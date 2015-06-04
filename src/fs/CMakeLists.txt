@@ -1,0 +1,59 @@
+set(FS_SRC
+	fs/fat32.cpp
+	fs/filesystem.cpp
+	fs/hfs.cpp
+	fs/nilfs2.cpp
+	fs/unknown.cpp
+	fs/linuxswap.cpp
+	fs/hfsplus.cpp
+	fs/ext3.cpp
+	fs/hpfs.cpp
+	fs/unformatted.cpp
+	fs/luks.cpp
+	fs/btrfs.cpp
+	fs/ufs.cpp
+	fs/reiserfs.cpp
+	fs/exfat.cpp
+	fs/filesystemfactory.cpp
+	fs/lvm2_pv.cpp
+	fs/reiser4.cpp
+	fs/ext2.cpp
+	fs/jfs.cpp
+	fs/ntfs.cpp
+	fs/fat16.cpp
+	fs/ext4.cpp
+	fs/xfs.cpp
+	fs/extended.cpp
+	fs/zfs.cpp
+	fs/ocfs2.cpp
+)
+
+set(FS_LIB_HDRS
+	fs/btrfs.h
+	fs/exfat.h
+	fs/ext2.h
+	fs/ext3.h
+	fs/ext4.h
+	fs/extended.h
+	fs/fat16.h
+	fs/fat32.h
+	fs/filesystem.h
+	fs/filesystemfactory.h
+	fs/hfs.h
+	fs/hfsplus.h
+	fs/hpfs.h
+	fs/jfs.h
+	fs/linuxswap.h
+	fs/luks.h
+	fs/lvm2_pv.h
+	fs/nilfs2.h
+	fs/ntfs.h
+	fs/ocfs2.h
+	fs/reiser4.h
+	fs/reiserfs.h
+	fs/ufs.h
+	fs/unformatted.h
+	fs/unknown.h
+	fs/xfs.h
+	fs/zfs.h
+)

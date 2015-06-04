@@ -1,0 +1,8 @@
+File=partitionmanager.kcfg
+ClassName=Config
+Singleton=true
+Mutators=true
+Visibility=LIBKPMCORE_EXPORT
+IncludeFiles=\"util/libpartitionmanagerexport.h\"
+ItemAccessors=true
+SetUserTexts=true
