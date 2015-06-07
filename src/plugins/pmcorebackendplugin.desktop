@@ -3,6 +3,7 @@ Type=ServiceType
 X-KDE-ServiceType=PartitionManager/Plugin
 Name=KDE Partition Manager Plugin
 Name[nl]=Plugin voor KDE-partitiebeheerder
+Name[pl]=Wtyczka zarządzania partycjami
 Name[pt]='Plugin' do Gestor de Partições do KDE
 Name[pt_BR]=Plugin do gerenciador de partições do KDE
 Name[sv]=KDE:s partitionshanterare insticksprogram

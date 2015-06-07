@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Name=KDE Partition Manager Dummy Backend
 Name[nl]=Dummy backend van KDE-partitiebeheerder
+Name[pl]=Fikcyjny silnik zarządzania partycjami
 Name[pt]=Infra-Estrutura de Testes do Gestor de Partições do KDE
 Name[pt_BR]=Infraestrutura de testes do gerenciador de partições do KDE
 Name[sv]=KDE:s partitionshanterare testbakgrundsprogram
@@ -9,6 +10,7 @@ Name[uk]=Тестовий додаток сервера Керування ро�
 Name[x-test]=xxKDE Partition Manager Dummy Backendxx
 Comment=A KDE Partition Manager dummy backend for testing purposes.
 Comment[nl]=Dummy backend van KDE-partitiebeheerder voor testdoeleinden
+Comment[pl]=Fikcyjny silnik zarządzania partycjami do prób.
 Comment[pt]=Uma infra-estrutura de exemplo do Gestor de Partições do KDE para fins de testes.
 Comment[pt_BR]=Uma infraestrutura de testes do gerenciador de partições do KDE.
 Comment[sv]=Ett bakgrundsprogram för KDE:s partitionshanterare i testsyfte.
