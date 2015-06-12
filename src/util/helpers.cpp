@@ -24,15 +24,10 @@
 #include <KLocalizedString>
 
 #include <QAction>
-#include <QIcon>
 #include <QMenu>
 #include <QHeaderView>
-#include <QPainter>
-#include <QPixmap>
 #include <QRect>
 #include <QTreeWidget>
-
-#include <config.h>
 
 void registerMetaTypes()
 {
@@ -43,18 +38,6 @@ void registerMetaTypes()
 bool caseInsensitiveLessThan(const QString& s1, const QString& s2)
 {
 	return s1.toLower() < s2.toLower();
-}
-
-QIcon createFileSystemColor(FileSystem::Type type, quint32 size)
-{
-	QPixmap pixmap(size, size);
-	QPainter painter(&pixmap);
-	painter.setPen(QColor(0, 0, 0));
-	painter.setBrush(Config::fileSystemColorCode(type));
-	painter.drawRect(QRect(0, 0, pixmap.width() - 1, pixmap.height() - 1));
-	painter.end();
-
-	return QIcon(pixmap);
 }
 
 void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree)

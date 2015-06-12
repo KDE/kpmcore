@@ -25,15 +25,12 @@
 
 class KAboutData;
 class QString;
-class QIcon;
 class QPoint;
 class QTreeWidget;
 
 LIBKPMCORE_EXPORT void registerMetaTypes();
 
 LIBKPMCORE_EXPORT bool caseInsensitiveLessThan(const QString& s1, const QString& s2);
-
-LIBKPMCORE_EXPORT QIcon createFileSystemColor(FileSystem::Type type, quint32 size);
 
 LIBKPMCORE_EXPORT void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree);
 
