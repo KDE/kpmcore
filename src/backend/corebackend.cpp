@@ -24,8 +24,6 @@
 
 #include <QDebug>
 
-#include <config.h>
-
 class CoreBackend::CoreBackendPrivate
 {
 	public:

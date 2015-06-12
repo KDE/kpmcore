@@ -27,8 +27,6 @@
 #include <KPluginLoader>
 #include <KServiceTypeTrader>
 
-#include <config.h>
-
 CoreBackendManager::CoreBackendManager() :
 	m_Backend(NULL)
 {
