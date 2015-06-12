@@ -36,7 +36,6 @@ file(GLOB kpmcore_UIFILES config/*.ui)
 ki18n_wrap_ui(kpmcore_SRCS ${kpmcore_UIFILES})
 
 kconfig_add_kcfg_files(kpmcore_SRCS config.kcfgc)
-install(FILES partitionmanager.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore
