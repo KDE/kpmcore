@@ -25,8 +25,6 @@
 
 #include <QDebug>
 
-#include <config.h>
-
 const QString Capacity::m_InvalidString = QStringLiteral("---");
 
 /** Creates a new Capacity instance.
@@ -136,11 +134,6 @@ QString Capacity::unitName(Unit u, qint64 val)
 bool Capacity::isValid() const
 {
 	return m_Size >= 0;
-}
-
-Capacity::Unit Capacity::preferredUnit()
-{
-	return static_cast<Unit>(Config::preferredUnit());
 }
 
 QString Capacity::formatByteSize(double size, int precision)
