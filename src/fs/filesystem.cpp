@@ -23,8 +23,6 @@
 #include <blkid/blkid.h>
 #include <KLocalizedString>
 
-#include <config.h>
-
 /** Creates a new FileSystem object
 	@param firstsector the first sector used by this FileSystem on the Device
 	@param lastsector the last sector used by this FileSystem on the Device
@@ -383,11 +381,6 @@ bool FileSystem::findExternal(const QString& cmdName, const QStringList& args, i
 		return false;
 
 	return cmd.exitCode() == 0 || cmd.exitCode() == expectedCode;
-}
-
-FileSystem::Type FileSystem::defaultFileSystem()
-{
-	return static_cast<FileSystem::Type>(Config::defaultFileSystem());
 }
 
 bool FileSystem::supportToolFound() const

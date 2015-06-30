@@ -124,7 +124,6 @@ Partition* NewOperation::createNew(const Partition& cloneFrom)
 	Partition* p = new Partition(cloneFrom);
 
 	p->deleteFileSystem();
-	p->setFileSystem(FileSystemFactory::create(FileSystem::defaultFileSystem(), p->firstSector(), p->lastSector()));
 	p->setState(Partition::StateNew);
 	p->setPartitionPath(QString());
 
