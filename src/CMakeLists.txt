@@ -23,12 +23,12 @@ include(jobs/CMakeLists.txt)
 include(fs/CMakeLists.txt)
 
 set(kpmcore_SRCS
-	${BACKEND_SRC}
-	${FS_SRC}
-	${CORE_SRC}
-	${OPS_SRC}
-	${JOBS_SRC}
-	${UTIL_SRC}
+    ${BACKEND_SRC}
+    ${FS_SRC}
+    ${CORE_SRC}
+    ${OPS_SRC}
+    ${JOBS_SRC}
+    ${UTIL_SRC}
 )
 
 file(GLOB kpmcore_UIFILES config/*.ui)
@@ -39,16 +39,18 @@ kconfig_add_kcfg_files(kpmcore_SRCS config.kcfgc)
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore
-	${UUID_LIBRARIES} ${BLKID_LIBRARIES} ${LIBATASMART_LIBRARIES}
-	KF5::ConfigCore
-	KF5::ConfigGui
-	KF5::I18n
-	KF5::IconThemes
-	KF5::KIOCore
-	KF5::Service
+    ${UUID_LIBRARIES}
+    ${BLKID_LIBRARIES}
+    ${LIBATASMART_LIBRARIES}
+    KF5::ConfigCore
+    KF5::ConfigGui
+    KF5::I18n
+    KF5::IconThemes
+    KF5::KIOCore
+    KF5::Service
 )
 
-install(TARGETS kpmcore EXPORT PartitionManagerTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES ${CORE_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/core/ COMPONENT Devel)
 install(FILES ${BACKEND_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/backend/ COMPONENT Devel)
 install(FILES ${FS_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/fs/ COMPONENT Devel)

@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-project(partitionmanager)
+project(kpmcore)
 
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 
@@ -42,7 +42,7 @@ include(ECMPackageConfigHelpers)
 
 ecm_setup_version(${VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/PartitionManagerConfigVersion.cmake"
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfigVersion.cmake"
                         SOVERSION 1)
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
@@ -82,19 +82,19 @@ include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE
 add_subdirectory(src)
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
-set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/PartitionManager")
+set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KPMcore")
 
-ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/PartitionManagerConfig.cmake.in"
-                              "${CMAKE_CURRENT_BINARY_DIR}/PartitionManagerConfig.cmake"
+ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
+                              "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"
                               INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
                               )
 
-install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/PartitionManagerConfig.cmake"
-               "${CMAKE_CURRENT_BINARY_DIR}/PartitionManagerConfigVersion.cmake"
+install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"
+               "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfigVersion.cmake"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel )
 
-install(EXPORT PartitionManagerTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE PartitionManagerTargets.cmake )
+install(EXPORT KPMcoreTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KPMcoreTargets.cmake )
 
 ki18n_install(po)
 
