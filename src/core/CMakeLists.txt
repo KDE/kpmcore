@@ -1,37 +1,41 @@
 set(CORE_SRC
-	core/copysourceshred.cpp
-	core/copysource.cpp
-	core/partition.cpp
-	core/mountentry.cpp
-	core/copytargetdevice.cpp
-	core/copytarget.cpp
-	core/copysourcedevice.cpp
-	core/operationrunner.cpp
-	core/partitiontable.cpp
-	core/copytargetfile.cpp
-	core/smartstatus.cpp
-	core/copysourcefile.cpp
-	core/smartattribute.cpp
-	core/devicescanner.cpp
-	core/partitionnode.cpp
-	core/partitionalignment.cpp
-	core/device.cpp
-	core/operationstack.cpp
-	core/partitionrole.cpp
+    core/copysourceshred.cpp
+    core/copysource.cpp
+    core/partition.cpp
+    core/mountentry.cpp
+    core/copytargetdevice.cpp
+    core/copytarget.cpp
+    core/copysourcedevice.cpp
+    core/operationrunner.cpp
+    core/partitiontable.cpp
+    core/copytargetfile.cpp
+    core/smartstatus.cpp
+    core/copysourcefile.cpp
+    core/smartattribute.cpp
+    core/devicescanner.cpp
+    core/partitionnode.cpp
+    core/partitionalignment.cpp
+    core/device.cpp
+    core/operationstack.cpp
+    core/partitionrole.cpp
 )
 
 set(CORE_LIB_HDRS
-	core/device.h
-	core/devicescanner.h
-	core/mountentry.h
-	core/operationrunner.h
-	core/operationstack.h
-	core/partition.h
-	core/partitionalignment.h
-	core/partitionnode.h
-	core/partitionrole.h
-	core/partitiontable.h
-	core/smartattribute.h
-	core/smartstatus.h
+    core/copysource.h
+    core/copysourcedevice.h
+    core/copytarget.h
+    core/copytargetdevice.h
+    core/device.h
+    core/devicescanner.h
+    core/mountentry.h
+    core/operationrunner.h
+    core/operationstack.h
+    core/partition.h
+    core/partitionalignment.h
+    core/partitionnode.h
+    core/partitionrole.h
+    core/partitiontable.h
+    core/smartattribute.h
+    core/smartstatus.h
 )
 
