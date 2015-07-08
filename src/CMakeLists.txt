@@ -1,4 +1,5 @@
 # Copyright (C) 2008, 2012 by Volker Lanz <vl@fidra.de>
+# Copyright (C) 2015       by Teo Mrnjavac <teo@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -21,6 +22,7 @@ include(util/CMakeLists.txt)
 include(ops/CMakeLists.txt)
 include(jobs/CMakeLists.txt)
 include(fs/CMakeLists.txt)
+include(gui/CMakeLists.txt)
 
 set(kpmcore_SRCS
     ${BACKEND_SRC}
@@ -29,6 +31,7 @@ set(kpmcore_SRCS
     ${OPS_SRC}
     ${JOBS_SRC}
     ${UTIL_SRC}
+    ${GUI_SRC}
 )
 
 file(GLOB kpmcore_UIFILES config/*.ui)
@@ -57,6 +60,7 @@ install(FILES ${FS_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/fs/ COMP
 install(FILES ${JOBS_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/jobs/ COMPONENT Devel)
 install(FILES ${OPS_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/ops/ COMPONENT Devel)
 install(FILES ${UTIL_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/util/ COMPONENT Devel)
+install(FILES ${GUI_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/gui/ COMPONENT Devel)
 
 ############################################
 
