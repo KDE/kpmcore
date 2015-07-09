@@ -76,7 +76,6 @@ class LIBKPMCORE_EXPORT Device : public QObject
 
 		QString prettyName() const;
 
-	protected:
 		void setPartitionTable(PartitionTable* ptable) { m_PartitionTable = ptable; }
 
 	private:
