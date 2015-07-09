@@ -111,15 +111,12 @@ class LIBKPMCORE_EXPORT Partition : public PartitionNode
 			StateRestore = 3	/**< from a RestoreOperation */
 		};
 
-	public:
 		Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = StateNone);
 		~Partition();
 
-	public:
 		Partition(const Partition&);
 		Partition& operator=(const Partition&);
 
-	public:
 		bool operator==(const Partition& other) const;
 		bool operator!=(const Partition& other) const;
 
@@ -175,7 +172,10 @@ class LIBKPMCORE_EXPORT Partition : public PartitionNode
 		void adjustLogicalNumbers(qint32 deletedNumber, qint32 insertedNumber);
 		void checkChildrenMounted();
 
-	protected:
+        void setFirstSector(qint64 s) { m_FirstSector = s; }
+        void setLastSector(qint64 s) { m_LastSector = s; }
+
+    protected:
 		void append(Partition* p) { m_Children.append(p); }
 		void setDevicePath(const QString& s) { m_DevicePath = s; }
 		void setPartitionPath(const QString& s);
@@ -183,8 +183,6 @@ class LIBKPMCORE_EXPORT Partition : public PartitionNode
 		void setMountPoint(const QString& s) { m_MountPoint = s; }
 		void setFlags(PartitionTable::Flags f) { m_ActiveFlags = f; }
 		void setSectorSize(qint32 s) { m_SectorSize = s; }
-		void setFirstSector(qint64 s) { m_FirstSector = s; }
-		void setLastSector(qint64 s) { m_LastSector = s; }
 		void move(qint64 newStartSector);
 		void setMounted(bool b) { m_IsMounted = b; }
 		void setFlag(PartitionTable::Flag f) { m_ActiveFlags |= f; }
