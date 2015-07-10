@@ -20,6 +20,7 @@
 #define COPYSOURCEDEVICE__H
 
 #include "../core/copysource.h"
+#include "../util/libpartitionmanagerexport.h"
 
 #include <qglobal.h>
 
@@ -33,7 +34,7 @@ class CoreBackendDevice;
 	another Device or to backup its FileSystem to a file.
 	@author Volker Lanz <vl@fidra.de>
  */
-class CopySourceDevice : public CopySource
+class LIBKPMCORE_EXPORT CopySourceDevice : public CopySource
 {
 	Q_DISABLE_COPY(CopySourceDevice)
 

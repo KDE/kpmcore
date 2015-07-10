@@ -20,6 +20,7 @@
 #define COPYTARGETDEVICE__H
 
 #include "../core/copytarget.h"
+#include "../util/libpartitionmanagerexport.h"
 
 #include <qglobal.h>
 
@@ -35,7 +36,7 @@ class CoreBackendDevice;
 
 	@author Volker Lanz <vl@fidra.de>
 */
-class CopyTargetDevice : public CopyTarget
+class LIBKPMCORE_EXPORT CopyTargetDevice : public CopyTarget
 {
 	Q_DISABLE_COPY(CopyTargetDevice)
 
