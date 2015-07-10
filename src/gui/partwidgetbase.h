@@ -21,7 +21,7 @@
 
 #include "../util/libpartitionmanagerexport.h"
 
-#include <kpmcore/core/partitionnode.h>
+#include "core/partitionnode.h"
 
 #include <QList>
 #include <QWidget>
