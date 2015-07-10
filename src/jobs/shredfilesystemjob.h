@@ -36,7 +36,7 @@ class Report;
 class ShredFileSystemJob : public Job
 {
 	public:
-		ShredFileSystemJob(Device& d, Partition& p);
+        ShredFileSystemJob(Device& d, Partition& p, bool randomShred);
 
 	public:
 		virtual bool run(Report& parent);
@@ -53,6 +53,7 @@ class ShredFileSystemJob : public Job
 	private:
 		Device& m_Device;
 		Partition& m_Partition;
+        bool m_RandomShred;
 };
 
 #endif

@@ -23,11 +23,11 @@
 	@param s the size the copy source will (pretend to) have
 	@param sectorsize the sectorsize the copy source will (pretend to) have
 */
-CopySourceShred::CopySourceShred (qint64 s, qint32 sectorsize) :
+CopySourceShred::CopySourceShred (qint64 s, qint32 sectorsize, bool randomShred) :
 	CopySource(),
 	m_Size(s),
 	m_SectorSize(sectorsize),
-	m_SourceFile(Config::shredSource() == Config::EnumShredSource::random ? QStringLiteral("/dev/urandom") : QStringLiteral("/dev/zero"))
+    m_SourceFile(randomShred ? QStringLiteral("/dev/urandom") : QStringLiteral("/dev/zero"))
 {
 }
 

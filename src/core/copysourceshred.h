@@ -34,7 +34,7 @@ class CopyTarget;
 class CopySourceShred : public CopySource
 {
 	public:
-		CopySourceShred(qint64 size, qint32 sectorsize);
+        CopySourceShred(qint64 size, qint32 sectorsize, bool randomShred);
 
 	public:
 		virtual bool open();

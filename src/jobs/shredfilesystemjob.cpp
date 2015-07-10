@@ -35,10 +35,11 @@
 	@param d the Device the FileSystem is on
 	@param p the Partition the FileSystem is in
 */
-ShredFileSystemJob::ShredFileSystemJob(Device& d, Partition& p) :
+ShredFileSystemJob::ShredFileSystemJob(Device& d, Partition& p, bool randomShred) :
 	Job(),
 	m_Device(d),
-	m_Partition(p)
+    m_Partition(p),
+    m_RandomShred(randomShred)
 {
 }
 
@@ -64,7 +65,7 @@ bool ShredFileSystemJob::run(Report& parent)
 	// Again, a scope for copyTarget and copySource. See MoveFileSystemJob::run()
 	{
 		CopyTargetDevice copyTarget(device(), partition().fileSystem().firstSector(), partition().fileSystem().lastSector());
-		CopySourceShred copySource(partition().capacity(), copyTarget.sectorSize());
+        CopySourceShred copySource(partition().capacity(), copyTarget.sectorSize(), m_RandomShred);
 
 		if (!copySource.open())
 			report->line() << i18nc("@info/plain", "Could not open random data source to overwrite file system.");

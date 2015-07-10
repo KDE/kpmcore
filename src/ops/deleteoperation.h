@@ -43,15 +43,24 @@ class LIBKPMCORE_EXPORT DeleteOperation : public Operation
 	Q_DISABLE_COPY(DeleteOperation)
 
 	public:
-		DeleteOperation(Device& d, Partition* p, bool secure = false);
+        enum ShredAction
+        {
+            NoShred = 0,
+            ZeroShred,
+            RandomShred
+        };
+
+        DeleteOperation(Device& d, Partition* p, ShredAction shred = NoShred);
 		~DeleteOperation();
 
 	public:
-		QString iconName() const { return isSecure() ? QStringLiteral("edit-delete-shred") : QStringLiteral("edit-delete"); }
+        QString iconName() const { return shredAction() == NoShred ?
+                                    QStringLiteral("edit-delete") :
+                                    QStringLiteral("edit-delete-shred"); }
 		QString description() const;
 		void preview();
 		void undo();
-		bool isSecure() const { return m_Secure; }
+        ShredAction shredAction() const { return m_ShredAction; }
 
 		virtual bool targets(const Device& d) const;
 		virtual bool targets(const Partition& p) const;
@@ -75,7 +84,7 @@ class LIBKPMCORE_EXPORT DeleteOperation : public Operation
 	private:
 		Device& m_TargetDevice;
 		Partition* m_DeletedPartition;
-		bool m_Secure;
+        ShredAction m_ShredAction;
 		Job* m_DeleteFileSystemJob;
 		DeletePartitionJob* m_DeletePartitionJob;
 };
