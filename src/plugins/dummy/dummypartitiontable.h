@@ -31,25 +31,25 @@ class Partition;
 
 class DummyPartitionTable : public CoreBackendPartitionTable
 {
-	public:
-		DummyPartitionTable();
-		~DummyPartitionTable();
+public:
+    DummyPartitionTable();
+    ~DummyPartitionTable();
 
-	public:
-		virtual bool open();
+public:
+    virtual bool open();
 
-		virtual bool commit(quint32 timeout = 10);
+    virtual bool commit(quint32 timeout = 10);
 
-		virtual CoreBackendPartition* getExtendedPartition();
-		virtual CoreBackendPartition* getPartitionBySector(qint64 sector);
+    virtual CoreBackendPartition* getExtendedPartition();
+    virtual CoreBackendPartition* getPartitionBySector(qint64 sector);
 
-		virtual QString createPartition(Report& report, const Partition& partition);
-		virtual bool deletePartition(Report& report, const Partition& partition);
-		virtual bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end);
-		virtual bool clobberFileSystem(Report& report, const Partition& partition);
-		virtual bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength);
-		virtual FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector);
-		virtual bool setPartitionSystemType(Report& report, const Partition& partition);
+    virtual QString createPartition(Report& report, const Partition& partition);
+    virtual bool deletePartition(Report& report, const Partition& partition);
+    virtual bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end);
+    virtual bool clobberFileSystem(Report& report, const Partition& partition);
+    virtual bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength);
+    virtual FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector);
+    virtual bool setPartitionSystemType(Report& report, const Partition& partition);
 };
 
 #endif

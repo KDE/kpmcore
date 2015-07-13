@@ -31,44 +31,58 @@ class CheckFileSystemJob;
 class ResizeFileSystemJob;
 
 /** Check a Partition.
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT CheckOperation : public Operation
 {
-	friend class OperationStack;
+    friend class OperationStack;
 
-	Q_OBJECT
-	Q_DISABLE_COPY(CheckOperation)
+    Q_OBJECT
+    Q_DISABLE_COPY(CheckOperation)
 
-	public:
-		CheckOperation(Device& targetDevice, Partition& checkedPartition);
+public:
+    CheckOperation(Device& targetDevice, Partition& checkedPartition);
 
-	public:
-		QString iconName() const { return QStringLiteral("flag"); }
-		QString description() const;
-		void preview() {}
-		void undo() {}
+public:
+    QString iconName() const {
+        return QStringLiteral("flag");
+    }
+    QString description() const;
+    void preview() {}
+    void undo() {}
 
-		virtual bool targets(const Device& d) const;
-		virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const;
+    virtual bool targets(const Partition& p) const;
 
-		static bool canCheck(const Partition* p);
+    static bool canCheck(const Partition* p);
 
-	protected:
-		Device& targetDevice() { return m_TargetDevice; }
-		const Device& targetDevice() const { return m_TargetDevice; }
+protected:
+    Device& targetDevice() {
+        return m_TargetDevice;
+    }
+    const Device& targetDevice() const {
+        return m_TargetDevice;
+    }
 
-		Partition& checkedPartition() { return m_CheckedPartition; }
-		const Partition& checkedPartition() const { return m_CheckedPartition; }
+    Partition& checkedPartition() {
+        return m_CheckedPartition;
+    }
+    const Partition& checkedPartition() const {
+        return m_CheckedPartition;
+    }
 
-		CheckFileSystemJob* checkJob() { return m_CheckJob; }
-		ResizeFileSystemJob* maximizeJob() { return m_MaximizeJob; }
+    CheckFileSystemJob* checkJob() {
+        return m_CheckJob;
+    }
+    ResizeFileSystemJob* maximizeJob() {
+        return m_MaximizeJob;
+    }
 
-	private:
-		Device& m_TargetDevice;
-		Partition& m_CheckedPartition;
-		CheckFileSystemJob* m_CheckJob;
-		ResizeFileSystemJob* m_MaximizeJob;
+private:
+    Device& m_TargetDevice;
+    Partition& m_CheckedPartition;
+    CheckFileSystemJob* m_CheckJob;
+    ResizeFileSystemJob* m_MaximizeJob;
 };
 
 #endif

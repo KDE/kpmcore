@@ -19,19 +19,19 @@
 
 namespace FS
 {
-	FileSystem::CommandSupportType extended::m_Create = FileSystem::cmdSupportFileSystem;
-	FileSystem::CommandSupportType extended::m_Grow = FileSystem::cmdSupportCore;
-	FileSystem::CommandSupportType extended::m_Shrink = FileSystem::cmdSupportCore;
-	FileSystem::CommandSupportType extended::m_Move = FileSystem::cmdSupportCore;
+FileSystem::CommandSupportType extended::m_Create = FileSystem::cmdSupportFileSystem;
+FileSystem::CommandSupportType extended::m_Grow = FileSystem::cmdSupportCore;
+FileSystem::CommandSupportType extended::m_Shrink = FileSystem::cmdSupportCore;
+FileSystem::CommandSupportType extended::m_Move = FileSystem::cmdSupportCore;
 
-	extended::extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-		FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Extended)
-	{
-	}
-	
-	bool extended::create(Report&, const QString&) const
-	{
-		return true;
-	}
+extended::extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Extended)
+{
+}
+
+bool extended::create(Report&, const QString&) const
+{
+    return true;
+}
 }
 

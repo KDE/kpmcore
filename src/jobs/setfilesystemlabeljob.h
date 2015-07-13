@@ -28,29 +28,37 @@ class Report;
 class OperationStack;
 
 /** Set a FileSystem label.
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class SetFileSystemLabelJob : public Job
 {
-	friend class OperationStack;
-	
-	public:
-		SetFileSystemLabelJob(Partition& p, const QString& newlabel);
+    friend class OperationStack;
 
-	public:
-		virtual bool run(Report& parent);
-		virtual QString description() const;
+public:
+    SetFileSystemLabelJob(Partition& p, const QString& newlabel);
 
-	protected:
-		Partition& partition() { return m_Partition; }
-		const Partition& partition() const { return m_Partition; }
+public:
+    virtual bool run(Report& parent);
+    virtual QString description() const;
 
-		const QString& label() const { return m_Label; }
-		void setLabel(const QString& l) { m_Label = l; }
+protected:
+    Partition& partition() {
+        return m_Partition;
+    }
+    const Partition& partition() const {
+        return m_Partition;
+    }
 
-	private:
-		Partition& m_Partition;
-		QString m_Label;
+    const QString& label() const {
+        return m_Label;
+    }
+    void setLabel(const QString& l) {
+        m_Label = l;
+    }
+
+private:
+    Partition& m_Partition;
+    QString m_Label;
 };
 
 #endif

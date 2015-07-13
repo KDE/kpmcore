@@ -19,8 +19,8 @@
 
 namespace FS
 {
-	unknown::unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-		FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Unknown)
-	{
-	}
+unknown::unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Unknown)
+{
+}
 }

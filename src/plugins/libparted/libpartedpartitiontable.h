@@ -33,34 +33,38 @@ class Partition;
 
 class LibPartedPartitionTable : public CoreBackendPartitionTable
 {
-	public:
-		LibPartedPartitionTable(PedDevice* device);
-		~LibPartedPartitionTable();
+public:
+    LibPartedPartitionTable(PedDevice* device);
+    ~LibPartedPartitionTable();
 
-	public:
-		virtual bool open();
+public:
+    virtual bool open();
 
-		virtual bool commit(quint32 timeout = 10);
-		static bool commit(PedDisk* pd, quint32 timeout = 10);
+    virtual bool commit(quint32 timeout = 10);
+    static bool commit(PedDisk* pd, quint32 timeout = 10);
 
-		virtual CoreBackendPartition* getExtendedPartition();
-		virtual CoreBackendPartition* getPartitionBySector(qint64 sector);
+    virtual CoreBackendPartition* getExtendedPartition();
+    virtual CoreBackendPartition* getPartitionBySector(qint64 sector);
 
-		virtual QString createPartition(Report& report, const Partition& partition);
-		virtual bool deletePartition(Report& report, const Partition& partition);
-		virtual bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end);
-		virtual bool clobberFileSystem(Report& report, const Partition& partition);
-		virtual bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength);
-		virtual FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector);
-		virtual bool setPartitionSystemType(Report& report, const Partition& partition);
+    virtual QString createPartition(Report& report, const Partition& partition);
+    virtual bool deletePartition(Report& report, const Partition& partition);
+    virtual bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end);
+    virtual bool clobberFileSystem(Report& report, const Partition& partition);
+    virtual bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength);
+    virtual FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector);
+    virtual bool setPartitionSystemType(Report& report, const Partition& partition);
 
-	private:
-		PedDevice* pedDevice() { return m_PedDevice; }
-		PedDisk* pedDisk() { return m_PedDisk; }
+private:
+    PedDevice* pedDevice() {
+        return m_PedDevice;
+    }
+    PedDisk* pedDisk() {
+        return m_PedDisk;
+    }
 
-	private:
-		PedDevice* m_PedDevice;
-		PedDisk* m_PedDisk;
+private:
+    PedDevice* m_PedDevice;
+    PedDisk* m_PedDisk;
 };
 
 #endif

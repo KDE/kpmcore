@@ -26,90 +26,88 @@
 #include <QMutex>
 
 /** Constructs an OperationRunner.
-	@param ostack the OperationStack to act on
+    @param ostack the OperationStack to act on
 */
 OperationRunner::OperationRunner(QObject* parent, OperationStack& ostack) :
-	QThread(parent),
-	m_OperationStack(ostack),
-	m_Report(NULL),
-	m_SuspendMutex(),
-	m_Cancelling(false)
+    QThread(parent),
+    m_OperationStack(ostack),
+    m_Report(NULL),
+    m_SuspendMutex(),
+    m_Cancelling(false)
 {
 }
 
 /** Runs the operations in the OperationStack. */
 void OperationRunner::run()
 {
-	Q_ASSERT(m_Report);
+    Q_ASSERT(m_Report);
 
-	setCancelling(false);
+    setCancelling(false);
 
-	bool status = true;
+    bool status = true;
 
-	for (int i = 0; i < numOperations(); i++)
-	{
-		suspendMutex().lock();
+    for (int i = 0; i < numOperations(); i++) {
+        suspendMutex().lock();
 
-		if (!status || isCancelling())
-		{
-			suspendMutex().unlock();
-			break;
-		}
+        if (!status || isCancelling()) {
+            suspendMutex().unlock();
+            break;
+        }
 
-		Operation* op = operationStack().operations()[i];
-		op->setStatus(Operation::StatusRunning);
+        Operation* op = operationStack().operations()[i];
+        op->setStatus(Operation::StatusRunning);
 
-		emit opStarted(i + 1, op);
+        emit opStarted(i + 1, op);
 
-		connect(op, SIGNAL(progress(int)), this, SIGNAL(progressSub(int)));
+        connect(op, SIGNAL(progress(int)), this, SIGNAL(progressSub(int)));
 
-		status = op->execute(report());
-		op->preview();
+        status = op->execute(report());
+        op->preview();
 
-		disconnect(op, SIGNAL(progress(int)), this, SIGNAL(progressSub(int)));
+        disconnect(op, SIGNAL(progress(int)), this, SIGNAL(progressSub(int)));
 
-		emit opFinished(i + 1, op);
+        emit opFinished(i + 1, op);
 
-		suspendMutex().unlock();
+        suspendMutex().unlock();
 
-		// Sleep a little to give others a chance to suspend us. This should normally not be
-		// required -- is it possible that the compiler just optimizes our unlock/lock away
-		// if we don't sleep?
-		msleep(5);
-	}
+        // Sleep a little to give others a chance to suspend us. This should normally not be
+        // required -- is it possible that the compiler just optimizes our unlock/lock away
+        // if we don't sleep?
+        msleep(5);
+    }
 
-	if (!status)
-		emit error();
-	else if (isCancelling())
-		emit cancelled();
-	else
-		emit finished();
+    if (!status)
+        emit error();
+    else if (isCancelling())
+        emit cancelled();
+    else
+        emit finished();
 }
 
 /** @return the number of Operations to run */
 qint32 OperationRunner::numOperations() const
 {
-	return operationStack().operations().size();
+    return operationStack().operations().size();
 }
 
 /** @return the number of Jobs to run */
 qint32 OperationRunner::numJobs() const
 {
-	qint32 result = 0;
+    qint32 result = 0;
 
-	foreach (const Operation* op,  operationStack().operations())
-		result += op->jobs().size();
+    foreach(const Operation * op,  operationStack().operations())
+    result += op->jobs().size();
 
-	return result;
+    return result;
 }
 
 /** @param op the number of the Operation to get a description for
-	@return the Operation's description
+    @return the Operation's description
 */
 QString OperationRunner::description(qint32 op) const
 {
-	Q_ASSERT(op >= 0);
-	Q_ASSERT(op < operationStack().size());
+    Q_ASSERT(op >= 0);
+    Q_ASSERT(op < operationStack().size());
 
-	return operationStack().operations()[op]->description();
+    return operationStack().operations()[op]->description();
 }

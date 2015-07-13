@@ -29,29 +29,37 @@ class QString;
 
 /** Delete a FileSystem.
 
-	Delete and clobber the FileSystem on the given Partition on the given Device.
+    Delete and clobber the FileSystem on the given Partition on the given Device.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class DeleteFileSystemJob : public Job
 {
-	public:
-		DeleteFileSystemJob(Device& d, Partition& p);
+public:
+    DeleteFileSystemJob(Device& d, Partition& p);
 
-	public:
-		virtual bool run(Report& parent);
-		virtual QString description() const;
+public:
+    virtual bool run(Report& parent);
+    virtual QString description() const;
 
-	protected:
-		Partition& partition() { return m_Partition; }
-		const Partition& partition() const { return m_Partition; }
+protected:
+    Partition& partition() {
+        return m_Partition;
+    }
+    const Partition& partition() const {
+        return m_Partition;
+    }
 
-		Device& device() { return m_Device; }
-		const Device& device() const { return m_Device; }
+    Device& device() {
+        return m_Device;
+    }
+    const Device& device() const {
+        return m_Device;
+    }
 
-	private:
-		Device& m_Device;
-		Partition& m_Partition;
+private:
+    Device& m_Device;
+    Partition& m_Partition;
 };
 
 #endif

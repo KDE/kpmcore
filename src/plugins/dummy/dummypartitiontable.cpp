@@ -29,7 +29,7 @@
 #include <unistd.h>
 
 DummyPartitionTable::DummyPartitionTable() :
-	CoreBackendPartitionTable()
+    CoreBackendPartitionTable()
 {
 }
 
@@ -39,86 +39,86 @@ DummyPartitionTable::~DummyPartitionTable()
 
 bool DummyPartitionTable::open()
 {
-	return true;
+    return true;
 }
 
 
 bool DummyPartitionTable::commit(quint32 timeout)
 {
-	Q_UNUSED(timeout);
+    Q_UNUSED(timeout);
 
-	return true;
+    return true;
 }
 
 CoreBackendPartition* DummyPartitionTable::getExtendedPartition()
 {
-	return new DummyPartition();
+    return new DummyPartition();
 }
 
 CoreBackendPartition* DummyPartitionTable::getPartitionBySector(qint64 sector)
 {
-	Q_UNUSED(sector);
+    Q_UNUSED(sector);
 
-	return new DummyPartition();
+    return new DummyPartition();
 }
 
 QString DummyPartitionTable::createPartition(Report& report, const Partition& partition)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(partition);
+    Q_UNUSED(report);
+    Q_UNUSED(partition);
 
-	return QStringLiteral("dummy");
+    return QStringLiteral("dummy");
 }
 
 bool DummyPartitionTable::deletePartition(Report& report, const Partition& partition)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(partition);
+    Q_UNUSED(report);
+    Q_UNUSED(partition);
 
-	return true;
+    return true;
 }
 
 bool DummyPartitionTable::updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(partition);
-	Q_UNUSED(sector_start);
-	Q_UNUSED(sector_end);
+    Q_UNUSED(report);
+    Q_UNUSED(partition);
+    Q_UNUSED(sector_start);
+    Q_UNUSED(sector_end);
 
-	return true;
+    return true;
 }
 
 bool DummyPartitionTable::clobberFileSystem(Report& report, const Partition& partition)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(partition);
+    Q_UNUSED(report);
+    Q_UNUSED(partition);
 
-	return true;
+    return true;
 }
 
 bool DummyPartitionTable::resizeFileSystem(Report& report, const Partition& partition, qint64 newLength)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(partition);
-	Q_UNUSED(newLength);
+    Q_UNUSED(report);
+    Q_UNUSED(partition);
+    Q_UNUSED(newLength);
 
-	return true;
+    return true;
 }
 
 FileSystem::Type DummyPartitionTable::detectFileSystemBySector(Report& report, const Device& device, qint64 sector)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(device);
-	Q_UNUSED(sector);
+    Q_UNUSED(report);
+    Q_UNUSED(device);
+    Q_UNUSED(sector);
 
-	FileSystem::Type rval = FileSystem::Unknown;
-	return rval;
+    FileSystem::Type rval = FileSystem::Unknown;
+    return rval;
 }
 
 bool DummyPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(partition);
+    Q_UNUSED(report);
+    Q_UNUSED(partition);
 
-	return true;
+    return true;
 }

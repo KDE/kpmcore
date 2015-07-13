@@ -29,28 +29,36 @@ class QString;
 
 namespace FS
 {
-	/** A UFS file system.
-		@author Volker Lanz <vl@fidra.de>
-	 */
-	class LIBKPMCORE_EXPORT ufs : public FileSystem
-	{
-		public:
-			ufs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+/** A UFS file system.
+    @author Volker Lanz <vl@fidra.de>
+ */
+class LIBKPMCORE_EXPORT ufs : public FileSystem
+{
+public:
+    ufs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-		public:
-			static void init() {}
+public:
+    static void init() {}
 
-			virtual CommandSupportType supportMove() const { return m_Move; }
-			virtual CommandSupportType supportCopy() const { return m_Copy; }
-			virtual CommandSupportType supportBackup() const { return m_Backup; }
+    virtual CommandSupportType supportMove() const {
+        return m_Move;
+    }
+    virtual CommandSupportType supportCopy() const {
+        return m_Copy;
+    }
+    virtual CommandSupportType supportBackup() const {
+        return m_Backup;
+    }
 
-			virtual bool supportToolFound() const { return true; }
+    virtual bool supportToolFound() const {
+        return true;
+    }
 
-		public:
-			static CommandSupportType m_Move;
-			static CommandSupportType m_Copy;
-			static CommandSupportType m_Backup;
-	};
+public:
+    static CommandSupportType m_Move;
+    static CommandSupportType m_Copy;
+    static CommandSupportType m_Backup;
+};
 }
 
 #endif

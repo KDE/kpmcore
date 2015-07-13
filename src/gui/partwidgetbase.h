@@ -31,33 +31,41 @@ class PartWidget;
 class QWidget;
 
 /** Base class for all widgets that need to position Partitions.
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT PartWidgetBase : public QWidget
 {
-	Q_OBJECT
-	Q_DISABLE_COPY(PartWidgetBase)
+    Q_OBJECT
+    Q_DISABLE_COPY(PartWidgetBase)
 
-	protected:
-		PartWidgetBase(QWidget* parent) : QWidget(parent) {}
-		virtual ~PartWidgetBase() {}
+protected:
+    PartWidgetBase(QWidget* parent) : QWidget(parent) {}
+    virtual ~PartWidgetBase() {}
 
-	public:
-		virtual qint32 borderWidth() const { return m_BorderWidth; } /**< @return border width */
-		virtual qint32 borderHeight() const { return m_BorderHeight; } /**< @return border height */
-		static qint32 spacing() { return m_Spacing; } /**< @return spacing between Partitions */
-		static qint32 minWidth() { return m_MinWidth; } /**< @return minimum width for a Partition widget */
+public:
+    virtual qint32 borderWidth() const {
+        return m_BorderWidth;    /**< @return border width */
+    }
+    virtual qint32 borderHeight() const {
+        return m_BorderHeight;    /**< @return border height */
+    }
+    static qint32 spacing() {
+        return m_Spacing;    /**< @return spacing between Partitions */
+    }
+    static qint32 minWidth() {
+        return m_MinWidth;    /**< @return minimum width for a Partition widget */
+    }
 
-		virtual QList<PartWidget*> childWidgets();
+    virtual QList<PartWidget*> childWidgets();
 
-	protected:
-		virtual void positionChildren(const QWidget* destWidget, const PartitionNode::Partitions& partitions, QList<PartWidget*> widgets) const;
+protected:
+    virtual void positionChildren(const QWidget* destWidget, const PartitionNode::Partitions& partitions, QList<PartWidget*> widgets) const;
 
-	private:
-		static const qint32 m_Spacing;
-		static const qint32 m_BorderWidth;
-		static const qint32 m_BorderHeight;
-		static const qint32 m_MinWidth;
+private:
+    static const qint32 m_Spacing;
+    static const qint32 m_BorderWidth;
+    static const qint32 m_BorderHeight;
+    static const qint32 m_MinWidth;
 };
 
 #endif

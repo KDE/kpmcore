@@ -31,26 +31,30 @@ class QString;
 
 namespace FS
 {
-	/** A pseudo file system for unformatted partitions.
-		@author Volker Lanz <vl@fidra.de>
-	 */
-	class LIBKPMCORE_EXPORT unformatted : public FileSystem
-	{
-		public:
-			unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+/** A pseudo file system for unformatted partitions.
+    @author Volker Lanz <vl@fidra.de>
+ */
+class LIBKPMCORE_EXPORT unformatted : public FileSystem
+{
+public:
+    unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-		public:
-			static void init() {}
+public:
+    static void init() {}
 
-			virtual bool create(Report&, const QString&) const;
+    virtual bool create(Report&, const QString&) const;
 
-			virtual CommandSupportType supportCreate() const { return m_Create; }
+    virtual CommandSupportType supportCreate() const {
+        return m_Create;
+    }
 
-			virtual bool supportToolFound() const { return true; }
+    virtual bool supportToolFound() const {
+        return true;
+    }
 
-		public:
-			static CommandSupportType m_Create;
-	};
+public:
+    static CommandSupportType m_Create;
+};
 }
 
 #endif

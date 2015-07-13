@@ -30,25 +30,25 @@ class QString;
 
 /** Dummy backend plugin that doesn't really do anything.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class DummyBackend : public CoreBackend
 {
-	friend class KPluginFactory;
+    friend class KPluginFactory;
 
-	Q_DISABLE_COPY(DummyBackend)
+    Q_DISABLE_COPY(DummyBackend)
 
-	private:
-		DummyBackend(QObject* parent, const QList<QVariant>& args);
+private:
+    DummyBackend(QObject* parent, const QList<QVariant>& args);
 
-	public:
-		virtual void initFSSupport();
+public:
+    virtual void initFSSupport();
 
-		virtual QList<Device*> scanDevices();
-		virtual CoreBackendDevice* openDevice(const QString& device_node);
-		virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node);
-		virtual bool closeDevice(CoreBackendDevice* core_device);
-		virtual Device* scanDevice(const QString& device_node);
+    virtual QList<Device*> scanDevices();
+    virtual CoreBackendDevice* openDevice(const QString& device_node);
+    virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node);
+    virtual bool closeDevice(CoreBackendDevice* core_device);
+    virtual Device* scanDevice(const QString& device_node);
 };
 
 #endif

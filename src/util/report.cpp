@@ -27,139 +27,138 @@
 #include <unistd.h>
 
 /** Creates a new Report instance.
-	@param p pointer to the parent instance. May be NULL ig this is a new root Report.
-	@param cmd the command
+    @param p pointer to the parent instance. May be NULL ig this is a new root Report.
+    @param cmd the command
 */
 Report::Report(Report* p, const QString& cmd) :
-	QObject(),
-	m_Parent(p),
-	m_Children(),
-	m_Command(cmd),
-	m_Output(),
-	m_Status()
+    QObject(),
+    m_Parent(p),
+    m_Children(),
+    m_Command(cmd),
+    m_Output(),
+    m_Status()
 {
 }
 
 /** Destroys a Report instance and all its children. */
 Report::~Report()
 {
-	qDeleteAll(children());
+    qDeleteAll(children());
 }
 
 /** Creates a new child for this Report and appends it to its list of children.
-	@param cmd the command
-	@return pointer to a new Report child
+    @param cmd the command
+    @return pointer to a new Report child
 */
 Report* Report::newChild(const QString& cmd)
 {
-	 Report* r = new Report(this, cmd);
-	 m_Children.append(r);
-	 return r;
+    Report* r = new Report(this, cmd);
+    m_Children.append(r);
+    return r;
 }
 
 /**
-	@return the Report converted to HTML
-	@see toText()
+    @return the Report converted to HTML
+    @see toText()
 */
 QString Report::toHtml() const
 {
-	QString s;
+    QString s;
 
-	if (parent() == root())
-		s += QStringLiteral("<div>\n");
-	else if (parent() != NULL)
-		s += QStringLiteral("<div style='margin-left:24px;margin-top:12px;margin-bottom:12px'>\n");
+    if (parent() == root())
+        s += QStringLiteral("<div>\n");
+    else if (parent() != NULL)
+        s += QStringLiteral("<div style='margin-left:24px;margin-top:12px;margin-bottom:12px'>\n");
 
-	if (!command().isEmpty())
-		s += QStringLiteral("\n<b>") + command().toHtmlEscaped() + QStringLiteral("</b>\n\n");
+    if (!command().isEmpty())
+        s += QStringLiteral("\n<b>") + command().toHtmlEscaped() + QStringLiteral("</b>\n\n");
 
-	if (!output().isEmpty())
-		s += QStringLiteral("<pre>") + output().toHtmlEscaped() + QStringLiteral("</pre>\n\n");
+    if (!output().isEmpty())
+        s += QStringLiteral("<pre>") + output().toHtmlEscaped() + QStringLiteral("</pre>\n\n");
 
-	if (children().size() == 0)
-		s += QStringLiteral("<br/>\n");
-	else
-		foreach(Report* child, children())
-			s += child->toHtml();
+    if (children().size() == 0)
+        s += QStringLiteral("<br/>\n");
+    else
+        foreach(Report * child, children())
+        s += child->toHtml();
 
-	if (!status().isEmpty())
-		s += QStringLiteral("<b>") + status().toHtmlEscaped() + QStringLiteral("</b><br/>\n\n");
+    if (!status().isEmpty())
+        s += QStringLiteral("<b>") + status().toHtmlEscaped() + QStringLiteral("</b><br/>\n\n");
 
-	if (parent() != NULL)
-	s += QStringLiteral("</div>\n\n");
+    if (parent() != NULL)
+        s += QStringLiteral("</div>\n\n");
 
-	return s;
+    return s;
 }
 
 /**
-	@return the Report converted to plain text
-	@see toHtml()
+    @return the Report converted to plain text
+    @see toHtml()
 */
 QString Report::toText() const
 {
-	QString s;
+    QString s;
 
-	if (!command().isEmpty())
-	{
-		s += QStringLiteral("==========================================================================================\n");
-		s += command() + QStringLiteral("\n");
-		s += QStringLiteral("==========================================================================================\n");
-	}
+    if (!command().isEmpty()) {
+        s += QStringLiteral("==========================================================================================\n");
+        s += command() + QStringLiteral("\n");
+        s += QStringLiteral("==========================================================================================\n");
+    }
 
-	if (!output().isEmpty())
-		s += output() + QStringLiteral("\n");
+    if (!output().isEmpty())
+        s += output() + QStringLiteral("\n");
 
-	foreach(Report* child, children())
-		s += child->toText();
+    foreach(Report * child, children())
+    s += child->toText();
 
-	return s;
+    return s;
 }
 
 /** Adds a string to this Report's output.
 
-	This is usually not what you want. In most cases, you will want to create a new child Report.
+    This is usually not what you want. In most cases, you will want to create a new child Report.
 
-	@param s the string to add to the output
+    @param s the string to add to the output
 
-	@see newChild()
+    @see newChild()
 */
 void Report::addOutput(const QString& s)
 {
-	 m_Output += s;
-	 root()->emitOutputChanged();
+    m_Output += s;
+    root()->emitOutputChanged();
 }
 
 void Report::emitOutputChanged()
 {
-	emit outputChanged();
+    emit outputChanged();
 }
 
 /** @return the root Report */
 Report* Report::root()
 {
-	Report* rval = this;
+    Report* rval = this;
 
-	while(rval->parent() != NULL)
-		rval = rval->parent();
+    while (rval->parent() != NULL)
+        rval = rval->parent();
 
-	return rval;
+    return rval;
 }
 
 /**
-	@overload
+    @overload
 */
 const Report* Report::root() const
 {
-	const Report* rval = this;
+    const Report* rval = this;
 
-	while(rval->parent() != NULL)
-		rval = rval->parent();
+    while (rval->parent() != NULL)
+        rval = rval->parent();
 
-	return rval;
+    return rval;
 }
 
 /** @return a Report line to write to */
 ReportLine Report::line()
 {
-	return ReportLine(*this);
+    return ReportLine(*this);
 }

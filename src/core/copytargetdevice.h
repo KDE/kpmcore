@@ -28,36 +28,44 @@ class CoreBackendDevice;
 
 /** A Device to copy to.
 
-	Represents a target Device to copy to. Used to copy a Partition to somewhere on the same
-	or another Device or to restore a FileSystem from a file to a Partition.
+    Represents a target Device to copy to. Used to copy a Partition to somewhere on the same
+    or another Device or to restore a FileSystem from a file to a Partition.
 
-	@see CopyTargetFile, CopySourceDevice
+    @see CopyTargetFile, CopySourceDevice
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class CopyTargetDevice : public CopyTarget
 {
-	Q_DISABLE_COPY(CopyTargetDevice)
+    Q_DISABLE_COPY(CopyTargetDevice)
 
-	public:
-		CopyTargetDevice(Device& d, qint64 firstsector, qint64 lastsector);
-		~CopyTargetDevice();
+public:
+    CopyTargetDevice(Device& d, qint64 firstsector, qint64 lastsector);
+    ~CopyTargetDevice();
 
-	public:
-		virtual bool open();
-		virtual qint32 sectorSize() const;
-		virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors);
-		virtual qint64 firstSector() const { return m_FirstSector; } /**< @return the first sector to write to */
-		virtual qint64 lastSector() const { return m_LastSector; } /**< @return the last sector to write to */
+public:
+    virtual bool open();
+    virtual qint32 sectorSize() const;
+    virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors);
+    virtual qint64 firstSector() const {
+        return m_FirstSector;    /**< @return the first sector to write to */
+    }
+    virtual qint64 lastSector() const {
+        return m_LastSector;    /**< @return the last sector to write to */
+    }
 
-		Device& device() { return m_Device; } /**< @return the Device to write to */
-		const Device& device() const { return m_Device; } /**< @return the Device to write to */
+    Device& device() {
+        return m_Device;    /**< @return the Device to write to */
+    }
+    const Device& device() const {
+        return m_Device;    /**< @return the Device to write to */
+    }
 
-	protected:
-		Device& m_Device;
-		CoreBackendDevice* m_BackendDevice;
-		const qint64 m_FirstSector;
-		const qint64 m_LastSector;
+protected:
+    Device& m_Device;
+    CoreBackendDevice* m_BackendDevice;
+    const qint64 m_FirstSector;
+    const qint64 m_LastSector;
 };
 
 #endif

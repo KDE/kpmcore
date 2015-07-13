@@ -32,59 +32,77 @@ class Report;
 
 /** An external command.
 
-	Runs an external command as a child process.
+    Runs an external command as a child process.
 
-	@author Volker Lanz <vl@fidra.de>
-	@author Andrius Štikonas <andrius@stikonas.eu>
+    @author Volker Lanz <vl@fidra.de>
+    @author Andrius Štikonas <andrius@stikonas.eu>
 */
 class LIBKPMCORE_EXPORT ExternalCommand : public QProcess
 {
-	Q_OBJECT
-	Q_DISABLE_COPY(ExternalCommand)
+    Q_OBJECT
+    Q_DISABLE_COPY(ExternalCommand)
 
-	public:
-		explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList());
-		explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList());
-		explicit ExternalCommand(const std::vector<QString> cmd, const std::vector<QStringList> args);
-		explicit ExternalCommand(Report& report, const std::vector<QString> cmd, const std::vector<QStringList> args);
-		~ExternalCommand();
+public:
+    explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList());
+    explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList());
+    explicit ExternalCommand(const std::vector<QString> cmd, const std::vector<QStringList> args);
+    explicit ExternalCommand(Report& report, const std::vector<QString> cmd, const std::vector<QStringList> args);
+    ~ExternalCommand();
 
-	public:
-		void setCommand(const std::vector<QString> cmd) { m_Command = cmd; } /**< @param cmd the command to run */
-		const std::vector<QString> command() const { return m_Command; } /**< @return the command to run */
+public:
+    void setCommand(const std::vector<QString> cmd) {
+        m_Command = cmd;    /**< @param cmd the command to run */
+    }
+    const std::vector<QString> command() const {
+        return m_Command;    /**< @return the command to run */
+    }
 
-		/**	@param s the argument to add
-			@param i the command to which the argument is added
-		*/
-		void addArg(const QString& s, const int i = 0) { m_Args[i] << s; }
-		const std::vector<QStringList> args() const { return m_Args; } /**< @return the arguments */
-		void setArgs(const std::vector<QStringList> args) { m_Args = args; } /**< @param args the new arguments */
+    /** @param s the argument to add
+        @param i the command to which the argument is added
+    */
+    void addArg(const QString& s, const int i = 0) {
+        m_Args[i] << s;
+    }
+    const std::vector<QStringList> args() const {
+        return m_Args;    /**< @return the arguments */
+    }
+    void setArgs(const std::vector<QStringList> args) {
+        m_Args = args;    /**< @param args the new arguments */
+    }
 
-		bool start(int timeout = 30000);
-		bool waitFor(int timeout = 30000);
-		bool run(int timeout = 30000);
+    bool start(int timeout = 30000);
+    bool waitFor(int timeout = 30000);
+    bool run(int timeout = 30000);
 
-		int exitCode() const { return m_ExitCode; } /**< @return the exit code */
+    int exitCode() const {
+        return m_ExitCode;    /**< @return the exit code */
+    }
 
-		const QString& output() const { return m_Output; } /**< @return the command output */
+    const QString& output() const {
+        return m_Output;    /**< @return the command output */
+    }
 
-		Report* report() { return m_Report; } /**< @return pointer to the Report or NULL */
+    Report* report() {
+        return m_Report;    /**< @return pointer to the Report or NULL */
+    }
 
-	protected:
-		void setExitCode(int i) { m_ExitCode = i; }
-		void setup();
+protected:
+    void setExitCode(int i) {
+        m_ExitCode = i;
+    }
+    void setup();
 
-	protected Q_SLOTS:
-		void onFinished(int exitCode);
-		void onReadOutput();
+protected Q_SLOTS:
+    void onFinished(int exitCode);
+    void onReadOutput();
 
-	private:
-		QProcess *processes;
-		Report *m_Report;
-		std::vector<QString> m_Command;
-		std::vector<QStringList> m_Args;
-		int m_ExitCode;
-		QString m_Output;
+private:
+    QProcess *processes;
+    Report *m_Report;
+    std::vector<QString> m_Command;
+    std::vector<QStringList> m_Args;
+    int m_ExitCode;
+    QString m_Output;
 };
 
 #endif
