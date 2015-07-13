@@ -141,7 +141,6 @@ class LIBKPMCORE_EXPORT FileSystem
 		static QString nameForType(FileSystem::Type t);
 		static QList<FileSystem::Type> types();
 		static FileSystem::Type typeForName(const QString& s);
-		static FileSystem::Type defaultFileSystem(); /**< @return the default FileSystem type */
 
 		virtual bool canMount(const QString&) const { return false; } /**< @return true if this FileSystem can be mounted */
 		virtual bool canUnmount(const QString&) const { return false; } /**< @return true if this FileSystem can be unmounted */
