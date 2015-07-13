@@ -28,57 +28,58 @@
 #include <KServiceTypeTrader>
 
 CoreBackendManager::CoreBackendManager() :
-    m_Backend(NULL)
+	m_Backend(NULL)
 {
 }
 
 CoreBackendManager* CoreBackendManager::self()
 {
-    static CoreBackendManager* instance = NULL;
+	static CoreBackendManager* instance = NULL;
 
-    if (instance == NULL)
-        instance = new CoreBackendManager;
+	if (instance == NULL)
+		instance = new CoreBackendManager;
 
-    return instance;
+	return instance;
 }
 
 KService::List CoreBackendManager::list() const
 {
     return KServiceTypeTrader::self()->query(QStringLiteral("PartitionManager/Plugin"),
-            QStringLiteral("[X-KDE-PluginInfo-Category] == 'BackendPlugin'"));
+                                             QStringLiteral("[X-KDE-PluginInfo-Category] == 'BackendPlugin'"));
 }
 
 bool CoreBackendManager::load(const QString& name)
 {
-    if (backend())
-        unload();
+	if (backend())
+		unload();
 
-    KPluginLoader loader(name);
+	KPluginLoader loader(name);
 
     KPluginFactory* factory = loader.factory();
 
-    if (factory != NULL) {
+	if (factory != NULL)
+	{
         m_Backend = factory->create<CoreBackend>(NULL);
 
         QString id = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
                      .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Id")).toString();
-        QString version = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
-                          .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Version")).toString();
-        if (id.isEmpty())
+	QString version = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
+                     .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Version")).toString();
+        if ( id.isEmpty() )
             return false;
 
-        backend()->setId(id);
-        backend()->setVersion(version);
+        backend()->setId( id );
+	backend()->setVersion ( version );
         qDebug() << "Loaded backend plugin: " << backend()->id();
-        return true;
-    }
+		return true;
+	}
 
-    qWarning() << "Could not load plugin for core backend " << name << ": " << loader.errorString();
-    return false;
+	qWarning() << "Could not load plugin for core backend " << name << ": " << loader.errorString();
+	return false;
 }
 
 void CoreBackendManager::unload()
 {
-    delete m_Backend;
-    m_Backend = NULL;
+	delete m_Backend;
+	m_Backend = NULL;
 }

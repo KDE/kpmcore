@@ -29,43 +29,33 @@ class Report;
 
 /** Restore a FileSystem.
 
-    Restores a FileSystem from a file to a given Partition on a given Device.
+	Restores a FileSystem from a file to a given Partition on a given Device.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class RestoreFileSystemJob : public Job
 {
-public:
-    RestoreFileSystemJob(Device& targetdevice, Partition& targetpartition, const QString& filename);
+	public:
+		RestoreFileSystemJob(Device& targetdevice, Partition& targetpartition, const QString& filename);
 
-public:
-    virtual bool run(Report& parent);
-    virtual qint32 numSteps() const;
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual qint32 numSteps() const;
+		virtual QString description() const;
 
-protected:
-    Partition& targetPartition() {
-        return m_TargetPartition;
-    }
-    const Partition& targetPartition() const {
-        return m_TargetPartition;
-    }
+	protected:
+		Partition& targetPartition() { return m_TargetPartition; }
+		const Partition& targetPartition() const { return m_TargetPartition; }
 
-    Device& targetDevice() {
-        return m_TargetDevice;
-    }
-    const Device& targetDevice() const {
-        return m_TargetDevice;
-    }
+		Device& targetDevice() { return m_TargetDevice; }
+		const Device& targetDevice() const { return m_TargetDevice; }
 
-    const QString& fileName() const {
-        return m_FileName;
-    }
+		const QString& fileName() const { return m_FileName; }
 
-private:
-    Device& m_TargetDevice;
-    Partition& m_TargetPartition;
-    QString m_FileName;
+	private:
+		Device& m_TargetDevice;
+		Partition& m_TargetPartition;
+		QString m_FileName;
 };
 
 #endif

@@ -31,22 +31,22 @@ class QString;
 
 namespace FS
 {
-/** An ext3 file system.
+	/** An ext3 file system.
 
-    Basically the same as ext2.
+		Basically the same as ext2.
 
-    @author Volker Lanz <vl@fidra.de>
- */
-class LIBKPMCORE_EXPORT ext3 : public ext2
-{
-public:
-    ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+		@author Volker Lanz <vl@fidra.de>
+	 */
+	class LIBKPMCORE_EXPORT ext3 : public ext2
+	{
+		public:
+			ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-public:
-    static void init() {}
-    virtual bool create(Report& report, const QString& deviceNode) const;
-    virtual qint64 maxCapacity() const;
-};
+		public:
+			static void init() {}
+			virtual bool create(Report& report, const QString& deviceNode) const;
+			virtual qint64 maxCapacity() const;
+	};
 }
 
 #endif

@@ -29,45 +29,37 @@ class CoreBackendDevice;
 
 /** A Device to copy from.
 
-    Represents a Device to copy from. Used to copy a Partition to somewhere on the same or
-    another Device or to backup its FileSystem to a file.
-    @author Volker Lanz <vl@fidra.de>
+	Represents a Device to copy from. Used to copy a Partition to somewhere on the same or
+	another Device or to backup its FileSystem to a file.
+	@author Volker Lanz <vl@fidra.de>
  */
 class CopySourceDevice : public CopySource
 {
-    Q_DISABLE_COPY(CopySourceDevice)
+	Q_DISABLE_COPY(CopySourceDevice)
 
-public:
-    CopySourceDevice(Device& d, qint64 firstsector, qint64 lastsector);
-    ~CopySourceDevice();
+	public:
+		CopySourceDevice(Device& d, qint64 firstsector, qint64 lastsector);
+		~CopySourceDevice();
 
-public:
-    virtual bool open();
-    virtual qint32 sectorSize() const;
-    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
-    virtual qint64 length() const;
-    virtual bool overlaps(const CopyTarget& target) const;
+	public:
+		virtual bool open();
+		virtual qint32 sectorSize() const;
+		virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
+		virtual qint64 length() const;
+		virtual bool overlaps(const CopyTarget& target) const;
 
-    virtual qint64 firstSector() const {
-        return m_FirstSector;    /**< @return first sector to copying */
-    }
-    virtual qint64 lastSector() const {
-        return m_LastSector;    /**< @return last sector to copy */
-    }
+		virtual qint64 firstSector() const { return m_FirstSector; } /**< @return first sector to copying */
+		virtual qint64 lastSector() const { return m_LastSector; } /**< @return last sector to copy */
 
-    Device& device() {
-        return m_Device;    /**< @return Device to copy from */
-    }
-    const Device& device() const {
-        return m_Device;    /**< @return Device to copy from */
-    }
+		Device& device() { return m_Device; } /**< @return Device to copy from */
+		const Device& device() const { return m_Device; } /**< @return Device to copy from */
 
-protected:
-    Device& m_Device;
-    const qint64 m_FirstSector;
-    const qint64 m_LastSector;
-    CoreBackendDevice* m_BackendDevice
-    ;
+	protected:
+		Device& m_Device;
+		const qint64 m_FirstSector;
+		const qint64 m_LastSector;
+		CoreBackendDevice* m_BackendDevice
+;
 };
 
 #endif

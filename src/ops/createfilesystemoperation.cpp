@@ -32,64 +32,64 @@
 #include <KLocalizedString>
 
 /** Creates a new CreateFileSystemOperation.
-    @param d the Device to create the new FileSystem on
-    @param p the Partition to create the new FileSystem in
-    @param newType the type of the new FileSystem
+	@param d the Device to create the new FileSystem on
+	@param p the Partition to create the new FileSystem in
+	@param newType the type of the new FileSystem
 */
 CreateFileSystemOperation::CreateFileSystemOperation(Device& d, Partition& p, FileSystem::Type newType) :
-    Operation(),
-    m_TargetDevice(d),
-    m_Partition(p),
-    m_NewFileSystem(FileSystemFactory::cloneWithNewType(newType, partition().fileSystem())),
-    m_OldFileSystem(&p.fileSystem()),
-    m_DeleteJob(new DeleteFileSystemJob(targetDevice(), partition())),
-    m_CreateJob(new CreateFileSystemJob(targetDevice(), partition())),
-    m_CheckJob(new CheckFileSystemJob(partition()))
+	Operation(),
+	m_TargetDevice(d),
+	m_Partition(p),
+	m_NewFileSystem(FileSystemFactory::cloneWithNewType(newType, partition().fileSystem())),
+	m_OldFileSystem(&p.fileSystem()),
+	m_DeleteJob(new DeleteFileSystemJob(targetDevice(), partition())),
+	m_CreateJob(new CreateFileSystemJob(targetDevice(), partition())),
+	m_CheckJob(new CheckFileSystemJob(partition()))
 {
-    // We never know anything about the number of used sectors on a new file system.
-    newFileSystem()->setSectorsUsed(-1);
+	// We never know anything about the number of used sectors on a new file system.
+	newFileSystem()->setSectorsUsed(-1);
 
-    addJob(deleteJob());
-    addJob(createJob());
-    addJob(checkJob());
+	addJob(deleteJob());
+	addJob(createJob());
+	addJob(checkJob());
 }
 
 CreateFileSystemOperation::~CreateFileSystemOperation()
 {
-    if (&partition().fileSystem() == newFileSystem())
-        delete oldFileSystem();
-    else
-        delete newFileSystem();
+	if (&partition().fileSystem() == newFileSystem())
+		delete oldFileSystem();
+	else
+		delete newFileSystem();
 }
 
 bool CreateFileSystemOperation::targets(const Device& d) const
 {
-    return d == targetDevice();
+	return d == targetDevice();
 }
 
 bool CreateFileSystemOperation::targets(const Partition& p) const
 {
-    return p == partition();
+	return p == partition();
 }
 
 void CreateFileSystemOperation::preview()
 {
-    partition().setFileSystem(newFileSystem());
+	partition().setFileSystem(newFileSystem());
 }
 
 void CreateFileSystemOperation::undo()
 {
-    partition().setFileSystem(oldFileSystem());
+	partition().setFileSystem(oldFileSystem());
 }
 
 bool CreateFileSystemOperation::execute(Report& parent)
 {
-    preview();
+	preview();
 
-    return Operation::execute(parent);
+	return Operation::execute(parent);
 }
 
 QString CreateFileSystemOperation::description() const
 {
-    return xi18nc("@info/plain", "Create filesystem %1 on partition <filename>%2</filename>", newFileSystem()->name(), partition().deviceNode());
+	return xi18nc("@info/plain", "Create filesystem %1 on partition <filename>%2</filename>", newFileSystem()->name(), partition().deviceNode());
 }

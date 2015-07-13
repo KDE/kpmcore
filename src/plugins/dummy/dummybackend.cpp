@@ -33,11 +33,11 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-K_PLUGIN_FACTORY_WITH_JSON(DummyBackendFactory, "pmdummybackendplugin.json", registerPlugin<DummyBackend>();)
+K_PLUGIN_FACTORY_WITH_JSON(DummyBackendFactory, "pmdummybackendplugin.json", registerPlugin<DummyBackend>(); )
 
 
 DummyBackend::DummyBackend(QObject*, const QList<QVariant>&) :
-    CoreBackend()
+	CoreBackend()
 {
 }
 
@@ -47,54 +47,56 @@ void DummyBackend::initFSSupport()
 
 QList<Device*> DummyBackend::scanDevices()
 {
-    QList<Device*> result;
-    result.append(scanDevice(QStringLiteral("/dev/sda")));
+	QList<Device*> result;
+	result.append(scanDevice(QStringLiteral("/dev/sda")));
 
-    emitScanProgress(QStringLiteral("/dev/sda"), 100);
+	emitScanProgress(QStringLiteral("/dev/sda"), 100);
 
-    return result;
+	return result;
 }
 
 Device* DummyBackend::scanDevice(const QString& device_node)
 {
-    Device* d = new Device(QStringLiteral("Dummy Device"), QStringLiteral("/tmp") + device_node, 255, 30, 63, 512);
-    CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(PartitionTable::msdos_sectorbased, 2048, d->totalSectors() - 2048));
-    CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), 128);
-    d->partitionTable()->updateUnallocated(*d);
-    d->setIconName(QStringLiteral("drive-harddisk"));
+	Device* d = new Device(QStringLiteral("Dummy Device"), QStringLiteral("/tmp") + device_node, 255, 30, 63, 512);
+	CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(PartitionTable::msdos_sectorbased, 2048, d->totalSectors() - 2048));
+	CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), 128);
+	d->partitionTable()->updateUnallocated(*d);
+	d->setIconName(QStringLiteral("drive-harddisk"));
 
-    CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), 4);
+	CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), 4);
 
-    return d;
+	return d;
 }
 
 CoreBackendDevice* DummyBackend::openDevice(const QString& device_node)
 {
-    DummyDevice* device = new DummyDevice(device_node);
+	DummyDevice* device = new DummyDevice(device_node);
 
-    if (device == NULL || !device->open()) {
-        delete device;
-        device = NULL;
-    }
+	if (device == NULL || !device->open())
+	{
+		delete device;
+		device = NULL;
+	}
 
-    return device;
+	return device;
 }
 
 CoreBackendDevice* DummyBackend::openDeviceExclusive(const QString& device_node)
 {
-    DummyDevice* device = new DummyDevice(device_node);
+	DummyDevice* device = new DummyDevice(device_node);
 
-    if (device == NULL || !device->openExclusive()) {
-        delete device;
-        device = NULL;
-    }
+	if (device == NULL || !device->openExclusive())
+	{
+		delete device;
+		device = NULL;
+	}
 
-    return device;
+	return device;
 }
 
 bool DummyBackend::closeDevice(CoreBackendDevice* core_device)
 {
-    return core_device->close();
+	return core_device->close();
 }
 
 #include "dummybackend.moc"

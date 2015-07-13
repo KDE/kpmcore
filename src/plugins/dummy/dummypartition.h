@@ -27,13 +27,13 @@ class Report;
 
 class DummyPartition : public CoreBackendPartition
 {
-    Q_DISABLE_COPY(DummyPartition);
+	Q_DISABLE_COPY(DummyPartition);
 
-public:
-    DummyPartition();
+	public:
+		DummyPartition();
 
-public:
-    virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state);
+	public:
+		virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state);
 };
 
 

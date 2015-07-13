@@ -27,62 +27,48 @@ class Device;
 
 /** Represent any kind of capacity.
 
-    Any kind of capacity that can be expressed in units of Byte, KiB, MiB and so on. Also prints
-    capacities in nicely formatted ways.
+	Any kind of capacity that can be expressed in units of Byte, KiB, MiB and so on. Also prints
+	capacities in nicely formatted ways.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT Capacity
 {
-public:
-    /** Units we can deal with */
-    enum Unit { Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
-    /** Type of capacity to print */
-    enum Type { Used, Available, Total };
-    /** Flags for printing */
-    enum Flag { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
-    Q_DECLARE_FLAGS(Flags, Flag)
+	public:
+		/** Units we can deal with */
+		enum Unit { Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
+		/** Type of capacity to print */
+		enum Type { Used, Available, Total };
+		/** Flags for printing */
+		enum Flag { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
+		Q_DECLARE_FLAGS(Flags, Flag)
 
-public:
-    explicit Capacity(qint64 size);
-    explicit Capacity(const Partition& p, Type t = Total);
-    Capacity(const Device& d);
+	public:
+		explicit Capacity(qint64 size);
+		explicit Capacity(const Partition& p, Type t = Total);
+		Capacity(const Device& d);
 
-public:
-    bool operator==(const Capacity& other) const {
-        return other.m_Size == m_Size;
-    }
-    bool operator!=(const Capacity& other) const {
-        return other.m_Size != m_Size;
-    }
-    bool operator>(const Capacity& other) const {
-        return other.m_Size > m_Size;
-    }
-    bool operator<(const Capacity& other) const {
-        return other.m_Size < m_Size;
-    }
-    bool operator>=(const Capacity& other) const {
-        return other.m_Size >= m_Size;
-    }
-    bool operator<=(const Capacity& other) const {
-        return other.m_Size <= m_Size;
-    }
+	public:
+		bool operator==(const Capacity& other) const { return other.m_Size == m_Size; }
+		bool operator!=(const Capacity& other) const { return other.m_Size != m_Size; }
+		bool operator>(const Capacity& other) const { return other.m_Size > m_Size; }
+		bool operator<(const Capacity& other) const { return other.m_Size < m_Size; }
+		bool operator>=(const Capacity& other) const { return other.m_Size >= m_Size; }
+		bool operator<=(const Capacity& other) const { return other.m_Size <= m_Size; }
 
-    qint64 toInt(Unit u) const;
-    double toDouble(Unit u) const;
+		qint64 toInt(Unit u) const;
+		double toDouble(Unit u) const;
 
-    bool isValid() const;
+		bool isValid() const;
 
-    static QString formatByteSize(double size, int precision = 2);
-    static const QString& invalidString() {
-        return m_InvalidString;    /**< @return string representing an invalid capacity */
-    }
-    static QString unitName(Unit u, qint64 val = 1);
-    static qint64 unitFactor(Unit from, Unit to);
+		static QString formatByteSize(double size, int precision = 2);
+		static const QString& invalidString() { return m_InvalidString; } /**< @return string representing an invalid capacity */
+		static QString unitName(Unit u, qint64 val = 1);
+		static qint64 unitFactor(Unit from, Unit to);
 
-private:
-    qint64 m_Size;
-    static const QString m_InvalidString;
+	private:
+		qint64 m_Size;
+		static const QString m_InvalidString;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Capacity::Flags)

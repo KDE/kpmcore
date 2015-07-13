@@ -28,74 +28,74 @@
 #include <KLocalizedString>
 
 /** Creates a new CreatePartitionTableOperation.
-    @param d the Device to create the new PartitionTable on
-    @param t the type for the new PartitionTable
+	@param d the Device to create the new PartitionTable on
+	@param t the type for the new PartitionTable
 */
 CreatePartitionTableOperation::CreatePartitionTableOperation(Device& d, PartitionTable::TableType t) :
-    Operation(),
-    m_TargetDevice(d),
-    m_OldPartitionTable(targetDevice().partitionTable()),
-    m_PartitionTable(new PartitionTable(t, PartitionTable::defaultFirstUsable(d, t), PartitionTable::defaultLastUsable(d, t))),
-    m_CreatePartitionTableJob(new CreatePartitionTableJob(targetDevice()))
+	Operation(),
+	m_TargetDevice(d),
+	m_OldPartitionTable(targetDevice().partitionTable()),
+	m_PartitionTable(new PartitionTable(t, PartitionTable::defaultFirstUsable(d, t), PartitionTable::defaultLastUsable(d, t))),
+	m_CreatePartitionTableJob(new CreatePartitionTableJob(targetDevice()))
 {
-    addJob(createPartitionTableJob());
+	addJob(createPartitionTableJob());
 }
 
 /** Creates a new CreatePartitionTableOperation.
-    @param d the Device to create the new PartitionTable on
-    @param ptable pointer to the new partition table object. the operation takes ownership.
+	@param d the Device to create the new PartitionTable on
+	@param ptable pointer to the new partition table object. the operation takes ownership.
 */
 CreatePartitionTableOperation::CreatePartitionTableOperation(Device& d, PartitionTable* ptable) :
-    Operation(),
-    m_TargetDevice(d),
-    m_OldPartitionTable(targetDevice().partitionTable()),
-    m_PartitionTable(ptable),
-    m_CreatePartitionTableJob(new CreatePartitionTableJob(targetDevice()))
+	Operation(),
+	m_TargetDevice(d),
+	m_OldPartitionTable(targetDevice().partitionTable()),
+	m_PartitionTable(ptable),
+	m_CreatePartitionTableJob(new CreatePartitionTableJob(targetDevice()))
 {
-    addJob(createPartitionTableJob());
+	addJob(createPartitionTableJob());
 }
 
 CreatePartitionTableOperation::~CreatePartitionTableOperation()
 {
-    if (status() == StatusPending)
-        delete m_PartitionTable;
+	if (status() == StatusPending)
+		delete m_PartitionTable;
 }
 
 bool CreatePartitionTableOperation::targets(const Device& d) const
 {
-    return d == targetDevice();
+	return d == targetDevice();
 }
 
 void CreatePartitionTableOperation::preview()
 {
-    targetDevice().setPartitionTable(partitionTable());
-    targetDevice().partitionTable()->updateUnallocated(targetDevice());
+	targetDevice().setPartitionTable(partitionTable());
+	targetDevice().partitionTable()->updateUnallocated(targetDevice());
 }
 
 void CreatePartitionTableOperation::undo()
 {
-    targetDevice().setPartitionTable(oldPartitionTable());
+	targetDevice().setPartitionTable(oldPartitionTable());
 
-    if (targetDevice().partitionTable())
-        targetDevice().partitionTable()->updateUnallocated(targetDevice());
+	if (targetDevice().partitionTable())
+		targetDevice().partitionTable()->updateUnallocated(targetDevice());
 }
 
 bool CreatePartitionTableOperation::execute(Report& parent)
 {
-    targetDevice().setPartitionTable(partitionTable());
-    return Operation::execute(parent);
+	targetDevice().setPartitionTable(partitionTable());
+	return Operation::execute(parent);
 }
 
 /** Can a new partition table be created on a device?
-    @param device pointer to the device, can be NULL
-    @return true if a new partition table can be created on @p device
+	@param device pointer to the device, can be NULL
+	@return true if a new partition table can be created on @p device
 */
 bool CreatePartitionTableOperation::canCreate(const Device* device)
 {
-    return device != NULL && (device->partitionTable() == NULL || !device->partitionTable()->isChildMounted());
+	return device != NULL && (device->partitionTable() == NULL || !device->partitionTable()->isChildMounted());
 }
 
 QString CreatePartitionTableOperation::description() const
 {
-    return xi18nc("@info/plain", "Create a new partition table (type: %1) on <filename>%2</filename>", partitionTable()->typeName(), targetDevice().deviceNode());
+	return xi18nc("@info/plain", "Create a new partition table (type: %1) on <filename>%2</filename>", partitionTable()->typeName(), targetDevice().deviceNode());
 }

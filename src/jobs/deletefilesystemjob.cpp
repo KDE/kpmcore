@@ -32,66 +32,73 @@
 #include <KLocalizedString>
 
 /** Creates a new DeleteFileSystemJob
-    @param d the Device the FileSystem to delete is on
-    @param p the Partition the FileSystem to delete is on
+	@param d the Device the FileSystem to delete is on
+	@param p the Partition the FileSystem to delete is on
 */
 DeleteFileSystemJob::DeleteFileSystemJob(Device& d, Partition& p) :
-    Job(),
-    m_Device(d),
-    m_Partition(p)
+	Job(),
+	m_Device(d),
+	m_Partition(p)
 {
 }
 
 bool DeleteFileSystemJob::run(Report& parent)
 {
-    Q_ASSERT(device().deviceNode() == partition().devicePath());
+	Q_ASSERT(device().deviceNode() == partition().devicePath());
 
-    if (device().deviceNode() != partition().devicePath()) {
-        qWarning() << "deviceNode: " << device().deviceNode() << ", partition path: " << partition().devicePath();
-        return false;
-    }
+	if (device().deviceNode() != partition().devicePath())
+	{
+		qWarning() << "deviceNode: " << device().deviceNode() << ", partition path: " << partition().devicePath();
+		return false;
+	}
 
-    bool rval = false;
+	bool rval = false;
 
-    Report* report = jobStarted(parent);
+	Report* report = jobStarted(parent);
 
-    if (partition().roles().has(PartitionRole::Extended))
-        rval = true;
-    else {
-        if (!partition().fileSystem().remove(*report, partition().deviceNode())) {
-            jobFinished(*report, rval);
-            return false;
-        }
+	if (partition().roles().has(PartitionRole::Extended))
+		rval = true;
+	else
+	{
+		if (!partition().fileSystem().remove(*report, partition().deviceNode()))
+		{
+			jobFinished(*report, rval);
+			return false;
+		}
 
-        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+		CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-        if (backendDevice) {
-            CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+		if (backendDevice)
+		{
+			CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
-            if (backendPartitionTable) {
-                rval = backendPartitionTable->clobberFileSystem(*report, partition());
+			if (backendPartitionTable)
+			{
+				rval = backendPartitionTable->clobberFileSystem(*report, partition());
 
-                if (!rval)
-                    report->line() << xi18nc("@info/plain", "Could not delete file system on <filename>%1</filename>.", partition().deviceNode());
-                else
-                    backendPartitionTable->commit();
+				if (!rval)
+					report->line() << xi18nc("@info/plain", "Could not delete file system on <filename>%1</filename>.", partition().deviceNode());
+				else
+					backendPartitionTable->commit();
 
-                delete backendPartitionTable;
+				delete backendPartitionTable;
 
-            } else
-                report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to delete file system on <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+			}
+			else
+				report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to delete file system on <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-            delete backendDevice;
-        } else
-            report->line() << xi18nc("@info/plain", "Could not delete file system signature for partition <filename>%1</filename>: Failed to open device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
-    }
+			delete backendDevice;
+		}
+		else
+			report->line() << xi18nc("@info/plain", "Could not delete file system signature for partition <filename>%1</filename>: Failed to open device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
+	}
 
-    jobFinished(*report, rval);
+	jobFinished(*report, rval);
 
-    return rval;
+	return rval;
 }
 
 QString DeleteFileSystemJob::description() const
 {
-    return xi18nc("@info/plain", "Delete file system on <filename>%1</filename>", partition().deviceNode());
+	return xi18nc("@info/plain", "Delete file system on <filename>%1</filename>", partition().deviceNode());
 }

@@ -29,40 +29,40 @@
 #include <KLocalizedString>
 
 /** Creates a new BackupOperation.
-    @param d the Device where the FileSystem to back up is on
-    @param p the Partition where the FileSystem to back up is in
-    @param filename the name of the file to back up to
+	@param d the Device where the FileSystem to back up is on
+	@param p the Partition where the FileSystem to back up is in
+	@param filename the name of the file to back up to
 */
 BackupOperation::BackupOperation(Device& d, Partition& p, const QString& filename) :
-    Operation(),
-    m_TargetDevice(d),
-    m_BackupPartition(p),
-    m_FileName(filename),
-    m_BackupJob(new BackupFileSystemJob(targetDevice(), backupPartition(), fileName()))
+	Operation(),
+	m_TargetDevice(d),
+	m_BackupPartition(p),
+	m_FileName(filename),
+	m_BackupJob(new BackupFileSystemJob(targetDevice(), backupPartition(), fileName()))
 {
-    addJob(backupJob());
+	addJob(backupJob());
 }
 
 QString BackupOperation::description() const
 {
-    return xi18nc("@info/plain", "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>", backupPartition().deviceNode(), Capacity::formatByteSize(backupPartition().capacity()), backupPartition().fileSystem().name(), fileName());
+	return xi18nc("@info/plain", "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>", backupPartition().deviceNode(), Capacity::formatByteSize(backupPartition().capacity()), backupPartition().fileSystem().name(), fileName());
 }
 
 /** Can the given Partition be backed up?
-    @param p The Partition in question, may be NULL.
-    @return true if @p p can be backed up.
+	@param p The Partition in question, may be NULL.
+	@return true if @p p can be backed up.
 */
 bool BackupOperation::canBackup(const Partition* p)
 {
-    if (p == NULL)
-        return false;
+	if (p == NULL)
+		return false;
 
-    if (p->isMounted())
-        return false;
+	if (p->isMounted())
+		return false;
 
-    if (p->state() == Partition::StateNew || p->state() == Partition::StateCopy || p->state() == Partition::StateRestore)
-        return false;
+	if (p->state() == Partition::StateNew || p->state() == Partition::StateCopy || p->state() == Partition::StateRestore)
+		return false;
 
-    return p->fileSystem().supportBackup() != FileSystem::cmdSupportNone;
+	return p->fileSystem().supportBackup() != FileSystem::cmdSupportNone;
 }
 

@@ -32,87 +32,87 @@
 #include <KLocalizedString>
 
 /** Creates a new DeleteOperation
-    @param d the Device to delete a Partition on
-    @param p pointer to the Partition to delete. May not be NULL
+	@param d the Device to delete a Partition on
+	@param p pointer to the Partition to delete. May not be NULL
 */
 DeleteOperation::DeleteOperation(Device& d, Partition* p, bool secure) :
-    Operation(),
-    m_TargetDevice(d),
-    m_DeletedPartition(p),
-    m_Secure(secure),
-    m_DeleteFileSystemJob(isSecure()
-                          ? static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition()))
-                          : static_cast<Job*>(new DeleteFileSystemJob(targetDevice(), deletedPartition()))),
-                            m_DeletePartitionJob(new DeletePartitionJob(targetDevice(), deletedPartition()))
+	Operation(),
+	m_TargetDevice(d),
+	m_DeletedPartition(p),
+	m_Secure(secure),
+	m_DeleteFileSystemJob(isSecure()
+		? static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition()))
+		: static_cast<Job*>(new DeleteFileSystemJob(targetDevice(), deletedPartition()))),
+	m_DeletePartitionJob(new DeletePartitionJob(targetDevice(), deletedPartition()))
 {
-    addJob(deleteFileSystemJob());
-    addJob(deletePartitionJob());
+	addJob(deleteFileSystemJob());
+	addJob(deletePartitionJob());
 }
 
 DeleteOperation::~DeleteOperation()
 {
-    if (status() != StatusPending && status() != StatusNone) // don't delete the partition if we're being merged or undone
-        delete m_DeletedPartition;
+	if (status() != StatusPending && status() != StatusNone) // don't delete the partition if we're being merged or undone
+		delete m_DeletedPartition;
 }
 
 bool DeleteOperation::targets(const Device& d) const
 {
-    return d == targetDevice();
+	return d == targetDevice();
 }
 
 bool DeleteOperation::targets(const Partition& p) const
 {
-    return p == deletedPartition();
+	return p == deletedPartition();
 }
 
 void DeleteOperation::preview()
 {
-    removePreviewPartition(targetDevice(), deletedPartition());
-    checkAdjustLogicalNumbers(deletedPartition(), false);
+	removePreviewPartition(targetDevice(), deletedPartition());
+	checkAdjustLogicalNumbers(deletedPartition(), false);
 }
 
 void DeleteOperation::undo()
 {
-    checkAdjustLogicalNumbers(deletedPartition(), true);
-    insertPreviewPartition(targetDevice(), deletedPartition());
+	checkAdjustLogicalNumbers(deletedPartition(), true);
+	insertPreviewPartition(targetDevice(), deletedPartition());
 }
 
 QString DeleteOperation::description() const
 {
-    if (isSecure())
-        return xi18nc("@info/plain", "Shred partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
-    else
-        return xi18nc("@info/plain", "Delete partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
+	if (isSecure())
+		return xi18nc("@info/plain", "Shred partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
+	else
+		return xi18nc("@info/plain", "Delete partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
 }
 
 void DeleteOperation::checkAdjustLogicalNumbers(Partition& p, bool undo)
 {
-    // If the deleted partition is a logical one, we need to adjust the numbers of the
-    // other logical partitions in the extended one, if there are any, because the OS
-    // will do that, too: Logicals must be numbered without gaps, i.e., a numbering like
-    // sda5, sda6, sda8 (after sda7 is deleted) will become sda5, sda6, sda7
-    Partition* parentPartition = dynamic_cast<Partition*>(p.parent());
-    if (parentPartition && parentPartition->roles().has(PartitionRole::Extended))
-        parentPartition->adjustLogicalNumbers(undo ? -1 : p.number(), undo ? p.number() : -1);
+	// If the deleted partition is a logical one, we need to adjust the numbers of the
+	// other logical partitions in the extended one, if there are any, because the OS
+	// will do that, too: Logicals must be numbered without gaps, i.e., a numbering like
+	// sda5, sda6, sda8 (after sda7 is deleted) will become sda5, sda6, sda7
+	Partition* parentPartition = dynamic_cast<Partition*>(p.parent());
+	if (parentPartition && parentPartition->roles().has(PartitionRole::Extended))
+		parentPartition->adjustLogicalNumbers(undo ? -1 : p.number(), undo ? p.number() : -1);
 }
 
 /** Can a Partition be deleted?
-    @param p the Partition in question, may be NULL.
-    @return true if @p p can be deleted.
+	@param p the Partition in question, may be NULL.
+	@return true if @p p can be deleted.
 */
 bool DeleteOperation::canDelete(const Partition* p)
 {
-    if (p == NULL)
-        return false;
+	if (p == NULL)
+		return false;
 
-    if (p->isMounted())
-        return false;
+	if (p->isMounted())
+		return false;
 
-    if (p->roles().has(PartitionRole::Unallocated))
-        return false;
+	if (p->roles().has(PartitionRole::Unallocated))
+		return false;
 
-    if (p->roles().has(PartitionRole::Extended))
-        return p->children().size() == 1 && p->children()[0]->roles().has(PartitionRole::Unallocated);
+	if (p->roles().has(PartitionRole::Extended))
+		return p->children().size() == 1 && p->children()[0]->roles().has(PartitionRole::Unallocated);
 
-    return true;
+	return true;
 }

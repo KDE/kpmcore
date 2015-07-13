@@ -23,30 +23,30 @@
 
 namespace FS
 {
-FileSystem::CommandSupportType hpfs::m_GetUsed = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_GetLabel = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_Create = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_Grow = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_Shrink = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_Move = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_Check = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_Copy = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_Backup = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_SetLabel = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_UpdateUUID = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType hpfs::m_GetUUID = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_GetUsed = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_GetLabel = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_Create = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_Grow = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_Shrink = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_Move = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_Check = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_Copy = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_Backup = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_SetLabel = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_UpdateUUID = FileSystem::cmdSupportNone;
+	FileSystem::CommandSupportType hpfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-hpfs::hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Hpfs)
-{
-}
+	hpfs::hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
+		FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Hpfs)
+	{
+	}
 
-void hpfs::init()
-{
-}
+	void hpfs::init()
+	{
+	}
 
-qint64 hpfs::maxCapacity() const
-{
-    return 2 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
-}
+	qint64 hpfs::maxCapacity() const
+	{
+		 return 2 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+	}
 }

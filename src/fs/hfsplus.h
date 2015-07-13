@@ -31,51 +31,39 @@ class QString;
 
 namespace FS
 {
-/** An hfsplus file system.
-    @author Volker Lanz <vl@fidra.de>
- */
-class LIBKPMCORE_EXPORT hfsplus : public FileSystem
-{
-public:
-    hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+	/** An hfsplus file system.
+		@author Volker Lanz <vl@fidra.de>
+	 */
+	class LIBKPMCORE_EXPORT hfsplus : public FileSystem
+	{
+		public:
+			hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-public:
-    static void init();
+		public:
+			static void init();
 
-    virtual bool check(Report& report, const QString& deviceNode) const;
+			virtual bool check(Report& report, const QString& deviceNode) const;
 
-    virtual CommandSupportType supportGetUsed() const {
-        return m_GetUsed;
-    }
-    virtual CommandSupportType supportShrink() const {
-        return m_Shrink;
-    }
-    virtual CommandSupportType supportMove() const {
-        return m_Move;
-    }
-    virtual CommandSupportType supportCheck() const {
-        return m_Check;
-    }
-    virtual CommandSupportType supportCopy() const {
-        return m_Copy;
-    }
-    virtual CommandSupportType supportBackup() const {
-        return m_Backup;
-    }
+			virtual CommandSupportType supportGetUsed() const { return m_GetUsed; }
+			virtual CommandSupportType supportShrink() const { return m_Shrink; }
+			virtual CommandSupportType supportMove() const { return m_Move; }
+			virtual CommandSupportType supportCheck() const { return m_Check; }
+			virtual CommandSupportType supportCopy() const { return m_Copy; }
+			virtual CommandSupportType supportBackup() const { return m_Backup; }
 
-    virtual qint64 maxCapacity() const;
-    virtual qint64 maxLabelLength() const;
-    virtual SupportTool supportToolName() const;
-    virtual bool supportToolFound() const;
+			virtual qint64 maxCapacity() const;
+			virtual qint64 maxLabelLength() const;
+			virtual SupportTool supportToolName() const;
+			virtual bool supportToolFound() const;
 
-public:
-    static CommandSupportType m_GetUsed;
-    static CommandSupportType m_Shrink;
-    static CommandSupportType m_Move;
-    static CommandSupportType m_Check;
-    static CommandSupportType m_Copy;
-    static CommandSupportType m_Backup;
-};
+		public:
+			static CommandSupportType m_GetUsed;
+			static CommandSupportType m_Shrink;
+			static CommandSupportType m_Move;
+			static CommandSupportType m_Check;
+			static CommandSupportType m_Copy;
+			static CommandSupportType m_Backup;
+	};
 }
 
 #endif

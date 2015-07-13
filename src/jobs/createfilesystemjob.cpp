@@ -32,54 +32,62 @@
 #include <KLocalizedString>
 
 /** Creates a new CreateFileSystemJob
-    @param p the Partition the FileSystem to create is on
+	@param p the Partition the FileSystem to create is on
 */
 CreateFileSystemJob::CreateFileSystemJob(Device& d, Partition& p) :
-    Job(),
-    m_Device(d),
-    m_Partition(p)
+	Job(),
+	m_Device(d),
+	m_Partition(p)
 {
 }
 
 bool CreateFileSystemJob::run(Report& parent)
 {
-    bool rval = false;
+	bool rval = false;
 
-    Report* report = jobStarted(parent);
+	Report* report = jobStarted(parent);
 
-    if (partition().fileSystem().type() == FileSystem::Unformatted)
-        return true;
+	if (partition().fileSystem().type() == FileSystem::Unformatted)
+		return true;
 
-    if (partition().fileSystem().supportCreate() == FileSystem::cmdSupportFileSystem) {
-        if (partition().fileSystem().create(*report, partition().deviceNode())) {
-            CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+	if (partition().fileSystem().supportCreate() == FileSystem::cmdSupportFileSystem)
+	{
+		if (partition().fileSystem().create(*report, partition().deviceNode()))
+		{
+			CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-            if (backendDevice) {
-                CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+			if (backendDevice)
+			{
+				CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
-                if (backendPartitionTable) {
-                    if (backendPartitionTable->setPartitionSystemType(*report, partition())) {
-                        rval = true;
-                        backendPartitionTable->commit();
-                    } else
-                        report->line() << xi18nc("@info/plain", "Failed to set the system type for the file system on partition <filename>%1</filename>.", partition().deviceNode());
+				if (backendPartitionTable)
+				{
+					if (backendPartitionTable->setPartitionSystemType(*report, partition()))
+					{
+						rval = true;
+						backendPartitionTable->commit();
+					}
+					else
+						report->line() << xi18nc("@info/plain", "Failed to set the system type for the file system on partition <filename>%1</filename>.", partition().deviceNode());
 
-                    delete backendPartitionTable;
-                } else
-                    report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+					delete backendPartitionTable;
+				}
+				else
+					report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-                delete backendDevice;
-            } else
-                report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
-        }
-    }
+				delete backendDevice;
+			}
+			else
+				report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+		}
+	}
 
-    jobFinished(*report, rval);
+	jobFinished(*report, rval);
 
-    return rval;
+	return rval;
 }
 
 QString CreateFileSystemJob::description() const
 {
-    return xi18nc("@info/plain", "Create file system <filename>%1</filename> on partition <filename>%2</filename>", partition().fileSystem().name(), partition().deviceNode());
+	return xi18nc("@info/plain", "Create file system <filename>%1</filename> on partition <filename>%2</filename>", partition().fileSystem().name(), partition().deviceNode());
 }

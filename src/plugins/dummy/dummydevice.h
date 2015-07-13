@@ -30,23 +30,23 @@ class CoreBackendPartitionTable;
 
 class DummyDevice : public CoreBackendDevice
 {
-    Q_DISABLE_COPY(DummyDevice);
+	Q_DISABLE_COPY(DummyDevice);
 
-public:
-    DummyDevice(const QString& device_node);
-    ~DummyDevice();
+	public:
+		DummyDevice(const QString& device_node);
+		~DummyDevice();
 
-public:
-    virtual bool open();
-    virtual bool openExclusive();
-    virtual bool close();
+	public:
+		virtual bool open();
+		virtual bool openExclusive();
+		virtual bool close();
 
-    virtual CoreBackendPartitionTable* openPartitionTable();
+		virtual CoreBackendPartitionTable* openPartitionTable();
 
-    virtual bool createPartitionTable(Report& report, const PartitionTable& ptable);
+		virtual bool createPartitionTable(Report& report, const PartitionTable& ptable);
 
-    virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors);
-    virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors);
+		virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors);
+		virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors);
 };
 
 #endif

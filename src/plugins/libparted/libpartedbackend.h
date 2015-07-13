@@ -43,35 +43,35 @@ class QString;
 
 /** Backend plugin for libparted.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class LibPartedBackend : public CoreBackend
 {
-    friend class KPluginFactory;
-    friend class LibPartedPartition;
-    friend class LibPartedDevice;
-    friend class LibPartedPartitionTable;
+	friend class KPluginFactory;
+	friend class LibPartedPartition;
+	friend class LibPartedDevice;
+	friend class LibPartedPartitionTable;
 
-    Q_DISABLE_COPY(LibPartedBackend)
+	Q_DISABLE_COPY(LibPartedBackend)
 
-private:
-    LibPartedBackend(QObject* parent, const QList<QVariant>& args);
+	private:
+		LibPartedBackend(QObject* parent, const QList<QVariant>& args);
 
-public:
-    virtual void initFSSupport();
+	public:
+		virtual void initFSSupport();
 
-    virtual CoreBackendDevice* openDevice(const QString& device_node);
-    virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node);
-    virtual bool closeDevice(CoreBackendDevice* core_device);
-    virtual Device* scanDevice(const QString& device_node);
-    virtual QList<Device*> scanDevices();
+		virtual CoreBackendDevice* openDevice(const QString& device_node);
+		virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node);
+		virtual bool closeDevice(CoreBackendDevice* core_device);
+		virtual Device* scanDevice(const QString& device_node);
+		virtual QList<Device*> scanDevices();
 
-    static QString lastPartedExceptionMessage();
+		static QString lastPartedExceptionMessage();
 
-private:
-    static FileSystem::Type detectFileSystem(PedPartition* pedPartition);
-    static PedPartitionFlag getPedFlag(PartitionTable::Flag flag);
-    static void scanDevicePartitions(PedDevice* pedDevice, Device& d, PedDisk* pedDisk);
+	private:
+		static FileSystem::Type detectFileSystem(PedPartition* pedPartition);
+		static PedPartitionFlag getPedFlag(PartitionTable::Flag flag);
+		static void scanDevicePartitions(PedDevice* pedDevice, Device& d, PedDisk* pedDisk);
 };
 
 #endif

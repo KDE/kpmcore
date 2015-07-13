@@ -21,16 +21,16 @@
 #include "util/report.h"
 
 DummyPartition::DummyPartition() :
-    CoreBackendPartition()
+	CoreBackendPartition()
 {
 }
 
 bool DummyPartition::setFlag(Report& report, PartitionTable::Flag partitionManagerFlag, bool state)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(partitionManagerFlag);
-    Q_UNUSED(state);
+	Q_UNUSED(report);
+	Q_UNUSED(partitionManagerFlag);
+	Q_UNUSED(state);
 
-    return true;
+	return true;
 }
 

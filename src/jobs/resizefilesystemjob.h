@@ -29,51 +29,39 @@ class QString;
 
 /** Resize a FileSystem.
 
-    Resizes a FileSystem on a given Device and Partition to a new length. If the new length is -1, the
-    FileSystem is maximized to fill the entire Partition.
+	Resizes a FileSystem on a given Device and Partition to a new length. If the new length is -1, the
+	FileSystem is maximized to fill the entire Partition.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class ResizeFileSystemJob : public Job
 {
-public:
-    ResizeFileSystemJob(Device& d, Partition& p, qint64 newlength = -1);
+	public:
+		ResizeFileSystemJob(Device& d, Partition& p, qint64 newlength = -1);
 
-public:
-    virtual bool run(Report& parent);
-    virtual qint32 numSteps() const;
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual qint32 numSteps() const;
+		virtual QString description() const;
 
-protected:
-    bool resizeFileSystemBackend(Report& report);
+	protected:
+		bool resizeFileSystemBackend(Report& report);
 
-    Partition& partition() {
-        return m_Partition;
-    }
-    const Partition& partition() const {
-        return m_Partition;
-    }
+		Partition& partition() { return m_Partition; }
+		const Partition& partition() const { return m_Partition; }
 
-    Device& device() {
-        return m_Device;
-    }
-    const Device& device() const {
-        return m_Device;
-    }
+		Device& device() { return m_Device; }
+		const Device& device() const { return m_Device; }
 
-    qint64 newLength() const {
-        return m_NewLength;
-    }
+		qint64 newLength() const { return m_NewLength; }
 
-    bool isMaximizing() const {
-        return m_Maximize;
-    }
+		bool isMaximizing() const { return m_Maximize; }
 
-private:
-    Device& m_Device;
-    Partition& m_Partition;
-    bool m_Maximize;
-    qint64 m_NewLength;
+	private:
+		Device& m_Device;
+		Partition& m_Partition;
+		bool m_Maximize;
+		qint64 m_NewLength;
 };
 
 #endif

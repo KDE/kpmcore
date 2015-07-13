@@ -29,47 +29,37 @@ class QString;
 
 namespace FS
 {
-/** An extended file system.
+	/** An extended file system.
 
-    A FileSystem for an extended Partition. Of course, extended partitions do not actually have
-    a file system, but we need this to be able to create, grow, shrink or move them.
+		A FileSystem for an extended Partition. Of course, extended partitions do not actually have
+		a file system, but we need this to be able to create, grow, shrink or move them.
 
-    @author Volker Lanz <vl@fidra.de>
- */
+		@author Volker Lanz <vl@fidra.de>
+	 */
 
-class LIBKPMCORE_EXPORT extended : public FileSystem
-{
-public:
-    extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+	class LIBKPMCORE_EXPORT extended : public FileSystem
+	{
+		public:
+			extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-public:
-    static void init() {}
+		public:
+			static void init() {}
 
-    virtual bool create(Report&, const QString&) const;
+			virtual bool create(Report&, const QString&) const;
 
-    virtual CommandSupportType supportCreate() const {
-        return m_Create;
-    }
-    virtual CommandSupportType supportGrow() const {
-        return m_Grow;
-    }
-    virtual CommandSupportType supportShrink() const {
-        return m_Shrink;
-    }
-    virtual CommandSupportType supportMove() const {
-        return m_Move;
-    }
+			virtual CommandSupportType supportCreate() const { return m_Create; }
+			virtual CommandSupportType supportGrow() const { return m_Grow; }
+			virtual CommandSupportType supportShrink() const { return m_Shrink; }
+			virtual CommandSupportType supportMove() const { return m_Move; }
 
-    virtual bool supportToolFound() const {
-        return true;
-    }
+			virtual bool supportToolFound() const { return true; }
 
-public:
-    static CommandSupportType m_Create;
-    static CommandSupportType m_Grow;
-    static CommandSupportType m_Shrink;
-    static CommandSupportType m_Move;
-};
+		public:
+			static CommandSupportType m_Create;
+			static CommandSupportType m_Grow;
+			static CommandSupportType m_Shrink;
+			static CommandSupportType m_Move;
+	};
 }
 
 #endif

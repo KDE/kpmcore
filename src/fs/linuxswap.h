@@ -31,79 +31,57 @@ class QString;
 
 namespace FS
 {
-/** A linux swap pseudo file system.
-    @author Volker Lanz <vl@fidra.de>
- */
-class LIBKPMCORE_EXPORT linuxswap : public FileSystem
-{
-public:
-    linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+	/** A linux swap pseudo file system.
+		@author Volker Lanz <vl@fidra.de>
+	 */
+	class LIBKPMCORE_EXPORT linuxswap : public FileSystem
+	{
+		public:
+			linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-public:
-    static void init();
+		public:
+			static void init();
 
-    virtual bool create(Report& report, const QString& deviceNode) const;
-    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const;
-    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
-    virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const;
-    virtual bool updateUUID(Report& report, const QString& deviceNode) const;
+			virtual bool create(Report& report, const QString& deviceNode) const;
+			virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const;
+			virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
+			virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const;
+			virtual bool updateUUID(Report& report, const QString& deviceNode) const;
 
-    virtual bool canMount(const QString&) const {
-        return true;
-    }
-    virtual bool canUnmount(const QString&) const {
-        return true;
-    }
+			virtual bool canMount(const QString&) const { return true; }
+			virtual bool canUnmount(const QString&) const { return true; }
 
-    virtual bool mount(const QString& deviceNode);
-    virtual bool unmount(const QString& deviceNode);
+			virtual bool mount(const QString& deviceNode);
+			virtual bool unmount(const QString& deviceNode);
 
-    virtual QString mountTitle() const;
-    virtual QString unmountTitle() const;
+			virtual QString mountTitle() const;
+			virtual QString unmountTitle() const;
 
-    virtual CommandSupportType supportCreate() const {
-        return m_Create;
-    }
-    virtual CommandSupportType supportGrow() const {
-        return m_Grow;
-    }
-    virtual CommandSupportType supportShrink() const {
-        return m_Shrink;
-    }
-    virtual CommandSupportType supportMove() const {
-        return m_Move;
-    }
-    virtual CommandSupportType supportCopy() const {
-        return m_Copy;
-    }
-    virtual CommandSupportType supportGetLabel() const {
-        return m_GetLabel;
-    }
-    virtual CommandSupportType supportSetLabel() const {
-        return m_SetLabel;
-    }
-    virtual CommandSupportType supportUpdateUUID() const {
-        return m_UpdateUUID;
-    }
-    virtual CommandSupportType supportGetUUID() const {
-        return m_GetUUID;
-    }
+			virtual CommandSupportType supportCreate() const { return m_Create; }
+			virtual CommandSupportType supportGrow() const { return m_Grow; }
+			virtual CommandSupportType supportShrink() const { return m_Shrink; }
+			virtual CommandSupportType supportMove() const { return m_Move; }
+			virtual CommandSupportType supportCopy() const { return m_Copy; }
+			virtual CommandSupportType supportGetLabel() const { return m_GetLabel; }
+			virtual CommandSupportType supportSetLabel() const { return m_SetLabel; }
+			virtual CommandSupportType supportUpdateUUID() const { return m_UpdateUUID; }
+			virtual CommandSupportType supportGetUUID() const { return m_GetUUID; }
 
-    virtual qint64 maxLabelLength() const;
-    virtual SupportTool supportToolName() const;
-    virtual bool supportToolFound() const;
+			virtual qint64 maxLabelLength() const;
+			virtual SupportTool supportToolName() const;
+			virtual bool supportToolFound() const;
 
-public:
-    static CommandSupportType m_Create;
-    static CommandSupportType m_Grow;
-    static CommandSupportType m_Shrink;
-    static CommandSupportType m_Move;
-    static CommandSupportType m_Copy;
-    static CommandSupportType m_SetLabel;
-    static CommandSupportType m_GetLabel;
-    static CommandSupportType m_UpdateUUID;
-    static CommandSupportType m_GetUUID;
-};
+		public:
+			static CommandSupportType m_Create;
+			static CommandSupportType m_Grow;
+			static CommandSupportType m_Shrink;
+			static CommandSupportType m_Move;
+			static CommandSupportType m_Copy;
+			static CommandSupportType m_SetLabel;
+			static CommandSupportType m_GetLabel;
+			static CommandSupportType m_UpdateUUID;
+			static CommandSupportType m_GetUUID;
+	};
 }
 
 #endif

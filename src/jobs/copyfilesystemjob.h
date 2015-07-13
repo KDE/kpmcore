@@ -31,54 +31,38 @@ class QString;
 
 /** Copy a FileSystem.
 
-    Copy a FileSystem on a given Partition and Device to another Partition on a (possibly other) Device.
+	Copy a FileSystem on a given Partition and Device to another Partition on a (possibly other) Device.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class CopyFileSystemJob : public Job
 {
-public:
-    CopyFileSystemJob(Device& targetdevice, Partition& targetpartition, Device& sourcedevice, Partition& sourcepartition);
+	public:
+		CopyFileSystemJob(Device& targetdevice, Partition& targetpartition, Device& sourcedevice, Partition& sourcepartition);
 
-public:
-    virtual bool run(Report& parent);
-    virtual qint32 numSteps() const;
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual qint32 numSteps() const;
+		virtual QString description() const;
 
-protected:
-    Partition& targetPartition() {
-        return m_TargetPartition;
-    }
-    const Partition& targetPartition() const {
-        return m_TargetPartition;
-    }
+	protected:
+		Partition& targetPartition() { return m_TargetPartition; }
+		const Partition& targetPartition() const { return m_TargetPartition; }
+		
+		Device& targetDevice() { return m_TargetDevice; }
+		const Device& targetDevice() const { return m_TargetDevice; }
+		
+		Partition& sourcePartition() { return m_SourcePartition; }
+		const Partition& sourcePartition() const { return m_SourcePartition; }
+		
+		Device& sourceDevice() { return m_SourceDevice; }
+		const Device& sourceDevice() const { return m_SourceDevice; }
 
-    Device& targetDevice() {
-        return m_TargetDevice;
-    }
-    const Device& targetDevice() const {
-        return m_TargetDevice;
-    }
-
-    Partition& sourcePartition() {
-        return m_SourcePartition;
-    }
-    const Partition& sourcePartition() const {
-        return m_SourcePartition;
-    }
-
-    Device& sourceDevice() {
-        return m_SourceDevice;
-    }
-    const Device& sourceDevice() const {
-        return m_SourceDevice;
-    }
-
-private:
-    Device& m_TargetDevice;
-    Partition& m_TargetPartition;
-    Device& m_SourceDevice;
-    Partition& m_SourcePartition;
+	private:
+		Device& m_TargetDevice;
+		Partition& m_TargetPartition;
+		Device& m_SourceDevice;
+		Partition& m_SourcePartition;
 };
 
 #endif

@@ -32,31 +32,29 @@ class CoreBackendPartitionTable;
 
 class LibPartedDevice : public CoreBackendDevice
 {
-    Q_DISABLE_COPY(LibPartedDevice);
+	Q_DISABLE_COPY(LibPartedDevice);
 
-public:
-    LibPartedDevice(const QString& device_node);
-    ~LibPartedDevice();
+	public:
+		LibPartedDevice(const QString& device_node);
+		~LibPartedDevice();
 
-public:
-    virtual bool open();
-    virtual bool openExclusive();
-    virtual bool close();
+	public:
+		virtual bool open();
+		virtual bool openExclusive();
+		virtual bool close();
 
-    virtual CoreBackendPartitionTable* openPartitionTable();
+		virtual CoreBackendPartitionTable* openPartitionTable();
 
-    virtual bool createPartitionTable(Report& report, const PartitionTable& ptable);
+		virtual bool createPartitionTable(Report& report, const PartitionTable& ptable);
 
-    virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors);
-    virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors);
+		virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors);
+		virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors);
 
-protected:
-    PedDevice* pedDevice() {
-        return m_PedDevice;
-    }
+	protected:
+		PedDevice* pedDevice() { return m_PedDevice; }
 
-private:
-    PedDevice* m_PedDevice;
+	private:
+		PedDevice* m_PedDevice;
 };
 
 #endif

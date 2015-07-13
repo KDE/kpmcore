@@ -25,56 +25,56 @@
 
 
 /** Constructs a device to copy to.
-    @param d the Device to copy to
-    @param firstsector the first sector on the Device to write to
-    @param lastsector the last sector on the Device to write to
+	@param d the Device to copy to
+	@param firstsector the first sector on the Device to write to
+	@param lastsector the last sector on the Device to write to
 */
 CopyTargetDevice::CopyTargetDevice(Device& d, qint64 firstsector, qint64 lastsector) :
-    CopyTarget(),
-    m_Device(d),
-    m_BackendDevice(NULL),
-    m_FirstSector(firstsector),
-    m_LastSector(lastsector)
+	CopyTarget(),
+	m_Device(d),
+	m_BackendDevice(NULL),
+	m_FirstSector(firstsector),
+	m_LastSector(lastsector)
 {
 }
 
 /** Destructs a CopyTargetDevice */
 CopyTargetDevice::~CopyTargetDevice()
 {
-    delete m_BackendDevice;
+	delete m_BackendDevice;
 }
 
 /** Opens a CopyTargetDevice for writing to.
-    @return true on success
+	@return true on success
 */
 bool CopyTargetDevice::open()
 {
-    m_BackendDevice = CoreBackendManager::self()->backend()->openDeviceExclusive(device().deviceNode());
-    return m_BackendDevice != NULL;
+	m_BackendDevice = CoreBackendManager::self()->backend()->openDeviceExclusive(device().deviceNode());
+	return m_BackendDevice != NULL;
 }
 
 /** @return the Device's sector size */
 qint32 CopyTargetDevice::sectorSize() const
 {
-    return device().logicalSectorSize();
+	return device().logicalSectorSize();
 }
 
 /** Writes the given number of sectors to the Device.
 
-    Note that @p writeOffset must be greater or equal than zero.
+	Note that @p writeOffset must be greater or equal than zero.
 
-    @param buffer the data to write
-    @param writeOffset where to start writing on the Device
-    @param numSectors the number of sectors in @p buffer
-    @return true on success
+	@param buffer the data to write
+	@param writeOffset where to start writing on the Device
+	@param numSectors the number of sectors in @p buffer
+	@return true on success
 */
 bool CopyTargetDevice::writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors)
 {
-    Q_ASSERT(writeOffset >= 0);
-    bool rval = m_BackendDevice->writeSectors(buffer, writeOffset, numSectors);
+	Q_ASSERT(writeOffset >= 0);
+	bool rval = m_BackendDevice->writeSectors(buffer, writeOffset, numSectors);
 
-    if (rval)
-        setSectorsWritten(sectorsWritten() + numSectors);
+	if (rval)
+		setSectorsWritten(sectorsWritten() + numSectors);
 
-    return rval;
+	return rval;
 }

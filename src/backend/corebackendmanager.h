@@ -36,48 +36,44 @@ class CoreBackend;
   */
 class LIBKPMCORE_EXPORT CoreBackendManager
 {
-private:
-    CoreBackendManager();
+	private:
+		CoreBackendManager();
 
-public:
-    /**
-      * @return pointer to ourselves
-      */
-    static CoreBackendManager* self();
+	public:
+		/**
+		  * @return pointer to ourselves
+		  */
+		static CoreBackendManager* self();
 
-    /**
-      * @return the name of the default backend plugin
-      */
-    static QString defaultBackendName() {
-        return QStringLiteral("pmlibpartedbackendplugin");
-    }
+		/**
+		  * @return the name of the default backend plugin
+		  */
+		static QString defaultBackendName() { return QStringLiteral("pmlibpartedbackendplugin"); }
 
-    /**
-      * @return a list of available backend plugins
-      */
-    KService::List list() const;
+		/**
+		  * @return a list of available backend plugins
+		  */
+		KService::List list() const;
 
-    /**
-       * Loads the given backend plugin into the application.
-       * @param name the name of the plugin to load
-       * @return true on success
-       */
-    bool load(const QString& name);
+		/**
+		   * Loads the given backend plugin into the application.
+		   * @param name the name of the plugin to load
+		   * @return true on success
+		   */
+		bool load(const QString& name);
 
-    /**
-      * Unload the current plugin.
-      */
-    void unload();
+		/**
+		  * Unload the current plugin.
+		  */
+		void unload();
 
-    /**
-      * @return a pointer to the currently loaded backend
-      */
-    CoreBackend* backend() {
-        return m_Backend;
-    }
+		/**
+		  * @return a pointer to the currently loaded backend
+		  */
+		CoreBackend* backend() { return m_Backend; }
 
-private:
-    CoreBackend* m_Backend;
+	private:
+		CoreBackend* m_Backend;
 };
 
 #endif

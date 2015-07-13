@@ -27,46 +27,39 @@ class QString;
 
 /** A Partition's role.
 
-    Each Partition has a PartitionRole: It can be primary, extended, logical or represent unallocated space on the Device.
+	Each Partition has a PartitionRole: It can be primary, extended, logical or represent unallocated space on the Device.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT PartitionRole
 {
-public:
-    /** A Partition's role: What kind of Partition is it? */
-    enum Role {
-        None = 0,           /**< None at all */
-        Primary = 1,        /**< Primary */
-        Extended = 2,       /**< Extended */
-        Logical = 4,        /**< Logical inside an extended */
-        Unallocated = 8,    /**< No real Partition, just unallocated space */
+	public:
+		/** A Partition's role: What kind of Partition is it? */
+		enum Role
+		{
+			None = 0,			/**< None at all */
+			Primary = 1,		/**< Primary */
+			Extended = 2,		/**< Extended */
+			Logical = 4,		/**< Logical inside an extended */
+			Unallocated = 8,	/**< No real Partition, just unallocated space */
 
-        Any = 255           /**< In case we're looking for a Partition with a PartitionRole, any will do */
-    };
+			Any = 255			/**< In case we're looking for a Partition with a PartitionRole, any will do */
+		};
 
-    Q_DECLARE_FLAGS(Roles, Role)
+ 	Q_DECLARE_FLAGS(Roles, Role)
 
-public:
-    explicit PartitionRole(Roles r) : m_Roles(r) {} /**< Creates a new PartitionRole object */
-    Roles roles() const {
-        return m_Roles;    /**< @return the roles as bitfield */
-    }
-    bool has(Role r) const {
-        return roles() & r;    /**< @param r the role to check @return true if the role is set */
-    }
+	public:
+		explicit PartitionRole(Roles r) : m_Roles(r) {} /**< Creates a new PartitionRole object */
+		Roles roles() const { return m_Roles; } /**< @return the roles as bitfield */
+		bool has(Role r) const { return roles() & r; } /**< @param r the role to check @return true if the role is set */
 
-    bool operator==(const PartitionRole& other) const {
-        return m_Roles == other.m_Roles;    /**< @param other object to compare with @return true if the same */
-    }
-    bool operator!=(const PartitionRole& other) const {
-        return !operator==(other);    /**< @param other object to compare with @return true if not the same */
-    }
+		bool operator==(const PartitionRole& other) const { return m_Roles == other.m_Roles; } /**< @param other object to compare with @return true if the same */
+		bool operator!=(const PartitionRole& other) const { return !operator==(other); }  /**< @param other object to compare with @return true if not the same */
 
-    QString toString() const;
+		QString toString() const;
 
-private:
-    Roles m_Roles;
+	private:
+		Roles m_Roles;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(PartitionRole::Roles)

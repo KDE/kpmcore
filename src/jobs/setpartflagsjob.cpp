@@ -33,81 +33,89 @@
 #include <KLocalizedString>
 
 /** Creates a new SetPartFlagsJob
-    @param d the Device the Partition whose flags are to be set is on
-    @param p the Partition whose flags are to be set
-    @param flags the new flags for the Partition
+	@param d the Device the Partition whose flags are to be set is on
+	@param p the Partition whose flags are to be set
+	@param flags the new flags for the Partition
 */
 SetPartFlagsJob::SetPartFlagsJob(Device& d, Partition& p, PartitionTable::Flags flags) :
-    Job(),
-    m_Device(d),
-    m_Partition(p),
-    m_Flags(flags)
+	Job(),
+	m_Device(d),
+	m_Partition(p),
+	m_Flags(flags)
 {
 }
 
 qint32 SetPartFlagsJob::numSteps() const
 {
-    return PartitionTable::flagList().size();
+	return PartitionTable::flagList().size();
 }
 
 bool SetPartFlagsJob::run(Report& parent)
 {
-    bool rval = true;
+	bool rval = true;
 
-    Report* report = jobStarted(parent);
+	Report* report = jobStarted(parent);
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+	CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-    if (backendDevice) {
-        CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+	if (backendDevice)
+	{
+		CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
-        if (backendPartitionTable) {
-            CoreBackendPartition* backendPartition = (partition().roles().has(PartitionRole::Extended))
-                    ? backendPartitionTable->getExtendedPartition()
-                    : backendPartitionTable->getPartitionBySector(partition().firstSector());
+		if (backendPartitionTable)
+		{
+			CoreBackendPartition* backendPartition = (partition().roles().has(PartitionRole::Extended))
+				? backendPartitionTable->getExtendedPartition()
+				: backendPartitionTable->getPartitionBySector(partition().firstSector());
 
-            if (backendPartition) {
-                quint32 count = 0;
+			if (backendPartition)
+			{
+				quint32 count = 0;
 
-                foreach(const PartitionTable::Flag & f, PartitionTable::flagList()) {
-                    emit progress(++count);
+				foreach(const PartitionTable::Flag& f, PartitionTable::flagList())
+				{
+					emit progress(++count);
 
-                    const bool state = (flags() & f) ? true : false;
+					const bool state = (flags() & f) ? true : false;
 
-                    if (!backendPartition->setFlag(*report, f, state)) {
-                        report->line() << xi18nc("@info/plain", "There was an error setting flag %1 for partition <filename>%2</filename> to state %3.", PartitionTable::flagName(f), partition().deviceNode(), state ? i18nc("@info/plain flag turned on, active", "on") : i18nc("@info/plain flag turned off, inactive", "off"));
+					if (!backendPartition->setFlag(*report, f, state))
+					{
+						report->line() << xi18nc("@info/plain", "There was an error setting flag %1 for partition <filename>%2</filename> to state %3.", PartitionTable::flagName(f), partition().deviceNode(), state ? i18nc("@info/plain flag turned on, active", "on") : i18nc("@info/plain flag turned off, inactive", "off"));
 
-                        rval = false;
-                    }
-                }
+						rval = false;
+					}
+				}
 
-                delete backendPartition;
-            } else
-                report->line() << xi18nc("@info/plain", "Could not find partition <filename>%1</filename> on device <filename>%2</filename> to set partition flags.", partition().deviceNode(), device().deviceNode());
+				delete backendPartition;
+			}
+			else
+				report->line() << xi18nc("@info/plain", "Could not find partition <filename>%1</filename> on device <filename>%2</filename> to set partition flags.", partition().deviceNode(), device().deviceNode());
 
-            if (rval)
-                backendPartitionTable->commit();
+			if (rval)
+				backendPartitionTable->commit();
 
-            delete backendPartitionTable;
-        } else
-            report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to set partition flags for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+			delete backendPartitionTable;
+		}
+		else
+			report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to set partition flags for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-        delete backendDevice;
-    } else
-        report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to set partition flags for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+		delete backendDevice;
+	}
+	else
+		report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to set partition flags for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-    if (rval)
-        partition().setFlags(flags());
+	if (rval)
+		partition().setFlags(flags());
 
-    jobFinished(*report, rval);
+	jobFinished(*report, rval);
 
-    return rval;
+	return rval;
 }
 
 QString SetPartFlagsJob::description() const
 {
-    if (PartitionTable::flagNames(flags()).size() == 0)
-        return xi18nc("@info/plain", "Clear flags for partition <filename>%1</filename>", partition().deviceNode());
+	if (PartitionTable::flagNames(flags()).size() == 0)
+		return xi18nc("@info/plain", "Clear flags for partition <filename>%1</filename>", partition().deviceNode());
 
-    return xi18nc("@info/plain", "Set the flags for partition <filename>%1</filename> to \"%2\"", partition().deviceNode(), PartitionTable::flagNames(flags()).join(QStringLiteral(",")));
+	return xi18nc("@info/plain", "Set the flags for partition <filename>%1</filename> to \"%2\"", partition().deviceNode(), PartitionTable::flagNames(flags()).join(QStringLiteral(",")));
 }

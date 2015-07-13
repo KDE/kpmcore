@@ -29,43 +29,33 @@ class Report;
 
 /** Back up a FileSystem.
 
-    Backs up a FileSystem from a given Device and Partition to a file with the given filename.
+	Backs up a FileSystem from a given Device and Partition to a file with the given filename.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class BackupFileSystemJob : public Job
 {
-public:
-    BackupFileSystemJob(Device& sourcedevice, Partition& sourcepartition, const QString& filename);
+	public:
+		BackupFileSystemJob(Device& sourcedevice, Partition& sourcepartition, const QString& filename);
 
-public:
-    virtual bool run(Report& parent);
-    virtual qint32 numSteps() const;
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual qint32 numSteps() const;
+		virtual QString description() const;
+		
+	protected:
+		Partition& sourcePartition() { return m_SourcePartition; }
+		const Partition& sourcePartition() const { return m_SourcePartition; }
 
-protected:
-    Partition& sourcePartition() {
-        return m_SourcePartition;
-    }
-    const Partition& sourcePartition() const {
-        return m_SourcePartition;
-    }
+		Device& sourceDevice() { return m_SourceDevice; }
+		const Device& sourceDevice() const { return m_SourceDevice; }
 
-    Device& sourceDevice() {
-        return m_SourceDevice;
-    }
-    const Device& sourceDevice() const {
-        return m_SourceDevice;
-    }
+		const QString& fileName() const { return m_FileName; }
 
-    const QString& fileName() const {
-        return m_FileName;
-    }
-
-private:
-    Device& m_SourceDevice;
-    Partition& m_SourcePartition;
-    QString m_FileName;
+	private:
+		Device& m_SourceDevice;
+		Partition& m_SourcePartition;
+		QString m_FileName;
 };
 
 #endif

@@ -27,20 +27,18 @@
 
 namespace FS
 {
-/** A pseudo file system for partitions whose file system we cannot determine.
-    @author Volker Lanz <vl@fidra.de>
-*/
-class LIBKPMCORE_EXPORT unknown : public FileSystem
-{
-public:
-    unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+	/** A pseudo file system for partitions whose file system we cannot determine.
+		@author Volker Lanz <vl@fidra.de>
+	*/
+	class LIBKPMCORE_EXPORT unknown : public FileSystem
+	{
+		public:
+			unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-public:
-    static void init() {}
-    virtual bool supportToolFound() const {
-        return true;
-    }
-};
+		public:
+			static void init() {}
+			virtual bool supportToolFound() const { return true; }
+	};
 }
 
 #endif

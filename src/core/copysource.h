@@ -25,31 +25,31 @@ class CopyTarget;
 
 /** Base class for something to copy from.
 
-    Abstract base class for all copy sources. Used in combination with CopyTarget
-    to implement moving, copying, backing up and restoring FileSystems.
+	Abstract base class for all copy sources. Used in combination with CopyTarget
+	to implement moving, copying, backing up and restoring FileSystems.
 
-    @see CopyTarget
-    @author Volker Lanz <vl@fidra.de>
+	@see CopyTarget
+	@author Volker Lanz <vl@fidra.de>
 */
 class CopySource
 {
-    Q_DISABLE_COPY(CopySource)
+	Q_DISABLE_COPY(CopySource)
 
-protected:
-    CopySource() {}
-    virtual ~CopySource() {}
+	protected:
+		CopySource() {}
+		virtual ~CopySource() {}
 
-public:
-    virtual bool open() = 0;
-    virtual qint32 sectorSize() const = 0;
-    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) = 0;
-    virtual qint64 length() const = 0;
-    virtual bool overlaps(const CopyTarget& target) const = 0;
+	public:
+		virtual bool open() = 0;
+		virtual qint32 sectorSize() const = 0;
+		virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) = 0;
+		virtual qint64 length() const = 0;
+		virtual bool overlaps(const CopyTarget& target) const = 0;
 
-    virtual qint64 firstSector() const = 0;
-    virtual qint64 lastSector() const = 0;
+		virtual qint64 firstSector() const = 0;
+		virtual qint64 lastSector() const = 0;
 
-private:
+	private:
 };
 
 #endif

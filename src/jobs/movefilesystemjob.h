@@ -29,43 +29,33 @@ class QString;
 
 /** Move a FileSystem.
 
-    Moves a FileSystem on a given Device and Partition to a new start sector.
+	Moves a FileSystem on a given Device and Partition to a new start sector.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class MoveFileSystemJob : public Job
 {
-public:
-    MoveFileSystemJob(Device& d, Partition& p, qint64 newstart);
+	public:
+		MoveFileSystemJob(Device& d, Partition& p, qint64 newstart);
 
-public:
-    virtual bool run(Report& parent);
-    virtual qint32 numSteps() const;
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual qint32 numSteps() const;
+		virtual QString description() const;
 
-protected:
-    Partition& partition() {
-        return m_Partition;
-    }
-    const Partition& partition() const {
-        return m_Partition;
-    }
+	protected:
+		Partition& partition() { return m_Partition; }
+		const Partition& partition() const { return m_Partition; }
 
-    Device& device() {
-        return m_Device;
-    }
-    const Device& device() const {
-        return m_Device;
-    }
+		Device& device() { return m_Device; }
+		const Device& device() const { return m_Device; }
 
-    qint64 newStart() const {
-        return m_NewStart;
-    }
+		qint64 newStart() const { return m_NewStart; }
 
-private:
-    Device& m_Device;
-    Partition& m_Partition;
-    qint64 m_NewStart;
+	private:
+		Device& m_Device;
+		Partition& m_Partition;
+		qint64 m_NewStart;
 };
 
 #endif

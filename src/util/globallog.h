@@ -27,65 +27,64 @@
 
 class LIBKPMCORE_EXPORT Log
 {
-public:
-    enum Level {
-        debug = 0,
-        information = 1,
-        warning = 2,
-        error = 3
-    };
+	public:
+		enum Level
+		{
+			debug = 0,
+			information = 1,
+			warning = 2,
+			error = 3
+		};
 
-public:
-    Log(Level lev = information) : ref(1), level(lev) {}
-    ~Log();
-    Log(const Log& other) : ref(other.ref + 1), level(other.level) {}
+	public:
+		Log(Level lev = information) : ref(1), level(lev) {}
+		~Log();
+		Log(const Log& other) : ref(other.ref + 1), level(other.level) {}
 
-private:
-    quint32 ref;
-    Level level;
+	private:
+		quint32 ref;
+		Level level;
 };
 
 /** Global logging.
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT GlobalLog : public QObject
 {
-    Q_OBJECT
-    Q_DISABLE_COPY(GlobalLog)
+	Q_OBJECT
+	Q_DISABLE_COPY(GlobalLog)
 
-    friend class Log;
-    friend Log operator<<(Log l, const QString& s);
-    friend Log operator<<(Log l, qint64 i);
+ 	friend class Log;
+ 	friend Log operator<<(Log l, const QString& s);
+ 	friend Log operator<<(Log l, qint64 i);
 
-private:
-    GlobalLog() : msg() {}
+	private:
+		GlobalLog() : msg() {}
 
-Q_SIGNALS:
-    void newMessage(Log::Level, const QString&);
+	Q_SIGNALS:
+		void newMessage(Log::Level, const QString&);
 
-public:
-    static GlobalLog* instance();
+	public:
+		static GlobalLog* instance();
 
-private:
-    void append(const QString& s) {
-        msg += s;
-    }
-    void flush(Log::Level level);
+	private:
+		void append(const QString& s) { msg += s; }
+		void flush(Log::Level level);
 
-private:
-    QString msg;
+	private:
+		QString msg;
 };
 
 inline Log operator<<(Log l, const QString& s)
 {
-    GlobalLog::instance()->append(s);
-    return l;
+	GlobalLog::instance()->append(s);
+	return l;
 }
 
 inline Log operator<<(Log l, qint64 i)
 {
-    GlobalLog::instance()->append(QString::number(i));
-    return l;
+	GlobalLog::instance()->append(QString::number(i));
+	return l;
 }
 
 #endif

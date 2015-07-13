@@ -28,35 +28,27 @@ class Report;
 class QString;
 
 /** Create a FileSystem.
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class CreateFileSystemJob : public Job
 {
-public:
-    CreateFileSystemJob(Device& d, Partition& p);
+	public:
+		CreateFileSystemJob(Device& d, Partition& p);
 
-public:
-    virtual bool run(Report& parent);
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual QString description() const;
 
-protected:
-    Partition& partition() {
-        return m_Partition;
-    }
-    const Partition& partition() const {
-        return m_Partition;
-    }
+	protected:
+		Partition& partition() { return m_Partition; }
+		const Partition& partition() const { return m_Partition; }
 
-    Device& device() {
-        return m_Device;
-    }
-    const Device& device() const {
-        return m_Device;
-    }
+		Device& device() { return m_Device; }
+		const Device& device() const { return m_Device; }
 
-private:
-    Device& m_Device;
-    Partition& m_Partition;
+	private:
+		Device& m_Device;
+		Partition& m_Partition;
 };
 
 #endif

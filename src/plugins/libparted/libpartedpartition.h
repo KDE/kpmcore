@@ -29,21 +29,19 @@ class Report;
 
 class LibPartedPartition : public CoreBackendPartition
 {
-    Q_DISABLE_COPY(LibPartedPartition);
+	Q_DISABLE_COPY(LibPartedPartition);
 
-public:
-    LibPartedPartition(PedPartition* ped_partition);
+	public:
+		LibPartedPartition(PedPartition* ped_partition);
 
-public:
-    virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state);
+	public:
+		virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state);
 
-private:
-    PedPartition* pedPartition() {
-        return m_PedPartition;
-    }
+	private:
+		PedPartition* pedPartition() { return m_PedPartition; }
 
-private:
-    PedPartition* m_PedPartition;
+	private:
+		PedPartition* m_PedPartition;
 };
 
 

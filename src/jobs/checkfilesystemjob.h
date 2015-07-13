@@ -27,27 +27,23 @@ class Report;
 class QString;
 
 /** Check a FileSystem.
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class CheckFileSystemJob : public Job
 {
-public:
-    CheckFileSystemJob(Partition& p);
+	public:
+		CheckFileSystemJob(Partition& p);
 
-public:
-    virtual bool run(Report& parent);
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual QString description() const;
 
-protected:
-    Partition& partition() {
-        return m_Partition;
-    }
-    const Partition& partition() const {
-        return m_Partition;
-    }
+	protected:
+		Partition& partition() { return m_Partition; }
+		const Partition& partition() const { return m_Partition; }
 
-private:
-    Partition& m_Partition;
+	private:
+		Partition& m_Partition;
 };
 
 #endif

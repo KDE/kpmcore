@@ -29,21 +29,21 @@ struct mntent;
 
 class LIBKPMCORE_EXPORT MountEntry
 {
-public:
-    enum IdentifyType { deviceNode, uuid, label };
+	public:
+		enum IdentifyType { deviceNode, uuid, label };
 
-public:
-    MountEntry(const QString& n, const QString& p, const QString& t, const QStringList& o, qint32 d, qint32 pn, IdentifyType type);
-    MountEntry(struct mntent* p, IdentifyType type);
+	public:
+		MountEntry(const QString& n, const QString& p, const QString& t, const QStringList& o, qint32 d, qint32 pn, IdentifyType type);
+		MountEntry(struct mntent* p, IdentifyType type);
 
-public:
-    QString name;
-    QString path;
-    QString type;
-    QStringList options;
-    qint32 dumpFreq;
-    qint32 passNumber;
-    IdentifyType identifyType;
+	public:
+		QString name;
+		QString path;
+		QString type;
+		QStringList options;
+		qint32 dumpFreq;
+		qint32 passNumber;
+		IdentifyType identifyType;
 };
 
 #endif

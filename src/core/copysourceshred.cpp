@@ -20,42 +20,42 @@
 #include <config.h>
 
 /** Constructs a CopySourceShred with the given @p size
-    @param s the size the copy source will (pretend to) have
-    @param sectorsize the sectorsize the copy source will (pretend to) have
+	@param s the size the copy source will (pretend to) have
+	@param sectorsize the sectorsize the copy source will (pretend to) have
 */
-CopySourceShred::CopySourceShred(qint64 s, qint32 sectorsize) :
-    CopySource(),
-    m_Size(s),
-    m_SectorSize(sectorsize),
-    m_SourceFile(Config::shredSource() == Config::EnumShredSource::random ? QStringLiteral("/dev/urandom") : QStringLiteral("/dev/zero"))
+CopySourceShred::CopySourceShred (qint64 s, qint32 sectorsize) :
+	CopySource(),
+	m_Size(s),
+	m_SectorSize(sectorsize),
+	m_SourceFile(Config::shredSource() == Config::EnumShredSource::random ? QStringLiteral("/dev/urandom") : QStringLiteral("/dev/zero"))
 {
 }
 
 /** Opens the shred source.
-    @return true on success
+	@return true on success
 */
 bool CopySourceShred::open()
 {
-    return sourceFile().open(QIODevice::ReadOnly);
+	return sourceFile().open(QIODevice::ReadOnly);
 }
 
 /** Returns the length of the source in sectors.
-    @return length of the source in sectors.
+	@return length of the source in sectors.
 */
 qint64 CopySourceShred::length() const
 {
-    return size() / sectorSize();
+	return size() / sectorSize();
 }
 
 /** Reads the given number of sectors from the source into the given buffer.
-    @param buffer buffer to store the sectors read in
-    @param readOffset offset where to begin reading (unused)
-    @param numSectors number of sectors to read
-    @return true on success
+	@param buffer buffer to store the sectors read in
+	@param readOffset offset where to begin reading (unused)
+	@param numSectors number of sectors to read
+	@return true on success
 */
 bool CopySourceShred::readSectors(void* buffer, qint64 readOffset, qint64 numSectors)
 {
-    Q_UNUSED(readOffset);
+	Q_UNUSED(readOffset);
 
-    return sourceFile().read(static_cast<char*>(buffer), numSectors * sectorSize()) == numSectors * sectorSize();
+	return sourceFile().read(static_cast<char*>(buffer), numSectors * sectorSize()) == numSectors * sectorSize();
 }

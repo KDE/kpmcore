@@ -23,7 +23,7 @@
 #include <QtGlobal>
 
 #if !defined(LIBKPMCORE_EXPORT)
-#define LIBKPMCORE_EXPORT Q_DECL_EXPORT
+	#define LIBKPMCORE_EXPORT Q_DECL_EXPORT
 #endif
 
 #endif

@@ -27,27 +27,23 @@ class Report;
 class QString;
 
 /** Create a PartitionTable.
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class CreatePartitionTableJob : public Job
 {
-public:
-    CreatePartitionTableJob(Device& d);
+	public:
+		CreatePartitionTableJob(Device& d);
 
-public:
-    virtual bool run(Report& parent);
-    virtual QString description() const;
+	public:
+		virtual bool run(Report& parent);
+		virtual QString description() const;
 
-protected:
-    Device& device() {
-        return m_Device;
-    }
-    const Device& device() const {
-        return m_Device;
-    }
+	protected:
+		Device& device() { return m_Device; }
+		const Device& device() const { return m_Device; }
 
-private:
-    Device& m_Device;
+	private:
+		Device& m_Device;
 };
 
 #endif

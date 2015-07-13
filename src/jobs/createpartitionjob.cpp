@@ -30,57 +30,63 @@
 #include <KLocalizedString>
 
 /** Creates a new CreatePartitionJob
-    @param d the Device the Partition to be created will be on
-    @param p the Partition to create
+	@param d the Device the Partition to be created will be on
+	@param p the Partition to create
 */
 CreatePartitionJob::CreatePartitionJob(Device& d, Partition& p) :
-    Job(),
-    m_Device(d),
-    m_Partition(p)
+	Job(),
+	m_Device(d),
+	m_Partition(p)
 {
 }
 
 bool CreatePartitionJob::run(Report& parent)
 {
-    Q_ASSERT(partition().devicePath() == device().deviceNode());
+	Q_ASSERT(partition().devicePath() == device().deviceNode());
 
-    bool rval = false;
+	bool rval = false;
 
-    Report* report = jobStarted(parent);
+	Report* report = jobStarted(parent);
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+	CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-    if (backendDevice) {
-        CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+	if (backendDevice)
+	{
+		CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
-        if (backendPartitionTable) {
-            QString partitionPath = backendPartitionTable->createPartition(*report, partition());
+		if (backendPartitionTable)
+		{
+			QString partitionPath = backendPartitionTable->createPartition(*report, partition());
 
-            if (partitionPath != QString()) {
-                rval = true;
-                partition().setPartitionPath(partitionPath);
-                partition().setState(Partition::StateNone);
-                backendPartitionTable->commit();
-            } else
-                report->line() << xi18nc("@info/plain", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
+			if (partitionPath != QString())
+			{
+				rval = true;
+				partition().setPartitionPath(partitionPath);
+				partition().setState(Partition::StateNone);
+				backendPartitionTable->commit();
+			}
+			else
+				report->line() << xi18nc("@info/plain", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
 
-            delete backendPartitionTable;
-        } else
-            report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+			delete backendPartitionTable;
+		}
+		else
+			report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-        delete backendDevice;
-    } else
-        report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+		delete backendDevice;
+	}
+	else
+		report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-    jobFinished(*report, rval);
+	jobFinished(*report, rval);
 
-    return rval;
+	return rval;
 }
 
 QString CreatePartitionJob::description() const
 {
-    if (partition().number() > 0)
-        return xi18nc("@info/plain", "Create new partition <filename>%1</filename>", partition().deviceNode());
+	if (partition().number() > 0)
+		return xi18nc("@info/plain", "Create new partition <filename>%1</filename>", partition().deviceNode());
 
-    return xi18nc("@info/plain", "Create new partition on device <filename>%1</filename>", device().deviceNode());
+	return xi18nc("@info/plain", "Create new partition on device <filename>%1</filename>", device().deviceNode());
 }

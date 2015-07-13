@@ -24,38 +24,34 @@
 
 /** Base class for something to copy to.
 
-    Abstract base class for all copy targets. Used together with CopySource to
-    implement moving, copying, restoring and backing up FileSystems.
+	Abstract base class for all copy targets. Used together with CopySource to
+	implement moving, copying, restoring and backing up FileSystems.
 
-    @see CopySource
-    @author Volker Lanz <vl@fidra.de>
+	@see CopySource
+	@author Volker Lanz <vl@fidra.de>
 */
 class CopyTarget
 {
-    Q_DISABLE_COPY(CopyTarget)
+	Q_DISABLE_COPY(CopyTarget)
 
-protected:
-    CopyTarget() : m_SectorsWritten(0) {}
-    virtual ~CopyTarget() {}
+	protected:
+		CopyTarget() : m_SectorsWritten(0) {}
+		virtual ~CopyTarget() {}
 
-public:
-    virtual bool open() = 0;
-    virtual qint32 sectorSize() const = 0;
-    virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) = 0;
-    virtual qint64 firstSector() const = 0;
-    virtual qint64 lastSector() const = 0;
+	public:
+		virtual bool open() = 0;
+		virtual qint32 sectorSize() const = 0;
+		virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) = 0;
+		virtual qint64 firstSector() const = 0;
+		virtual qint64 lastSector() const = 0;
 
-    qint64 sectorsWritten() const {
-        return m_SectorsWritten;
-    }
+		qint64 sectorsWritten() const { return m_SectorsWritten; }
 
-protected:
-    void setSectorsWritten(qint64 s) {
-        m_SectorsWritten = s;
-    }
-
-private:
-    qint64 m_SectorsWritten;
+	protected:
+		void setSectorsWritten(qint64 s) { m_SectorsWritten = s; }
+		
+	private:
+		qint64 m_SectorsWritten;
 };
 
 #endif

@@ -20,24 +20,24 @@
 #include <mntent.h>
 
 MountEntry::MountEntry(const QString& n, const QString& p, const QString& t, const QStringList& o, qint32 d, qint32 pn, IdentifyType type) :
-    name(n),
-    path(p),
-    type(t),
-    options(o),
-    dumpFreq(d),
-    passNumber(pn),
-    identifyType(type)
+	name(n),
+	path(p),
+	type(t),
+	options(o),
+	dumpFreq(d),
+	passNumber(pn),
+	identifyType(type)
 {
 }
 
 MountEntry::MountEntry(struct mntent* p, IdentifyType type) :
-    name(QString::fromUtf8(p->mnt_fsname)),
-    path(QString::fromUtf8(p->mnt_dir)),
-    type(QString::fromUtf8(p->mnt_type)),
-    options(QString::fromUtf8(p->mnt_opts).split(QStringLiteral(","))),
-    dumpFreq(p->mnt_freq),
-    passNumber(p->mnt_passno),
-    identifyType(type)
+	name(QString::fromUtf8(p->mnt_fsname)),
+	path(QString::fromUtf8(p->mnt_dir)),
+	type(QString::fromUtf8(p->mnt_type)),
+	options(QString::fromUtf8(p->mnt_opts).split(QStringLiteral(","))),
+	dumpFreq(p->mnt_freq),
+	passNumber(p->mnt_passno),
+	identifyType(type)
 {
 }
 

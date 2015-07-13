@@ -25,43 +25,43 @@
 
 namespace FS
 {
-fat32::fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    fat16(firstsector, lastsector, sectorsused, label, FileSystem::Fat32)
-{
-}
+	fat32::fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
+		fat16(firstsector, lastsector, sectorsused, label, FileSystem::Fat32)
+	{
+	}
 
-qint64 fat32::minCapacity() const
-{
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
-}
+	qint64 fat32::minCapacity() const
+	{
+		return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+	}
 
-qint64 fat32::maxCapacity() const
-{
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
-}
+	qint64 fat32::maxCapacity() const
+	{
+		return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+	}
 
-bool fat32::create(Report& report, const QString& deviceNode) const
-{
-    ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), QStringList() << QStringLiteral("-F32") << QStringLiteral("-I") << QStringLiteral("-v") << deviceNode);
-    return cmd.run(-1) && cmd.exitCode() == 0;
-}
+	bool fat32::create(Report& report, const QString& deviceNode) const
+	{
+		ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), QStringList() << QStringLiteral("-F32") << QStringLiteral("-I") << QStringLiteral("-v") << deviceNode);
+		return cmd.run(-1) && cmd.exitCode() == 0;
+	}
 
-bool fat32::updateUUID(Report& report, const QString& deviceNode) const
-{
-    qint32 t = time(NULL);
+	bool fat32::updateUUID(Report& report, const QString& deviceNode) const
+	{
+		qint32 t = time(NULL);
 
-    char uuid[4];
-    for (quint32 i = 0; i < sizeof(uuid); i++, t >>= 8)
-        uuid[i] = t & 0xff;
+		char uuid[4];
+		for (quint32 i = 0; i < sizeof(uuid); i++, t >>= 8)
+			uuid[i] = t & 0xff;
 
-    ExternalCommand cmd(report, QStringLiteral("dd"), QStringList() << QStringLiteral("of=") + deviceNode << QStringLiteral("bs=1") << QStringLiteral("count=4") << QStringLiteral("seek=67"));
+		ExternalCommand cmd(report, QStringLiteral("dd"), QStringList() << QStringLiteral("of=") + deviceNode << QStringLiteral("bs=1") << QStringLiteral("count=4") << QStringLiteral("seek=67"));
 
-    if (!cmd.start())
-        return false;
+		if (!cmd.start())
+			return false;
 
-    if (cmd.write(uuid, sizeof(uuid)) != sizeof(uuid))
-        return false;
+		if (cmd.write(uuid, sizeof(uuid)) != sizeof(uuid))
+			return false;
 
-    return cmd.waitFor(-1);
-}
+		return cmd.waitFor(-1);
+	}
 }

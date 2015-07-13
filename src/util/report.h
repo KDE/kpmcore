@@ -30,124 +30,106 @@ class ReportLine;
 
 /** Report details about running Operations and Jobs.
 
-    Gather information for the report shown in the ProgressDialog's detail view.
+	Gather information for the report shown in the ProgressDialog's detail view.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT Report : public QObject
 {
-    Q_OBJECT
-    Q_DISABLE_COPY(Report)
+	Q_OBJECT
+	Q_DISABLE_COPY(Report)
 
-    friend Report& operator<<(Report& report, const QString& s);
-    friend Report& operator<<(Report& report, qint64 i);
+	friend Report& operator<<(Report& report, const QString& s);
+	friend Report& operator<<(Report& report, qint64 i);
 
-public:
-    explicit Report(Report* p, const QString& cmd = QString());
-    ~Report();
+	public:
+		explicit Report(Report* p, const QString& cmd = QString());
+		~Report();
 
-Q_SIGNALS:
-    void outputChanged();
+	Q_SIGNALS:
+		void outputChanged();
 
-public:
-    Report* newChild(const QString& cmd = QString());
+	public:
+		Report* newChild(const QString& cmd = QString());
 
-    const QList<Report*>& children() const {
-        return m_Children;    /**< @return the list of this Report's children */
-    }
+		const QList<Report*>& children() const { return m_Children; } /**< @return the list of this Report's children */
 
-    Report* parent() {
-        return m_Parent;    /**< @return pointer to this Reports parent. May be NULL if this is the root Report */
-    }
-    const Report* parent() const {
-        return m_Parent;    /**< @return pointer to this Reports parent. May be NULL if this is the root Report */
-    }
+		Report* parent() { return m_Parent; } /**< @return pointer to this Reports parent. May be NULL if this is the root Report */
+		const Report* parent() const { return m_Parent; } /**< @return pointer to this Reports parent. May be NULL if this is the root Report */
 
-    Report* root();
-    const Report* root() const;
+		Report* root();
+		const Report* root() const;
 
-    const QString& command() const {
-        return m_Command;    /**< @return the command */
-    }
-    const QString& output() const {
-        return m_Output;    /**< @return the output */
-    }
-    const QString& status() const {
-        return m_Status;    /**< @return the status line */
-    }
+		const QString& command() const { return m_Command; } /**< @return the command */
+		const QString& output() const { return m_Output; } /**< @return the output */
+		const QString& status() const { return m_Status; } /**< @return the status line */
 
-    void setCommand(const QString& s) {
-        m_Command = s;    /**< @param s the new command */
-    }
-    void setStatus(const QString& s) {
-        m_Status = s;    /**< @param s the new status */
-    }
-    void addOutput(const QString& s);
+		void setCommand(const QString& s) { m_Command = s; } /**< @param s the new command */
+		void setStatus(const QString& s) { m_Status = s; } /**< @param s the new status */
+		void addOutput(const QString& s);
 
-    QString toHtml() const;
-    QString toText() const;
+		QString toHtml() const;
+		QString toText() const;
 
-    ReportLine line();
+		ReportLine line();
 
-    static QString htmlHeader();
-    static QString htmlFooter();
+		static QString htmlHeader();
+		static QString htmlFooter();
 
-protected:
-    void emitOutputChanged();
+	protected:
+		void emitOutputChanged();
 
-private:
-    Report* m_Parent;
-    QList<Report*> m_Children;
-    QString m_Command;
-    QString m_Output;
-    QString m_Status;
+	private:
+		Report* m_Parent;
+		QList<Report*> m_Children;
+		QString m_Command;
+		QString m_Output;
+		QString m_Status;
 };
 
 inline Report& operator<<(Report& report, const QString& s)
 {
-    report.addOutput(s);
-    return report;
+	report.addOutput(s);
+	return report;
 }
 
 inline Report& operator<<(Report& report, qint64 i)
 {
-    report.addOutput(QString::number(i));
-    return report;
+	report.addOutput(QString::number(i));
+	return report;
 }
 
 class ReportLine
 {
-    friend ReportLine operator<<(ReportLine reportLine, const QString& s);
-    friend ReportLine operator<<(ReportLine reportLine, qint64 i);
-    friend class Report;
+	friend ReportLine operator<<(ReportLine reportLine, const QString& s);
+	friend ReportLine operator<<(ReportLine reportLine, qint64 i);
+	friend class Report;
 
-protected:
-    ReportLine(Report& r) : ref(1), report(r.newChild()) {}
+	protected:
+		ReportLine(Report& r) : ref(1), report(r.newChild()) {}
 
-public:
-    ~ReportLine() {
-        if (--ref == 0) *report << QStringLiteral("\n");
-    }
-    ReportLine(const ReportLine& other) : ref(other.ref + 1), report(other.report) {}
+	public:
+		~ReportLine() { if (--ref == 0) *report << QStringLiteral("\n"); }
+		ReportLine(const ReportLine& other) : ref(other.ref + 1), report(other.report) {}
 
-private:
-    ReportLine& operator=(const ReportLine&);
+	private:
+		ReportLine& operator=(const ReportLine&);
 
-private:
-    qint32 ref;
-    Report* report;
+	private:
+		qint32 ref;
+		Report* report;
 };
 
 inline ReportLine operator<<(ReportLine reportLine, const QString& s)
 {
-    *reportLine.report << s;
-    return reportLine;
+	*reportLine.report << s;
+	return reportLine;
 }
 
 inline ReportLine operator<<(ReportLine reportLine, qint64 i)
 {
-    *reportLine.report << i;
-    return reportLine;
+	*reportLine.report << i;
+	return reportLine;
 }
 
 #endif

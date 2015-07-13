@@ -33,69 +33,51 @@ class Job;
 class DeletePartitionJob;
 
 /** Delete a Partition.
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT DeleteOperation : public Operation
 {
-    friend class OperationStack;
+	friend class OperationStack;
 
-    Q_OBJECT
-    Q_DISABLE_COPY(DeleteOperation)
+	Q_OBJECT
+	Q_DISABLE_COPY(DeleteOperation)
 
-public:
-    DeleteOperation(Device& d, Partition* p, bool secure = false);
-    ~DeleteOperation();
+	public:
+		DeleteOperation(Device& d, Partition* p, bool secure = false);
+		~DeleteOperation();
 
-public:
-    QString iconName() const {
-        return isSecure() ? QStringLiteral("edit-delete-shred") : QStringLiteral("edit-delete");
-    }
-    QString description() const;
-    void preview();
-    void undo();
-    bool isSecure() const {
-        return m_Secure;
-    }
+	public:
+		QString iconName() const { return isSecure() ? QStringLiteral("edit-delete-shred") : QStringLiteral("edit-delete"); }
+		QString description() const;
+		void preview();
+		void undo();
+		bool isSecure() const { return m_Secure; }
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+		virtual bool targets(const Device& d) const;
+		virtual bool targets(const Partition& p) const;
 
-    static bool canDelete(const Partition* p);
+		static bool canDelete(const Partition* p);
 
-protected:
-    Device& targetDevice() {
-        return m_TargetDevice;
-    }
-    const Device& targetDevice() const {
-        return m_TargetDevice;
-    }
+	protected:
+		Device& targetDevice() { return m_TargetDevice; }
+		const Device& targetDevice() const { return m_TargetDevice; }
 
-    Partition& deletedPartition() {
-        return *m_DeletedPartition;
-    }
-    const Partition& deletedPartition() const {
-        return *m_DeletedPartition;
-    }
+		Partition& deletedPartition() { return *m_DeletedPartition; }
+		const Partition& deletedPartition() const { return *m_DeletedPartition; }
 
-    void checkAdjustLogicalNumbers(Partition& p, bool undo);
+		void checkAdjustLogicalNumbers(Partition& p, bool undo);
 
-    void setDeletedPartition(Partition* p) {
-        m_DeletedPartition = p;
-    }
+		void setDeletedPartition(Partition* p) { m_DeletedPartition = p; }
 
-    Job* deleteFileSystemJob() {
-        return m_DeleteFileSystemJob;
-    }
-    DeletePartitionJob* deletePartitionJob() {
-        return m_DeletePartitionJob;
-    }
+		Job* deleteFileSystemJob() { return m_DeleteFileSystemJob; }
+		DeletePartitionJob* deletePartitionJob() { return m_DeletePartitionJob; }
 
-private:
-    Device& m_TargetDevice;
-    Partition* m_DeletedPartition;
-    bool m_Secure;
-    Job* m_DeleteFileSystemJob;
-    DeletePartitionJob* m_DeletePartitionJob;
+	private:
+		Device& m_TargetDevice;
+		Partition* m_DeletedPartition;
+		bool m_Secure;
+		Job* m_DeleteFileSystemJob;
+		DeletePartitionJob* m_DeletePartitionJob;
 };
 
 #endif

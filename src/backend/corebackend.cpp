@@ -26,36 +26,36 @@
 
 class CoreBackend::CoreBackendPrivate
 {
-public:
-    CoreBackendPrivate() {}
+	public:
+		CoreBackendPrivate() {}
 };
 
 CoreBackend::CoreBackend() :
-    d(new CoreBackendPrivate())
+	d(new CoreBackendPrivate())
 {
 }
 
 CoreBackend::~CoreBackend()
 {
-    delete d;
+	delete d;
 }
 
 void CoreBackend::emitProgress(int i)
 {
-    emit progress(i);
+	emit progress(i);
 }
 
 void CoreBackend::emitScanProgress(const QString& device_node, int i)
 {
-    emit scanProgress(device_node, i);
+	emit scanProgress(device_node, i);
 }
 
 void CoreBackend::setPartitionTableForDevice(Device& d, PartitionTable* p)
 {
-    d.setPartitionTable(p);
+	d.setPartitionTable(p);
 }
 
 void CoreBackend::setPartitionTableMaxPrimaries(PartitionTable& p, qint32 max_primaries)
 {
-    p.setMaxPrimaries(max_primaries);
+	p.setMaxPrimaries(max_primaries);
 }

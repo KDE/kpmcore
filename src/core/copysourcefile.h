@@ -29,44 +29,32 @@ class CopyTarget;
 
 /** A file to copy from.
 
-    Represents a file to copy from. Used to restore a FileSystem from a backup file.
+	Represents a file to copy from. Used to restore a FileSystem from a backup file.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class CopySourceFile : public CopySource
 {
-public:
-    CopySourceFile(const QString& filename, qint32 sectorsize);
+	public:
+		CopySourceFile(const QString& filename, qint32 sectorsize);
 
-public:
-    virtual bool open();
-    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
-    virtual qint64 length() const;
+	public:
+		virtual bool open();
+		virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
+		virtual qint64 length() const;
+		
+		virtual qint32 sectorSize() const { return m_SectorSize; } /**< @return the file's sector size */
+		virtual bool overlaps(const CopyTarget&) const { return false; } /**< @return false for file */
+		virtual qint64 firstSector() const { return 0; } /**< @return 0 for file */
+		virtual qint64 lastSector() const { return length(); } /**< @return equal to length for file. @see length() */
+		
+	protected:
+		QFile& file() { return m_File; }
+		const QFile& file() const { return m_File; }
 
-    virtual qint32 sectorSize() const {
-        return m_SectorSize;    /**< @return the file's sector size */
-    }
-    virtual bool overlaps(const CopyTarget&) const {
-        return false;    /**< @return false for file */
-    }
-    virtual qint64 firstSector() const {
-        return 0;    /**< @return 0 for file */
-    }
-    virtual qint64 lastSector() const {
-        return length();    /**< @return equal to length for file. @see length() */
-    }
-
-protected:
-    QFile& file() {
-        return m_File;
-    }
-    const QFile& file() const {
-        return m_File;
-    }
-
-protected:
-    QFile m_File;
-    qint32 m_SectorSize;
+	protected:
+		QFile m_File;
+		qint32 m_SectorSize;
 };
 
 #endif

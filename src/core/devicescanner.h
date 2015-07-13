@@ -26,36 +26,32 @@ class OperationStack;
 
 /** Thread to scan for all available Devices on this computer.
 
-    This class is used to find all Devices on the computer and to create new Device instances for each of them. It's subclassing QThread to run asynchronously.
+	This class is used to find all Devices on the computer and to create new Device instances for each of them. It's subclassing QThread to run asynchronously.
 
-    @author Volker Lanz <vl@fidra.de>
+	@author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT DeviceScanner : public QThread
 {
-    Q_OBJECT
+	Q_OBJECT
 
-public:
-    DeviceScanner(QObject* parent, OperationStack& ostack);
+	public:
+		DeviceScanner(QObject* parent, OperationStack& ostack);
 
-public:
-    void clear(); /**< clear Devices and the OperationStack */
-    void scan(); /**< do the actual scanning; blocks if called directly */
-    void setupConnections();
+	public:
+		void clear(); /**< clear Devices and the OperationStack */
+		void scan(); /**< do the actual scanning; blocks if called directly */
+		void setupConnections();
 
-Q_SIGNALS:
-    void progress(const QString& device_node, int progress);
+	Q_SIGNALS:
+		void progress(const QString& device_node, int progress);
 
-protected:
-    virtual void run();
-    OperationStack& operationStack() {
-        return m_OperationStack;
-    }
-    const OperationStack& operationStack() const {
-        return m_OperationStack;
-    }
+	protected:
+		virtual void run();
+		OperationStack& operationStack() { return m_OperationStack; }
+		const OperationStack& operationStack() const { return m_OperationStack; }
 
-private:
-    OperationStack& m_OperationStack;
+	private:
+		OperationStack& m_OperationStack;
 };
 
 #endif
