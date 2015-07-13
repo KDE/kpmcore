@@ -30,43 +30,61 @@ class Device;
 class BackupFileSystemJob;
 
 /** Back up a FileSystem.
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT BackupOperation : public Operation
 {
-	Q_OBJECT
-	Q_DISABLE_COPY(BackupOperation)
+    Q_OBJECT
+    Q_DISABLE_COPY(BackupOperation)
 
-	public:
-		BackupOperation(Device& targetDevice, Partition& backupPartition, const QString& filename);
+public:
+    BackupOperation(Device& targetDevice, Partition& backupPartition, const QString& filename);
 
-	public:
-		QString iconName() const { return QStringLiteral("document-export"); }
-		QString description() const;
-		void preview() {}
-		void undo() {}
+public:
+    QString iconName() const {
+        return QStringLiteral("document-export");
+    }
+    QString description() const;
+    void preview() {}
+    void undo() {}
 
-		virtual bool targets(const Device&) const { return false; }
-		virtual bool targets(const Partition&) const { return false; }
+    virtual bool targets(const Device&) const {
+        return false;
+    }
+    virtual bool targets(const Partition&) const {
+        return false;
+    }
 
-		static bool canBackup(const Partition* p);
+    static bool canBackup(const Partition* p);
 
-	protected:
-		Device& targetDevice() { return m_TargetDevice; }
-		const Device& targetDevice() const { return m_TargetDevice; }
+protected:
+    Device& targetDevice() {
+        return m_TargetDevice;
+    }
+    const Device& targetDevice() const {
+        return m_TargetDevice;
+    }
 
-		Partition& backupPartition() { return m_BackupPartition; }
-		const Partition& backupPartition() const { return m_BackupPartition; }
+    Partition& backupPartition() {
+        return m_BackupPartition;
+    }
+    const Partition& backupPartition() const {
+        return m_BackupPartition;
+    }
 
-		const QString& fileName() const { return m_FileName; }
+    const QString& fileName() const {
+        return m_FileName;
+    }
 
-		BackupFileSystemJob* backupJob() { return m_BackupJob; }
+    BackupFileSystemJob* backupJob() {
+        return m_BackupJob;
+    }
 
-	private:
-		Device& m_TargetDevice;
-		Partition& m_BackupPartition;
-		const QString m_FileName;
-		BackupFileSystemJob* m_BackupJob;
+private:
+    Device& m_TargetDevice;
+    Partition& m_BackupPartition;
+    const QString m_FileName;
+    BackupFileSystemJob* m_BackupJob;
 };
 
 #endif

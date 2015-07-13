@@ -31,19 +31,19 @@ class Report;
   */
 class LIBKPMCORE_EXPORT CoreBackendPartition
 {
-	public:
-		CoreBackendPartition();
-		virtual ~CoreBackendPartition() {}
+public:
+    CoreBackendPartition();
+    virtual ~CoreBackendPartition() {}
 
-	public:
-		/**
-		  * Set a flag for the partition
-		  * @param report the Report to write information to
-		  * @param flag the flag to set
-		  * @param state the state to set the flag to (i.e., on or off)
-		  * @return true on success
-		  */
-		virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state) = 0;
+public:
+    /**
+      * Set a flag for the partition
+      * @param report the Report to write information to
+      * @param flag the flag to set
+      * @param state the state to set the flag to (i.e., on or off)
+      * @return true on success
+      */
+    virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state) = 0;
 };
 
 #endif

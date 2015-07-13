@@ -19,24 +19,24 @@
 
 GlobalLog* GlobalLog::instance()
 {
-	static GlobalLog* p = NULL;
+    static GlobalLog* p = NULL;
 
-	if (p == NULL)
-		p = new GlobalLog();
+    if (p == NULL)
+        p = new GlobalLog();
 
-	return p;
+    return p;
 }
 
 void GlobalLog::flush(Log::Level lev)
 {
-	emit newMessage(lev, msg);
-	msg.clear();
+    emit newMessage(lev, msg);
+    msg.clear();
 }
 
 // --------------------------------------------------------------------------
 
 Log::~Log()
 {
-	if (--ref == 0)
-		GlobalLog::instance()->flush(level);
+    if (--ref == 0)
+        GlobalLog::instance()->flush(level);
 }

@@ -25,13 +25,13 @@ class QString;
 
 class LIBKPMCORE_EXPORT HtmlReport
 {
-	public:
-		HtmlReport() {}
+public:
+    HtmlReport() {}
 
-	public:
-		static QString tableLine(const QString& label, const QString contents);
-		QString header();
-		QString footer();
+public:
+    static QString tableLine(const QString& label, const QString contents);
+    QString header();
+    QString footer();
 };
 
 #endif

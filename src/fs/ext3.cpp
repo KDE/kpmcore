@@ -24,19 +24,19 @@
 
 namespace FS
 {
-	ext3::ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-		ext2(firstsector, lastsector, sectorsused, label, FileSystem::Ext3)
-	{
-	}
+ext3::ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
+    ext2(firstsector, lastsector, sectorsused, label, FileSystem::Ext3)
+{
+}
 
-	qint64 ext3::maxCapacity() const
-	{
-		return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
-	}
+qint64 ext3::maxCapacity() const
+{
+    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+}
 
-	bool ext3::create(Report& report, const QString& deviceNode) const
-	{
-		ExternalCommand cmd(report, QStringLiteral("mkfs.ext3"), QStringList() << QStringLiteral("-qF") << deviceNode);
-		return cmd.run(-1) && cmd.exitCode() == 0;
-	}
+bool ext3::create(Report& report, const QString& deviceNode) const
+{
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ext3"), QStringList() << QStringLiteral("-qF") << deviceNode);
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
 }

@@ -62,154 +62,227 @@ class QTextStream;
 
 /** A partition or some unallocated space on a Device.
 
-	Repesent partitions in a PartitionTable on a Device. Partitions can be unallocated, thus not all
-	instances really are partitions in the way the user would see them.
+    Repesent partitions in a PartitionTable on a Device. Partitions can be unallocated, thus not all
+    instances really are partitions in the way the user would see them.
 
-	Extended partitions have child objects that represent the logicals inside them.
+    Extended partitions have child objects that represent the logicals inside them.
 
-	@see PartitionTable, Device, FileSystem
-	@author Volker Lanz <vl@fidra.de>
+    @see PartitionTable, Device, FileSystem
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT Partition : public PartitionNode
 {
-	friend class PartitionTable;
-	friend class OperationStack;
-	friend class Device;
-	friend class PartitionNode;
-	friend class CoreBackendPartitionTable;
-	friend class PartitionAlignment;
+    friend class PartitionTable;
+    friend class OperationStack;
+    friend class Device;
+    friend class PartitionNode;
+    friend class CoreBackendPartitionTable;
+    friend class PartitionAlignment;
 
-	friend class PartResizerWidget;
-	friend class ResizeDialog;
-	friend class InsertDialog;
-	friend class NewDialog;
-	friend class EditMountPointDialog;
-	friend class PartPropsDialog;
-	friend class SizeDialogBase;
+    friend class PartResizerWidget;
+    friend class ResizeDialog;
+    friend class InsertDialog;
+    friend class NewDialog;
+    friend class EditMountPointDialog;
+    friend class PartPropsDialog;
+    friend class SizeDialogBase;
 
-	friend class CreateFileSystemOperation;
-	friend class RestoreOperation;
-	friend class SetPartFlagsOperation;
-	friend class CopyOperation;
-	friend class NewOperation;
-	friend class ResizeOperation;
+    friend class CreateFileSystemOperation;
+    friend class RestoreOperation;
+    friend class SetPartFlagsOperation;
+    friend class CopyOperation;
+    friend class NewOperation;
+    friend class ResizeOperation;
 
-	friend class SetPartGeometryJob;
-	friend class CreatePartitionJob;
-	friend class SetPartFlagsJob;
-	friend class RestoreFileSystemJob;
+    friend class SetPartGeometryJob;
+    friend class CreatePartitionJob;
+    friend class SetPartFlagsJob;
+    friend class RestoreFileSystemJob;
 
-	friend QTextStream& operator<<(QTextStream& stream, const Partition& p);
+    friend QTextStream& operator<<(QTextStream& stream, const Partition& p);
 
-	public:
-		/** A Partition state -- where did it come from? */
-		enum State
-		{
-			StateNone = 0,		/**< exists on disk */
-			StateNew = 1,		/**< from a NewOperation */
-			StateCopy = 2,		/**< from a CopyOperation */
-			StateRestore = 3	/**< from a RestoreOperation */
-		};
+public:
+    /** A Partition state -- where did it come from? */
+    enum State {
+        StateNone = 0,      /**< exists on disk */
+        StateNew = 1,       /**< from a NewOperation */
+        StateCopy = 2,      /**< from a CopyOperation */
+        StateRestore = 3    /**< from a RestoreOperation */
+    };
 
-		Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = StateNone);
-		~Partition();
+    Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = StateNone);
+    ~Partition();
 
-		Partition(const Partition&);
-		Partition& operator=(const Partition&);
+    Partition(const Partition&);
+    Partition& operator=(const Partition&);
 
-		bool operator==(const Partition& other) const;
-		bool operator!=(const Partition& other) const;
+    bool operator==(const Partition& other) const;
+    bool operator!=(const Partition& other) const;
 
-		qint32 number() const { return m_Number; } /**< @return the Partition's device number, e.g. 7 for /dev/sdd7 */
+    qint32 number() const {
+        return m_Number;    /**< @return the Partition's device number, e.g. 7 for /dev/sdd7 */
+    }
 
-		bool isRoot() const { return false; } /**< @return always false for Partition */
+    bool isRoot() const {
+        return false;    /**< @return always false for Partition */
+    }
 
-		PartitionNode* parent() { return m_Parent; } /**< @return the Partition's parent PartitionNode */
-		const PartitionNode* parent() const { return m_Parent; } /**< @return the Partition's parent PartitionNode */
+    PartitionNode* parent() {
+        return m_Parent;    /**< @return the Partition's parent PartitionNode */
+    }
+    const PartitionNode* parent() const {
+        return m_Parent;    /**< @return the Partition's parent PartitionNode */
+    }
 
-		Partitions& children() { return m_Children; } /**< @return the Partition's children. empty for non-extended. */
-		const Partitions& children() const { return m_Children; } /**< @return the Partition's children. empty for non-extended. */
+    Partitions& children() {
+        return m_Children;    /**< @return the Partition's children. empty for non-extended. */
+    }
+    const Partitions& children() const {
+        return m_Children;    /**< @return the Partition's children. empty for non-extended. */
+    }
 
-		const QString& devicePath() const { return m_DevicePath; } /**< @return the Partition's device path, e.g. /dev/sdd */
-		const QString& partitionPath() const { return m_PartitionPath; } /**< @return the Partition's path, e.g. /dev/sdd1 */
+    const QString& devicePath() const {
+        return m_DevicePath;    /**< @return the Partition's device path, e.g. /dev/sdd */
+    }
+    const QString& partitionPath() const {
+        return m_PartitionPath;    /**< @return the Partition's path, e.g. /dev/sdd1 */
+    }
 
-		qint64 firstSector() const { return m_FirstSector; } /**< @return the Partition's first sector on the Device */
-		qint64 lastSector() const { return m_LastSector; } /**< @return the Partition's last sector on the Device */
-		qint64 sectorsUsed() const;
-		qint32 sectorSize() const { return m_SectorSize; } /**< @return the sector size on the Partition's Device */
-		qint64 length() const { return lastSector() - firstSector() + 1; } /**< @return the length of the Partition */
-		qint64 capacity() const { return length() * sectorSize(); } /**< @return the capacity of the Partition in bytes */
-		qint64 used() const { return sectorsUsed() < 0 ? -1 : sectorsUsed() * sectorSize(); } /**< @return the number of used sectors in the Partition's FileSystem */
-		qint64 available() const { return sectorsUsed() < 0 ? -1 : capacity() - used(); } /**< @return the number of free sectors in the Partition's FileSystem */
-		qint64 minimumSectors() const;
-		qint64 maximumSectors() const;
-		qint64 maxFirstSector() const;
-		qint64 minLastSector() const;
+    qint64 firstSector() const {
+        return m_FirstSector;    /**< @return the Partition's first sector on the Device */
+    }
+    qint64 lastSector() const {
+        return m_LastSector;    /**< @return the Partition's last sector on the Device */
+    }
+    qint64 sectorsUsed() const;
+    qint32 sectorSize() const {
+        return m_SectorSize;    /**< @return the sector size on the Partition's Device */
+    }
+    qint64 length() const {
+        return lastSector() - firstSector() + 1;    /**< @return the length of the Partition */
+    }
+    qint64 capacity() const {
+        return length() * sectorSize();    /**< @return the capacity of the Partition in bytes */
+    }
+    qint64 used() const {
+        return sectorsUsed() < 0 ? -1 : sectorsUsed() * sectorSize();    /**< @return the number of used sectors in the Partition's FileSystem */
+    }
+    qint64 available() const {
+        return sectorsUsed() < 0 ? -1 : capacity() - used();    /**< @return the number of free sectors in the Partition's FileSystem */
+    }
+    qint64 minimumSectors() const;
+    qint64 maximumSectors() const;
+    qint64 maxFirstSector() const;
+    qint64 minLastSector() const;
 
-		QString deviceNode() const;
+    QString deviceNode() const;
 
-		const PartitionRole& roles() const { return m_Roles; } /**< @return the Partition's role(s) */
+    const PartitionRole& roles() const {
+        return m_Roles;    /**< @return the Partition's role(s) */
+    }
 
-		const QString& mountPoint() const { return m_MountPoint; } /**< @return the Partition's mount point */
+    const QString& mountPoint() const {
+        return m_MountPoint;    /**< @return the Partition's mount point */
+    }
 
-		PartitionTable::Flags activeFlags() const { return m_ActiveFlags; } /**< @return the flags currently set for this Partition */
-		PartitionTable::Flags availableFlags() const { return m_AvailableFlags; } /**< @return the flags available for this Partition */
+    PartitionTable::Flags activeFlags() const {
+        return m_ActiveFlags;    /**< @return the flags currently set for this Partition */
+    }
+    PartitionTable::Flags availableFlags() const {
+        return m_AvailableFlags;    /**< @return the flags available for this Partition */
+    }
 
-		bool isMounted() const { return m_IsMounted; } /**< @return true if Partition is mounted */
+    bool isMounted() const {
+        return m_IsMounted;    /**< @return true if Partition is mounted */
+    }
 
-		FileSystem& fileSystem() { return *m_FileSystem; } /**< @return the Partition's FileSystem */
-		const FileSystem& fileSystem() const { return *m_FileSystem; } /**< @return the Partition's FileSystem */
+    FileSystem& fileSystem() {
+        return *m_FileSystem;    /**< @return the Partition's FileSystem */
+    }
+    const FileSystem& fileSystem() const {
+        return *m_FileSystem;    /**< @return the Partition's FileSystem */
+    }
 
-		State state() const { return m_State; } /**< @return the Partition's state */
-		bool hasChildren() const;
+    State state() const {
+        return m_State;    /**< @return the Partition's state */
+    }
+    bool hasChildren() const;
 
-		bool mount(Report& report);
-		bool unmount(Report& report);
+    bool mount(Report& report);
+    bool unmount(Report& report);
 
-		bool canMount() const;
-		bool canUnmount() const;
+    bool canMount() const;
+    bool canUnmount() const;
 
-		void adjustLogicalNumbers(qint32 deletedNumber, qint32 insertedNumber);
-		void checkChildrenMounted();
+    void adjustLogicalNumbers(qint32 deletedNumber, qint32 insertedNumber);
+    void checkChildrenMounted();
 
-        void setFirstSector(qint64 s) { m_FirstSector = s; }
-        void setLastSector(qint64 s) { m_LastSector = s; }
+    void setFirstSector(qint64 s) {
+        m_FirstSector = s;
+    }
+    void setLastSector(qint64 s) {
+        m_LastSector = s;
+    }
 
-    protected:
-		void append(Partition* p) { m_Children.append(p); }
-		void setDevicePath(const QString& s) { m_DevicePath = s; }
-		void setPartitionPath(const QString& s);
-		void setRoles(const PartitionRole& r) { m_Roles = r; }
-		void setMountPoint(const QString& s) { m_MountPoint = s; }
-		void setFlags(PartitionTable::Flags f) { m_ActiveFlags = f; }
-		void setSectorSize(qint32 s) { m_SectorSize = s; }
-		void move(qint64 newStartSector);
-		void setMounted(bool b) { m_IsMounted = b; }
-		void setFlag(PartitionTable::Flag f) { m_ActiveFlags |= f; }
-		void unsetFlag(PartitionTable::Flag f) { m_ActiveFlags &= ~f; }
-		void setParent(PartitionNode* p) { m_Parent = p; }
-		void setFileSystem(FileSystem* fs);
-		void setState(State s) { m_State = s; }
-		void deleteFileSystem();
+protected:
+    void append(Partition* p) {
+        m_Children.append(p);
+    }
+    void setDevicePath(const QString& s) {
+        m_DevicePath = s;
+    }
+    void setPartitionPath(const QString& s);
+    void setRoles(const PartitionRole& r) {
+        m_Roles = r;
+    }
+    void setMountPoint(const QString& s) {
+        m_MountPoint = s;
+    }
+    void setFlags(PartitionTable::Flags f) {
+        m_ActiveFlags = f;
+    }
+    void setSectorSize(qint32 s) {
+        m_SectorSize = s;
+    }
+    void move(qint64 newStartSector);
+    void setMounted(bool b) {
+        m_IsMounted = b;
+    }
+    void setFlag(PartitionTable::Flag f) {
+        m_ActiveFlags |= f;
+    }
+    void unsetFlag(PartitionTable::Flag f) {
+        m_ActiveFlags &= ~f;
+    }
+    void setParent(PartitionNode* p) {
+        m_Parent = p;
+    }
+    void setFileSystem(FileSystem* fs);
+    void setState(State s) {
+        m_State = s;
+    }
+    void deleteFileSystem();
 
-	private:
-		void setNumber(qint32 n) { m_Number = n; }
+private:
+    void setNumber(qint32 n) {
+        m_Number = n;
+    }
 
-		qint32 m_Number;
-		Partitions m_Children;
-		PartitionNode* m_Parent;
-		FileSystem* m_FileSystem;
-		PartitionRole m_Roles;
-		qint64 m_FirstSector;
-		qint64 m_LastSector;
-		QString m_DevicePath;
-		QString m_PartitionPath;
-		QString m_MountPoint;
-		PartitionTable::Flags m_AvailableFlags;
-		PartitionTable::Flags m_ActiveFlags;
-		bool m_IsMounted;
-		qint32 m_SectorSize;
-		State m_State;
+    qint32 m_Number;
+    Partitions m_Children;
+    PartitionNode* m_Parent;
+    FileSystem* m_FileSystem;
+    PartitionRole m_Roles;
+    qint64 m_FirstSector;
+    qint64 m_LastSector;
+    QString m_DevicePath;
+    QString m_PartitionPath;
+    QString m_MountPoint;
+    PartitionTable::Flags m_AvailableFlags;
+    PartitionTable::Flags m_ActiveFlags;
+    bool m_IsMounted;
+    qint32 m_SectorSize;
+    State m_State;
 };
 
 QTextStream& operator<<(QTextStream& stream, const Partition& p);

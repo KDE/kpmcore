@@ -24,7 +24,7 @@
 #include "util/report.h"
 
 DummyDevice::DummyDevice(const QString& device_node) :
-	CoreBackendDevice(device_node)
+    CoreBackendDevice(device_node)
 {
 }
 
@@ -34,60 +34,59 @@ DummyDevice::~DummyDevice()
 
 bool DummyDevice::open()
 {
-	return true;
+    return true;
 }
 
 bool DummyDevice::openExclusive()
 {
-	return true;
+    return true;
 }
 
 bool DummyDevice::close()
 {
-	return true;
+    return true;
 }
 
 CoreBackendPartitionTable* DummyDevice::openPartitionTable()
 {
-	CoreBackendPartitionTable* ptable = new DummyPartitionTable();
+    CoreBackendPartitionTable* ptable = new DummyPartitionTable();
 
-	if (ptable == NULL || !ptable->open())
-	{
-		delete ptable;
-		ptable = NULL;
-	}
+    if (ptable == NULL || !ptable->open()) {
+        delete ptable;
+        ptable = NULL;
+    }
 
-	return ptable;
+    return ptable;
 }
 
 bool DummyDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
-	Q_UNUSED(report);
-	Q_UNUSED(ptable);
+    Q_UNUSED(report);
+    Q_UNUSED(ptable);
 
-	return true;
+    return true;
 }
 
 bool DummyDevice::readSectors(void* buffer, qint64 offset, qint64 numSectors)
 {
-	Q_UNUSED(buffer);
-	Q_UNUSED(offset);
-	Q_UNUSED(numSectors);
+    Q_UNUSED(buffer);
+    Q_UNUSED(offset);
+    Q_UNUSED(numSectors);
 
-	if (!isExclusive())
-		return false;
+    if (!isExclusive())
+        return false;
 
-	return true;
+    return true;
 }
 
 bool DummyDevice::writeSectors(void* buffer, qint64 offset, qint64 numSectors)
 {
-	Q_UNUSED(buffer);
-	Q_UNUSED(offset);
-	Q_UNUSED(numSectors);
+    Q_UNUSED(buffer);
+    Q_UNUSED(offset);
+    Q_UNUSED(numSectors);
 
-	if (!isExclusive())
-		return false;
+    if (!isExclusive())
+        return false;
 
-	return true;
+    return true;
 }

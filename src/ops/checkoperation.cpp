@@ -30,47 +30,47 @@
 #include <KLocalizedString>
 
 /** Creates a new CheckOperation.
-	@param d the Device where the Partition to check is on.
-	@param p the Partition to check
+    @param d the Device where the Partition to check is on.
+    @param p the Partition to check
 */
 CheckOperation::CheckOperation(Device& d, Partition& p) :
-	Operation(),
-	m_TargetDevice(d),
-	m_CheckedPartition(p),
-	m_CheckJob(new CheckFileSystemJob(checkedPartition())),
-	m_MaximizeJob(new ResizeFileSystemJob(targetDevice(), checkedPartition()))
+    Operation(),
+    m_TargetDevice(d),
+    m_CheckedPartition(p),
+    m_CheckJob(new CheckFileSystemJob(checkedPartition())),
+    m_MaximizeJob(new ResizeFileSystemJob(targetDevice(), checkedPartition()))
 {
-	addJob(checkJob());
-	addJob(maximizeJob());
+    addJob(checkJob());
+    addJob(maximizeJob());
 }
 
 bool CheckOperation::targets(const Device& d) const
 {
-	return d == targetDevice();
+    return d == targetDevice();
 }
 
 bool CheckOperation::targets(const Partition& p) const
 {
-	return p == checkedPartition();
+    return p == checkedPartition();
 }
 
 QString CheckOperation::description() const
 {
-	return xi18nc("@info/plain", "Check and repair partition <filename>%1</filename> (%2, %3)", checkedPartition().deviceNode(), Capacity::formatByteSize(checkedPartition().capacity()), checkedPartition().fileSystem().name());
+    return xi18nc("@info/plain", "Check and repair partition <filename>%1</filename> (%2, %3)", checkedPartition().deviceNode(), Capacity::formatByteSize(checkedPartition().capacity()), checkedPartition().fileSystem().name());
 }
 
 /** Can a Partition be checked?
-	@param p the Partition in question, may be NULL.
-	@return true if @p p can be checked.
+    @param p the Partition in question, may be NULL.
+    @return true if @p p can be checked.
 */
 bool CheckOperation::canCheck(const Partition* p)
 {
-	if (p == NULL)
-		return false;
+    if (p == NULL)
+        return false;
 
-	if (p->isMounted())
-		return false;
+    if (p->isMounted())
+        return false;
 
-	return p->fileSystem().supportCheck() != FileSystem::cmdSupportNone;
+    return p->fileSystem().supportCheck() != FileSystem::cmdSupportNone;
 }
 

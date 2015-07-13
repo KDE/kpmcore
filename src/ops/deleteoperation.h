@@ -33,60 +33,77 @@ class Job;
 class DeletePartitionJob;
 
 /** Delete a Partition.
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT DeleteOperation : public Operation
 {
-	friend class OperationStack;
+    friend class OperationStack;
 
-	Q_OBJECT
-	Q_DISABLE_COPY(DeleteOperation)
+    Q_OBJECT
+    Q_DISABLE_COPY(DeleteOperation)
 
-	public:
-        enum ShredAction
-        {
-            NoShred = 0,
-            ZeroShred,
-            RandomShred
-        };
+public:
+    enum ShredAction {
+        NoShred = 0,
+        ZeroShred,
+        RandomShred
+    };
 
-        DeleteOperation(Device& d, Partition* p, ShredAction shred = NoShred);
-		~DeleteOperation();
+    DeleteOperation(Device& d, Partition* p, ShredAction shred = NoShred);
+    ~DeleteOperation();
 
-	public:
-        QString iconName() const { return shredAction() == NoShred ?
-                                    QStringLiteral("edit-delete") :
-                                    QStringLiteral("edit-delete-shred"); }
-		QString description() const;
-		void preview();
-		void undo();
-        ShredAction shredAction() const { return m_ShredAction; }
+public:
+    QString iconName() const {
+        return shredAction() == NoShred ?
+               QStringLiteral("edit-delete") :
+               QStringLiteral("edit-delete-shred");
+    }
+    QString description() const;
+    void preview();
+    void undo();
+    ShredAction shredAction() const {
+        return m_ShredAction;
+    }
 
-		virtual bool targets(const Device& d) const;
-		virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const;
+    virtual bool targets(const Partition& p) const;
 
-		static bool canDelete(const Partition* p);
+    static bool canDelete(const Partition* p);
 
-	protected:
-		Device& targetDevice() { return m_TargetDevice; }
-		const Device& targetDevice() const { return m_TargetDevice; }
+protected:
+    Device& targetDevice() {
+        return m_TargetDevice;
+    }
+    const Device& targetDevice() const {
+        return m_TargetDevice;
+    }
 
-		Partition& deletedPartition() { return *m_DeletedPartition; }
-		const Partition& deletedPartition() const { return *m_DeletedPartition; }
+    Partition& deletedPartition() {
+        return *m_DeletedPartition;
+    }
+    const Partition& deletedPartition() const {
+        return *m_DeletedPartition;
+    }
 
-		void checkAdjustLogicalNumbers(Partition& p, bool undo);
+    void checkAdjustLogicalNumbers(Partition& p, bool undo);
 
-		void setDeletedPartition(Partition* p) { m_DeletedPartition = p; }
+    void setDeletedPartition(Partition* p) {
+        m_DeletedPartition = p;
+    }
 
-		Job* deleteFileSystemJob() { return m_DeleteFileSystemJob; }
-		DeletePartitionJob* deletePartitionJob() { return m_DeletePartitionJob; }
+    Job* deleteFileSystemJob() {
+        return m_DeleteFileSystemJob;
+    }
+    DeletePartitionJob* deletePartitionJob() {
+        return m_DeletePartitionJob;
+    }
 
-	private:
-		Device& m_TargetDevice;
-		Partition* m_DeletedPartition;
-        ShredAction m_ShredAction;
-		Job* m_DeleteFileSystemJob;
-		DeletePartitionJob* m_DeletePartitionJob;
+private:
+    Device& m_TargetDevice;
+    Partition* m_DeletedPartition;
+    ShredAction m_ShredAction;
+    Job* m_DeleteFileSystemJob;
+    DeletePartitionJob* m_DeletePartitionJob;
 };
 
 #endif

@@ -28,107 +28,102 @@
 #include <unistd.h>
 
 LibPartedDevice::LibPartedDevice(const QString& device_node) :
-	CoreBackendDevice(device_node),
-	m_PedDevice(NULL)
+    CoreBackendDevice(device_node),
+    m_PedDevice(NULL)
 {
 }
 
 LibPartedDevice::~LibPartedDevice()
 {
-	if (pedDevice())
-		close();
+    if (pedDevice())
+        close();
 }
 
 bool LibPartedDevice::open()
 {
-	Q_ASSERT(pedDevice() == NULL);
+    Q_ASSERT(pedDevice() == NULL);
 
-	if (pedDevice())
-		return false;
+    if (pedDevice())
+        return false;
 
-	m_PedDevice = ped_device_get(deviceNode().toLatin1().constData());
+    m_PedDevice = ped_device_get(deviceNode().toLatin1().constData());
 
-	return m_PedDevice != NULL;
+    return m_PedDevice != NULL;
 }
 
 bool LibPartedDevice::openExclusive()
 {
-	bool rval = open() && ped_device_open(pedDevice());
+    bool rval = open() && ped_device_open(pedDevice());
 
-	if (rval)
-		setExclusive(true);
+    if (rval)
+        setExclusive(true);
 
-	return rval;
+    return rval;
 }
 
 bool LibPartedDevice::close()
 {
-	Q_ASSERT(pedDevice());
+    Q_ASSERT(pedDevice());
 
-	if (pedDevice() && isExclusive())
-	{
-		ped_device_close(pedDevice());
-		setExclusive(false);
-	}
+    if (pedDevice() && isExclusive()) {
+        ped_device_close(pedDevice());
+        setExclusive(false);
+    }
 
-	m_PedDevice = NULL;
-	return true;
+    m_PedDevice = NULL;
+    return true;
 }
 
 CoreBackendPartitionTable* LibPartedDevice::openPartitionTable()
 {
-	CoreBackendPartitionTable* ptable = new LibPartedPartitionTable(pedDevice());
+    CoreBackendPartitionTable* ptable = new LibPartedPartitionTable(pedDevice());
 
-	if (ptable == NULL || !ptable->open())
-	{
-		delete ptable;
-		ptable = NULL;
-	}
+    if (ptable == NULL || !ptable->open()) {
+        delete ptable;
+        ptable = NULL;
+    }
 
-	return ptable;
+    return ptable;
 }
 
 bool LibPartedDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
-	PedDiskType* pedDiskType = ped_disk_type_get(ptable.typeName().toLatin1().constData());
+    PedDiskType* pedDiskType = ped_disk_type_get(ptable.typeName().toLatin1().constData());
 
-	if (pedDiskType == NULL)
-	{
-		report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not retrieve partition table type \"%1\" for <filename>%2</filename>.", ptable.typeName(), deviceNode());
-		return false;
-	}
+    if (pedDiskType == NULL) {
+        report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not retrieve partition table type \"%1\" for <filename>%2</filename>.", ptable.typeName(), deviceNode());
+        return false;
+    }
 
-	PedDevice* dev = ped_device_get(deviceNode().toLatin1().constData());
+    PedDevice* dev = ped_device_get(deviceNode().toLatin1().constData());
 
-	if (dev == NULL)
-	{
-		report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not open backend device <filename>%1</filename>.", deviceNode());
-		return false;
-	}
+    if (dev == NULL) {
+        report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not open backend device <filename>%1</filename>.", deviceNode());
+        return false;
+    }
 
-	PedDisk* disk = ped_disk_new_fresh(dev, pedDiskType);
+    PedDisk* disk = ped_disk_new_fresh(dev, pedDiskType);
 
-	if (disk == NULL)
-	{
-		report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not create a new partition table in the backend for device <filename>%1</filename>.", deviceNode());
-		return false;
-	}
+    if (disk == NULL) {
+        report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not create a new partition table in the backend for device <filename>%1</filename>.", deviceNode());
+        return false;
+    }
 
-	return LibPartedPartitionTable::commit(disk);
+    return LibPartedPartitionTable::commit(disk);
 }
 
 bool LibPartedDevice::readSectors(void* buffer, qint64 offset, qint64 numSectors)
 {
-	if (!isExclusive())
-		return false;
+    if (!isExclusive())
+        return false;
 
-	return ped_device_read(pedDevice(), buffer, offset, numSectors);
+    return ped_device_read(pedDevice(), buffer, offset, numSectors);
 }
 
 bool LibPartedDevice::writeSectors(void* buffer, qint64 offset, qint64 numSectors)
 {
-	if (!isExclusive())
-		return false;
+    if (!isExclusive())
+        return false;
 
-	return ped_device_write(pedDevice(), buffer, offset, numSectors);
+    return ped_device_write(pedDevice(), buffer, offset, numSectors);
 }

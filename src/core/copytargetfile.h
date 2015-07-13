@@ -28,31 +28,41 @@ class QString;
 
 /** A file to copy to.
 
-	Repesents a target file to copy to. Used to back up a FileSystem to a file.
+    Repesents a target file to copy to. Used to back up a FileSystem to a file.
 
-	@see CopySourceFile, CopyTargetDevice
-	@author Volker Lanz <vl@fidra.de>
+    @see CopySourceFile, CopyTargetDevice
+    @author Volker Lanz <vl@fidra.de>
 */
 class CopyTargetFile : public CopyTarget
 {
-	public:
-		CopyTargetFile(const QString& filename, qint32 sectorsize);
+public:
+    CopyTargetFile(const QString& filename, qint32 sectorsize);
 
-	public:
-		virtual bool open();
-		virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors);
+public:
+    virtual bool open();
+    virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors);
 
-		virtual qint32 sectorSize() const { return m_SectorSize; } /**< @return the file's sector size */
-		virtual qint64 firstSector() const { return 0; } /**< @return always 0 for a file */
-		virtual qint64 lastSector() const { return sectorsWritten(); } /**< @return the number of sectors written so far */
+    virtual qint32 sectorSize() const {
+        return m_SectorSize;    /**< @return the file's sector size */
+    }
+    virtual qint64 firstSector() const {
+        return 0;    /**< @return always 0 for a file */
+    }
+    virtual qint64 lastSector() const {
+        return sectorsWritten();    /**< @return the number of sectors written so far */
+    }
 
-	protected:
-		QFile& file() { return m_File; }
-		const QFile& file() const { return m_File; }
+protected:
+    QFile& file() {
+        return m_File;
+    }
+    const QFile& file() const {
+        return m_File;
+    }
 
-	protected:
-		QFile m_File;
-		qint32 m_SectorSize;
+protected:
+    QFile m_File;
+    qint32 m_SectorSize;
 };
 
 #endif

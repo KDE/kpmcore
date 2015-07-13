@@ -27,34 +27,48 @@ class CopyTarget;
 
 /** A source for securely overwriting a partition (shredding).
 
-	Represents a source of data (random or zeros) to copy from. Used to securely overwrite data on disk.
+    Represents a source of data (random or zeros) to copy from. Used to securely overwrite data on disk.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class CopySourceShred : public CopySource
 {
-	public:
-        CopySourceShred(qint64 size, qint32 sectorsize, bool randomShred);
+public:
+    CopySourceShred(qint64 size, qint32 sectorsize, bool randomShred);
 
-	public:
-		virtual bool open();
-		virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
-		virtual qint64 length() const;
+public:
+    virtual bool open();
+    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
+    virtual qint64 length() const;
 
-		virtual qint32 sectorSize() const { return m_SectorSize; } /**< @return the file's sector size */
-		virtual bool overlaps(const CopyTarget&) const { return false; } /**< @return false for shred source */
-		virtual qint64 firstSector() const { return 0; } /**< @return 0 for shred source */
-		virtual qint64 lastSector() const { return length(); } /**< @return equal to length for shred source. @see length() */
+    virtual qint32 sectorSize() const {
+        return m_SectorSize;    /**< @return the file's sector size */
+    }
+    virtual bool overlaps(const CopyTarget&) const {
+        return false;    /**< @return false for shred source */
+    }
+    virtual qint64 firstSector() const {
+        return 0;    /**< @return 0 for shred source */
+    }
+    virtual qint64 lastSector() const {
+        return length();    /**< @return equal to length for shred source. @see length() */
+    }
 
-	protected:
-		QFile& sourceFile() { return m_SourceFile; }
-		const QFile& sourceFile() const { return m_SourceFile; }
-		qint32 size() const { return m_Size; }
+protected:
+    QFile& sourceFile() {
+        return m_SourceFile;
+    }
+    const QFile& sourceFile() const {
+        return m_SourceFile;
+    }
+    qint32 size() const {
+        return m_Size;
+    }
 
-	private:
-		qint64 m_Size;
-		qint32 m_SectorSize;
-		QFile m_SourceFile;
+private:
+    qint64 m_Size;
+    qint32 m_SectorSize;
+    QFile m_SourceFile;
 };
 
 #endif

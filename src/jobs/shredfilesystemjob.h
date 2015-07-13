@@ -29,31 +29,39 @@ class Report;
 
 /** Securely delete and shred a FileSystem.
 
-	Shreds (overwrites with random data) a FileSystem on given Partition and Device.
+    Shreds (overwrites with random data) a FileSystem on given Partition and Device.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class ShredFileSystemJob : public Job
 {
-	public:
-        ShredFileSystemJob(Device& d, Partition& p, bool randomShred);
+public:
+    ShredFileSystemJob(Device& d, Partition& p, bool randomShred);
 
-	public:
-		virtual bool run(Report& parent);
-		virtual qint32 numSteps() const;
-		virtual QString description() const;
+public:
+    virtual bool run(Report& parent);
+    virtual qint32 numSteps() const;
+    virtual QString description() const;
 
-	protected:
-		Partition& partition() { return m_Partition; }
-		const Partition& partition() const { return m_Partition; }
+protected:
+    Partition& partition() {
+        return m_Partition;
+    }
+    const Partition& partition() const {
+        return m_Partition;
+    }
 
-		Device& device() { return m_Device; }
-		const Device& device() const { return m_Device; }
+    Device& device() {
+        return m_Device;
+    }
+    const Device& device() const {
+        return m_Device;
+    }
 
-	private:
-		Device& m_Device;
-		Partition& m_Partition;
-        bool m_RandomShred;
+private:
+    Device& m_Device;
+    Partition& m_Partition;
+    bool m_RandomShred;
 };
 
 #endif

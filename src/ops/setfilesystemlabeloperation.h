@@ -32,45 +32,59 @@ class SetFileSystemLabelJob;
 
 /** Set a FileSystem label.
 
-	Sets the FileSystem label for the given Partition.
+    Sets the FileSystem label for the given Partition.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT SetFileSystemLabelOperation : public Operation
 {
-	friend class OperationStack;
+    friend class OperationStack;
 
-	Q_OBJECT
-	Q_DISABLE_COPY(SetFileSystemLabelOperation)
+    Q_OBJECT
+    Q_DISABLE_COPY(SetFileSystemLabelOperation)
 
-	public:
-		SetFileSystemLabelOperation(Partition& p, const QString& newlabel);
+public:
+    SetFileSystemLabelOperation(Partition& p, const QString& newlabel);
 
-	public:
-		QString iconName() const { return QStringLiteral("edit-rename"); }
-		QString description() const;
-		void preview();
-		void undo();
+public:
+    QString iconName() const {
+        return QStringLiteral("edit-rename");
+    }
+    QString description() const;
+    void preview();
+    void undo();
 
-		virtual bool targets(const Device& d) const;
-		virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const;
+    virtual bool targets(const Partition& p) const;
 
-	protected:
-		Partition& labeledPartition() { return m_LabeledPartition; }
-		const Partition& labeledPartition() const { return m_LabeledPartition; }
+protected:
+    Partition& labeledPartition() {
+        return m_LabeledPartition;
+    }
+    const Partition& labeledPartition() const {
+        return m_LabeledPartition;
+    }
 
-		const QString& oldLabel() const { return m_OldLabel; }
-		const QString& newLabel() const { return m_NewLabel; }
+    const QString& oldLabel() const {
+        return m_OldLabel;
+    }
+    const QString& newLabel() const {
+        return m_NewLabel;
+    }
 
-		void setOldLabel(const QString& l) { m_OldLabel = l; }
+    void setOldLabel(const QString& l) {
+        m_OldLabel = l;
+    }
 
-		SetFileSystemLabelJob* labelJob() { return m_LabelJob; }
+    SetFileSystemLabelJob* labelJob() {
+        return m_LabelJob;
+    }
 
-	private:
-		Partition& m_LabeledPartition;
-		QString m_OldLabel;
-		QString m_NewLabel;
-		SetFileSystemLabelJob* m_LabelJob;
+private:
+    Partition& m_LabeledPartition;
+    QString m_OldLabel;
+    QString m_NewLabel;
+    SetFileSystemLabelJob* m_LabelJob;
 };
 
 #endif

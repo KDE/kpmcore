@@ -27,59 +27,80 @@ struct SkSmartAttributeParsedData;
 
 class LIBKPMCORE_EXPORT SmartAttribute
 {
-	public:
-		enum FailureType
-		{
-			PreFailure,
-			OldAge
-		};
+public:
+    enum FailureType {
+        PreFailure,
+        OldAge
+    };
 
-		enum UpdateType
-		{
-			Online,
-			Offline
-		};
+    enum UpdateType {
+        Online,
+        Offline
+    };
 
-		enum Assessment
-		{
-			NotApplicable,
-			Failing,
-			HasFailed,
-			Warning,
-			Good
-		};
+    enum Assessment {
+        NotApplicable,
+        Failing,
+        HasFailed,
+        Warning,
+        Good
+    };
 
-	public:
-		SmartAttribute(const SkSmartAttributeParsedData* a);
+public:
+    SmartAttribute(const SkSmartAttributeParsedData* a);
 
-	public:
-		qint32 id() const { return m_Id; }
-		const QString& name() const { return m_Name; }
-		const QString& desc() const { return m_Desc; }
-		FailureType failureType() const { return m_FailureType; }
-		UpdateType updateType() const { return m_UpdateType; }
-		qint32 current() const { return m_Current; }
-		qint32 worst() const { return m_Worst; }
-		qint32 threshold() const { return m_Threshold; }
-		const QString& raw() const { return m_Raw; }
-		Assessment assessment() const { return m_Assessment; }
-		const QString& value() const { return m_Value; }
+public:
+    qint32 id() const {
+        return m_Id;
+    }
+    const QString& name() const {
+        return m_Name;
+    }
+    const QString& desc() const {
+        return m_Desc;
+    }
+    FailureType failureType() const {
+        return m_FailureType;
+    }
+    UpdateType updateType() const {
+        return m_UpdateType;
+    }
+    qint32 current() const {
+        return m_Current;
+    }
+    qint32 worst() const {
+        return m_Worst;
+    }
+    qint32 threshold() const {
+        return m_Threshold;
+    }
+    const QString& raw() const {
+        return m_Raw;
+    }
+    Assessment assessment() const {
+        return m_Assessment;
+    }
+    const QString& value() const {
+        return m_Value;
+    }
 
-		QString assessmentToString() const { return assessmentToString(assessment()); }
-		static QString assessmentToString(Assessment a);
+    QString assessmentToString() const {
+        return assessmentToString(assessment());
+    }
+    static QString assessmentToString(Assessment a);
 
-	private:
-		qint32 m_Id;
-		QString m_Name;
-		QString m_Desc;
-		FailureType m_FailureType;
-		UpdateType m_UpdateType;
-		qint32 m_Current;
-		qint32 m_Worst;
-		qint32 m_Threshold;
-		QString m_Raw;
-		Assessment m_Assessment;
-		QString m_Value;
+private:
+    qint32 m_Id;
+    QString m_Name;
+    QString m_Desc;
+    FailureType m_FailureType;
+    UpdateType m_UpdateType;
+    qint32 m_Current;
+    qint32 m_Worst;
+    qint32 m_Threshold;
+    QString m_Raw;
+    Assessment m_Assessment;
+    QString m_Value;
 };
 
 #endif

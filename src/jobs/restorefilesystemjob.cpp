@@ -35,80 +35,77 @@
 #include <KLocalizedString>
 
 /** Creates a new RestoreFileSystemJob
-	@param targetdevice the Device the FileSystem is to be restored to
-	@param targetpartition the Partition the FileSystem is to be restore to
-	@param filename the file name with the image file to restore
+    @param targetdevice the Device the FileSystem is to be restored to
+    @param targetpartition the Partition the FileSystem is to be restore to
+    @param filename the file name with the image file to restore
 */
 RestoreFileSystemJob::RestoreFileSystemJob(Device& targetdevice, Partition& targetpartition, const QString& filename) :
-	Job(),
-	m_TargetDevice(targetdevice),
-	m_TargetPartition(targetpartition),
-	m_FileName(filename)
+    Job(),
+    m_TargetDevice(targetdevice),
+    m_TargetPartition(targetpartition),
+    m_FileName(filename)
 {
 }
 
 qint32 RestoreFileSystemJob::numSteps() const
 {
-	return 100;
+    return 100;
 }
 
 bool RestoreFileSystemJob::run(Report& parent)
 {
-	// Restoring is file system independent because we currently have no way of
-	// detecting the file system in a given image file. We cannot even find out if the
-	// file the user gave us is a valid image file or just some junk.
+    // Restoring is file system independent because we currently have no way of
+    // detecting the file system in a given image file. We cannot even find out if the
+    // file the user gave us is a valid image file or just some junk.
 
-	bool rval = false;
+    bool rval = false;
 
-	Report* report = jobStarted(parent);
+    Report* report = jobStarted(parent);
 
-	// Again, a scope for copyTarget and copySource. See MoveFileSystemJob::run()
-	{
-		// FileSystems are restored to _partitions_, so don't use first and last sector of file system here
-		CopyTargetDevice copyTarget(targetDevice(), targetPartition().firstSector(), targetPartition().lastSector());
-		CopySourceFile copySource(fileName(), copyTarget.sectorSize());
+    // Again, a scope for copyTarget and copySource. See MoveFileSystemJob::run()
+    {
+        // FileSystems are restored to _partitions_, so don't use first and last sector of file system here
+        CopyTargetDevice copyTarget(targetDevice(), targetPartition().firstSector(), targetPartition().lastSector());
+        CopySourceFile copySource(fileName(), copyTarget.sectorSize());
 
-		if (!copySource.open())
-			report->line() << xi18nc("@info/plain", "Could not open backup file <filename>%1</filename> to restore from.", fileName());
-		else if (!copyTarget.open())
-			report->line() << xi18nc("@info/plain", "Could not open target partition <filename>%1</filename> to restore to.", targetPartition().deviceNode());
-		else
-		{
-			rval = copyBlocks(*report, copyTarget, copySource);
+        if (!copySource.open())
+            report->line() << xi18nc("@info/plain", "Could not open backup file <filename>%1</filename> to restore from.", fileName());
+        else if (!copyTarget.open())
+            report->line() << xi18nc("@info/plain", "Could not open target partition <filename>%1</filename> to restore to.", targetPartition().deviceNode());
+        else {
+            rval = copyBlocks(*report, copyTarget, copySource);
 
-			if (rval)
-			{
-				// create a new file system for what was restored with the length of the image file
-				const qint64 newLastSector = targetPartition().firstSector() + copySource.length() - 1;
+            if (rval) {
+                // create a new file system for what was restored with the length of the image file
+                const qint64 newLastSector = targetPartition().firstSector() + copySource.length() - 1;
 
-				CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(targetDevice().deviceNode());
+                CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(targetDevice().deviceNode());
 
-				FileSystem::Type t = FileSystem::Unknown;
+                FileSystem::Type t = FileSystem::Unknown;
 
-				if (backendDevice)
-				{
-					CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+                if (backendDevice) {
+                    CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
-					if (backendPartitionTable)
-						t = backendPartitionTable->detectFileSystemBySector(*report, targetDevice(), targetPartition().firstSector());
-				}
+                    if (backendPartitionTable)
+                        t = backendPartitionTable->detectFileSystemBySector(*report, targetDevice(), targetPartition().firstSector());
+                }
 
-				FileSystem* fs = FileSystemFactory::create(t, targetPartition().firstSector(), newLastSector);
+                FileSystem* fs = FileSystemFactory::create(t, targetPartition().firstSector(), newLastSector);
 
-				targetPartition().deleteFileSystem();
-				targetPartition().setFileSystem(fs);
-			}
+                targetPartition().deleteFileSystem();
+                targetPartition().setFileSystem(fs);
+            }
 
-			report->line() << i18nc("@info/plain", "Closing device. This may take a few seconds.");
-		}
-	}
+            report->line() << i18nc("@info/plain", "Closing device. This may take a few seconds.");
+        }
+    }
 
-	jobFinished(*report, rval);
+    jobFinished(*report, rval);
 
-	return rval;
+    return rval;
 }
 
 QString RestoreFileSystemJob::description() const
 {
-	return xi18nc("@info/plain", "Restore the file system from file <filename>%1</filename> to partition <filename>%2</filename>", fileName(), targetPartition().deviceNode());
+    return xi18nc("@info/plain", "Restore the file system from file <filename>%1</filename> to partition <filename>%2</filename>", fileName(), targetPartition().deviceNode());
 }

@@ -19,15 +19,15 @@
 
 namespace FS
 {
-	FileSystem::CommandSupportType unformatted::m_Create = FileSystem::cmdSupportFileSystem;
+FileSystem::CommandSupportType unformatted::m_Create = FileSystem::cmdSupportFileSystem;
 
-	unformatted::unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-		FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Unformatted)
-	{
-	}
+unformatted::unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Unformatted)
+{
+}
 
-	bool unformatted::create(Report&, const QString&) const
-	{
-		return true;
-	}
+bool unformatted::create(Report&, const QString&) const
+{
+    return true;
+}
 }

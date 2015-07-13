@@ -29,26 +29,26 @@
 class QString;
 
 /** Factory to create instances of FileSystem.
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
  */
 class LIBKPMCORE_EXPORT FileSystemFactory
 {
-	public:
-		/** map of FileSystem::Types to pointers of FileSystem */
-		typedef QMap<FileSystem::Type, FileSystem*> FileSystems;
+public:
+    /** map of FileSystem::Types to pointers of FileSystem */
+    typedef QMap<FileSystem::Type, FileSystem*> FileSystems;
 
-	private:
-		FileSystemFactory();
+private:
+    FileSystemFactory();
 
-	public:
-		static void init();
-		static FileSystem* create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorsused = -1, const QString& label = QString(), const QString& uuid = QString());
-		static FileSystem* create(const FileSystem& other);
-		static FileSystem* cloneWithNewType(FileSystem::Type newType, const FileSystem& other);
-		static const FileSystems& map();
+public:
+    static void init();
+    static FileSystem* create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorsused = -1, const QString& label = QString(), const QString& uuid = QString());
+    static FileSystem* create(const FileSystem& other);
+    static FileSystem* cloneWithNewType(FileSystem::Type newType, const FileSystem& other);
+    static const FileSystems& map();
 
-	private:
-		static FileSystems m_FileSystems;
+private:
+    static FileSystems m_FileSystems;
 };
 
 #endif

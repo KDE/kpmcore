@@ -24,41 +24,41 @@
 #include "core/device.h"
 
 /** Constructs a DeviceScanner
-	@param ostack the OperationStack where the devices will be created
+    @param ostack the OperationStack where the devices will be created
 */
 DeviceScanner::DeviceScanner(QObject* parent, OperationStack& ostack) :
-	QThread(parent),
-	m_OperationStack(ostack)
+    QThread(parent),
+    m_OperationStack(ostack)
 {
-	setupConnections();
+    setupConnections();
 }
 
 void DeviceScanner::setupConnections()
 {
-	connect(CoreBackendManager::self()->backend(), SIGNAL(scanProgress(QString,int)), SIGNAL(progress(QString,int)));
+    connect(CoreBackendManager::self()->backend(), SIGNAL(scanProgress(QString, int)), SIGNAL(progress(QString, int)));
 }
 
 void DeviceScanner::clear()
 {
-	operationStack().clearOperations();
-	operationStack().clearDevices();
+    operationStack().clearOperations();
+    operationStack().clearDevices();
 }
 
 void DeviceScanner::run()
 {
-	scan();
+    scan();
 }
 
 void DeviceScanner::scan()
 {
-	emit progress(QString(), 0);
+    emit progress(QString(), 0);
 
-	clear();
+    clear();
 
-	QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
+    QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
 
-	foreach(Device* d, deviceList)
-		operationStack().addDevice(d);
+    foreach(Device * d, deviceList)
+    operationStack().addDevice(d);
 
-	operationStack().sortDevices();
+    operationStack().sortDevices();
 }

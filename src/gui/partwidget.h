@@ -30,36 +30,42 @@ class QResizeEvent;
 
 /** Widget that represents a Partition.
 
-	Represents a single Partition (possibly with its children, in case of an extended Partition) in the GUI.
+    Represents a single Partition (possibly with its children, in case of an extended Partition) in the GUI.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT PartWidget : public PartWidgetBase
 {
-	Q_OBJECT
+    Q_OBJECT
 
-	public:
-		explicit PartWidget(QWidget* parent, const Partition* p = NULL);
+public:
+    explicit PartWidget(QWidget* parent, const Partition* p = NULL);
 
-	public:
-		void init(const Partition* p);
-		void setActive(bool b) { m_Active = b; }
-		bool isActive() const { return m_Active; } /**< @return true if this is the currently active widget */
-		void updateChildren();
+public:
+    void init(const Partition* p);
+    void setActive(bool b) {
+        m_Active = b;
+    }
+    bool isActive() const {
+        return m_Active;    /**< @return true if this is the currently active widget */
+    }
+    void updateChildren();
 
-		const Partition* partition() const { return m_Partition; } /**< @return the widget's Partition */
+    const Partition* partition() const {
+        return m_Partition;    /**< @return the widget's Partition */
+    }
 
-	protected:
-		void paintEvent(QPaintEvent* event);
-		void resizeEvent(QResizeEvent* event);
+protected:
+    void paintEvent(QPaintEvent* event);
+    void resizeEvent(QResizeEvent* event);
 
-		QColor activeColor(const QColor& col) const;
+    QColor activeColor(const QColor& col) const;
 
-		void drawGradient(QPainter* painter, const QColor& color, const QRect& rect, bool active = false) const;
+    void drawGradient(QPainter* painter, const QColor& color, const QRect& rect, bool active = false) const;
 
-	private:
-		const Partition* m_Partition;
-		bool m_Active;
+private:
+    const Partition* m_Partition;
+    bool m_Active;
 };
 
 #endif

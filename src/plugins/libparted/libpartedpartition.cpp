@@ -23,32 +23,31 @@
 #include <KLocalizedString>
 
 LibPartedPartition::LibPartedPartition(PedPartition* ped_partition) :
-	CoreBackendPartition(),
-	m_PedPartition(ped_partition)
+    CoreBackendPartition(),
+    m_PedPartition(ped_partition)
 {
 }
 
 bool LibPartedPartition::setFlag(Report& report, PartitionTable::Flag partitionManagerFlag, bool state)
 {
-	Q_ASSERT(pedPartition() != NULL);
+    Q_ASSERT(pedPartition() != NULL);
 
-	const PedPartitionFlag f = LibPartedBackend::getPedFlag(partitionManagerFlag);
+    const PedPartitionFlag f = LibPartedBackend::getPedFlag(partitionManagerFlag);
 
-	// ignore flags that don't exist for this partition
-	if (!ped_partition_is_flag_available(pedPartition(), f))
-	{
-		report.line() << i18nc("@info/plain", "The flag \"%1\" is not available on the partition's partition table.", PartitionTable::flagName(partitionManagerFlag));
-		return true;
-	}
+    // ignore flags that don't exist for this partition
+    if (!ped_partition_is_flag_available(pedPartition(), f)) {
+        report.line() << i18nc("@info/plain", "The flag \"%1\" is not available on the partition's partition table.", PartitionTable::flagName(partitionManagerFlag));
+        return true;
+    }
 
-	// Workaround: libparted claims the hidden flag is available for extended partitions, but
-	// throws an error when we try to set or clear it. So skip this combination.
-	if (pedPartition()->type == PED_PARTITION_EXTENDED && partitionManagerFlag == PartitionTable::FlagHidden)
-		return true;
+    // Workaround: libparted claims the hidden flag is available for extended partitions, but
+    // throws an error when we try to set or clear it. So skip this combination.
+    if (pedPartition()->type == PED_PARTITION_EXTENDED && partitionManagerFlag == PartitionTable::FlagHidden)
+        return true;
 
-	if (!ped_partition_set_flag(pedPartition(), f, state ? 1 : 0))
-		return false;
+    if (!ped_partition_set_flag(pedPartition(), f, state ? 1 : 0))
+        return false;
 
-	return true;
+    return true;
 }
 

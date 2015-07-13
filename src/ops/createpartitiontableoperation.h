@@ -33,49 +33,67 @@ class PartitionTable;
 class OperationStack;
 
 /** Create a PartitionTable.
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT CreatePartitionTableOperation : public Operation
 {
-	Q_OBJECT
-	Q_DISABLE_COPY(CreatePartitionTableOperation)
+    Q_OBJECT
+    Q_DISABLE_COPY(CreatePartitionTableOperation)
 
-	friend class OperationStack;
+    friend class OperationStack;
 
-	public:
-		CreatePartitionTableOperation(Device& d, PartitionTable::TableType t);
-		CreatePartitionTableOperation(Device& d, PartitionTable* ptable);
-		~CreatePartitionTableOperation();
+public:
+    CreatePartitionTableOperation(Device& d, PartitionTable::TableType t);
+    CreatePartitionTableOperation(Device& d, PartitionTable* ptable);
+    ~CreatePartitionTableOperation();
 
-	public:
-		QString iconName() const { return QStringLiteral("edit-clear"); }
-		QString description() const;
-		void preview();
-		void undo();
-		bool execute(Report& parent);
+public:
+    QString iconName() const {
+        return QStringLiteral("edit-clear");
+    }
+    QString description() const;
+    void preview();
+    void undo();
+    bool execute(Report& parent);
 
-		virtual bool targets(const Device& d) const;
-		virtual bool targets(const Partition&) const { return false; }
+    virtual bool targets(const Device& d) const;
+    virtual bool targets(const Partition&) const {
+        return false;
+    }
 
-		static bool canCreate(const Device* device);
+    static bool canCreate(const Device* device);
 
-	protected:
-		Device& targetDevice() { return m_TargetDevice; }
-		const Device& targetDevice() const { return m_TargetDevice; }
+protected:
+    Device& targetDevice() {
+        return m_TargetDevice;
+    }
+    const Device& targetDevice() const {
+        return m_TargetDevice;
+    }
 
-		PartitionTable* partitionTable() { return m_PartitionTable; }
-		const PartitionTable* partitionTable() const { return m_PartitionTable; }
+    PartitionTable* partitionTable() {
+        return m_PartitionTable;
+    }
+    const PartitionTable* partitionTable() const {
+        return m_PartitionTable;
+    }
 
-		PartitionTable* oldPartitionTable() { return m_OldPartitionTable; }
-		void setOldPartitionTable(PartitionTable* old) { m_OldPartitionTable = old; }
+    PartitionTable* oldPartitionTable() {
+        return m_OldPartitionTable;
+    }
+    void setOldPartitionTable(PartitionTable* old) {
+        m_OldPartitionTable = old;
+    }
 
-		CreatePartitionTableJob* createPartitionTableJob() { return m_CreatePartitionTableJob; }
+    CreatePartitionTableJob* createPartitionTableJob() {
+        return m_CreatePartitionTableJob;
+    }
 
-	private:
-		Device& m_TargetDevice;
-		PartitionTable* m_OldPartitionTable;
-		PartitionTable* m_PartitionTable;
-		CreatePartitionTableJob* m_CreatePartitionTableJob;
+private:
+    Device& m_TargetDevice;
+    PartitionTable* m_OldPartitionTable;
+    PartitionTable* m_PartitionTable;
+    CreatePartitionTableJob* m_CreatePartitionTableJob;
 };
 
 #endif

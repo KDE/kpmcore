@@ -31,59 +31,83 @@ class QString;
 
 namespace FS
 {
-	/** An NTFS file system.
-		@author Volker Lanz <vl@fidra.de>
-	 */
-	class LIBKPMCORE_EXPORT ntfs : public FileSystem
-	{
-		public:
-			ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+/** An NTFS file system.
+    @author Volker Lanz <vl@fidra.de>
+ */
+class LIBKPMCORE_EXPORT ntfs : public FileSystem
+{
+public:
+    ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-		public:
-			static void init();
+public:
+    static void init();
 
-			virtual qint64 readUsedCapacity(const QString& deviceNode) const;
-			virtual bool check(Report& report, const QString& deviceNode) const;
-			virtual bool create(Report& report, const QString& deviceNode) const;
-			virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const;
-			virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const;
-			virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
-			virtual bool updateUUID(Report& report, const QString& deviceNode) const;
-			virtual bool updateBootSector(Report& report, const QString& deviceNode) const;
+    virtual qint64 readUsedCapacity(const QString& deviceNode) const;
+    virtual bool check(Report& report, const QString& deviceNode) const;
+    virtual bool create(Report& report, const QString& deviceNode) const;
+    virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const;
+    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const;
+    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
+    virtual bool updateUUID(Report& report, const QString& deviceNode) const;
+    virtual bool updateBootSector(Report& report, const QString& deviceNode) const;
 
-			virtual CommandSupportType supportGetUsed() const { return m_GetUsed; }
-			virtual CommandSupportType supportGetLabel() const { return m_GetLabel; }
-			virtual CommandSupportType supportCreate() const { return m_Create; }
-			virtual CommandSupportType supportGrow() const { return m_Grow; }
-			virtual CommandSupportType supportShrink() const { return m_Shrink; }
-			virtual CommandSupportType supportMove() const { return m_Move; }
-			virtual CommandSupportType supportCheck() const { return m_Check; }
-			virtual CommandSupportType supportCopy() const { return m_Copy; }
-			virtual CommandSupportType supportBackup() const { return m_Backup; }
-			virtual CommandSupportType supportSetLabel() const { return m_SetLabel; }
-			virtual CommandSupportType supportUpdateUUID() const { return m_UpdateUUID; }
-			virtual CommandSupportType supportGetUUID() const { return m_GetUUID; }
+    virtual CommandSupportType supportGetUsed() const {
+        return m_GetUsed;
+    }
+    virtual CommandSupportType supportGetLabel() const {
+        return m_GetLabel;
+    }
+    virtual CommandSupportType supportCreate() const {
+        return m_Create;
+    }
+    virtual CommandSupportType supportGrow() const {
+        return m_Grow;
+    }
+    virtual CommandSupportType supportShrink() const {
+        return m_Shrink;
+    }
+    virtual CommandSupportType supportMove() const {
+        return m_Move;
+    }
+    virtual CommandSupportType supportCheck() const {
+        return m_Check;
+    }
+    virtual CommandSupportType supportCopy() const {
+        return m_Copy;
+    }
+    virtual CommandSupportType supportBackup() const {
+        return m_Backup;
+    }
+    virtual CommandSupportType supportSetLabel() const {
+        return m_SetLabel;
+    }
+    virtual CommandSupportType supportUpdateUUID() const {
+        return m_UpdateUUID;
+    }
+    virtual CommandSupportType supportGetUUID() const {
+        return m_GetUUID;
+    }
 
-			virtual qint64 minCapacity() const;
-			virtual qint64 maxCapacity() const;
-			virtual qint64 maxLabelLength() const;
-			virtual SupportTool supportToolName() const;
-			virtual bool supportToolFound() const;
+    virtual qint64 minCapacity() const;
+    virtual qint64 maxCapacity() const;
+    virtual qint64 maxLabelLength() const;
+    virtual SupportTool supportToolName() const;
+    virtual bool supportToolFound() const;
 
-		public:
-			static CommandSupportType m_GetUsed;
-			static CommandSupportType m_GetLabel;
-			static CommandSupportType m_Create;
-			static CommandSupportType m_Grow;
-			static CommandSupportType m_Shrink;
-			static CommandSupportType m_Move;
-			static CommandSupportType m_Check;
-			static CommandSupportType m_Copy;
-			static CommandSupportType m_Backup;
-			static CommandSupportType m_SetLabel;
-			static CommandSupportType m_UpdateUUID;
-			static CommandSupportType m_GetUUID;
-	};
+public:
+    static CommandSupportType m_GetUsed;
+    static CommandSupportType m_GetLabel;
+    static CommandSupportType m_Create;
+    static CommandSupportType m_Grow;
+    static CommandSupportType m_Shrink;
+    static CommandSupportType m_Move;
+    static CommandSupportType m_Check;
+    static CommandSupportType m_Copy;
+    static CommandSupportType m_Backup;
+    static CommandSupportType m_SetLabel;
+    static CommandSupportType m_UpdateUUID;
+    static CommandSupportType m_GetUUID;
+};
 }
 
 #endif

@@ -36,54 +36,74 @@ class CheckFileSystemJob;
 
 /** Create a Partition.
 
-	Creates the given Partition on the given Device.
+    Creates the given Partition on the given Device.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT NewOperation : public Operation
 {
-	friend class OperationStack;
+    friend class OperationStack;
 
-	Q_OBJECT
-	Q_DISABLE_COPY(NewOperation)
+    Q_OBJECT
+    Q_DISABLE_COPY(NewOperation)
 
-	public:
-		NewOperation(Device& d, Partition* p);
-		~NewOperation();
+public:
+    NewOperation(Device& d, Partition* p);
+    ~NewOperation();
 
-	public:
-		QString iconName() const { return QStringLiteral("document-new"); }
-		QString description() const;
-		void preview();
-		void undo();
+public:
+    QString iconName() const {
+        return QStringLiteral("document-new");
+    }
+    QString description() const;
+    void preview();
+    void undo();
 
-		virtual bool targets(const Device& d) const;
-		virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const;
+    virtual bool targets(const Partition& p) const;
 
-		static bool canCreateNew(const Partition* p);
-		static Partition* createNew(const Partition& cloneFrom, FileSystem::Type type);
+    static bool canCreateNew(const Partition* p);
+    static Partition* createNew(const Partition& cloneFrom, FileSystem::Type type);
 
-	protected:
-		Partition& newPartition() { return *m_NewPartition; }
-		const Partition& newPartition() const { return *m_NewPartition; }
+protected:
+    Partition& newPartition() {
+        return *m_NewPartition;
+    }
+    const Partition& newPartition() const {
+        return *m_NewPartition;
+    }
 
-		Device& targetDevice() { return m_TargetDevice; }
-		const Device& targetDevice() const { return m_TargetDevice; }
+    Device& targetDevice() {
+        return m_TargetDevice;
+    }
+    const Device& targetDevice() const {
+        return m_TargetDevice;
+    }
 
-		CreatePartitionJob* createPartitionJob() { return m_CreatePartitionJob; }
-		CreateFileSystemJob* createFileSystemJob() { return m_CreateFileSystemJob; }
-		SetPartFlagsJob* setPartFlagsJob() { return m_SetPartFlagsJob; }
-		SetFileSystemLabelJob* setLabelJob() { return m_SetFileSystemLabelJob; }
-		CheckFileSystemJob* checkJob() { return m_CheckFileSystemJob; }
+    CreatePartitionJob* createPartitionJob() {
+        return m_CreatePartitionJob;
+    }
+    CreateFileSystemJob* createFileSystemJob() {
+        return m_CreateFileSystemJob;
+    }
+    SetPartFlagsJob* setPartFlagsJob() {
+        return m_SetPartFlagsJob;
+    }
+    SetFileSystemLabelJob* setLabelJob() {
+        return m_SetFileSystemLabelJob;
+    }
+    CheckFileSystemJob* checkJob() {
+        return m_CheckFileSystemJob;
+    }
 
-	private:
-		Device& m_TargetDevice;
-		Partition* m_NewPartition;
-		CreatePartitionJob* m_CreatePartitionJob;
-		CreateFileSystemJob* m_CreateFileSystemJob;
-		SetPartFlagsJob* m_SetPartFlagsJob;
-		SetFileSystemLabelJob* m_SetFileSystemLabelJob;
-		CheckFileSystemJob* m_CheckFileSystemJob;
+private:
+    Device& m_TargetDevice;
+    Partition* m_NewPartition;
+    CreatePartitionJob* m_CreatePartitionJob;
+    CreateFileSystemJob* m_CreateFileSystemJob;
+    SetPartFlagsJob* m_SetPartFlagsJob;
+    SetFileSystemLabelJob* m_SetFileSystemLabelJob;
+    CheckFileSystemJob* m_CheckFileSystemJob;
 };
 
 #endif

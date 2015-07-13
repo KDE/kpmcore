@@ -35,49 +35,67 @@ class SetPartFlagsJob;
 
 /** Set Partition flags.
 
-	Sets the Partition flags for the given Partition on the given Device.
+    Sets the Partition flags for the given Partition on the given Device.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT SetPartFlagsOperation : public Operation
 {
-	friend class OperationStack;
+    friend class OperationStack;
 
-	Q_OBJECT
-	Q_DISABLE_COPY(SetPartFlagsOperation)
+    Q_OBJECT
+    Q_DISABLE_COPY(SetPartFlagsOperation)
 
-	public:
-		SetPartFlagsOperation(Device& d, Partition& p, const PartitionTable::Flags& flags);
+public:
+    SetPartFlagsOperation(Device& d, Partition& p, const PartitionTable::Flags& flags);
 
-	public:
-		QString iconName() const { return QStringLiteral("flag-blue"); }
-		QString description() const;
-		void preview();
-		void undo();
+public:
+    QString iconName() const {
+        return QStringLiteral("flag-blue");
+    }
+    QString description() const;
+    void preview();
+    void undo();
 
-		virtual bool targets(const Device& d) const;
-		virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const;
+    virtual bool targets(const Partition& p) const;
 
-	protected:
-		Partition& flagPartition() { return m_FlagPartition; }
-		const Partition& flagPartition() const { return m_FlagPartition; }
+protected:
+    Partition& flagPartition() {
+        return m_FlagPartition;
+    }
+    const Partition& flagPartition() const {
+        return m_FlagPartition;
+    }
 
-		Device& targetDevice() { return m_TargetDevice; }
-		const Device& targetDevice() const { return m_TargetDevice; }
+    Device& targetDevice() {
+        return m_TargetDevice;
+    }
+    const Device& targetDevice() const {
+        return m_TargetDevice;
+    }
 
-		const PartitionTable::Flags& oldFlags() const { return m_OldFlags; }
-		const PartitionTable::Flags& newFlags() const { return m_NewFlags; }
+    const PartitionTable::Flags& oldFlags() const {
+        return m_OldFlags;
+    }
+    const PartitionTable::Flags& newFlags() const {
+        return m_NewFlags;
+    }
 
-		void setOldFlags(PartitionTable::Flags f) { m_OldFlags = f; }
+    void setOldFlags(PartitionTable::Flags f) {
+        m_OldFlags = f;
+    }
 
-		SetPartFlagsJob* flagsJob() { return m_FlagsJob; }
+    SetPartFlagsJob* flagsJob() {
+        return m_FlagsJob;
+    }
 
-	private:
-		Device& m_TargetDevice;
-		Partition& m_FlagPartition;
-		PartitionTable::Flags m_OldFlags;
-		PartitionTable::Flags m_NewFlags;
-		SetPartFlagsJob* m_FlagsJob;
+private:
+    Device& m_TargetDevice;
+    Partition& m_FlagPartition;
+    PartitionTable::Flags m_OldFlags;
+    PartitionTable::Flags m_NewFlags;
+    SetPartFlagsJob* m_FlagsJob;
 };
 
 #endif

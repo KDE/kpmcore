@@ -26,30 +26,30 @@
 #include <KLocalizedString>
 
 /** Creates a new CheckFileSystemJob
-	@param p the Partition whose FileSystem is to be checked
+    @param p the Partition whose FileSystem is to be checked
 */
 CheckFileSystemJob::CheckFileSystemJob(Partition& p) :
-	Job(),
-	m_Partition(p)
+    Job(),
+    m_Partition(p)
 {
 }
 
 bool CheckFileSystemJob::run(Report& parent)
 {
-	Report* report = jobStarted(parent);
+    Report* report = jobStarted(parent);
 
-	// if we cannot check, assume everything is fine
-	bool rval = true;
+    // if we cannot check, assume everything is fine
+    bool rval = true;
 
-	if (partition().fileSystem().supportCheck() == FileSystem::cmdSupportFileSystem)
-		rval = partition().fileSystem().check(*report, partition().deviceNode());
+    if (partition().fileSystem().supportCheck() == FileSystem::cmdSupportFileSystem)
+        rval = partition().fileSystem().check(*report, partition().deviceNode());
 
-	jobFinished(*report, rval);
+    jobFinished(*report, rval);
 
-	return rval;
+    return rval;
 }
 
 QString CheckFileSystemJob::description() const
 {
-	return xi18nc("@info/plain", "Check file system on partition <filename>%1</filename>", partition().deviceNode());
+    return xi18nc("@info/plain", "Check file system on partition <filename>%1</filename>", partition().deviceNode());
 }

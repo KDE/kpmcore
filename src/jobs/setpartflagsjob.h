@@ -31,33 +31,43 @@ class QString;
 
 /** Set a Partition's flags.
 
-	Set the Partition flags for a given Partition on a given Device.
+    Set the Partition flags for a given Partition on a given Device.
 
-	@author Volker Lanz <vl@fidra.de>
+    @author Volker Lanz <vl@fidra.de>
 */
 class SetPartFlagsJob : public Job
 {
-	public:
-		SetPartFlagsJob(Device& d, Partition& p, PartitionTable::Flags flags);
+public:
+    SetPartFlagsJob(Device& d, Partition& p, PartitionTable::Flags flags);
 
-	public:
-		virtual bool run(Report& parent);
-		virtual qint32 numSteps() const;
-		virtual QString description() const;
+public:
+    virtual bool run(Report& parent);
+    virtual qint32 numSteps() const;
+    virtual QString description() const;
 
-	protected:
-		Device& device() { return m_Device; }
-		const Device& device() const { return m_Device; }
+protected:
+    Device& device() {
+        return m_Device;
+    }
+    const Device& device() const {
+        return m_Device;
+    }
 
-		Partition& partition() { return m_Partition; }
-		const Partition& partition() const { return m_Partition; }
+    Partition& partition() {
+        return m_Partition;
+    }
+    const Partition& partition() const {
+        return m_Partition;
+    }
 
-		PartitionTable::Flags flags() const { return m_Flags; }
+    PartitionTable::Flags flags() const {
+        return m_Flags;
+    }
 
-	private:
-		Device& m_Device;
-		Partition& m_Partition;
-		PartitionTable::Flags m_Flags;
+private:
+    Device& m_Device;
+    Partition& m_Partition;
+    PartitionTable::Flags m_Flags;
 };
 
 #endif

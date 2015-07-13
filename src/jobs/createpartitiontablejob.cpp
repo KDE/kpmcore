@@ -29,39 +29,37 @@
 #include <KLocalizedString>
 
 /** Creates a new CreatePartitionTableJob
-	@param d the Device a new PartitionTable is to be created on
+    @param d the Device a new PartitionTable is to be created on
 */
 CreatePartitionTableJob::CreatePartitionTableJob(Device& d) :
-	Job(),
-	m_Device(d)
+    Job(),
+    m_Device(d)
 {
 }
 
 bool CreatePartitionTableJob::run(Report& parent)
 {
-	bool rval = false;
+    bool rval = false;
 
-	Report* report = jobStarted(parent);
+    Report* report = jobStarted(parent);
 
-	CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-	if (backendDevice != NULL)
-	{
-		Q_ASSERT(device().partitionTable());
+    if (backendDevice != NULL) {
+        Q_ASSERT(device().partitionTable());
 
-		rval = backendDevice->createPartitionTable(*report, *device().partitionTable());
+        rval = backendDevice->createPartitionTable(*report, *device().partitionTable());
 
-		delete backendDevice;
-	}
-	else
-		report->line() << xi18nc("@info/plain", "Creating partition table failed: Could not open device <filename>%1</filename>.", device().deviceNode());
+        delete backendDevice;
+    } else
+        report->line() << xi18nc("@info/plain", "Creating partition table failed: Could not open device <filename>%1</filename>.", device().deviceNode());
 
-	jobFinished(*report, rval);
+    jobFinished(*report, rval);
 
-	return rval;
+    return rval;
 }
 
 QString CreatePartitionTableJob::description() const
 {
-	return xi18nc("@info/plain", "Create new partition table on device <filename>%1</filename>", device().deviceNode());
+    return xi18nc("@info/plain", "Create new partition table on device <filename>%1</filename>", device().deviceNode());
 }

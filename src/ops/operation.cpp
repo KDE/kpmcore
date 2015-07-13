@@ -32,148 +32,142 @@
 #include <KLocalizedString>
 
 Operation::Operation() :
-	m_Status(StatusNone),
-	m_Jobs(),
-	m_ProgressBase(0)
+    m_Status(StatusNone),
+    m_Jobs(),
+    m_ProgressBase(0)
 {
 }
 
 Operation::~Operation()
 {
-	qDeleteAll(jobs());
-	jobs().clear();
+    qDeleteAll(jobs());
+    jobs().clear();
 }
 
 void Operation::insertPreviewPartition(Device& device, Partition& p)
 {
-	Q_ASSERT(device.partitionTable());
+    Q_ASSERT(device.partitionTable());
 
-	device.partitionTable()->removeUnallocated();
+    device.partitionTable()->removeUnallocated();
 
-	p.parent()->insert(&p);
+    p.parent()->insert(&p);
 
-	device.partitionTable()->updateUnallocated(device);
+    device.partitionTable()->updateUnallocated(device);
 }
 
 void Operation::removePreviewPartition(Device& device, Partition& p)
 {
-	Q_ASSERT(device.partitionTable());
+    Q_ASSERT(device.partitionTable());
 
-	if (p.parent()->remove(&p))
-		device.partitionTable()->updateUnallocated(device);
-	else
-		qWarning() << "failed to remove partition " << p.deviceNode() << " at " << &p << " from preview.";
+    if (p.parent()->remove(&p))
+        device.partitionTable()->updateUnallocated(device);
+    else
+        qWarning() << "failed to remove partition " << p.deviceNode() << " at " << &p << " from preview.";
 }
 
 /** @return text describing the Operation's current status */
 QString Operation::statusText() const
 {
-	static const QString s[] =
-	{
-		i18nc("@info:progress operation", "None"),
-		i18nc("@info:progress operation", "Pending"),
-		i18nc("@info:progress operation", "Running"),
-		i18nc("@info:progress operation", "Success"),
-		i18nc("@info:progress operation", "Warning"),
-		i18nc("@info:progress operation", "Error")
-	};
+    static const QString s[] = {
+        i18nc("@info:progress operation", "None"),
+        i18nc("@info:progress operation", "Pending"),
+        i18nc("@info:progress operation", "Running"),
+        i18nc("@info:progress operation", "Success"),
+        i18nc("@info:progress operation", "Warning"),
+        i18nc("@info:progress operation", "Error")
+    };
 
-	Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(s) / sizeof(s[0]));
+    Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(s) / sizeof(s[0]));
 
-	if (status() < 0 || static_cast<quint32>(status()) >= sizeof(s) / sizeof(s[0]))
-	{
-		qWarning() << "invalid status " << status();
-		return QString();
-	}
+    if (status() < 0 || static_cast<quint32>(status()) >= sizeof(s) / sizeof(s[0])) {
+        qWarning() << "invalid status " << status();
+        return QString();
+    }
 
-	return s[status()];
+    return s[status()];
 }
 
 /** @return icon for the current Operation's status */
 QIcon Operation::statusIcon() const
 {
-	static const QString icons[] =
-	{
-		QString(),
-		QStringLiteral("dialog-information"),
-		QStringLiteral("dialog-information"),
-		QStringLiteral("dialog-ok"),
-		QStringLiteral("dialog-warning"),
-		QStringLiteral("dialog-error")
-	};
+    static const QString icons[] = {
+        QString(),
+        QStringLiteral("dialog-information"),
+        QStringLiteral("dialog-information"),
+        QStringLiteral("dialog-ok"),
+        QStringLiteral("dialog-warning"),
+        QStringLiteral("dialog-error")
+    };
 
-	Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(icons) / sizeof(icons[0]));
+    Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(icons) / sizeof(icons[0]));
 
-	if (status() < 0 || static_cast<quint32>(status()) >= sizeof(icons) / sizeof(icons[0]))
-	{
-		qWarning() << "invalid status " << status();
-		return QIcon();
-	}
+    if (status() < 0 || static_cast<quint32>(status()) >= sizeof(icons) / sizeof(icons[0])) {
+        qWarning() << "invalid status " << status();
+        return QIcon();
+    }
 
-	if (status() == StatusNone)
-		return QIcon();
+    if (status() == StatusNone)
+        return QIcon();
 
-	return QIcon::fromTheme(icons[status()]).pixmap(IconSize(KIconLoader::Small));
+    return QIcon::fromTheme(icons[status()]).pixmap(IconSize(KIconLoader::Small));
 }
 
 void Operation::addJob(Job* job)
 {
-	if (job)
-	{
-		jobs().append(job);
-		connect(job, SIGNAL(started()), SLOT(onJobStarted()));
-		connect(job, SIGNAL(progress(int)), SIGNAL(progress(int)));
-		connect(job, SIGNAL(finished()), SLOT(onJobFinished()));
-	}
+    if (job) {
+        jobs().append(job);
+        connect(job, SIGNAL(started()), SLOT(onJobStarted()));
+        connect(job, SIGNAL(progress(int)), SIGNAL(progress(int)));
+        connect(job, SIGNAL(finished()), SLOT(onJobFinished()));
+    }
 }
 
 void Operation::onJobStarted()
 {
-	Job* job = qobject_cast<Job*>(sender());
+    Job* job = qobject_cast<Job*>(sender());
 
-	if (job)
-		emit jobStarted(job, this);
+    if (job)
+        emit jobStarted(job, this);
 }
 
 void Operation::onJobFinished()
 {
-	Job* job = qobject_cast<Job*>(sender());
+    Job* job = qobject_cast<Job*>(sender());
 
-	if (job)
-	{
-		setProgressBase(progressBase() + job->numSteps());
-		emit jobFinished(job, this);
-	}
+    if (job) {
+        setProgressBase(progressBase() + job->numSteps());
+        emit jobFinished(job, this);
+    }
 }
 
 /** @return total number of steps to run this Operation */
 qint32 Operation::totalProgress() const
 {
-	qint32 result = 0;
+    qint32 result = 0;
 
-	foreach (const Job* job, jobs())
-		result += job->numSteps();
+    foreach(const Job * job, jobs())
+    result += job->numSteps();
 
-	return result;
+    return result;
 }
 
 /** Execute the operation
-	@param parent the parent Report to create a new child for
-	@return true on success
+    @param parent the parent Report to create a new child for
+    @return true on success
 */
 bool Operation::execute(Report& parent)
 {
-	bool rval = false;
+    bool rval = false;
 
-	Report* report = parent.newChild(description());
+    Report* report = parent.newChild(description());
 
-	foreach (Job* job, jobs())
-		if (!(rval = job->run(*report)))
-			break;
+    foreach(Job * job, jobs())
+    if (!(rval = job->run(*report)))
+        break;
 
-	setStatus(rval ? StatusFinishedSuccess : StatusError);
+    setStatus(rval ? StatusFinishedSuccess : StatusError);
 
-	report->setStatus(i18nc("@info/plain status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
+    report->setStatus(i18nc("@info/plain status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
 
-	return rval;
+    return rval;
 }

@@ -31,26 +31,26 @@ class QString;
 
 namespace FS
 {
-	/** A fat32 file system.
+/** A fat32 file system.
 
-		Basically the same as a fat16 file system.
+    Basically the same as a fat16 file system.
 
-		@author Volker Lanz <vl@fidra.de>
-	 */
-	class LIBKPMCORE_EXPORT fat32 : public fat16
-	{
-		public:
-			fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    @author Volker Lanz <vl@fidra.de>
+ */
+class LIBKPMCORE_EXPORT fat32 : public fat16
+{
+public:
+    fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
-		public:
-			static void init() {}
+public:
+    static void init() {}
 
-			virtual bool create(Report& report, const QString& deviceNode) const;
-			virtual bool updateUUID(Report& report, const QString& deviceNode) const;
+    virtual bool create(Report& report, const QString& deviceNode) const;
+    virtual bool updateUUID(Report& report, const QString& deviceNode) const;
 
-			virtual qint64 minCapacity() const;
-			virtual qint64 maxCapacity() const;
-	};
+    virtual qint64 minCapacity() const;
+    virtual qint64 maxCapacity() const;
+};
 }
 
 #endif
