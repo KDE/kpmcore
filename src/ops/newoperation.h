@@ -61,8 +61,7 @@ class LIBKPMCORE_EXPORT NewOperation : public Operation
 		virtual bool targets(const Partition& p) const;
 
 		static bool canCreateNew(const Partition* p);
-        static Partition* createNew(const Partition& cloneFrom,
-                                    FileSystem::Type type);
+		static Partition* createNew(const Partition& cloneFrom, FileSystem::Type type);
 
 	protected:
 		Partition& newPartition() { return *m_NewPartition; }

@@ -120,14 +120,14 @@ bool NewOperation::canCreateNew(const Partition* p)
 }
 
 Partition* NewOperation::createNew(const Partition& cloneFrom,
-                                   FileSystem::Type type)
+								   FileSystem::Type type)
 {
 	Partition* p = new Partition(cloneFrom);
 
 	p->deleteFileSystem();
-    p->setFileSystem(FileSystemFactory::create(type,
-                                               p->firstSector(),
-                                               p->lastSector()));
+	p->setFileSystem(FileSystemFactory::create(type,
+											   p->firstSector(),
+											   p->lastSector()));
 	p->setState(Partition::StateNew);
 	p->setPartitionPath(QString());
 
