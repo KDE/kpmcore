@@ -119,11 +119,15 @@ bool NewOperation::canCreateNew(const Partition* p)
 	return p != NULL && p->roles().has(PartitionRole::Unallocated);
 }
 
-Partition* NewOperation::createNew(const Partition& cloneFrom)
+Partition* NewOperation::createNew(const Partition& cloneFrom,
+                                   FileSystem::Type type)
 {
 	Partition* p = new Partition(cloneFrom);
 
 	p->deleteFileSystem();
+    p->setFileSystem(FileSystemFactory::create(type,
+                                               p->firstSector(),
+                                               p->lastSector()));
 	p->setState(Partition::StateNew);
 	p->setPartitionPath(QString());
 
