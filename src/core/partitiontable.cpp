@@ -338,9 +338,8 @@ void PartitionTable::updateUnallocated(const Device& d)
 
 qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
 {
-    if (t == msdos && Config::useCylinderAlignment())
-        return d.sectorsPerTrack();
-
+    Q_UNUSED(t)
+    Q_UNUSED(d)
     return Config::sectorAlignment();
 }
 
