@@ -32,6 +32,7 @@ private:
     PartitionAlignment();
 
 public:
+
     static bool isAligned(const Device& d, const Partition& p, bool quiet = false);
     static bool isAligned(const Device& d, const Partition& p, qint64 newFirst, qint64 newLast, bool quiet);
 
@@ -41,11 +42,22 @@ public:
 
     static qint64 sectorAlignment(const Device& d);
 
+    /** Sets the sector alignment multiplier for ALL devices henceforth except
+     *  for devices that have a disklabel which aligns to cylinder boundaries.
+     *  The default is 2048.
+     *  This should probably be only set once on startup if necessary and not
+     *  changed afterwards.
+     */
+    static void setSectorAlignment( int sectorAlignment );
+
     static qint64 firstDelta(const Device& d, const Partition& p, qint64 s);
 
     static qint64 lastDelta(const Device& d, const Partition& p, qint64 s);
 
     static bool isLengthAligned(const Device& d, const Partition& p);
+
+private:
+    static int s_sectorAlignment;
 };
 
 #endif

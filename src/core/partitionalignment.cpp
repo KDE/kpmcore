@@ -29,6 +29,8 @@
 
 #include <config.h>
 
+int PartitionAlignment::s_sectorAlignment = 2048;
+
 qint64 PartitionAlignment::firstDelta(const Device& d, const Partition& p, qint64 s)
 {
     if (d.partitionTable()->type() == PartitionTable::msdos) {
@@ -93,7 +95,12 @@ bool PartitionAlignment::isAligned(const Device& d, const Partition& p, qint64 n
 */
 qint64 PartitionAlignment::sectorAlignment(const Device& d)
 {
-    return d.partitionTable()->type() == PartitionTable::msdos ? d.cylinderSize() : Config::sectorAlignment();
+    return s_sectorAlignment;
+}
+
+void PartitionAlignment::setSectorAlignment(int sectorAlignment)
+{
+    s_sectorAlignment = sectorAlignment;
 }
 
 qint64 PartitionAlignment::alignedFirstSector(const Device& d, const Partition& p, qint64 s, qint64 min_first, qint64 max_first, qint64 min_length, qint64 max_length)
