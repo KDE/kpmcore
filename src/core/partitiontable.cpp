@@ -339,8 +339,7 @@ void PartitionTable::updateUnallocated(const Device& d)
 qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
 {
     Q_UNUSED(t)
-    Q_UNUSED(d)
-    return Config::sectorAlignment();
+    return PartitionAlignment::sectorAlignment(d);
 }
 
 qint64 PartitionTable::defaultLastUsable(const Device& d, TableType t)
@@ -418,15 +417,15 @@ bool PartitionTable::tableTypeIsReadOnly(TableType l)
 }
 
 /** Simple heuristic to determine if the PartitionTable is sector aligned (i.e.
-    if its Partitions begin at sectors evenly divisable by Config::sectorAlignment().
+    if its Partitions begin at sectors evenly divisable by PartitionAlignment::sectorAlignment().
     @return true if is sector aligned, otherwise false
 */
 bool PartitionTable::isSectorBased(const Device& d) const
 {
     if (type() == PartitionTable::msdos) {
-        // return configured default for empty partition tables
+        // the default for empty partition tables is sector based
         if (numPrimaries() == 0)
-            return !Config::useCylinderAlignment();
+            return true;
 
         quint32 numCylinderAligned = 0;
         quint32 numSectorAligned = 0;
@@ -434,7 +433,7 @@ bool PartitionTable::isSectorBased(const Device& d) const
         // see if we have more cylinder aligned partitions than sector
         // aligned ones.
         foreach(const Partition * p, children())
-        if (p->firstSector() % Config::sectorAlignment() == 0)
+        if (p->firstSector() % PartitionAlignment::sectorAlignment(d) == 0)
             numSectorAligned++;
         else if (p->firstSector() % d.cylinderSize() == 0)
             numCylinderAligned++;
