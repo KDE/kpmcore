@@ -21,7 +21,12 @@
 
 #include "../util/libpartitionmanagerexport.h"
 
+#include "../fs/filesystem.h"
 #include "partwidgetbase.h"
+
+#include <QColor>
+
+#include <array>
 
 class Partition;
 
@@ -55,6 +60,8 @@ public:
         return m_Partition;    /**< @return the widget's Partition */
     }
 
+    void setFileSystemColorCode( const std::array< QColor, FileSystem::__lastType >& colorCode );
+
 protected:
     void paintEvent(QPaintEvent* event);
     void resizeEvent(QResizeEvent* event);
@@ -66,6 +73,7 @@ protected:
 private:
     const Partition* m_Partition;
     bool m_Active;
+    std::array< QColor, FileSystem::__lastType > m_fileSystemColorCode;
 };
 
 #endif

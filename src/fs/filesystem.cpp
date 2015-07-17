@@ -23,6 +23,37 @@
 #include <blkid/blkid.h>
 #include <KLocalizedString>
 
+
+const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode =
+{
+    QColor( 220,205,175 ),
+    QColor( 187,249,207 ),
+    QColor( 102,121,150 ),
+    QColor( 122,145,180 ),
+    QColor( 143,170,210 ),
+    QColor( 155,155,130 ),
+    QColor( 204,179,215 ),
+    QColor( 229,201,240 ),
+    QColor( 244,214,255 ),
+    QColor( 216,220,135 ),
+    QColor( 251,255,157 ),
+    QColor( 200,255,254 ),
+    QColor( 137,200,198 ),
+    QColor( 210,136,142 ),
+    QColor( 240,165,171 ),
+    QColor( 151,220,134 ),
+    QColor( 220,205,175 ),
+    QColor( 173,205,255 ),
+    QColor( 176,155,185 ),
+    QColor( 170,30,77 ),
+    QColor( 96,140,85 ),
+    QColor( 33,137,108 ),
+    QColor( 250,230,255 ),
+    QColor( 242,155,104 ),
+    QColor( 160,210,180 )
+};
+
+
 /** Creates a new FileSystem object
     @param firstsector the first sector used by this FileSystem on the Device
     @param lastsector the last sector used by this FileSystem on the Device

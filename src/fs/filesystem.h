@@ -21,10 +21,13 @@
 #include "../util/libpartitionmanagerexport.h"
 
 #include <qglobal.h>
+#include <QColor>
 #include <QStringList>
 #include <QString>
 #include <QList>
 #include <QUrl>
+
+#include <array>
 
 class Device;
 class Report;
@@ -89,6 +92,8 @@ public:
         cmdSupportFileSystem = 2,       /**< supported by some external command */
         cmdSupportBackend = 4           /**< supported by the backend */
     };
+
+    static const std::array< QColor, __lastType > defaultColorCode;
 
     Q_DECLARE_FLAGS(CommandSupportTypes, CommandSupportType)
 

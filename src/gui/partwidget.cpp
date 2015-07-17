@@ -39,6 +39,7 @@ PartWidget::PartWidget(QWidget* parent, const Partition* p) :
 {
     setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
     init(p);
+    m_fileSystemColorCode = FileSystem::defaultColorCode;
 }
 
 void PartWidget::init(const Partition* p)
@@ -72,6 +73,12 @@ void PartWidget::updateChildren()
     }
 }
 
+void PartWidget::setFileSystemColorCode(const std::array< QColor, FileSystem::__lastType >& colorCode)
+{
+    m_fileSystemColorCode = colorCode;
+    repaint();
+}
+
 void PartWidget::resizeEvent(QResizeEvent*)
 {
     if (partition())
@@ -95,11 +102,13 @@ void PartWidget::paintEvent(QPaintEvent*)
     painter.setRenderHints(QPainter::Antialiasing);
 
     if (partition()->roles().has(PartitionRole::Extended)) {
-        drawGradient(&painter, activeColor(Config::fileSystemColorCode(partition()->fileSystem().type())), QRect(0, 0, width(), height()));
+        drawGradient(&painter, activeColor(
+                         m_fileSystemColorCode[ partition()->fileSystem().type() ]),
+                     QRect(0, 0, width(), height()));
         return;
     }
 
-    const QColor base = activeColor(Config::fileSystemColorCode(partition()->fileSystem().type()));
+    const QColor base = activeColor(m_fileSystemColorCode[ partition()->fileSystem().type() ]);
 
     if (!partition()->roles().has(PartitionRole::Unallocated)) {
         const QColor dark = base.darker(105);
