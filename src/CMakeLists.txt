@@ -38,15 +38,11 @@ file(GLOB kpmcore_UIFILES config/*.ui)
 
 ki18n_wrap_ui(kpmcore_SRCS ${kpmcore_UIFILES})
 
-kconfig_add_kcfg_files(kpmcore_SRCS config.kcfgc)
-
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore
     ${UUID_LIBRARIES}
     ${BLKID_LIBRARIES}
     ${LIBATASMART_LIBRARIES}
-    KF5::ConfigCore
-    KF5::ConfigGui
     KF5::I18n
     KF5::IconThemes
     KF5::KIOCore
