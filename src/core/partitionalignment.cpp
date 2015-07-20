@@ -95,6 +95,7 @@ bool PartitionAlignment::isAligned(const Device& d, const Partition& p, qint64 n
 */
 qint64 PartitionAlignment::sectorAlignment(const Device& d)
 {
+    Q_UNUSED(d)
     return s_sectorAlignment;
 }
 
