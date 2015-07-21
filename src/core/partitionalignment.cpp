@@ -27,8 +27,6 @@
 
 #include <KLocalizedString>
 
-#include <config.h>
-
 int PartitionAlignment::s_sectorAlignment = 2048;
 
 qint64 PartitionAlignment::firstDelta(const Device& d, const Partition& p, qint64 s)

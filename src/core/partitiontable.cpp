@@ -34,8 +34,6 @@
 #include <QFile>
 #include <QTextStream>
 
-#include <config.h>
-
 /** Creates a new PartitionTable object with type MSDOS
     @param type name of the PartitionTable type (e.g. "msdos" or "gpt")
 */

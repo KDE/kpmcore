@@ -17,8 +17,6 @@
 
 #include "core/copysourceshred.h"
 
-#include <config.h>
-
 /** Constructs a CopySourceShred with the given @p size
     @param s the size the copy source will (pretend to) have
     @param sectorsize the sectorsize the copy source will (pretend to) have

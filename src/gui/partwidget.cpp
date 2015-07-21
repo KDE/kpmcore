@@ -26,8 +26,6 @@
 #include <QApplication>
 #include <QFontDatabase>
 
-#include <config.h>
-
 /** Creates a new PartWidget
     @param parent pointer to the parent widget
     @param p pointer to the Partition this widget will show. must not be NULL.
