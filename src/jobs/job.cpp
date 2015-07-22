@@ -94,9 +94,6 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
     if (rval && lastBlock > 0) {
         Q_ASSERT(lastBlock < blockSize);
 
-        if (lastBlock >= blockSize)
-            qWarning() << "lastBlock: " << lastBlock << ", blockSize: " << blockSize;
-
         const qint64 lastBlockReadOffset = copyDir > 0 ? readOffset + blockSize * blocksCopied : source.firstSector();
         const qint64 lastBlockWriteOffset = copyDir > 0 ? writeOffset + blockSize * blocksCopied : target.firstSector();
 
