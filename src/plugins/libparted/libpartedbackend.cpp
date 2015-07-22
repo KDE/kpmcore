@@ -143,7 +143,9 @@ static quint64 lastUsableSector(const Device& d)
     PedDevice* pedDevice = ped_device_get(d.deviceNode().toLatin1().constData());
     PedDisk* pedDisk = pedDevice ? ped_disk_new(pedDevice) : NULL;
 
-    quint64 rval = pedDisk->dev->bios_geom.sectors * pedDisk->dev->bios_geom.heads * pedDisk->dev->bios_geom.cylinders - 1;
+    quint64 rval = static_cast< quint64 >( pedDisk->dev->bios_geom.sectors ) *
+                   pedDisk->dev->bios_geom.heads *
+                   pedDisk->dev->bios_geom.cylinders - 1;
 
     if (pedDisk && strcmp(pedDisk->type->name, "gpt") == 0) {
         GPTDiskData* gpt_disk_data = reinterpret_cast<GPTDiskData*>(pedDisk->disk_specific);
