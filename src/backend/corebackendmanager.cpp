@@ -28,15 +28,15 @@
 #include <KServiceTypeTrader>
 
 CoreBackendManager::CoreBackendManager() :
-    m_Backend(NULL)
+    m_Backend(nullptr)
 {
 }
 
 CoreBackendManager* CoreBackendManager::self()
 {
-    static CoreBackendManager* instance = NULL;
+    static CoreBackendManager* instance = nullptr;
 
-    if (instance == NULL)
+    if (instance == nullptr)
         instance = new CoreBackendManager;
 
     return instance;
@@ -57,8 +57,8 @@ bool CoreBackendManager::load(const QString& name)
 
     KPluginFactory* factory = loader.factory();
 
-    if (factory != NULL) {
-        m_Backend = factory->create<CoreBackend>(NULL);
+    if (factory != nullptr) {
+        m_Backend = factory->create<CoreBackend>(nullptr);
 
         QString id = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
                      .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Id")).toString();
@@ -80,5 +80,5 @@ bool CoreBackendManager::load(const QString& name)
 void CoreBackendManager::unload()
 {
     delete m_Backend;
-    m_Backend = NULL;
+    m_Backend = nullptr;
 }

@@ -31,7 +31,7 @@
     @param args the arguments to pass to the command
 */
 ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args) :
-    m_Report(NULL),
+    m_Report(nullptr),
     m_ExitCode(-1),
     m_Output()
 {
@@ -60,7 +60,7 @@ ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStri
     @param args the vector of the arguments to pass to the commands
 */
 ExternalCommand::ExternalCommand(const std::vector<QString> cmd, const std::vector<QStringList> args) :
-    m_Report(NULL),
+    m_Report(nullptr),
     m_Command(cmd),
     m_Args(args),
     m_ExitCode(-1),

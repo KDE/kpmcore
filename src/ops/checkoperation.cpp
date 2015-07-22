@@ -60,12 +60,12 @@ QString CheckOperation::description() const
 }
 
 /** Can a Partition be checked?
-    @param p the Partition in question, may be NULL.
+    @param p the Partition in question, may be nullptr.
     @return true if @p p can be checked.
 */
 bool CheckOperation::canCheck(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     if (p->isMounted())

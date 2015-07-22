@@ -32,7 +32,7 @@
 CopyTargetDevice::CopyTargetDevice(Device& d, qint64 firstsector, qint64 lastsector) :
     CopyTarget(),
     m_Device(d),
-    m_BackendDevice(NULL),
+    m_BackendDevice(nullptr),
     m_FirstSector(firstsector),
     m_LastSector(lastsector)
 {
@@ -50,7 +50,7 @@ CopyTargetDevice::~CopyTargetDevice()
 bool CopyTargetDevice::open()
 {
     m_BackendDevice = CoreBackendManager::self()->backend()->openDeviceExclusive(device().deviceNode());
-    return m_BackendDevice != NULL;
+    return m_BackendDevice != nullptr;
 }
 
 /** @return the Device's sector size */

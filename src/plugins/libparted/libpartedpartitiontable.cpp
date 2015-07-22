@@ -37,13 +37,13 @@
 LibPartedPartitionTable::LibPartedPartitionTable(PedDevice* device) :
     CoreBackendPartitionTable(),
     m_PedDevice(device),
-    m_PedDisk(NULL)
+    m_PedDisk(nullptr)
 {
 }
 
 LibPartedPartitionTable::~LibPartedPartitionTable()
 {
-    if (m_PedDisk != NULL)
+    if (m_PedDisk != nullptr)
         ped_disk_destroy(m_PedDisk);
 }
 
@@ -51,7 +51,7 @@ bool LibPartedPartitionTable::open()
 {
     m_PedDisk = ped_disk_new(pedDevice());
 
-    return m_PedDisk != NULL;
+    return m_PedDisk != nullptr;
 }
 
 bool LibPartedPartitionTable::commit(quint32 timeout)
@@ -61,7 +61,7 @@ bool LibPartedPartitionTable::commit(quint32 timeout)
 
 bool LibPartedPartitionTable::commit(PedDisk* pd, quint32 timeout)
 {
-    if (pd == NULL)
+    if (pd == nullptr)
         return false;
 
     bool rval = ped_disk_commit_to_dev(pd);
@@ -91,8 +91,8 @@ CoreBackendPartition* LibPartedPartitionTable::getExtendedPartition()
 {
     PedPartition* pedPartition = ped_disk_extended_partition(pedDisk());
 
-    if (pedPartition == NULL)
-        return NULL;
+    if (pedPartition == nullptr)
+        return nullptr;
 
     return new LibPartedPartition(pedPartition);
 }
@@ -101,8 +101,8 @@ CoreBackendPartition* LibPartedPartitionTable::getPartitionBySector(qint64 secto
 {
     PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk(), sector);
 
-    if (pedPartition == NULL)
-        return NULL;
+    if (pedPartition == nullptr)
+        return nullptr;
 
     return new LibPartedPartition(pedPartition);
 }
@@ -146,7 +146,7 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
 
     QString rval = QString();
 
-    // According to libParted docs, PedPartitionType can be "NULL if unknown". That's obviously wrong,
+    // According to libParted docs, PedPartitionType can be "nullptr if unknown". That's obviously wrong,
     // it's a typedef for an enum. So let's use something the libparted devs will hopefully never
     // use...
     PedPartitionType pedType = static_cast<PedPartitionType>(0xffffffff);
@@ -163,22 +163,22 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
         return QString();
     }
 
-    PedFileSystemType* pedFsType = (partition.roles().has(PartitionRole::Extended) || partition.fileSystem().type() == FileSystem::Unformatted) ? NULL : getPedFileSystemType(partition.fileSystem().type());
+    PedFileSystemType* pedFsType = (partition.roles().has(PartitionRole::Extended) || partition.fileSystem().type() == FileSystem::Unformatted) ? nullptr : getPedFileSystemType(partition.fileSystem().type());
 
     PedPartition* pedPartition = ped_partition_new(pedDisk(), pedType, pedFsType, partition.firstSector(), partition.lastSector());
 
-    if (pedPartition == NULL) {
+    if (pedPartition == nullptr) {
         report.line() << xi18nc("@info/plain", "Failed to create new partition <filename>%1</filename>.", partition.deviceNode());
         return QString();
     }
 
-    PedConstraint* pedConstraint = NULL;
+    PedConstraint* pedConstraint = nullptr;
     PedGeometry* pedGeometry = ped_geometry_new(pedDevice(), partition.firstSector(), partition.length());
 
     if (pedGeometry)
         pedConstraint = ped_constraint_exact(pedGeometry);
 
-    if (pedConstraint == NULL) {
+    if (pedConstraint == nullptr) {
         report.line() << i18nc("@info/plain", "Failed to create a new partition: could not get geometry for constraint.");
         return QString();
     }
@@ -281,7 +281,7 @@ bool LibPartedPartitionTable::resizeFileSystem(Report& report, const Partition& 
     if (PedGeometry* originalGeometry = ped_geometry_new(pedDevice(), partition.fileSystem().firstSector(), partition.fileSystem().length())) {
         if (PedFileSystem* pedFileSystem = ped_file_system_open(originalGeometry)) {
             if (PedGeometry* resizedGeometry = ped_geometry_new(pedDevice(), partition.fileSystem().firstSector(), newLength)) {
-                PedTimer* pedTimer = ped_timer_new(pedTimerHandler, NULL);
+                PedTimer* pedTimer = ped_timer_new(pedTimerHandler, nullptr);
                 rval = ped_file_system_resize(pedFileSystem, resizedGeometry, pedTimer);
                 ped_timer_destroy(pedTimer);
 
@@ -320,15 +320,15 @@ FileSystem::Type LibPartedPartitionTable::detectFileSystemBySector(Report& repor
 
 bool LibPartedPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
-    PedFileSystemType* pedFsType = (partition.roles().has(PartitionRole::Extended) || partition.fileSystem().type() == FileSystem::Unformatted) ? NULL : getPedFileSystemType(partition.fileSystem().type());
-    if (pedFsType == NULL) {
+    PedFileSystemType* pedFsType = (partition.roles().has(PartitionRole::Extended) || partition.fileSystem().type() == FileSystem::Unformatted) ? nullptr : getPedFileSystemType(partition.fileSystem().type());
+    if (pedFsType == nullptr) {
         report.line() << xi18nc("@info/plain", "Could not update the system type for partition <filename>%1</filename>.", partition.deviceNode());
         report.line() << xi18nc("@info/plain", "No file system defined.");
         return false;
     }
 
     PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk(), partition.firstSector());
-    if (pedPartition == NULL) {
+    if (pedPartition == nullptr) {
         report.line() << xi18nc("@info/plain", "Could not update the system type for partition <filename>%1</filename>.", partition.deviceNode());
         report.line() << xi18nc("@info/plain", "No partition found at sector %1.", partition.firstSector());
         return false;

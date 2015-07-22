@@ -97,14 +97,14 @@ bool PartitionTable::hasExtended() const
     return false;
 }
 
-/** @return pointer to the PartitionTable's extended Partition or NULL if none exists */
+/** @return pointer to the PartitionTable's extended Partition or nullptr if none exists */
 Partition* PartitionTable::extended() const
 {
     for (int i = 0; i < children().size(); i++)
         if (children()[i]->roles().has(PartitionRole::Extended))
             return children()[i];
 
-    return NULL;
+    return nullptr;
 }
 
 /** Gets valid PartitionRoles for a Partition
@@ -136,7 +136,7 @@ int PartitionTable::numPrimaries() const
 }
 
 /** Appends a Partition to this PartitionTable
-    @param partition pointer of the partition to append. Must not be NULL.
+    @param partition pointer of the partition to append. Must not be nullptr.
 */
 void PartitionTable::append(Partition* partition)
 {
@@ -213,7 +213,7 @@ bool PartitionTable::getUnallocatedRange(const Device& device, PartitionNode& pa
     if (!parent.isRoot()) {
         Partition* extended = dynamic_cast<Partition*>(&parent);
 
-        if (extended == NULL) {
+        if (extended == nullptr) {
             qWarning() << "extended is null. start: " << start << ", end: " << end << ", device: " << device.deviceNode();
             return false;
         }
@@ -236,7 +236,7 @@ bool PartitionTable::getUnallocatedRange(const Device& device, PartitionNode& pa
     @param parent the parent PartitionNode for the new Partition
     @param start the new Partition's start sector
     @param end the new Partition's end sector
-    @return pointer to the newly created Partition object or NULL if the Partition could not be created
+    @return pointer to the newly created Partition object or nullptr if the Partition could not be created
 */
 Partition* createUnallocated(const Device& device, PartitionNode& parent, qint64 start, qint64 end)
 {
@@ -246,7 +246,7 @@ Partition* createUnallocated(const Device& device, PartitionNode& parent, qint64
         r |= PartitionRole::Logical;
 
     if (!PartitionTable::getUnallocatedRange(device, parent, start, end))
-        return NULL;
+        return nullptr;
 
     return new Partition(&parent, device, PartitionRole(r), FileSystemFactory::create(FileSystem::Unknown, start, end), start, end, QString());
 }
@@ -256,7 +256,7 @@ Partition* createUnallocated(const Device& device, PartitionNode& parent, qint64
 */
 void PartitionTable::removeUnallocated(PartitionNode* p)
 {
-    Q_ASSERT(p != NULL);
+    Q_ASSERT(p != nullptr);
 
     qint32 i = 0;
 
@@ -298,7 +298,7 @@ void PartitionTable::removeUnallocated()
 */
 void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64 start) const
 {
-    Q_ASSERT(p != NULL);
+    Q_ASSERT(p != nullptr);
 
     qint64 lastEnd = start;
 
@@ -317,8 +317,8 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
 
     if (!p->isRoot()) {
         Partition* extended = dynamic_cast<Partition*>(p);
-        Q_ASSERT(extended != NULL);
-        parentEnd = (extended != NULL) ? extended->lastSector() : -1;
+        Q_ASSERT(extended != nullptr);
+        parentEnd = (extended != nullptr) ? extended->lastSector() : -1;
     }
 
     if (parentEnd >= firstUsable())

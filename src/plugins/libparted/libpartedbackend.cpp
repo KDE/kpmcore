@@ -299,7 +299,7 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
     Q_ASSERT(pedDisk);
     Q_ASSERT(d.partitionTable());
 
-    PedPartition* pedPartition = NULL;
+    PedPartition* pedPartition = nullptr;
 
     KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
     mountPoints.append(KMountPoint::possibleMountPoints(KMountPoint::NeedRealDeviceName));
@@ -335,7 +335,7 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
         PartitionNode* parent = d.partitionTable()->findPartitionBySector(pedPartition->geom.start, PartitionRole(PartitionRole::Extended));
 
         // None found, so it's a primary in the device's partition table.
-        if (parent == NULL)
+        if (parent == nullptr)
             parent = d.partitionTable();
 
         const QString node = QString::fromUtf8(ped_partition_get_path(pedPartition));
@@ -385,9 +385,9 @@ Device* LibPartedBackend::scanDevice(const QString& device_node)
 {
     PedDevice* pedDevice = ped_device_get(device_node.toLocal8Bit().constData());
 
-    if (pedDevice == NULL) {
+    if (pedDevice == nullptr) {
         Log(Log::warning) << xi18nc("@info/plain", "Could not access device <filename>%1</filename>", device_node);
-        return NULL;
+        return nullptr;
     }
 
     Log(Log::information) << i18nc("@info/plain", "Device found: %1", QString::fromUtf8(pedDevice->model));
@@ -412,7 +412,7 @@ QList<Device*> LibPartedBackend::scanDevices()
     QList<Device*> result;
 
     ped_device_probe_all();
-    PedDevice* pedDevice = NULL;
+    PedDevice* pedDevice = nullptr;
     QVector<QString> path;
     quint32 totalDevices = 0;
     while (true) {
@@ -438,9 +438,9 @@ CoreBackendDevice* LibPartedBackend::openDevice(const QString& device_node)
 {
     LibPartedDevice* device = new LibPartedDevice(device_node);
 
-    if (device == NULL || !device->open()) {
+    if (device == nullptr || !device->open()) {
         delete device;
-        device = NULL;
+        device = nullptr;
     }
 
     return device;
@@ -450,9 +450,9 @@ CoreBackendDevice* LibPartedBackend::openDeviceExclusive(const QString& device_n
 {
     LibPartedDevice* device = new LibPartedDevice(device_node);
 
-    if (device == NULL || !device->openExclusive()) {
+    if (device == nullptr || !device->openExclusive()) {
         delete device;
-        device = NULL;
+        device = nullptr;
     }
 
     return device;
@@ -464,8 +464,8 @@ bool LibPartedBackend::closeDevice(CoreBackendDevice* core_device)
 }
 
 /** Detects the type of a FileSystem given a PedDevice and a PedPartition
-    @param pedDevice pointer to the pedDevice. Must not be NULL.
-    @param pedPartition pointer to the pedPartition. Must not be NULL
+    @param pedDevice pointer to the pedDevice. Must not be nullptr.
+    @param pedPartition pointer to the pedPartition. Must not be nullptr
     @return the detected FileSystem type (FileSystem::Unknown if not detected)
 */
 FileSystem::Type LibPartedBackend::detectFileSystem(PedPartition* pedPartition)
@@ -473,12 +473,12 @@ FileSystem::Type LibPartedBackend::detectFileSystem(PedPartition* pedPartition)
     FileSystem::Type rval = FileSystem::Unknown;
 
     blkid_cache cache;
-    char* pedPath = NULL;
+    char* pedPath = nullptr;
 
-    if (blkid_get_cache(&cache, NULL) == 0 && (pedPath = ped_partition_get_path(pedPartition))) {
+    if (blkid_get_cache(&cache, nullptr) == 0 && (pedPath = ped_partition_get_path(pedPartition))) {
         blkid_dev dev;
 
-        if ((dev = blkid_get_dev(cache, pedPath, BLKID_DEV_NORMAL)) != NULL) {
+        if ((dev = blkid_get_dev(cache, pedPath, BLKID_DEV_NORMAL)) != nullptr) {
             QString s = QString::fromUtf8(blkid_get_tag_value(cache, "TYPE", pedPath));
 
             if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
@@ -493,7 +493,7 @@ FileSystem::Type LibPartedBackend::detectFileSystem(PedPartition* pedPartition)
             else if (s == QStringLiteral("hfs")) rval = FileSystem::Hfs;
             else if (s == QStringLiteral("hfsplus")) rval = FileSystem::HfsPlus;
             else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
-            else if (s == QStringLiteral("vfat") && pedPartition->fs_type != NULL) {
+            else if (s == QStringLiteral("vfat") && pedPartition->fs_type != nullptr) {
                 // libblkid does not distinguish between fat16 and fat32, so we're still using libparted
                 // for those
                 if (strcmp(pedPartition->fs_type->name, "fat16") == 0)

@@ -51,9 +51,9 @@ CoreBackendPartitionTable* DummyDevice::openPartitionTable()
 {
     CoreBackendPartitionTable* ptable = new DummyPartitionTable();
 
-    if (ptable == NULL || !ptable->open()) {
+    if (ptable == nullptr || !ptable->open()) {
         delete ptable;
-        ptable = NULL;
+        ptable = nullptr;
     }
 
     return ptable;

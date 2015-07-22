@@ -28,11 +28,11 @@
 
 /** Creates a new PartWidget
     @param parent pointer to the parent widget
-    @param p pointer to the Partition this widget will show. must not be NULL.
+    @param p pointer to the Partition this widget will show. must not be nullptr.
 */
 PartWidget::PartWidget(QWidget* parent, const Partition* p) :
     PartWidgetBase(parent),
-    m_Partition(NULL),
+    m_Partition(nullptr),
     m_Active(false)
 {
     setFont(QFontDatabase::systemFont(QFontDatabase::SmallestReadableFont));
@@ -59,7 +59,7 @@ void PartWidget::updateChildren()
         foreach(QWidget * w, childWidgets()) {
             w->setVisible(false);
             w->deleteLater();
-            w->setParent(NULL);
+            w->setParent(nullptr);
         }
 
         foreach(const Partition * child, partition()->children()) {
@@ -90,7 +90,7 @@ QColor PartWidget::activeColor(const QColor& col) const
 
 void PartWidget::paintEvent(QPaintEvent*)
 {
-    if (partition() == NULL)
+    if (partition() == nullptr)
         return;
 
     const int usedPercentage = partition()->used() * 100 / partition()->capacity();

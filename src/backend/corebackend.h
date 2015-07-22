@@ -101,7 +101,7 @@ public:
     /**
       * Open a device for reading.
       * @param device_node The path of the device that is to be opened (e.g. /dev/sda)
-      * @return a pointer to a CoreBackendDevice or NULL if the open failed. If a pointer to
+      * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
       *         an instance is returned, it's the caller's responsibility to delete the
       *         object.
       */
@@ -110,7 +110,7 @@ public:
     /**
       * Open a device in exclusive mode for writing.
       * @param device_node The path of the device that is to be opened (e.g. /dev/sda)
-      * @return a pointer to a CoreBackendDevice or NULL if the open failed. If a pointer to
+      * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
       *         an instance is returned, it's the caller's responsibility to delete the
       *         object.
       */
@@ -118,7 +118,7 @@ public:
 
     /**
       * Close a CoreBackendDevice that has previously been opened.
-      * @param core_device Pointer to the CoreBackendDevice to be closed. Must not be NULL.
+      * @param core_device Pointer to the CoreBackendDevice to be closed. Must not be nullptr.
       * @return true if closing the CoreBackendDevice succeeded, otherwise false.
       *
       * This method does not delete the object.

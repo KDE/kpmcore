@@ -33,7 +33,7 @@
 
 /** Creates a new DeleteOperation
     @param d the Device to delete a Partition on
-    @param p pointer to the Partition to delete. May not be NULL
+    @param p pointer to the Partition to delete. May not be nullptr
 */
 DeleteOperation::DeleteOperation(Device& d, Partition* p, ShredAction shred) :
     Operation(),
@@ -103,12 +103,12 @@ void DeleteOperation::checkAdjustLogicalNumbers(Partition& p, bool undo)
 }
 
 /** Can a Partition be deleted?
-    @param p the Partition in question, may be NULL.
+    @param p the Partition in question, may be nullptr.
     @return true if @p p can be deleted.
 */
 bool DeleteOperation::canDelete(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     if (p->isMounted())

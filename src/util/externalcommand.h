@@ -83,7 +83,7 @@ public:
     }
 
     Report* report() {
-        return m_Report;    /**< @return pointer to the Report or NULL */
+        return m_Report;    /**< @return pointer to the Report or nullptr */
     }
 
 protected:

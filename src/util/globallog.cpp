@@ -19,9 +19,9 @@
 
 GlobalLog* GlobalLog::instance()
 {
-    static GlobalLog* p = NULL;
+    static GlobalLog* p = nullptr;
 
-    if (p == NULL)
+    if (p == nullptr)
         p = new GlobalLog();
 
     return p;

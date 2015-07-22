@@ -93,7 +93,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
 {
     NewOperation* newOp = dynamic_cast<NewOperation*>(currentOp);
 
-    if (newOp == NULL)
+    if (newOp == nullptr)
         return false;
 
     DeleteOperation* pushedDeleteOp = dynamic_cast<DeleteOperation*>(pushedOp);
@@ -108,7 +108,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
         Log() << i18nc("@info/plain", "Deleting a partition just created: Undoing the operation to create the partition.");
 
         delete pushedOp;
-        pushedOp = NULL;
+        pushedOp = nullptr;
 
         newOp->undo();
         delete operations().takeAt(operations().indexOf(newOp));
@@ -166,7 +166,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
         newOp->newPartition().fileSystem().setLabel(pushedLabelOp->newLabel());
 
         delete pushedOp;
-        pushedOp = NULL;
+        pushedOp = nullptr;
 
         return true;
     }
@@ -180,10 +180,10 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
         newOp->newPartition().setFileSystem(FileSystemFactory::cloneWithNewType(pushedCreateFileSystemOp->newFileSystem()->type(), *oldFs));
 
         delete oldFs;
-        oldFs = NULL;
+        oldFs = nullptr;
 
         delete pushedOp;
-        pushedOp = NULL;
+        pushedOp = nullptr;
 
         return true;
     }
@@ -193,7 +193,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
         Log() << i18nc("@info/plain", "Checking file systems is automatically done when creating them: No new operation required.");
 
         delete pushedOp;
-        pushedOp = NULL;
+        pushedOp = nullptr;
 
         return true;
     }
@@ -226,7 +226,7 @@ bool OperationStack::mergeCopyOperation(Operation*& currentOp, Operation*& pushe
 {
     CopyOperation* copyOp = dynamic_cast<CopyOperation*>(currentOp);
 
-    if (copyOp == NULL)
+    if (copyOp == nullptr)
         return false;
 
     DeleteOperation* pushedDeleteOp = dynamic_cast<DeleteOperation*>(pushedOp);
@@ -236,11 +236,11 @@ bool OperationStack::mergeCopyOperation(Operation*& currentOp, Operation*& pushe
     if (pushedDeleteOp && &copyOp->copiedPartition() == &pushedDeleteOp->deletedPartition()) {
         // If the copy operation didn't overwrite, but create a new partition, just remove the
         // copy operation, forget the delete and be done.
-        if (copyOp->overwrittenPartition() == NULL) {
+        if (copyOp->overwrittenPartition() == nullptr) {
             Log() << i18nc("@info/plain", "Deleting a partition just copied: Removing the copy.");
 
             delete pushedOp;
-            pushedOp = NULL;
+            pushedOp = nullptr;
         } else {
             Log() << i18nc("@info/plain", "Deleting a partition just copied over an existing partition: Removing the copy and deleting the existing partition.");
 
@@ -277,17 +277,17 @@ bool OperationStack::mergeRestoreOperation(Operation*& currentOp, Operation*& pu
 {
     RestoreOperation* restoreOp = dynamic_cast<RestoreOperation*>(currentOp);
 
-    if (restoreOp == NULL)
+    if (restoreOp == nullptr)
         return false;
 
     DeleteOperation* pushedDeleteOp = dynamic_cast<DeleteOperation*>(pushedOp);
 
     if (pushedDeleteOp && &restoreOp->restorePartition() == &pushedDeleteOp->deletedPartition()) {
-        if (restoreOp->overwrittenPartition() == NULL) {
+        if (restoreOp->overwrittenPartition() == nullptr) {
             Log() << i18nc("@info/plain", "Deleting a partition just restored: Removing the restore operation.");
 
             delete pushedOp;
-            pushedOp = NULL;
+            pushedOp = nullptr;
         } else {
             Log() << i18nc("@info/plain", "Deleting a partition just restored to an existing partition: Removing the restore operation and deleting the existing partition.");
 
@@ -316,7 +316,7 @@ bool OperationStack::mergePartFlagsOperation(Operation*& currentOp, Operation*& 
 {
     SetPartFlagsOperation* partFlagsOp = dynamic_cast<SetPartFlagsOperation*>(currentOp);
 
-    if (partFlagsOp == NULL)
+    if (partFlagsOp == nullptr)
         return false;
 
     SetPartFlagsOperation* pushedFlagsOp = dynamic_cast<SetPartFlagsOperation*>(pushedOp);
@@ -347,7 +347,7 @@ bool OperationStack::mergePartLabelOperation(Operation*& currentOp, Operation*& 
 {
     SetFileSystemLabelOperation* partLabelOp = dynamic_cast<SetFileSystemLabelOperation*>(currentOp);
 
-    if (partLabelOp == NULL)
+    if (partLabelOp == nullptr)
         return false;
 
     SetFileSystemLabelOperation* pushedLabelOp = dynamic_cast<SetFileSystemLabelOperation*>(pushedOp);
@@ -382,7 +382,7 @@ bool OperationStack::mergeCreatePartitionTableOperation(Operation*& currentOp, O
         Log() << i18nc("@info/plain", "Creating new partition table, discarding previous operation on device.");
 
         CreatePartitionTableOperation* createPartitionTableOp = dynamic_cast<CreatePartitionTableOperation*>(currentOp);
-        if (createPartitionTableOp != NULL)
+        if (createPartitionTableOp != nullptr)
             pushedCreatePartitionTableOp->setOldPartitionTable(createPartitionTableOp->oldPartitionTable());
 
         currentOp->undo();
@@ -401,7 +401,7 @@ bool OperationStack::mergeCreatePartitionTableOperation(Operation*& currentOp, O
     Operation. Callers <b>must not rely</b> on the pushed Operation to exist after
     calling OperationStack::push().
 
-    @param o Pointer to the Operation. Must not be NULL.
+    @param o Pointer to the Operation. Must not be nullptr.
 */
 void OperationStack::push(Operation* o)
 {
@@ -427,14 +427,14 @@ void OperationStack::push(Operation* o)
             break;
     }
 
-    if (o != NULL) {
+    if (o != nullptr) {
         Log() << i18nc("@info/plain", "Add operation: %1", o->description());
         operations().append(o);
         o->preview();
         o->setStatus(Operation::StatusPending);
     }
 
-    // emit operationsChanged even if o is NULL because it has been merged: merging might
+    // emit operationsChanged even if o is nullptr because it has been merged: merging might
     // have led to an existing operation changing.
     emit operationsChanged();
 }
@@ -473,14 +473,14 @@ void OperationStack::clearDevices()
 
 /** Finds a Device a Partition is on.
     @param p pointer to the Partition to find a Device for
-    @return the Device or NULL if none could be found
+    @return the Device or nullptr if none could be found
 */
 Device* OperationStack::findDeviceForPartition(const Partition* p)
 {
     QReadLocker lockDevices(&lock());
 
     foreach(Device * d, previewDevices()) {
-        if (d->partitionTable() == NULL)
+        if (d->partitionTable() == nullptr)
             continue;
 
         foreach(const Partition * part, d->partitionTable()->children()) {
@@ -493,11 +493,11 @@ Device* OperationStack::findDeviceForPartition(const Partition* p)
         }
     }
 
-    return NULL;
+    return nullptr;
 }
 
 /** Adds a Device to the OperationStack
-    @param d pointer to the Device to add. Must not be NULL.
+    @param d pointer to the Device to add. Must not be nullptr.
 */
 void OperationStack::addDevice(Device* d)
 {

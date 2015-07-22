@@ -45,7 +45,7 @@ bool CreatePartitionTableJob::run(Report& parent)
 
     CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-    if (backendDevice != NULL) {
+    if (backendDevice != nullptr) {
         Q_ASSERT(device().partitionTable());
 
         rval = backendDevice->createPartitionTable(*report, *device().partitionTable());

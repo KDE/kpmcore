@@ -38,17 +38,17 @@
 
 /** Creates a new NewOperation.
     @param d the Device to create a new Partition on
-    @param p pointer to the new Partition to create. May not be NULL.
+    @param p pointer to the new Partition to create. May not be nullptr.
 */
 NewOperation::NewOperation(Device& d, Partition* p) :
     Operation(),
     m_TargetDevice(d),
     m_NewPartition(p),
     m_CreatePartitionJob(new CreatePartitionJob(targetDevice(), newPartition())),
-    m_CreateFileSystemJob(NULL),
-    m_SetPartFlagsJob(NULL),
-    m_SetFileSystemLabelJob(NULL),
-    m_CheckFileSystemJob(NULL)
+    m_CreateFileSystemJob(nullptr),
+    m_SetPartFlagsJob(nullptr),
+    m_SetFileSystemLabelJob(nullptr),
+    m_CheckFileSystemJob(nullptr)
 {
     addJob(createPartitionJob());
 
@@ -109,12 +109,12 @@ QString NewOperation::description() const
 }
 
 /** Can a Partition be created somewhere?
-    @param p the Partition where a new Partition is to be created, may be NULL
+    @param p the Partition where a new Partition is to be created, may be nullptr
     @return true if a new Partition can be created in @p p
  */
 bool NewOperation::canCreateNew(const Partition* p)
 {
-    return p != NULL && p->roles().has(PartitionRole::Unallocated);
+    return p != nullptr && p->roles().has(PartitionRole::Unallocated);
 }
 
 Partition* NewOperation::createNew(const Partition& cloneFrom,

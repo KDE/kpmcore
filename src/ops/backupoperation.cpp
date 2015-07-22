@@ -49,12 +49,12 @@ QString BackupOperation::description() const
 }
 
 /** Can the given Partition be backed up?
-    @param p The Partition in question, may be NULL.
+    @param p The Partition in question, may be nullptr.
     @return true if @p p can be backed up.
 */
 bool BackupOperation::canBackup(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     if (p->isMounted())

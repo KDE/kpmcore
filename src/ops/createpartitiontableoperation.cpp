@@ -87,12 +87,12 @@ bool CreatePartitionTableOperation::execute(Report& parent)
 }
 
 /** Can a new partition table be created on a device?
-    @param device pointer to the device, can be NULL
+    @param device pointer to the device, can be nullptr
     @return true if a new partition table can be created on @p device
 */
 bool CreatePartitionTableOperation::canCreate(const Device* device)
 {
-    return device != NULL && (device->partitionTable() == NULL || !device->partitionTable()->isChildMounted());
+    return device != nullptr && (device->partitionTable() == nullptr || !device->partitionTable()->isChildMounted());
 }
 
 QString CreatePartitionTableOperation::description() const

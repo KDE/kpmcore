@@ -33,7 +33,7 @@
 #include <KIOCore/KMountPoint>
 
 /** Creates a new Partition object.
-    @param parent the Partition's parent. May be another Partition (for logicals) or a PartitionTable. Must not be NULL.
+    @param parent the Partition's parent. May be another Partition (for logicals) or a PartitionTable. Must not be nullptr.
     @param device the Device this Partition is on.
     @param role the Partition's role(s)
     @param fs pointer to the Partition's FileSystem object. The Partition object will take ownership of this.
@@ -340,7 +340,7 @@ bool Partition::unmount(Report& report)
 void Partition::deleteFileSystem()
 {
     delete m_FileSystem;
-    m_FileSystem = NULL;
+    m_FileSystem = nullptr;
 }
 
 void Partition::setPartitionPath(const QString& s)

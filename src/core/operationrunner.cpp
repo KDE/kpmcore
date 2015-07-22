@@ -31,7 +31,7 @@
 OperationRunner::OperationRunner(QObject* parent, OperationStack& ostack) :
     QThread(parent),
     m_OperationStack(ostack),
-    m_Report(NULL),
+    m_Report(nullptr),
     m_SuspendMutex(),
     m_Cancelling(false)
 {

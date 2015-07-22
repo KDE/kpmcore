@@ -24,7 +24,7 @@
 
 /** Tries to find the predecessor for a Partition.
     @param p the Partition to find a predecessor for
-    @return pointer to the predecessor or NULL if none was found
+    @return pointer to the predecessor or nullptr if none was found
 */
 Partition* PartitionNode::predecessor(Partition& p)
 {
@@ -36,7 +36,7 @@ Partition* PartitionNode::predecessor(Partition& p)
         if (plist[idx] == &p)
             return plist[idx - 1];
 
-    return NULL;
+    return nullptr;
 }
 
 /**
@@ -52,12 +52,12 @@ const Partition* PartitionNode::predecessor(const Partition& p) const
         if (plist[idx] == &p)
             return plist[idx - 1];
 
-    return NULL;
+    return nullptr;
 }
 
 /** Tries to find the successor for a Partition.
     @param p the Partition to find a successor for
-    @return pointer to the successor or NULL if none was found
+    @return pointer to the successor or nullptr if none was found
  */
 Partition* PartitionNode::successor(Partition& p)
 {
@@ -69,7 +69,7 @@ Partition* PartitionNode::successor(Partition& p)
         if (plist[idx] == &p)
             return plist[idx + 1];
 
-    return NULL;
+    return nullptr;
 }
 
 /**
@@ -85,16 +85,16 @@ const Partition* PartitionNode::successor(const Partition& p) const
         if (plist[idx] == &p)
             return plist[idx + 1];
 
-    return NULL;
+    return nullptr;
 }
 
 /** Inserts a Partition into a PartitionNode's children
-    @param p pointer to the Partition to insert. May be NULL.
+    @param p pointer to the Partition to insert. May be nullptr.
     @return true on success
 */
 bool PartitionNode::insert(Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     for (int idx = 0; idx < children().size(); idx++) {
@@ -110,12 +110,12 @@ bool PartitionNode::insert(Partition* p)
 }
 
 /** Removes a Partition from the PartitionNode's children.
-    @param p pointer to the Partition to remove. May be NULL.
+    @param p pointer to the Partition to remove. May be nullptr.
     @return true on success.
 */
 bool PartitionNode::remove(Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     if (children().removeOne(p))
@@ -134,7 +134,7 @@ void PartitionNode::clearChildren()
 /** Finds a Partition by sector.
     @param s the sector the Partition is at
     @param role the PartitionRole the Partition is supposed to have
-    @return pointer to the Partition found or NULL if none was found
+    @return pointer to the Partition found or nullptr if none was found
 */
 Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& role)
 {
@@ -148,7 +148,7 @@ Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& r
             return p;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 /**
@@ -165,7 +165,7 @@ const Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionR
             return p;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 /** Reparents a Partition to this PartitionNode

@@ -57,10 +57,10 @@ public:
     }
 
     Report* parent() {
-        return m_Parent;    /**< @return pointer to this Reports parent. May be NULL if this is the root Report */
+        return m_Parent;    /**< @return pointer to this Reports parent. May be nullptr if this is the root Report */
     }
     const Report* parent() const {
-        return m_Parent;    /**< @return pointer to this Reports parent. May be NULL if this is the root Report */
+        return m_Parent;    /**< @return pointer to this Reports parent. May be nullptr if this is the root Report */
     }
 
     Report* root();

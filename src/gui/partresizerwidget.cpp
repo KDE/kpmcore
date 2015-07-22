@@ -44,9 +44,9 @@ const qint32 PartResizerWidget::m_HandleHeight = 59;
 */
 PartResizerWidget::PartResizerWidget(QWidget* parent) :
     QWidget(parent),
-    m_Device(NULL),
-    m_Partition(NULL),
-    m_PartWidget(NULL),
+    m_Device(nullptr),
+    m_Partition(nullptr),
+    m_PartWidget(nullptr),
     m_MinimumFirstSector(0),
     m_MaximumFirstSector(-1),
     m_MinimumLastSector(-1),
@@ -55,7 +55,7 @@ PartResizerWidget::PartResizerWidget(QWidget* parent) :
     m_MaximumLength(-1),
     m_LeftHandle(this),
     m_RightHandle(this),
-    m_DraggedWidget(NULL),
+    m_DraggedWidget(nullptr),
     m_Hotspot(0),
     m_MoveAllowed(true),
     m_ReadOnly(false),
@@ -187,7 +187,7 @@ void PartResizerWidget::mousePressEvent(QMouseEvent* event)
     if (event->button() == Qt::LeftButton) {
         m_DraggedWidget = static_cast<QWidget*>(childAt(event->pos()));
 
-        if (m_DraggedWidget != NULL) {
+        if (m_DraggedWidget != nullptr) {
             if (partWidget().isAncestorOf(m_DraggedWidget))
                 m_DraggedWidget = &partWidget();
 
@@ -298,7 +298,7 @@ void PartResizerWidget::mouseMoveEvent(QMouseEvent* event)
 void PartResizerWidget::mouseReleaseEvent(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton)
-        m_DraggedWidget = NULL;
+        m_DraggedWidget = nullptr;
 }
 
 bool PartResizerWidget::updateFirstSector(qint64 newFirstSector)
@@ -444,7 +444,7 @@ void PartResizerWidget::setMoveAllowed(bool b)
 {
     m_MoveAllowed = b;
 
-    if (m_PartWidget != NULL)
+    if (m_PartWidget != nullptr)
         partWidget().setCursor(b ? Qt::SizeAllCursor : Qt::ArrowCursor);
 }
 

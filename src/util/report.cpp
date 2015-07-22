@@ -27,7 +27,7 @@
 #include <unistd.h>
 
 /** Creates a new Report instance.
-    @param p pointer to the parent instance. May be NULL ig this is a new root Report.
+    @param p pointer to the parent instance. May be nullptr ig this is a new root Report.
     @param cmd the command
 */
 Report::Report(Report* p, const QString& cmd) :
@@ -67,7 +67,7 @@ QString Report::toHtml() const
 
     if (parent() == root())
         s += QStringLiteral("<div>\n");
-    else if (parent() != NULL)
+    else if (parent() != nullptr)
         s += QStringLiteral("<div style='margin-left:24px;margin-top:12px;margin-bottom:12px'>\n");
 
     if (!command().isEmpty())
@@ -85,7 +85,7 @@ QString Report::toHtml() const
     if (!status().isEmpty())
         s += QStringLiteral("<b>") + status().toHtmlEscaped() + QStringLiteral("</b><br/>\n\n");
 
-    if (parent() != NULL)
+    if (parent() != nullptr)
         s += QStringLiteral("</div>\n\n");
 
     return s;
@@ -138,7 +138,7 @@ Report* Report::root()
 {
     Report* rval = this;
 
-    while (rval->parent() != NULL)
+    while (rval->parent() != nullptr)
         rval = rval->parent();
 
     return rval;
@@ -151,7 +151,7 @@ const Report* Report::root() const
 {
     const Report* rval = this;
 
-    while (rval->parent() != NULL)
+    while (rval->parent() != nullptr)
         rval = rval->parent();
 
     return rval;

@@ -30,7 +30,7 @@ LibPartedPartition::LibPartedPartition(PedPartition* ped_partition) :
 
 bool LibPartedPartition::setFlag(Report& report, PartitionTable::Flag partitionManagerFlag, bool state)
 {
-    Q_ASSERT(pedPartition() != NULL);
+    Q_ASSERT(pedPartition() != nullptr);
 
     const PedPartitionFlag f = LibPartedBackend::getPedFlag(partitionManagerFlag);
 

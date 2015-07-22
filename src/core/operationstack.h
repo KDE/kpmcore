@@ -51,7 +51,7 @@ public:
     typedef QList<Operation*> Operations;
 
 public:
-    OperationStack(QObject* parent = NULL);
+    OperationStack(QObject* parent = nullptr);
     ~OperationStack();
 
 Q_SIGNALS:

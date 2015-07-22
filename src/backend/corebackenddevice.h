@@ -76,7 +76,7 @@ public:
 
     /**
       * Open this backend device's partition table
-      * @return a pointer to the CoreBackendPartitionTable for this device or NULL in case
+      * @return a pointer to the CoreBackendPartitionTable for this device or nullptr in case
       *         of errors
       */
     virtual CoreBackendPartitionTable* openPartitionTable() = 0;

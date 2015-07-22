@@ -72,9 +72,9 @@ CoreBackendDevice* DummyBackend::openDevice(const QString& device_node)
 {
     DummyDevice* device = new DummyDevice(device_node);
 
-    if (device == NULL || !device->open()) {
+    if (device == nullptr || !device->open()) {
         delete device;
-        device = NULL;
+        device = nullptr;
     }
 
     return device;
@@ -84,9 +84,9 @@ CoreBackendDevice* DummyBackend::openDeviceExclusive(const QString& device_node)
 {
     DummyDevice* device = new DummyDevice(device_node);
 
-    if (device == NULL || !device->openExclusive()) {
+    if (device == nullptr || !device->openExclusive()) {
         delete device;
-        device = NULL;
+        device = nullptr;
     }
 
     return device;

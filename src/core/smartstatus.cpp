@@ -46,7 +46,7 @@ SmartStatus::SmartStatus(const QString& device_path) :
 
 void SmartStatus::update()
 {
-    SkDisk* skDisk = NULL;
+    SkDisk* skDisk = nullptr;
     SkBool skSmartStatus = false;
     uint64_t mkelvin = 0;
     uint64_t skBadSectors = 0;

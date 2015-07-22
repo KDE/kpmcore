@@ -148,7 +148,7 @@ bool fat16::create(Report& report, const QString& deviceNode) const
 
 bool fat16::updateUUID(Report& report, const QString& deviceNode) const
 {
-    qint32 t = time(NULL);
+    qint32 t = time(nullptr);
 
     char uuid[4];
     for (quint32 i = 0; i < sizeof(uuid); i++, t >>= 8)

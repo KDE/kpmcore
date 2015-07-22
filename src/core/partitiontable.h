@@ -90,10 +90,10 @@ public:
 
 public:
     PartitionNode* parent() {
-        return NULL;    /**< @return always NULL for PartitionTable */
+        return nullptr;    /**< @return always nullptr for PartitionTable */
     }
     const PartitionNode* parent() const {
-        return NULL;    /**< @return always NULL for PartitionTable */
+        return nullptr;    /**< @return always nullptr for PartitionTable */
     }
 
     bool isRoot() const {

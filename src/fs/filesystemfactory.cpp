@@ -116,11 +116,11 @@ void FileSystemFactory::init()
     @param lastsector the FileSystem's last sector relative to the Device
     @param sectorsused the number of used sectors in the FileSystem
     @param label the FileSystem's label
-    @return pointer to the newly created FileSystem object or NULL if FileSystem could not be created
+    @return pointer to the newly created FileSystem object or nullptr if FileSystem could not be created
 */
 FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QString& uuid)
 {
-    FileSystem* fs = NULL;
+    FileSystem* fs = nullptr;
 
     switch (t) {
     case FileSystem::Btrfs:        fs = new FS::btrfs(firstsector, lastsector, sectorsused, label); break;
@@ -151,7 +151,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     default:                       break;
     }
 
-    if (fs != NULL)
+    if (fs != nullptr)
         fs->setUUID(uuid);
 
     return fs;
@@ -174,7 +174,7 @@ const FileSystemFactory::FileSystems& FileSystemFactory::map()
 /** Clones a FileSystem from another one, but with a new type.
     @param newType the new FileSystem's type
     @param other the old FileSystem to clone
-    @return pointer to the newly created FileSystem or NULL in case of errors
+    @return pointer to the newly created FileSystem or nullptr in case of errors
 */
 FileSystem* FileSystemFactory::cloneWithNewType(FileSystem::Type newType, const FileSystem& other)
 {

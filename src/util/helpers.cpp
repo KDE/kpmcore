@@ -59,7 +59,7 @@ void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree)
 
     QAction* action = headerMenu.exec(tree.header()->mapToGlobal(p));
 
-    if (action != NULL) {
+    if (action != nullptr) {
         const bool hidden = !action->isChecked();
         tree.setColumnHidden(action->data().toInt(), hidden);
         if (!hidden)

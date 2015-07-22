@@ -83,7 +83,7 @@ Device::Device(const QString& name, const QString& devicenode, qint32 heads, qin
     QObject(),
     m_Name(name.length() > 0 ? name : i18n("Unknown Device")),
     m_DeviceNode(devicenode),
-    m_PartitionTable(NULL),
+    m_PartitionTable(nullptr),
     m_Heads(heads),
     m_SectorsPerTrack(numSectors),
     m_Cylinders(cylinders),

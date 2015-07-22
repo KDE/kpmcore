@@ -38,9 +38,9 @@
 
 /** Creates a new CopyOperation.
     @param targetdevice the Device to copy the Partition to
-    @param copiedpartition pointer to the new Partition object on the target Device. May not be NULL.
+    @param copiedpartition pointer to the new Partition object on the target Device. May not be nullptr.
     @param sourcedevice the Device where to copy from
-    @param sourcepartition pointer to the Partition to copy from. May not be NULL.
+    @param sourcepartition pointer to the Partition to copy from. May not be nullptr.
 */
 CopyOperation::CopyOperation(Device& targetdevice, Partition* copiedpartition, Device& sourcedevice, Partition* sourcepartition) :
     Operation(),
@@ -48,13 +48,13 @@ CopyOperation::CopyOperation(Device& targetdevice, Partition* copiedpartition, D
     m_CopiedPartition(copiedpartition),
     m_SourceDevice(sourcedevice),
     m_SourcePartition(sourcepartition),
-    m_OverwrittenPartition(NULL),
+    m_OverwrittenPartition(nullptr),
     m_MustDeleteOverwritten(false),
-    m_CheckSourceJob(NULL),
-    m_CreatePartitionJob(NULL),
-    m_CopyFSJob(NULL),
-    m_CheckTargetJob(NULL),
-    m_MaximizeJob(NULL),
+    m_CheckSourceJob(nullptr),
+    m_CreatePartitionJob(nullptr),
+    m_CopyFSJob(nullptr),
+    m_CheckTargetJob(nullptr),
+    m_MaximizeJob(nullptr),
     m_Description(updateDescription())
 {
     Q_ASSERT(targetDevice().partitionTable());
@@ -63,7 +63,7 @@ CopyOperation::CopyOperation(Device& targetdevice, Partition* copiedpartition, D
 
     Q_ASSERT(dest);
 
-    if (dest == NULL)
+    if (dest == nullptr)
         qWarning() << "destination partition not found at sector " << copiedPartition().firstSector();
 
     if (dest && !dest->roles().has(PartitionRole::Unallocated)) {
@@ -73,7 +73,7 @@ CopyOperation::CopyOperation(Device& targetdevice, Partition* copiedpartition, D
 
     addJob(m_CheckSourceJob = new CheckFileSystemJob(sourcePartition()));
 
-    if (overwrittenPartition() == NULL)
+    if (overwrittenPartition() == nullptr)
         addJob(m_CreatePartitionJob = new CreatePartitionJob(targetDevice(), copiedPartition()));
 
     addJob(m_CopyFSJob = new CopyFileSystemJob(targetDevice(), copiedPartition(), sourceDevice(), sourcePartition()));
@@ -243,7 +243,7 @@ void CopyOperation::cleanupOverwrittenPartition()
 {
     if (mustDeleteOverwritten()) {
         delete overwrittenPartition();
-        m_OverwrittenPartition = NULL;
+        m_OverwrittenPartition = nullptr;
     }
 }
 
@@ -272,12 +272,12 @@ Partition* CopyOperation::createCopy(const Partition& target, const Partition& s
 }
 
 /** Can a Partition be copied?
-    @param p the Partition in question, may be NULL.
+    @param p the Partition in question, may be nullptr.
     @return true if @p p can be copied.
  */
 bool CopyOperation::canCopy(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     if (p->isMounted())
@@ -291,13 +291,13 @@ bool CopyOperation::canCopy(const Partition* p)
 }
 
 /** Can a Partition be pasted on another one?
-    @param p the Partition to be pasted to, may be NULL
-    @param source the Partition to be pasted, may be NULL
+    @param p the Partition to be pasted to, may be nullptr
+    @param source the Partition to be pasted, may be nullptr
     @return true if @p source can be pasted on @p p
  */
 bool CopyOperation::canPaste(const Partition* p, const Partition* source)
 {
-    if (p == NULL || source == NULL)
+    if (p == nullptr || source == nullptr)
         return false;
 
     if (p->isMounted())

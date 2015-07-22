@@ -42,7 +42,7 @@
 
 /** Creates a new RestoreOperation.
     @param d the Device to restore the Partition to
-    @param p pointer to the Partition that will be restored. May not be NULL.
+    @param p pointer to the Partition that will be restored. May not be nullptr.
     @param filename name of the image file to restore from
 */
 RestoreOperation::RestoreOperation(Device& d, Partition* p, const QString& filename) :
@@ -50,13 +50,13 @@ RestoreOperation::RestoreOperation(Device& d, Partition* p, const QString& filen
     m_TargetDevice(d),
     m_RestorePartition(p),
     m_FileName(filename),
-    m_OverwrittenPartition(NULL),
+    m_OverwrittenPartition(nullptr),
     m_MustDeleteOverwritten(false),
     m_ImageLength(QFileInfo(filename).size() / 512), // 512 being the "sector size" of an image file.
-    m_CreatePartitionJob(NULL),
-    m_RestoreJob(NULL),
-    m_CheckTargetJob(NULL),
-    m_MaximizeJob(NULL)
+    m_CreatePartitionJob(nullptr),
+    m_RestoreJob(nullptr),
+    m_CheckTargetJob(nullptr),
+    m_MaximizeJob(nullptr)
 {
     restorePartition().setState(Partition::StateRestore);
 
@@ -66,7 +66,7 @@ RestoreOperation::RestoreOperation(Device& d, Partition* p, const QString& filen
 
     Q_ASSERT(dest);
 
-    if (dest == NULL)
+    if (dest == nullptr)
         qWarning() << "destination partition not found at sector " << restorePartition().firstSector();
 
     if (dest && !dest->roles().has(PartitionRole::Unallocated)) {
@@ -178,17 +178,17 @@ void RestoreOperation::cleanupOverwrittenPartition()
 {
     if (mustDeleteOverwritten()) {
         delete overwrittenPartition();
-        m_OverwrittenPartition = NULL;
+        m_OverwrittenPartition = nullptr;
     }
 }
 
 /** Can a Partition be restored to somewhere?
-    @param p the Partition in question, may be NULL.
+    @param p the Partition in question, may be nullptr.
     @return true if a Partition can be restored to @p p.
  */
 bool RestoreOperation::canRestore(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     if (p->isMounted())
@@ -215,7 +215,7 @@ Partition* RestoreOperation::createRestorePartition(const Device& device, Partit
     QFileInfo fileInfo(filename);
 
     if (!fileInfo.exists())
-        return NULL;
+        return nullptr;
 
     const qint64 end = start + fileInfo.size() / device.logicalSectorSize() - 1;
     Partition* p = new Partition(&parent, device, PartitionRole(r), FileSystemFactory::create(FileSystem::Unknown, start, end), start, end, QString());

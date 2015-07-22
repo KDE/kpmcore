@@ -53,13 +53,13 @@ public:
     virtual bool commit(quint32 timeout = 10) = 0;
 
     /**
-      * @return pointer to the extended partition as a CoreBackendPartition or NULL if there is none
+      * @return pointer to the extended partition as a CoreBackendPartition or nullptr if there is none
       */
     virtual CoreBackendPartition* getExtendedPartition() = 0;
 
     /**
       * @param sector sector the partition occupies
-      * @return the CoreBackendPartition to occupy the given sector or NULL if not found
+      * @return the CoreBackendPartition to occupy the given sector or nullptr if not found
       */
     virtual CoreBackendPartition* getPartitionBySector(qint64 sector) = 0;
 

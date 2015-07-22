@@ -44,7 +44,7 @@ class LIBKPMCORE_EXPORT PartWidget : public PartWidgetBase
     Q_OBJECT
 
 public:
-    explicit PartWidget(QWidget* parent, const Partition* p = NULL);
+    explicit PartWidget(QWidget* parent, const Partition* p = nullptr);
 
 public:
     void init(const Partition* p);

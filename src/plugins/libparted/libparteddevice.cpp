@@ -29,7 +29,7 @@
 
 LibPartedDevice::LibPartedDevice(const QString& device_node) :
     CoreBackendDevice(device_node),
-    m_PedDevice(NULL)
+    m_PedDevice(nullptr)
 {
 }
 
@@ -41,14 +41,14 @@ LibPartedDevice::~LibPartedDevice()
 
 bool LibPartedDevice::open()
 {
-    Q_ASSERT(pedDevice() == NULL);
+    Q_ASSERT(pedDevice() == nullptr);
 
     if (pedDevice())
         return false;
 
     m_PedDevice = ped_device_get(deviceNode().toLatin1().constData());
 
-    return m_PedDevice != NULL;
+    return m_PedDevice != nullptr;
 }
 
 bool LibPartedDevice::openExclusive()
@@ -70,7 +70,7 @@ bool LibPartedDevice::close()
         setExclusive(false);
     }
 
-    m_PedDevice = NULL;
+    m_PedDevice = nullptr;
     return true;
 }
 
@@ -78,9 +78,9 @@ CoreBackendPartitionTable* LibPartedDevice::openPartitionTable()
 {
     CoreBackendPartitionTable* ptable = new LibPartedPartitionTable(pedDevice());
 
-    if (ptable == NULL || !ptable->open()) {
+    if (ptable == nullptr || !ptable->open()) {
         delete ptable;
-        ptable = NULL;
+        ptable = nullptr;
     }
 
     return ptable;
@@ -90,21 +90,21 @@ bool LibPartedDevice::createPartitionTable(Report& report, const PartitionTable&
 {
     PedDiskType* pedDiskType = ped_disk_type_get(ptable.typeName().toLatin1().constData());
 
-    if (pedDiskType == NULL) {
+    if (pedDiskType == nullptr) {
         report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not retrieve partition table type \"%1\" for <filename>%2</filename>.", ptable.typeName(), deviceNode());
         return false;
     }
 
     PedDevice* dev = ped_device_get(deviceNode().toLatin1().constData());
 
-    if (dev == NULL) {
+    if (dev == nullptr) {
         report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not open backend device <filename>%1</filename>.", deviceNode());
         return false;
     }
 
     PedDisk* disk = ped_disk_new_fresh(dev, pedDiskType);
 
-    if (disk == NULL) {
+    if (disk == nullptr) {
         report.line() << xi18nc("@info/plain", "Creating partition table failed: Could not create a new partition table in the backend for device <filename>%1</filename>.", deviceNode());
         return false;
     }

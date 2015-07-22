@@ -53,14 +53,14 @@ ResizeOperation::ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint6
     m_NewFirstSector(newfirst),
     m_NewLastSector(newlast),
     m_CheckOriginalJob(new CheckFileSystemJob(partition())),
-    m_MoveExtendedJob(NULL),
-    m_ShrinkResizeJob(NULL),
-    m_ShrinkSetGeomJob(NULL),
-    m_MoveSetGeomJob(NULL),
-    m_MoveFileSystemJob(NULL),
-    m_GrowResizeJob(NULL),
-    m_GrowSetGeomJob(NULL),
-    m_CheckResizedJob(NULL)
+    m_MoveExtendedJob(nullptr),
+    m_ShrinkResizeJob(nullptr),
+    m_ShrinkSetGeomJob(nullptr),
+    m_MoveSetGeomJob(nullptr),
+    m_MoveFileSystemJob(nullptr),
+    m_GrowResizeJob(nullptr),
+    m_GrowSetGeomJob(nullptr),
+    m_CheckResizedJob(nullptr)
 {
     addJob(checkOriginalJob());
 
@@ -313,12 +313,12 @@ bool ResizeOperation::grow(Report& report)
 }
 
 /** Can a Partition be grown, i.e. increased in size?
-    @param p the Partition in question, may be NULL.
+    @param p the Partition in question, may be nullptr.
     @return true if @p p can be grown.
  */
 bool ResizeOperation::canGrow(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
@@ -332,12 +332,12 @@ bool ResizeOperation::canGrow(const Partition* p)
 }
 
 /** Can a Partition be shrunk, i.e. decreased in size?
-    @param p the Partition in question, may be NULL.
+    @param p the Partition in question, may be nullptr.
     @return true if @p p can be shrunk.
  */
 bool ResizeOperation::canShrink(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
@@ -354,12 +354,12 @@ bool ResizeOperation::canShrink(const Partition* p)
 }
 
 /** Can a Partition be moved?
-    @param p the Partition in question, may be NULL.
+    @param p the Partition in question, may be nullptr.
     @return true if @p p can be moved.
  */
 bool ResizeOperation::canMove(const Partition* p)
 {
-    if (p == NULL)
+    if (p == nullptr)
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk

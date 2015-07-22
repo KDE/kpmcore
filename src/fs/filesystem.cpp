@@ -87,11 +87,11 @@ static QString readBlkIdValue(const QString& deviceNode, const QString& tag)
     blkid_cache cache;
     QString rval;
 
-    if (blkid_get_cache(&cache, NULL) == 0) {
+    if (blkid_get_cache(&cache, nullptr) == 0) {
         blkid_dev dev;
 
-        char* label = NULL;
-        if ((dev = blkid_get_dev(cache, deviceNode.toLocal8Bit().constData(), BLKID_DEV_NORMAL)) != NULL &&
+        char* label = nullptr;
+        if ((dev = blkid_get_dev(cache, deviceNode.toLocal8Bit().constData(), BLKID_DEV_NORMAL)) != nullptr &&
                 (label = blkid_get_tag_value(cache, tag.toLocal8Bit().constData(), deviceNode.toLocal8Bit().constData()))) {
             rval = QString::fromUtf8(label);
             free(label);
