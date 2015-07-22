@@ -112,11 +112,15 @@ bool ocfs2::create(Report& report, const QString& deviceNode) const
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.ocfs2"), QStringList() << deviceNode);
 
-    cmd.start();
-    cmd.write("y\n");
-    cmd.waitFor(-1);
+    if (cmd.start())
+    {
+        cmd.write("y\n");
+        cmd.waitFor(-1);
 
-    return cmd.exitCode() == 0;
+        return cmd.exitCode() == 0;
+    }
+    else
+        return false;
 }
 
 bool ocfs2::resize(Report& report, const QString& deviceNode, qint64 length) const
