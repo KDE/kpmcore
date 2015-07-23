@@ -64,10 +64,10 @@ RestoreOperation::RestoreOperation(Device& d, Partition* p, const QString& filen
 
     Partition* dest = targetDevice().partitionTable()->findPartitionBySector(restorePartition().firstSector(), PartitionRole(PartitionRole::Primary | PartitionRole::Logical | PartitionRole::Unallocated));
 
-    Q_ASSERT(dest);
-
     if (dest == nullptr)
         qWarning() << "destination partition not found at sector " << restorePartition().firstSector();
+
+    Q_ASSERT(dest);
 
     if (dest && !dest->roles().has(PartitionRole::Unallocated)) {
         restorePartition().setLastSector(dest->lastSector());
