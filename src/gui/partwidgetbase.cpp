@@ -110,6 +110,9 @@ void PartWidgetBase::positionChildren(const QWidget* destWidget, const Partition
     foreach(const Partition * p, partitions)
         totalLength += p->length();
 
+    if (totalLength < 1)
+        return;
+
     // calculate unleveled width for each child and store it
     for (int i = 0; i < partitions.size(); i++) {
         childrenWidth.append(partitions[i]->length() * destWidgetWidth / totalLength);
