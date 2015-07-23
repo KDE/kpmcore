@@ -407,7 +407,7 @@ Device* LibPartedBackend::scanDevice(const QString& device_node)
     return d;
 }
 
-QList<Device*> LibPartedBackend::scanDevices()
+QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 {
     QList<Device*> result;
 
@@ -421,6 +421,12 @@ QList<Device*> LibPartedBackend::scanDevices()
             break;
         if (pedDevice->type == PED_DEVICE_DM)
             continue;
+        if (excludeReadOnly && (
+                pedDevice->type == PED_DEVICE_LOOP ||
+                pedDevice->type == PED_DEVICE_UNKNOWN ||
+                pedDevice->read_only))
+            continue;
+
         path.push_back(QString::fromUtf8(pedDevice->path));
         ++totalDevices;
     }

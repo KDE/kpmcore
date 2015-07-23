@@ -45,8 +45,9 @@ void DummyBackend::initFSSupport()
 {
 }
 
-QList<Device*> DummyBackend::scanDevices()
+QList<Device*> DummyBackend::scanDevices(bool excludeReadOnly)
 {
+    Q_UNUSED(excludeReadOnly)
     QList<Device*> result;
     result.append(scanDevice(QStringLiteral("/dev/sda")));
 

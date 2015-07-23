@@ -60,11 +60,11 @@ private:
 public:
     virtual void initFSSupport();
 
-    virtual CoreBackendDevice* openDevice(const QString& device_node);
-    virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node);
-    virtual bool closeDevice(CoreBackendDevice* core_device);
-    virtual Device* scanDevice(const QString& device_node);
-    virtual QList<Device*> scanDevices();
+    virtual CoreBackendDevice* openDevice(const QString& device_node) override;
+    virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node) override;
+    virtual bool closeDevice(CoreBackendDevice* core_device) override;
+    virtual Device* scanDevice(const QString& device_node) override;
+    virtual QList<Device*> scanDevices(bool excludeReadOnly = false) override;
 
     static QString lastPartedExceptionMessage();
 
