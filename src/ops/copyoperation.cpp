@@ -61,10 +61,10 @@ CopyOperation::CopyOperation(Device& targetdevice, Partition* copiedpartition, D
 
     Partition* dest = targetDevice().partitionTable()->findPartitionBySector(copiedPartition().firstSector(), PartitionRole(PartitionRole::Primary | PartitionRole::Logical | PartitionRole::Unallocated));
 
-    Q_ASSERT(dest);
-
     if (dest == nullptr)
         qWarning() << "destination partition not found at sector " << copiedPartition().firstSector();
+
+    Q_ASSERT(dest);
 
     if (dest && !dest->roles().has(PartitionRole::Unallocated)) {
         copiedPartition().setLastSector(dest->lastSector());
