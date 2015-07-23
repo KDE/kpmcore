@@ -256,7 +256,7 @@ Partition* createUnallocated(const Device& device, PartitionNode& parent, qint64
 */
 void PartitionTable::removeUnallocated(PartitionNode* p)
 {
-    Q_ASSERT(p != nullptr);
+    Q_ASSERT(p);
 
     qint32 i = 0;
 
@@ -298,7 +298,7 @@ void PartitionTable::removeUnallocated()
 */
 void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64 start) const
 {
-    Q_ASSERT(p != nullptr);
+    Q_ASSERT(p);
 
     qint64 lastEnd = start;
 
@@ -317,8 +317,8 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
 
     if (!p->isRoot()) {
         Partition* extended = dynamic_cast<Partition*>(p);
-        Q_ASSERT(extended != nullptr);
-        parentEnd = (extended != nullptr) ? extended->lastSector() : -1;
+        parentEnd = extended ? extended->lastSector() : -1;
+        Q_ASSERT(extended);
     }
 
     if (parentEnd >= firstUsable())
