@@ -45,8 +45,10 @@ DeleteOperation::DeleteOperation(Device& d, Partition* p, ShredAction shred) :
     switch (shredAction()) {
     case NoShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new DeleteFileSystemJob(targetDevice(), deletedPartition()));
+        break;
     case ZeroShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition(), false));
+        break;
     case RandomShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition(), true));
     }
