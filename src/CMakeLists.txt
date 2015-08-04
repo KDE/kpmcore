@@ -35,6 +35,8 @@ set(kpmcore_SRCS
 )
 
 file(GLOB kpmcore_UIFILES config/*.ui)
+file(GLOB gui_UIFILES gui/*.ui)
+list(APPEND kpmcore_UIFILES ${gui_UIFILES})
 
 ki18n_wrap_ui(kpmcore_SRCS ${kpmcore_UIFILES})
 
