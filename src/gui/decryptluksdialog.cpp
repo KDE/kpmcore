@@ -26,8 +26,6 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 
-#include <config.h>
-
 DecryptLuksDialog::DecryptLuksDialog(QWidget* parent, const QString& deviceNode) :
     QDialog(parent),
     m_DialogWidget(new DecryptLuksDialogWidget(this)),
