@@ -13,3 +13,7 @@ set(GUI_LIB_HDRS
     gui/partwidget.h
     gui/partwidgetbase.h
 )
+
+set(gui_UIFILES
+    gui/decryptluksdialogwidgetbase.ui
+)

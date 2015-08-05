@@ -34,11 +34,7 @@ set(kpmcore_SRCS
     ${GUI_SRC}
 )
 
-file(GLOB kpmcore_UIFILES config/*.ui)
-file(GLOB gui_UIFILES gui/*.ui)
-list(APPEND kpmcore_UIFILES ${gui_UIFILES})
-
-ki18n_wrap_ui(kpmcore_SRCS ${kpmcore_UIFILES})
+ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore
