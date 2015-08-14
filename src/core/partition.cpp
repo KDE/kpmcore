@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -292,7 +293,7 @@ bool Partition::mount(Report& report)
     bool success = false;
 
     if (fileSystem().canMount(deviceNode()))
-        success = fileSystem().mount(deviceNode());
+        success = fileSystem().mount(deviceNode(), mountPoint());
     else {
         ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("-v") << deviceNode() << mountPoint());
         if (mountCmd.run() && mountCmd.exitCode() == 0)
@@ -321,7 +322,11 @@ bool Partition::unmount(Report& report)
                 setMountPoint(QString());
         } else {
 
-            ExternalCommand umountCmd(report, QStringLiteral("umount"), QStringList() << QStringLiteral("-v") << deviceNode());
+            ExternalCommand umountCmd(report,
+                                      QStringLiteral("umount"),
+                                      { QStringLiteral("-v"),
+                                        QStringLiteral("-A"),
+                                        deviceNode() });
             if (!umountCmd.run() || umountCmd.exitCode() != 0)
                 success = false;
         }

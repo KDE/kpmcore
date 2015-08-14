@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -23,7 +24,8 @@
 
 #include "../fs/filesystem.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
+#include <QPointer>
 
 class Report;
 
@@ -38,6 +40,7 @@ class LIBKPMCORE_EXPORT luks : public FileSystem
 {
 public:
     luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    virtual ~luks();
 
 public:
     static void init();
@@ -85,13 +88,24 @@ public:
     virtual QString readUUID(const QString& deviceNode) const;
     virtual bool updateUUID(Report& report, const QString& deviceNode) const;
 
+    virtual QString mountTitle() const override;
+    virtual QString unmountTitle() const override;
+    QString cryptOpenTitle() const;
+    QString cryptCloseTitle() const;
+
     virtual bool canMount(const QString&) const;
     virtual bool canUnmount(const QString&) const;
+    bool isMounted() const;
 
-    virtual bool mount(const QString& deviceNode);
-    virtual bool unmount(const QString& deviceNode);
-    virtual QString mountTitle() const;
-    virtual QString unmountTitle() const;
+    bool canCryptOpen(const QString& deviceNode) const;
+    bool canCryptClose(const QString& deviceNode) const;
+    bool isCryptOpen() const;
+
+    bool cryptOpen(const QString& deviceNode);
+    bool cryptClose(const QString& deviceNode);
+
+    virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
+    virtual bool unmount(const QString& deviceNode) override;
 
     static QString mapperName(const QString& deviceNode);
 
@@ -114,6 +128,12 @@ public:
     static CommandSupportType m_SetLabel;
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
+
+private:
+    FileSystem* m_innerFs;
+
+    bool m_isCryptOpen;
+    bool m_isMounted;
 };
 }
 

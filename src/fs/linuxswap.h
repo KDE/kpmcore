@@ -55,11 +55,11 @@ public:
         return true;
     }
 
-    virtual bool mount(const QString& deviceNode);
-    virtual bool unmount(const QString& deviceNode);
+    virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
+    virtual bool unmount(const QString& deviceNode) override;
 
-    virtual QString mountTitle() const;
-    virtual QString unmountTitle() const;
+    virtual QString mountTitle() const override;
+    virtual QString unmountTitle() const override;
 
     virtual CommandSupportType supportCreate() const {
         return m_Create;
