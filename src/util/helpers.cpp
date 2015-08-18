@@ -17,6 +17,7 @@
 
 #include "util/helpers.h"
 #include "../util/globallog.h"
+#include "../util/ismounted.h"
 
 #include "../ops/operation.h"
 
@@ -65,4 +66,9 @@ void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree)
         if (!hidden)
             tree.resizeColumnToContents(action->data().toInt());
     }
+}
+
+bool isMounted(const QString& deviceNode)
+{
+    return is_mounted(deviceNode.toLatin1().constData());
 }

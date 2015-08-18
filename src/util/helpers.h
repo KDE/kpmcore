@@ -19,9 +19,9 @@
 
 #define HELPERS__H
 
-#include "../util/libpartitionmanagerexport.h"
-
 #include "../fs/filesystem.h"
+
+#include "../util/libpartitionmanagerexport.h"
 
 class QString;
 class QPoint;
@@ -34,5 +34,7 @@ LIBKPMCORE_EXPORT bool caseInsensitiveLessThan(const QString& s1, const QString&
 LIBKPMCORE_EXPORT void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree);
 
 LIBKPMCORE_EXPORT bool checkAccessibleDevices();
+
+LIBKPMCORE_EXPORT bool isMounted(const QString& deviceNode);
 
 #endif
