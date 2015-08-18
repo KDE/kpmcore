@@ -23,7 +23,6 @@
 
 #include "../fs/filesystem.h"
 
-class KAboutData;
 class QString;
 class QPoint;
 class QTreeWidget;
