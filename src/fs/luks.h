@@ -97,10 +97,12 @@ public:
     virtual bool canMount(const QString&) const;
     virtual bool canUnmount(const QString&) const;
     bool isMounted() const;
+    void setMounted(bool mounted);
 
     bool canCryptOpen(const QString& deviceNode) const;
     bool canCryptClose(const QString& deviceNode) const;
     bool isCryptOpen() const;
+    void setCryptOpen(bool cryptOpen);
 
     bool cryptOpen(const QString& deviceNode);
     bool cryptClose(const QString& deviceNode);

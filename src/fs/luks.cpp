@@ -142,6 +142,11 @@ bool luks::isMounted() const
     return m_isCryptOpen && m_isMounted;
 }
 
+void luks::setMounted(bool mounted)
+{
+    m_isMounted = mounted;
+}
+
 bool luks::canCryptOpen(const QString&) const
 {
     return !m_isCryptOpen && !m_isMounted;
@@ -155,6 +160,11 @@ bool luks::canCryptClose(const QString&) const
 bool luks::isCryptOpen() const
 {
     return m_isCryptOpen;
+}
+
+void luks::setCryptOpen(bool cryptOpen)
+{
+    m_isCryptOpen = cryptOpen;
 }
 
 bool luks::cryptOpen(const QString& deviceNode)
@@ -417,4 +427,5 @@ QString luks::getPayloadOffset(const QString& deviceNode)
     }
     return QStringLiteral("---");
 }
+
 }
