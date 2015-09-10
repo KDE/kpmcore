@@ -351,14 +351,32 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
 
         // libparted does not handle LUKS partitions
         QString mountPoint;
-        bool mounted;
+        bool mounted = false;
         if (fs->type() == FileSystem::Luks) {
-            mounted = dynamic_cast<FS::luks*>(fs)->isMounted();
-            mountPoint = mountPoints.findByDevice(FS::luks::mapperName(node)) ?
-                         mountPoints.findByDevice(FS::luks::mapperName(node))->mountPoint() :
-                         QString();
+            FS::luks* luksFs = dynamic_cast<FS::luks*>(fs);
+            QString mapperNode = FS::luks::mapperName(node);
+            bool isCryptOpen = !mapperNode.isEmpty();
+            luksFs->setCryptOpen(isCryptOpen);
+
+            if (isCryptOpen) {
+                mountPoint = mountPoints.findByDevice(mapperNode) ?
+                             mountPoints.findByDevice(mapperNode)->mountPoint() :
+                             QString();
+                // We cannot use libparted to check the mounted status because
+                // we don't have a PedPartition for the mapper device, so we use
+                // check_mount_point from util-linux instead, defined in the
+                // private header ismounted.h and copied into KPMcore & wrapped
+                // in helpers.h for convenience.
+                mounted = isMounted(mapperNode);
+            } else {
+                mounted = false;
+            }
+
+            luksFs->setMounted(mounted);
         } else {
-            mountPoint = mountPoints.findByDevice(node) ? mountPoints.findByDevice(node)->mountPoint() : QString();
+            mountPoint = mountPoints.findByDevice(node) ?
+                         mountPoints.findByDevice(node)->mountPoint() :
+                         QString();
             mounted = ped_partition_is_busy(pedPartition);
         }
 
