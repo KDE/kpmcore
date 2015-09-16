@@ -130,10 +130,8 @@ QString linuxswap::unmountTitle() const
     return i18nc("@title:menu", "Deactivate swap");
 }
 
-bool linuxswap::mount(const QString& deviceNode, const QString& mountPoint)
+bool linuxswap::mount(const QString& deviceNode)
 {
-    Q_UNUSED(mountPoint);
-
     ExternalCommand cmd(QStringLiteral("swapon"), QStringList() << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }

@@ -1,5 +1,3 @@
-set_source_files_properties( util/ismounted.c PROPERTIES LANGUAGE CXX )
-
 set(UTIL_SRC
     util/capacity.cpp
     util/externalcommand.cpp
@@ -7,7 +5,6 @@ set(UTIL_SRC
     util/helpers.cpp
     util/htmlreport.cpp
     util/report.cpp
-    util/ismounted.c
 )
 
 set(UTIL_LIB_HDRS

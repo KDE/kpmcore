@@ -1,6 +1,5 @@
 /*************************************************************************
  *  Copyright (C) 2008-2012 by Volker Lanz <vl@fidra.de>                 *
- *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -49,6 +48,7 @@
 
 #include <parted/parted.h>
 #include <unistd.h>
+#include <blkid/blkid.h>
 
 K_PLUGIN_FACTORY_WITH_JSON(LibPartedBackendFactory, "pmlibpartedbackendplugin.json", registerPlugin<LibPartedBackend>();)
 
@@ -345,10 +345,8 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
         QString mountPoint;
         bool mounted;
         if (fs->type() == FileSystem::Luks) {
-            mounted = dynamic_cast<FS::luks*>(fs)->isMounted();
-            mountPoint = mountPoints.findByDevice(FS::luks::mapperName(node)) ?
-                         mountPoints.findByDevice(FS::luks::mapperName(node))->mountPoint() :
-                         QString();
+            mountPoint = FS::luks::mapperName(node);
+            mounted = (mountPoint != QString()) ? true : false;
         } else {
             mountPoint = mountPoints.findByDevice(node) ? mountPoints.findByDevice(node)->mountPoint() : QString();
             mounted = ped_partition_is_busy(pedPartition);
@@ -480,12 +478,50 @@ FileSystem::Type LibPartedBackend::detectFileSystem(PedPartition* pedPartition)
 {
     FileSystem::Type rval = FileSystem::Unknown;
 
-    char* pedPath = ped_partition_get_path(pedPartition);
+    blkid_cache cache;
+    char* pedPath = nullptr;
 
-    if (pedPath)
-        rval = FileSystem::detectFileSystem(QString::fromUtf8(pedPath));
+    if (blkid_get_cache(&cache, nullptr) == 0 && (pedPath = ped_partition_get_path(pedPartition))) {
+        blkid_dev dev;
 
-    free(pedPath);
+        if ((dev = blkid_get_dev(cache, pedPath, BLKID_DEV_NORMAL)) != nullptr) {
+            QString s = QString::fromUtf8(blkid_get_tag_value(cache, "TYPE", pedPath));
+
+            if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
+            else if (s == QStringLiteral("ext3")) rval = FileSystem::Ext3;
+            else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Ext4;
+            else if (s == QStringLiteral("swap")) rval = FileSystem::LinuxSwap;
+            else if (s == QStringLiteral("ntfs")) rval = FileSystem::Ntfs;
+            else if (s == QStringLiteral("reiserfs")) rval = FileSystem::ReiserFS;
+            else if (s == QStringLiteral("reiser4")) rval = FileSystem::Reiser4;
+            else if (s == QStringLiteral("xfs")) rval = FileSystem::Xfs;
+            else if (s == QStringLiteral("jfs")) rval = FileSystem::Jfs;
+            else if (s == QStringLiteral("hfs")) rval = FileSystem::Hfs;
+            else if (s == QStringLiteral("hfsplus")) rval = FileSystem::HfsPlus;
+            else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
+            else if (s == QStringLiteral("vfat") && pedPartition->fs_type != nullptr) {
+                // libblkid does not distinguish between fat16 and fat32, so we're still using libparted
+                // for those
+                if (strcmp(pedPartition->fs_type->name, "fat16") == 0)
+                    rval = FileSystem::Fat16;
+                else if (strcmp(pedPartition->fs_type->name, "fat32") == 0)
+                    rval = FileSystem::Fat32;
+            } else if (s == QStringLiteral("btrfs")) rval = FileSystem::Btrfs;
+            else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Ocfs2;
+            else if (s == QStringLiteral("zfs_member")) rval = FileSystem::Zfs;
+            else if (s == QStringLiteral("hpfs")) rval = FileSystem::Hpfs;
+            else if (s == QStringLiteral("crypto_LUKS")) rval = FileSystem::Luks;
+            else if (s == QStringLiteral("exfat")) rval = FileSystem::Exfat;
+            else if (s == QStringLiteral("nilfs2")) rval = FileSystem::Nilfs2;
+            else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Lvm2_PV;
+            else
+                qWarning() << "blkid: unknown file system type " << s << " on " << pedPath;
+        }
+
+        blkid_put_cache(cache);
+
+        free(pedPath);
+    }
 
     return rval;
 }
