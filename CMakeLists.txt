@@ -97,12 +97,6 @@ install(EXPORT KPMcoreTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KPMc
 
 ki18n_install(po)
 
-get_filename_component(_doc_translations_path doc-translations ABSOLUTE)
-
-if (EXISTS ${_doc_translations_path}/CMakeLists.txt)
-    add_subdirectory(doc-translations)
-endif()
-
-message(STATUS "KDE Partition Manager ${VERSION} will be built for install into ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "kpmcore ${VERSION} will be built for install into ${CMAKE_INSTALL_PREFIX}")
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
