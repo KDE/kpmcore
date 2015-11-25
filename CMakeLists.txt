@@ -27,6 +27,7 @@ set(VERSION_MINOR "9")
 set(VERSION_RELEASE "50")
 set(VERSION_SUFFIX "")
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE}${VERSION_SUFFIX})
+set(SOVERSION "1")
 add_definitions(-D'VERSION="${VERSION}"') #"
 
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
@@ -43,7 +44,7 @@ include(ECMPackageConfigHelpers)
 ecm_setup_version(${VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfigVersion.cmake"
-                        SOVERSION 1)
+                        SOVERSION ${SOVERSION})
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
   Core
@@ -96,6 +97,10 @@ install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"
 install(EXPORT KPMcoreTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KPMcoreTargets.cmake )
 
 ki18n_install(po)
+
+set_target_properties( kpmcore
+  PROPERTIES VERSION ${VERSION} SOVERSION ${SOVERSION}
+)
 
 message(STATUS "kpmcore ${VERSION} will be built for install into ${CMAKE_INSTALL_PREFIX}")
 
