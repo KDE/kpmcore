@@ -82,11 +82,13 @@ include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE
 add_subdirectory(src)
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
+set(INCLUDE_INSTALL_DIR "include/kpmcore/")
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KPMcore")
 
 ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
                               "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"
                               INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
+                              PATH_VARS INCLUDE_INSTALL_DIR
                               )
 
 install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"

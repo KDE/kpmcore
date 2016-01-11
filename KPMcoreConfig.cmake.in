@@ -1,3 +1,4 @@
 @PACKAGE_INIT@
 
+set_and_check(KPMCORE_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
 include("${CMAKE_CURRENT_LIST_DIR}/KPMcoreTargets.cmake")
