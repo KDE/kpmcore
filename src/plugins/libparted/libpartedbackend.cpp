@@ -486,7 +486,6 @@ FileSystem::Type LibPartedBackend::detectFileSystem(PedPartition* pedPartition)
 
         if ((dev = blkid_get_dev(cache, pedPath, BLKID_DEV_NORMAL)) != nullptr) {
             QString s = QString::fromUtf8(blkid_get_tag_value(cache, "TYPE", pedPath));
-
             if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
             else if (s == QStringLiteral("ext3")) rval = FileSystem::Ext3;
             else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Ext4;
@@ -499,12 +498,12 @@ FileSystem::Type LibPartedBackend::detectFileSystem(PedPartition* pedPartition)
             else if (s == QStringLiteral("hfs")) rval = FileSystem::Hfs;
             else if (s == QStringLiteral("hfsplus")) rval = FileSystem::HfsPlus;
             else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
-            else if (s == QStringLiteral("vfat") && pedPartition->fs_type != nullptr) {
-                // libblkid does not distinguish between fat16 and fat32, so we're still using libparted
-                // for those
-                if (strcmp(pedPartition->fs_type->name, "fat16") == 0)
+            else if (s == QStringLiteral("vfat")) {
+                // libblkid uses SEC_TYPE to distinguish between FAT16 and FAT32
+                QString st = QString::fromUtf8(blkid_get_tag_value(cache, "SEC_TYPE", pedPath));
+                if (st == QStringLiteral("msdos"))
                     rval = FileSystem::Fat16;
-                else if (strcmp(pedPartition->fs_type->name, "fat32") == 0)
+                else
                     rval = FileSystem::Fat32;
             } else if (s == QStringLiteral("btrfs")) rval = FileSystem::Btrfs;
             else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Ocfs2;
