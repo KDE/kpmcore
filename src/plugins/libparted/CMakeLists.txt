@@ -31,6 +31,6 @@ add_library(pmlibpartedbackendplugin SHARED ${pmlibpartedbackendplugin_SRCS})
 
 target_link_libraries(pmlibpartedbackendplugin kpmcore ${LIBPARTED_LIBS} ${BLKID_LIBRARIES} KF5::KIOCore KF5::I18n)
 
-install(TARGETS pmlibpartedbackendplugin DESTINATION ${PLUGIN_INSTALL_DIR})
+install(TARGETS pmlibpartedbackendplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})
 kcoreaddons_desktop_to_json(pmlibpartedbackendplugin pmlibpartedbackendplugin.desktop)
 install(FILES pmlibpartedbackendplugin.desktop DESTINATION ${SERVICES_INSTALL_DIR})
