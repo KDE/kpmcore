@@ -105,10 +105,10 @@ qint64 btrfs::maxLabelLength() const
 
 qint64 btrfs::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("btrfs-debug-tree"), QStringList() << deviceNode);
+    ExternalCommand cmd(QStringLiteral("btrfs"), QStringList() << QStringLiteral("filesystem") << QStringLiteral("show") << QStringLiteral("--raw") << deviceNode);
 
     if (cmd.run()) {
-        QRegExp rxBytesUsed(QStringLiteral(" bytes used (\\d+)"));
+        QRegExp rxBytesUsed(QStringLiteral(" used (\\d+) path ") + deviceNode);
 
         if (rxBytesUsed.indexIn(cmd.output()) != -1)
             return rxBytesUsed.cap(1).toLongLong();
