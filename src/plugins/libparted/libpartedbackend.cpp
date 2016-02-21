@@ -206,7 +206,7 @@ static void readSectorsUsed(PedDisk* pedDisk, const Device& d, Partition& p, con
 
     const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
-    if (p.isMounted() && freeSpaceInfo.isValid())
+    if (p.isMounted() && freeSpaceInfo.isValid() && mountPoint != QStringLiteral())
         p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSectorSize());
     else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
         p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSectorSize());
