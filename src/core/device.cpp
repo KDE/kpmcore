@@ -112,5 +112,8 @@ bool Device::operator!=(const Device& other) const
 
 QString Device::prettyName() const
 {
-    return QStringLiteral("%1 (%2, %3)").arg(deviceNode()).arg(name()).arg(Capacity::formatByteSize(this->capacity()));
+    if ( name().isEmpty() )
+        return deviceNode();
+    else
+        return i18nc("Device name – Capacity (device node)", "%1 – %2 (%3)", name(), Capacity::formatByteSize(capacity()), deviceNode());
 }
