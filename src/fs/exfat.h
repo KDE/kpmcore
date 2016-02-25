@@ -32,7 +32,7 @@ class QString;
 namespace FS
 {
 /** An exfat file system.
-    @author Volker Lanz <vl@fidra.de>
+    @author Andrius Štikonas <andrius@stikonas.eu>
 */
 class LIBKPMCORE_EXPORT exfat : public FileSystem
 {

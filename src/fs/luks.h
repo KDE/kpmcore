@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2013 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -32,7 +33,7 @@ class QString;
 namespace FS
 {
 /** A LUKS crypto file system.
-    @author Volker Lanz <vl@fidra.de>
+    @author Andrius Štikonas <andrius@stikonas.eu>
 */
 class LIBKPMCORE_EXPORT luks : public FileSystem
 {

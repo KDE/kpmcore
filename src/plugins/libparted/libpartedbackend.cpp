@@ -513,6 +513,7 @@ FileSystem::Type LibPartedBackend::detectFileSystem(PedPartition* pedPartition)
             else if (s == QStringLiteral("exfat")) rval = FileSystem::Exfat;
             else if (s == QStringLiteral("nilfs2")) rval = FileSystem::Nilfs2;
             else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Lvm2_PV;
+            else if (s == QStringLiteral("f2fs")) rval = FileSystem::F2fs;
             else
                 qWarning() << "blkid: unknown file system type " << s << " on " << pedPath;
         }

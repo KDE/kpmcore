@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         * 
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -32,7 +33,7 @@ class QString;
 namespace FS
 {
 /** LVM2 physical volume.
-    @author Andrius Štikonas <stikonas@gmail.com>
+    @author Andrius Štikonas <andrius@stikonas.eu>
 */
 class LIBKPMCORE_EXPORT lvm2_pv : public FileSystem
 {

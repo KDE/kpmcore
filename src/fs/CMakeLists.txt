@@ -1,31 +1,32 @@
 set(FS_SRC
+    fs/btrfs.cpp
+    fs/exfat.cpp
+    fs/ext2.cpp
+    fs/ext3.cpp
+    fs/ext4.cpp
+    fs/extended.cpp
+    fs/f2fs.cpp
+    fs/fat16.cpp
     fs/fat32.cpp
     fs/filesystem.cpp
-    fs/hfs.cpp
-    fs/nilfs2.cpp
-    fs/unknown.cpp
-    fs/linuxswap.cpp
-    fs/hfsplus.cpp
-    fs/ext3.cpp
-    fs/hpfs.cpp
-    fs/unformatted.cpp
-    fs/luks.cpp
-    fs/btrfs.cpp
-    fs/ufs.cpp
-    fs/reiserfs.cpp
-    fs/exfat.cpp
     fs/filesystemfactory.cpp
-    fs/lvm2_pv.cpp
-    fs/reiser4.cpp
-    fs/ext2.cpp
+    fs/hfs.cpp
+    fs/hfsplus.cpp
+    fs/hpfs.cpp
     fs/jfs.cpp
+    fs/linuxswap.cpp
+    fs/luks.cpp
+    fs/lvm2_pv.cpp
+    fs/nilfs2.cpp
     fs/ntfs.cpp
-    fs/fat16.cpp
-    fs/ext4.cpp
-    fs/xfs.cpp
-    fs/extended.cpp
-    fs/zfs.cpp
     fs/ocfs2.cpp
+    fs/reiser4.cpp
+    fs/reiserfs.cpp
+    fs/ufs.cpp
+    fs/unformatted.cpp
+    fs/unknown.cpp
+    fs/xfs.cpp
+    fs/zfs.cpp
 )
 
 set(FS_LIB_HDRS
@@ -35,6 +36,7 @@ set(FS_LIB_HDRS
     fs/ext3.h
     fs/ext4.h
     fs/extended.h
+    fs/f2fs.h
     fs/fat16.h
     fs/fat32.h
     fs/filesystem.h

@@ -81,8 +81,9 @@ public:
         Exfat = 22,
         Nilfs2 = 23,
         Lvm2_PV = 24,
+        F2fs = 25,
 
-        __lastType = 25
+        __lastType = 26
     };
 
     /** The type of support for a given FileSystem action */

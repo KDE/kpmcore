@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2010 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -32,7 +33,7 @@ class QString;
 namespace FS
 {
 /** A zfs file system.
-    @author Volker Lanz <vl@fidra.de>
+    @author Andrius Štikonas <andrius@stikonas.eu>
 */
 class LIBKPMCORE_EXPORT zfs : public FileSystem
 {

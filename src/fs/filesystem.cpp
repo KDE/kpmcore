@@ -50,7 +50,8 @@ const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode 
     QColor( 33,137,108 ),
     QColor( 250,230,255 ),
     QColor( 242,155,104 ),
-    QColor( 160,210,180 )
+    QColor( 160,210,180 ),
+    QColor( 255,170,0 )
 };
 
 
@@ -318,6 +319,7 @@ static const QString* typeNames()
         i18nc("@item filesystem name", "exfat"),
         i18nc("@item filesystem name", "nilfs2"),
         i18nc("@item filesystem name", "lvm2 pv"),
+        i18nc("@item filesystem name", "f2fs"),
     };
 
     return s;
