@@ -32,7 +32,6 @@
 #include <KLocalizedString>
 
 #include <QDebug>
-#include <QFile>
 #include <QTextStream>
 
 /** Creates a new PartitionTable object with type MSDOS
