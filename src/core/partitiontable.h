@@ -50,7 +50,7 @@ class LIBKPMCORE_EXPORT PartitionTable : public PartitionNode
     friend LIBKPMCORE_EXPORT QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable);
 
 public:
-    enum TableType {
+    enum TableType : qint8 {
         unknownTableType = -1,
 
         aix,
@@ -68,7 +68,7 @@ public:
     };
 
     /** Partition flags */
-    enum Flag {
+    enum Flag : qint32 {
         FlagNone = 0,
         FlagBoot = 1,
         FlagRoot = 2,
