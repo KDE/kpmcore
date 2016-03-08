@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008, 2010 by Volker Lanz <vl@fidra.de>                *
+ *  Copyright (C) 2016 by Teo Mrnjavac <teo@kde.org>                     *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -49,7 +50,7 @@ class LIBKPMCORE_EXPORT PartitionTable : public PartitionNode
     friend LIBKPMCORE_EXPORT QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable);
 
 public:
-    enum TableType {
+    enum TableType : qint8 {
         unknownTableType = -1,
 
         aix,
@@ -67,7 +68,7 @@ public:
     };
 
     /** Partition flags */
-    enum Flag {
+    enum Flag : qint32 {
         FlagNone = 0,
         FlagBoot = 1,
         FlagRoot = 2,
@@ -79,7 +80,14 @@ public:
         FlagHpService = 128,
         FlagPalo = 256,
         FlagPrep = 512,
-        FlagMsftReserved = 1024
+        FlagMsftReserved = 1024,
+        FlagBiosGrub = 2048,
+        FlagAppleTvRecovery = 4096,
+        FlagDiag = 8192,
+        FlagLegacyBoot = 16384,
+        FlagMsftData = 32768,
+        FlagIrst = 65536,
+        FlagEsp = 131072
     };
 
     Q_DECLARE_FLAGS(Flags, Flag)

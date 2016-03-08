@@ -1,6 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016 by Teo Mrnjavac <teo@kde.org>                     *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -149,18 +150,42 @@ void PartitionTable::append(Partition* partition)
 QString PartitionTable::flagName(Flag f)
 {
     switch (f) {
-    case PartitionTable::FlagBoot: return i18nc("@item partition flag", "boot");
-    case PartitionTable::FlagRoot: return i18nc("@item partition flag", "root");
-    case PartitionTable::FlagSwap: return i18nc("@item partition flag", "swap");
-    case PartitionTable::FlagHidden: return i18nc("@item partition flag", "hidden");
-    case PartitionTable::FlagRaid: return i18nc("@item partition flag", "raid");
-    case PartitionTable::FlagLvm: return i18nc("@item partition flag", "lvm");
-    case PartitionTable::FlagLba: return i18nc("@item partition flag", "lba");
-    case PartitionTable::FlagHpService: return i18nc("@item partition flag", "hpservice");
-    case PartitionTable::FlagPalo: return i18nc("@item partition flag", "palo");
-    case PartitionTable::FlagPrep: return i18nc("@item partition flag", "prep");
-    case PartitionTable::FlagMsftReserved: return i18nc("@item partition flag", "msft-reserved");
-
+    case PartitionTable::FlagBoot:
+        return i18nc("@item partition flag", "boot");
+    case PartitionTable::FlagRoot:
+        return i18nc("@item partition flag", "root");
+    case PartitionTable::FlagSwap:
+        return i18nc("@item partition flag", "swap");
+    case PartitionTable::FlagHidden:
+        return i18nc("@item partition flag", "hidden");
+    case PartitionTable::FlagRaid:
+        return i18nc("@item partition flag", "raid");
+    case PartitionTable::FlagLvm:
+        return i18nc("@item partition flag", "lvm");
+    case PartitionTable::FlagLba:
+        return i18nc("@item partition flag", "lba");
+    case PartitionTable::FlagHpService:
+        return i18nc("@item partition flag", "hpservice");
+    case PartitionTable::FlagPalo:
+        return i18nc("@item partition flag", "palo");
+    case PartitionTable::FlagPrep:
+        return i18nc("@item partition flag", "prep");
+    case PartitionTable::FlagMsftReserved:
+        return i18nc("@item partition flag", "msft-reserved");
+    case PartitionTable::FlagBiosGrub:
+        return i18nc("@item partition flag", "bios-grub");
+    case PartitionTable::FlagAppleTvRecovery:
+        return i18nc("@item partition flag", "apple-tv-recovery");
+    case PartitionTable::FlagDiag:
+        return i18nc("@item partition flag", "diag");
+    case PartitionTable::FlagLegacyBoot:
+        return i18nc("@item partition flag", "legacy-boot");
+    case PartitionTable::FlagMsftData:
+        return i18nc("@item partition flag", "msft-data");
+    case PartitionTable::FlagIrst:
+        return i18nc("@item partition flag", "irst");
+    case PartitionTable::FlagEsp:
+        return i18nc("@item partition flag", "esp");
     default:
         break;
     }
@@ -184,6 +209,13 @@ QList<PartitionTable::Flag> PartitionTable::flagList()
     rval.append(PartitionTable::FlagPalo);
     rval.append(PartitionTable::FlagPrep);
     rval.append(PartitionTable::FlagMsftReserved);
+    rval.append(PartitionTable::FlagBiosGrub);
+    rval.append(PartitionTable::FlagAppleTvRecovery);
+    rval.append(PartitionTable::FlagDiag);
+    rval.append(PartitionTable::FlagLegacyBoot);
+    rval.append(PartitionTable::FlagMsftData);
+    rval.append(PartitionTable::FlagIrst);
+    rval.append(PartitionTable::FlagEsp);
 
     return rval;
 }
