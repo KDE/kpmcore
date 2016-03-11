@@ -61,7 +61,7 @@ void ntfs::init()
     m_Create = findExternal(QStringLiteral("mkfs.ntfs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Copy = findExternal(QStringLiteral("ntfsclone")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Backup = cmdSupportCore;
-    m_UpdateUUID = findExternal(QStringLiteral("dd")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_UpdateUUID = cmdSupportCore;
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_GetUUID = cmdSupportCore;
 }
@@ -177,16 +177,26 @@ bool ntfs::resize(Report& report, const QString& deviceNode, qint64 length) cons
 bool ntfs::updateUUID(Report& report, const QString& deviceNode) const
 {
     QUuid uuid = QUuid::createUuid();
+    char* s = reinterpret_cast<char*>(&uuid.data4[0]);
 
-    ExternalCommand cmd(report, QStringLiteral("dd"), QStringList() << QStringLiteral("of=") + deviceNode << QStringLiteral("bs=1") << QStringLiteral("count=8") << QStringLiteral("seek=72"));
-
-    if (!cmd.start())
+    QFile device(deviceNode);
+    if (!device.open(QFile::ReadWrite | QFile::Unbuffered)) {
+        Log() << xi18nc("@info/plain", "Could not open partition <filename>%1</filename> for writing when trying to update the NTFS serial number.", deviceNode);
         return false;
+    }
 
-    if (cmd.write(reinterpret_cast<char*>(&uuid.data4[0]), 8) != 8)
+    if (!device.seek(0x48)) {
+        Log() << xi18nc("@info/plain", "Could not seek to position 0x48 on partition <filename>%1</filename> when trying to update the NTFS serial number.", deviceNode);
         return false;
+    }
 
-    return cmd.waitFor(-1);
+    if (device.write(s, 8) != 8) {
+        Log() << xi18nc("@info/plain", "Could not write new NTFS serial number to partition <filename>%1</filename>.", deviceNode);
+        return false;
+    }
+
+    Log() << xi18nc("@info/plain", "Updated NTFS serial number for partition <filename>%1</filename> successfully.", deviceNode);
+    return true;
 }
 
 bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
