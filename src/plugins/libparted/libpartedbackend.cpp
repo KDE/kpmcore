@@ -432,7 +432,6 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
             continue;
         if (excludeReadOnly && (
                 pedDevice->type == PED_DEVICE_LOOP ||
-                pedDevice->type == PED_DEVICE_UNKNOWN ||
                 pedDevice->read_only))
             continue;
 
