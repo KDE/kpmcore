@@ -57,7 +57,6 @@ find_package(KF5 REQUIRED
   IconThemes
   KIO
   Service
-  XmlGui
 )
 
 # use sane compile flags
