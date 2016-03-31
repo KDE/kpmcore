@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
  *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
@@ -172,6 +173,7 @@ public:
     static QString nameForType(FileSystem::Type t);
     static QList<FileSystem::Type> types();
     static FileSystem::Type typeForName(const QString& s);
+    static FileSystem::Type detectFileSystem(const QString& partitionPath);
 
     virtual bool canMount(const QString&) const {
         return false;    /**< @return true if this FileSystem can be mounted */
@@ -183,8 +185,8 @@ public:
     virtual QString mountTitle() const;
     virtual QString unmountTitle() const;
 
-    virtual bool mount(const QString& mountPoint);
-    virtual bool unmount(const QString& mountPoint);
+    virtual bool mount(const QString& deviceNode, const QString& mountPoint);
+    virtual bool unmount(const QString& deviceNode);
 
     qint64 firstSector() const {
         return m_FirstSector;    /**< @return the FileSystem's first sector */
