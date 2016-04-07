@@ -93,7 +93,8 @@ bool luks::supportToolFound() const
 
 FileSystem::SupportTool luks::supportToolName() const
 {
-    return SupportTool(QStringLiteral("cryptsetup"), QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
+    return SupportTool(QStringLiteral("cryptsetup"),
+                       QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
 }
 
 qint64 luks::minCapacity() const
@@ -200,8 +201,10 @@ bool luks::cryptOpen(const QString& deviceNode)
     commands.push_back(QStringLiteral("echo"));
     commands.push_back(QStringLiteral("cryptsetup"));
     std::vector<QStringList> args;
-    args.push_back(QStringList() << dlg->luksPassphrase().text());
-    args.push_back(QStringList() << QStringLiteral("luksOpen") << deviceNode << dlg->luksName().text());
+    args.push_back({ dlg->luksPassphrase().text() });
+    args.push_back({ QStringLiteral("luksOpen"),
+                     deviceNode,
+                     dlg->luksName().text() });
     delete dlg;
 
     ExternalCommand cmd(commands, args);
@@ -245,7 +248,8 @@ bool luks::cryptClose(const QString& deviceNode)
         return false;
     }
 
-    ExternalCommand cmd(QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksClose") << mapperName(deviceNode));
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksClose"), mapperName(deviceNode) });
     if (!(cmd.run(-1) && cmd.exitCode() == 0))
         return false;
 
@@ -347,7 +351,8 @@ bool luks::unmount(const QString& deviceNode)
 
 QString luks::readUUID(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksUUID") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksUUID"), deviceNode });
     if (cmd.run()) {
         return cmd.output().simplified();
     }
@@ -358,15 +363,27 @@ bool luks::updateUUID(Report& report, const QString& deviceNode) const
 {
     QUuid uuid = QUuid::createUuid();
 
-    ExternalCommand cmd(report, QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksUUID") << deviceNode << QStringLiteral("--uuid") << uuid.toString());
+    ExternalCommand cmd(report,
+                        QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksUUID"),
+                          deviceNode,
+                          QStringLiteral("--uuid"),
+                          uuid.toString() });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 QString luks::mapperName(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("find"), QStringList() << QStringLiteral("/dev/mapper/") << QStringLiteral("-exec") << QStringLiteral("cryptsetup") << QStringLiteral("status") << QStringLiteral("{}") << QStringLiteral(";"));
+    ExternalCommand cmd(QStringLiteral("find"),
+                        { QStringLiteral("/dev/mapper/"),
+                          QStringLiteral("-exec"),
+                          QStringLiteral("cryptsetup"),
+                          QStringLiteral("status"),
+                          QStringLiteral("{}"),
+                          QStringLiteral(";") });
     if (cmd.run()) {
-        QRegExp rxDeviceName(QStringLiteral("(/dev/mapper/[A-Za-z0-9-/]+) is active[A-Za-z0-9- \\.\n]+[A-Za-z0-9-: \n]+") + deviceNode);
+        QRegExp rxDeviceName(QStringLiteral("(/dev/mapper/[A-Za-z0-9-/]+) is "
+                                            "active[A-Za-z0-9- \\.\n]+[A-Za-z0-9-: \n]+") + deviceNode);
         if (rxDeviceName.indexIn(cmd.output()) > -1)
             return rxDeviceName.cap(1);
     }
@@ -375,7 +392,8 @@ QString luks::mapperName(const QString& deviceNode)
 
 QString luks::getCipherName(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksDump") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksDump"), deviceNode });
     if (cmd.run()) {
         QRegExp rxCipherName(QStringLiteral("(?:Cipher name:\\s+)([A-Za-z0-9-]+)"));
         if (rxCipherName.indexIn(cmd.output()) > -1)
@@ -386,7 +404,8 @@ QString luks::getCipherName(const QString& deviceNode)
 
 QString luks::getCipherMode(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksDump") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksDump"), deviceNode });
     if (cmd.run()) {
         QRegExp rxCipherMode(QStringLiteral("(?:Cipher mode:\\s+)([A-Za-z0-9-]+)"));
         if (rxCipherMode.indexIn(cmd.output()) > -1)
@@ -397,7 +416,8 @@ QString luks::getCipherMode(const QString& deviceNode)
 
 QString luks::getHashName(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksDump") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksDump"), deviceNode });
     if (cmd.run()) {
         QRegExp rxHash(QStringLiteral("(?:Hash spec:\\s+)([A-Za-z0-9-]+)"));
         if (rxHash.indexIn(cmd.output()) > -1)
@@ -408,7 +428,8 @@ QString luks::getHashName(const QString& deviceNode)
 
 QString luks::getKeySize(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksDump") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksDump"), deviceNode });
     if (cmd.run()) {
         QRegExp rxKeySize(QStringLiteral("(?:MK bits:\\s+)(\\d+)"));
         if (rxKeySize.indexIn(cmd.output()) > -1)
@@ -419,7 +440,8 @@ QString luks::getKeySize(const QString& deviceNode)
 
 QString luks::getPayloadOffset(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("luksDump") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksDump"), deviceNode });
     if (cmd.run()) {
         QRegExp rxPayloadOffset(QStringLiteral("(?:Payload offset:\\s+)(\\d+)"));
         if (rxPayloadOffset.indexIn(cmd.output()) > -1)
