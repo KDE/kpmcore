@@ -83,6 +83,7 @@ public:
         return m_GetUUID;
     }
 
+    virtual bool create(Report &report, const QString &deviceNode) const override;
     virtual qint64 minCapacity() const;
     virtual SupportTool supportToolName() const;
     virtual bool supportToolFound() const;
@@ -133,9 +134,9 @@ public:
     static CommandSupportType m_GetUUID;
 
 private:
-    FileSystem* m_innerFs;
+    mutable FileSystem* m_innerFs;
 
-    bool m_isCryptOpen;
+    mutable bool m_isCryptOpen;
     bool m_isMounted;
 };
 }

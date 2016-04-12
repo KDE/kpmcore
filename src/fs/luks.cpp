@@ -67,11 +67,76 @@ luks::~luks()
 
 void luks::init()
 {
+    m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Copy = cmdSupportCore;
     m_Move = cmdSupportCore;
     m_Backup = cmdSupportCore;
     m_GetUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+}
+
+bool luks::create(Report& report, const QString& deviceNode) const
+{
+
+    QPointer<DecryptLuksDialog> dlg = new DecryptLuksDialog(0, deviceNode); //TODO: parent widget instead of 0
+
+    if (dlg->exec() != QDialog::Accepted)
+    {
+        delete dlg;
+        return false;
+    }
+
+    std::vector<QString> commands;
+    commands.push_back(QStringLiteral("echo"));
+    commands.push_back(QStringLiteral("cryptsetup"));
+    std::vector<QStringList> args;
+    args.push_back({ dlg->luksPassphrase().text() });
+    args.push_back({ QStringLiteral("-s"),
+                     QStringLiteral("512"),
+                     QStringLiteral("luksFormat"),
+                     deviceNode,
+                     QStringLiteral("-") });
+
+    ExternalCommand createCmd(commands, args);
+    if (!(createCmd.run(-1) && createCmd.exitCode() == 0))
+        return false;
+
+    commands.clear();
+    commands.push_back(QStringLiteral("echo"));
+    commands.push_back(QStringLiteral("cryptsetup"));
+    args.clear();
+    args.push_back({ dlg->luksPassphrase().text() });
+    args.push_back({ QStringLiteral("luksOpen"),
+                     deviceNode,
+                     dlg->luksName().text() });
+    delete dlg;
+
+    ExternalCommand openCmd(commands, args);
+    if (!(openCmd.run(-1) && openCmd.exitCode() == 0))
+        return false;
+
+    if (m_innerFs)
+    {
+        delete m_innerFs;
+        m_innerFs = nullptr;
+    }
+
+    QString mapperNode = mapperName(deviceNode);
+    if (mapperNode.isEmpty())
+        return false;
+
+
+    //FIXME: don't hardcode inner fs type
+    FileSystem::Type innerFsType = FileSystem::Ext4;
+    m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
+                                                    *this);
+
+    m_isCryptOpen = (m_innerFs != nullptr);
+
+    if (m_isCryptOpen)
+        return true;
+    return false;
+
 }
 
 bool luks::supportToolFound() const
@@ -80,7 +145,7 @@ bool luks::supportToolFound() const
 //          m_GetUsed != cmdSupportNone &&
 //          m_GetLabel != cmdSupportNone &&
 //          m_SetLabel != cmdSupportNone &&
-//          m_Create != cmdSupportNone &&
+        m_Create != cmdSupportNone &&
 //          m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
 //          m_Grow != cmdSupportNone &&
