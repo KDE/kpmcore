@@ -192,7 +192,7 @@ bool luks::canMount(const QString& deviceNode) const
     return m_isCryptOpen &&
            !m_isMounted &&
            m_innerFs &&
-           m_innerFs->canMount(deviceNode);
+           m_innerFs->canMount(mapperName(deviceNode));
 }
 
 bool luks::canUnmount(const QString& deviceNode) const
@@ -200,7 +200,7 @@ bool luks::canUnmount(const QString& deviceNode) const
     return m_isCryptOpen &&
            m_isMounted &&
            m_innerFs &&
-           m_innerFs->canUnmount(deviceNode);
+           m_innerFs->canUnmount(mapperName(deviceNode));
 }
 
 bool luks::isMounted() const
