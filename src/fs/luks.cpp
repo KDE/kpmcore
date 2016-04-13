@@ -130,6 +130,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
     FileSystem::Type innerFsType = FileSystem::Ext4;
     m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
                                                     *this);
+    m_innerFs->create(report, mapperNode);
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
