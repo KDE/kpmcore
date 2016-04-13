@@ -94,8 +94,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
     args.push_back({ QStringLiteral("-s"),
                      QStringLiteral("512"),
                      QStringLiteral("luksFormat"),
-                     deviceNode,
-                     QStringLiteral("-") });
+                     deviceNode });
 
     ExternalCommand createCmd(commands, args);
     if (!(createCmd.run(-1) && createCmd.exitCode() == 0))
