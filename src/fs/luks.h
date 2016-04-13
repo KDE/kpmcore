@@ -108,6 +108,8 @@ public:
     bool cryptOpen(const QString& deviceNode);
     bool cryptClose(const QString& deviceNode);
 
+    void loadInnerFilesystem(const QString& mapperNode);
+
     virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
     virtual bool unmount(const QString& deviceNode) override;
 

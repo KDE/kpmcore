@@ -286,10 +286,7 @@ bool luks::cryptOpen(const QString& deviceNode)
     if (mapperNode.isEmpty())
         return false;
 
-    FileSystem::Type innerFsType = detectFileSystem(mapperNode);
-    m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
-                                                    *this);
-
+    loadInnerFilesystem(mapperNode);
     m_isCryptOpen = (m_innerFs != nullptr);
 
     if (m_isCryptOpen)
@@ -326,6 +323,13 @@ bool luks::cryptClose(const QString& deviceNode)
     if (!m_isCryptOpen)
         return true;
     return false;
+}
+
+void luks::loadInnerFilesystem(const QString& mapperNode)
+{
+    FileSystem::Type innerFsType = detectFileSystem(mapperNode);
+    m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
+                                                    *this);
 }
 
 bool luks::mount(const QString& deviceNode, const QString& mountPoint)

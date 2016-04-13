@@ -359,6 +359,8 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
             luksFs->setCryptOpen(isCryptOpen);
 
             if (isCryptOpen) {
+                luksFs->loadInnerFilesystem(mapperNode);
+
                 mountPoint = mountPoints.findByDevice(mapperNode) ?
                              mountPoints.findByDevice(mapperNode)->mountPoint() :
                              QString();
