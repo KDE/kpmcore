@@ -108,10 +108,13 @@ public:
     bool cryptOpen(const QString& deviceNode);
     bool cryptClose(const QString& deviceNode);
 
-    void loadInnerFilesystem(const QString& mapperNode);
+    void loadInnerFileSystem(const QString& mapperNode);
+    void createInnerFileSystem(Type type);
 
     virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
     virtual bool unmount(const QString& deviceNode) override;
+
+    virtual FileSystem::Type type() const override;
 
     static QString mapperName(const QString& deviceNode);
 
@@ -120,6 +123,7 @@ public:
     static QString getHashName(const QString& deviceNode);
     static QString getKeySize(const QString& deviceNode);
     static QString getPayloadOffset(const QString& deviceNode);
+    static bool canEncryptType(FileSystem::Type type);
 
 public:
     static CommandSupportType m_GetUsed;

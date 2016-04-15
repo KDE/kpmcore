@@ -77,7 +77,7 @@ void luks::init()
 
 bool luks::create(Report& report, const QString& deviceNode) const
 {
-
+    Q_ASSERT(m_innerFs);
     QPointer<DecryptLuksDialog> dlg = new DecryptLuksDialog(0, deviceNode); //TODO: parent widget instead of 0
 
     if (dlg->exec() != QDialog::Accepted)
@@ -114,21 +114,10 @@ bool luks::create(Report& report, const QString& deviceNode) const
     if (!(openCmd.run(-1) && openCmd.exitCode() == 0))
         return false;
 
-    if (m_innerFs)
-    {
-        delete m_innerFs;
-        m_innerFs = nullptr;
-    }
-
     QString mapperNode = mapperName(deviceNode);
     if (mapperNode.isEmpty())
         return false;
 
-
-    //FIXME: don't hardcode inner fs type
-    FileSystem::Type innerFsType = FileSystem::Ext4;
-    m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
-                                                    *this);
     m_innerFs->create(report, mapperNode);
 
     m_isCryptOpen = (m_innerFs != nullptr);
@@ -136,7 +125,6 @@ bool luks::create(Report& report, const QString& deviceNode) const
     if (m_isCryptOpen)
         return true;
     return false;
-
 }
 
 bool luks::supportToolFound() const
@@ -286,7 +274,7 @@ bool luks::cryptOpen(const QString& deviceNode)
     if (mapperNode.isEmpty())
         return false;
 
-    loadInnerFilesystem(mapperNode);
+    loadInnerFileSystem(mapperNode);
     m_isCryptOpen = (m_innerFs != nullptr);
 
     if (m_isCryptOpen)
@@ -325,11 +313,18 @@ bool luks::cryptClose(const QString& deviceNode)
     return false;
 }
 
-void luks::loadInnerFilesystem(const QString& mapperNode)
+void luks::loadInnerFileSystem(const QString& mapperNode)
 {
+    Q_ASSERT(!m_innerFs);
     FileSystem::Type innerFsType = detectFileSystem(mapperNode);
     m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
                                                     *this);
+}
+
+void luks::createInnerFileSystem(FileSystem::Type type)
+{
+    Q_ASSERT(!m_innerFs);
+    m_innerFs = FileSystemFactory::cloneWithNewType(type, *this);
 }
 
 bool luks::mount(const QString& deviceNode, const QString& mountPoint)
@@ -416,6 +411,13 @@ bool luks::unmount(const QString& deviceNode)
         }
     }
     return false;
+}
+
+FileSystem::Type luks::type() const
+{
+    if (m_isCryptOpen && m_innerFs)
+        return m_innerFs->type();
+    return FileSystem::Luks;
 }
 
 QString luks::readUUID(const QString& deviceNode) const
@@ -517,6 +519,27 @@ QString luks::getPayloadOffset(const QString& deviceNode)
             return rxPayloadOffset.cap(1);
     }
     return QStringLiteral("---");
+}
+
+bool luks::canEncryptType(FileSystem::Type type)
+{
+    switch (type)
+    {
+    case Ext2:
+    case Ext3:
+    case Ext4:
+    case LinuxSwap:
+    case ReiserFS:
+    case Reiser4:
+    case Xfs:
+    case Jfs:
+    case Btrfs:
+    case Zfs:
+    case Lvm2_PV:
+        return true;
+    default:
+        return false;
+    }
 }
 
 }
