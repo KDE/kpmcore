@@ -353,13 +353,14 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
         QString mountPoint;
         bool mounted = false;
         if (fs->type() == FileSystem::Luks) {
+            r |= PartitionRole::LUKS;
             FS::luks* luksFs = dynamic_cast<FS::luks*>(fs);
             QString mapperNode = FS::luks::mapperName(node);
             bool isCryptOpen = !mapperNode.isEmpty();
             luksFs->setCryptOpen(isCryptOpen);
 
             if (isCryptOpen) {
-                luksFs->loadInnerFilesystem(mapperNode);
+                luksFs->loadInnerFileSystem(mapperNode);
 
                 mountPoint = mountPoints.findByDevice(mapperNode) ?
                              mountPoints.findByDevice(mapperNode)->mountPoint() :
