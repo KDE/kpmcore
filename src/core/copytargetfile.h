@@ -21,7 +21,7 @@
 
 #include "../core/copytarget.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 #include <QFile>
 
 class QString;

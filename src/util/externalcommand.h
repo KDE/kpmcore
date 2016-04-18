@@ -26,7 +26,7 @@
 #include <QProcess>
 #include <QStringList>
 #include <QString>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Report;
 

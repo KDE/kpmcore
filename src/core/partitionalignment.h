@@ -19,7 +19,7 @@
 
 #define PARTITIONALIGNMENT__H
 
-#include "qglobal.h"
+#include "QtGlobal"
 
 #include "../util/libpartitionmanagerexport.h"
 

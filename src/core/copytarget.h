@@ -19,7 +19,7 @@
 
 #define COPYTARGET__H
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 
 /** Base class for something to copy to.

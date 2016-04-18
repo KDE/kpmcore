@@ -23,7 +23,7 @@
 
 #include "fs/fat16.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Report;
 

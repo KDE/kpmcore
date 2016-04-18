@@ -23,7 +23,7 @@
 
 #include <QString>
 #include <QStringList>
-#include <qglobal.h>
+#include <QtGlobal>
 
 struct mntent;
 

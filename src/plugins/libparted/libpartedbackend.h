@@ -30,7 +30,7 @@
 
 #include <QList>
 #include <QVariant>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class LibPartedDevice;
 class LibPartedPartitionTable;

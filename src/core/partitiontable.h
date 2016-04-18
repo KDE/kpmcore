@@ -26,7 +26,7 @@
 #include "../core/partitionrole.h"
 
 #include <QList>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Device;
 class Partition;

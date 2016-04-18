@@ -19,7 +19,7 @@
 
 #define COPYSOURCE__H
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class CopyTarget;
 

@@ -25,7 +25,7 @@
 #include <QList>
 #include <QReadWriteLock>
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Device;
 class Partition;

@@ -21,7 +21,7 @@
 #define FILESYSTEM__H
 #include "../util/libpartitionmanagerexport.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 #include <QColor>
 #include <QStringList>
 #include <QString>

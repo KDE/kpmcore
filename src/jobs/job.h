@@ -24,7 +24,7 @@
 #include "../util/libpartitionmanagerexport.h"
 
 #include <QObject>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class QString;
 class QIcon;

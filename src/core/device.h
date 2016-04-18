@@ -23,7 +23,7 @@
 
 #include <QString>
 #include <QObject>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class PartitionTable;
 class CreatePartitionTableOperation;

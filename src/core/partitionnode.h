@@ -23,7 +23,7 @@
 
 #include <QObject>
 #include <QList>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Partition;
 class PartitionRole;

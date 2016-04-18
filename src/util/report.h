@@ -25,7 +25,7 @@
 #include <QObject>
 #include <QList>
 #include <QString>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class ReportLine;
 

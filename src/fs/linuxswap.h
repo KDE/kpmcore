@@ -23,7 +23,7 @@
 
 #include "fs/filesystem.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Report;
 

@@ -21,7 +21,7 @@
 
 #include "../util/libpartitionmanagerexport.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 #include <QString>
 #include <QList>
 
