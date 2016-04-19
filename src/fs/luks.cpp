@@ -257,7 +257,7 @@ bool luks::cryptOpen(const QString& deviceNode)
     args.push_back({ dlg->luksPassphrase().text() });
     args.push_back({ QStringLiteral("luksOpen"),
                      deviceNode,
-                     dlg->luksName().text() });
+                     QStringLiteral("luks-") + readUUID(deviceNode) });
     delete dlg;
 
     ExternalCommand cmd(commands, args);
