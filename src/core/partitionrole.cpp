@@ -37,7 +37,7 @@ QString PartitionRole::toString() const
     if (roles() & Primary)
         return i18nc("@item partition role", "primary");
 
-    if (roles() & LUKS)
+    if (roles() & Luks)
         return i18nc("@item partition role", "LUKS");
 
     return i18nc("@item partition role", "none");

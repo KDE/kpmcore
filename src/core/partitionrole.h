@@ -42,7 +42,7 @@ public:
         Extended = 2,       /**< Extended */
         Logical = 4,        /**< Logical inside an extended */
         Unallocated = 8,    /**< No real Partition, just unallocated space */
-        LUKS = 16,          /**< Encrypted partition with LUKS key management */
+        Luks = 16,          /**< Encrypted partition with LUKS key management */
 
         Any = 255           /**< In case we're looking for a Partition with a PartitionRole, any will do */
     };
