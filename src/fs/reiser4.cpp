@@ -121,7 +121,7 @@ bool reiser4::check(Report& report, const QString& deviceNode) const
 
 bool reiser4::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.reiser4"), QStringList() << QStringLiteral("--yes") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.reiser4"), QStringList() << QStringLiteral("--yes") << QStringLiteral("--force") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }
