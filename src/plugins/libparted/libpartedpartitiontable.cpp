@@ -123,7 +123,7 @@ static const struct {
     { FileSystem::Ntfs, QStringLiteral("ntfs") },
     { FileSystem::Exfat, QStringLiteral("ntfs") },
     { FileSystem::ReiserFS, QStringLiteral("reiserfs") },
-    { FileSystem::Reiser4, QStringLiteral("reiser4") },
+    { FileSystem::Reiser4, QStringLiteral("reiserfs") },
     { FileSystem::Xfs, QStringLiteral("xfs") },
     { FileSystem::Jfs, QStringLiteral("jfs") },
     { FileSystem::Hfs, QStringLiteral("hfs") },
