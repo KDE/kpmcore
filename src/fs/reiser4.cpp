@@ -115,13 +115,13 @@ qint64 reiser4::readUsedCapacity(const QString& deviceNode) const
 
 bool reiser4::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.reiser4"), QStringList() << QStringLiteral("--fix") << QStringLiteral("-y") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("fsck.reiser4"), QStringList() << QStringLiteral("--fix") << QStringLiteral("--yes") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool reiser4::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.reiser4"), QStringList() << QStringLiteral("--yes") << QStringLiteral("--force") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.reiser4"), QStringList() << QStringLiteral("--force") << QStringLiteral("--yes") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

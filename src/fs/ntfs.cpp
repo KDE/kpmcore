@@ -140,19 +140,19 @@ bool ntfs::writeLabel(Report& report, const QString& deviceNode, const QString& 
 
 bool ntfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("ntfsresize"), QStringList() << QStringLiteral("-P") << QStringLiteral("-i") << QStringLiteral("-f") << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("ntfsresize"), QStringList() << QStringLiteral("--no-progress-bar") << QStringLiteral("--info") << QStringLiteral("--force") << QStringLiteral("--verbose") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ntfs::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.ntfs"), QStringList() << QStringLiteral("-f") << QStringLiteral("-vv") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ntfs"), QStringList() << QStringLiteral("--quick") << QStringLiteral("--verbose") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ntfs::copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("ntfsclone"), QStringList() << QStringLiteral("-f") << QStringLiteral("--overwrite") << targetDeviceNode << sourceDeviceNode);
+    ExternalCommand cmd(report, QStringLiteral("ntfsclone"), QStringList() << QStringLiteral("--force") << QStringLiteral("--overwrite") << targetDeviceNode << sourceDeviceNode);
 
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
@@ -160,10 +160,10 @@ bool ntfs::copy(Report& report, const QString& targetDeviceNode, const QString& 
 bool ntfs::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
     QStringList args;
-    args << QStringLiteral("-P") << QStringLiteral("-f") << deviceNode << QStringLiteral("-s") << QString::number(length);
+    args << QStringLiteral("--no-progress-bar") << QStringLiteral("--force") << deviceNode << QStringLiteral("--size") << QString::number(length);
 
     QStringList dryRunArgs = args;
-    dryRunArgs << QStringLiteral("-n");
+    dryRunArgs << QStringLiteral("--no-action");
     ExternalCommand cmdDryRun(QStringLiteral("ntfsresize"), dryRunArgs);
 
     if (cmdDryRun.run(-1) && cmdDryRun.exitCode() == 0) {

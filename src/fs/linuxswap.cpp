@@ -88,9 +88,9 @@ bool linuxswap::resize(Report& report, const QString& deviceNode, qint64 length)
 
     QStringList args;
     if (!label.isEmpty())
-        args << QStringLiteral("-L") << label;
+        args << QStringLiteral("--label") << label;
     if (!uuid.isEmpty())
-        args << QStringLiteral("-U") << uuid;
+        args << QStringLiteral("--uuid") << uuid;
 
     args << deviceNode << QString::number(length / 1024);
 
@@ -105,9 +105,9 @@ bool linuxswap::copy(Report& report, const QString& targetDeviceNode, const QStr
 
     QStringList args;
     if (!label.isEmpty())
-        args << QStringLiteral("-L") << label;
+        args << QStringLiteral("--label") << label;
     if (!uuid.isEmpty())
-        args << QStringLiteral("-U") << uuid;
+        args << QStringLiteral("--uuid") << uuid;
 
     args << targetDeviceNode;
 
@@ -117,7 +117,7 @@ bool linuxswap::copy(Report& report, const QString& targetDeviceNode, const QStr
 
 bool linuxswap::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkswap"), QStringList() << QStringLiteral("-L") << newLabel << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkswap"), QStringList() << QStringLiteral("--label") << newLabel << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
@@ -149,7 +149,7 @@ bool linuxswap::updateUUID(Report& report, const QString& deviceNode) const
 
     QStringList args;
     if (!label.isEmpty())
-        args << QStringLiteral("-L") << label;
+        args << QStringLiteral("--label") << label;
 
     args << deviceNode;
 

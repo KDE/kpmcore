@@ -145,10 +145,10 @@ bool nilfs2::resize(Report& report, const QString& deviceNode, qint64 length) co
 
     bool rval = false;
 
-    ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("-v") << QStringLiteral("-t") << QStringLiteral("nilfs2") << deviceNode << tempDir.path());
+    ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("--verbose") << QStringLiteral("--types") << QStringLiteral("nilfs2") << deviceNode << tempDir.path());
 
     if (mountCmd.run(-1) && mountCmd.exitCode() == 0) {
-        ExternalCommand resizeCmd(report, QStringLiteral("nilfs-resize"), QStringList() << QStringLiteral("-v") << QStringLiteral("-y") << deviceNode << QString::number(length));
+        ExternalCommand resizeCmd(report, QStringLiteral("nilfs-resize"), QStringList() << QStringLiteral("--verbose") << QStringLiteral("--assume-yes") << deviceNode << QString::number(length));
 
         if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
             rval = true;

@@ -130,13 +130,13 @@ qint64 reiserfs::readUsedCapacity(const QString& deviceNode) const
 
 bool reiserfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), QStringList() << QStringLiteral("-l") << newLabel << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), QStringList() << QStringLiteral("--label") << newLabel << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool reiserfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.reiserfs"), QStringList() << QStringLiteral("--fix-fixable") << QStringLiteral("-q") << QStringLiteral("-y") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("fsck.reiserfs"), QStringList() << QStringLiteral("--fix-fixable") << QStringLiteral("--quiet") << QStringLiteral("--yes") << deviceNode);
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1 || cmd.exitCode() == 256);
 }
 
@@ -164,7 +164,7 @@ bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) 
 bool reiserfs::updateUUID(Report& report, const QString& deviceNode) const
 {
     const QString uuid = QUuid::createUuid().toString().remove(QRegExp(QStringLiteral("\\{|\\}")));
-    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), QStringList() << QStringLiteral("-u") << uuid << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), QStringList() << QStringLiteral("--uuid") << uuid << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

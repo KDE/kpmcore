@@ -88,7 +88,7 @@ qint64 lvm2_pv::maxCapacity() const
 
 bool lvm2_pv::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("lvm"), QStringList() << QStringLiteral("pvck") << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("lvm"), QStringList() << QStringLiteral("pvck") << QStringLiteral("--verbose") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
@@ -101,13 +101,13 @@ bool lvm2_pv::create(Report& report, const QString& deviceNode) const
 bool lvm2_pv::remove(Report& report, const QString& deviceNode) const
 {
 //      TODO: check if PV is a member of an exported VG
-    ExternalCommand cmd(report, QStringLiteral("lvm"), QStringList() << QStringLiteral("pvremove") << QStringLiteral("-ffy") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("lvm"), QStringList() << QStringLiteral("pvremove") << QStringLiteral("--force") << QStringLiteral("--force") << QStringLiteral("--yes") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool lvm2_pv::updateUUID(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("lvm"), QStringList() << QStringLiteral("pvchange") << QStringLiteral("-u") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("lvm"), QStringList() << QStringLiteral("pvchange") << QStringLiteral("--uuid") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

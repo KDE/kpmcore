@@ -126,7 +126,7 @@ bool btrfs::check(Report& report, const QString& deviceNode) const
 
 bool btrfs::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), QStringList() << QStringLiteral("-f") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), QStringList() << QStringLiteral("--force") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
@@ -140,7 +140,7 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
 
     bool rval = false;
 
-    ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("-v") << QStringLiteral("-t") << QStringLiteral("btrfs") << deviceNode << tempDir.path());
+    ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("--verbose") << QStringLiteral("--types") << QStringLiteral("btrfs") << deviceNode << tempDir.path());
 
     if (mountCmd.run(-1) && mountCmd.exitCode() == 0) {
         ExternalCommand resizeCmd(report, QStringLiteral("btrfs"), QStringList() << QStringLiteral("filesystem") << QStringLiteral("resize") << QString::number(length) << tempDir.path());
