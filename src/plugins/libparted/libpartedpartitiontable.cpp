@@ -252,7 +252,8 @@ bool LibPartedPartitionTable::clobberFileSystem(Report& report, const Partition&
         if (pedPartition->type == PED_PARTITION_NORMAL || pedPartition->type == PED_PARTITION_LOGICAL) {
             if (ped_device_open(pedDevice())) {
                 //reiser4 stores "ReIsEr4" at sector 128 with a sector size of 512 bytes
-                rval = ped_geometry_write(&pedPartition->geom, "0000000", 65536 / pedDevice()->sector_size, 1);
+                char zeroes[pedDevice()->sector_size*129] = {0};
+                rval = ped_geometry_write(&pedPartition->geom, zeroes, 0, 129);
 
                 if (!rval)
                     report.line() << xi18nc("@info/plain", "Failed to erase filesystem signature on partition <filename>%1</filename>.", partition.deviceNode());
