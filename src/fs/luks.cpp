@@ -250,11 +250,12 @@ bool luks::cryptOpen(const QString& deviceNode)
         return false;
     }
 
+    QString passphrase = dlg->luksPassphrase().text();
     std::vector<QString> commands;
     commands.push_back(QStringLiteral("echo"));
     commands.push_back(QStringLiteral("cryptsetup"));
     std::vector<QStringList> args;
-    args.push_back({ dlg->luksPassphrase().text() });
+    args.push_back({ passphrase });
     args.push_back({ QStringLiteral("luksOpen"),
                      deviceNode,
                      QStringLiteral("luks-") + readUUID(deviceNode) });
@@ -278,7 +279,10 @@ bool luks::cryptOpen(const QString& deviceNode)
     m_isCryptOpen = (m_innerFs != nullptr);
 
     if (m_isCryptOpen)
+    {
+        m_passphrase = passphrase;
         return true;
+    }
     return false;
 }
 
@@ -305,6 +309,8 @@ bool luks::cryptClose(const QString& deviceNode)
 
     delete m_innerFs;
     m_innerFs = nullptr;
+
+    m_passphrase.clear();
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
