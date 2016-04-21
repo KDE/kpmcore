@@ -42,9 +42,6 @@ class DecryptLuksDialog : public QDialog
         const QString& m_DeviceNode;
 
     public:
-        QLineEdit& luksName() { return widget().luksName(); }
-        const QLineEdit& luksName() const { return widget().luksName(); }
-
         QLineEdit& luksPassphrase() { return widget().luksPassphrase(); }
         const QLineEdit& luksPassphrase() const { return widget().luksPassphrase(); }
 };

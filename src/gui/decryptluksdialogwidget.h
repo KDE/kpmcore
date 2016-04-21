@@ -31,10 +31,6 @@ class DecryptLuksDialogWidget : public QWidget, public Ui::DecryptLuksDialogWidg
     public:
         DecryptLuksDialogWidget(QWidget* parent);
 
-    public:
-        QLineEdit& luksName() { return *m_LineEditName; }
-        const QLineEdit& luksName() const { return *m_LineEditName; }
-
         QLineEdit& luksPassphrase() { return *m_LineEditPassphrase; }
         const QLineEdit& luksPassphrase() const { return *m_LineEditPassphrase; }
 };
