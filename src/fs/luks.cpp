@@ -78,19 +78,13 @@ void luks::init()
 bool luks::create(Report& report, const QString& deviceNode) const
 {
     Q_ASSERT(m_innerFs);
-    QPointer<DecryptLuksDialog> dlg = new DecryptLuksDialog(0, deviceNode); //TODO: parent widget instead of 0
-
-    if (dlg->exec() != QDialog::Accepted)
-    {
-        delete dlg;
-        return false;
-    }
+    Q_ASSERT(!m_passphrase.isEmpty());
 
     std::vector<QString> commands;
     commands.push_back(QStringLiteral("echo"));
     commands.push_back(QStringLiteral("cryptsetup"));
     std::vector<QStringList> args;
-    args.push_back({ dlg->luksPassphrase().text() });
+    args.push_back({ m_passphrase });
     args.push_back({ QStringLiteral("-s"),
                      QStringLiteral("512"),
                      QStringLiteral("luksFormat"),
@@ -104,11 +98,10 @@ bool luks::create(Report& report, const QString& deviceNode) const
     commands.push_back(QStringLiteral("echo"));
     commands.push_back(QStringLiteral("cryptsetup"));
     args.clear();
-    args.push_back({ dlg->luksPassphrase().text() });
+    args.push_back({ m_passphrase });
     args.push_back({ QStringLiteral("luksOpen"),
                      deviceNode,
-                     dlg->luksName().text() });
-    delete dlg;
+                     QStringLiteral("luks-") + readUUID(deviceNode) });
 
     ExternalCommand openCmd(commands, args);
     if (!(openCmd.run(-1) && openCmd.exitCode() == 0))
@@ -173,6 +166,11 @@ QString luks::cryptOpenTitle() const
 QString luks::cryptCloseTitle() const
 {
     return i18nc("@title:menu", "Deactivate");
+}
+
+void luks::setPassphrase(const QString& passphrase)
+{
+    m_passphrase = passphrase;
 }
 
 bool luks::canMount(const QString& deviceNode) const

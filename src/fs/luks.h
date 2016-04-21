@@ -95,6 +95,8 @@ public:
     QString cryptOpenTitle() const;
     QString cryptCloseTitle() const;
 
+    void setPassphrase(const QString&);
+
     virtual bool canMount(const QString&) const;
     virtual bool canUnmount(const QString&) const;
     bool isMounted() const;
@@ -143,6 +145,7 @@ private:
     mutable FileSystem* m_innerFs;
 
     mutable bool m_isCryptOpen;
+    QString m_passphrase;
     bool m_isMounted;
 };
 }
