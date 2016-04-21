@@ -79,7 +79,7 @@ qint64 hfsplus::maxLabelLength() const
 
 bool hfsplus::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("hpfsck"), QStringList() << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("hpfsck"), { QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

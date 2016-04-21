@@ -24,7 +24,7 @@
 #include "../util/libpartitionmanagerexport.h"
 
 #include <QMap>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class QString;
 

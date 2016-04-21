@@ -46,16 +46,16 @@ ocfs2::ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QS
 
 void ocfs2::init()
 {
-    m_Create = findExternal(QStringLiteral("mkfs.ocfs2"), QStringList() << QStringLiteral("-V")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check = findExternal(QStringLiteral("fsck.ocfs2"), QStringList(), 16) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("tunefs.ocfs2"), QStringList() << QStringLiteral("-V")) && findExternal(QStringLiteral("debugfs.ocfs2"), QStringList() << QStringLiteral("-V"))) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Create = findExternal(QStringLiteral("mkfs.ocfs2"), { QStringLiteral("--version") }) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = findExternal(QStringLiteral("fsck.ocfs2"), {}, 16) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("tunefs.ocfs2"), { QStringLiteral("--version") }) && findExternal(QStringLiteral("debugfs.ocfs2"), { QStringLiteral("--version") })) ? cmdSupportFileSystem : cmdSupportNone;
     m_Shrink = cmdSupportNone;
 
     // TODO: it seems there's no way to get the FS usage with ocfs2
     m_GetUsed = cmdSupportNone;
 
-    m_SetLabel = findExternal(QStringLiteral("tunefs.ocfs2"), QStringList() << QStringLiteral("-V")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_UpdateUUID = findExternal(QStringLiteral("tunefs.ocfs2"), QStringList() << QStringLiteral("-V")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_SetLabel = findExternal(QStringLiteral("tunefs.ocfs2"), { QStringLiteral("--version") }) ? cmdSupportFileSystem : cmdSupportNone;
+    m_UpdateUUID = findExternal(QStringLiteral("tunefs.ocfs2"), { QStringLiteral("--version") }) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
@@ -105,13 +105,13 @@ qint64 ocfs2::readUsedCapacity(const QString& deviceNode) const
 
 bool ocfs2::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.ocfs2"), QStringList() << QStringLiteral("-f") << QStringLiteral("-y") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("fsck.ocfs2"), { QStringLiteral("-f"), QStringLiteral("-y"), deviceNode });
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1 || cmd.exitCode() == 2);
 }
 
 bool ocfs2::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.ocfs2"), QStringList() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ocfs2"), { deviceNode });
 
     if (cmd.start())
     {
@@ -126,7 +126,7 @@ bool ocfs2::create(Report& report, const QString& deviceNode) const
 
 bool ocfs2::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    ExternalCommand cmdBlockSize(QStringLiteral("debugfs.ocfs2"), QStringList() << QStringLiteral("-R") << QStringLiteral("stats") << deviceNode);
+    ExternalCommand cmdBlockSize(QStringLiteral("debugfs.ocfs2"), { QStringLiteral("--request"), QStringLiteral("stats"), deviceNode });
 
     qint32 blockSize = -1;
     if (cmdBlockSize.run()) {
@@ -139,19 +139,19 @@ bool ocfs2::resize(Report& report, const QString& deviceNode, qint64 length) con
     if (blockSize == -1)
         return false;
 
-    ExternalCommand cmd(report, QStringLiteral("tunefs.ocfs2"), QStringList() << QStringLiteral("-y") << QStringLiteral("-S") << deviceNode << QString::number(length / blockSize));
+    ExternalCommand cmd(report, QStringLiteral("tunefs.ocfs2"), { QStringLiteral("--yes"), QStringLiteral("--volume-size"), deviceNode, QString::number(length / blockSize) });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ocfs2::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("tunefs.ocfs2"), QStringList() << QStringLiteral("-L") << newLabel << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("tunefs.ocfs2"), { QStringLiteral("--label"), newLabel, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ocfs2::updateUUID(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("tunefs.ocfs2"), QStringList() << QStringLiteral("-U") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("tunefs.ocfs2"), { QStringLiteral("--uuid-reset"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

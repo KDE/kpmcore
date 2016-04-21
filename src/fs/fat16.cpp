@@ -53,7 +53,7 @@ fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QS
 void fat16::init()
 {
     m_Create = findExternal(QStringLiteral("mkfs.msdos")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_GetUsed = m_Check = findExternal(QStringLiteral("fsck.msdos"), QStringList(), 2) ? cmdSupportFileSystem : cmdSupportNone;
+    m_GetUsed = m_Check = findExternal(QStringLiteral("fsck.msdos"), {}, 2) ? cmdSupportFileSystem : cmdSupportNone;
     m_GetLabel = cmdSupportCore;
     m_SetLabel = findExternal(QStringLiteral("fatlabel")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Move = cmdSupportCore;
@@ -104,7 +104,7 @@ qint64 fat16::maxLabelLength() const
 
 qint64 fat16::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("fsck.msdos"), QStringList() << QStringLiteral("-n") << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("fsck.msdos"), { QStringLiteral("-n"), QStringLiteral("-v"), deviceNode });
 
     if (cmd.run()) {
         qint64 usedClusters = -1;
@@ -131,19 +131,19 @@ bool fat16::writeLabel(Report& report, const QString& deviceNode, const QString&
 {
     report.line() << xi18nc("@info/plain", "Setting label for partition <filename>%1</filename> to %2", deviceNode, newLabel);
 
-    ExternalCommand cmd(report, QStringLiteral("fatlabel"), QStringList() << deviceNode << newLabel);
+    ExternalCommand cmd(report, QStringLiteral("fatlabel"), { deviceNode, newLabel });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool fat16::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.msdos"), QStringList() << QStringLiteral("-a") << QStringLiteral("-w") << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("fsck.msdos"), { QStringLiteral("-a"), QStringLiteral("-w"), QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool fat16::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), QStringList() << QStringLiteral("-F16") << QStringLiteral("-I") << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), { QStringLiteral("-F16"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
@@ -155,7 +155,7 @@ bool fat16::updateUUID(Report& report, const QString& deviceNode) const
     for (quint32 i = 0; i < sizeof(uuid); i++, t >>= 8)
         uuid[i] = t & 0xff;
 
-    ExternalCommand cmd(report, QStringLiteral("dd"), QStringList() << QStringLiteral("of=") + deviceNode << QStringLiteral("bs=1") << QStringLiteral("count=4") << QStringLiteral("seek=39"));
+    ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=39") });
 
     if (!cmd.start())
         return false;

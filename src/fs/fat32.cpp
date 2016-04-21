@@ -42,7 +42,7 @@ qint64 fat32::maxCapacity() const
 
 bool fat32::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), QStringList() << QStringLiteral("-F32") << QStringLiteral("-I") << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), { QStringLiteral("-F32"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
@@ -54,7 +54,7 @@ bool fat32::updateUUID(Report& report, const QString& deviceNode) const
     for (quint32 i = 0; i < sizeof(uuid); i++, t >>= 8)
         uuid[i] = t & 0xff;
 
-    ExternalCommand cmd(report, QStringLiteral("dd"), QStringList() << QStringLiteral("of=") + deviceNode << QStringLiteral("bs=1") << QStringLiteral("count=4") << QStringLiteral("seek=67"));
+    ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode, QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=67") });
 
     if (!cmd.start())
         return false;

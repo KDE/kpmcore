@@ -55,7 +55,7 @@ void xfs::init()
     m_Create = findExternal(QStringLiteral("mkfs.xfs")) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_Check = findExternal(QStringLiteral("xfs_repair")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Grow = (findExternal(QStringLiteral("xfs_growfs"), QStringList() << QStringLiteral("-V")) && m_Check != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = (findExternal(QStringLiteral("xfs_growfs"), { QStringLiteral("-V") }) && m_Check != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
     m_Copy = findExternal(QStringLiteral("xfs_copy")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Backup = cmdSupportCore;
@@ -100,7 +100,7 @@ qint64 xfs::maxLabelLength() const
 
 qint64 xfs::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("xfs_db"), QStringList() << QStringLiteral("-c") << QStringLiteral("sb 0") << QStringLiteral("-c") << QStringLiteral("print") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("xfs_db"), { QStringLiteral("-c"), QStringLiteral("sb 0"), QStringLiteral("-c"), QStringLiteral("print"), deviceNode });
 
     if (cmd.run()) {
         qint64 dBlocks = -1;
@@ -130,25 +130,25 @@ qint64 xfs::readUsedCapacity(const QString& deviceNode) const
 
 bool xfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("xfs_db"), QStringList() << QStringLiteral("-x") << QStringLiteral("-c") << QStringLiteral("sb 0") << QStringLiteral("-c") << QStringLiteral("label ") + newLabel << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("xfs_db"), { QStringLiteral("-x"), QStringLiteral("-c"), QStringLiteral("sb 0"), QStringLiteral("-c"), QStringLiteral("label ") + newLabel, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool xfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("xfs_repair"), QStringList() << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("xfs_repair"), { QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool xfs::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.xfs"), QStringList() << QStringLiteral("-f") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.xfs"), { QStringLiteral("-f"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool xfs::copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("xfs_copy"), QStringList() << sourceDeviceNode << targetDeviceNode);
+    ExternalCommand cmd(report, QStringLiteral("xfs_copy"), { sourceDeviceNode, targetDeviceNode });
 
     // xfs_copy behaves a little strangely. It apparently kills itself at the end of main, causing QProcess
     // to report that it crashed.
@@ -169,17 +169,17 @@ bool xfs::resize(Report& report, const QString& deviceNode, qint64) const
 
     bool rval = false;
 
-    ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("-v") << QStringLiteral("-t") << QStringLiteral("xfs") << deviceNode << tempDir.path());
+    ExternalCommand mountCmd(report, QStringLiteral("mount"), { QStringLiteral("--verbose"), QStringLiteral("--types"), QStringLiteral("xfs"), deviceNode, tempDir.path() });
 
     if (mountCmd.run(-1)) {
-        ExternalCommand resizeCmd(report, QStringLiteral("xfs_growfs"), QStringList() << tempDir.path());
+        ExternalCommand resizeCmd(report, QStringLiteral("xfs_growfs"), { tempDir.path() });
 
         if (resizeCmd.run(-1))
             rval = true;
         else
             report.line() << xi18nc("@info/plain", "Resizing XFS file system on partition <filename>%1</filename> failed: xfs_growfs failed.", deviceNode);
 
-        ExternalCommand unmountCmd(report, QStringLiteral("umount"), QStringList() << tempDir.path());
+        ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1))
             report.line() << xi18nc("@info/plain", "Warning: Resizing XFS file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);

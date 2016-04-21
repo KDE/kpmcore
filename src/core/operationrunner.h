@@ -23,7 +23,7 @@
 
 #include <QThread>
 #include <QMutex>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Operation;
 class OperationStack;

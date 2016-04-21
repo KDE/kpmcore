@@ -22,7 +22,7 @@
 #include "../core/copytarget.h"
 #include "../util/libpartitionmanagerexport.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Device;
 class CoreBackendDevice;

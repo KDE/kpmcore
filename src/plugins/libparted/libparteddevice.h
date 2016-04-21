@@ -21,7 +21,7 @@
 
 #include "backend/corebackenddevice.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 #include <parted/parted.h>
 

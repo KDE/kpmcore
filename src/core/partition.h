@@ -26,7 +26,7 @@
 #include "../util/libpartitionmanagerexport.h"
 
 #include <QStringList>
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Device;
 class OperationStack;

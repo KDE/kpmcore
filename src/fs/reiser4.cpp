@@ -42,9 +42,9 @@ reiser4::reiser4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, cons
 void reiser4::init()
 {
     m_GetLabel = cmdSupportCore;
-    m_GetUsed = findExternal(QStringLiteral("debugfs.reiser4"), QStringList(), 16) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Create = findExternal(QStringLiteral("mkfs.reiser4"), QStringList(), 16) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check = findExternal(QStringLiteral("fsck.reiser4"), QStringList(), 16) ? cmdSupportFileSystem : cmdSupportNone;
+    m_GetUsed = findExternal(QStringLiteral("debugfs.reiser4"), {}, 16) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Create = findExternal(QStringLiteral("mkfs.reiser4"), {}, 16) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = findExternal(QStringLiteral("fsck.reiser4"), {}, 16) ? cmdSupportFileSystem : cmdSupportNone;
     m_Move = m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Backup = cmdSupportCore;
 }
@@ -85,7 +85,7 @@ qint64 reiser4::maxLabelLength() const
 
 qint64 reiser4::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("debugfs.reiser4"), QStringList() << deviceNode);
+    ExternalCommand cmd(QStringLiteral("debugfs.reiser4"), { deviceNode });
 
     if (cmd.run()) {
         qint64 blocks = -1;
@@ -115,13 +115,13 @@ qint64 reiser4::readUsedCapacity(const QString& deviceNode) const
 
 bool reiser4::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.reiser4"), QStringList() << QStringLiteral("--fix") << QStringLiteral("-y") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("fsck.reiser4"), { QStringLiteral("--yes"), QStringLiteral("--fix"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool reiser4::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.reiser4"), QStringList() << QStringLiteral("--yes") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.reiser4"), { QStringLiteral("--yes"), QStringLiteral("--force"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

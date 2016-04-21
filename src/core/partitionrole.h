@@ -22,7 +22,7 @@
 
 #include "../util/libpartitionmanagerexport.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class QString;
 

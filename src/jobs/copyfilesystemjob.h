@@ -21,7 +21,7 @@
 
 #include "jobs/job.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Partition;
 class Device;

@@ -25,7 +25,7 @@
 
 #include "util/capacity.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Report;
 

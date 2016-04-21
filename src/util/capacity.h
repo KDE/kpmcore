@@ -23,7 +23,7 @@
 class Partition;
 class Device;
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 /** Represent any kind of capacity.
 

@@ -46,7 +46,7 @@ zfs::zfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QStrin
 
 void zfs::init()
 {
-    m_SetLabel = findExternal(QStringLiteral("zpool"), QStringList(), 2) ? cmdSupportFileSystem : cmdSupportNone;
+    m_SetLabel = findExternal(QStringLiteral("zpool"), {}, 2) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_GetLabel = cmdSupportCore;
     m_Backup = cmdSupportCore;
@@ -88,16 +88,15 @@ qint64 zfs::maxCapacity() const
 bool zfs::remove(Report& report, const QString& deviceNode) const
 {
     Q_UNUSED(deviceNode)
-//      TODO: check if -f option is needed
-    ExternalCommand cmd(report, QStringLiteral("zpool"), QStringList() << QStringLiteral("destroy") << QStringLiteral("-f") << this->label());
+    ExternalCommand cmd(report, QStringLiteral("zpool"), { QStringLiteral("destroy"), QStringLiteral("-f"), label() });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool zfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
     Q_UNUSED(deviceNode)
-    ExternalCommand cmd1(report, QStringLiteral("zpool"), QStringList() << QStringLiteral("export") << this->label());
-    ExternalCommand cmd2(report, QStringLiteral("zpool"), QStringList() << QStringLiteral("import") << this->label() << newLabel);
+    ExternalCommand cmd1(report, QStringLiteral("zpool"), { QStringLiteral("export"), label() });
+    ExternalCommand cmd2(report, QStringLiteral("zpool"), { QStringLiteral("import"), label(), newLabel });
     return cmd1.run(-1) && cmd1.exitCode() == 0 && cmd2.run(-1) && cmd2.exitCode() == 0;
 }
 }

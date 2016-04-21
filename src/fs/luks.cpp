@@ -449,7 +449,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64) const
     if (mapperNode.isEmpty())
         return false;
 
-    ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("resize") << mapperNode);
+    ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperNode });
     report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
     bool rval = false;

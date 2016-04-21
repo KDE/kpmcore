@@ -23,7 +23,7 @@
 
 #include "fs/ext2.h"
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 class Report;
 

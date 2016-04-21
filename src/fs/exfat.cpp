@@ -95,19 +95,19 @@ qint64 exfat::maxLabelLength() const
 
 bool exfat::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("exfatfsck"), QStringList() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("exfatfsck"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool exfat::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.exfat"), QStringList() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.exfat"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool exfat::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("exfatlabel"), QStringList() << deviceNode << newLabel);
+    ExternalCommand cmd(report, QStringLiteral("exfatlabel"), { deviceNode, newLabel });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
