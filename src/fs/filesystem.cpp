@@ -185,7 +185,7 @@ bool FileSystem::create(Report& report, const QString& deviceNode) const
     return true;
 }
 
-/** Resized a FileSystem to a given new length
+/** Resize a FileSystem to a given new length
     @param report Report to write status information to
     @param deviceNode the device node for the Partition the FileSystem is on
     @param newLength the new length for the FileSystem in bytes

@@ -83,6 +83,7 @@ bool linuxswap::create(Report& report, const QString& deviceNode) const
 
 bool linuxswap::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
+    Q_UNUSED(length);
     const QString label = readLabel(deviceNode);
     const QString uuid = readUUID(deviceNode);
 
@@ -92,7 +93,7 @@ bool linuxswap::resize(Report& report, const QString& deviceNode, qint64 length)
     if (!uuid.isEmpty())
         args << QStringLiteral("-U") << uuid;
 
-    args << deviceNode << QString::number(length / 1024);
+    args << deviceNode;
 
     ExternalCommand cmd(report, QStringLiteral("mkswap"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;

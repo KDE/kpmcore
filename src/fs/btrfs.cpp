@@ -143,7 +143,8 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
     ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("-v") << QStringLiteral("-t") << QStringLiteral("btrfs") << deviceNode << tempDir.path());
 
     if (mountCmd.run(-1) && mountCmd.exitCode() == 0) {
-        ExternalCommand resizeCmd(report, QStringLiteral("btrfs"), QStringList() << QStringLiteral("filesystem") << QStringLiteral("resize") << QString::number(length) << tempDir.path());
+        QString len = length == -1 ? QStringLiteral("max") : QString::number(length);
+        ExternalCommand resizeCmd(report, QStringLiteral("btrfs"), QStringList() << QStringLiteral("filesystem") << QStringLiteral("resize") << len << tempDir.path());
 
         if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
             rval = true;

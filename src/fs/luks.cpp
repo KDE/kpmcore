@@ -25,6 +25,7 @@
 
 #include "util/capacity.h"
 #include "util/externalcommand.h"
+#include "util/report.h"
 
 #include <QDebug>
 #include <QDialog>
@@ -69,6 +70,7 @@ void luks::init()
 {
     m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Copy = cmdSupportCore;
     m_Move = cmdSupportCore;
     m_Backup = cmdSupportCore;
@@ -129,7 +131,7 @@ bool luks::supportToolFound() const
         m_Create != cmdSupportNone &&
 //          m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
-//          m_Grow != cmdSupportNone &&
+         m_Grow != cmdSupportNone &&
 //          m_Shrink != cmdSupportNone &&
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
@@ -416,6 +418,28 @@ FileSystem::Type luks::type() const
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->type();
     return FileSystem::Luks;
+}
+
+bool luks::resize(Report& report, const QString& deviceNode, qint64) const
+{
+    Q_ASSERT(m_innerFs);
+
+    QString mapperNode = mapperName(deviceNode);
+    if (mapperNode.isEmpty())
+        return false;
+
+    ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), QStringList() << QStringLiteral("resize") << mapperNode);
+    report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
+
+    bool rval = false;
+    if (cryptResizeCmd.run(-1))
+    {
+        rval = m_innerFs->resize(report, mapperNode, -1);
+    }
+    else
+        report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename> failed.", deviceNode);
+
+    return rval;
 }
 
 QString luks::readUUID(const QString& deviceNode) const
