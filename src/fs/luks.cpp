@@ -69,6 +69,8 @@ luks::~luks()
 void luks::init()
 {
     m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_SetLabel = cmdSupportFileSystem;
+    m_GetLabel = cmdSupportFileSystem;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Grow = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Copy = cmdSupportCore;
@@ -126,8 +128,8 @@ bool luks::supportToolFound() const
 {
     return
 //          m_GetUsed != cmdSupportNone &&
-//          m_GetLabel != cmdSupportNone &&
-//          m_SetLabel != cmdSupportNone &&
+        m_GetLabel != cmdSupportNone &&
+        m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
 //          m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
@@ -424,6 +426,19 @@ FileSystem::Type luks::type() const
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->type();
     return FileSystem::Luks;
+}
+
+QString luks::readLabel(const QString& deviceNode) const
+{
+    if (m_isCryptOpen && m_innerFs)
+        return m_innerFs->readLabel(mapperName(deviceNode));
+    return QStringLiteral();
+}
+
+bool luks::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
+{
+    Q_ASSERT(m_innerFs);
+    return m_innerFs->writeLabel(report, mapperName(deviceNode), newLabel);
 }
 
 bool luks::resize(Report& report, const QString& deviceNode, qint64) const

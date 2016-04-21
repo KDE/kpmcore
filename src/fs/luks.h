@@ -90,6 +90,8 @@ public:
     virtual QString readUUID(const QString& deviceNode) const;
     virtual bool updateUUID(Report& report, const QString& deviceNode) const;
     virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const;
+    virtual QString readLabel(const QString& deviceNode) const;
+    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
 
     virtual QString mountTitle() const override;
     virtual QString unmountTitle() const override;
