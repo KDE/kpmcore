@@ -49,12 +49,12 @@ reiserfs::reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, co
 void reiserfs::init()
 {
     m_GetLabel = cmdSupportCore;
-    m_GetUsed = findExternal(QStringLiteral("debugreiserfs"), QStringList(), 16) ? cmdSupportFileSystem : cmdSupportNone;
+    m_GetUsed = findExternal(QStringLiteral("debugreiserfs"), {}, 16) ? cmdSupportFileSystem : cmdSupportNone;
     m_SetLabel = findExternal(QStringLiteral("reiserfstune")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Create = findExternal(QStringLiteral("mkfs.reiserfs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Check = findExternal(QStringLiteral("fsck.reiserfs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Move = m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
-    m_Grow = findExternal(QStringLiteral("resize_reiserfs"), QStringList(), 16) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = findExternal(QStringLiteral("resize_reiserfs"), {}, 16) ? cmdSupportFileSystem : cmdSupportNone;
     m_Shrink = (m_GetUsed != cmdSupportNone && m_Grow != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
     m_Backup = cmdSupportCore;
     m_UpdateUUID = findExternal(QStringLiteral("reiserfstune")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -100,7 +100,7 @@ qint64 reiserfs::maxLabelLength() const
 
 qint64 reiserfs::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("debugreiserfs"), QStringList() << deviceNode);
+    ExternalCommand cmd(QStringLiteral("debugreiserfs"), { deviceNode });
 
     if (cmd.run()) {
         qint64 blockCount = -1;
@@ -130,25 +130,25 @@ qint64 reiserfs::readUsedCapacity(const QString& deviceNode) const
 
 bool reiserfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), QStringList() << QStringLiteral("--label") << newLabel << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), { QStringLiteral("--label"), newLabel, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool reiserfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.reiserfs"), QStringList() << QStringLiteral("--fix-fixable") << QStringLiteral("--quiet") << QStringLiteral("--yes") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("fsck.reiserfs"), { QStringLiteral("--fix-fixable"), QStringLiteral("--quiet"), QStringLiteral("--yes"), deviceNode });
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1 || cmd.exitCode() == 256);
 }
 
 bool reiserfs::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.reiserfs"), QStringList() << QStringLiteral("-f") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.reiserfs"), { QStringLiteral("-f"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    ExternalCommand cmd(report, QStringLiteral("resize_reiserfs"), QStringList() << deviceNode << QStringLiteral("-q") << QStringLiteral("-s") << QString::number(length));
+    ExternalCommand cmd(report, QStringLiteral("resize_reiserfs"), { deviceNode, QStringLiteral("-q"), QStringLiteral("-s"), QString::number(length) });
 
     bool rval = cmd.start(-1);
 
@@ -164,7 +164,7 @@ bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) 
 bool reiserfs::updateUUID(Report& report, const QString& deviceNode) const
 {
     const QString uuid = QUuid::createUuid().toString().remove(QRegExp(QStringLiteral("\\{|\\}")));
-    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), QStringList() << QStringLiteral("--uuid") << uuid << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("reiserfstune"), { QStringLiteral("--uuid"), uuid, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

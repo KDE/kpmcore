@@ -105,7 +105,7 @@ qint64 ntfs::maxLabelLength() const
 
 qint64 ntfs::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("ntfsresize"), QStringList() << QStringLiteral("--info") << QStringLiteral("--force") << QStringLiteral("--no-progress-bar") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("ntfsresize"), { QStringLiteral("--info"), QStringLiteral("--force"), QStringLiteral("--no-progress-bar"), deviceNode });
 
     if (cmd.run()) {
         qint64 usedBytes = -1;
@@ -123,13 +123,13 @@ qint64 ntfs::readUsedCapacity(const QString& deviceNode) const
 
 bool ntfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand writeCmd(report, QStringLiteral("ntfslabel"), QStringList() << QStringLiteral("--force") << deviceNode << newLabel.simplified());
+    ExternalCommand writeCmd(report, QStringLiteral("ntfslabel"), { QStringLiteral("--force"), deviceNode, newLabel.simplified() });
     writeCmd.setProcessChannelMode(QProcess::SeparateChannels);
 
     if (!writeCmd.run(-1))
         return false;
 
-    ExternalCommand testCmd(QStringLiteral("ntfslabel"), QStringList() << QStringLiteral("--force") << deviceNode);
+    ExternalCommand testCmd(QStringLiteral("ntfslabel"), { QStringLiteral("--force"), deviceNode });
     testCmd.setProcessChannelMode(QProcess::SeparateChannels);
 
     if (!testCmd.run(-1))
@@ -140,27 +140,26 @@ bool ntfs::writeLabel(Report& report, const QString& deviceNode, const QString& 
 
 bool ntfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("ntfsresize"), QStringList() << QStringLiteral("--no-progress-bar") << QStringLiteral("--info") << QStringLiteral("--force") << QStringLiteral("--verbose") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("ntfsresize"), { QStringLiteral("--no-progress-bar"), QStringLiteral("--info"), QStringLiteral("--force"), QStringLiteral("--verbose"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ntfs::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.ntfs"), QStringList() << QStringLiteral("--quick") << QStringLiteral("--verbose") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ntfs"), { QStringLiteral("--quick"), QStringLiteral("--verbose"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ntfs::copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("ntfsclone"), QStringList() << QStringLiteral("--force") << QStringLiteral("--overwrite") << targetDeviceNode << sourceDeviceNode);
+    ExternalCommand cmd(report, QStringLiteral("ntfsclone"), { QStringLiteral("--force"), QStringLiteral("--overwrite"), targetDeviceNode, sourceDeviceNode });
 
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ntfs::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    QStringList args;
-    args << QStringLiteral("--no-progress-bar") << QStringLiteral("--force") << deviceNode << QStringLiteral("--size") << QString::number(length);
+    QStringList args = { QStringLiteral("--no-progress-bar"), QStringLiteral("--force"), deviceNode, QStringLiteral("--size"), QString::number(length) };
 
     QStringList dryRunArgs = args;
     dryRunArgs << QStringLiteral("--no-action");

@@ -50,7 +50,7 @@ void ext2::init()
     m_GetLabel = cmdSupportCore;
     m_SetLabel = findExternal(QStringLiteral("e2label")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Create = findExternal(QStringLiteral("mkfs.ext2")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check = findExternal(QStringLiteral("e2fsck"), QStringList() << QStringLiteral("-V")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = findExternal(QStringLiteral("e2fsck"), { QStringLiteral("-V") }) ? cmdSupportFileSystem : cmdSupportNone;
     m_UpdateUUID = findExternal(QStringLiteral("tune2fs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("resize2fs"))) ? cmdSupportFileSystem : cmdSupportNone;
     m_Shrink = (m_Grow != cmdSupportNone && m_GetUsed) != cmdSupportNone ? cmdSupportFileSystem : cmdSupportNone;
@@ -94,7 +94,7 @@ qint64 ext2::maxLabelLength() const
 
 qint64 ext2::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("dumpe2fs"), QStringList() << QStringLiteral("-h") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("dumpe2fs"), { QStringLiteral("-h"), deviceNode });
 
     if (cmd.run()) {
         qint64 blockCount = -1;
@@ -124,32 +124,32 @@ qint64 ext2::readUsedCapacity(const QString& deviceNode) const
 
 bool ext2::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("e2fsck"), QStringList() << QStringLiteral("-f") << QStringLiteral("-y") << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("e2fsck"), { QStringLiteral("-f"), QStringLiteral("-y"), QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1 || cmd.exitCode() == 2 || cmd.exitCode() == 256);
 }
 
 bool ext2::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.ext2"), QStringList() << QStringLiteral("-qF") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ext2"), { QStringLiteral("-qF"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ext2::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
     const QString len = QString::number(length / 512) + QStringLiteral("s");
-    ExternalCommand cmd(report, QStringLiteral("resize2fs"), QStringList() << deviceNode << len);
+    ExternalCommand cmd(report, QStringLiteral("resize2fs"), { deviceNode, len });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ext2::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("e2label"), QStringList() << deviceNode << newLabel);
+    ExternalCommand cmd(report, QStringLiteral("e2label"), { deviceNode, newLabel });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ext2::updateUUID(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("tune2fs"), QStringList() << QStringLiteral("-U") << QStringLiteral("random") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("tune2fs"), { QStringLiteral("-U"), QStringLiteral("random"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

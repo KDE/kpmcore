@@ -84,13 +84,13 @@ qint64 hfs::maxLabelLength() const
 
 bool hfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("hfsck"), QStringList() << QStringLiteral("-v") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("hfsck"), { QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool hfs::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("hformat"), QStringList() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("hformat"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }

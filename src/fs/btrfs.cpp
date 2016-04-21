@@ -106,7 +106,8 @@ qint64 btrfs::maxLabelLength() const
 
 qint64 btrfs::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("btrfs"), QStringList() << QStringLiteral("filesystem") << QStringLiteral("show") << QStringLiteral("--raw") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("btrfs"),
+                        { QStringLiteral("filesystem"), QStringLiteral("show"), QStringLiteral("--raw"), deviceNode });
 
     if (cmd.run()) {
         QRegExp rxBytesUsed(QStringLiteral(" used (\\d+) path ") + deviceNode);
@@ -120,13 +121,13 @@ qint64 btrfs::readUsedCapacity(const QString& deviceNode) const
 
 bool btrfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("btrfsck"), QStringList() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("btrfsck"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool btrfs::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), QStringList() << QStringLiteral("--force") << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), { QStringLiteral("--force"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
@@ -140,17 +141,18 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
 
     bool rval = false;
 
-    ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("--verbose") << QStringLiteral("--types") << QStringLiteral("btrfs") << deviceNode << tempDir.path());
+    ExternalCommand mountCmd(report, QStringLiteral("mount"),
+                             { QStringLiteral("--verbose"),  QStringLiteral("--types"), QStringLiteral("btrfs"), deviceNode, tempDir.path() });
 
     if (mountCmd.run(-1) && mountCmd.exitCode() == 0) {
-        ExternalCommand resizeCmd(report, QStringLiteral("btrfs"), QStringList() << QStringLiteral("filesystem") << QStringLiteral("resize") << QString::number(length) << tempDir.path());
+        ExternalCommand resizeCmd(report, QStringLiteral("btrfs"), { QStringLiteral("filesystem"), QStringLiteral("resize"), QString::number(length), tempDir.path() });
 
         if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
             rval = true;
         else
             report.line() << xi18nc("@info/plain", "Resizing Btrfs file system on partition <filename>%1</filename> failed: btrfs file system resize failed.", deviceNode);
 
-        ExternalCommand unmountCmd(report, QStringLiteral("umount"), QStringList() << tempDir.path());
+        ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1) && unmountCmd.exitCode() == 0)
             report.line() << xi18nc("@info/plain", "Warning: Resizing Btrfs file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
@@ -162,7 +164,7 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
 
 bool btrfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("btrfs"), QStringList() << QStringLiteral("filesystem") << QStringLiteral("label") << deviceNode << newLabel);
+    ExternalCommand cmd(report, QStringLiteral("btrfs"), { QStringLiteral("filesystem"), QStringLiteral("label"), deviceNode, newLabel });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

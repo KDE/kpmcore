@@ -110,19 +110,19 @@ qint64 nilfs2::maxLabelLength() const
 
 bool nilfs2::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.nilfs2"), QStringList() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("fsck.nilfs2"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool nilfs2::create(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.nilfs2"), QStringList() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("mkfs.nilfs2"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 qint64 nilfs2::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("nilfs-tune"), QStringList() << QStringLiteral("-l") << deviceNode);
+    ExternalCommand cmd(QStringLiteral("nilfs-tune"), { QStringLiteral("-l"), deviceNode });
 
     if (cmd.run()) {
         QRegExp rxBlockSize(QStringLiteral("(?:Block size:\\s+)(\\d+)"));
@@ -145,17 +145,17 @@ bool nilfs2::resize(Report& report, const QString& deviceNode, qint64 length) co
 
     bool rval = false;
 
-    ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("--verbose") << QStringLiteral("--types") << QStringLiteral("nilfs2") << deviceNode << tempDir.path());
+    ExternalCommand mountCmd(report, QStringLiteral("mount"), { QStringLiteral("--verbose"), QStringLiteral("--types"), QStringLiteral("nilfs2"), deviceNode, tempDir.path() });
 
     if (mountCmd.run(-1) && mountCmd.exitCode() == 0) {
-        ExternalCommand resizeCmd(report, QStringLiteral("nilfs-resize"), QStringList() << QStringLiteral("--verbose") << QStringLiteral("--assume-yes") << deviceNode << QString::number(length));
+        ExternalCommand resizeCmd(report, QStringLiteral("nilfs-resize"), { QStringLiteral("--verbose"), QStringLiteral("--assume-yes"), deviceNode, QString::number(length) });
 
         if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
             rval = true;
         else
             report.line() << xi18nc("@info/plain", "Resizing NILFS2 file system on partition <filename>%1</filename> failed: NILFS2 file system resize failed.", deviceNode);
 
-        ExternalCommand unmountCmd(report, QStringLiteral("umount"), QStringList() << tempDir.path());
+        ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1) && unmountCmd.exitCode() == 0)
             report.line() << xi18nc("@info/plain", "Warning: Resizing NILFS2 file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
@@ -167,14 +167,14 @@ bool nilfs2::resize(Report& report, const QString& deviceNode, qint64 length) co
 
 bool nilfs2::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("nilfs-tune"), QStringList() << QStringLiteral("-l") << newLabel << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("nilfs-tune"), { QStringLiteral("-l"), newLabel, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool nilfs2::updateUUID(Report& report, const QString& deviceNode) const
 {
     QUuid uuid = QUuid::createUuid();
-    ExternalCommand cmd(report, QStringLiteral("nilfs-tune"), QStringList() << QStringLiteral("-U") << uuid.toString() << deviceNode);
+    ExternalCommand cmd(report, QStringLiteral("nilfs-tune"), { QStringLiteral("-U"), uuid.toString(), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }
