@@ -175,6 +175,7 @@ bool ntfs::resize(Report& report, const QString& deviceNode, qint64 length) cons
 
 bool ntfs::updateUUID(Report& report, const QString& deviceNode) const
 {
+    Q_UNUSED(report);
     QUuid uuid = QUuid::createUuid();
     char* s = reinterpret_cast<char*>(&uuid.data4[0]);
 
