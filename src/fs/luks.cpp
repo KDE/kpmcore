@@ -105,7 +105,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
     args.push_back({ m_passphrase });
     args.push_back({ QStringLiteral("luksOpen"),
                      deviceNode,
-                     QStringLiteral("luks-") + readUUID(deviceNode) });
+                     suggestedMapperName(deviceNode) });
 
     ExternalCommand openCmd(commands, args);
     if (!(openCmd.run(-1) && openCmd.exitCode() == 0))
@@ -260,7 +260,7 @@ bool luks::cryptOpen(const QString& deviceNode)
     args.push_back({ passphrase });
     args.push_back({ QStringLiteral("luksOpen"),
                      deviceNode,
-                     QStringLiteral("luks-") + readUUID(deviceNode) });
+                     suggestedMapperName(deviceNode) });
     delete dlg;
 
     ExternalCommand cmd(commands, args);
@@ -426,6 +426,11 @@ FileSystem::Type luks::type() const
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->type();
     return FileSystem::Luks;
+}
+
+QString luks::suggestedMapperName(const QString& deviceNode) const
+{
+    return QStringLiteral("luks-") + readUUID(deviceNode);
 }
 
 QString luks::readLabel(const QString& deviceNode) const

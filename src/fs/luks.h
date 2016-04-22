@@ -121,6 +121,8 @@ public:
 
     virtual FileSystem::Type type() const override;
 
+    QString suggestedMapperName(const QString& deviceNode) const;
+
     static QString mapperName(const QString& deviceNode);
 
     static QString getCipherName(const QString& deviceNode);
