@@ -176,27 +176,9 @@ bool ntfs::resize(Report& report, const QString& deviceNode, qint64 length) cons
 bool ntfs::updateUUID(Report& report, const QString& deviceNode) const
 {
     Q_UNUSED(report);
-    QUuid uuid = QUuid::createUuid();
-    char* s = reinterpret_cast<char*>(&uuid.data4[0]);
+    ExternalCommand cmd(QStringLiteral("ntfslabel"), { QStringLiteral("--new-serial"), deviceNode });
 
-    QFile device(deviceNode);
-    if (!device.open(QFile::ReadWrite | QFile::Unbuffered)) {
-        Log() << xi18nc("@info/plain", "Could not open partition <filename>%1</filename> for writing when trying to update the NTFS serial number.", deviceNode);
-        return false;
-    }
-
-    if (!device.seek(0x48)) {
-        Log() << xi18nc("@info/plain", "Could not seek to position 0x48 on partition <filename>%1</filename> when trying to update the NTFS serial number.", deviceNode);
-        return false;
-    }
-
-    if (device.write(s, 8) != 8) {
-        Log() << xi18nc("@info/plain", "Could not write new NTFS serial number to partition <filename>%1</filename>.", deviceNode);
-        return false;
-    }
-
-    Log() << xi18nc("@info/plain", "Updated NTFS serial number for partition <filename>%1</filename> successfully.", deviceNode);
-    return true;
+    return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
