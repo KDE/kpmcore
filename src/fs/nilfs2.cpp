@@ -59,7 +59,7 @@ void nilfs2::init()
     m_SetLabel = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
     m_UpdateUUID = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
 
-    m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("nilfs-resize"))) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = findExternal(QStringLiteral("nilfs-resize")) ? cmdSupportFileSystem : cmdSupportNone;
     m_GetUsed = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Shrink = (m_Grow != cmdSupportNone && m_GetUsed != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
 
