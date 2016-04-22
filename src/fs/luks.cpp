@@ -103,7 +103,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
     commands.push_back(QStringLiteral("cryptsetup"));
     args.clear();
     args.push_back({ m_passphrase });
-    args.push_back({ QStringLiteral("luksOpen"),
+    args.push_back({ QStringLiteral("open"),
                      deviceNode,
                      suggestedMapperName(deviceNode) });
 
@@ -305,7 +305,7 @@ bool luks::cryptClose(const QString& deviceNode)
     }
 
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("luksClose"), mapperName(deviceNode) });
+                        { QStringLiteral("close"), mapperName(deviceNode) });
     if (!(cmd.run(-1) && cmd.exitCode() == 0))
         return false;
 
