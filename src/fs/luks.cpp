@@ -133,7 +133,7 @@ bool luks::supportToolFound() const
         m_Create != cmdSupportNone &&
 //          m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
-         m_Grow != cmdSupportNone &&
+        m_Grow != cmdSupportNone &&
 //          m_Shrink != cmdSupportNone &&
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
@@ -313,6 +313,7 @@ bool luks::cryptClose(const QString& deviceNode)
     m_innerFs = nullptr;
 
     m_passphrase.clear();
+    setLabel({});
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
