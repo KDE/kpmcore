@@ -144,7 +144,8 @@ bool luks::create(Report& report, const QString& deviceNode) const
     if (mapperNode.isEmpty())
         return false;
 
-    m_innerFs->create(report, mapperNode);
+    if (!m_innerFs->create(report, mapperNode))
+        return false;
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
