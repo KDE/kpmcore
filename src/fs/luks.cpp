@@ -314,7 +314,7 @@ bool luks::cryptClose(const QString& deviceNode)
     m_innerFs = nullptr;
 
     m_passphrase.clear();
-    setLabel({});
+    setLabel(QStringLiteral());
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
@@ -519,7 +519,7 @@ QString luks::mapperName(const QString& deviceNode)
         if (rxDeviceName.indexIn(cmd.output()) > -1)
             return rxDeviceName.cap(1);
     }
-    return QString();
+    return QStringLiteral();
 }
 
 QString luks::getCipherName(const QString& deviceNode)
