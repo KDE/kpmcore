@@ -450,7 +450,7 @@ QString luks::readLabel(const QString& deviceNode) const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->readLabel(mapperName(deviceNode));
-    return QStringLiteral();
+    return QString();
 }
 
 bool luks::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
