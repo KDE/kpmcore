@@ -73,6 +73,7 @@ void luks::init()
     m_GetLabel = cmdSupportFileSystem;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Grow = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = cmdSupportCore;
     m_Copy = cmdSupportCore;
     m_Move = cmdSupportCore;
     m_Backup = cmdSupportCore;
@@ -131,7 +132,7 @@ bool luks::supportToolFound() const
         m_GetLabel != cmdSupportNone &&
         m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
-//          m_Check != cmdSupportNone &&
+        m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
         m_Grow != cmdSupportNone &&
 //          m_Shrink != cmdSupportNone &&
@@ -334,6 +335,17 @@ void luks::createInnerFileSystem(FileSystem::Type type)
 {
     Q_ASSERT(!m_innerFs);
     m_innerFs = FileSystemFactory::cloneWithNewType(type, *this);
+}
+
+bool luks::check(Report& report, const QString& deviceNode) const
+{
+    Q_ASSERT(m_innerFs);
+
+    QString mapperNode = mapperName(deviceNode);
+    if (mapperNode.isEmpty())
+        return false;
+
+    return m_innerFs->check(report, mapperNode);
 }
 
 bool luks::mount(const QString& deviceNode, const QString& mountPoint)

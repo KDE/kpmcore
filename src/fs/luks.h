@@ -73,7 +73,11 @@ public:
         return m_Move;
     }
     virtual CommandSupportType supportCheck() const {
-        return m_Check;
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Check && m_innerFs)
+            return m_innerFs->supportShrink();
+        return cmdSupportNone;
     }
     virtual CommandSupportType supportCopy() const {
         return m_Copy;
@@ -91,6 +95,7 @@ public:
         return m_GetUUID;
     }
 
+    virtual bool check(Report& report, const QString& deviceNode) const override;
     virtual bool create(Report &report, const QString &deviceNode) const override;
     virtual qint64 minCapacity() const;
     virtual SupportTool supportToolName() const;
