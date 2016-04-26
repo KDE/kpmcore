@@ -76,7 +76,7 @@ public:
         if (!m_isCryptOpen)
             return cmdSupportNone;
         if (m_Check && m_innerFs)
-            return m_innerFs->supportShrink();
+            return m_innerFs->supportCheck();
         return cmdSupportNone;
     }
     virtual CommandSupportType supportCopy() const {
