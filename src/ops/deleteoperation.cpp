@@ -21,6 +21,7 @@
 #include "core/partition.h"
 #include "core/device.h"
 #include "core/partitiontable.h"
+#include "fs/luks.h"
 
 #include "jobs/deletepartitionjob.h"
 #include "jobs/deletefilesystemjob.h"
@@ -122,6 +123,17 @@ bool DeleteOperation::canDelete(const Partition* p)
 
     if (p->roles().has(PartitionRole::Extended))
         return p->children().size() == 1 && p->children()[0]->roles().has(PartitionRole::Unallocated);
+
+    if (p->roles().has(PartitionRole::Luks))
+    {
+        const FileSystem& fsRef = p->fileSystem();
+        const FS::luks* luksFs = dynamic_cast<const FS::luks*>(&fsRef);
+        if (!luksFs)
+            return false;
+
+        if (luksFs->isCryptOpen() || luksFs->isMounted())
+            return false;
+    }
 
     return true;
 }
