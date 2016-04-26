@@ -80,6 +80,34 @@ void luks::init()
     m_GetUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
 }
 
+bool luks::supportToolFound() const
+{
+    return
+//         m_GetUsed != cmdSupportNone &&
+        m_GetLabel != cmdSupportNone &&
+        m_SetLabel != cmdSupportNone &&
+        m_Create != cmdSupportNone &&
+        m_Check != cmdSupportNone &&
+        m_UpdateUUID != cmdSupportNone &&
+        m_Grow != cmdSupportNone &&
+//         m_Shrink != cmdSupportNone &&
+        m_Copy != cmdSupportNone &&
+        m_Move != cmdSupportNone &&
+        m_Backup != cmdSupportNone &&
+        m_GetUUID != cmdSupportNone;
+}
+
+FileSystem::SupportTool luks::supportToolName() const
+{
+    return SupportTool(QStringLiteral("cryptsetup"),
+                       QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
+}
+
+qint64 luks::minCapacity() const
+{
+    return 3 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+}
+
 bool luks::create(Report& report, const QString& deviceNode) const
 {
     Q_ASSERT(m_innerFs);
@@ -123,34 +151,6 @@ bool luks::create(Report& report, const QString& deviceNode) const
     if (m_isCryptOpen)
         return true;
     return false;
-}
-
-bool luks::supportToolFound() const
-{
-    return
-//          m_GetUsed != cmdSupportNone &&
-        m_GetLabel != cmdSupportNone &&
-        m_SetLabel != cmdSupportNone &&
-        m_Create != cmdSupportNone &&
-        m_Check != cmdSupportNone &&
-        m_UpdateUUID != cmdSupportNone &&
-        m_Grow != cmdSupportNone &&
-//          m_Shrink != cmdSupportNone &&
-        m_Copy != cmdSupportNone &&
-        m_Move != cmdSupportNone &&
-        m_Backup != cmdSupportNone &&
-        m_GetUUID != cmdSupportNone;
-}
-
-FileSystem::SupportTool luks::supportToolName() const
-{
-    return SupportTool(QStringLiteral("cryptsetup"),
-                       QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
-}
-
-qint64 luks::minCapacity() const
-{
-    return 3 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 QString luks::mountTitle() const
