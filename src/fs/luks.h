@@ -56,10 +56,18 @@ public:
         return m_Create;
     }
     virtual CommandSupportType supportGrow() const {
-        return m_Grow;
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Grow && m_innerFs)
+            return m_innerFs->supportGrow();
+        return cmdSupportNone;
     }
     virtual CommandSupportType supportShrink() const {
-        return m_Shrink;
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Shrink && m_innerFs)
+            return m_innerFs->supportShrink();
+        return cmdSupportNone;
     }
     virtual CommandSupportType supportMove() const {
         return m_Move;
