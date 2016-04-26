@@ -32,7 +32,7 @@ T sum(const QList<T>& list)
 {
     T rval = 0;
     foreach(const T & val, list)
-    rval += val;
+        rval += val;
     return rval;
 }
 
