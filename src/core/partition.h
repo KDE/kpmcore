@@ -27,6 +27,7 @@
 
 #include <QStringList>
 #include <QtGlobal>
+#include <QPointer>
 
 class Device;
 class OperationStack;
@@ -270,7 +271,7 @@ private:
 
     qint32 m_Number;
     Partitions m_Children;
-    PartitionNode* m_Parent;
+    QPointer< PartitionNode > m_Parent;
     FileSystem* m_FileSystem;
     PartitionRole m_Roles;
     qint64 m_FirstSector;
