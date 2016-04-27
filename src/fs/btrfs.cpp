@@ -53,7 +53,7 @@ void btrfs::init()
     m_Create = findExternal(QStringLiteral("mkfs.btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Check = findExternal(QStringLiteral("btrfsck"), QStringList(), 1) ? cmdSupportFileSystem : cmdSupportNone;
     m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("btrfs"))) ? cmdSupportFileSystem : cmdSupportNone;
-    m_GetUsed = findExternal(QStringLiteral("btrfs-debug-tree")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_GetUsed = findExternal(QStringLiteral("btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Shrink = (m_Grow != cmdSupportNone && m_GetUsed != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_SetLabel = findExternal(QStringLiteral("btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -91,7 +91,7 @@ FileSystem::SupportTool btrfs::supportToolName() const
 
 qint64 btrfs::minCapacity() const
 {
-    return 256 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 40 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 qint64 btrfs::maxCapacity() const

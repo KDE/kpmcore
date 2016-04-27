@@ -80,7 +80,8 @@ Partition::~Partition()
     // list of children). As a workaround, always remove a partition from its parent here in the dtor.
     // This presumably fixes 232092, but backporting is too risky until we're sure this doesn't cause
     // side-effects.
-    parent()->remove(this);
+    if (m_Parent)
+        parent()->remove(this);
     clearChildren();
     deleteFileSystem();
 }
