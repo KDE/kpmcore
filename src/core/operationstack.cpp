@@ -456,7 +456,7 @@ void OperationStack::clearOperations()
         Operation* o = operations().takeLast();
         if (o->status() == Operation::StatusPending)
             o->undo();
-        delete o;
+        o->deleteLater();
     }
 
     emit operationsChanged();
