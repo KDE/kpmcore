@@ -45,11 +45,11 @@ public:
 public:
     static void init() {}
 
-    virtual bool create(Report& report, const QString& deviceNode) const;
-    virtual bool updateUUID(Report& report, const QString& deviceNode) const;
+    virtual bool create(Report& report, const QString& deviceNode) const override;
+    virtual bool updateUUID(Report& report, const QString& deviceNode) const override;
 
-    virtual qint64 minCapacity() const;
-    virtual qint64 maxCapacity() const;
+    virtual qint64 minCapacity() const override;
+    virtual qint64 maxCapacity() const override;
 };
 }
 

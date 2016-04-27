@@ -40,9 +40,9 @@ public:
     ResizeFileSystemJob(Device& d, Partition& p, qint64 newlength = -1);
 
 public:
-    virtual bool run(Report& parent);
-    virtual qint32 numSteps() const;
-    virtual QString description() const;
+    virtual bool run(Report& parent) override;
+    virtual qint32 numSteps() const override;
+    virtual QString description() const override;
 
 protected:
     bool resizeFileSystemBackend(Report& report);

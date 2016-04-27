@@ -75,16 +75,16 @@ public:
     ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint64 newlast);
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return QStringLiteral("arrow-right-double");
     }
-    QString description() const;
-    bool execute(Report& parent);
-    void preview();
-    void undo();
+    QString description() const override;
+    bool execute(Report& parent) override;
+    void preview() override;
+    void undo() override;
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const override;
+    virtual bool targets(const Partition& p) const override;
 
     static bool canGrow(const Partition* p);
     static bool canShrink(const Partition* p);

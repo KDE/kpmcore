@@ -53,15 +53,15 @@ public:
     ~NewOperation();
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return QStringLiteral("document-new");
     }
-    QString description() const;
-    void preview();
-    void undo();
+    QString description() const override;
+    void preview() override;
+    void undo() override;
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const override;
+    virtual bool targets(const Partition& p) const override;
 
     static bool canCreateNew(const Partition* p);
     static Partition* createNew(const Partition& cloneFrom, FileSystem::Type type);

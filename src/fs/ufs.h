@@ -40,17 +40,17 @@ public:
 public:
     static void init() {}
 
-    virtual CommandSupportType supportMove() const {
+    virtual CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCopy() const {
+    virtual CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const {
+    virtual CommandSupportType supportBackup() const override {
         return m_Backup;
     }
 
-    virtual bool supportToolFound() const {
+    virtual bool supportToolFound() const override {
         return true;
     }
 

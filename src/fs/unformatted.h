@@ -42,13 +42,13 @@ public:
 public:
     static void init() {}
 
-    virtual bool create(Report&, const QString&) const;
+    virtual bool create(Report&, const QString&) const override;
 
-    virtual CommandSupportType supportCreate() const {
+    virtual CommandSupportType supportCreate() const override {
         return m_Create;
     }
 
-    virtual bool supportToolFound() const {
+    virtual bool supportToolFound() const override {
         return true;
     }
 

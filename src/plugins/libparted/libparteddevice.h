@@ -39,16 +39,16 @@ public:
     ~LibPartedDevice();
 
 public:
-    virtual bool open();
-    virtual bool openExclusive();
-    virtual bool close();
+    virtual bool open() override;
+    virtual bool openExclusive() override;
+    virtual bool close() override;
 
-    virtual CoreBackendPartitionTable* openPartitionTable();
+    virtual CoreBackendPartitionTable* openPartitionTable() override;
 
-    virtual bool createPartitionTable(Report& report, const PartitionTable& ptable);
+    virtual bool createPartitionTable(Report& report, const PartitionTable& ptable) override;
 
-    virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors);
-    virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors);
+    virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors) override;
+    virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors) override;
 
 protected:
     PedDevice* pedDevice() {

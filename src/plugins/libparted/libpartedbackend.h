@@ -59,7 +59,7 @@ private:
     LibPartedBackend(QObject* parent, const QList<QVariant>& args);
 
 public:
-    virtual void initFSSupport();
+    virtual void initFSSupport() override;
 
     virtual CoreBackendDevice* openDevice(const QString& device_node) override;
     virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node) override;

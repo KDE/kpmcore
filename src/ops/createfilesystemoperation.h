@@ -53,16 +53,16 @@ public:
     ~CreateFileSystemOperation();
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return QStringLiteral("draw-eraser");
     }
-    QString description() const;
-    void preview();
-    void undo();
-    bool execute(Report& parent);
+    QString description() const override;
+    void preview() override;
+    void undo() override;
+    bool execute(Report& parent) override;
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const override;
+    virtual bool targets(const Partition& p) const override;
 
 protected:
     Device& targetDevice() {

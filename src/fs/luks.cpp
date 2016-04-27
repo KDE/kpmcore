@@ -210,7 +210,7 @@ void luks::setMounted(bool mounted)
 
 bool luks::canCryptOpen(const QString&) const
 {
-    return supportToolFound() && !m_isCryptOpen && !m_isMounted;
+    return !m_isCryptOpen && !m_isMounted && supportToolFound();
 }
 
 bool luks::canCryptClose(const QString&) const
