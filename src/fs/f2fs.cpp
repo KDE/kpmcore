@@ -94,7 +94,7 @@ FileSystem::SupportTool f2fs::supportToolName() const
 
 qint64 f2fs::minCapacity() const
 {
-    return 128 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB); // FIXME
+    return 30 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 qint64 f2fs::maxCapacity() const
