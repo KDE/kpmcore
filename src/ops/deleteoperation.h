@@ -24,6 +24,7 @@
 
 #include "../ops/operation.h"
 
+#include <QPointer>
 #include <QString>
 
 class Device;
@@ -101,7 +102,7 @@ protected:
 
 private:
     Device& m_TargetDevice;
-    Partition* m_DeletedPartition;
+    QPointer< Partition > m_DeletedPartition;
     ShredAction m_ShredAction;
     Job* m_DeleteFileSystemJob;
     DeletePartitionJob* m_DeletePartitionJob;
