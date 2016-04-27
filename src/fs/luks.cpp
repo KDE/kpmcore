@@ -83,6 +83,7 @@ void luks::init()
 bool luks::supportToolFound() const
 {
     return
+        m_isCryptOpen && m_innerFs ? m_innerFs->supportToolFound() : true &&
 //         m_GetUsed != cmdSupportNone &&
         m_GetLabel != cmdSupportNone &&
         m_SetLabel != cmdSupportNone &&
@@ -99,6 +100,8 @@ bool luks::supportToolFound() const
 
 FileSystem::SupportTool luks::supportToolName() const
 {
+    if (m_isCryptOpen && m_innerFs)
+        return m_innerFs->supportToolName();
     return SupportTool(QStringLiteral("cryptsetup"),
                        QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
 }
