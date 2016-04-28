@@ -520,7 +520,8 @@ QString luks::mapperName(const QString& deviceNode)
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         QStringList output=cmd.output().split(QStringLiteral("\n"));
         output.removeFirst();
-        return QStringLiteral("/dev/mapper/") + output.first();
+        if (!output.first().isEmpty())
+            return QStringLiteral("/dev/mapper/") + output.first();
     }
     return QString();
 }
