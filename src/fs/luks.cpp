@@ -82,7 +82,7 @@ void luks::init()
 
 bool luks::supportToolFound() const
 {
-    return
+    m_cryptsetupFound =
 //         m_GetUsed != cmdSupportNone &&
         m_GetLabel != cmdSupportNone &&
         m_SetLabel != cmdSupportNone &&
@@ -94,7 +94,8 @@ bool luks::supportToolFound() const
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
         m_Backup != cmdSupportNone &&
-        m_GetUUID != cmdSupportNone &&
+        m_GetUUID != cmdSupportNone;
+    return m_cryptsetupFound &&
         ((m_isCryptOpen && m_innerFs) ? m_innerFs->supportToolFound() : true);
 }
 
@@ -215,7 +216,7 @@ bool luks::canCryptOpen(const QString&) const
 
 bool luks::canCryptClose(const QString&) const
 {
-    return m_isCryptOpen && !m_isMounted;
+    return m_isCryptOpen && !m_isMounted && m_cryptsetupFound;
 }
 
 bool luks::isCryptOpen() const

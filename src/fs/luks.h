@@ -163,6 +163,7 @@ private:
     mutable FileSystem* m_innerFs;
 
     mutable bool m_isCryptOpen;
+    mutable bool m_cryptsetupFound;
     QString m_passphrase;
     bool m_isMounted;
 };
