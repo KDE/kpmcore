@@ -101,7 +101,7 @@ bool luks::supportToolFound() const
 
 FileSystem::SupportTool luks::supportToolName() const
 {
-    if (m_isCryptOpen && m_innerFs)
+    if (m_isCryptOpen && m_innerFs && m_cryptsetupFound)
         return m_innerFs->supportToolName();
     return SupportTool(QStringLiteral("cryptsetup"),
                        QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
