@@ -123,7 +123,7 @@ public:
     bool isCryptOpen() const;
     void setCryptOpen(bool cryptOpen);
 
-    bool cryptOpen(const QString& deviceNode);
+    bool cryptOpen(QWidget* parent, const QString& deviceNode);
     bool cryptClose(const QString& deviceNode);
 
     void loadInnerFileSystem(const QString& mapperNode);

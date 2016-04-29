@@ -229,7 +229,7 @@ void luks::setCryptOpen(bool cryptOpen)
     m_isCryptOpen = cryptOpen;
 }
 
-bool luks::cryptOpen(const QString& deviceNode)
+bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
 {
     if (m_isCryptOpen)
     {
@@ -250,7 +250,7 @@ bool luks::cryptOpen(const QString& deviceNode)
         }
     }
 
-    QPointer<DecryptLuksDialog> dlg = new DecryptLuksDialog(0, deviceNode); //TODO: parent widget instead of 0
+    QPointer<DecryptLuksDialog> dlg = new DecryptLuksDialog(parent, deviceNode);
 
     if (dlg->exec() != QDialog::Accepted)
     {
