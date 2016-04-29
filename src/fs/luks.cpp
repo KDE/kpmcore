@@ -73,6 +73,7 @@ void luks::init()
     m_GetLabel = cmdSupportFileSystem;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Grow = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Shrink = m_Grow;
     m_Check = cmdSupportCore;
     m_Copy = cmdSupportCore;
     m_Move = cmdSupportCore;
@@ -90,7 +91,7 @@ bool luks::supportToolFound() const
         m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
         m_Grow != cmdSupportNone &&
-//         m_Shrink != cmdSupportNone &&
+        m_Shrink != cmdSupportNone &&
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
         m_Backup != cmdSupportNone &&
@@ -474,7 +475,7 @@ bool luks::writeLabel(Report& report, const QString& deviceNode, const QString& 
     return m_innerFs->writeLabel(report, mapperName(deviceNode), newLabel);
 }
 
-bool luks::resize(Report& report, const QString& deviceNode, qint64) const
+bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) const
 {
     Q_ASSERT(m_innerFs);
 
@@ -482,18 +483,28 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64) const
     if (mapperNode.isEmpty())
         return false;
 
-    ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperNode });
-    report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
-
-    bool rval = false;
-    if (cryptResizeCmd.run(-1))
+    if ( newLength - length() > 0 )
     {
-        rval = m_innerFs->resize(report, mapperNode, -1);
-    }
-    else
-        report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename> failed.", deviceNode);
+        ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperNode });
+        report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
-    return rval;
+        if (cryptResizeCmd.run(-1))
+        {
+            return m_innerFs->resize(report, mapperNode, -1);
+        }
+        else
+            report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename> failed.", deviceNode);
+    }
+    else if (m_innerFs->resize(report, mapperNode, newLength - getPayloadOffset(deviceNode).toInt() * m_logicalSectorSize))
+    {
+        ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("-b"), QString::number(newLength), QStringLiteral("resize"), mapperNode });
+        report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
+        if (cryptResizeCmd.run(-1))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 QString luks::readUUID(const QString& deviceNode) const
