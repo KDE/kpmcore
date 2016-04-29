@@ -338,7 +338,8 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
                                                     *this);
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
-    setSectorsUsed(m_innerFs->readUsedCapacity(mapperNode)/m_logicalSectorSize);
+    if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem) // FIXME:also implement checking space if partition is mounted
+        setSectorsUsed(m_innerFs->readUsedCapacity(mapperNode)/m_logicalSectorSize);
 }
 
 void luks::createInnerFileSystem(FileSystem::Type type)
