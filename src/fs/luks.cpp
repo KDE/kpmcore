@@ -77,13 +77,13 @@ void luks::init()
     m_Copy = cmdSupportCore;
     m_Move = cmdSupportCore;
     m_Backup = cmdSupportCore;
+    m_GetUsed = cmdSupportNone; // libparted does not support LUKS, we do this as a special case
     m_GetUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
 }
 
 bool luks::supportToolFound() const
 {
     m_cryptsetupFound =
-//         m_GetUsed != cmdSupportNone &&
         m_GetLabel != cmdSupportNone &&
         m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
@@ -264,7 +264,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     commands.push_back(QStringLiteral("cryptsetup"));
     std::vector<QStringList> args;
     args.push_back({ passphrase });
-    args.push_back({ QStringLiteral("luksOpen"),
+    args.push_back({ QStringLiteral("open"),
                      deviceNode,
                      suggestedMapperName(deviceNode) });
     delete dlg;
@@ -320,6 +320,8 @@ bool luks::cryptClose(const QString& deviceNode)
 
     m_passphrase.clear();
     setLabel({});
+    setUUID(readUUID(deviceNode));
+    setSectorsUsed(-1);
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
@@ -334,6 +336,9 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     FileSystem::Type innerFsType = detectFileSystem(mapperNode);
     m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
                                                     *this);
+    setLabel(m_innerFs->readLabel(mapperNode));
+    setUUID(m_innerFs->readUUID(mapperNode));
+    setSectorsUsed(m_innerFs->readUsedCapacity(mapperNode)/m_logicalSectorSize);
 }
 
 void luks::createInnerFileSystem(FileSystem::Type type)
@@ -351,6 +356,15 @@ bool luks::check(Report& report, const QString& deviceNode) const
         return false;
 
     return m_innerFs->check(report, mapperNode);
+}
+
+qint64 luks::readUsedCapacity(const QString& deviceNode) const
+{
+    if (!m_isCryptOpen)
+        return -1;
+    if (m_innerFs)
+        return m_innerFs->readUsedCapacity(deviceNode);
+    return -1;
 }
 
 bool luks::mount(const QString& deviceNode, const QString& mountPoint)
@@ -488,6 +502,8 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64) const
 
 QString luks::readUUID(const QString& deviceNode) const
 {
+    if (m_isCryptOpen && m_innerFs)
+        return m_innerFs->readUUID(mapperName(deviceNode));
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksUUID"), deviceNode });
     if (cmd.run()) {

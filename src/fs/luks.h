@@ -45,6 +45,7 @@ public:
 
 public:
     static void init();
+    virtual qint64 readUsedCapacity(const QString& deviceNode) const override;
 
     virtual CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
@@ -93,6 +94,10 @@ public:
     }
     virtual CommandSupportType supportGetUUID() const override {
         return m_GetUUID;
+    }
+
+    void setLogicalSectorSize(unsigned int logicalSectorSize) {
+        m_logicalSectorSize = logicalSectorSize;
     }
 
     virtual bool check(Report& report, const QString& deviceNode) const override;
@@ -166,6 +171,7 @@ private:
     mutable bool m_cryptsetupFound;
     QString m_passphrase;
     bool m_isMounted;
+    unsigned int m_logicalSectorSize;
 };
 }
 
