@@ -483,7 +483,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     if (mapperNode.isEmpty())
         return false;
 
-    if ( newLength - length() > 0 )
+    if ( newLength - length() * m_logicalSectorSize > 0 )
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperNode });
         report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
@@ -497,7 +497,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     }
     else if (m_innerFs->resize(report, mapperNode, newLength - getPayloadOffset(deviceNode).toInt() * m_logicalSectorSize))
     {
-        ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("-b"), QString::number(newLength), QStringLiteral("resize"), mapperNode });
+        ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("-b"), QString::number(newLength / m_logicalSectorSize), QStringLiteral("resize"), mapperNode });
         report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1))
         {
