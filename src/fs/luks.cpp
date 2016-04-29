@@ -488,9 +488,9 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperNode });
         report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
-        if (cryptResizeCmd.run(-1))
+        if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
         {
-            return m_innerFs->resize(report, mapperNode, -1);
+            return m_innerFs->resize(report, mapperNode, newLength - getPayloadOffset(deviceNode).toInt() * m_logicalSectorSize);
         }
         else
             report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename> failed.", deviceNode);
@@ -499,7 +499,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("--size"), QString::number(newLength / m_logicalSectorSize), QStringLiteral("resize"), mapperNode });
         report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
-        if (cryptResizeCmd.run(-1))
+        if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
         {
             return true;
         }
