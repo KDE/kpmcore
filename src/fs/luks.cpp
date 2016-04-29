@@ -107,11 +107,6 @@ FileSystem::SupportTool luks::supportToolName() const
                        QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
 }
 
-qint64 luks::minCapacity() const
-{
-    return 3 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
-}
-
 bool luks::create(Report& report, const QString& deviceNode) const
 {
     Q_ASSERT(m_innerFs);

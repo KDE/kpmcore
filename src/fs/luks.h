@@ -102,7 +102,6 @@ public:
 
     virtual bool check(Report& report, const QString& deviceNode) const override;
     virtual bool create(Report &report, const QString &deviceNode) const override;
-    virtual qint64 minCapacity() const override;
     virtual SupportTool supportToolName() const override;
     virtual bool supportToolFound() const override;
     virtual QString readUUID(const QString& deviceNode) const override;
