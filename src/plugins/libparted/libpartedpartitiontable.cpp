@@ -67,19 +67,8 @@ bool LibPartedPartitionTable::commit(PedDisk* pd, quint32 timeout)
 
     bool rval = ped_disk_commit_to_dev(pd);
 
-    // The GParted authors have found a bug in libparted that causes it to intermittently
-    // not commit changes to the Linux kernel, probably a race. Until this is fixed in
-    // libparted, the following patch should help alleviate the consequences by just re-trying
-    // committing to the OS if it fails the first time after a short pause.
-    // See: http://git.gnome.org/browse/gparted/commit/?id=bf86fd3f9ceb0096dfe87a8c9a38403c13b13f00
-    if (rval) {
+    if (rval)
         rval = ped_disk_commit_to_os(pd);
-
-        if (!rval) {
-            sleep(1);
-            rval = ped_disk_commit_to_os(pd);
-        }
-    }
 
     if (!ExternalCommand(QStringLiteral("udevadm"), QStringList() << QStringLiteral("settle") << QStringLiteral("--timeout=") + QString::number(timeout)).run() &&
             !ExternalCommand(QStringLiteral("udevsettle"), QStringList() << QStringLiteral("--timeout=") + QString::number(timeout)).run())
