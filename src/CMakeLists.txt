@@ -45,6 +45,7 @@ target_link_libraries( kpmcore
     KF5::IconThemes
     KF5::KIOCore
     KF5::Service
+    KF5::WidgetsAddons
 )
 
 install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})

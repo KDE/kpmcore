@@ -21,8 +21,6 @@
 
 #include "fs/filesystemfactory.h"
 
-#include "gui/decryptluksdialog.h"
-
 #include "util/capacity.h"
 #include "util/externalcommand.h"
 #include "util/report.h"
@@ -34,6 +32,7 @@
 #include <QUuid>
 
 #include <KLocalizedString>
+#include <KPasswordDialog>
 
 namespace FS
 {
@@ -246,15 +245,12 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
         }
     }
 
-    QPointer<DecryptLuksDialog> dlg = new DecryptLuksDialog(parent, deviceNode);
-
-    if (dlg->exec() != QDialog::Accepted)
-    {
-        delete dlg;
+    KPasswordDialog dlg( parent );
+    dlg.setPrompt(i18n("Enter passphrase for %1:", deviceNode));
+    if( !dlg.exec() )
         return false;
-    }
 
-    QString passphrase = dlg->luksPassphrase().text();
+    QString passphrase = dlg.password();
     std::vector<QString> commands;
     commands.push_back(QStringLiteral("echo"));
     commands.push_back(QStringLiteral("cryptsetup"));
@@ -263,7 +259,6 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     args.push_back({ QStringLiteral("open"),
                      deviceNode,
                      suggestedMapperName(deviceNode) });
-    delete dlg;
 
     ExternalCommand cmd(commands, args);
     if (!(cmd.run(-1) && cmd.exitCode() == 0))

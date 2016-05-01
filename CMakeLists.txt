@@ -57,6 +57,7 @@ find_package(KF5 REQUIRED
   IconThemes
   KIO
   Service
+  WidgetsAddons
 )
 
 # use sane compile flags
