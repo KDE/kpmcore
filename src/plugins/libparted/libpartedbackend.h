@@ -71,7 +71,7 @@ public:
 private:
     static FileSystem::Type detectFileSystem(PedPartition* pedPartition);
     static PedPartitionFlag getPedFlag(PartitionTable::Flag flag);
-    static void scanDevicePartitions(PedDevice* pedDevice, Device& d, PedDisk* pedDisk);
+    static void scanDevicePartitions(Device& d, PedDisk* pedDisk);
 };
 
 #endif

@@ -299,11 +299,10 @@ void LibPartedBackend::initFSSupport()
     try to determine the FileSystem usage, read the FileSystem label and store it all in newly created
     objects that are in the end added to the Device's PartitionTable.
 
-    @param pedDevice libparted pointer to the device
     @param d Device
     @param pedDisk libparted pointer to the partition table
 */
-void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedDisk)
+void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
 {
     Q_ASSERT(pedDisk);
     Q_ASSERT(d.partitionTable());
@@ -381,7 +380,7 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
         d.partitionTable()->setType(d, PartitionTable::msdos_sectorbased);
 
     foreach(const Partition * part, partitions)
-    PartitionAlignment::isAligned(d, *part);
+        PartitionAlignment::isAligned(d, *part);
 
     ped_disk_destroy(pedDisk);
 }
@@ -410,7 +409,7 @@ Device* LibPartedBackend::scanDevice(const QString& device_node)
         CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(type, firstUsableSector(*d), lastUsableSector(*d)));
         CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), ped_disk_get_max_primary_partition_count(pedDisk));
 
-        scanDevicePartitions(pedDevice, *d, pedDisk);
+        scanDevicePartitions(*d, pedDisk);
     }
 
     return d;
@@ -478,7 +477,6 @@ bool LibPartedBackend::closeDevice(CoreBackendDevice* core_device)
 }
 
 /** Detects the type of a FileSystem given a PedDevice and a PedPartition
-    @param pedDevice pointer to the pedDevice. Must not be nullptr.
     @param pedPartition pointer to the pedPartition. Must not be nullptr
     @return the detected FileSystem type (FileSystem::Unknown if not detected)
 */
@@ -547,5 +545,6 @@ QString LibPartedBackend::lastPartedExceptionMessage()
 {
     return s_lastPartedExceptionMessage;
 }
+
 
 #include "libpartedbackend.moc"
