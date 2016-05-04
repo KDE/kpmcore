@@ -25,7 +25,12 @@ endif (LIBPARTED_FS_RESIZE_LIBRARY_SUPPORT)
 
 include_directories(${LIBPARTED_INCLUDE_DIR})
 
-file (GLOB pmlibpartedbackendplugin_SRCS *.cpp)
+set (pmlibpartedbackendplugin_SRCS
+    libpartedbackend.cpp
+    libparteddevice.cpp
+    libpartedpartition.cpp
+    libpartedpartitiontable.cpp
+)
 
 add_library(pmlibpartedbackendplugin SHARED ${pmlibpartedbackendplugin_SRCS})
 

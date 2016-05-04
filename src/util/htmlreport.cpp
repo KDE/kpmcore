@@ -18,8 +18,8 @@
 
 #include "util/htmlreport.h"
 
-#include "../backend/corebackend.h"
-#include "../backend/corebackendmanager.h"
+#include "backend/corebackend.h"
+#include "backend/corebackendmanager.h"
 
 #include <QApplication>
 #include <QDateTime>

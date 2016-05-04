@@ -18,7 +18,7 @@
 #if !defined(CAPACITY__H)
 
 #define CAPACITY__H
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 class Partition;
 class Device;

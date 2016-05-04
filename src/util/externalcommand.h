@@ -19,7 +19,7 @@
 
 #define EXTERNALCOMMAND__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <vector>
 
