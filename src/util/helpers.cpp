@@ -17,10 +17,10 @@
  *************************************************************************/
 
 #include "util/helpers.h"
-#include "../util/globallog.h"
-#include "../util/ismounted.h"
+#include "util/externalcommand.h"
+#include "util/globallog.h"
 
-#include "../ops/operation.h"
+#include "ops/operation.h"
 
 #include <KAboutData>
 #include <KLocalizedString>
@@ -71,5 +71,15 @@ void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree)
 
 bool isMounted(const QString& deviceNode)
 {
-    return is_mounted(deviceNode.toLatin1().constData());
+    ExternalCommand cmd(QStringLiteral("lsblk"),
+                        { QStringLiteral("--noheadings"),
+                          QStringLiteral("--nodeps"),
+                          QStringLiteral("--output"),
+                          QStringLiteral("mountpoint"),
+                          deviceNode });
+
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        return !cmd.output().simplified().isEmpty();
+    }
+    return false;
 }

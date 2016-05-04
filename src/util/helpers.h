@@ -19,9 +19,9 @@
 
 #define HELPERS__H
 
-#include "../fs/filesystem.h"
+#include "fs/filesystem.h"
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 class QString;
 class QPoint;
