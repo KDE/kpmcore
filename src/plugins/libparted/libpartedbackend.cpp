@@ -352,7 +352,7 @@ void LibPartedBackend::scanDevicePartitions(PedDevice*, Device& d, PedDisk* pedD
         // libparted does not handle LUKS partitions
         QString mountPoint;
         bool mounted = false;
-        if (fs->type() == FileSystem::Luks) {
+        if (type == FileSystem::Luks) {
             r |= PartitionRole::Luks;
             FS::luks* luksFs = dynamic_cast<FS::luks*>(fs);
             QString mapperNode = FS::luks::mapperName(node);
