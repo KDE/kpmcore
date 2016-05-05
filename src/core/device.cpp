@@ -66,7 +66,7 @@ static qint32 getPhysicalSectorSize(const QString& device_node)
 
     if (f.open(QIODevice::ReadOnly)) {
         QByteArray a = f.readLine();
-        return a.simplified().toInt();
+        return a.trimmed().toInt();
     }
 
     return -1;

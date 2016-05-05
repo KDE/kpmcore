@@ -79,7 +79,7 @@ bool isMounted(const QString& deviceNode)
                           deviceNode });
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        return !cmd.output().simplified().isEmpty();
+        return !cmd.output().trimmed().isEmpty();
     }
     return false;
 }
