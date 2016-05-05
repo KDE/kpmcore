@@ -149,6 +149,9 @@ public:
     static QString getPayloadOffset(const QString& deviceNode);
     static bool canEncryptType(FileSystem::Type type);
 
+protected:
+    virtual QString readOuterUUID(const QString& deviceNode) const;
+
 public:
     static CommandSupportType m_GetUsed;
     static CommandSupportType m_GetLabel;

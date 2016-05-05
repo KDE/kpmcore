@@ -454,7 +454,7 @@ FileSystem::Type luks::type() const
 
 QString luks::suggestedMapperName(const QString& deviceNode) const
 {
-    return QStringLiteral("luks-") + readUUID(deviceNode);
+    return QStringLiteral("luks-") + readOuterUUID(deviceNode);
 }
 
 QString luks::readLabel(const QString& deviceNode) const
@@ -507,6 +507,11 @@ QString luks::readUUID(const QString& deviceNode) const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->readUUID(mapperName(deviceNode));
+    return readOuterUUID(deviceNode);
+}
+
+QString luks::readOuterUUID(const QString &deviceNode) const
+{
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksUUID"), deviceNode });
     if (cmd.run()) {
