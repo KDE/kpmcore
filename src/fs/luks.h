@@ -116,6 +116,7 @@ public:
     QString cryptCloseTitle() const;
 
     void setPassphrase(const QString&);
+    QString passphrase() const;
 
     virtual bool canMount(const QString&) const override;
     virtual bool canUnmount(const QString&) const override;

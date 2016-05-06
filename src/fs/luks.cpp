@@ -178,6 +178,11 @@ void luks::setPassphrase(const QString& passphrase)
     m_passphrase = passphrase;
 }
 
+QString luks::passphrase() const
+{
+    return m_passphrase;
+}
+
 bool luks::canMount(const QString& deviceNode) const
 {
     return m_isCryptOpen &&
