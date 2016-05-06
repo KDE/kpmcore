@@ -18,7 +18,7 @@
 #ifndef DEVICESCANNER_H
 #define DEVICESCANNER_H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QThread>
 

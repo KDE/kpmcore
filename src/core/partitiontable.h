@@ -20,10 +20,10 @@
 
 #define PARTITIONTABLE__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
-#include "../core/partitionnode.h"
-#include "../core/partitionrole.h"
+#include "core/partitionnode.h"
+#include "core/partitionrole.h"
 
 #include <QList>
 #include <QtGlobal>

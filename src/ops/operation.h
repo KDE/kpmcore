@@ -19,7 +19,7 @@
 
 #define OPERATION__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QObject>
 #include <QList>

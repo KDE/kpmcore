@@ -19,9 +19,9 @@
 
 #define JOB__H
 
-#include "../fs/filesystem.h"
+#include "fs/filesystem.h"
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QObject>
 #include <QtGlobal>

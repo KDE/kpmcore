@@ -20,7 +20,7 @@
 #if !defined(FILESYSTEM__H)
 
 #define FILESYSTEM__H
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QtGlobal>
 #include <QColor>

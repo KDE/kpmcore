@@ -20,9 +20,9 @@
 
 #define DELETEOPERATION__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
-#include "../ops/operation.h"
+#include "ops/operation.h"
 
 #include <QString>
 

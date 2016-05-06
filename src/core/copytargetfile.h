@@ -19,7 +19,7 @@
 
 #define COPYTARGETFILE__H
 
-#include "../core/copytarget.h"
+#include "core/copytarget.h"
 
 #include <QtGlobal>
 #include <QFile>

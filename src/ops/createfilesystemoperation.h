@@ -20,11 +20,11 @@
 
 #define CREATEFILESYSTEMOPERATION__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
-#include "../ops/operation.h"
+#include "ops/operation.h"
 
-#include "../fs/filesystem.h"
+#include "fs/filesystem.h"
 
 #include <QString>
 

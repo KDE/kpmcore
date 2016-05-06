@@ -21,7 +21,7 @@
 
 #include "QtGlobal"
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 class Device;
 class Partition;

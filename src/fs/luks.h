@@ -21,9 +21,9 @@
 
 #define LUKS__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
-#include "../fs/filesystem.h"
+#include "fs/filesystem.h"
 
 #include <QtGlobal>
 #include <QPointer>

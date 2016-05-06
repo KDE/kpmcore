@@ -19,8 +19,8 @@
 
 #define COPYSOURCEDEVICE__H
 
-#include "../core/copysource.h"
-#include "../util/libpartitionmanagerexport.h"
+#include "core/copysource.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QtGlobal>
 

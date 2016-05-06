@@ -19,11 +19,11 @@
 
 #define PARTITION__H
 
-#include "../core/partitionnode.h"
-#include "../core/partitionrole.h"
-#include "../core/partitiontable.h"
+#include "core/partitionnode.h"
+#include "core/partitionrole.h"
+#include "core/partitiontable.h"
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QStringList>
 #include <QtGlobal>

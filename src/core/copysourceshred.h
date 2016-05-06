@@ -19,7 +19,7 @@
 
 #define COPYSOURCESHRED__H
 
-#include "../core/copysource.h"
+#include "core/copysource.h"
 
 #include <QFile>
 

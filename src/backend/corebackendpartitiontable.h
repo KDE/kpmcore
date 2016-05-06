@@ -19,9 +19,9 @@
 
 #define COREBACKENDPARTITIONTABLE__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
-#include "../fs/filesystem.h"
+#include "fs/filesystem.h"
 
 #include <QtGlobal>
 

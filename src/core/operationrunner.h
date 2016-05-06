@@ -19,7 +19,7 @@
 
 #define OPERATIONRUNNER__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QThread>
 #include <QMutex>

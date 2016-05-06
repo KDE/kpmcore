@@ -19,7 +19,7 @@
 
 #define DEVICE__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QString>
 #include <QObject>

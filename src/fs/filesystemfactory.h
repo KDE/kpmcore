@@ -19,9 +19,9 @@
 
 #define FILESYSTEMFACTORY__H
 
-#include "../fs/filesystem.h"
+#include "fs/filesystem.h"
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QMap>
 #include <QtGlobal>

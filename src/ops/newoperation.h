@@ -20,9 +20,9 @@
 
 #define NEWOPERATION__H
 
-#include "../fs/filesystem.h"
-#include "../ops/operation.h"
-#include "../util/libpartitionmanagerexport.h"
+#include "fs/filesystem.h"
+#include "ops/operation.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QString>
 

@@ -20,7 +20,7 @@
 
 #define BTRFS__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include "fs/filesystem.h"
 

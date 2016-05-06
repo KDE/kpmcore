@@ -19,9 +19,9 @@
 
 #define PARTWIDGETBASE__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
 
-#include "../core/partitionnode.h"
+#include "core/partitionnode.h"
 
 #include <QList>
 #include <QWidget>

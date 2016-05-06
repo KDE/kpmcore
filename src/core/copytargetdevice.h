@@ -19,8 +19,8 @@
 
 #define COPYTARGETDEVICE__H
 
-#include "../core/copytarget.h"
-#include "../util/libpartitionmanagerexport.h"
+#include "core/copytarget.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QtGlobal>
 
