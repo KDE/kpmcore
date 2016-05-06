@@ -48,15 +48,15 @@ public:
     SetFileSystemLabelOperation(Partition& p, const QString& newlabel);
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return QStringLiteral("edit-rename");
     }
-    QString description() const;
-    void preview();
-    void undo();
+    QString description() const override;
+    void preview() override;
+    void undo() override;
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const override;
+    virtual bool targets(const Partition& p) const override;
 
 protected:
     Partition& labeledPartition() {

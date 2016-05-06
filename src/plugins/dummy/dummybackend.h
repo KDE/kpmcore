@@ -42,7 +42,7 @@ private:
     DummyBackend(QObject* parent, const QList<QVariant>& args);
 
 public:
-    virtual void initFSSupport();
+    virtual void initFSSupport() override;
 
     virtual QList<Device*> scanDevices(bool excludeReadOnly = false) override;
     virtual CoreBackendDevice* openDevice(const QString& device_node) override;

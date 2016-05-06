@@ -137,7 +137,9 @@ bool ext2::create(Report& report, const QString& deviceNode) const
 bool ext2::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
     const QString len = QString::number(length / 512) + QStringLiteral("s");
-    ExternalCommand cmd(report, QStringLiteral("resize2fs"), { deviceNode, len });
+    const QStringList args = length == -1 ? QStringList() << deviceNode : QStringList() << deviceNode <<  len;
+
+    ExternalCommand cmd(report, QStringLiteral("resize2fs"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

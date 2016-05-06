@@ -37,7 +37,7 @@ public:
 
 public:
     static void init() {}
-    virtual bool supportToolFound() const {
+    virtual bool supportToolFound() const override {
         return true;
     }
 };

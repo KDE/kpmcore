@@ -1,6 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2013 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2015-2016 by Teo Mrnjavac <teo@kde.org>                *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -25,6 +26,7 @@
 #include "../fs/filesystem.h"
 
 #include <QtGlobal>
+#include <QPointer>
 
 class Report;
 
@@ -39,60 +41,105 @@ class LIBKPMCORE_EXPORT luks : public FileSystem
 {
 public:
     luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    virtual ~luks();
 
 public:
     static void init();
+    virtual qint64 readUsedCapacity(const QString& deviceNode) const override;
 
-    virtual CommandSupportType supportGetUsed() const {
+    virtual CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }
-    virtual CommandSupportType supportGetLabel() const {
+    virtual CommandSupportType supportGetLabel() const override {
         return m_GetLabel;
     }
-    virtual CommandSupportType supportCreate() const {
+    virtual CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const {
-        return m_Grow;
+    virtual CommandSupportType supportGrow() const override {
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Grow && m_innerFs)
+            return m_innerFs->supportGrow();
+        return cmdSupportNone;
     }
-    virtual CommandSupportType supportShrink() const {
-        return m_Shrink;
+    virtual CommandSupportType supportShrink() const override {
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Shrink && m_innerFs)
+            return m_innerFs->supportShrink();
+        return cmdSupportNone;
     }
-    virtual CommandSupportType supportMove() const {
+    virtual CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCheck() const {
-        return m_Check;
+    virtual CommandSupportType supportCheck() const override {
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Check && m_innerFs)
+            return m_innerFs->supportCheck();
+        return cmdSupportNone;
     }
-    virtual CommandSupportType supportCopy() const {
+    virtual CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const {
+    virtual CommandSupportType supportBackup() const override {
         return m_Backup;
     }
-    virtual CommandSupportType supportSetLabel() const {
+    virtual CommandSupportType supportSetLabel() const override {
         return m_SetLabel;
     }
-    virtual CommandSupportType supportUpdateUUID() const {
+    virtual CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
     }
-    virtual CommandSupportType supportGetUUID() const {
+    virtual CommandSupportType supportGetUUID() const override {
         return m_GetUUID;
     }
 
-    virtual qint64 minCapacity() const;
-    virtual SupportTool supportToolName() const;
-    virtual bool supportToolFound() const;
-    virtual QString readUUID(const QString& deviceNode) const;
-    virtual bool updateUUID(Report& report, const QString& deviceNode) const;
+    void setLogicalSectorSize(unsigned int logicalSectorSize) {
+        m_logicalSectorSize = logicalSectorSize;
+    }
 
-    virtual bool canMount(const QString&) const;
-    virtual bool canUnmount(const QString&) const;
+    virtual bool check(Report& report, const QString& deviceNode) const override;
+    virtual bool create(Report &report, const QString &deviceNode) const override;
+    virtual SupportTool supportToolName() const override;
+    virtual bool supportToolFound() const override;
+    virtual QString readUUID(const QString& deviceNode) const override;
+    virtual bool updateUUID(Report& report, const QString& deviceNode) const override;
+    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    virtual QString readLabel(const QString& deviceNode) const override;
+    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 
-    virtual bool mount(const QString& deviceNode);
-    virtual bool unmount(const QString& deviceNode);
-    virtual QString mountTitle() const;
-    virtual QString unmountTitle() const;
+    virtual QString mountTitle() const override;
+    virtual QString unmountTitle() const override;
+    QString cryptOpenTitle() const;
+    QString cryptCloseTitle() const;
+
+    void setPassphrase(const QString&);
+    QString passphrase() const;
+
+    virtual bool canMount(const QString&) const override;
+    virtual bool canUnmount(const QString&) const override;
+    bool isMounted() const;
+    void setMounted(bool mounted);
+
+    bool canCryptOpen(const QString& deviceNode) const;
+    bool canCryptClose(const QString& deviceNode) const;
+    bool isCryptOpen() const;
+    void setCryptOpen(bool cryptOpen);
+
+    bool cryptOpen(QWidget* parent, const QString& deviceNode);
+    bool cryptClose(const QString& deviceNode);
+
+    void loadInnerFileSystem(const QString& mapperNode);
+    void createInnerFileSystem(Type type);
+
+    virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
+    virtual bool unmount(const QString& deviceNode) override;
+
+    virtual FileSystem::Type type() const override;
+
+    QString suggestedMapperName(const QString& deviceNode) const;
 
     static QString mapperName(const QString& deviceNode);
 
@@ -101,6 +148,10 @@ public:
     static QString getHashName(const QString& deviceNode);
     static QString getKeySize(const QString& deviceNode);
     static QString getPayloadOffset(const QString& deviceNode);
+    static bool canEncryptType(FileSystem::Type type);
+
+protected:
+    virtual QString readOuterUUID(const QString& deviceNode) const;
 
 public:
     static CommandSupportType m_GetUsed;
@@ -115,6 +166,15 @@ public:
     static CommandSupportType m_SetLabel;
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
+
+private:
+    mutable FileSystem* m_innerFs;
+
+    mutable bool m_isCryptOpen;
+    mutable bool m_cryptsetupFound;
+    QString m_passphrase;
+    bool m_isMounted;
+    unsigned int m_logicalSectorSize;
 };
 }
 

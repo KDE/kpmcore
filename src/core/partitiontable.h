@@ -97,30 +97,30 @@ public:
     ~PartitionTable();
 
 public:
-    PartitionNode* parent() {
+    PartitionNode* parent() override {
         return nullptr;    /**< @return always nullptr for PartitionTable */
     }
-    const PartitionNode* parent() const {
+    const PartitionNode* parent() const override {
         return nullptr;    /**< @return always nullptr for PartitionTable */
     }
 
-    bool isRoot() const {
+    bool isRoot() const override {
         return true;    /**< @return always true for PartitionTable */
     }
     bool isReadOnly() const {
         return tableTypeIsReadOnly(type());    /**< @return true if the PartitionTable is read only */
     }
 
-    Partitions& children() {
+    Partitions& children() override {
         return m_Children;    /**< @return the children in this PartitionTable */
     }
-    const Partitions& children() const {
+    const Partitions& children() const override {
         return m_Children;    /**< @return the children in this PartitionTable */
     }
 
     void setType(const Device& d, TableType t);
 
-    void append(Partition* partition);
+    void append(Partition* partition) override;
 
     qint64 freeSectorsBefore(const Partition& p) const;
     qint64 freeSectorsAfter(const Partition& p) const;

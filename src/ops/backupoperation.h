@@ -42,17 +42,17 @@ public:
     BackupOperation(Device& targetDevice, Partition& backupPartition, const QString& filename);
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return QStringLiteral("document-export");
     }
-    QString description() const;
-    void preview() {}
-    void undo() {}
+    QString description() const override;
+    void preview() override {}
+    void undo() override {}
 
-    virtual bool targets(const Device&) const {
+    virtual bool targets(const Device&) const override {
         return false;
     }
-    virtual bool targets(const Partition&) const {
+    virtual bool targets(const Partition&) const override{
         return false;
     }
 

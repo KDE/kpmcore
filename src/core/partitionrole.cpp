@@ -1,6 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016 by Teo Mrnjavac <teo@kde.org>                     *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -35,6 +36,9 @@ QString PartitionRole::toString() const
 
     if (roles() & Primary)
         return i18nc("@item partition role", "primary");
+
+    if (roles() & Luks)
+        return i18nc("@item partition role", "LUKS");
 
     return i18nc("@item partition role", "none");
 }

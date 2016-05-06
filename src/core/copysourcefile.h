@@ -39,20 +39,20 @@ public:
     CopySourceFile(const QString& filename, qint32 sectorsize);
 
 public:
-    virtual bool open();
-    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
-    virtual qint64 length() const;
+    virtual bool open() override;
+    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) override;
+    virtual qint64 length() const override;
 
-    virtual qint32 sectorSize() const {
+    virtual qint32 sectorSize() const override {
         return m_SectorSize;    /**< @return the file's sector size */
     }
-    virtual bool overlaps(const CopyTarget&) const {
+    virtual bool overlaps(const CopyTarget&) const override {
         return false;    /**< @return false for file */
     }
-    virtual qint64 firstSector() const {
+    virtual qint64 firstSector() const override {
         return 0;    /**< @return 0 for file */
     }
-    virtual qint64 lastSector() const {
+    virtual qint64 lastSector() const override {
         return length();    /**< @return equal to length for file. @see length() */
     }
 

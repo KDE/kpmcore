@@ -45,22 +45,22 @@ public:
 public:
     static void init() {}
 
-    virtual bool create(Report&, const QString&) const;
+    virtual bool create(Report&, const QString&) const  override;
 
-    virtual CommandSupportType supportCreate() const {
+    virtual CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const {
+    virtual CommandSupportType supportGrow() const override {
         return m_Grow;
     }
-    virtual CommandSupportType supportShrink() const {
+    virtual CommandSupportType supportShrink() const override {
         return m_Shrink;
     }
-    virtual CommandSupportType supportMove() const {
+    virtual CommandSupportType supportMove() const override {
         return m_Move;
     }
 
-    virtual bool supportToolFound() const {
+    virtual bool supportToolFound() const override {
         return true;
     }
 

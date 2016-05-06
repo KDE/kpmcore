@@ -54,20 +54,20 @@ public:
     ~DeleteOperation();
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return shredAction() == NoShred ?
                QStringLiteral("edit-delete") :
                QStringLiteral("edit-delete-shred");
     }
-    QString description() const;
-    void preview();
-    void undo();
+    QString description() const override;
+    void preview() override;
+    void undo() override;
     ShredAction shredAction() const {
         return m_ShredAction;
     }
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const override;
+    virtual bool targets(const Partition& p) const override;
 
     static bool canDelete(const Partition* p);
 

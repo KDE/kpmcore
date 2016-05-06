@@ -55,19 +55,19 @@ public:
     ~CopyOperation();
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return QStringLiteral("edit-copy");
     }
-    QString description() const {
+    QString description() const override {
         return m_Description;
     }
 
-    bool execute(Report& parent);
-    void preview();
-    void undo();
+    bool execute(Report& parent) override;
+    void preview() override;
+    void undo() override;
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const override;
+    virtual bool targets(const Partition& p) const override;
 
     static bool canCopy(const Partition* p);
     static bool canPaste(const Partition* p, const Partition* source);

@@ -124,21 +124,21 @@ public:
         return m_Number;    /**< @return the Partition's device number, e.g. 7 for /dev/sdd7 */
     }
 
-    bool isRoot() const {
+    bool isRoot() const override {
         return false;    /**< @return always false for Partition */
     }
 
-    PartitionNode* parent() {
+    PartitionNode* parent() override {
         return m_Parent;    /**< @return the Partition's parent PartitionNode */
     }
-    const PartitionNode* parent() const {
+    const PartitionNode* parent() const override {
         return m_Parent;    /**< @return the Partition's parent PartitionNode */
     }
 
-    Partitions& children() {
+    Partitions& children() override {
         return m_Children;    /**< @return the Partition's children. empty for non-extended. */
     }
-    const Partitions& children() const {
+    const Partitions& children() const override {
         return m_Children;    /**< @return the Partition's children. empty for non-extended. */
     }
 
@@ -226,7 +226,7 @@ public:
     }
 
 protected:
-    void append(Partition* p) {
+    void append(Partition* p) override {
         m_Children.append(p);
     }
     void setDevicePath(const QString& s) {

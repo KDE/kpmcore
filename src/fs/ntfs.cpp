@@ -123,19 +123,13 @@ qint64 ntfs::readUsedCapacity(const QString& deviceNode) const
 
 bool ntfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand writeCmd(report, QStringLiteral("ntfslabel"), { QStringLiteral("--force"), deviceNode, newLabel.simplified() });
+    ExternalCommand writeCmd(report, QStringLiteral("ntfslabel"), { QStringLiteral("--force"), deviceNode, newLabel });
     writeCmd.setProcessChannelMode(QProcess::SeparateChannels);
 
     if (!writeCmd.run(-1))
         return false;
 
-    ExternalCommand testCmd(QStringLiteral("ntfslabel"), { QStringLiteral("--force"), deviceNode });
-    testCmd.setProcessChannelMode(QProcess::SeparateChannels);
-
-    if (!testCmd.run(-1))
-        return false;
-
-    return testCmd.output().simplified() == newLabel.simplified();
+    return true;
 }
 
 bool ntfs::check(Report& report, const QString& deviceNode) const

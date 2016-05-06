@@ -56,17 +56,17 @@ public:
     ~RestoreOperation();
 
 public:
-    QString iconName() const {
+    QString iconName() const override {
         return QStringLiteral("document-import");
     }
-    QString description() const;
-    bool execute(Report& parent);
-    void undo();
+    QString description() const override;
+    bool execute(Report& parent) override;
+    void undo() override;
 
-    void preview();
+    void preview() override;
 
-    virtual bool targets(const Device& d) const;
-    virtual bool targets(const Partition& p) const;
+    virtual bool targets(const Device& d) const override;
+    virtual bool targets(const Partition& p) const override;
 
     static bool canRestore(const Partition* p);
     static Partition* createRestorePartition(const Device& device, PartitionNode& parent, qint64 start, const QString& fileName);

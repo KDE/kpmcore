@@ -43,8 +43,8 @@ public:
     SetPartGeometryJob(Device& d, Partition& p, qint64 newstart, qint64 newlength);
 
 public:
-    virtual bool run(Report& parent);
-    virtual QString description() const;
+    virtual bool run(Report& parent) override;
+    virtual QString description() const override;
 
 protected:
     Partition& partition() {

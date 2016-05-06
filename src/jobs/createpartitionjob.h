@@ -36,8 +36,8 @@ public:
     CreatePartitionJob(Device& d, Partition& p);
 
 public:
-    virtual bool run(Report& parent);
-    virtual QString description() const;
+    virtual bool run(Report& parent) override;
+    virtual QString description() const override;
 
 protected:
     Partition& partition() {

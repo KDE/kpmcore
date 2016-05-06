@@ -44,8 +44,8 @@ public:
 
 public:
     static void init() {}
-    virtual bool create(Report& report, const QString& deviceNode) const;
-    virtual qint64 maxCapacity() const;
+    virtual bool create(Report& report, const QString& deviceNode) const override;
+    virtual qint64 maxCapacity() const override;
 };
 }
 

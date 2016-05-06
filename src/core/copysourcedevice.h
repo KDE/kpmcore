@@ -43,16 +43,16 @@ public:
     ~CopySourceDevice();
 
 public:
-    virtual bool open();
-    virtual qint32 sectorSize() const;
-    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors);
-    virtual qint64 length() const;
-    virtual bool overlaps(const CopyTarget& target) const;
+    virtual bool open() override;
+    virtual qint32 sectorSize() const override;
+    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) override;
+    virtual qint64 length() const override;
+    virtual bool overlaps(const CopyTarget& target) const override;
 
-    virtual qint64 firstSector() const {
+    virtual qint64 firstSector() const override {
         return m_FirstSector;    /**< @return first sector to copying */
     }
-    virtual qint64 lastSector() const {
+    virtual qint64 lastSector() const override {
         return m_LastSector;    /**< @return last sector to copy */
     }
 

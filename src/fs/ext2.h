@@ -42,54 +42,54 @@ public:
 public:
     static void init();
 
-    virtual qint64 readUsedCapacity(const QString& deviceNode) const;
-    virtual bool check(Report& report, const QString& deviceNode) const;
-    virtual bool create(Report& report, const QString& deviceNode) const;
-    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const;
-    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
-    virtual bool updateUUID(Report& report, const QString& deviceNode) const;
+    virtual qint64 readUsedCapacity(const QString& deviceNode) const override;
+    virtual bool check(Report& report, const QString& deviceNode) const override;
+    virtual bool create(Report& report, const QString& deviceNode) const override;
+    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    virtual bool updateUUID(Report& report, const QString& deviceNode) const override;
 
-    virtual CommandSupportType supportGetUsed() const {
+    virtual CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }
-    virtual CommandSupportType supportGetLabel() const {
+    virtual CommandSupportType supportGetLabel() const override {
         return m_GetLabel;
     }
-    virtual CommandSupportType supportCreate() const {
+    virtual CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const {
+    virtual CommandSupportType supportGrow() const override {
         return m_Grow;
     }
-    virtual CommandSupportType supportShrink() const {
+    virtual CommandSupportType supportShrink() const override {
         return m_Shrink;
     }
-    virtual CommandSupportType supportMove() const {
+    virtual CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCheck() const {
+    virtual CommandSupportType supportCheck() const override {
         return m_Check;
     }
-    virtual CommandSupportType supportCopy() const {
+    virtual CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const {
+    virtual CommandSupportType supportBackup() const override {
         return m_Backup;
     }
-    virtual CommandSupportType supportSetLabel() const {
+    virtual CommandSupportType supportSetLabel() const override {
         return m_SetLabel;
     }
-    virtual CommandSupportType supportUpdateUUID() const {
+    virtual CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
     }
-    virtual CommandSupportType supportGetUUID() const {
+    virtual CommandSupportType supportGetUUID() const override {
         return m_GetUUID;
     }
 
-    virtual qint64 maxCapacity() const;
-    virtual qint64 maxLabelLength() const;
-    virtual SupportTool supportToolName() const;
-    virtual bool supportToolFound() const;
+    virtual qint64 maxCapacity() const override;
+    virtual qint64 maxLabelLength() const override;
+    virtual SupportTool supportToolName() const override;
+    virtual bool supportToolFound() const override;
 
 public:
     static CommandSupportType m_GetUsed;
