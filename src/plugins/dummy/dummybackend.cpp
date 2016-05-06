@@ -70,6 +70,13 @@ Device* DummyBackend::scanDevice(const QString& device_node)
     return d;
 }
 
+FileSystem::Type DummyBackend::detectFileSystem(const QString& deviceNode)
+{
+    Q_UNUSED(deviceNode)
+
+    return FileSystem::Unknown;
+}
+
 CoreBackendDevice* DummyBackend::openDevice(const QString& device_node)
 {
     DummyDevice* device = new DummyDevice(device_node);
