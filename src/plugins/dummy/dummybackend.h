@@ -49,6 +49,7 @@ public:
     virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node) override;
     virtual bool closeDevice(CoreBackendDevice* core_device) override;
     virtual Device* scanDevice(const QString& device_node) override;
+    virtual FileSystem::Type detectFileSystem(const QString& deviceNode) override {return FileSystem::Unknown;}
 };
 
 #endif

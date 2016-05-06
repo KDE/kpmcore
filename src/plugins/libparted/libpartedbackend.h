@@ -66,13 +66,13 @@ public:
     virtual bool closeDevice(CoreBackendDevice* core_device) override;
     virtual Device* scanDevice(const QString& device_node) override;
     virtual QList<Device*> scanDevices(bool excludeReadOnly = false) override;
+    virtual FileSystem::Type detectFileSystem(const QString& partitionPath) override;
 
     static QString lastPartedExceptionMessage();
 
 private:
-    static FileSystem::Type detectFileSystem(PedPartition* pedPartition);
     static PedPartitionFlag getPedFlag(PartitionTable::Flag flag);
-    static void scanDevicePartitions(Device& d, PedDisk* pedDisk);
+    void scanDevicePartitions(Device& d, PedDisk* pedDisk);
 };
 
 #endif

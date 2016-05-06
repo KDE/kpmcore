@@ -299,14 +299,15 @@ FileSystem::Type LibPartedPartitionTable::detectFileSystemBySector(Report& repor
 {
     PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk(), sector);
 
-    FileSystem::Type rval = FileSystem::Unknown;
-
-    if (pedPartition)
-        rval = LibPartedBackend::detectFileSystem(pedPartition);
+    char* pedPath = ped_partition_get_path(pedPartition);
+    FileSystem::Type type = FileSystem::Unknown;
+    if (pedPartition && pedPath)
+        type = CoreBackendManager::self()->backend()->detectFileSystem(QString::fromUtf8(pedPath));
     else
         report.line() << xi18nc("@info/plain", "Could not determine file system of partition at sector %1 on device <filename>%2</filename>.", sector, device.deviceNode());
+    free(pedPath);
 
-    return rval;
+    return type;
 }
 
 bool LibPartedPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)

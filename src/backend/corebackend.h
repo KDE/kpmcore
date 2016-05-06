@@ -20,7 +20,8 @@
 
 #define COREBACKEND__H
 
-#include "../util/libpartitionmanagerexport.h"
+#include "util/libpartitionmanagerexport.h"
+#include "fs/filesystem.h"
 
 #include <QObject>
 #include <QList>
@@ -90,6 +91,13 @@ public:
       *         for deleting these objects.
       */
     virtual QList<Device*> scanDevices(bool excludeReadOnly = false) = 0;
+
+    /**
+      * Scan a single device in the system.
+      * @param deviceNode The path to the device that is to be scanned (e.g. /dev/sda)
+      * @return FileSystem type of the device on deviceNode
+      */
+    virtual FileSystem::Type detectFileSystem(const QString& deviceNode) = 0;
 
     /**
       * Scan a single device in the system.
