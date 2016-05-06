@@ -326,8 +326,7 @@ bool Partition::unmount(Report& report)
 
             ExternalCommand umountCmd(report,
                                       QStringLiteral("umount"),
-                                      { QStringLiteral("-v"),
-                                        QStringLiteral("-A"),
+                                      { QStringLiteral("--verbose"),
                                         deviceNode() });
             if (!umountCmd.run() || umountCmd.exitCode() != 0)
                 success = false;
