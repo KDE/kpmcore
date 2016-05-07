@@ -499,7 +499,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     else if (m_innerFs->resize(report, mapperNode, payloadLength))
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("--size"), QString::number(payloadLength / m_logicalSectorSize), QStringLiteral("resize"), mapperNode });
-        report.line() << xi18nc("@info/plain", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
+        report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
         {
             return true;
