@@ -21,9 +21,9 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
+#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
-#include <QRegExp>
 #include <QUuid>
 
 namespace FS
@@ -102,24 +102,27 @@ qint64 reiserfs::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("debugreiserfs"), { deviceNode });
 
-    if (cmd.run()) {
+    if (cmd.run(-1) && cmd.exitCode() == 16) {
         qint64 blockCount = -1;
-        QRegExp rxBlockCount(QStringLiteral("Count of blocks[^:]+: (\\d+)"));
+        QRegularExpression re(QStringLiteral("Count of blocks[^:]+: (\\d+)"));
+        QRegularExpressionMatch reBlockCount = re.match(cmd.output());
 
-        if (rxBlockCount.indexIn(cmd.output()) != -1)
-            blockCount = rxBlockCount.cap(1).toLongLong();
+        if (reBlockCount.hasMatch())
+            blockCount = reBlockCount.captured(1).toLongLong();
 
         qint64 blockSize = -1;
-        QRegExp rxBlockSize(QStringLiteral("Blocksize: (\\d+)"));
+        re.setPattern(QStringLiteral("Blocksize: (\\d+)"));
+        QRegularExpressionMatch reBlockSize = re.match(cmd.output());
 
-        if (rxBlockSize.indexIn(cmd.output()) != -1)
-            blockSize = rxBlockSize.cap(1).toLongLong();
+        if (reBlockSize.hasMatch())
+            blockSize = reBlockSize.captured(1).toLongLong();
 
         qint64 freeBlocks = -1;
-        QRegExp rxFreeBlocks(QStringLiteral("Free blocks[^:]+: (\\d+)"));
+        re.setPattern(QStringLiteral("Free blocks[^:]+: (\\d+)"));
+        QRegularExpressionMatch reFreeBlocks = re.match(cmd.output());
 
-        if (rxFreeBlocks.indexIn(cmd.output()) != -1)
-            freeBlocks = rxFreeBlocks.cap(1).toLongLong();
+        if (reFreeBlocks.hasMatch())
+            freeBlocks = reFreeBlocks.captured(1).toLongLong();
 
         if (blockCount > -1 && blockSize > -1 && freeBlocks > -1)
             return (blockCount - freeBlocks) * blockSize;
@@ -166,7 +169,7 @@ bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) 
 
 bool reiserfs::updateUUID(Report& report, const QString& deviceNode) const
 {
-    const QString uuid = QUuid::createUuid().toString().remove(QRegExp(QStringLiteral("\\{|\\}")));
+    const QString uuid = QUuid::createUuid().toString().remove(QRegularExpression(QStringLiteral("\\{|\\}")));
     ExternalCommand cmd(report, QStringLiteral("reiserfstune"), { QStringLiteral("--uuid"), uuid, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }

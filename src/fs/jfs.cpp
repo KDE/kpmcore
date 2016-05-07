@@ -21,8 +21,8 @@
 #include "util/report.h"
 #include "util/capacity.h"
 
+#include <QRegularExpression>
 #include <QStringList>
-#include <QRegExp>
 #include <QTemporaryDir>
 
 #include <KLocalizedString>
@@ -100,26 +100,29 @@ qint64 jfs::readUsedCapacity(const QString& deviceNode) const
 
     if (cmd.start() && cmd.write("dm") == 2 && cmd.waitFor()) {
         qint64 blockSize = -1;
-        QRegExp rxBlockSize(QStringLiteral("Block Size: (\\d+)"));
+        QRegularExpression re(QStringLiteral("Block Size: (\\d+)"));
+        QRegularExpressionMatch reBlockSize = re.match(cmd.output());
 
-        if (rxBlockSize.indexIn(cmd.output()) != -1)
-            blockSize = rxBlockSize.cap(1).toLongLong();
+        if (reBlockSize.hasMatch())
+            blockSize = reBlockSize.captured(1).toLongLong();
 
         qint64 nBlocks = -1;
-        QRegExp rxnBlocks(QStringLiteral("dn_mapsize:\\s+0x([0-9a-f]+)"));
+        re.setPattern(QStringLiteral("dn_mapsize:\\s+0x(\\x+)"));
+        QRegularExpressionMatch renBlocks = re.match(cmd.output());
 
         bool ok = false;
-        if (rxnBlocks.indexIn(cmd.output()) != -1) {
-            nBlocks = rxnBlocks.cap(1).toLongLong(&ok, 16);
+        if (renBlocks.hasMatch()) {
+            nBlocks = renBlocks.captured(1).toLongLong(&ok, 16);
             if (!ok)
                 nBlocks = -1;
         }
 
         qint64 nFree = -1;
-        QRegExp rxnFree(QStringLiteral("dn_nfree:\\s+0x([0-9a-f]+)"));
+        re.setPattern(QStringLiteral("dn_nfree:\\s+0x(\\x+)"));
+        QRegularExpressionMatch renFree = re.match(cmd.output());
 
-        if (rxnFree.indexIn(cmd.output()) != -1) {
-            nFree = rxnFree.cap(1).toLongLong(&ok, 16);
+        if (renFree.hasMatch()) {
+            nFree = renFree.captured(1).toLongLong(&ok, 16);
             if (!ok)
                 nFree = -1;
         }
