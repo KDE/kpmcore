@@ -53,7 +53,7 @@ nilfs2::nilfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const 
 void nilfs2::init()
 {
     m_Create = findExternal(QStringLiteral("mkfs.nilfs2")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check = findExternal(QStringLiteral("fsck.nilfs2")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = /*findExternal(QStringLiteral("fsck.nilfs2")) ? cmdSupportFileSystem : */cmdSupportNone;
 
     m_GetLabel = cmdSupportCore;
     m_SetLabel = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -63,8 +63,8 @@ void nilfs2::init()
     m_GetUsed = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Shrink = (m_Grow != cmdSupportNone && m_GetUsed != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
 
-    m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
-    m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
+    m_Copy =/* (m_Check != cmdSupportNone) ?*/ cmdSupportCore /*: cmdSupportNone*/;
+    m_Move =/* (m_Check != cmdSupportNone) ?*/ cmdSupportCore /*: cmdSupportNone*/;
 
     m_GetLabel = cmdSupportCore;
     m_Backup = cmdSupportCore;
@@ -78,7 +78,7 @@ bool nilfs2::supportToolFound() const
         m_GetLabel != cmdSupportNone &&
         m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
-        m_Check != cmdSupportNone &&
+//         m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
         m_Grow != cmdSupportNone &&
         m_Shrink != cmdSupportNone &&
