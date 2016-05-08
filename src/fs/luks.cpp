@@ -113,31 +113,24 @@ bool luks::create(Report& report, const QString& deviceNode) const
     Q_ASSERT(m_innerFs);
     Q_ASSERT(!m_passphrase.isEmpty());
 
-    std::vector<QString> commands;
-    commands.push_back(QStringLiteral("echo"));
-    commands.push_back(QStringLiteral("cryptsetup"));
-    std::vector<QStringList> args;
-    args.push_back({ m_passphrase });
-    args.push_back({ QStringLiteral("-s"),
-                     QStringLiteral("512"),
-                     QStringLiteral("luksFormat"),
-                     deviceNode });
-
-    ExternalCommand createCmd(commands, args);
-    if (!(createCmd.run(-1) && createCmd.exitCode() == 0))
+    ExternalCommand createCmd(report, QStringLiteral("cryptsetup"),
+                              { QStringLiteral("-s"),
+                                QStringLiteral("512"),
+                                QStringLiteral("luksFormat"),
+                                deviceNode });
+    if (!( createCmd.start(-1) &&
+                createCmd.write(m_passphrase.toLatin1() + '\n' + m_passphrase.toLatin1() + '\n') == 2*(m_passphrase.toLatin1().length() + 1) &&
+                createCmd.waitFor() && createCmd.exitCode() == 0))
+    {
         return false;
+    }
 
-    commands.clear();
-    commands.push_back(QStringLiteral("echo"));
-    commands.push_back(QStringLiteral("cryptsetup"));
-    args.clear();
-    args.push_back({ m_passphrase });
-    args.push_back({ QStringLiteral("open"),
-                     deviceNode,
-                     suggestedMapperName(deviceNode) });
+    ExternalCommand openCmd(report, QStringLiteral("cryptsetup"),
+                              { QStringLiteral("open"),
+                                deviceNode,
+                                suggestedMapperName(deviceNode) });
 
-    ExternalCommand openCmd(commands, args);
-    if (!(openCmd.run(-1) && openCmd.exitCode() == 0))
+    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLatin1() + '\n') == m_passphrase.toLatin1().length() + 1 && openCmd.waitFor()))
         return false;
 
     QString mapperNode = mapperName(deviceNode);
@@ -257,18 +250,17 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
         return false;
 
     QString passphrase = dlg.password();
-    std::vector<QString> commands;
-    commands.push_back(QStringLiteral("echo"));
-    commands.push_back(QStringLiteral("cryptsetup"));
-    std::vector<QStringList> args;
-    args.push_back({ passphrase });
-    args.push_back({ QStringLiteral("open"),
-                     deviceNode,
-                     suggestedMapperName(deviceNode) });
+    ExternalCommand openCmd(QStringLiteral("cryptsetup"),
+                              { QStringLiteral("open"),
+                                deviceNode,
+                                suggestedMapperName(deviceNode) });
 
-    ExternalCommand cmd(commands, args);
-    if (!(cmd.run(-1) && cmd.exitCode() == 0))
+    if (!( openCmd.start(-1) &&
+                    openCmd.write(passphrase.toLatin1() + '\n') == passphrase.toLatin1().length() + 1 &&
+                    openCmd.waitFor() && openCmd.exitCode() == 0) )
+    {
         return false;
+    }
 
     if (m_innerFs)
     {

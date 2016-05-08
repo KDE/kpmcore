@@ -45,30 +45,14 @@ class LIBKPMCORE_EXPORT ExternalCommand : public QProcess
 public:
     explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList());
     explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList());
-    explicit ExternalCommand(const std::vector<QString> cmd, const std::vector<QStringList> args);
-    explicit ExternalCommand(Report& report, const std::vector<QString> cmd, const std::vector<QStringList> args);
-    ~ExternalCommand();
 
 public:
-    void setCommand(const std::vector<QString> cmd) {
-        m_Command = cmd;    /**< @param cmd the command to run */
-    }
-    const std::vector<QString> command() const {
-        return m_Command;    /**< @return the command to run */
-    }
+    void setCommand(const QString& cmd) { m_Command = cmd; } /**< @param cmd the command to run */
+    const QString& command() const { return m_Command; } /**< @return the command to run */
 
-    /** @param s the argument to add
-        @param i the command to which the argument is added
-    */
-    void addArg(const QString& s, const int i = 0) {
-        m_Args[i] << s;
-    }
-    const std::vector<QStringList> args() const {
-        return m_Args;    /**< @return the arguments */
-    }
-    void setArgs(const std::vector<QStringList> args) {
-        m_Args = args;    /**< @param args the new arguments */
-    }
+    void addArg(const QString& s) { m_Args << s; } /**< @param s the argument to add */
+    const QStringList& args() const { return m_Args; } /**< @return the arguments */
+    void setArgs(const QStringList& args) { m_Args = args; } /**< @param args the new arguments */
 
     bool start(int timeout = 30000);
     bool waitFor(int timeout = 30000);
@@ -97,10 +81,9 @@ protected Q_SLOTS:
     void onReadOutput();
 
 private:
-    QProcess *processes;
     Report *m_Report;
-    std::vector<QString> m_Command;
-    std::vector<QStringList> m_Args;
+    QString m_Command;
+    QStringList m_Args;
     int m_ExitCode;
     QString m_Output;
 };
