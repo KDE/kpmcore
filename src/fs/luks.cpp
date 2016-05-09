@@ -119,7 +119,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
     if (!( createCmd.start(-1) &&
-                createCmd.write(m_passphrase.toLatin1() + '\n' + m_passphrase.toLatin1() + '\n') == 2*(m_passphrase.toLatin1().length() + 1) &&
+                createCmd.write(m_passphrase.toUtf8() + '\n' + m_passphrase.toUtf8() + '\n') == 2*(m_passphrase.toUtf8().length() + 1) &&
                 createCmd.waitFor() && createCmd.exitCode() == 0))
     {
         return false;
@@ -130,7 +130,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLatin1() + '\n') == m_passphrase.toLatin1().length() + 1 && openCmd.waitFor()))
+    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toUtf8() + '\n') == m_passphrase.toUtf8().length() + 1 && openCmd.waitFor()))
         return false;
 
     QString mapperNode = mapperName(deviceNode);
@@ -255,8 +255,9 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
+    qDebug() << passphrase.toUtf8();
     if (!( openCmd.start(-1) &&
-                    openCmd.write(passphrase.toLatin1() + '\n') == passphrase.toLatin1().length() + 1 &&
+                    openCmd.write(passphrase.toUtf8() + '\n') == passphrase.toUtf8().length() + 1 &&
                     openCmd.waitFor() && openCmd.exitCode() == 0) )
     {
         return false;

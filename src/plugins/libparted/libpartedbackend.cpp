@@ -41,9 +41,9 @@
 
 #include <blkid/blkid.h>
 
+#include <QDebug>
 #include <QString>
 #include <QStringList>
-#include <QDebug>
 
 #include <KLocalizedString>
 #include <KIOCore/KMountPoint>
