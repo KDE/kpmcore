@@ -86,7 +86,7 @@ bool luks::supportToolFound() const
 {
     m_cryptsetupFound =
         m_GetLabel != cmdSupportNone &&
-        m_SetLabel != cmdSupportNone &&
+//         m_SetLabel != cmdSupportNone && (only m_innerFs labels are supported)
         m_Create != cmdSupportNone &&
         m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
@@ -310,6 +310,7 @@ bool luks::cryptClose(const QString& deviceNode)
 
     m_passphrase.clear();
     setLabel({});
+    m_SetLabel = cmdSupportNone;
     setUUID(readUUID(deviceNode));
     setSectorsUsed(-1);
 
@@ -326,6 +327,7 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     FileSystem::Type innerFsType = detectFileSystem(mapperNode);
     m_innerFs = FileSystemFactory::cloneWithNewType(innerFsType,
                                                     *this);
+    m_SetLabel = cmdSupportFileSystem;
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem) // FIXME:also implement checking space if partition is mounted

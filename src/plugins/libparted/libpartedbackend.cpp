@@ -379,6 +379,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
                 // in helpers.h for convenience.
                 mounted = isMounted(mapperNode);
             } else {
+                luksFs->m_SetLabel = FileSystem::cmdSupportNone;
                 mounted = false;
             }
 
