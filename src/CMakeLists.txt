@@ -16,6 +16,8 @@
 
 ############################################
 
+add_definitions(-DTRANSLATION_DOMAIN=\"kpmcore\")
+
 include(backend/CMakeLists.txt)
 include(core/CMakeLists.txt)
 include(util/CMakeLists.txt)
