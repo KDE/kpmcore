@@ -255,7 +255,6 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    qDebug() << passphrase.toUtf8();
     if (!( openCmd.start(-1) &&
                     openCmd.write(passphrase.toUtf8() + '\n') == passphrase.toUtf8().length() + 1 &&
                     openCmd.waitFor() && openCmd.exitCode() == 0) )
