@@ -30,8 +30,8 @@
 #include "jobs/resizefilesystemjob.h"
 
 #include "fs/filesystem.h"
-#include "fs/luks.h"
 #include "fs/filesystemfactory.h"
+#include "fs/luks.h"
 
 #include "util/capacity.h"
 #include "util/report.h"

@@ -148,10 +148,8 @@ bool reiserfs::create(Report& report, const QString& deviceNode) const
 
 bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    const QStringList args = length == -1 ?
-                                     QStringList() << deviceNode << QStringLiteral("-q") :
-                                     QStringList() << deviceNode << QStringLiteral("-q") << QStringLiteral("-s") << QString::number(length);
-    ExternalCommand cmd(report, QStringLiteral("resize_reiserfs"), args);
+    ExternalCommand cmd(report, QStringLiteral("resize_reiserfs"),
+                        { deviceNode, QStringLiteral("-q"), QStringLiteral("-s"), QString::number(length) });
 
     bool rval = cmd.start(-1);
 
