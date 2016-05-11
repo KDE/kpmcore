@@ -22,8 +22,8 @@
 #include "util/capacity.h"
 #include "util/report.h"
 
-#include <QRegularExpression>
 #include <QString>
+#include <QRegExp>
 #include <QTemporaryDir>
 
 #include <KLocalizedString>
@@ -109,12 +109,11 @@ qint64 btrfs::readUsedCapacity(const QString& deviceNode) const
     ExternalCommand cmd(QStringLiteral("btrfs"),
                         { QStringLiteral("filesystem"), QStringLiteral("show"), QStringLiteral("--raw"), deviceNode });
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral(" used (\\d+) path ") + deviceNode);
-        QRegularExpressionMatch reBytesUsed = re.match(cmd.output());
+    if (cmd.run()) {
+        QRegExp rxBytesUsed(QStringLiteral(" used (\\d+) path ") + deviceNode);
 
-        if (reBytesUsed.hasMatch())
-            return reBytesUsed.captured(1).toLongLong();
+        if (rxBytesUsed.indexIn(cmd.output()) != -1)
+            return rxBytesUsed.cap(1).toLongLong();
     }
 
     return -1;

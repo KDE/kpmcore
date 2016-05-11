@@ -21,8 +21,8 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
-#include <QRegularExpression>
 #include <QString>
+#include <QRegExp>
 
 namespace FS
 {
@@ -129,12 +129,11 @@ bool ocfs2::resize(Report& report, const QString& deviceNode, qint64 length) con
     ExternalCommand cmdBlockSize(QStringLiteral("debugfs.ocfs2"), { QStringLiteral("--request"), QStringLiteral("stats"), deviceNode });
 
     qint32 blockSize = -1;
-    if (cmdBlockSize.run(-1) && cmdBlockSize.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Block Size Bits: (\\d+)"));
-        QRegularExpressionMatch reBlockSizeBits = re.match(cmdBlockSize.output());
+    if (cmdBlockSize.run()) {
+        QRegExp rxBlockSizeBits(QStringLiteral("Block Size Bits: (\\d+)"));
 
-        if (reBlockSizeBits.hasMatch())
-            blockSize = 1 << reBlockSizeBits.captured(1).toInt();
+        if (rxBlockSizeBits.indexIn(cmdBlockSize.output()) != -1)
+            blockSize = 1 << rxBlockSizeBits.cap(1).toInt();
     }
 
     if (blockSize == -1)

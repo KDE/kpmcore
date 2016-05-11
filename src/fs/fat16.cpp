@@ -24,9 +24,9 @@
 
 #include <KLocalizedString>
 
-#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
+#include <QRegExp>
 
 #include <ctime>
 
@@ -106,21 +106,19 @@ qint64 fat16::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("fsck.msdos"), { QStringLiteral("-n"), QStringLiteral("-v"), deviceNode });
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
+    if (cmd.run()) {
         qint64 usedClusters = -1;
-        QRegularExpression re(QStringLiteral("files, (\\d+)/\\d+ "));
-        QRegularExpressionMatch reClusters = re.match(cmd.output());
+        QRegExp rxClusters(QStringLiteral("files, (\\d+)/\\d+ "));
 
-        if (reClusters.hasMatch())
-            usedClusters = reClusters.captured(1).toLongLong();
+        if (rxClusters.indexIn(cmd.output()) != -1)
+            usedClusters = rxClusters.cap(1).toLongLong();
 
         qint64 clusterSize = -1;
 
-        re.setPattern(QStringLiteral("(\\d+) bytes per cluster"));
-        QRegularExpressionMatch reClusterSize = re.match(cmd.output());
+        QRegExp rxClusterSize(QStringLiteral("(\\d+) bytes per cluster"));
 
-        if (reClusterSize.hasMatch())
-            clusterSize = reClusterSize.captured(1).toLongLong();
+        if (rxClusterSize.indexIn(cmd.output()) != -1)
+            clusterSize = rxClusterSize.cap(1).toLongLong();
 
         if (usedClusters > -1 && clusterSize > -1)
             return usedClusters * clusterSize;

@@ -24,7 +24,6 @@
 
 #include <cmath>
 
-#include <QRegularExpression>
 #include <QString>
 #include <QTemporaryDir>
 #include <QUuid>
@@ -125,15 +124,12 @@ qint64 nilfs2::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("nilfs-tune"), { QStringLiteral("-l"), deviceNode });
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Block size:\\s+(\\d+)"));
-        QRegularExpressionMatch reBlockSize = re.match(cmd.output());
-        re.setPattern(QStringLiteral("Device size:\\s+(\\d+)"));
-        QRegularExpressionMatch reDeviceSize = re.match(cmd.output());
-        re.setPattern(QStringLiteral("Free blocks count:\\s+(\\d+)"));
-        QRegularExpressionMatch reFreeBlocks = re.match(cmd.output());
-        if (reBlockSize.hasMatch() && reDeviceSize.hasMatch() && reFreeBlocks.hasMatch())
-            return reDeviceSize.captured(1).toLongLong() - reBlockSize.captured(1).toLongLong() * reFreeBlocks.captured(1).toLongLong();
+    if (cmd.run()) {
+        QRegExp rxBlockSize(QStringLiteral("(?:Block size:\\s+)(\\d+)"));
+        QRegExp rxDeviceSize(QStringLiteral("(?:Device size:\\s+)(\\d+)"));
+        QRegExp rxFreeBlocks(QStringLiteral("(?:Free blocks count:\\s+)(\\d+)"));
+        if (rxBlockSize.indexIn(cmd.output()) != -1 && rxDeviceSize.indexIn(cmd.output()) != -1 && rxFreeBlocks.indexIn(cmd.output()) != -1)
+            return rxDeviceSize.cap(1).toLongLong() - rxBlockSize.cap(1).toLongLong() * rxFreeBlocks.cap(1).toLongLong();
     }
 
     return -1;

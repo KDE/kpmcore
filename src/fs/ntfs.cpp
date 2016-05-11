@@ -25,14 +25,13 @@
 
 #include <KLocalizedString>
 
-#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
 #include <QFile>
 #include <QUuid>
 
-#include <algorithm>
 #include <ctime>
+#include <algorithm>
 
 namespace FS
 {
@@ -108,13 +107,12 @@ qint64 ntfs::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("ntfsresize"), { QStringLiteral("--info"), QStringLiteral("--force"), QStringLiteral("--no-progress-bar"), deviceNode });
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
+    if (cmd.run()) {
         qint64 usedBytes = -1;
-        QRegularExpression re(QStringLiteral("resize at (\\d+) bytes"));
-        QRegularExpressionMatch reUsedBytes = re.match(cmd.output());
+        QRegExp rxUsedBytes(QStringLiteral("resize at (\\d+) bytes"));
 
-        if (reUsedBytes.hasMatch())
-            usedBytes = reUsedBytes.captured(1).toLongLong();
+        if (rxUsedBytes.indexIn(cmd.output()) != -1)
+            usedBytes = rxUsedBytes.cap(1).toLongLong();
 
         if (usedBytes > -1)
             return usedBytes;

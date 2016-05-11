@@ -28,7 +28,6 @@
 #include <QDebug>
 #include <QDialog>
 #include <QPointer>
-#include <QRegularExpression>
 #include <QString>
 #include <QUuid>
 
@@ -495,7 +494,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     else if (m_innerFs->resize(report, mapperNode, payloadLength))
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("--size"), QString::number(payloadLength / m_logicalSectorSize), QStringLiteral("resize"), mapperNode });
-        report.line() << xi18nc("@info/plain", "Resize encrypted file system on partition <filename>%1</filename>.", deviceNode);
+        report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
         {
             return true;
@@ -523,7 +522,7 @@ QString luks::readOuterUUID(const QString &deviceNode) const
 
 bool luks::updateUUID(Report& report, const QString& deviceNode) const
 {
-    const QString uuid = QUuid::createUuid().toString().remove(QRegularExpression(QStringLiteral("\\{|\\}")));
+    const QString uuid = QUuid::createUuid().toString().remove(QRegExp(QStringLiteral("\\{|\\}")));
 
     ExternalCommand cmd(report,
                         QStringLiteral("cryptsetup"),
@@ -555,11 +554,10 @@ QString luks::getCipherName(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Cipher name:\\s+(\\w+)"));
-        QRegularExpressionMatch reCipherName = re.match(cmd.output());
-        if (reCipherName.hasMatch())
-            return reCipherName.captured(1);
+    if (cmd.run()) {
+        QRegExp rxCipherName(QStringLiteral("(?:Cipher name:\\s+)([A-Za-z0-9-]+)"));
+        if (rxCipherName.indexIn(cmd.output()) > -1)
+            return rxCipherName.cap(1);
     }
     return QStringLiteral("---");
 }
@@ -568,11 +566,10 @@ QString luks::getCipherMode(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Cipher mode:\\s+(\\w+)"));
-        QRegularExpressionMatch reCipherMode = re.match(cmd.output());
-        if (reCipherMode.hasMatch())
-            return reCipherMode.captured(1);
+    if (cmd.run()) {
+        QRegExp rxCipherMode(QStringLiteral("(?:Cipher mode:\\s+)([A-Za-z0-9-]+)"));
+        if (rxCipherMode.indexIn(cmd.output()) > -1)
+            return rxCipherMode.cap(1);
     }
     return QStringLiteral("---");
 }
@@ -581,11 +578,10 @@ QString luks::getHashName(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Hash spec:\\s+(\\w+)"));
-        QRegularExpressionMatch reHash = re.match(cmd.output());
-        if (reHash.hasMatch())
-            return reHash.captured(1);
+    if (cmd.run()) {
+        QRegExp rxHash(QStringLiteral("(?:Hash spec:\\s+)([A-Za-z0-9-]+)"));
+        if (rxHash.indexIn(cmd.output()) > -1)
+            return rxHash.cap(1);
     }
     return QStringLiteral("---");
 }
@@ -594,11 +590,10 @@ QString luks::getKeySize(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("MK bits:\\s+(\\d+)"));
-        QRegularExpressionMatch reKeySize = re.match(cmd.output());
-        if (reKeySize.hasMatch())
-            return reKeySize.captured(1);
+    if (cmd.run()) {
+        QRegExp rxKeySize(QStringLiteral("(?:MK bits:\\s+)(\\d+)"));
+        if (rxKeySize.indexIn(cmd.output()) > -1)
+            return rxKeySize.cap(1);
     }
     return QStringLiteral("---");
 }
@@ -607,11 +602,10 @@ QString luks::getPayloadOffset(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Payload offset:\\s+(\\d+)"));
-        QRegularExpressionMatch rePayloadOffset = re.match(cmd.output());
-        if (rePayloadOffset.hasMatch())
-            return rePayloadOffset.captured(1);
+    if (cmd.run()) {
+        QRegExp rxPayloadOffset(QStringLiteral("(?:Payload offset:\\s+)(\\d+)"));
+        if (rxPayloadOffset.indexIn(cmd.output()) > -1)
+            return rxPayloadOffset.cap(1);
     }
     return QStringLiteral("---");
 }

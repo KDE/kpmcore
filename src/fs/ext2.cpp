@@ -21,8 +21,8 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
-#include <QRegularExpression>
 #include <QString>
+#include <QRegExp>
 
 namespace FS
 {
@@ -98,25 +98,22 @@ qint64 ext2::readUsedCapacity(const QString& deviceNode) const
 
     if (cmd.run()) {
         qint64 blockCount = -1;
-        QRegularExpression re(QStringLiteral("Block count:\\s+(\\w+)"));
-        QRegularExpressionMatch reBlockCount = re.match(cmd.output());
+        QRegExp rxBlockCount(QStringLiteral("Block count:\\s*(\\d+)"));
 
-        if (reBlockCount.hasMatch())
-            blockCount = reBlockCount.captured(1).toLongLong();
+        if (rxBlockCount.indexIn(cmd.output()) != -1)
+            blockCount = rxBlockCount.cap(1).toLongLong();
 
         qint64 freeBlocks = -1;
-        re.setPattern(QStringLiteral("Free blocks:\\s+(\\d+)"));
-        QRegularExpressionMatch reFreeBlocks = re.match(cmd.output());
+        QRegExp rxFreeBlocks(QStringLiteral("Free blocks:\\s*(\\d+)"));
 
-        if (reFreeBlocks.hasMatch())
-            freeBlocks = reFreeBlocks.captured(1).toLongLong();
+        if (rxFreeBlocks.indexIn(cmd.output()) != -1)
+            freeBlocks = rxFreeBlocks.cap(1).toLongLong();
 
         qint64 blockSize = -1;
-        re.setPattern(QStringLiteral("Block size:\\s+(\\d+)"));
-        QRegularExpressionMatch reBlockSize = re.match(cmd.output());
+        QRegExp rxBlockSize(QStringLiteral("Block size:\\s*(\\d+)"));
 
-        if (reBlockSize.hasMatch())
-            blockSize = reBlockSize.captured(1).toLongLong();
+        if (rxBlockSize.indexIn(cmd.output()) != -1)
+            blockSize = rxBlockSize.cap(1).toLongLong();
 
         if (blockCount > -1 && freeBlocks > -1 && blockSize > -1)
             return (blockCount - freeBlocks) * blockSize;
