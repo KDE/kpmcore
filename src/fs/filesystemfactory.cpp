@@ -98,7 +98,7 @@ void FileSystemFactory::init()
     FS::hpfs::init();
     FS::jfs::init();
     FS::linuxswap::init();
-    FS::luks::init();
+//     FS::luks::init();
     FS::lvm2_pv::init();
     FS::nilfs2::init();
     FS::ntfs::init();

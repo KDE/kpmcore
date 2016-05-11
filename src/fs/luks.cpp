@@ -37,19 +37,6 @@
 
 namespace FS
 {
-FileSystem::CommandSupportType luks::m_GetUsed = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_GetLabel = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_Create = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_Grow = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_Shrink = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_Move = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_Check = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_Copy = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_Backup = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_SetLabel = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_UpdateUUID = FileSystem::cmdSupportNone;
-FileSystem::CommandSupportType luks::m_GetUUID = FileSystem::cmdSupportNone;
-
 luks::luks(qint64 firstsector,
            qint64 lastsector,
            qint64 sectorsused,
@@ -59,6 +46,18 @@ luks::luks(qint64 firstsector,
     , m_isCryptOpen(false)
     , m_isMounted(false)
 {
+    m_GetUsed = FileSystem::cmdSupportNone;
+    m_GetLabel = FileSystem::cmdSupportNone;
+    m_Create = FileSystem::cmdSupportNone;
+    m_Grow = FileSystem::cmdSupportNone;
+    m_Shrink = FileSystem::cmdSupportNone;
+    m_Move = FileSystem::cmdSupportNone;
+    m_Check = FileSystem::cmdSupportNone;
+    m_Copy = FileSystem::cmdSupportNone;
+    m_Backup = FileSystem::cmdSupportNone;
+    m_SetLabel = FileSystem::cmdSupportNone;
+    m_UpdateUUID = FileSystem::cmdSupportNone;
+    m_GetUUID = FileSystem::cmdSupportNone;
 }
 
 luks::~luks()

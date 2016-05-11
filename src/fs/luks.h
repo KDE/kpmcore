@@ -44,7 +44,7 @@ public:
     virtual ~luks();
 
 public:
-    static void init();
+    void init();
     virtual qint64 readUsedCapacity(const QString& deviceNode) const override;
 
     virtual CommandSupportType supportGetUsed() const override {
@@ -154,18 +154,18 @@ protected:
     virtual QString readOuterUUID(const QString& deviceNode) const;
 
 public:
-    static CommandSupportType m_GetUsed;
-    static CommandSupportType m_GetLabel;
-    static CommandSupportType m_Create;
-    static CommandSupportType m_Grow;
-    static CommandSupportType m_Shrink;
-    static CommandSupportType m_Move;
-    static CommandSupportType m_Check;
-    static CommandSupportType m_Copy;
-    static CommandSupportType m_Backup;
-    static CommandSupportType m_SetLabel;
-    static CommandSupportType m_UpdateUUID;
-    static CommandSupportType m_GetUUID;
+    CommandSupportType m_GetUsed;
+    CommandSupportType m_GetLabel;
+    CommandSupportType m_Create;
+    CommandSupportType m_Grow;
+    CommandSupportType m_Shrink;
+    CommandSupportType m_Move;
+    CommandSupportType m_Check;
+    CommandSupportType m_Copy;
+    CommandSupportType m_Backup;
+    CommandSupportType m_SetLabel;
+    CommandSupportType m_UpdateUUID;
+    CommandSupportType m_GetUUID;
 
 private:
     mutable FileSystem* m_innerFs;
