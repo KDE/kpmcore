@@ -30,6 +30,7 @@
 #include "jobs/resizefilesystemjob.h"
 
 #include "fs/filesystem.h"
+#include "fs/luks.h"
 #include "fs/filesystemfactory.h"
 
 #include "util/capacity.h"
@@ -197,6 +198,9 @@ bool RestoreOperation::canRestore(const Partition* p)
 
     if (p->roles().has(PartitionRole::Extended))
         return false;
+
+    if (p->roles().has(PartitionRole::Luks))
+        return FS::luks::mapperName(p->deviceNode()).isEmpty();
 
     return true;
 }
