@@ -69,7 +69,7 @@ luks::~luks()
 void luks::init()
 {
     m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_SetLabel = cmdSupportFileSystem;
+    m_SetLabel = cmdSupportNone;
     m_GetLabel = cmdSupportFileSystem;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Grow = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
