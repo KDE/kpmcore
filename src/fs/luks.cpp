@@ -523,14 +523,14 @@ QString luks::readOuterUUID(const QString &deviceNode) const
 
 bool luks::updateUUID(Report& report, const QString& deviceNode) const
 {
-    QUuid uuid = QUuid::createUuid();
+    const QString uuid = QUuid::createUuid().toString().remove(QRegularExpression(QStringLiteral("\\{|\\}")));
 
     ExternalCommand cmd(report,
                         QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksUUID"),
                           deviceNode,
                           QStringLiteral("--uuid"),
-                          uuid.toString() });
+                          uuid });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
