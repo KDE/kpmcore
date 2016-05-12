@@ -28,6 +28,7 @@
 #include "util/report.h"
 
 #include <QDebug>
+#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
 
@@ -214,7 +215,7 @@ void Partition::adjustLogicalNumbers(qint32 deletedNumber, qint32 insertedNumber
 
     foreach(Partition * p, children()) {
         QString path = p->partitionPath();
-        path.remove(QRegExp(QStringLiteral("([0-9]+$)")));
+        path.remove(QRegularExpression(QStringLiteral("(\\d+$)")));
         if (deletedNumber > 4 && p->number() > deletedNumber)
             p->setPartitionPath(path + QString::number(p->number() - 1));
         else if (insertedNumber > 4 && p->number() >= insertedNumber)

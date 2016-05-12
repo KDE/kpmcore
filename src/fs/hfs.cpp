@@ -22,7 +22,6 @@
 #include "util/capacity.h"
 
 #include <QStringList>
-#include <QRegExp>
 
 namespace FS
 {

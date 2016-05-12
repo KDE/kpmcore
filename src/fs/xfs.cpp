@@ -22,9 +22,9 @@
 #include "util/capacity.h"
 #include "util/report.h"
 
+#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
-#include <QRegExp>
 #include <QTemporaryDir>
 
 #include <KLocalizedString>
@@ -102,24 +102,27 @@ qint64 xfs::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("xfs_db"), { QStringLiteral("-c"), QStringLiteral("sb 0"), QStringLiteral("-c"), QStringLiteral("print"), deviceNode });
 
-    if (cmd.run()) {
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
         qint64 dBlocks = -1;
-        QRegExp rxDBlocks(QStringLiteral("dblocks = (\\d+)"));
+        QRegularExpression re(QStringLiteral("dblocks = (\\d+)"));
+        QRegularExpressionMatch reDBlocks = re.match(cmd.output());
 
-        if (rxDBlocks.indexIn(cmd.output()) != -1)
-            dBlocks = rxDBlocks.cap(1).toLongLong();
+        if (reDBlocks.hasMatch())
+            dBlocks = reDBlocks.captured(1).toLongLong();
 
         qint64 blockSize = -1;
-        QRegExp rxBlockSize(QStringLiteral("blocksize = (\\d+)"));
+        re.setPattern(QStringLiteral("blocksize = (\\d+)"));
+        QRegularExpressionMatch reBlockSize = re.match(cmd.output());
 
-        if (rxBlockSize.indexIn(cmd.output()) != -1)
-            blockSize = rxBlockSize.cap(1).toLongLong();
+        if (reBlockSize.hasMatch())
+            blockSize = reBlockSize.captured(1).toLongLong();
 
         qint64 fdBlocks = -1;
-        QRegExp rxFdBlocks(QStringLiteral("fdblocks = (\\d+)"));
+        re.setPattern(QStringLiteral("fdblocks = (\\d+)"));
+        QRegularExpressionMatch reFdBlocks = re.match(cmd.output());
 
-        if (rxFdBlocks.indexIn(cmd.output()) != -1)
-            fdBlocks = rxFdBlocks.cap(1).toLongLong();
+        if (reFdBlocks.hasMatch())
+            fdBlocks = reFdBlocks.captured(1).toLongLong();
 
         if (dBlocks > -1 && blockSize > -1 && fdBlocks > -1)
             return (dBlocks - fdBlocks) * blockSize;
