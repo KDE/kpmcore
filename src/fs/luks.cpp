@@ -535,20 +535,18 @@ bool luks::updateUUID(Report& report, const QString& deviceNode) const
 
 QString luks::mapperName(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("find"),
-                        { QStringLiteral("/dev/mapper/"),
-                          QStringLiteral("-exec"),
-                          QStringLiteral("cryptsetup"),
-                          QStringLiteral("status"),
-                          QStringLiteral("{}"),
-                          QStringLiteral(";") });
-    if (cmd.run()) {
-        QRegExp rxDeviceName(QStringLiteral("(/dev/mapper/[A-Za-z0-9-/]+) is "
-                                            "active[A-Za-z0-9- \\.\n]+[A-Za-z0-9-: \n]+") + deviceNode);
-        if (rxDeviceName.indexIn(cmd.output()) > -1)
-            return rxDeviceName.cap(1);
+    ExternalCommand cmd(QStringLiteral("lsblk"),
+                        { QStringLiteral("--raw"),
+                          QStringLiteral("--noheadings"),
+                          QStringLiteral("--output"),
+                          QStringLiteral("name"),
+                          deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QStringList output=cmd.output().split(QStringLiteral("\n"));
+        output.removeFirst();
+        if (!output.first().isEmpty())
+            return QStringLiteral("/dev/mapper/") + output.first();
     }
-
     return QString();
 }
 
