@@ -353,9 +353,10 @@ void Partition::deleteFileSystem()
 void Partition::setPartitionPath(const QString& s)
 {
     m_PartitionPath = s;
-    QRegExp rxPartitionNumber(QStringLiteral("([0-9]+$)"));
-    if (rxPartitionNumber.indexIn(partitionPath()) > -1) {
-        setNumber(rxPartitionNumber.cap().toInt());
+    QRegularExpression re(QStringLiteral("(\\d+$)"));
+    QRegularExpressionMatch rePartitionNumber = re.match(partitionPath());
+    if (rePartitionNumber.hasMatch()) {
+        setNumber(rePartitionNumber.captured().toInt());
         return;
     }
     setNumber(-1);
