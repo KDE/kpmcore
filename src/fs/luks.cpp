@@ -489,8 +489,6 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
         {
             return m_innerFs->resize(report, mapperNode, newLength - getPayloadOffset(deviceNode).toInt() * m_logicalSectorSize);
         }
-        else
-            report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename> failed.", deviceNode);
     }
     else if (m_innerFs->resize(report, mapperNode, payloadLength))
     {
@@ -501,6 +499,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
             return true;
         }
     }
+    report.line() << xi18nc("@info/plain", "Resizing encrypted file system on partition <filename>%1</filename> failed.", deviceNode);
     return false;
 }
 
