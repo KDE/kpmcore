@@ -156,7 +156,7 @@ bool FileSystem::resize(Report& report, const QString& deviceNode, qint64 newLen
 /** Move a FileSystem to a new start sector
     @param report Report to write status information to
     @param deviceNode the device node for the Partition the FileSystem is on
-    @param newLength the new start sector for the FileSystem
+    @param newStartSector the new start sector for the FileSystem
     @return true on success
 */
 bool FileSystem::move(Report& report, const QString& deviceNode, qint64 newStartSector) const
@@ -401,6 +401,8 @@ bool FileSystem::canMount(const QString& deviceNode, const QString& mountPoint) 
 }
 
 /** Attempt to mount this FileSystem on a given mount point
+    @param report the report to write information to
+    @param deviceNode the path to the device that is to be unmounted
     @param mountPoint the mount point to mount the FileSystem on
     @return true on success
 */
@@ -418,7 +420,8 @@ bool FileSystem::mount(Report& report, const QString &deviceNode, const QString 
 }
 
 /** Attempt to unmount this FileSystem
-    @param mountPoint the mount point the FileSystem is mounted on
+    @param report the report to write information to
+    @param deviceNode the path to the device that is to be unmounted
     @return true on success
  */
 bool FileSystem::unmount(Report& report, const QString& deviceNode)
