@@ -437,7 +437,7 @@ bool luks::unmount(Report& report, const QString& deviceNode)
     else {
         ExternalCommand unmountCmd( report,
                 QStringLiteral("umount"),
-                { QStringLiteral("--verbose"), mapperNode });
+                { QStringLiteral("--verbose"), QStringLiteral("--all-targets"), mapperNode });
         if (unmountCmd.run() && unmountCmd.exitCode() == 0)
         {
             m_isMounted = false;

@@ -426,6 +426,7 @@ bool FileSystem::unmount(Report& report, const QString& deviceNode)
     ExternalCommand umountCmd(  report,
                                 QStringLiteral("umount"),
                               { QStringLiteral("--verbose"),
+                                QStringLiteral("--all-targets"),
                                 deviceNode });
     if ( umountCmd.run() && umountCmd.exitCode() == 0 )
         return true;
