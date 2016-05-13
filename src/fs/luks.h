@@ -118,7 +118,7 @@ public:
     void setPassphrase(const QString&);
     QString passphrase() const;
 
-    virtual bool canMount(const QString&) const override;
+    virtual bool canMount(const QString&, const QString&) const override;
     virtual bool canUnmount(const QString&) const override;
     bool isMounted() const;
     void setMounted(bool mounted);
@@ -134,7 +134,7 @@ public:
     void loadInnerFileSystem(const QString& mapperNode);
     void createInnerFileSystem(Type type);
 
-    virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
+    virtual bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
     virtual bool unmount(Report& report, const QString& deviceNode) override;
 
     virtual FileSystem::Type type() const override;

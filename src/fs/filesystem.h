@@ -175,9 +175,8 @@ public:
     static FileSystem::Type typeForName(const QString& s);
     static FileSystem::Type detectFileSystem(const QString& partitionPath);
 
-    virtual bool canMount(const QString&) const {
-        return false;    /**< @return true if this FileSystem can be mounted */
-    }
+    /**< @return true if this FileSystem can be mounted */
+    virtual bool canMount(const QString& deviceNode, const QString& mountPoint) const;
     virtual bool canUnmount(const QString&) const {
         return true;    /**< @return true if this FileSystem can be unmounted */
     }
@@ -185,7 +184,7 @@ public:
     virtual QString mountTitle() const;
     virtual QString unmountTitle() const;
 
-    virtual bool mount(const QString& deviceNode, const QString& mountPoint);
+    virtual bool mount(Report& report, const QString& deviceNode, const QString& mountPoint);
     virtual bool unmount(Report& report, const QString& deviceNode);
 
     qint64 firstSector() const {

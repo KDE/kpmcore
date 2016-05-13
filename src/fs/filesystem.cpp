@@ -393,16 +393,27 @@ void FileSystem::move(qint64 newStartSector)
     setFirstSector(newStartSector);
     setLastSector(newStartSector + savedLength - 1);
 }
+bool FileSystem::canMount(const QString& deviceNode, const QString& mountPoint) const
+{
+    Q_UNUSED(deviceNode);
+    // cannot mount if we have no mount points
+    return !mountPoint.isEmpty();
+}
 
 /** Attempt to mount this FileSystem on a given mount point
     @param mountPoint the mount point to mount the FileSystem on
     @return true on success
 */
-bool FileSystem::mount(const QString &deviceNode, const QString &mountPoint)
+bool FileSystem::mount(Report& report, const QString &deviceNode, const QString &mountPoint)
 {
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(mountPoint);
-
+    ExternalCommand mountCmd(   report,
+                                QStringLiteral("mount"),
+                              { QStringLiteral("--verbose"),
+                                deviceNode,
+                                mountPoint });
+    if (mountCmd.run() && mountCmd.exitCode() == 0) {
+        return true;
+    }
     return false;
 }
 

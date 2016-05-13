@@ -267,16 +267,15 @@ void Partition::checkChildrenMounted()
 bool Partition::canMount() const
 {
     // cannot mount if already mounted
-    if (isMounted())
+    if (isMounted())  {
         return false;
+    }
 
-    // if the file system says we can mount without mount points, that's fine
-    // (this is the case for swap only, actually)
-    if (fileSystem().canMount(deviceNode()))
+    if (fileSystem().canMount(deviceNode(), mountPoint())) {
         return true;
+    }
 
-    // cannot mount if we have no mount points
-    return !mountPoint().isEmpty();
+    return false;
 }
 
 /** @return true if this Partition can be unmounted */
@@ -295,12 +294,8 @@ bool Partition::mount(Report& report)
 
     bool success = false;
 
-    if (fileSystem().canMount(deviceNode()))
-        success = fileSystem().mount(deviceNode(), mountPoint());
-    else {
-        ExternalCommand mountCmd(report, QStringLiteral("mount"), QStringList() << QStringLiteral("-v") << deviceNode() << mountPoint());
-        if (mountCmd.run() && mountCmd.exitCode() == 0)
-            success = true;
+    if (fileSystem().canMount(deviceNode(), mountPoint())) {
+        success = fileSystem().mount(report, deviceNode(), mountPoint());
     }
 
     setMounted(success);

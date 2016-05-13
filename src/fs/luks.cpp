@@ -176,12 +176,12 @@ QString luks::passphrase() const
     return m_passphrase;
 }
 
-bool luks::canMount(const QString& deviceNode) const
+bool luks::canMount(const QString& deviceNode, const QString& mountPoint) const
 {
     return m_isCryptOpen &&
            !m_isMounted &&
            m_innerFs &&
-           m_innerFs->canMount(mapperName(deviceNode));
+           m_innerFs->canMount(mapperName(deviceNode), mountPoint);
 }
 
 bool luks::canUnmount(const QString& deviceNode) const
@@ -360,7 +360,7 @@ qint64 luks::readUsedCapacity(const QString& deviceNode) const
     return -1;
 }
 
-bool luks::mount(const QString& deviceNode, const QString& mountPoint)
+bool luks::mount(Report& report, const QString& deviceNode, const QString& mountPoint)
 {
     if (!m_isCryptOpen)
     {
@@ -382,9 +382,9 @@ bool luks::mount(const QString& deviceNode, const QString& mountPoint)
     if (mapperNode.isEmpty())
         return false;
 
-    if (m_innerFs->canMount(mapperNode))
+    if (m_innerFs->canMount(mapperNode, mountPoint))
     {
-        if (m_innerFs->mount(mapperNode, mountPoint))
+        if (m_innerFs->mount(report, mapperNode, mountPoint))
         {
             m_isMounted = true;
             return true;
@@ -392,6 +392,7 @@ bool luks::mount(const QString& deviceNode, const QString& mountPoint)
     }
     else {
         ExternalCommand mountCmd(
+                report,
                 QStringLiteral("mount"),
                 { QStringLiteral("-v"), mapperNode, mountPoint });
         if (mountCmd.run() && mountCmd.exitCode() == 0)

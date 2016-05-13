@@ -48,14 +48,8 @@ public:
     virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const override;
     virtual bool updateUUID(Report& report, const QString& deviceNode) const override;
 
-    virtual bool canMount(const QString&) const override {
-        return true;
-    }
-    virtual bool canUnmount(const QString&) const override {
-        return true;
-    }
-
-    virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
+    virtual bool canMount(const QString& deviceNode, const QString& mountPoint) const override;
+    virtual bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
     virtual bool unmount(Report& report, const QString& deviceNode) override;
 
     virtual QString mountTitle() const override;
