@@ -394,7 +394,7 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
         ExternalCommand mountCmd(
                 report,
                 QStringLiteral("mount"),
-                { QStringLiteral("-v"), mapperNode, mountPoint });
+                { QStringLiteral("--verbose"), mapperNode, mountPoint });
         if (mountCmd.run() && mountCmd.exitCode() == 0)
         {
             m_isMounted = true;
