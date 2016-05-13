@@ -179,14 +179,14 @@ public:
         return false;    /**< @return true if this FileSystem can be mounted */
     }
     virtual bool canUnmount(const QString&) const {
-        return false;    /**< @return true if this FileSystem can be unmounted */
+        return true;    /**< @return true if this FileSystem can be unmounted */
     }
 
     virtual QString mountTitle() const;
     virtual QString unmountTitle() const;
 
     virtual bool mount(const QString& deviceNode, const QString& mountPoint);
-    virtual bool unmount(const QString& deviceNode);
+    virtual bool unmount(Report& report, const QString& deviceNode);
 
     qint64 firstSector() const {
         return m_FirstSector;    /**< @return the FileSystem's first sector */

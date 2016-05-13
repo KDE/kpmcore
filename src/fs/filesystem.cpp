@@ -410,10 +410,14 @@ bool FileSystem::mount(const QString &deviceNode, const QString &mountPoint)
     @param mountPoint the mount point the FileSystem is mounted on
     @return true on success
  */
-bool FileSystem::unmount(const QString& mountPoint)
+bool FileSystem::unmount(Report& report, const QString& deviceNode)
 {
-    Q_UNUSED(mountPoint);
-
+    ExternalCommand umountCmd(  report,
+                                QStringLiteral("umount"),
+                              { QStringLiteral("--verbose"),
+                                deviceNode });
+    if ( umountCmd.run() && umountCmd.exitCode() == 0 )
+        return true;
     return false;
 }
 

@@ -320,17 +320,7 @@ bool Partition::unmount(Report& report)
 
     while (success) {
         if (fileSystem().canUnmount(deviceNode())) {
-            success = fileSystem().unmount(deviceNode());
-            if (success)
-                setMountPoint(QString());
-        } else {
-
-            ExternalCommand umountCmd(report,
-                                      QStringLiteral("umount"),
-                                      { QStringLiteral("--verbose"),
-                                        deviceNode() });
-            if (!umountCmd.run() || umountCmd.exitCode() != 0)
-                success = false;
+            success = fileSystem().unmount(report, deviceNode());
         }
 
         KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);

@@ -56,7 +56,7 @@ public:
     }
 
     virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
-    virtual bool unmount(const QString& deviceNode) override;
+    virtual bool unmount(Report& report, const QString& deviceNode) override;
 
     virtual QString mountTitle() const override;
     virtual QString unmountTitle() const override;

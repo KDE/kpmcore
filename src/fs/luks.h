@@ -135,7 +135,7 @@ public:
     void createInnerFileSystem(Type type);
 
     virtual bool mount(const QString& deviceNode, const QString& mountPoint) override;
-    virtual bool unmount(const QString& deviceNode) override;
+    virtual bool unmount(Report& report, const QString& deviceNode) override;
 
     virtual FileSystem::Type type() const override;
 

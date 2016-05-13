@@ -139,9 +139,9 @@ bool linuxswap::mount(const QString& deviceNode, const QString& mountPoint)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool linuxswap::unmount(const QString& deviceNode)
+bool linuxswap::unmount(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("swapoff"), { deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("swapoff"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

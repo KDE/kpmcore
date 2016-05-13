@@ -403,7 +403,7 @@ bool luks::mount(const QString& deviceNode, const QString& mountPoint)
     return false;
 }
 
-bool luks::unmount(const QString& deviceNode)
+bool luks::unmount(Report& report, const QString& deviceNode)
 {
     if (!m_isCryptOpen)
     {
@@ -427,14 +427,14 @@ bool luks::unmount(const QString& deviceNode)
 
     if (m_innerFs->canUnmount(mapperNode))
     {
-        if (m_innerFs->unmount(mapperNode))
+        if (m_innerFs->unmount(report, mapperNode))
         {
             m_isMounted = false;
             return true;
         }
     }
     else {
-        ExternalCommand unmountCmd(
+        ExternalCommand unmountCmd( report,
                 QStringLiteral("umount"),
                 { QStringLiteral("--verbose"), mapperNode });
         if (unmountCmd.run() && unmountCmd.exitCode() == 0)
