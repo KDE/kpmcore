@@ -243,8 +243,9 @@ bool LibPartedPartitionTable::clobberFileSystem(Report& report, const Partition&
                 //reiser4 stores "ReIsEr4" at sector 128 with a sector size of 512 bytes
 
                 // We need to use memset instead of = {0} because clang sucks.
-                char zeroes[pedDevice()->sector_size*129];
-                memset(zeroes, 0, pedDevice()->sector_size*129*sizeof(long long));
+                const long long zeroes_length = pedDevice()->sector_size*129;
+                char zeroes[zeroes_length];
+                memset(zeroes, 0, zeroes_length*sizeof(char));
 
                 rval = ped_geometry_write(&pedPartition->geom, zeroes, 0, 129);
 
