@@ -40,7 +40,7 @@ public:
     ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Ext2);
 
 public:
-    static void init();
+    virtual void init() override;
 
     virtual qint64 readUsedCapacity(const QString& deviceNode) const override;
     virtual bool check(Report& report, const QString& deviceNode) const override;

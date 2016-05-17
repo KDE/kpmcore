@@ -40,7 +40,7 @@ public:
     hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    static void init();
+    virtual void init() override;
 
     virtual bool check(Report& report, const QString& deviceNode) const override;
 

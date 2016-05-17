@@ -41,10 +41,6 @@ hpfs::hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QStr
 {
 }
 
-void hpfs::init()
-{
-}
-
 qint64 hpfs::maxCapacity() const
 {
     return 2 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);

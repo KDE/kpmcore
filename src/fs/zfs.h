@@ -41,7 +41,7 @@ public:
     zfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    static void init();
+    virtual void init() override;
 
     virtual bool remove(Report& report, const QString& deviceNode) const override;
     virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;

@@ -84,32 +84,9 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Xfs, new FS::xfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Zfs, new FS::zfs(-1, -1, -1, QString()));
 
-    FS::btrfs::init();
-    FS::exfat::init();
-    FS::ext2::init();
-    FS::ext3::init();
-    FS::ext4::init();
-    FS::extended::init();
-    FS::f2fs::init();
-    FS::fat16::init();
-    FS::fat32::init();
-    FS::hfs::init();
-    FS::hfsplus::init();
-    FS::hpfs::init();
-    FS::jfs::init();
-    FS::linuxswap::init();
-//     FS::luks::init();
-    FS::lvm2_pv::init();
-    FS::nilfs2::init();
-    FS::ntfs::init();
-    FS::ocfs2::init();
-    FS::reiserfs::init();
-    FS::reiser4::init();
-    FS::ufs::init();
-    FS::unformatted::init();
-    FS::unknown::init();
-    FS::xfs::init();
-    FS::zfs::init();
+    foreach(FileSystem * fs, FileSystemFactory::map()) {
+        fs->init();
+    }
 
     CoreBackendManager::self()->backend()->initFSSupport();
 }

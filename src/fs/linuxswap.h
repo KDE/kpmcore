@@ -40,7 +40,7 @@ public:
     linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    static void init();
+    virtual void init() override;
 
     virtual bool create(Report& report, const QString& deviceNode) const override;
     virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const override;

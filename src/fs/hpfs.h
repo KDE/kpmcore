@@ -40,8 +40,6 @@ public:
     hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    static void init();
-
     virtual CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }

@@ -40,8 +40,6 @@ public:
     unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    static void init() {}
-
     virtual bool create(Report&, const QString&) const override;
 
     virtual CommandSupportType supportCreate() const override {
