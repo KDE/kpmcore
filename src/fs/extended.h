@@ -44,22 +44,22 @@ public:
 
 public:
 
-    virtual bool create(Report&, const QString&) const  override;
+    bool create(Report&, const QString&) const  override;
 
-    virtual CommandSupportType supportCreate() const override {
+    CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const override {
+    CommandSupportType supportGrow() const override {
         return m_Grow;
     }
-    virtual CommandSupportType supportShrink() const override {
+    CommandSupportType supportShrink() const override {
         return m_Shrink;
     }
-    virtual CommandSupportType supportMove() const override {
+    CommandSupportType supportMove() const override {
         return m_Move;
     }
 
-    virtual bool supportToolFound() const override {
+    bool supportToolFound() const override {
         return true;
     }
 

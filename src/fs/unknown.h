@@ -36,7 +36,7 @@ public:
     unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual bool supportToolFound() const override {
+    bool supportToolFound() const override {
         return true;
     }
 };

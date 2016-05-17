@@ -40,13 +40,13 @@ public:
     unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual bool create(Report&, const QString&) const override;
+    bool create(Report&, const QString&) const override;
 
-    virtual CommandSupportType supportCreate() const override {
+    CommandSupportType supportCreate() const override {
         return m_Create;
     }
 
-    virtual bool supportToolFound() const override {
+    bool supportToolFound() const override {
         return true;
     }
 

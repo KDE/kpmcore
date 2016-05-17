@@ -49,10 +49,10 @@ public:
     void preview() override {}
     void undo() override {}
 
-    virtual bool targets(const Device&) const override {
+    bool targets(const Device&) const override {
         return false;
     }
-    virtual bool targets(const Partition&) const override{
+    bool targets(const Partition&) const override{
         return false;
     }
 

@@ -39,9 +39,9 @@ public:
     MoveFileSystemJob(Device& d, Partition& p, qint64 newstart);
 
 public:
-    virtual bool run(Report& parent) override;
-    virtual qint32 numSteps() const override;
-    virtual QString description() const override;
+    bool run(Report& parent) override;
+    qint32 numSteps() const override;
+    QString description() const override;
 
 protected:
     Partition& partition() {

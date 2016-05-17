@@ -45,54 +45,54 @@ public:
 
 public:
     void init() override;
-    virtual qint64 readUsedCapacity(const QString& deviceNode) const override;
+    qint64 readUsedCapacity(const QString& deviceNode) const override;
 
-    virtual CommandSupportType supportGetUsed() const override {
+    CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }
-    virtual CommandSupportType supportGetLabel() const override {
+    CommandSupportType supportGetLabel() const override {
         return m_GetLabel;
     }
-    virtual CommandSupportType supportCreate() const override {
+    CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const override {
+    CommandSupportType supportGrow() const override {
         if (!m_isCryptOpen)
             return cmdSupportNone;
         if (m_Grow && m_innerFs)
             return m_innerFs->supportGrow();
         return cmdSupportNone;
     }
-    virtual CommandSupportType supportShrink() const override {
+    CommandSupportType supportShrink() const override {
         if (!m_isCryptOpen)
             return cmdSupportNone;
         if (m_Shrink && m_innerFs)
             return m_innerFs->supportShrink();
         return cmdSupportNone;
     }
-    virtual CommandSupportType supportMove() const override {
+    CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCheck() const override {
+    CommandSupportType supportCheck() const override {
         if (!m_isCryptOpen)
             return cmdSupportNone;
         if (m_Check && m_innerFs)
             return m_innerFs->supportCheck();
         return cmdSupportNone;
     }
-    virtual CommandSupportType supportCopy() const override {
+    CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const override {
+    CommandSupportType supportBackup() const override {
         return m_Backup;
     }
-    virtual CommandSupportType supportSetLabel() const override {
+    CommandSupportType supportSetLabel() const override {
         return m_SetLabel;
     }
-    virtual CommandSupportType supportUpdateUUID() const override {
+    CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
     }
-    virtual CommandSupportType supportGetUUID() const override {
+    CommandSupportType supportGetUUID() const override {
         return m_GetUUID;
     }
 
@@ -100,26 +100,26 @@ public:
         m_logicalSectorSize = logicalSectorSize;
     }
 
-    virtual bool check(Report& report, const QString& deviceNode) const override;
-    virtual bool create(Report &report, const QString &deviceNode) const override;
-    virtual SupportTool supportToolName() const override;
-    virtual bool supportToolFound() const override;
-    virtual QString readUUID(const QString& deviceNode) const override;
-    virtual bool updateUUID(Report& report, const QString& deviceNode) const override;
-    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
-    virtual QString readLabel(const QString& deviceNode) const override;
-    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    bool check(Report& report, const QString& deviceNode) const override;
+    bool create(Report &report, const QString &deviceNode) const override;
+    SupportTool supportToolName() const override;
+    bool supportToolFound() const override;
+    QString readUUID(const QString& deviceNode) const override;
+    bool updateUUID(Report& report, const QString& deviceNode) const override;
+    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    QString readLabel(const QString& deviceNode) const override;
+    bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 
-    virtual QString mountTitle() const override;
-    virtual QString unmountTitle() const override;
+    QString mountTitle() const override;
+    QString unmountTitle() const override;
     QString cryptOpenTitle() const;
     QString cryptCloseTitle() const;
 
     void setPassphrase(const QString&);
     QString passphrase() const;
 
-    virtual bool canMount(const QString&, const QString&) const override;
-    virtual bool canUnmount(const QString&) const override;
+    bool canMount(const QString&, const QString&) const override;
+    bool canUnmount(const QString&) const override;
     bool isMounted() const;
     void setMounted(bool mounted);
 
@@ -134,10 +134,10 @@ public:
     void loadInnerFileSystem(const QString& mapperNode);
     void createInnerFileSystem(Type type);
 
-    virtual bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
-    virtual bool unmount(Report& report, const QString& deviceNode) override;
+    bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
+    bool unmount(Report& report, const QString& deviceNode) override;
 
-    virtual FileSystem::Type type() const override;
+    FileSystem::Type type() const override;
 
     QString suggestedMapperName(const QString& deviceNode) const;
 

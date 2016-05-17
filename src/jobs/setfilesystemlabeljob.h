@@ -38,8 +38,8 @@ public:
     SetFileSystemLabelJob(Partition& p, const QString& newlabel);
 
 public:
-    virtual bool run(Report& parent) override;
-    virtual QString description() const override;
+    bool run(Report& parent) override;
+    QString description() const override;
 
 protected:
     Partition& partition() {

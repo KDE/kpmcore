@@ -57,8 +57,8 @@ public:
     void undo() override;
     bool execute(Report& parent) override;
 
-    virtual bool targets(const Device& d) const override;
-    virtual bool targets(const Partition&) const  override{
+    bool targets(const Device& d) const override;
+    bool targets(const Partition&) const  override{
         return false;
     }
 

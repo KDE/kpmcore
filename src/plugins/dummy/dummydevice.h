@@ -37,16 +37,16 @@ public:
     ~DummyDevice();
 
 public:
-    virtual bool open() override;
-    virtual bool openExclusive() override;
-    virtual bool close() override;
+    bool open() override;
+    bool openExclusive() override;
+    bool close() override;
 
-    virtual CoreBackendPartitionTable* openPartitionTable() override;
+    CoreBackendPartitionTable* openPartitionTable() override;
 
-    virtual bool createPartitionTable(Report& report, const PartitionTable& ptable) override;
+    bool createPartitionTable(Report& report, const PartitionTable& ptable) override;
 
-    virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors) override;
-    virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors) override;
+    bool readSectors(void* buffer, qint64 offset, qint64 numSectors) override;
+    bool writeSectors(void* buffer, qint64 offset, qint64 numSectors) override;
 };
 
 #endif

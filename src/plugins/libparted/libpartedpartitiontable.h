@@ -38,21 +38,21 @@ public:
     ~LibPartedPartitionTable();
 
 public:
-    virtual bool open() override;
+    bool open() override;
 
-    virtual bool commit(quint32 timeout = 10) override;
+    bool commit(quint32 timeout = 10) override;
     static bool commit(PedDisk* pd, quint32 timeout = 10);
 
-    virtual CoreBackendPartition* getExtendedPartition() override;
-    virtual CoreBackendPartition* getPartitionBySector(qint64 sector) override;
+    CoreBackendPartition* getExtendedPartition() override;
+    CoreBackendPartition* getPartitionBySector(qint64 sector) override;
 
-    virtual QString createPartition(Report& report, const Partition& partition) override;
-    virtual bool deletePartition(Report& report, const Partition& partition) override;
-    virtual bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end) override;
-    virtual bool clobberFileSystem(Report& report, const Partition& partition) override;
-    virtual bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength) override;
-    virtual FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector) override;
-    virtual bool setPartitionSystemType(Report& report, const Partition& partition) override;
+    QString createPartition(Report& report, const Partition& partition) override;
+    bool deletePartition(Report& report, const Partition& partition) override;
+    bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end) override;
+    bool clobberFileSystem(Report& report, const Partition& partition) override;
+    bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength) override;
+    FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector) override;
+    bool setPartitionSystemType(Report& report, const Partition& partition) override;
 
 private:
     PedDevice* pedDevice() {

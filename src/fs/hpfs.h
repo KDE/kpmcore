@@ -40,45 +40,45 @@ public:
     hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual CommandSupportType supportGetUsed() const override {
+    CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }
-    virtual CommandSupportType supportGetLabel() const override {
+    CommandSupportType supportGetLabel() const override {
         return m_GetLabel;
     }
-    virtual CommandSupportType supportCreate() const override {
+    CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const override {
+    CommandSupportType supportGrow() const override {
         return m_Grow;
     }
-    virtual CommandSupportType supportShrink() const override {
+    CommandSupportType supportShrink() const override {
         return m_Shrink;
     }
-    virtual CommandSupportType supportMove() const override {
+    CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCheck() const override {
+    CommandSupportType supportCheck() const override {
         return m_Check;
     }
-    virtual CommandSupportType supportCopy() const override {
+    CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const override {
+    CommandSupportType supportBackup() const override {
         return m_Backup;
     }
-    virtual CommandSupportType supportSetLabel() const override {
+    CommandSupportType supportSetLabel() const override {
         return m_SetLabel;
     }
-    virtual CommandSupportType supportUpdateUUID() const override {
+    CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
     }
-    virtual CommandSupportType supportGetUUID() const override {
+    CommandSupportType supportGetUUID() const override {
         return m_GetUUID;
     }
 
-    virtual qint64 maxCapacity() const override;
-    virtual bool supportToolFound() const override {
+    qint64 maxCapacity() const override;
+    bool supportToolFound() const override {
         return true;
     }
 

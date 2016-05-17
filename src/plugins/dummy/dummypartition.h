@@ -33,7 +33,7 @@ public:
     DummyPartition();
 
 public:
-    virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state) override;
+    bool setFlag(Report& report, PartitionTable::Flag flag, bool state) override;
 };
 
 

@@ -35,7 +35,7 @@ public:
     LibPartedPartition(PedPartition* ped_partition);
 
 public:
-    virtual bool setFlag(Report& report, PartitionTable::Flag flag, bool state) override;
+    bool setFlag(Report& report, PartitionTable::Flag flag, bool state) override;
 
 private:
     PedPartition* pedPartition() {

@@ -45,13 +45,13 @@ public:
     ~CopyTargetDevice();
 
 public:
-    virtual bool open() override;
-    virtual qint32 sectorSize() const override;
-    virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) override;
-    virtual qint64 firstSector() const override {
+    bool open() override;
+    qint32 sectorSize() const override;
+    bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) override;
+    qint64 firstSector() const override {
         return m_FirstSector;    /**< @return the first sector to write to */
     }
-    virtual qint64 lastSector() const override {
+    qint64 lastSector() const override {
         return m_LastSector;    /**< @return the last sector to write to */
     }
 

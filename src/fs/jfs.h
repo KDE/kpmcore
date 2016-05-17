@@ -40,47 +40,47 @@ public:
     jfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual void init() override;
+    void init() override;
 
-    virtual qint64 readUsedCapacity(const QString& deviceNode) const override;
-    virtual bool check(Report& report, const QString& deviceNode) const override;
-    virtual bool create(Report& report, const QString& deviceNode) const override;
-    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
-    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    qint64 readUsedCapacity(const QString& deviceNode) const override;
+    bool check(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) const override;
+    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 
-    virtual CommandSupportType supportGetUsed() const override {
+    CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }
-    virtual CommandSupportType supportGetLabel() const override {
+    CommandSupportType supportGetLabel() const override {
         return m_GetLabel;
     }
-    virtual CommandSupportType supportCreate() const override {
+    CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const override {
+    CommandSupportType supportGrow() const override {
         return m_Grow;
     }
-    virtual CommandSupportType supportMove() const override {
+    CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCheck() const override {
+    CommandSupportType supportCheck() const override {
         return m_Check;
     }
-    virtual CommandSupportType supportCopy() const override {
+    CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const override {
+    CommandSupportType supportBackup() const override {
         return m_Backup;
     }
-    virtual CommandSupportType supportSetLabel() const override {
+    CommandSupportType supportSetLabel() const override {
         return m_SetLabel;
     }
 
-    virtual qint64 minCapacity() const override;
-    virtual qint64 maxCapacity() const override;
-    virtual qint64 maxLabelLength() const override;
-    virtual SupportTool supportToolName() const override;
-    virtual bool supportToolFound() const override;
+    qint64 minCapacity() const override;
+    qint64 maxCapacity() const override;
+    qint64 maxLabelLength() const override;
+    SupportTool supportToolName() const override;
+    bool supportToolFound() const override;
 
 public:
     static CommandSupportType m_GetUsed;

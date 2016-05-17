@@ -46,7 +46,7 @@ Q_SIGNALS:
     void progress(const QString& device_node, int progress);
 
 protected:
-    virtual void run() override;
+    void run() override;
     OperationStack& operationStack() {
         return m_OperationStack;
     }

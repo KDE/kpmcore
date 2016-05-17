@@ -37,20 +37,20 @@ public:
     CopySourceShred(qint64 size, qint32 sectorsize, bool randomShred);
 
 public:
-    virtual bool open() override;
-    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) override;
-    virtual qint64 length() const override;
+    bool open() override;
+    bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) override;
+    qint64 length() const override;
 
-    virtual qint32 sectorSize() const override {
+    qint32 sectorSize() const override {
         return m_SectorSize;    /**< @return the file's sector size */
     }
-    virtual bool overlaps(const CopyTarget&) const override {
+    bool overlaps(const CopyTarget&) const override {
         return false;    /**< @return false for shred source */
     }
-    virtual qint64 firstSector() const override {
+    qint64 firstSector() const override {
         return 0;    /**< @return 0 for shred source */
     }
-    virtual qint64 lastSector() const override {
+    qint64 lastSector() const override {
         return length();    /**< @return equal to length for shred source. @see length() */
     }
 

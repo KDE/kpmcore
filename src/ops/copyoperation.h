@@ -66,8 +66,8 @@ public:
     void preview() override;
     void undo() override;
 
-    virtual bool targets(const Device& d) const override;
-    virtual bool targets(const Partition& p) const override;
+    bool targets(const Device& d) const override;
+    bool targets(const Partition& p) const override;
 
     static bool canCopy(const Partition* p);
     static bool canPaste(const Partition* p, const Partition* source);

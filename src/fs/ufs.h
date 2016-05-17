@@ -38,17 +38,17 @@ public:
     ufs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual CommandSupportType supportMove() const override {
+    CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCopy() const override {
+    CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const override {
+    CommandSupportType supportBackup() const override {
         return m_Backup;
     }
 
-    virtual bool supportToolFound() const override {
+    bool supportToolFound() const override {
         return true;
     }
 

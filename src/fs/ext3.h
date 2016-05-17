@@ -43,8 +43,8 @@ public:
     ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual bool create(Report& report, const QString& deviceNode) const override;
-    virtual qint64 maxCapacity() const override;
+    bool create(Report& report, const QString& deviceNode) const override;
+    qint64 maxCapacity() const override;
 };
 }
 

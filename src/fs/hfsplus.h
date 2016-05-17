@@ -40,33 +40,33 @@ public:
     hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual void init() override;
+    void init() override;
 
-    virtual bool check(Report& report, const QString& deviceNode) const override;
+    bool check(Report& report, const QString& deviceNode) const override;
 
-    virtual CommandSupportType supportGetUsed() const override {
+    CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }
-    virtual CommandSupportType supportShrink() const override {
+    CommandSupportType supportShrink() const override {
         return m_Shrink;
     }
-    virtual CommandSupportType supportMove() const override {
+    CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCheck() const override {
+    CommandSupportType supportCheck() const override {
         return m_Check;
     }
-    virtual CommandSupportType supportCopy() const override {
+    CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportBackup() const override {
+    CommandSupportType supportBackup() const override {
         return m_Backup;
     }
 
-    virtual qint64 maxCapacity() const override;
-    virtual qint64 maxLabelLength() const override;
-    virtual SupportTool supportToolName() const override;
-    virtual bool supportToolFound() const override;
+    qint64 maxCapacity() const override;
+    qint64 maxLabelLength() const override;
+    SupportTool supportToolName() const override;
+    bool supportToolFound() const override;
 
 public:
     static CommandSupportType m_GetUsed;

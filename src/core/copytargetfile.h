@@ -39,16 +39,16 @@ public:
     CopyTargetFile(const QString& filename, qint32 sectorsize);
 
 public:
-    virtual bool open() override;
-    virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) override;
+    bool open() override;
+    bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) override;
 
-    virtual qint32 sectorSize() const override {
+    qint32 sectorSize() const override {
         return m_SectorSize;    /**< @return the file's sector size */
     }
-    virtual qint64 firstSector() const override {
+    qint64 firstSector() const override {
         return 0;    /**< @return always 0 for a file */
     }
-    virtual qint64 lastSector() const override {
+    qint64 lastSector() const override {
         return sectorsWritten();    /**< @return the number of sectors written so far */
     }
 

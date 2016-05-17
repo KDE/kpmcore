@@ -59,14 +59,14 @@ private:
     LibPartedBackend(QObject* parent, const QList<QVariant>& args);
 
 public:
-    virtual void initFSSupport() override;
+    void initFSSupport() override;
 
-    virtual CoreBackendDevice* openDevice(const QString& device_node) override;
-    virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node) override;
-    virtual bool closeDevice(CoreBackendDevice* core_device) override;
-    virtual Device* scanDevice(const QString& device_node) override;
-    virtual QList<Device*> scanDevices(bool excludeReadOnly = false) override;
-    virtual FileSystem::Type detectFileSystem(const QString& partitionPath) override;
+    CoreBackendDevice* openDevice(const QString& device_node) override;
+    CoreBackendDevice* openDeviceExclusive(const QString& device_node) override;
+    bool closeDevice(CoreBackendDevice* core_device) override;
+    Device* scanDevice(const QString& device_node) override;
+    QList<Device*> scanDevices(bool excludeReadOnly = false) override;
+    FileSystem::Type detectFileSystem(const QString& partitionPath) override;
 
     static QString lastPartedExceptionMessage();
 

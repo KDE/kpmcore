@@ -40,52 +40,52 @@ public:
     linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    virtual void init() override;
+    void init() override;
 
-    virtual bool create(Report& report, const QString& deviceNode) const override;
-    virtual bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
-    virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
-    virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const override;
-    virtual bool updateUUID(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) const override;
+    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const override;
+    bool updateUUID(Report& report, const QString& deviceNode) const override;
 
-    virtual bool canMount(const QString& deviceNode, const QString& mountPoint) const override;
-    virtual bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
-    virtual bool unmount(Report& report, const QString& deviceNode) override;
+    bool canMount(const QString& deviceNode, const QString& mountPoint) const override;
+    bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
+    bool unmount(Report& report, const QString& deviceNode) override;
 
-    virtual QString mountTitle() const override;
-    virtual QString unmountTitle() const override;
+    QString mountTitle() const override;
+    QString unmountTitle() const override;
 
-    virtual CommandSupportType supportCreate() const override {
+    CommandSupportType supportCreate() const override {
         return m_Create;
     }
-    virtual CommandSupportType supportGrow() const override {
+    CommandSupportType supportGrow() const override {
         return m_Grow;
     }
-    virtual CommandSupportType supportShrink() const override {
+    CommandSupportType supportShrink() const override {
         return m_Shrink;
     }
-    virtual CommandSupportType supportMove() const override {
+    CommandSupportType supportMove() const override {
         return m_Move;
     }
-    virtual CommandSupportType supportCopy() const override {
+    CommandSupportType supportCopy() const override {
         return m_Copy;
     }
-    virtual CommandSupportType supportGetLabel() const override {
+    CommandSupportType supportGetLabel() const override {
         return m_GetLabel;
     }
-    virtual CommandSupportType supportSetLabel() const override {
+    CommandSupportType supportSetLabel() const override {
         return m_SetLabel;
     }
-    virtual CommandSupportType supportUpdateUUID() const override {
+    CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
     }
-    virtual CommandSupportType supportGetUUID() const override {
+    CommandSupportType supportGetUUID() const override {
         return m_GetUUID;
     }
 
-    virtual qint64 maxLabelLength() const override;
-    virtual SupportTool supportToolName() const override;
-    virtual bool supportToolFound() const override;
+    qint64 maxLabelLength() const override;
+    SupportTool supportToolName() const override;
+    bool supportToolFound() const override;
 
 public:
     static CommandSupportType m_Create;
