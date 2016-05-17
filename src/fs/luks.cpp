@@ -46,28 +46,7 @@ luks::luks(qint64 firstsector,
     , m_isCryptOpen(false)
     , m_isMounted(false)
 {
-    m_GetUsed = FileSystem::cmdSupportNone;
-    m_GetLabel = FileSystem::cmdSupportNone;
-    m_Create = FileSystem::cmdSupportNone;
-    m_Grow = FileSystem::cmdSupportNone;
-    m_Shrink = FileSystem::cmdSupportNone;
-    m_Move = FileSystem::cmdSupportNone;
-    m_Check = FileSystem::cmdSupportNone;
-    m_Copy = FileSystem::cmdSupportNone;
-    m_Backup = FileSystem::cmdSupportNone;
-    m_SetLabel = FileSystem::cmdSupportNone;
-    m_UpdateUUID = FileSystem::cmdSupportNone;
-    m_GetUUID = FileSystem::cmdSupportNone;
-}
-
-luks::~luks()
-{
-    delete m_innerFs;
-}
-
-void luks::init()
-{
-//     m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+    //     m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_SetLabel = cmdSupportNone;
     m_GetLabel = cmdSupportFileSystem;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -79,6 +58,11 @@ void luks::init()
     m_Backup = cmdSupportCore;
     m_GetUsed = cmdSupportNone; // libparted does not support LUKS, we do this as a special case
     m_GetUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+}
+
+luks::~luks()
+{
+    delete m_innerFs;
 }
 
 bool luks::supportToolFound() const

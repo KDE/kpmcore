@@ -361,7 +361,6 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
         if (type == FileSystem::Luks) {
             r |= PartitionRole::Luks;
             FS::luks* luksFs = dynamic_cast<FS::luks*>(fs);
-            luksFs->init();
             QString mapperNode = FS::luks::mapperName(node);
             bool isCryptOpen = !mapperNode.isEmpty();
             luksFs->setCryptOpen(isCryptOpen);

@@ -44,7 +44,6 @@ public:
     virtual ~luks();
 
 public:
-    void init() override;
     qint64 readUsedCapacity(const QString& deviceNode) const override;
 
     CommandSupportType supportGetUsed() const override {
