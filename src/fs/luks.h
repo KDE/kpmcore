@@ -70,6 +70,8 @@ public:
         return cmdSupportNone;
     }
     CommandSupportType supportMove() const override {
+        if (m_isCryptOpen)
+            return cmdSupportNone;
         return m_Move;
     }
     CommandSupportType supportCheck() const override {
