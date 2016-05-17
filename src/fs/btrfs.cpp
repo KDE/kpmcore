@@ -91,7 +91,7 @@ FileSystem::SupportTool btrfs::supportToolName() const
 
 qint64 btrfs::minCapacity() const
 {
-    return 100 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 256 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 qint64 btrfs::maxCapacity() const
