@@ -71,7 +71,6 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Hpfs, new FS::hpfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Jfs, new FS::jfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Luks, new FS::luks(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Nilfs2, new FS::nilfs2(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Ntfs, new FS::ntfs(-1, -1, -1, QString()));
@@ -98,7 +97,6 @@ void FileSystemFactory::init()
     FS::hpfs::init();
     FS::jfs::init();
     FS::linuxswap::init();
-//     FS::luks::init();
     FS::lvm2_pv::init();
     FS::nilfs2::init();
     FS::ntfs::init();
