@@ -46,7 +46,7 @@ luks::luks(qint64 firstsector,
     , m_isCryptOpen(false)
     , m_isMounted(false)
 {
-    //     m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_SetLabel = cmdSupportNone;
     m_GetLabel = cmdSupportFileSystem;
     m_UpdateUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -88,10 +88,11 @@ bool luks::create(Report& report, const QString& deviceNode) const
     ExternalCommand createCmd(report, QStringLiteral("cryptsetup"),
                               { QStringLiteral("-s"),
                                 QStringLiteral("512"),
+                                QStringLiteral("--batch-mode"),
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
     if (!( createCmd.start(-1) &&
-                createCmd.write(m_passphrase.toUtf8() + '\n' + m_passphrase.toUtf8() + '\n') == 2*(m_passphrase.toUtf8().length() + 1) &&
+                createCmd.write(m_passphrase.toUtf8() + '\n') == m_passphrase.toUtf8().length() + 1 &&
                 createCmd.waitFor() && createCmd.exitCode() == 0))
     {
         return false;
