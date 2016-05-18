@@ -39,7 +39,6 @@ class Report;
 */
 class LIBKPMCORE_EXPORT ExternalCommand : public QProcess
 {
-    Q_OBJECT
     Q_DISABLE_COPY(ExternalCommand)
 
 public:
