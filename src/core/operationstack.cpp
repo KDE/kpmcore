@@ -449,6 +449,22 @@ void OperationStack::pop()
     emit operationsChanged();
 }
 
+/** Check whether previous operations involve given partition.
+
+    @param p Pointer to the Partition. Must not be nullptr.
+*/
+bool OperationStack::contains(const Partition* p) const
+{
+    Q_ASSERT(p);
+
+    foreach(Operation * o, operations()) {
+        if (o->targets(*p))
+            return true;
+    }
+
+    return false;
+}
+
 /** Removes all Operations from the OperationStack, calling Operation::undo() on them and deleting them. */
 void OperationStack::clearOperations()
 {

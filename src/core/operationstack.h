@@ -61,6 +61,7 @@ Q_SIGNALS:
 public:
     void push(Operation* o);
     void pop();
+    bool contains(const Partition* p) const;
     void clearOperations();
     int size() const {
         return operations().size();    /**< @return number of operations */
