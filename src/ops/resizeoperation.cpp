@@ -323,7 +323,7 @@ bool ResizeOperation::canGrow(const Partition* p)
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
-    if (p->state() == Partition::StateNew)
+    if (p->state() == Partition::StateNew && !p->roles().has(PartitionRole::Luks))
         return true;
 
     if (p->isMounted())
@@ -342,7 +342,7 @@ bool ResizeOperation::canShrink(const Partition* p)
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
-    if (p->state() == Partition::StateNew)
+    if (p->state() == Partition::StateNew && !p->roles().has(PartitionRole::Luks))
         return true;
 
     if (p->state() == Partition::StateCopy)
@@ -365,7 +365,8 @@ bool ResizeOperation::canMove(const Partition* p)
 
     // we can always grow, shrink or move a partition not yet written to disk
     if (p->state() == Partition::StateNew)
-        return true;
+        // too many bad things can happen for LUKS partitions
+        return p->roles().has(PartitionRole::Luks) ? false : true;
 
     if (p->isMounted())
         return false;
