@@ -478,7 +478,7 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 }
 
 /** Detects the type of a FileSystem given a PedDevice and a PedPartition
-    @param pedPartition pointer to the pedPartition. Must not be nullptr
+    @param partitionPath path to the partition
     @return the detected FileSystem type (FileSystem::Unknown if not detected)
 */
 FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath)
