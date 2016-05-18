@@ -82,13 +82,19 @@ public:
         return cmdSupportNone;
     }
     CommandSupportType supportCopy() const override {
+        if (m_isCryptOpen)
+            return cmdSupportNone;
         return m_Copy;
     }
     CommandSupportType supportBackup() const override {
         return m_Backup;
     }
     CommandSupportType supportSetLabel() const override {
-        return m_SetLabel;
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Check && m_innerFs)
+            return m_innerFs->supportSetLabel();
+        return cmdSupportNone;
     }
     CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
