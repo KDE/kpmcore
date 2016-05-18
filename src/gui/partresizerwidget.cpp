@@ -115,7 +115,8 @@ void PartResizerWidget::init(Device& d, Partition& p, qint64 minFirst, qint64 ma
     m_PartWidget = new PartWidget(this, &partition());
 
     if (!readOnly()) {
-        leftHandle().setCursor(Qt::SizeHorCursor);
+        if (moveAllowed())
+            leftHandle().setCursor(Qt::SizeHorCursor);
         rightHandle().setCursor(Qt::SizeHorCursor);
     }
 
