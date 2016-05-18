@@ -37,6 +37,19 @@
 
 namespace FS
 {
+FileSystem::CommandSupportType luks::m_GetUsed = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_GetLabel = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_Create = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_Grow = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_Shrink = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_Move = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_Check = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_Copy = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_Backup = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_SetLabel = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_UpdateUUID = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType luks::m_GetUUID = FileSystem::cmdSupportNone;
+
 luks::luks(qint64 firstsector,
            qint64 lastsector,
            qint64 sectorsused,
@@ -45,6 +58,15 @@ luks::luks(qint64 firstsector,
     , m_innerFs(nullptr)
     , m_isCryptOpen(false)
     , m_isMounted(false)
+{
+}
+
+luks::~luks()
+{
+    delete m_innerFs;
+}
+
+void luks::init()
 {
     m_Create = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
     m_SetLabel = cmdSupportNone;
@@ -58,11 +80,6 @@ luks::luks(qint64 firstsector,
     m_Backup = cmdSupportCore;
     m_GetUsed = cmdSupportNone; // libparted does not support LUKS, we do this as a special case
     m_GetUUID = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
-}
-
-luks::~luks()
-{
-    delete m_innerFs;
 }
 
 bool luks::supportToolFound() const
