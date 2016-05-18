@@ -281,6 +281,9 @@ bool CopyOperation::canCopy(const Partition* p)
     if (p == nullptr)
         return false;
 
+    if (p->state() == Partition::StateNew && p->roles().has(PartitionRole::Luks))
+        return false;
+
     if (p->isMounted())
         return false;
 
