@@ -68,15 +68,15 @@ OperationStack::~OperationStack()
     <!-- 1 -->
     <li>An existing operation created a Partition that is now being deleted: In this case, just remove
         the corresponding NewOperation from the OperationStack.<br/>This does not work for
-        extended partitions (#232092) and luks partitions.</li>
+        extended partitions.(#232092)</li>
     <!-- 2 -->
     <li>An existing Operation created a Partition that is now being moved or resized. In this case,
         remove the original NewOperation and create a new NewOperation with updated start and end
         sectors. This new NewOperation is appended to the OperationStack.<br/>This does not work for
-        extended partitions(#232092) and luks partitions.</li>
+        extended partitions.(#232092)</li>
     <!-- 3 -->
     <li>An existing NewOperation created a Partition that is now being copied. We're not copying
-        but instead creating another new Partition in its place. This does not work for luks partitions.</li>
+        but instead creating another new Partition in its place.</li>
     <!-- 4 -->
     <li>The label for a new Partition's FileSystem is modified: Modify in NewOperation and forget it.</li>
     <!-- 5 -->
@@ -105,9 +105,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
     CheckOperation* pushedCheckOp = dynamic_cast<CheckOperation*>(pushedOp);
 
     // -- 1 --
-    if (pushedDeleteOp && &newOp->newPartition() == &pushedDeleteOp->deletedPartition() &&
-                        !pushedDeleteOp->deletedPartition().roles().has(PartitionRole::Extended) &&
-                        !pushedDeleteOp->deletedPartition().roles().has(PartitionRole::Luks)) {
+    if (pushedDeleteOp && &newOp->newPartition() == &pushedDeleteOp->deletedPartition() && !pushedDeleteOp->deletedPartition().roles().has(PartitionRole::Extended)) {
         Log() << i18nc("@info/plain", "Deleting a partition just created: Undoing the operation to create the partition.");
 
         delete pushedOp;
@@ -120,9 +118,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
     }
 
     // -- 2 --
-    if (pushedResizeOp && &newOp->newPartition() == &pushedResizeOp->partition() &&
-                        !pushedResizeOp->partition().roles().has(PartitionRole::Extended) &&
-                        !pushedResizeOp->partition().roles().has(PartitionRole::Luks)) {
+    if (pushedResizeOp && &newOp->newPartition() == &pushedResizeOp->partition() && !pushedResizeOp->partition().roles().has(PartitionRole::Extended)) {
         // NOTE: In theory it would be possible to merge resizing an extended as long as it has no children.
         // But that still doesn't save us: If we're not merging a resize on an extended that has children,
         // a resizeop is added to the stack. Next, the user deletes the child. Then he resizes the
@@ -147,8 +143,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
     }
 
     // -- 3 --
-    if (pushedCopyOp && &newOp->newPartition() == &pushedCopyOp->sourcePartition() &&
-                        !pushedCopyOp->sourcePartition().roles().has(PartitionRole::Luks)) {
+    if (pushedCopyOp && &newOp->newPartition() == &pushedCopyOp->sourcePartition()) {
         Log() << i18nc("@info/plain", "Copying a new partition: Creating a new partition instead.");
 
         Partition* newPartition = new Partition(newOp->newPartition());
