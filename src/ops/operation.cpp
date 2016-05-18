@@ -117,9 +117,9 @@ void Operation::addJob(Job* job)
 {
     if (job) {
         jobs().append(job);
-        connect(job, SIGNAL(started()), SLOT(onJobStarted()));
-        connect(job, SIGNAL(progress(int)), SIGNAL(progress(int)));
-        connect(job, SIGNAL(finished()), SLOT(onJobFinished()));
+        connect(job, &Job::started, this, &Operation::onJobStarted);
+        connect(job, &Job::progress, this, &Operation::progress);
+        connect(job, &Job::finished, this, &Operation::onJobFinished);
     }
 }
 

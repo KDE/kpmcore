@@ -112,7 +112,7 @@ Q_SIGNALS:
     void firstSectorChanged(qint64);
     void lastSectorChanged(qint64);
 
-public Q_SLOTS:
+public:
     bool updateFirstSector(qint64 newFirstSector);
     bool updateLastSector(qint64 newLastSector);
     bool movePartition(qint64 newFirstSector);

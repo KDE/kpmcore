@@ -63,8 +63,8 @@ void ExternalCommand::setup()
     setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromUtf8(getenv("PATH")));
     setProcessChannelMode(MergedChannels);
 
-    connect(this, SIGNAL(finished(int, QProcess::ExitStatus)), SLOT(onFinished(int)));
-    connect(this, SIGNAL(readyReadStandardOutput()), SLOT(onReadOutput()));
+    connect(this, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &ExternalCommand::onFinished);
+    connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
 }
 
 /** Starts the external command.
@@ -126,7 +126,8 @@ void ExternalCommand::onReadOutput()
         *report() << s;
 }
 
-void ExternalCommand::onFinished(int exitCode)
+void ExternalCommand::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
+    Q_UNUSED(exitStatus)
     setExitCode(exitCode);
 }

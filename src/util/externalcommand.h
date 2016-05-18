@@ -76,8 +76,7 @@ protected:
     }
     void setup();
 
-protected Q_SLOTS:
-    void onFinished(int exitCode);
+    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadOutput();
 
 private:

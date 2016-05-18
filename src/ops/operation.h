@@ -120,11 +120,10 @@ public:
 
     LIBKPMCORE_EXPORT qint32 totalProgress() const;
 
-protected Q_SLOTS:
+protected:
     void onJobStarted();
     void onJobFinished();
 
-protected:
     void insertPreviewPartition(Device& targetDevice, Partition& newPartition);
     void removePreviewPartition(Device& device, Partition& p);
 
