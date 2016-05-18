@@ -460,6 +460,10 @@ bool OperationStack::contains(const Partition* p) const
     foreach(Operation * o, operations()) {
         if (o->targets(*p))
             return true;
+        CopyOperation* copyOp = dynamic_cast<CopyOperation*>(o);
+        const Partition* source = &copyOp->sourcePartition();
+        if (source == p)
+            return true;
     }
 
     return false;
