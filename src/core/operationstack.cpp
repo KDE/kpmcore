@@ -408,23 +408,26 @@ void OperationStack::push(Operation* o)
 {
     Q_ASSERT(o);
 
-    foreach(Operation * currentOp, operations()) {
-        if (mergeNewOperation(currentOp, o))
+    auto currentOp = operations().end();
+    while (currentOp != operations().begin())
+    {
+        --currentOp;
+        if (mergeNewOperation(*currentOp, o))
             break;
 
-        if (mergeCopyOperation(currentOp, o))
+        if (mergeCopyOperation(*currentOp, o))
             break;
 
-        if (mergeRestoreOperation(currentOp, o))
+        if (mergeRestoreOperation(*currentOp, o))
             break;
 
-        if (mergePartFlagsOperation(currentOp, o))
+        if (mergePartFlagsOperation(*currentOp, o))
             break;
 
-        if (mergePartLabelOperation(currentOp, o))
+        if (mergePartLabelOperation(*currentOp, o))
             break;
 
-        if (mergeCreatePartitionTableOperation(currentOp, o))
+        if (mergeCreatePartitionTableOperation(*currentOp, o))
             break;
     }
 
