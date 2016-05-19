@@ -142,7 +142,7 @@ bool CopyOperation::execute(Report& parent)
             // if we have overwritten a partition, reset device path and number
             if (overwrittenPartition()) {
                 copiedPartition().setDevicePath(overwrittenPartition()->devicePath());
-                copiedPartition().setPartitionPath(overwrittenPartition()->devicePath());
+                copiedPartition().setPartitionPath(overwrittenPartition()->partitionPath());
             }
 
             // now run the copy job itself
