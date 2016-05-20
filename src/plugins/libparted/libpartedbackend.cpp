@@ -367,7 +367,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
             luksFs->setLogicalSectorSize(d.logicalSectorSize());
 
             if (isCryptOpen) {
-                luksFs->loadInnerFileSystem(mapperNode);
+                luksFs->loadInnerFileSystem(node, mapperNode);
 
                 mountPoint = mountPoints.findByDevice(mapperNode) ?
                              mountPoints.findByDevice(mapperNode)->mountPoint() :

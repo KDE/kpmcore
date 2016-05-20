@@ -262,7 +262,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     if (mapperNode.isEmpty())
         return false;
 
-    loadInnerFileSystem(mapperNode);
+    loadInnerFileSystem(deviceNode, mapperNode);
     m_isCryptOpen = (m_innerFs != nullptr);
 
     if (m_isCryptOpen)
@@ -309,7 +309,7 @@ bool luks::cryptClose(const QString& deviceNode)
     return false;
 }
 
-void luks::loadInnerFileSystem(const QString& mapperNode)
+void luks::loadInnerFileSystem(const QString& deviceNode, const QString& mapperNode)
 {
     Q_ASSERT(!m_innerFs);
     FileSystem::Type innerFsType = detectFileSystem(mapperNode);
@@ -318,7 +318,7 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem) // FIXME:also implement checking space if partition is mounted
-        setSectorsUsed(m_innerFs->readUsedCapacity(mapperNode)/m_logicalSectorSize);
+        setSectorsUsed(m_innerFs->readUsedCapacity(mapperNode)/m_logicalSectorSize + getPayloadOffset(deviceNode).toInt());
 }
 
 void luks::createInnerFileSystem(FileSystem::Type type)

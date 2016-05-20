@@ -139,7 +139,7 @@ public:
     bool cryptOpen(QWidget* parent, const QString& deviceNode);
     bool cryptClose(const QString& deviceNode);
 
-    void loadInnerFileSystem(const QString& mapperNode);
+    void loadInnerFileSystem(const QString& deviceNode, const QString& mapperNode);
     void createInnerFileSystem(Type type);
 
     bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
