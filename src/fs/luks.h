@@ -151,11 +151,11 @@ public:
 
     static QString mapperName(const QString& deviceNode);
 
-    static QString getCipherName(const QString& deviceNode);
-    static QString getCipherMode(const QString& deviceNode);
-    static QString getHashName(const QString& deviceNode);
-    static QString getKeySize(const QString& deviceNode);
-    static QString getPayloadOffset(const QString& deviceNode);
+    QString getCipherName(const QString& deviceNode) const;
+    QString getCipherMode(const QString& deviceNode) const;
+    QString getHashName(const QString& deviceNode) const;
+    qint64 getKeySize(const QString& deviceNode) const;
+    qint64 getPayloadOffset(const QString& deviceNode) const;
     static bool canEncryptType(FileSystem::Type type);
 
 protected:
