@@ -318,7 +318,7 @@ void luks::loadInnerFileSystem(const QString& deviceNode, const QString& mapperN
                                                     *this);
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
-    if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem) // FIXME:also implement checking space if partition is mounted
+    if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
         setSectorsUsed(m_innerFs->readUsedCapacity(mapperNode)/m_logicalSectorSize + getPayloadOffset(deviceNode));
 }
 

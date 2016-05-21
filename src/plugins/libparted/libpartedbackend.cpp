@@ -375,6 +375,11 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
                 // We cannot use libparted to check the mounted status because
                 // we don't have a PedPartition for the mapper device, so we use lsblk
                 mounted = isMounted(mapperNode);
+                if (mounted) {
+                    const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
+                    if (freeSpaceInfo.isValid() && mountPoint != QString())
+                        luksFs->setSectorsUsed(freeSpaceInfo.used() / d.logicalSectorSize() + luksFs->getPayloadOffset(node));
+                }
             } else {
                 mounted = false;
             }
