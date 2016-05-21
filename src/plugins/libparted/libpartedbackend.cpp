@@ -46,8 +46,8 @@
 #include <QStringList>
 
 #include <KLocalizedString>
-#include <KIOCore/KMountPoint>
-#include <KIOCore/KDiskFreeSpaceInfo>
+#include <KMountPoint>
+#include <KDiskFreeSpaceInfo>
 #include <KPluginFactory>
 
 #include <parted/parted.h>
@@ -373,10 +373,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
                              mountPoints.findByDevice(mapperNode)->mountPoint() :
                              QString();
                 // We cannot use libparted to check the mounted status because
-                // we don't have a PedPartition for the mapper device, so we use
-                // check_mount_point from util-linux instead, defined in the
-                // private header ismounted.h and copied into KPMcore & wrapped
-                // in helpers.h for convenience.
+                // we don't have a PedPartition for the mapper device, so we use lsblk
                 mounted = isMounted(mapperNode);
             } else {
                 mounted = false;
@@ -392,7 +389,8 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
 
         Partition* part = new Partition(parent, d, PartitionRole(r), fs, pedPartition->geom.start, pedPartition->geom.end, node, availableFlags(pedPartition), mountPoint, mounted, activeFlags(pedPartition));
 
-        readSectorsUsed(pedDisk, d, *part, mountPoint);
+        if (!part->roles().has(PartitionRole::Luks))
+            readSectorsUsed(pedDisk, d, *part, mountPoint);
 
         if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
             fs->setLabel(fs->readLabel(part->deviceNode()));

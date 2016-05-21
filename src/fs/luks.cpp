@@ -32,6 +32,7 @@
 #include <QString>
 #include <QUuid>
 
+#include <KDiskFreeSpaceInfo>
 #include <KLocalizedString>
 #include <KPasswordDialog>
 
@@ -374,6 +375,11 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
         if (m_innerFs->mount(report, mapperNode, mountPoint))
         {
             m_isMounted = true;
+
+            const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
+            if (freeSpaceInfo.isValid() && mountPoint != QString())
+                setSectorsUsed(freeSpaceInfo.used() / m_logicalSectorSize + getPayloadOffset(deviceNode));
+
             return true;
         }
     }
