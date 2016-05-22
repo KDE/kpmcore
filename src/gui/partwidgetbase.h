@@ -35,7 +35,6 @@ class QWidget;
 */
 class LIBKPMCORE_EXPORT PartWidgetBase : public QWidget
 {
-    Q_OBJECT
     Q_DISABLE_COPY(PartWidgetBase)
 
 protected:

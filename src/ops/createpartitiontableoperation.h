@@ -38,7 +38,6 @@ class OperationStack;
 */
 class LIBKPMCORE_EXPORT CreatePartitionTableOperation : public Operation
 {
-    Q_OBJECT
     Q_DISABLE_COPY(CreatePartitionTableOperation)
 
     friend class OperationStack;

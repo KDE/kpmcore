@@ -48,7 +48,6 @@ class LIBKPMCORE_EXPORT RestoreOperation : public Operation
 {
     friend class OperationStack;
 
-    Q_OBJECT
     Q_DISABLE_COPY(RestoreOperation)
 
 public:

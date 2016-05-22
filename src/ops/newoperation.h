@@ -45,7 +45,6 @@ class LIBKPMCORE_EXPORT NewOperation : public Operation
 {
     friend class OperationStack;
 
-    Q_OBJECT
     Q_DISABLE_COPY(NewOperation)
 
 public:

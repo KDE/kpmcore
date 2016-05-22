@@ -45,7 +45,6 @@ class LIBKPMCORE_EXPORT CreateFileSystemOperation : public Operation
 {
     friend class OperationStack;
 
-    Q_OBJECT
     Q_DISABLE_COPY(CreateFileSystemOperation)
 
 public:

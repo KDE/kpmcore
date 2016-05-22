@@ -44,7 +44,6 @@ class LIBKPMCORE_EXPORT SetPartFlagsOperation : public Operation
 {
     friend class OperationStack;
 
-    Q_OBJECT
     Q_DISABLE_COPY(SetPartFlagsOperation)
 
 public:

@@ -38,8 +38,6 @@ class PartitionRole;
 */
 class LIBKPMCORE_EXPORT PartitionNode : public QObject
 {
-    Q_OBJECT
-
 public:
     typedef QList<Partition*> Partitions;
 

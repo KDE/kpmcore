@@ -40,7 +40,6 @@ class LIBKPMCORE_EXPORT DeleteOperation : public Operation
 {
     friend class OperationStack;
 
-    Q_OBJECT
     Q_DISABLE_COPY(DeleteOperation)
 
 public:

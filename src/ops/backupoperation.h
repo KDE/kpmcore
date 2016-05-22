@@ -35,7 +35,6 @@ class BackupFileSystemJob;
 */
 class LIBKPMCORE_EXPORT BackupOperation : public Operation
 {
-    Q_OBJECT
     Q_DISABLE_COPY(BackupOperation)
 
 public:

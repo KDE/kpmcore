@@ -41,7 +41,6 @@ class LIBKPMCORE_EXPORT SetFileSystemLabelOperation : public Operation
 {
     friend class OperationStack;
 
-    Q_OBJECT
     Q_DISABLE_COPY(SetFileSystemLabelOperation)
 
 public:
