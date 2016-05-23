@@ -93,6 +93,8 @@ public:
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
 
+    static QString getVGName(const QString& deviceNode);
+
 public:
     static CommandSupportType m_GetUsed;
     static CommandSupportType m_GetLabel;

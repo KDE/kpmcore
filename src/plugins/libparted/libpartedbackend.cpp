@@ -36,6 +36,7 @@
 #include "fs/hfs.h"
 #include "fs/hfsplus.h"
 #include "fs/luks.h"
+#include "fs/lvm2_pv.h"
 
 #include "util/globallog.h"
 #include "util/externalcommand.h"
@@ -252,12 +253,18 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
             if (isCryptOpen) {
                 luksFs->loadInnerFileSystem(partitionNode, mapperNode);
 
-                mountPoint = mountPoints.findByDevice(mapperNode) ?
-                             mountPoints.findByDevice(mapperNode)->mountPoint() :
-                             QString();
-                // We cannot use libparted to check the mounted status because
-                // we don't have a PedPartition for the mapper device, so we use lsblk
-                mounted = isMounted(mapperNode);
+                if (luksFs->type() == FileSystem::Lvm2_PV) {
+                    mountPoint = FS::lvm2_pv::getVGName(mapperNode);
+                    mounted    = false;
+                } else {
+
+                    mountPoint = mountPoints.findByDevice(mapperNode) ?
+                                 mountPoints.findByDevice(mapperNode)->mountPoint() :
+                                 QString();
+                    // We cannot use libparted to check the mounted status because
+                    // we don't have a PedPartition for the mapper device, so we use lsblk
+                    mounted = isMounted(mapperNode);
+                }
                 if (mounted) {
                     const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
                     if (freeSpaceInfo.isValid() && mountPoint != QString())
@@ -268,6 +275,10 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
             }
 
             luksFs->setMounted(mounted);
+        } else if (type == FileSystem::Lvm2_PV) {
+            //TODO: adding PartitionRole
+            mountPoint = FS::lvm2_pv::getVGName(node);
+            mounted    = false;
         } else {
             mountPoint = mountPoints.findByDevice(partitionNode) ?
                          mountPoints.findByDevice(partitionNode)->mountPoint() :

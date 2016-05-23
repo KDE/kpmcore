@@ -22,6 +22,7 @@
 #include "util/capacity.h"
 
 #include <QString>
+#include <QRegularExpression>
 
 namespace FS
 {
@@ -117,4 +118,18 @@ bool lvm2_pv::canMount(const QString & deviceNode, const QString & mountPoint) c
     Q_UNUSED(mountPoint)
     return false;
 }
+
+QString lvm2_pv::getVGName(const QString& deviceNode) //PV node
+{
+    ExternalCommand cmd( QStringLiteral("lvm"),
+                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("VG Name\\h+(\\w+)"));
+        QRegularExpressionMatch vgName = re.match(cmd.output());
+        if (vgName.hasMatch())
+            return vgName.captured(1);
+    }
+    return QString();
+}
+
 }
