@@ -530,7 +530,7 @@ bool luks::updateUUID(Report& report, const QString& deviceNode) const
 QString luks::mapperName(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("lsblk"),
-                        { QStringLiteral("--raw"),
+                        { QStringLiteral("--list"),
                           QStringLiteral("--noheadings"),
                           QStringLiteral("--output"),
                           QStringLiteral("name"),
