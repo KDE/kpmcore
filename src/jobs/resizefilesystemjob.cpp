@@ -115,9 +115,9 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
         CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
         if (backendPartitionTable) {
-            connect(CoreBackendManager::self()->backend(), SIGNAL(progress(int)), this, SIGNAL(progress(int)));
+            connect(CoreBackendManager::self()->backend(), &CoreBackend::progress, this, &ResizeFileSystemJob::progress);
             rval = backendPartitionTable->resizeFileSystem(report, partition(), newLength());
-            disconnect(CoreBackendManager::self()->backend(), SIGNAL(progress(int)), this, SIGNAL(progress(int)));
+            disconnect(CoreBackendManager::self()->backend(), &CoreBackend::progress, this, &ResizeFileSystemJob::progress);
 
             if (rval) {
                 report.line() << i18nc("@info/plain", "Successfully resized file system using internal backend functions.");

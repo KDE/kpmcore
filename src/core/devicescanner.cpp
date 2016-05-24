@@ -36,7 +36,7 @@ DeviceScanner::DeviceScanner(QObject* parent, OperationStack& ostack) :
 
 void DeviceScanner::setupConnections()
 {
-    connect(CoreBackendManager::self()->backend(), SIGNAL(scanProgress(QString, int)), SIGNAL(progress(QString, int)));
+    connect(CoreBackendManager::self()->backend(), &CoreBackend::scanProgress, this, &DeviceScanner::progress);
 }
 
 void DeviceScanner::clear()
