@@ -47,7 +47,9 @@ lvm2_pv::lvm2_pv(qint64 firstsector, qint64 lastsector, qint64 sectorsused, cons
 void lvm2_pv::init()
 {
     m_Create = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check  = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow   = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Shrink = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_GetLabel = cmdSupportCore;
     m_UpdateUUID = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -69,8 +71,8 @@ bool lvm2_pv::supportToolFound() const
         m_Create != cmdSupportNone &&
         m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
-//          m_Grow != cmdSupportNone &&
-//          m_Shrink != cmdSupportNone &&
+        m_Grow != cmdSupportNone &&
+        m_Shrink != cmdSupportNone &&
 //          m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
         m_Backup != cmdSupportNone &&
@@ -103,6 +105,15 @@ bool lvm2_pv::remove(Report& report, const QString& deviceNode) const
 {
 //      TODO: check if PV is a member of an exported VG
     ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvremove"), QStringLiteral("--force"), QStringLiteral("--force"), QStringLiteral("--yes"), deviceNode });
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) const
+{
+    // TODO: check if the it is legal to reize
+    const QString len = QString::number(length / 512) + QStringLiteral("s");
+
+    ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvresize"), QStringLiteral("--yes"), QStringLiteral("--setphysicalvolumesize"), len, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
