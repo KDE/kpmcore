@@ -21,6 +21,7 @@
 #include "util/externalcommand.h"
 
 #include <KLocalizedString>
+#include <QDebug>
 
 namespace FS
 {
@@ -134,9 +135,9 @@ QString linuxswap::unmountTitle() const
 
 bool linuxswap::canMount(const QString& deviceNode, const QString& mountPoint) const {
     Q_UNUSED(deviceNode);
-    Q_UNUSED(mountPoint);
     // linux swap doesn't require mount point to activate
-    return true;
+    qDebug() << mountPoint;
+    return mountPoint != QStringLiteral("/");
 }
 
 bool linuxswap::mount(Report& report, const QString& deviceNode, const QString& mountPoint)

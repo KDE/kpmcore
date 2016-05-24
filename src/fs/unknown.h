@@ -39,6 +39,7 @@ public:
     bool supportToolFound() const override {
         return true;
     }
+    bool canMount(const QString & deviceNode, const QString & mountPoint) const override;
 };
 }
 

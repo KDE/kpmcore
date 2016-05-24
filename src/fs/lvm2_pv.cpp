@@ -110,4 +110,11 @@ bool lvm2_pv::updateUUID(Report& report, const QString& deviceNode) const
     ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvchange"), QStringLiteral("--uuid"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
+
+bool lvm2_pv::canMount(const QString & deviceNode, const QString & mountPoint) const
+{
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(mountPoint)
+    return false;
+}
 }

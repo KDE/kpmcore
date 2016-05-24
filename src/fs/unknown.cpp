@@ -23,4 +23,11 @@ unknown::unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, cons
     FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Unknown)
 {
 }
+
+bool unknown::canMount(const QString & deviceNode, const QString & mountPoint) const
+{
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(mountPoint)
+    return false;
+}
 }
