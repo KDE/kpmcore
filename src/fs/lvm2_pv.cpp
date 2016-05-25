@@ -110,7 +110,7 @@ bool lvm2_pv::remove(Report& report, const QString& deviceNode) const
 
 bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    // TODO: check if the it is legal to reize
+    // TODO: check if the it is legal to resize
     const QString len = QString::number(length / 512) + QStringLiteral("s");
 
     ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvresize"), QStringLiteral("--yes"), QStringLiteral("--setphysicalvolumesize"), len, deviceNode });
@@ -141,6 +141,67 @@ QString lvm2_pv::getVGName(const QString& deviceNode) //PV node
             return vgName.captured(1);
     }
     return QString();
+}
+
+qint64 lvm2_pv::getTotalPE(const QString& deviceNode) const {
+    ExternalCommand cmd( QStringLiteral("lvm"),
+                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("Total PE\\h+(\\d+)"));
+        QRegularExpressionMatch totalPE = re.match(cmd.output());
+        if (totalPE.hasMatch())
+            return totalPE.captured(1).toLongLong();
+    }
+    return -1;
+
+}
+
+qint64 lvm2_pv::getFreePE(const QString& deviceNode) const {
+    ExternalCommand cmd( QStringLiteral("lvm"),
+                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("Free PE\\h+(\\d+)"));
+        QRegularExpressionMatch freePE = re.match(cmd.output());
+        if (freePE.hasMatch())
+            return freePE.captured(1).toLongLong();
+    }
+    return -1;
+}
+
+qint64 lvm2_pv::getAllocatedPE(const QString& deviceNode) const {
+    ExternalCommand cmd( QStringLiteral("lvm"),
+                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("Allocated PE\\h+(\\d+)"));
+        QRegularExpressionMatch allocatedPE = re.match(cmd.output());
+        if (allocatedPE.hasMatch())
+            return allocatedPE.captured(1).toLongLong();
+    }
+    return -1;
+}
+
+qint64 lvm2_pv::getPVSize(const QString& deviceNode) const {
+    ExternalCommand cmd( QStringLiteral("lvm"),
+                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"),  QStringLiteral("--units"), QStringLiteral("B"), deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("PV Size\\h+(\\d+)"));
+        QRegularExpressionMatch PVSize = re.match(cmd.output());
+        if (PVSize.hasMatch())
+            return PVSize.captured(1).toLongLong();
+    }
+    return -1;
+}
+
+qint64 lvm2_pv::getPESize(const QString& deviceNode) const {
+    ExternalCommand cmd( QStringLiteral("lvm"),
+                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), QStringLiteral("--units"), QStringLiteral("B"), deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("PE Size\\h+(\\d+)"));
+        QRegularExpressionMatch PESize = re.match(cmd.output());
+        if (PESize.hasMatch())
+            return PESize.captured(1).toLongLong();
+    }
+    return -1;
 }
 
 }
