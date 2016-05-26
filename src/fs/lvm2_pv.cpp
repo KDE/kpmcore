@@ -46,20 +46,22 @@ lvm2_pv::lvm2_pv(qint64 firstsector, qint64 lastsector, qint64 sectorsused, cons
 
 void lvm2_pv::init()
 {
-    m_Create = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check  = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Grow   = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Shrink = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
+    CommandSupportType lvmFound = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
 
-    m_GetLabel = cmdSupportCore;
-    m_UpdateUUID = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Create     = lvmFound;
+    m_Check      = lvmFound;
+    m_Grow       = lvmFound;
+    m_Shrink     = lvmFound;
+    m_UpdateUUID = lvmFound;
 
-    m_Copy = cmdSupportNone; // Copying PV can confuse LVM
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
 
+    m_GetLabel = cmdSupportCore;
+    m_Backup   = cmdSupportCore;
+    m_GetUUID  = cmdSupportCore;
+
     m_GetLabel = cmdSupportNone;
-    m_Backup = cmdSupportCore;
-    m_GetUUID = cmdSupportCore;
+    m_Copy     = cmdSupportNone; // Copying PV can confuse LVM
 }
 
 bool lvm2_pv::supportToolFound() const
