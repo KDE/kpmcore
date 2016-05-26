@@ -26,6 +26,7 @@
 #include "core/partition.h"
 #include "core/device.h"
 
+#include "util/helpers.h"
 #include "util/report.h"
 
 #include <QDebug>
@@ -55,6 +56,12 @@ bool DeleteFileSystemJob::run(Report& parent)
     bool rval = false;
 
     Report* report = jobStarted(parent);
+
+    if (isMounted(partition().partitionPath())) {
+        report->line() << xi18nc("@info/plain", "Could not delete file system: file system on <filename>%1</filename> is mounted.", partition().deviceNode());
+        jobFinished(*report, rval);
+        return false;
+    }
 
     if (partition().roles().has(PartitionRole::Extended))
         rval = true;
