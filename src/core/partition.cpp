@@ -62,11 +62,11 @@ Partition::Partition(PartitionNode* parent, const Device& device, const Partitio
     m_AvailableFlags(availableFlags),
     m_ActiveFlags(activeFlags),
     m_IsMounted(mounted),
-    m_SectorSize(device.logicalSectorSize()),
     m_State(state)
 {
     setPartitionPath(partitionPath);
     Q_ASSERT(m_Parent);
+    m_SectorSize = device.logicalSize();
 }
 
 /** Destroys a Partition, destroying its children and its FileSystem */

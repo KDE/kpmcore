@@ -164,7 +164,7 @@ QString RestoreOperation::description() const
     if (overwrittenPartition())
         return xi18nc("@info:status", "Restore partition from <filename>%1</filename> to <filename>%2</filename>", fileName(), overwrittenPartition()->deviceNode());
 
-    return xi18nc("@info:status", "Restore partition on <filename>%1</filename> at %2 from <filename>%3</filename>", targetDevice().deviceNode(), Capacity::formatByteSize(restorePartition().firstSector() * targetDevice().logicalSectorSize()), fileName());
+    return xi18nc("@info:status", "Restore partition on <filename>%1</filename> at %2 from <filename>%3</filename>", targetDevice().deviceNode(), Capacity::formatByteSize(restorePartition().firstSector() * targetDevice().logicalSize()), fileName());
 }
 
 void RestoreOperation::setOverwrittenPartition(Partition* p)
@@ -222,7 +222,7 @@ Partition* RestoreOperation::createRestorePartition(const Device& device, Partit
     if (!fileInfo.exists())
         return nullptr;
 
-    const qint64 end = start + fileInfo.size() / device.logicalSectorSize() - 1;
+    const qint64 end = start + fileInfo.size() / device.logicalSize() - 1;
     Partition* p = new Partition(&parent, device, PartitionRole(r), FileSystemFactory::create(FileSystem::Unknown, start, end), start, end, QString());
 
     p->setState(Partition::StateRestore);

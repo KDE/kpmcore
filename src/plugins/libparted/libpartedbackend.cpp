@@ -24,7 +24,7 @@
 #include "plugins/libparted/libparteddevice.h"
 #include "plugins/libparted/pedflags.h"
 
-#include "core/device.h"
+#include "core/diskdevice.h"
 #include "core/partition.h"
 #include "core/partitiontable.h"
 #include "core/partitionalignment.h"
@@ -99,7 +99,7 @@ static qint64 readSectorsUsedLibParted(const Partition& p)
     @param p the Partition the FileSystem is on
     @param mountPoint mount point of the partition in question
 */
-static void readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint)
+static void readSectorsUsed(const DiskDevice& d, Partition& p, const QString& mountPoint)
 {
     const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
@@ -176,7 +176,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 
     Log(Log::information) << xi18nc("@info:status", "Device found: %1", model);
 
-    Device* d = new Device(model, path, heads, sectors, cylinders, sectorSize);
+    DiskDevice* d = new DiskDevice(model, path, heads, sectors, cylinders, sectorSize);
 
     if (pedDiskError)
         return d;
@@ -277,7 +277,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
             luksFs->setMounted(mounted);
         } else if (type == FileSystem::Lvm2_PV) {
             //TODO: adding PartitionRole
-            mountPoint = FS::lvm2_pv::getVGName(node);
+            mountPoint = FS::lvm2_pv::getVGName(partitionNode);
             mounted    = false;
         } else {
             mountPoint = mountPoints.findByDevice(partitionNode) ?

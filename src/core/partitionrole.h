@@ -43,6 +43,7 @@ public:
         Logical = 4,        /**< Logical inside an extended */
         Unallocated = 8,    /**< No real Partition, just unallocated space */
         Luks = 16,          /**< Encrypted partition with LUKS key management */
+        Lvm_Lv = 32,        /**< Logical Volume of LVM */
 
         Any = 255           /**< In case we're looking for a Partition with a PartitionRole, any will do */
     };

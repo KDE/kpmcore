@@ -23,8 +23,8 @@
 #include "core/partitiontable.h"
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/diskdevice.h"
 #include "core/partitionalignment.h"
-
 #include "fs/filesystem.h"
 #include "fs/filesystemfactory.h"
 
@@ -240,28 +240,37 @@ QStringList PartitionTable::flagNames(Flags flags)
     return rval;
 }
 
-bool PartitionTable::getUnallocatedRange(const Device& device, PartitionNode& parent, qint64& start, qint64& end)
+bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent, qint64& start, qint64& end)
 {
-    if (!parent.isRoot()) {
-        Partition* extended = dynamic_cast<Partition*>(&parent);
+    //TODO: alignment for LVM device
+    if (d.type() == Device::Disk_Device) {
+        const DiskDevice& device = dynamic_cast<const DiskDevice&>(d);
+        if (!parent.isRoot()) {
+            Partition* extended = dynamic_cast<Partition*>(&parent);
 
-        if (extended == nullptr) {
-            qWarning() << "extended is null. start: " << start << ", end: " << end << ", device: " << device.deviceNode();
-            return false;
+            if (extended == nullptr) {
+                qWarning() << "extended is null. start: " << start << ", end: " << end << ", device: " << device.deviceNode();
+                return false;
+            }
+
+            // Leave a track (cylinder aligned) or sector alignment sectors (sector based) free at the
+            // start for a new partition's metadata
+            start += device.partitionTable()->type() == PartitionTable::msdos ? device.sectorsPerTrack() : PartitionAlignment::sectorAlignment(device);
+
+            // .. and also at the end for the metadata for a partition to follow us, if we're not
+            // at the end of the extended partition
+            if (end < extended->lastSector())
+                end -= device.partitionTable()->type() == PartitionTable::msdos ? device.sectorsPerTrack() : PartitionAlignment::sectorAlignment(device);
         }
 
-        // Leave a track (cylinder aligned) or sector alignment sectors (sector based) free at the
-        // start for a new partition's metadata
-        start += device.partitionTable()->type() == PartitionTable::msdos ? device.sectorsPerTrack() : PartitionAlignment::sectorAlignment(device);
-
-        // .. and also at the end for the metadata for a partition to follow us, if we're not
-        // at the end of the extended partition
-        if (end < extended->lastSector())
-            end -= device.partitionTable()->type() == PartitionTable::msdos ? device.sectorsPerTrack() : PartitionAlignment::sectorAlignment(device);
+        return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
+    } else if (d.type() == Device::LVM_Device) {
+        return false;
     }
-
-    return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
+    return false;
 }
+
+
 
 /** Creates a new unallocated Partition on the given Device.
     @param device the Device to create the new Partition on
@@ -369,15 +378,16 @@ void PartitionTable::updateUnallocated(const Device& d)
 qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
 {
     Q_UNUSED(t)
-    return PartitionAlignment::sectorAlignment(d);
+    const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
+    return PartitionAlignment::sectorAlignment(diskDevice);
 }
 
 qint64 PartitionTable::defaultLastUsable(const Device& d, TableType t)
 {
     if (t == gpt)
-        return d.totalSectors() - 1 - 32 - 1;
+        return d.totalLogical() - 1 - 32 - 1;
 
-    return d.totalSectors() - 1;
+    return d.totalLogical() - 1;
 }
 
 static struct {
@@ -452,26 +462,31 @@ bool PartitionTable::tableTypeIsReadOnly(TableType l)
 */
 bool PartitionTable::isSectorBased(const Device& d) const
 {
-    if (type() == PartitionTable::msdos) {
-        // the default for empty partition tables is sector based
-        if (numPrimaries() == 0)
-            return true;
+    if (d.type() == Device::Disk_Device) {
+        const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
 
-        quint32 numCylinderAligned = 0;
-        quint32 numSectorAligned = 0;
+        if (type() == PartitionTable::msdos) {
+            // the default for empty partition tables is sector based
+            if (numPrimaries() == 0)
+                return true;
 
-        // see if we have more cylinder aligned partitions than sector
-        // aligned ones.
-        foreach(const Partition * p, children())
-            if (p->firstSector() % PartitionAlignment::sectorAlignment(d) == 0)
+            quint32 numCylinderAligned = 0;
+            quint32 numSectorAligned = 0;
+
+            // see if we have more cylinder aligned partitions than sector
+            // aligned ones.
+            foreach(const Partition * p, children())
+            if (p->firstSector() % PartitionAlignment::sectorAlignment(diskDevice) == 0)
                 numSectorAligned++;
-            else if (p->firstSector() % d.cylinderSize() == 0)
+            else if (p->firstSector() % diskDevice.cylinderSize() == 0)
                 numCylinderAligned++;
 
-        return numSectorAligned >= numCylinderAligned;
+            return numSectorAligned >= numCylinderAligned;
+        }
+        return type() == PartitionTable::msdos_sectorbased;
     }
 
-    return type() == PartitionTable::msdos_sectorbased;
+    return false;
 }
 
 void PartitionTable::setType(const Device& d, TableType t)

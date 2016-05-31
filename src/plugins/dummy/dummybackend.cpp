@@ -22,7 +22,7 @@
 #include "plugins/dummy/dummybackend.h"
 #include "plugins/dummy/dummydevice.h"
 
-#include "core/device.h"
+#include "core/diskdevice.h"
 #include "core/partition.h"
 #include "core/partitiontable.h"
 
@@ -59,7 +59,7 @@ QList<Device*> DummyBackend::scanDevices(bool excludeLoop)
 
 Device* DummyBackend::scanDevice(const QString& device_node)
 {
-    Device* d = new Device(QStringLiteral("Dummy Device"), QStringLiteral("/tmp") + device_node, 255, 30, 63, 512);
+    DiskDevice* d = new DiskDevice(QStringLiteral("Dummy Device"), QStringLiteral("/tmp") + device_node, 255, 30, 63, 512);
     CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(PartitionTable::msdos_sectorbased, 2048, d->totalSectors() - 2048));
     CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), 128);
     d->partitionTable()->updateUnallocated(*d);

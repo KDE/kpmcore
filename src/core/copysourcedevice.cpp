@@ -60,7 +60,7 @@ bool CopySourceDevice::open()
 */
 qint32 CopySourceDevice::sectorSize() const
 {
-    return device().logicalSectorSize();
+    return device().logicalSize();
 }
 
 /** Returns the length of this CopySource

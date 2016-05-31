@@ -49,29 +49,33 @@ bool CreatePartitionJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+    if (device().type() == Device::Disk_Device) {
+        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-    if (backendDevice) {
-        CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+        if (backendDevice) {
+            CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
-        if (backendPartitionTable) {
-            QString partitionPath = backendPartitionTable->createPartition(*report, partition());
+            if (backendPartitionTable) {
+                QString partitionPath = backendPartitionTable->createPartition(*report, partition());
 
-            if (partitionPath != QString()) {
-                rval = true;
-                partition().setPartitionPath(partitionPath);
-                partition().setState(Partition::StateNone);
-                backendPartitionTable->commit();
+                if (partitionPath != QString()) {
+                    rval = true;
+                    partition().setPartitionPath(partitionPath);
+                    partition().setState(Partition::StateNone);
+                    backendPartitionTable->commit();
+                } else
+                    report->line() << xi18nc("@info/plain", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
+
+                delete backendPartitionTable;
             } else
-                report->line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
+                report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-            delete backendPartitionTable;
+            delete backendDevice;
         } else
-            report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+            report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+    } else if (device().type() == Device::LVM_Device) {
 
-        delete backendDevice;
-    } else
-        report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+    }
 
     jobFinished(*report, rval);
 

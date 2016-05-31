@@ -38,7 +38,6 @@ class LibPartedPartitionTable;
 class LibPartedPartition;
 class OperationStack;
 
-class Device;
 class KPluginFactory;
 class QString;
 

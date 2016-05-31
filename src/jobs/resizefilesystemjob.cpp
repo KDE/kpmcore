@@ -86,7 +86,7 @@ bool ResizeFileSystemJob::run(Report& parent)
         }
 
         case FileSystem::cmdSupportFileSystem: {
-            const qint64 newLengthInByte = Capacity(newLength() * device().logicalSectorSize()).toInt(Capacity::Byte);
+            const qint64 newLengthInByte = Capacity(newLength() * device().logicalSize()).toInt(Capacity::Byte);
             if (partition().isMounted())
                 rval = partition().fileSystem().resizeOnline(*report, partition().deviceNode(), partition().mountPoint(), newLengthInByte);
             else

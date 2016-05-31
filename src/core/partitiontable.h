@@ -64,7 +64,8 @@ public:
         mac,
         pc98,
         amiga,
-        sun
+        sun,
+        vmd  /* Volume Manager Device */
     };
 
     /** Partition flags */

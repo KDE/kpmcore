@@ -199,10 +199,10 @@ QString ResizeOperation::description() const
     // Each of these needs a different description. And for reasons of i18n, we cannot
     // just concatenate strings together...
 
-    const QString moveDelta = Capacity::formatByteSize(qAbs(newFirstSector() - origFirstSector()) * targetDevice().logicalSectorSize());
+    const QString moveDelta = Capacity::formatByteSize(qAbs(newFirstSector() - origFirstSector()) * targetDevice().logicalSize());
 
-    const QString origCapacity = Capacity::formatByteSize(origLength() * targetDevice().logicalSectorSize());
-    const QString newCapacity = Capacity::formatByteSize(newLength() * targetDevice().logicalSectorSize());
+    const QString origCapacity = Capacity::formatByteSize(origLength() * targetDevice().logicalSize());
+    const QString newCapacity = Capacity::formatByteSize(newLength() * targetDevice().logicalSize());
 
     switch (resizeAction()) {
     case MoveLeft:

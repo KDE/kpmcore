@@ -30,7 +30,7 @@ class CreatePartitionTableOperation;
 class CoreBackend;
 class SmartStatus;
 
-/** A device.
+/** A abstract device interface.
 
     Represents a device like /dev/sda.
 
@@ -47,81 +47,81 @@ class LIBKPMCORE_EXPORT Device : public QObject
     friend class CoreBackend;
 
 public:
-    Device(const QString& name, const QString& devicenode, qint32 heads, qint32 numSectors, qint32 cylinders, qint64 sectorSize, const QString& iconname = QString());
-    ~Device();
+    enum Type {
+        Disk_Device = 0,
+        LVM_Device  = 1, /* VG */
+        RAID_Device = 2, /* software RAID device */
+        Unknown_Device = 4
+    };
+
+protected:
+    Device(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Disk_Device);
 
 public:
-    bool operator==(const Device& other) const;
-    bool operator!=(const Device& other) const;
+    virtual ~Device();
 
-    const QString& name() const {
+public:
+    virtual bool operator==(const Device& other) const;
+    virtual bool operator!=(const Device& other) const;
+
+    virtual const QString& name() const {
         return m_Name;    /**< @return the Device's name, usually some manufacturer string */
     }
-    const QString& deviceNode() const {
+    virtual const QString& deviceNode() const {
         return m_DeviceNode;    /**< @return the Device's node, for example "/dev/sda" */
     }
-    PartitionTable* partitionTable() {
+
+    virtual PartitionTable* partitionTable() {
         return m_PartitionTable;    /**< @return the Device's PartitionTable */
     }
-    const PartitionTable* partitionTable() const {
+    virtual const PartitionTable* partitionTable() const {
         return m_PartitionTable;    /**< @return the Device's PartitionTable */
-    }
-    qint32 heads() const {
-        return m_Heads;    /**< @return the number of heads on the Device in CHS notation */
-    }
-    qint32 cylinders() const {
-        return m_Cylinders;    /**< @return the number of cylinders on the Device in CHS notation */
-    }
-    qint32 sectorsPerTrack() const {
-        return m_SectorsPerTrack;    /**< @return the number of sectors on the Device in CHS notation */
-    }
-    qint32 physicalSectorSize() const {
-        return m_PhysicalSectorSize;    /**< @return the physical sector size the Device uses or -1 if unknown */
-    }
-    qint32 logicalSectorSize() const {
-        return m_LogicalSectorSize;    /**< @return the logical sector size the Device uses */
-    }
-    qint64 totalSectors() const {
-        return static_cast<qint64>(heads()) * cylinders() * sectorsPerTrack();    /**< @return the total number of sectors on the device */
-    }
-    qint64 capacity() const {
-        return totalSectors() * logicalSectorSize();    /**< @return the Device's capacity in bytes */
-    }
-    qint64 cylinderSize() const {
-        return static_cast<qint64>(heads()) * sectorsPerTrack();    /**< @return the size of a cylinder on this Device in sectors */
     }
 
-    void setIconName(const QString& name) {
+    virtual qint64 capacity() const { /**< @return the Device's capacity in bytes */
+        return logicalSize() * totalLogical();
+    }
+
+    virtual void setIconName(const QString& name) {
         m_IconName = name;
     }
-    const QString& iconName() const {
+    virtual const QString& iconName() const {
         return m_IconName;    /**< @return suggested icon name for this Device */
     }
 
-    SmartStatus& smartStatus() {
+    virtual SmartStatus& smartStatus() {
         return *m_SmartStatus;
     }
-    const SmartStatus& smartStatus() const {
+    virtual const SmartStatus& smartStatus() const {
         return *m_SmartStatus;
     }
 
-    QString prettyName() const;
-
-    void setPartitionTable(PartitionTable* ptable) {
+    virtual void setPartitionTable(PartitionTable* ptable) {
         m_PartitionTable = ptable;
     }
 
-private:
+    virtual qint32 logicalSize() const {
+        return m_LogicalSize;
+    }
+    virtual qint64 totalLogical() const {
+        return m_TotalLogical;
+    }
+
+    virtual Device::Type type() const {
+        return m_Type;
+    }
+
+    virtual QString prettyName() const;
+
+protected:
     QString m_Name;
     QString m_DeviceNode;
+    qint32  m_LogicalSize;
+    qint32  m_TotalLogical;
     PartitionTable* m_PartitionTable;
-    qint32 m_Heads;
-    qint32 m_SectorsPerTrack;
-    qint32 m_Cylinders;
-    qint32 m_LogicalSectorSize;
-    qint32 m_PhysicalSectorSize;
     QString m_IconName;
     SmartStatus* m_SmartStatus;
+    Device::Type m_Type;
 };
 
 #endif

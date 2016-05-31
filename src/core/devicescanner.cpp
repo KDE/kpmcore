@@ -57,6 +57,7 @@ void DeviceScanner::scan()
     clear();
 
     QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
+    //TODO: Scan for LVM here and add to the list.
 
     foreach(Device * d, deviceList)
         operationStack().addDevice(d);
