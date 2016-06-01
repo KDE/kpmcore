@@ -59,7 +59,7 @@ void DeviceScanner::scan()
     QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
 
     foreach(Device * d, deviceList)
-    operationStack().addDevice(d);
+        operationStack().addDevice(d);
 
     operationStack().sortDevices();
 }

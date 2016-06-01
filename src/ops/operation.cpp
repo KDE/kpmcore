@@ -147,7 +147,7 @@ qint32 Operation::totalProgress() const
     qint32 result = 0;
 
     foreach(const Job * job, jobs())
-    result += job->numSteps();
+        result += job->numSteps();
 
     return result;
 }
@@ -163,8 +163,8 @@ bool Operation::execute(Report& parent)
     Report* report = parent.newChild(description());
 
     foreach(Job * job, jobs())
-    if (!(rval = job->run(*report)))
-        break;
+        if (!(rval = job->run(*report)))
+            break;
 
     setStatus(rval ? StatusFinishedSuccess : StatusError);
 

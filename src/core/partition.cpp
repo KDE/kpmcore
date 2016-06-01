@@ -180,8 +180,8 @@ qint64 Partition::sectorsUsed() const
 
     qint64 result = 0;
     foreach(const Partition * p, children())
-    if (!p->roles().has(PartitionRole::Unallocated))
-        result += p->length();
+        if (!p->roles().has(PartitionRole::Unallocated))
+            result += p->length();
 
     return result;
 }
@@ -231,8 +231,8 @@ qint64 Partition::maxFirstSector() const
     qint64 rval = -1;
 
     foreach(const Partition * child, children())
-    if (!child->roles().has(PartitionRole::Unallocated) && (child->firstSector() < rval || rval == -1))
-        rval = child->firstSector();
+        if (!child->roles().has(PartitionRole::Unallocated) && (child->firstSector() < rval || rval == -1))
+            rval = child->firstSector();
 
     return rval;
 }
@@ -243,8 +243,8 @@ qint64 Partition::minLastSector() const
     qint64 rval = -1;
 
     foreach(const Partition * child, children())
-    if (!child->roles().has(PartitionRole::Unallocated) && child->lastSector() > rval)
-        rval = child->lastSector();
+        if (!child->roles().has(PartitionRole::Unallocated) && child->lastSector() > rval)
+            rval = child->lastSector();
 
     return rval;
 }
@@ -253,8 +253,8 @@ qint64 Partition::minLastSector() const
 bool Partition::hasChildren() const
 {
     foreach(const Partition * child, children())
-    if (!child->roles().has(PartitionRole::Unallocated))
-        return true;
+        if (!child->roles().has(PartitionRole::Unallocated))
+            return true;
 
     return false;
 }

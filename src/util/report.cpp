@@ -81,7 +81,7 @@ QString Report::toHtml() const
         s += QStringLiteral("<br/>\n");
     else
         foreach(Report * child, children())
-        s += child->toHtml();
+            s += child->toHtml();
 
     if (!status().isEmpty())
         s += QStringLiteral("<b>") + status().toHtmlEscaped() + QStringLiteral("</b><br/>\n\n");
@@ -110,7 +110,7 @@ QString Report::toText() const
         s += output() + QStringLiteral("\n");
 
     foreach(Report * child, children())
-    s += child->toText();
+        s += child->toText();
 
     return s;
 }

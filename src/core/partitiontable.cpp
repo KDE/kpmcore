@@ -130,8 +130,8 @@ int PartitionTable::numPrimaries() const
     int result = 0;
 
     foreach(const Partition * p, children())
-    if (p->roles().has(PartitionRole::Primary) || p->roles().has(PartitionRole::Extended))
-        result++;
+        if (p->roles().has(PartitionRole::Primary) || p->roles().has(PartitionRole::Extended))
+            result++;
 
     return result;
 }
@@ -463,10 +463,10 @@ bool PartitionTable::isSectorBased(const Device& d) const
         // see if we have more cylinder aligned partitions than sector
         // aligned ones.
         foreach(const Partition * p, children())
-        if (p->firstSector() % PartitionAlignment::sectorAlignment(d) == 0)
-            numSectorAligned++;
-        else if (p->firstSector() % d.cylinderSize() == 0)
-            numCylinderAligned++;
+            if (p->firstSector() % PartitionAlignment::sectorAlignment(d) == 0)
+                numSectorAligned++;
+            else if (p->firstSector() % d.cylinderSize() == 0)
+                numCylinderAligned++;
 
         return numSectorAligned >= numCylinderAligned;
     }
@@ -498,19 +498,19 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
     QList<const Partition*> partitions;
 
     foreach(const Partition * p, ptable.children())
-    if (!p->roles().has(PartitionRole::Unallocated)) {
-        partitions.append(p);
+        if (!p->roles().has(PartitionRole::Unallocated)) {
+            partitions.append(p);
 
-        if (p->roles().has(PartitionRole::Extended))
-            foreach(const Partition * child, p->children())
-            if (!child->roles().has(PartitionRole::Unallocated))
-                partitions.append(child);
-    }
+            if (p->roles().has(PartitionRole::Extended))
+                foreach(const Partition * child, p->children())
+                if (!child->roles().has(PartitionRole::Unallocated))
+                    partitions.append(child);
+        }
 
     qSort(partitions.begin(), partitions.end(), isPartitionLessThan);
 
     foreach(const Partition * p, partitions)
-    stream << *p;
+        stream << *p;
 
     return stream;
 }
