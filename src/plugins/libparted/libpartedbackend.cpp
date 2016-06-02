@@ -143,6 +143,8 @@ static quint64 firstUsableSector(const Device& d)
             rval += 32;
     }
 
+    ped_disk_destroy(pedDisk);
+
     return rval;
 }
 
@@ -170,6 +172,8 @@ static quint64 lastUsableSector(const Device& d)
         else
             rval -= 32;
     }
+
+    ped_disk_destroy(pedDisk);
 
     return rval;
 }
@@ -321,8 +325,8 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
 
         PartitionRole::Roles r = PartitionRole::None;
 
-        char* pedPath = ped_partition_get_path(pedPartition);
         FileSystem::Type type = FileSystem::Unknown;
+        char* pedPath = ped_partition_get_path(pedPartition);
         if (pedPath)
             type = detectFileSystem(QString::fromUtf8(pedPath));
         free(pedPath);
@@ -352,7 +356,9 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
         if (parent == nullptr)
             parent = d.partitionTable();
 
-        const QString node = QString::fromUtf8(ped_partition_get_path(pedPartition));
+        pedPath = ped_partition_get_path(pedPartition);
+        const QString node = QString::fromUtf8(pedPath);
+        free(pedPath);
         FileSystem* fs = FileSystemFactory::create(type, pedPartition->geom.start, pedPartition->geom.end);
 
         // libparted does not handle LUKS partitions
@@ -445,6 +451,7 @@ Device* LibPartedBackend::scanDevice(const QString& device_node)
         scanDevicePartitions(*d, pedDisk);
     }
 
+    ped_device_destroy(pedDevice);
     return d;
 }
 
@@ -495,9 +502,9 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath
         if ((dev = blkid_get_dev(cache,
                                  partitionPath.toLocal8Bit().constData(),
                                  BLKID_DEV_NORMAL)) != nullptr) {
-            QString s = QString::fromUtf8(blkid_get_tag_value(cache,
-                                                              "TYPE",
-                                                              partitionPath.toLocal8Bit().constData()));
+            char *string = blkid_get_tag_value(cache, "TYPE", partitionPath.toLocal8Bit().constData());
+            QString s = QString::fromUtf8(string);
+            free(string);
 
             if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
             else if (s == QStringLiteral("ext3")) rval = FileSystem::Ext3;
@@ -513,9 +520,9 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath
             else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
             else if (s == QStringLiteral("vfat")) {
                 // libblkid uses SEC_TYPE to distinguish between FAT16 and FAT32
-                QString st = QString::fromUtf8(blkid_get_tag_value(cache,
-                                                                   "SEC_TYPE",
-                                                                   partitionPath.toLocal8Bit().constData()));
+                string = blkid_get_tag_value(cache, "SEC_TYPE", partitionPath.toLocal8Bit().constData());
+                QString st = QString::fromUtf8(string);
+                free(string);
                 if (st == QStringLiteral("msdos"))
                     rval = FileSystem::Fat16;
                 else
@@ -581,6 +588,5 @@ QString LibPartedBackend::lastPartedExceptionMessage()
 {
     return s_lastPartedExceptionMessage;
 }
-
 
 #include "libpartedbackend.moc"
