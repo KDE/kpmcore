@@ -15,8 +15,10 @@ set(CORE_SRC
     core/devicescanner.cpp
     core/partitionnode.cpp
     core/partitionalignment.cpp
-    core/diskdevice.cpp
     core/device.cpp
+    core/diskdevice.cpp
+    core/volumemanagerdevice.cpp
+    core/lvmdevice.cpp
     core/operationstack.cpp
     core/partitionrole.cpp
 )
@@ -26,8 +28,10 @@ set(CORE_LIB_HDRS
     core/copysourcedevice.h
     core/copytarget.h
     core/copytargetdevice.h
-    core/diskdevice.h
     core/device.h
+    core/diskdevice.h
+    core/volumemanagerdevice.h
+    core/lvmdevice.h
     core/devicescanner.h
     core/mountentry.h
     core/operationrunner.h

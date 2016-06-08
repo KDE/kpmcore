@@ -23,6 +23,12 @@
 
 #include "core/operationstack.h"
 #include "core/device.h"
+#include "core/lvmdevice.h"
+#include "core/diskdevice.h"
+
+#include "util/externalcommand.h"
+#include <QRegularExpression>
+#include <QDebug>
 
 /** Constructs a DeviceScanner
     @param ostack the OperationStack where the devices will be created
@@ -57,10 +63,33 @@ void DeviceScanner::scan()
     clear();
 
     QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
-    //TODO: Scan for LVM here and add to the list.
+    QList<LvmDevice*> lvmList = scanLvmDevices();
 
     foreach(Device * d, deviceList)
         operationStack().addDevice(d);
 
+    foreach(Device * d, lvmList)
+    operationStack().addDevice(d);
+
     operationStack().sortDevices();
+}
+
+/* Return list of VG (LvmDevice) on the system */
+QList<LvmDevice*> DeviceScanner::scanLvmDevices() const
+{
+    QList<LvmDevice*> lvmList;
+
+    ExternalCommand scanLvm(QStringLiteral("lvm"),
+            { QStringLiteral("vgdisplay")});
+
+    if (scanLvm.run(-1) && scanLvm.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("VG Name\\h+(\\w+)"));
+        QRegularExpressionMatchIterator i = re.globalMatch(scanLvm.output());
+        while(i.hasNext()) {
+            QRegularExpressionMatch vgName = i.next();
+            LvmDevice* temp = new LvmDevice(vgName.captured(1));
+            lvmList.append(temp);
+        }
+    }
+    return lvmList;
 }

@@ -1,6 +1,4 @@
 /*************************************************************************
- *  Copyright (C) 2010 by Volker Lanz <vl@fidra.de>                      *
- *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
  *  published by the Free Software Foundation; either version 3 of       *
@@ -15,50 +13,43 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef DEVICESCANNER_H
-#define DEVICESCANNER_H
+#if !defined(VOLUMEMANAGERDEVICE__H)
+
+#define VOLUMEMANAGERDEVICE__H
 
 #include "util/libpartitionmanagerexport.h"
+#include "core/device.h"
 
-#include <QThread>
+#include <QString>
+#include <QObject>
+#include <QtGlobal>
 
-class OperationStack;
-class LvmDevice;
+class PartitionTable;
+class CreatePartitionTableOperation;
+class CoreBackend;
+class SmartStatus;
+class Partition;
 
-/** Thread to scan for all available Devices on this computer.
+/** A device.
 
-    This class is used to find all Devices on the computer and to create new Device instances for each of them. It's subclassing QThread to run asynchronously.
+    Represents a device like /dev/sda.
 
+    Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
+
+    @see PartitionTable, Partition
     @author Volker Lanz <vl@fidra.de>
 */
-class LIBKPMCORE_EXPORT DeviceScanner : public QThread
+class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 {
-    Q_OBJECT
-
-public:
-    DeviceScanner(QObject* parent, OperationStack& ostack);
-
-public:
-    void clear(); /**< clear Devices and the OperationStack */
-    void scan(); /**< do the actual scanning; blocks if called directly */
-    void setupConnections();
-
-Q_SIGNALS:
-    void progress(const QString& device_node, int progress);
+    Q_DISABLE_COPY(VolumeManagerDevice)
 
 protected:
-    void run() override;
-    OperationStack& operationStack() {
-        return m_OperationStack;
-    }
-    const OperationStack& operationStack() const {
-        return m_OperationStack;
-    }
+    VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
 
-    QList<LvmDevice*> scanLvmDevices() const;
-
-private:
-    OperationStack& m_OperationStack;
+public:
+    //virtual void refresh() const = 0; /* VG infos can be changed, unlike disk_device  */
+    //virtual Qlist<Partition*> listDevices() const = 0;
 };
 
 #endif
+
