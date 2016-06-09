@@ -37,7 +37,7 @@ qint64 fat32::minCapacity() const
 
 qint64 fat32::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 bool fat32::create(Report& report, const QString& deviceNode) const

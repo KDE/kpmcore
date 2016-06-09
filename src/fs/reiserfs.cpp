@@ -90,7 +90,7 @@ qint64 reiserfs::minCapacity() const
 
 qint64 reiserfs::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 qint64 reiserfs::maxLabelLength() const
