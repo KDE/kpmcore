@@ -94,7 +94,7 @@ qint64 fat16::minCapacity() const
 
 qint64 fat16::maxCapacity() const
 {
-    return 4 * Capacity::unitFactor(Capacity::Byte, Capacity::GiB);
+    return 4 * Capacity::unitFactor(Capacity::Byte, Capacity::GiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 qint64 fat16::maxLabelLength() const
