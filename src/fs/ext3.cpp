@@ -31,7 +31,7 @@ ext3::ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QStr
 
 qint64 ext3::maxCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 bool ext3::create(Report& report, const QString& deviceNode) const

@@ -84,7 +84,7 @@ FileSystem::SupportTool ext2::supportToolName() const
 
 qint64 ext2::maxCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
 qint64 ext2::maxLabelLength() const
