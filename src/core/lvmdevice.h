@@ -46,7 +46,19 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
 
 public:
     LvmDevice(const QString& name, const QString& iconname = QString());
-//    void refresh() const override;
+
+public:
+    QList<Partition*> scanPartitions(const Device& dev, PartitionTable* pTable) const;
+    Partition* scanPartition(const QString& lvPath, const Device& dev, PartitionTable* pTable) const;
+
+    static qint32 getPeSize(const QString& name);
+    static qint32 getTotalPE(const QString& name);
+    static qint32 getAllocatedPE(const QString& name);
+    static qint32 getFreePE(const QString& name);
+    static QString getUUID(const QString& name);
+
+protected:
+    void initPartitions();
 
 public:
     qint32 peSize() const {
@@ -61,21 +73,9 @@ public:
     qint32 freePE() const {
         return m_freePE;
     }
-
-public:
-    static qint32 getPeSize(const QString& name);
-    static qint32 getTotalPE(const QString& name);
-    static qint32 getAllocatedPE(const QString& name);
-    static qint32 getFreePE(const QString& name);
-    static QString getUUID(const QString& name);
-protected:
-    void update();
-    void initPartitions();
-public:
-    QList<Partition*> scanPartitions(const Device& dev, PartitionTable* pTable) const;
-    Partition* scanPartition(const QString& lvPath, const Device& dev, PartitionTable* pTable) const;
-
-
+    QString UUID() const {
+        return m_UUID;
+    }
 
 private:
     qint32 m_peSize;
