@@ -25,10 +25,12 @@
 
 namespace FS
 {
+FileSystem::CommandSupportType hfsplus::m_GetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_GetUsed = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Shrink = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Move = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Check = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType hfsplus::m_Create = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Backup = FileSystem::cmdSupportNone;
 
@@ -39,19 +41,21 @@ hfsplus::hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, cons
 
 void hfsplus::init()
 {
-    m_Check = findExternal(QStringLiteral("hpfsck")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = findExternal(QStringLiteral("fsck_hfs")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Create = findExternal(QStringLiteral("newfs_hfs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Backup = cmdSupportCore;
+    m_GetLabel = cmdSupportCore;
 }
 
 bool hfsplus::supportToolFound() const
 {
     return
 //          m_GetUsed != cmdSupportNone &&
-//          m_GetLabel != cmdSupportNone &&
+         m_GetLabel != cmdSupportNone &&
 //          m_SetLabel != cmdSupportNone &&
-//          m_Create != cmdSupportNone &&
+        m_Create != cmdSupportNone &&
         m_Check != cmdSupportNone &&
 //          m_UpdateUUID != cmdSupportNone &&
 //          m_Grow != cmdSupportNone &&
@@ -59,17 +63,17 @@ bool hfsplus::supportToolFound() const
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
         m_Backup != cmdSupportNone;
-//          m_GetUUID != cmdSupportNone;
+//         m_GetUUID != cmdSupportNone;
 }
 
 FileSystem::SupportTool hfsplus::supportToolName() const
 {
-    return SupportTool(QStringLiteral("hfsplus"), QUrl());
+    return SupportTool(QStringLiteral("diskdev_cmds"), QUrl(QStringLiteral("http://opendarwin.org")));
 }
 
 qint64 hfsplus::maxCapacity() const
 {
-    return 8 * Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
 qint64 hfsplus::maxLabelLength() const
@@ -79,7 +83,14 @@ qint64 hfsplus::maxLabelLength() const
 
 bool hfsplus::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("hpfsck"), { QStringLiteral("-v"), deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("fsck_hfs"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
+
+bool hfsplus::create(Report& report, const QString& deviceNode) const
+{
+    ExternalCommand cmd(report, QStringLiteral("newfs_hfs"), { deviceNode });
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
 }

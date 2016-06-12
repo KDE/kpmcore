@@ -43,7 +43,11 @@ public:
     void init() override;
 
     bool check(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) const override;
 
+    CommandSupportType supportGetLabel() const override {
+        return m_GetLabel;
+    }
     CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
     }
@@ -55,6 +59,9 @@ public:
     }
     CommandSupportType supportCheck() const override {
         return m_Check;
+    }
+    CommandSupportType supportCreate() const override {
+        return m_Create;
     }
     CommandSupportType supportCopy() const override {
         return m_Copy;
@@ -69,9 +76,11 @@ public:
     bool supportToolFound() const override;
 
 public:
+    static CommandSupportType m_GetLabel;
     static CommandSupportType m_GetUsed;
     static CommandSupportType m_Shrink;
     static CommandSupportType m_Move;
+    static CommandSupportType m_Create;
     static CommandSupportType m_Check;
     static CommandSupportType m_Copy;
     static CommandSupportType m_Backup;
