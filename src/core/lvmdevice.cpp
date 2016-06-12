@@ -22,9 +22,11 @@
 
 #include "core/partitiontable.h"
 #include "util/externalcommand.h"
+#include "util/helpers.h"
 
 #include <QRegularExpression>
 #include <QStringList>
+#include <KMountPoint>
 
 /** Constructs a representation of LVM device with functionning LV as Partition
     @param name Volume Group name
@@ -44,12 +46,6 @@ LvmDevice::LvmDevice(const QString& name, const QString& iconname)
 {
     initPartitions();
 }
-
-/*
-void LvmDevice::update() const
-{
-}
-*/
 
 void LvmDevice::initPartitions()
 {
@@ -72,22 +68,10 @@ QList<Partition*> LvmDevice::scanPartitions(const Device& dev, PartitionTable* p
     QList<Partition*> pList;
     QList<QString> lvNodeList;
 
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("lvdisplay"),
-              QStringLiteral("--units"),
-              QStringLiteral("B"),
-              dev.name()});
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression pathRE(QStringLiteral("LV Path\\h+((\\w|/)+)"));
-        QRegularExpressionMatchIterator pathMatch = pathRE.globalMatch(cmd.output());
-        while (pathMatch.hasNext()) {
-            QRegularExpressionMatch path = pathMatch.next();
-            lvNodeList << path.captured(1);
-        }
-    }
+    lvNodeList = getField(QStringLiteral("lv_path"), dev.name()).split(QStringLiteral("\n"));
 
     foreach (QString lvNode, lvNodeList) {
-        pList.append(scanPartition(lvNode, dev, pTable));
+        pList.append(scanPartition(lvNode.trimmed(), dev, pTable));
     }
 
     return pList;
@@ -121,6 +105,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, const Device& dev, Pa
              endSector   = match.captured(2).toLongLong();
         }
     }
+
     FileSystem* fs = FileSystemFactory::create(FileSystem::detectFileSystem(lvPath), startSector, endSector);
 
     Partition* part = new Partition(pTable,
@@ -180,6 +165,12 @@ QString LvmDevice::getUUID(const QString& vgname)
     return val.isEmpty() ? QStringLiteral("---") : val;
 
 }
+/** Query LVM details with field name
+ *
+ * @param fieldName lvm field name
+ * @param vgname
+ * @returns raw output of command output, usully with manay spaces within the returned string
+ * */
 
 QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
 {
