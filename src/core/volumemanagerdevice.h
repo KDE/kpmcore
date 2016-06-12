@@ -45,10 +45,14 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 
 protected:
     VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
+    virtual QList<QString> deviceNodeList() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice */
 
 public:
     //virtual void refresh() const = 0; /* VG infos can be changed, unlike disk_device  */
     //virtual Qlist<Partition*> listDevices() const = 0;
+    virtual QString prettyDeviceNodeList() const;
+
+private:
 };
 
 #endif

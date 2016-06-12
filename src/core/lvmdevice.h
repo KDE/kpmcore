@@ -56,9 +56,11 @@ public:
     static qint32 getAllocatedPE(const QString& name);
     static qint32 getFreePE(const QString& name);
     static QString getUUID(const QString& name);
+    static QString getField(const QString& fieldName, const QString& vgname = QString());
 
 protected:
     void initPartitions();
+    QList<QString> deviceNodeList() const override;
 
 public:
     qint32 peSize() const {

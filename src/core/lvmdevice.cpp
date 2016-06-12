@@ -61,7 +61,7 @@ void LvmDevice::initPartitions()
         pTable->append(p);
     }
 
-    this->setPartitionTable(pTable);
+    setPartitionTable(pTable);
 }
 
 /**
@@ -78,7 +78,7 @@ QList<Partition*> LvmDevice::scanPartitions(const Device& dev, PartitionTable* p
               QStringLiteral("B"),
               dev.name()});
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression pathRE(QStringLiteral("LV Path\\h+((\\w|\/)+)"));
+        QRegularExpression pathRE(QStringLiteral("LV Path\\h+((\\w|/)+)"));
         QRegularExpressionMatchIterator pathMatch = pathRE.globalMatch(cmd.output());
         while (pathMatch.hasNext()) {
             QRegularExpressionMatch path = pathMatch.next();
@@ -87,7 +87,7 @@ QList<Partition*> LvmDevice::scanPartitions(const Device& dev, PartitionTable* p
     }
 
     foreach (QString lvNode, lvNodeList) {
-        pList.append(this->scanPartition(lvNode, dev, pTable));
+        pList.append(scanPartition(lvNode, dev, pTable));
     }
 
     return pList;
@@ -136,87 +136,66 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, const Device& dev, Pa
     return part;
 }
 
-qint32 LvmDevice::getPeSize(const QString& vgname)
+QList<QString> LvmDevice::deviceNodeList() const
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("vgdisplay"),
-              QStringLiteral("--units"),
-              QStringLiteral("B"),
-              vgname});
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("PE Size\\h+(\\d+)"));
-        QRegularExpressionMatch match = re.match(cmd.output());
-        if (match.hasMatch()) {
-            return match.captured(1).toInt();
+    QList<QString> devPathList;
+    QString cmdOutput = getField(QStringLiteral("pv_name"), name());
+
+    if (cmdOutput.size()) {
+        QList<QString> tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        foreach(QString devPath, tempPathList) {
+            devPathList.append(devPath.trimmed());
         }
     }
-    return -1;
+
+    return devPathList;
+}
+
+qint32 LvmDevice::getPeSize(const QString& vgname)
+{
+    QString val = getField(QStringLiteral("vg_extent_size"), vgname);
+    return val.isEmpty() ? -1 : val.toInt();
 }
 
 qint32 LvmDevice::getTotalPE(const QString& vgname)
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("vgdisplay"),
-              QStringLiteral("--units"),
-              QStringLiteral("B"),
-              vgname});
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Total PE\\h+(\\d+)"));
-        QRegularExpressionMatch match = re.match(cmd.output());
-        if (match.hasMatch()) {
-            return match.captured(1).toInt();
-        }
-    }
-    return -1;
+    QString val = getField(QStringLiteral("vg_extent_count"), vgname);
+    return val.isEmpty() ? -1 : val.toInt();
 }
 
 qint32 LvmDevice::getAllocatedPE(const QString& vgname)
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("vgdisplay"),
-              QStringLiteral("--units"),
-              QStringLiteral("B"),
-              vgname});
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Alloc PE / Size\\h+(\\d+)"));
-        QRegularExpressionMatch match = re.match(cmd.output());
-        if (match.hasMatch()) {
-            return match.captured(1).toInt();
-        }
-    }
-    return -1;
+    return getTotalPE(vgname) - getFreePE(vgname);
 }
 
 qint32 LvmDevice::getFreePE(const QString& vgname)
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("vgdisplay"),
-              QStringLiteral("--units"),
-              QStringLiteral("B"),
-              vgname});
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Free  PE / Size\\h+(\\d+)"));
-        QRegularExpressionMatch match = re.match(cmd.output());
-        if (match.hasMatch()) {
-            return match.captured(1).toInt();
-        }
-    }
-    return -1;
+    QString val =  getField(QStringLiteral("vg_free_count"), vgname);
+    return val.isEmpty() ? -1 : val.toInt();
 }
 
 QString LvmDevice::getUUID(const QString& vgname)
 {
+    QString val = getField(QStringLiteral("vg_uuid"), vgname);
+    return val.isEmpty() ? QStringLiteral("---") : val;
+
+}
+
+QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
+{
     ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("vgdisplay"),
+            { QStringLiteral("vgs"),
+              QStringLiteral("--foreign"),
+              QStringLiteral("--readonly"),
+              QStringLiteral("--noheadings"),
               QStringLiteral("--units"),
               QStringLiteral("B"),
-              vgname});
+              QStringLiteral("--nosuffix"),
+              QStringLiteral("--options"),
+              fieldName,
+              vgname });
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("LV UUID\\h+(\\w+)"));
-        QRegularExpressionMatch match = re.match(cmd.output());
-        if (match.hasMatch()) {
-            return match.captured(1);
-        }
+        return cmd.output().trimmed();
     }
-    return QStringLiteral("---");
+    return QString();
 }

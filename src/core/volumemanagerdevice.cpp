@@ -34,3 +34,16 @@ VolumeManagerDevice::VolumeManagerDevice(const QString& name,
     : Device(name, devicenode, logicalSize, totalLogical, iconname, type)
 {
 }
+
+QString VolumeManagerDevice::prettyDeviceNodeList() const
+{
+    QString rval;
+    foreach (QString devNode, deviceNodeList()) {
+        rval += devNode + QStringLiteral(",");
+    }
+
+    if (rval.size()) {
+        rval.chop(1);
+    }
+    return rval;
+}

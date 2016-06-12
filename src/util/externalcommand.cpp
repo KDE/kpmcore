@@ -60,7 +60,7 @@ ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStri
 
 void ExternalCommand::setup()
 {
-    setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromUtf8(getenv("PATH")));
+    setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromUtf8(getenv("PATH")) << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
     setProcessChannelMode(MergedChannels);
 
     connect(this, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &ExternalCommand::onFinished);
