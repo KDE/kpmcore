@@ -53,13 +53,13 @@ bool hfsplus::supportToolFound() const
 {
     return
 //          m_GetUsed != cmdSupportNone &&
-         m_GetLabel != cmdSupportNone &&
+        m_GetLabel != cmdSupportNone &&
 //          m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
         m_Check != cmdSupportNone &&
 //          m_UpdateUUID != cmdSupportNone &&
 //          m_Grow != cmdSupportNone &&
-//          m_Shrink != cmdSupportNone &&
+        m_Shrink != cmdSupportNone &&
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
         m_Backup != cmdSupportNone;
