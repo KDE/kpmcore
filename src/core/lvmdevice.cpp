@@ -85,7 +85,13 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, const Device& dev, Pa
     qint64 startSector;
     qint64 endSector;
     QString mountPoint = QString();
-    bool mounted = false;
+    bool mounted = isMounted(lvPath);
+
+    KMountPoint::List mountPointList = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
+    mountPointList.append(KMountPoint::possibleMountPoints(KMountPoint::NeedRealDeviceName));
+    mountPoint = mountPointList.findByDevice(lvPath) ?
+                 mountPointList.findByDevice(lvPath)->mountPoint() :
+                 QString();
 
     ExternalCommand cmd(QStringLiteral("lvm"),
             { QStringLiteral("lvdisplay"),
