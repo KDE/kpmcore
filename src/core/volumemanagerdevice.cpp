@@ -1,6 +1,5 @@
 /*************************************************************************
- *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016 by Chantara Tith <tith.chantara@gmail.com>        *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -43,6 +42,7 @@ QString VolumeManagerDevice::prettyDeviceNodeList() const
     }
 
     if (rval.size()) {
+        //chop off the trailing colon
         rval.chop(1);
     }
     return rval;

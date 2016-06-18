@@ -51,16 +51,21 @@ public:
     QList<Partition*> scanPartitions(const Device& dev, PartitionTable* pTable) const;
     Partition* scanPartition(const QString& lvPath, const Device& dev, PartitionTable* pTable) const;
 
-    static qint32 getPeSize(const QString& name);
-    static qint32 getTotalPE(const QString& name);
-    static qint32 getAllocatedPE(const QString& name);
-    static qint32 getFreePE(const QString& name);
-    static QString getUUID(const QString& name);
+    static qint32 getPeSize(const QString& vgname);
+    static qint32 getTotalPE(const QString& vgname);
+    static qint32 getAllocatedPE(const QString& vgname);
+    static qint32 getFreePE(const QString& vgname);
+    static QString getUUID(const QString& vgname);
     static QString getField(const QString& fieldName, const QString& vgname = QString());
+
+    static qint32 getTotalLE(const QString& lvpath);
 
 protected:
     void initPartitions();
     QList<QString> deviceNodeList() const override;
+    qint64 mappedSector(const QString& lvpath, qint64 sector) const override;
+
+    QList<QString> lvPathList() const;
 
 public:
     qint32 peSize() const {
@@ -85,6 +90,7 @@ private:
     qint32 m_allocPE;
     qint32 m_freePE;
     QString m_UUID;
+
 };
 
 #endif

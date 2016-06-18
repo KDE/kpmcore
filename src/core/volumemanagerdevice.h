@@ -1,4 +1,6 @@
 /*************************************************************************
+ *  Copyright (C) 2016 by Chantara Tith <tith.chantara@gmail.com>        *
+ *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
  *  published by the Free Software Foundation; either version 3 of       *
@@ -30,14 +32,13 @@ class CoreBackend;
 class SmartStatus;
 class Partition;
 
-/** A device.
+/** A abstract device represeting real physical devices.
 
-    Represents a device like /dev/sda.
+    Represents a device like /dev/sda, /dev/sdb1.
 
     Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
 
     @see PartitionTable, Partition
-    @author Volker Lanz <vl@fidra.de>
 */
 class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 {
@@ -46,13 +47,15 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 protected:
     VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
     virtual QList<QString> deviceNodeList() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice */
+    virtual qint64  mappedSector(const QString& devNode, qint64 sector) const = 0;
 
 public:
-    //virtual void refresh() const = 0; /* VG infos can be changed, unlike disk_device  */
-    //virtual Qlist<Partition*> listDevices() const = 0;
+    /** string deviceNodeList together into comma-sperated list */
     virtual QString prettyDeviceNodeList() const;
+    /** Mapper return absolute sector representing the VG */
 
 private:
+    //QMap<QString, qint32> deviceSizeMapper;
 };
 
 #endif

@@ -27,10 +27,12 @@
 #include <QRegularExpression>
 #include <QStringList>
 #include <KMountPoint>
+#include <KDiskFreeSpaceInfo>
 
 /** Constructs a representation of LVM device with functionning LV as Partition
-    @param name Volume Group name
-*/
+ *
+ *  @param name Volume Group name
+ */
 LvmDevice::LvmDevice(const QString& name, const QString& iconname)
     : VolumeManagerDevice(name,
                           (QStringLiteral("/dev/") + name),
@@ -56,63 +58,60 @@ void LvmDevice::initPartitions()
     foreach (Partition* p, scanPartitions(*this, pTable)) {
         pTable->append(p);
     }
-
     setPartitionTable(pTable);
 }
 
 /**
-   return sorted Partition(LV) Array
-*/
+ *  @returns sorted Partition(LV) Array
+ */
 QList<Partition*> LvmDevice::scanPartitions(const Device& dev, PartitionTable* pTable) const
 {
     QList<Partition*> pList;
-    QList<QString> lvNodeList;
-
-    lvNodeList = getField(QStringLiteral("lv_path"), dev.name()).split(QStringLiteral("\n"));
-
-    foreach (QString lvNode, lvNodeList) {
-        pList.append(scanPartition(lvNode.trimmed(), dev, pTable));
+    foreach (QString lvPath, lvPathList()) {
+        pList.append(scanPartition(lvPath, dev, pTable));
     }
-
     return pList;
 }
 
 /**
-   return sorted Partition(LV) Array
-*/
-Partition* LvmDevice::scanPartition(const QString& lvPath, const Device& dev, PartitionTable* pTable) const
+ * @returns sorted Partition(LV) Array
+ */
+Partition* LvmDevice::scanPartition(const QString& lvpath, const Device& dev, PartitionTable* pTable) const
 {
+    /*
+     * NOTE:
+     * LVM partition have 2 different start and end sector value
+     * 1. representing the actual LV start from 0 -> size of LV - 1
+     * 2. representing abstract LV's sector inside a VG partitionTable
+     *    start from size of last Partitions -> size of LV - 1
+     * Reason for this is for the LV Partition to worrks nicely with other parts of the codebase
+     * without too many special cases.
+     */
+
     qint64 startSector;
     qint64 endSector;
+    qint64 lvSize;
+
+    bool mounted = isMounted(lvpath);
     QString mountPoint = QString();
-    bool mounted = isMounted(lvPath);
 
     KMountPoint::List mountPointList = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
     mountPointList.append(KMountPoint::possibleMountPoints(KMountPoint::NeedRealDeviceName));
-    mountPoint = mountPointList.findByDevice(lvPath) ?
-                 mountPointList.findByDevice(lvPath)->mountPoint() :
+    mountPoint = mountPointList.findByDevice(lvpath) ?
+                 mountPointList.findByDevice(lvpath)->mountPoint() :
                  QString();
 
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("lvdisplay"),
-              QStringLiteral("--units"),
-              QStringLiteral("B"),
-              QStringLiteral("--maps"),
-              lvPath});
+    lvSize      = getTotalLE(lvpath);
+    startSector = mappedSector(lvpath,0);
+    endSector   = startSector + (lvSize - 1);
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
+    const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
-        //TODO: regex for first and last sector of the LV
-        //TODO: stringing PE into one large contingiuous array of PE ??
-        QRegularExpression re(QStringLiteral("Physical extents\\h+(\\d+)\\sto\\s(\\d+)"));
-        QRegularExpressionMatch match = re.match(cmd.output());
-        if (match.hasMatch()) {
-             startSector = match.captured(1).toLongLong();
-             endSector   = match.captured(2).toLongLong();
-        }
+    FileSystem* fs = FileSystemFactory::create(FileSystem::detectFileSystem(lvpath), 0, lvSize - 1);
+    if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
+        //TODO: fix used space report. currently incorrect
+        fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
     }
-
-    FileSystem* fs = FileSystemFactory::create(FileSystem::detectFileSystem(lvPath), startSector, endSector);
 
     Partition* part = new Partition(pTable,
                     dev,
@@ -120,11 +119,27 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, const Device& dev, Pa
                     fs,
                     startSector,
                     endSector,
-                    lvPath,
+                    lvpath,
                     PartitionTable::Flag::FlagLvm,
                     mountPoint,
                     mounted);
     return part;
+}
+
+qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
+{
+    qint64 mSector = 0;
+    QList<QString> lvpathList = lvPathList();
+    qint32 devIndex = lvpathList.indexOf(lvpath);
+
+    if (devIndex) {
+        for (int i = 0; i < devIndex; i++) {
+            //TODO: currently going over the same LV again and again is wasteful. Could use some more optimization
+            mSector += getTotalLE(lvpathList[i]);
+        }
+        mSector += sector;
+    }
+    return mSector;
 }
 
 QList<QString> LvmDevice::deviceNodeList() const
@@ -138,8 +153,21 @@ QList<QString> LvmDevice::deviceNodeList() const
             devPathList.append(devPath.trimmed());
         }
     }
-
     return devPathList;
+}
+
+QList<QString> LvmDevice::lvPathList() const
+{
+    QList<QString> lvPathList;
+    QString cmdOutput = getField(QStringLiteral("lv_path"), name());
+
+    if (cmdOutput.size()) {
+        QList<QString> tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        foreach(QString lvPath, tempPathList) {
+            lvPathList.append(lvPath.trimmed());
+        }
+    }
+    return lvPathList;
 }
 
 qint32 LvmDevice::getPeSize(const QString& vgname)
@@ -171,6 +199,7 @@ QString LvmDevice::getUUID(const QString& vgname)
     return val.isEmpty() ? QStringLiteral("---") : val;
 
 }
+
 /** Query LVM details with field name
  *
  * @param fieldName lvm field name
@@ -195,4 +224,20 @@ QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
         return cmd.output().trimmed();
     }
     return QString();
+}
+
+qint32 LvmDevice::getTotalLE(const QString& lvpath)
+{
+    ExternalCommand cmd(QStringLiteral("lvm"),
+            { QStringLiteral("lvdisplay"),
+              lvpath});
+
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("Current LE\\h+(\\d+)"));
+        QRegularExpressionMatch match = re.match(cmd.output());
+        if (match.hasMatch()) {
+             return  match.captured(1).toInt();
+        }
+    }
+    return -1;
 }

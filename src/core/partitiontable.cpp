@@ -266,6 +266,7 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
         return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
     } else if (d.type() == Device::LVM_Device) {
         return false;
+        //TODO: return range from last LE to last allocated LE
     }
     return false;
 }
@@ -378,8 +379,12 @@ void PartitionTable::updateUnallocated(const Device& d)
 qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
 {
     Q_UNUSED(t)
-    const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
-    return PartitionAlignment::sectorAlignment(diskDevice);
+    if (d.type() == Device::LVM_Device) {
+        return 0;
+    } else {
+        const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
+        return PartitionAlignment::sectorAlignment(diskDevice);
+    }
 }
 
 qint64 PartitionTable::defaultLastUsable(const Device& d, TableType t)
