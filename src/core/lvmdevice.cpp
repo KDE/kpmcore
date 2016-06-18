@@ -241,3 +241,18 @@ qint32 LvmDevice::getTotalLE(const QString& lvpath)
     }
     return -1;
 }
+
+bool LvmDevice::removeLV(Device& dev, Partition& part)
+{
+    ExternalCommand cmd(QStringLiteral("lvm"),
+            { QStringLiteral("lvremove"),
+              QStringLiteral("--yes"),
+              part.partitionPath()});
+
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        //TODO: remove Partition from PartitionTable and delete from memory
+        dev.partitionTable()->remove(&part);
+        return  true;
+    }
+    return false;
+}

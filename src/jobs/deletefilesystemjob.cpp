@@ -63,8 +63,12 @@ bool DeleteFileSystemJob::run(Report& parent)
         return false;
     }
 
-    if (partition().roles().has(PartitionRole::Extended))
+    if (partition().roles().has(PartitionRole::Extended)) {
         rval = true;
+    } else if (device().type() == Device::LVM_Device) {
+        //TODO: LVM delete Filesystem Job. libparted can't help us here.
+        rval = true;
+    }
     else {
         if (!partition().fileSystem().remove(*report, partition().deviceNode())) {
             jobFinished(*report, rval);

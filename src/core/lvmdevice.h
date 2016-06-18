@@ -60,6 +60,8 @@ public:
 
     static qint32 getTotalLE(const QString& lvpath);
 
+    static bool removeLV(Device& dev, Partition& part);
+
 protected:
     void initPartitions();
     QList<QString> deviceNodeList() const override;
