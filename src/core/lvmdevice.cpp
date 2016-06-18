@@ -113,6 +113,10 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const Device& dev, Pa
         fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
     }
 
+    if (fs->supportGetLabel() != FileSystem::cmdSupportNone) {
+        fs->setLabel(fs->readLabel(lvpath));
+    }
+
     Partition* part = new Partition(pTable,
                     dev,
                     PartitionRole(PartitionRole::Lvm_Lv),
