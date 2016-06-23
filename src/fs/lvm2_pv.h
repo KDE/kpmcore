@@ -43,14 +43,22 @@ public:
 public:
     void init() override;
 
-//          qint64 readUsedCapacity(const QString& deviceNode) const override;
+    qint64 readUsedCapacity(const QString& deviceNode) const override;
     bool check(Report& report, const QString& deviceNode) const override;
     bool create(Report& report, const QString& deviceNode) const override;
     bool remove(Report& report, const QString& deviceNode) const override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
 //          bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
     bool updateUUID(Report& report, const QString& deviceNode) const override;
+    QString readUUID(const QString& deviceNode) const override;
+
     bool canMount(const QString & deviceNode, const QString & mountPoint) const override;
+    bool canUnmount(const QString& deviceNode) const override;
+    QString mountTitle() const override;
+    QString unmountTitle() const override;
+
+    bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override; // mountPoint == VG name
+    bool unmount(Report& report, const QString& deviceNode) override;
 
 
     CommandSupportType supportGetUsed() const override {
@@ -101,6 +109,8 @@ public:
     qint64 getPVSize(const QString& deviceNode) const; // return PV size in bytes
 
     static QString getVGName(const QString& deviceNode);
+
+    static QString getpvField(const QString& fieldname, const QString& deviceNode);
 
 public:
     static CommandSupportType m_GetUsed;

@@ -24,6 +24,8 @@
 #include <QString>
 #include <QRegularExpression>
 
+#include <KLocalizedString>
+
 namespace FS
 {
 FileSystem::CommandSupportType lvm2_pv::m_GetUsed = FileSystem::cmdSupportNone;
@@ -53,6 +55,7 @@ void lvm2_pv::init()
     m_Grow       = lvmFound;
     m_Shrink     = lvmFound;
     m_UpdateUUID = lvmFound;
+    m_GetUsed    = lvmFound;
 
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
 
@@ -67,7 +70,7 @@ void lvm2_pv::init()
 bool lvm2_pv::supportToolFound() const
 {
     return
-//          m_GetUsed != cmdSupportNone &&
+        m_GetUsed != cmdSupportNone &&
 //          m_GetLabel != cmdSupportNone &&
 //          m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
@@ -89,6 +92,12 @@ FileSystem::SupportTool lvm2_pv::supportToolName() const
 qint64 lvm2_pv::maxCapacity() const
 {
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+}
+
+qint64 lvm2_pv::readUsedCapacity(const QString& deviceNode) const
+{
+    QString val = getpvField(QStringLiteral("pv_used"), deviceNode);
+    return val.isEmpty() ? -1 : val.toLongLong();
 }
 
 bool lvm2_pv::check(Report& report, const QString& deviceNode) const
@@ -125,85 +134,106 @@ bool lvm2_pv::updateUUID(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool lvm2_pv::canMount(const QString & deviceNode, const QString & mountPoint) const
+QString lvm2_pv::readUUID(const QString& deviceNode) const
 {
-    Q_UNUSED(deviceNode)
-    Q_UNUSED(mountPoint)
+    return getpvField(QStringLiteral("pv_uuid"), deviceNode);
+}
+
+bool lvm2_pv::mount(Report& report, const QString& deviceNode, const QString& mountPoint)
+{
+    Q_UNUSED(report);
+    Q_UNUSED(deviceNode);
+    Q_UNUSED(mountPoint);
     return false;
 }
 
-QString lvm2_pv::getVGName(const QString& deviceNode) //PV node
+bool lvm2_pv::unmount(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd( QStringLiteral("lvm"),
-                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
+    Q_UNUSED(deviceNode);
+    Q_UNUSED(report);
+    return false;
+}
+
+bool lvm2_pv::canMount(const QString & deviceNode, const QString & mountPoint) const
+{
+    Q_UNUSED(mountPoint);
+    QString rval = getpvField(QStringLiteral("pv_in_use"), deviceNode); // this field return "used" when in use otherwise empty string
+    if (rval.isEmpty()) {
+        return true;
+    }
+    return false;
+}
+
+bool lvm2_pv::canUnmount(const QString& deviceNode) const
+{
+    QString rval = getpvField(QStringLiteral("pv_in_use"), deviceNode);
+    if (rval.isEmpty()) {
+        return false;
+    }
+    return true;
+}
+
+QString lvm2_pv::mountTitle() const
+{
+    return i18nc("@title:menu", "Add to VG");
+}
+
+QString lvm2_pv::unmountTitle() const
+{
+    return i18nc("@title:menu", "Remove from VG");
+}
+
+qint64 lvm2_pv::getTotalPE(const QString& deviceNode) const
+{
+    QString val = getpvField(QStringLiteral("pv_pe_count"), deviceNode);
+    return val.isEmpty() ? -1 : val.toLongLong();
+}
+
+qint64 lvm2_pv::getFreePE(const QString& deviceNode) const
+{
+    return getTotalPE(deviceNode) - getAllocatedPE(deviceNode);
+}
+
+qint64 lvm2_pv::getAllocatedPE(const QString& deviceNode) const
+{
+    QString val = getpvField(QStringLiteral("pv_pe_alloc_count"), deviceNode);
+    return val.isEmpty() ? -1 : val.toLongLong();
+}
+
+qint64 lvm2_pv::getPVSize(const QString& deviceNode) const
+{
+    QString val = getpvField(QStringLiteral("pv_size"), deviceNode);
+    return val.isEmpty() ? -1 : val.toLongLong();
+}
+
+qint64 lvm2_pv::getPESize(const QString& deviceNode) const
+{
+    QString val = getpvField(QStringLiteral("vg_extent_size"), deviceNode);
+    return val.isEmpty() ? -1 : val.toLongLong();
+}
+
+QString  lvm2_pv::getpvField(const QString& fieldname, const QString& deviceNode)
+{
+    ExternalCommand cmd(QStringLiteral("lvm"),
+            { QStringLiteral("pvs"),
+              QStringLiteral("--foreign"),
+              QStringLiteral("--readonly"),
+              QStringLiteral("--noheadings"),
+              QStringLiteral("--units"),
+              QStringLiteral("B"),
+              QStringLiteral("--nosuffix"),
+              QStringLiteral("--options"),
+              fieldname,
+              deviceNode });
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("VG Name\\h+(\\w+)"));
-        QRegularExpressionMatch vgName = re.match(cmd.output());
-        if (vgName.hasMatch())
-            return vgName.captured(1);
+        return cmd.output().trimmed();
     }
     return QString();
 }
 
-qint64 lvm2_pv::getTotalPE(const QString& deviceNode) const {
-    ExternalCommand cmd( QStringLiteral("lvm"),
-                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Total PE\\h+(\\d+)"));
-        QRegularExpressionMatch totalPE = re.match(cmd.output());
-        if (totalPE.hasMatch())
-            return totalPE.captured(1).toLongLong();
-    }
-    return -1;
-
-}
-
-qint64 lvm2_pv::getFreePE(const QString& deviceNode) const {
-    ExternalCommand cmd( QStringLiteral("lvm"),
-                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Free PE\\h+(\\d+)"));
-        QRegularExpressionMatch freePE = re.match(cmd.output());
-        if (freePE.hasMatch())
-            return freePE.captured(1).toLongLong();
-    }
-    return -1;
-}
-
-qint64 lvm2_pv::getAllocatedPE(const QString& deviceNode) const {
-    ExternalCommand cmd( QStringLiteral("lvm"),
-                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Allocated PE\\h+(\\d+)"));
-        QRegularExpressionMatch allocatedPE = re.match(cmd.output());
-        if (allocatedPE.hasMatch())
-            return allocatedPE.captured(1).toLongLong();
-    }
-    return -1;
-}
-
-qint64 lvm2_pv::getPVSize(const QString& deviceNode) const {
-    ExternalCommand cmd( QStringLiteral("lvm"),
-                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"),  QStringLiteral("--units"), QStringLiteral("B"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("PV Size\\h+(\\d+)"));
-        QRegularExpressionMatch PVSize = re.match(cmd.output());
-        if (PVSize.hasMatch())
-            return PVSize.captured(1).toLongLong();
-    }
-    return -1;
-}
-
-qint64 lvm2_pv::getPESize(const QString& deviceNode) const {
-    ExternalCommand cmd( QStringLiteral("lvm"),
-                        { QStringLiteral("pvdisplay"), QStringLiteral("--verbose"), QStringLiteral("--units"), QStringLiteral("B"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("PE Size\\h+(\\d+)"));
-        QRegularExpressionMatch PESize = re.match(cmd.output());
-        if (PESize.hasMatch())
-            return PESize.captured(1).toLongLong();
-    }
-    return -1;
+QString lvm2_pv::getVGName(const QString& deviceNode)
+{
+    return getpvField(QStringLiteral("vg_name"), deviceNode);
 }
 
 }
