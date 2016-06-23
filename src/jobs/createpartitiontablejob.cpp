@@ -44,16 +44,20 @@ bool CreatePartitionTableJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+    if (device().type() == Device::Disk_Device) {
+        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-    if (backendDevice != nullptr) {
-        Q_ASSERT(device().partitionTable());
+        if (backendDevice != nullptr) {
+            Q_ASSERT(device().partitionTable());
 
-        rval = backendDevice->createPartitionTable(*report, *device().partitionTable());
+            rval = backendDevice->createPartitionTable(*report, *device().partitionTable());
 
-        delete backendDevice;
-    } else
-        report->line() << xi18nc("@info:progress", "Creating partition table failed: Could not open device <filename>%1</filename>.", device().deviceNode());
+            delete backendDevice;
+        } else
+            report->line() << xi18nc("@info:progress", "Creating partition table failed: Could not open device <filename>%1</filename>.", device().deviceNode());
+    } else if (device().type() == Device::LVM_Device) {
+        //TODO: figure what to do wit LVM partitionTable
+    }
 
     jobFinished(*report, rval);
 

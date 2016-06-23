@@ -28,6 +28,7 @@
 #include <QStringList>
 #include <KMountPoint>
 #include <KDiskFreeSpaceInfo>
+#include <KLocalizedString>
 
 /** Constructs a representation of LVM device with functionning LV as Partition
  *
@@ -58,13 +59,28 @@ void LvmDevice::initPartitions()
     foreach (Partition* p, scanPartitions(*this, pTable)) {
         pTable->append(p);
     }
+
+    // Manually insert unallocated space as Partition.
+    // TODO: PartitionTable's updateUnallocated seem not to works.
+    if (freePE()) {
+        qint64 startUnallocated = lastusable - freePE() + 1;
+        qint64 endUnallocated   = lastusable;
+        pTable->append(new Partition(pTable,
+                                     *this,
+                                     PartitionRole(PartitionRole::Unallocated),
+                                     FileSystemFactory::create(FileSystem::Unknown,startUnallocated, endUnallocated),
+                                     startUnallocated,
+                                     endUnallocated,
+                                     QString())
+                      );
+    }
     setPartitionTable(pTable);
 }
 
 /**
  *  @returns sorted Partition(LV) Array
  */
-QList<Partition*> LvmDevice::scanPartitions(const Device& dev, PartitionTable* pTable) const
+QList<Partition*> LvmDevice::scanPartitions(const LvmDevice& dev, PartitionTable* pTable) const
 {
     QList<Partition*> pList;
     foreach (QString lvPath, lvPathList()) {
@@ -76,7 +92,7 @@ QList<Partition*> LvmDevice::scanPartitions(const Device& dev, PartitionTable* p
 /**
  * @returns sorted Partition(LV) Array
  */
-Partition* LvmDevice::scanPartition(const QString& lvpath, const Device& dev, PartitionTable* pTable) const
+Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev, PartitionTable* pTable) const
 {
     /*
      * NOTE:
@@ -204,7 +220,7 @@ QString LvmDevice::getUUID(const QString& vgname)
 
 }
 
-/** Query LVM details with field name
+/** Get LVM vgs command output with field name
  *
  * @param fieldName lvm field name
  * @param vgname
@@ -246,7 +262,7 @@ qint32 LvmDevice::getTotalLE(const QString& lvpath)
     return -1;
 }
 
-bool LvmDevice::removeLV(Device& dev, Partition& part)
+bool LvmDevice::removeLV(Report& report, LvmDevice& dev, Partition& part)
 {
     ExternalCommand cmd(QStringLiteral("lvm"),
             { QStringLiteral("lvremove"),
@@ -254,9 +270,79 @@ bool LvmDevice::removeLV(Device& dev, Partition& part)
               part.partitionPath()});
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        //TODO: remove Partition from PartitionTable and delete from memory
+        //TODO: remove Partition from PartitionTable and delete from memory ??
         dev.partitionTable()->remove(&part);
         return  true;
     }
+    report.line() << xi18nc("@info/plain", "Failed to add Logical Volume");
+    return false;
+}
+
+bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname)
+{
+    ExternalCommand cmd(QStringLiteral("lvm"),
+            { QStringLiteral("lvcreate"),
+              QStringLiteral("--yes"),
+              QStringLiteral("--extents"),
+              QString::number(part.length()),
+              QStringLiteral("--name"),
+              lvname,
+              dev.name()});
+
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        return  true;
+    }
+    //report.line() << xi18nc("@info/plain", "Failed to add Logical Volume");
+    report.line() << cmd.output();
+    return false;
+}
+
+bool LvmDevice::resizeLv(Report& report, LvmDevice& dev, Partition& part)
+{
+    Q_UNUSED(dev);
+    //TODO: through tests
+    ExternalCommand cmd(QStringLiteral("lvm"),
+            { QStringLiteral("lvresize"),
+              //QStringLiteral("--yes"), // this command could corrupt user data
+              QStringLiteral("--extents"),
+              QString::number(part.length()),
+              part.partitionPath()});
+
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        return  true;
+    }
+    report.line() << cmd.output();
+    return false;
+}
+
+bool LvmDevice::removePV(Report& report, LvmDevice& dev, const QString& pvPath)
+{
+    //TODO: through tests
+    ExternalCommand cmd(QStringLiteral("lvm"),
+            { QStringLiteral("vgreduce"),
+              //QStringLiteral("--yes"), // potentially corrupt user data
+              dev.name(),
+              pvPath});
+
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        return  true;
+    }
+    report.line() << cmd.output();
+    return false;
+}
+
+bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
+{
+    //TODO: through tests
+    ExternalCommand cmd(QStringLiteral("lvm"),
+            { QStringLiteral("vgextend"),
+              //QStringLiteral("--yes"), // potentially corrupt user data
+              dev.name(),
+              pvPath});
+
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        return  true;
+    }
+    report.line() << cmd.output();
     return false;
 }

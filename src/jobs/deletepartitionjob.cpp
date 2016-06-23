@@ -80,7 +80,8 @@ bool DeletePartitionJob::run(Report& parent)
         } else
             report->line() << xi18nc("@info:progress", "Deleting partition failed: Could not open device <filename>%1</filename>.", device().deviceNode());
     } else if (device().type() == Device::LVM_Device) {
-        rval = LvmDevice::removeLV(device(), partition());
+        LvmDevice& dev = dynamic_cast<LvmDevice&>(device());
+        rval = LvmDevice::removeLV(*report, dev, partition());
     }
 
     jobFinished(*report, rval);

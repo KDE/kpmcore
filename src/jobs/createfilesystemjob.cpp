@@ -53,25 +53,29 @@ bool CreateFileSystemJob::run(Report& parent)
 
     if (partition().fileSystem().supportCreate() == FileSystem::cmdSupportFileSystem) {
         if (partition().fileSystem().create(*report, partition().deviceNode())) {
-            CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+            if (device().type() == Device::Disk_Device) {
+                CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 
-            if (backendDevice) {
-                CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+                if (backendDevice) {
+                    CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
-                if (backendPartitionTable) {
-                    if (backendPartitionTable->setPartitionSystemType(*report, partition())) {
-                        rval = true;
-                        backendPartitionTable->commit();
+                    if (backendPartitionTable) {
+                        if (backendPartitionTable->setPartitionSystemType(*report, partition())) {
+                            rval = true;
+                            backendPartitionTable->commit();
+                        } else
+                            report->line() << xi18nc("@info:progress", "Failed to set the system type for the file system on partition <filename>%1</filename>.", partition().deviceNode());
+
+                        delete backendPartitionTable;
                     } else
-                        report->line() << xi18nc("@info:progress", "Failed to set the system type for the file system on partition <filename>%1</filename>.", partition().deviceNode());
+                        report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-                    delete backendPartitionTable;
+                    delete backendDevice;
                 } else
-                    report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
-
-                delete backendDevice;
-            } else
-                report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+                    report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+            } else if (device().type() == Device::LVM_Device) {
+                rval = true;
+            }
         }
     }
 

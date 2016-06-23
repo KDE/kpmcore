@@ -22,6 +22,7 @@
 #include "core/volumemanagerdevice.h"
 
 #include "util/libpartitionmanagerexport.h"
+#include "util/report.h"
 
 #include <QString>
 #include <QObject>
@@ -48,8 +49,8 @@ public:
     LvmDevice(const QString& name, const QString& iconname = QString());
 
 public:
-    QList<Partition*> scanPartitions(const Device& dev, PartitionTable* pTable) const;
-    Partition* scanPartition(const QString& lvPath, const Device& dev, PartitionTable* pTable) const;
+    QList<Partition*> scanPartitions(const LvmDevice& dev, PartitionTable* pTable) const;
+    Partition* scanPartition(const QString& lvPath, const LvmDevice& dev, PartitionTable* pTable) const;
 
     static qint32 getPeSize(const QString& vgname);
     static qint32 getTotalPE(const QString& vgname);
@@ -60,7 +61,12 @@ public:
 
     static qint32 getTotalLE(const QString& lvpath);
 
-    static bool removeLV(Device& dev, Partition& part);
+    static bool removeLV(Report& report, LvmDevice& dev, Partition& part);
+    static bool createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname);
+    static bool resizeLv(Report& report, LvmDevice& dev, Partition& part);
+
+    static bool removePV(Report& report, LvmDevice& dev, const QString& pvPath);
+    static bool insertPV(Report& report, LvmDevice& dev, const QString& pvPath);
 
 protected:
     void initPartitions();
