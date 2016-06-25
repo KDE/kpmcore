@@ -75,11 +75,14 @@ bool CreatePartitionJob::run(Report& parent)
         } else
             report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
     } else if (device().type() == Device::LVM_Device) {
-        //TODO: take lvname from createDialog
         LvmDevice& dev = dynamic_cast<LvmDevice&>(device());
-        rval = LvmDevice::createLV(*report, dev, partition(), QStringLiteral("randomLV"));
-        partition().setPartitionPath(dev.deviceNode() + QStringLiteral("/randomLV"));
         partition().setState(Partition::StateNone);
+
+        //TODO: take lvname from createDialog.
+        // find a better way to do this.now, we're assuming that partitionPath is already set, so we get the name from the path
+        QString partPath = partition().partitionPath();
+        QString lvname   = partPath.right(partPath.length() - partPath.lastIndexOf(QStringLiteral("/")) - 1);
+        rval = LvmDevice::createLV(*report, dev, partition(), lvname);
     }
 
     jobFinished(*report, rval);
