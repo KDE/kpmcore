@@ -252,7 +252,7 @@ qint32 LvmDevice::getTotalLE(const QString& lvpath)
 
 bool LvmDevice::removeLV(Report& report, LvmDevice& dev, Partition& part)
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
+    ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvremove"),
               QStringLiteral("--yes"),
               part.partitionPath()});
@@ -262,13 +262,12 @@ bool LvmDevice::removeLV(Report& report, LvmDevice& dev, Partition& part)
         dev.partitionTable()->remove(&part);
         return  true;
     }
-    report.line() << xi18nc("@info/plain", "Failed to add Logical Volume");
     return false;
 }
 
 bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname)
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
+    ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvcreate"),
               QStringLiteral("--yes"),
               QStringLiteral("--extents"),
@@ -277,60 +276,43 @@ bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const 
               lvname,
               dev.name()});
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        return  true;
-    }
-    //report.line() << xi18nc("@info/plain", "Failed to add Logical Volume");
-    report.line() << cmd.output();
-    return false;
+    return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
 bool LvmDevice::resizeLv(Report& report, LvmDevice& dev, Partition& part)
 {
     Q_UNUSED(dev);
     //TODO: through tests
-    ExternalCommand cmd(QStringLiteral("lvm"),
+    ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvresize"),
               //QStringLiteral("--yes"), // this command could corrupt user data
               QStringLiteral("--extents"),
               QString::number(part.length()),
               part.partitionPath()});
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        return  true;
-    }
-    report.line() << cmd.output();
-    return false;
+    return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
 bool LvmDevice::removePV(Report& report, LvmDevice& dev, const QString& pvPath)
 {
     //TODO: through tests
-    ExternalCommand cmd(QStringLiteral("lvm"),
+    ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgreduce"),
               //QStringLiteral("--yes"), // potentially corrupt user data
               dev.name(),
               pvPath});
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        return  true;
-    }
-    report.line() << cmd.output();
-    return false;
+    return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
 bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
 {
     //TODO: through tests
-    ExternalCommand cmd(QStringLiteral("lvm"),
+    ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgextend"),
               //QStringLiteral("--yes"), // potentially corrupt user data
               dev.name(),
               pvPath});
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        return  true;
-    }
-    report.line() << cmd.output();
-    return false;
+    return (cmd.run(-1) && cmd.exitCode() == 0);
 }
