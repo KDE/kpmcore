@@ -112,9 +112,12 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
     const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
     FileSystem* fs = FileSystemFactory::create(FileSystem::detectFileSystem(lvpath), 0, lvSize - 1);
+
+    //TODO: fix used space report. currently incorrect
     if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
-        //TODO: fix used space report. currently incorrect
         fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
+    } else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem) {
+        fs->setSectorsUsed(fs->readUsedCapacity(lvpath) / logicalSize());
     }
 
     if (fs->supportGetLabel() != FileSystem::cmdSupportNone) {
