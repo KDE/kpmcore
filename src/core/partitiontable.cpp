@@ -24,6 +24,7 @@
 #include "core/partition.h"
 #include "core/device.h"
 #include "core/diskdevice.h"
+#include "core/lvmdevice.h"
 #include "core/partitionalignment.h"
 #include "fs/filesystem.h"
 #include "fs/filesystemfactory.h"
@@ -242,7 +243,6 @@ QStringList PartitionTable::flagNames(Flags flags)
 
 bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent, qint64& start, qint64& end)
 {
-    //TODO: alignment for LVM device
     if (d.type() == Device::Disk_Device) {
         const DiskDevice& device = dynamic_cast<const DiskDevice&>(d);
         if (!parent.isRoot()) {
@@ -265,8 +265,13 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
 
         return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
     } else if (d.type() == Device::LVM_Device) {
+        const LvmDevice& lvm = dynamic_cast<const LvmDevice&>(d);
+        if (lvm.freePE() && start >=  lvm.allocatedPE()) {
+            start = lvm.allocatedPE();
+            end   = lvm.totalPE() - 1;
+            return true;
+        }
         return false;
-        //TODO: return range from last LE to last allocated LE
     }
     return false;
 }

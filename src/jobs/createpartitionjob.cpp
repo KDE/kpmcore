@@ -75,6 +75,7 @@ bool CreatePartitionJob::run(Report& parent)
         } else
             report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
     } else if (device().type() == Device::LVM_Device) {
+        //TODO: take lvname from createDialog
         LvmDevice& dev = dynamic_cast<LvmDevice&>(device());
         rval = LvmDevice::createLV(*report, dev, partition(), QStringLiteral("randomLV"));
         partition().setPartitionPath(dev.deviceNode() + QStringLiteral("/randomLV"));

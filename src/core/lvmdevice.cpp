@@ -60,20 +60,8 @@ void LvmDevice::initPartitions()
         pTable->append(p);
     }
 
-    // Manually insert unallocated space as Partition.
-    // TODO: PartitionTable's updateUnallocated seem not to works.
-    if (freePE()) {
-        qint64 startUnallocated = lastusable - freePE() + 1;
-        qint64 endUnallocated   = lastusable;
-        pTable->append(new Partition(pTable,
-                                     *this,
-                                     PartitionRole(PartitionRole::Unallocated),
-                                     FileSystemFactory::create(FileSystem::Unknown,startUnallocated, endUnallocated),
-                                     startUnallocated,
-                                     endUnallocated,
-                                     QString())
-                      );
-    }
+    pTable->updateUnallocated(*this);
+
     setPartitionTable(pTable);
 }
 
