@@ -282,13 +282,14 @@ bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::resizeLv(Report& report, LvmDevice& dev, Partition& part)
+bool LvmDevice::resizeLV(Report& report, LvmDevice& dev, Partition& part)
 {
     Q_UNUSED(dev);
-    //TODO: through tests
+    //TODO: through tests and add warning that it could currupt the user data.
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvresize"),
-              //QStringLiteral("--yes"), // this command could corrupt user data
+              QStringLiteral("--force"), // this command could corrupt user data
+              QStringLiteral("--yes"),
               QStringLiteral("--extents"),
               QString::number(part.length()),
               part.partitionPath()});
