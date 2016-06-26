@@ -93,7 +93,7 @@ bool CreatePartitionTableOperation::execute(Report& parent)
 */
 bool CreatePartitionTableOperation::canCreate(const Device* device)
 {
-    return device != nullptr && (device->partitionTable() == nullptr || !device->partitionTable()->isChildMounted());
+    return (device != nullptr) && (device->partitionTable() == nullptr || !device->partitionTable()->isChildMounted()) && (device->type() != Device::LVM_Device);
 }
 
 QString CreatePartitionTableOperation::description() const
