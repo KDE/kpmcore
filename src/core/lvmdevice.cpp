@@ -187,7 +187,7 @@ qint32 LvmDevice::getPeSize(const QString& vgname)
     return val.isEmpty() ? -1 : val.toInt();
 }
 
-qint32 LvmDevice::getTotalPE(const QString& vgname)
+qint64 LvmDevice::getTotalPE(const QString& vgname)
 {
     QString val = getField(QStringLiteral("vg_extent_count"), vgname);
     return val.isEmpty() ? -1 : val.toInt();

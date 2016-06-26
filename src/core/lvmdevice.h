@@ -53,7 +53,7 @@ public:
     Partition* scanPartition(const QString& lvPath, const LvmDevice& dev, PartitionTable* pTable) const;
 
     static qint32 getPeSize(const QString& vgname);
-    static qint32 getTotalPE(const QString& vgname);
+    static qint64 getTotalPE(const QString& vgname);
     static qint32 getAllocatedPE(const QString& vgname);
     static qint32 getFreePE(const QString& vgname);
     static QString getUUID(const QString& vgname);
@@ -79,7 +79,7 @@ public:
     qint32 peSize() const {
         return m_peSize;
     }
-    qint32 totalPE() const {
+    qint64 totalPE() const {
         return m_totalPE;
     }
     qint32 allocatedPE() const {
@@ -94,7 +94,7 @@ public:
 
 private:
     qint32 m_peSize;
-    qint32 m_totalPE;
+    qint64 m_totalPE;
     qint32 m_allocPE;
     qint32 m_freePE;
     QString m_UUID;
