@@ -386,10 +386,10 @@ qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
     Q_UNUSED(t)
     if (d.type() == Device::LVM_Device) {
         return 0;
-    } else {
-        const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
-        return PartitionAlignment::sectorAlignment(diskDevice);
     }
+
+    const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
+    return PartitionAlignment::sectorAlignment(diskDevice);
 }
 
 qint64 PartitionTable::defaultLastUsable(const Device& d, TableType t)
