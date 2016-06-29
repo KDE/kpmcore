@@ -89,6 +89,17 @@ qint64 PartitionTable::freeSectorsAfter(const Partition& p) const
     return 0;
 }
 
+qint64 PartitionTable::freeSectors() const
+{
+    qint64 sectors = 0;
+    foreach(const Partition * p, children())
+    if (p->roles().has(PartitionRole::Unallocated)) {
+        sectors += p->length();
+    }
+
+    return sectors;
+}
+
 /** @return true if the PartitionTable has an extended Partition */
 bool PartitionTable::hasExtended() const
 {

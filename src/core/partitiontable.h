@@ -126,6 +126,7 @@ public:
 
     qint64 freeSectorsBefore(const Partition& p) const;
     qint64 freeSectorsAfter(const Partition& p) const;
+    qint64 freeSectors() const;
 
     bool hasExtended() const;
     Partition* extended() const;
