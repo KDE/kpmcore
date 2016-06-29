@@ -68,6 +68,8 @@ public:
     static bool removePV(Report& report, LvmDevice& dev, const QString& pvPath);
     static bool insertPV(Report& report, LvmDevice& dev, const QString& pvPath);
 
+    static bool createVG(Report& report, const QString vgname, const QList<Partition*> pvlist);
+
 protected:
     void initPartitions();
     QList<QString> deviceNodeList() const override;

@@ -320,3 +320,16 @@ bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
+
+bool LvmDevice::createVG(Report& report, const QString vgname, const QList<Partition*> pvlist)
+{
+    //TODO: check that all the pv in pvlist is lvm2_pv
+    QStringList args = QStringList();
+    args << QStringLiteral("vgcreate") << vgname;
+    foreach (Partition* p, pvlist) {
+        args << p->partitionPath();
+    }
+    ExternalCommand cmd(report, QStringLiteral("lvm"), args);
+
+    return (cmd.run(-1) && cmd.exitCode() == 0);
+}
