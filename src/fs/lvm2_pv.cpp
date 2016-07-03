@@ -236,9 +236,10 @@ QStringList lvm2_pv::getFreePV()
     QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
     foreach (QString pvnode, pvList) {
         if (!isUsed(pvnode.trimmed())) {
-            rlist.append(pvnode);
+            rlist.append(pvnode.trimmed());
         }
     }
+
     return rlist;
 }
 
@@ -250,7 +251,7 @@ QStringList lvm2_pv::getUsedPV(const QString& vgname)
     QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
     foreach (QString pvnode, pvList) {
         if (isUsed(pvnode.trimmed())) {
-            rlist.append(pvnode);
+            rlist.append(pvnode.trimmed());
         }
     }
 

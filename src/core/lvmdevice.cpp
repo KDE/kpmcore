@@ -327,7 +327,7 @@ bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << vgname;
     foreach (QString pvnode, pvlist) {
-        args << pvnode;
+        args << pvnode.trimmed();
     }
     ExternalCommand cmd(report, QStringLiteral("lvm"), args);
 
