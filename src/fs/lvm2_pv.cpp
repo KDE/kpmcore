@@ -173,16 +173,6 @@ bool lvm2_pv::canUnmount(const QString& deviceNode) const
     return true;
 }
 
-QString lvm2_pv::mountTitle() const
-{
-    return i18nc("@title:menu", "Add to VG");
-}
-
-QString lvm2_pv::unmountTitle() const
-{
-    return i18nc("@title:menu", "Remove from VG");
-}
-
 qint64 lvm2_pv::getTotalPE(const QString& deviceNode) const
 {
     QString val = getpvField(QStringLiteral("pv_pe_count"), deviceNode);
@@ -214,17 +204,19 @@ qint64 lvm2_pv::getPESize(const QString& deviceNode) const
 
 QString  lvm2_pv::getpvField(const QString& fieldname, const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("pvs"),
-              QStringLiteral("--foreign"),
-              QStringLiteral("--readonly"),
-              QStringLiteral("--noheadings"),
-              QStringLiteral("--units"),
-              QStringLiteral("B"),
-              QStringLiteral("--nosuffix"),
-              QStringLiteral("--options"),
-              fieldname,
-              deviceNode });
+    QStringList args = { QStringLiteral("pvs"),
+                    QStringLiteral("--foreign"),
+                    QStringLiteral("--readonly"),
+                    QStringLiteral("--noheadings"),
+                    QStringLiteral("--units"),
+                    QStringLiteral("B"),
+                    QStringLiteral("--nosuffix"),
+                    QStringLiteral("--options"),
+                    fieldname };
+    if (!deviceNode.isEmpty()) {
+        args << deviceNode;
+    }
+    ExternalCommand cmd(QStringLiteral("lvm"), args);
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         return cmd.output().trimmed();
     }
@@ -234,6 +226,44 @@ QString  lvm2_pv::getpvField(const QString& fieldname, const QString& deviceNode
 QString lvm2_pv::getVGName(const QString& deviceNode)
 {
     return getpvField(QStringLiteral("vg_name"), deviceNode);
+}
+
+QStringList lvm2_pv::getFreePV()
+{
+    QStringList rlist;
+
+    QString output = getpvField(QStringLiteral("pv_name"));
+    QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+    foreach (QString pvnode, pvList) {
+        if (!isUsed(pvnode.trimmed())) {
+            rlist.append(pvnode);
+        }
+    }
+    return rlist;
+}
+
+QStringList lvm2_pv::getUsedPV(const QString& vgname)
+{
+    QStringList rlist;
+
+    QString output = getpvField(QStringLiteral("pv_name"), vgname);
+    QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+    foreach (QString pvnode, pvList) {
+        if (isUsed(pvnode.trimmed())) {
+            rlist.append(pvnode);
+        }
+    }
+
+    return rlist;
+}
+
+bool lvm2_pv::isUsed(const QString& deviceNode)
+{
+    QString output = getpvField(QStringLiteral("pv_in_use"), deviceNode.trimmed());
+    if (output.trimmed() == QStringLiteral("used")) {
+        return true;
+    }
+    return false;
 }
 
 }

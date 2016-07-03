@@ -54,8 +54,6 @@ public:
 
     bool canMount(const QString & deviceNode, const QString & mountPoint) const override;
     bool canUnmount(const QString& deviceNode) const override;
-    QString mountTitle() const override;
-    QString unmountTitle() const override;
 
     bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override; // mountPoint == VG name
     bool unmount(Report& report, const QString& deviceNode) override;
@@ -108,9 +106,13 @@ public:
     qint64 getPESize(const QString& deviceNode) const; // return PE size in bytes
     qint64 getPVSize(const QString& deviceNode) const; // return PV size in bytes
 
-    static QString getVGName(const QString& deviceNode);
+    static bool isUsed(const QString& pvNode);
 
-    static QString getpvField(const QString& fieldname, const QString& deviceNode);
+    static QString getVGName(const QString& deviceNode);
+    static QString getpvField(const QString& fieldname, const QString& deviceNode = QString());
+
+    static QStringList getFreePV();
+    static QStringList getUsedPV(const QString& vgname = QString());
 
 public:
     static CommandSupportType m_GetUsed;
