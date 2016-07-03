@@ -68,8 +68,8 @@ public:
     static bool removePV(Report& report, LvmDevice& dev, const QString& pvPath);
     static bool insertPV(Report& report, LvmDevice& dev, const QString& pvPath);
 
+    static bool removeVG(Report& report, LvmDevice& dev);
     static bool createVG(Report& report, const QString vgname, const QStringList pvlist);
-    static bool removeVG(Report& report, const QString vgname);
 
 protected:
     void initPartitions();

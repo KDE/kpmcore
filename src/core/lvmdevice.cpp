@@ -334,10 +334,10 @@ bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::removeVG(Report& report, const QString vgname)
+bool LvmDevice::removeVG(Report& report, LvmDevice& dev)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgremove"),
-              vgname });
+              dev.name() });
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
