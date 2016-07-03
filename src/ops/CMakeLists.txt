@@ -7,6 +7,7 @@ set(OPS_SRC
     ops/createfilesystemoperation.cpp
     ops/createpartitiontableoperation.cpp
     ops/createvolumegroupoperation.cpp
+    ops/removevolumegroupoperation.cpp
     ops/setfilesystemlabeloperation.cpp
     ops/setpartflagsoperation.cpp
     ops/checkoperation.cpp
@@ -21,6 +22,7 @@ set(OPS_LIB_HDRS
     ops/createfilesystemoperation.h
     ops/createpartitiontableoperation.h
     ops/createvolumegroupoperation.h
+    ops/removevolumegroupoperation.h
     ops/deleteoperation.h
     ops/newoperation.h
     ops/operation.h
