@@ -30,7 +30,7 @@ class QString;
 class CreateVolumeGroupJob : public Job
 {
 public:
-    CreateVolumeGroupJob(const QString& vgname, const QList<Partition*> pvlist);
+    CreateVolumeGroupJob(const QString& vgname, const QStringList& pvlist);
 
 public:
     bool run(Report& parent) override;
@@ -43,16 +43,16 @@ protected:
     const QString vgName() const {
         return m_vgName;
     }
-    QList<Partition*> pvList() {
+    QStringList pvList() {
         return m_pvList;
     }
-    const QList<Partition*> pvList() const {
+    const QStringList pvList() const {
         return m_pvList;
     }
 
 private:
     QString m_vgName;
-    QList<Partition*> m_pvList;
+    QStringList m_pvList;
 };
 
 #endif

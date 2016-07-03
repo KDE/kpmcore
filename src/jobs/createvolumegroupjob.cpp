@@ -27,7 +27,7 @@
     @param vgname
     @parem pvList
 */
-CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgname, const QList<Partition*> pvlist) :
+CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgname, const QStringList& pvlist) :
     Job(),
     m_vgName(vgname),
     m_pvList(pvlist)
@@ -49,5 +49,9 @@ bool CreateVolumeGroupJob::run(Report& parent)
 
 QString CreateVolumeGroupJob::description() const
 {
-    return xi18nc("@info/plain", "Create new Volume Group named <filename>%1</filename>", vgName());
+    QString tmp = QString();
+    foreach(QString name, pvList()) {
+        tmp += QStringLiteral("\n") + name;
+    }
+    return xi18nc("@info/plain", "Create new Volume Group: <filename>%1</filename> with PV: %2", vgName(), tmp);
 }

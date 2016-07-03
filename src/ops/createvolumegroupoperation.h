@@ -37,7 +37,7 @@ class LIBKPMCORE_EXPORT CreateVolumeGroupOperation : public Operation
     friend class OperationStack;
 
 public:
-    CreateVolumeGroupOperation(const QString& vgname, const QList<Partition*> pvlist);
+    CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist);
 
 public:
     QString iconName() const override {
@@ -46,7 +46,9 @@ public:
 
     QString description() const override;
 
-    virtual bool targets(const Device&) const override;
+    virtual bool targets(const Device&) const override {
+        return true;
+    }
     virtual bool targets(const Partition&) const override;
 
     virtual void preview() override;

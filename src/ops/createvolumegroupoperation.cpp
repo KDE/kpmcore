@@ -18,6 +18,7 @@
 #include "ops/createvolumegroupoperation.h"
 
 #include "core/lvmdevice.h"
+#include "fs/lvm2_pv.h"
 
 #include "jobs/createvolumegroupjob.h"
 
@@ -29,17 +30,11 @@
     @param d the Device to create the new PartitionTable on
     @param t the type for the new PartitionTable
 */
-CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgname, const QList<Partition*> pvlist) :
+CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist) :
     Operation(),
     m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgname, pvlist))
 {
     addJob(createVolumeGroupJob());
-}
-
-bool CreateVolumeGroupOperation::canCreate()
-{
-    //TODO: return true if there is any free PV
-    return true;
 }
 
 QString CreateVolumeGroupOperation::description() const
@@ -47,14 +42,9 @@ QString CreateVolumeGroupOperation::description() const
     return xi18nc("@info/plain", "Create a new LVM volume group.");
 }
 
-bool CreateVolumeGroupOperation::targets(const Device&) const
-{
-    return false;
-}
-
 bool CreateVolumeGroupOperation::targets(const Partition& part) const
 {
-    return true;
+    return false;
 }
 
 void CreateVolumeGroupOperation::preview()
@@ -63,4 +53,9 @@ void CreateVolumeGroupOperation::preview()
 
 void CreateVolumeGroupOperation::undo()
 {
+}
+
+bool CreateVolumeGroupOperation::canCreate()
+{
+    return true;
 }
