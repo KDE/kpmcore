@@ -320,6 +320,14 @@ bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
+bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath)
+{
+    Q_UNUSED(dev);
+    ExternalCommand cmd(report, QStringLiteral("lvm"),
+            { QStringLiteral("pvmove"),
+              pvPath});
+    return (cmd.run(-1) && cmd.exitCode() == 0);
+}
 
 bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList pvlist)
 {
