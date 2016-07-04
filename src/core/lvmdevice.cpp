@@ -220,8 +220,7 @@ QString LvmDevice::getUUID(const QString& vgname)
 
 QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
 {
-    ExternalCommand cmd(QStringLiteral("lvm"),
-            { QStringLiteral("vgs"),
+    QStringList args = { QStringLiteral("vgs"),
               QStringLiteral("--foreign"),
               QStringLiteral("--readonly"),
               QStringLiteral("--noheadings"),
@@ -229,8 +228,11 @@ QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
               QStringLiteral("B"),
               QStringLiteral("--nosuffix"),
               QStringLiteral("--options"),
-              fieldName,
-              vgname });
+              fieldName };
+    if  (!vgname.isEmpty()) {
+        args << vgname;
+    }
+    ExternalCommand cmd(QStringLiteral("lvm"), args);
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         return cmd.output().trimmed();
     }
