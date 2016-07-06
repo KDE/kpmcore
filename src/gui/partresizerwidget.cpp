@@ -31,7 +31,7 @@
 #include <QPaintEvent>
 #include <QResizeEvent>
 #include <QStyleOptionToolBar>
-#include <QStyleOptionFrameV3>
+#include <QStyleOptionFrame>
 #include <QStyleOptionButton>
 
 const qint32 PartResizerWidget::m_HandleHeight = 59;
@@ -172,7 +172,7 @@ void PartResizerWidget::paintEvent(QPaintEvent*)
 {
     // draw sunken frame
     QPainter painter(this);
-    QStyleOptionFrameV3 opt;
+    QStyleOptionFrame opt;
     opt.initFrom(this);
     opt.frameShape = QFrame::StyledPanel;
     opt.rect = contentsRect();
