@@ -243,21 +243,6 @@ QStringList lvm2_pv::getFreePV()
     return rlist;
 }
 
-QStringList lvm2_pv::getUsedPV(const QString& vgname)
-{
-    QStringList rlist;
-
-    QString output = getpvField(QStringLiteral("pv_name"), vgname);
-    QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-    foreach (QString pvnode, pvList) {
-        if (isUsed(pvnode.trimmed())) {
-            rlist.append(pvnode.trimmed());
-        }
-    }
-
-    return rlist;
-}
-
 bool lvm2_pv::isUsed(const QString& deviceNode)
 {
     QString output = getpvField(QStringLiteral("pv_in_use"), deviceNode.trimmed());

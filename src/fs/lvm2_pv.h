@@ -112,7 +112,6 @@ public:
     static QString getpvField(const QString& fieldname, const QString& deviceNode = QString());
 
     static QStringList getFreePV();
-    static QStringList getUsedPV(const QString& vgname = QString());
 
 public:
     static CommandSupportType m_GetUsed;
