@@ -408,10 +408,7 @@ void OperationStack::push(Operation* o)
 {
     Q_ASSERT(o);
 
-    auto currentOp = operations().end();
-    while (currentOp != operations().begin())
-    {
-        --currentOp;
+    for (auto currentOp = operations().rbegin(); currentOp != operations().rend(); ++currentOp) {
         if (mergeNewOperation(*currentOp, o))
             break;
 
