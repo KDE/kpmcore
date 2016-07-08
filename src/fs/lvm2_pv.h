@@ -100,11 +100,14 @@ public:
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
 
-    qint64 getTotalPE(const QString& deviceNode) const;
-    qint64 getFreePE(const QString& deviceNode) const;
-    qint64 getAllocatedPE(const QString& deviceNode) const;
-    qint64 getPESize(const QString& deviceNode) const; // return PE size in bytes
-    qint64 getPVSize(const QString& deviceNode) const; // return PV size in bytes
+    static qint64 getTotalPE(const QString& deviceNode);
+    static qint64 getTotalPE(const QStringList& deviceNodeList);
+    static qint64 getFreePE(const QString& deviceNode);
+    static qint64 getFreePE(const QStringList& deviceNodeList);
+    static qint64 getAllocatedPE(const QString& deviceNode);
+    static qint64 getAllocatedPE(const QStringList& deviceNodeList);
+    static qint64 getPESize(const QString& deviceNode); // return PE size in bytes
+    static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
 
     static bool isUsed(const QString& pvNode);
 
