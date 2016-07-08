@@ -238,6 +238,20 @@ qint64 lvm2_pv::getPVSize(const QString& deviceNode)
     return val.isEmpty() ? -1 : val.toLongLong();
 }
 
+qint64 lvm2_pv::getPVSize(const QStringList& deviceNodeList)
+{
+    qint64 sum = 0;
+    foreach (QString deviceNode, deviceNodeList) {
+        qint64 pvsize = getPVSize(deviceNode);
+        if (pvsize < 0) {
+            sum = -1;
+            break;
+        }
+        sum += pvsize;
+    }
+    return sum;
+}
+
 qint64 lvm2_pv::getPESize(const QString& deviceNode)
 {
     QString val = getpvField(QStringLiteral("vg_extent_size"), deviceNode);

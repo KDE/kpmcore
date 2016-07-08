@@ -108,6 +108,7 @@ public:
     static qint64 getAllocatedPE(const QStringList& deviceNodeList);
     static qint64 getPESize(const QString& deviceNode); // return PE size in bytes
     static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
+    static qint64 getPVSize(const QStringList& deviceNodeList);
 
     static bool isUsed(const QString& pvNode);
 
