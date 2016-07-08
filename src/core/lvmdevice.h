@@ -61,6 +61,9 @@ public:
 
     static qint32 getTotalLE(const QString& lvpath);
 
+    static QStringList getPVs(const QString& vgname);
+    static QStringList getLVs(const QString& vgname);
+
     static bool removeLV(Report& report, LvmDevice& dev, Partition& part);
     static bool createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname);
     static bool resizeLV(Report& report, LvmDevice& dev, Partition& part);

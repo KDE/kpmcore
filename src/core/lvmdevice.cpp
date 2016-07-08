@@ -153,13 +153,13 @@ qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
     return mSector;
 }
 
-QList<QString> LvmDevice::deviceNodeList() const
+QStringList LvmDevice::getPVs(const QString& vgname)
 {
-    QList<QString> devPathList;
-    QString cmdOutput = getField(QStringLiteral("pv_name"), name());
+    QStringList devPathList;
+    QString cmdOutput = getField(QStringLiteral("pv_name"), vgname);
 
     if (cmdOutput.size()) {
-        QList<QString> tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
         foreach(QString devPath, tempPathList) {
             devPathList.append(devPath.trimmed());
         }
@@ -167,18 +167,28 @@ QList<QString> LvmDevice::deviceNodeList() const
     return devPathList;
 }
 
-QList<QString> LvmDevice::lvPathList() const
+QList<QString> LvmDevice::deviceNodeList() const
 {
-    QList<QString> lvPathList;
-    QString cmdOutput = getField(QStringLiteral("lv_path"), name());
+    return getPVs(name());
+}
+
+QStringList LvmDevice::getLVs(const QString& vgname)
+{
+    QStringList lvPathList;
+    QString cmdOutput = getField(QStringLiteral("lv_path"), vgname);
 
     if (cmdOutput.size()) {
-        QList<QString> tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
         foreach(QString lvPath, tempPathList) {
             lvPathList.append(lvPath.trimmed());
         }
     }
     return lvPathList;
+}
+
+QList<QString> LvmDevice::lvPathList() const
+{
+    return getLVs(name());
 }
 
 qint32 LvmDevice::getPeSize(const QString& vgname)
