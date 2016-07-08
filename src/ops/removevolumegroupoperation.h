@@ -55,8 +55,6 @@ public:
     virtual void preview() override;
     virtual void undo() override;
 
-    static bool canRemove();
-
 protected:
     RemoveVolumeGroupJob* removeVolumeGroupJob() {
         return m_RemoveVolumeGroupJob;

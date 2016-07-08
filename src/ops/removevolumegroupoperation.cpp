@@ -47,8 +47,3 @@ void RemoveVolumeGroupOperation::preview()
 void RemoveVolumeGroupOperation::undo()
 {
 }
-
-bool RemoveVolumeGroupOperation::canRemove()
-{
-    return true;
-}
