@@ -17,6 +17,7 @@
 
 #include "core/lvmdevice.h"
 #include "fs/filesystem.h"
+#include "fs/lvm2_pv.h"
 #include "fs/filesystemfactory.h"
 #include "core/partition.h"
 
@@ -335,6 +336,11 @@ bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
 bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath)
 {
     Q_UNUSED(dev);
+
+    if (FS::lvm2_pv::getAllocatedPE(pvPath) <= 0) {
+        return true;
+    }
+
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("pvmove"),
               pvPath});
