@@ -117,7 +117,7 @@ protected:
     QString m_Name;
     QString m_DeviceNode;
     qint32  m_LogicalSize;
-    qint32  m_TotalLogical;
+    qint64  m_TotalLogical;
     PartitionTable* m_PartitionTable;
     QString m_IconName;
     SmartStatus* m_SmartStatus;
