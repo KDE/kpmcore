@@ -333,7 +333,7 @@ bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
-bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath)
+bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath, const QStringList& destinations)
 {
     Q_UNUSED(dev);
 
@@ -341,9 +341,16 @@ bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath)
         return true;
     }
 
-    ExternalCommand cmd(report, QStringLiteral("lvm"),
-            { QStringLiteral("pvmove"),
-              pvPath});
+    QStringList args = QStringList();
+    args << QStringLiteral("pvmove");
+    args << pvPath;
+    if (!destinations.isEmpty()) {
+        foreach (QString destPath, destinations) {
+            args << destPath.trimmed();
+        }
+    }
+
+    ExternalCommand cmd(report, QStringLiteral("lvm"), args);
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 

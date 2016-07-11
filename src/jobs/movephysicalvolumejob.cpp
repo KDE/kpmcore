@@ -41,8 +41,16 @@ bool MovePhysicalVolumeJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     //TODO:check that the provided list is legal
+
+    QStringList destinations = LvmDevice::getPVs(device().name());
     foreach (QString partPath, partList()) {
-        rval = LvmDevice::movePV(*report, device(), partPath);
+        if (destinations.contains(partPath)) {
+            destinations.removeAll(partPath);
+        }
+    }
+
+    foreach (QString partPath, partList()) {
+        rval = LvmDevice::movePV(*report, device(), partPath, destinations);
         if (rval == false) {
             break;
         }
