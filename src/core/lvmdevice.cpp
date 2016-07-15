@@ -192,7 +192,7 @@ QList<QString> LvmDevice::lvPathList() const
     return getLVs(name());
 }
 
-qint32 LvmDevice::getPeSize(const QString& vgname)
+qint64 LvmDevice::getPeSize(const QString& vgname)
 {
     QString val = getField(QStringLiteral("vg_extent_size"), vgname);
     return val.isEmpty() ? -1 : val.toInt();
@@ -204,12 +204,12 @@ qint64 LvmDevice::getTotalPE(const QString& vgname)
     return val.isEmpty() ? -1 : val.toInt();
 }
 
-qint32 LvmDevice::getAllocatedPE(const QString& vgname)
+qint64 LvmDevice::getAllocatedPE(const QString& vgname)
 {
     return getTotalPE(vgname) - getFreePE(vgname);
 }
 
-qint32 LvmDevice::getFreePE(const QString& vgname)
+qint64 LvmDevice::getFreePE(const QString& vgname)
 {
     QString val =  getField(QStringLiteral("vg_free_count"), vgname);
     return val.isEmpty() ? -1 : val.toInt();
@@ -250,7 +250,7 @@ QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
     return QString();
 }
 
-qint32 LvmDevice::getTotalLE(const QString& lvpath)
+qint64 LvmDevice::getTotalLE(const QString& lvpath)
 {
     ExternalCommand cmd(QStringLiteral("lvm"),
             { QStringLiteral("lvdisplay"),

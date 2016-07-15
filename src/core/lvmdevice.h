@@ -52,14 +52,14 @@ public:
     QList<Partition*> scanPartitions(const LvmDevice& dev, PartitionTable* pTable) const;
     Partition* scanPartition(const QString& lvPath, const LvmDevice& dev, PartitionTable* pTable) const;
 
-    static qint32 getPeSize(const QString& vgname);
+    static qint64 getPeSize(const QString& vgname);
     static qint64 getTotalPE(const QString& vgname);
-    static qint32 getAllocatedPE(const QString& vgname);
-    static qint32 getFreePE(const QString& vgname);
+    static qint64 getAllocatedPE(const QString& vgname);
+    static qint64 getFreePE(const QString& vgname);
     static QString getUUID(const QString& vgname);
     static QString getField(const QString& fieldName, const QString& vgname = QString());
 
-    static qint32 getTotalLE(const QString& lvpath);
+    static qint64 getTotalLE(const QString& lvpath);
 
     static QStringList getPVs(const QString& vgname);
     static QStringList getLVs(const QString& vgname);
@@ -83,16 +83,16 @@ protected:
     QList<QString> lvPathList() const;
 
 public:
-    qint32 peSize() const {
+    qint64 peSize() const {
         return m_peSize;
     }
     qint64 totalPE() const {
         return m_totalPE;
     }
-    qint32 allocatedPE() const {
+    qint64 allocatedPE() const {
         return m_allocPE;
     }
-    qint32 freePE() const {
+    qint64 freePE() const {
         return m_freePE;
     }
     QString UUID() const {
@@ -100,10 +100,10 @@ public:
     }
 
 private:
-    qint32 m_peSize;
+    qint64 m_peSize;
     qint64 m_totalPE;
-    qint32 m_allocPE;
-    qint32 m_freePE;
+    qint64 m_allocPE;
+    qint64 m_freePE;
     QString m_UUID;
 
 };
