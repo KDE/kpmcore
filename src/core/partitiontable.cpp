@@ -277,12 +277,9 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
         return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
     } else if (d.type() == Device::LVM_Device) {
         const LvmDevice& lvm = dynamic_cast<const LvmDevice&>(d);
-        if (lvm.freePE() && start >=  lvm.allocatedPE()) {
-            start = lvm.allocatedPE();
-            end   = lvm.totalPE() - 1;
+        if (lvm.freePE() && start >=  lvm.allocatedPE() && end < lvm.totalPE()) {
             return true;
         }
-        return false;
     }
     return false;
 }
@@ -360,13 +357,17 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
 
     qint64 lastEnd = start;
 
-    foreach(Partition * child, p->children()) {
-        p->insert(createUnallocated(d, *p, lastEnd, child->firstSector() - 1));
+    if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
+        lastEnd = p->children().last()->lastSector() + 1;
+    } else {
+        foreach(Partition * child, p->children()) {
+            p->insert(createUnallocated(d, *p, lastEnd, child->firstSector() - 1));
 
-        if (child->roles().has(PartitionRole::Extended))
-            insertUnallocated(d, child, child->firstSector());
+            if (child->roles().has(PartitionRole::Extended))
+                insertUnallocated(d, child, child->firstSector());
 
-        lastEnd = child->lastSector() + 1;
+            lastEnd = child->lastSector() + 1;
+        }
     }
 
     // Take care of the free space between the end of the last child and the end
@@ -379,7 +380,7 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
         Q_ASSERT(extended);
     }
 
-    if (parentEnd >= firstUsable())
+    if (parentEnd >= firstUsable() && parentEnd >= lastEnd)
         p->insert(createUnallocated(d, *p, lastEnd, parentEnd));
 }
 
