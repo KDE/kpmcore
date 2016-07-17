@@ -137,24 +137,24 @@ bool RestoreOperation::execute(Report& parent)
                 // or the image length, whichever is larger. If this fails, don't return an error, just
                 // warn the user.
                 if ((warning = !maximizeJob()->run(*report)))
-                    report->line() << xi18nc("@info/plain", "Warning: Maximizing file system on target partition <filename>%1</filename> to the size of the partition failed.", restorePartition().deviceNode());
+                    report->line() << xi18nc("@info:status", "<warning>Maximizing file system on target partition <filename>%1</filename> to the size of the partition failed.</warning>", restorePartition().deviceNode());
             } else
-                report->line() << xi18nc("@info/plain", "Checking target file system on partition <filename>%1</filename> after the restore failed.", restorePartition().deviceNode());
+                report->line() << xi18nc("@info:status", "Checking target file system on partition <filename>%1</filename> after the restore failed.", restorePartition().deviceNode());
         } else {
             if (!overwrittenPartition())
                 DeletePartitionJob(targetDevice(), restorePartition()).run(*report);
 
-            report->line() << i18nc("@info/plain", "Restoring file system failed.");
+            report->line() << xi18nc("@info:status", "Restoring file system failed.");
         }
     } else
-        report->line() << i18nc("@info/plain", "Creating the destination partition to restore to failed.");
+        report->line() << xi18nc("@info:status", "Creating the destination partition to restore to failed.");
 
     if (rval)
         setStatus(warning ? StatusFinishedWarning : StatusFinishedSuccess);
     else
         setStatus(StatusError);
 
-    report->setStatus(i18nc("@info/plain status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
+    report->setStatus(xi18nc("@info:status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
 
     return rval;
 }
@@ -162,9 +162,9 @@ bool RestoreOperation::execute(Report& parent)
 QString RestoreOperation::description() const
 {
     if (overwrittenPartition())
-        return xi18nc("@info/plain", "Restore partition from <filename>%1</filename> to <filename>%2</filename>", fileName(), overwrittenPartition()->deviceNode());
+        return xi18nc("@info:status", "Restore partition from <filename>%1</filename> to <filename>%2</filename>", fileName(), overwrittenPartition()->deviceNode());
 
-    return xi18nc("@info/plain", "Restore partition on <filename>%1</filename> at %2 from <filename>%3</filename>", targetDevice().deviceNode(), Capacity::formatByteSize(restorePartition().firstSector() * targetDevice().logicalSectorSize()), fileName());
+    return xi18nc("@info:status", "Restore partition on <filename>%1</filename> at %2 from <filename>%3</filename>", targetDevice().deviceNode(), Capacity::formatByteSize(restorePartition().firstSector() * targetDevice().logicalSectorSize()), fileName());
 }
 
 void RestoreOperation::setOverwrittenPartition(Partition* p)

@@ -305,33 +305,33 @@ QString FileSystem::name() const
 static const QString* typeNames()
 {
     static const QString s[] = {
-        i18nc("@item filesystem name", "unknown"),
-        i18nc("@item filesystem name", "extended"),
+        xi18nc("@item filesystem name", "unknown"),
+        xi18nc("@item filesystem name", "extended"),
 
-        i18nc("@item filesystem name", "ext2"),
-        i18nc("@item filesystem name", "ext3"),
-        i18nc("@item filesystem name", "ext4"),
-        i18nc("@item filesystem name", "linuxswap"),
-        i18nc("@item filesystem name", "fat16"),
-        i18nc("@item filesystem name", "fat32"),
-        i18nc("@item filesystem name", "ntfs"),
-        i18nc("@item filesystem name", "reiser"),
-        i18nc("@item filesystem name", "reiser4"),
-        i18nc("@item filesystem name", "xfs"),
-        i18nc("@item filesystem name", "jfs"),
-        i18nc("@item filesystem name", "hfs"),
-        i18nc("@item filesystem name", "hfsplus"),
-        i18nc("@item filesystem name", "ufs"),
-        i18nc("@item filesystem name", "unformatted"),
-        i18nc("@item filesystem name", "btrfs"),
-        i18nc("@item filesystem name", "hpfs"),
-        i18nc("@item filesystem name", "luks"),
-        i18nc("@item filesystem name", "ocfs2"),
-        i18nc("@item filesystem name", "zfs"),
-        i18nc("@item filesystem name", "exfat"),
-        i18nc("@item filesystem name", "nilfs2"),
-        i18nc("@item filesystem name", "lvm2 pv"),
-        i18nc("@item filesystem name", "f2fs"),
+        xi18nc("@item filesystem name", "ext2"),
+        xi18nc("@item filesystem name", "ext3"),
+        xi18nc("@item filesystem name", "ext4"),
+        xi18nc("@item filesystem name", "linuxswap"),
+        xi18nc("@item filesystem name", "fat16"),
+        xi18nc("@item filesystem name", "fat32"),
+        xi18nc("@item filesystem name", "ntfs"),
+        xi18nc("@item filesystem name", "reiser"),
+        xi18nc("@item filesystem name", "reiser4"),
+        xi18nc("@item filesystem name", "xfs"),
+        xi18nc("@item filesystem name", "jfs"),
+        xi18nc("@item filesystem name", "hfs"),
+        xi18nc("@item filesystem name", "hfsplus"),
+        xi18nc("@item filesystem name", "ufs"),
+        xi18nc("@item filesystem name", "unformatted"),
+        xi18nc("@item filesystem name", "btrfs"),
+        xi18nc("@item filesystem name", "hpfs"),
+        xi18nc("@item filesystem name", "luks"),
+        xi18nc("@item filesystem name", "ocfs2"),
+        xi18nc("@item filesystem name", "zfs"),
+        xi18nc("@item filesystem name", "exfat"),
+        xi18nc("@item filesystem name", "nilfs2"),
+        xi18nc("@item filesystem name", "lvm2 pv"),
+        xi18nc("@item filesystem name", "f2fs"),
     };
 
     return s;
@@ -375,13 +375,13 @@ QList<FileSystem::Type> FileSystem::types()
 /** @return printable menu title for mounting this FileSystem */
 QString FileSystem::mountTitle() const
 {
-    return i18nc("@title:menu", "Mount");
+    return xi18nc("@title:menu", "Mount");
 }
 
 /** @return printable menu title for unmounting this FileSystem */
 QString FileSystem::unmountTitle() const
 {
-    return i18nc("@title:menu", "Unmount");
+    return xi18nc("@title:menu", "Unmount");
 }
 
 /** Moves a FileSystem to a new start sector.

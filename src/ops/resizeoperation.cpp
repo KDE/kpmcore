@@ -152,23 +152,23 @@ bool ResizeOperation::execute(Report& parent)
         // they might temporarily be outside the extended partition and the backend would not let us do that.
         if (moveExtendedJob()) {
             if (!(rval = moveExtendedJob()->run(*report)))
-                report->line() << xi18nc("@info/plain", "Moving extended partition <filename>%1</filename> failed.", partition().deviceNode());
+                report->line() << xi18nc("@info:status", "Moving extended partition <filename>%1</filename> failed.", partition().deviceNode());
         } else {
             // We run all three methods. Any of them returns true if it has nothing to do.
             rval = shrink(*report) && move(*report) && grow(*report);
 
             if (rval) {
                 if (!(rval = checkResizedJob()->run(*report)))
-                    report->line() << xi18nc("@info/plain", "Checking partition <filename>%1</filename> after resize/move failed.", partition().deviceNode());
+                    report->line() << xi18nc("@info:status", "Checking partition <filename>%1</filename> after resize/move failed.", partition().deviceNode());
             } else
-                report->line() << xi18nc("@info/plain", "Resizing/moving partition <filename>%1</filename> failed.", partition().deviceNode());
+                report->line() << xi18nc("@info:status", "Resizing/moving partition <filename>%1</filename> failed.", partition().deviceNode());
         }
     } else
-        report->line() << xi18nc("@info/plain", "Checking partition <filename>%1</filename> before resize/move failed.", partition().deviceNode());
+        report->line() << xi18nc("@info:status", "Checking partition <filename>%1</filename> before resize/move failed.", partition().deviceNode());
 
     setStatus(rval ? StatusFinishedSuccess : StatusError);
 
-    report->setStatus(i18nc("@info/plain status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
+    report->setStatus(xi18nc("@info:status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
 
     return rval;
 }
@@ -194,35 +194,35 @@ QString ResizeOperation::description() const
 
     switch (resizeAction()) {
     case MoveLeft:
-        return xi18nc("@info/plain describe resize/move action", "Move partition <filename>%1</filename> to the left by %2", partition().deviceNode(), moveDelta);
+        return xi18nc("@info:status describe resize/move action", "Move partition <filename>%1</filename> to the left by %2", partition().deviceNode(), moveDelta);
 
     case MoveRight:
-        return xi18nc("@info/plain describe resize/move action", "Move partition <filename>%1</filename> to the right by %2", partition().deviceNode(), moveDelta);
+        return xi18nc("@info:status describe resize/move action", "Move partition <filename>%1</filename> to the right by %2", partition().deviceNode(), moveDelta);
 
     case Grow:
-        return xi18nc("@info/plain describe resize/move action", "Grow partition <filename>%1</filename> from %2 to %3", partition().deviceNode(), origCapacity, newCapacity);
+        return xi18nc("@info:status describe resize/move action", "Grow partition <filename>%1</filename> from %2 to %3", partition().deviceNode(), origCapacity, newCapacity);
 
     case Shrink:
-        return xi18nc("@info/plain describe resize/move action", "Shrink partition <filename>%1</filename> from %2 to %3", partition().deviceNode(), origCapacity, newCapacity);
+        return xi18nc("@info:status describe resize/move action", "Shrink partition <filename>%1</filename> from %2 to %3", partition().deviceNode(), origCapacity, newCapacity);
 
     case MoveLeftGrow:
-        return xi18nc("@info/plain describe resize/move action", "Move partition <filename>%1</filename> to the left by %2 and grow it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
+        return xi18nc("@info:status describe resize/move action", "Move partition <filename>%1</filename> to the left by %2 and grow it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
 
     case MoveRightGrow:
-        return xi18nc("@info/plain describe resize/move action", "Move partition <filename>%1</filename> to the right by %2 and grow it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
+        return xi18nc("@info:status describe resize/move action", "Move partition <filename>%1</filename> to the right by %2 and grow it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
 
     case MoveLeftShrink:
-        return xi18nc("@info/plain describe resize/move action", "Move partition <filename>%1</filename> to the left by %2 and shrink it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
+        return xi18nc("@info:status describe resize/move action", "Move partition <filename>%1</filename> to the left by %2 and shrink it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
 
     case MoveRightShrink:
-        return xi18nc("@info/plain describe resize/move action", "Move partition <filename>%1</filename> to the right by %2 and shrink it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
+        return xi18nc("@info:status describe resize/move action", "Move partition <filename>%1</filename> to the right by %2 and shrink it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
 
     default:
         qWarning() << "Could not determine what to do with partition " << partition().deviceNode() << ".";
         break;
     }
 
-    return i18nc("@info/plain describe resize/move action", "Unknown resize/move action.");
+    return xi18nc("@info:status describe resize/move action", "Unknown resize/move action.");
 }
 
 ResizeOperation::ResizeAction ResizeOperation::resizeAction() const
@@ -251,12 +251,12 @@ ResizeOperation::ResizeAction ResizeOperation::resizeAction() const
 bool ResizeOperation::shrink(Report& report)
 {
     if (shrinkResizeJob() && !shrinkResizeJob()->run(report)) {
-        report.line() << xi18nc("@info/plain", "Resize/move failed: Could not resize file system to shrink partition <filename>%1</filename>.", partition().deviceNode());
+        report.line() << xi18nc("@info:status", "Resize/move failed: Could not resize file system to shrink partition <filename>%1</filename>.", partition().deviceNode());
         return false;
     }
 
     if (shrinkSetGeomJob() && !shrinkSetGeomJob()->run(report)) {
-        report.line() << xi18nc("@info/plain", "Resize/move failed: Could not shrink partition <filename>%1</filename>.", partition().deviceNode());
+        report.line() << xi18nc("@info:status", "Resize/move failed: Could not shrink partition <filename>%1</filename>.", partition().deviceNode());
         return false;
 
         /** @todo if this fails, no one undoes the shrinking of the file system above, because we
@@ -275,16 +275,16 @@ bool ResizeOperation::move(Report& report)
     // back to its original position if copyBlocks fails.
     const qint64 oldStart = partition().firstSector();
     if (moveSetGeomJob() && !moveSetGeomJob()->run(report)) {
-        report.line() << xi18nc("@info/plain", "Moving partition <filename>%1</filename> failed.", partition().deviceNode());
+        report.line() << xi18nc("@info:status", "Moving partition <filename>%1</filename> failed.", partition().deviceNode());
         return false;
     }
 
     if (moveFileSystemJob() && !moveFileSystemJob()->run(report)) {
-        report.line() << xi18nc("@info/plain", "Moving the filesystem for partition <filename>%1</filename> failed. Rolling back.", partition().deviceNode());
+        report.line() << xi18nc("@info:status", "Moving the filesystem for partition <filename>%1</filename> failed. Rolling back.", partition().deviceNode());
 
         // see above: We now have to move back the partition itself.
         if (!SetPartGeometryJob(targetDevice(), partition(), oldStart, partition().length()).run(report))
-            report.line() << xi18nc("@info/plain", "Moving back partition <filename>%1</filename> to its original position failed.", partition().deviceNode());
+            report.line() << xi18nc("@info:status", "Moving back partition <filename>%1</filename> to its original position failed.", partition().deviceNode());
 
         return false;
     }
@@ -297,15 +297,15 @@ bool ResizeOperation::grow(Report& report)
     const qint64 oldLength = partition().length();
 
     if (growSetGeomJob() && !growSetGeomJob()->run(report)) {
-        report.line() << xi18nc("@info/plain", "Resize/move failed: Could not grow partition <filename>%1</filename>.", partition().deviceNode());
+        report.line() << xi18nc("@info:status", "Resize/move failed: Could not grow partition <filename>%1</filename>.", partition().deviceNode());
         return false;
     }
 
     if (growResizeJob() && !growResizeJob()->run(report)) {
-        report.line() << xi18nc("@info/plain", "Resize/move failed: Could not resize the file system on partition <filename>%1</filename>", partition().deviceNode());
+        report.line() << xi18nc("@info:status", "Resize/move failed: Could not resize the file system on partition <filename>%1</filename>", partition().deviceNode());
 
         if (!SetPartGeometryJob(targetDevice(), partition(), partition().firstSector(), oldLength).run(report))
-            report.line() << xi18nc("@info/plain", "Could not restore old partition size for partition <filename>%1</filename>.", partition().deviceNode());
+            report.line() << xi18nc("@info:status", "Could not restore old partition size for partition <filename>%1</filename>.", partition().deviceNode());
 
         return false;
     }

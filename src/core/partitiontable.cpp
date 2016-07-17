@@ -151,41 +151,41 @@ QString PartitionTable::flagName(Flag f)
 {
     switch (f) {
     case PartitionTable::FlagBoot:
-        return i18nc("@item partition flag", "boot");
+        return xi18nc("@item partition flag", "boot");
     case PartitionTable::FlagRoot:
-        return i18nc("@item partition flag", "root");
+        return xi18nc("@item partition flag", "root");
     case PartitionTable::FlagSwap:
-        return i18nc("@item partition flag", "swap");
+        return xi18nc("@item partition flag", "swap");
     case PartitionTable::FlagHidden:
-        return i18nc("@item partition flag", "hidden");
+        return xi18nc("@item partition flag", "hidden");
     case PartitionTable::FlagRaid:
-        return i18nc("@item partition flag", "raid");
+        return xi18nc("@item partition flag", "raid");
     case PartitionTable::FlagLvm:
-        return i18nc("@item partition flag", "lvm");
+        return xi18nc("@item partition flag", "lvm");
     case PartitionTable::FlagLba:
-        return i18nc("@item partition flag", "lba");
+        return xi18nc("@item partition flag", "lba");
     case PartitionTable::FlagHpService:
-        return i18nc("@item partition flag", "hpservice");
+        return xi18nc("@item partition flag", "hpservice");
     case PartitionTable::FlagPalo:
-        return i18nc("@item partition flag", "palo");
+        return xi18nc("@item partition flag", "palo");
     case PartitionTable::FlagPrep:
-        return i18nc("@item partition flag", "prep");
+        return xi18nc("@item partition flag", "prep");
     case PartitionTable::FlagMsftReserved:
-        return i18nc("@item partition flag", "msft-reserved");
+        return xi18nc("@item partition flag", "msft-reserved");
     case PartitionTable::FlagBiosGrub:
-        return i18nc("@item partition flag", "bios-grub");
+        return xi18nc("@item partition flag", "bios-grub");
     case PartitionTable::FlagAppleTvRecovery:
-        return i18nc("@item partition flag", "apple-tv-recovery");
+        return xi18nc("@item partition flag", "apple-tv-recovery");
     case PartitionTable::FlagDiag:
-        return i18nc("@item partition flag", "diag");
+        return xi18nc("@item partition flag", "diag");
     case PartitionTable::FlagLegacyBoot:
-        return i18nc("@item partition flag", "legacy-boot");
+        return xi18nc("@item partition flag", "legacy-boot");
     case PartitionTable::FlagMsftData:
-        return i18nc("@item partition flag", "msft-data");
+        return xi18nc("@item partition flag", "msft-data");
     case PartitionTable::FlagIrst:
-        return i18nc("@item partition flag", "irst");
+        return xi18nc("@item partition flag", "irst");
     case PartitionTable::FlagEsp:
-        return i18nc("@item partition flag", "esp");
+        return xi18nc("@item partition flag", "esp");
     default:
         break;
     }
@@ -416,7 +416,7 @@ QString PartitionTable::tableTypeToName(TableType l)
         if (l == tableTypes[i].type)
             return tableTypes[i].name;
 
-    return i18nc("@item partition table name", "unknown");
+    return xi18nc("@item partition table name", "unknown");
 }
 
 qint64 PartitionTable::maxPrimariesForTableType(TableType l)

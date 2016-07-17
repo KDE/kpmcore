@@ -90,9 +90,9 @@ void DeleteOperation::undo()
 QString DeleteOperation::description() const
 {
     if (shredAction() != NoShred)
-        return xi18nc("@info/plain", "Shred partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
+        return xi18nc("@info:status", "Shred partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
     else
-        return xi18nc("@info/plain", "Delete partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
+        return xi18nc("@info:status", "Delete partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
 }
 
 void DeleteOperation::checkAdjustLogicalNumbers(Partition& p, bool undo)

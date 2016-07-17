@@ -106,7 +106,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
 
     // -- 1 --
     if (pushedDeleteOp && &newOp->newPartition() == &pushedDeleteOp->deletedPartition() && !pushedDeleteOp->deletedPartition().roles().has(PartitionRole::Extended)) {
-        Log() << i18nc("@info/plain", "Deleting a partition just created: Undoing the operation to create the partition.");
+        Log() << xi18nc("@info:status", "Deleting a partition just created: Undoing the operation to create the partition.");
 
         delete pushedOp;
         pushedOp = nullptr;
@@ -124,7 +124,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
         // a resizeop is added to the stack. Next, the user deletes the child. Then he resizes the
         // extended again (a second resize): The ResizeOp still has the pointer to the original extended that
         // will now be deleted.
-        Log() << i18nc("@info/plain", "Resizing a partition just created: Updating start and end in existing operation.");
+        Log() << xi18nc("@info:status", "Resizing a partition just created: Updating start and end in existing operation.");
 
         Partition* newPartition = new Partition(newOp->newPartition());
         newPartition->setFirstSector(pushedResizeOp->newFirstSector());
@@ -144,7 +144,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
 
     // -- 3 --
     if (pushedCopyOp && &newOp->newPartition() == &pushedCopyOp->sourcePartition()) {
-        Log() << i18nc("@info/plain", "Copying a new partition: Creating a new partition instead.");
+        Log() << xi18nc("@info:status", "Copying a new partition: Creating a new partition instead.");
 
         Partition* newPartition = new Partition(newOp->newPartition());
         newPartition->setFirstSector(pushedCopyOp->copiedPartition().firstSector());
@@ -161,7 +161,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
 
     // -- 4 --
     if (pushedLabelOp && &newOp->newPartition() == &pushedLabelOp->labeledPartition()) {
-        Log() << i18nc("@info/plain", "Changing label for a new partition: No new operation required.");
+        Log() << xi18nc("@info:status", "Changing label for a new partition: No new operation required.");
 
         newOp->setLabelJob()->setLabel(pushedLabelOp->newLabel());
         newOp->newPartition().fileSystem().setLabel(pushedLabelOp->newLabel());
@@ -174,7 +174,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
 
     // -- 5 --
     if (pushedCreateFileSystemOp && &newOp->newPartition() == &pushedCreateFileSystemOp->partition()) {
-        Log() << i18nc("@info/plain", "Changing file system for a new partition: No new operation required.");
+        Log() << xi18nc("@info:status", "Changing file system for a new partition: No new operation required.");
 
         FileSystem* oldFs = &newOp->newPartition().fileSystem();
 
@@ -191,7 +191,7 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
 
     // -- 6 --
     if (pushedCheckOp && &newOp->newPartition() == &pushedCheckOp->checkedPartition()) {
-        Log() << i18nc("@info/plain", "Checking file systems is automatically done when creating them: No new operation required.");
+        Log() << xi18nc("@info:status", "Checking file systems is automatically done when creating them: No new operation required.");
 
         delete pushedOp;
         pushedOp = nullptr;
@@ -238,12 +238,12 @@ bool OperationStack::mergeCopyOperation(Operation*& currentOp, Operation*& pushe
         // If the copy operation didn't overwrite, but create a new partition, just remove the
         // copy operation, forget the delete and be done.
         if (copyOp->overwrittenPartition() == nullptr) {
-            Log() << i18nc("@info/plain", "Deleting a partition just copied: Removing the copy.");
+            Log() << xi18nc("@info:status", "Deleting a partition just copied: Removing the copy.");
 
             delete pushedOp;
             pushedOp = nullptr;
         } else {
-            Log() << i18nc("@info/plain", "Deleting a partition just copied over an existing partition: Removing the copy and deleting the existing partition.");
+            Log() << xi18nc("@info:status", "Deleting a partition just copied over an existing partition: Removing the copy and deleting the existing partition.");
 
             pushedDeleteOp->setDeletedPartition(copyOp->overwrittenPartition());
         }
@@ -256,7 +256,7 @@ bool OperationStack::mergeCopyOperation(Operation*& currentOp, Operation*& pushe
 
     // -- 2 --
     if (pushedCopyOp && &copyOp->copiedPartition() == &pushedCopyOp->sourcePartition()) {
-        Log() << i18nc("@info/plain", "Copying a partition that is itself a copy: Copying the original source partition instead.");
+        Log() << xi18nc("@info:status", "Copying a partition that is itself a copy: Copying the original source partition instead.");
 
         pushedCopyOp->setSourcePartition(&copyOp->sourcePartition());
     }
@@ -285,12 +285,12 @@ bool OperationStack::mergeRestoreOperation(Operation*& currentOp, Operation*& pu
 
     if (pushedDeleteOp && &restoreOp->restorePartition() == &pushedDeleteOp->deletedPartition()) {
         if (restoreOp->overwrittenPartition() == nullptr) {
-            Log() << i18nc("@info/plain", "Deleting a partition just restored: Removing the restore operation.");
+            Log() << xi18nc("@info:status", "Deleting a partition just restored: Removing the restore operation.");
 
             delete pushedOp;
             pushedOp = nullptr;
         } else {
-            Log() << i18nc("@info/plain", "Deleting a partition just restored to an existing partition: Removing the restore operation and deleting the existing partition.");
+            Log() << xi18nc("@info:status", "Deleting a partition just restored to an existing partition: Removing the restore operation and deleting the existing partition.");
 
             pushedDeleteOp->setDeletedPartition(restoreOp->overwrittenPartition());
         }
@@ -323,7 +323,7 @@ bool OperationStack::mergePartFlagsOperation(Operation*& currentOp, Operation*& 
     SetPartFlagsOperation* pushedFlagsOp = dynamic_cast<SetPartFlagsOperation*>(pushedOp);
 
     if (pushedFlagsOp && &partFlagsOp->flagPartition() == &pushedFlagsOp->flagPartition()) {
-        Log() << i18nc("@info/plain", "Changing flags again for the same partition: Removing old operation.");
+        Log() << xi18nc("@info:status", "Changing flags again for the same partition: Removing old operation.");
 
         pushedFlagsOp->setOldFlags(partFlagsOp->oldFlags());
         partFlagsOp->undo();
@@ -354,7 +354,7 @@ bool OperationStack::mergePartLabelOperation(Operation*& currentOp, Operation*& 
     SetFileSystemLabelOperation* pushedLabelOp = dynamic_cast<SetFileSystemLabelOperation*>(pushedOp);
 
     if (pushedLabelOp && &partLabelOp->labeledPartition() == &pushedLabelOp->labeledPartition()) {
-        Log() << i18nc("@info/plain", "Changing label again for the same partition: Removing old operation.");
+        Log() << xi18nc("@info:status", "Changing label again for the same partition: Removing old operation.");
 
         pushedLabelOp->setOldLabel(partLabelOp->oldLabel());
         partLabelOp->undo();
@@ -380,7 +380,7 @@ bool OperationStack::mergeCreatePartitionTableOperation(Operation*& currentOp, O
     CreatePartitionTableOperation* pushedCreatePartitionTableOp = dynamic_cast<CreatePartitionTableOperation*>(pushedOp);
 
     if (pushedCreatePartitionTableOp && currentOp->targets(pushedCreatePartitionTableOp->targetDevice())) {
-        Log() << i18nc("@info/plain", "Creating new partition table, discarding previous operation on device.");
+        Log() << xi18nc("@info:status", "Creating new partition table, discarding previous operation on device.");
 
         CreatePartitionTableOperation* createPartitionTableOp = dynamic_cast<CreatePartitionTableOperation*>(currentOp);
         if (createPartitionTableOp != nullptr)
@@ -429,7 +429,7 @@ void OperationStack::push(Operation* o)
     }
 
     if (o != nullptr) {
-        Log() << i18nc("@info/plain", "Add operation: %1", o->description());
+        Log() << xi18nc("@info:status", "Add operation: %1", o->description());
         operations().append(o);
         o->preview();
         o->setStatus(Operation::StatusPending);

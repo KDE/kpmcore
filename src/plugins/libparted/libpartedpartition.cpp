@@ -37,7 +37,7 @@ bool LibPartedPartition::setFlag(Report& report, PartitionTable::Flag partitionM
 
     // ignore flags that don't exist for this partition
     if (!ped_partition_is_flag_available(pedPartition(), f)) {
-        report.line() << i18nc("@info/plain", "The flag \"%1\" is not available on the partition's partition table.", PartitionTable::flagName(partitionManagerFlag));
+        report.line() << xi18nc("@info:progress", "The flag \"%1\" is not available on the partition's partition table.", PartitionTable::flagName(partitionManagerFlag));
         return true;
     }
 

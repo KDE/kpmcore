@@ -51,20 +51,20 @@ QString SmartAttribute::assessmentToString(Assessment a)
 {
     switch (a) {
     case Failing:
-        return i18nc("@item:intable", "failing");
+        return xi18nc("@item:intable", "failing");
 
     case HasFailed:
-        return i18nc("@item:intable", "has failed");
+        return xi18nc("@item:intable", "has failed");
 
     case Warning:
-        return i18nc("@item:intable", "warning");
+        return xi18nc("@item:intable", "warning");
 
     case Good:
-        return i18nc("@item:intable", "good");
+        return xi18nc("@item:intable", "good");
 
     case NotApplicable:
     default:
-        return i18nc("@item:intable not applicable", "N/A");
+        return xi18nc("@item:intable not applicable", "N/A");
     }
 }
 
@@ -78,7 +78,7 @@ static QString getPrettyValue(qint64 value, qint64 unit)
         break;
 
     case SK_SMART_ATTRIBUTE_UNIT_SECTORS:
-        rval = i18ncp("@item:intable", "%1 sector", "%1 sectors", value);
+        rval = xi18ncp("@item:intable", "%1 sector", "%1 sectors", value);
         break;
 
     case SK_SMART_ATTRIBUTE_UNIT_MKELVIN:
@@ -91,7 +91,7 @@ static QString getPrettyValue(qint64 value, qint64 unit)
 
     case SK_SMART_ATTRIBUTE_UNIT_UNKNOWN:
     default:
-        rval = i18nc("@item:intable not applicable", "N/A");
+        rval = xi18nc("@item:intable not applicable", "N/A");
         break;
     }
 

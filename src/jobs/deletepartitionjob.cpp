@@ -65,18 +65,18 @@ bool DeletePartitionJob::run(Report& parent)
             rval = backendPartitionTable->deletePartition(*report, partition());
 
             if (!rval)
-                report->line() << xi18nc("@info/plain", "Could not delete partition <filename>%1</filename>.", partition().deviceNode());
+                report->line() << xi18nc("@info:progress", "Could not delete partition <filename>%1</filename>.", partition().deviceNode());
             else
                 backendPartitionTable->commit();
 
             delete backendPartitionTable;
 
         } else
-            report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to delete partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+            report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to delete partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
         delete backendDevice;
     } else
-        report->line() << xi18nc("@info/plain", "Deleting partition failed: Could not open device <filename>%1</filename>.", device().deviceNode());
+        report->line() << xi18nc("@info:progress", "Deleting partition failed: Could not open device <filename>%1</filename>.", device().deviceNode());
 
     jobFinished(*report, rval);
 
@@ -85,5 +85,5 @@ bool DeletePartitionJob::run(Report& parent)
 
 QString DeletePartitionJob::description() const
 {
-    return xi18nc("@info/plain", "Delete the partition <filename>%1</filename>", partition().deviceNode());
+    return xi18nc("@info:progress", "Delete the partition <filename>%1</filename>", partition().deviceNode());
 }

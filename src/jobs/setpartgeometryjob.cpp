@@ -73,7 +73,7 @@ bool SetPartGeometryJob::run(Report& parent)
 
         delete backendDevice;
     } else
-        report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> while trying to resize/move partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+        report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> while trying to resize/move partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
     jobFinished(*report, rval);
 
@@ -82,5 +82,5 @@ bool SetPartGeometryJob::run(Report& parent)
 
 QString SetPartGeometryJob::description() const
 {
-    return xi18nc("@info/plain", "Set geometry of partition <filename>%1</filename>: Start sector: %2, length: %3", partition().deviceNode(), newStart(), newLength());
+    return xi18nc("@info:progress", "Set geometry of partition <filename>%1</filename>: Start sector: %2, length: %3", partition().deviceNode(), newStart(), newLength());
 }

@@ -106,7 +106,7 @@ void NewOperation::undo()
 
 QString NewOperation::description() const
 {
-    return xi18nc("@info/plain", "Create a new partition (%1, %2) on <filename>%3</filename>", Capacity::formatByteSize(newPartition().capacity()), newPartition().fileSystem().name(), targetDevice().deviceNode());
+    return xi18nc("@info:status", "Create a new partition (%1, %2) on <filename>%3</filename>", Capacity::formatByteSize(newPartition().capacity()), newPartition().fileSystem().name(), targetDevice().deviceNode());
 }
 
 /** Can a Partition be created somewhere?

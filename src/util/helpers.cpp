@@ -44,7 +44,7 @@ bool caseInsensitiveLessThan(const QString& s1, const QString& s2)
 
 void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree)
 {
-    QMenu headerMenu(i18nc("@title:menu", "Columns"));
+    QMenu headerMenu(xi18nc("@title:menu", "Columns"));
 
     QHeaderView* header = tree.header();
 

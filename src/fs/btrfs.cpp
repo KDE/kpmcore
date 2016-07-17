@@ -136,7 +136,7 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
 {
     QTemporaryDir tempDir;
     if (!tempDir.isValid()) {
-        report.line() << xi18nc("@info/plain", "Resizing Btrfs file system on partition <filename>%1</filename> failed: Could not create temp dir.", deviceNode);
+        report.line() << xi18nc("@info:progress", "Resizing Btrfs file system on partition <filename>%1</filename> failed: Could not create temp dir.", deviceNode);
         return false;
     }
 
@@ -152,14 +152,14 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
         if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
             rval = true;
         else
-            report.line() << xi18nc("@info/plain", "Resizing Btrfs file system on partition <filename>%1</filename> failed: btrfs file system resize failed.", deviceNode);
+            report.line() << xi18nc("@info:progress", "Resizing Btrfs file system on partition <filename>%1</filename> failed: btrfs file system resize failed.", deviceNode);
 
         ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1) && unmountCmd.exitCode() == 0)
-            report.line() << xi18nc("@info/plain", "Warning: Resizing Btrfs file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
+            report.line() << xi18nc("@info:progress", "Warning: Resizing Btrfs file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
     } else
-        report.line() << xi18nc("@info/plain", "Resizing Btrfs file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
+        report.line() << xi18nc("@info:progress", "Resizing Btrfs file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
 
     return rval;
 }

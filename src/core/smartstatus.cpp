@@ -196,42 +196,42 @@ QString SmartStatus::tempToString(qint64 mkelvin)
 {
     const double celsius = (mkelvin - 273150.0) / 1000.0;
     const double fahrenheit = 9.0 * celsius / 5.0 + 32;
-    return i18nc("@item:intable degrees in Celsius and Fahrenheit", "%1° C / %2° F", QLocale().toString(celsius, 1), QLocale().toString(fahrenheit, 1));
+    return xi18nc("@item:intable degrees in Celsius and Fahrenheit", "%1° C / %2° F", QLocale().toString(celsius, 1), QLocale().toString(fahrenheit, 1));
 }
 
 QString SmartStatus::selfTestStatusToString(SmartStatus::SelfTestStatus s)
 {
     switch (s) {
     case Aborted:
-        return i18nc("@item", "Aborted");
+        return xi18nc("@item", "Aborted");
 
     case Interrupted:
-        return i18nc("@item", "Interrupted");
+        return xi18nc("@item", "Interrupted");
 
     case Fatal:
-        return i18nc("@item", "Fatal error");
+        return xi18nc("@item", "Fatal error");
 
     case ErrorUnknown:
-        return i18nc("@item", "Unknown error");
+        return xi18nc("@item", "Unknown error");
 
     case ErrorEletrical:
-        return i18nc("@item", "Electrical error");
+        return xi18nc("@item", "Electrical error");
 
     case ErrorServo:
-        return i18nc("@item", "Servo error");
+        return xi18nc("@item", "Servo error");
 
     case ErrorRead:
-        return i18nc("@item", "Read error");
+        return xi18nc("@item", "Read error");
 
     case ErrorHandling:
-        return i18nc("@item", "Handling error");
+        return xi18nc("@item", "Handling error");
 
     case InProgress:
-        return i18nc("@item", "Self test in progress");
+        return xi18nc("@item", "Self test in progress");
 
     case Success:
     default:
-        return i18nc("@item", "Success");
+        return xi18nc("@item", "Success");
     }
 
 }
@@ -240,23 +240,23 @@ QString SmartStatus::overallAssessmentToString(Overall o)
 {
     switch (o) {
     case Good:
-        return i18nc("@item", "Healthy");
+        return xi18nc("@item", "Healthy");
 
     case BadPast:
-        return i18nc("@item", "Has been used outside of its design parameters in the past.");
+        return xi18nc("@item", "Has been used outside of its design parameters in the past.");
 
     case BadSectors:
-        return i18nc("@item", "Has some bad sectors.");
+        return xi18nc("@item", "Has some bad sectors.");
 
     case BadNow:
-        return i18nc("@item", "Is being used outside of its design parameters right now.");
+        return xi18nc("@item", "Is being used outside of its design parameters right now.");
 
     case BadSectorsMany:
-        return i18nc("@item", "Has many bad sectors.");
+        return xi18nc("@item", "Has many bad sectors.");
 
     case Bad:
     default:
-        return i18nc("@item", "Disk failure is imminent. Backup all data!");
+        return xi18nc("@item", "Disk failure is imminent. Backup all data!");
     }
 
 }

@@ -125,12 +125,12 @@ bool linuxswap::writeLabel(Report& report, const QString& deviceNode, const QStr
 
 QString linuxswap::mountTitle() const
 {
-    return i18nc("@title:menu", "Activate swap");
+    return xi18nc("@title:menu", "Activate swap");
 }
 
 QString linuxswap::unmountTitle() const
 {
-    return i18nc("@title:menu", "Deactivate swap");
+    return xi18nc("@title:menu", "Deactivate swap");
 }
 
 bool linuxswap::canMount(const QString& deviceNode, const QString& mountPoint) const {

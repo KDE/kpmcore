@@ -109,19 +109,19 @@ qint64 Capacity::unitFactor(Unit from, Unit to)
 QString Capacity::unitName(Unit u, qint64 val)
 {
     static QString unitNames[] = {
-        i18ncp("@info/plain unit", "Byte", "Bytes", val),
-        i18nc("@info/plain unit", "KiB"),
-        i18nc("@info/plain unit", "MiB"),
-        i18nc("@info/plain unit", "GiB"),
-        i18nc("@info/plain unit", "TiB"),
-        i18nc("@info/plain unit", "PiB"),
-        i18nc("@info/plain unit", "EiB"),
-        i18nc("@info/plain unit", "ZiB"),
-        i18nc("@info/plain unit", "YiB")
+        xi18ncp("@item:intext unit", "Byte", "Bytes", val),
+        xi18nc("@item:intext unit", "KiB"),
+        xi18nc("@item:intext unit", "MiB"),
+        xi18nc("@item:intext unit", "GiB"),
+        xi18nc("@item:intext unit", "TiB"),
+        xi18nc("@item:intext unit", "PiB"),
+        xi18nc("@item:intext unit", "EiB"),
+        xi18nc("@item:intext unit", "ZiB"),
+        xi18nc("@item:intext unit", "YiB")
     };
 
     if (static_cast<quint32>(u) >= sizeof(unitNames) / sizeof(unitNames[0]))
-        return i18nc("@info/plain unit", "(unknown unit)");
+        return xi18nc("@item:intext unit", "(unknown unit)");
 
     return unitNames[u];
 }

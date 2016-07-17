@@ -63,15 +63,15 @@ bool CreatePartitionJob::run(Report& parent)
                 partition().setState(Partition::StateNone);
                 backendPartitionTable->commit();
             } else
-                report->line() << xi18nc("@info/plain", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
+                report->line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
 
             delete backendPartitionTable;
         } else
-            report->line() << xi18nc("@info/plain", "Could not open partition table on device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+            report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
         delete backendDevice;
     } else
-        report->line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+        report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
     jobFinished(*report, rval);
 
@@ -81,7 +81,7 @@ bool CreatePartitionJob::run(Report& parent)
 QString CreatePartitionJob::description() const
 {
     if (partition().number() > 0)
-        return xi18nc("@info/plain", "Create new partition <filename>%1</filename>", partition().deviceNode());
+        return xi18nc("@info:progress", "Create new partition <filename>%1</filename>", partition().deviceNode());
 
-    return xi18nc("@info/plain", "Create new partition on device <filename>%1</filename>", device().deviceNode());
+    return xi18nc("@info:progress", "Create new partition on device <filename>%1</filename>", device().deviceNode());
 }

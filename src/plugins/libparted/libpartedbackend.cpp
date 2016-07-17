@@ -86,7 +86,7 @@ static QString s_lastPartedExceptionMessage;
 */
 static PedExceptionOption pedExceptionHandler(PedException* e)
 {
-    Log(Log::error) << i18nc("@info/plain", "LibParted Exception: %1", QString::fromLocal8Bit(e->message));
+    Log(Log::error) << xi18nc("@info:status", "LibParted Exception: %1", QString::fromLocal8Bit(e->message));
     s_lastPartedExceptionMessage = QString::fromLocal8Bit(e->message);
     return PED_EXCEPTION_UNHANDLED;
 }
@@ -433,11 +433,11 @@ Device* LibPartedBackend::scanDevice(const QString& device_node)
     PedDevice* pedDevice = ped_device_get(device_node.toLocal8Bit().constData());
 
     if (pedDevice == nullptr) {
-        Log(Log::warning) << xi18nc("@info/plain", "Could not access device <filename>%1</filename>", device_node);
+        Log(Log::warning) << xi18nc("@info:status", "Could not access device <filename>%1</filename>", device_node);
         return nullptr;
     }
 
-    Log(Log::information) << i18nc("@info/plain", "Device found: %1", QString::fromUtf8(pedDevice->model));
+    Log(Log::information) << xi18nc("@info:status", "Device found: %1", QString::fromUtf8(pedDevice->model));
 
     Device* d = new Device(QString::fromUtf8(pedDevice->model), QString::fromUtf8(pedDevice->path), pedDevice->bios_geom.heads, pedDevice->bios_geom.sectors, pedDevice->bios_geom.cylinders, pedDevice->sector_size);
 

@@ -57,7 +57,7 @@ bool CheckOperation::targets(const Partition& p) const
 
 QString CheckOperation::description() const
 {
-    return xi18nc("@info/plain", "Check and repair partition <filename>%1</filename> (%2, %3)", checkedPartition().deviceNode(), Capacity::formatByteSize(checkedPartition().capacity()), checkedPartition().fileSystem().name());
+    return xi18nc("@info:status", "Check and repair partition <filename>%1</filename> (%2, %3)", checkedPartition().deviceNode(), Capacity::formatByteSize(checkedPartition().capacity()), checkedPartition().fileSystem().name());
 }
 
 /** Can a Partition be checked?

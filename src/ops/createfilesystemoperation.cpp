@@ -92,5 +92,5 @@ bool CreateFileSystemOperation::execute(Report& parent)
 
 QString CreateFileSystemOperation::description() const
 {
-    return xi18nc("@info/plain", "Create filesystem %1 on partition <filename>%2</filename>", newFileSystem()->name(), partition().deviceNode());
+    return xi18nc("@info:status", "Create filesystem %1 on partition <filename>%2</filename>", newFileSystem()->name(), partition().deviceNode());
 }

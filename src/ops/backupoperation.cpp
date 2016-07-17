@@ -46,7 +46,7 @@ BackupOperation::BackupOperation(Device& d, Partition& p, const QString& filenam
 
 QString BackupOperation::description() const
 {
-    return xi18nc("@info/plain", "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>", backupPartition().deviceNode(), Capacity::formatByteSize(backupPartition().capacity()), backupPartition().fileSystem().name(), fileName());
+    return xi18nc("@info:status", "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>", backupPartition().deviceNode(), Capacity::formatByteSize(backupPartition().capacity()), backupPartition().fileSystem().name(), fileName());
 }
 
 /** Can the given Partition be backed up?

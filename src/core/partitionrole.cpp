@@ -26,19 +26,19 @@
 QString PartitionRole::toString() const
 {
     if (roles() & Unallocated)
-        return i18nc("@item partition role", "unallocated");
+        return xi18nc("@item partition role", "unallocated");
 
     if (roles() & Logical)
-        return i18nc("@item partition role", "logical");
+        return xi18nc("@item partition role", "logical");
 
     if (roles() & Extended)
-        return i18nc("@item partition role", "extended");
+        return xi18nc("@item partition role", "extended");
 
     if (roles() & Primary)
-        return i18nc("@item partition role", "primary");
+        return xi18nc("@item partition role", "primary");
 
     if (roles() & Luks)
-        return i18nc("@item partition role", "LUKS");
+        return xi18nc("@item partition role", "LUKS");
 
-    return i18nc("@item partition role", "none");
+    return xi18nc("@item partition role", "none");
 }

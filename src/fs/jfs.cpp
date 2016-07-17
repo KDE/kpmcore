@@ -156,7 +156,7 @@ bool jfs::resize(Report& report, const QString& deviceNode, qint64) const
 {
     QTemporaryDir tempDir;
     if (!tempDir.isValid()) {
-        report.line() << xi18nc("@info/plain", "Resizing JFS file system on partition <filename>%1</filename> failed: Could not create temp dir.", deviceNode);
+        report.line() << xi18nc("@info:progress", "Resizing JFS file system on partition <filename>%1</filename> failed: Could not create temp dir.", deviceNode);
         return false;
     }
 
@@ -170,14 +170,14 @@ bool jfs::resize(Report& report, const QString& deviceNode, qint64) const
         if (resizeMountCmd.run(-1))
             rval = true;
         else
-            report.line() << xi18nc("@info/plain", "Resizing JFS file system on partition <filename>%1</filename> failed: Remount failed.", deviceNode);
+            report.line() << xi18nc("@info:progress", "Resizing JFS file system on partition <filename>%1</filename> failed: Remount failed.", deviceNode);
 
         ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1))
-            report.line() << xi18nc("@info/plain", "Warning: Resizing JFS file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
+            report.line() << xi18nc("@info:progress", "Warning: Resizing JFS file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
     } else
-        report.line() << xi18nc("@info/plain", "Resizing JFS file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
+        report.line() << xi18nc("@info:progress", "Resizing JFS file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
 
     return rval;
 }

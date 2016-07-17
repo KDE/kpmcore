@@ -68,12 +68,12 @@ bool ShredFileSystemJob::run(Report& parent)
         CopySourceShred copySource(partition().capacity(), copyTarget.sectorSize(), m_RandomShred);
 
         if (!copySource.open())
-            report->line() << i18nc("@info/plain", "Could not open random data source to overwrite file system.");
+            report->line() << xi18nc("@info:progress", "Could not open random data source to overwrite file system.");
         else if (!copyTarget.open())
-            report->line() << xi18nc("@info/plain", "Could not open target partition <filename>%1</filename> to restore to.", partition().deviceNode());
+            report->line() << xi18nc("@info:progress", "Could not open target partition <filename>%1</filename> to restore to.", partition().deviceNode());
         else {
             rval = copyBlocks(*report, copyTarget, copySource);
-            report->line() << i18nc("@info/plain", "Closing device. This may take a few seconds.");
+            report->line() << i18nc("@info:progress", "Closing device. This may take a few seconds.");
         }
     }
 
@@ -84,5 +84,5 @@ bool ShredFileSystemJob::run(Report& parent)
 
 QString ShredFileSystemJob::description() const
 {
-    return xi18nc("@info/plain", "Shred the file system on <filename>%1</filename>", partition().deviceNode());
+    return xi18nc("@info:progress", "Shred the file system on <filename>%1</filename>", partition().deviceNode());
 }

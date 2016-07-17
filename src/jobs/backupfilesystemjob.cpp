@@ -60,9 +60,9 @@ bool BackupFileSystemJob::run(Report& parent)
         CopyTargetFile copyTarget(fileName(), sourceDevice().logicalSectorSize());
 
         if (!copySource.open())
-            report->line() << xi18nc("@info/plain", "Could not open file system on source partition <filename>%1</filename> for backup.", sourcePartition().deviceNode());
+            report->line() << xi18nc("@info:progress", "Could not open file system on source partition <filename>%1</filename> for backup.", sourcePartition().deviceNode());
         else if (!copyTarget.open())
-            report->line() << xi18nc("@info/plain", "Could not create backup file <filename>%1</filename>.", fileName());
+            report->line() << xi18nc("@info:progress", "Could not create backup file <filename>%1</filename>.", fileName());
         else
             rval = copyBlocks(*report, copyTarget, copySource);
     }
@@ -74,5 +74,5 @@ bool BackupFileSystemJob::run(Report& parent)
 
 QString BackupFileSystemJob::description() const
 {
-    return xi18nc("@info/plain", "Back up file system on partition <filename>%1</filename> to <filename>%2</filename>", sourcePartition().deviceNode(), fileName());
+    return xi18nc("@info:progress", "Back up file system on partition <filename>%1</filename> to <filename>%2</filename>", sourcePartition().deviceNode(), fileName());
 }

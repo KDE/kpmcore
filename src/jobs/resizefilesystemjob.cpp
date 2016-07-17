@@ -70,17 +70,17 @@ bool ResizeFileSystemJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     if (partition().fileSystem().length() == newLength()) {
-        report->line() << xi18ncp("@info/plain", "The file system on partition <filename>%2</filename> already has the requested length of 1 sector.", "The file system on partition <filename>%2</filename> already has the requested length of %1 sectors.", newLength(), partition().deviceNode());
+        report->line() << xi18ncp("@info:progress", "The file system on partition <filename>%2</filename> already has the requested length of 1 sector.", "The file system on partition <filename>%2</filename> already has the requested length of %1 sectors.", newLength(), partition().deviceNode());
         rval = true;
     } else {
-        report->line() << i18nc("@info/plain", "Resizing file system from %1 to %2 sectors.", partition().fileSystem().length(), newLength());
+        report->line() << i18nc("@info:progress", "Resizing file system from %1 to %2 sectors.", partition().fileSystem().length(), newLength());
 
         FileSystem::CommandSupportType support = (newLength() < partition().fileSystem().length()) ? partition().fileSystem().supportShrink() : partition().fileSystem().supportGrow();
 
         switch (support) {
         case FileSystem::cmdSupportBackend: {
             Report* childReport = report->newChild();
-            childReport->line() << i18nc("@info/plain", "Resizing a %1 file system using internal backend functions.", partition().fileSystem().name());
+            childReport->line() << xi18nc("@info:progress", "Resizing a %1 file system using internal backend functions.", partition().fileSystem().name());
             rval = resizeFileSystemBackend(*childReport);
             break;
         }
@@ -92,7 +92,7 @@ bool ResizeFileSystemJob::run(Report& parent)
         }
 
         default:
-            report->line() << xi18nc("@info/plain", "The file system on partition <filename>%1</filename> cannot be resized because there is no support for it.", partition().deviceNode());
+            report->line() << xi18nc("@info:progress", "The file system on partition <filename>%1</filename> cannot be resized because there is no support for it.", partition().deviceNode());
             break;
         }
 
@@ -120,17 +120,17 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
             disconnect(CoreBackendManager::self()->backend(), &CoreBackend::progress, this, &ResizeFileSystemJob::progress);
 
             if (rval) {
-                report.line() << i18nc("@info/plain", "Successfully resized file system using internal backend functions.");
+                report.line() << xi18nc("@info:progress", "Successfully resized file system using internal backend functions.");
                 backendPartitionTable->commit();
             }
 
             delete backendPartitionTable;
         } else
-            report.line() << xi18nc("@info/plain", "Could not open partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
+            report.line() << xi18nc("@info:progress", "Could not open partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
 
         delete backendDevice;
     } else
-        report.line() << xi18nc("@info/plain", "Could not read geometry for partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
+        report.line() << xi18nc("@info:progress", "Could not read geometry for partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
 
     return rval;
 }
@@ -138,7 +138,7 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
 QString ResizeFileSystemJob::description() const
 {
     if (isMaximizing())
-        return xi18nc("@info/plain", "Maximize file system on <filename>%1</filename> to fill the partition", partition().deviceNode());
+        return xi18nc("@info:progress", "Maximize file system on <filename>%1</filename> to fill the partition", partition().deviceNode());
 
-    return xi18ncp("@info/plain", "Resize file system on partition <filename>%2</filename> to 1 sector", "Resize file system on partition <filename>%2</filename> to %1 sectors", newLength(), partition().deviceNode());
+    return xi18ncp("@info:progress", "Resize file system on partition <filename>%2</filename> to 1 sector", "Resize file system on partition <filename>%2</filename> to %1 sectors", newLength(), partition().deviceNode());
 }

@@ -43,7 +43,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
     /** @todo copyBlocks() assumes that source.sectorSize() == target.sectorSize(). */
 
     if (source.sectorSize() != target.sectorSize()) {
-        report.line() << i18nc("@info/plain", "The logical sector sizes in the source and target for copying are not the same. This is currently unsupported.");
+        report.line() << xi18nc("@info:progress", "The logical sector sizes in the source and target for copying are not the same. This is currently unsupported.");
         return false;
     }
 
@@ -61,7 +61,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
         copyDir = -1;
     }
 
-    report.line() << i18nc("@info/plain", "Copying %1 blocks (%2 sectors) from %3 to %4, direction: %5.", blocksToCopy, source.length(), readOffset, writeOffset, copyDir);
+    report.line() << xi18nc("@info:progress", "Copying %1 blocks (%2 sectors) from %3 to %4, direction: %5.", blocksToCopy, source.length(), readOffset, writeOffset, copyDir);
 
     qint64 blocksCopied = 0;
 
@@ -83,7 +83,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
             if (percent % 5 == 0 && t.elapsed() > 1000) {
                 const qint64 mibsPerSec = (blocksCopied * blockSize * source.sectorSize() / 1024 / 1024) / (t.elapsed() / 1000);
                 const qint64 estSecsLeft = (100 - percent) * t.elapsed() / percent / 1000;
-                report.line() << i18nc("@info/plain", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
+                report.line() << xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
             }
             emit progress(percent);
         }
@@ -98,7 +98,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
         const qint64 lastBlockReadOffset = copyDir > 0 ? readOffset + blockSize * blocksCopied : source.firstSector();
         const qint64 lastBlockWriteOffset = copyDir > 0 ? writeOffset + blockSize * blocksCopied : target.firstSector();
 
-        report.line() << i18nc("@info/plain", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
+        report.line() << xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
 
         rval = source.readSectors(buffer, lastBlockReadOffset, lastBlock);
 
@@ -111,7 +111,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
 
     free(buffer);
 
-    report.line() << i18ncp("@info/plain argument 2 is a string such as 7 sectors (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 sector", "%1 sectors", target.sectorsWritten()));
+    report.line() << xi18ncp("@info:progress argument 2 is a string such as 7 sectors (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 sector", "%1 sectors", target.sectorsWritten()));
 
     return rval;
 }
@@ -119,7 +119,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
 bool Job::rollbackCopyBlocks(Report& report, CopyTarget& origTarget, CopySource& origSource)
 {
     if (!origSource.overlaps(origTarget)) {
-        report.line() << i18nc("@info/plain", "Source and target for copying do not overlap: Rollback is not required.");
+        report.line() << xi18nc("@info:progress", "Source and target for copying do not overlap: Rollback is not required.");
         return true;
     }
 
@@ -143,24 +143,24 @@ bool Job::rollbackCopyBlocks(Report& report, CopyTarget& origTarget, CopySource&
             undoTargetLastSector = origSource.lastSector();
         }
 
-        report.line() << i18nc("@info/plain", "Rollback from: First sector: %1, last sector: %2.", undoSourceFirstSector, undoSourceLastSector);
-        report.line() << i18nc("@info/plain", "Rollback to: First sector: %1, last sector: %2.", undoTargetFirstSector, undoTargetLastSector);
+        report.line() << xi18nc("@info:progress", "Rollback from: First sector: %1, last sector: %2.", undoSourceFirstSector, undoSourceLastSector);
+        report.line() << xi18nc("@info:progress", "Rollback to: First sector: %1, last sector: %2.", undoTargetFirstSector, undoTargetLastSector);
 
         CopySourceDevice undoSource(ctd.device(), undoSourceFirstSector, undoSourceLastSector);
         if (!undoSource.open()) {
-            report.line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to rollback copying.", ctd.device().deviceNode());
+            report.line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to rollback copying.", ctd.device().deviceNode());
             return false;
         }
 
         CopyTargetDevice undoTarget(csd.device(), undoTargetFirstSector, undoTargetLastSector);
         if (!undoTarget.open()) {
-            report.line() << xi18nc("@info/plain", "Could not open device <filename>%1</filename> to rollback copying.", csd.device().deviceNode());
+            report.line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to rollback copying.", csd.device().deviceNode());
             return false;
         }
 
         return copyBlocks(report, undoTarget, undoSource);
     } catch (...) {
-        report.line() << i18nc("@info/plain", "Rollback failed: Source or target are not devices.");
+        report.line() << xi18nc("@info:progress", "Rollback failed: Source or target are not devices.");
     }
 
     return false;
@@ -175,7 +175,7 @@ Report* Job::jobStarted(Report& parent)
 {
     emit started();
 
-    return parent.newChild(i18nc("@info/plain", "Job: %1", description()));
+    return parent.newChild(xi18nc("@info:progress", "Job: %1", description()));
 }
 
 void Job::jobFinished(Report& report, bool b)
@@ -184,7 +184,7 @@ void Job::jobFinished(Report& report, bool b)
     emit progress(numSteps());
     emit finished();
 
-    report.setStatus(i18nc("@info/plain job status (error, warning, ...)", "%1: %2", description(), statusText()));
+    report.setStatus(xi18nc("@info:progress job status (error, warning, ...)", "%1: %2", description(), statusText()));
 }
 
 /** @return the Job's current status icon */
@@ -208,9 +208,9 @@ QIcon Job::statusIcon() const
 QString Job::statusText() const
 {
     static const QString s[] = {
-        i18nc("@info:progress job", "Pending"),
-        i18nc("@info:progress job", "Success"),
-        i18nc("@info:progress job", "Error")
+        xi18nc("@info:progress job", "Pending"),
+        xi18nc("@info:progress job", "Success"),
+        xi18nc("@info:progress job", "Error")
     };
 
     Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(s) / sizeof(s[0]));

@@ -70,12 +70,12 @@ void Operation::removePreviewPartition(Device& device, Partition& p)
 QString Operation::statusText() const
 {
     static const QString s[] = {
-        i18nc("@info:progress operation", "None"),
-        i18nc("@info:progress operation", "Pending"),
-        i18nc("@info:progress operation", "Running"),
-        i18nc("@info:progress operation", "Success"),
-        i18nc("@info:progress operation", "Warning"),
-        i18nc("@info:progress operation", "Error")
+        xi18nc("@info:progress operation", "None"),
+        xi18nc("@info:progress operation", "Pending"),
+        xi18nc("@info:progress operation", "Running"),
+        xi18nc("@info:progress operation", "Success"),
+        xi18nc("@info:progress operation", "Warning"),
+        xi18nc("@info:progress operation", "Error")
     };
 
     Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(s) / sizeof(s[0]));
@@ -168,7 +168,7 @@ bool Operation::execute(Report& parent)
 
     setStatus(rval ? StatusFinishedSuccess : StatusError);
 
-    report->setStatus(i18nc("@info/plain status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
+    report->setStatus(xi18nc("@info:status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
 
     return rval;
 }

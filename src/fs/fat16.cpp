@@ -131,7 +131,7 @@ qint64 fat16::readUsedCapacity(const QString& deviceNode) const
 
 bool fat16::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    report.line() << xi18nc("@info/plain", "Setting label for partition <filename>%1</filename> to %2", deviceNode, newLabel);
+    report.line() << xi18nc("@info:progress", "Setting label for partition <filename>%1</filename> to %2", deviceNode, newLabel);
 
     ExternalCommand cmd(report, QStringLiteral("fatlabel"), { deviceNode, newLabel });
     return cmd.run(-1) && cmd.exitCode() == 0;

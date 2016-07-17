@@ -148,7 +148,7 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
         pedType = PED_PARTITION_NORMAL;
 
     if (pedType == static_cast<int>(0xffffffff)) {
-        report.line() << xi18nc("@info/plain", "Unknown partition role for new partition <filename>%1</filename> (roles: %2)", partition.deviceNode(), partition.roles().toString());
+        report.line() << xi18nc("@info:progress", "Unknown partition role for new partition <filename>%1</filename> (roles: %2)", partition.deviceNode(), partition.roles().toString());
         return QString();
     }
 
@@ -157,7 +157,7 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
     PedPartition* pedPartition = ped_partition_new(pedDisk(), pedType, pedFsType, partition.firstSector(), partition.lastSector());
 
     if (pedPartition == nullptr) {
-        report.line() << xi18nc("@info/plain", "Failed to create new partition <filename>%1</filename>.", partition.deviceNode());
+        report.line() << xi18nc("@info:progress", "Failed to create new partition <filename>%1</filename>.", partition.deviceNode());
         return QString();
     }
 
@@ -169,7 +169,7 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
     ped_geometry_destroy(pedGeometry);
 
     if (pedConstraint == nullptr) {
-        report.line() << i18nc("@info/plain", "Failed to create a new partition: could not get geometry for constraint.");
+        report.line() << i18nc("@info:progress", "Failed to create a new partition: could not get geometry for constraint.");
         return QString();
     }
 
@@ -179,7 +179,7 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
         free(pedPath);
     }
     else {
-        report.line() << xi18nc("@info/plain", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), QString::fromUtf8(pedDisk()->dev->path));
+        report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), QString::fromUtf8(pedDisk()->dev->path));
         report.line() << LibPartedBackend::lastPartedExceptionMessage();
     }
 
@@ -202,9 +202,9 @@ bool LibPartedPartitionTable::deletePartition(Report& report, const Partition& p
         rval = ped_disk_delete_partition(pedDisk(), pedPartition);
 
         if (!rval)
-            report.line() << xi18nc("@info/plain", "Could not delete partition <filename>%1</filename>.", partition.deviceNode());
+            report.line() << xi18nc("@info:progress", "Could not delete partition <filename>%1</filename>.", partition.deviceNode());
     } else
-        report.line() << xi18nc("@info/plain", "Deleting partition failed: Partition to delete (<filename>%1</filename>) not found on disk.", partition.deviceNode());
+        report.line() << xi18nc("@info:progress", "Deleting partition failed: Partition to delete (<filename>%1</filename>) not found on disk.", partition.deviceNode());
 
     return rval;
 }
@@ -225,15 +225,15 @@ bool LibPartedPartitionTable::updateGeometry(Report& report, const Partition& pa
                 if (ped_disk_set_partition_geom(pedDisk(), pedPartition, pedConstraint, sector_start, sector_end))
                     rval = true;
                 else
-                    report.line() << xi18nc("@info/plain", "Could not set geometry for partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
+                    report.line() << xi18nc("@info:progress", "Could not set geometry for partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
                 ped_constraint_destroy(pedConstraint);
             } else
-                report.line() << xi18nc("@info/plain", "Could not get constraint for partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
+                report.line() << xi18nc("@info:progress", "Could not get constraint for partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
             ped_geometry_destroy(pedGeometry);
         } else
-            report.line() << xi18nc("@info/plain", "Could not get geometry for partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
+            report.line() << xi18nc("@info:progress", "Could not get geometry for partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
     } else
-        report.line() << xi18nc("@info/plain", "Could not open partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
+        report.line() << xi18nc("@info:progress", "Could not open partition <filename>%1</filename> while trying to resize/move it.", partition.deviceNode());
 
     return rval;
 }
@@ -255,14 +255,14 @@ bool LibPartedPartitionTable::clobberFileSystem(Report& report, const Partition&
                 rval = ped_geometry_write(&pedPartition->geom, zeroes, 0, 129);
 
                 if (!rval)
-                    report.line() << xi18nc("@info/plain", "Failed to erase filesystem signature on partition <filename>%1</filename>.", partition.deviceNode());
+                    report.line() << xi18nc("@info:progress", "Failed to erase filesystem signature on partition <filename>%1</filename>.", partition.deviceNode());
 
                 ped_device_close(pedDevice());
             }
         } else
             rval = true;
     } else
-        report.line() << xi18nc("@info/plain", "Could not delete file system on partition <filename>%1</filename>: Failed to get partition.", partition.deviceNode());
+        report.line() << xi18nc("@info:progress", "Could not delete file system on partition <filename>%1</filename>: Failed to get partition.", partition.deviceNode());
 
     return rval;
 }
@@ -287,17 +287,17 @@ bool LibPartedPartitionTable::resizeFileSystem(Report& report, const Partition& 
                 ped_timer_destroy(pedTimer);
 
                 if (!rval)
-                    report.line() << xi18nc("@info/plain", "Could not resize file system on partition <filename>%1</filename>.", partition.deviceNode());
+                    report.line() << xi18nc("@info:progress", "Could not resize file system on partition <filename>%1</filename>.", partition.deviceNode());
                 ped_geometry_destroy(resizedGeometry);
             } else
-                report.line() << xi18nc("@info/plain", "Could not get geometry for resized partition <filename>%1</filename> while trying to resize the file system.", partition.deviceNode());
+                report.line() << xi18nc("@info:progress", "Could not get geometry for resized partition <filename>%1</filename> while trying to resize the file system.", partition.deviceNode());
 
             ped_file_system_close(pedFileSystem);
         } else
-            report.line() << xi18nc("@info/plain", "Could not open partition <filename>%1</filename> while trying to resize the file system.", partition.deviceNode());
+            report.line() << xi18nc("@info:progress", "Could not open partition <filename>%1</filename> while trying to resize the file system.", partition.deviceNode());
         ped_geometry_destroy(originalGeometry);
     } else
-        report.line() << xi18nc("@info/plain", "Could not read geometry for partition <filename>%1</filename> while trying to resize the file system.", partition.deviceNode());
+        report.line() << xi18nc("@info:progress", "Could not read geometry for partition <filename>%1</filename> while trying to resize the file system.", partition.deviceNode());
 #else
     Q_UNUSED(report);
     Q_UNUSED(partition);
@@ -316,7 +316,7 @@ FileSystem::Type LibPartedPartitionTable::detectFileSystemBySector(Report& repor
     if (pedPartition && pedPath)
         type = CoreBackendManager::self()->backend()->detectFileSystem(QString::fromUtf8(pedPath));
     else
-        report.line() << xi18nc("@info/plain", "Could not determine file system of partition at sector %1 on device <filename>%2</filename>.", sector, device.deviceNode());
+        report.line() << xi18nc("@info:progress", "Could not determine file system of partition at sector %1 on device <filename>%2</filename>.", sector, device.deviceNode());
     free(pedPath);
 
     return type;
@@ -326,15 +326,15 @@ bool LibPartedPartitionTable::setPartitionSystemType(Report& report, const Parti
 {
     PedFileSystemType* pedFsType = (partition.roles().has(PartitionRole::Extended) || partition.fileSystem().type() == FileSystem::Unformatted) ? nullptr : getPedFileSystemType(partition.fileSystem().type());
     if (pedFsType == nullptr) {
-        report.line() << xi18nc("@info/plain", "Could not update the system type for partition <filename>%1</filename>.", partition.deviceNode());
-        report.line() << xi18nc("@info/plain", "No file system defined.");
+        report.line() << xi18nc("@info:progress", "Could not update the system type for partition <filename>%1</filename>.", partition.deviceNode());
+        report.line() << xi18nc("@info:progress", "No file system defined.");
         return false;
     }
 
     PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk(), partition.firstSector());
     if (pedPartition == nullptr) {
-        report.line() << xi18nc("@info/plain", "Could not update the system type for partition <filename>%1</filename>.", partition.deviceNode());
-        report.line() << xi18nc("@info/plain", "No partition found at sector %1.", partition.firstSector());
+        report.line() << xi18nc("@info:progress", "Could not update the system type for partition <filename>%1</filename>.", partition.deviceNode());
+        report.line() << xi18nc("@info:progress", "No partition found at sector %1.", partition.firstSector());
         return false;
     }
 

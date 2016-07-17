@@ -158,16 +158,16 @@ bool Partition::operator!=(const Partition& other) const
 QString Partition::deviceNode() const
 {
     if (roles().has(PartitionRole::None) || roles().has(PartitionRole::Unallocated))
-        return i18nc("@item partition name", "unallocated");
+        return xi18nc("@item partition name", "unallocated");
 
     if (state() == StateNew)
-        return i18nc("@item partition name", "New Partition");
+        return xi18nc("@item partition name", "New Partition");
 
     if (state() == StateRestore)
-        return i18nc("@item partition name", "Restored Partition");
+        return xi18nc("@item partition name", "Restored Partition");
 
     if (state() == StateCopy)
-        return i18nc("@item partition name", "Copy of %1", partitionPath());
+        return xi18nc("@item partition name", "Copy of %1", partitionPath());
 
     return partitionPath();
 }

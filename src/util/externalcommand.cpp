@@ -76,13 +76,13 @@ bool ExternalCommand::start(int timeout)
     QProcess::start(command(), args());
 
     if (report()) {
-        report()->setCommand(i18nc("@info/plain", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
+        report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
     }
 
     if (!waitForStarted(timeout))
     {
         if (report())
-            report()->line() << i18nc("@info/plain", "(Command timeout while starting)");
+            report()->line() << xi18nc("@info:status", "(Command timeout while starting)");
         return false;
     }
 
@@ -99,7 +99,7 @@ bool ExternalCommand::waitFor(int timeout)
 
     if (!waitForFinished(timeout)) {
         if (report())
-            report()->line() << i18nc("@info/plain", "(Command timeout while running)");
+            report()->line() << xi18nc("@info:status", "(Command timeout while running)");
         return false;
     }
 
