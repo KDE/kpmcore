@@ -175,7 +175,7 @@ bool jfs::resize(Report& report, const QString& deviceNode, qint64) const
         ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1))
-            report.line() << xi18nc("@info:progress", "Warning: Resizing JFS file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
+            report.line() << xi18nc("@info:progress", "<warning>Resizing JFS file system on partition <filename>%1</filename>: Unmount failed.</warning>", deviceNode);
     } else
         report.line() << xi18nc("@info:progress", "Resizing JFS file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
 

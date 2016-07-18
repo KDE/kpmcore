@@ -157,7 +157,7 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
         ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1) && unmountCmd.exitCode() == 0)
-            report.line() << xi18nc("@info:progress", "Warning: Resizing Btrfs file system on partition <filename>%1</filename>: Unmount failed.", deviceNode);
+            report.line() << xi18nc("@info:progress", "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: Unmount failed.</warning>", deviceNode);
     } else
         report.line() << xi18nc("@info:progress", "Resizing Btrfs file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
 
