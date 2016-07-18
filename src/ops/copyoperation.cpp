@@ -154,7 +154,7 @@ bool CopyOperation::execute(Report& parent)
 
                     // if maximizing doesn't work, just warn the user, don't fail
                     if (!maximizeJob()->run(*report)) {
-                        report->line() << xi18nc("@info:status", "Warning: Maximizing file system on target partition <filename>%1</filename> to the size of the partition failed.", copiedPartition().deviceNode());
+                        report->line() << xi18nc("@info:status", "<warning>Maximizing file system on target partition <filename>%1</filename> to the size of the partition failed.</warning>", copiedPartition().deviceNode());
                         warning = true;
                     }
                 } else

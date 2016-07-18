@@ -185,7 +185,7 @@ bool xfs::resize(Report& report, const QString& deviceNode, qint64) const
         ExternalCommand unmountCmd(report, QStringLiteral("umount"), { tempDir.path() });
 
         if (!unmountCmd.run(-1))
-            report.line() << xi18nc("@info:progress", "<warning>Resizing XFS file system on partition <filename>%1</filename>: Unmount failed.</warning>", deviceNode);
+            report.line() << xi18nc("@info:progress", "<warning>Resizing XFS file system on partition <filename>%1</filename> failed: Unmount failed.</warning>", deviceNode);
     } else
         report.line() << xi18nc("@info:progress", "Resizing XFS file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
 
