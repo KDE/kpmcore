@@ -169,7 +169,7 @@ protected:
         return m_RightHandle;
     }
 
-    qint64 sectorsPerPixel() const;
+    long double sectorsPerPixel() const;
 
     void set(qint64 newCap, qint64 newFreeBefore, qint64 newFreeAfter);
 

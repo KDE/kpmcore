@@ -133,10 +133,10 @@ qint32 PartResizerWidget::handleWidth() const
     return style()->pixelMetric(QStyle::PM_SplitterWidth);
 }
 
-qint64 PartResizerWidget::sectorsPerPixel() const
+long double PartResizerWidget::sectorsPerPixel() const
 {
     //FIXME: Make sure that this function never return 0
-    return totalSectors() / (width() - 2 * handleWidth());
+    return totalSectors() / (width() - 2.0L * handleWidth());
 }
 
 int PartResizerWidget::partWidgetStart() const
@@ -286,13 +286,13 @@ void PartResizerWidget::mouseMoveEvent(QMouseEvent* event)
     int x = event->pos().x() - m_Hotspot;
 
     if (draggedWidget() == &leftHandle()) {
-        const qint64 newFirstSector = qMax(minimumFirstSector() + x * sectorsPerPixel(), 0LL);
+        const qint64 newFirstSector = qMax(minimumFirstSector() + x * sectorsPerPixel(), 0.0L);
         updateFirstSector(newFirstSector);
     } else if (draggedWidget() == &rightHandle()) {
-        const qint64 newLastSector = qMin(minimumFirstSector() + (x - rightHandle().width()) * sectorsPerPixel(), maximumLastSector());
+        const qint64 newLastSector = qMin(static_cast<qint64>(minimumFirstSector() + (x - rightHandle().width()) * sectorsPerPixel()), maximumLastSector());
         updateLastSector(newLastSector);
     } else if (draggedWidget() == &partWidget() && moveAllowed()) {
-        const qint64 newFirstSector = qMax(minimumFirstSector() + (x - handleWidth()) * sectorsPerPixel(), 0LL);
+        const qint64 newFirstSector = qMax(minimumFirstSector() + (x - handleWidth()) * sectorsPerPixel(), 0.0L);
         movePartition(newFirstSector);
     }
 }
