@@ -27,10 +27,11 @@
     @param vgname
     @parem pvList
 */
-CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgname, const QStringList& pvlist) :
+CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgname, const QStringList& pvlist, const qint32 pesize) :
     Job(),
     m_vgName(vgname),
-    m_pvList(pvlist)
+    m_pvList(pvlist),
+    m_PESize(pesize)
 {
 }
 
@@ -40,7 +41,7 @@ bool CreateVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    rval = LvmDevice::createVG(*report, vgName(), pvList());
+    rval = LvmDevice::createVG(*report, vgName(), pvList(), peSize());
 
     jobFinished(*report, rval);
 

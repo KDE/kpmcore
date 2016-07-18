@@ -354,11 +354,12 @@ bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath, co
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList pvlist)
+bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize)
 {
     //TODO: check that all the pv in pvlist is lvm2_pv
     QStringList args = QStringList();
-    args << QStringLiteral("vgcreate") << vgname;
+    args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
+    args << vgname;
     foreach (QString pvnode, pvlist) {
         args << pvnode.trimmed();
     }

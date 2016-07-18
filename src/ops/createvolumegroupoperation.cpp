@@ -30,9 +30,9 @@
     @param d the Device to create the new PartitionTable on
     @param t the type for the new PartitionTable
 */
-CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist) :
+CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist, const qint32 pesize) :
     Operation(),
-    m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgname, pvlist))
+    m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgname, pvlist, pesize))
 {
     addJob(createVolumeGroupJob());
 }
@@ -44,6 +44,7 @@ QString CreateVolumeGroupOperation::description() const
 
 bool CreateVolumeGroupOperation::targets(const Partition& part) const
 {
+    Q_UNUSED(part)
     return false;
 }
 

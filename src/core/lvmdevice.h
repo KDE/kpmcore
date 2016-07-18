@@ -73,7 +73,7 @@ public:
     static bool movePV(Report& report, LvmDevice& dev, const QString& pvPath, const QStringList& destinations = QStringList());
 
     static bool removeVG(Report& report, LvmDevice& dev);
-    static bool createVG(Report& report, const QString vgname, const QStringList pvlist);
+    static bool createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize = 4); // peSize in megabytes
 
 protected:
     void initPartitions();
