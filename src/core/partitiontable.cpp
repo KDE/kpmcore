@@ -276,8 +276,7 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
 
         return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
     } else if (d.type() == Device::LVM_Device) {
-        const LvmDevice& lvm = dynamic_cast<const LvmDevice&>(d);
-        if (lvm.freePE() && start >=  lvm.allocatedPE() && end < lvm.totalPE()) {
+        if (end - start + 1 > 0) {
             return true;
         }
     }
@@ -358,7 +357,15 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
     qint64 lastEnd = start;
 
     if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
-        lastEnd = p->children().last()->lastSector() + 1;
+        // rearranging all the partitions sector to keep all the unallocated space at the end
+        lastEnd = 0;
+        foreach (Partition* child, children()) {
+            qint64 totalSector = child->length();
+            child->setFirstSector(lastEnd);
+            child->setLastSector(lastEnd + totalSector - 1);
+
+            lastEnd += totalSector;
+        }
     } else {
         foreach(Partition * child, p->children()) {
             p->insert(createUnallocated(d, *p, lastEnd, child->firstSector() - 1));
