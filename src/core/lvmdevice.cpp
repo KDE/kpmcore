@@ -88,7 +88,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
      * LVM partition have 2 different start and end sector value
      * 1. representing the actual LV start from 0 -> size of LV - 1
      * 2. representing abstract LV's sector inside a VG partitionTable
-     *    start from size of last Partitions -> size of LV - 1
+     *    start from last sector + 1 of last Partitions -> size of LV - 1
      * Reason for this is for the LV Partition to worrks nicely with other parts of the codebase
      * without too many special cases.
      */
