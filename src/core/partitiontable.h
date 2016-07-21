@@ -91,6 +91,7 @@ public:
     };
 
     Q_DECLARE_FLAGS(Flags, Flag)
+    Q_FLAG(Flag)
 
 public:
     PartitionTable(TableType type, qint64 first_usable, qint64 last_usable);

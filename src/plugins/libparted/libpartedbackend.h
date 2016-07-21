@@ -61,10 +61,10 @@ private:
 public:
     void initFSSupport() override;
 
-    CoreBackendDevice* openDevice(const QString& device_node) override;
-    CoreBackendDevice* openDeviceExclusive(const QString& device_node) override;
+    CoreBackendDevice* openDevice(const QString& deviceNode) override;
+    CoreBackendDevice* openDeviceExclusive(const QString& deviceNode) override;
     bool closeDevice(CoreBackendDevice* core_device) override;
-    Device* scanDevice(const QString& device_node) override;
+    Device* scanDevice(const QString& deviceNode) override;
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;
     FileSystem::Type detectFileSystem(const QString& partitionPath) override;
 
@@ -72,7 +72,6 @@ public:
 
 private:
     static PedPartitionFlag getPedFlag(PartitionTable::Flag flag);
-    void scanDevicePartitions(Device& d, PedDisk* pedDisk);
 };
 
 #endif

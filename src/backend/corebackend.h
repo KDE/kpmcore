@@ -58,10 +58,10 @@ Q_SIGNALS:
 
     /**
       * Emitted to inform about scan progress.
-      * @param device_node the device being scanned just now (e.g. "/dev/sda")
+      * @param deviceNode the device being scanned just now (e.g. "/dev/sda")
       * @param i the progress in percent (from 0 to 100)
       */
-    void scanProgress(const QString& device_node, int i);
+    void scanProgress(const QString& deviceNode, int i);
 
 public:
     /**
@@ -101,29 +101,29 @@ public:
 
     /**
       * Scan a single device in the system.
-      * @param device_node The path to the device that is to be scanned (e.g. /dev/sda)
+      * @param deviceNode The path to the device that is to be scanned (e.g. /dev/sda)
       * @return a pointer to a Device instance. The caller is responsible for deleting
       *         this object.
       */
-    virtual Device* scanDevice(const QString& device_node) = 0;
+    virtual Device* scanDevice(const QString& deviceNode) = 0;
 
     /**
       * Open a device for reading.
-      * @param device_node The path of the device that is to be opened (e.g. /dev/sda)
+      * @param deviceNode The path of the device that is to be opened (e.g. /dev/sda)
       * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
       *         an instance is returned, it's the caller's responsibility to delete the
       *         object.
       */
-    virtual CoreBackendDevice* openDevice(const QString& device_node) = 0;
+    virtual CoreBackendDevice* openDevice(const QString& deviceNode) = 0;
 
     /**
       * Open a device in exclusive mode for writing.
-      * @param device_node The path of the device that is to be opened (e.g. /dev/sda)
+      * @param deviceNode The path of the device that is to be opened (e.g. /dev/sda)
       * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
       *         an instance is returned, it's the caller's responsibility to delete the
       *         object.
       */
-    virtual CoreBackendDevice* openDeviceExclusive(const QString& device_node) = 0;
+    virtual CoreBackendDevice* openDeviceExclusive(const QString& deviceNode) = 0;
 
     /**
       * Close a CoreBackendDevice that has previously been opened.
@@ -144,12 +144,12 @@ public:
 
     /**
       * Emit scan progress.
-      * @param device_node the path to the device just being scanned (e.g. /dev/sda)
+      * @param deviceNode the path to the device just being scanned (e.g. /dev/sda)
       * @param i the progress in percent (from 0 to 100)
       * This is used to emit a scanProgress() signal from the backend device scanning
       * code.
       */
-    virtual void emitScanProgress(const QString& device_node, int i);
+    virtual void emitScanProgress(const QString& deviceNode, int i);
 
 protected:
     static void setPartitionTableForDevice(Device& d, PartitionTable* p);
