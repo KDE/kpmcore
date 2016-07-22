@@ -317,7 +317,7 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeLoop)
                           QStringLiteral("--noheadings"),
                           QStringLiteral("--output"), QString::fromLatin1("name"),
                           QStringLiteral("--paths"),
-                          QStringLiteral("--include"), excludeLoop ? QStringLiteral("3,8") : QStringLiteral("3,7,8") });
+                          QStringLiteral("--include"), excludeLoop ? QStringLiteral("3,8,22,33,34,65,66,67,68,69,70,71,179,259") : QStringLiteral("3,7,8,22,33,34,65,66,67,68,69,70,71,179,259") });
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         QStringList devices = cmd.output().split(QString::fromLatin1("\n"));
         devices.removeLast();
