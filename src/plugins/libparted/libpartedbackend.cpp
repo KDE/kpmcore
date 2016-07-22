@@ -308,7 +308,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
     return d;
 }
 
-QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
+QList<Device*> LibPartedBackend::scanDevices(bool excludeLoop)
 {
     QList<Device*> result;
 
@@ -317,7 +317,7 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
                           QStringLiteral("--noheadings"),
                           QStringLiteral("--output"), QString::fromLatin1("name"),
                           QStringLiteral("--paths"),
-                          QStringLiteral("--include"), excludeReadOnly ? QStringLiteral("3,8") : QStringLiteral("3,7,8") });
+                          QStringLiteral("--include"), excludeLoop ? QStringLiteral("3,8") : QStringLiteral("3,7,8") });
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         QStringList devices = cmd.output().split(QString::fromLatin1("\n"));
         devices.removeLast();

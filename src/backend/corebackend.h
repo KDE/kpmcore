@@ -90,7 +90,7 @@ public:
       * @return a QList of pointers to Device instances. The caller is responsible
       *         for deleting these objects.
       */
-    virtual QList<Device*> scanDevices(bool excludeReadOnly = false) = 0;
+    virtual QList<Device*> scanDevices(bool excludeLoop = false) = 0;
 
     /**
       * Scan a single device in the system.
