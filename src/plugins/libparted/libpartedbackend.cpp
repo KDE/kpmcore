@@ -38,6 +38,7 @@
 #include "fs/luks.h"
 
 #include "util/globallog.h"
+#include "util/externalcommand.h"
 #include "util/helpers.h"
 
 #include <blkid/blkid.h>
@@ -310,26 +311,21 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 {
     QList<Device*> result;
-    QVariantMap args;
-    args[QLatin1String("excludeReadOnly")] = excludeReadOnly;
 
-    KAuth::Action scanAction = QStringLiteral("org.kde.kpmcore.scan.scandevices");
-    scanAction.setHelperId(QStringLiteral("org.kde.kpmcore.scan"));
-    scanAction.setArguments(args);
-    KAuth::ExecuteJob *job = scanAction.execute();
-    if (!job->exec()) {
-        qWarning() << "KAuth returned an error code: " << job->errorString();
-        return result;
-    }
-    QList<QVariant> paths = job->data()[QLatin1String("paths")].toList();
-
-    quint32 totalDevices = paths.size();
-    for (quint32 i = 0; i < totalDevices; ++i) {
-        QString path = paths[i].toString();
-        emitScanProgress(path, i * 100 / totalDevices);
-        Device* d = scanDevice(path);
-        if (d)
-            result.append(d);
+    ExternalCommand cmd(QStringLiteral("lsblk"), {
+                          QStringLiteral("--nodeps"),
+                          QStringLiteral("--noheadings"),
+                          QStringLiteral("--output"), QString::fromLatin1("name"),
+                          QStringLiteral("--paths"),
+                          QStringLiteral("--include"), excludeReadOnly ? QStringLiteral("3,8") : QStringLiteral("3,7,8") });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QStringList devices = cmd.output().split(QString::fromLatin1("\n"));
+        devices.removeLast();
+        quint32 totalDevices = devices.length();
+        for (quint32 i = 0; i < totalDevices; ++i) {
+            emitScanProgress(devices[i], i * 100 / totalDevices);
+            result.append(scanDevice(devices[i]));
+        }
     }
 
     return result;

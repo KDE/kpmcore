@@ -1,9 +1,3 @@
-[org.kde.kpmcore.scan.scandevices]
-Name=Scan devices action
-Description=Scan available devices
-Policy=yes
-Persistence=session
-
 [org.kde.kpmcore.scan.scandevice]
 Name=Scan device action
 Description=Scan device

@@ -19,35 +19,6 @@
 #include "core/partitiontable.h"
 #include "plugins/libparted/pedflags.h"
 
-ActionReply Scan::scandevices(const QVariantMap& args)
-{
-    ActionReply reply;
-
-    ped_device_probe_all();
-    PedDevice* pedDevice = nullptr;
-    QList<QVariant> paths;
-    bool excludeReadOnly = args[QLatin1String("excludeReadOnly")].toBool();
-
-    while (true) {
-        pedDevice = ped_device_get_next(pedDevice);
-        if (!pedDevice)
-            break;
-        if (pedDevice->type == PED_DEVICE_DM)
-            continue;
-        if (excludeReadOnly && (
-                pedDevice->type == PED_DEVICE_LOOP ||
-                pedDevice->read_only))
-            continue;
-
-        paths.append(QString::fromUtf8(pedDevice->path));
-    }
-
-    QVariantMap returnArgs;
-    returnArgs[QLatin1String("paths")] = paths;
-    reply.setData(returnArgs);
-    return reply;
-}
-
 ActionReply Scan::scandevice(const QVariantMap& args)
 {
     ActionReply reply;

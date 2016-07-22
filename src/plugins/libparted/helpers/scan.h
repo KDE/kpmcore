@@ -29,7 +29,6 @@ class Scan : public QObject
     Q_OBJECT
 
 public Q_SLOTS:
-    ActionReply scandevices(const QVariantMap& args);
     ActionReply scandevice(const QVariantMap& args);
     ActionReply readsectorsused(const QVariantMap& args);
 };
