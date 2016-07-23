@@ -308,21 +308,37 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
     return d;
 }
 
-QList<Device*> LibPartedBackend::scanDevices(bool excludeLoop)
+QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 {
     QList<Device*> result;
-
+    // FIXME: cat /sys/block/loop0/ro
+    // linux.git/tree/Documentation/devices.txt
+    QString blockDeviceMajorNumbers = QStringLiteral(
+        "3,22,33,34,56,57,88,89,90,91,128,129,130,131,132,133,134,135," // MFM, RLL and IDE hard disk/CD-ROM interface
+        "7," // loop devices
+        "8,65,66,67,68,69,70,71," // SCSI disk devices
+        "80,81,82,83,84,85,86,87," // I2O hard disk
+        "179," // MMC block devices
+        "259" // Block Extended Major (include NVMe)
+    );
     ExternalCommand cmd(QStringLiteral("lsblk"), {
                           QStringLiteral("--nodeps"),
                           QStringLiteral("--noheadings"),
                           QStringLiteral("--output"), QString::fromLatin1("name"),
                           QStringLiteral("--paths"),
-                          QStringLiteral("--include"), excludeLoop ? QStringLiteral("3,8,22,33,34,65,66,67,68,69,70,71,179,259") : QStringLiteral("3,7,8,22,33,34,65,66,67,68,69,70,71,179,259") });
+                          QStringLiteral("--include"), blockDeviceMajorNumbers});
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         QStringList devices = cmd.output().split(QString::fromLatin1("\n"));
         devices.removeLast();
         quint32 totalDevices = devices.length();
         for (quint32 i = 0; i < totalDevices; ++i) {
+            if (excludeReadOnly) {
+                QFile f(QStringLiteral("/sys/block/%1/ro").arg(QString(devices[i]).remove(QStringLiteral("/dev/"))));
+                if (f.open(QIODevice::ReadOnly))
+                    if (f.readLine().trimmed().toInt() == 1)
+                        continue;
+            }
+
             emitScanProgress(devices[i], i * 100 / totalDevices);
             result.append(scanDevice(devices[i]));
         }
