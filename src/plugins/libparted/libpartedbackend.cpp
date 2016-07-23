@@ -268,7 +268,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
                 if (mounted) {
                     const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
                     if (freeSpaceInfo.isValid() && mountPoint != QString())
-                        luksFs->setSectorsUsed(freeSpaceInfo.used() / d->logicalSectorSize() + luksFs->getPayloadOffset(partitionNode));
+                        luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->getPayloadOffset(partitionNode)) / d->logicalSectorSize());
                 }
             } else {
                 mounted = false;

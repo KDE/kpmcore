@@ -190,7 +190,7 @@ qint64 Partition::sectorsUsed() const
 qint64 Partition::minimumSectors() const
 {
     if (roles().has(PartitionRole::Luks))
-        return fileSystem().minCapacity() / sectorSize() + 4096; // 4096 is the default cryptsetup payload offset
+        return ( fileSystem().minCapacity() + (4096 * 512) ) / sectorSize(); // 4096 is the default cryptsetup payload offset
     return fileSystem().minCapacity() / sectorSize();
 }
 

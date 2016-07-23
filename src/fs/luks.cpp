@@ -317,7 +317,7 @@ void luks::loadInnerFileSystem(const QString& deviceNode, const QString& mapperN
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        setSectorsUsed(m_innerFs->readUsedCapacity(mapperNode)/m_logicalSectorSize + getPayloadOffset(deviceNode));
+        setSectorsUsed((m_innerFs->readUsedCapacity(mapperNode) + getPayloadOffset(deviceNode)) / m_logicalSectorSize );
 }
 
 void luks::createInnerFileSystem(FileSystem::Type type)
@@ -376,7 +376,7 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
 
             const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
             if (freeSpaceInfo.isValid() && mountPoint != QString())
-                setSectorsUsed(freeSpaceInfo.used() / m_logicalSectorSize + getPayloadOffset(deviceNode));
+                setSectorsUsed((freeSpaceInfo.used() + getPayloadOffset(deviceNode)) / m_logicalSectorSize);
 
             return true;
         }
@@ -471,7 +471,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     if (mapperNode.isEmpty())
         return false;
 
-    qint64 payloadLength = newLength - getPayloadOffset(deviceNode) * m_logicalSectorSize;
+    qint64 payloadLength = newLength - getPayloadOffset(deviceNode);
     if ( newLength - length() * m_logicalSectorSize > 0 )
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperNode });
@@ -479,7 +479,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
 
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
         {
-            return m_innerFs->resize(report, mapperNode, newLength - getPayloadOffset(deviceNode) * m_logicalSectorSize);
+            return m_innerFs->resize(report, mapperNode, payloadLength);
         }
     }
     else if (m_innerFs->resize(report, mapperNode, payloadLength))
@@ -594,17 +594,13 @@ qint64 luks::getKeySize(const QString& deviceNode) const
     return -1;
 }
 
+/*
+ * @return size of payload offset in bytes.
+ */
 qint64 luks::getPayloadOffset(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Payload offset:\\s+(\\d+)"));
-        QRegularExpressionMatch rePayloadOffset = re.match(cmd.output());
-        if (rePayloadOffset.hasMatch())
-            return rePayloadOffset.captured(1).toLongLong();
-    }
-    return -1;
+    //4096 sectors and 512 bytes.
+    return 4096 * 512;
 }
 
 bool luks::canEncryptType(FileSystem::Type type)

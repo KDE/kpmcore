@@ -126,7 +126,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
             if (mounted) {
                 const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
                 if (freeSpaceInfo.isValid() && mountPoint != QString())
-                    luksFs->setSectorsUsed(freeSpaceInfo.used() / dev.logicalSize() + luksFs->getPayloadOffset(lvpath));
+                    luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->getPayloadOffset(lvpath)) / dev.logicalSize());
             }
         } else {
             mounted = false;
