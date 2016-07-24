@@ -41,7 +41,6 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    //TODO:check that the provided list is legal
     foreach (QString pvpath, partList()) {
         if (type() == ResizeVolumeGroupJob::Grow) {
             rval = LvmDevice::insertPV(*report, device(), pvpath);

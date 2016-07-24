@@ -78,8 +78,6 @@ bool CreatePartitionJob::run(Report& parent)
         LvmDevice& dev = dynamic_cast<LvmDevice&>(device());
         partition().setState(Partition::StateNone);
 
-        //TODO: take lvname from createDialog.
-        // find a better way to do this.now, we're assuming that partitionPath is already set, so we get the name from the path
         QString partPath = partition().partitionPath();
         QString lvname   = partPath.right(partPath.length() - partPath.lastIndexOf(QStringLiteral("/")) - 1);
         rval = LvmDevice::createLV(*report, dev, partition(), lvname);

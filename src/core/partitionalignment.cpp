@@ -33,7 +33,6 @@ int PartitionAlignment::s_sectorAlignment = 2048;
 
 qint64 PartitionAlignment::firstDelta(const Device& d, const Partition& p, qint64 s)
 {
-    //TODO: make sure things work for LVM
     if (d.partitionTable()->type() == PartitionTable::msdos) {
         const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
         if (p.roles().has(PartitionRole::Logical) && s == 2 * diskDevice.sectorsPerTrack())
@@ -53,7 +52,6 @@ qint64 PartitionAlignment::lastDelta(const Device& d, const Partition&, qint64 s
 
 bool PartitionAlignment::isLengthAligned(const Device& d, const Partition& p)
 {
-    //TODO: make sure things work for LVM
     if (d.partitionTable()->type() == PartitionTable::msdos) {
         const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
         if (p.roles().has(PartitionRole::Logical) && p.firstSector() == 2 * diskDevice.sectorsPerTrack())
