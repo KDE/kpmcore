@@ -395,8 +395,15 @@ bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList
 
 bool LvmDevice::removeVG(Report& report, LvmDevice& dev)
 {
+    bool deactivated = false;
+    ExternalCommand deactivate(report, QStringLiteral("lvm"),
+            { QStringLiteral("vgchange"),
+              QStringLiteral("--activate"), QStringLiteral("n"),
+              dev.name() });
+    deactivated = deactivate.run(-1) && deactivate.exitCode() == 0;
+
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgremove"),
               dev.name() });
-    return (cmd.run(-1) && cmd.exitCode() == 0);
+    return (deactivated && cmd.run(-1) && cmd.exitCode() == 0);
 }
