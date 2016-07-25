@@ -19,6 +19,8 @@
 #include "core/partitiontable.h"
 #include "plugins/libparted/pedflags.h"
 
+#include <blkid/blkid.h>
+
 ActionReply Scan::scandevice(const QVariantMap& args)
 {
     ActionReply reply;
@@ -161,6 +163,41 @@ ActionReply Scan::readsectorsused(const QVariantMap& args)
 
     QVariantMap returnArgs;
     returnArgs[QLatin1String("sectorsUsed")] = rval;
+
+    reply.setData(returnArgs);
+    return reply;
+}
+
+ActionReply Scan::detectfilesystem(const QVariantMap& args)
+{
+    ActionReply reply;
+    QVariantMap returnArgs;
+    QString deviceNode = args[QLatin1String("deviceNode")].toString();
+
+    blkid_cache cache;
+    if (blkid_get_cache(&cache, nullptr) == 0) {
+        blkid_dev dev;
+
+        if ((dev = blkid_get_dev(cache, deviceNode.toLocal8Bit().constData(), BLKID_DEV_NORMAL)) != nullptr) {
+            char *string = blkid_get_tag_value(cache, "TYPE", deviceNode.toLocal8Bit().constData());
+            QString s = QString::fromUtf8(string);
+            free(string);
+
+            if (s == QStringLiteral("vfat")) {
+                // libblkid uses SEC_TYPE to distinguish between FAT16 and FAT32
+                string = blkid_get_tag_value(cache, "SEC_TYPE", deviceNode.toLocal8Bit().constData());
+                QString st = QString::fromUtf8(string);
+                free(string);
+                if (st == QStringLiteral("msdos"))
+                    returnArgs[QLatin1String("fileSystem")] = QStringLiteral("fat16");
+                else
+                    returnArgs[QLatin1String("fileSystem")] = QStringLiteral("fat32");
+            }
+            else
+                returnArgs[QLatin1String("fileSystem")] = s;
+        }
+        blkid_put_cache(cache);
+    }
 
     reply.setData(returnArgs);
     return reply;
