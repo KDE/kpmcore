@@ -382,6 +382,7 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& deviceNode)
     else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
     else if (s == QStringLiteral("fat16")) rval = FileSystem::Fat16;
     else if (s == QStringLiteral("fat32")) rval = FileSystem::Fat32;
+    else if (s == QStringLiteral("btrfs")) rval = FileSystem::Btrfs;
     else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Ocfs2;
     else if (s == QStringLiteral("zfs_member")) rval = FileSystem::Zfs;
     else if (s == QStringLiteral("hpfs")) rval = FileSystem::Hpfs;
