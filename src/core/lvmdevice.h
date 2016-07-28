@@ -52,6 +52,8 @@ public:
     QList<Partition*> scanPartitions(const LvmDevice& dev, PartitionTable* pTable) const;
     Partition* scanPartition(const QString& lvPath, const LvmDevice& dev, PartitionTable* pTable) const;
 
+    static QList<LvmDevice*> scanSystemLVM();
+
     static qint64 getPeSize(const QString& vgname);
     static qint64 getTotalPE(const QString& vgname);
     static qint64 getAllocatedPE(const QString& vgname);

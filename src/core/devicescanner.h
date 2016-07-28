@@ -23,7 +23,6 @@
 #include <QThread>
 
 class OperationStack;
-class LvmDevice;
 
 /** Thread to scan for all available Devices on this computer.
 
@@ -54,8 +53,6 @@ protected:
     const OperationStack& operationStack() const {
         return m_OperationStack;
     }
-
-    QList<LvmDevice*> scanLvmDevices() const;
 
 private:
     OperationStack& m_OperationStack;

@@ -163,6 +163,21 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
     return part;
 }
 
+QList<LvmDevice*> LvmDevice::scanSystemLVM()
+{
+    QList<LvmDevice*> lvmList;
+
+    QString output = getField(QStringLiteral("vg_name"));
+    if (!output.isEmpty()) {
+        QStringList vgnameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        foreach(QString vgname, vgnameList) {
+            lvmList.append(new LvmDevice(vgname.trimmed()));
+        }
+    }
+
+    return lvmList;
+}
+
 qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
 {
     qint64 mSector = 0;
