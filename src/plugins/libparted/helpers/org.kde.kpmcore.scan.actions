@@ -45,24 +45,3 @@ Description[uk]=Читання даних щодо використаних се
 Description[x-test]=xxRead used sectorsxx
 Policy=yes
 Persistence=session
-
-[org.kde.kpmcore.scan.detectfilesystem]
-Name=Detect file system type action
-Name[ca]=Acció de detecció del tipus de sistema de fitxers
-Name[nl]=Actie voor type bestandssysteem detecteren
-Name[pt]=Acção de detecção do tipo de sistema de ficheiros
-Name[sl]=Dejanje zaznavanja vrste datotečnega sistema
-Name[sv]=Åtgärd för att detektera typ av filsystem
-Name[uk]=Дія із визначення типу файлової системи
-Name[x-test]=xxDetect file system type actionxx
-Description=Detect file system type
-Description[ca]=Detecta el tipus de sistema de fitxers
-Description[de]=Dateisystemtyp erkennen
-Description[nl]=Type bestandssysteem detecteren
-Description[pt]=Detectar o tipo de sistema de ficheiros
-Description[sl]=Zaznaj vrsto datotečnega sistema
-Description[sv]=Detektera typ av filsystem
-Description[uk]=Визначення типу файлової системи
-Description[x-test]=xxDetect file system typexx
-Policy=yes
-Persistence=session

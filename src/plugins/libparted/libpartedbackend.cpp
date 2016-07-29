@@ -41,6 +41,8 @@
 #include "util/externalcommand.h"
 #include "util/helpers.h"
 
+#include <blkid/blkid.h>
+
 #include <QDebug>
 #include <QString>
 #include <QStringList>
@@ -196,9 +198,6 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
     QList<QVariant> partitionEnd = job->data()[QLatin1String("partitionEnd")].toList();
     QList<QVariant> partitionBusy = job->data()[QLatin1String("partitionBusy")].toList();
 
-    QList<QVariant> availableFlags = job->data()[QLatin1String("availableFlags")].toList();
-    QList<QVariant> activeFlags = job->data()[QLatin1String("activeFlags")].toList();
-
     quint32 totalPartitions = partitionPath.size();
     QList<Partition*> partitions;
     for (quint32 i = 0; i < totalPartitions; ++i) {
@@ -276,7 +275,9 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
             mounted = busy;
         }
 
+        QList<QVariant> availableFlags = job->data()[QLatin1String("availableFlags")].toList();
         PartitionTable::Flags available = static_cast<PartitionTable::Flag>(availableFlags[i].toInt());
+        QList<QVariant> activeFlags = job->data()[QLatin1String("activeFlags")].toList();
         PartitionTable::Flags active = static_cast<PartitionTable::Flag>(activeFlags[i].toInt());
         Partition* part = new Partition(parent, *d, PartitionRole(r), fs, start, end, partitionNode, available, mountPoint, mounted, active);
 
@@ -345,51 +346,60 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 }
 
 /** Detects the type of a FileSystem given a PedDevice and a PedPartition
-    @param deviceNode path to the partition
+    @param partitionPath path to the partition
     @return the detected FileSystem type (FileSystem::Unknown if not detected)
 */
-FileSystem::Type LibPartedBackend::detectFileSystem(const QString& deviceNode)
+FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath)
 {
     FileSystem::Type rval = FileSystem::Unknown;
 
-    KAuth::Action action = QStringLiteral("org.kde.kpmcore.scan.detectfilesystem");
-    action.setHelperId(QStringLiteral("org.kde.kpmcore.scan"));
-    QVariantMap args = {{ QStringLiteral("deviceNode"), deviceNode }};
-    action.setArguments(args);
+    blkid_cache cache;
+    if (blkid_get_cache(&cache, nullptr) == 0) {
+        blkid_dev dev;
 
-    KAuth::ExecuteJob *job = action.execute();
-    if (!job->exec()) {
-        qWarning() << "KAuth returned an error code: " << job->errorString();
-        return rval;
+        if ((dev = blkid_get_dev(cache,
+                                 partitionPath.toLocal8Bit().constData(),
+                                 BLKID_DEV_NORMAL)) != nullptr) {
+            char *string = blkid_get_tag_value(cache, "TYPE", partitionPath.toLocal8Bit().constData());
+            QString s = QString::fromUtf8(string);
+            free(string);
+
+            if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
+            else if (s == QStringLiteral("ext3")) rval = FileSystem::Ext3;
+            else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Ext4;
+            else if (s == QStringLiteral("swap")) rval = FileSystem::LinuxSwap;
+            else if (s == QStringLiteral("ntfs")) rval = FileSystem::Ntfs;
+            else if (s == QStringLiteral("reiserfs")) rval = FileSystem::ReiserFS;
+            else if (s == QStringLiteral("reiser4")) rval = FileSystem::Reiser4;
+            else if (s == QStringLiteral("xfs")) rval = FileSystem::Xfs;
+            else if (s == QStringLiteral("jfs")) rval = FileSystem::Jfs;
+            else if (s == QStringLiteral("hfs")) rval = FileSystem::Hfs;
+            else if (s == QStringLiteral("hfsplus")) rval = FileSystem::HfsPlus;
+            else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
+            else if (s == QStringLiteral("vfat")) {
+                // libblkid uses SEC_TYPE to distinguish between FAT16 and FAT32
+                string = blkid_get_tag_value(cache, "SEC_TYPE", partitionPath.toLocal8Bit().constData());
+                QString st = QString::fromUtf8(string);
+                free(string);
+                if (st == QStringLiteral("msdos"))
+                    rval = FileSystem::Fat16;
+                else
+                    rval = FileSystem::Fat32;
+            } else if (s == QStringLiteral("btrfs")) rval = FileSystem::Btrfs;
+            else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Ocfs2;
+            else if (s == QStringLiteral("zfs_member")) rval = FileSystem::Zfs;
+            else if (s == QStringLiteral("hpfs")) rval = FileSystem::Hpfs;
+            else if (s == QStringLiteral("crypto_LUKS")) rval = FileSystem::Luks;
+            else if (s == QStringLiteral("exfat")) rval = FileSystem::Exfat;
+            else if (s == QStringLiteral("nilfs2")) rval = FileSystem::Nilfs2;
+            else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Lvm2_PV;
+            else if (s == QStringLiteral("f2fs")) rval = FileSystem::F2fs;
+            else
+                qWarning() << "blkid: unknown file system type " << s << " on " << partitionPath;
+        }
+
+        blkid_put_cache(cache);
     }
-
-    QString s = job->data()[QLatin1String("fileSystem")].toString();
-
-    if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
-    else if (s == QStringLiteral("ext3")) rval = FileSystem::Ext3;
-    else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Ext4;
-    else if (s == QStringLiteral("swap")) rval = FileSystem::LinuxSwap;
-    else if (s == QStringLiteral("ntfs")) rval = FileSystem::Ntfs;
-    else if (s == QStringLiteral("reiserfs")) rval = FileSystem::ReiserFS;
-    else if (s == QStringLiteral("reiser4")) rval = FileSystem::Reiser4;
-    else if (s == QStringLiteral("xfs")) rval = FileSystem::Xfs;
-    else if (s == QStringLiteral("jfs")) rval = FileSystem::Jfs;
-    else if (s == QStringLiteral("hfs")) rval = FileSystem::Hfs;
-    else if (s == QStringLiteral("hfsplus")) rval = FileSystem::HfsPlus;
-    else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
-    else if (s == QStringLiteral("fat16")) rval = FileSystem::Fat16;
-    else if (s == QStringLiteral("fat32")) rval = FileSystem::Fat32;
-    else if (s == QStringLiteral("btrfs")) rval = FileSystem::Btrfs;
-    else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Ocfs2;
-    else if (s == QStringLiteral("zfs_member")) rval = FileSystem::Zfs;
-    else if (s == QStringLiteral("hpfs")) rval = FileSystem::Hpfs;
-    else if (s == QStringLiteral("crypto_LUKS")) rval = FileSystem::Luks;
-    else if (s == QStringLiteral("exfat")) rval = FileSystem::Exfat;
-    else if (s == QStringLiteral("nilfs2")) rval = FileSystem::Nilfs2;
-    else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Lvm2_PV;
-    else if (s == QStringLiteral("f2fs")) rval = FileSystem::F2fs;
-    else
-        qWarning() << "blkid: unknown file system type " << s << " on " << deviceNode;
 
     return rval;
 }

@@ -31,7 +31,6 @@ class Scan : public QObject
 public Q_SLOTS:
     ActionReply scandevice(const QVariantMap& args);
     ActionReply readsectorsused(const QVariantMap& args);
-    ActionReply detectfilesystem(const QVariantMap& args);
 };
 
 // --------------------------------------------------------------------------
