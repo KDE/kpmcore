@@ -90,7 +90,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
      * 1. representing the actual LV start from 0 -> size of LV - 1
      * 2. representing abstract LV's sector inside a VG partitionTable
      *    start from last sector + 1 of last Partitions -> size of LV - 1
-     * Reason for this is for the LV Partition to worrks nicely with other parts of the codebase
+     * Reason for this is for the LV Partition to work nicely with other parts of the codebase
      * without too many special cases.
      */
 
@@ -157,7 +157,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
                     startSector,
                     endSector,
                     lvpath,
-                    PartitionTable::Flag::FlagLvm,
+                    PartitionTable::Flag::FlagNone,
                     mountPoint,
                     mounted);
     return part;
