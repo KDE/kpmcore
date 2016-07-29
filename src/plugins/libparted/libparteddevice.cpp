@@ -28,8 +28,8 @@
 
 #include <unistd.h>
 
-LibPartedDevice::LibPartedDevice(const QString& device_node) :
-    CoreBackendDevice(device_node),
+LibPartedDevice::LibPartedDevice(const QString& deviceNode) :
+    CoreBackendDevice(deviceNode),
     m_PedDevice(nullptr)
 {
 }

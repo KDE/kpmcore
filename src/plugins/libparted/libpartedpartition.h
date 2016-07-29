@@ -46,5 +46,4 @@ private:
     PedPartition* m_PedPartition;
 };
 
-
 #endif

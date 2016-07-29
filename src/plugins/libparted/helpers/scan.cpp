@@ -25,28 +25,24 @@ ActionReply Scan::scandevice(const QVariantMap& args)
 {
     ActionReply reply;
 
-    QString deviceNode = args[QLatin1String("deviceNode")].toString();
-    PedDevice* pedDevice = ped_device_get(deviceNode.toLocal8Bit().constData());
+    PedDevice* pedDevice = ped_device_get(args[QStringLiteral("deviceNode")].toString().toLocal8Bit().constData());
 
-    QVariantMap returnArgs;
     if (!pedDevice) {
-        returnArgs[QLatin1String("pedDeviceError")] = true;
-        reply.setData(returnArgs);
+        reply.addData(QStringLiteral("pedDeviceError"), true);
         return reply;
     }
 
-    returnArgs[QLatin1String("model")] = QString::fromUtf8(pedDevice->model);
-    returnArgs[QLatin1String("path")] = QString::fromUtf8(pedDevice->path);
-    returnArgs[QLatin1String("heads")] = pedDevice->bios_geom.heads;
-    returnArgs[QLatin1String("sectors")] = pedDevice->bios_geom.sectors;
-    returnArgs[QLatin1String("cylinders")] = pedDevice->bios_geom.cylinders;
-    returnArgs[QLatin1String("sectorSize")] = pedDevice->sector_size;
+    reply.addData(QStringLiteral("model"), QString::fromUtf8(pedDevice->model));
+    reply.addData(QStringLiteral("path"), QString::fromUtf8(pedDevice->path));
+    reply.addData(QStringLiteral("heads"), pedDevice->bios_geom.heads);
+    reply.addData(QStringLiteral("sectors"), pedDevice->bios_geom.sectors);
+    reply.addData(QStringLiteral("cylinders"), pedDevice->bios_geom.cylinders);
+    reply.addData(QStringLiteral("sectorSize"), pedDevice->sector_size);
 
     PedDisk* pedDisk = ped_disk_new(pedDevice);
 
     if (!pedDisk) {
-        returnArgs[QLatin1String("pedDiskError")] = true;
-        reply.setData(returnArgs);
+        reply.addData(QStringLiteral("pedDiskError"), true);
         return reply;
     }
 
@@ -77,13 +73,13 @@ ActionReply Scan::scandevice(const QVariantMap& args)
             lastUsableSector -= 32;
     }
 
-    returnArgs[QLatin1String("pedDeviceError")] = false;
-    returnArgs[QLatin1String("pedDiskError")] = false;
+    reply.addData(QStringLiteral("pedDeviceError"), false);
+    reply.addData(QStringLiteral("pedDiskError"), false);
 
-    returnArgs[QLatin1String("typeName")] = QString::fromUtf8(pedDisk->type->name);
-    returnArgs[QLatin1String("maxPrimaryPartitionCount")] = ped_disk_get_max_primary_partition_count(pedDisk);
-    returnArgs[QLatin1String("firstUsableSector")] = firstUsableSector;
-    returnArgs[QLatin1String("lastUsableSector")] = lastUsableSector;
+    reply.addData(QStringLiteral("typeName"), QString::fromUtf8(pedDisk->type->name));
+    reply.addData(QStringLiteral("maxPrimaryPartitionCount"), ped_disk_get_max_primary_partition_count(pedDisk));
+    reply.addData(QStringLiteral("firstUsableSector"), firstUsableSector);
+    reply.addData(QStringLiteral("lastUsableSector"), lastUsableSector);
 
     PedPartition* pedPartition = nullptr;
     QList<QVariant> partitionPath;
@@ -98,7 +94,7 @@ ActionReply Scan::scandevice(const QVariantMap& args)
         if (pedPartition->num < 1)
             continue;
 
-        partitionPath.append(QLatin1String(ped_partition_get_path(pedPartition)));
+        partitionPath.append(QString::fromLatin1(ped_partition_get_path(pedPartition)));
         partitionType.append(pedPartition->type);
         partitionStart.append(pedPartition->geom.start);
         partitionEnd.append(pedPartition->geom.end);
@@ -134,45 +130,37 @@ ActionReply Scan::scandevice(const QVariantMap& args)
         // --------------------------------------------------------------------------
     }
 
-    returnArgs[QLatin1String("availableFlags")] = availableFlags;
-    returnArgs[QLatin1String("activeFlags")] = activeFlags;
-    returnArgs[QLatin1String("partitionPath")] = partitionPath;
-    returnArgs[QLatin1String("partitionType")] = partitionType;
-    returnArgs[QLatin1String("partitionStart")] = partitionStart;
-    returnArgs[QLatin1String("partitionEnd")] = partitionEnd;
-    returnArgs[QLatin1String("partitionBusy")] = partitionBusy;
+    reply.addData(QStringLiteral("availableFlags"), availableFlags);
+    reply.addData(QStringLiteral("activeFlags"), activeFlags);
+    reply.addData(QStringLiteral("partitionPath"), partitionPath);
+    reply.addData(QStringLiteral("partitionType"), partitionType);
+    reply.addData(QStringLiteral("partitionStart"), partitionStart);
+    reply.addData(QStringLiteral("partitionEnd"), partitionEnd);
+    reply.addData(QStringLiteral("partitionBusy"), partitionBusy);
 
-    reply.setData(returnArgs);
     return reply;
 }
 
 ActionReply Scan::readsectorsused(const QVariantMap& args)
 {
-    ActionReply reply;
-
-    QString deviceNode = args[QLatin1String("deviceNode")].toString();
-    qint64 firstSector = args[QLatin1String("firstSector")].toLongLong();
     qint64 rval = -1;
 
-    if (PedDevice* pedDevice = ped_device_get(deviceNode.toLocal8Bit().constData()))
+    if (PedDevice* pedDevice = ped_device_get(args[QStringLiteral("deviceNode")].toString().toLocal8Bit().constData()))
         if (PedDisk* pedDisk = ped_disk_new(pedDevice))
-            if (PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk, firstSector))
+            if (PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk, args[QStringLiteral("firstSector")].toLongLong()))
                 if (PedFileSystem* pedFileSystem = ped_file_system_open(&pedPartition->geom))
                     if (PedConstraint* pedConstraint = ped_file_system_get_resize_constraint(pedFileSystem))
                         rval = pedConstraint->min_size;
 
-    QVariantMap returnArgs;
-    returnArgs[QLatin1String("sectorsUsed")] = rval;
-
-    reply.setData(returnArgs);
+    ActionReply reply;
+    reply.addData(QStringLiteral("sectorsUsed"), rval);
     return reply;
 }
 
 ActionReply Scan::detectfilesystem(const QVariantMap& args)
 {
     ActionReply reply;
-    QVariantMap returnArgs;
-    QString deviceNode = args[QLatin1String("deviceNode")].toString();
+    QString deviceNode = args[QStringLiteral("deviceNode")].toString();
 
     blkid_cache cache;
     if (blkid_get_cache(&cache, nullptr) == 0) {
@@ -189,17 +177,16 @@ ActionReply Scan::detectfilesystem(const QVariantMap& args)
                 QString st = QString::fromUtf8(string);
                 free(string);
                 if (st == QStringLiteral("msdos"))
-                    returnArgs[QLatin1String("fileSystem")] = QStringLiteral("fat16");
+                    reply.addData(QStringLiteral("fileSystem"), QStringLiteral("fat16"));
                 else
-                    returnArgs[QLatin1String("fileSystem")] = QStringLiteral("fat32");
+                    reply.addData(QStringLiteral("fileSystem"), QStringLiteral("fat32"));
             }
             else
-                returnArgs[QLatin1String("fileSystem")] = s;
+                reply.addData(QStringLiteral("fileSystem"), s);
         }
         blkid_put_cache(cache);
     }
 
-    reply.setData(returnArgs);
     return reply;
 }
 

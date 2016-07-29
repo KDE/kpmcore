@@ -35,7 +35,7 @@ class LibPartedDevice : public CoreBackendDevice
     Q_DISABLE_COPY(LibPartedDevice);
 
 public:
-    LibPartedDevice(const QString& device_node);
+    LibPartedDevice(const QString& deviceNode);
     ~LibPartedDevice();
 
 public:
