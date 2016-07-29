@@ -57,6 +57,7 @@ Name[uk]=Дія із визначення типу файлової систем
 Name[x-test]=xxDetect file system type actionxx
 Description=Detect file system type
 Description[ca]=Detecta el tipus de sistema de fitxers
+Description[de]=Dateisystemtyp erkennen
 Description[nl]=Type bestandssysteem detecteren
 Description[pt]=Detectar o tipo de sistema de ficheiros
 Description[sl]=Zaznaj vrsto datotečnega sistema
