@@ -121,11 +121,22 @@ bool lvm2_pv::remove(Report& report, const QString& deviceNode) const
 
 bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    // TODO: check if the it is legal to resize
-    const QString len = QString::number(length / 512) + QStringLiteral("s");
+//     FIXME: we don't need pvmove when growing
+    qint64 lastPE = getTotalPE(deviceNode) - 1;
+    qint64 firstPE = qMin(length / getPESize(deviceNode), lastPE) - 1;     // FIXME: case when resizing to minimal possible size
+    ExternalCommand moveCmd(report,
+                            QStringLiteral("lvm"), {
+                            QStringLiteral("pvmove"),
+                            QStringLiteral("--alloc"),
+                            QStringLiteral("anywhere"),
+                            deviceNode + QStringLiteral(":") + QString::number(firstPE) + QStringLiteral("-") + QString::number(lastPE),
+                            deviceNode + QStringLiteral(":") + QStringLiteral("0-") + QString::number(firstPE - 1)
+                            });
+    bool rval = moveCmd.run(-1) && (moveCmd.exitCode() == 0 || moveCmd.exitCode() == 5); // FIXME: exit code 5
 
+    const QString len = QString::number(length / 512) + QStringLiteral("s");
     ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvresize"), QStringLiteral("--yes"), QStringLiteral("--setphysicalvolumesize"), len, deviceNode });
-    return cmd.run(-1) && cmd.exitCode() == 0;
+    return rval && cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool lvm2_pv::updateUUID(Report& report, const QString& deviceNode) const
