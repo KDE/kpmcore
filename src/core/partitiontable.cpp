@@ -437,7 +437,8 @@ static struct {
     { QStringLiteral("mac"), 0xffff, false, true, PartitionTable::mac },
     { QStringLiteral("pc98"), 16, false, true, PartitionTable::pc98 },
     { QStringLiteral("amiga"), 128, false, true, PartitionTable::amiga },
-    { QStringLiteral("sun"), 8, false, true, PartitionTable::sun }
+    { QStringLiteral("sun"), 8, false, true, PartitionTable::sun },
+    { QStringLiteral("vmd"), 0xffff, false, false, PartitionTable::vmd }
 };
 
 PartitionTable::TableType PartitionTable::nameToTableType(const QString& n)
