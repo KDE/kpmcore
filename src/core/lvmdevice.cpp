@@ -28,9 +28,10 @@
 
 #include <QRegularExpression>
 #include <QStringList>
-#include <KMountPoint>
+
 #include <KDiskFreeSpaceInfo>
 #include <KLocalizedString>
+#include <KMountPoint>
 
 /** Constructs a representation of LVM device with functionning LV as Partition
  *
@@ -139,10 +140,12 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
         const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
         //TODO: test used space report. probably incorrect
-        if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
-            fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
-        } else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem) {
-            fs->setSectorsUsed(fs->readUsedCapacity(lvpath) / logicalSize());
+        if (logicalSize() > 0) {
+            if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
+                fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
+            } else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem) {
+                fs->setSectorsUsed(fs->readUsedCapacity(lvpath) / logicalSize());
+            }
         }
     }
 
