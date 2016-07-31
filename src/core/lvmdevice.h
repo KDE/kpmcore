@@ -32,9 +32,7 @@ class PartitionTable;
 class CreatePartitionTableOperation;
 class SmartStatus;
 
-/** A device.
-
-    Represents a device like /dev/sda.
+/** Represents LVM Volume Group.
 
     Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
 
@@ -49,8 +47,8 @@ public:
     LvmDevice(const QString& name, const QString& iconname = QString());
 
 public:
-    QList<Partition*> scanPartitions(const LvmDevice& dev, PartitionTable* pTable) const;
-    Partition* scanPartition(const QString& lvPath, const LvmDevice& dev, PartitionTable* pTable) const;
+    QList<Partition*> scanPartitions(PartitionTable* pTable) const;
+    Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
 
     static QList<LvmDevice*> scanSystemLVM();
 
@@ -111,4 +109,3 @@ private:
 };
 
 #endif
-

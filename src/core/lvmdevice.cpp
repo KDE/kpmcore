@@ -59,7 +59,7 @@ void LvmDevice::initPartitions()
     qint64 lastusable  = totalPE() - 1;
     PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
 
-    foreach (Partition* p, scanPartitions(*this, pTable)) {
+    foreach (Partition* p, scanPartitions(pTable)) {
         pTable->append(p);
     }
 
@@ -69,25 +69,25 @@ void LvmDevice::initPartitions()
 }
 
 /**
- *  @returns sorted Partition(LV) Array
+ *  @return sorted Partition(LV) Array
  */
-QList<Partition*> LvmDevice::scanPartitions(const LvmDevice& dev, PartitionTable* pTable) const
+QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
     QList<Partition*> pList;
     foreach (QString lvPath, lvPathList()) {
-        pList.append(scanPartition(lvPath, dev, pTable));
+        pList.append(scanPartition(lvPath, pTable));
     }
     return pList;
 }
 
 /**
- * @returns sorted Partition(LV) Array
+ * @return sorted Partition (LV) Array
  */
-Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev, PartitionTable* pTable) const
+Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTable) const
 {
     /*
      * NOTE:
-     * LVM partition have 2 different start and end sector value
+     * LVM partition has 2 different start and end sector values
      * 1. representing the actual LV start from 0 -> size of LV - 1
      * 2. representing abstract LV's sector inside a VG partitionTable
      *    start from last sector + 1 of last Partitions -> size of LV - 1
@@ -116,7 +116,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
         QString mapperNode = FS::luks::mapperName(lvpath);
         bool isCryptOpen = !mapperNode.isEmpty();
         luksFs->setCryptOpen(isCryptOpen);
-        luksFs->setLogicalSectorSize(dev.logicalSize());
+        luksFs->setLogicalSectorSize(logicalSize());
 
         if (isCryptOpen) {
             luksFs->loadInnerFileSystem(lvpath, mapperNode);
@@ -127,7 +127,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
             if (mounted) {
                 const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
                 if (freeSpaceInfo.isValid() && mountPoint != QString())
-                    luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->getPayloadOffset(lvpath)) / dev.logicalSize());
+                    luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->getPayloadOffset(lvpath)) / logicalSize());
             }
         } else {
             mounted = false;
@@ -154,7 +154,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, const LvmDevice& dev,
     }
 
     Partition* part = new Partition(pTable,
-                    dev,
+                    *this,
                     PartitionRole(r),
                     fs,
                     startSector,
@@ -267,9 +267,9 @@ QString LvmDevice::getUUID(const QString& vgname)
 
 /** Get LVM vgs command output with field name
  *
- * @param fieldName lvm field name
- * @param vgname
- * @returns raw output of command output, usully with manay spaces within the returned string
+ * @param fieldName LVM field name
+ * @param vgname the name of LVM Volume Group
+ * @return raw output of command output, usully with many spaces within the returned string
  * */
 
 QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
@@ -399,7 +399,7 @@ bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath, co
 
 bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize)
 {
-    //TODO: check that all the pv in pvlist is lvm2_pv
+    //TODO: check that all the pv in pvlist are lvm2_pv
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
     args << vgname;
