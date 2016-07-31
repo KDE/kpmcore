@@ -276,7 +276,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 
             luksFs->setMounted(mounted);
         } else if (fsType == FileSystem::Lvm2_PV) {
-            //TODO: adding PartitionRole
+            r |= PartitionRole::Lvm_Lv;
             mountPoint = FS::lvm2_pv::getVGName(partitionNode);
             mounted    = false;
         } else {

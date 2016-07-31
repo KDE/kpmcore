@@ -341,7 +341,7 @@ bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const 
 bool LvmDevice::resizeLV(Report& report, LvmDevice& dev, Partition& part)
 {
     Q_UNUSED(dev);
-    //TODO: through tests and add warning that it could currupt the user data.
+    //TODO: thorough tests and add warning that it could currupt the user data.
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvresize"),
               QStringLiteral("--force"), // this command could corrupt user data
@@ -355,7 +355,6 @@ bool LvmDevice::resizeLV(Report& report, LvmDevice& dev, Partition& part)
 
 bool LvmDevice::removePV(Report& report, LvmDevice& dev, const QString& pvPath)
 {
-    //TODO: through tests
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgreduce"),
               //QStringLiteral("--yes"), // potentially corrupt user data
@@ -367,7 +366,6 @@ bool LvmDevice::removePV(Report& report, LvmDevice& dev, const QString& pvPath)
 
 bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
 {
-    //TODO: through tests
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgextend"),
               //QStringLiteral("--yes"), // potentially corrupt user data
@@ -399,7 +397,6 @@ bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath, co
 
 bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize)
 {
-    //TODO: check that all the pv in pvlist are lvm2_pv
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
     args << vgname;

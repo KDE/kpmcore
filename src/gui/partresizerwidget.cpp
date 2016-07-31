@@ -135,7 +135,6 @@ qint32 PartResizerWidget::handleWidth() const
 
 long double PartResizerWidget::sectorsPerPixel() const
 {
-    //FIXME: Make sure that this function never return 0
     return totalSectors() / (width() - 2.0L * handleWidth());
 }
 
