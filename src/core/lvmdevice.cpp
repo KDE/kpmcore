@@ -44,12 +44,13 @@ LvmDevice::LvmDevice(const QString& name, const QString& iconname)
                           getTotalPE(name),
                           iconname,
                           Device::LVM_Device)
-    , m_peSize(getPeSize(name))
-    , m_totalPE(getTotalPE(name))
-    , m_allocPE(getAllocatedPE(name))
-    , m_freePE(getFreePE(name))
-    , m_UUID(getUUID(name))
 {
+    m_peSize  = logicalSize();
+    m_totalPE = totalLogical();
+    m_allocPE = getAllocatedPE(name);
+    m_freePE  = totalLogical() - m_allocPE;
+    m_UUID    = getUUID(name);
+
     initPartitions();
 }
 
