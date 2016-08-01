@@ -66,6 +66,7 @@ public:
 
     static bool removeLV(Report& report, LvmDevice& dev, Partition& part);
     static bool createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname);
+    static bool createLVSnapshot(Report& report, LvmDevice& dev, Partition& lvpart, const QString& name, const qint64 extents = 0);
     static bool resizeLV(Report& report, LvmDevice& dev, Partition& part);
 
     static bool removePV(Report& report, LvmDevice& dev, const QString& pvPath);

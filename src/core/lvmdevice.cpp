@@ -339,6 +339,23 @@ bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
+bool LvmDevice::createLVSnapshot(Report& report, LvmDevice& dev, Partition& lvpart, const QString& name, const qint64 extents)
+{
+    Q_UNUSED(dev);
+    QString numExtents = (extents > 0) ? QString::number(extents) :
+        QString::number(lvpart.length());
+    ExternalCommand cmd(report, QStringLiteral("lvm"),
+            { QStringLiteral("lvcreate"),
+              QStringLiteral("--yes"),
+              QStringLiteral("--extents"),
+              numExtents,
+              QStringLiteral("--snapshot"),
+              QStringLiteral("--name"),
+              name,
+              lvpart.partitionPath() });
+    return (cmd.run(-1) && cmd.exitCode() == 0);
+}
+
 bool LvmDevice::resizeLV(Report& report, LvmDevice& dev, Partition& part)
 {
     Q_UNUSED(dev);
