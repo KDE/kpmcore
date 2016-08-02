@@ -106,7 +106,7 @@ qint64 fat16::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("fsck.msdos"), { QStringLiteral("-n"), QStringLiteral("-v"), deviceNode });
 
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
+    if (cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1)) {
         qint64 usedClusters = -1;
         QRegularExpression re(QStringLiteral("files, (\\d+)/\\d+ "));
         QRegularExpressionMatch reClusters = re.match(cmd.output());
