@@ -243,7 +243,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
         bool mounted = false;
         if (fsType == FileSystem::Luks) {
             r |= PartitionRole::Luks;
-            FS::luks* luksFs = dynamic_cast<FS::luks*>(fs);
+            FS::luks* luksFs = static_cast<FS::luks*>(fs);
             QString mapperNode = FS::luks::mapperName(partitionNode);
             bool isCryptOpen = !mapperNode.isEmpty();
             luksFs->setCryptOpen(isCryptOpen);

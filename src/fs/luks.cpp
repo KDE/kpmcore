@@ -58,7 +58,9 @@ luks::luks(qint64 firstsector,
     : FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Luks)
     , m_innerFs(nullptr)
     , m_isCryptOpen(false)
+    , m_cryptsetupFound(false)
     , m_isMounted(false)
+    , m_logicalSectorSize(1)
 {
 }
 
@@ -131,11 +133,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
     if (!m_innerFs->create(report, mapperNode))
         return false;
 
-    m_isCryptOpen = (m_innerFs != nullptr);
-
-    if (m_isCryptOpen)
-        return true;
-    return false;
+    return true;
 }
 
 QString luks::mountTitle() const
@@ -249,9 +247,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     if (!( openCmd.start(-1) &&
                     openCmd.write(passphrase.toUtf8() + '\n') == passphrase.toUtf8().length() + 1 &&
                     openCmd.waitFor() && openCmd.exitCode() == 0) )
-    {
         return false;
-    }
 
     if (m_innerFs)
     {
@@ -266,12 +262,11 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     loadInnerFileSystem(deviceNode, mapperNode);
     m_isCryptOpen = (m_innerFs != nullptr);
 
-    if (m_isCryptOpen)
-    {
-        m_passphrase = passphrase;
-        return true;
-    }
-    return false;
+    if (!m_isCryptOpen)
+        return false;
+
+    m_passphrase = passphrase;
+    return true;
 }
 
 bool luks::cryptClose(const QString& deviceNode)
@@ -305,9 +300,9 @@ bool luks::cryptClose(const QString& deviceNode)
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
-    if (!m_isCryptOpen)
-        return true;
-    return false;
+    if (m_isCryptOpen)
+        return false;
+    return true;
 }
 
 void luks::loadInnerFileSystem(const QString& deviceNode, const QString& mapperNode)

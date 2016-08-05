@@ -106,6 +106,7 @@ qint64 fat16::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("fsck.msdos"), { QStringLiteral("-n"), QStringLiteral("-v"), deviceNode });
 
+    // Exit code 1 is returned when FAT dirty bit is set
     if (cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1)) {
         qint64 usedClusters = -1;
         QRegularExpression re(QStringLiteral("files, (\\d+)/\\d+ "));
