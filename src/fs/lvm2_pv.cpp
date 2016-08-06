@@ -96,7 +96,8 @@ qint64 lvm2_pv::maxCapacity() const
 qint64 lvm2_pv::readUsedCapacity(const QString& deviceNode) const
 {
     QString val = getpvField(QStringLiteral("pv_used"), deviceNode);
-    return val.isEmpty() ? -1 : val.toLongLong();
+    QString metadataOffset = getpvField(QStringLiteral("pe_start"), deviceNode);
+    return val.isEmpty() ? -1 : val.toLongLong() + metadataOffset.toLongLong();
 }
 
 bool lvm2_pv::check(Report& report, const QString& deviceNode) const
@@ -122,18 +123,20 @@ bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) c
 {
     bool rval = true;
 
-    qint64 lastPE = getTotalPE(deviceNode) - 1;
+    qint64 metadataOffset = getpvField(QStringLiteral("pe_start"), deviceNode).toLongLong();
+
+    qint64 lastPE = getTotalPE(deviceNode) - 1; // starts from 0
     if (lastPE > 0) { // make sure that the PV is already in a VG
-        qint64 targetPE = length / getPESize(deviceNode);
+        qint64 targetPE = (length - metadataOffset)/ getPESize(deviceNode) - 1; // starts from 0
         if (targetPE < lastPE) { //shrinking FS
-            qint64 firstPE = targetPE - 1;
+            qint64 firstMovedPE = qMax(targetPE + 1, getAllocatedPE(deviceNode)); // starts from 1
             ExternalCommand moveCmd(report,
                                     QStringLiteral("lvm"), {
                                     QStringLiteral("pvmove"),
                                     QStringLiteral("--alloc"),
                                     QStringLiteral("anywhere"),
-                                    deviceNode + QStringLiteral(":") + QString::number(firstPE) + QStringLiteral("-") + QString::number(lastPE),
-                                    deviceNode + QStringLiteral(":") + QStringLiteral("0-") + QString::number(firstPE - 1)
+                                    deviceNode + QStringLiteral(":") + QString::number(firstMovedPE) + QStringLiteral("-") + QString::number(lastPE),
+                                    deviceNode + QStringLiteral(":") + QStringLiteral("0-") + QString::number(firstMovedPE - 1)
                                     });
             rval = moveCmd.run(-1) && (moveCmd.exitCode() == 0 || moveCmd.exitCode() == 5); // FIXME: exit code 5: NO data to move
         }
