@@ -601,8 +601,15 @@ qint64 luks::getKeySize(const QString& deviceNode) const
  */
 qint64 luks::getPayloadOffset(const QString& deviceNode) const
 {
-    //4096 sectors and 512 bytes.
-    return 4096 * 512;
+    ExternalCommand cmd(QStringLiteral("cryptsetup"),
+                        { QStringLiteral("luksDump"), deviceNode });
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("Payload offset:\\s+(\\d+)"));
+        QRegularExpressionMatch rePayloadOffset = re.match(cmd.output());
+        if (rePayloadOffset.hasMatch())
+            return rePayloadOffset.captured(1).toLongLong() * 512; // assuming LUKS sector size is 512
+    }
+    return -1;
 }
 
 bool luks::canEncryptType(FileSystem::Type type)
