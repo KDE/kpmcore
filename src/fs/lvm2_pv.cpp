@@ -120,21 +120,31 @@ bool lvm2_pv::remove(Report& report, const QString& deviceNode) const
 
 bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-//     FIXME: we don't need pvmove when growing
-    qint64 lastPE = getTotalPE(deviceNode) - 1;
-    qint64 firstPE = qMin(length / getPESize(deviceNode), lastPE) - 1;     // FIXME: case when resizing to minimal possible size
-    ExternalCommand moveCmd(report,
-                            QStringLiteral("lvm"), {
-                            QStringLiteral("pvmove"),
-                            QStringLiteral("--alloc"),
-                            QStringLiteral("anywhere"),
-                            deviceNode + QStringLiteral(":") + QString::number(firstPE) + QStringLiteral("-") + QString::number(lastPE),
-                            deviceNode + QStringLiteral(":") + QStringLiteral("0-") + QString::number(firstPE - 1)
-                            });
-    bool rval = moveCmd.run(-1) && (moveCmd.exitCode() == 0 || moveCmd.exitCode() == 5); // FIXME: exit code 5
+    bool rval = true;
 
-    const QString len = QString::number(length / 512) + QStringLiteral("s");
-    ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvresize"), QStringLiteral("--yes"), QStringLiteral("--setphysicalvolumesize"), len, deviceNode });
+    qint64 lastPE = getTotalPE(deviceNode) - 1;
+    if (lastPE > 0) { // make sure that the PV is already in a VG
+        qint64 targetPE = length / getPESize(deviceNode);
+        if (targetPE < lastPE) { //shrinking FS
+            qint64 firstPE = targetPE - 1;
+            ExternalCommand moveCmd(report,
+                                    QStringLiteral("lvm"), {
+                                    QStringLiteral("pvmove"),
+                                    QStringLiteral("--alloc"),
+                                    QStringLiteral("anywhere"),
+                                    deviceNode + QStringLiteral(":") + QString::number(firstPE) + QStringLiteral("-") + QString::number(lastPE),
+                                    deviceNode + QStringLiteral(":") + QStringLiteral("0-") + QString::number(firstPE - 1)
+                                    });
+            rval = moveCmd.run(-1) && (moveCmd.exitCode() == 0 || moveCmd.exitCode() == 5); // FIXME: exit code 5: NO data to move
+        }
+    }
+
+    ExternalCommand cmd(report, QStringLiteral("lvm"), {
+                                QStringLiteral("pvresize"),
+                                QStringLiteral("--yes"),
+                                QStringLiteral("--setphysicalvolumesize"),
+                                QString::number(length) + QStringLiteral("B"),
+                                deviceNode });
     return rval && cmd.run(-1) && cmd.exitCode() == 0;
 }
 
