@@ -113,7 +113,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
 
     if (type == FileSystem::Luks) {
         r |= PartitionRole::Luks;
-        FS::luks* luksFs = dynamic_cast<FS::luks*>(fs);
+        FS::luks* luksFs = static_cast<FS::luks*>(fs);
         QString mapperNode = FS::luks::mapperName(lvpath);
         bool isCryptOpen = !mapperNode.isEmpty();
         luksFs->setCryptOpen(isCryptOpen);
