@@ -54,14 +54,14 @@ protected:
         return m_PartList;
     }
 
-    const Type type() const {
+    ResizeVolumeGroupJob::Type type() const {
         return m_Type;
     }
 
 private:
     LvmDevice& m_Device;
     const QStringList m_PartList;
-    const Type m_Type;
+    ResizeVolumeGroupJob::Type m_Type;
 };
 
 #endif
