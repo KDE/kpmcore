@@ -41,7 +41,7 @@ Device::Device(const QString& name,
     , m_TotalLogical(totalLogical)
     , m_PartitionTable(nullptr)
     , m_IconName(iconname.isEmpty() ? QStringLiteral("drive-harddisk") : iconname)
-    , m_SmartStatus(new SmartStatus(devicenode))
+    , m_SmartStatus(type == Device::Disk_Device ? new SmartStatus(devicenode) : nullptr)
     , m_Type(type)
 {
 }
