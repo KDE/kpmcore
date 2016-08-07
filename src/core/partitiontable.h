@@ -152,6 +152,13 @@ public:
         return m_LastUsable;
     }
 
+    void setFirstUsableSector(qint64 s) {
+        m_FirstUsable = s;
+    }
+    void setLastUsableSector(qint64 s) {
+        m_LastUsable = s;
+    }
+
     void updateUnallocated(const Device& d);
     void insertUnallocated(const Device& d, PartitionNode* p, qint64 start) const;
 
@@ -178,12 +185,6 @@ public:
 protected:
     void setMaxPrimaries(qint32 n) {
         m_MaxPrimaries = n;
-    }
-    void setFirstUsableSector(qint64 s) {
-        m_FirstUsable = s;
-    }
-    void setLastUsableSector(qint64 s) {
-        m_LastUsable = s;
     }
 
 private:
