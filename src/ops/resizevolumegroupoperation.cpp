@@ -41,7 +41,9 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& dev, const QSt
     m_ShrinkVolumeGroupJob(nullptr),
     m_MovePhysicalVolumeJob(nullptr)
 {
-    const QStringList clist = LvmDevice::getPVs(dev.name());
+    const QStringList clist = currentList();
+    m_TargetSize = FS::lvm2_pv::getPVSize(targetList());
+    m_CurrentSize = FS::lvm2_pv::getPVSize(currentList());
 
     QStringList toRemoveList = clist;
     foreach (QString path, partlist) {
@@ -111,8 +113,17 @@ bool ResizeVolumeGroupOperation::targets(const Partition& part) const
 
 void ResizeVolumeGroupOperation::preview()
 {
+    //asumming that targetSize is larger than the allocated space.
+    device().setTotalLogical(targetSize() / device().logicalSize());
+    device().partitionTable()->setFirstUsableSector(PartitionTable::defaultFirstUsable(device(), PartitionTable::vmd));
+    device().partitionTable()->setLastUsableSector(PartitionTable::defaultLastUsable(device(), PartitionTable::vmd));
+    device().partitionTable()->updateUnallocated(device());
 }
 
 void ResizeVolumeGroupOperation::undo()
 {
+    device().setTotalLogical(currentSize() / device().logicalSize());
+    device().partitionTable()->setFirstUsableSector(PartitionTable::defaultFirstUsable(device(), PartitionTable::vmd));
+    device().partitionTable()->setLastUsableSector(PartitionTable::defaultLastUsable(device(), PartitionTable::vmd));
+    device().partitionTable()->updateUnallocated(device());
 }

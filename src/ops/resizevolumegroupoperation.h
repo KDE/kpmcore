@@ -72,6 +72,14 @@ protected:
         return m_CurrentList;
     }
 
+    qint64 targetSize() const {
+        return m_TargetSize;
+    }
+
+    qint64 currentSize() const {
+        return m_CurrentSize;
+    }
+
     ResizeVolumeGroupJob* growVolumeGroupJob() {
         return m_GrowVolumeGroupJob;
     }
@@ -89,6 +97,8 @@ private:
 
     const QStringList m_TargetList;
     const QStringList m_CurrentList;
+    qint64 m_TargetSize;
+    qint64 m_CurrentSize;
 
     ResizeVolumeGroupJob *m_GrowVolumeGroupJob;
     ResizeVolumeGroupJob *m_ShrinkVolumeGroupJob;
