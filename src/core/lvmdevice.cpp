@@ -27,7 +27,6 @@
 #include "util/helpers.h"
 
 #include <QRegularExpression>
-#include <QStringList>
 
 #include <KDiskFreeSpaceInfo>
 #include <KLocalizedString>
@@ -50,8 +49,18 @@ LvmDevice::LvmDevice(const QString& name, const QString& iconname)
     m_freePE  = getFreePE(name);
     m_allocPE = m_totalPE - m_freePE;
     m_UUID    = getUUID(name);
+    m_PVPathList = new QStringList(getPVs(name));
+    m_LVPathList = new QStringList(getLVs(name));
+    m_LVSizeMap  = new QMap<QString, qint64>();
 
     initPartitions();
+}
+
+LvmDevice::~LvmDevice()
+{
+    delete m_PVPathList;
+    delete m_LVPathList;
+    delete m_LVSizeMap;
 }
 
 void LvmDevice::initPartitions()
@@ -61,6 +70,7 @@ void LvmDevice::initPartitions()
     PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
 
     foreach (Partition* p, scanPartitions(pTable)) {
+        LVSizeMap()->insert(p->partitionPath(), p->length());
         pTable->append(p);
     }
 
@@ -178,7 +188,6 @@ QList<LvmDevice*> LvmDevice::scanSystemLVM()
             lvmList.append(new LvmDevice(vgname.trimmed()));
         }
     }
-
     return lvmList;
 }
 
@@ -190,13 +199,25 @@ qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
 
     if (devIndex) {
         for (int i = 0; i < devIndex; i++) {
-            //TODO: currently going over the same LV again and again is wasteful. Could use some more optimization
-            mSector += getTotalLE(lvpathList[i]);
+            mSector += LVSizeMap()->value(lvpathList[i]);
         }
         mSector += sector;
     }
     return mSector;
 }
+
+QStringList LvmDevice::deviceNodeList() const
+{
+    return *PVPathList();
+}
+
+QStringList LvmDevice::lvPathList() const
+{
+    return *LVPathList();
+}
+
+
+
 
 QStringList LvmDevice::getPVs(const QString& vgname)
 {
@@ -212,11 +233,6 @@ QStringList LvmDevice::getPVs(const QString& vgname)
     return devPathList;
 }
 
-QList<QString> LvmDevice::deviceNodeList() const
-{
-    return getPVs(name());
-}
-
 QStringList LvmDevice::getLVs(const QString& vgname)
 {
     QStringList lvPathList;
@@ -229,11 +245,6 @@ QStringList LvmDevice::getLVs(const QString& vgname)
         }
     }
     return lvPathList;
-}
-
-QList<QString> LvmDevice::lvPathList() const
-{
-    return getLVs(name());
 }
 
 qint64 LvmDevice::getPeSize(const QString& vgname)

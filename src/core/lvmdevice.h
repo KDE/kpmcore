@@ -27,6 +27,7 @@
 #include <QString>
 #include <QObject>
 #include <QtGlobal>
+#include <QStringList>
 
 class PartitionTable;
 class CreatePartitionTableOperation;
@@ -45,11 +46,13 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
 
 public:
     LvmDevice(const QString& name, const QString& iconname = QString());
+    ~LvmDevice();
 
 public:
     QList<Partition*> scanPartitions(PartitionTable* pTable) const;
     Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
 
+public:
     static QList<LvmDevice*> scanSystemLVM();
 
     static qint64 getPeSize(const QString& vgname);
@@ -78,10 +81,10 @@ public:
 
 protected:
     void initPartitions();
-    QList<QString> deviceNodeList() const override;
+    QStringList deviceNodeList() const override;
     qint64 mappedSector(const QString& lvpath, qint64 sector) const override;
 
-    QList<QString> lvPathList() const;
+    QStringList lvPathList() const;
 
 public:
     qint64 peSize() const {
@@ -100,6 +103,18 @@ public:
         return m_UUID;
     }
 
+    QStringList* LVPathList() const {
+        return m_LVPathList;
+    }
+
+    QStringList* PVPathList() const {
+        return m_PVPathList;
+    }
+
+    QMap<QString, qint64>* LVSizeMap() const {
+        return m_LVSizeMap;
+    }
+
 private:
     qint64 m_peSize;
     qint64 m_totalPE;
@@ -107,6 +122,9 @@ private:
     qint64 m_freePE;
     QString m_UUID;
 
+    mutable QStringList* m_LVPathList;
+    mutable QStringList* m_PVPathList;
+    mutable QMap<QString, qint64>* m_LVSizeMap;
 };
 
 #endif

@@ -23,6 +23,7 @@
 #include "core/device.h"
 
 #include <QString>
+#include <QStringList>
 #include <QObject>
 #include <QtGlobal>
 
@@ -44,18 +45,20 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 {
     Q_DISABLE_COPY(VolumeManagerDevice)
 
-protected:
+public:
     VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
-    virtual QList<QString> deviceNodeList() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice */
+    virtual void initPartitions() = 0;
+    virtual QStringList deviceNodeList() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice */
     virtual qint64  mappedSector(const QString& devNode, qint64 sector) const = 0;
 
 public:
     /** string deviceNodeList together into comma-sperated list */
     virtual QString prettyDeviceNodeList() const;
-    /** Mapper return absolute sector representing the VG */
 
-private:
-    //QMap<QString, qint32> deviceSizeMapper;
+    void setTotalLogical(qint64 num) {
+        Q_ASSERT(num > 0);
+        m_TotalLogical = num;
+    }
 };
 
 #endif
