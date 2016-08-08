@@ -115,7 +115,7 @@ public:
     static QString getVGName(const QString& deviceNode);
     static QString getpvField(const QString& fieldname, const QString& deviceNode = QString());
 
-    static QStringList getFreePV();
+    static const QStringList getFreePV();
 
 public:
     static CommandSupportType m_GetUsed;

@@ -307,7 +307,7 @@ QString lvm2_pv::getVGName(const QString& deviceNode)
     return getpvField(QStringLiteral("vg_name"), deviceNode);
 }
 
-QStringList lvm2_pv::getFreePV()
+const QStringList lvm2_pv::getFreePV()
 {
     QStringList rlist;
 
