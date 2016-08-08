@@ -446,15 +446,28 @@ bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList
 
 bool LvmDevice::removeVG(Report& report, LvmDevice& dev)
 {
-    bool deactivated = false;
-    ExternalCommand deactivate(report, QStringLiteral("lvm"),
-            { QStringLiteral("vgchange"),
-              QStringLiteral("--activate"), QStringLiteral("n"),
-              dev.name() });
-    deactivated = deactivate.run(-1) && deactivate.exitCode() == 0;
-
+    bool deactivated = deactivateVG(report, dev);
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgremove"),
               dev.name() });
     return (deactivated && cmd.run(-1) && cmd.exitCode() == 0);
+}
+
+bool LvmDevice::deactivateVG(Report& report, const LvmDevice& dev)
+{
+    ExternalCommand deactivate(report, QStringLiteral("lvm"),
+            { QStringLiteral("vgchange"),
+              QStringLiteral("--activate"), QStringLiteral("n"),
+              dev.name() });
+    return deactivate.run(-1) && deactivate.exitCode() == 0;
+}
+
+bool LvmDevice::deactivateLV(Report& report, LvmDevice& dev, Partition& part)
+{
+    Q_UNUSED(dev);
+    ExternalCommand deactivate(report, QStringLiteral("lvm"),
+            { QStringLiteral("lvchange"),
+              QStringLiteral("--activate"), QStringLiteral("n"),
+              part.partitionPath() });
+    return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
