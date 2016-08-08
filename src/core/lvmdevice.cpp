@@ -163,6 +163,8 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
     if (fs->supportGetLabel() != FileSystem::cmdSupportNone) {
         fs->setLabel(fs->readLabel(lvpath));
     }
+    if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
+        fs->setUUID(fs->readUUID(lvpath));
 
     Partition* part = new Partition(pTable,
                     *this,
