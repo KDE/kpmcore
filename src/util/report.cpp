@@ -80,7 +80,7 @@ QString Report::toHtml() const
     if (children().size() == 0)
         s += QStringLiteral("<br/>\n");
     else
-        for (Report * child : children())
+        for (const auto &child : children())
             s += child->toHtml();
 
     if (!status().isEmpty())
@@ -109,7 +109,7 @@ QString Report::toText() const
     if (!output().isEmpty())
         s += output() + QStringLiteral("\n");
 
-    for (const Report * child : children())
+    for (const auto &child : children())
         s += child->toText();
 
     return s;

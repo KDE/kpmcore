@@ -84,9 +84,8 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Xfs, new FS::xfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Zfs, new FS::zfs(-1, -1, -1, QString()));
 
-    for (FileSystem * fs : FileSystemFactory::map()) {
+    for (const auto &fs : FileSystemFactory::map())
         fs->init();
-    }
 
     CoreBackendManager::self()->backend()->initFSSupport();
 }

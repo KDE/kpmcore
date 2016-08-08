@@ -457,7 +457,7 @@ bool OperationStack::contains(const Partition* p) const
 {
     Q_ASSERT(p);
 
-    for (Operation * o : operations()) {
+    for (auto const &o : operations()) {
         if (o->targets(*p))
             return true;
 
@@ -499,19 +499,19 @@ void OperationStack::clearDevices()
     @param p pointer to the Partition to find a Device for
     @return the Device or nullptr if none could be found
 */
-Device* OperationStack::findDeviceForPartition(const Partition* p)
+const Device* OperationStack::findDeviceForPartition(const Partition* p)
 {
     QReadLocker lockDevices(&lock());
 
-    foreach(Device * d, previewDevices()) {
+    foreach(const Device *d, previewDevices()) {
         if (d->partitionTable() == nullptr)
             continue;
 
-        foreach(const Partition * part, d->partitionTable()->children()) {
+        for (auto const &part : d->partitionTable()->children()) {
             if (part == p)
                 return d;
 
-            for (const Partition * child : part->children())
+            for (auto const &child : part->children())
                 if (child == p)
                     return d;
         }

@@ -92,7 +92,7 @@ qint64 PartitionTable::freeSectorsAfter(const Partition& p) const
 qint64 PartitionTable::freeSectors() const
 {
     qint64 sectors = 0;
-    for (const Partition * p : children()) {
+    for (auto const &p : children()) {
         if (p->roles().has(PartitionRole::Unallocated)) {
             sectors += p->length();
         }
@@ -104,8 +104,8 @@ qint64 PartitionTable::freeSectors() const
 /** @return true if the PartitionTable has an extended Partition */
 bool PartitionTable::hasExtended() const
 {
-    for (int i = 0; i < children().size(); i++)
-        if (children()[i]->roles().has(PartitionRole::Extended))
+    for (auto const &p : children())
+        if (p->roles().has(PartitionRole::Extended))
             return true;
 
     return false;
@@ -114,9 +114,9 @@ bool PartitionTable::hasExtended() const
 /** @return pointer to the PartitionTable's extended Partition or nullptr if none exists */
 Partition* PartitionTable::extended() const
 {
-    for (int i = 0; i < children().size(); i++)
-        if (children()[i]->roles().has(PartitionRole::Extended))
-            return children()[i];
+    for (auto const &p : children())
+        if (p->roles().has(PartitionRole::Extended))
+            return p;
 
     return nullptr;
 }
@@ -142,7 +142,7 @@ int PartitionTable::numPrimaries() const
 {
     int result = 0;
 
-    for (const Partition * p : children())
+    for (auto const &p : children())
         if (p->roles().has(PartitionRole::Primary) || p->roles().has(PartitionRole::Extended))
             result++;
 
@@ -360,7 +360,7 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
     if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
         // rearranging all the partitions sector to keep all the unallocated space at the end
         lastEnd = 0;
-        for (Partition* child : children()) {
+        for (auto &child : children()) {
             qint64 totalSector = child->length();
             child->setFirstSector(lastEnd);
             child->setLastSector(lastEnd + totalSector - 1);
@@ -368,7 +368,7 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
             lastEnd += totalSector;
         }
     } else {
-        foreach(Partition * child, p->children()) {
+        foreach(auto &child, p->children()) {
             p->insert(createUnallocated(d, *p, lastEnd, child->firstSector() - 1));
 
             if (child->roles().has(PartitionRole::Extended))
@@ -444,45 +444,45 @@ static struct {
 
 PartitionTable::TableType PartitionTable::nameToTableType(const QString& n)
 {
-    for (size_t i = 0; i < sizeof(tableTypes) / sizeof(tableTypes[0]); i++)
-        if (n == tableTypes[i].name)
-            return tableTypes[i].type;
+    for (const auto &type : tableTypes)
+        if (n == type.name)
+            return type.type;
 
     return PartitionTable::unknownTableType;
 }
 
 QString PartitionTable::tableTypeToName(TableType l)
 {
-    for (size_t i = 0; i < sizeof(tableTypes) / sizeof(tableTypes[0]); i++)
-        if (l == tableTypes[i].type)
-            return tableTypes[i].name;
+    for (const auto &type : tableTypes)
+        if (l == type.type)
+            return type.name;
 
     return xi18nc("@item partition table name", "unknown");
 }
 
 qint64 PartitionTable::maxPrimariesForTableType(TableType l)
 {
-    for (size_t i = 0; i < sizeof(tableTypes) / sizeof(tableTypes[0]); i++)
-        if (l == tableTypes[i].type)
-            return tableTypes[i].maxPrimaries;
+    for (const auto &type : tableTypes)
+        if (l == type.type)
+            return type.maxPrimaries;
 
     return 1;
 }
 
 bool PartitionTable::tableTypeSupportsExtended(TableType l)
 {
-    for (size_t i = 0; i < sizeof(tableTypes) / sizeof(tableTypes[0]); i++)
-        if (l == tableTypes[i].type)
-            return tableTypes[i].canHaveExtended;
+    for (const auto &type : tableTypes)
+        if (l == type.type)
+            return type.canHaveExtended;
 
     return false;
 }
 
 bool PartitionTable::tableTypeIsReadOnly(TableType l)
 {
-    for (size_t i = 0; i < sizeof(tableTypes) / sizeof(tableTypes[0]); i++)
-        if (l == tableTypes[i].type)
-            return tableTypes[i].isReadOnly;
+    for (const auto &type : tableTypes)
+        if (l == type.type)
+            return type.isReadOnly;
 
     return false;
 }
@@ -506,7 +506,7 @@ bool PartitionTable::isSectorBased(const Device& d) const
 
             // see if we have more cylinder aligned partitions than sector
             // aligned ones.
-            for (const Partition * p : children()) {
+            for (const auto &p : children()) {
                 if (p->firstSector() % PartitionAlignment::sectorAlignment(diskDevice) == 0)
                     numSectorAligned++;
                 else if (p->firstSector() % diskDevice.cylinderSize() == 0)
@@ -544,12 +544,12 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 
     QList<const Partition*> partitions;
 
-    for (const Partition * p : ptable.children()) {
+    for (auto const &p : ptable.children()) {
         if (!p->roles().has(PartitionRole::Unallocated)) {
             partitions.append(p);
 
             if (p->roles().has(PartitionRole::Extended))
-                for (const Partition * child : p->children()) {
+                for (auto const &child : p->children()) {
                     if (!child->roles().has(PartitionRole::Unallocated))
                         partitions.append(child);
                 }
@@ -558,7 +558,7 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 
     qSort(partitions.begin(), partitions.end(), isPartitionLessThan);
 
-    foreach(const Partition * p, partitions)
+    foreach(auto const &p, partitions)
         stream << *p;
 
     return stream;

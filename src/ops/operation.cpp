@@ -146,7 +146,7 @@ qint32 Operation::totalProgress() const
 {
     qint32 result = 0;
 
-    for (const Job * job : jobs())
+    for (const auto &job : jobs())
         result += job->numSteps();
 
     return result;

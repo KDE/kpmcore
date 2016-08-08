@@ -39,7 +39,7 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    for (const QString pvpath : partList()) {
+    for (const auto &pvpath : partList()) {
         if (type() == ResizeVolumeGroupJob::Grow) {
             rval = LvmDevice::insertPV(*report, device(), pvpath);
         } else if (type() == ResizeVolumeGroupJob::Shrink) {
@@ -58,7 +58,7 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 QString ResizeVolumeGroupJob::description() const
 {
     QString tmp = QString();
-    for (const QString path : partList()) {
+    for (const auto &path : partList()) {
         tmp += path + QStringLiteral(",");
     }
     if (type() == ResizeVolumeGroupJob::Grow) {

@@ -205,7 +205,7 @@ qint64 lvm2_pv::getTotalPE(const QString& deviceNode)
 qint64 lvm2_pv::getTotalPE(const QStringList& deviceNodeList)
 {
     qint64 sum = 0;
-    for (QString deviceNode : deviceNodeList) {
+    for (const auto &deviceNode : deviceNodeList) {
         qint64 totalPE =  getTotalPE(deviceNode);
         if (totalPE < 0) {
             sum = -1;

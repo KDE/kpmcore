@@ -71,7 +71,7 @@ void LvmDevice::initPartitions()
     qint64 lastusable  = totalPE() - 1;
     PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
 
-    for (Partition* p : scanPartitions(pTable)) {
+    for (const auto &p : scanPartitions(pTable)) {
         LVSizeMap()->insert(p->partitionPath(), p->length());
         pTable->append(p);
     }
@@ -87,7 +87,7 @@ void LvmDevice::initPartitions()
 const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
     QList<Partition*> pList;
-    for (QString lvPath : lvPathList()) {
+    for (const auto &lvPath : lvPathList()) {
         pList.append(scanPartition(lvPath, pTable));
     }
     return pList;
@@ -184,7 +184,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
 QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {
     QList<LvmDevice*> lvmList;
-    for (QString vgname : getVGs()) {
+    for (const auto &vgname : getVGs()) {
         lvmList.append(new LvmDevice(vgname));
     }
     return lvmList;
@@ -221,7 +221,7 @@ const QStringList LvmDevice::getVGs()
     QString output = getField(QStringLiteral("vg_name"));
     if (!output.isEmpty()) {
         const QStringList vgnameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        for (QString vgname : vgnameList) {
+        for (const auto &vgname : vgnameList) {
             vgList.append(vgname.trimmed());
         }
     }
@@ -235,7 +235,7 @@ QStringList LvmDevice::getPVs(const QString& vgname)
 
     if (cmdOutput.size()) {
         const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        for (QString devPath : tempPathList) {
+        for (const auto &devPath : tempPathList) {
             devPathList.append(devPath.trimmed());
         }
     }
@@ -249,7 +249,7 @@ QStringList LvmDevice::getLVs(const QString& vgname)
 
     if (cmdOutput.size()) {
         const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        for (QString lvPath : tempPathList) {
+        for (const auto &lvPath : tempPathList) {
             lvPathList.append(lvPath.trimmed());
         }
     }
@@ -424,7 +424,7 @@ bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath, co
     args << QStringLiteral("pvmove");
     args << pvPath;
     if (!destinations.isEmpty()) {
-        for (QString destPath : destinations) {
+        for (const auto &destPath : destinations) {
             args << destPath.trimmed();
         }
     }
@@ -438,7 +438,7 @@ bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
     args << vgname;
-    for (QString pvnode : pvlist) {
+    for (const auto &pvnode : pvlist) {
         args << pvnode.trimmed();
     }
     ExternalCommand cmd(report, QStringLiteral("lvm"), args);

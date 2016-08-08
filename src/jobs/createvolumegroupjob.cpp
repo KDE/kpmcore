@@ -24,8 +24,8 @@
 #include <KLocalizedString>
 
 /** Creates a new CreateVolumeGroupJob
-    @param vgname
-    @parem pvList
+    @param vgname LVM Volume Group name
+    @param pvlist List of LVM Physical Volumes
 */
 CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgname, const QStringList& pvlist, const qint32 pesize) :
     Job(),
@@ -51,7 +51,7 @@ bool CreateVolumeGroupJob::run(Report& parent)
 QString CreateVolumeGroupJob::description() const
 {
     QString tmp = QString();
-    for (const QString name : pvList()) {
+    for (const auto &name : pvList()) {
         tmp += QStringLiteral("\n") + name;
     }
     return xi18nc("@info/plain", "Create new Volume Group: <filename>%1</filename> with PV: %2", vgName(), tmp);

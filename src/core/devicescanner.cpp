@@ -65,10 +65,10 @@ void DeviceScanner::scan()
     const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
     const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM();
 
-    for (Device * d : deviceList)
+    for (auto const &d : deviceList)
         operationStack().addDevice(d);
 
-    for (Device * d : lvmList)
+    for (auto const &d : lvmList)
         operationStack().addDevice(d);
 
     operationStack().sortDevices();

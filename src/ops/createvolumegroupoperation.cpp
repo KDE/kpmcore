@@ -27,8 +27,6 @@
 #include <KLocalizedString>
 
 /** Creates a new CreateVolumeGroupOperation.
-    @param d the Device to create the new PartitionTable on
-    @param t the type for the new PartitionTable
 */
 CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist, const qint32 pesize) :
     Operation(),
@@ -56,7 +54,7 @@ void CreateVolumeGroupOperation::preview()
 
 void CreateVolumeGroupOperation::undo()
 {
-    for(QString pvpath : PVList()) {
+    for(const auto &pvpath : PVList()) {
         if (LvmDevice::s_DirtyPVs.contains(pvpath)) {
             LvmDevice::s_DirtyPVs.removeAll(pvpath);
         }

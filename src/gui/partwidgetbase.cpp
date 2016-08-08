@@ -107,21 +107,21 @@ void PartWidgetBase::positionChildren(const QWidget* destWidget, const Partition
         return;
 
     qint64 totalLength = 0;
-    for (const Partition * p : partitions)
+    for (const auto &p : partitions)
         totalLength += p->length();
 
     if (totalLength < 1)
         return;
 
     // calculate unleveled width for each child and store it
-    for (int i = 0; i < partitions.size(); i++) {
-        childrenWidth.append(partitions[i]->length() * destWidgetWidth / totalLength);
+    for (const auto &p : partitions) {
+        childrenWidth.append(p->length() * destWidgetWidth / totalLength);
 
         // Calculate the minimum width for the widget. This is easy for primary and logical partitions: they
         // just have a fixed min width (configured in m_MinWidth). But for extended partitions things
         // are not quite as simple. We need to calc the sum of the min widths for each child, taking
         // spacing and borders into account, and add our own min width.
-        qint32 min = (minWidth() + 2 * borderWidth() + spacing()) * partitions[i]->children().size() - spacing() + 2 * borderWidth();
+        qint32 min = (minWidth() + 2 * borderWidth() + spacing()) * p->children().size() - spacing() + 2 * borderWidth();
 
         // if it's too small, this partition is a primary or logical so just use the configured value
         if (min < minWidth())
@@ -146,7 +146,7 @@ QList<PartWidget*> PartWidgetBase::childWidgets()
 {
     QList<PartWidget*> rval;
 
-    for (QObject * o : children())
+    for (auto &o : children())
         if (PartWidget* w = qobject_cast<PartWidget*>(o))
             rval.append(w);
 

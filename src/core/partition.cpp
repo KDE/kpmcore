@@ -106,7 +106,7 @@ Partition::Partition(const Partition& other) :
     m_State(other.m_State)
 {
     setPartitionPath(other.m_PartitionPath);
-    for (const Partition * child : other.children()) {
+    for (auto const &child : other.children()) {
         Partition* p = new Partition(*child);
         p->setParent(this);
         m_Children.append(p);
@@ -121,7 +121,7 @@ Partition& Partition::operator=(const Partition& other)
 
     clearChildren();
 
-    for (const Partition * child : other.children()) {
+    for (auto const &child : other.children()) {
         Partition* p = new Partition(*child);
         p->setParent(this);
         m_Children.append(p);
@@ -179,7 +179,7 @@ qint64 Partition::sectorsUsed() const
         return fileSystem().sectorsUsed();
 
     qint64 result = 0;
-    for (const Partition * p : children())
+    for (auto const &p : children())
         if (!p->roles().has(PartitionRole::Unallocated))
             result += p->length();
 
@@ -215,7 +215,7 @@ void Partition::adjustLogicalNumbers(qint32 deletedNumber, qint32 insertedNumber
     if (!roles().has(PartitionRole::Extended))
         return;
 
-    foreach(Partition * p, children()) {
+    foreach(auto const &p, children()) {
         QString path = p->partitionPath();
         path.remove(QRegularExpression(QStringLiteral("(\\d+$)")));
         if (deletedNumber > 4 && p->number() > deletedNumber)
@@ -230,7 +230,7 @@ qint64 Partition::maxFirstSector() const
 {
     qint64 rval = -1;
 
-    for (const Partition * child : children())
+    for (auto const &child : children())
         if (!child->roles().has(PartitionRole::Unallocated) && (child->firstSector() < rval || rval == -1))
             rval = child->firstSector();
 
@@ -242,7 +242,7 @@ qint64 Partition::minLastSector() const
 {
     qint64 rval = -1;
 
-    for (const Partition * child : children())
+    for (auto const &child : children())
         if (!child->roles().has(PartitionRole::Unallocated) && child->lastSector() > rval)
             rval = child->lastSector();
 
@@ -252,7 +252,7 @@ qint64 Partition::minLastSector() const
 /** @return true if the Partition has children */
 bool Partition::hasChildren() const
 {
-    for (const Partition * child : children())
+    for (auto const &child : children())
         if (!child->roles().has(PartitionRole::Unallocated))
             return true;
 
@@ -365,7 +365,7 @@ QTextStream& operator<<(QTextStream& stream, const Partition& p)
 {
     QStringList flagList;
 
-    for (const PartitionTable::Flag & f : PartitionTable::flagList()) {
+    for (auto const &f : PartitionTable::flagList()) {
         if (p.activeFlags() & f)
             flagList.append(PartitionTable::flagName(f));
     }

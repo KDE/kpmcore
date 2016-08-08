@@ -25,8 +25,6 @@
 #include <KLocalizedString>
 
 /** Creates a new RemoveVolumeGroupOperation.
-    @param d the Device to create the new PartitionTable on
-    @param t the type for the new PartitionTable
 */
 RemoveVolumeGroupOperation::RemoveVolumeGroupOperation(VolumeManagerDevice& dev) :
     Operation(),

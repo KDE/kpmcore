@@ -96,7 +96,7 @@ qint32 OperationRunner::numJobs() const
 {
     qint32 result = 0;
 
-    for (const Operation * op :  operationStack().operations())
+    for (auto const &op :  operationStack().operations())
         result += op->jobs().size();
 
     return result;

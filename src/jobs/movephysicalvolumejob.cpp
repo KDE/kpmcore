@@ -39,13 +39,13 @@ bool MovePhysicalVolumeJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     QStringList destinations = LvmDevice::getPVs(device().name());
-    for (const QString partPath : partList()) {
+    for (const auto &partPath : partList()) {
         if (destinations.contains(partPath)) {
             destinations.removeAll(partPath);
         }
     }
 
-    for (const QString partPath : partList()) {
+    for (const auto &partPath : partList()) {
         rval = LvmDevice::movePV(*report, device(), partPath, destinations);
         if (rval == false) {
             break;
@@ -60,7 +60,7 @@ bool MovePhysicalVolumeJob::run(Report& parent)
 QString MovePhysicalVolumeJob::description() const
 {
     QString tmp = QString();
-    for (const QString path : partList()) {
+    for (const auto &path : partList()) {
         tmp += path + QStringLiteral(",");
     }
     return xi18nc("@info/plain", "Move used PE in %1 on %2 to other available Physical Volumes", tmp, device().name());

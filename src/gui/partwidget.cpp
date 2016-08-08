@@ -56,13 +56,13 @@ void PartWidget::init(const Partition* p)
 void PartWidget::updateChildren()
 {
     if (partition()) {
-        foreach(QWidget * w, childWidgets()) {
+        foreach(auto &w, childWidgets()) {
             w->setVisible(false);
             w->deleteLater();
             w->setParent(nullptr);
         }
 
-        for (const Partition * child : partition()->children()) {
+        for (const auto &child : partition()->children()) {
             QWidget* w = new PartWidget(this, child);
             w->setVisible(true);
         }
