@@ -61,8 +61,13 @@ protected:
         return m_CreateVolumeGroupJob;
     }
 
+    QStringList PVList() {
+        return m_PVList;
+    }
+
 private:
     CreateVolumeGroupJob* m_CreateVolumeGroupJob;
+    QStringList m_PVList;
 };
 
 #endif

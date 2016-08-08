@@ -56,6 +56,8 @@ LvmDevice::LvmDevice(const QString& name, const QString& iconname)
     initPartitions();
 }
 
+QStringList LvmDevice::s_DirtyPVs;
+
 LvmDevice::~LvmDevice()
 {
     delete m_PVPathList;

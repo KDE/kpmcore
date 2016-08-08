@@ -32,7 +32,8 @@
 */
 CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist, const qint32 pesize) :
     Operation(),
-    m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgname, pvlist, pesize))
+    m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgname, pvlist, pesize)),
+    m_PVList(pvlist)
 {
     addJob(createVolumeGroupJob());
 }
@@ -50,10 +51,16 @@ bool CreateVolumeGroupOperation::targets(const Partition& part) const
 
 void CreateVolumeGroupOperation::preview()
 {
+    LvmDevice::s_DirtyPVs << PVList();
 }
 
 void CreateVolumeGroupOperation::undo()
 {
+    foreach(QString pvpath, PVList()) {
+        if (LvmDevice::s_DirtyPVs.contains(pvpath)) {
+            LvmDevice::s_DirtyPVs.removeAll(pvpath);
+        }
+    }
 }
 
 bool CreateVolumeGroupOperation::canCreate()

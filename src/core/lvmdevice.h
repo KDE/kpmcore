@@ -53,6 +53,7 @@ public:
     Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
     QStringList deviceNodeList() const override;
     QStringList lvPathList() const;
+    static QStringList s_DirtyPVs;
 
 public:
     static QList<LvmDevice*> scanSystemLVM();
