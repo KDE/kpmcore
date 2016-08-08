@@ -75,6 +75,7 @@ public:
     static bool createLVSnapshot(Report& report, LvmDevice& dev, Partition& lvpart, const QString& name, const qint64 extents = 0);
     static bool resizeLV(Report& report, LvmDevice& dev, Partition& part);
     static bool deactivateLV(Report& report, LvmDevice& dev, Partition& part);
+    static bool activateLV(Report& report, LvmDevice& dev, Partition& part);
 
     static bool removePV(Report& report, LvmDevice& dev, const QString& pvPath);
     static bool insertPV(Report& report, LvmDevice& dev, const QString& pvPath);
@@ -83,6 +84,7 @@ public:
     static bool removeVG(Report& report, LvmDevice& dev);
     static bool createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize = 4); // peSize in megabytes
     static bool deactivateVG(Report& report, const LvmDevice& dev);
+    static bool activateVG(Report& report, const LvmDevice& dev);
 
 protected:
     void initPartitions();

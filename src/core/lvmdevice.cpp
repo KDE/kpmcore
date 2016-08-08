@@ -471,3 +471,22 @@ bool LvmDevice::deactivateLV(Report& report, LvmDevice& dev, Partition& part)
               part.partitionPath() });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
+
+bool LvmDevice::activateVG(Report& report, const LvmDevice& dev)
+{
+    ExternalCommand deactivate(report, QStringLiteral("lvm"),
+            { QStringLiteral("vgchange"),
+              QStringLiteral("--activate"), QStringLiteral("y"),
+              dev.name() });
+    return deactivate.run(-1) && deactivate.exitCode() == 0;
+}
+
+bool LvmDevice::activateLV(Report& report, LvmDevice& dev, Partition& part)
+{
+    Q_UNUSED(dev);
+    ExternalCommand deactivate(report, QStringLiteral("lvm"),
+            { QStringLiteral("lvchange"),
+              QStringLiteral("--activate"), QStringLiteral("y"),
+              part.partitionPath() });
+    return deactivate.run(-1) && deactivate.exitCode() == 0;
+}
