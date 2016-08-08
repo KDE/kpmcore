@@ -60,8 +60,13 @@ protected:
         return m_RemoveVolumeGroupJob;
     }
 
+    VolumeManagerDevice& device() {
+        return m_Device;
+    }
+
 private:
     RemoveVolumeGroupJob* m_RemoveVolumeGroupJob;
+    VolumeManagerDevice& m_Device;
 };
 
 #endif

@@ -30,7 +30,8 @@
 */
 RemoveVolumeGroupOperation::RemoveVolumeGroupOperation(VolumeManagerDevice& dev) :
     Operation(),
-    m_RemoveVolumeGroupJob(new RemoveVolumeGroupJob(dev))
+    m_RemoveVolumeGroupJob(new RemoveVolumeGroupJob(dev)),
+    m_Device(dev)
 {
     addJob(removeVolumeGroupJob());
 }
