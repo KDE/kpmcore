@@ -51,6 +51,8 @@ public:
 public:
     QList<Partition*> scanPartitions(PartitionTable* pTable) const;
     Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
+    QStringList deviceNodeList() const override;
+    QStringList lvPathList() const;
 
 public:
     static QList<LvmDevice*> scanSystemLVM();
@@ -81,10 +83,7 @@ public:
 
 protected:
     void initPartitions();
-    QStringList deviceNodeList() const override;
     qint64 mappedSector(const QString& lvpath, qint64 sector) const override;
-
-    QStringList lvPathList() const;
 
 public:
     qint64 peSize() const {
