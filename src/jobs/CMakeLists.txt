@@ -8,6 +8,8 @@ set(JOBS_SRC
     jobs/createpartitiontablejob.cpp
     jobs/createvolumegroupjob.cpp
     jobs/removevolumegroupjob.cpp
+    jobs/deactivatevolumegroupjob.cpp
+    jobs/deactivatelogicalvolumejob.cpp
     jobs/resizevolumegroupjob.cpp
     jobs/movephysicalvolumejob.cpp
     jobs/setfilesystemlabeljob.cpp
