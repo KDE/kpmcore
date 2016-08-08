@@ -81,7 +81,7 @@ public:
         return m_Operations;    /**< @return the list of operations */
     }
 
-    const Device* findDeviceForPartition(const Partition* p);
+    Device* findDeviceForPartition(const Partition* p);
 
     QReadWriteLock& lock() {
         return m_Lock;

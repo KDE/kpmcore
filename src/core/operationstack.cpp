@@ -499,15 +499,15 @@ void OperationStack::clearDevices()
     @param p pointer to the Partition to find a Device for
     @return the Device or nullptr if none could be found
 */
-const Device* OperationStack::findDeviceForPartition(const Partition* p)
+Device* OperationStack::findDeviceForPartition(const Partition* p)
 {
     QReadLocker lockDevices(&lock());
 
-    foreach(const Device *d, previewDevices()) {
+    foreach(Device *d, previewDevices()) {
         if (d->partitionTable() == nullptr)
             continue;
 
-        for (auto const &part : d->partitionTable()->children()) {
+        foreach (auto const *part, d->partitionTable()->children()) {
             if (part == p)
                 return d;
 
