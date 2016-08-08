@@ -446,9 +446,9 @@ bool LibPartedBackend::closeDevice(CoreBackendDevice* core_device)
 
 PedPartitionFlag LibPartedBackend::getPedFlag(PartitionTable::Flag flag)
 {
-    for (quint32 i = 0; i < sizeof(flagmap) / sizeof(flagmap[0]); i++)
-        if (flagmap[i].flag == flag)
-            return flagmap[i].pedFlag;
+    for (const auto &f : flagmap)
+        if (f.flag == flag)
+            return f.pedFlag;
 
     return static_cast<PedPartitionFlag>(-1);
 }
