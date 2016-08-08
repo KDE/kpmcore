@@ -78,9 +78,7 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& dev, const QSt
             addJob(movePhysicalVolumeJob());
             addJob(shrinkvolumegroupjob());
         }
-
     }
-
 }
 
 QString ResizeVolumeGroupOperation::description() const
@@ -89,11 +87,13 @@ QString ResizeVolumeGroupOperation::description() const
     foreach (QString path, targetList()) {
         tlist += path + QStringLiteral(",");
     }
+    tlist.chop(1);
     QString clist = QString();
     foreach (QString path, currentList()) {
         clist += path + QStringLiteral(",");
     }
-    return xi18nc("@info/plain", "Resize volume %1 From\n%2 To\n%3", device().name(), clist, tlist);
+    clist.chop(1);
+    return xi18nc("@info/plain", "Resize volume %1 from %2 to %3", device().name(), clist, tlist);
 }
 
 bool ResizeVolumeGroupOperation::targets(const Device& d) const
