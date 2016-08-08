@@ -182,13 +182,8 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
 QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {
     QList<LvmDevice*> lvmList;
-
-    QString output = getField(QStringLiteral("vg_name"));
-    if (!output.isEmpty()) {
-        QStringList vgnameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        foreach(QString vgname, vgnameList) {
-            lvmList.append(new LvmDevice(vgname.trimmed()));
-        }
+    foreach (QString vgname, getVGs()) {
+        lvmList.append(new LvmDevice(vgname));
     }
     return lvmList;
 }
@@ -218,8 +213,18 @@ QStringList LvmDevice::lvPathList() const
     return *LVPathList();
 }
 
-
-
+QStringList LvmDevice::getVGs()
+{
+    QStringList vgList;
+    QString output = getField(QStringLiteral("vg_name"));
+    if (!output.isEmpty()) {
+        QStringList vgnameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        foreach(QString vgname, vgnameList) {
+            vgList.append(vgname.trimmed());
+        }
+    }
+    return vgList;
+}
 
 QStringList LvmDevice::getPVs(const QString& vgname)
 {
