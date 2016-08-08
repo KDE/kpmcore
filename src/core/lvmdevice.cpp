@@ -71,7 +71,7 @@ void LvmDevice::initPartitions()
     qint64 lastusable  = totalPE() - 1;
     PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
 
-    foreach (Partition* p, scanPartitions(pTable)) {
+    for (Partition* p : scanPartitions(pTable)) {
         LVSizeMap()->insert(p->partitionPath(), p->length());
         pTable->append(p);
     }
@@ -84,10 +84,10 @@ void LvmDevice::initPartitions()
 /**
  *  @return sorted Partition(LV) Array
  */
-QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
+const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
     QList<Partition*> pList;
-    foreach (QString lvPath, lvPathList()) {
+    for (QString lvPath : lvPathList()) {
         pList.append(scanPartition(lvPath, pTable));
     }
     return pList;
@@ -184,7 +184,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
 QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {
     QList<LvmDevice*> lvmList;
-    foreach (QString vgname, getVGs()) {
+    for (QString vgname : getVGs()) {
         lvmList.append(new LvmDevice(vgname));
     }
     return lvmList;
@@ -205,23 +205,23 @@ qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
     return mSector;
 }
 
-QStringList LvmDevice::deviceNodeList() const
+const QStringList LvmDevice::deviceNodeList() const
 {
     return *PVPathList();
 }
 
-QStringList LvmDevice::lvPathList() const
+const QStringList LvmDevice::lvPathList() const
 {
     return *LVPathList();
 }
 
-QStringList LvmDevice::getVGs()
+const QStringList LvmDevice::getVGs()
 {
     QStringList vgList;
     QString output = getField(QStringLiteral("vg_name"));
     if (!output.isEmpty()) {
-        QStringList vgnameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        foreach(QString vgname, vgnameList) {
+        const QStringList vgnameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        for (QString vgname : vgnameList) {
             vgList.append(vgname.trimmed());
         }
     }
@@ -234,8 +234,8 @@ QStringList LvmDevice::getPVs(const QString& vgname)
     QString cmdOutput = getField(QStringLiteral("pv_name"), vgname);
 
     if (cmdOutput.size()) {
-        QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        foreach(QString devPath, tempPathList) {
+        const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        for (QString devPath : tempPathList) {
             devPathList.append(devPath.trimmed());
         }
     }
@@ -248,8 +248,8 @@ QStringList LvmDevice::getLVs(const QString& vgname)
     QString cmdOutput = getField(QStringLiteral("lv_path"), vgname);
 
     if (cmdOutput.size()) {
-        QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        foreach(QString lvPath, tempPathList) {
+        const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        for (QString lvPath : tempPathList) {
             lvPathList.append(lvPath.trimmed());
         }
     }
@@ -424,7 +424,7 @@ bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath, co
     args << QStringLiteral("pvmove");
     args << pvPath;
     if (!destinations.isEmpty()) {
-        foreach (QString destPath, destinations) {
+        for (QString destPath : destinations) {
             args << destPath.trimmed();
         }
     }
@@ -438,7 +438,7 @@ bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
     args << vgname;
-    foreach (QString pvnode, pvlist) {
+    for (QString pvnode : pvlist) {
         args << pvnode.trimmed();
     }
     ExternalCommand cmd(report, QStringLiteral("lvm"), args);
@@ -464,7 +464,7 @@ bool LvmDevice::deactivateVG(Report& report, const LvmDevice& dev)
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
 
-bool LvmDevice::deactivateLV(Report& report, LvmDevice& dev, Partition& part)
+bool LvmDevice::deactivateLV(Report& report, const LvmDevice& dev, const Partition& part)
 {
     Q_UNUSED(dev);
     ExternalCommand deactivate(report, QStringLiteral("lvm"),

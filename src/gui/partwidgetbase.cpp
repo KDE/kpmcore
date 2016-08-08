@@ -31,7 +31,7 @@ template<typename T>
 T sum(const QList<T>& list)
 {
     T rval = 0;
-    foreach(const T & val, list)
+    for (const T & val : list)
         rval += val;
     return rval;
 }
@@ -107,7 +107,7 @@ void PartWidgetBase::positionChildren(const QWidget* destWidget, const Partition
         return;
 
     qint64 totalLength = 0;
-    foreach(const Partition * p, partitions)
+    for (const Partition * p : partitions)
         totalLength += p->length();
 
     if (totalLength < 1)
@@ -146,7 +146,7 @@ QList<PartWidget*> PartWidgetBase::childWidgets()
 {
     QList<PartWidget*> rval;
 
-    foreach(QObject * o, children())
+    for (QObject * o : children())
         if (PartWidget* w = qobject_cast<PartWidget*>(o))
             rval.append(w);
 

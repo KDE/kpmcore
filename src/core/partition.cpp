@@ -106,7 +106,7 @@ Partition::Partition(const Partition& other) :
     m_State(other.m_State)
 {
     setPartitionPath(other.m_PartitionPath);
-    foreach(const Partition * child, other.children()) {
+    for (const Partition * child : other.children()) {
         Partition* p = new Partition(*child);
         p->setParent(this);
         m_Children.append(p);
@@ -121,7 +121,7 @@ Partition& Partition::operator=(const Partition& other)
 
     clearChildren();
 
-    foreach(const Partition * child, other.children()) {
+    for (const Partition * child : other.children()) {
         Partition* p = new Partition(*child);
         p->setParent(this);
         m_Children.append(p);
@@ -179,7 +179,7 @@ qint64 Partition::sectorsUsed() const
         return fileSystem().sectorsUsed();
 
     qint64 result = 0;
-    foreach(const Partition * p, children())
+    for (const Partition * p : children())
         if (!p->roles().has(PartitionRole::Unallocated))
             result += p->length();
 
@@ -230,7 +230,7 @@ qint64 Partition::maxFirstSector() const
 {
     qint64 rval = -1;
 
-    foreach(const Partition * child, children())
+    for (const Partition * child : children())
         if (!child->roles().has(PartitionRole::Unallocated) && (child->firstSector() < rval || rval == -1))
             rval = child->firstSector();
 
@@ -242,7 +242,7 @@ qint64 Partition::minLastSector() const
 {
     qint64 rval = -1;
 
-    foreach(const Partition * child, children())
+    for (const Partition * child : children())
         if (!child->roles().has(PartitionRole::Unallocated) && child->lastSector() > rval)
             rval = child->lastSector();
 
@@ -252,7 +252,7 @@ qint64 Partition::minLastSector() const
 /** @return true if the Partition has children */
 bool Partition::hasChildren() const
 {
-    foreach(const Partition * child, children())
+    for (const Partition * child : children())
         if (!child->roles().has(PartitionRole::Unallocated))
             return true;
 
@@ -365,7 +365,7 @@ QTextStream& operator<<(QTextStream& stream, const Partition& p)
 {
     QStringList flagList;
 
-    foreach(const PartitionTable::Flag & f, PartitionTable::flagList()) {
+    for (const PartitionTable::Flag & f : PartitionTable::flagList()) {
         if (p.activeFlags() & f)
             flagList.append(PartitionTable::flagName(f));
     }

@@ -24,8 +24,6 @@
 #include <KLocalizedString>
 
 /** Creates a new RemoveVolumeGroupJob
-    @param vgname
-    @parem pvList
 */
 RemoveVolumeGroupJob::RemoveVolumeGroupJob(VolumeManagerDevice& dev) :
     Job(),

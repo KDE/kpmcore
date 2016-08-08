@@ -70,7 +70,7 @@ bool SetPartFlagsJob::run(Report& parent)
             if (backendPartition) {
                 quint32 count = 0;
 
-                foreach(const PartitionTable::Flag & f, PartitionTable::flagList()) {
+                for (const PartitionTable::Flag & f : PartitionTable::flagList()) {
                     emit progress(++count);
 
                     const bool state = (flags() & f) ? true : false;

@@ -62,13 +62,13 @@ void DeviceScanner::scan()
 
     clear();
 
-    QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
-    QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM();
+    const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
+    const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM();
 
-    foreach(Device * d, deviceList)
+    for (Device * d : deviceList)
         operationStack().addDevice(d);
 
-    foreach(Device * d, lvmList)
+    for (Device * d : lvmList)
         operationStack().addDevice(d);
 
     operationStack().sortDevices();

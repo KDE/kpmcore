@@ -26,10 +26,8 @@
 #include <KLocalizedString>
 
 /** Creates a new DeactivateLogicalVolumeJob
-    @param vgname
-    @parem pvList
 */
-DeactivateLogicalVolumeJob::DeactivateLogicalVolumeJob(VolumeManagerDevice& dev, QStringList lvPaths) :
+DeactivateLogicalVolumeJob::DeactivateLogicalVolumeJob(const VolumeManagerDevice& dev, const QStringList lvPaths) :
     Job(),
     m_Device(dev),
     m_LVList(lvPaths)
@@ -43,9 +41,9 @@ bool DeactivateLogicalVolumeJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     if (device().type() == Device::LVM_Device) {
-        foreach (Partition* part, device().partitionTable()->children()) {
+        for (const Partition* part : device().partitionTable()->children()) {
             if (!part->roles().has(PartitionRole::Unallocated)) {
-                if (!LvmDevice::deactivateLV(*report, dynamic_cast<LvmDevice&>(device()), *part)) {
+                if (!LvmDevice::deactivateLV(*report,  dynamic_cast<const LvmDevice&>(device()), *part)) {
                     rval = false;
                 }
             }

@@ -457,7 +457,7 @@ bool OperationStack::contains(const Partition* p) const
 {
     Q_ASSERT(p);
 
-    foreach(Operation * o, operations()) {
+    for (Operation * o : operations()) {
         if (o->targets(*p))
             return true;
 
@@ -511,9 +511,9 @@ Device* OperationStack::findDeviceForPartition(const Partition* p)
             if (part == p)
                 return d;
 
-            foreach(const Partition * child, part->children())
-            if (child == p)
-                return d;
+            for (const Partition * child : part->children())
+                if (child == p)
+                    return d;
         }
     }
 

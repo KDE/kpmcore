@@ -205,7 +205,7 @@ qint64 lvm2_pv::getTotalPE(const QString& deviceNode)
 qint64 lvm2_pv::getTotalPE(const QStringList& deviceNodeList)
 {
     qint64 sum = 0;
-    foreach (QString deviceNode, deviceNodeList) {
+    for (QString deviceNode : deviceNodeList) {
         qint64 totalPE =  getTotalPE(deviceNode);
         if (totalPE < 0) {
             sum = -1;
@@ -224,7 +224,7 @@ qint64 lvm2_pv::getFreePE(const QString& deviceNode)
 qint64 lvm2_pv::getFreePE(const QStringList& deviceNodeList)
 {
     qint64 sum = 0;
-    foreach (QString deviceNode, deviceNodeList) {
+    for (QString deviceNode :deviceNodeList) {
         qint64 freePE = getFreePE(deviceNode);
         if (freePE < 0) {
             sum = -1;
@@ -244,7 +244,7 @@ qint64 lvm2_pv::getAllocatedPE(const QString& deviceNode)
 qint64 lvm2_pv::getAllocatedPE(const QStringList& deviceNodeList)
 {
     qint64 sum = 0;
-    foreach (QString deviceNode, deviceNodeList) {
+    for (QString deviceNode : deviceNodeList) {
         qint64 allocatedPE = getAllocatedPE(deviceNode);
         if (allocatedPE < 0) {
             sum = -1;
@@ -264,7 +264,7 @@ qint64 lvm2_pv::getPVSize(const QString& deviceNode)
 qint64 lvm2_pv::getPVSize(const QStringList& deviceNodeList)
 {
     qint64 sum = 0;
-    foreach (QString deviceNode, deviceNodeList) {
+    for (QString deviceNode : deviceNodeList) {
         qint64 pvsize = getPVSize(deviceNode);
         if (pvsize < 0) {
             sum = -1;
@@ -312,8 +312,8 @@ QStringList lvm2_pv::getFreePV()
     QStringList rlist;
 
     QString output = getpvField(QStringLiteral("pv_name"));
-    QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-    foreach (QString pvnode, pvList) {
+    const QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+    for (QString pvnode : pvList) {
         if (!isUsed(pvnode.trimmed())) {
             rlist.append(pvnode.trimmed());
         }

@@ -84,7 +84,7 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Xfs, new FS::xfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Zfs, new FS::zfs(-1, -1, -1, QString()));
 
-    foreach(FileSystem * fs, FileSystemFactory::map()) {
+    for (FileSystem * fs : FileSystemFactory::map()) {
         fs->init();
     }
 

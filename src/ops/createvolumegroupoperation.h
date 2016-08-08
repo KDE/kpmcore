@@ -61,7 +61,7 @@ protected:
         return m_CreateVolumeGroupJob;
     }
 
-    QStringList PVList() {
+    const QStringList PVList() {
         return m_PVList;
     }
 

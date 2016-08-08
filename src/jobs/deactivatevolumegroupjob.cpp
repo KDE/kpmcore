@@ -24,8 +24,6 @@
 #include <KLocalizedString>
 
 /** Deactivate LVM Volume Group
-    @param vgname
-    @parem pvList
 */
 DeactivateVolumeGroupJob::DeactivateVolumeGroupJob(VolumeManagerDevice& dev) :
     Job(),

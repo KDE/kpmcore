@@ -142,8 +142,8 @@ Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& r
     foreach(Partition * p, children()) {
         // (women and) children first. ;-)
         foreach(Partition * child, p->children())
-        if ((child->roles().roles() & role.roles()) && s >= child->firstSector() && s <= child->lastSector())
-            return child;
+            if ((child->roles().roles() & role.roles()) && s >= child->firstSector() && s <= child->lastSector())
+                return child;
 
         if ((p->roles().roles() & role.roles()) && s >= p->firstSector() && s <= p->lastSector())
             return p;
@@ -157,10 +157,10 @@ Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& r
 */
 const Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& role) const
 {
-    foreach(const Partition * p, children()) {
-        foreach(const Partition * child, p->children())
-        if ((child->roles().roles() & role.roles()) && s >= child->firstSector() && s <= child->lastSector())
-            return child;
+    for (const Partition * p : children()) {
+        for (const Partition * child : p->children())
+            if ((child->roles().roles() & role.roles()) && s >= child->firstSector() && s <= child->lastSector())
+                return child;
 
         if ((p->roles().roles() & role.roles()) && s >= p->firstSector() && s <= p->lastSector())
             return p;
@@ -190,9 +190,9 @@ qint32 PartitionNode::highestMountedChild() const
 {
     qint32 result = -1;
 
-    foreach(const Partition * p, children())
-    if (p->number() > result && p->isMounted())
-        result = p->number();
+    for (const Partition * p : children())
+        if (p->number() > result && p->isMounted())
+            result = p->number();
 
     return result;
 }
@@ -200,9 +200,9 @@ qint32 PartitionNode::highestMountedChild() const
 /** @return true if any of the partition's children are mounted */
 bool PartitionNode::isChildMounted() const
 {
-    foreach(const Partition * child, children())
-    if (child->isMounted() || (child->hasChildren() && child->isChildMounted()))
-        return true;
+    for (const Partition * child : children())
+        if (child->isMounted() || (child->hasChildren() && child->isChildMounted()))
+            return true;
 
     return false;
 }

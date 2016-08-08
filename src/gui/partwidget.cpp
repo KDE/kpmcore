@@ -62,7 +62,7 @@ void PartWidget::updateChildren()
             w->setParent(nullptr);
         }
 
-        foreach(const Partition * child, partition()->children()) {
+        for (const Partition * child : partition()->children()) {
             QWidget* w = new PartWidget(this, child);
             w->setVisible(true);
         }

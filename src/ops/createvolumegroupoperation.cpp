@@ -56,7 +56,7 @@ void CreateVolumeGroupOperation::preview()
 
 void CreateVolumeGroupOperation::undo()
 {
-    foreach(QString pvpath, PVList()) {
+    for(QString pvpath : PVList()) {
         if (LvmDevice::s_DirtyPVs.contains(pvpath)) {
             LvmDevice::s_DirtyPVs.removeAll(pvpath);
         }

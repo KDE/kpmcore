@@ -24,8 +24,6 @@
 #include <KLocalizedString>
 
 /** Creates a new MovePhysicalVolumeJob
-    @param vgname
-    @parem pvList
 */
 MovePhysicalVolumeJob::MovePhysicalVolumeJob(LvmDevice& dev, const QStringList partlist) :
     Job(),
@@ -41,13 +39,13 @@ bool MovePhysicalVolumeJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     QStringList destinations = LvmDevice::getPVs(device().name());
-    foreach (QString partPath, partList()) {
+    for (const QString partPath : partList()) {
         if (destinations.contains(partPath)) {
             destinations.removeAll(partPath);
         }
     }
 
-    foreach (QString partPath, partList()) {
+    for (const QString partPath : partList()) {
         rval = LvmDevice::movePV(*report, device(), partPath, destinations);
         if (rval == false) {
             break;
@@ -62,7 +60,7 @@ bool MovePhysicalVolumeJob::run(Report& parent)
 QString MovePhysicalVolumeJob::description() const
 {
     QString tmp = QString();
-    foreach (QString path, partList()) {
+    for (const QString path : partList()) {
         tmp += path + QStringLiteral(",");
     }
     return xi18nc("@info/plain", "Move used PE in %1 on %2 to other available Physical Volumes", tmp, device().name());

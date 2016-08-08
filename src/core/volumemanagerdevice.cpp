@@ -37,7 +37,7 @@ VolumeManagerDevice::VolumeManagerDevice(const QString& name,
 QString VolumeManagerDevice::prettyDeviceNodeList() const
 {
     QString rval;
-    foreach (QString devNode, deviceNodeList()) {
+    for (QString devNode : deviceNodeList()) {
         rval += devNode + QStringLiteral(",");
     }
 

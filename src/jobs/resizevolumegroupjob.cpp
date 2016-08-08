@@ -24,8 +24,6 @@
 #include <KLocalizedString>
 
 /** Creates a new ResizeVolumeGroupJob
-    @param vgname
-    @parem pvList
 */
 ResizeVolumeGroupJob::ResizeVolumeGroupJob(LvmDevice& dev, const QStringList partlist, const Type type) :
     Job(),
@@ -41,7 +39,7 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    foreach (QString pvpath, partList()) {
+    for (const QString pvpath : partList()) {
         if (type() == ResizeVolumeGroupJob::Grow) {
             rval = LvmDevice::insertPV(*report, device(), pvpath);
         } else if (type() == ResizeVolumeGroupJob::Shrink) {
@@ -60,7 +58,7 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 QString ResizeVolumeGroupJob::description() const
 {
     QString tmp = QString();
-    foreach (QString path, partList()) {
+    for (const QString path : partList()) {
         tmp += path + QStringLiteral(",");
     }
     if (type() == ResizeVolumeGroupJob::Grow) {

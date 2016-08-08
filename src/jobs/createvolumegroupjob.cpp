@@ -51,7 +51,7 @@ bool CreateVolumeGroupJob::run(Report& parent)
 QString CreateVolumeGroupJob::description() const
 {
     QString tmp = QString();
-    foreach(QString name, pvList()) {
+    for (const QString name : pvList()) {
         tmp += QStringLiteral("\n") + name;
     }
     return xi18nc("@info/plain", "Create new Volume Group: <filename>%1</filename> with PV: %2", vgName(), tmp);

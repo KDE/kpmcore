@@ -30,16 +30,13 @@ class QString;
 class DeactivateLogicalVolumeJob : public Job
 {
 public:
-    DeactivateLogicalVolumeJob(VolumeManagerDevice& dev, QStringList lvPaths = {});
+    DeactivateLogicalVolumeJob(const VolumeManagerDevice& dev, const QStringList lvPaths = {});
 
 public:
     bool run(Report& parent) override;
     QString description() const override;
 
 protected:
-    VolumeManagerDevice& device() {
-        return m_Device;
-    }
     const VolumeManagerDevice& device() const {
         return m_Device;
     }
@@ -49,8 +46,8 @@ protected:
     }
 
 private:
-    VolumeManagerDevice& m_Device;
-    QStringList m_LVList;
+    const VolumeManagerDevice& m_Device;
+    const QStringList m_LVList;
 };
 
 #endif

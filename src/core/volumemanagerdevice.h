@@ -48,7 +48,7 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 public:
     VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
     virtual void initPartitions() = 0;
-    virtual QStringList deviceNodeList() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice */
+    virtual const QStringList deviceNodeList() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice */
     virtual qint64  mappedSector(const QString& devNode, qint64 sector) const = 0;
 
 public:

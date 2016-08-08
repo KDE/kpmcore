@@ -92,9 +92,10 @@ qint64 PartitionTable::freeSectorsAfter(const Partition& p) const
 qint64 PartitionTable::freeSectors() const
 {
     qint64 sectors = 0;
-    foreach(const Partition * p, children())
-    if (p->roles().has(PartitionRole::Unallocated)) {
-        sectors += p->length();
+    for (const Partition * p : children()) {
+        if (p->roles().has(PartitionRole::Unallocated)) {
+            sectors += p->length();
+        }
     }
 
     return sectors;
@@ -141,7 +142,7 @@ int PartitionTable::numPrimaries() const
 {
     int result = 0;
 
-    foreach(const Partition * p, children())
+    for (const Partition * p : children())
         if (p->roles().has(PartitionRole::Primary) || p->roles().has(PartitionRole::Extended))
             result++;
 
@@ -206,7 +207,7 @@ QString PartitionTable::flagName(Flag f)
 }
 
 /** @return list of all flags */
-QList<PartitionTable::Flag> PartitionTable::flagList()
+const QList<PartitionTable::Flag> PartitionTable::flagList()
 {
     QList<PartitionTable::Flag> rval;
 
@@ -359,7 +360,7 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
     if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
         // rearranging all the partitions sector to keep all the unallocated space at the end
         lastEnd = 0;
-        foreach (Partition* child, children()) {
+        for (Partition* child : children()) {
             qint64 totalSector = child->length();
             child->setFirstSector(lastEnd);
             child->setLastSector(lastEnd + totalSector - 1);
@@ -505,11 +506,12 @@ bool PartitionTable::isSectorBased(const Device& d) const
 
             // see if we have more cylinder aligned partitions than sector
             // aligned ones.
-            foreach(const Partition * p, children())
-            if (p->firstSector() % PartitionAlignment::sectorAlignment(diskDevice) == 0)
-                numSectorAligned++;
-            else if (p->firstSector() % diskDevice.cylinderSize() == 0)
-                numCylinderAligned++;
+            for (const Partition * p : children()) {
+                if (p->firstSector() % PartitionAlignment::sectorAlignment(diskDevice) == 0)
+                    numSectorAligned++;
+                else if (p->firstSector() % diskDevice.cylinderSize() == 0)
+                    numCylinderAligned++;
+            }
 
             return numSectorAligned >= numCylinderAligned;
         }
@@ -542,15 +544,17 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 
     QList<const Partition*> partitions;
 
-    foreach(const Partition * p, ptable.children())
+    for (const Partition * p : ptable.children()) {
         if (!p->roles().has(PartitionRole::Unallocated)) {
             partitions.append(p);
 
             if (p->roles().has(PartitionRole::Extended))
-                foreach(const Partition * child, p->children())
-                if (!child->roles().has(PartitionRole::Unallocated))
-                    partitions.append(child);
+                for (const Partition * child : p->children()) {
+                    if (!child->roles().has(PartitionRole::Unallocated))
+                        partitions.append(child);
+                }
         }
+    }
 
     qSort(partitions.begin(), partitions.end(), isPartitionLessThan);
 

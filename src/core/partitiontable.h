@@ -164,7 +164,7 @@ public:
 
     bool isSectorBased(const Device& d) const;
 
-    static QList<Flag> flagList();
+    static const QList<Flag> flagList();
     static QString flagName(Flag f);
     static QStringList flagNames(Flags f);
 
