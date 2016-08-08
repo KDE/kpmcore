@@ -608,20 +608,22 @@ bool luks::canEncryptType(FileSystem::Type type)
 {
     switch (type)
     {
-    case Ext2:
-    case Ext3:
-    case Ext4:
-    case LinuxSwap:
-    case ReiserFS:
-    case Reiser4:
-    case Xfs:
-    case Jfs:
-    case Btrfs:
-    case Zfs:
-    case Lvm2_PV:
-        return true;
-    default:
-        return false;
+        case Btrfs:
+        case F2fs:
+        case Ext2:
+        case Ext3:
+        case Ext4:
+        case Jfs:
+        case LinuxSwap:
+        case Lvm2_PV:
+        case Nilfs2:
+        case ReiserFS:
+        case Reiser4:
+        case Xfs:
+        case Zfs:
+            return true;
+        default:
+            return false;
     }
 }
 
