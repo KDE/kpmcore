@@ -63,7 +63,8 @@ ResizeOperation::ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint6
     m_GrowSetGeomJob(nullptr),
     m_CheckResizedJob(nullptr)
 {
-    addJob(checkOriginalJob());
+    if(!partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
+        addJob(checkOriginalJob());
 
     if (partition().roles().has(PartitionRole::Extended)) {
         m_MoveExtendedJob = new SetPartGeometryJob(targetDevice(), partition(), newFirstSector(), newLength());
@@ -99,7 +100,8 @@ ResizeOperation::ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint6
 
         m_CheckResizedJob = new CheckFileSystemJob(partition());
 
-        addJob(checkResizedJob());
+        if(!partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
+            addJob(checkResizedJob());
     }
 }
 
@@ -145,7 +147,12 @@ bool ResizeOperation::execute(Report& parent)
 
     Report* report = parent.newChild(description());
 
-    if ((rval = checkOriginalJob()->run(*report))) {
+    if (partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
+        rval = true;
+    else
+        rval = checkOriginalJob()->run(*report);
+
+    if (rval) {
         // Extended partitions are a special case: They don't have any file systems and so there's no
         // need to move, shrink or grow their contents before setting the new geometry. In fact, trying
         // to first shrink THEN move would not work for an extended partition that has children, because
@@ -158,7 +165,12 @@ bool ResizeOperation::execute(Report& parent)
             rval = shrink(*report) && move(*report) && grow(*report);
 
             if (rval) {
-                if (!(rval = checkResizedJob()->run(*report)))
+                if (partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
+                    rval = true;
+                else
+                    rval = checkResizedJob()->run(*report);
+
+                if (!rval)
                     report->line() << xi18nc("@info:status", "Checking partition <filename>%1</filename> after resize/move failed.", partition().deviceNode());
             } else
                 report->line() << xi18nc("@info:status", "Resizing/moving partition <filename>%1</filename> failed.", partition().deviceNode());
@@ -327,7 +339,7 @@ bool ResizeOperation::canGrow(const Partition* p)
         return true;
 
     if (p->isMounted())
-        return false;
+        return p->fileSystem().supportGrowOnline();
 
     return p->fileSystem().supportGrow() != FileSystem::cmdSupportNone;
 }
@@ -349,7 +361,7 @@ bool ResizeOperation::canShrink(const Partition* p)
         return false;
 
     if (p->isMounted())
-        return false;
+        return p->fileSystem().supportShrinkOnline();
 
     return p->fileSystem().supportShrink() != FileSystem::cmdSupportNone;
 }

@@ -162,12 +162,12 @@ bool jfs::resize(Report& report, const QString& deviceNode, qint64) const
 
     bool rval = false;
 
-    ExternalCommand mountCmd(report, QStringLiteral("mount"), { QStringLiteral("-v"), QStringLiteral("-t"), QStringLiteral("jfs"), deviceNode, tempDir.path() });
+    ExternalCommand mountCmd(report, QStringLiteral("mount"), { QStringLiteral("--verbose"), QStringLiteral("--type"), QStringLiteral("jfs"), deviceNode, tempDir.path() });
 
     if (mountCmd.run(-1)) {
-        ExternalCommand resizeMountCmd(report, QStringLiteral("mount"), { QStringLiteral("-v"), QStringLiteral("-t"), QStringLiteral("jfs"), QStringLiteral("-o"), QStringLiteral("remount,resize"), deviceNode, tempDir.path() });
+        ExternalCommand resizeMountCmd(report, QStringLiteral("mount"), { QStringLiteral("--verbose"), QStringLiteral("--type"), QStringLiteral("jfs"), QStringLiteral("--options"), QStringLiteral("remount,resize"), deviceNode, tempDir.path() });
 
-        if (resizeMountCmd.run(-1))
+        if (resizeMountCmd.run(-1)  && resizeMountCmd.exitCode() == 0)
             rval = true;
         else
             report.line() << xi18nc("@info:progress", "Resizing JFS file system on partition <filename>%1</filename> failed: Remount failed.", deviceNode);
@@ -180,5 +180,16 @@ bool jfs::resize(Report& report, const QString& deviceNode, qint64) const
         report.line() << xi18nc("@info:progress", "Resizing JFS file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
 
     return rval;
+}
+bool jfs::resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64) const
+{
+
+    ExternalCommand resizeMountCmd(report, QStringLiteral("mount"), { QStringLiteral("--verbose"), QStringLiteral("--type"), QStringLiteral("jfs"), QStringLiteral("--options"), QStringLiteral("remount,resize"), deviceNode, mountPoint });
+
+    if (resizeMountCmd.run(-1) && resizeMountCmd.exitCode() == 0)
+        return true;
+
+    report.line() << xi18nc("@info:progress", "Resizing JFS file system on partition <filename>%1</filename> failed: Remount failed.", deviceNode);
+    return false;
 }
 }

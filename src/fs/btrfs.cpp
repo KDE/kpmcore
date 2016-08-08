@@ -164,6 +164,18 @@ bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) con
     return rval;
 }
 
+bool btrfs::resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const
+{
+    ExternalCommand resizeCmd(report, QStringLiteral("btrfs"),
+                              { QStringLiteral("filesystem"), QStringLiteral("resize"), QString::number(length), mountPoint });
+
+    if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
+        return true;
+
+    report.line() << xi18nc("@info:progress", "Resizing Btrfs file system on partition <filename>%1</filename> failed: btrfs file system resize failed.", deviceNode);
+    return false;
+}
+
 bool btrfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
     ExternalCommand cmd(report, QStringLiteral("btrfs"), { QStringLiteral("filesystem"), QStringLiteral("label"), deviceNode, newLabel });

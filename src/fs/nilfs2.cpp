@@ -169,6 +169,17 @@ bool nilfs2::resize(Report& report, const QString& deviceNode, qint64 length) co
     return rval;
 }
 
+bool nilfs2::resizeOnline(Report& report, const QString& deviceNode, const QString&, qint64 length) const
+{
+    ExternalCommand resizeCmd(report, QStringLiteral("nilfs-resize"), { QStringLiteral("--verbose"), QStringLiteral("--assume-yes"), deviceNode, QString::number(length) });
+
+    if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
+        return true;
+
+    report.line() << xi18nc("@info:progress", "Resizing NILFS2 file system on partition <filename>%1</filename> failed: NILFS2 file system resize failed.", deviceNode);
+    return false;
+}
+
 bool nilfs2::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
     ExternalCommand cmd(report, QStringLiteral("nilfs-tune"), { QStringLiteral("-l"), newLabel, deviceNode });

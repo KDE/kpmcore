@@ -165,6 +165,11 @@ bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) 
     return cmd.waitFor(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 256);
 }
 
+bool reiserfs::resizeOnline(Report& report, const QString& deviceNode, const QString&, qint64 length) const
+{
+    return resize(report, deviceNode, length);
+}
+
 bool reiserfs::updateUUID(Report& report, const QString& deviceNode) const
 {
     const QString uuid = QUuid::createUuid().toString().remove(QRegularExpression(QStringLiteral("\\{|\\}")));

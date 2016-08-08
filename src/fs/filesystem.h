@@ -22,11 +22,11 @@
 #define FILESYSTEM__H
 #include "util/libpartitionmanagerexport.h"
 
-#include <QtGlobal>
 #include <QColor>
+#include <QList>
 #include <QStringList>
 #include <QString>
-#include <QList>
+#include <QtGlobal>
 #include <QUrl>
 
 #include <array>
@@ -112,6 +112,7 @@ public:
     virtual QString readLabel(const QString& deviceNode) const;
     virtual bool create(Report& report, const QString& deviceNode) const;
     virtual bool resize(Report& report, const QString& deviceNode, qint64 newLength) const;
+    virtual bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 newLength) const;
     virtual bool move(Report& report, const QString& deviceNode, qint64 newStartSector) const;
     virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
     virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const;
@@ -134,7 +135,13 @@ public:
     virtual CommandSupportType supportGrow() const {
         return cmdSupportNone;    /**< @return CommandSupportType for growing */
     }
+    virtual CommandSupportType supportGrowOnline() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for online growing */
+    }
     virtual CommandSupportType supportShrink() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for shrinking */
+    }
+    virtual CommandSupportType supportShrinkOnline() const {
         return cmdSupportNone;    /**< @return CommandSupportType for shrinking */
     }
     virtual CommandSupportType supportMove() const {

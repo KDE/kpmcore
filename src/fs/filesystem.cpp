@@ -153,6 +153,24 @@ bool FileSystem::resize(Report& report, const QString& deviceNode, qint64 newLen
     return true;
 }
 
+/** Resize a mounted FileSystem to a given new length
+    @param report Report to write status information to
+    @param deviceNode the device node for the Partition the FileSystem is on
+    @param mountPoint the mount point where FileSystem is mounted on
+    @param newLength the new length for the FileSystem in bytes
+    @return true on success
+*/
+bool FileSystem::resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 newLength) const
+{
+    Q_UNUSED(report);
+    Q_UNUSED(deviceNode);
+    Q_UNUSED(mountPoint);
+    Q_UNUSED(newLength);
+
+    return true;
+}
+
+
 /** Move a FileSystem to a new start sector
     @param report Report to write status information to
     @param deviceNode the device node for the Partition the FileSystem is on

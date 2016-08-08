@@ -47,6 +47,7 @@ public:
     bool create(Report& report, const QString& deviceNode) const override;
     bool copy(Report& report, const QString&, const QString&) const override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 
     CommandSupportType supportGetUsed() const override {
@@ -59,6 +60,9 @@ public:
         return m_Create;
     }
     CommandSupportType supportGrow() const override {
+        return m_Grow;
+    }
+    CommandSupportType supportGrowOnline() const override {
         return m_Grow;
     }
     CommandSupportType supportMove() const override {

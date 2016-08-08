@@ -44,7 +44,12 @@ public:
 
 public:
     bool create(Report& report, const QString& deviceNode) const override;
+    bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     qint64 maxCapacity() const override;
+
+    CommandSupportType supportGrowOnline() const override {
+        return m_Grow;
+    }
 };
 }
 

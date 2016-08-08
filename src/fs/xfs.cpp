@@ -177,7 +177,7 @@ bool xfs::resize(Report& report, const QString& deviceNode, qint64) const
     if (mountCmd.run(-1)) {
         ExternalCommand resizeCmd(report, QStringLiteral("xfs_growfs"), { tempDir.path() });
 
-        if (resizeCmd.run(-1))
+        if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
             rval = true;
         else
             report.line() << xi18nc("@info:progress", "Resizing XFS file system on partition <filename>%1</filename> failed: xfs_growfs failed.", deviceNode);
@@ -190,5 +190,16 @@ bool xfs::resize(Report& report, const QString& deviceNode, qint64) const
         report.line() << xi18nc("@info:progress", "Resizing XFS file system on partition <filename>%1</filename> failed: Initial mount failed.", deviceNode);
 
     return rval;
+}
+
+bool xfs::resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64) const
+{
+    ExternalCommand resizeCmd(report, QStringLiteral("xfs_growfs"), { mountPoint });
+
+    if (resizeCmd.run(-1) && resizeCmd.exitCode() == 0)
+        return true;
+
+    report.line() << xi18nc("@info:progress", "Resizing XFS file system on partition <filename>%1</filename> failed: xfs_growfs failed.", deviceNode);
+    return false;
 }
 }
