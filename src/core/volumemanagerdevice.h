@@ -33,9 +33,10 @@ class CoreBackend;
 class SmartStatus;
 class Partition;
 
-/** A abstract device represeting real physical devices.
+/** A Volume Manager of real physical devices represented as an abstract device.
 
-    Represents a device like /dev/sda, /dev/sdb1.
+    VolumeManagerDevice is an abstract class of volume manager. e.g: LVM, SoftRAID.
+    a device like /dev/sda, /dev/sdb1.
 
     Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
 
@@ -46,15 +47,38 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
     Q_DISABLE_COPY(VolumeManagerDevice)
 
 public:
+    /**
+     *
+     */
     VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
+
+    /**
+     *
+     */
+    virtual const QStringList deviceNodes() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice. */
+    virtual const QStringList partitionNodes() const = 0; /** Return list of partitions on the device. */
+    virtual qint64 partitionSize(QString& partitionPath) const = 0; /** Return size of provided partition in bytes. */
+
+protected:
+    /**
+     *
+     */
     virtual void initPartitions() = 0;
-    virtual const QStringList deviceNodeList() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice */
+    /**
+     *
+     */
     virtual qint64  mappedSector(const QString& devNode, qint64 sector) const = 0;
 
 public:
-    /** string deviceNodeList together into comma-sperated list */
+
+    /** string deviceNodes together into comma-sperated list
+     *
+     * */
     virtual QString prettyDeviceNodeList() const;
 
+    /**
+     *
+     */
     void setTotalLogical(qint64 num) {
         Q_ASSERT(num > 0);
         m_TotalLogical = num;

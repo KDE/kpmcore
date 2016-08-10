@@ -22,7 +22,7 @@
 
 #include "util/capacity.h"
 
-/** Constructs a Device with an empty PartitionTable.
+/** Constructs a Volume Manager Device with an empty PartitionTable.
 */
 VolumeManagerDevice::VolumeManagerDevice(const QString& name,
                                          const QString& devicenode,
@@ -37,7 +37,7 @@ VolumeManagerDevice::VolumeManagerDevice(const QString& name,
 QString VolumeManagerDevice::prettyDeviceNodeList() const
 {
     QString rval;
-    for (const auto &devNode : deviceNodeList()) {
+    for (const auto &devNode : deviceNodes()) {
         rval += devNode + QStringLiteral(",");
     }
 

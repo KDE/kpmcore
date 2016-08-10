@@ -49,14 +49,18 @@ public:
     ~LvmDevice();
 
 public:
-    const QList<Partition*> scanPartitions(PartitionTable* pTable) const;
-    Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
-    const QStringList deviceNodeList() const override;
-    const QStringList lvPathList() const;
+    const QStringList deviceNodes() const override;
+    const QStringList partitionNodes() const override;
+    qint64 partitionSize(QString& partitionPath) const override;
+
     static QStringList s_DirtyPVs;
 
 public:
     static QList<LvmDevice*> scanSystemLVM();
+
+    static const QStringList getVGs();
+    static const QStringList getPVs(const QString& vgname);
+    static const QStringList getLVs(const QString& vgname);
 
     static qint64 getPeSize(const QString& vgname);
     static qint64 getTotalPE(const QString& vgname);
@@ -66,10 +70,6 @@ public:
     static QString getField(const QString& fieldName, const QString& vgname = QString());
 
     static qint64 getTotalLE(const QString& lvpath);
-
-    static QStringList getPVs(const QString& vgname);
-    static QStringList getLVs(const QString& vgname);
-    static const QStringList getVGs();
 
     static bool removeLV(Report& report, LvmDevice& dev, Partition& part);
     static bool createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname);
@@ -89,6 +89,9 @@ public:
 
 protected:
     void initPartitions() override;
+    const QList<Partition*> scanPartitions(PartitionTable* pTable) const;
+    Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
+
     qint64 mappedSector(const QString& lvpath, qint64 sector) const override;
 
 public:
@@ -108,7 +111,8 @@ public:
         return m_UUID;
     }
 
-    const QStringList* LVPathList() const {
+protected:
+    QStringList* LVPathList() const {
         return m_LVPathList;
     }
 

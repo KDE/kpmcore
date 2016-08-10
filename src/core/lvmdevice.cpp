@@ -32,9 +32,10 @@
 #include <KLocalizedString>
 #include <KMountPoint>
 
-/** Constructs a representation of LVM device with functionning LV as Partition
+/** Constructs a representation of LVM device with functionning LV as Partitions
  *
  *  @param name Volume Group name
+ *  @param iconname 
  */
 LvmDevice::LvmDevice(const QString& name, const QString& iconname)
     : VolumeManagerDevice(name,
@@ -87,13 +88,15 @@ void LvmDevice::initPartitions()
 const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
     QList<Partition*> pList;
-    for (const auto &lvPath : lvPathList()) {
+    for (const auto &lvPath : partitionNodes()) {
         pList.append(scanPartition(lvPath, pTable));
     }
     return pList;
 }
 
 /**
+ * @param lvpath
+ * @param pTable
  * @return sorted Partition (LV) Array
  */
 Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTable) const
@@ -181,6 +184,9 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
     return part;
 }
 
+/**
+ *
+ */
 QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {
     QList<LvmDevice*> lvmList;
@@ -193,7 +199,7 @@ QList<LvmDevice*> LvmDevice::scanSystemLVM()
 qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
 {
     qint64 mSector = 0;
-    QList<QString> lvpathList = lvPathList();
+    QList<QString> lvpathList = partitionNodes();
     qint32 devIndex = lvpathList.indexOf(lvpath);
 
     if (devIndex) {
@@ -205,14 +211,19 @@ qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
     return mSector;
 }
 
-const QStringList LvmDevice::deviceNodeList() const
+const QStringList LvmDevice::deviceNodes() const
 {
     return *PVPathList();
 }
 
-const QStringList LvmDevice::lvPathList() const
+const QStringList LvmDevice::partitionNodes() const
 {
     return *LVPathList();
+}
+
+qint64 LvmDevice::partitionSize(QString& partitionPath) const
+{
+    return LVSizeMap()->value(partitionPath);
 }
 
 const QStringList LvmDevice::getVGs()
@@ -228,7 +239,7 @@ const QStringList LvmDevice::getVGs()
     return vgList;
 }
 
-QStringList LvmDevice::getPVs(const QString& vgname)
+const QStringList LvmDevice::getPVs(const QString& vgname)
 {
     QStringList devPathList;
     QString cmdOutput = getField(QStringLiteral("pv_name"), vgname);
@@ -242,7 +253,7 @@ QStringList LvmDevice::getPVs(const QString& vgname)
     return devPathList;
 }
 
-QStringList LvmDevice::getLVs(const QString& vgname)
+const QStringList LvmDevice::getLVs(const QString& vgname)
 {
     QStringList lvPathList;
     QString cmdOutput = getField(QStringLiteral("lv_path"), vgname);
