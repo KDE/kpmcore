@@ -55,7 +55,7 @@ public:
         return m_MinWidth;    /**< @return minimum width for a Partition widget */
     }
 
-    virtual QList<PartWidget*> childWidgets();
+    virtual const QList<PartWidget*> childWidgets() const;
 
 protected:
     virtual void positionChildren(const QWidget* destWidget, const PartitionNode::Partitions& partitions, QList<PartWidget*> widgets) const;

@@ -215,7 +215,7 @@ public:
     bool canMount() const;
     bool canUnmount() const;
 
-    void adjustLogicalNumbers(qint32 deletedNumber, qint32 insertedNumber);
+    void adjustLogicalNumbers(qint32 deletedNumber, qint32 insertedNumber) const;
     void checkChildrenMounted();
 
     void setFirstSector(qint64 s) {

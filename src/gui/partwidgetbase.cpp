@@ -142,7 +142,7 @@ void PartWidgetBase::positionChildren(const QWidget* destWidget, const Partition
     }
 }
 
-QList<PartWidget*> PartWidgetBase::childWidgets()
+const QList<PartWidget*> PartWidgetBase::childWidgets() const
 {
     QList<PartWidget*> rval;
 

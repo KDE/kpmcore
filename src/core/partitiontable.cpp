@@ -92,7 +92,7 @@ qint64 PartitionTable::freeSectorsAfter(const Partition& p) const
 qint64 PartitionTable::freeSectors() const
 {
     qint64 sectors = 0;
-    for (auto const &p : children()) {
+    for (const auto &p : children()) {
         if (p->roles().has(PartitionRole::Unallocated)) {
             sectors += p->length();
         }
@@ -104,7 +104,7 @@ qint64 PartitionTable::freeSectors() const
 /** @return true if the PartitionTable has an extended Partition */
 bool PartitionTable::hasExtended() const
 {
-    for (auto const &p : children())
+    for (const auto &p : children())
         if (p->roles().has(PartitionRole::Extended))
             return true;
 
@@ -114,7 +114,7 @@ bool PartitionTable::hasExtended() const
 /** @return pointer to the PartitionTable's extended Partition or nullptr if none exists */
 Partition* PartitionTable::extended() const
 {
-    for (auto const &p : children())
+    for (const auto &p : children())
         if (p->roles().has(PartitionRole::Extended))
             return p;
 
@@ -142,7 +142,7 @@ int PartitionTable::numPrimaries() const
 {
     int result = 0;
 
-    for (auto const &p : children())
+    for (const auto &p : children())
         if (p->roles().has(PartitionRole::Primary) || p->roles().has(PartitionRole::Extended))
             result++;
 
@@ -285,7 +285,6 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
 }
 
 
-
 /** Creates a new unallocated Partition on the given Device.
     @param device the Device to create the new Partition on
     @param parent the parent PartitionNode for the new Partition
@@ -360,7 +359,7 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
     if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
         // rearranging all the partitions sector to keep all the unallocated space at the end
         lastEnd = 0;
-        for (auto &child : children()) {
+        for (const auto &child : children()) {
             qint64 totalSector = child->length();
             child->setFirstSector(lastEnd);
             child->setLastSector(lastEnd + totalSector - 1);
@@ -368,7 +367,8 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
             lastEnd += totalSector;
         }
     } else {
-        foreach(auto &child, p->children()) {
+        const auto pChildren = p->children();
+        for (const auto &child : pChildren) {
             p->insert(createUnallocated(d, *p, lastEnd, child->firstSector() - 1));
 
             if (child->roles().has(PartitionRole::Extended))
@@ -544,12 +544,12 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 
     QList<const Partition*> partitions;
 
-    for (auto const &p : ptable.children()) {
+    for (const auto &p : ptable.children()) {
         if (!p->roles().has(PartitionRole::Unallocated)) {
             partitions.append(p);
 
             if (p->roles().has(PartitionRole::Extended))
-                for (auto const &child : p->children()) {
+                for (const auto &child : p->children()) {
                     if (!child->roles().has(PartitionRole::Unallocated))
                         partitions.append(child);
                 }
@@ -558,7 +558,7 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 
     qSort(partitions.begin(), partitions.end(), isPartitionLessThan);
 
-    foreach(auto const &p, partitions)
+    foreach(const auto &p, partitions)
         stream << *p;
 
     return stream;

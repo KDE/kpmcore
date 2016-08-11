@@ -162,7 +162,8 @@ bool Operation::execute(Report& parent)
 
     Report* report = parent.newChild(description());
 
-    foreach(Job * job, jobs())
+    const auto Jobs = jobs();
+    for (const auto &job : Jobs)
         if (!(rval = job->run(*report)))
             break;
 

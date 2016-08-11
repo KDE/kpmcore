@@ -139,9 +139,11 @@ void PartitionNode::clearChildren()
 */
 Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& role)
 {
-    foreach(auto & p, children()) {
+    const auto partitions = children();
+    for (auto &p : partitions) {
         // (women and) children first. ;-)
-        foreach(auto &child, p->children())
+        const auto pChildren = p->children();
+        for (auto &child : pChildren)
             if ((child->roles().roles() & role.roles()) && s >= child->firstSector() && s <= child->lastSector())
                 return child;
 
@@ -158,7 +160,7 @@ Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& r
 const Partition* PartitionNode::findPartitionBySector(qint64 s, const PartitionRole& role) const
 {
     for (const auto *p : children()) {
-        for (auto const &child : p->children())
+        for (const auto &child : p->children())
             if ((child->roles().roles() & role.roles()) && s >= child->firstSector() && s <= child->lastSector())
                 return child;
 

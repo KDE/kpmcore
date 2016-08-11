@@ -56,7 +56,7 @@ void PartWidget::init(const Partition* p)
 void PartWidget::updateChildren()
 {
     if (partition()) {
-        foreach(auto &w, childWidgets()) {
+        for (const auto &w : childWidgets()) {
             w->setVisible(false);
             w->deleteLater();
             w->setParent(nullptr);
