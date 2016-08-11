@@ -107,12 +107,12 @@ ActionReply Scan::scandevice(const QVariantMap& args)
         // unallocated. Libparted doesn't like it if we ask for flags for unallocated
         // space.
         if (pedPartition->num > 0)
-            for (quint32 i = 0; i < sizeof(flagmap) / sizeof(flagmap[0]); i++)
-                if (ped_partition_is_flag_available(pedPartition, flagmap[i].pedFlag))
+            for (const auto &flag : flagmap)
+                if (ped_partition_is_flag_available(pedPartition, flag.pedFlag))
                     // Workaround: libparted claims the hidden flag is available for extended partitions, but
                     // throws an error when we try to set or clear it. So skip this combination. Also see setFlag.
-                    if (pedPartition->type != PED_PARTITION_EXTENDED || flagmap[i].flag != PartitionTable::FlagHidden)
-                        flags |= flagmap[i].flag;
+                    if (pedPartition->type != PED_PARTITION_EXTENDED || flag.flag != PartitionTable::FlagHidden)
+                        flags |= flag.flag;
 
         availableFlags.append(static_cast<qint32>(flags));
         // --------------------------------------------------------------------------
@@ -120,9 +120,9 @@ ActionReply Scan::scandevice(const QVariantMap& args)
 
         flags = PartitionTable::FlagNone;
         if (pedPartition->num > 0)
-            for (quint32 i = 0; i < sizeof(flagmap) / sizeof(flagmap[0]); i++)
-                if (ped_partition_is_flag_available(pedPartition, flagmap[i].pedFlag) && ped_partition_get_flag(pedPartition, flagmap[i].pedFlag))
-                    flags |= flagmap[i].flag;
+            for (const auto &flag : flagmap)
+                if (ped_partition_is_flag_available(pedPartition, flag.pedFlag) && ped_partition_get_flag(pedPartition, flag.pedFlag))
+                    flags |= flag.flag;
 
         activeFlags.append(static_cast<qint32>(flags));
         // --------------------------------------------------------------------------

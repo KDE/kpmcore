@@ -51,8 +51,10 @@ bool fat32::updateUUID(Report& report, const QString& deviceNode) const
     qint32 t = time(nullptr);
 
     char uuid[4];
-    for (quint32 i = 0; i < sizeof(uuid); i++, t >>= 8)
-        uuid[i] = t & 0xff;
+    for (auto &u : uuid) {
+        u = t & 0xff;
+        t >>= 8;
+    }
 
     ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode, QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=67") });
 

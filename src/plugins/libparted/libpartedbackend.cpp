@@ -320,7 +320,6 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 {
     QList<Device*> result;
-    // FIXME: cat /sys/block/loop0/ro
     // linux.git/tree/Documentation/devices.txt
     QString blockDeviceMajorNumbers = QStringLiteral(
         "3,22,33,34,56,57,88,89,90,91,128,129,130,131,132,133,134,135," // MFM, RLL and IDE hard disk/CD-ROM interface

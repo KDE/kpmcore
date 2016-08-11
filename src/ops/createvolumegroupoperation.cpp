@@ -54,7 +54,7 @@ void CreateVolumeGroupOperation::preview()
 
 void CreateVolumeGroupOperation::undo()
 {
-    for(const auto &pvpath : PVList()) {
+    for (const auto &pvpath : PVList()) {
         if (LvmDevice::s_DirtyPVs.contains(pvpath)) {
             LvmDevice::s_DirtyPVs.removeAll(pvpath);
         }
