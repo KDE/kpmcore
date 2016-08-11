@@ -46,7 +46,7 @@ bool MovePhysicalVolumeJob::run(Report& parent)
     }
 
     for (const auto &partPath : partList()) {
-        rval = LvmDevice::movePV(*report, device(), partPath, destinations);
+        rval = LvmDevice::movePV(*report, partPath, destinations);
         if (rval == false) {
             break;
         }

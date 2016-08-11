@@ -78,12 +78,11 @@ bool SetPartGeometryJob::run(Report& parent)
         } else
             report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> while trying to resize/move partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
     } else if (device().type() == Device::LVM_Device) {
-        LvmDevice& dev = dynamic_cast<LvmDevice&>(device());
 
         partition().setFirstSector(newStart());
         partition().setLastSector(newStart() + newLength() - 1);
 
-        rval = LvmDevice::resizeLV(*report, dev, partition());
+        rval = LvmDevice::resizeLV(*report, partition());
     }
 
     jobFinished(*report, rval);

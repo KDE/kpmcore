@@ -43,7 +43,7 @@ bool DeactivateLogicalVolumeJob::run(Report& parent)
     if (device().type() == Device::LVM_Device) {
         for (const auto &p : device().partitionTable()->children()) {
             if (!p->roles().has(PartitionRole::Unallocated)) {
-                if (!LvmDevice::deactivateLV(*report,  dynamic_cast<const LvmDevice&>(device()), *p)) {
+                if (!LvmDevice::deactivateLV(*report, *p)) {
                     rval = false;
                 }
             }

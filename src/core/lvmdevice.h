@@ -73,14 +73,14 @@ public:
 
     static bool removeLV(Report& report, LvmDevice& dev, Partition& part);
     static bool createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname);
-    static bool createLVSnapshot(Report& report, LvmDevice& dev, Partition& lvpart, const QString& name, const qint64 extents = 0);
-    static bool resizeLV(Report& report, LvmDevice& dev, Partition& part);
-    static bool deactivateLV(Report& report, const LvmDevice& dev, const Partition& part);
-    static bool activateLV(Report& report, LvmDevice& dev, Partition& part);
+    static bool createLVSnapshot(Report& report, Partition& lvpart, const QString& name, const qint64 extents = 0);
+    static bool resizeLV(Report& report, Partition& part);
+    static bool deactivateLV(Report& report, const Partition& part);
+    static bool activateLV(Report& report, Partition& part);
 
     static bool removePV(Report& report, LvmDevice& dev, const QString& pvPath);
     static bool insertPV(Report& report, LvmDevice& dev, const QString& pvPath);
-    static bool movePV(Report& report, LvmDevice& dev, const QString& pvPath, const QStringList& destinations = QStringList());
+    static bool movePV(Report& report, const QString& pvPath, const QStringList& destinations = QStringList());
 
     static bool removeVG(Report& report, LvmDevice& dev);
     static bool createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize = 4); // peSize in megabytes

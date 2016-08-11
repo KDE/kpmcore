@@ -370,9 +370,8 @@ bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::createLVSnapshot(Report& report, LvmDevice& dev, Partition& lvpart, const QString& name, const qint64 extents)
+bool LvmDevice::createLVSnapshot(Report& report, Partition& lvpart, const QString& name, const qint64 extents)
 {
-    Q_UNUSED(dev);
     QString numExtents = (extents > 0) ? QString::number(extents) :
         QString::number(lvpart.length());
     ExternalCommand cmd(report, QStringLiteral("lvm"),
@@ -387,9 +386,8 @@ bool LvmDevice::createLVSnapshot(Report& report, LvmDevice& dev, Partition& lvpa
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::resizeLV(Report& report, LvmDevice& dev, Partition& part)
+bool LvmDevice::resizeLV(Report& report, Partition& part)
 {
-    Q_UNUSED(dev);
     //TODO: thorough tests and add warning that it could currupt the user data.
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvresize"),
@@ -423,9 +421,8 @@ bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
-bool LvmDevice::movePV(Report& report, LvmDevice& dev, const QString& pvPath, const QStringList& destinations)
+bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList& destinations)
 {
-    Q_UNUSED(dev);
 
     if (FS::lvm2_pv::getAllocatedPE(pvPath) <= 0) {
         return true;
@@ -475,9 +472,8 @@ bool LvmDevice::deactivateVG(Report& report, const LvmDevice& dev)
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
 
-bool LvmDevice::deactivateLV(Report& report, const LvmDevice& dev, const Partition& part)
+bool LvmDevice::deactivateLV(Report& report, const Partition& part)
 {
-    Q_UNUSED(dev);
     ExternalCommand deactivate(report, QStringLiteral("lvm"),
             { QStringLiteral("lvchange"),
               QStringLiteral("--activate"), QStringLiteral("n"),
@@ -494,9 +490,8 @@ bool LvmDevice::activateVG(Report& report, const LvmDevice& dev)
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
 
-bool LvmDevice::activateLV(Report& report, LvmDevice& dev, Partition& part)
+bool LvmDevice::activateLV(Report& report, Partition& part)
 {
-    Q_UNUSED(dev);
     ExternalCommand deactivate(report, QStringLiteral("lvm"),
             { QStringLiteral("lvchange"),
               QStringLiteral("--activate"), QStringLiteral("y"),
