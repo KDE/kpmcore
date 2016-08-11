@@ -20,9 +20,7 @@
 #define LVMDEVICE__H
 
 #include "core/volumemanagerdevice.h"
-
 #include "util/libpartitionmanagerexport.h"
-#include "util/report.h"
 
 #include <QString>
 #include <QObject>
@@ -30,7 +28,8 @@
 #include <QStringList>
 
 class PartitionTable;
-class CreatePartitionTableOperation;
+class Report;
+class Partition;
 class SmartStatus;
 
 /** Represents LVM Volume Group.
@@ -56,6 +55,10 @@ public:
     static QStringList s_DirtyPVs;
 
 public:
+
+    /**
+     *
+     */
     static QList<LvmDevice*> scanSystemLVM();
 
     static const QStringList getVGs();
@@ -88,10 +91,18 @@ public:
     static bool activateVG(Report& report, const LvmDevice& dev);
 
 protected:
-    void initPartitions() override;
-    const QList<Partition*> scanPartitions(PartitionTable* pTable) const;
-    Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
 
+    void initPartitions() override;
+
+    /**
+     *
+     */
+    const QList<Partition*> scanPartitions(PartitionTable* pTable) const;
+
+    /**
+     *
+     */
+    Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
     qint64 mappedSector(const QString& lvpath, qint64 sector) const override;
 
 public:

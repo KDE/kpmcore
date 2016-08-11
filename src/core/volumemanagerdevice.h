@@ -27,12 +27,6 @@
 #include <QObject>
 #include <QtGlobal>
 
-class PartitionTable;
-class CreatePartitionTableOperation;
-class CoreBackend;
-class SmartStatus;
-class Partition;
-
 /** A Volume Manager of real physical devices represented as an abstract device.
 
     VolumeManagerDevice is an abstract class of volume manager. e.g: LVM, SoftRAID.
@@ -47,23 +41,34 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
     Q_DISABLE_COPY(VolumeManagerDevice)
 
 public:
+
     /**
      *
      */
     VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
 
     /**
+     *  @return list of physical device or partitions that makes up volumeManagerDevice.
+     */
+    virtual const QStringList deviceNodes() const = 0;
+
+    /**
      *
      */
-    virtual const QStringList deviceNodes() const = 0; /** Return list of physical device or partitions that makes up volumeManagerDevice. */
     virtual const QStringList partitionNodes() const = 0; /** Return list of partitions on the device. */
+
+    /**
+     *
+     */
     virtual qint64 partitionSize(QString& partitionPath) const = 0; /** Return size of provided partition in bytes. */
 
 protected:
+
     /**
      *
      */
     virtual void initPartitions() = 0;
+
     /**
      *
      */
@@ -73,17 +78,18 @@ public:
 
     /** string deviceNodes together into comma-sperated list
      *
-     * */
+     *  @return comma-seperated list of deviceNodes
+     */
     virtual QString prettyDeviceNodeList() const;
 
-    /**
+    /** Resize device total number of logical sectors.
      *
+     * @param n Number of sectors.
      */
-    void setTotalLogical(qint64 num) {
-        Q_ASSERT(num > 0);
-        m_TotalLogical = num;
+    void setTotalLogical(qint64 n) {
+        Q_ASSERT(n > 0);
+        m_TotalLogical = n;
     }
 };
 
 #endif
-

@@ -17,11 +17,6 @@
 
 #include "core/volumemanagerdevice.h"
 
-#include "core/partitiontable.h"
-#include "core/smartstatus.h"
-
-#include "util/capacity.h"
-
 /** Constructs a Volume Manager Device with an empty PartitionTable.
 */
 VolumeManagerDevice::VolumeManagerDevice(const QString& name,

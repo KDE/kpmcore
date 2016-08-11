@@ -16,15 +16,16 @@
  *************************************************************************/
 
 #include "core/lvmdevice.h"
+#include "core/partition.h"
 #include "fs/filesystem.h"
 #include "fs/lvm2_pv.h"
 #include "fs/luks.h"
 #include "fs/filesystemfactory.h"
-#include "core/partition.h"
 
 #include "core/partitiontable.h"
 #include "util/externalcommand.h"
 #include "util/helpers.h"
+#include "util/report.h"
 
 #include <QRegularExpression>
 
