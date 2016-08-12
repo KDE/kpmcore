@@ -59,9 +59,5 @@ bool MovePhysicalVolumeJob::run(Report& parent)
 
 QString MovePhysicalVolumeJob::description() const
 {
-    QString tmp = QString();
-    for (const auto &path : partList()) {
-        tmp += path + QStringLiteral(",");
-    }
-    return xi18nc("@info/plain", "Move used PE in %1 on %2 to other available Physical Volumes", tmp, device().name());
+    return xi18nc("@info/plain", "Move used PE in %1 on %2 to other available Physical Volumes", partList().join(QStringLiteral(", ")), device().name());
 }

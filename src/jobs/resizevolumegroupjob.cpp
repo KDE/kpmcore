@@ -57,15 +57,13 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
 QString ResizeVolumeGroupJob::description() const
 {
-    QString tmp = QString();
-    for (const auto &path : partList()) {
-        tmp += path + QStringLiteral(",");
-    }
+    const QString partitionList = partList().join(QStringLiteral(", "));
+
     if (type() == ResizeVolumeGroupJob::Grow) {
-        return xi18nc("@info/plain", "Inserting Volume: %1 to %2.", tmp, device().name());
+        return xi18nc("@info/plain", "Inserting Volume: %1 to %2.", partitionList, device().name());
     }
     if (type() == ResizeVolumeGroupJob::Shrink) {
-        return xi18nc("@info/plain", "Removing Volume: %1 from %2.", tmp, device().name());
+        return xi18nc("@info/plain", "Removing Volume: %1 from %2.", partitionList, device().name());
     }
-    return xi18nc("@info/plain", "Resizing Volume: %1 to %2.", device().name(), tmp);
+    return xi18nc("@info/plain", "Resizing Volume: %1 to %2.", device().name(), partitionList);
 }
