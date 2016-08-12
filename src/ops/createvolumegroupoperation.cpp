@@ -27,11 +27,14 @@
 #include <KLocalizedString>
 
 /** Creates a new CreateVolumeGroupOperation.
+ * @param vgName LVM Volume Group name
+ * @param pvList List of LVM Physical Volumes used to create Volume Group
+ * @param peSize LVM Physical Extent size in MiB
 */
-CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist, const qint32 pesize) :
+CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgName, const QStringList& pvList, const qint32 peSize) :
     Operation(),
-    m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgname, pvlist, pesize)),
-    m_PVList(pvlist)
+    m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgName, pvList, peSize)),
+    m_PVList(pvList)
 {
     addJob(createVolumeGroupJob());
 }
@@ -41,9 +44,8 @@ QString CreateVolumeGroupOperation::description() const
     return xi18nc("@info/plain", "Create a new LVM volume group.");
 }
 
-bool CreateVolumeGroupOperation::targets(const Partition& part) const
+bool CreateVolumeGroupOperation::targets(const Partition&) const
 {
-    Q_UNUSED(part)
     return false;
 }
 
@@ -54,9 +56,9 @@ void CreateVolumeGroupOperation::preview()
 
 void CreateVolumeGroupOperation::undo()
 {
-    for (const auto &pvpath : PVList()) {
-        if (LvmDevice::s_DirtyPVs.contains(pvpath)) {
-            LvmDevice::s_DirtyPVs.removeAll(pvpath);
+    for (const auto &pvPath : PVList()) {
+        if (LvmDevice::s_DirtyPVs.contains(pvPath)) {
+            LvmDevice::s_DirtyPVs.removeAll(pvPath);
         }
     }
 }

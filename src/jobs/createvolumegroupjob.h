@@ -30,7 +30,7 @@ class QString;
 class CreateVolumeGroupJob : public Job
 {
 public:
-    CreateVolumeGroupJob(const QString& vgname, const QStringList& pvlist, const qint32 pesize);
+    CreateVolumeGroupJob(const QString& vgName, const QStringList& pvList, const qint32 peSize);
 
 public:
     bool run(Report& parent) override;

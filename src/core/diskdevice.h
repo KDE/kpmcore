@@ -48,7 +48,7 @@ class LIBKPMCORE_EXPORT DiskDevice : public Device
     friend class CoreBackend;
 
 public:
-    DiskDevice(const QString& name, const QString& devicenode, qint32 heads, qint32 numSectors, qint32 cylinders, qint32 sectorSize, const QString& iconname = QString());
+    DiskDevice(const QString& name, const QString& deviceNode, qint32 heads, qint32 numSectors, qint32 cylinders, qint32 sectorSize, const QString& iconName = QString());
 
 public:
     qint32 heads() const {

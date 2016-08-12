@@ -35,24 +35,24 @@
 
 /** Constructs a representation of LVM device with functionning LV as Partitions
  *
- *  @param name Volume Group name
- *  @param iconname 
+ *  @param vgName Volume Group name
+ *  @param iconName Icon representing LVM Volume group
  */
-LvmDevice::LvmDevice(const QString& name, const QString& iconname)
-    : VolumeManagerDevice(name,
-                          (QStringLiteral("/dev/") + name),
-                          getPeSize(name),
-                          getTotalPE(name),
-                          iconname,
+LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
+    : VolumeManagerDevice(vgName,
+                          (QStringLiteral("/dev/") + vgName),
+                          getPeSize(vgName),
+                          getTotalPE(vgName),
+                          iconName,
                           Device::LVM_Device)
 {
     m_peSize  = logicalSize();
     m_totalPE = totalLogical();
-    m_freePE  = getFreePE(name);
+    m_freePE  = getFreePE(vgName);
     m_allocPE = m_totalPE - m_freePE;
-    m_UUID    = getUUID(name);
-    m_PVPathList = new QStringList(getPVs(name));
-    m_LVPathList = new QStringList(getLVs(name));
+    m_UUID    = getUUID(vgName);
+    m_PVPathList = new QStringList(getPVs(vgName));
+    m_LVPathList = new QStringList(getLVs(vgName));
     m_LVSizeMap  = new QMap<QString, qint64>();
 
     initPartitions();
@@ -96,11 +96,11 @@ const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 }
 
 /**
- * @param lvpath
- * @param pTable
+ * @param lvPath LVM Logical Volume path
+ * @param pTable Abstract partition table representing partitions of LVM Volume Group
  * @return sorted Partition (LV) Array
  */
-Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTable) const
+Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTable) const
 {
     /*
      * NOTE:
@@ -112,14 +112,14 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
      * without too many special cases.
      */
 
-    qint64 lvSize = getTotalLE(lvpath);
-    qint64 startSector = mappedSector(lvpath, 0);
+    qint64 lvSize = getTotalLE(lvPath);
+    qint64 startSector = mappedSector(lvPath, 0);
     qint64 endSector = startSector + lvSize - 1;
 
-    FileSystem::Type type = FileSystem::detectFileSystem(lvpath);
+    FileSystem::Type type = FileSystem::detectFileSystem(lvPath);
     FileSystem* fs = FileSystemFactory::create(type, 0, lvSize - 1);
 
-    bool mounted = isMounted(lvpath);
+    bool mounted = isMounted(lvPath);
     QString mountPoint = QString();
 
     KMountPoint::List mountPointList = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
@@ -130,13 +130,13 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
     if (type == FileSystem::Luks) {
         r |= PartitionRole::Luks;
         FS::luks* luksFs = static_cast<FS::luks*>(fs);
-        QString mapperNode = FS::luks::mapperName(lvpath);
+        QString mapperNode = FS::luks::mapperName(lvPath);
         bool isCryptOpen = !mapperNode.isEmpty();
         luksFs->setCryptOpen(isCryptOpen);
         luksFs->setLogicalSectorSize(logicalSize());
 
         if (isCryptOpen) {
-            luksFs->loadInnerFileSystem(lvpath, mapperNode);
+            luksFs->loadInnerFileSystem(lvPath, mapperNode);
             mountPoint = mountPointList.findByDevice(mapperNode) ?
                          mountPointList.findByDevice(mapperNode)->mountPoint() :
                          QString();
@@ -144,15 +144,15 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
             if (mounted) {
                 const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
                 if (freeSpaceInfo.isValid() && mountPoint != QString())
-                    luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->getPayloadOffset(lvpath)) / logicalSize());
+                    luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->getPayloadOffset(lvPath)) / logicalSize());
             }
         } else {
             mounted = false;
         }
         luksFs->setMounted(mounted);
     } else {
-        mountPoint = mountPointList.findByDevice(lvpath) ?
-                     mountPointList.findByDevice(lvpath)->mountPoint() :
+        mountPoint = mountPointList.findByDevice(lvPath) ?
+                     mountPointList.findByDevice(lvPath)->mountPoint() :
                      QString();
         const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
@@ -161,16 +161,16 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
             if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
                 fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
             } else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem) {
-                fs->setSectorsUsed(fs->readUsedCapacity(lvpath) / logicalSize());
+                fs->setSectorsUsed(fs->readUsedCapacity(lvPath) / logicalSize());
             }
         }
     }
 
     if (fs->supportGetLabel() != FileSystem::cmdSupportNone) {
-        fs->setLabel(fs->readLabel(lvpath));
+        fs->setLabel(fs->readLabel(lvPath));
     }
     if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
-        fs->setUUID(fs->readUUID(lvpath));
+        fs->setUUID(fs->readUUID(lvPath));
 
     Partition* part = new Partition(pTable,
                     *this,
@@ -178,7 +178,7 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
                     fs,
                     startSector,
                     endSector,
-                    lvpath,
+                    lvPath,
                     PartitionTable::Flag::FlagNone,
                     mountPoint,
                     mounted);
@@ -191,17 +191,17 @@ Partition* LvmDevice::scanPartition(const QString& lvpath, PartitionTable* pTabl
 QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {
     QList<LvmDevice*> lvmList;
-    for (const auto &vgname : getVGs()) {
-        lvmList.append(new LvmDevice(vgname));
+    for (const auto &vgName : getVGs()) {
+        lvmList.append(new LvmDevice(vgName));
     }
     return lvmList;
 }
 
-qint64 LvmDevice::mappedSector(const QString& lvpath, qint64 sector) const
+qint64 LvmDevice::mappedSector(const QString& lvPath, qint64 sector) const
 {
     qint64 mSector = 0;
     QList<QString> lvpathList = partitionNodes();
-    qint32 devIndex = lvpathList.indexOf(lvpath);
+    qint32 devIndex = lvpathList.indexOf(lvPath);
 
     if (devIndex) {
         for (int i = 0; i < devIndex; i++) {
@@ -232,18 +232,18 @@ const QStringList LvmDevice::getVGs()
     QStringList vgList;
     QString output = getField(QStringLiteral("vg_name"));
     if (!output.isEmpty()) {
-        const QStringList vgnameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        for (const auto &vgname : vgnameList) {
-            vgList.append(vgname.trimmed());
+        const QStringList vgNameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        for (const auto &vgName : vgNameList) {
+            vgList.append(vgName.trimmed());
         }
     }
     return vgList;
 }
 
-const QStringList LvmDevice::getPVs(const QString& vgname)
+const QStringList LvmDevice::getPVs(const QString& vgName)
 {
     QStringList devPathList;
-    QString cmdOutput = getField(QStringLiteral("pv_name"), vgname);
+    QString cmdOutput = getField(QStringLiteral("pv_name"), vgName);
 
     if (cmdOutput.size()) {
         const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
@@ -254,10 +254,10 @@ const QStringList LvmDevice::getPVs(const QString& vgname)
     return devPathList;
 }
 
-const QStringList LvmDevice::getLVs(const QString& vgname)
+const QStringList LvmDevice::getLVs(const QString& vgName)
 {
     QStringList lvPathList;
-    QString cmdOutput = getField(QStringLiteral("lv_path"), vgname);
+    QString cmdOutput = getField(QStringLiteral("lv_path"), vgName);
 
     if (cmdOutput.size()) {
         const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
@@ -268,32 +268,32 @@ const QStringList LvmDevice::getLVs(const QString& vgname)
     return lvPathList;
 }
 
-qint64 LvmDevice::getPeSize(const QString& vgname)
+qint64 LvmDevice::getPeSize(const QString& vgName)
 {
-    QString val = getField(QStringLiteral("vg_extent_size"), vgname);
+    QString val = getField(QStringLiteral("vg_extent_size"), vgName);
     return val.isEmpty() ? -1 : val.toInt();
 }
 
-qint64 LvmDevice::getTotalPE(const QString& vgname)
+qint64 LvmDevice::getTotalPE(const QString& vgName)
 {
-    QString val = getField(QStringLiteral("vg_extent_count"), vgname);
+    QString val = getField(QStringLiteral("vg_extent_count"), vgName);
     return val.isEmpty() ? -1 : val.toInt();
 }
 
-qint64 LvmDevice::getAllocatedPE(const QString& vgname)
+qint64 LvmDevice::getAllocatedPE(const QString& vgName)
 {
-    return getTotalPE(vgname) - getFreePE(vgname);
+    return getTotalPE(vgName) - getFreePE(vgName);
 }
 
-qint64 LvmDevice::getFreePE(const QString& vgname)
+qint64 LvmDevice::getFreePE(const QString& vgName)
 {
-    QString val =  getField(QStringLiteral("vg_free_count"), vgname);
+    QString val =  getField(QStringLiteral("vg_free_count"), vgName);
     return val.isEmpty() ? -1 : val.toInt();
 }
 
-QString LvmDevice::getUUID(const QString& vgname)
+QString LvmDevice::getUUID(const QString& vgName)
 {
-    QString val = getField(QStringLiteral("vg_uuid"), vgname);
+    QString val = getField(QStringLiteral("vg_uuid"), vgName);
     return val.isEmpty() ? QStringLiteral("---") : val;
 
 }
@@ -301,11 +301,11 @@ QString LvmDevice::getUUID(const QString& vgname)
 /** Get LVM vgs command output with field name
  *
  * @param fieldName LVM field name
- * @param vgname the name of LVM Volume Group
+ * @param vgName the name of LVM Volume Group
  * @return raw output of command output, usully with many spaces within the returned string
  * */
 
-QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
+QString LvmDevice::getField(const QString& fieldName, const QString& vgName)
 {
     QStringList args = { QStringLiteral("vgs"),
               QStringLiteral("--foreign"),
@@ -316,8 +316,8 @@ QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
               QStringLiteral("--nosuffix"),
               QStringLiteral("--options"),
               fieldName };
-    if  (!vgname.isEmpty()) {
-        args << vgname;
+    if  (!vgName.isEmpty()) {
+        args << vgName;
     }
     ExternalCommand cmd(QStringLiteral("lvm"), args);
     if (cmd.run(-1) && cmd.exitCode() == 0) {
@@ -326,11 +326,11 @@ QString LvmDevice::getField(const QString& fieldName, const QString& vgname)
     return QString();
 }
 
-qint64 LvmDevice::getTotalLE(const QString& lvpath)
+qint64 LvmDevice::getTotalLE(const QString& lvPath)
 {
     ExternalCommand cmd(QStringLiteral("lvm"),
             { QStringLiteral("lvdisplay"),
-              lvpath});
+              lvPath});
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         QRegularExpression re(QStringLiteral("Current LE\\h+(\\d+)"));
@@ -342,39 +342,39 @@ qint64 LvmDevice::getTotalLE(const QString& lvpath)
     return -1;
 }
 
-bool LvmDevice::removeLV(Report& report, LvmDevice& dev, Partition& part)
+bool LvmDevice::removeLV(Report& report, LvmDevice& d, Partition& p)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvremove"),
               QStringLiteral("--yes"),
-              part.partitionPath()});
+              p.partitionPath()});
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         //TODO: remove Partition from PartitionTable and delete from memory ??
-        dev.partitionTable()->remove(&part);
+        d.partitionTable()->remove(&p);
         return  true;
     }
     return false;
 }
 
-bool LvmDevice::createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname)
+bool LvmDevice::createLV(Report& report, LvmDevice& d, Partition& p, const QString& lvName)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvcreate"),
               QStringLiteral("--yes"),
               QStringLiteral("--extents"),
-              QString::number(part.length()),
+              QString::number(p.length()),
               QStringLiteral("--name"),
-              lvname,
-              dev.name()});
+              lvName,
+              d.name()});
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::createLVSnapshot(Report& report, Partition& lvpart, const QString& name, const qint64 extents)
+bool LvmDevice::createLVSnapshot(Report& report, Partition& p, const QString& name, const qint64 extents)
 {
     QString numExtents = (extents > 0) ? QString::number(extents) :
-        QString::number(lvpart.length());
+        QString::number(p.length());
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvcreate"),
               QStringLiteral("--yes"),
@@ -383,11 +383,11 @@ bool LvmDevice::createLVSnapshot(Report& report, Partition& lvpart, const QStrin
               QStringLiteral("--snapshot"),
               QStringLiteral("--name"),
               name,
-              lvpart.partitionPath() });
+              p.partitionPath() });
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::resizeLV(Report& report, Partition& part)
+bool LvmDevice::resizeLV(Report& report, Partition& p)
 {
     //TODO: thorough tests and add warning that it could currupt the user data.
     ExternalCommand cmd(report, QStringLiteral("lvm"),
@@ -395,29 +395,29 @@ bool LvmDevice::resizeLV(Report& report, Partition& part)
               QStringLiteral("--force"), // this command could corrupt user data
               QStringLiteral("--yes"),
               QStringLiteral("--extents"),
-              QString::number(part.length()),
-              part.partitionPath()});
+              QString::number(p.length()),
+              p.partitionPath()});
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::removePV(Report& report, LvmDevice& dev, const QString& pvPath)
+bool LvmDevice::removePV(Report& report, LvmDevice& d, const QString& pvPath)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgreduce"),
               //QStringLiteral("--yes"), // potentially corrupt user data
-              dev.name(),
+              d.name(),
               pvPath});
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::insertPV(Report& report, LvmDevice& dev, const QString& pvPath)
+bool LvmDevice::insertPV(Report& report, LvmDevice& d, const QString& pvPath)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgextend"),
               //QStringLiteral("--yes"), // potentially corrupt user data
-              dev.name(),
+              d.name(),
               pvPath});
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
@@ -442,60 +442,60 @@ bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList&
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize)
+bool LvmDevice::createVG(Report& report, const QString vgName, const QStringList pvList, const qint32 peSize)
 {
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
-    args << vgname;
-    for (const auto &pvnode : pvlist) {
-        args << pvnode.trimmed();
+    args << vgName;
+    for (const auto &pvNode : pvList) {
+        args << pvNode.trimmed();
     }
     ExternalCommand cmd(report, QStringLiteral("lvm"), args);
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::removeVG(Report& report, LvmDevice& dev)
+bool LvmDevice::removeVG(Report& report, LvmDevice& d)
 {
-    bool deactivated = deactivateVG(report, dev);
+    bool deactivated = deactivateVG(report, d);
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgremove"),
-              dev.name() });
+              d.name() });
     return (deactivated && cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::deactivateVG(Report& report, const LvmDevice& dev)
+bool LvmDevice::deactivateVG(Report& report, const LvmDevice& d)
 {
     ExternalCommand deactivate(report, QStringLiteral("lvm"),
             { QStringLiteral("vgchange"),
               QStringLiteral("--activate"), QStringLiteral("n"),
-              dev.name() });
+              d.name() });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
 
-bool LvmDevice::deactivateLV(Report& report, const Partition& part)
+bool LvmDevice::deactivateLV(Report& report, const Partition& p)
 {
     ExternalCommand deactivate(report, QStringLiteral("lvm"),
             { QStringLiteral("lvchange"),
               QStringLiteral("--activate"), QStringLiteral("n"),
-              part.partitionPath() });
+              p.partitionPath() });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
 
-bool LvmDevice::activateVG(Report& report, const LvmDevice& dev)
+bool LvmDevice::activateVG(Report& report, const LvmDevice& d)
 {
     ExternalCommand deactivate(report, QStringLiteral("lvm"),
             { QStringLiteral("vgchange"),
               QStringLiteral("--activate"), QStringLiteral("y"),
-              dev.name() });
+              d.name() });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
 
-bool LvmDevice::activateLV(Report& report, Partition& part)
+bool LvmDevice::activateLV(Report& report, Partition& p)
 {
     ExternalCommand deactivate(report, QStringLiteral("lvm"),
             { QStringLiteral("lvchange"),
               QStringLiteral("--activate"), QStringLiteral("y"),
-              part.partitionPath() });
+              p.partitionPath() });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }

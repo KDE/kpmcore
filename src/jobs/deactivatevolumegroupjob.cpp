@@ -25,9 +25,9 @@
 
 /** Deactivate LVM Volume Group
 */
-DeactivateVolumeGroupJob::DeactivateVolumeGroupJob(VolumeManagerDevice& dev) :
+DeactivateVolumeGroupJob::DeactivateVolumeGroupJob(VolumeManagerDevice& d) :
     Job(),
-    m_Device(dev)
+    m_Device(d)
 {
 }
 

@@ -36,7 +36,7 @@ class LIBKPMCORE_EXPORT RemoveVolumeGroupOperation : public Operation
     friend class OperationStack;
 
 public:
-    RemoveVolumeGroupOperation(VolumeManagerDevice& dev);
+    RemoveVolumeGroupOperation(VolumeManagerDevice& d);
 
 public:
     QString iconName() const override {

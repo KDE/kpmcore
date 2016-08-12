@@ -28,11 +28,11 @@
 
 /** Creates a new RemoveVolumeGroupOperation.
 */
-DeactivateVolumeGroupOperation::DeactivateVolumeGroupOperation(VolumeManagerDevice& dev) :
+DeactivateVolumeGroupOperation::DeactivateVolumeGroupOperation(VolumeManagerDevice& d) :
     Operation(),
-    m_DeactivateVolumeGroupJob(new DeactivateVolumeGroupJob(dev)),
-    m_DeactivateLogicalVolumeJob(new DeactivateLogicalVolumeJob(dev)),
-    m_Device(dev)
+    m_DeactivateVolumeGroupJob(new DeactivateVolumeGroupJob(d)),
+    m_DeactivateLogicalVolumeJob(new DeactivateLogicalVolumeJob(d)),
+    m_Device(d)
 {
     addJob(deactivateLogicalVolumeJob());
     addJob(deactivateVolumeGroupJob());

@@ -37,7 +37,7 @@ class LIBKPMCORE_EXPORT CreateVolumeGroupOperation : public Operation
     friend class OperationStack;
 
 public:
-    CreateVolumeGroupOperation(const QString& vgname, const QStringList& pvlist, const qint32 pesize = 4);
+    CreateVolumeGroupOperation(const QString& vgName, const QStringList& pvList, const qint32 peSize = 4);
 
 public:
     QString iconName() const override {

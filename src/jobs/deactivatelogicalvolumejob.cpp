@@ -27,9 +27,9 @@
 
 /** Creates a new DeactivateLogicalVolumeJob
 */
-DeactivateLogicalVolumeJob::DeactivateLogicalVolumeJob(const VolumeManagerDevice& dev, const QStringList lvPaths) :
+DeactivateLogicalVolumeJob::DeactivateLogicalVolumeJob(const VolumeManagerDevice& d, const QStringList lvPaths) :
     Job(),
-    m_Device(dev),
+    m_Device(d),
     m_LVList(lvPaths)
 {
 }

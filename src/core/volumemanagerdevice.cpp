@@ -20,12 +20,12 @@
 /** Constructs a Volume Manager Device with an empty PartitionTable.
 */
 VolumeManagerDevice::VolumeManagerDevice(const QString& name,
-                                         const QString& devicenode,
+                                         const QString& deviceNode,
                                          const qint32 logicalSize,
                                          const qint64 totalLogical,
-                                         const QString& iconname,
+                                         const QString& iconName,
                                          Device::Type type)
-    : Device(name, devicenode, logicalSize, totalLogical, iconname, type)
+    : Device(name, deviceNode, logicalSize, totalLogical, iconName, type)
 {
 }
 

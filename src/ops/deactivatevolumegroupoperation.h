@@ -38,7 +38,7 @@ class LIBKPMCORE_EXPORT DeactivateVolumeGroupOperation : public Operation
     friend class OperationStack;
 
 public:
-    DeactivateVolumeGroupOperation(VolumeManagerDevice& dev);
+    DeactivateVolumeGroupOperation(VolumeManagerDevice& d);
 
 public:
     QString iconName() const override {

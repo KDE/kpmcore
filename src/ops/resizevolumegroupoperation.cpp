@@ -30,22 +30,22 @@
 
 /** Creates a new ResizeVolumeGroupOperation.
     @param d the Device to create the new PartitionTable on
-    @param t the type for the new PartitionTable
+    @param partlist list of LVM Physical Volumes that should be in LVM Volume Group
 */
-ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& dev, const QStringList partlist) :
+ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QStringList partlist) :
     Operation(),
-    m_Device(dev),
+    m_Device(d),
     m_TargetList(partlist),
-    m_CurrentList(LvmDevice::getPVs(dev.name())),
+    m_CurrentList(LvmDevice::getPVs(d.name())),
     m_GrowVolumeGroupJob(nullptr),
     m_ShrinkVolumeGroupJob(nullptr),
     m_MovePhysicalVolumeJob(nullptr)
 {
-    const QStringList clist = currentList();
+    const QStringList curList = currentList();
     m_TargetSize = FS::lvm2_pv::getPVSize(targetList());
     m_CurrentSize = FS::lvm2_pv::getPVSize(currentList());
 
-    QStringList toRemoveList = clist;
+    QStringList toRemoveList = curList;
     for (QString path : partlist) {
         if (toRemoveList.contains(path)) {
             toRemoveList.removeAll(path);
@@ -53,28 +53,28 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& dev, const QSt
     }
 
     QStringList toInsertList = partlist;
-    for (QString path : clist) {
+    for (QString path : curList) {
         if (toInsertList.contains(path)) {
             toInsertList.removeAll(path);
         }
     }
 
-    qint64 freePE = FS::lvm2_pv::getFreePE(clist) - FS::lvm2_pv::getFreePE(toRemoveList);
+    qint64 freePE = FS::lvm2_pv::getFreePE(curList) - FS::lvm2_pv::getFreePE(toRemoveList);
     qint64 movePE = FS::lvm2_pv::getAllocatedPE(toRemoveList);
-    qint64 growPE = FS::lvm2_pv::getPVSize(toInsertList) / LvmDevice::getPeSize(dev.name());
+    qint64 growPE = FS::lvm2_pv::getPVSize(toInsertList) / LvmDevice::getPeSize(d.name());
 
     if ( movePE > (freePE + growPE)) {
         // *ABORT* can't move
-    } else if (partlist == clist) {
+    } else if (partlist == curList) {
         // *DO NOTHING*
     } else {
         if (!toInsertList.isEmpty()) {
-            m_GrowVolumeGroupJob = new ResizeVolumeGroupJob(dev, toInsertList, ResizeVolumeGroupJob::Grow);
+            m_GrowVolumeGroupJob = new ResizeVolumeGroupJob(d, toInsertList, ResizeVolumeGroupJob::Grow);
             addJob(growVolumeGroupJob());
         }
         if (!toRemoveList.isEmpty()) {
-            m_MovePhysicalVolumeJob = new MovePhysicalVolumeJob(dev, toRemoveList);
-            m_ShrinkVolumeGroupJob = new ResizeVolumeGroupJob(dev, toRemoveList, ResizeVolumeGroupJob::Shrink);
+            m_MovePhysicalVolumeJob = new MovePhysicalVolumeJob(d, toRemoveList);
+            m_ShrinkVolumeGroupJob = new ResizeVolumeGroupJob(d, toRemoveList, ResizeVolumeGroupJob::Shrink);
             addJob(movePhysicalVolumeJob());
             addJob(shrinkvolumegroupjob());
         }
@@ -94,10 +94,10 @@ bool ResizeVolumeGroupOperation::targets(const Device& d) const
     return d == device();
 }
 
-bool ResizeVolumeGroupOperation::targets(const Partition& part) const
+bool ResizeVolumeGroupOperation::targets(const Partition& p) const
 {
     for (QString partPath : targetList()) {
-        if (partPath == part.partitionPath()) {
+        if (partPath == p.partitionPath()) {
             return true;
         }
     }

@@ -24,11 +24,12 @@
 #include <KLocalizedString>
 
 /** Creates a new MovePhysicalVolumeJob
+ * @param d Device representing LVM Volume Group
 */
-MovePhysicalVolumeJob::MovePhysicalVolumeJob(LvmDevice& dev, const QStringList partlist) :
+MovePhysicalVolumeJob::MovePhysicalVolumeJob(LvmDevice& d, const QStringList partList) :
     Job(),
-    m_Device(dev),
-    m_PartList(partlist)
+    m_Device(d),
+    m_PartList(partList)
 {
 }
 

@@ -45,7 +45,7 @@ public:
     /**
      *
      */
-    VolumeManagerDevice(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Unknown_Device);
+    VolumeManagerDevice(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
 
     /**
      *  @return list of physical device or partitions that makes up volumeManagerDevice.

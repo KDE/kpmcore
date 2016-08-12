@@ -95,7 +95,7 @@ public:
     Q_FLAG(Flag)
 
 public:
-    PartitionTable(TableType type, qint64 first_usable, qint64 last_usable);
+    PartitionTable(TableType type, qint64 firstUsable, qint64 lastUsable);
     ~PartitionTable();
 
 public:

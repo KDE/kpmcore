@@ -26,10 +26,10 @@
 
 /** Creates a new RemoveVolumeGroupOperation.
 */
-RemoveVolumeGroupOperation::RemoveVolumeGroupOperation(VolumeManagerDevice& dev) :
+RemoveVolumeGroupOperation::RemoveVolumeGroupOperation(VolumeManagerDevice& d) :
     Operation(),
-    m_RemoveVolumeGroupJob(new RemoveVolumeGroupJob(dev)),
-    m_Device(dev)
+    m_RemoveVolumeGroupJob(new RemoveVolumeGroupJob(d)),
+    m_Device(d)
 {
     addJob(removeVolumeGroupJob());
 }

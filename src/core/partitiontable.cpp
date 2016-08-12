@@ -39,13 +39,13 @@
 /** Creates a new PartitionTable object with type MSDOS
     @param type name of the PartitionTable type (e.g. "msdos" or "gpt")
 */
-PartitionTable::PartitionTable(TableType type, qint64 first_usable, qint64 last_usable) :
+PartitionTable::PartitionTable(TableType type, qint64 firstUsable, qint64 lastUsable) :
     PartitionNode(),
     m_Children(),
     m_MaxPrimaries(maxPrimariesForTableType(type)),
     m_Type(type),
-    m_FirstUsable(first_usable),
-    m_LastUsable(last_usable)
+    m_FirstUsable(firstUsable),
+    m_LastUsable(lastUsable)
 {
 }
 

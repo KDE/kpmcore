@@ -72,24 +72,24 @@ static qint32 getPhysicalSectorSize(const QString& device_node)
 
 /** Constructs a Disk Device with an empty PartitionTable.
     @param name the Device's name, usually some string defined by the manufacturer
-    @param devicenode the Device's node, for example "/dev/sda"
+    @param deviceNode the Device's node, for example "/dev/sda"
     @param heads the number of heads in CHS notation
     @param numSectors the number of sectors in CHS notation
     @param cylinders the number of cylinders in CHS notation
     @param sectorSize the size of a sector in bytes
 */
 DiskDevice::DiskDevice(const QString& name,
-                       const QString& devicenode,
+                       const QString& deviceNode,
                        qint32 heads,
                        qint32 numSectors,
                        qint32 cylinders,
                        qint32 sectorSize,
-                       const QString& iconname)
-    : Device(name, devicenode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconname, Device::Disk_Device)
+                       const QString& iconName)
+    : Device(name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Disk_Device)
     , m_Heads(heads)
     , m_SectorsPerTrack(numSectors)
     , m_Cylinders(cylinders)
     , m_LogicalSectorSize(sectorSize)
-    , m_PhysicalSectorSize(getPhysicalSectorSize(devicenode))
+    , m_PhysicalSectorSize(getPhysicalSectorSize(deviceNode))
 {
 }

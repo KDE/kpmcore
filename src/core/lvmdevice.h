@@ -44,7 +44,7 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
     Q_DISABLE_COPY(LvmDevice)
 
 public:
-    LvmDevice(const QString& name, const QString& iconname = QString());
+    LvmDevice(const QString& name, const QString& iconName = QString());
     ~LvmDevice();
 
 public:
@@ -62,33 +62,33 @@ public:
     static QList<LvmDevice*> scanSystemLVM();
 
     static const QStringList getVGs();
-    static const QStringList getPVs(const QString& vgname);
-    static const QStringList getLVs(const QString& vgname);
+    static const QStringList getPVs(const QString& vgName);
+    static const QStringList getLVs(const QString& vgName);
 
-    static qint64 getPeSize(const QString& vgname);
-    static qint64 getTotalPE(const QString& vgname);
-    static qint64 getAllocatedPE(const QString& vgname);
-    static qint64 getFreePE(const QString& vgname);
-    static QString getUUID(const QString& vgname);
-    static QString getField(const QString& fieldName, const QString& vgname = QString());
+    static qint64 getPeSize(const QString& vgName);
+    static qint64 getTotalPE(const QString& vgName);
+    static qint64 getAllocatedPE(const QString& vgName);
+    static qint64 getFreePE(const QString& vgName);
+    static QString getUUID(const QString& vgName);
+    static QString getField(const QString& fieldName, const QString& vgName = QString());
 
-    static qint64 getTotalLE(const QString& lvpath);
+    static qint64 getTotalLE(const QString& lvPath);
 
-    static bool removeLV(Report& report, LvmDevice& dev, Partition& part);
-    static bool createLV(Report& report, LvmDevice& dev, Partition& part, const QString& lvname);
-    static bool createLVSnapshot(Report& report, Partition& lvpart, const QString& name, const qint64 extents = 0);
-    static bool resizeLV(Report& report, Partition& part);
-    static bool deactivateLV(Report& report, const Partition& part);
-    static bool activateLV(Report& report, Partition& part);
+    static bool removeLV(Report& report, LvmDevice& d, Partition& p);
+    static bool createLV(Report& report, LvmDevice& d, Partition& p, const QString& lvName);
+    static bool createLVSnapshot(Report& report, Partition& p, const QString& name, const qint64 extents = 0);
+    static bool resizeLV(Report& report, Partition& p);
+    static bool deactivateLV(Report& report, const Partition& p);
+    static bool activateLV(Report& report, Partition& p);
 
-    static bool removePV(Report& report, LvmDevice& dev, const QString& pvPath);
-    static bool insertPV(Report& report, LvmDevice& dev, const QString& pvPath);
+    static bool removePV(Report& report, LvmDevice& d, const QString& pvPath);
+    static bool insertPV(Report& report, LvmDevice& d, const QString& pvPath);
     static bool movePV(Report& report, const QString& pvPath, const QStringList& destinations = QStringList());
 
-    static bool removeVG(Report& report, LvmDevice& dev);
-    static bool createVG(Report& report, const QString vgname, const QStringList pvlist, const qint32 peSize = 4); // peSize in megabytes
-    static bool deactivateVG(Report& report, const LvmDevice& dev);
-    static bool activateVG(Report& report, const LvmDevice& dev);
+    static bool removeVG(Report& report, LvmDevice& d);
+    static bool createVG(Report& report, const QString vgName, const QStringList pvList, const qint32 peSize = 4); // peSize in megabytes
+    static bool deactivateVG(Report& report, const LvmDevice& d);
+    static bool activateVG(Report& report, const LvmDevice& d);
 
 protected:
 
@@ -103,7 +103,7 @@ protected:
      *
      */
     Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
-    qint64 mappedSector(const QString& lvpath, qint64 sector) const override;
+    qint64 mappedSector(const QString& lvPath, qint64 sector) const override;
 
 public:
     qint64 peSize() const {

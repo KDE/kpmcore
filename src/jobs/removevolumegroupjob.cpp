@@ -25,9 +25,9 @@
 
 /** Creates a new RemoveVolumeGroupJob
 */
-RemoveVolumeGroupJob::RemoveVolumeGroupJob(VolumeManagerDevice& dev) :
+RemoveVolumeGroupJob::RemoveVolumeGroupJob(VolumeManagerDevice& d) :
     Job(),
-    m_Device(dev)
+    m_Device(d)
 {
 }
 
