@@ -65,7 +65,7 @@ public:
     CoreBackendDevice* openDeviceExclusive(const QString& deviceNode) override;
     bool closeDevice(CoreBackendDevice* core_device) override;
     Device* scanDevice(const QString& deviceNode) override;
-    QList<Device*> scanDevices(bool excludeReadOnly = true) override;
+    QList<Device*> scanDevices(bool excludeReadOnly = false) override;
     FileSystem::Type detectFileSystem(const QString& partitionPath) override;
 
     static QString lastPartedExceptionMessage();
