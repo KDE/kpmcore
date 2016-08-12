@@ -83,17 +83,10 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& dev, const QSt
 
 QString ResizeVolumeGroupOperation::description() const
 {
-    QString tlist = QString();
-    for (QString path : targetList()) {
-        tlist += path + QStringLiteral(",");
-    }
-    tlist.chop(1);
-    QString clist = QString();
-    for (QString path : currentList()) {
-        clist += path + QStringLiteral(",");
-    }
-    clist.chop(1);
-    return xi18nc("@info/plain", "Resize volume %1 from %2 to %3", device().name(), clist, tlist);
+    QString tList = targetList().join(QStringLiteral(", "));
+    QString curList = currentList().join(QStringLiteral(", "));
+
+    return xi18nc("@info/plain", "Resize volume %1 from %2 to %3", device().name(), curList, tList);
 }
 
 bool ResizeVolumeGroupOperation::targets(const Device& d) const
