@@ -43,7 +43,7 @@ public:
     void setupConnections();
 
 Q_SIGNALS:
-    void progress(const QString& device_node, int progress);
+    void progress(const QString& deviceNode, int progress);
 
 protected:
     void run() override;

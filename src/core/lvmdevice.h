@@ -79,7 +79,7 @@ public:
     static bool createLVSnapshot(Report& report, Partition& p, const QString& name, const qint64 extents = 0);
     static bool resizeLV(Report& report, Partition& p);
     static bool deactivateLV(Report& report, const Partition& p);
-    static bool activateLV(Report& report, Partition& p);
+    static bool activateLV(const QString& deviceNode);
 
     static bool removePV(Report& report, LvmDevice& d, const QString& pvPath);
     static bool insertPV(Report& report, LvmDevice& d, const QString& pvPath);

@@ -26,22 +26,22 @@
 
 /** Constructs a Device with an empty PartitionTable.
     @param name the Device's name, usually some string defined by the manufacturer
-    @param devicenode the Device's node, for example "/dev/sda"
+    @param deviceNode the Device's node, for example "/dev/sda"
 */
 Device::Device(const QString& name,
-               const QString& devicenode,
+               const QString& deviceNode,
                const qint32 logicalSize,
                const qint64 totalLogical,
-               const QString& iconname,
+               const QString& iconName,
                Device::Type type)
     : QObject()
     , m_Name(name.length() > 0 ? name : i18n("Unknown Device"))
-    , m_DeviceNode(devicenode)
+    , m_DeviceNode(deviceNode)
     , m_LogicalSize(logicalSize)
     , m_TotalLogical(totalLogical)
     , m_PartitionTable(nullptr)
-    , m_IconName(iconname.isEmpty() ? QStringLiteral("drive-harddisk") : iconname)
-    , m_SmartStatus(type == Device::Disk_Device ? new SmartStatus(devicenode) : nullptr)
+    , m_IconName(iconName.isEmpty() ? QStringLiteral("drive-harddisk") : iconName)
+    , m_SmartStatus(type == Device::Disk_Device ? new SmartStatus(deviceNode) : nullptr)
     , m_Type(type)
 {
 }

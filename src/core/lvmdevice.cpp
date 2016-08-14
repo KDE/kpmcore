@@ -112,6 +112,8 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
      * without too many special cases.
      */
 
+    activateLV(lvPath);
+
     qint64 lvSize = getTotalLE(lvPath);
     qint64 startSector = mappedSector(lvPath, 0);
     qint64 endSector = startSector + lvSize - 1;
@@ -491,11 +493,11 @@ bool LvmDevice::activateVG(Report& report, const LvmDevice& d)
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }
 
-bool LvmDevice::activateLV(Report& report, Partition& p)
+bool LvmDevice::activateLV(const QString& lvPath)
 {
-    ExternalCommand deactivate(report, QStringLiteral("lvm"),
+    ExternalCommand deactivate(QStringLiteral("lvm"),
             { QStringLiteral("lvchange"),
               QStringLiteral("--activate"), QStringLiteral("y"),
-              p.partitionPath() });
+              lvPath });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
 }

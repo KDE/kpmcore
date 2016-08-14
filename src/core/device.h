@@ -23,7 +23,6 @@
 
 #include <QString>
 #include <QObject>
-#include <QtGlobal>
 
 class PartitionTable;
 class CreatePartitionTableOperation;
@@ -55,7 +54,7 @@ public:
     };
 
 protected:
-    Device(const QString& name, const QString& devicenode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconname = QString(), Device::Type type = Device::Disk_Device);
+    Device(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
 
 public:
     virtual ~Device();
