@@ -30,6 +30,7 @@ class DeactivateLogicalVolumeJob;
 class DeactivateVolumeGroupJob;
 class VolumeManagerDevice;
 class OperationStack;
+class PartitionTable;
 
 class LIBKPMCORE_EXPORT DeactivateVolumeGroupOperation : public Operation
 {
@@ -70,10 +71,15 @@ protected:
         return m_Device;
     }
 
+    PartitionTable* partitionTable() {
+        return m_PartitionTable;
+    }
+
 private:
     DeactivateVolumeGroupJob* m_DeactivateVolumeGroupJob;
     DeactivateLogicalVolumeJob* m_DeactivateLogicalVolumeJob;
     VolumeManagerDevice& m_Device;
+    PartitionTable* m_PartitionTable;
 };
 
 #endif

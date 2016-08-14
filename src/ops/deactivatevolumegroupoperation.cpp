@@ -32,7 +32,8 @@ DeactivateVolumeGroupOperation::DeactivateVolumeGroupOperation(VolumeManagerDevi
     Operation(),
     m_DeactivateVolumeGroupJob(new DeactivateVolumeGroupJob(d)),
     m_DeactivateLogicalVolumeJob(new DeactivateLogicalVolumeJob(d)),
-    m_Device(d)
+    m_Device(d),
+    m_PartitionTable(d.partitionTable())
 {
     addJob(deactivateLogicalVolumeJob());
     addJob(deactivateVolumeGroupJob());
@@ -45,8 +46,14 @@ QString DeactivateVolumeGroupOperation::description() const
 
 void DeactivateVolumeGroupOperation::preview()
 {
+    device().setPartitionTable(new PartitionTable(PartitionTable::vmd, 0, device().totalLogical() - 1));
 }
 
 void DeactivateVolumeGroupOperation::undo()
 {
+    PartitionTable* tmp = device().partitionTable();
+    if (tmp != partitionTable()) {
+        device().setPartitionTable(partitionTable());
+        delete tmp;
+    }
 }
