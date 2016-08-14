@@ -58,6 +58,8 @@ public:
     virtual void preview() override;
     virtual void undo() override;
 
+    static bool isDeactivatable(const VolumeManagerDevice* dev);
+
 protected:
     DeactivateVolumeGroupJob* deactivateVolumeGroupJob() {
         return m_DeactivateVolumeGroupJob;

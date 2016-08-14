@@ -21,6 +21,7 @@
 
 #include "core/volumemanagerdevice.h"
 #include "core/partitiontable.h"
+#include "core/partition.h"
 
 #include <QString>
 
@@ -56,4 +57,18 @@ void DeactivateVolumeGroupOperation::undo()
         device().setPartitionTable(partitionTable());
         delete tmp;
     }
+}
+
+bool DeactivateVolumeGroupOperation::isDeactivatable(const VolumeManagerDevice* dev)
+{
+    if (dev->type() == Device::LVM_Device) {
+        for (const auto &p : dev->partitionTable()->children()) {
+            if (p->isMounted()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    return false;
 }
