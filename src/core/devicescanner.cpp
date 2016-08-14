@@ -68,9 +68,10 @@ void DeviceScanner::scan()
     for (const auto &d : deviceList)
         operationStack().addDevice(d);
 
+    operationStack().sortDevices();
+
     for (const auto &d : lvmList)
         operationStack().addDevice(d);
 
-    operationStack().sortDevices();
 }
 
