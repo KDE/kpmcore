@@ -33,7 +33,7 @@
 #include <KLocalizedString>
 #include <KMountPoint>
 
-/** Constructs a representation of LVM device with functionning LV as Partitions
+/** Constructs a representation of LVM device with initialized LV as Partitions
  *
  *  @param vgName Volume Group name
  *  @param iconName Icon representing LVM Volume group
@@ -58,6 +58,10 @@ LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
     initPartitions();
 }
 
+/**
+ * shared list of PV's paths that will be added to any VGs.
+ * (have been added to an operation, but not yet applied)
+*/
 QStringList LvmDevice::s_DirtyPVs;
 
 LvmDevice::~LvmDevice()
@@ -84,7 +88,7 @@ void LvmDevice::initPartitions()
 }
 
 /**
- *  @return sorted Partition(LV) Array
+ *  @return a initialized Partition(LV) list
  */
 const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
@@ -95,23 +99,22 @@ const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
     return pList;
 }
 
-/**
+/** scan and construct a partition(LV) at a given path
+ *
+ * NOTE:
+ * LVM partition has 2 different start and end sector values
+ * 1. representing the actual LV start from 0 -> size of LV - 1
+ * 2. representing abstract LV's sector inside a VG partitionTable
+ *    start from last sector + 1 of last Partitions -> size of LV - 1
+ * Reason for this is for the LV Partition to work nicely with other parts of the codebase
+ * without too many special cases.
+ *
  * @param lvPath LVM Logical Volume path
  * @param pTable Abstract partition table representing partitions of LVM Volume Group
- * @return sorted Partition (LV) Array
+ * @return initialized Partition(LV)
  */
 Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTable) const
 {
-    /*
-     * NOTE:
-     * LVM partition has 2 different start and end sector values
-     * 1. representing the actual LV start from 0 -> size of LV - 1
-     * 2. representing abstract LV's sector inside a VG partitionTable
-     *    start from last sector + 1 of last Partitions -> size of LV - 1
-     * Reason for this is for the LV Partition to work nicely with other parts of the codebase
-     * without too many special cases.
-     */
-
     activateLV(lvPath);
 
     qint64 lvSize = getTotalLE(lvPath);
@@ -187,8 +190,9 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     return part;
 }
 
-/**
+/** scan and contruct list of initialized LvmDevice objects.
  *
+ *  @return list of initialized LvmDevice
  */
 QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {

@@ -281,7 +281,13 @@ qint64 lvm2_pv::getPESize(const QString& deviceNode)
     return val.isEmpty() ? -1 : val.toLongLong();
 }
 
-QString  lvm2_pv::getpvField(const QString& fieldname, const QString& deviceNode)
+/** Get pvs command output with field name
+ *
+ *  @param fieldName LVM field name
+ *  @param deviceNode path to PV
+ *  @return raw output of pvs command, usually with many spaces
+ */
+QString  lvm2_pv::getpvField(const QString& fieldName, const QString& deviceNode)
 {
     QStringList args = { QStringLiteral("pvs"),
                     QStringLiteral("--foreign"),
@@ -291,7 +297,7 @@ QString  lvm2_pv::getpvField(const QString& fieldname, const QString& deviceNode
                     QStringLiteral("B"),
                     QStringLiteral("--nosuffix"),
                     QStringLiteral("--options"),
-                    fieldname };
+                    fieldName };
     if (!deviceNode.isEmpty()) {
         args << deviceNode;
     }

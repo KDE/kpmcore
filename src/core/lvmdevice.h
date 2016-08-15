@@ -32,12 +32,11 @@ class Report;
 class Partition;
 class SmartStatus;
 
-/** Represents LVM Volume Group.
+/** Representation of LVM Volume Group(VG).
 
     Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
 
-    @see PartitionTable, Partition
-    @author Volker Lanz <vl@fidra.de>
+    @see Device, VolumeManagerDevice, PartitionTable, Partition
 */
 class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
 {
@@ -56,9 +55,6 @@ public:
 
 public:
 
-    /**
-     *
-     */
     static QList<LvmDevice*> scanSystemLVM();
 
     static const QStringList getVGs();
@@ -93,15 +89,7 @@ public:
 protected:
 
     void initPartitions() override;
-
-    /**
-     *
-     */
     const QList<Partition*> scanPartitions(PartitionTable* pTable) const;
-
-    /**
-     *
-     */
     Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
     qint64 mappedSector(const QString& lvPath, qint64 sector) const override;
 

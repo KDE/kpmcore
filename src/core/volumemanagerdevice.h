@@ -27,52 +27,56 @@
 #include <QObject>
 #include <QtGlobal>
 
-/** A Volume Manager of real physical devices represented as an abstract device.
-
-    VolumeManagerDevice is an abstract class of volume manager. e.g: LVM, SoftRAID.
-    a device like /dev/sda, /dev/sdb1.
-
-    Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
-
-    @see PartitionTable, Partition
-*/
+/** A Volume Manager of physical devices represented as an abstract device.
+ *
+ *   VolumeManagerDevice is an abstract device class for volume manager. e.g: LVM, SoftRAID.
+ *   example of physical device: /dev/sda, /dev/sdb1.
+ *
+ *   Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
+ *
+ *   @see Device, PartitionTable, Partition
+ */
 class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 {
     Q_DISABLE_COPY(VolumeManagerDevice)
 
 public:
 
-    /**
-     *
-     */
     VolumeManagerDevice(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
 
     /**
-     *  @return list of physical device or partitions that makes up volumeManagerDevice.
+     *  @return list of physical device's path that makes up volumeManagerDevice.(e.g: /dev/sda, /dev/sdb1)
      */
     virtual const QStringList deviceNodes() const = 0;
 
     /**
-     *
+     * @return list of logical partition's path.
      */
-    virtual const QStringList partitionNodes() const = 0; /** Return list of partitions on the device. */
+    virtual const QStringList partitionNodes() const = 0;
 
     /**
-     *
+     * @return size of logical partition at the given path in bytes.
      */
-    virtual qint64 partitionSize(QString& partitionPath) const = 0; /** Return size of provided partition in bytes. */
+    virtual qint64 partitionSize(QString& partitionPath) const = 0;
 
 protected:
 
-    /**
+    /** Initialize device's partition table and partitions.
      *
      */
     virtual void initPartitions() = 0;
 
-    /**
+    /** absolute sector as represented inside the device's partitionTable
      *
+     *  For VolumeMangerDevice to works with the rest of the codebase, partitions are stringed
+     *  one after another to create a representation of PartitionTable and partition just like
+     *  real disk device.
+     *
+     *  @param partitionPath logical partition path
+     *  @sector sector value to be mapped (if 0, will return start sector of the partition)
+     *  @return absolute sector value as represented inside device's partitionTable
      */
-    virtual qint64  mappedSector(const QString& devNode, qint64 sector) const = 0;
+    virtual qint64  mappedSector(const QString& partitionPath, qint64 sector) const = 0;
 
 public:
 

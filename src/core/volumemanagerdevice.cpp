@@ -17,7 +17,8 @@
 
 #include "core/volumemanagerdevice.h"
 
-/** Constructs a Volume Manager Device with an empty PartitionTable.
+/** Constructs an abstract Volume Manager Device with an empty PartitionTable.
+ *
 */
 VolumeManagerDevice::VolumeManagerDevice(const QString& name,
                                          const QString& deviceNode,

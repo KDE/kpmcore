@@ -113,7 +113,7 @@ public:
     static bool isUsed(const QString& pvNode);
 
     static QString getVGName(const QString& deviceNode);
-    static QString getpvField(const QString& fieldname, const QString& deviceNode = QString());
+    static QString getpvField(const QString& fieldName, const QString& deviceNode = QString());
 
     static const QStringList getFreePV();
 

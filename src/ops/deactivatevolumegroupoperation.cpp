@@ -59,6 +59,11 @@ void DeactivateVolumeGroupOperation::undo()
     }
 }
 
+/** loop through given device's partitions to check if any is mounted.
+ *
+ *  @dev VolumeManagerDevice with initialized partitions
+ *  @return false if any of the device's partition is mounted.
+ */
 bool DeactivateVolumeGroupOperation::isDeactivatable(const VolumeManagerDevice* dev)
 {
     if (dev->type() == Device::LVM_Device) {
