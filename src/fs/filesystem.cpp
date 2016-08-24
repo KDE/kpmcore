@@ -33,6 +33,7 @@
 
 const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode =
 {
+{
     QColor( 220,205,175 ),
     QColor( 187,249,207 ),
     QColor( 102,121,150 ),
@@ -59,6 +60,7 @@ const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode 
     QColor( 242,155,104 ),
     QColor( 160,210,180 ),
     QColor( 255,170,0 )
+}
 };
 
 

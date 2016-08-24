@@ -78,7 +78,7 @@ static PedExceptionOption pedExceptionHandler(PedException* e)
 #if defined LIBPARTED_FS_RESIZE_LIBRARY_SUPPORT
 static qint64 readSectorsUsedLibParted(const Partition& p)
 {
-    KAuth::Action action = QStringLiteral("org.kde.kpmcore.scan.readsectorsused");
+    KAuth::Action action(QStringLiteral("org.kde.kpmcore.scan.readsectorsused"));
     action.setHelperId(QStringLiteral("org.kde.kpmcore.scan"));
     QVariantMap args = {
         { QStringLiteral("deviceNode"), p.deviceNode() },
@@ -149,7 +149,7 @@ void LibPartedBackend::initFSSupport()
 */
 Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 {
-    KAuth::Action scanAction = QStringLiteral("org.kde.kpmcore.scan.scandevice");
+    KAuth::Action scanAction(QStringLiteral("org.kde.kpmcore.scan.scandevice"));
     scanAction.setHelperId(QStringLiteral("org.kde.kpmcore.scan"));
     QVariantMap args = {{ QStringLiteral("deviceNode"), deviceNode }};
     scanAction.setArguments(args);

@@ -56,7 +56,7 @@ bool CreatePartitionTableJob::run(Report& parent)
         } else
             report->line() << xi18nc("@info:progress", "Creating partition table failed: Could not open device <filename>%1</filename>.", device().deviceNode());
     } else if (device().type() == Device::LVM_Device) {
-        //TODO: figure what to do wit LVM partitionTable
+        //TODO: figure what to do with LVM partitionTable
     }
 
     jobFinished(*report, rval);
