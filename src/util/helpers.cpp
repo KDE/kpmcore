@@ -88,16 +88,16 @@ KAboutData aboutKPMcore()
 {
     KAboutData aboutData( QStringLiteral("kpmcore"),
                           xi18nc("@title", "<application>KPMcore</application>"), QStringLiteral(VERSION),
-                          i18n("Library for managing partitions"),
-                          KAboutLicense::LGPL_V3, i18n( "&copy; 2008-2016 KPMcore developers" ) );
+                          xi18nc("@title", "Library for managing partitions"),
+                          KAboutLicense::LGPL_V3, xi18nc("@info:credit", "&copy; 2008-2016 KPMcore developers" ) );
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.setProductName(QByteArray("kpmcore"));
     aboutData.setHomepage(QStringLiteral("https://quickgit.kde.org/?p=kpmcore.git"));
 
-    aboutData.addAuthor(xi18nc("@info:credit", "Volker Lanz"), xi18nc("@info:credit", "Former maintainer of KDE Partition Manager"));
+    aboutData.addAuthor(xi18nc("@info:credit", "Volker Lanz"), xi18nc("@info:credit", "Former maintainer"));
     aboutData.addAuthor(xi18nc("@info:credit", "Andrius Štikonas"), xi18nc("@info:credit", "Maintainer"), QStringLiteral("andrius@stikonas.eu"));
-    aboutData.addAuthor(xi18n("Teo Mrnjavac"), i18nc("@info:credit", "Calamares maintainer"), QStringLiteral("teo@kde.org"));
-    aboutData.addAuthor(xi18n("Chantara Tith"), i18nc("@info:credit", "LVM support"), QStringLiteral("tith.chantara@gmail.com"));
+    aboutData.addAuthor(xi18nc("@info:credit", "Teo Mrnjavac"), i18nc("@info:credit", "Calamares maintainer"), QStringLiteral("teo@kde.org"));
+    aboutData.addAuthor(xi18nc("@info:credit", "Chantara Tith"), i18nc("@info:credit", "LVM support"), QStringLiteral("tith.chantara@gmail.com"));
 
     return aboutData;
 }
