@@ -23,6 +23,8 @@
 
 #include "util/libpartitionmanagerexport.h"
 
+class KAboutData;
+
 class QString;
 class QPoint;
 class QTreeWidget;
@@ -36,5 +38,7 @@ LIBKPMCORE_EXPORT void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree
 LIBKPMCORE_EXPORT bool checkAccessibleDevices();
 
 LIBKPMCORE_EXPORT bool isMounted(const QString& deviceNode);
+
+LIBKPMCORE_EXPORT KAboutData aboutKPMcore();
 
 #endif
