@@ -58,12 +58,13 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 QString ResizeVolumeGroupJob::description() const
 {
     const QString partitionList = partList().join(QStringLiteral(", "));
+    const qint32 count = partList().count();
 
     if (type() == ResizeVolumeGroupJob::Grow) {
-        return xi18nc("@info/plain", "Inserting Volume: %1 to %2.", partitionList, device().name());
+        return xi18ncp("@info/plain", "Adding LVM Physical Volume %2 to %3.", "Adding LVM Physical Volumes %2 to %3.", count, partitionList, device().name());
     }
     if (type() == ResizeVolumeGroupJob::Shrink) {
-        return xi18nc("@info/plain", "Removing Volume: %1 from %2.", partitionList, device().name());
+        return xi18ncp("@info/plain", "Removing LVM Physical Volume %2 from %3.", "Removing LVM Physical Volumes %2 from %3.", count, partitionList, device().name());
     }
-    return xi18nc("@info/plain", "Resizing Volume: %1 to %2.", device().name(), partitionList);
+    return xi18nc("@info/plain", "Resizing Volume Group %1 to %2.", device().name(), partitionList);
 }
