@@ -157,7 +157,10 @@ public:
         return cmdSupportNone;    /**< @return CommandSupportType for backing up */
     }
     virtual CommandSupportType supportSetLabel() const {
-        return cmdSupportNone;    /**< @return CommandSupportType for setting label*/
+        return cmdSupportNone;    /**< @return CommandSupportType for setting label */
+    }
+    virtual CommandSupportType supportSetLabelOnline() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for setting label of mounted file systems */
     }
     virtual CommandSupportType supportUpdateUUID() const {
         return cmdSupportNone;    /**< @return CommandSupportType for updating the UUID */

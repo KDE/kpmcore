@@ -79,6 +79,9 @@ public:
     CommandSupportType supportSetLabel() const override {
         return m_SetLabel;
     }
+    CommandSupportType supportSetLabelOnline() const override {
+        return m_SetLabel;
+    }
     CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
     }
