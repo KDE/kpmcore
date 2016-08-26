@@ -89,7 +89,7 @@ KAboutData aboutKPMcore()
     KAboutData aboutData( QStringLiteral("kpmcore"),
                           xi18nc("@title", "<application>KPMcore</application>"), QStringLiteral(VERSION),
                           xi18nc("@title", "Library for managing partitions"),
-                          KAboutLicense::LGPL_V3, xi18nc("@info:credit", "&copy; 2008-2016 KPMcore developers" ) );
+                          KAboutLicense::GPL_V3, xi18nc("@info:credit", "&copy; 2008-2016 KPMcore developers" ) );
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.setProductName(QByteArray("kpmcore"));
     aboutData.setHomepage(QStringLiteral("https://quickgit.kde.org/?p=kpmcore.git"));
