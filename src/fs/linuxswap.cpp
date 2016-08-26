@@ -119,7 +119,7 @@ bool linuxswap::copy(Report& report, const QString& targetDeviceNode, const QStr
 
 bool linuxswap::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkswap"), { QStringLiteral("--label"), newLabel, deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("swaplabel"), { QStringLiteral("--label"), newLabel, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
