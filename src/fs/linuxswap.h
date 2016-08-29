@@ -47,6 +47,7 @@ public:
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
     bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const override;
     bool updateUUID(Report& report, const QString& deviceNode) const override;
+    qint64 readUsedCapacity(const QString& deviceNode) const override;
 
     bool canMount(const QString& deviceNode, const QString& mountPoint) const override;
     bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
@@ -69,6 +70,9 @@ public:
     }
     CommandSupportType supportCopy() const override {
         return m_Copy;
+    }
+    CommandSupportType supportGetUsed() const override {
+        return m_GetUsed;
     }
     CommandSupportType supportGetLabel() const override {
         return m_GetLabel;
@@ -98,6 +102,7 @@ public:
     static CommandSupportType m_Copy;
     static CommandSupportType m_SetLabel;
     static CommandSupportType m_GetLabel;
+    static CommandSupportType m_GetUsed;
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
 };

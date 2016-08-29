@@ -21,7 +21,9 @@
 #include "util/externalcommand.h"
 
 #include <KLocalizedString>
-#include <QDebug>
+
+#include <QFileInfo>
+#include <QTextStream>
 
 namespace FS
 {
@@ -30,6 +32,7 @@ FileSystem::CommandSupportType linuxswap::m_Grow = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType linuxswap::m_Shrink = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType linuxswap::m_Move = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType linuxswap::m_Copy = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType linuxswap::m_GetUsed = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType linuxswap::m_GetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType linuxswap::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType linuxswap::m_GetUUID = FileSystem::cmdSupportNone;
@@ -44,6 +47,7 @@ void linuxswap::init()
 {
     m_SetLabel = m_Shrink = m_Grow = m_Create = m_UpdateUUID = (findExternal(QStringLiteral("mkswap"))) ? cmdSupportFileSystem : cmdSupportNone;
     m_GetLabel = cmdSupportCore;
+    m_GetUsed = cmdSupportFileSystem;
     m_Copy = cmdSupportFileSystem;
     m_Move = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
@@ -52,17 +56,17 @@ void linuxswap::init()
 bool linuxswap::supportToolFound() const
 {
     return
-//          m_GetUsed != cmdSupportNone &&
+        m_GetUsed != cmdSupportNone &&
         m_GetLabel != cmdSupportNone &&
         m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
-//          m_Check != cmdSupportNone &&
+//         m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
         m_Grow != cmdSupportNone &&
         m_Shrink != cmdSupportNone &&
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
-//          m_Backup != cmdSupportNone &&
+//         m_Backup != cmdSupportNone &&
         m_GetUUID != cmdSupportNone;
 }
 
@@ -136,7 +140,6 @@ QString linuxswap::unmountTitle() const
 bool linuxswap::canMount(const QString& deviceNode, const QString& mountPoint) const {
     Q_UNUSED(deviceNode);
     // linux swap doesn't require mount point to activate
-    qDebug() << mountPoint;
     return mountPoint != QStringLiteral("/");
 }
 
@@ -165,5 +168,23 @@ bool linuxswap::updateUUID(Report& report, const QString& deviceNode) const
 
     ExternalCommand cmd(report, QStringLiteral("mkswap"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+qint64 linuxswap::readUsedCapacity(const QString& deviceNode) const
+{
+    QFile swapsFile(QStringLiteral("/proc/swaps"));
+
+    if (swapsFile.open(QIODevice::ReadOnly)) {
+        QByteArray data = swapsFile.readAll();
+        swapsFile.close();
+        QTextStream in(&data);
+        while (!in.atEnd()) {
+            QStringList line = in.readLine().split(QRegExp(QStringLiteral("\\s+")));
+            QFileInfo kernelPath(deviceNode);
+            if (line[0] == kernelPath.canonicalFilePath())
+                return line[3].toLongLong() * 1024;
+        }
+    }
+    return -1;
 }
 }

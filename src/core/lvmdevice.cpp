@@ -145,6 +145,8 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
             mountPoint = mountPointList.findByDevice(mapperNode) ?
                          mountPointList.findByDevice(mapperNode)->mountPoint() :
                          QString();
+            if (mountPoint == QStringLiteral("none"))
+                mountPoint = QString();
             mounted = isMounted(mapperNode);
             if (mounted) {
                 const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
@@ -160,6 +162,9 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
                      mountPointList.findByDevice(lvPath)->mountPoint() :
                      QString();
         const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
+
+        if (mountPoint == QStringLiteral("none"))
+            mountPoint = QString();
 
         //TODO: test used space report. probably incorrect
         if (logicalSize() > 0) {

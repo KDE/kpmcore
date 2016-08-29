@@ -261,6 +261,8 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
                     mountPoint = mountPoints.findByDevice(mapperNode) ?
                                  mountPoints.findByDevice(mapperNode)->mountPoint() :
                                  QString();
+                    if (mountPoint == QStringLiteral("none"))
+                        mountPoint = QString();
                     // We cannot use libparted to check the mounted status because
                     // we don't have a PedPartition for the mapper device, so we use lsblk
                     mounted = isMounted(mapperNode);
@@ -283,6 +285,8 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
             mountPoint = mountPoints.findByDevice(partitionNode) ?
                          mountPoints.findByDevice(partitionNode)->mountPoint() :
                          QString();
+            if (mountPoint == QStringLiteral("none"))
+                mountPoint = QString();
             mounted = busy;
         }
 
