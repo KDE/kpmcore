@@ -28,6 +28,7 @@
 #include "util/report.h"
 
 #include <QRegularExpression>
+#include <QtMath>
 
 #include <KDiskFreeSpaceInfo>
 #include <KLocalizedString>
@@ -171,7 +172,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
             if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
                 fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
             } else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem) {
-                fs->setSectorsUsed(fs->readUsedCapacity(lvPath) / logicalSize());
+                fs->setSectorsUsed(qCeil(fs->readUsedCapacity(lvPath) / static_cast<float>(logicalSize())));
             }
         }
     }
