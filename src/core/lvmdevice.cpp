@@ -167,7 +167,6 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
         if (mountPoint == QStringLiteral("none"))
             mountPoint = QString();
 
-        //TODO: test used space report. probably incorrect
         if (logicalSize() > 0) {
             if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
                 fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
@@ -362,7 +361,6 @@ bool LvmDevice::removeLV(Report& report, LvmDevice& d, Partition& p)
               p.partitionPath()});
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        //TODO: remove Partition from PartitionTable and delete from memory ??
         d.partitionTable()->remove(&p);
         return  true;
     }

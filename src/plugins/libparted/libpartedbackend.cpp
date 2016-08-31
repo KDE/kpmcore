@@ -317,7 +317,6 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
     foreach(const Partition * part, partitions)
         PartitionAlignment::isAligned(*d, *part);
 
-
     return d;
 }
 
