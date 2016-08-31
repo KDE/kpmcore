@@ -119,10 +119,7 @@ bool PartitionNode::remove(Partition* p)
     if (p == nullptr)
         return false;
 
-    if (children().removeOne(p))
-        return true;
-
-    return false;
+    return children().removeOne(p);
 }
 
 /** Deletes all children */
