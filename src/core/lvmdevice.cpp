@@ -399,10 +399,9 @@ bool LvmDevice::createLVSnapshot(Report& report, Partition& p, const QString& na
 
 bool LvmDevice::resizeLV(Report& report, Partition& p)
 {
-    //TODO: thorough tests and add warning that it could currupt the user data.
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("lvresize"),
-              QStringLiteral("--force"), // this command could corrupt user data
+              QStringLiteral("--force"),
               QStringLiteral("--yes"),
               QStringLiteral("--extents"),
               QString::number(p.length()),
@@ -415,7 +414,6 @@ bool LvmDevice::removePV(Report& report, LvmDevice& d, const QString& pvPath)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgreduce"),
-              //QStringLiteral("--yes"), // potentially corrupt user data
               d.name(),
               pvPath});
 
@@ -426,7 +424,7 @@ bool LvmDevice::insertPV(Report& report, LvmDevice& d, const QString& pvPath)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgextend"),
-              //QStringLiteral("--yes"), // potentially corrupt user data
+              QStringLiteral("--yes"),
               d.name(),
               pvPath});
 
