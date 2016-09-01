@@ -289,4 +289,3 @@ private:
 QTextStream& operator<<(QTextStream& stream, const Partition& p);
 
 #endif
-

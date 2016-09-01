@@ -32,14 +32,5 @@ VolumeManagerDevice::VolumeManagerDevice(const QString& name,
 
 QString VolumeManagerDevice::prettyDeviceNodeList() const
 {
-    QString rval;
-    for (const auto &devNode : deviceNodes()) {
-        rval += devNode + QStringLiteral(",");
-    }
-
-    if (rval.size()) {
-        //chop off the trailing colon
-        rval.chop(1);
-    }
-    return rval;
+    return deviceNodes().join(QStringLiteral(", "));
 }
