@@ -88,6 +88,16 @@ void luks::init()
     m_GetUsed = cmdSupportNone; // libparted does not support LUKS, we do this as a special case
 }
 
+void luks::scan(const QString& deviceNode)
+{
+    getMapperName(deviceNode);
+    getCipherName(deviceNode);
+    getCipherMode(deviceNode);
+    getHashName(deviceNode);
+    getKeySize(deviceNode);
+    getPayloadOffset(deviceNode);
+}
+
 bool luks::supportToolFound() const
 {
     m_cryptsetupFound = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -129,11 +139,12 @@ bool luks::create(Report& report, const QString& deviceNode) const
     if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toUtf8() + '\n') == m_passphrase.toUtf8().length() + 1 && openCmd.waitFor()))
         return false;
 
-    QString mapperNode = mapperName(deviceNode);
-    if (mapperNode.isEmpty())
+    if (mapperName().isEmpty())
         return false;
 
-    if (!m_innerFs->create(report, mapperNode))
+//   FIXME  scan(deviceNode);
+
+    if (!m_innerFs->create(report, mapperName()))
         return false;
 
     return true;
@@ -169,20 +180,20 @@ QString luks::passphrase() const
     return m_passphrase;
 }
 
-bool luks::canMount(const QString& deviceNode, const QString& mountPoint) const
+bool luks::canMount(const QString&, const QString& mountPoint) const
 {
     return m_isCryptOpen &&
            !m_isMounted &&
            m_innerFs &&
-           m_innerFs->canMount(mapperName(deviceNode), mountPoint);
+           m_innerFs->canMount(mapperName(), mountPoint);
 }
 
-bool luks::canUnmount(const QString& deviceNode) const
+bool luks::canUnmount(const QString&) const
 {
     return m_isCryptOpen &&
            m_isMounted &&
            m_innerFs &&
-           m_innerFs->canUnmount(mapperName(deviceNode));
+           m_innerFs->canUnmount(mapperName());
 }
 
 bool luks::isMounted() const
@@ -219,7 +230,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
 {
     if (m_isCryptOpen)
     {
-        if (!mapperName(deviceNode).isEmpty())
+        if (!mapperName().isEmpty())
         {
             qWarning() << "LUKS device" << deviceNode
                        << "already decrypted."
@@ -252,17 +263,17 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
                     openCmd.waitFor() && openCmd.exitCode() == 0) )
         return false;
 
-    if (m_innerFs)
-    {
+    if (m_innerFs) {
         delete m_innerFs;
         m_innerFs = nullptr;
     }
 
-    QString mapperNode = mapperName(deviceNode);
-    if (mapperNode.isEmpty())
+    scan(deviceNode);
+
+    if (mapperName().isEmpty())
         return false;
 
-    loadInnerFileSystem(deviceNode, mapperNode);
+    loadInnerFileSystem(mapperName());
     m_isCryptOpen = (m_innerFs != nullptr);
 
     if (!m_isCryptOpen)
@@ -289,7 +300,7 @@ bool luks::cryptClose(const QString& deviceNode)
     }
 
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("close"), mapperName(deviceNode) });
+                        { QStringLiteral("close"), mapperName() });
     if (!(cmd.run(-1) && cmd.exitCode() == 0))
         return false;
 
@@ -308,7 +319,7 @@ bool luks::cryptClose(const QString& deviceNode)
     return true;
 }
 
-void luks::loadInnerFileSystem(const QString& deviceNode, const QString& mapperNode)
+void luks::loadInnerFileSystem(const QString& mapperNode)
 {
     Q_ASSERT(!m_innerFs);
     FileSystem::Type innerFsType = detectFileSystem(mapperNode);
@@ -317,7 +328,7 @@ void luks::loadInnerFileSystem(const QString& deviceNode, const QString& mapperN
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        setSectorsUsed((m_innerFs->readUsedCapacity(mapperNode) + getPayloadOffset(deviceNode)) / m_logicalSectorSize );
+        setSectorsUsed((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / m_logicalSectorSize );
 }
 
 void luks::createInnerFileSystem(FileSystem::Type type)
@@ -326,15 +337,14 @@ void luks::createInnerFileSystem(FileSystem::Type type)
     m_innerFs = FileSystemFactory::cloneWithNewType(type, *this);
 }
 
-bool luks::check(Report& report, const QString& deviceNode) const
+bool luks::check(Report& report, const QString&) const
 {
     Q_ASSERT(m_innerFs);
 
-    QString mapperNode = mapperName(deviceNode);
-    if (mapperNode.isEmpty())
+    if (mapperName().isEmpty())
         return false;
 
-    return m_innerFs->check(report, mapperNode);
+    return m_innerFs->check(report, mapperName());
 }
 
 qint64 luks::readUsedCapacity(const QString& deviceNode) const
@@ -364,19 +374,18 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
 
     Q_ASSERT(m_innerFs);
 
-    QString mapperNode = mapperName(deviceNode);
-    if (mapperNode.isEmpty())
+    if (mapperName().isEmpty())
         return false;
 
-    if (m_innerFs->canMount(mapperNode, mountPoint))
+    if (m_innerFs->canMount(mapperName(), mountPoint))
     {
-        if (m_innerFs->mount(report, mapperNode, mountPoint))
+        if (m_innerFs->mount(report, mapperName(), mountPoint))
         {
             m_isMounted = true;
 
             const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
             if (freeSpaceInfo.isValid() && mountPoint != QString())
-                setSectorsUsed((freeSpaceInfo.used() + getPayloadOffset(deviceNode)) / m_logicalSectorSize);
+                setSectorsUsed((freeSpaceInfo.used() + payloadOffset()) / m_logicalSectorSize);
 
             return true;
         }
@@ -385,7 +394,7 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
         ExternalCommand mountCmd(
                 report,
                 QStringLiteral("mount"),
-                { QStringLiteral("--verbose"), mapperNode, mountPoint });
+                { QStringLiteral("--verbose"), mapperName(), mountPoint });
         if (mountCmd.run() && mountCmd.exitCode() == 0)
         {
             m_isMounted = true;
@@ -413,13 +422,12 @@ bool luks::unmount(Report& report, const QString& deviceNode)
 
     Q_ASSERT(m_innerFs);
 
-    QString mapperNode = mapperName(deviceNode);
-    if (mapperNode.isEmpty())
+    if (mapperName().isEmpty())
         return false;
 
-    if (m_innerFs->canUnmount(mapperNode))
+    if (m_innerFs->canUnmount(mapperName()))
     {
-        if (m_innerFs->unmount(report, mapperNode))
+        if (m_innerFs->unmount(report, mapperName()))
         {
             m_isMounted = false;
             return true;
@@ -428,7 +436,7 @@ bool luks::unmount(Report& report, const QString& deviceNode)
     else {
         ExternalCommand unmountCmd( report,
                 QStringLiteral("umount"),
-                { QStringLiteral("--verbose"), QStringLiteral("--all-targets"), mapperNode });
+                { QStringLiteral("--verbose"), QStringLiteral("--all-targets"), mapperName() });
         if (unmountCmd.run() && unmountCmd.exitCode() == 0)
         {
             m_isMounted = false;
@@ -450,43 +458,42 @@ QString luks::suggestedMapperName(const QString& deviceNode) const
     return QStringLiteral("luks-") + readOuterUUID(deviceNode);
 }
 
-QString luks::readLabel(const QString& deviceNode) const
+QString luks::readLabel(const QString&) const
 {
     if (m_isCryptOpen && m_innerFs)
-        return m_innerFs->readLabel(mapperName(deviceNode));
+        return m_innerFs->readLabel(mapperName());
     return QString();
 }
 
-bool luks::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
+bool luks::writeLabel(Report& report, const QString&, const QString& newLabel)
 {
     Q_ASSERT(m_innerFs);
-    return m_innerFs->writeLabel(report, mapperName(deviceNode), newLabel);
+    return m_innerFs->writeLabel(report, mapperName(), newLabel);
 }
 
 bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) const
 {
     Q_ASSERT(m_innerFs);
 
-    QString mapperNode = mapperName(deviceNode);
-    if (mapperNode.isEmpty())
+    if (mapperName().isEmpty())
         return false;
 
-    qint64 payloadLength = newLength - getPayloadOffset(deviceNode);
+    qint64 payloadLength = newLength - payloadOffset();
     if ( newLength - length() * m_logicalSectorSize > 0 )
     {
-        ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperNode });
+        ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
         {
-            return m_innerFs->resize(report, mapperNode, payloadLength);
+            return m_innerFs->resize(report, mapperName(), payloadLength);
         }
     }
-    else if (m_innerFs->resize(report, mapperNode, payloadLength))
+    else if (m_innerFs->resize(report, mapperName(), payloadLength))
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"),
                 {  QStringLiteral("--size"), QString::number(payloadLength / /*m_logicalSectorSize*/ 512), // LUKS assume 512 bytes sector
-                   QStringLiteral("resize"), mapperNode });
+                   QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
         {
@@ -500,7 +507,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
 QString luks::readUUID(const QString& deviceNode) const
 {
     if (m_isCryptOpen && m_innerFs)
-        return m_innerFs->readUUID(mapperName(deviceNode));
+        return m_innerFs->readUUID(mapperName());
     return readOuterUUID(deviceNode);
 }
 
@@ -527,7 +534,7 @@ bool luks::updateUUID(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-QString luks::mapperName(const QString& deviceNode)
+void luks::getMapperName(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("lsblk"),
                         { QStringLiteral("--list"),
@@ -539,12 +546,13 @@ QString luks::mapperName(const QString& deviceNode)
         QStringList output=cmd.output().split(QStringLiteral("\n"));
         output.removeFirst();
         if (!output.first().isEmpty())
-            return QStringLiteral("/dev/mapper/") + output.first();
+            m_MapperName = QStringLiteral("/dev/mapper/") + output.first();
     }
-    return QString();
+    else
+        m_MapperName = QString();
 }
 
-QString luks::getCipherName(const QString& deviceNode) const
+void luks::getCipherName(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
@@ -552,12 +560,13 @@ QString luks::getCipherName(const QString& deviceNode) const
         QRegularExpression re(QStringLiteral("Cipher name:\\s+(\\w+)"));
         QRegularExpressionMatch reCipherName = re.match(cmd.output());
         if (reCipherName.hasMatch())
-            return reCipherName.captured(1);
+            m_CipherName = reCipherName.captured(1);
     }
-    return QStringLiteral("---");
+    else
+        m_CipherName = QStringLiteral("---");
 }
 
-QString luks::getCipherMode(const QString& deviceNode) const
+void luks::getCipherMode(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
@@ -565,12 +574,13 @@ QString luks::getCipherMode(const QString& deviceNode) const
         QRegularExpression re(QStringLiteral("Cipher mode:\\s+(\\w+)"));
         QRegularExpressionMatch reCipherMode = re.match(cmd.output());
         if (reCipherMode.hasMatch())
-            return reCipherMode.captured(1);
+            m_CipherMode =  reCipherMode.captured(1);
     }
-    return QStringLiteral("---");
+    else
+        m_CipherMode = QStringLiteral("---");
 }
 
-QString luks::getHashName(const QString& deviceNode) const
+void luks::getHashName(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
@@ -578,12 +588,12 @@ QString luks::getHashName(const QString& deviceNode) const
         QRegularExpression re(QStringLiteral("Hash spec:\\s+(\\w+)"));
         QRegularExpressionMatch reHash = re.match(cmd.output());
         if (reHash.hasMatch())
-            return reHash.captured(1);
+            m_HashName = reHash.captured(1);
     }
-    return QStringLiteral("---");
+    m_HashName = QStringLiteral("---");
 }
 
-qint64 luks::getKeySize(const QString& deviceNode) const
+void luks::getKeySize(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
@@ -591,15 +601,16 @@ qint64 luks::getKeySize(const QString& deviceNode) const
         QRegularExpression re(QStringLiteral("MK bits:\\s+(\\d+)"));
         QRegularExpressionMatch reKeySize = re.match(cmd.output());
         if (reKeySize.hasMatch())
-            return reKeySize.captured(1).toLongLong();
+            m_KeySize = reKeySize.captured(1).toLongLong();
     }
-    return -1;
+    else
+        m_KeySize = -1;
 }
 
 /*
  * @return size of payload offset in bytes.
  */
-qint64 luks::getPayloadOffset(const QString& deviceNode) const
+void luks::getPayloadOffset(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
@@ -607,9 +618,10 @@ qint64 luks::getPayloadOffset(const QString& deviceNode) const
         QRegularExpression re(QStringLiteral("Payload offset:\\s+(\\d+)"));
         QRegularExpressionMatch rePayloadOffset = re.match(cmd.output());
         if (rePayloadOffset.hasMatch())
-            return rePayloadOffset.captured(1).toLongLong() * 512; // assuming LUKS sector size is 512
+            m_KeySize = rePayloadOffset.captured(1).toLongLong() * 512; // assuming LUKS sector size is 512
     }
-    return -1;
+    else
+        m_KeySize = -1;
 }
 
 bool luks::canEncryptType(FileSystem::Type type)

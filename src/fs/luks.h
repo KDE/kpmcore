@@ -45,6 +45,7 @@ public:
 
 public:
     void init() override;
+    void scan(const QString& deviceNode) override;
     qint64 readUsedCapacity(const QString& deviceNode) const override;
 
     CommandSupportType supportGetUsed() const override {
@@ -109,7 +110,7 @@ public:
     }
 
     bool check(Report& report, const QString& deviceNode) const override;
-    bool create(Report &report, const QString &deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) const override;
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
     QString readUUID(const QString& deviceNode) const override;
@@ -139,7 +140,7 @@ public:
     bool cryptOpen(QWidget* parent, const QString& deviceNode);
     bool cryptClose(const QString& deviceNode);
 
-    void loadInnerFileSystem(const QString& deviceNode, const QString& mapperNode);
+    void loadInnerFileSystem(const QString& mapperNode);
     void createInnerFileSystem(Type type);
 
     bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override;
@@ -149,13 +150,21 @@ public:
 
     QString suggestedMapperName(const QString& deviceNode) const;
 
-    static QString mapperName(const QString& deviceNode);
+    void getMapperName(const QString& deviceNode);
 
-    QString getCipherName(const QString& deviceNode) const;
-    QString getCipherMode(const QString& deviceNode) const;
-    QString getHashName(const QString& deviceNode) const;
-    qint64 getKeySize(const QString& deviceNode) const;
-    qint64 getPayloadOffset(const QString& deviceNode) const;
+    void getCipherName(const QString& deviceNode);
+    void getCipherMode(const QString& deviceNode);
+    void getHashName(const QString& deviceNode);
+    void getKeySize(const QString& deviceNode);
+    void getPayloadOffset(const QString& deviceNode);
+
+    QString mapperName() const { return m_MapperName; };
+    QString cipherName() const { return m_CipherName; };
+    QString cipherMode() const { return m_CipherMode; };
+    QString hashName() const { return m_HashName; };
+    qint64 keySize() const { return m_KeySize; };
+    qint64 payloadOffset() const { return m_PayloadOffset; };
+
     static bool canEncryptType(FileSystem::Type type);
 
 protected:
@@ -183,6 +192,13 @@ private:
     QString m_passphrase;
     bool m_isMounted;
     unsigned int m_logicalSectorSize;
+
+    QString m_MapperName;
+    QString m_CipherName;
+    QString m_CipherMode;
+    QString m_HashName;
+    qint64 m_KeySize;
+    qint64 m_PayloadOffset;
 };
 }
 

@@ -199,8 +199,10 @@ bool RestoreOperation::canRestore(const Partition* p)
     if (p->roles().has(PartitionRole::Extended))
         return false;
 
-    if (p->roles().has(PartitionRole::Luks))
-        return FS::luks::mapperName(p->deviceNode()).isEmpty();
+    if (p->roles().has(PartitionRole::Luks)) {
+        const FS::luks* luksFs = static_cast<const FS::luks*>(&p->fileSystem());
+        return luksFs->mapperName().isEmpty();
+    }
 
     return true;
 }

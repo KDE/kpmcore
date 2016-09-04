@@ -140,6 +140,14 @@ bool FileSystem::create(Report& report, const QString& deviceNode) const
     return true;
 }
 
+/** Scans a new FileSystem and load file system specific class variables.
+ *  @param deviceNode the device node for the Partition to create the FileSystem on
+*/
+void FileSystem::scan(const QString& deviceNode)
+{
+    Q_UNUSED(deviceNode);
+}
+
 /** Resize a FileSystem to a given new length
     @param report Report to write status information to
     @param deviceNode the device node for the Partition the FileSystem is on
@@ -171,7 +179,6 @@ bool FileSystem::resizeOnline(Report& report, const QString& deviceNode, const Q
 
     return true;
 }
-
 
 /** Move a FileSystem to a new start sector
     @param report Report to write status information to

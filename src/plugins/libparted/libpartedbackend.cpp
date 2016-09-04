@@ -238,6 +238,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
             parent = d->partitionTable();
 
         FileSystem* fs = FileSystemFactory::create(fsType, start, end);
+        fs->scan(partitionNode);
 
         // libparted does not handle LUKS partitions
         QString mountPoint;
@@ -245,13 +246,13 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
         if (fsType == FileSystem::Luks) {
             r |= PartitionRole::Luks;
             FS::luks* luksFs = static_cast<FS::luks*>(fs);
-            QString mapperNode = FS::luks::mapperName(partitionNode);
+            QString mapperNode = luksFs->mapperName();
             bool isCryptOpen = !mapperNode.isEmpty();
             luksFs->setCryptOpen(isCryptOpen);
             luksFs->setLogicalSectorSize(d->logicalSectorSize());
 
             if (isCryptOpen) {
-                luksFs->loadInnerFileSystem(partitionNode, mapperNode);
+                luksFs->loadInnerFileSystem(mapperNode);
 
                 if (luksFs->type() == FileSystem::Lvm2_PV) {
                     mountPoint = FS::lvm2_pv::getVGName(mapperNode);
@@ -270,7 +271,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
                 if (mounted) {
                     const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
                     if (freeSpaceInfo.isValid() && mountPoint != QString())
-                        luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->getPayloadOffset(partitionNode)) / d->logicalSectorSize());
+                        luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->payloadOffset()) / d->logicalSectorSize());
                 }
             } else {
                 mounted = false;

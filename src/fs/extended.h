@@ -44,7 +44,7 @@ public:
 
 public:
 
-    bool create(Report&, const QString&) const  override;
+    bool create(Report&, const QString&) const override;
 
     CommandSupportType supportCreate() const override {
         return m_Create;

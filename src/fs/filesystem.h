@@ -108,6 +108,7 @@ public:
 
 public:
     virtual void init() {};
+    virtual void scan(const QString& deviceNode);
     virtual qint64 readUsedCapacity(const QString& deviceNode) const;
     virtual QString readLabel(const QString& deviceNode) const;
     virtual bool create(Report& report, const QString& deviceNode) const;
