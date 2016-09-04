@@ -106,7 +106,7 @@ public:
     static qint64 getFreePE(const QStringList& deviceNodeList);
     static qint64 getAllocatedPE(const QString& deviceNode);
     static qint64 getAllocatedPE(const QStringList& deviceNodeList);
-    static qint64 getPESize(const QString& deviceNode); // return PE size in bytes
+    qint64 getPESize(const QString& deviceNode) const; // return PE size in bytes
     static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
     static qint64 getPVSize(const QStringList& deviceNodeList);
 
@@ -115,7 +115,7 @@ public:
     static QString getVGName(const QString& deviceNode);
     static QString getpvField(const QString& fieldName, const QString& deviceNode = QString());
 
-    static const QStringList getFreePV();
+    static QStringList getFreePV();
 
 public:
     static CommandSupportType m_GetUsed;
@@ -130,6 +130,7 @@ public:
     static CommandSupportType m_SetLabel;
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
+
 };
 }
 

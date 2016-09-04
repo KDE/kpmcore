@@ -46,14 +46,14 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QStri
     m_CurrentSize = FS::lvm2_pv::getPVSize(currentList());
 
     QStringList toRemoveList = curList;
-    for (QString path : partlist) {
+    for (const QString &path : partlist) {
         if (toRemoveList.contains(path)) {
             toRemoveList.removeAll(path);
         }
     }
 
     QStringList toInsertList = partlist;
-    for (QString path : curList) {
+    for (const QString &path : curList) {
         if (toInsertList.contains(path)) {
             toInsertList.removeAll(path);
         }
@@ -96,7 +96,7 @@ bool ResizeVolumeGroupOperation::targets(const Device& d) const
 
 bool ResizeVolumeGroupOperation::targets(const Partition& p) const
 {
-    for (QString partPath : targetList()) {
+    for (const QString &partPath : targetList()) {
         if (partPath == p.partitionPath()) {
             return true;
         }

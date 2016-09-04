@@ -127,7 +127,7 @@ bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) c
 
     qint64 lastPE = getTotalPE(deviceNode) - 1; // starts from 0
     if (lastPE > 0) { // make sure that the PV is already in a VG
-        qint64 targetPE = (length - metadataOffset)/ getPESize(deviceNode) - 1; // starts from 0
+        qint64 targetPE = (length - metadataOffset) / getPESize(deviceNode) - 1; // starts from 0
         if (targetPE < lastPE) { //shrinking FS
             qint64 firstMovedPE = qMax(targetPE + 1, getAllocatedPE(deviceNode)); // starts from 1
             ExternalCommand moveCmd(report,
@@ -206,7 +206,7 @@ qint64 lvm2_pv::getTotalPE(const QStringList& deviceNodeList)
 {
     qint64 sum = 0;
     for (const auto &deviceNode : deviceNodeList) {
-        qint64 totalPE =  getTotalPE(deviceNode);
+        qint64 totalPE = getTotalPE(deviceNode);
         if (totalPE < 0) {
             sum = -1;
             break;
@@ -275,7 +275,7 @@ qint64 lvm2_pv::getPVSize(const QStringList& deviceNodeList)
     return sum;
 }
 
-qint64 lvm2_pv::getPESize(const QString& deviceNode)
+qint64 lvm2_pv::getPESize(const QString& deviceNode) const
 {
     QString val = getpvField(QStringLiteral("vg_extent_size"), deviceNode);
     return val.isEmpty() ? -1 : val.toLongLong();
@@ -313,7 +313,7 @@ QString lvm2_pv::getVGName(const QString& deviceNode)
     return getpvField(QStringLiteral("vg_name"), deviceNode);
 }
 
-const QStringList lvm2_pv::getFreePV()
+QStringList lvm2_pv::getFreePV()
 {
     QStringList rlist;
 
