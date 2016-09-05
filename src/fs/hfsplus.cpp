@@ -87,7 +87,7 @@ bool hfsplus::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool hfsplus::create(Report& report, const QString& deviceNode) const
+bool hfsplus::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("newfs_hfs"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

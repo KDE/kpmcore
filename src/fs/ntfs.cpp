@@ -140,7 +140,7 @@ bool ntfs::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool ntfs::create(Report& report, const QString& deviceNode) const
+bool ntfs::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.ntfs"), { QStringLiteral("--quick"), QStringLiteral("--verbose"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

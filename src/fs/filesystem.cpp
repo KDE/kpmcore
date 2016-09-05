@@ -132,7 +132,7 @@ QString FileSystem::readLabel(const QString& deviceNode) const
     @param deviceNode the device node for the Partition to create the FileSystem on
     @return true if successful
 */
-bool FileSystem::create(Report& report, const QString& deviceNode) const
+bool FileSystem::create(Report& report, const QString& deviceNode)
 {
     Q_UNUSED(report);
     Q_UNUSED(deviceNode);

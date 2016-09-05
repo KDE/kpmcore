@@ -43,7 +43,7 @@ public:
     ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    bool create(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) override;
     bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     qint64 maxCapacity() const override;
 

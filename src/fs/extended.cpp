@@ -29,7 +29,7 @@ extended::extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, co
 {
 }
 
-bool extended::create(Report&, const QString&) const
+bool extended::create(Report&, const QString&)
 {
     return true;
 }

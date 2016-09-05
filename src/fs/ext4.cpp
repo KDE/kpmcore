@@ -34,7 +34,7 @@ qint64 ext4::maxCapacity() const
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
-bool ext4::create(Report& report, const QString& deviceNode) const
+bool ext4::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.ext4"), QStringList() << QStringLiteral("-qF") << deviceNode);
     return cmd.run(-1) && cmd.exitCode() == 0;

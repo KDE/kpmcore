@@ -44,7 +44,7 @@ public:
 
     qint64 readUsedCapacity(const QString& deviceNode) const override;
     bool check(Report& report, const QString& deviceNode) const override;
-    bool create(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) override;
     bool updateUUID(Report& report, const QString& deviceNode) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 

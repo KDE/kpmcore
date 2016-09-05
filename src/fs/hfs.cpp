@@ -87,7 +87,7 @@ bool hfs::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool hfs::create(Report& report, const QString& deviceNode) const
+bool hfs::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("hformat"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

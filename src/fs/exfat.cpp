@@ -98,7 +98,7 @@ bool exfat::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool exfat::create(Report& report, const QString& deviceNode) const
+bool exfat::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.exfat"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

@@ -109,7 +109,7 @@ bool ocfs2::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1 || cmd.exitCode() == 2);
 }
 
-bool ocfs2::create(Report& report, const QString& deviceNode) const
+bool ocfs2::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.ocfs2"), { deviceNode });
 

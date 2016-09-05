@@ -126,7 +126,7 @@ bool btrfs::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool btrfs::create(Report& report, const QString& deviceNode) const
+bool btrfs::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), { QStringLiteral("--force"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

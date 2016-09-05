@@ -115,7 +115,7 @@ bool nilfs2::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool nilfs2::create(Report& report, const QString& deviceNode) const
+bool nilfs2::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.nilfs2"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

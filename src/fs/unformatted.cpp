@@ -26,7 +26,7 @@ unformatted::unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsus
 {
 }
 
-bool unformatted::create(Report&, const QString&) const
+bool unformatted::create(Report&, const QString&)
 {
     return true;
 }

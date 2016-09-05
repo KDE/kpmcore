@@ -22,6 +22,7 @@
 
 #include <cstdlib>
 
+#include <QDebug>
 #include <QString>
 #include <QStringList>
 
@@ -73,6 +74,7 @@ void ExternalCommand::setup()
 */
 bool ExternalCommand::start(int timeout)
 {
+    qDebug() << "ExternalCommand" << command() << args();
     QProcess::start(command(), args());
 
     if (report()) {

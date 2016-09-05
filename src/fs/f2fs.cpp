@@ -113,7 +113,7 @@ bool f2fs::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool f2fs::create(Report& report, const QString& deviceNode) const
+bool f2fs::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

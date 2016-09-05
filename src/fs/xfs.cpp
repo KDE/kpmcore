@@ -143,7 +143,7 @@ bool xfs::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool xfs::create(Report& report, const QString& deviceNode) const
+bool xfs::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.xfs"), { QStringLiteral("-f"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

@@ -80,7 +80,7 @@ qint64 linuxswap::maxLabelLength() const
     return 15;
 }
 
-bool linuxswap::create(Report& report, const QString& deviceNode) const
+bool linuxswap::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkswap"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

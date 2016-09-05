@@ -43,7 +43,7 @@ public:
     void init() override;
 
     bool check(Report& report, const QString& deviceNode) const override;
-    bool create(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) override;
 
     CommandSupportType supportGetUsed() const override {
         return m_GetUsed;

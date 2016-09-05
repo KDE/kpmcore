@@ -110,7 +110,7 @@ public:
     }
 
     bool check(Report& report, const QString& deviceNode) const override;
-    bool create(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) override;
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
     QString readUUID(const QString& deviceNode) const override;

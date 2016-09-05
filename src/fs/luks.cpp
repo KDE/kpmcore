@@ -113,7 +113,7 @@ FileSystem::SupportTool luks::supportToolName() const
                        QUrl(QStringLiteral("https://code.google.com/p/cryptsetup/")));
 }
 
-bool luks::create(Report& report, const QString& deviceNode) const
+bool luks::create(Report& report, const QString& deviceNode)
 {
     Q_ASSERT(m_innerFs);
     Q_ASSERT(!m_passphrase.isEmpty());
@@ -142,7 +142,7 @@ bool luks::create(Report& report, const QString& deviceNode) const
     if (mapperName().isEmpty())
         return false;
 
-//   FIXME  scan(deviceNode);
+    scan(deviceNode);
 
     if (!m_innerFs->create(report, mapperName()))
         return false;

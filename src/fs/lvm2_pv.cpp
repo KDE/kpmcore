@@ -106,7 +106,7 @@ bool lvm2_pv::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool lvm2_pv::create(Report& report, const QString& deviceNode) const
+bool lvm2_pv::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvcreate"), QStringLiteral("--force"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

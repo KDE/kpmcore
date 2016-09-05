@@ -40,7 +40,7 @@ qint64 fat32::maxCapacity() const
     return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
-bool fat32::create(Report& report, const QString& deviceNode) const
+bool fat32::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), { QStringLiteral("-F32"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

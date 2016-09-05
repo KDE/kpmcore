@@ -40,7 +40,7 @@ public:
     unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
-    bool create(Report&, const QString&) const override;
+    bool create(Report&, const QString&) override;
 
     CommandSupportType supportCreate() const override {
         return m_Create;

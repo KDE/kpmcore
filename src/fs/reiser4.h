@@ -44,7 +44,7 @@ public:
 
     qint64 readUsedCapacity(const QString& deviceNode) const override;
     bool check(Report& report, const QString& deviceNode) const override;
-    bool create(Report& report, const QString& deviceNode) const override;
+    bool create(Report& report, const QString& deviceNode) override;
 
     CommandSupportType supportGetUsed() const override {
         return m_GetUsed;

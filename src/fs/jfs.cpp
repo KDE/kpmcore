@@ -146,7 +146,7 @@ bool jfs::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1);
 }
 
-bool jfs::create(Report& report, const QString& deviceNode) const
+bool jfs::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.jfs"), { QStringLiteral("-q"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

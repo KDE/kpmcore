@@ -131,7 +131,7 @@ bool ext2::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1 || cmd.exitCode() == 2 || cmd.exitCode() == 256);
 }
 
-bool ext2::create(Report& report, const QString& deviceNode) const
+bool ext2::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.ext2"), { QStringLiteral("-qF"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;

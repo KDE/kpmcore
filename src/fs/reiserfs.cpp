@@ -143,7 +143,7 @@ bool reiserfs::check(Report& report, const QString& deviceNode) const
     return cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1 || cmd.exitCode() == 256);
 }
 
-bool reiserfs::create(Report& report, const QString& deviceNode) const
+bool reiserfs::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.reiserfs"), { QStringLiteral("-f"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
