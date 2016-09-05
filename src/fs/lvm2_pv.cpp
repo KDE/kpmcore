@@ -184,21 +184,15 @@ bool lvm2_pv::unmount(Report& report, const QString& deviceNode)
 
 bool lvm2_pv::canMount(const QString & deviceNode, const QString & mountPoint) const
 {
+    Q_UNUSED(deviceNode);
     Q_UNUSED(mountPoint);
-    QString rval = getpvField(QStringLiteral("pv_in_use"), deviceNode); // this field return "used" when in use otherwise empty string
-    if (rval.isEmpty()) {
-        return true;
-    }
     return false;
 }
 
 bool lvm2_pv::canUnmount(const QString& deviceNode) const
 {
-    QString rval = getpvField(QStringLiteral("pv_in_use"), deviceNode);
-    if (rval.isEmpty()) {
-        return false;
-    }
-    return true;
+    Q_UNUSED(deviceNode);
+    return false;
 }
 
 qint64 lvm2_pv::getTotalPE(const QString& deviceNode)
