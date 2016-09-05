@@ -139,10 +139,10 @@ bool luks::create(Report& report, const QString& deviceNode)
     if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toUtf8() + '\n') == m_passphrase.toUtf8().length() + 1 && openCmd.waitFor()))
         return false;
 
+    scan(deviceNode);
+
     if (mapperName().isEmpty())
         return false;
-
-    scan(deviceNode);
 
     if (!m_innerFs->create(report, mapperName()))
         return false;
