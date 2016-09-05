@@ -110,11 +110,11 @@ public:
         return m_UUID;
     }
 
-protected:
     QStringList* LVPathList() const {
         return m_LVPathList;
     }
 
+protected:
     QStringList* PVPathList() const {
         return m_PVPathList;
     }
