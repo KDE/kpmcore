@@ -66,6 +66,11 @@ void lvm2_pv::init()
     m_Copy     = cmdSupportNone; // Copying PV can confuse LVM
 }
 
+void lvm2_pv::scan(const QString& deviceNode)
+{
+    getPESize(deviceNode);
+}
+
 bool lvm2_pv::supportToolFound() const
 {
     return
@@ -127,7 +132,7 @@ bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) c
 
     qint64 lastPE = getTotalPE(deviceNode) - 1; // starts from 0
     if (lastPE > 0) { // make sure that the PV is already in a VG
-        qint64 targetPE = (length - metadataOffset) / getPESize(deviceNode) - 1; // starts from 0
+        qint64 targetPE = (length - metadataOffset) / peSize() - 1; // starts from 0
         if (targetPE < lastPE) { //shrinking FS
             qint64 firstMovedPE = qMax(targetPE + 1, getAllocatedPE(deviceNode)); // starts from 1
             ExternalCommand moveCmd(report,
@@ -275,10 +280,10 @@ qint64 lvm2_pv::getPVSize(const QStringList& deviceNodeList)
     return sum;
 }
 
-qint64 lvm2_pv::getPESize(const QString& deviceNode) const
+void lvm2_pv::getPESize(const QString& deviceNode)
 {
     QString val = getpvField(QStringLiteral("vg_extent_size"), deviceNode);
-    return val.isEmpty() ? -1 : val.toLongLong();
+    m_PESize = val.isEmpty() ? -1 : val.toLongLong();
 }
 
 /** Get pvs command output with field name

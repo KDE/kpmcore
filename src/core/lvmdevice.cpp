@@ -198,7 +198,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
 
 /** scan and contruct list of initialized LvmDevice objects.
  *
- *  @return list of initialized LvmDevice
+ *  @return list of initialized LvmDevices
  */
 QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {

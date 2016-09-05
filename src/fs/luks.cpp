@@ -329,6 +329,7 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
         setSectorsUsed((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / m_logicalSectorSize );
+    m_innerFs->scan(mapperNode);
 }
 
 void luks::createInnerFileSystem(FileSystem::Type type)

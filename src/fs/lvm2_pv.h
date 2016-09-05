@@ -42,6 +42,7 @@ public:
 
 public:
     void init() override;
+    void scan(const QString& deviceNode) override;
 
     qint64 readUsedCapacity(const QString& deviceNode) const override;
     bool check(Report& report, const QString& deviceNode) const override;
@@ -100,22 +101,22 @@ public:
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
 
+    static QString getpvField(const QString& fieldName, const QString& deviceNode = QString());
+
     static qint64 getTotalPE(const QString& deviceNode);
     static qint64 getTotalPE(const QStringList& deviceNodeList);
     static qint64 getFreePE(const QString& deviceNode);
     static qint64 getFreePE(const QStringList& deviceNodeList);
     static qint64 getAllocatedPE(const QString& deviceNode);
     static qint64 getAllocatedPE(const QStringList& deviceNodeList);
-    qint64 getPESize(const QString& deviceNode) const; // return PE size in bytes
+    void getPESize(const QString& deviceNode); // return PE size in bytes
     static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
     static qint64 getPVSize(const QStringList& deviceNodeList);
-
+    static QString getVGName(const QString& deviceNode);
+    static QStringList getFreePV();
     static bool isUsed(const QString& pvNode);
 
-    static QString getVGName(const QString& deviceNode);
-    static QString getpvField(const QString& fieldName, const QString& deviceNode = QString());
-
-    static QStringList getFreePV();
+    qint64 peSize() const { return m_PESize; };
 
 public:
     static CommandSupportType m_GetUsed;
@@ -130,6 +131,9 @@ public:
     static CommandSupportType m_SetLabel;
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
+
+private:
+    qint64 m_PESize;
 
 };
 }

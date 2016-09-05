@@ -158,6 +158,8 @@ public:
     void getKeySize(const QString& deviceNode);
     void getPayloadOffset(const QString& deviceNode);
 
+    FileSystem* innerFS() const { return m_innerFs; }; // avoid calling this unless necessary
+
     QString mapperName() const { return m_MapperName; };
     QString cipherName() const { return m_CipherName; };
     QString cipherMode() const { return m_CipherMode; };
