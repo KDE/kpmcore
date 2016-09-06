@@ -91,11 +91,7 @@ void luks::init()
 void luks::scan(const QString& deviceNode)
 {
     getMapperName(deviceNode);
-    getCipherName(deviceNode);
-    getCipherMode(deviceNode);
-    getHashName(deviceNode);
-    getKeySize(deviceNode);
-    getPayloadOffset(deviceNode);
+    getLuksInfo(deviceNode);
 }
 
 bool luks::supportToolFound() const
@@ -486,9 +482,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
-        {
             return m_innerFs->resize(report, mapperName(), payloadLength);
-        }
     }
     else if (m_innerFs->resize(report, mapperName(), payloadLength))
     {
@@ -497,9 +491,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
                    QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
-        {
             return true;
-        }
     }
     report.line() << xi18nc("@info:progress", "Resizing encrypted file system on partition <filename>%1</filename> failed.", deviceNode);
     return false;
@@ -553,76 +545,54 @@ void luks::getMapperName(const QString& deviceNode)
         m_MapperName = QString();
 }
 
-void luks::getCipherName(const QString& deviceNode)
+void luks::getLuksInfo(const QString& deviceNode)
 {
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksDump"), deviceNode });
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         QRegularExpression re(QStringLiteral("Cipher name:\\s+(\\w+)"));
-        QRegularExpressionMatch reCipherName = re.match(cmd.output());
-        if (reCipherName.hasMatch())
-            m_CipherName = reCipherName.captured(1);
-    }
-    else
-        m_CipherName = QStringLiteral("---");
-}
+        QRegularExpressionMatch rem = re.match(cmd.output());
+        if (rem.hasMatch())
+            m_CipherName = rem.captured(1);
+        else
+            m_CipherName = QLatin1String("---");
 
-void luks::getCipherMode(const QString& deviceNode)
-{
-    ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Cipher mode:\\s+(\\w+)"));
-        QRegularExpressionMatch reCipherMode = re.match(cmd.output());
-        if (reCipherMode.hasMatch())
-            m_CipherMode =  reCipherMode.captured(1);
-    }
-    else
-        m_CipherMode = QStringLiteral("---");
-}
+        re.setPattern(QStringLiteral("Cipher mode:\\s+(\\w+)"));
+        rem = re.match(cmd.output());
+        if (rem.hasMatch())
+            m_CipherMode = rem.captured(1);
+        else
+            m_CipherMode = QLatin1String("---");
 
-void luks::getHashName(const QString& deviceNode)
-{
-    ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Hash spec:\\s+(\\w+)"));
-        QRegularExpressionMatch reHash = re.match(cmd.output());
-        if (reHash.hasMatch())
-            m_HashName = reHash.captured(1);
-    }
-    m_HashName = QStringLiteral("---");
-}
+        re.setPattern(QStringLiteral("Hash spec:\\s+(\\w+)"));
+        rem = re.match(cmd.output());
+        if (rem.hasMatch())
+            m_HashName = rem.captured(1);
+        else
+            m_HashName = QLatin1String("---");
 
-void luks::getKeySize(const QString& deviceNode)
-{
-    ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("MK bits:\\s+(\\d+)"));
-        QRegularExpressionMatch reKeySize = re.match(cmd.output());
-        if (reKeySize.hasMatch())
-            m_KeySize = reKeySize.captured(1).toLongLong();
+        re.setPattern(QStringLiteral("MK bits:\\s+(\\d+)"));
+        rem = re.match(cmd.output());
+        if (rem.hasMatch())
+            m_KeySize = rem.captured(1).toLongLong();
+        else
+            m_KeySize = -1;
+
+        re.setPattern(QStringLiteral("Payload offset:\\s+(\\d+)"));
+        rem = re.match(cmd.output());
+        if (rem.hasMatch())
+            m_PayloadOffset = rem.captured(1).toLongLong() * 512; // assuming LUKS sector size is 512;
+        else
+            m_PayloadOffset = -1;
+
     }
-    else
+    else {
+        m_CipherName = QLatin1String("---");
+        m_CipherMode = QLatin1String("---");
+        m_HashName = QLatin1String("---");
         m_KeySize = -1;
-}
-
-/*
- * @return size of payload offset in bytes.
- */
-void luks::getPayloadOffset(const QString& deviceNode)
-{
-    ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("luksDump"), deviceNode });
-    if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("Payload offset:\\s+(\\d+)"));
-        QRegularExpressionMatch rePayloadOffset = re.match(cmd.output());
-        if (rePayloadOffset.hasMatch())
-            m_KeySize = rePayloadOffset.captured(1).toLongLong() * 512; // assuming LUKS sector size is 512
+        m_PayloadOffset = -1;
     }
-    else
-        m_KeySize = -1;
 }
 
 bool luks::canEncryptType(FileSystem::Type type)

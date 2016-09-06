@@ -151,12 +151,7 @@ public:
     QString suggestedMapperName(const QString& deviceNode) const;
 
     void getMapperName(const QString& deviceNode);
-
-    void getCipherName(const QString& deviceNode);
-    void getCipherMode(const QString& deviceNode);
-    void getHashName(const QString& deviceNode);
-    void getKeySize(const QString& deviceNode);
-    void getPayloadOffset(const QString& deviceNode);
+    void getLuksInfo(const QString& deviceNode);
 
     FileSystem* innerFS() const { return m_innerFs; }; // avoid calling this unless necessary
 
