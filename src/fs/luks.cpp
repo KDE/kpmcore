@@ -58,7 +58,7 @@ luks::luks(qint64 firstsector,
     : FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Luks)
     , m_innerFs(nullptr)
     , m_isCryptOpen(false)
-    , m_cryptsetupFound(false)
+    , m_cryptsetupFound(m_Create != cmdSupportNone)
     , m_isMounted(false)
     , m_logicalSectorSize(1)
 {
@@ -96,9 +96,7 @@ void luks::scan(const QString& deviceNode)
 
 bool luks::supportToolFound() const
 {
-    m_cryptsetupFound = findExternal(QStringLiteral("cryptsetup")) ? cmdSupportFileSystem : cmdSupportNone;
-    return m_cryptsetupFound &&
-        ((m_isCryptOpen && m_innerFs) ? m_innerFs->supportToolFound() : true);
+    return m_cryptsetupFound && ((m_isCryptOpen && m_innerFs) ? m_innerFs->supportToolFound() : true);
 }
 
 FileSystem::SupportTool luks::supportToolName() const
