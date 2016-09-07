@@ -40,7 +40,7 @@ class SmartStatus;
 */
 class LIBKPMCORE_EXPORT Device : public QObject
 {
-    Q_DISABLE_COPY(Device)
+    Device &operator=(const Device &) = delete;
 
     friend class CreatePartitionTableOperation;
     friend class CoreBackend;
@@ -54,7 +54,8 @@ public:
     };
 
 protected:
-    Device(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
+    explicit Device(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
+    explicit Device(const Device& other);
 
 public:
     virtual ~Device();

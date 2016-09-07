@@ -46,6 +46,26 @@ Device::Device(const QString& name,
 {
 }
 
+/** Copy constructor for Device.
+ * @param other the other Device.
+ */
+Device::Device(const Device& other)
+    : QObject()
+    , m_Name(other.m_Name)
+    , m_DeviceNode(other.m_DeviceNode)
+    , m_LogicalSize(other.m_LogicalSize)
+    , m_TotalLogical(other.m_TotalLogical)
+    , m_PartitionTable(nullptr)
+    , m_IconName(other.m_IconName)
+    , m_SmartStatus(nullptr)
+    , m_Type(other.m_Type)
+{
+    if (other.m_PartitionTable)
+        m_PartitionTable = new PartitionTable(*other.m_PartitionTable);
+    if (other.m_SmartStatus)
+        m_SmartStatus = new SmartStatus(*other.m_SmartStatus);
+}
+
 /** Destructs a Device. */
 Device::~Device()
 {
