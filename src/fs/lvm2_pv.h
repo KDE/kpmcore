@@ -22,6 +22,7 @@
 
 #include "util/libpartitionmanagerexport.h"
 
+#include "core/partition.h"
 #include "fs/filesystem.h"
 
 #include <QtGlobal>
@@ -113,8 +114,8 @@ public:
     static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
     static qint64 getPVSize(const QStringList& deviceNodeList);
     static QString getVGName(const QString& deviceNode);
-    static QStringList getFreePV();
-    static bool isUsed(const QString& pvNode);
+    static QList<const Partition *> getFreePVinNode(const PartitionNode* parent);
+    static QList<const Partition *> getFreePV(const QList<Device*>& devices);
 
     qint64 peSize() const { return m_PESize; };
 

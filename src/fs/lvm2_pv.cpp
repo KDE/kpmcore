@@ -16,6 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+
+#include "core/device.h"
 #include "fs/lvm2_pv.h"
 
 #include "util/externalcommand.h"
@@ -312,28 +314,36 @@ QString lvm2_pv::getVGName(const QString& deviceNode)
     return getpvField(QStringLiteral("vg_name"), deviceNode);
 }
 
-QStringList lvm2_pv::getFreePV()
+QList<const Partition *> lvm2_pv::getFreePVinNode(const PartitionNode* parent)
 {
-    QStringList rlist;
+    QList<const Partition *> partitions;
+    if (parent == nullptr)
+        return partitions;
 
-    QString output = getpvField(QStringLiteral("pv_name"));
-    const QStringList pvList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-    for (QString pvnode : pvList) {
-        if (!isUsed(pvnode.trimmed())) {
-            rlist.append(pvnode.trimmed());
-        }
+    for (const auto &node : parent->children()) {
+        const Partition* p = dynamic_cast<const Partition*>(node);
+
+        if (p == nullptr)
+            continue;
+
+        if (node->children().size() > 0)
+            partitions.append(getFreePVinNode(node));
+
+        // FIXME: reenable newly created PVs (before applying) once everything works
+        if(p->fileSystem().type() == FileSystem::Lvm2_PV && p->mountPoint() == QString() && p->deviceNode() == p->partitionPath())
+            partitions.append(p);
     }
 
-    return rlist;
+    return partitions;
 }
 
-bool lvm2_pv::isUsed(const QString& deviceNode)
+QList<const Partition *> lvm2_pv::getFreePV(const QList<Device*>& devices)
 {
-    QString output = getpvField(QStringLiteral("pv_in_use"), deviceNode.trimmed());
-    if (output.trimmed() == QStringLiteral("used")) {
-        return true;
-    }
-    return false;
+    QList<const Partition *> partitions;
+    for (auto const &d : devices)
+        partitions.append(getFreePVinNode(d->partitionTable()));
+
+    return partitions;
 }
 
 }
