@@ -20,12 +20,11 @@
 #define SMARTSTATUS__H
 
 #include "util/libpartitionmanagerexport.h"
+#include "core/smartattribute.h"
 
 #include <QtGlobal>
 #include <QString>
 #include <QList>
-
-class SmartAttribute;
 
 struct SkSmartAttributeParsedData;
 struct SkDisk;

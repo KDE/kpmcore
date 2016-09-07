@@ -17,7 +17,6 @@
  *************************************************************************/
 
 #include "core/smartstatus.h"
-#include "core/smartattribute.h"
 
 #include <KLocalizedString>
 
