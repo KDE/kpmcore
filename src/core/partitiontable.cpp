@@ -39,14 +39,32 @@
 /** Creates a new PartitionTable object with type MSDOS
     @param type name of the PartitionTable type (e.g. "msdos" or "gpt")
 */
-PartitionTable::PartitionTable(TableType type, qint64 firstUsable, qint64 lastUsable) :
-    PartitionNode(),
-    m_Children(),
-    m_MaxPrimaries(maxPrimariesForTableType(type)),
-    m_Type(type),
-    m_FirstUsable(firstUsable),
-    m_LastUsable(lastUsable)
+PartitionTable::PartitionTable(TableType type, qint64 firstUsable, qint64 lastUsable)
+    : PartitionNode()
+    , m_Children()
+    , m_MaxPrimaries(maxPrimariesForTableType(type))
+    , m_Type(type)
+    , m_FirstUsable(firstUsable)
+    , m_LastUsable(lastUsable)
 {
+}
+
+/** Copy constructor for PartitionTable.
+ * @param other the other PartitionTable.
+ */
+PartitionTable::PartitionTable(const PartitionTable& other)
+    : PartitionNode()
+    , m_Children()
+    , m_MaxPrimaries(other.m_MaxPrimaries)
+    , m_Type(other.m_Type)
+    , m_FirstUsable(other.m_FirstUsable)
+    , m_LastUsable(other.m_LastUsable)
+{
+    for (Partitions::const_iterator it = other.m_Children.constBegin();
+         it != other.m_Children.constEnd(); ++it)
+    {
+        m_Children.append(new Partition(**it));
+    }
 }
 
 /** Destroys a PartitionTable object, destroying all children */

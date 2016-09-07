@@ -44,7 +44,7 @@ class QTextStream;
 */
 class LIBKPMCORE_EXPORT PartitionTable : public PartitionNode
 {
-    Q_DISABLE_COPY(PartitionTable)
+    PartitionTable &operator=(const PartitionTable &) = delete;
 
     friend class CoreBackend;
     friend LIBKPMCORE_EXPORT QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable);
@@ -96,6 +96,7 @@ public:
 
 public:
     PartitionTable(TableType type, qint64 firstUsable, qint64 lastUsable);
+    PartitionTable(const PartitionTable& other);
     ~PartitionTable();
 
 public:
