@@ -114,9 +114,12 @@ public:
     static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
     static qint64 getPVSize(const QStringList& deviceNodeList);
     static QString getVGName(const QString& deviceNode);
-    static QList<const Partition *> getFreePVinNode(const PartitionNode* parent);
-    static QList<const Partition *> getFreePV(const QList<Device*>& devices);
+    static QList<const Partition *> getPVinNode(const PartitionNode* parent, const QString& vgName = QString());
+    static QList<const Partition *> getPVs(const QList<Device*>& devices, const QString& vgName = QString());
 
+    qint64 allocatedPE() const { return m_AllocatedPE; };
+    qint64 freePE() const { return m_TotalPE - m_AllocatedPE; };
+    qint64 totalPE() const { return m_TotalPE; };
     qint64 peSize() const { return m_PESize; };
 
 public:
@@ -135,6 +138,8 @@ public:
 
 private:
     qint64 m_PESize;
+    qint64 m_TotalPE;
+    qint64 m_AllocatedPE;
 
 };
 }

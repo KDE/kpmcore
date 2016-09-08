@@ -19,6 +19,7 @@
 
 #define LVMDEVICE__H
 
+#include "core/device.h"
 #include "core/volumemanagerdevice.h"
 #include "util/libpartitionmanagerexport.h"
 
@@ -43,7 +44,7 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
     Q_DISABLE_COPY(LvmDevice)
 
 public:
-    LvmDevice(const QString& name, const QString& iconName = QString());
+    LvmDevice(const QString& name, const QList<Device *>& devices, const QString& iconName = QString());
     ~LvmDevice();
 
 public:
@@ -54,11 +55,9 @@ public:
     static QStringList s_DirtyPVs;
 
 public:
-
-    static QList<LvmDevice*> scanSystemLVM();
+    static QList<LvmDevice*> scanSystemLVM(const QList<Device*>& devices);
 
     static const QStringList getVGs();
-    static const QStringList getPVs(const QString& vgName);
     static const QStringList getLVs(const QString& vgName);
 
     static qint64 getPeSize(const QString& vgName);
@@ -114,11 +113,11 @@ public:
         return m_LVPathList;
     }
 
-protected:
-    QStringList* PVPathList() const {
-        return m_PVPathList;
+    const QList <const Partition*> physicalVolumes() const {
+        return m_PVs;
     }
 
+protected:
     QMap<QString, qint64>* LVSizeMap() const {
         return m_LVSizeMap;
     }
@@ -131,7 +130,7 @@ private:
     QString m_UUID;
 
     mutable QStringList* m_LVPathList;
-    mutable QStringList* m_PVPathList;
+    mutable QList <const Partition*> m_PVs;
     mutable QMap<QString, qint64>* m_LVSizeMap;
 };
 

@@ -32,32 +32,28 @@
     @param d the Device to create the new PartitionTable on
     @param partlist list of LVM Physical Volumes that should be in LVM Volume Group
 */
-ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QStringList partlist) :
-    Operation(),
-    m_Device(d),
-    m_TargetList(partlist),
-    m_CurrentList(LvmDevice::getPVs(d.name())),
-    m_GrowVolumeGroupJob(nullptr),
-    m_ShrinkVolumeGroupJob(nullptr),
-    m_MovePhysicalVolumeJob(nullptr)
+ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QStringList partlist)
+    : Operation()
+    , m_Device(d)
+    , m_TargetList(partlist)
+    , m_CurrentList(d.deviceNodes())
+    , m_GrowVolumeGroupJob(nullptr)
+    , m_ShrinkVolumeGroupJob(nullptr)
+    , m_MovePhysicalVolumeJob(nullptr)
 {
     const QStringList curList = currentList();
     m_TargetSize = FS::lvm2_pv::getPVSize(targetList());
     m_CurrentSize = FS::lvm2_pv::getPVSize(currentList());
 
     QStringList toRemoveList = curList;
-    for (const QString &path : partlist) {
-        if (toRemoveList.contains(path)) {
+    for (const QString &path : partlist)
+        if (toRemoveList.contains(path))
             toRemoveList.removeAll(path);
-        }
-    }
 
     QStringList toInsertList = partlist;
-    for (const QString &path : curList) {
-        if (toInsertList.contains(path)) {
+    for (const QString &path : curList)
+        if (toInsertList.contains(path))
             toInsertList.removeAll(path);
-        }
-    }
 
     qint64 freePE = FS::lvm2_pv::getFreePE(curList) - FS::lvm2_pv::getFreePE(toRemoveList);
     qint64 movePE = FS::lvm2_pv::getAllocatedPE(toRemoveList);

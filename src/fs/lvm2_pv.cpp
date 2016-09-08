@@ -71,6 +71,8 @@ void lvm2_pv::init()
 void lvm2_pv::scan(const QString& deviceNode)
 {
     getPESize(deviceNode);
+    m_AllocatedPE = getAllocatedPE(deviceNode);
+    m_TotalPE = getTotalPE(deviceNode);
 }
 
 bool lvm2_pv::supportToolFound() const
@@ -314,7 +316,7 @@ QString lvm2_pv::getVGName(const QString& deviceNode)
     return getpvField(QStringLiteral("vg_name"), deviceNode);
 }
 
-QList<const Partition *> lvm2_pv::getFreePVinNode(const PartitionNode* parent)
+QList<const Partition *> lvm2_pv::getPVinNode(const PartitionNode* parent, const QString& vgName)
 {
     QList<const Partition *> partitions;
     if (parent == nullptr)
@@ -327,7 +329,7 @@ QList<const Partition *> lvm2_pv::getFreePVinNode(const PartitionNode* parent)
             continue;
 
         if (node->children().size() > 0)
-            partitions.append(getFreePVinNode(node));
+            partitions.append(getPVinNode(node, vgName));
 
         // FIXME: reenable newly created PVs (before applying) once everything works
         if(p->fileSystem().type() == FileSystem::Lvm2_PV && p->mountPoint() == QString() && p->deviceNode() == p->partitionPath())
@@ -337,11 +339,17 @@ QList<const Partition *> lvm2_pv::getFreePVinNode(const PartitionNode* parent)
     return partitions;
 }
 
-QList<const Partition *> lvm2_pv::getFreePV(const QList<Device*>& devices)
+/** construct a list of Partition objects for LVM PVs that are either unused or belong to some VG.
+ *
+ *  @param devices list of Devices which we scan for LVM PVs
+ *  @param vgName name of the volume group
+ *  @return list of LVM PVs
+ */
+QList<const Partition *> lvm2_pv::getPVs(const QList<Device*>& devices, const QString& vgName)
 {
     QList<const Partition *> partitions;
     for (auto const &d : devices)
-        partitions.append(getFreePVinNode(d->partitionTable()));
+        partitions.append(getPVinNode(d->partitionTable(), vgName));
 
     return partitions;
 }

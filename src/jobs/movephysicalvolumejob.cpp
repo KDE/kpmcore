@@ -39,7 +39,7 @@ bool MovePhysicalVolumeJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    QStringList destinations = LvmDevice::getPVs(device().name());
+    QStringList destinations = device().deviceNodes();
     for (const auto &partPath : partList()) {
         if (destinations.contains(partPath)) {
             destinations.removeAll(partPath);

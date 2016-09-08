@@ -63,7 +63,7 @@ void DeviceScanner::scan()
     clear();
 
     const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
-    const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM();
+    const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM(deviceList); // NOTE: PVs inside LVM won't be scanned
 
     for (const auto &d : deviceList)
         operationStack().addDevice(d);

@@ -37,9 +37,10 @@
 /** Constructs a representation of LVM device with initialized LV as Partitions
  *
  *  @param vgName Volume Group name
+ *  @param devices list of devices where we look for LVM PVs belonging to this VG.
  *  @param iconName Icon representing LVM Volume group
  */
-LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
+LvmDevice::LvmDevice(const QString& vgName, const QList<Device*>& devices, const QString& iconName)
     : VolumeManagerDevice(vgName,
                           (QStringLiteral("/dev/") + vgName),
                           getPeSize(vgName),
@@ -52,7 +53,7 @@ LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
     m_freePE  = getFreePE(vgName);
     m_allocPE = m_totalPE - m_freePE;
     m_UUID    = getUUID(vgName);
-    m_PVPathList = new QStringList(getPVs(vgName));
+    m_PVs     = FS::lvm2_pv::getPVs(devices, vgName);
     m_LVPathList = new QStringList(getLVs(vgName));
     m_LVSizeMap  = new QMap<QString, qint64>();
 
@@ -67,7 +68,6 @@ QStringList LvmDevice::s_DirtyPVs;
 
 LvmDevice::~LvmDevice()
 {
-    delete m_PVPathList;
     delete m_LVPathList;
     delete m_LVSizeMap;
 }
@@ -198,13 +198,14 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
 
 /** scan and contruct list of initialized LvmDevice objects.
  *
+ *  @param devices list of Devices which we scan for LVM PVs
  *  @return list of initialized LvmDevices
  */
-QList<LvmDevice*> LvmDevice::scanSystemLVM()
+QList<LvmDevice*> LvmDevice::scanSystemLVM(const QList<Device*>& devices)
 {
     QList<LvmDevice*> lvmList;
     for (const auto &vgName : getVGs()) {
-        lvmList.append(new LvmDevice(vgName));
+        lvmList.append(new LvmDevice(vgName, devices));
     }
     return lvmList;
 }
@@ -226,7 +227,11 @@ qint64 LvmDevice::mappedSector(const QString& lvPath, qint64 sector) const
 
 const QStringList LvmDevice::deviceNodes() const
 {
-    return *PVPathList();
+    QStringList pvList;
+    for (const auto &p : physicalVolumes())
+        pvList << p->partitionPath();
+
+    return pvList;
 }
 
 const QStringList LvmDevice::partitionNodes() const
@@ -250,20 +255,6 @@ const QStringList LvmDevice::getVGs()
         }
     }
     return vgList;
-}
-
-const QStringList LvmDevice::getPVs(const QString& vgName)
-{
-    QStringList devPathList;
-    QString cmdOutput = getField(QStringLiteral("pv_name"), vgName);
-
-    if (cmdOutput.size()) {
-        const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
-        for (const auto &devPath : tempPathList) {
-            devPathList.append(devPath.trimmed());
-        }
-    }
-    return devPathList;
 }
 
 const QStringList LvmDevice::getLVs(const QString& vgName)
@@ -431,21 +422,18 @@ bool LvmDevice::insertPV(Report& report, LvmDevice& d, const QString& pvPath)
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
+
 bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList& destinations)
 {
-
-    if (FS::lvm2_pv::getAllocatedPE(pvPath) <= 0) {
+    if (FS::lvm2_pv::getAllocatedPE(pvPath) <= 0)
         return true;
-    }
 
     QStringList args = QStringList();
     args << QStringLiteral("pvmove");
     args << pvPath;
-    if (!destinations.isEmpty()) {
-        for (const auto &destPath : destinations) {
+    if (!destinations.isEmpty())
+        for (const auto &destPath : destinations)
             args << destPath.trimmed();
-        }
-    }
 
     ExternalCommand cmd(report, QStringLiteral("lvm"), args);
     return (cmd.run(-1) && cmd.exitCode() == 0);
@@ -456,9 +444,9 @@ bool LvmDevice::createVG(Report& report, const QString vgName, const QStringList
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
     args << vgName;
-    for (const auto &pvNode : pvList) {
+    for (const auto &pvNode : pvList)
         args << pvNode.trimmed();
-    }
+
     ExternalCommand cmd(report, QStringLiteral("lvm"), args);
 
     return (cmd.run(-1) && cmd.exitCode() == 0);
