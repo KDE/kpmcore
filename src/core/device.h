@@ -55,9 +55,9 @@ public:
 
 protected:
     explicit Device(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
-    explicit Device(const Device& other);
 
 public:
+    explicit Device(const Device& other);
     virtual ~Device();
 
 public:
