@@ -48,6 +48,7 @@ class LIBKPMCORE_EXPORT OperationStack : public QObject
 
 public:
     typedef QList<Device*> Devices;
+    typedef QList<QPair<QString, const Partition *>> PhysicalVolumes;
     typedef QList<Operation*> Operations;
 
 public:
@@ -72,6 +73,13 @@ public:
     }
     const Devices& previewDevices() const {
         return m_PreviewDevices;    /**< @return the list of Devices */
+    }
+
+    PhysicalVolumes& physicalVolumes() {
+        return m_LVMPhysicalVolumes;    /**< @return the list of LVM PVs */
+    }
+    const PhysicalVolumes& physicalVolumes() const {
+        return m_LVMPhysicalVolumes;    /**< @return the list of LVM PVs */
     }
 
     Operations& operations() {
@@ -102,6 +110,7 @@ protected:
 private:
     Operations m_Operations;
     mutable Devices m_PreviewDevices;
+    mutable PhysicalVolumes m_LVMPhysicalVolumes;
     QReadWriteLock m_Lock;
 };
 

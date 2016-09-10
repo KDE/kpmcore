@@ -37,10 +37,9 @@
 /** Constructs a representation of LVM device with initialized LV as Partitions
  *
  *  @param vgName Volume Group name
- *  @param devices list of devices where we look for LVM PVs belonging to this VG.
  *  @param iconName Icon representing LVM Volume group
  */
-LvmDevice::LvmDevice(const QString& vgName, const QList<Device*>& devices, const QString& iconName)
+LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
     : VolumeManagerDevice(vgName,
                           (QStringLiteral("/dev/") + vgName),
                           getPeSize(vgName),
@@ -53,7 +52,6 @@ LvmDevice::LvmDevice(const QString& vgName, const QList<Device*>& devices, const
     m_freePE  = getFreePE(vgName);
     m_allocPE = m_totalPE - m_freePE;
     m_UUID    = getUUID(vgName);
-    m_PVs     = FS::lvm2_pv::getPVs(devices, vgName);
     m_LVPathList = new QStringList(getLVs(vgName));
     m_LVSizeMap  = new QMap<QString, qint64>();
 
@@ -144,22 +142,35 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
 
         if (isCryptOpen) {
             luksFs->loadInnerFileSystem(mapperNode);
-            mountPoint = mountPointList.findByDevice(mapperNode) ?
-                         mountPointList.findByDevice(mapperNode)->mountPoint() :
-                         QString();
-            if (mountPoint == QStringLiteral("none"))
-                mountPoint = QString();
-            mounted = isMounted(mapperNode);
-            if (mounted) {
-                const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-                if (freeSpaceInfo.isValid() && mountPoint != QString())
-                    luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->payloadOffset()) / logicalSize());
+
+            if (luksFs->type() == FileSystem::Lvm2_PV) {
+                    mountPoint = FS::lvm2_pv::getVGName(mapperNode);
+                    mounted    = false;
+            }
+            else {
+                mountPoint = mountPointList.findByDevice(mapperNode) ?
+                            mountPointList.findByDevice(mapperNode)->mountPoint() :
+                            QString();
+                if (mountPoint == QStringLiteral("none"))
+                    mountPoint = QString();
+                mounted = isMounted(mapperNode);
+                if (mounted) {
+                    const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
+                    if (freeSpaceInfo.isValid() && mountPoint != QString())
+                        luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->payloadOffset()) / logicalSize());
+                }
             }
         } else {
             mounted = false;
         }
         luksFs->setMounted(mounted);
-    } else {
+    }
+    else if (type == FileSystem::Lvm2_PV) {
+            r |= PartitionRole::Lvm_Lv;
+            mountPoint = FS::lvm2_pv::getVGName(lvPath);
+            mounted    = false;
+    }
+    else {
         mountPoint = mountPointList.findByDevice(lvPath) ?
                      mountPointList.findByDevice(lvPath)->mountPoint() :
                      QString();
@@ -198,14 +209,13 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
 
 /** scan and contruct list of initialized LvmDevice objects.
  *
- *  @param devices list of Devices which we scan for LVM PVs
  *  @return list of initialized LvmDevices
  */
-QList<LvmDevice*> LvmDevice::scanSystemLVM(const QList<Device*>& devices)
+QList<LvmDevice*> LvmDevice::scanSystemLVM()
 {
     QList<LvmDevice*> lvmList;
     for (const auto &vgName : getVGs()) {
-        lvmList.append(new LvmDevice(vgName, devices));
+        lvmList.append(new LvmDevice(vgName));
     }
     return lvmList;
 }

@@ -39,6 +39,9 @@ namespace FS
 class LIBKPMCORE_EXPORT lvm2_pv : public FileSystem
 {
 public:
+    typedef QList<QPair<QString, const Partition *>> PhysicalVolumes;
+
+public:
     lvm2_pv(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
 
 public:
@@ -114,8 +117,8 @@ public:
     static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
     static qint64 getPVSize(const QStringList& deviceNodeList);
     static QString getVGName(const QString& deviceNode);
-    static QList<const Partition *> getPVinNode(const PartitionNode* parent, const QString& vgName = QString());
-    static QList<const Partition *> getPVs(const QList<Device*>& devices, const QString& vgName = QString());
+    static PhysicalVolumes getPVinNode(const PartitionNode* parent);
+    static PhysicalVolumes getPVs(const QList<Device*>& devices);
 
     qint64 allocatedPE() const { return m_AllocatedPE; };
     qint64 freePE() const { return m_TotalPE - m_AllocatedPE; };
@@ -140,7 +143,6 @@ private:
     qint64 m_PESize;
     qint64 m_TotalPE;
     qint64 m_AllocatedPE;
-
 };
 }
 

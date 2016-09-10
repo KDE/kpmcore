@@ -17,8 +17,8 @@
  *************************************************************************/
 
 
-#include "core/device.h"
 #include "fs/lvm2_pv.h"
+#include "core/device.h"
 
 #include "util/externalcommand.h"
 #include "util/capacity.h"
@@ -316,9 +316,9 @@ QString lvm2_pv::getVGName(const QString& deviceNode)
     return getpvField(QStringLiteral("vg_name"), deviceNode);
 }
 
-QList<const Partition *> lvm2_pv::getPVinNode(const PartitionNode* parent, const QString& vgName)
+lvm2_pv::PhysicalVolumes lvm2_pv::getPVinNode(const PartitionNode* parent)
 {
-    QList<const Partition *> partitions;
+    PhysicalVolumes partitions;
     if (parent == nullptr)
         return partitions;
 
@@ -329,11 +329,11 @@ QList<const Partition *> lvm2_pv::getPVinNode(const PartitionNode* parent, const
             continue;
 
         if (node->children().size() > 0)
-            partitions.append(getPVinNode(node, vgName));
+            partitions.append(getPVinNode(node));
 
         // FIXME: reenable newly created PVs (before applying) once everything works
-        if(p->fileSystem().type() == FileSystem::Lvm2_PV && p->mountPoint() == QString() && p->deviceNode() == p->partitionPath())
-            partitions.append(p);
+        if(p->fileSystem().type() == FileSystem::Lvm2_PV && p->deviceNode() == p->partitionPath())
+            partitions.append(QPair<QString, const Partition *>(p->mountPoint(), p));
     }
 
     return partitions;
@@ -342,14 +342,13 @@ QList<const Partition *> lvm2_pv::getPVinNode(const PartitionNode* parent, const
 /** construct a list of Partition objects for LVM PVs that are either unused or belong to some VG.
  *
  *  @param devices list of Devices which we scan for LVM PVs
- *  @param vgName name of the volume group
  *  @return list of LVM PVs
  */
-QList<const Partition *> lvm2_pv::getPVs(const QList<Device*>& devices, const QString& vgName)
+lvm2_pv::PhysicalVolumes lvm2_pv::getPVs(const QList<Device*>& devices)
 {
-    QList<const Partition *> partitions;
+    PhysicalVolumes partitions;
     for (auto const &d : devices)
-        partitions.append(getPVinNode(d->partitionTable(), vgName));
+        partitions.append(getPVinNode(d->partitionTable()));
 
     return partitions;
 }

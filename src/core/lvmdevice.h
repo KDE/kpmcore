@@ -44,7 +44,7 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
     Q_DISABLE_COPY(LvmDevice)
 
 public:
-    LvmDevice(const QString& name, const QList<Device *>& devices, const QString& iconName = QString());
+    LvmDevice(const QString& name, const QString& iconName = QString());
     ~LvmDevice();
 
 public:
@@ -55,7 +55,7 @@ public:
     static QStringList s_DirtyPVs;
 
 public:
-    static QList<LvmDevice*> scanSystemLVM(const QList<Device*>& devices);
+    static QList<LvmDevice*> scanSystemLVM();
 
     static const QStringList getVGs();
     static const QStringList getLVs(const QString& vgName);

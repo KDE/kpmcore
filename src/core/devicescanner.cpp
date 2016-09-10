@@ -26,6 +26,8 @@
 #include "core/lvmdevice.h"
 #include "core/diskdevice.h"
 
+#include "fs/lvm2_pv.h"
+
 #include "util/externalcommand.h"
 #include <QRegularExpression>
 #include <QDebug>
@@ -63,15 +65,18 @@ void DeviceScanner::scan()
     clear();
 
     const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
-    const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM(deviceList); // NOTE: PVs inside LVM won't be scanned
+    const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM(); // NOTE: PVs inside LVM won't be scanned
+    operationStack().physicalVolumes() = FS::lvm2_pv::getPVs(deviceList);
 
     for (const auto &d : deviceList)
         operationStack().addDevice(d);
 
     operationStack().sortDevices();
 
-    for (const auto &d : lvmList)
+    for (const auto &d : lvmList) {
         operationStack().addDevice(d);
+        operationStack().physicalVolumes().append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
+    }
 
 }
 
