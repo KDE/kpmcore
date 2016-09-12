@@ -32,7 +32,6 @@
 
 #include <KDiskFreeSpaceInfo>
 #include <KLocalizedString>
-#include <KMountPoint>
 
 /** Constructs a representation of LVM device with initialized LV as Partitions
  *
@@ -124,69 +123,30 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     FileSystem* fs = FileSystemFactory::create(type, 0, lvSize - 1);
     fs->scan(lvPath);
 
-    bool mounted = isMounted(lvPath);
-    QString mountPoint = QString();
-
-    KMountPoint::List mountPointList = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
-    mountPointList.append(KMountPoint::possibleMountPoints(KMountPoint::NeedRealDeviceName));
-
     PartitionRole::Roles r = PartitionRole::Lvm_Lv;
+    QString mountPoint;
+    bool mounted;
 
-    if (type == FileSystem::Luks) {
+    // Handle LUKS partition
+    if (fs->type() == FileSystem::Luks) {
         r |= PartitionRole::Luks;
-        FS::luks* luksFs = static_cast<FS::luks*>(fs);
-        QString mapperNode = luksFs->mapperName();
-        bool isCryptOpen = !mapperNode.isEmpty();
-        luksFs->setCryptOpen(isCryptOpen);
-        luksFs->setLogicalSectorSize(logicalSize());
+        initLuks(fs, this);
+        QString mapperNode = static_cast<FS::luks*>(fs)->mapperName();
+        mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
+        mounted    = FileSystem::detectMountStatus(fs, mapperNode);
+    } else {
+        mountPoint = FileSystem::detectMountPoint(fs, lvPath);
+        mounted = FileSystem::detectMountStatus(fs, lvPath);
 
-        if (isCryptOpen) {
-            luksFs->loadInnerFileSystem(mapperNode);
-
-            if (luksFs->type() == FileSystem::Lvm2_PV) {
-                    mountPoint = FS::lvm2_pv::getVGName(mapperNode);
-                    mounted    = false;
-            }
-            else {
-                mountPoint = mountPointList.findByDevice(mapperNode) ?
-                            mountPointList.findByDevice(mapperNode)->mountPoint() :
-                            QString();
-                if (mountPoint == QStringLiteral("none"))
-                    mountPoint = QString();
-                mounted = isMounted(mapperNode);
-                if (mounted) {
-                    const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-                    if (freeSpaceInfo.isValid() && mountPoint != QString())
-                        luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->payloadOffset()) / logicalSize());
-                }
-            }
-        } else {
-            mounted = false;
-        }
-        luksFs->setMounted(mounted);
-    }
-    else if (type == FileSystem::Lvm2_PV) {
-            r |= PartitionRole::Lvm_Lv;
-            mountPoint = FS::lvm2_pv::getVGName(lvPath);
-            mounted    = false;
-    }
-    else {
-        mountPoint = mountPointList.findByDevice(lvPath) ?
-                     mountPointList.findByDevice(lvPath)->mountPoint() :
-                     QString();
         const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-
-        if (mountPoint == QStringLiteral("none"))
-            mountPoint = QString();
-
-        if (logicalSize() > 0) {
+        if (logicalSize() > 0 && fs->type() != FileSystem::Luks) {
             if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
                 fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
             } else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem) {
                 fs->setSectorsUsed(qCeil(fs->readUsedCapacity(lvPath) / static_cast<float>(logicalSize())));
             }
         }
-    }
+   }
 
     if (fs->supportGetLabel() != FileSystem::cmdSupportNone) {
         fs->setLabel(fs->readLabel(lvPath));

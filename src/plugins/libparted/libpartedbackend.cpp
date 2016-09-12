@@ -50,7 +50,6 @@
 
 #include <KAuth>
 #include <KLocalizedString>
-#include <KMountPoint>
 #include <KDiskFreeSpaceInfo>
 #include <KPluginFactory>
 
@@ -190,9 +189,6 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
     CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(type, firstUsableSector, lastUsableSector));
     CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), maxPrimaryPartitionCount);
 
-    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
-    mountPoints.append(KMountPoint::possibleMountPoints(KMountPoint::NeedRealDeviceName));
-
     QList<QVariant> partitionPath = job->data()[QLatin1String("partitionPath")].toList();
     QList<QVariant> partitionType = job->data()[QLatin1String("partitionType")].toList();
     QList<QVariant> partitionStart = job->data()[QLatin1String("partitionStart")].toList();
@@ -206,7 +202,6 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
         int type = partitionType[i].toInt();
         qint64 start = partitionStart[i].toLongLong();
         qint64 end = partitionEnd[i].toLongLong();
-        bool busy = partitionBusy[i].toBool();
 
         PartitionRole::Roles r = PartitionRole::None;
 
@@ -239,56 +234,19 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 
         FileSystem* fs = FileSystemFactory::create(fsType, start, end);
         fs->scan(partitionNode);
+        QString mountPoint;
+        bool mounted;
 
         // libparted does not handle LUKS partitions
-        QString mountPoint;
-        bool mounted = false;
-        if (fsType == FileSystem::Luks) {
+        if (fs->type() == FileSystem::Luks) {
             r |= PartitionRole::Luks;
-            FS::luks* luksFs = static_cast<FS::luks*>(fs);
-            QString mapperNode = luksFs->mapperName();
-            bool isCryptOpen = !mapperNode.isEmpty();
-            luksFs->setCryptOpen(isCryptOpen);
-            luksFs->setLogicalSectorSize(d->logicalSectorSize());
-
-            if (isCryptOpen) {
-                luksFs->loadInnerFileSystem(mapperNode);
-
-                if (luksFs->type() == FileSystem::Lvm2_PV) {
-                    mountPoint = FS::lvm2_pv::getVGName(mapperNode);
-                    mounted    = false;
-                } else {
-
-                    mountPoint = mountPoints.findByDevice(mapperNode) ?
-                                 mountPoints.findByDevice(mapperNode)->mountPoint() :
-                                 QString();
-                    if (mountPoint == QStringLiteral("none"))
-                        mountPoint = QString();
-                    // We cannot use libparted to check the mounted status because
-                    // we don't have a PedPartition for the mapper device, so we use lsblk
-                    mounted = isMounted(mapperNode);
-                }
-                if (mounted) {
-                    const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-                    if (freeSpaceInfo.isValid() && mountPoint != QString())
-                        luksFs->setSectorsUsed((freeSpaceInfo.used() + luksFs->payloadOffset()) / d->logicalSectorSize());
-                }
-            } else {
-                mounted = false;
-            }
-
-            luksFs->setMounted(mounted);
-        } else if (fsType == FileSystem::Lvm2_PV) {
-            r |= PartitionRole::Lvm_Lv;
-            mountPoint = FS::lvm2_pv::getVGName(partitionNode);
-            mounted    = false;
+            initLuks(fs, d);
+            QString mapperNode = static_cast<FS::luks*>(fs)->mapperName();
+            mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
+            mounted    = FileSystem::detectMountStatus(fs, mapperNode);
         } else {
-            mountPoint = mountPoints.findByDevice(partitionNode) ?
-                         mountPoints.findByDevice(partitionNode)->mountPoint() :
-                         QString();
-            if (mountPoint == QStringLiteral("none"))
-                mountPoint = QString();
-            mounted = busy;
+            mountPoint = FileSystem::detectMountPoint(fs, partitionNode);
+            mounted = FileSystem::detectMountStatus(fs, partitionNode);
         }
 
         QList<QVariant> availableFlags = job->data()[QLatin1String("availableFlags")].toList();

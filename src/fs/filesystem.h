@@ -186,6 +186,8 @@ public:
     static QList<FileSystem::Type> types();
     static FileSystem::Type typeForName(const QString& s);
     static FileSystem::Type detectFileSystem(const QString& partitionPath);
+    static QString detectMountPoint(FileSystem* fs, const QString& partitionPath);
+    static bool detectMountStatus(FileSystem* fs, const QString& partitionPath);
 
     /**< @return true if this FileSystem can be mounted */
     virtual bool canMount(const QString& deviceNode, const QString& mountPoint) const;

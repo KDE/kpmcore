@@ -18,15 +18,18 @@
  *************************************************************************/
 
 #include "fs/filesystem.h"
+#include "fs/lvm2_pv.h"
 
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
 
 #include "util/externalcommand.h"
 #include "util/capacity.h"
+#include "util/helpers.h"
 
 #include <blkid/blkid.h>
 
+#include <KMountPoint>
 #include <KLocalizedString>
 
 #include <QDebug>
@@ -116,6 +119,37 @@ static QString readBlkIdValue(const QString& deviceNode, const QString& tag)
 FileSystem::Type FileSystem::detectFileSystem(const QString& partitionPath)
 {
     return CoreBackendManager::self()->backend()->detectFileSystem(partitionPath);
+}
+
+QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPath)
+{
+    QString mountPoint = QString();
+
+    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
+    mountPoints.append(KMountPoint::possibleMountPoints(KMountPoint::NeedRealDeviceName));
+
+    if (fs->type() == FileSystem::Lvm2_PV) {
+        mountPoint = FS::lvm2_pv::getVGName(partitionPath);
+    } else {
+        mountPoint = mountPoints.findByDevice(partitionPath) ?
+                     mountPoints.findByDevice(partitionPath)->mountPoint() :
+                     QString();
+        if (mountPoint == QStringLiteral("none"))
+            mountPoint = QString();
+    }
+    return mountPoint;
+}
+
+bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
+{
+    bool mounted = false;
+
+    if (fs->type() == FileSystem::Lvm2_PV) {
+        mounted = false;
+    } else {
+        mounted = isMounted(partitionPath);
+    }
+    return mounted;
 }
 
 /** Reads the label for this FileSystem

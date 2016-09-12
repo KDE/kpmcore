@@ -19,6 +19,8 @@
 #include "util/helpers.h"
 #include "util/externalcommand.h"
 #include "util/globallog.h"
+#include "fs/luks.h"
+#include "core/device.h"
 
 #include "ops/operation.h"
 
@@ -82,6 +84,21 @@ bool isMounted(const QString& deviceNode)
         return !cmd.output().trimmed().isEmpty();
     }
     return false;
+}
+
+void initLuks(FileSystem* fs, const Device* dev)
+{
+    if (fs->type() == FileSystem::Luks) {
+        FS::luks* luksFS = static_cast<FS::luks*>(fs);
+        QString mapperNode = luksFS->mapperName();
+        bool isCryptOpen = !mapperNode.isEmpty();
+        luksFS->setCryptOpen(isCryptOpen);
+        luksFS->setLogicalSectorSize(dev->logicalSize());
+        if (isCryptOpen) {
+            luksFS->loadInnerFileSystem(mapperNode);
+        }
+        luksFS->setMounted(isMounted(mapperNode));
+    }
 }
 
 KAboutData aboutKPMcore()
