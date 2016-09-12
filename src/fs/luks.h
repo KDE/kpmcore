@@ -105,10 +105,6 @@ public:
         return m_GetUUID;
     }
 
-    void setLogicalSectorSize(unsigned int logicalSectorSize) {
-        m_logicalSectorSize = logicalSectorSize;
-    }
-
     bool check(Report& report, const QString& deviceNode) const override;
     bool create(Report& report, const QString& deviceNode) override;
     SupportTool supportToolName() const override;
@@ -189,7 +185,7 @@ private:
     mutable bool m_cryptsetupFound;
     QString m_passphrase;
     bool m_isMounted;
-    unsigned int m_logicalSectorSize;
+    constexpr static unsigned int m_logicalSectorSize = 512;
 
     QString m_MapperName;
     QString m_CipherName;

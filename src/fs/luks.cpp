@@ -61,7 +61,6 @@ luks::luks(qint64 firstsector,
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)
     , m_isMounted(false)
-    , m_logicalSectorSize(512)
 {
 }
 
@@ -486,7 +485,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     else if (m_innerFs->resize(report, mapperName(), payloadLength))
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"),
-                {  QStringLiteral("--size"), QString::number(payloadLength / /*m_logicalSectorSize*/ 512), // LUKS assume 512 bytes sector
+                {  QStringLiteral("--size"), QString::number(payloadLength / m_logicalSectorSize), // LUKS assumes 512 bytes sector
                    QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
