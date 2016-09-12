@@ -60,7 +60,7 @@ luks::luks(qint64 firstsector,
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)
     , m_isMounted(false)
-    , m_logicalSectorSize(1)
+    , m_logicalSectorSize(512)
 {
 }
 
