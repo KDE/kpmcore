@@ -21,8 +21,9 @@
 
 #include "fs/filesystemfactory.h"
 
-#include "util/capacity.h"
 #include "util/externalcommand.h"
+#include "util/capacity.h"
+#include "util/helpers.h"
 #include "util/report.h"
 
 #include <QDebug>
@@ -613,6 +614,20 @@ bool luks::canEncryptType(FileSystem::Type type)
             return true;
         default:
             return false;
+    }
+}
+
+void luks::initLUKS(FileSystem* fs)
+{
+    if (fs->type() == FileSystem::Luks) {
+        FS::luks* luksFS = static_cast<FS::luks*>(fs);
+        QString mapperNode = luksFS->mapperName();
+        bool isCryptOpen = !mapperNode.isEmpty();
+        luksFS->setCryptOpen(isCryptOpen);
+        if (isCryptOpen) {
+            luksFS->loadInnerFileSystem(mapperNode);
+            luksFS->setMounted(::isMounted(mapperNode)); //isMounted from helpers.h
+        }
     }
 }
 

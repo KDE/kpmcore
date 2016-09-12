@@ -39,8 +39,6 @@ LIBKPMCORE_EXPORT bool checkAccessibleDevices();
 
 LIBKPMCORE_EXPORT bool isMounted(const QString& deviceNode);
 
-LIBKPMCORE_EXPORT void initLuks(FileSystem* fs, const Device* dev);
-
 LIBKPMCORE_EXPORT KAboutData aboutKPMcore();
 
 #endif

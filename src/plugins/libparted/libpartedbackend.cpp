@@ -240,7 +240,7 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
         // libparted does not handle LUKS partitions
         if (fs->type() == FileSystem::Luks) {
             r |= PartitionRole::Luks;
-            initLuks(fs, d);
+            FS::luks::initLUKS(fs);
             QString mapperNode = static_cast<FS::luks*>(fs)->mapperName();
             mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
             mounted    = FileSystem::detectMountStatus(fs, mapperNode);
