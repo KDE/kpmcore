@@ -65,7 +65,7 @@ void DeviceScanner::scan()
     clear();
 
     const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
-    const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM(); // NOTE: PVs inside LVM won't be scanned
+    const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM();
     operationStack().physicalVolumes() = FS::lvm2_pv::getPVs(deviceList);
 
     for (const auto &d : deviceList)
