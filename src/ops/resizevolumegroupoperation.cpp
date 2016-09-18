@@ -60,11 +60,19 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QList
             toInsertList.append(p);
 
     qint64 currentFreePE = 0;
-    for (const auto &p : currentList())
-        currentFreePE += FS::lvm2_pv::getFreePE(p->partitionPath());
+    for (const auto &p : currentList()) {
+        const FS::lvm2_pv* lvm2PVFs = p->roles().has(PartitionRole::Luks) ?
+                    static_cast<const FS::lvm2_pv*>(static_cast<const FS::luks*>(&p->fileSystem())->innerFS()) : // LVM inside LUKS partition
+                    static_cast<const FS::lvm2_pv*>(&p->fileSystem()); // simple LVM
+        currentFreePE += lvm2PVFs->freePE();
+    }
     qint64 removedFreePE = 0;
-    for (const auto &p : toRemoveList) // FIXME: qAsConst
-        removedFreePE += FS::lvm2_pv::getFreePE(p->partitionPath());
+    for (const auto &p : toRemoveList) { // FIXME: qAsConst
+            const FS::lvm2_pv* lvm2PVFs = p->roles().has(PartitionRole::Luks) ?
+                    static_cast<const FS::lvm2_pv*>(static_cast<const FS::luks*>(&p->fileSystem())->innerFS()) : // LVM inside LUKS partition
+                    static_cast<const FS::lvm2_pv*>(&p->fileSystem()); // simple LVM
+        removedFreePE += lvm2PVFs->freePE();
+    }
     qint64 freePE = currentFreePE - removedFreePE;
     qint64 movePE = 0;
     for (const auto &p : toRemoveList) { // FIXME: qAsConst
