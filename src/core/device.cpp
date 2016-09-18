@@ -84,5 +84,5 @@ bool Device::operator!=(const Device& other) const
 
 QString Device::prettyName() const
 {
-    return i18nc("Device name – Capacity (device node)", "%1 – %2 (%3)", name(), Capacity::formatByteSize(capacity()), deviceNode());
+    return xi18nc("@item:inlistbox Device name – Capacity (device node)", "%1 – %2 (%3)", name(), Capacity::formatByteSize(capacity()), deviceNode());
 }
