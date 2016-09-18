@@ -57,7 +57,7 @@ public:
     bool updateUUID(Report& report, const QString& deviceNode) const override;
     QString readUUID(const QString& deviceNode) const override;
 
-    bool canMount(const QString & deviceNode, const QString & mountPoint) const override;
+    bool canMount(const QString& deviceNode, const QString& mountPoint) const override;
     bool canUnmount(const QString& deviceNode) const override;
 
     bool mount(Report& report, const QString& deviceNode, const QString& mountPoint) override; // mountPoint == VG name
@@ -108,14 +108,8 @@ public:
     static QString getpvField(const QString& fieldName, const QString& deviceNode = QString());
 
     static qint64 getTotalPE(const QString& deviceNode);
-    static qint64 getTotalPE(const QStringList& deviceNodeList);
     static qint64 getFreePE(const QString& deviceNode);
-    static qint64 getFreePE(const QStringList& deviceNodeList);
     static qint64 getAllocatedPE(const QString& deviceNode);
-    static qint64 getAllocatedPE(const QStringList& deviceNodeList);
-    void getPESize(const QString& deviceNode); // return PE size in bytes
-    static qint64 getPVSize(const QString& deviceNode); // return PV size in bytes
-    static qint64 getPVSize(const QStringList& deviceNodeList);
     static QString getVGName(const QString& deviceNode);
     static PhysicalVolumes getPVinNode(const PartitionNode* parent);
     static PhysicalVolumes getPVs(const QList<Device*>& devices);
@@ -124,6 +118,9 @@ public:
     qint64 freePE() const { return m_TotalPE - m_AllocatedPE; };
     qint64 totalPE() const { return m_TotalPE; };
     qint64 peSize() const { return m_PESize; };
+
+private:
+    void getPESize(const QString& deviceNode); // return PE size in bytes
 
 public:
     static CommandSupportType m_GetUsed;

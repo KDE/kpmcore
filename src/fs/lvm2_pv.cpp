@@ -123,7 +123,6 @@ bool lvm2_pv::create(Report& report, const QString& deviceNode)
 
 bool lvm2_pv::remove(Report& report, const QString& deviceNode) const
 {
-//      TODO: check if PV is a member of an exported VG
     ExternalCommand cmd(report, QStringLiteral("lvm"), { QStringLiteral("pvremove"), QStringLiteral("--force"), QStringLiteral("--force"), QStringLiteral("--yes"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
@@ -186,7 +185,7 @@ bool lvm2_pv::unmount(Report& report, const QString& deviceNode)
     return false;
 }
 
-bool lvm2_pv::canMount(const QString & deviceNode, const QString & mountPoint) const
+bool lvm2_pv::canMount(const QString& deviceNode, const QString& mountPoint) const
 {
     Q_UNUSED(deviceNode);
     Q_UNUSED(mountPoint);
@@ -205,77 +204,15 @@ qint64 lvm2_pv::getTotalPE(const QString& deviceNode)
     return val.isEmpty() ? -1 : val.toLongLong();
 }
 
-qint64 lvm2_pv::getTotalPE(const QStringList& deviceNodeList)
-{
-    qint64 sum = 0;
-    for (const auto &deviceNode : deviceNodeList) {
-        qint64 totalPE = getTotalPE(deviceNode);
-        if (totalPE < 0) {
-            sum = -1;
-            break;
-        }
-        sum += totalPE;
-    }
-    return sum;
-}
-
 qint64 lvm2_pv::getFreePE(const QString& deviceNode)
 {
     return getTotalPE(deviceNode) - getAllocatedPE(deviceNode);
-}
-
-qint64 lvm2_pv::getFreePE(const QStringList& deviceNodeList)
-{
-    qint64 sum = 0;
-    for (QString deviceNode :deviceNodeList) {
-        qint64 freePE = getFreePE(deviceNode);
-        if (freePE < 0) {
-            sum = -1;
-            break;
-        }
-        sum += freePE;
-    }
-    return sum;
 }
 
 qint64 lvm2_pv::getAllocatedPE(const QString& deviceNode)
 {
     QString val = getpvField(QStringLiteral("pv_pe_alloc_count"), deviceNode);
     return val.isEmpty() ? -1 : val.toLongLong();
-}
-
-qint64 lvm2_pv::getAllocatedPE(const QStringList& deviceNodeList)
-{
-    qint64 sum = 0;
-    for (QString deviceNode : deviceNodeList) {
-        qint64 allocatedPE = getAllocatedPE(deviceNode);
-        if (allocatedPE < 0) {
-            sum = -1;
-            break;
-        }
-        sum += allocatedPE;
-    }
-    return sum;
-}
-
-qint64 lvm2_pv::getPVSize(const QString& deviceNode)
-{
-    QString val = getpvField(QStringLiteral("pv_size"), deviceNode);
-    return val.isEmpty() ? -1 : val.toLongLong();
-}
-
-qint64 lvm2_pv::getPVSize(const QStringList& deviceNodeList)
-{
-    qint64 sum = 0;
-    for (QString deviceNode : deviceNodeList) {
-        qint64 pvsize = getPVSize(deviceNode);
-        if (pvsize < 0) {
-            sum = -1;
-            break;
-        }
-        sum += pvsize;
-    }
-    return sum;
 }
 
 void lvm2_pv::getPESize(const QString& deviceNode)
