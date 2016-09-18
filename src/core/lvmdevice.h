@@ -52,7 +52,7 @@ public:
     const QStringList partitionNodes() const override;
     qint64 partitionSize(QString& partitionPath) const override;
 
-    static QStringList s_DirtyPVs;
+    static QList<const Partition*> s_DirtyPVs;
 
 public:
     static QList<LvmDevice*> scanSystemLVM();
@@ -81,7 +81,7 @@ public:
     static bool movePV(Report& report, const QString& pvPath, const QStringList& destinations = QStringList());
 
     static bool removeVG(Report& report, LvmDevice& d);
-    static bool createVG(Report& report, const QString vgName, const QStringList pvList, const qint32 peSize = 4); // peSize in megabytes
+    static bool createVG(Report& report, const QString vgName, const QList<const Partition*>& pvList, const qint32 peSize = 4); // peSize in megabytes
     static bool deactivateVG(Report& report, const LvmDevice& d);
     static bool activateVG(Report& report, const LvmDevice& d);
 
@@ -108,12 +108,13 @@ public:
     QString UUID() const {
         return m_UUID;
     }
-
     QStringList* LVPathList() const {
         return m_LVPathList;
     }
-
-    const QList <const Partition*> physicalVolumes() const {
+    QList <const Partition*>& physicalVolumes() {
+        return m_PVs;
+    }
+    const QList <const Partition*>& physicalVolumes() const {
         return m_PVs;
     }
 
@@ -130,7 +131,7 @@ private:
     QString m_UUID;
 
     mutable QStringList* m_LVPathList;
-    mutable QList <const Partition*> m_PVs;
+    QList <const Partition*> m_PVs;
     mutable QMap<QString, qint64>* m_LVSizeMap;
 };
 

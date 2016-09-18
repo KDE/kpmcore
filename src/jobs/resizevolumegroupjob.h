@@ -19,6 +19,7 @@
 
 #define RESIZEVOLUMEGROUPJOB_H
 
+#include "core/partition.h"
 #include "jobs/job.h"
 
 class LvmDevice;
@@ -36,7 +37,7 @@ public:
     };
 
 public:
-    ResizeVolumeGroupJob(LvmDevice& dev, const QStringList partlist, const Type type);
+    ResizeVolumeGroupJob(LvmDevice& dev, const QList <const Partition*>& partlist, const Type type);
 
 public:
     bool run(Report& parent) override;
@@ -50,7 +51,7 @@ protected:
         return m_Device;
     }
 
-    const QStringList partList() const {
+    const QList <const Partition*>& partList() const {
         return m_PartList;
     }
 
@@ -60,7 +61,7 @@ protected:
 
 private:
     LvmDevice& m_Device;
-    const QStringList m_PartList;
+    const QList <const Partition*> m_PartList;
     ResizeVolumeGroupJob::Type m_Type;
 };
 

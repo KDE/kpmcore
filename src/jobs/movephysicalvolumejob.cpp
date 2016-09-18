@@ -26,7 +26,7 @@
 /** Creates a new MovePhysicalVolumeJob
  * @param d Device representing LVM Volume Group
 */
-MovePhysicalVolumeJob::MovePhysicalVolumeJob(LvmDevice& d, const QStringList partList) :
+MovePhysicalVolumeJob::MovePhysicalVolumeJob(LvmDevice& d, const QList <const Partition*>& partList) :
     Job(),
     m_Device(d),
     m_PartList(partList)
@@ -40,14 +40,14 @@ bool MovePhysicalVolumeJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     QStringList destinations = device().deviceNodes();
-    for (const auto &partPath : partList()) {
-        if (destinations.contains(partPath)) {
-            destinations.removeAll(partPath);
+    for (const auto &p : partList()) {
+        if (destinations.contains(p->partitionPath())) {
+            destinations.removeAll(p->partitionPath());
         }
     }
 
-    for (const auto &partPath : partList()) {
-        rval = LvmDevice::movePV(*report, partPath, destinations);
+    for (const auto &p : partList()) {
+        rval = LvmDevice::movePV(*report, p->partitionPath(), destinations);
         if (rval == false) {
             break;
         }
@@ -60,5 +60,9 @@ bool MovePhysicalVolumeJob::run(Report& parent)
 
 QString MovePhysicalVolumeJob::description() const
 {
-    return xi18nc("@info/plain", "Move used PE in %1 on %2 to other available Physical Volumes", partList().join(QStringLiteral(", ")), device().name());
+    QString movedPartitions = QString();
+    for (const auto &p : partList())
+        movedPartitions += QStringLiteral(", ") + p->deviceNode();
+    movedPartitions.chop(2);
+    return xi18nc("@info/plain", "Move used PE in %1 on %2 to other available Physical Volumes", movedPartitions, device().name());
 }

@@ -19,6 +19,7 @@
 
 #define MOVEPHYSICALVOLUMEJOB_H
 
+#include "core/partition.h"
 #include "jobs/job.h"
 
 class LvmDevice;
@@ -29,7 +30,7 @@ class QString;
 class MovePhysicalVolumeJob : public Job
 {
 public:
-    MovePhysicalVolumeJob(LvmDevice& dev, const QStringList partlist);
+    MovePhysicalVolumeJob(LvmDevice& dev, const QList <const Partition*>& partlist);
 
 public:
     bool run(Report& parent) override;
@@ -43,13 +44,13 @@ protected:
     const LvmDevice& device() const {
         return m_Device;
     }
-    const QStringList partList() const {
+    const QList <const Partition*>& partList() const {
         return m_PartList;
     }
 
 private:
     LvmDevice& m_Device;
-    const QStringList m_PartList;
+    const QList <const Partition*> m_PartList;
 };
 
 #endif

@@ -19,6 +19,7 @@
 
 #include "core/lvmdevice.h"
 #include "fs/lvm2_pv.h"
+#include "fs/luks.h"
 #include "core/partition.h"
 
 #include "jobs/resizevolumegroupjob.h"
@@ -30,38 +31,55 @@
 
 /** Creates a new ResizeVolumeGroupOperation.
     @param d the Device to create the new PartitionTable on
-    @param partlist list of LVM Physical Volumes that should be in LVM Volume Group
+    @param partList list of LVM Physical Volumes that should be in LVM Volume Group
 */
-ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QStringList partlist)
+ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QList<const Partition*>& partList)
     : Operation()
     , m_Device(d)
-    , m_TargetList(partlist)
-    , m_CurrentList(d.deviceNodes())
+    , m_TargetList(partList)
+    , m_CurrentList(d.physicalVolumes())
+    , m_TargetSize(0)
+    , m_CurrentSize(0)
     , m_GrowVolumeGroupJob(nullptr)
     , m_ShrinkVolumeGroupJob(nullptr)
     , m_MovePhysicalVolumeJob(nullptr)
 {
-    const QStringList curList = currentList();
-    m_TargetSize = FS::lvm2_pv::getPVSize(targetList());
-    m_CurrentSize = FS::lvm2_pv::getPVSize(currentList());
+    for (const auto &p : targetList())
+        m_TargetSize += p->capacity();
+    for (const auto &p : currentList())
+        m_CurrentSize += p->capacity();
 
-    QStringList toRemoveList = curList;
-    for (const QString &path : partlist)
-        if (toRemoveList.contains(path))
-            toRemoveList.removeAll(path);
+    QList<const Partition*> toRemoveList;
+    for (const auto &p : currentList())
+        if (!targetList().contains(p))
+            toRemoveList.append(p);
 
-    QStringList toInsertList = partlist;
-    for (const QString &path : curList)
-        if (toInsertList.contains(path))
-            toInsertList.removeAll(path);
+    QList<const Partition*> toInsertList;
+    for (const auto &p : targetList())
+        if (!currentList().contains(p))
+            toInsertList.append(p);
 
-    qint64 freePE = FS::lvm2_pv::getFreePE(curList) - FS::lvm2_pv::getFreePE(toRemoveList);
-    qint64 movePE = FS::lvm2_pv::getAllocatedPE(toRemoveList);
-    qint64 growPE = FS::lvm2_pv::getPVSize(toInsertList) / LvmDevice::getPeSize(d.name());
+    qint64 currentFreePE = 0;
+    for (const auto &p : currentList())
+        currentFreePE += FS::lvm2_pv::getFreePE(p->partitionPath());
+    qint64 removedFreePE = 0;
+    for (const auto &p : toRemoveList) // FIXME: qAsConst
+        removedFreePE += FS::lvm2_pv::getFreePE(p->partitionPath());
+    qint64 freePE = currentFreePE - removedFreePE;
+    qint64 movePE = 0;
+    for (const auto &p : toRemoveList) { // FIXME: qAsConst
+        const FS::lvm2_pv* lvm2PVFs = p->roles().has(PartitionRole::Luks) ?
+                    static_cast<const FS::lvm2_pv*>(static_cast<const FS::luks*>(&p->fileSystem())->innerFS()) : // LVM inside LUKS partition
+                    static_cast<const FS::lvm2_pv*>(&p->fileSystem()); // simple LVM
+        movePE += lvm2PVFs->allocatedPE();
+    }
+    qint64 growPE = 0;
+    for (const auto &p : toInsertList) // FIXME: qAsConst
+        growPE += FS::lvm2_pv::getPVSize(p->partitionPath()) / LvmDevice::getPeSize(d.name());
 
     if ( movePE > (freePE + growPE)) {
         // *ABORT* can't move
-    } else if (partlist == curList) {
+    } else if (partList == currentList()) {
         // *DO NOTHING*
     } else {
         if (!toInsertList.isEmpty()) {
@@ -79,8 +97,16 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QStri
 
 QString ResizeVolumeGroupOperation::description() const
 {
-    QString tList = targetList().join(QStringLiteral(", "));
-    QString curList = currentList().join(QStringLiteral(", "));
+    QString tList = QString();
+    for (const auto &p : targetList()) {
+        tList += p->deviceNode() + QStringLiteral(", ");
+    }
+    tList.chop(2);
+    QString curList = QString();
+    for (const auto &p : currentList()) {
+        curList += p->deviceNode() + QStringLiteral(", ");
+    }
+    curList.chop(2);
 
     return xi18nc("@info/plain", "Resize volume %1 from %2 to %3", device().name(), curList, tList);
 }
@@ -92,8 +118,8 @@ bool ResizeVolumeGroupOperation::targets(const Device& d) const
 
 bool ResizeVolumeGroupOperation::targets(const Partition& p) const
 {
-    for (const QString &partPath : targetList()) {
-        if (partPath == p.partitionPath()) {
+    for (const auto &partition : targetList()) {
+        if (partition->partitionPath() == p.partitionPath()) {
             return true;
         }
     }

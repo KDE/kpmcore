@@ -19,10 +19,11 @@
 
 #define CREATEVOLUMEGROUPJOB_H
 
+#include "core/partition.h"
+
 #include "jobs/job.h"
 
 class LvmDevice;
-class Partition;
 class Report;
 
 class QString;
@@ -30,7 +31,7 @@ class QString;
 class CreateVolumeGroupJob : public Job
 {
 public:
-    CreateVolumeGroupJob(const QString& vgName, const QStringList& pvList, const qint32 peSize);
+    CreateVolumeGroupJob(const QString& vgName, const QList<const Partition*>& pvList, const qint32 peSize);
 
 public:
     bool run(Report& parent) override;
@@ -43,10 +44,10 @@ protected:
     const QString vgName() const {
         return m_vgName;
     }
-    QStringList pvList() {
+    QList<const Partition*>& pvList() {
         return m_pvList;
     }
-    const QStringList pvList() const {
+    const QList<const Partition*>& pvList() const {
         return m_pvList;
     }
 
@@ -56,7 +57,7 @@ protected:
 
 private:
     QString m_vgName;
-    QStringList m_pvList;
+    QList<const Partition*> m_pvList;
     qint32 m_PESize;
 };
 

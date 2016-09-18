@@ -25,7 +25,7 @@
 
 /** Creates a new ResizeVolumeGroupJob
 */
-ResizeVolumeGroupJob::ResizeVolumeGroupJob(LvmDevice& dev, const QStringList partlist, const Type type) :
+ResizeVolumeGroupJob::ResizeVolumeGroupJob(LvmDevice& dev, const QList <const Partition*>& partlist, const Type type) :
     Job(),
     m_Device(dev),
     m_PartList(partlist),
@@ -39,15 +39,14 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    for (const auto &pvpath : partList()) {
-        if (type() == ResizeVolumeGroupJob::Grow) {
-            rval = LvmDevice::insertPV(*report, device(), pvpath);
-        } else if (type() == ResizeVolumeGroupJob::Shrink) {
-            rval = LvmDevice::removePV(*report, device(), pvpath);
-        }
-        if (rval == false) {
+    for (const auto &p : partList()) {
+        if (type() == ResizeVolumeGroupJob::Grow)
+            rval = LvmDevice::insertPV(*report, device(), p->partitionPath());
+        else if (type() == ResizeVolumeGroupJob::Shrink)
+            rval = LvmDevice::removePV(*report, device(), p->partitionPath());
+
+        if (rval == false)
             break;
-        }
     }
 
     jobFinished(*report, rval);
@@ -57,7 +56,11 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
 QString ResizeVolumeGroupJob::description() const
 {
-    const QString partitionList = partList().join(QStringLiteral(", "));
+    QString partitionList = QString();
+    for (const auto &p : partList()) {
+        partitionList += QStringLiteral(", ") + p->deviceNode();
+    }
+    partitionList.chop(2);
     const qint32 count = partList().count();
 
     if (type() == ResizeVolumeGroupJob::Grow) {

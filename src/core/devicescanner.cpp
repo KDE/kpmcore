@@ -29,8 +29,8 @@
 #include "fs/lvm2_pv.h"
 
 #include "util/externalcommand.h"
+
 #include <QRegularExpression>
-#include <QDebug>
 
 /** Constructs a DeviceScanner
     @param ostack the OperationStack where the devices will be created
@@ -78,5 +78,10 @@ void DeviceScanner::scan()
         operationStack().physicalVolumes().append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
     }
 
+    // Store list of physical volumes in LvmDevice
+    for (const auto &d : lvmList)
+        for (const auto &p : operationStack().physicalVolumes())
+            if (p.first == d->name())
+                d->physicalVolumes().append(p.second);
 }
 
