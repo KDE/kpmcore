@@ -67,6 +67,7 @@ public:
     virtual const QString& name() const {
         return m_Name;    /**< @return the Device's name, usually some manufacturer string */
     }
+
     virtual const QString& deviceNode() const {
         return m_DeviceNode;    /**< @return the Device's node, for example "/dev/sda" */
     }
@@ -74,6 +75,7 @@ public:
     virtual PartitionTable* partitionTable() {
         return m_PartitionTable;    /**< @return the Device's PartitionTable */
     }
+
     virtual const PartitionTable* partitionTable() const {
         return m_PartitionTable;    /**< @return the Device's PartitionTable */
     }
@@ -85,6 +87,7 @@ public:
     virtual void setIconName(const QString& name) {
         m_IconName = name;
     }
+
     virtual const QString& iconName() const {
         return m_IconName;    /**< @return suggested icon name for this Device */
     }
@@ -92,6 +95,7 @@ public:
     virtual SmartStatus& smartStatus() {
         return *m_SmartStatus;
     }
+
     virtual const SmartStatus& smartStatus() const {
         return *m_SmartStatus;
     }
@@ -103,6 +107,7 @@ public:
     virtual qint32 logicalSize() const {
         return m_LogicalSize;
     }
+
     virtual qint64 totalLogical() const {
         return m_TotalLogical;
     }

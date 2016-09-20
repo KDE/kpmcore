@@ -86,7 +86,7 @@ void LvmDevice::initPartitions()
 }
 
 /**
- *  @return a initialized Partition(LV) list
+ *  @return an initialized Partition(LV) list
  */
 const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
