@@ -19,12 +19,15 @@
 
 #define HELPERS__H
 
+#include "core/partition.h"
 #include "fs/filesystem.h"
+#include "fs/luks.h"
 
 #include "util/libpartitionmanagerexport.h"
 
 class KAboutData;
 
+class Partition;
 class QString;
 class QPoint;
 class QTreeWidget;
@@ -40,5 +43,19 @@ LIBKPMCORE_EXPORT bool checkAccessibleDevices();
 LIBKPMCORE_EXPORT bool isMounted(const QString& deviceNode);
 
 LIBKPMCORE_EXPORT KAboutData aboutKPMcore();
+
+/** Pointer to the file system (which might be inside LUKS container) contained in the partition
+ * @param p Partition where we look for file system
+ * @return pointer to the FileSystem
+*/
+template <typename T>
+inline LIBKPMCORE_EXPORT void innerFS (const Partition* p, T& fs)
+{
+    Partition* partition = const_cast<Partition*>(p);
+    if (p->roles().has(PartitionRole::Luks))
+        fs = dynamic_cast<const T>(dynamic_cast<const FS::luks* const>(&p->fileSystem())->innerFS());
+    else
+        fs = dynamic_cast<const T>(&partition->fileSystem());
+}
 
 #endif

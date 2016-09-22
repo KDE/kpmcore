@@ -18,12 +18,11 @@
 #include "ops/resizevolumegroupoperation.h"
 
 #include "core/lvmdevice.h"
-#include "fs/lvm2_pv.h"
-#include "fs/luks.h"
 #include "core/partition.h"
-
+#include "fs/lvm2_pv.h"
 #include "jobs/resizevolumegroupjob.h"
 #include "jobs/movephysicalvolumejob.h"
+#include "util/helpers.h"
 
 #include <QString>
 
@@ -61,24 +60,21 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QList
 
     qint64 currentFreePE = 0;
     for (const auto &p : currentList()) {
-        const FS::lvm2_pv* lvm2PVFs = p->roles().has(PartitionRole::Luks) ?
-                    static_cast<const FS::lvm2_pv*>(static_cast<const FS::luks*>(&p->fileSystem())->innerFS()) : // LVM inside LUKS partition
-                    static_cast<const FS::lvm2_pv*>(&p->fileSystem()); // simple LVM
+        FS::lvm2_pv *lvm2PVFs;
+        innerFS(p, lvm2PVFs);
         currentFreePE += lvm2PVFs->freePE();
     }
     qint64 removedFreePE = 0;
     for (const auto &p : toRemoveList) { // FIXME: qAsConst
-            const FS::lvm2_pv* lvm2PVFs = p->roles().has(PartitionRole::Luks) ?
-                    static_cast<const FS::lvm2_pv*>(static_cast<const FS::luks*>(&p->fileSystem())->innerFS()) : // LVM inside LUKS partition
-                    static_cast<const FS::lvm2_pv*>(&p->fileSystem()); // simple LVM
+        FS::lvm2_pv *lvm2PVFs;
+        innerFS(p, lvm2PVFs);
         removedFreePE += lvm2PVFs->freePE();
     }
     qint64 freePE = currentFreePE - removedFreePE;
     qint64 movePE = 0;
     for (const auto &p : toRemoveList) { // FIXME: qAsConst
-        const FS::lvm2_pv* lvm2PVFs = p->roles().has(PartitionRole::Luks) ?
-                    static_cast<const FS::lvm2_pv*>(static_cast<const FS::luks*>(&p->fileSystem())->innerFS()) : // LVM inside LUKS partition
-                    static_cast<const FS::lvm2_pv*>(&p->fileSystem()); // simple LVM
+        FS::lvm2_pv *lvm2PVFs;
+        innerFS(p, lvm2PVFs);
         movePE += lvm2PVFs->allocatedPE();
     }
     qint64 growPE = 0;
