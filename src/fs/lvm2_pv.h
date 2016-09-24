@@ -108,7 +108,6 @@ public:
     static QString getpvField(const QString& fieldName, const QString& deviceNode = QString());
 
     static qint64 getTotalPE(const QString& deviceNode);
-    static qint64 getFreePE(const QString& deviceNode);
     static qint64 getAllocatedPE(const QString& deviceNode);
     static QString getVGName(const QString& deviceNode);
     static PhysicalVolumes getPVinNode(const PartitionNode* parent);

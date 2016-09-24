@@ -204,11 +204,6 @@ qint64 lvm2_pv::getTotalPE(const QString& deviceNode)
     return val.isEmpty() ? -1 : val.toLongLong();
 }
 
-qint64 lvm2_pv::getFreePE(const QString& deviceNode)
-{
-    return getTotalPE(deviceNode) - getAllocatedPE(deviceNode);
-}
-
 qint64 lvm2_pv::getAllocatedPE(const QString& deviceNode)
 {
     QString val = getpvField(QStringLiteral("pv_pe_alloc_count"), deviceNode);
