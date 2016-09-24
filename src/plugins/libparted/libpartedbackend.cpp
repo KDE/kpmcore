@@ -185,8 +185,8 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
     quint64 firstUsableSector = job->data()[QLatin1String("firstUsableSector")].toULongLong();
     quint64 lastUsableSector = job->data()[QLatin1String("lastUsableSector")].toULongLong();
 
-    const PartitionTable::TableType type = PartitionTable::nameToTableType(typeName);
-    CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(type, firstUsableSector, lastUsableSector));
+    const PartitionTable::TableType tableType = PartitionTable::nameToTableType(typeName);
+    CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(tableType, firstUsableSector, lastUsableSector));
     CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), maxPrimaryPartitionCount);
 
     QList<QVariant> partitionPath = job->data()[QLatin1String("partitionPath")].toList();
@@ -194,6 +194,8 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
     QList<QVariant> partitionStart = job->data()[QLatin1String("partitionStart")].toList();
     QList<QVariant> partitionEnd = job->data()[QLatin1String("partitionEnd")].toList();
     QList<QVariant> partitionBusy = job->data()[QLatin1String("partitionBusy")].toList();
+    QList<QVariant> partitionLabel;
+    partitionLabel = job->data()[QLatin1String("partitionLabel")].toList();
 
     quint32 totalPartitions = partitionPath.size();
     QList<Partition*> partitions;
@@ -260,6 +262,10 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 
         if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
             fs->setLabel(fs->readLabel(part->deviceNode()));
+
+        // GPT partitions support partition labels and partition UUIDs
+        if(tableType == PartitionTable::TableType::gpt)
+            part->setLabel(partitionLabel[i].toString());
 
         if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
             fs->setUUID(fs->readUUID(part->deviceNode()));

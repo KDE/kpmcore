@@ -141,14 +141,18 @@ public:
     const Partitions& children() const override {
         return m_Children;    /**< @return the Partition's children. empty for non-extended. */
     }
-
     const QString& devicePath() const {
         return m_DevicePath;    /**< @return the Partition's device path, e.g. /dev/sdd */
     }
     const QString& partitionPath() const {
         return m_PartitionPath;    /**< @return the Partition's path, e.g. /dev/sdd1 */
     }
-
+    const QString& label() const {
+        return m_Label;    /**< @return the GPT Partition label */
+    }
+    const QString& uuid() const {
+        return m_UUID;    /**< @return the GPT Partition UUID */
+    }
     qint64 firstSector() const {
         return m_FirstSector;    /**< @return the Partition's first sector on the Device */
     }
@@ -192,18 +196,15 @@ public:
     PartitionTable::Flags availableFlags() const {
         return m_AvailableFlags;    /**< @return the flags available for this Partition */
     }
-
     bool isMounted() const {
         return m_IsMounted;    /**< @return true if Partition is mounted */
     }
-
     FileSystem& fileSystem() {
         return *m_FileSystem;    /**< @return the Partition's FileSystem */
     }
     const FileSystem& fileSystem() const {
         return *m_FileSystem;    /**< @return the Partition's FileSystem */
     }
-
     State state() const {
         return m_State;    /**< @return the Partition's state */
     }
@@ -223,6 +224,13 @@ public:
     }
     void setLastSector(qint64 s) {
         m_LastSector = s;
+    }
+
+    void setLabel(const QString& s) {
+        m_Label = s;    /**< @param s the new label */
+    }
+    void setUUID(const QString& s) {
+        m_UUID = s;    /**< @param s the new UUID */
     }
 
 protected:
@@ -277,6 +285,8 @@ private:
     qint64 m_FirstSector;
     qint64 m_LastSector;
     QString m_DevicePath;
+    QString m_Label;
+    QString m_UUID;
     QString m_PartitionPath;
     QString m_MountPoint;
     PartitionTable::Flags m_AvailableFlags;

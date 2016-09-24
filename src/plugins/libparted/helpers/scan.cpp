@@ -61,7 +61,8 @@ ActionReply Scan::scandevice(const QVariantMap& args)
            pedDisk->dev->bios_geom.heads *
            pedDisk->dev->bios_geom.cylinders - 1;
 
-    if (strcmp(pedDisk->type->name, "gpt") == 0) {
+    bool isGPT = strcmp(pedDisk->type->name, "gpt") == 0;
+    if (isGPT) {
         GPTDiskData* gpt_disk_data = reinterpret_cast<GPTDiskData*>(pedDisk->disk_specific);
         PedGeometry* geom = reinterpret_cast<PedGeometry*>(&gpt_disk_data->data_area);
 
@@ -85,6 +86,7 @@ ActionReply Scan::scandevice(const QVariantMap& args)
     QList<QVariant> partitionStart;
     QList<QVariant> partitionEnd;
     QList<QVariant> partitionBusy;
+    QList<QVariant> partitionLabel;
     QList<QVariant> availableFlags;
     QList<QVariant> activeFlags;
 
@@ -97,6 +99,10 @@ ActionReply Scan::scandevice(const QVariantMap& args)
         partitionStart.append(pedPartition->geom.start);
         partitionEnd.append(pedPartition->geom.end);
         partitionBusy.append(ped_partition_is_busy(pedPartition));
+        if (isGPT)
+            partitionLabel.append(QLatin1String(ped_partition_get_name(pedPartition)));
+        else
+            partitionLabel.append(QLatin1String());
 
         // --------------------------------------------------------------------------
         // Get list of available flags
@@ -135,6 +141,7 @@ ActionReply Scan::scandevice(const QVariantMap& args)
     reply.addData(QStringLiteral("partitionStart"), partitionStart);
     reply.addData(QStringLiteral("partitionEnd"), partitionEnd);
     reply.addData(QStringLiteral("partitionBusy"), partitionBusy);
+    reply.addData(QStringLiteral("partitionLabel"), partitionLabel);
 
     return reply;
 }
