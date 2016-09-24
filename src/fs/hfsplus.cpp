@@ -83,13 +83,13 @@ qint64 hfsplus::maxLabelLength() const
 
 bool hfsplus::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck_hfs"), { deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("fsck.hfsplus"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool hfsplus::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("newfs_hfs"), { deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("mkfs.hfsplus"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
