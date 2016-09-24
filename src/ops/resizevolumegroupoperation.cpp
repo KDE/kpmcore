@@ -78,8 +78,9 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QList
         movePE += lvm2PVFs->allocatedPE();
     }
     qint64 growPE = 0;
-    for (const auto &p : toInsertList) // FIXME: qAsConst
-        growPE += p->capacity() / LvmDevice::getPeSize(d.name());
+    for (const auto &p : toInsertList) { // FIXME: qAsConst
+        growPE += p->capacity() / device().peSize();
+    }
 
     if ( movePE > (freePE + growPE)) {
         // *ABORT* can't move

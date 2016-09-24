@@ -20,8 +20,6 @@
 
 #include "util/report.h"
 
-#include <cstdlib>
-
 #include <QString>
 #include <QStringList>
 

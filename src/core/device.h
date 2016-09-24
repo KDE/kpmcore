@@ -64,6 +64,10 @@ public:
     virtual bool operator==(const Device& other) const;
     virtual bool operator!=(const Device& other) const;
 
+    virtual QString& name() {
+        return m_Name;    /**< @return the Device's name, usually some manufacturer string */
+    }
+
     virtual const QString& name() const {
         return m_Name;    /**< @return the Device's name, usually some manufacturer string */
     }
