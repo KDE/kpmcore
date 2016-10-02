@@ -134,8 +134,6 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
         mountPoint = mountPoints.findByDevice(partitionPath) ?
                      mountPoints.findByDevice(partitionPath)->mountPoint() :
                      QString();
-        if (mountPoint == QStringLiteral("none"))
-            mountPoint = QString();
     }
     return mountPoint;
 }
