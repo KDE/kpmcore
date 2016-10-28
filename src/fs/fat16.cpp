@@ -52,8 +52,8 @@ fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QS
 
 void fat16::init()
 {
-    m_Create = findExternal(QStringLiteral("mkfs.msdos")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_GetUsed = m_Check = findExternal(QStringLiteral("fsck.msdos"), {}, 2) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Create = findExternal(QStringLiteral("mkfs.fat")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_GetUsed = m_Check = findExternal(QStringLiteral("mkfs.fat"), {}, 2) ? cmdSupportFileSystem : cmdSupportNone;
     m_GetLabel = cmdSupportCore;
     m_SetLabel = findExternal(QStringLiteral("fatlabel")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Move = cmdSupportCore;
@@ -104,7 +104,7 @@ qint64 fat16::maxLabelLength() const
 
 qint64 fat16::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("fsck.msdos"), { QStringLiteral("-n"), QStringLiteral("-v"), deviceNode });
+    ExternalCommand cmd(QStringLiteral("fsck.fat"), { QStringLiteral("-n"), QStringLiteral("-v"), deviceNode });
 
     // Exit code 1 is returned when FAT dirty bit is set
     if (cmd.run(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 1)) {
@@ -146,7 +146,7 @@ bool fat16::check(Report& report, const QString& deviceNode) const
 
 bool fat16::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.msdos"), { QStringLiteral("-F16"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("mkfs.fat"), { QStringLiteral("-F16"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
