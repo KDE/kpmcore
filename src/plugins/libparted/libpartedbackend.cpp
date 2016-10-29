@@ -48,11 +48,11 @@
 #include <QString>
 #include <QStringList>
 
-#include <KAuth>
 #include <KLocalizedString>
 #include <KDiskFreeSpaceInfo>
 #include <KPluginFactory>
 
+#include <parted/parted.h>
 #include <unistd.h>
 
 K_PLUGIN_FACTORY_WITH_JSON(LibPartedBackendFactory, "pmlibpartedbackendplugin.json", registerPlugin<LibPartedBackend>();)
@@ -69,47 +69,180 @@ static PedExceptionOption pedExceptionHandler(PedException* e)
     return PED_EXCEPTION_UNHANDLED;
 }
 
+// --------------------------------------------------------------------------
+
+// The following structs and the typedef come from libparted's internal gpt sources.
+// It's very unfortunate there is no public API to get at the first and last usable
+// sector for GPT a partition table, so this is the only (libparted) way to get that
+// information (another way would be to read the GPT header and parse the
+// information ourselves; if the libparted devs begin changing these internal
+// structs for each point release and break our code, we'll have to do just that).
+
+typedef struct {
+    uint32_t time_low;
+    uint16_t time_mid;
+    uint16_t time_hi_and_version;
+    uint8_t  clock_seq_hi_and_reserved;
+    uint8_t  clock_seq_low;
+    uint8_t  node[6];
+} /* __attribute__ ((packed)) */ efi_guid_t;
+
+
+struct __attribute__((packed)) _GPTDiskData {
+    PedGeometry data_area;
+    int     entry_count;
+    efi_guid_t  uuid;
+};
+
+typedef struct _GPTDiskData GPTDiskData;
+
+// --------------------------------------------------------------------------
+
+/** Get the first sector a Partition may cover on a given Device
+    @param d the Device in question
+    @return the first sector usable by a Partition
+*/
+static quint64 firstUsableSector(const Device& d)
+{
+    PedDevice* pedDevice = ped_device_get(d.deviceNode().toLatin1().constData());
+    PedDisk* pedDisk = pedDevice ? ped_disk_new(pedDevice) : nullptr;
+
+    quint64 rval = 0;
+    if (pedDisk)
+        rval = pedDisk->dev->bios_geom.sectors;
+
+    if (pedDisk && strcmp(pedDisk->type->name, "gpt") == 0) {
+        GPTDiskData* gpt_disk_data = reinterpret_cast<GPTDiskData*>(pedDisk->disk_specific);
+        PedGeometry* geom = reinterpret_cast<PedGeometry*>(&gpt_disk_data->data_area);
+
+        if (geom)
+            rval = geom->start;
+        else
+            rval += 32;
+    }
+
+    ped_disk_destroy(pedDisk);
+
+    return rval;
+}
+
+/** Get the last sector a Partition may cover on a given Device
+    @param d the Device in question
+    @return the last sector usable by a Partition
+*/
+static quint64 lastUsableSector(const Device& d)
+{
+    PedDevice* pedDevice = ped_device_get(d.deviceNode().toLatin1().constData());
+    PedDisk* pedDisk = pedDevice ? ped_disk_new(pedDevice) : nullptr;
+
+    quint64 rval = 0;
+    if (pedDisk)
+        rval = static_cast< quint64 >( pedDisk->dev->bios_geom.sectors ) *
+               pedDisk->dev->bios_geom.heads *
+               pedDisk->dev->bios_geom.cylinders - 1;
+
+    if (pedDisk && strcmp(pedDisk->type->name, "gpt") == 0) {
+        GPTDiskData* gpt_disk_data = reinterpret_cast<GPTDiskData*>(pedDisk->disk_specific);
+        PedGeometry* geom = reinterpret_cast<PedGeometry*>(&gpt_disk_data->data_area);
+
+        if (geom)
+            rval = geom->end;
+        else
+            rval -= 32;
+    }
+
+    ped_disk_destroy(pedDisk);
+
+    return rval;
+}
+
 /** Reads sectors used on a FileSystem using libparted functions.
     @param pedDisk pointer to pedDisk  where the Partition and its FileSystem are
     @param p the Partition the FileSystem is on
     @return the number of sectors used
 */
 #if defined LIBPARTED_FS_RESIZE_LIBRARY_SUPPORT
-static qint64 readSectorsUsedLibParted(const Partition& p)
+static qint64 readSectorsUsedLibParted(PedDisk* pedDisk, const Partition& p)
 {
-    KAuth::Action action(QStringLiteral("org.kde.kpmcore.scan.readsectorsused"));
-    action.setHelperId(QStringLiteral("org.kde.kpmcore.scan"));
-    QVariantMap args = {
-        { QStringLiteral("deviceNode"), p.deviceNode() },
-        { QStringLiteral("firstSector"), p.firstSector() }
-    };
-    action.setArguments(args);
-    KAuth::ExecuteJob *job = action.execute();
-    if (!job->exec()) {
-        qWarning() << "KAuth returned an error code: " << job->errorString();
-        return -1;
+    Q_ASSERT(pedDisk);
+
+    qint64 rval = -1;
+
+    PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk, p.firstSector());
+
+    if (pedPartition) {
+        PedFileSystem* pedFileSystem = ped_file_system_open(&pedPartition->geom);
+
+        if (pedFileSystem) {
+            if (PedConstraint* pedConstraint = ped_file_system_get_resize_constraint(pedFileSystem)) {
+                rval = pedConstraint->min_size;
+                ped_constraint_destroy(pedConstraint);
+            }
+
+            ped_file_system_close(pedFileSystem);
+        }
     }
 
-    return job->data()[QLatin1String("sectorsUsed")].toLongLong();
+    return rval;
 }
 #endif
 
 /** Reads the sectors used in a FileSystem and stores the result in the Partition's FileSystem object.
+    @param pedDisk pointer to pedDisk  where the Partition and its FileSystem are
     @param p the Partition the FileSystem is on
     @param mountPoint mount point of the partition in question
 */
-static void readSectorsUsed(const DiskDevice& d, Partition& p, const QString& mountPoint)
+static void readSectorsUsed(PedDisk* pedDisk, const Device& d, Partition& p, const QString& mountPoint)
 {
     const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
     if (p.isMounted() && freeSpaceInfo.isValid() && mountPoint != QString())
-        p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSectorSize());
+        p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSize());
     else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSectorSize());
+        p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSize());
 #if defined LIBPARTED_FS_RESIZE_LIBRARY_SUPPORT
-    else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportBackend)
-        p.fileSystem().setSectorsUsed(readSectorsUsedLibParted(p));
+    else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportCore)
+        p.fileSystem().setSectorsUsed(readSectorsUsedLibParted(pedDisk, p));
+#else
+        Q_UNUSED(pedDisk);
 #endif
+}
+
+static PartitionTable::Flags activeFlags(PedPartition* p)
+{
+    PartitionTable::Flags flags = PartitionTable::FlagNone;
+
+    // We might get here with a pedPartition just picked up from libparted that is
+    // unallocated. Libparted doesn't like it if we ask for flags for unallocated
+    // space.
+    if (p->num <= 0)
+        return flags;
+
+    for (const auto &flag : flagmap)
+        if (ped_partition_is_flag_available(p, flag.pedFlag) && ped_partition_get_flag(p, flag.pedFlag))
+            flags |= flag.flag;
+
+    return flags;
+}
+
+static PartitionTable::Flags availableFlags(PedPartition* p)
+{
+    PartitionTable::Flags flags;
+
+    // see above.
+    if (p->num <= 0)
+        return flags;
+
+    for (const auto &flag : flagmap) {
+        if (ped_partition_is_flag_available(p, flag.pedFlag)) {
+            // Workaround: libparted claims the hidden flag is available for extended partitions, but
+            // throws an error when we try to set or clear it. So skip this combination. Also see setFlag.
+            if (p->type != PED_PARTITION_EXTENDED || flag.flag != PartitionTable::FlagHidden)
+                flags |= flag.flag;
+        }
+    }
+
+    return flags;
 }
 
 /** Constructs a LibParted object. */
@@ -142,74 +275,37 @@ void LibPartedBackend::initFSSupport()
 #endif
 }
 
-/** Create a Device for the given deviceNode and scan it for partitions.
-    @param deviceNode the device node (e.g. "/dev/sda")
-    @return the created Device object. callers need to free this.
+/** Scans a Device for Partitions.
+
+    This method  will scan a Device for all Partitions on it, detect the FileSystem for each Partition,
+    try to determine the FileSystem usage, read the FileSystem label and store it all in newly created
+    objects that are in the end added to the Device's PartitionTable.
+
+    @param d Device
+    @param pedDisk libparted pointer to the partition table
 */
-Device* LibPartedBackend::scanDevice(const QString& deviceNode)
+void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
 {
-    KAuth::Action scanAction(QStringLiteral("org.kde.kpmcore.scan.scandevice"));
-    scanAction.setHelperId(QStringLiteral("org.kde.kpmcore.scan"));
-    QVariantMap args = {{ QStringLiteral("deviceNode"), deviceNode }};
-    scanAction.setArguments(args);
-    KAuth::ExecuteJob *job = scanAction.execute();
-    if (!job->exec()) {
-        qWarning() << "KAuth returned an error code: " << job->errorString();
-        return nullptr;
-    }
+    Q_ASSERT(pedDisk);
+    Q_ASSERT(d.partitionTable());
 
-    bool pedDeviceError = job->data()[QLatin1String("pedDeviceError")].toBool();
+    PedPartition* pedPartition = nullptr;
 
-    if (pedDeviceError) {
-        Log(Log::warning) << xi18nc("@info:status", "Could not access device <filename>%1</filename>", deviceNode);
-        return nullptr;
-    }
-
-    QString model = job->data()[QLatin1String("model")].toString();
-    QString path = job->data()[QLatin1String("path")].toString();
-    int heads = job->data()[QLatin1String("heads")].toInt();
-    int sectors = job->data()[QLatin1String("sectors")].toInt();
-    int cylinders = job->data()[QLatin1String("cylinders")].toInt();
-    int sectorSize = job->data()[QLatin1String("sectorSize")].toInt();
-    bool pedDiskError = job->data()[QLatin1String("pedDiskError")].toBool();
-
-    Log(Log::information) << xi18nc("@info:status", "Device found: %1", model);
-
-    DiskDevice* d = new DiskDevice(model, path, heads, sectors, cylinders, sectorSize);
-
-    if (pedDiskError)
-        return d;
-
-    QString typeName = job->data()[QLatin1String("typeName")].toString();
-    qint32 maxPrimaryPartitionCount = job->data()[QLatin1String("maxPrimaryPartitionCount")].toInt();
-    quint64 firstUsableSector = job->data()[QLatin1String("firstUsableSector")].toULongLong();
-    quint64 lastUsableSector = job->data()[QLatin1String("lastUsableSector")].toULongLong();
-
-    const PartitionTable::TableType tableType = PartitionTable::nameToTableType(typeName);
-    CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(tableType, firstUsableSector, lastUsableSector));
-    CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), maxPrimaryPartitionCount);
-
-    QList<QVariant> partitionPath = job->data()[QLatin1String("partitionPath")].toList();
-    QList<QVariant> partitionType = job->data()[QLatin1String("partitionType")].toList();
-    QList<QVariant> partitionStart = job->data()[QLatin1String("partitionStart")].toList();
-    QList<QVariant> partitionEnd = job->data()[QLatin1String("partitionEnd")].toList();
-    QList<QVariant> partitionBusy = job->data()[QLatin1String("partitionBusy")].toList();
-    QList<QVariant> partitionLabel;
-    partitionLabel = job->data()[QLatin1String("partitionLabel")].toList();
-
-    quint32 totalPartitions = partitionPath.size();
     QList<Partition*> partitions;
-    for (quint32 i = 0; i < totalPartitions; ++i) {
-        QString partitionNode = partitionPath[i].toString();
-        int type = partitionType[i].toInt();
-        qint64 start = partitionStart[i].toLongLong();
-        qint64 end = partitionEnd[i].toLongLong();
+
+    while ((pedPartition = ped_disk_next_partition(pedDisk, pedPartition))) {
+        if (pedPartition->num < 1)
+            continue;
 
         PartitionRole::Roles r = PartitionRole::None;
 
-        FileSystem::Type fsType = detectFileSystem(partitionNode);
+        FileSystem::Type type = FileSystem::Unknown;
+        char* pedPath = ped_partition_get_path(pedPartition);
+        const QString partitionNode = pedPath ? QString::fromUtf8(pedPath) : QString();
+        free(pedPath);
+        type = detectFileSystem(partitionNode);
 
-        switch (type) {
+        switch (pedPartition->type) {
         case PED_PARTITION_NORMAL:
             r = PartitionRole::Primary;
             break;
@@ -228,13 +324,13 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
         }
 
         // Find an extended partition this partition is in.
-        PartitionNode* parent = d->partitionTable()->findPartitionBySector(start, PartitionRole(PartitionRole::Extended));
+        PartitionNode* parent = d.partitionTable()->findPartitionBySector(pedPartition->geom.start, PartitionRole(PartitionRole::Extended));
 
         // None found, so it's a primary in the device's partition table.
         if (parent == nullptr)
-            parent = d->partitionTable();
+            parent = d.partitionTable();
 
-        FileSystem* fs = FileSystemFactory::create(fsType, start, end);
+        FileSystem* fs = FileSystemFactory::create(type, pedPartition->geom.start, pedPartition->geom.end);
         fs->scan(partitionNode);
         QString mountPoint;
         bool mounted;
@@ -251,21 +347,17 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
             mounted = FileSystem::detectMountStatus(fs, partitionNode);
         }
 
-        QList<QVariant> availableFlags = job->data()[QLatin1String("availableFlags")].toList();
-        PartitionTable::Flags available = static_cast<PartitionTable::Flag>(availableFlags[i].toInt());
-        QList<QVariant> activeFlags = job->data()[QLatin1String("activeFlags")].toList();
-        PartitionTable::Flags active = static_cast<PartitionTable::Flag>(activeFlags[i].toInt());
-        Partition* part = new Partition(parent, *d, PartitionRole(r), fs, start, end, partitionNode, available, mountPoint, mounted, active);
+        Partition* part = new Partition(parent, d, PartitionRole(r), fs, pedPartition->geom.start, pedPartition->geom.end, partitionNode, availableFlags(pedPartition), mountPoint, mounted, activeFlags(pedPartition));
 
         if (!part->roles().has(PartitionRole::Luks))
-            readSectorsUsed(*d, *part, mountPoint);
+            readSectorsUsed(pedDisk, d, *part, mountPoint);
 
         if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
             fs->setLabel(fs->readLabel(part->deviceNode()));
 
         // GPT partitions support partition labels and partition UUIDs
-        if(tableType == PartitionTable::TableType::gpt)
-            part->setLabel(partitionLabel[i].toString());
+        if(d.partitionTable()->type() == PartitionTable::TableType::gpt)
+            fs->setLabel(fs->readLabel(part->deviceNode()));
 
         if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
             fs->setUUID(fs->readUUID(part->deviceNode()));
@@ -274,14 +366,43 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
         partitions.append(part);
     }
 
-    d->partitionTable()->updateUnallocated(*d);
+    d.partitionTable()->updateUnallocated(d);
 
-    if (d->partitionTable()->isSectorBased(*d))
-        d->partitionTable()->setType(*d, PartitionTable::msdos_sectorbased);
+    if (d.partitionTable()->isSectorBased(d))
+        d.partitionTable()->setType(d, PartitionTable::msdos_sectorbased);
 
     foreach(const Partition * part, partitions)
-        PartitionAlignment::isAligned(*d, *part);
+        PartitionAlignment::isAligned(d, *part);
+}
 
+/** Create a Device for the given device_node and scan it for partitions.
+    @param deviceNode the device node (e.g. "/dev/sda")
+    @return the created Device object. callers need to free this.
+*/
+Device* LibPartedBackend::scanDevice(const QString& deviceNode)
+{
+    PedDevice* pedDevice = ped_device_get(deviceNode.toLocal8Bit().constData());
+
+    if (pedDevice == nullptr) {
+        Log(Log::warning) << xi18nc("@info:status", "Could not access device <filename>%1</filename>", deviceNode);
+        return nullptr;
+    }
+
+    Log(Log::information) << xi18nc("@info:status", "Device found: %1", QString::fromUtf8(pedDevice->model));
+
+    DiskDevice* d = new DiskDevice(QString::fromUtf8(pedDevice->model), QString::fromUtf8(pedDevice->path), pedDevice->bios_geom.heads, pedDevice->bios_geom.sectors, pedDevice->bios_geom.cylinders, pedDevice->sector_size);
+
+    PedDisk* pedDisk = ped_disk_new(pedDevice);
+
+    if (pedDisk) {
+        const PartitionTable::TableType type = PartitionTable::nameToTableType(QString::fromUtf8(pedDisk->type->name));
+        CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(type, firstUsableSector(*d), lastUsableSector(*d)));
+        CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), ped_disk_get_max_primary_partition_count(pedDisk));
+
+        scanDevicePartitions(*d, pedDisk);
+    }
+
+    ped_device_destroy(pedDevice);
     return d;
 }
 

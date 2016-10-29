@@ -71,6 +71,7 @@ public:
 
 private:
     static PedPartitionFlag getPedFlag(PartitionTable::Flag flag);
+    void scanDevicePartitions(Device& d, PedDisk* pedDisk);
 };
 
 #endif
