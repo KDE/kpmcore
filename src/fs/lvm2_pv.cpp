@@ -174,29 +174,29 @@ QString lvm2_pv::readUUID(const QString& deviceNode) const
 
 bool lvm2_pv::mount(Report& report, const QString& deviceNode, const QString& mountPoint)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(mountPoint);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(mountPoint)
     return false;
 }
 
 bool lvm2_pv::unmount(Report& report, const QString& deviceNode)
 {
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(report);
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(report)
     return false;
 }
 
 bool lvm2_pv::canMount(const QString& deviceNode, const QString& mountPoint) const
 {
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(mountPoint);
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(mountPoint)
     return false;
 }
 
 bool lvm2_pv::canUnmount(const QString& deviceNode) const
 {
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(deviceNode)
     return false;
 }
 

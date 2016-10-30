@@ -625,7 +625,7 @@ void luks::initLUKS(FileSystem* fs)
         luksFS->setCryptOpen(isCryptOpen);
         if (isCryptOpen) {
             luksFS->loadInnerFileSystem(mapperNode);
-            luksFS->setMounted(::isMounted(mapperNode)); //isMounted from helpers.h
+            luksFS->setMounted(detectMountStatus(luksFS->innerFS(), mapperNode));
         }
     }
 }

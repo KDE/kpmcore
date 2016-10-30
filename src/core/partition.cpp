@@ -23,6 +23,7 @@
 
 #include "fs/filesystem.h"
 #include "fs/filesystemfactory.h"
+#include "fs/luks.h"
 
 #include "util/externalcommand.h"
 #include "util/report.h"
@@ -283,7 +284,13 @@ bool Partition::canMount() const
 /** @return true if this Partition can be unmounted */
 bool Partition::canUnmount() const
 {
-    return !roles().has(PartitionRole::Extended) && isMounted();
+    return !roles().has(PartitionRole::Extended) && isMounted() && fileSystem().canUnmount(deviceNode());
+}
+
+void Partition::setMounted(bool b) {
+    m_IsMounted = b;
+    if (roles().has(PartitionRole::Luks))
+        static_cast<FS::luks*>(m_FileSystem)->setMounted(b);
 }
 
 /** Tries to mount a Partition.

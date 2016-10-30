@@ -100,6 +100,8 @@ class LIBKPMCORE_EXPORT Partition : public PartitionNode
     friend class SetPartFlagsJob;
     friend class RestoreFileSystemJob;
 
+    friend class DeactivateVolumeGroupJob;
+
     friend QTextStream& operator<<(QTextStream& stream, const Partition& p);
 
 public:
@@ -254,9 +256,8 @@ protected:
         m_SectorSize = s;
     }
     void move(qint64 newStartSector);
-    void setMounted(bool b) {
-        m_IsMounted = b;
-    }
+    void setMounted(bool b);
+
     void setFlag(PartitionTable::Flag f) {
         m_ActiveFlags |= f;
     }

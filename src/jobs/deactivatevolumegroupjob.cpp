@@ -18,6 +18,7 @@
 #include "jobs/deactivatevolumegroupjob.h"
 
 #include "core/lvmdevice.h"
+#include "core/partition.h"
 
 #include "util/report.h"
 
@@ -38,7 +39,12 @@ bool DeactivateVolumeGroupJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     if (device().type() == Device::LVM_Device) {
-        rval = LvmDevice::deactivateVG(*report, dynamic_cast<LvmDevice&>(device()));
+        rval = LvmDevice::deactivateVG(*report, static_cast<LvmDevice&>(device()));
+    }
+    const auto lvmPVs = static_cast<LvmDevice&>(device()).physicalVolumes();
+    for (auto &p : lvmPVs) {
+        Partition *partition = const_cast<Partition *>(p);
+        partition->setMounted(false);
     }
 
     jobFinished(*report, rval);
