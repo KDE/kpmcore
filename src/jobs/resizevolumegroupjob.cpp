@@ -41,9 +41,9 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
     for (const auto &p : partList()) {
         if (type() == ResizeVolumeGroupJob::Grow)
-            rval = LvmDevice::insertPV(*report, device(), p->partitionPath());
+            rval = LvmDevice::insertPV(*report, device(), p->partitionPath()); // FIXME: LUKS
         else if (type() == ResizeVolumeGroupJob::Shrink)
-            rval = LvmDevice::removePV(*report, device(), p->partitionPath());
+            rval = LvmDevice::removePV(*report, device(), p->partitionPath()); // FIXME: LUKS
 
         if (rval == false)
             break;

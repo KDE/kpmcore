@@ -126,8 +126,7 @@ bool DeleteOperation::canDelete(const Partition* p)
 
     if (p->roles().has(PartitionRole::Luks))
     {
-        const FileSystem& fsRef = p->fileSystem();
-        const FS::luks* luksFs = dynamic_cast<const FS::luks*>(&fsRef);
+        const FS::luks* luksFs = dynamic_cast<const FS::luks*>(&p->fileSystem());
         if (!luksFs)
             return false;
 

@@ -198,8 +198,12 @@ qint64 LvmDevice::mappedSector(const QString& lvPath, qint64 sector) const
 const QStringList LvmDevice::deviceNodes() const
 {
     QStringList pvList;
-    for (const auto &p : physicalVolumes())
-        pvList << p->partitionPath();
+    for (const auto &p : physicalVolumes()) {
+        if (p->roles().has(PartitionRole::Luks))
+            pvList << static_cast<const FS::luks*>(&p->fileSystem())->mapperName();
+        else
+            pvList << p->partitionPath();
+    }
 
     return pvList;
 }
@@ -414,8 +418,12 @@ bool LvmDevice::createVG(Report& report, const QString vgName, const QList<const
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
     args << vgName;
-    for (const auto &p : pvList)
-        args << p->partitionPath();
+    for (const auto &p : pvList) {
+        if (p->roles().has(PartitionRole::Luks))
+            args << static_cast<const FS::luks*>(&p->fileSystem())->mapperName();
+        else
+            args << p->partitionPath();
+    }
 
     ExternalCommand cmd(report, QStringLiteral("lvm"), args);
 
