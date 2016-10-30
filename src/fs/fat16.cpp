@@ -53,7 +53,7 @@ fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QS
 void fat16::init()
 {
     m_Create = findExternal(QStringLiteral("mkfs.fat")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_GetUsed = m_Check = findExternal(QStringLiteral("mkfs.fat"), {}, 2) ? cmdSupportFileSystem : cmdSupportNone;
+    m_GetUsed = m_Check = findExternal(QStringLiteral("mkfs.fat"), {}, 1) ? cmdSupportFileSystem : cmdSupportNone;
     m_GetLabel = cmdSupportCore;
     m_SetLabel = findExternal(QStringLiteral("fatlabel")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Move = cmdSupportCore;
