@@ -28,10 +28,10 @@
 #include "util/externalcommand.h"
 #include "util/report.h"
 
-#include <QDebug>
 #include <QRegularExpression>
 #include <QString>
 #include <QStringList>
+#include <QTextStream>
 
 #include <KLocalizedString>
 #include <KIOCore/KMountPoint>
