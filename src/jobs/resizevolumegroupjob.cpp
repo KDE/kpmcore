@@ -18,6 +18,7 @@
 #include "jobs/resizevolumegroupjob.h"
 
 #include "core/lvmdevice.h"
+#include "fs/luks.h"
 
 #include "util/report.h"
 
@@ -40,10 +41,11 @@ bool ResizeVolumeGroupJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     for (const auto &p : partList()) {
+        const QString deviceNode = p->roles().has(PartitionRole::Luks) ? static_cast<const FS::luks*>(&p->fileSystem())->mapperName() : p->partitionPath();
         if (type() == ResizeVolumeGroupJob::Grow)
-            rval = LvmDevice::insertPV(*report, device(), p->partitionPath()); // FIXME: LUKS
+            rval = LvmDevice::insertPV(*report, device(), deviceNode);
         else if (type() == ResizeVolumeGroupJob::Shrink)
-            rval = LvmDevice::removePV(*report, device(), p->partitionPath()); // FIXME: LUKS
+            rval = LvmDevice::removePV(*report, device(), deviceNode);
 
         if (rval == false)
             break;
