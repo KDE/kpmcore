@@ -64,11 +64,25 @@ public:
             return m_innerFs->supportGrow();
         return cmdSupportNone;
     }
+    CommandSupportType supportGrowOnline() const override {
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Grow && m_innerFs)
+            return m_innerFs->supportGrowOnline();
+        return cmdSupportNone;
+    }
     CommandSupportType supportShrink() const override {
         if (!m_isCryptOpen)
             return cmdSupportNone;
         if (m_Shrink && m_innerFs)
             return m_innerFs->supportShrink();
+        return cmdSupportNone;
+    }
+    CommandSupportType supportShrinkOnline() const override {
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Shrink && m_innerFs)
+            return m_innerFs->supportShrinkOnline();
         return cmdSupportNone;
     }
     CommandSupportType supportMove() const override {
@@ -81,6 +95,13 @@ public:
             return cmdSupportNone;
         if (m_Check && m_innerFs)
             return m_innerFs->supportCheck();
+        return cmdSupportNone;
+    }
+    CommandSupportType supportCheckOnline() const override {
+        if (!m_isCryptOpen)
+            return cmdSupportNone;
+        if (m_Check && m_innerFs)
+            return m_innerFs->supportCheckOnline();
         return cmdSupportNone;
     }
     CommandSupportType supportCopy() const override {

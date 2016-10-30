@@ -78,14 +78,11 @@ bool lvm2_pv::supportToolFound() const
 {
     return
         m_GetUsed != cmdSupportNone &&
-//          m_GetLabel != cmdSupportNone &&
-//          m_SetLabel != cmdSupportNone &&
         m_Create != cmdSupportNone &&
         m_Check != cmdSupportNone &&
         m_UpdateUUID != cmdSupportNone &&
         m_Grow != cmdSupportNone &&
         m_Shrink != cmdSupportNone &&
-//          m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
         m_Backup != cmdSupportNone &&
         m_GetUUID != cmdSupportNone;
@@ -156,6 +153,12 @@ bool lvm2_pv::resize(Report& report, const QString& deviceNode, qint64 length) c
                                 QString::number(length) + QStringLiteral("B"),
                                 deviceNode });
     return rval && cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool lvm2_pv::resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const
+{
+    Q_UNUSED(mountPoint)
+    return resize(report, deviceNode, length);
 }
 
 bool lvm2_pv::updateUUID(Report& report, const QString& deviceNode) const

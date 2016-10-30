@@ -143,7 +143,7 @@ bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
     bool mounted = false;
 
     if (fs->type() == FileSystem::Lvm2_PV) {
-        mounted = false;
+        mounted = FS::lvm2_pv::getVGName(partitionPath) != QString(); // FIXME: VG name is scanned twice
     } else {
         mounted = isMounted(partitionPath);
     }
@@ -166,8 +166,8 @@ QString FileSystem::readLabel(const QString& deviceNode) const
 */
 bool FileSystem::create(Report& report, const QString& deviceNode)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
 
     return true;
 }
@@ -188,9 +188,9 @@ void FileSystem::scan(const QString& deviceNode)
 */
 bool FileSystem::resize(Report& report, const QString& deviceNode, qint64 newLength) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(newLength);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(newLength)
 
     return true;
 }

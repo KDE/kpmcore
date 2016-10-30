@@ -29,6 +29,8 @@
 #include "jobs/resizefilesystemjob.h"
 #include "jobs/movefilesystemjob.h"
 
+#include "ops/checkoperation.h"
+
 #include "fs/filesystem.h"
 
 #include "util/capacity.h"
@@ -63,7 +65,7 @@ ResizeOperation::ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint6
     m_GrowSetGeomJob(nullptr),
     m_CheckResizedJob(nullptr)
 {
-    if(!partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
+    if(CheckOperation::canCheck(&partition()))
         addJob(checkOriginalJob());
 
     if (partition().roles().has(PartitionRole::Extended)) {
@@ -100,7 +102,7 @@ ResizeOperation::ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint6
 
         m_CheckResizedJob = new CheckFileSystemJob(partition());
 
-        if(!partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
+        if(CheckOperation::canCheck(&partition()))
             addJob(checkResizedJob());
     }
 }
@@ -143,13 +145,11 @@ void ResizeOperation::undo()
 
 bool ResizeOperation::execute(Report& parent)
 {
-    bool rval = false;
+    bool rval = true;
 
     Report* report = parent.newChild(description());
 
-    if (partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
-        rval = true;
-    else
+    if (CheckOperation::canCheck(&partition()))
         rval = checkOriginalJob()->run(*report);
 
     if (rval) {
@@ -165,13 +165,11 @@ bool ResizeOperation::execute(Report& parent)
             rval = shrink(*report) && move(*report) && grow(*report);
 
             if (rval) {
-                if (partition().isMounted()) // FIXME: add support for checkOnline for file systems that support it.
-                    rval = true;
-                else
+                if (CheckOperation::canCheck(&partition())) {
                     rval = checkResizedJob()->run(*report);
-
-                if (!rval)
-                    report->line() << xi18nc("@info:status", "Checking partition <filename>%1</filename> after resize/move failed.", partition().deviceNode());
+                    if (!rval)
+                        report->line() << xi18nc("@info:status", "Checking partition <filename>%1</filename> after resize/move failed.", partition().deviceNode());
+                }
             } else
                 report->line() << xi18nc("@info:status", "Resizing/moving partition <filename>%1</filename> failed.", partition().deviceNode());
         }

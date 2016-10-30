@@ -151,6 +151,9 @@ public:
     virtual CommandSupportType supportCheck() const {
         return cmdSupportNone;    /**< @return CommandSupportType for checking */
     }
+    virtual CommandSupportType supportCheckOnline() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for checking */
+    }
     virtual CommandSupportType supportCopy() const {
         return cmdSupportNone;    /**< @return CommandSupportType for copying */
     }
