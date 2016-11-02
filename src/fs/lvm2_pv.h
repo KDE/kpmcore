@@ -28,8 +28,35 @@
 #include <QtGlobal>
 
 class Report;
-
 class QString;
+
+/** Stores information about LVM PV or potentially encrypted LVM PV
+ * @author Andrius Štikonas <andrius@stikonas.eu>
+ */
+
+class LvmPV
+{
+public:
+    LvmPV(const QString vgName, const Partition* p, bool isLuks = false);
+
+    const QString vgName() const {
+        return m_vgName;
+    }
+
+    const Partition* partition() const {
+        return m_p;
+    }
+
+    bool isLuks() const {
+        return m_isLuks;
+    }
+
+private:
+    QString m_vgName;
+    const Partition *m_p;
+    bool m_isLuks;
+};
+
 
 namespace FS
 {
@@ -38,8 +65,6 @@ namespace FS
 */
 class LIBKPMCORE_EXPORT lvm2_pv : public FileSystem
 {
-public:
-    typedef QList<QPair<QString, const Partition *>> PhysicalVolumes;
 
 public:
     lvm2_pv(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
@@ -120,8 +145,8 @@ public:
     static qint64 getTotalPE(const QString& deviceNode);
     static qint64 getAllocatedPE(const QString& deviceNode);
     static QString getVGName(const QString& deviceNode);
-    static PhysicalVolumes getPVinNode(const PartitionNode* parent);
-    static PhysicalVolumes getPVs(const QList<Device*>& devices);
+    static QList<LvmPV> getPVinNode(const PartitionNode* parent);
+    static QList<LvmPV> getPVs(const QList<Device*>& devices);
 
     qint64 allocatedPE() const { return m_AllocatedPE; };
     qint64 freePE() const { return m_TotalPE - m_AllocatedPE; };

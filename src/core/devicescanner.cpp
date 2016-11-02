@@ -81,7 +81,7 @@ void DeviceScanner::scan()
     // Store list of physical volumes in LvmDevice
     for (const auto &d : lvmList)
         for (const auto &p : operationStack().physicalVolumes())
-            if (p.first == d->name())
-                d->physicalVolumes().append(p.second);
+            if (p.vgName() == d->name())
+                d->physicalVolumes().append(p.partition());
 }
 

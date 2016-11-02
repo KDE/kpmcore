@@ -250,9 +250,9 @@ QString lvm2_pv::getVGName(const QString& deviceNode)
     return getpvField(QStringLiteral("vg_name"), deviceNode);
 }
 
-lvm2_pv::PhysicalVolumes lvm2_pv::getPVinNode(const PartitionNode* parent)
+QList<LvmPV> lvm2_pv::getPVinNode(const PartitionNode* parent)
 {
-    PhysicalVolumes partitions;
+    QList<LvmPV> partitions;
     if (parent == nullptr)
         return partitions;
 
@@ -267,7 +267,7 @@ lvm2_pv::PhysicalVolumes lvm2_pv::getPVinNode(const PartitionNode* parent)
 
         // FIXME: reenable newly created PVs (before applying) once everything works
         if(p->fileSystem().type() == FileSystem::Lvm2_PV && p->deviceNode() == p->partitionPath())
-            partitions.append(QPair<QString, const Partition *>(p->mountPoint(), p));
+            partitions.append(LvmPV(p->mountPoint(), p));
     }
 
     return partitions;
@@ -278,13 +278,20 @@ lvm2_pv::PhysicalVolumes lvm2_pv::getPVinNode(const PartitionNode* parent)
  *  @param devices list of Devices which we scan for LVM PVs
  *  @return list of LVM PVs
  */
-lvm2_pv::PhysicalVolumes lvm2_pv::getPVs(const QList<Device*>& devices)
+QList<LvmPV> lvm2_pv::getPVs(const QList<Device*>& devices)
 {
-    PhysicalVolumes partitions;
+    QList<LvmPV> partitions;
     for (auto const &d : devices)
         partitions.append(getPVinNode(d->partitionTable()));
 
     return partitions;
 }
 
+}
+
+LvmPV::LvmPV(const QString vgName, const Partition* p, bool isLuks)
+    : m_vgName(vgName)
+    , m_p(p)
+    , m_isLuks(isLuks)
+{
 }

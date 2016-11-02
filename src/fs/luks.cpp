@@ -309,8 +309,6 @@ bool luks::cryptClose(const QString& deviceNode)
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
-    if (m_isCryptOpen)
-        return false;
     return true;
 }
 

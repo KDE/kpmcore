@@ -19,6 +19,7 @@
 
 #define OPERATIONSTACK__H
 
+#include "fs/lvm2_pv.h"
 #include "util/libpartitionmanagerexport.h"
 
 #include <QObject>
@@ -48,7 +49,6 @@ class LIBKPMCORE_EXPORT OperationStack : public QObject
 
 public:
     typedef QList<Device*> Devices;
-    typedef QList<QPair<QString, const Partition *>> PhysicalVolumes;
     typedef QList<Operation*> Operations;
 
 public:
@@ -75,10 +75,10 @@ public:
         return m_PreviewDevices;    /**< @return the list of Devices */
     }
 
-    PhysicalVolumes& physicalVolumes() {
+    QList<LvmPV>& physicalVolumes() {
         return m_LVMPhysicalVolumes;    /**< @return the list of LVM PVs */
     }
-    const PhysicalVolumes& physicalVolumes() const {
+    const QList<LvmPV>& physicalVolumes() const {
         return m_LVMPhysicalVolumes;    /**< @return the list of LVM PVs */
     }
 
@@ -110,7 +110,7 @@ protected:
 private:
     Operations m_Operations;
     mutable Devices m_PreviewDevices;
-    mutable PhysicalVolumes m_LVMPhysicalVolumes;
+    mutable QList<LvmPV> m_LVMPhysicalVolumes;
     QReadWriteLock m_Lock;
 };
 
