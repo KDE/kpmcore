@@ -43,7 +43,7 @@ public:
         return m_vgName;
     }
 
-    const Partition* partition() const {
+    QPointer<const Partition> partition() const {
         return m_p;
     }
 
@@ -53,7 +53,7 @@ public:
 
 private:
     QString m_vgName;
-    const Partition *m_p;
+    QPointer<const Partition> m_p;
     bool m_isLuks;
 };
 
