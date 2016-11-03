@@ -18,6 +18,7 @@
  *************************************************************************/
 
 #include "fs/luks.h"
+#include "fs/lvm2_pv.h"
 
 #include "fs/filesystemfactory.h"
 
@@ -274,6 +275,10 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     if (!m_isCryptOpen)
         return false;
 
+    for (auto &p : LVM::pvList) // FIXME: qAsConst
+        if (p.isLuks() && p.partition()->deviceNode() == deviceNode && p.partition()->fileSystem().type() == FileSystem::Lvm2_PV)
+            p.setLuks(false);
+
     m_passphrase = passphrase;
     return true;
 }
@@ -308,6 +313,10 @@ bool luks::cryptClose(const QString& deviceNode)
     setSectorsUsed(-1);
 
     m_isCryptOpen = (m_innerFs != nullptr);
+
+    for (auto &p : LVM::pvList) // FIXME: qAsConst
+        if (!p.isLuks() && p.partition()->deviceNode() == deviceNode)
+            p.setLuks(true);
 
     return true;
 }

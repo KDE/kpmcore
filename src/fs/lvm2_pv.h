@@ -51,6 +51,10 @@ public:
         return m_isLuks;
     }
 
+    void setLuks(bool luks) {
+        m_isLuks = luks;
+    }
+
 private:
     QString m_vgName;
     QPointer<const Partition> m_p;

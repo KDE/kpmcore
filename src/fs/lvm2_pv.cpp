@@ -268,6 +268,9 @@ QList<LvmPV> lvm2_pv::getPVinNode(const PartitionNode* parent)
         // FIXME: reenable newly created PVs (before applying) once everything works
         if(p->fileSystem().type() == FileSystem::Lvm2_PV && p->deviceNode() == p->partitionPath())
             partitions.append(LvmPV(p->mountPoint(), p));
+
+        if(p->fileSystem().type() == FileSystem::Luks && p->deviceNode() == p->partitionPath())
+            partitions.append(LvmPV(p->mountPoint(), p, true));
     }
 
     return partitions;
