@@ -66,7 +66,7 @@ void DeviceScanner::scan()
 
     const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
     const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM();
-    operationStack().physicalVolumes() = FS::lvm2_pv::getPVs(deviceList);
+    LVM::pvList = FS::lvm2_pv::getPVs(deviceList);
 
     for (const auto &d : deviceList)
         operationStack().addDevice(d);
@@ -75,12 +75,12 @@ void DeviceScanner::scan()
 
     for (const auto &d : lvmList) {
         operationStack().addDevice(d);
-        operationStack().physicalVolumes().append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
+        LVM::pvList.append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
     }
 
     // Store list of physical volumes in LvmDevice
     for (const auto &d : lvmList)
-        for (const auto &p : operationStack().physicalVolumes())
+        for (const auto &p : LVM::pvList) // FIXME: qAsConst
             if (p.vgName() == d->name())
                 d->physicalVolumes().append(p.partition());
 }

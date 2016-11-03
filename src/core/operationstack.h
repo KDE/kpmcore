@@ -19,7 +19,6 @@
 
 #define OPERATIONSTACK__H
 
-#include "fs/lvm2_pv.h"
 #include "util/libpartitionmanagerexport.h"
 
 #include <QObject>
@@ -75,13 +74,6 @@ public:
         return m_PreviewDevices;    /**< @return the list of Devices */
     }
 
-    QList<LvmPV>& physicalVolumes() {
-        return m_LVMPhysicalVolumes;    /**< @return the list of LVM PVs */
-    }
-    const QList<LvmPV>& physicalVolumes() const {
-        return m_LVMPhysicalVolumes;    /**< @return the list of LVM PVs */
-    }
-
     Operations& operations() {
         return m_Operations;    /**< @return the list of operations */
     }
@@ -110,7 +102,6 @@ protected:
 private:
     Operations m_Operations;
     mutable Devices m_PreviewDevices;
-    mutable QList<LvmPV> m_LVMPhysicalVolumes;
     QReadWriteLock m_Lock;
 };
 

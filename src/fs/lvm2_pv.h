@@ -57,6 +57,9 @@ private:
     bool m_isLuks;
 };
 
+namespace LVM {
+    extern LIBKPMCORE_EXPORT QList<LvmPV> pvList;
+}
 
 namespace FS
 {
