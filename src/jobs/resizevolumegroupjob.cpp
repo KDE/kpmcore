@@ -60,7 +60,7 @@ QString ResizeVolumeGroupJob::description() const
 {
     QString partitionList = QString();
     for (const auto &p : partList()) {
-        partitionList += QStringLiteral(", ") + p->deviceNode();
+        partitionList += p->deviceNode() + QStringLiteral(", ");
     }
     partitionList.chop(2);
     const qint32 count = partList().count();
