@@ -53,7 +53,7 @@ QString CreateVolumeGroupJob::description() const
 {
     QString tmp = QString();
     for (const auto &p : pvList()) {
-        tmp += QStringLiteral(", ") + p->deviceNode();
+        tmp += p->deviceNode() + QStringLiteral(", ");
     }
     tmp.chop(2);
     return xi18nc("@info/plain", "Create a new Volume Group: <filename>%1</filename> with PV: %2", vgName(), tmp);
