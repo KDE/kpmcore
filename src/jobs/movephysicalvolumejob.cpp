@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2016 by Chantara Tith <tith.chantara@gmail.com>        *
+ *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -62,7 +63,7 @@ QString MovePhysicalVolumeJob::description() const
 {
     QString movedPartitions = QString();
     for (const auto &p : partList())
-        movedPartitions += QStringLiteral(", ") + p->deviceNode();
+        movedPartitions += p->deviceNode() + QStringLiteral(", ");
     movedPartitions.chop(2);
     return xi18nc("@info/plain", "Move used PE in %1 on %2 to other available Physical Volumes", movedPartitions, device().name());
 }
