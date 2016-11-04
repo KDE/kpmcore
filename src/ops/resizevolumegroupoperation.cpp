@@ -133,7 +133,7 @@ bool ResizeVolumeGroupOperation::targets(const Partition& p) const
 
 void ResizeVolumeGroupOperation::preview()
 {
-    //asumming that targetSize is larger than the allocated space.
+    //assuming that targetSize is larger than the allocated space.
     device().setTotalLogical(targetSize() / device().logicalSize());
     device().partitionTable()->setFirstUsableSector(PartitionTable::defaultFirstUsable(device(), PartitionTable::vmd));
     device().partitionTable()->setLastUsableSector(PartitionTable::defaultLastUsable(device(), PartitionTable::vmd));
