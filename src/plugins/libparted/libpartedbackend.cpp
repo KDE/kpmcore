@@ -194,12 +194,14 @@ static qint64 readSectorsUsedLibParted(PedDisk* pedDisk, const Partition& p)
 */
 static void readSectorsUsed(PedDisk* pedDisk, const Device& d, Partition& p, const QString& mountPoint)
 {
-    const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
+    if (mountPoint != QString()) {
+        const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
-    if (p.isMounted() && freeSpaceInfo.isValid() && mountPoint != QString())
-        p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSize());
-    else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSize());
+        if (p.isMounted() && freeSpaceInfo.isValid() && mountPoint != QString())
+            p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSize());
+        else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
+            p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSize());
+    }
 #if defined LIBPARTED_FS_RESIZE_LIBRARY_SUPPORT
     else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportCore)
         p.fileSystem().setSectorsUsed(readSectorsUsedLibParted(pedDisk, p));

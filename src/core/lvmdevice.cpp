@@ -139,14 +139,14 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
         mountPoint = FileSystem::detectMountPoint(fs, lvPath);
         mounted = FileSystem::detectMountStatus(fs, lvPath);
 
-        const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-        if (logicalSize() > 0 && fs->type() != FileSystem::Luks) {
-            if (mounted && freeSpaceInfo.isValid() && mountPoint != QString()) {
-                fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
-            } else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem) {
-                fs->setSectorsUsed(qCeil(fs->readUsedCapacity(lvPath) / static_cast<float>(logicalSize())));
-            }
+        if (mountPoint != QString()) {
+            const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
+            if (logicalSize() > 0 && fs->type() != FileSystem::Luks)
+                if (mounted && freeSpaceInfo.isValid() && mountPoint != QString())
+                    fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
         }
+        else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
+            fs->setSectorsUsed(qCeil(fs->readUsedCapacity(lvPath) / static_cast<float>(logicalSize())));
    }
 
     if (fs->supportGetLabel() != FileSystem::cmdSupportNone) {
