@@ -436,6 +436,7 @@ bool LvmDevice::removeVG(Report& report, LvmDevice& d)
     bool deactivated = deactivateVG(report, d);
     ExternalCommand cmd(report, QStringLiteral("lvm"),
             { QStringLiteral("vgremove"),
+              QStringLiteral("--force"),
               d.name() });
     return (deactivated && cmd.run(-1) && cmd.exitCode() == 0);
 }
