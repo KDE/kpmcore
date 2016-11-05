@@ -38,7 +38,7 @@ RemoveVolumeGroupOperation::RemoveVolumeGroupOperation(VolumeManagerDevice& d) :
 
 QString RemoveVolumeGroupOperation::description() const
 {
-    return xi18nc("@info/plain", "Remove a new LVM volume group.");
+    return xi18nc("@info/plain", "Remove a LVM volume group.");
 }
 
 void RemoveVolumeGroupOperation::preview()
