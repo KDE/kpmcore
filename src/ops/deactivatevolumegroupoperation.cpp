@@ -47,16 +47,13 @@ QString DeactivateVolumeGroupOperation::description() const
 
 void DeactivateVolumeGroupOperation::preview()
 {
+    m_PartitionTable = device().partitionTable();
     device().setPartitionTable(new PartitionTable(PartitionTable::vmd, 0, device().totalLogical() - 1));
 }
 
 void DeactivateVolumeGroupOperation::undo()
 {
-    PartitionTable* tmp = device().partitionTable();
-    if (tmp != partitionTable()) {
-        device().setPartitionTable(partitionTable());
-        delete tmp;
-    }
+    device().setPartitionTable(m_PartitionTable);
 }
 
 /** loop through given device's partitions to check if any is mounted.

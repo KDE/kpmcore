@@ -25,6 +25,7 @@
 
 #include <QString>
 
+class PartitionTable;
 class RemoveVolumeGroupJob;
 class VolumeManagerDevice;
 class OperationStack;
@@ -67,6 +68,7 @@ protected:
 private:
     RemoveVolumeGroupJob* m_RemoveVolumeGroupJob;
     VolumeManagerDevice& m_Device;
+    PartitionTable* m_PartitionTable;
 };
 
 #endif

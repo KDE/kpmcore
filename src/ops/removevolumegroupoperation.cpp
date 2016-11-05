@@ -18,6 +18,7 @@
 #include "ops/removevolumegroupoperation.h"
 #include "jobs/removevolumegroupjob.h"
 
+#include "core/partitiontable.h"
 #include "core/volumemanagerdevice.h"
 
 #include <QString>
@@ -41,8 +42,11 @@ QString RemoveVolumeGroupOperation::description() const
 
 void RemoveVolumeGroupOperation::preview()
 {
+    m_PartitionTable = device().partitionTable();
+    device().setPartitionTable(new PartitionTable(PartitionTable::vmd, 0, device().totalLogical() - 1));
 }
 
 void RemoveVolumeGroupOperation::undo()
 {
+    device().setPartitionTable(m_PartitionTable);
 }

@@ -73,10 +73,6 @@ protected:
         return m_Device;
     }
 
-    PartitionTable* partitionTable() {
-        return m_PartitionTable;
-    }
-
 private:
     DeactivateVolumeGroupJob* m_DeactivateVolumeGroupJob;
     DeactivateLogicalVolumeJob* m_DeactivateLogicalVolumeJob;
