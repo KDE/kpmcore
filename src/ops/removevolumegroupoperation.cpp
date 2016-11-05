@@ -18,6 +18,7 @@
 #include "ops/removevolumegroupoperation.h"
 #include "jobs/removevolumegroupjob.h"
 
+#include "core/partition.h"
 #include "core/partitiontable.h"
 #include "core/volumemanagerdevice.h"
 
@@ -49,4 +50,25 @@ void RemoveVolumeGroupOperation::preview()
 void RemoveVolumeGroupOperation::undo()
 {
     device().setPartitionTable(m_PartitionTable);
+}
+
+/** Check if Volume Group can be safely removed
+ *
+ *  @param dev VolumeManagerDevice with initialized partitions
+ *  @return true if there are no LVM partitions.
+ */
+bool RemoveVolumeGroupOperation::isRemovable(const VolumeManagerDevice* dev)
+{
+    // TODO: allow removal when LVs are inactive.
+    if (dev->type() == Device::LVM_Device) {
+        if (dev->partitionTable()->children().count() == 0) // This is necessary to prevent a crash during applying of operations
+            return true;
+        else if (dev->partitionTable()->children().count() > 1)
+            return false;
+        else
+            if (dev->partitionTable()->children().first()->fileSystem().type() == FileSystem::Unknown)
+                return true;
+    }
+
+    return false;
 }

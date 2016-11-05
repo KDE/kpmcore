@@ -56,6 +56,8 @@ public:
     virtual void preview() override;
     virtual void undo() override;
 
+    static bool isRemovable(const VolumeManagerDevice* dev);
+
 protected:
     RemoveVolumeGroupJob* removeVolumeGroupJob() {
         return m_RemoveVolumeGroupJob;
