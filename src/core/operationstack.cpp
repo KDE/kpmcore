@@ -31,6 +31,7 @@
 #include "ops/setpartflagsoperation.h"
 #include "ops/setfilesystemlabeloperation.h"
 #include "ops/createpartitiontableoperation.h"
+#include "ops/resizevolumegroupoperation.h"
 #include "ops/checkoperation.h"
 
 #include "jobs/setfilesystemlabeljob.h"
@@ -395,6 +396,19 @@ bool OperationStack::mergeCreatePartitionTableOperation(Operation*& currentOp, O
     return false;
 }
 
+bool OperationStack::mergeResizeVolumeGroupResizeOperation(Operation*& pushedOp)
+{
+    ResizeVolumeGroupOperation* pushedResizeVolumeGroupOp = dynamic_cast<ResizeVolumeGroupOperation*>(pushedOp);
+
+    if (pushedResizeVolumeGroupOp && pushedResizeVolumeGroupOp->jobs().count() == 0) {
+        Log() << xi18nc("@info:status", "Resizing Volume Group, nothing to do.");
+
+        return true;
+    }
+
+    return false;
+}
+
 /** Pushes a new Operation on the OperationStack.
 
     This method will call all methods that try to merge the new Operation with the
@@ -407,6 +421,9 @@ bool OperationStack::mergeCreatePartitionTableOperation(Operation*& currentOp, O
 void OperationStack::push(Operation* o)
 {
     Q_ASSERT(o);
+
+    if (mergeResizeVolumeGroupResizeOperation(o))
+        return;
 
     for (auto currentOp = operations().rbegin(); currentOp != operations().rend(); ++currentOp) {
         if (mergeNewOperation(*currentOp, o))

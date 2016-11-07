@@ -98,6 +98,7 @@ protected:
     bool mergePartFlagsOperation(Operation*& currentOp, Operation*& pushedOp);
     bool mergePartLabelOperation(Operation*& currentOp, Operation*& pushedOp);
     bool mergeCreatePartitionTableOperation(Operation*& currentOp, Operation*& pushedOp);
+    bool mergeResizeVolumeGroupResizeOperation(Operation*& pushedOp);
 
 private:
     Operations m_Operations;
