@@ -176,6 +176,9 @@ QString Partition::deviceNode() const
 /** @return the sectors used in the Partition's FileSystem or, in case of an extended partition, the sum of used sectors of the Partition's children */
 qint64 Partition::sectorsUsed() const
 {
+    if (m_FileSystem == nullptr)
+        return -1;
+
     if (!roles().has(PartitionRole::Extended))
         return fileSystem().sectorsUsed();
 
