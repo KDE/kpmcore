@@ -176,6 +176,7 @@ QString Partition::deviceNode() const
 /** @return the sectors used in the Partition's FileSystem or, in case of an extended partition, the sum of used sectors of the Partition's children */
 qint64 Partition::sectorsUsed() const
 {
+    // Make sure file system exists. In some cases (due to bugs elsewhere?) file system pointer did not exist, especially for unallocated space.
     if (m_FileSystem == nullptr)
         return -1;
 
