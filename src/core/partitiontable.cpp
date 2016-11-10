@@ -317,6 +317,10 @@ Partition* createUnallocated(const Device& device, PartitionNode& parent, qint64
     if (!parent.isRoot())
         r |= PartitionRole::Logical;
 
+    // Mark unallocated space in LVM VG as LVM LV so that pasting can be easily disabled (it does not work yet)
+    if (device.type() == Device::LVM_Device)
+        r |= PartitionRole::Lvm_Lv;
+
     if (!PartitionTable::getUnallocatedRange(device, parent, start, end))
         return nullptr;
 

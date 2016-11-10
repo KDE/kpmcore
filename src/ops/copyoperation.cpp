@@ -314,6 +314,9 @@ bool CopyOperation::canPaste(const Partition* p, const Partition* source)
     if (p->roles().has(PartitionRole::Extended))
         return false;
 
+    if (p->roles().has(PartitionRole::Lvm_Lv))
+        return false;
+
     if (p == source)
         return false;
 
