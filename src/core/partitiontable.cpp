@@ -375,14 +375,14 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
     qint64 lastEnd = start;
 
     if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
-        // rearranging all the partitions sector to keep all the unallocated space at the end
+        // rearranging the sectors of all partitions to keep unallocated space at the end
         lastEnd = 0;
         for (const auto &child : children()) {
-            qint64 totalSector = child->length();
+            qint64 totalSectors = child->length();
             child->setFirstSector(lastEnd);
-            child->setLastSector(lastEnd + totalSector - 1);
+            child->setLastSector(lastEnd + totalSectors - 1);
 
-            lastEnd += totalSector;
+            lastEnd += totalSectors;
         }
     } else {
         const auto pChildren = p->children();
