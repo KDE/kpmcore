@@ -287,6 +287,10 @@ bool CopyOperation::canCopy(const Partition* p)
     if (p->isMounted())
         return false;
 
+    // FIXME: Does not work well enough yet
+    if (p->roles().has(PartitionRole::Lvm_Lv))
+        return false;
+
     // Normally, copying partitions that have not been written to disk yet should
     // be forbidden here. The operation stack, however, will take care of these
     // problematic cases when pushing the CopyOperation onto the stack.
