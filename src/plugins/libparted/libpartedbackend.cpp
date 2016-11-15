@@ -197,7 +197,8 @@ static void readSectorsUsed(PedDisk* pedDisk, const Device& d, Partition& p, con
     if (mountPoint != QString()) {
         const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
-        if (p.isMounted() && freeSpaceInfo.isValid() && mountPoint != QString())
+        // KDiskFreeSpaceInfo does not work with swap
+        if (p.isMounted() && freeSpaceInfo.isValid() && mountPoint != QString() && p.fileSystem().type() != FileSystem::LinuxSwap)
             p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSize());
         else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
             p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSize());
