@@ -512,9 +512,19 @@ QString luks::readUUID(const QString& deviceNode) const
 
 QString luks::readOuterUUID(const QString &deviceNode) const
 {
+    if ( deviceNode.isEmpty() )
+        return QString();
+
     ExternalCommand cmd(QStringLiteral("cryptsetup"),
                         { QStringLiteral("luksUUID"), deviceNode });
     if (cmd.run()) {
+        if ( cmd.exitCode() )
+        {
+            qWarning() << "Cannot get luksUUID for device" << deviceNode
+                       << "\tcryptsetup exit code" << cmd.exitCode()
+                       << "\toutput:" << cmd.output().trimmed();
+            return QString();
+        }
         return cmd.output().trimmed();
     }
     return QStringLiteral("---");
