@@ -92,7 +92,7 @@ KAboutData aboutKPMcore()
                           KAboutLicense::GPL_V3, xi18nc("@info:credit", "&copy; 2008-2016 KPMcore developers" ) );
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.setProductName(QByteArray("kpmcore"));
-    aboutData.setHomepage(QStringLiteral("https://quickgit.kde.org/?p=kpmcore.git"));
+    aboutData.setHomepage(QStringLiteral("https://commits.kde.org/kpmcore"));
 
     aboutData.addAuthor(xi18nc("@info:credit", "Volker Lanz"), xi18nc("@info:credit", "Former maintainer"));
     aboutData.addAuthor(xi18nc("@info:credit", "Andrius Štikonas"), xi18nc("@info:credit", "Maintainer"), QStringLiteral("andrius@stikonas.eu"));
