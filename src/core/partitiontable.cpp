@@ -554,11 +554,6 @@ void PartitionTable::setType(const Device& d, TableType t)
     updateUnallocated(d);
 }
 
-static bool isPartitionLessThan(const Partition* p1, const Partition* p2)
-{
-    return p1->number() < p2->number();
-}
-
 QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 {
     stream << "type: \"" << ptable.typeName() << "\"\n"
@@ -579,7 +574,7 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
         }
     }
 
-    qSort(partitions.begin(), partitions.end(), isPartitionLessThan);
+    qSort(partitions.begin(), partitions.end(), [](const Partition* p1, const Partition* p2) { return p1->number() < p2->number(); });
 
     foreach(const auto &p, partitions)
         stream << *p;
