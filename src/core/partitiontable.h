@@ -161,7 +161,7 @@ public:
     }
 
     void updateUnallocated(const Device& d);
-    void insertUnallocated(const Device& d, PartitionNode* p, qint64 start) const;
+    void insertUnallocated(const Device& d, PartitionNode* p, qint64 start);
 
     bool isSectorBased(const Device& d) const;
 
