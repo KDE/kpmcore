@@ -415,7 +415,7 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
     // linux.git/tree/Documentation/devices.txt
     QString blockDeviceMajorNumbers = QStringLiteral(
         "3,22,33,34,56,57,88,89,90,91,128,129,130,131,132,133,134,135," // MFM, RLL and IDE hard disk/CD-ROM interface
-        "7," // loop devices
+        // "7," // loop devices TODO: add another bool option for loopDevices
         "8,65,66,67,68,69,70,71," // SCSI disk devices
         "80,81,82,83,84,85,86,87," // I2O hard disk
         "179," // MMC block devices
