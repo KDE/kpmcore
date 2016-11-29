@@ -27,8 +27,6 @@
 
 #include <KLocalizedString>
 
-#include <unistd.h>
-
 namespace FS
 {
 FileSystem::CommandSupportType jfs::m_GetUsed = FileSystem::cmdSupportNone;

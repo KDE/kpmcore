@@ -25,7 +25,6 @@
 #include <KLocalizedString>
 
 #include <sys/utsname.h>
-#include <unistd.h>
 
 /** Creates a new Report instance.
     @param p pointer to the parent instance. May be nullptr ig this is a new root Report.

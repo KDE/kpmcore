@@ -26,8 +26,6 @@
 
 #include "util/report.h"
 
-#include <unistd.h>
-
 DummyPartitionTable::DummyPartitionTable() :
     CoreBackendPartitionTable()
 {

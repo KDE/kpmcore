@@ -32,7 +32,6 @@
 #include <kio_version.h>
 
 #include <sys/utsname.h>
-#include <unistd.h>
 
 QString HtmlReport::tableLine(const QString& label, const QString contents)
 {

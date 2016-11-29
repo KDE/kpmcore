@@ -29,8 +29,6 @@
 
 #include <KLocalizedString>
 
-#include <unistd.h>
-
 namespace FS
 {
 FileSystem::CommandSupportType xfs::m_GetUsed = FileSystem::cmdSupportNone;

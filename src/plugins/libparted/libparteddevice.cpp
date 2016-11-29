@@ -26,8 +26,6 @@
 
 #include <KLocalizedString>
 
-#include <unistd.h>
-
 LibPartedDevice::LibPartedDevice(const QString& deviceNode) :
     CoreBackendDevice(deviceNode),
     m_PedDevice(nullptr)

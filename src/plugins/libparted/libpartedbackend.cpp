@@ -53,7 +53,6 @@
 #include <KPluginFactory>
 
 #include <parted/parted.h>
-#include <unistd.h>
 
 K_PLUGIN_FACTORY_WITH_JSON(LibPartedBackendFactory, "pmlibpartedbackendplugin.json", registerPlugin<LibPartedBackend>();)
 
