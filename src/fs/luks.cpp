@@ -525,7 +525,9 @@ QString luks::readOuterUUID(const QString &deviceNode) const
                        << "\toutput:" << cmd.output().trimmed();
             return QString();
         }
-        return cmd.output().trimmed();
+        QString outerUuid = cmd.output().trimmed();
+        const_cast< QString& >( m_outerUuid ) = outerUuid;
+        return outerUuid;
     }
     return QStringLiteral("---");
 }
@@ -609,6 +611,11 @@ void luks::getLuksInfo(const QString& deviceNode)
         m_KeySize = -1;
         m_PayloadOffset = -1;
     }
+}
+
+QString luks::outerUuid() const
+{
+    return m_outerUuid;
 }
 
 bool luks::canEncryptType(FileSystem::Type type)

@@ -171,13 +171,14 @@ public:
     void getLuksInfo(const QString& deviceNode);
 
     FileSystem* innerFS() const { return m_innerFs; }; // avoid calling this unless necessary
+    QString outerUuid() const;
 
-    QString mapperName() const { return m_MapperName; };
-    QString cipherName() const { return m_CipherName; };
-    QString cipherMode() const { return m_CipherMode; };
-    QString hashName() const { return m_HashName; };
-    qint64 keySize() const { return m_KeySize; };
-    qint64 payloadOffset() const { return m_PayloadOffset; };
+    QString mapperName() const { return m_MapperName; }
+    QString cipherName() const { return m_CipherName; }
+    QString cipherMode() const { return m_CipherMode; }
+    QString hashName() const { return m_HashName; }
+    qint64 keySize() const { return m_KeySize; }
+    qint64 payloadOffset() const { return m_PayloadOffset; }
 
     static bool canEncryptType(FileSystem::Type type);
     static void initLUKS(FileSystem* fs);
@@ -214,6 +215,7 @@ private:
     QString m_HashName;
     qint64 m_KeySize;
     qint64 m_PayloadOffset;
+    QString m_outerUuid;
 };
 }
 
