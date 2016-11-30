@@ -505,9 +505,10 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
 
 QString luks::readUUID(const QString& deviceNode) const
 {
+    QString outerUuid = readOuterUUID(deviceNode);
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->readUUID(mapperName());
-    return readOuterUUID(deviceNode);
+    return outerUuid;
 }
 
 QString luks::readOuterUUID(const QString &deviceNode) const
