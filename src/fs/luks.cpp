@@ -642,17 +642,14 @@ bool luks::canEncryptType(FileSystem::Type type)
     }
 }
 
-void luks::initLUKS(FileSystem* fs)
+void luks::initLUKS()
 {
-    if (fs->type() == FileSystem::Luks) {
-        FS::luks* luksFS = static_cast<FS::luks*>(fs);
-        QString mapperNode = luksFS->mapperName();
-        bool isCryptOpen = !mapperNode.isEmpty();
-        luksFS->setCryptOpen(isCryptOpen);
-        if (isCryptOpen) {
-            luksFS->loadInnerFileSystem(mapperNode);
-            luksFS->setMounted(detectMountStatus(luksFS->innerFS(), mapperNode));
-        }
+    QString mapperNode = mapperName();
+    bool isCryptOpen = !mapperNode.isEmpty();
+    setCryptOpen(isCryptOpen);
+    if (isCryptOpen) {
+        loadInnerFileSystem(mapperNode);
+        setMounted(detectMountStatus(innerFS(), mapperNode));
     }
 }
 

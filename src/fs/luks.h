@@ -181,7 +181,7 @@ public:
     qint64 payloadOffset() const { return m_PayloadOffset; }
 
     static bool canEncryptType(FileSystem::Type type);
-    static void initLUKS(FileSystem* fs);
+    void initLUKS();
 
 protected:
     virtual QString readOuterUUID(const QString& deviceNode) const;
