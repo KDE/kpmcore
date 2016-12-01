@@ -116,7 +116,7 @@ public:
     Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = StateNone);
     ~Partition();
 
-    Partition(const Partition&);
+    Partition(const Partition& other, PartitionNode* parent = nullptr);
     Partition& operator=(const Partition&);
 
     bool operator==(const Partition& other) const;

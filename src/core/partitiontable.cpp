@@ -63,7 +63,7 @@ PartitionTable::PartitionTable(const PartitionTable& other)
     for (Partitions::const_iterator it = other.m_Children.constBegin();
          it != other.m_Children.constEnd(); ++it)
     {
-        m_Children.append(new Partition(**it));
+        m_Children.append(new Partition(**it, this));
     }
 }
 

@@ -90,7 +90,7 @@ Partition::~Partition()
 
 /** @param other Partition to copy
 */
-Partition::Partition(const Partition& other) :
+Partition::Partition(const Partition& other, PartitionNode* parent) :
     PartitionNode(),
     m_Children(),
     m_Parent(other.m_Parent),
@@ -106,10 +106,12 @@ Partition::Partition(const Partition& other) :
     m_SectorSize(other.m_SectorSize),
     m_State(other.m_State)
 {
+    if ( parent )
+        m_Parent = parent;
+
     setPartitionPath(other.m_PartitionPath);
     for (const auto &child : other.children()) {
-        Partition* p = new Partition(*child);
-        p->setParent(this);
+        Partition* p = new Partition(*child, this);
         m_Children.append(p);
     }
 }
