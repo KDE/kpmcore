@@ -139,7 +139,7 @@ bool fat16::writeLabel(Report& report, const QString& deviceNode, const QString&
 
 bool fat16::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.msdos"), { QStringLiteral("-a"), QStringLiteral("-w"), QStringLiteral("-v"), deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("fsck.fat"), { QStringLiteral("-a"), QStringLiteral("-w"), QStringLiteral("-v"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
