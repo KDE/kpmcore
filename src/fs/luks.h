@@ -133,6 +133,7 @@ public:
     QString readUUID(const QString& deviceNode) const override;
     bool updateUUID(Report& report, const QString& deviceNode) const override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     QString readLabel(const QString& deviceNode) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 

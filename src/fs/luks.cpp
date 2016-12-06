@@ -503,6 +503,12 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     return false;
 }
 
+bool luks::resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const
+{
+    Q_UNUSED(mountPoint)
+    return resize(report, deviceNode, length);
+}
+
 QString luks::readUUID(const QString& deviceNode) const
 {
     QString outerUuid = readOuterUUID(deviceNode);
