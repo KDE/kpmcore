@@ -31,7 +31,8 @@
 RemoveVolumeGroupOperation::RemoveVolumeGroupOperation(VolumeManagerDevice& d) :
     Operation(),
     m_RemoveVolumeGroupJob(new RemoveVolumeGroupJob(d)),
-    m_Device(d)
+    m_Device(d),
+    m_PartitionTable(nullptr)
 {
     addJob(removeVolumeGroupJob());
 }
