@@ -62,6 +62,8 @@ luks::luks(qint64 firstsector,
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)
     , m_isMounted(false)
+    , m_KeySize(-1)
+    , m_PayloadOffset(-1)
 {
 }
 
