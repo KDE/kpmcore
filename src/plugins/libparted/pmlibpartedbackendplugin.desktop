@@ -2,7 +2,6 @@
 Encoding=UTF-8
 Name=KDE Partition Manager LibParted Backend
 Name[ar]=سند LibParted لمدير كدي للأقسام
-Name[ast]=Backend LibParted del xestor de ficheros de KDE
 Name[bg]=Ядро LibParted за управление на дялове в KDE
 Name[bs]=LibParted pozadina  za KDE‑ov menadžer particija
 Name[ca]=Dorsal pel LibParted del gestor de particions del KDE
@@ -47,7 +46,6 @@ Name[zh_CN]=KDE 分区管理器 LibParted 后端
 Name[zh_TW]=KDE 磁碟分割區管理員 LibParted 後端介面
 Comment=The LibParted backend for KDE Partition Manager
 Comment[ar]=سند LibParted لمدير كدي للأقسام
-Comment[ast]=El backend de LibParted pal xestor de particiones de KDE
 Comment[bg]=Ядро LibParted за управление на дялове в KDE
 Comment[bs]=Pozadina Libparteda za KDE‑ov menadžer particija
 Comment[ca]=Un dorsal pel LibParted del gestor de particions del KDE
