@@ -104,10 +104,12 @@ void PartResizerWidget::init(Device& d, Partition& p, qint64 minFirst, qint64 ma
         opt.rect = pixmap.rect().adjusted(0, 2, 0, -2);
         style()->drawControl(QStyle::CE_Splitter, &opt, &p, this);
 
-        leftHandle().setPixmap(pixmap);
+        if (moveAllowed())
+            leftHandle().setPixmap(pixmap);
         rightHandle().setPixmap(pixmap);
 
-        leftHandle().setFixedSize(handleWidth(), handleHeight());
+        if (moveAllowed())
+            leftHandle().setFixedSize(handleWidth(), handleHeight());
         rightHandle().setFixedSize(handleWidth(), handleHeight());
     }
 
