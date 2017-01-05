@@ -1,6 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
- *  Copyright (C) 2013 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2013-2017 by Andrius Štikonas <andrius@stikonas.eu>    *
  *  Copyright (C) 2015-2016 by Teo Mrnjavac <teo@kde.org>                *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
@@ -389,7 +389,7 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
             m_isMounted = true;
 
             const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-            if (freeSpaceInfo.isValid() && mountPoint != QString())
+            if (freeSpaceInfo.isValid() && !mountPoint.isEmpty())
                 setSectorsUsed((freeSpaceInfo.used() + payloadOffset()) / m_logicalSectorSize);
 
             return true;

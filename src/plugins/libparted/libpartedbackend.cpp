@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2008-2012 by Volker Lanz <vl@fidra.de>                 *
  *  Copyright (C) 2015-2016 by Teo Mrnjavac <teo@kde.org>                *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2017 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -193,15 +193,15 @@ static qint64 readSectorsUsedLibParted(PedDisk* pedDisk, const Partition& p)
 */
 static void readSectorsUsed(PedDisk* pedDisk, const Device& d, Partition& p, const QString& mountPoint)
 {
-    if (mountPoint != QString()) {
+    if (!mountPoint.isEmpty()) {
         const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
         // KDiskFreeSpaceInfo does not work with swap
-        if (p.isMounted() && freeSpaceInfo.isValid() && mountPoint != QString() && p.fileSystem().type() != FileSystem::LinuxSwap)
+        if (p.isMounted() && freeSpaceInfo.isValid() && p.fileSystem().type() != FileSystem::LinuxSwap)
             p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSize());
-        else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
-            p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSize());
     }
+    else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
+        p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSize());
 #if defined LIBPARTED_FS_RESIZE_LIBRARY_SUPPORT
     else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportCore)
         p.fileSystem().setSectorsUsed(readSectorsUsedLibParted(pedDisk, p));
