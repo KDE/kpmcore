@@ -61,7 +61,6 @@ find_package(KF5 REQUIRED
 
 # use sane compile flags
 add_definitions(
-  -fexceptions
   -DQT_USE_QSTRINGBUILDER
   -DQT_NO_CAST_TO_ASCII
   -DQT_NO_CAST_FROM_ASCII
@@ -71,6 +70,8 @@ add_definitions(
   -DQT_NO_SIGNALS_SLOTS_KEYWORDS
   -DQT_USE_FAST_OPERATOR_PLUS
 )
+kde_enable_exceptions()
+
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(BLKID REQUIRED blkid>=2.23)
