@@ -132,7 +132,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     if (fs->type() == FileSystem::Luks) {
         r |= PartitionRole::Luks;
         FS::luks* luksFs = static_cast<FS::luks*>(fs);
-        luksFs->initLUKS();
+        luksFs->initLUKS(logicalSize());
 
         QString mapperNode = luksFs->mapperName();
         mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
