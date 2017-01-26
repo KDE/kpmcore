@@ -193,11 +193,11 @@ static qint64 readSectorsUsedLibParted(PedDisk* pedDisk, const Partition& p)
 */
 static void readSectorsUsed(PedDisk* pedDisk, const Device& d, Partition& p, const QString& mountPoint)
 {
-    if (!mountPoint.isEmpty()) {
+    if (!mountPoint.isEmpty() && p.fileSystem().type() != FileSystem::LinuxSwap && p.fileSystem().type() != FileSystem::Lvm2_PV) {
         const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
 
         // KDiskFreeSpaceInfo does not work with swap
-        if (p.isMounted() && freeSpaceInfo.isValid() && p.fileSystem().type() != FileSystem::LinuxSwap)
+        if (p.isMounted() && freeSpaceInfo.isValid())
             p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSize());
     }
     else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
