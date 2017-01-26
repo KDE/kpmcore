@@ -32,6 +32,7 @@
 #include <QPointer>
 #include <QRegularExpression>
 #include <QString>
+#include <QtMath>
 #include <QUuid>
 
 #include <KDiskFreeSpaceInfo>
@@ -333,7 +334,7 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        setSectorsUsed((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / m_logicalSectorSize );
+        setSectorsUsed(qCeil((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / static_cast<float>(m_logicalSectorSize) ));
     m_innerFs->scan(mapperNode);
 }
 
