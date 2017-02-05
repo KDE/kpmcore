@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=KDE Partition Manager Dummy Backend
-Name[ar]=سند مدير كدي للأقسام دمية
+Name[ar]=سند دمية ل‍«مدير كدي للأقسام»
 Name[ast]=Backend maniquín del xestor KDE de particiones
 Name[bg]=Празно ядро за управление на дялове в KDE
 Name[bs]=Prazna pozadina za KDE‑ov menadžer particija
@@ -46,7 +46,7 @@ Name[x-test]=xxKDE Partition Manager Dummy Backendxx
 Name[zh_CN]=KDE 分区管理器虚拟后端
 Name[zh_TW]=KDE 磁碟分割區管理員空白後端介面
 Comment=A KDE Partition Manager dummy backend for testing purposes.
-Comment[ar]=سند مدير كدي للأقسام دمية لأغراض اختباريّة.
+Comment[ar]=سند دمية ل‍«مدير كدي للأقسام» لأغراض اختباريّة.
 Comment[ast]=Un backend maniquín del xestor KDE de particiones pa propósitos de pruebes.
 Comment[bg]=Празно тестово ядро за управление на дялове в KDE
 Comment[bs]=Lažna pozadina za KDE‑ov menadžer particija, za probne namjene.
