@@ -104,9 +104,9 @@ qint64 lvm2_pv::maxCapacity() const
 
 qint64 lvm2_pv::readUsedCapacity(const QString& deviceNode) const
 {
-    QString val = getpvField(QStringLiteral("pv_used"), deviceNode);
+    QString pvUsed = getpvField(QStringLiteral("pv_used"), deviceNode);
     QString metadataOffset = getpvField(QStringLiteral("pe_start"), deviceNode);
-    return val.isEmpty() ? -1 : val.toLongLong() + metadataOffset.toLongLong();
+    return pvUsed.isEmpty() ? -1 : pvUsed.toLongLong() + metadataOffset.toLongLong();
 }
 
 bool lvm2_pv::check(Report& report, const QString& deviceNode) const
@@ -206,20 +206,20 @@ bool lvm2_pv::canUnmount(const QString& deviceNode) const
 
 qint64 lvm2_pv::getTotalPE(const QString& deviceNode)
 {
-    QString val = getpvField(QStringLiteral("pv_pe_count"), deviceNode);
-    return val.isEmpty() ? -1 : val.toLongLong();
+    QString pvPeCount = getpvField(QStringLiteral("pv_pe_count"), deviceNode);
+    return pvPeCount.isEmpty() ? -1 : pvPeCount.toLongLong();
 }
 
 qint64 lvm2_pv::getAllocatedPE(const QString& deviceNode)
 {
-    QString val = getpvField(QStringLiteral("pv_pe_alloc_count"), deviceNode);
-    return val.isEmpty() ? -1 : val.toLongLong();
+    QString pvPeAllocCount = getpvField(QStringLiteral("pv_pe_alloc_count"), deviceNode);
+    return pvPeAllocCount.isEmpty() ? -1 : pvPeAllocCount.toLongLong();
 }
 
 void lvm2_pv::getPESize(const QString& deviceNode)
 {
-    QString val = getpvField(QStringLiteral("vg_extent_size"), deviceNode);
-    m_PESize = val.isEmpty() ? -1 : val.toLongLong();
+    QString vgExtentSize = getpvField(QStringLiteral("vg_extent_size"), deviceNode);
+    m_PESize = vgExtentSize.isEmpty() ? -1 : vgExtentSize.toLongLong();
 }
 
 /** Get pvs command output with field name
