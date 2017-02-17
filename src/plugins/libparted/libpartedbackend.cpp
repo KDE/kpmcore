@@ -419,6 +419,7 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
         "8,65,66,67,68,69,70,71," // SCSI disk devices
         "80,81,82,83,84,85,86,87," // I2O hard disk
         "179," // MMC block devices
+        "253," // Virtio KVM devices (e.g. /dev/vda)
         "259" // Block Extended Major (include NVMe)
     );
     ExternalCommand cmd(QStringLiteral("lsblk"), {
