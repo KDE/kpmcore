@@ -441,7 +441,10 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
             }
 
             emitScanProgress(devices[i], i * 100 / totalDevices);
-            result.append(scanDevice(devices[i]));
+            Device* device = scanDevice(devices[i]);
+            if(device != nullptr) {
+                result.append(device);
+            }
         }
     }
 
