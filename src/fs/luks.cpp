@@ -562,13 +562,12 @@ void luks::getMapperName(const QString& deviceNode)
                         { QStringLiteral("--list"),
                           QStringLiteral("--noheadings"),
                           QStringLiteral("--output"),
-                          QStringLiteral("name"),
+                          QStringLiteral("type,name"),
                           deviceNode });
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QStringList output=cmd.output().split(QStringLiteral("\n"));
-        output.removeFirst();
-        if (!output.first().isEmpty())
-            m_MapperName = QStringLiteral("/dev/mapper/") + output.first();
+        QStringList output=cmd.output().split(QStringLiteral("\n")).filter(QRegularExpression(QStringLiteral("^crypt ")));
+        if (!output.isEmpty() && !output.first().isEmpty())
+            m_MapperName = QStringLiteral("/dev/mapper/") + output.first().split(QStringLiteral(" ")).last();
     }
     else
         m_MapperName = QString();
