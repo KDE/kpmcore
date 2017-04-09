@@ -48,8 +48,14 @@ bool SetFileSystemLabelJob::run(Report& parent)
     // we don't have to check for support to avoid having a failed job.
     if (partition().fileSystem().supportSetLabel() == FileSystem::cmdSupportNone)
         report->line() << xi18nc("@info:progress", "File system on partition <filename>%1</filename> does not support setting labels. Job ignored.", partition().deviceNode());
-    else if (partition().fileSystem().supportSetLabel() == FileSystem::cmdSupportFileSystem) {
+    else if (partition().fileSystem().supportSetLabel() == FileSystem::cmdSupportFileSystem && !partition().isMounted()) {
         rval = partition().fileSystem().writeLabel(*report, partition().deviceNode(), label());
+
+        if (rval)
+            partition().fileSystem().setLabel(label());
+    }
+    else if (partition().fileSystem().supportSetLabelOnline() == FileSystem::cmdSupportFileSystem && partition().isMounted()) {
+        rval = partition().fileSystem().writeLabelOnline(*report, partition().deviceNode(), partition().mountPoint(), label());
 
         if (rval)
             partition().fileSystem().setLabel(label());

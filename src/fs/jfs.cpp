@@ -138,6 +138,12 @@ bool jfs::writeLabel(Report& report, const QString& deviceNode, const QString& n
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
+bool jfs::writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel)
+{
+    Q_UNUSED(mountPoint)
+    return writeLabel(report, deviceNode, newLabel);
+}
+
 bool jfs::check(Report& report, const QString& deviceNode) const
 {
     ExternalCommand cmd(report, QStringLiteral("fsck.jfs"), { QStringLiteral("-f"), deviceNode });

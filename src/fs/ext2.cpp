@@ -151,6 +151,12 @@ bool ext2::writeLabel(Report& report, const QString& deviceNode, const QString& 
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
+bool ext2::writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel)
+{
+    Q_UNUSED(mountPoint)
+    return writeLabel(report, deviceNode, newLabel);
+}
+
 bool ext2::updateUUID(Report& report, const QString& deviceNode) const
 {
     ExternalCommand cmd(report, QStringLiteral("tune2fs"), { QStringLiteral("-U"), QStringLiteral("random"), deviceNode });

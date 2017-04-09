@@ -182,6 +182,13 @@ bool btrfs::writeLabel(Report& report, const QString& deviceNode, const QString&
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
+bool btrfs::writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel)
+{
+    Q_UNUSED(deviceNode)
+    ExternalCommand cmd(report, QStringLiteral("btrfs"), { QStringLiteral("filesystem"), QStringLiteral("label"), mountPoint, newLabel });
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
 bool btrfs::updateUUID(Report& report, const QString& deviceNode) const
 {
     Q_UNUSED(report);

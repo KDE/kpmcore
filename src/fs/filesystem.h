@@ -116,6 +116,7 @@ public:
     virtual bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 newLength) const;
     virtual bool move(Report& report, const QString& deviceNode, qint64 newStartSector) const;
     virtual bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel);
+    virtual bool writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel);
     virtual bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const;
     virtual bool backup(Report& report, const Device& sourceDevice, const QString& deviceNode, const QString& filename) const;
     virtual bool remove(Report& report, const QString& deviceNode) const;

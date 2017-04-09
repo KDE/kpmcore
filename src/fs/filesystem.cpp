@@ -242,6 +242,23 @@ bool FileSystem::writeLabel(Report& report, const QString& deviceNode, const QSt
     return true;
 }
 
+/** Writes a label for the FileSystem to disk
+    @param report Report to write status information to
+    @param deviceNode the device node for the Partition the FileSystem is on
+    @param mountPoint the mount point where FileSystem is mounted on
+    @param newLabel the new label for the FileSystem
+    @return true on success
+*/
+bool FileSystem::writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel)
+{
+    Q_UNUSED(report);
+    Q_UNUSED(deviceNode);
+    Q_UNUSED(mountPoint);
+    Q_UNUSED(newLabel);
+
+    return true;
+}
+
 /** Copies a FileSystem from one Partition to another
     @param report Report to write status information to
     @param targetDeviceNode device node of the target Partition
