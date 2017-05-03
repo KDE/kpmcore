@@ -561,7 +561,7 @@ void OperationStack::sortDevices()
 {
     QWriteLocker lockDevices(&lock());
 
-    qSort(previewDevices().begin(), previewDevices().end(), deviceLessThan);
+    std::sort(previewDevices().begin(), previewDevices().end(), deviceLessThan);
 
     emit devicesChanged();
 }

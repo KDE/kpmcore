@@ -381,7 +381,7 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
     if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
         // rearranging the sectors of all partitions to keep unallocated space at the end
         lastEnd = 0;
-        qSort(children().begin(), children().end(), [](const Partition* p1, const Partition* p2) { return p1->deviceNode() < p2->deviceNode(); });
+        std::sort(children().begin(), children().end(), [](const Partition* p1, const Partition* p2) { return p1->deviceNode() < p2->deviceNode(); });
         for (const auto &child : children()) {
             qint64 totalSectors = child->length();
             child->setFirstSector(lastEnd);
@@ -574,7 +574,7 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
         }
     }
 
-    qSort(partitions.begin(), partitions.end(), [](const Partition* p1, const Partition* p2) { return p1->number() < p2->number(); });
+    std::sort(partitions.begin(), partitions.end(), [](const Partition* p1, const Partition* p2) { return p1->number() < p2->number(); });
 
     foreach(const auto &p, partitions)
         stream << *p;
