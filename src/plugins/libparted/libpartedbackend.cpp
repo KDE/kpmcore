@@ -374,7 +374,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
     if (d.partitionTable()->isSectorBased(d))
         d.partitionTable()->setType(d, PartitionTable::msdos_sectorbased);
 
-    foreach(const Partition * part, partitions)
+    for (const Partition * part : qAsConst(partitions))
         PartitionAlignment::isAligned(d, *part);
 }
 

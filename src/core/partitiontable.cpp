@@ -566,17 +566,19 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
         if (!p->roles().has(PartitionRole::Unallocated)) {
             partitions.append(p);
 
-            if (p->roles().has(PartitionRole::Extended))
-                for (const auto &child : p->children()) {
+            if (p->roles().has(PartitionRole::Extended)) {
+                const auto partChildren = p->children();
+                for (const auto &child : partChildren) {
                     if (!child->roles().has(PartitionRole::Unallocated))
                         partitions.append(child);
                 }
+            }
         }
     }
 
     std::sort(partitions.begin(), partitions.end(), [](const Partition* p1, const Partition* p2) { return p1->number() < p2->number(); });
 
-    foreach(const auto &p, partitions)
+    for (const auto &p : qAsConst(partitions))
         stream << *p;
 
     return stream;
