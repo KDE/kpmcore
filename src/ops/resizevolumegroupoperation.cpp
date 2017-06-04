@@ -66,20 +66,20 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QList
         currentFreePE += lvm2PVFs->freePE();
     }
     qint64 removedFreePE = 0;
-    for (const auto &p : toRemoveList) { // FIXME: qAsConst
+    for (const auto &p : qAsConst(toRemoveList)) {
         FS::lvm2_pv *lvm2PVFs;
         innerFS(p, lvm2PVFs);
         removedFreePE += lvm2PVFs->freePE();
     }
     qint64 freePE = currentFreePE - removedFreePE;
     qint64 movePE = 0;
-    for (const auto &p : toRemoveList) { // FIXME: qAsConst
+    for (const auto &p : qAsConst(toRemoveList)) {
         FS::lvm2_pv *lvm2PVFs;
         innerFS(p, lvm2PVFs);
         movePE += lvm2PVFs->allocatedPE();
     }
     qint64 growPE = 0;
-    for (const auto &p : toInsertList) { // FIXME: qAsConst
+    for (const auto &p : qAsConst(toInsertList)) {
         growPE += p->capacity() / device().peSize();
     }
 

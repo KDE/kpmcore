@@ -80,7 +80,7 @@ void DeviceScanner::scan()
 
     // Store list of physical volumes in LvmDevice
     for (const auto &d : lvmList)
-        for (const auto &p : LVM::pvList) // FIXME: qAsConst
+        for (const auto &p : qAsConst(LVM::pvList))
             if (p.vgName() == d->name())
                 d->physicalVolumes().append(p.partition());
 }
