@@ -43,6 +43,7 @@ target_link_libraries( kpmcore
     ${UUID_LIBRARIES}
     ${BLKID_LIBRARIES}
     ${LIBATASMART_LIBRARIES}
+    Qt5::DBus
     KF5::I18n
     KF5::IconThemes
     KF5::KIOCore

@@ -17,14 +17,16 @@
  *************************************************************************/
 
 #include "core/operationrunner.h"
-
 #include "core/operationstack.h"
-
 #include "ops/operation.h"
-
 #include "util/report.h"
 
+#include <QDBusInterface>
+#include <QDBusReply>
 #include <QMutex>
+
+#include <pwd.h>
+#include <unistd.h>
 
 /** Constructs an OperationRunner.
     @param ostack the OperationStack to act on
@@ -46,6 +48,22 @@ void OperationRunner::run()
     setCancelling(false);
 
     bool status = true;
+
+    // Disable Plasma removable device automounting
+    unsigned int currentUid = getuid(); // 0 if running as root
+    unsigned int userId = getpwnam(getlogin())->pw_uid; // uid of original user before sudo
+    setuid(userId);
+    QStringList modules;
+    QDBusConnection bus = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QStringLiteral("sessionBus"));
+    QDBusInterface kdedInterface( QStringLiteral("org.kde.kded5"), QStringLiteral("/kded"), QStringLiteral("org.kde.kded5"), bus );
+    QDBusReply<QStringList> reply = kdedInterface.call( QStringLiteral("loadedModules")  );
+    if ( reply.isValid() )
+        modules = reply.value();
+    QString automounterService = QStringLiteral("device_automounter");
+    bool automounter = modules.contains(automounterService);
+    if (automounter)
+        kdedInterface.call( QStringLiteral("unloadModule"), automounterService );
+    setuid(currentUid);
 
     for (int i = 0; i < numOperations(); i++) {
         suspendMutex().lock();
@@ -76,6 +94,9 @@ void OperationRunner::run()
         // if we don't sleep?
         msleep(5);
     }
+
+    if (automounter)
+        kdedInterface.call( QStringLiteral("loadModule"), automounterService );
 
     if (!status)
         emit error();
