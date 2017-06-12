@@ -170,7 +170,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     return part;
 }
 
-/** scan and contruct list of initialized LvmDevice objects.
+/** scan and construct list of initialized LvmDevice objects.
  *
  *  @return list of initialized LvmDevices
  */
@@ -186,7 +186,7 @@ QList<LvmDevice*> LvmDevice::scanSystemLVM()
 qint64 LvmDevice::mappedSector(const QString& lvPath, qint64 sector) const
 {
     qint64 mSector = 0;
-    QList<QString> lvpathList = partitionNodes();
+    QStringList lvpathList = partitionNodes();
     qint32 devIndex = lvpathList.indexOf(lvPath);
 
     if (devIndex) {
@@ -282,7 +282,7 @@ QString LvmDevice::getUUID(const QString& vgName)
  *
  * @param fieldName LVM field name
  * @param vgName the name of LVM Volume Group
- * @return raw output of command output, usully with many spaces within the returned string
+ * @return raw output of command output, usually with many spaces within the returned string
  * */
 
 QString LvmDevice::getField(const QString& fieldName, const QString& vgName)
