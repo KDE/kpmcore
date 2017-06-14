@@ -21,7 +21,6 @@
 #include "ops/operation.h"
 #include "util/report.h"
 
-#include <QDebug>
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QMutex>
@@ -53,20 +52,13 @@ void OperationRunner::run()
     // Disable Plasma removable device automounting
     unsigned int currentUid = getuid(); // 0 if running as root
     unsigned int userId = getpwnam(getlogin())->pw_uid; // uid of original user before sudo
-        qDebug() << "sessionBus" << QDBusConnection::sessionBus().isConnected();
-    QDBusConnection::disconnectFromBus(QStringLiteral("qt_default_session_bus"));
     seteuid(userId);
     QStringList modules;
-//     QDBusConnection bus = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QStringLiteral("sessionBus"));
-    QDBusConnection bus = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QStringLiteral("qt_default_session_bus"));
-    DBusConnection(_q_manager()->busConnection(SessionBus))
-    qDebug() << "bus" << bus.isConnected();
-    qDebug() << "sessionBus" << QDBusConnection::sessionBus().isConnected();
+    QDBusConnection bus = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QStringLiteral("sessionBus"));
     QDBusInterface kdedInterface( QStringLiteral("org.kde.kded5"), QStringLiteral("/kded"), QStringLiteral("org.kde.kded5"), bus );
     QDBusReply<QStringList> reply = kdedInterface.call( QStringLiteral("loadedModules")  );
     if ( reply.isValid() )
         modules = reply.value();
-    qDebug() << modules;
     QString automounterService = QStringLiteral("device_automounter");
     bool automounter = modules.contains(automounterService);
     if (automounter)
