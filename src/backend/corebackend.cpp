@@ -45,9 +45,9 @@ void CoreBackend::emitProgress(int i)
     emit progress(i);
 }
 
-void CoreBackend::emitScanProgress(const QString& device_node, int i)
+void CoreBackend::emitScanProgress(const QString& deviceNode, int i)
 {
-    emit scanProgress(device_node, i);
+    emit scanProgress(deviceNode, i);
 }
 
 void CoreBackend::setPartitionTableForDevice(Device& d, PartitionTable* p)

@@ -45,6 +45,8 @@
 #include <blkid/blkid.h>
 
 #include <QDebug>
+#include <QFile>
+#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
 
@@ -411,37 +413,32 @@ Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 
 QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 {
+//  TODO: add another bool option for loopDevices
     QList<Device*> result;
-    // linux.git/tree/Documentation/devices.txt
-    QString blockDeviceMajorNumbers = QStringLiteral(
-        "3,22,33,34,56,57,88,89,90,91,128,129,130,131,132,133,134,135," // MFM, RLL and IDE hard disk/CD-ROM interface
-        // "7," // loop devices TODO: add another bool option for loopDevices
-        "8,65,66,67,68,69,70,71," // SCSI disk devices
-        "80,81,82,83,84,85,86,87," // I2O hard disk
-        "179," // MMC block devices
-        "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254," // Virtio KVM devices (e.g. /dev/vda)
-        "259" // Block Extended Major (include NVMe)
-    );
-    ExternalCommand cmd(QStringLiteral("lsblk"), {
+
+    ExternalCommand cmd(QStringLiteral("lsblk"),
+                        { QStringLiteral("--list"),
                           QStringLiteral("--nodeps"),
                           QStringLiteral("--noheadings"),
-                          QStringLiteral("--output"), QString::fromLatin1("name"),
                           QStringLiteral("--paths"),
-                          QStringLiteral("--include"), blockDeviceMajorNumbers});
+                          QStringLiteral("--sort"), QStringLiteral("name"),
+                          QStringLiteral("--output"),
+                          QStringLiteral("type,name") });
+
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QStringList devices = cmd.output().split(QString::fromLatin1("\n"));
-        devices.removeLast();
-        quint32 totalDevices = devices.length();
+        const QStringList output=cmd.output().split(QStringLiteral("\n")).filter(QRegularExpression(QStringLiteral("^disk ")));
+        quint32 totalDevices = output.length();
         for (quint32 i = 0; i < totalDevices; ++i) {
+            QString deviceNode = output[i].split(QStringLiteral(" ")).last();
             if (excludeReadOnly) {
-                QFile f(QStringLiteral("/sys/block/%1/ro").arg(QString(devices[i]).remove(QStringLiteral("/dev/"))));
+                QFile f(QStringLiteral("/sys/block/%1/ro").arg(deviceNode.remove(QStringLiteral("/dev/"))));
                 if (f.open(QIODevice::ReadOnly))
                     if (f.readLine().trimmed().toInt() == 1)
                         continue;
             }
 
-            emitScanProgress(devices[i], i * 100 / totalDevices);
-            Device* device = scanDevice(devices[i]);
+            emitScanProgress(deviceNode, i * 100 / totalDevices);
+            Device* device = scanDevice(deviceNode);
             if(device != nullptr) {
                 result.append(device);
             }
