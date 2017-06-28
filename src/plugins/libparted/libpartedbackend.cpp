@@ -46,6 +46,8 @@
 
 #include <QDebug>
 #include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QRegularExpression>
 #include <QString>
 #include <QStringList>
@@ -415,29 +417,41 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 {
 //  TODO: add another bool option for loopDevices
     QList<Device*> result;
+    QStringList deviceNodes;
 
     ExternalCommand cmd(QStringLiteral("lsblk"),
-                        { QStringLiteral("--list"),
-                          QStringLiteral("--nodeps"),
+                        { QStringLiteral("--nodeps"),
                           QStringLiteral("--noheadings"),
                           QStringLiteral("--paths"),
                           QStringLiteral("--sort"), QStringLiteral("name"),
+                          QStringLiteral("--json"),
                           QStringLiteral("--output"),
                           QStringLiteral("type,name") });
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        const QStringList output=cmd.output().split(QStringLiteral("\n")).filter(QRegularExpression(QStringLiteral("^disk ")));
-        quint32 totalDevices = output.length();
-        for (quint32 i = 0; i < totalDevices; ++i) {
-            const QString deviceNode = output[i].split(QStringLiteral(" ")).last();
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toUtf8());
+        QJsonObject jsonObject = jsonDocument.object();
+        const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
+        for (const auto &deviceLine : jsonArray) {
+            QJsonObject deviceObject = deviceLine.toObject();
+            if (deviceObject[QLatin1String("type")].toString() != QLatin1String("disk"))
+                continue;
+
+            const QString deviceNode = deviceObject[QLatin1String("name")].toString();
             if (excludeReadOnly) {
-                auto deviceName = deviceNode;
+                QString deviceName = deviceNode;
                 deviceName.remove(QStringLiteral("/dev/"));
                 QFile f(QStringLiteral("/sys/block/%1/ro").arg(deviceName));
                 if (f.open(QIODevice::ReadOnly))
                     if (f.readLine().trimmed().toInt() == 1)
                         continue;
             }
+            deviceNodes << deviceNode;
+        }
+
+        quint32 totalDevices = deviceNodes.length();
+        for (quint32 i = 0; i < totalDevices; ++i) {
+            const QString deviceNode = deviceNodes[i];
 
             emitScanProgress(deviceNode, i * 100 / totalDevices);
             Device* device = scanDevice(deviceNode);
