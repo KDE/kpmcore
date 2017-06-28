@@ -429,9 +429,11 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
         const QStringList output=cmd.output().split(QStringLiteral("\n")).filter(QRegularExpression(QStringLiteral("^disk ")));
         quint32 totalDevices = output.length();
         for (quint32 i = 0; i < totalDevices; ++i) {
-            QString deviceNode = output[i].split(QStringLiteral(" ")).last();
+            const QString deviceNode = output[i].split(QStringLiteral(" ")).last();
             if (excludeReadOnly) {
-                QFile f(QStringLiteral("/sys/block/%1/ro").arg(deviceNode.remove(QStringLiteral("/dev/"))));
+                auto deviceName = deviceNode;
+                deviceName.remove(QStringLiteral("/dev/"));
+                QFile f(QStringLiteral("/sys/block/%1/ro").arg(deviceName));
                 if (f.open(QIODevice::ReadOnly))
                     if (f.readLine().trimmed().toInt() == 1)
                         continue;
