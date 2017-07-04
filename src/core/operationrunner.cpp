@@ -51,8 +51,14 @@ void OperationRunner::run()
 
     // Disable Plasma removable device automounting
     unsigned int currentUid = getuid(); // 0 if running as root
-    unsigned int userId = getpwnam(getlogin())->pw_uid; // uid of original user before sudo
-    seteuid(userId);
+    char *login = getlogin();
+    if (login != nullptr){
+        passwd* pwnam = getpwnam(login);
+        if (pwnam != nullptr) {
+            unsigned int userId = pwnam->pw_uid; // uid of original user before sudo
+            seteuid(userId);
+        }
+    }
     QStringList modules;
     QDBusConnection bus = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QStringLiteral("sessionBus"));
     QDBusInterface kdedInterface( QStringLiteral("org.kde.kded5"), QStringLiteral("/kded"), QStringLiteral("org.kde.kded5"), bus );
