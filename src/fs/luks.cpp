@@ -27,12 +27,16 @@
 #include "util/helpers.h"
 #include "util/report.h"
 
+#include <cmath>
+
 #include <QDebug>
 #include <QDialog>
-#include <QPointer>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
 #include <QRegularExpression>
+#include <QPointer>
 #include <QString>
-#include <QtMath>
 #include <QUuid>
 
 #include <KDiskFreeSpaceInfo>
@@ -334,7 +338,7 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        setSectorsUsed(qCeil((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / static_cast<float>(m_logicalSectorSize) ));
+        setSectorsUsed(std::ceil((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / static_cast<float>(m_logicalSectorSize) ));
     m_innerFs->scan(mapperNode);
 }
 
@@ -561,16 +565,25 @@ void luks::getMapperName(const QString& deviceNode)
     ExternalCommand cmd(QStringLiteral("lsblk"),
                         { QStringLiteral("--list"),
                           QStringLiteral("--noheadings"),
+                          QStringLiteral("--paths"),
+                          QStringLiteral("--json"),
                           QStringLiteral("--output"),
                           QStringLiteral("type,name"),
                           deviceNode });
+    m_MapperName = QString();
+
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        QStringList output=cmd.output().split(QStringLiteral("\n")).filter(QRegularExpression(QStringLiteral("^crypt ")));
-        if (!output.isEmpty() && !output.first().isEmpty())
-            m_MapperName = QStringLiteral("/dev/mapper/") + output.first().split(QStringLiteral(" ")).last();
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toUtf8());
+        QJsonObject jsonObject = jsonDocument.object();
+        const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
+        for (const auto &deviceLine : jsonArray) {
+            QJsonObject deviceObject = deviceLine.toObject();
+            if (deviceObject[QLatin1String("type")].toString() == QLatin1String("crypt")) {
+                m_MapperName = deviceObject[QLatin1String("name")].toString();
+                break;
+            }
+        }
     }
-    else
-        m_MapperName = QString();
 }
 
 void luks::getLuksInfo(const QString& deviceNode)

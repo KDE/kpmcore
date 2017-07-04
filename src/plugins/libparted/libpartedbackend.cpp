@@ -48,7 +48,7 @@
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
-#include <QRegularExpression>
+#include <QJsonObject>
 #include <QString>
 #include <QStringList>
 
@@ -421,7 +421,6 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
 
     ExternalCommand cmd(QStringLiteral("lsblk"),
                         { QStringLiteral("--nodeps"),
-                          QStringLiteral("--noheadings"),
                           QStringLiteral("--paths"),
                           QStringLiteral("--sort"), QStringLiteral("name"),
                           QStringLiteral("--json"),
