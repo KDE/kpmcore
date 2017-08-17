@@ -22,6 +22,7 @@ set(FS_SRC
     fs/ocfs2.cpp
     fs/reiser4.cpp
     fs/reiserfs.cpp
+    fs/udf.cpp
     fs/ufs.cpp
     fs/unformatted.cpp
     fs/unknown.cpp
@@ -53,6 +54,7 @@ set(FS_LIB_HDRS
     fs/ocfs2.h
     fs/reiser4.h
     fs/reiserfs.h
+    fs/udf.h
     fs/ufs.h
     fs/unformatted.h
     fs/unknown.h

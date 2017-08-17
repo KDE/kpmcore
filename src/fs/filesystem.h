@@ -84,8 +84,9 @@ public:
         Nilfs2 = 23,
         Lvm2_PV = 24,
         F2fs = 25,
+        Udf = 26,
 
-        __lastType = 26
+        __lastType = 27
     };
 
     /** The type of support for a given FileSystem action */

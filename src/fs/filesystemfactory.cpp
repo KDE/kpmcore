@@ -40,6 +40,7 @@
 #include "fs/ocfs2.h"
 #include "fs/reiser4.h"
 #include "fs/reiserfs.h"
+#include "fs/udf.h"
 #include "fs/ufs.h"
 #include "fs/unformatted.h"
 #include "fs/unknown.h"
@@ -78,6 +79,7 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Ocfs2, new FS::ocfs2(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::ReiserFS, new FS::reiserfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Reiser4, new FS::reiser4(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Udf, new FS::udf(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Ufs, new FS::ufs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Unformatted, new FS::unformatted(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Unknown, new FS::unknown(-1, -1, -1, QString()));
@@ -124,6 +126,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     case FileSystem::Ocfs2:        fs = new FS::ocfs2(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::ReiserFS:     fs = new FS::reiserfs(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Reiser4:      fs = new FS::reiser4(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Udf:          fs = new FS::udf(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Ufs:          fs = new FS::ufs(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Unformatted:  fs = new FS::unformatted(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Unknown:      fs = new FS::unknown(firstsector, lastsector, sectorsused, label); break;

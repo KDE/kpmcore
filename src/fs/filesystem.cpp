@@ -408,6 +408,7 @@ static const QString* typeNames()
         xi18nc("@item filesystem name", "nilfs2"),
         xi18nc("@item filesystem name", "lvm2 pv"),
         xi18nc("@item filesystem name", "f2fs"),
+        xi18nc("@item filesystem name", "udf"),
     };
 
     return s;
