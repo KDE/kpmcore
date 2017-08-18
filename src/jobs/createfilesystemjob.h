@@ -33,7 +33,7 @@ class QString;
 class CreateFileSystemJob : public Job
 {
 public:
-    CreateFileSystemJob(Device& d, Partition& p);
+    CreateFileSystemJob(Device& d, Partition& p, const QString& label = {});
 
 public:
     bool run(Report& parent) override;
@@ -57,6 +57,7 @@ protected:
 private:
     Device& m_Device;
     Partition& m_Partition;
+    const QString& m_Label;
 };
 
 #endif

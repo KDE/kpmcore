@@ -113,6 +113,7 @@ public:
     virtual qint64 readUsedCapacity(const QString& deviceNode) const;
     virtual QString readLabel(const QString& deviceNode) const;
     virtual bool create(Report& report, const QString& deviceNode);
+    virtual bool createWithLabel(Report& report, const QString& deviceNode, const QString& label);
     virtual bool resize(Report& report, const QString& deviceNode, qint64 newLength) const;
     virtual bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 newLength) const;
     virtual bool move(Report& report, const QString& deviceNode, qint64 newStartSector) const;
@@ -133,6 +134,9 @@ public:
         return cmdSupportNone;    /**< @return CommandSupportType for reading label*/
     }
     virtual CommandSupportType supportCreate() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for creating */
+    }
+    virtual CommandSupportType supportCreateWithLabel() const {
         return cmdSupportNone;    /**< @return CommandSupportType for creating */
     }
     virtual CommandSupportType supportGrow() const {

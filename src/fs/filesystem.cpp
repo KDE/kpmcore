@@ -173,6 +173,21 @@ bool FileSystem::create(Report& report, const QString& deviceNode)
     return true;
 }
 
+/** Creates a new FileSystem with a specified Label
+    @param report Report to write status information to
+    @param deviceNode the device node for the Partition to create the FileSystem on
+    @param label the new label for the FileSystem
+    @return true if successful
+*/
+bool FileSystem::createWithLabel(Report& report, const QString& deviceNode, const QString& label)
+{
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(label)
+
+    return true;
+}
+
 /** Scans a new FileSystem and load file system specific class variables.
  *  @param deviceNode the device node for the Partition to create the FileSystem on
 */

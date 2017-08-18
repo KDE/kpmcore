@@ -35,10 +35,11 @@
 /** Creates a new CreateFileSystemJob
     @param p the Partition the FileSystem to create is on
 */
-CreateFileSystemJob::CreateFileSystemJob(Device& d, Partition& p) :
+CreateFileSystemJob::CreateFileSystemJob(Device& d, Partition& p, const QString& label) :
     Job(),
     m_Device(d),
-    m_Partition(p)
+    m_Partition(p),
+    m_Label(label)
 {
 }
 
@@ -51,8 +52,13 @@ bool CreateFileSystemJob::run(Report& parent)
     if (partition().fileSystem().type() == FileSystem::Unformatted)
         return true;
 
+    bool createResult;
     if (partition().fileSystem().supportCreate() == FileSystem::cmdSupportFileSystem) {
-        if (partition().fileSystem().create(*report, partition().deviceNode())) {
+        if (partition().fileSystem().supportCreateWithLabel() == FileSystem::cmdSupportFileSystem)
+            createResult = partition().fileSystem().createWithLabel(*report, partition().deviceNode(), m_Label);
+        else
+            createResult = partition().fileSystem().create(*report, partition().deviceNode());
+        if (createResult) {
             if (device().type() == Device::Disk_Device) {
                 CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
 

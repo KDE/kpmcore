@@ -78,31 +78,9 @@ qint64 udf::maxLabelLength() const
 
 bool udf::create(Report& report, const QString& deviceNode)
 {
-    // mkudffs from udftools prior to 1.1 does not check for partition limits and crashes
-    if ( length() > MAX_UDF_BLOCKS ) {
-        report.line() << xi18nc("@info:status", "Partition is too large");
+    int blkSize = blockSize(report, deviceNode);
+    if (blkSize == -1)
         return false;
-    }
-    if ( length() < MIN_UDF_BLOCKS ) {
-        report.line() << xi18nc("@info:status", "Partition is too small");
-        return false;
-    }
-
-    // mkudffs from udftools prior to 1.1 is not able to detect logical (sector) size
-    // and UDF block size must match logical sector size of underlying media
-    int fd = open(deviceNode.toLocal8Bit().data(), O_RDONLY);
-    if ( fd < 0 ) {
-        report.line() << xi18nc("@info:status", "Cannot open device node");
-        return false;
-    }
-    int blksize;
-    int ret = ioctl(fd, BLKSSZGET, &blksize);
-    close(fd);
-
-    if ( ret != 0 ) {
-        report.line() << xi18nc("@info:status", "Cannot read logical (sector) size of device node");
-        return false;
-    }
 
     ExternalCommand cmd(report, QStringLiteral("mkudffs"), {
         QStringLiteral("--utf8"),
@@ -110,7 +88,7 @@ bool udf::create(Report& report, const QString& deviceNode)
         // For now format as UDF revision 2.01 for hard disk media type
         QStringLiteral("--media-type=hd"),
         QStringLiteral("--udfrev=0x201"),
-        QStringLiteral("--blocksize=") + QString::number(blksize),
+        QStringLiteral("--blocksize=") + QString::number(blkSize),
         // TODO: Pass label as udf::create() parameter
         // QStringLiteral("--lvid=") + label,
         // QStringLiteral("--vid=") + shortlabel,
@@ -118,4 +96,56 @@ bool udf::create(Report& report, const QString& deviceNode)
     });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
+
+bool udf::createWithLabel(Report& report, const QString& deviceNode, const QString& label)
+{
+    int blkSize = blockSize(report, deviceNode);
+    if (blkSize == -1)
+        return false;
+
+    ExternalCommand cmd(report, QStringLiteral("mkudffs"), {
+        QStringLiteral("--utf8"),
+        // TODO: Add GUI option for choosing different optical disks and UDF revision
+        // For now format as UDF revision 2.01 for hard disk media type
+        QStringLiteral("--media-type=hd"),
+        QStringLiteral("--udfrev=0x201"),
+        QStringLiteral("--blocksize=") + QString::number(blkSize),
+        // TODO: Pass label as udf::create() parameter
+        QStringLiteral("--lvid=") + label,
+        // QStringLiteral("--vid=") + shortlabel,
+        deviceNode
+    });
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+int udf::blockSize(Report& report, const QString& deviceNode)
+{
+    // mkudffs from udftools prior to 1.1 does not check for partition limits and crashes
+    if ( length() > MAX_UDF_BLOCKS ) {
+        report.line() << xi18nc("@info:status", "Partition is too large");
+        return -1;
+    }
+    if ( length() < MIN_UDF_BLOCKS ) {
+        report.line() << xi18nc("@info:status", "Partition is too small");
+        return -1;
+    }
+
+    // mkudffs from udftools prior to 1.1 is not able to detect logical (sector) size
+    // and UDF block size must match logical sector size of underlying media
+    int fd = open(deviceNode.toLocal8Bit().data(), O_RDONLY);
+    if ( fd < 0 ) {
+        report.line() << xi18nc("@info:status", "Cannot open device node");
+        return -1;
+    }
+    int blksize;
+    int ret = ioctl(fd, BLKSSZGET, &blksize);
+    close(fd);
+
+    if ( ret != 0 ) {
+        report.line() << xi18nc("@info:status", "Cannot read logical (sector) size of device node");
+        return -1;
+    }
+    return blksize;
+}
+
 }

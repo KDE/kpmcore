@@ -62,7 +62,7 @@ NewOperation::NewOperation(Device& d, Partition* p) :
         // label. The operation stack will merge these operations with this one here
         // and if the jobs don't exist things will break.
 
-        m_CreateFileSystemJob = new CreateFileSystemJob(targetDevice(), newPartition());
+        m_CreateFileSystemJob = new CreateFileSystemJob(targetDevice(), newPartition(), fs.label());
         addJob(createFileSystemJob());
 
         if (fs.type() == FileSystem::Lvm2_PV) {

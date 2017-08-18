@@ -43,11 +43,15 @@ public:
     void init() override;
 
     bool create(Report& report, const QString& deviceNode) override;
+    bool createWithLabel(Report& report, const QString& deviceNode, const QString& label) override;
 
     CommandSupportType supportGetLabel() const override {
         return cmdSupportCore;
     }
     CommandSupportType supportCreate() const override {
+        return m_Create;
+    }
+    CommandSupportType supportCreateWithLabel() const override {
         return m_Create;
     }
     CommandSupportType supportMove() const override {
@@ -71,6 +75,9 @@ public:
 
 public:
     static CommandSupportType m_Create;
+
+private:
+    int blockSize(Report& report, const QString& deviceNode);
 };
 }
 
