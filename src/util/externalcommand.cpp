@@ -29,7 +29,7 @@
     @param cmd the command to run
     @param args the arguments to pass to the command
 */
-ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args) :
+ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, const QProcess::ProcessChannelMode processChannelMode) :
     QProcess(),
     m_Report(nullptr),
     m_Command(cmd),
@@ -37,7 +37,7 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args) :
     m_ExitCode(-1),
     m_Output()
 {
-    setup();
+    setup(processChannelMode);
 }
 
 /** Creates a new ExternalCommand instance with Report.
@@ -45,7 +45,7 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args) :
     @param cmd the command to run
     @param args the arguments to pass to the command
  */
-ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStringList& args) :
+ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStringList& args, const QProcess::ProcessChannelMode processChannelMode) :
     QProcess(),
     m_Report(report.newChild()),
     m_Command(cmd),
@@ -53,13 +53,13 @@ ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStri
     m_ExitCode(-1),
     m_Output()
 {
-    setup();
+    setup(processChannelMode);
 }
 
-void ExternalCommand::setup()
+void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMode)
 {
     setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromUtf8(getenv("PATH")) << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
-    setProcessChannelMode(SeparateChannels);
+    setProcessChannelMode(processChannelMode);
 
     connect(this, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &ExternalCommand::onFinished);
     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);

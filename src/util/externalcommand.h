@@ -42,8 +42,8 @@ class LIBKPMCORE_EXPORT ExternalCommand : public QProcess
     Q_DISABLE_COPY(ExternalCommand)
 
 public:
-    explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList());
-    explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList());
+    explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = MergedChannels);
+    explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = MergedChannels);
 
 public:
     void setCommand(const QString& cmd) { m_Command = cmd; } /**< @param cmd the command to run */
@@ -73,7 +73,7 @@ protected:
     void setExitCode(int i) {
         m_ExitCode = i;
     }
-    void setup();
+    void setup(const QProcess::ProcessChannelMode processChannelMode);
 
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadOutput();
