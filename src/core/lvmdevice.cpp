@@ -62,7 +62,7 @@ LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
  * shared list of PV's paths that will be added to any VGs.
  * (have been added to an operation, but not yet applied)
 */
-QList<const Partition*> LvmDevice::s_DirtyPVs;
+QVector<const Partition*> LvmDevice::s_DirtyPVs;
 
 LvmDevice::~LvmDevice()
 {
@@ -416,7 +416,7 @@ bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList&
     return (cmd.run(-1) && cmd.exitCode() == 0);
 }
 
-bool LvmDevice::createVG(Report& report, const QString vgName, const QList<const Partition*>& pvList, const qint32 peSize)
+bool LvmDevice::createVG(Report& report, const QString vgName, const QVector<const Partition*>& pvList, const qint32 peSize)
 {
     QStringList args = QStringList();
     args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);

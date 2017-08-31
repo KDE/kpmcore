@@ -38,7 +38,7 @@ class LIBKPMCORE_EXPORT CreateVolumeGroupOperation : public Operation
     friend class OperationStack;
 
 public:
-    CreateVolumeGroupOperation(const QString& vgName, const QList<const Partition*>& pvList, const qint32 peSize = 4);
+    CreateVolumeGroupOperation(const QString& vgName, const QVector<const Partition*>& pvList, const qint32 peSize = 4);
 
 public:
     QString iconName() const override {
@@ -62,13 +62,13 @@ protected:
         return m_CreateVolumeGroupJob;
     }
 
-    const QList<const Partition*>& PVList() {
+    const QVector<const Partition*>& PVList() {
         return m_PVList;
     }
 
 private:
     CreateVolumeGroupJob* m_CreateVolumeGroupJob;
-    const QList<const Partition*> m_PVList;
+    const QVector<const Partition*> m_PVList;
 };
 
 #endif

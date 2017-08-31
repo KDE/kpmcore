@@ -33,7 +33,7 @@
     @param d the Device to create the new PartitionTable on
     @param partList list of LVM Physical Volumes that should be in LVM Volume Group
 */
-ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QList<const Partition*>& partList)
+ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QVector<const Partition*>& partList)
     : Operation()
     , m_Device(d)
     , m_TargetList(partList)

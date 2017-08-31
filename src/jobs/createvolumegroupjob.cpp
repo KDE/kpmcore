@@ -29,7 +29,7 @@
  * @param pvList List of LVM Physical Volumes used to create Volume Group
  * @param peSize LVM Physical Extent size in MiB
 */
-CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgName, const QList<const Partition*>& pvList, const qint32 peSize) :
+CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgName, const QVector<const Partition*>& pvList, const qint32 peSize) :
     Job(),
     m_vgName(vgName),
     m_pvList(pvList),

@@ -40,7 +40,7 @@ class LIBKPMCORE_EXPORT ResizeVolumeGroupOperation : public Operation
     friend class OperationStack;
 
 public:
-    ResizeVolumeGroupOperation(LvmDevice& dev, const QList<const Partition*>& partlist);
+    ResizeVolumeGroupOperation(LvmDevice& dev, const QVector<const Partition*>& partlist);
 
 public:
     QString iconName() const override {
@@ -65,11 +65,11 @@ protected:
     const LvmDevice& device() const {
         return m_Device;
     }
-    const QList<const Partition*>& targetList() const {
+    const QVector<const Partition*>& targetList() const {
         return m_TargetList;
     }
 
-    const QList<const Partition*>& currentList() const {
+    const QVector<const Partition*>& currentList() const {
         return m_CurrentList;
     }
 
@@ -96,8 +96,8 @@ protected:
 private:
     LvmDevice& m_Device;
 
-    QList<const Partition*> m_TargetList;
-    QList<const Partition*> m_CurrentList;
+    QVector<const Partition*> m_TargetList;
+    QVector<const Partition*> m_CurrentList;
     qint64 m_TargetSize;
     qint64 m_CurrentSize;
 
