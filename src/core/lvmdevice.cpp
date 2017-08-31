@@ -53,7 +53,7 @@ LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
     m_allocPE = m_totalPE - m_freePE;
     m_UUID    = getUUID(vgName);
     m_LVPathList = new QStringList(getLVs(vgName));
-    m_LVSizeMap  = new QMap<QString, qint64>();
+    m_LVSizeMap  = new QHash<QString, qint64>();
 
     initPartitions();
 }

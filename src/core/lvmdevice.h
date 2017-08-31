@@ -24,6 +24,7 @@
 #include "core/volumemanagerdevice.h"
 #include "util/libpartitionmanagerexport.h"
 
+#include <QHash>
 #include <QString>
 #include <QObject>
 #include <QtGlobal>
@@ -120,7 +121,7 @@ public:
     }
 
 protected:
-    QMap<QString, qint64>* LVSizeMap() const {
+    QHash<QString, qint64>* LVSizeMap() const {
         return m_LVSizeMap;
     }
 
@@ -133,7 +134,8 @@ private:
 
     mutable QStringList* m_LVPathList;
     QList <const Partition*> m_PVs;
-    mutable QMap<QString, qint64>* m_LVSizeMap;
+    mutable QHash<QString, qint64>* m_LVSizeMap;
+
 };
 
 #endif
