@@ -62,14 +62,12 @@ FileSystem::SupportTool udf::supportToolName() const
 
 qint64 udf::minCapacity() const
 {
-    // TODO: Capacity depends on logical (sector) size of disk, now hardcoded as 512
-    return MIN_UDF_BLOCKS * 512;
+    return MIN_UDF_BLOCKS * sectorSize();
 }
 
 qint64 udf::maxCapacity() const
 {
-    // TODO: Capacity depends on logical (sector) size of disk, now hardcoded as 4096
-    return MAX_UDF_BLOCKS * 4096;
+    return MAX_UDF_BLOCKS * sectorSize();
 }
 
 qint64 udf::maxLabelLength() const
@@ -135,6 +133,8 @@ bool udf::createWithLabel(Report& report, const QString& deviceNode, const QStri
         labelArgs << QStringLiteral("--vid=") + shortLabel;
     }
 
+    // mkudffs from udftools prior to 1.1 is not able to detect logical (sector) size
+    // and UDF block size must match logical sector size of underlying media
     QStringList cmdArgs;
     cmdArgs << QStringLiteral("--utf8");
     // TODO: Add GUI option for choosing different optical disks and UDF revision
