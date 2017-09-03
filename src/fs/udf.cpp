@@ -59,7 +59,6 @@ FileSystem::SupportTool udf::supportToolName() const
     return SupportTool(QStringLiteral("udftools"), QUrl(QStringLiteral("https://github.com/pali/udftools")));
 }
 
-
 qint64 udf::minCapacity() const
 {
     return MIN_UDF_BLOCKS * sectorSize();
