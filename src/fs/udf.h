@@ -76,9 +76,6 @@ public:
 public:
     static CommandSupportType m_Create;
     static bool m_OnlyAsciiLabel;
-
-private:
-    int blockSize(Report& report, const QString& deviceNode);
 };
 }
 

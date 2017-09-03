@@ -27,11 +27,6 @@
 #include <QString>
 #include <QStringList>
 
-#include <fcntl.h>
-#include <linux/fs.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
-
 namespace FS
 {
 constexpr qint64 MIN_UDF_BLOCKS = 282;
@@ -99,10 +94,6 @@ bool udf::createWithLabel(Report& report, const QString& deviceNode, const QStri
         return false;
     }
 
-    int blkSize = blockSize(report, deviceNode);
-    if (blkSize == -1)
-        return false;
-
     // It is not possible to create UDF filesystem without a label or with empty label
     // When --lvid or --vid option is not specified, mkudffs use sane default
     QStringList labelArgs;
@@ -150,32 +141,12 @@ bool udf::createWithLabel(Report& report, const QString& deviceNode, const QStri
     // For now format as UDF revision 2.01 for hard disk media type
     cmdArgs << QStringLiteral("--media-type=hd");
     cmdArgs << QStringLiteral("--udfrev=0x201");
-    cmdArgs << QStringLiteral("--blocksize=") + QString::number(blkSize);
+    cmdArgs << QStringLiteral("--blocksize=") + QString::number(sectorSize());
     cmdArgs << labelArgs;
     cmdArgs << deviceNode;
 
     ExternalCommand cmd(report, QStringLiteral("mkudffs"), cmdArgs);
     return cmd.run(-1) && cmd.exitCode() == 0;
-}
-
-int udf::blockSize(Report& report, const QString& deviceNode)
-{
-    // mkudffs from udftools prior to 1.1 is not able to detect logical (sector) size
-    // and UDF block size must match logical sector size of underlying media
-    int fd = open(deviceNode.toLocal8Bit().data(), O_RDONLY);
-    if ( fd < 0 ) {
-        report.line() << xi18nc("@info:status", "Cannot open device node");
-        return -1;
-    }
-    int blksize;
-    int ret = ioctl(fd, BLKSSZGET, &blksize);
-    close(fd);
-
-    if ( ret != 0 ) {
-        report.line() << xi18nc("@info:status", "Cannot read logical (sector) size of device node");
-        return -1;
-    }
-    return blksize;
 }
 
 }
