@@ -67,7 +67,6 @@ luks::luks(qint64 firstsector,
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)
     , m_isMounted(false)
-    , m_logicalSectorSize(512)
     , m_KeySize(-1)
     , m_PayloadOffset(-1)
 {
@@ -338,7 +337,7 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        setSectorsUsed(std::ceil((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / static_cast<float>(m_logicalSectorSize) ));
+        setSectorsUsed(std::ceil((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / static_cast<float>(sectorSize()) ));
     m_innerFs->scan(mapperNode);
 }
 
@@ -396,7 +395,7 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
 
             const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
             if (freeSpaceInfo.isValid() && !mountPoint.isEmpty())
-                setSectorsUsed((freeSpaceInfo.used() + payloadOffset()) / m_logicalSectorSize);
+                setSectorsUsed((freeSpaceInfo.used() + payloadOffset()) / sectorSize());
 
             return true;
         }
@@ -490,7 +489,7 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
         return false;
 
     qint64 payloadLength = newLength - payloadOffset();
-    if ( newLength - length() * m_logicalSectorSize > 0 )
+    if ( newLength - length() * sectorSize() > 0 )
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
@@ -664,9 +663,8 @@ bool luks::canEncryptType(FileSystem::Type type)
     }
 }
 
-void luks::initLUKS(unsigned int sectorSize)
+void luks::initLUKS()
 {
-    setLogicalSectorSize(sectorSize);
     QString mapperNode = mapperName();
     bool isCryptOpen = !mapperNode.isEmpty();
     setCryptOpen(isCryptOpen);

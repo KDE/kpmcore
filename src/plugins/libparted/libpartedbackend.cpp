@@ -336,7 +336,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
         if (parent == nullptr)
             parent = d.partitionTable();
 
-        FileSystem* fs = FileSystemFactory::create(type, pedPartition->geom.start, pedPartition->geom.end);
+        FileSystem* fs = FileSystemFactory::create(type, pedPartition->geom.start, pedPartition->geom.end, d.logicalSize());
         fs->scan(partitionNode);
         QString mountPoint;
         bool mounted;
@@ -345,7 +345,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
         if (fs->type() == FileSystem::Luks) {
             r |= PartitionRole::Luks;
             FS::luks* luksFs = static_cast<FS::luks*>(fs);
-            luksFs->initLUKS(d.logicalSize());
+            luksFs->initLUKS();
             QString mapperNode = luksFs->mapperName();
             mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
             mounted    = FileSystem::detectMountStatus(fs, mapperNode);

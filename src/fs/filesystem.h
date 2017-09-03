@@ -232,6 +232,9 @@ public:
     const QString& label() const {
         return m_Label;    /**< @return the FileSystem's label */
     }
+    qint64 sectorSize() const {
+        return m_SectorSize;    /**< @return the sector size in the underlying Device */
+    }
     qint64 sectorsUsed() const {
         return m_SectorsUsed;    /**< @return the sectors in use on the FileSystem */
     }
@@ -239,6 +242,9 @@ public:
         return m_UUID;    /**< @return the FileSystem's UUID */
     }
 
+    void setSectorSize(qint64 s) {
+        m_SectorSize = s;    /**< @param s the new value for sector size */
+    }
     void setSectorsUsed(qint64 s) {
         m_SectorsUsed = s;    /**< @param s the new value for sectors in use */
     }
@@ -256,6 +262,7 @@ protected:
     FileSystem::Type m_Type;
     qint64 m_FirstSector;
     qint64 m_LastSector;
+    qint64 m_SectorSize;
     qint64 m_SectorsUsed;
     QString m_Label;
     QString m_UUID;

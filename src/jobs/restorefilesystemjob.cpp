@@ -91,7 +91,7 @@ bool RestoreFileSystemJob::run(Report& parent)
                         t = backendPartitionTable->detectFileSystemBySector(*report, targetDevice(), targetPartition().firstSector());
                 }
 
-                FileSystem* fs = FileSystemFactory::create(t, targetPartition().firstSector(), newLastSector);
+                FileSystem* fs = FileSystemFactory::create(t, targetPartition().firstSector(), newLastSector, targetPartition().sectorSize());
 
                 targetPartition().deleteFileSystem();
                 targetPartition().setFileSystem(fs);

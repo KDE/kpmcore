@@ -126,10 +126,6 @@ public:
         return m_GetUUID;
     }
 
-    void setLogicalSectorSize(unsigned int logicalSectorSize) {
-        m_logicalSectorSize = logicalSectorSize;
-    }
-
     bool check(Report& report, const QString& deviceNode) const override;
     bool create(Report& report, const QString& deviceNode) override;
     SupportTool supportToolName() const override;
@@ -186,7 +182,7 @@ public:
     qint64 payloadOffset() const { return m_PayloadOffset; }
 
     static bool canEncryptType(FileSystem::Type type);
-    void initLUKS(unsigned int sectorSize);
+    void initLUKS();
 
 protected:
     virtual QString readOuterUUID(const QString& deviceNode) const;
@@ -212,7 +208,6 @@ private:
     mutable bool m_cryptsetupFound;
     QString m_passphrase;
     bool m_isMounted;
-    unsigned int m_logicalSectorSize;
 
     QString m_MapperName;
     QString m_CipherName;

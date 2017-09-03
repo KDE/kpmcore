@@ -121,7 +121,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     qint64 endSector = startSector + lvSize - 1;
 
     FileSystem::Type type = FileSystem::detectFileSystem(lvPath);
-    FileSystem* fs = FileSystemFactory::create(type, 0, lvSize - 1);
+    FileSystem* fs = FileSystemFactory::create(type, 0, lvSize - 1, logicalSize());
     fs->scan(lvPath);
 
     PartitionRole::Roles r = PartitionRole::Lvm_Lv;
@@ -132,7 +132,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     if (fs->type() == FileSystem::Luks) {
         r |= PartitionRole::Luks;
         FS::luks* luksFs = static_cast<FS::luks*>(fs);
-        luksFs->initLUKS(logicalSize());
+        luksFs->initLUKS();
 
         QString mapperNode = luksFs->mapperName();
         mountPoint = FileSystem::detectMountPoint(fs, mapperNode);

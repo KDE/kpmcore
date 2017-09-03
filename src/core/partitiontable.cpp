@@ -324,7 +324,7 @@ Partition* createUnallocated(const Device& device, PartitionNode& parent, qint64
     if (!PartitionTable::getUnallocatedRange(device, parent, start, end))
         return nullptr;
 
-    return new Partition(&parent, device, PartitionRole(r), FileSystemFactory::create(FileSystem::Unknown, start, end), start, end, QString());
+    return new Partition(&parent, device, PartitionRole(r), FileSystemFactory::create(FileSystem::Unknown, start, end, device.logicalSize()), start, end, QString());
 }
 
 /** Removes all unallocated children from a PartitionNode

@@ -100,7 +100,7 @@ void FileSystemFactory::init()
     @param label the FileSystem's label
     @return pointer to the newly created FileSystem object or nullptr if FileSystem could not be created
 */
-FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QString& uuid)
+FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorSize, qint64 sectorsused, const QString& label, const QString& uuid)
 {
     FileSystem* fs = nullptr;
 
@@ -138,6 +138,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     if (fs != nullptr)
         fs->setUUID(uuid);
 
+    fs->setSectorSize(sectorSize);
     return fs;
 }
 
@@ -146,7 +147,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
 */
 FileSystem* FileSystemFactory::create(const FileSystem& other)
 {
-    return create(other.type(), other.firstSector(), other.lastSector(), other.sectorsUsed(), other.label(), other.uuid());
+    return create(other.type(), other.firstSector(), other.lastSector(), other.sectorSize(), other.sectorsUsed(), other.label(), other.uuid());
 }
 
 /** @return the map of FileSystems */
@@ -162,5 +163,5 @@ const FileSystemFactory::FileSystems& FileSystemFactory::map()
 */
 FileSystem* FileSystemFactory::cloneWithNewType(FileSystem::Type newType, const FileSystem& other)
 {
-    return create(newType, other.firstSector(), other.lastSector(), other.sectorsUsed(), other.label());
+    return create(newType, other.firstSector(), other.lastSector(), other.sectorSize(), other.sectorsUsed(), other.label());
 }
