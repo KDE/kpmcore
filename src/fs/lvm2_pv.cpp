@@ -242,7 +242,7 @@ QString  lvm2_pv::getpvField(const QString& fieldName, const QString& deviceNode
     if (!deviceNode.isEmpty()) {
         args << deviceNode;
     }
-    ExternalCommand cmd(QStringLiteral("lvm"), args);
+    ExternalCommand cmd(QStringLiteral("lvm"), args, QProcess::ProcessChannelMode::SeparateChannels);
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         return cmd.output().trimmed();
     }

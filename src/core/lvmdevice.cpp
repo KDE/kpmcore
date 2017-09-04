@@ -299,7 +299,7 @@ QString LvmDevice::getField(const QString& fieldName, const QString& vgName)
     if  (!vgName.isEmpty()) {
         args << vgName;
     }
-    ExternalCommand cmd(QStringLiteral("lvm"), args);
+    ExternalCommand cmd(QStringLiteral("lvm"), args, QProcess::ProcessChannelMode::SeparateChannels);
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         return cmd.output().trimmed();
     }
