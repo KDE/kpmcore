@@ -388,11 +388,12 @@ qint64 FileSystem::maxLabelLength() const
 }
 
 /** Validates the label for this FileSystem
- * @param label the label that will be checked
- * @return the valid label */
-QString FileSystem::validateLabel(const QString& label) const
+ * @param parent the parent widget passed to the QObject constructor
+ * @return QValidator to validate the file system label line edit input */
+QValidator* FileSystem::labelValidator(QObject *parent) const
 {
-    return label.left(maxLabelLength());
+    Q_UNUSED(parent)
+    return nullptr;
 }
 
 /** @return this FileSystem's type as printable name */
