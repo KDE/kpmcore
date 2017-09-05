@@ -34,7 +34,7 @@ constexpr qint64 MIN_UDF_BLOCKS = 282;
 constexpr qint64 MAX_UDF_BLOCKS = ((1ULL << 32) - 1);
 
 FileSystem::CommandSupportType udf::m_Create = FileSystem::cmdSupportNone;
-QRegularExpressionValidator udf::m_LabelValidator;
+bool udf::oldMkudffsVersion = false;
 
 udf::udf(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
     FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Udf)
@@ -48,18 +48,7 @@ void udf::init()
     if (m_Create == cmdSupportFileSystem) {
         // Detect old mkudffs prior to version 1.1 by lack of --label option
         ExternalCommand cmd(QStringLiteral("mkudffs"), { QStringLiteral("--help") });
-        bool oldMkudffsVersion = cmd.run(-1) && !cmd.output().contains(QStringLiteral("--label"));
-
-        if (oldMkudffsVersion) {
-            // Mkudffs from udftools prior to version 1.1 damages the label if it
-            // contains non-ASCII characters.  Therefore do not allow a label with
-            // such characters with old versions of mkudffs.
-            m_LabelValidator.setRegularExpression(QRegularExpression(QStringLiteral("[\\x{0001}-\\x{007F}]{0,126}")));
-        } else {
-            // UDF label can only contain 126 bytes, either 126 ISO-8859-1
-            // (Latin 1) characters or 63 UCS-2BE characters.
-            m_LabelValidator.setRegularExpression(QRegularExpression(QStringLiteral("[\\x{0001}-\\x{00FF}]{0,126}|[\\x{0001}-\\x{FFFF}]{0,63}")));
-        }
+        oldMkudffsVersion = cmd.run(-1) && !cmd.output().contains(QStringLiteral("--label"));
     }
 }
 
@@ -88,9 +77,20 @@ qint64 udf::maxLabelLength() const
     return 126;
 }
 
-QValidator* udf::labelValidator(QObject *parent)
+QValidator* udf::labelValidator(QObject *parent) const
 {
-    return &m_LabelValidator;
+    QRegularExpressionValidator *m_LabelValidator = new QRegularExpressionValidator(parent);
+    if (oldMkudffsVersion) {
+        // Mkudffs from udftools prior to version 1.1 damages the label if it
+        // contains non-ASCII characters.  Therefore do not allow a label with
+        // such characters with old versions of mkudffs.
+        m_LabelValidator->setRegularExpression(QRegularExpression(QStringLiteral("[\\x{0001}-\\x{007F}]{0,126}")));
+    } else {
+        // UDF label can only contain 126 bytes, either 126 ISO-8859-1
+        // (Latin 1) characters or 63 UCS-2BE characters.
+        m_LabelValidator->setRegularExpression(QRegularExpression(QStringLiteral("[\\x{0001}-\\x{00FF}]{0,126}|[\\x{0001}-\\x{FFFF}]{0,63}")));
+    }
+    return m_LabelValidator;
 }
 
 bool udf::create(Report& report, const QString& deviceNode)

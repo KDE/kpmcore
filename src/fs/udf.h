@@ -76,7 +76,9 @@ public:
 
 public:
     static CommandSupportType m_Create;
-    static QRegularExpressionValidator m_LabelValidator;
+
+private:
+    static bool oldMkudffsVersion;
 };
 }
 
