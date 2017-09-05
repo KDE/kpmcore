@@ -70,12 +70,13 @@ public:
     qint64 minCapacity() const override;
     qint64 maxCapacity() const override;
     qint64 maxLabelLength() const override;
+    QValidator* labelValidator(QObject *parent = nullptr) const override;
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
 
 public:
     static CommandSupportType m_Create;
-    static bool m_OnlyAsciiLabel;
+    static QRegularExpressionValidator m_LabelValidator;
 };
 }
 
