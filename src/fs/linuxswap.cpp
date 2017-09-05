@@ -23,6 +23,7 @@
 #include <KLocalizedString>
 
 #include <QFileInfo>
+#include <QRegularExpression>
 #include <QTextStream>
 
 namespace FS
@@ -185,7 +186,7 @@ qint64 linuxswap::readUsedCapacity(const QString& deviceNode) const
         swapsFile.close();
         QTextStream in(&data);
         while (!in.atEnd()) {
-            QStringList line = in.readLine().split(QRegExp(QStringLiteral("\\s+")));
+            QStringList line = in.readLine().split(QRegularExpression(QStringLiteral("\\s+")));
             QFileInfo kernelPath(deviceNode);
             if (line[0] == kernelPath.canonicalFilePath())
                 return line[3].toLongLong() * 1024;
