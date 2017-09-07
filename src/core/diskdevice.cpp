@@ -31,7 +31,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <linux/fs.h>
+#ifdef __gnu_linux__
+  #include <linux/fs.h>
+#endif
 
 #if !defined(BLKPBSZGET)
 #define BLKPBSZGET _IO(0x12,123)/* get block physical sector size */
