@@ -29,12 +29,12 @@
 #include "util/report.h"
 
 #include <QRegularExpression>
+#include <QStorageInfo>
 #include <QString>
 #include <QStringList>
 #include <QTextStream>
 
 #include <KLocalizedString>
-#include <KIOCore/KMountPoint>
 
 /** Creates a new Partition object.
     @param parent the Partition's parent. May be another Partition (for logicals) or a PartitionTable. Must not be nullptr.
@@ -326,17 +326,18 @@ bool Partition::unmount(Report& report)
     if (!isMounted())
         return false;
 
-    bool success = true;
+    bool success = false;
 
-    while (success) {
-        if (fileSystem().canUnmount(deviceNode())) {
-            success = fileSystem().unmount(report, deviceNode());
-        }
+    if (fileSystem().canUnmount(deviceNode())) {
+        success = fileSystem().unmount(report, deviceNode());
+    }
 
-        KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
-
-        if (!mountPoints.findByDevice(deviceNode()))
+    const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
+    for (const QStorageInfo &storage : QStorageInfo::mountedVolumes()) {
+        if (QString::fromUtf8(storage.device()) == deviceNode() ) {
+            success = false;
             break;
+        }
     }
 
     setMounted(!success);
