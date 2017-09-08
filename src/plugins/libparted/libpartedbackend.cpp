@@ -49,11 +49,11 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QStorageInfo>
 #include <QString>
 #include <QStringList>
 
 #include <KLocalizedString>
-#include <KDiskFreeSpaceInfo>
 #include <KPluginFactory>
 
 #include <parted/parted.h>
@@ -198,11 +198,9 @@ static qint64 readSectorsUsedLibParted(PedDisk* pedDisk, const Partition& p)
 static void readSectorsUsed(PedDisk* pedDisk, const Device& d, Partition& p, const QString& mountPoint)
 {
     if (!mountPoint.isEmpty() && p.fileSystem().type() != FileSystem::LinuxSwap && p.fileSystem().type() != FileSystem::Lvm2_PV) {
-        const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-
-        // KDiskFreeSpaceInfo does not work with swap
-        if (p.isMounted() && freeSpaceInfo.isValid())
-            p.fileSystem().setSectorsUsed(freeSpaceInfo.used() / d.logicalSize());
+        const QStorageInfo storage = QStorageInfo(mountPoint);
+        if (p.isMounted() && storage.isValid())
+            p.fileSystem().setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / d.logicalSize());
     }
     else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
         p.fileSystem().setSectorsUsed(p.fileSystem().readUsedCapacity(p.deviceNode()) / d.logicalSize());
