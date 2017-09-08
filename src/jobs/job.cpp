@@ -30,7 +30,6 @@
 #include <QIcon>
 #include <QTime>
 
-#include <KIconLoader>
 #include <KLocalizedString>
 
 Job::Job() :
@@ -188,7 +187,7 @@ void Job::jobFinished(Report& report, bool b)
 }
 
 /** @return the Job's current status icon */
-QIcon Job::statusIcon() const
+QString Job::statusIcon() const
 {
     static const QString icons[] = {
         QStringLiteral("dialog-information"),
@@ -199,9 +198,9 @@ QIcon Job::statusIcon() const
     Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(icons) / sizeof(icons[0]));
 
     if (status() < 0 || static_cast<quint32>(status()) >= sizeof(icons) / sizeof(icons[0]))
-        return QIcon();
+        return QString();
 
-    return QIcon::fromTheme(icons[status()]).pixmap(IconSize(KIconLoader::Small));
+    return icons[status()];
 }
 
 /** @return the Job's current status text */

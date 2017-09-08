@@ -45,7 +45,6 @@ target_link_libraries( kpmcore
     ${LIBATASMART_LIBRARIES}
     Qt5::DBus
     KF5::I18n
-    KF5::IconThemes
     KF5::KIOCore
     KF5::Service
     KF5::WidgetsAddons

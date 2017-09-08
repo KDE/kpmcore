@@ -112,7 +112,7 @@ public:
         return m_Status;    /**< @return the current status */
     }
     virtual QString statusText() const;
-    virtual QIcon statusIcon() const;
+    virtual QString statusIcon() const;
 
     virtual void setStatus(OperationStatus s) {
         m_Status = s;    /**< @param s the new status */

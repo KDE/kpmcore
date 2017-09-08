@@ -29,7 +29,6 @@
 #include <QIcon>
 #include <QString>
 
-#include <KIconLoader>
 #include <KLocalizedString>
 
 Operation::Operation() :
@@ -89,7 +88,7 @@ QString Operation::statusText() const
 }
 
 /** @return icon for the current Operation's status */
-QIcon Operation::statusIcon() const
+QString Operation::statusIcon() const
 {
     static const QString icons[] = {
         QString(),
@@ -104,13 +103,13 @@ QIcon Operation::statusIcon() const
 
     if (status() < 0 || static_cast<quint32>(status()) >= sizeof(icons) / sizeof(icons[0])) {
         qWarning() << "invalid status " << status();
-        return QIcon();
+        return QString();
     }
 
     if (status() == StatusNone)
-        return QIcon();
+        return QString();
 
-    return QIcon::fromTheme(icons[status()]).pixmap(IconSize(KIconLoader::Small));
+    return icons[status()];
 }
 
 void Operation::addJob(Job* job)

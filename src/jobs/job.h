@@ -73,7 +73,7 @@ public:
     virtual QString description() const = 0; /**< @return the Job's description */
     virtual bool run(Report& parent) = 0; /**< @param parent parent Report to add new child to for this Job @return true if successfully run */
 
-    virtual QIcon statusIcon() const;
+    virtual QString statusIcon() const;
     virtual QString statusText() const;
 
     JobStatus status() const {
