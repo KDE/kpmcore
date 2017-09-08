@@ -86,8 +86,9 @@ public:
         Lvm2_PV = 24,
         F2fs = 25,
         Udf = 26,
+        Iso9660 = 27,
 
-        __lastType = 27
+        __lastType = 28
     };
 
     /** The type of support for a given FileSystem action */

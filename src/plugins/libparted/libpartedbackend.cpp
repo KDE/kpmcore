@@ -513,6 +513,7 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath
             else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Lvm2_PV;
             else if (s == QStringLiteral("f2fs")) rval = FileSystem::F2fs;
             else if (s == QStringLiteral("udf")) rval = FileSystem::Udf;
+            else if (s == QStringLiteral("iso9660")) rval = FileSystem::Iso9660;
             else
                 qWarning() << "blkid: unknown file system type " << s << " on " << partitionPath;
         }

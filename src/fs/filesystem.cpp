@@ -63,7 +63,8 @@ const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode 
     QColor( 242,155,104 ),
     QColor( 160,210,180 ),
     QColor( 255,170,0 ),
-    QColor( 170, 120, 255)
+    QColor( 170, 120, 255 ),
+    QColor( 177, 82, 69 )
 }
 };
 
@@ -434,6 +435,7 @@ static const QString* typeNames()
         xi18nc("@item filesystem name", "lvm2 pv"),
         xi18nc("@item filesystem name", "f2fs"),
         xi18nc("@item filesystem name", "udf"),
+        xi18nc("@item filesystem name", "iso9660"),
     };
 
     return s;

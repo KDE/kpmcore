@@ -31,6 +31,7 @@
 #include "fs/hfs.h"
 #include "fs/hfsplus.h"
 #include "fs/hpfs.h"
+#include "fs/iso9660.h"
 #include "fs/jfs.h"
 #include "fs/linuxswap.h"
 #include "fs/luks.h"
@@ -70,6 +71,7 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Hfs, new FS::hfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::HfsPlus, new FS::hfsplus(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Hpfs, new FS::hpfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Iso9660, new FS::iso9660(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Jfs, new FS::jfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Luks, new FS::luks(-1, -1, -1, QString()));
@@ -117,6 +119,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     case FileSystem::Hfs:          fs = new FS::hfs(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::HfsPlus:      fs = new FS::hfsplus(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Hpfs:         fs = new FS::hpfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Iso9660:      fs = new FS::iso9660(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Jfs:          fs = new FS::jfs(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::LinuxSwap:    fs = new FS::linuxswap(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Luks:         fs = new FS::luks(firstsector, lastsector, sectorsused, label); break;

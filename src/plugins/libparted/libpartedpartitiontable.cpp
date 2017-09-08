@@ -117,7 +117,8 @@ static const struct {
     { FileSystem::Hfs, QStringLiteral("hfs") },
     { FileSystem::HfsPlus, QStringLiteral("hfs+") },
     { FileSystem::Ufs, QStringLiteral("ufs") },
-    { FileSystem::Udf, QStringLiteral("ntfs") }
+    { FileSystem::Udf, QStringLiteral("ntfs") },
+    { FileSystem::Iso9660, QStringLiteral("iso9660") }
 };
 
 static PedFileSystemType* getPedFileSystemType(FileSystem::Type t)
