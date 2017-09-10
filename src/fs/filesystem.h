@@ -110,7 +110,7 @@ public:
     virtual ~FileSystem() {}
 
 public:
-    virtual void init() {};
+    virtual void init() {}
     virtual void scan(const QString& deviceNode);
     virtual qint64 readUsedCapacity(const QString& deviceNode) const;
     virtual QString readLabel(const QString& deviceNode) const;
