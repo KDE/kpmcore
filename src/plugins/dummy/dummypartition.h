@@ -27,7 +27,7 @@ class Report;
 
 class DummyPartition : public CoreBackendPartition
 {
-    Q_DISABLE_COPY(DummyPartition);
+    Q_DISABLE_COPY(DummyPartition)
 
 public:
     DummyPartition();

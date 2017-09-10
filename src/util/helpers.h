@@ -46,7 +46,7 @@ LIBKPMCORE_EXPORT KAboutData aboutKPMcore();
 
 /** Pointer to the file system (which might be inside LUKS container) contained in the partition
  * @param p Partition where we look for file system
- * @return pointer to the FileSystem
+ * @param fs inner FileSystem object
 */
 template <typename T>
 inline LIBKPMCORE_EXPORT void innerFS (const Partition* p, T& fs)

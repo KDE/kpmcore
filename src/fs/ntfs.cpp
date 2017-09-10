@@ -181,7 +181,7 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
 {
     report.line() << xi18nc("@info:progress", "Updating boot sector for NTFS file system on partition <filename>%1</filename>.", deviceNode);
 
-    quint32 n = firstSector();
+    qint64 n = firstSector();
     char* s = reinterpret_cast<char*>(&n);
 
 #if Q_BYTE_ORDER == Q_BIG_ENDIAN

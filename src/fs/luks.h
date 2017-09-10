@@ -41,7 +41,7 @@ class LIBKPMCORE_EXPORT luks : public FileSystem
 {
 public:
     luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
-    virtual ~luks();
+    ~luks() override;
 
 public:
     void init() override;
@@ -171,7 +171,7 @@ public:
     void getMapperName(const QString& deviceNode);
     void getLuksInfo(const QString& deviceNode);
 
-    FileSystem* innerFS() const { return m_innerFs; }; // avoid calling this unless necessary
+    FileSystem* innerFS() const { return m_innerFs; } // avoid calling this unless necessary
     QString outerUuid() const;
 
     QString mapperName() const { return m_MapperName; }

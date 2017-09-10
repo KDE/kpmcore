@@ -155,10 +155,10 @@ public:
     static QList<LvmPV> getPVinNode(const PartitionNode* parent);
     static QList<LvmPV> getPVs(const QList<Device*>& devices);
 
-    qint64 allocatedPE() const { return m_AllocatedPE; };
-    qint64 freePE() const { return m_TotalPE - m_AllocatedPE; };
-    qint64 totalPE() const { return m_TotalPE; };
-    qint64 peSize() const { return m_PESize; };
+    qint64 allocatedPE() const { return m_AllocatedPE; }
+    qint64 freePE() const { return m_TotalPE - m_AllocatedPE; }
+    qint64 totalPE() const { return m_TotalPE; }
+    qint64 peSize() const { return m_PESize; }
 
 private:
     void getPESize(const QString& deviceNode); // return PE size in bytes

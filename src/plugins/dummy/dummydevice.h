@@ -30,7 +30,7 @@ class CoreBackendPartitionTable;
 
 class DummyDevice : public CoreBackendDevice
 {
-    Q_DISABLE_COPY(DummyDevice);
+    Q_DISABLE_COPY(DummyDevice)
 
 public:
     DummyDevice(const QString& device_node);

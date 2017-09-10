@@ -97,7 +97,7 @@ public:
 public:
     PartitionTable(TableType type, qint64 firstUsable, qint64 lastUsable);
     PartitionTable(const PartitionTable& other);
-    ~PartitionTable();
+    ~PartitionTable() override;
 
 public:
     PartitionNode* parent() override {

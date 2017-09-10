@@ -29,7 +29,7 @@ class Report;
 
 class LibPartedPartition : public CoreBackendPartition
 {
-    Q_DISABLE_COPY(LibPartedPartition);
+    Q_DISABLE_COPY(LibPartedPartition)
 
 public:
     LibPartedPartition(PedPartition* ped_partition);

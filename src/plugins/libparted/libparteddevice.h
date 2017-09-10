@@ -32,7 +32,7 @@ class CoreBackendPartitionTable;
 
 class LibPartedDevice : public CoreBackendDevice
 {
-    Q_DISABLE_COPY(LibPartedDevice);
+    Q_DISABLE_COPY(LibPartedDevice)
 
 public:
     LibPartedDevice(const QString& deviceNode);
