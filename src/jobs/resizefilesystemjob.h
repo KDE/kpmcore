@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(RESIZEFILESYSTEMJOB__H)
+#if !defined(KPMCORE_RESIZEFILESYSTEMJOB_H)
 
-#define RESIZEFILESYSTEMJOB__H
+#define KPMCORE_RESIZEFILESYSTEMJOB_H
 
 #include "jobs/job.h"
 

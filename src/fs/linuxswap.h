@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(LINUXSWAP__H)
+#if !defined(KPMCORE_LINUXSWAP_H)
 
-#define LINUXSWAP__H
+#define KPMCORE_LINUXSWAP_H
 
 #include "util/libpartitionmanagerexport.h"
 

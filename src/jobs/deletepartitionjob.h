@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(DELETEPARTITIONJOB__H)
+#if !defined(KPMCORE_DELETEPARTITIONJOB_H)
 
-#define DELETEPARTITIONJOB__H
+#define KPMCORE_DELETEPARTITIONJOB_H
 
 #include "jobs/job.h"
 

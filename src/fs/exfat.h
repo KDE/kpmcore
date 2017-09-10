@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(EXFAT__H)
+#if !defined(KPMCORE_EXFAT_H)
 
-#define EXFAT__H
+#define KPMCORE_EXFAT_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYTARGETFILE__H)
+#if !defined(KPMCORE_COPYTARGETFILE_H)
 
-#define COPYTARGETFILE__H
+#define KPMCORE_COPYTARGETFILE_H
 
 #include "core/copytarget.h"
 

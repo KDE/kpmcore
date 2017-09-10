@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(DUMMYPARTITIONTABLE__H)
+#if !defined(KPMCORE_DUMMYPARTITIONTABLE_H)
 
-#define DUMMYPARTITIONTABLE__H
+#define KPMCORE_DUMMYPARTITIONTABLE_H
 
 #include "backend/corebackendpartitiontable.h"
 

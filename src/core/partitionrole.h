@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(PARTITIONROLE__H)
+#if !defined(KPMCORE_PARTITIONROLE_H)
 
-#define PARTITIONROLE__H
+#define KPMCORE_PARTITIONROLE_H
 
 #include "util/libpartitionmanagerexport.h"
 

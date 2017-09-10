@@ -15,8 +15,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef DEVICESCANNER_H
-#define DEVICESCANNER_H
+#ifndef KPMCORE_DEVICESCANNER_H
+#define KPMCORE_DEVICESCANNER_H
 
 #include "util/libpartitionmanagerexport.h"
 

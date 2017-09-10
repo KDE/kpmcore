@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(LVMDEVICE__H)
+#if !defined(KPMCORE_LVMDEVICE_H)
 
-#define LVMDEVICE__H
+#define KPMCORE_LVMDEVICE_H
 
 #include "core/device.h"
 #include "core/volumemanagerdevice.h"

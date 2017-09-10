@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(SMARTSTATUS__H)
+#if !defined(KPMCORE_SMARTSTATUS_H)
 
-#define SMARTSTATUS__H
+#define KPMCORE_SMARTSTATUS_H
 
 #include "util/libpartitionmanagerexport.h"
 #include "core/smartattribute.h"

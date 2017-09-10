@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(DEACTIVATEVOLUMEGROUPOPERATION_H)
+#if !defined(KPMCORE_DEACTIVATEVOLUMEGROUPOPERATION_H)
 
-#define DEACTIVATEVOLUMEGROUPOPERATION_H
+#define KPMCORE_DEACTIVATEVOLUMEGROUPOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

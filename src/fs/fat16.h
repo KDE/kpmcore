@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(FAT16__H)
+#if !defined(KPMCORE_FAT16_H)
 
-#define FAT16__H
+#define KPMCORE_FAT16_H
 
 #include "util/libpartitionmanagerexport.h"
 

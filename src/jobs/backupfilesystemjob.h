@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(BACKUPFILESYSTEMJOB__H)
+#if !defined(KPMCORE_BACKUPFILESYSTEMJOB_H)
 
-#define BACKUPFILESYSTEMJOB__H
+#define KPMCORE_BACKUPFILESYSTEMJOB_H
 
 #include "jobs/job.h"
 

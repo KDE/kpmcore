@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(LVM2_PV__H)
+#if !defined(KPMCORE_LVM2_PV_H)
 
-#define LVM2_PV__H
+#define KPMCORE_LVM2_PV_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -17,8 +17,8 @@
 
 // #include "libpartitionmanager_export.h"
 
-#if !defined(LIBPARTITIONMANAGEREXPORT__H)
-#define LIBPARTITIONMANAGEREXPORT__H
+#if !defined(KPMCORE_LIBPARTITIONMANAGEREXPORT_H)
+#define KPMCORE_LIBPARTITIONMANAGEREXPORT_H
 
 #include <QtGlobal>
 

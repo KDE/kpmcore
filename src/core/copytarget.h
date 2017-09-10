@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYTARGET__H)
+#if !defined(KPMCORE_COPYTARGET_H)
 
-#define COPYTARGET__H
+#define KPMCORE_COPYTARGET_H
 
 #include <QtGlobal>
 

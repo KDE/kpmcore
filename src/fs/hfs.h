@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(HFS__H)
+#if !defined(KPMCORE_HFS_H)
 
-#define HFS__H
+#define KPMCORE_HFS_H
 
 #include "util/libpartitionmanagerexport.h"
 

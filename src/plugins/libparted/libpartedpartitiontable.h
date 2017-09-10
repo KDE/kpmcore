@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(LIBPARTEDPARTITIONTABLE__H)
+#if !defined(KPMCORE_LIBPARTEDPARTITIONTABLE_H)
 
-#define LIBPARTEDPARTITIONTABLE__H
+#define KPMCORE_LIBPARTEDPARTITIONTABLE_H
 
 #include "backend/corebackendpartitiontable.h"
 

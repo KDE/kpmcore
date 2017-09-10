@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(EXT2__H)
+#if !defined(KPMCORE_EXT2_H)
 
-#define EXT2__H
+#define KPMCORE_EXT2_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(PARTITIONTABLE__H)
+#if !defined(KPMCORE_PARTITIONTABLE_H)
 
-#define PARTITIONTABLE__H
+#define KPMCORE_PARTITIONTABLE_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(DUMMYDEVICE__H)
+#if !defined(KPMCORE_DUMMYDEVICE_H)
 
-#define DUMMYDEVICE__H
+#define KPMCORE_DUMMYDEVICE_H
 
 #include "backend/corebackenddevice.h"
 

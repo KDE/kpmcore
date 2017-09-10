@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYSOURCESHRED__H)
+#if !defined(KPMCORE_COPYSOURCESHRED_H)
 
-#define COPYSOURCESHRED__H
+#define KPMCORE_COPYSOURCESHRED_H
 
 #include "core/copysource.h"
 

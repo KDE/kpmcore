@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(PARTITIONALIGNMENT__H)
+#if !defined(KPMCORE_PARTITIONALIGNMENT_H)
 
-#define PARTITIONALIGNMENT__H
+#define KPMCORE_PARTITIONALIGNMENT_H
 
 #include "QtGlobal"
 

@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(ZFS__H)
+#if !defined(KPMCORE_ZFS_H)
 
-#define ZFS__H
+#define KPMCORE_ZFS_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(OCFS2__H)
+#if !defined(KPMCORE_OCFS2_H)
 
-#define OCFS2__H
+#define KPMCORE_OCFS2_H
 
 #include "util/libpartitionmanagerexport.h"
 

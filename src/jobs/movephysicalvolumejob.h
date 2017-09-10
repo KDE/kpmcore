@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(MOVEPHYSICALVOLUMEJOB_H)
+#if !defined(KPMCORE_MOVEPHYSICALVOLUMEJOB_H)
 
-#define MOVEPHYSICALVOLUMEJOB_H
+#define KPMCORE_MOVEPHYSICALVOLUMEJOB_H
 
 #include "core/partition.h"
 #include "jobs/job.h"

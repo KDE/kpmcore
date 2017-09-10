@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(CREATEVOLUMEGROUPOPERATION_H)
+#if !defined(KPMCORE_CREATEVOLUMEGROUPOPERATION_H)
 
-#define CREATEVOLUMEGROUPOPERATION_H
+#define KPMCORE_CREATEVOLUMEGROUPOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

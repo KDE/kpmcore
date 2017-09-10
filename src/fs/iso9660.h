@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(ISO9660__H)
+#if !defined(KPMCORE_ISO9660_H)
 
-#define ISO9660__H
+#define KPMCORE_ISO9660_H
 
 #include "util/libpartitionmanagerexport.h"
 

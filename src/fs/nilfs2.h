@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(NILFS2__H)
+#if !defined(KPMCORE_NILFS2_H)
 
-#define NILFS2__H
+#define KPMCORE_NILFS2_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(CHECKOPERATION__H)
+#if !defined(KPMCORE_CHECKOPERATION_H)
 
-#define CHECKOPERATION__H
+#define KPMCORE_CHECKOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

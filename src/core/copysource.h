@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYSOURCE__H)
+#if !defined(KPMCORE_COPYSOURCE_H)
 
-#define COPYSOURCE__H
+#define KPMCORE_COPYSOURCE_H
 
 #include <QtGlobal>
 

@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(REMOVEVOLUMEGROUPJOB_H)
+#if !defined(KPMCORE_REMOVEVOLUMEGROUPJOB_H)
 
-#define REMOVEVOLUMEGROUPJOB_H
+#define KPMCORE_REMOVEVOLUMEGROUPJOB_H
 
 #include "jobs/job.h"
 

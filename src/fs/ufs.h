@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(UFS__H)
+#if !defined(KPMCORE_UFS_H)
 
-#define UFS__H
+#define KPMCORE_UFS_H
 
 #include "util/libpartitionmanagerexport.h"
 

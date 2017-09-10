@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(HELPERS__H)
+#if !defined(KPMCORE_HELPERS_H)
 
-#define HELPERS__H
+#define KPMCORE_HELPERS_H
 
 #include "core/partition.h"
 #include "fs/filesystem.h"

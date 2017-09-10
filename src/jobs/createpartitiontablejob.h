@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(CREATEPARTITIONTABLEJOB__H)
+#if !defined(KPMCORE_CREATEPARTITIONTABLEJOB_H)
 
-#define CREATEPARTITIONTABLEJOB__H
+#define KPMCORE_CREATEPARTITIONTABLEJOB_H
 
 #include "jobs/job.h"
 

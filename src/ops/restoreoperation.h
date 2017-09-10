@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(RESTOREOPERATION__H)
+#if !defined(KPMCORE_RESTOREOPERATION_H)
 
-#define RESTOREOPERATION__H
+#define KPMCORE_RESTOREOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

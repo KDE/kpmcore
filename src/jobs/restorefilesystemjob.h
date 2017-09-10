@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(RESTOREFILESYSTEMJOB__H)
+#if !defined(KPMCORE_RESTOREFILESYSTEMJOB_H)
 
-#define RESTOREFILESYSTEMJOB__H
+#define KPMCORE_RESTOREFILESYSTEMJOB_H
 
 #include "jobs/job.h"
 

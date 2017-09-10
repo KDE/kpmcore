@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(LIBPARTEDDEVICE__H)
+#if !defined(KPMCORE_LIBPARTEDDEVICE_H)
 
-#define LIBPARTEDDEVICE__H
+#define KPMCORE_LIBPARTEDDEVICE_H
 
 #include "backend/corebackenddevice.h"
 

@@ -17,9 +17,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(FILESYSTEM__H)
+#if !defined(KPMCORE_FILESYSTEM_H)
 
-#define FILESYSTEM__H
+#define KPMCORE_FILESYSTEM_H
 #include "util/libpartitionmanagerexport.h"
 
 #include <QColor>

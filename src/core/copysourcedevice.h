@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYSOURCEDEVICE__H)
+#if !defined(KPMCORE_COPYSOURCEDEVICE_H)
 
-#define COPYSOURCEDEVICE__H
+#define KPMCORE_COPYSOURCEDEVICE_H
 
 #include "core/copysource.h"
 #include "util/libpartitionmanagerexport.h"

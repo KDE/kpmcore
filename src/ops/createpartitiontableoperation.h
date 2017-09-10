@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(CREATEPARTITIONTABLEOPERATION__H)
+#if !defined(KPMCORE_CREATEPARTITIONTABLEOPERATION_H)
 
-#define CREATEPARTITIONTABLEOPERATION__H
+#define KPMCORE_CREATEPARTITIONTABLEOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYOPERATION__H)
+#if !defined(KPMCORE_COPYOPERATION_H)
 
-#define COPYOPERATION__H
+#define KPMCORE_COPYOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

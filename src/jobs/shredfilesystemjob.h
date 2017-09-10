@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(SHREDFILESYSTEMJOB__H)
+#if !defined(KPMCORE_SHREDFILESYSTEMJOB_H)
 
-#define SHREDFILESYSTEMJOB__H
+#define KPMCORE_SHREDFILESYSTEMJOB_H
 
 #include "jobs/job.h"
 

@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(DEVICE__H)
+#if !defined(KPMCORE_DEVICE_H)
 
-#define DEVICE__H
+#define KPMCORE_DEVICE_H
 
 #include "util/libpartitionmanagerexport.h"
 

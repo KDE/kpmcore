@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(SETFILESYSTEMLABELJOB__H)
+#if !defined(KPMCORE_SETFILESYSTEMLABELJOB_H)
 
-#define SETFILESYSTEMLABELJOB__H
+#define KPMCORE_SETFILESYSTEMLABELJOB_H
 
 #include "jobs/job.h"
 

@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(MOVEFILESYSTEMJOB__H)
+#if !defined(KPMCORE_MOVEFILESYSTEMJOB_H)
 
-#define MOVEFILESYSTEMJOB__H
+#define KPMCORE_MOVEFILESYSTEMJOB_H
 
 #include "jobs/job.h"
 

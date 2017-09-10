@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(PARTWIDGET__H)
+#if !defined(KPMCORE_PARTWIDGET_H)
 
-#define PARTWIDGET__H
+#define KPMCORE_PARTWIDGET_H
 
 #include "util/libpartitionmanagerexport.h"
 

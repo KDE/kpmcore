@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(DEACTIVATELOGICALVOLUMEJOB_H)
+#if !defined(KPMCORE_DEACTIVATELOGICALVOLUMEJOB_H)
 
-#define DEACTIVATELOGICALVOLUMEJOB_H
+#define KPMCORE_DEACTIVATELOGICALVOLUMEJOB_H
 
 #include "jobs/job.h"
 

@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(SETPARTFLAGSOPERATION__H)
+#if !defined(KPMCORE_SETPARTFLAGSOPERATION_H)
 
-#define SETPARTFLAGSOPERATION__H
+#define KPMCORE_SETPARTFLAGSOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

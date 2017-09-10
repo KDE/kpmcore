@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(DUMMYBACKEND__H)
+#if !defined(KPMCORE_DUMMYBACKEND_H)
 
-#define DUMMYBACKEND__H
+#define KPMCORE_DUMMYBACKEND_H
 
 #include "backend/corebackend.h"
 

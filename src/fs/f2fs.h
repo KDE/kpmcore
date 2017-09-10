@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(F2FS__H)
+#if !defined(KPMCORE_F2FS_H)
 
-#define F2FS__H
+#define KPMCORE_F2FS_H
 
 #include "util/libpartitionmanagerexport.h"
 

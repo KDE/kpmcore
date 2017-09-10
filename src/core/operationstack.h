@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(OPERATIONSTACK__H)
+#if !defined(KPMCORE_OPERATIONSTACK_H)
 
-#define OPERATIONSTACK__H
+#define KPMCORE_OPERATIONSTACK_H
 
 #include "util/libpartitionmanagerexport.h"
 

@@ -16,6 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+#ifndef KPMCORE_PEDFLAGS_H
+#define KPMCORE_PEDFLAGS_H
+
 static struct {
     PedPartitionFlag pedFlag;
     PartitionTable::Flag flag;
@@ -39,3 +42,5 @@ static struct {
     { PED_PARTITION_IRST,               PartitionTable::FlagIrst }, // Intel Rapid Start partition
     { PED_PARTITION_ESP,                PartitionTable::FlagEsp }   // EFI system
 };
+
+#endif

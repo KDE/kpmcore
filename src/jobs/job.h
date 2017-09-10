@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(JOB__H)
+#if !defined(KPMCORE_JOB_H)
 
-#define JOB__H
+#define KPMCORE_JOB_H
 
 #include "fs/filesystem.h"
 

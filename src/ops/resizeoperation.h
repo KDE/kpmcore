@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(RESIZEOPERATION__H)
+#if !defined(KPMCORE_RESIZEOPERATION_H)
 
-#define RESIZEOPERATION__H
+#define KPMCORE_RESIZEOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

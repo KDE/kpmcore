@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(PARTITION__H)
+#if !defined(KPMCORE_PARTITION_H)
 
-#define PARTITION__H
+#define KPMCORE_PARTITION_H
 
 #include "core/partitionnode.h"
 #include "core/partitionrole.h"

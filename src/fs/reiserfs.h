@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(REISERFS__H)
+#if !defined(KPMCORE_REISERFS_H)
 
-#define REISERFS__H
+#define KPMCORE_REISERFS_H
 
 #include "util/libpartitionmanagerexport.h"
 

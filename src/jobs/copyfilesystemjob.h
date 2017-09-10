@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYFILESYSTEMJOB__H)
+#if !defined(KPMCORE_COPYFILESYSTEMJOB_H)
 
-#define COPYFILESYSTEMJOB__H
+#define KPMCORE_COPYFILESYSTEMJOB_H
 
 #include "jobs/job.h"
 

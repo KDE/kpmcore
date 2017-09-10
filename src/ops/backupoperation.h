@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(BACKUPOPERATION__H)
+#if !defined(KPMCORE_BACKUPOPERATION_H)
 
-#define BACKUPOPERATION__H
+#define KPMCORE_BACKUPOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

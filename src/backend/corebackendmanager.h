@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COREBACKENDMANAGER__H)
+#if !defined(KPMCORE_COREBACKENDMANAGER_H)
 
-#define COREBACKENDMANAGER__H
+#define KPMCORE_COREBACKENDMANAGER_H
 
 #include "util/libpartitionmanagerexport.h"
 

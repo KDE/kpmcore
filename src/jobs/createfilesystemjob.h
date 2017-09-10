@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(CREATEFILESYSTEMJOB__H)
+#if !defined(KPMCORE_CREATEFILESYSTEMJOB_H)
 
-#define CREATEFILESYSTEMJOB__H
+#define KPMCORE_CREATEFILESYSTEMJOB_H
 
 #include "jobs/job.h"
 

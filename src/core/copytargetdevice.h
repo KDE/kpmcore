@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(COPYTARGETDEVICE__H)
+#if !defined(KPMCORE_COPYTARGETDEVICE_H)
 
-#define COPYTARGETDEVICE__H
+#define KPMCORE_COPYTARGETDEVICE_H
 
 #include "core/copytarget.h"
 #include "util/libpartitionmanagerexport.h"

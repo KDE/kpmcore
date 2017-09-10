@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(REMOVEVOLUMEGROUPOPERATION_H)
+#if !defined(KPMCORE_REMOVEVOLUMEGROUPOPERATION_H)
 
-#define REMOVEVOLUMEGROUPOPERATION_H
+#define KPMCORE_REMOVEVOLUMEGROUPOPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
 

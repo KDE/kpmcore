@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(REPORT__H)
+#if !defined(KPMCORE_REPORT_H)
 
-#define REPORT__H
+#define KPMCORE_REPORT_H
 
 #include "util/libpartitionmanagerexport.h"
 

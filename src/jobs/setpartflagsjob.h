@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(SETPARTFLAGSJOB__H)
+#if !defined(KPMCORE_SETPARTFLAGSJOB_H)
 
-#define SETPARTFLAGSJOB__H
+#define KPMCORE_SETPARTFLAGSJOB_H
 
 #include "jobs/job.h"
 
