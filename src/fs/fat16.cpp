@@ -25,6 +25,7 @@
 #include <KLocalizedString>
 
 #include <QRegularExpression>
+#include <QRegularExpressionValidator>
 #include <QString>
 #include <QStringList>
 
@@ -99,6 +100,13 @@ qint64 fat16::maxCapacity() const
 qint64 fat16::maxLabelLength() const
 {
     return 11;
+}
+
+QValidator* fat16::labelValidator(QObject *parent) const
+{
+    QRegularExpressionValidator *m_LabelValidator = new QRegularExpressionValidator(parent);
+    m_LabelValidator->setRegularExpression(QRegularExpression(QStringLiteral(R"(^[^*?.,;:\/\\|+=<>\[\]"]*$)")));
+    return m_LabelValidator;
 }
 
 qint64 fat16::readUsedCapacity(const QString& deviceNode) const
