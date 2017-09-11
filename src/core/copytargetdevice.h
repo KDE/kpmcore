@@ -46,7 +46,7 @@ public:
 
 public:
     bool open() override;
-    qint32 sectorSize() const override;
+    qint64 sectorSize() const override;
     bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) override;
     qint64 firstSector() const override {
         return m_FirstSector;    /**< @return the first sector to write to */

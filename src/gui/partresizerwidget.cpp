@@ -25,6 +25,8 @@
 
 #include "fs/filesystem.h"
 
+#include <algorithm>
+
 #include <QDebug>
 #include <QPainter>
 #include <QMouseEvent>
@@ -80,8 +82,8 @@ void PartResizerWidget::init(Device& d, Partition& p, qint64 minFirst, qint64 ma
     setReadOnly(read_only);
     setMoveAllowed(move_allowed);
 
-    setMinimumLength(qMax(partition().sectorsUsed(), partition().minimumSectors()));
-    setMaximumLength(qMin(totalSectors(), partition().maximumSectors()));
+    setMinimumLength(std::max(partition().sectorsUsed(), partition().minimumSectors()));
+    setMaximumLength(std::min(totalSectors(), partition().maximumSectors()));
 
     // set margins to accommodate to top/bottom button asymmetric layouts
     QStyleOptionButton bOpt;
@@ -142,12 +144,12 @@ long double PartResizerWidget::sectorsPerPixel() const
 
 int PartResizerWidget::partWidgetStart() const
 {
-    return handleWidth() + (partition().firstSector() - minimumFirstSector()) / sectorsPerPixel();
+    return static_cast<int>(handleWidth() + (partition().firstSector() - minimumFirstSector()) / sectorsPerPixel());
 }
 
 int PartResizerWidget::partWidgetWidth() const
 {
-    return partition().length() / sectorsPerPixel();
+    return static_cast<int>(partition().length() / sectorsPerPixel());
 }
 
 void PartResizerWidget::updatePositions()
@@ -287,13 +289,13 @@ void PartResizerWidget::mouseMoveEvent(QMouseEvent* event)
     int x = event->pos().x() - m_Hotspot;
 
     if (draggedWidget() == &leftHandle()) {
-        const qint64 newFirstSector = qMax(minimumFirstSector() + x * sectorsPerPixel(), 0.0L);
+        const qint64 newFirstSector = static_cast<qint64>(std::max(minimumFirstSector() + x * sectorsPerPixel(), 0.0L));
         updateFirstSector(newFirstSector);
     } else if (draggedWidget() == &rightHandle()) {
-        const qint64 newLastSector = qMin(static_cast<qint64>(minimumFirstSector() + (x - rightHandle().width()) * sectorsPerPixel()), maximumLastSector());
+        const qint64 newLastSector = static_cast<qint64>(std::min(static_cast<qint64>(minimumFirstSector() + (x - rightHandle().width()) * sectorsPerPixel()), maximumLastSector()));
         updateLastSector(newLastSector);
     } else if (draggedWidget() == &partWidget() && moveAllowed()) {
-        const qint64 newFirstSector = qMax(minimumFirstSector() + (x - handleWidth()) * sectorsPerPixel(), 0.0L);
+        const qint64 newFirstSector = static_cast<qint64>(std::max(minimumFirstSector() + (x - handleWidth()) * sectorsPerPixel(), 0.0L));
         movePartition(newFirstSector);
     }
 }

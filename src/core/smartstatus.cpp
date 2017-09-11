@@ -36,10 +36,10 @@ SmartStatus::SmartStatus(const QString& device_path) :
     m_Firmware(),
     m_Overall(Bad),
     m_SelfTestStatus(Success),
-    m_Temp(-99),
-    m_BadSectors(-99),
-    m_PowerCycles(-99),
-    m_PoweredOn(-99)
+    m_Temp(0),
+    m_BadSectors(0),
+    m_PowerCycles(0),
+    m_PoweredOn(0)
 {
     update();
 }
@@ -191,7 +191,7 @@ void SmartStatus::update()
     setInitSuccess(true);
 }
 
-QString SmartStatus::tempToString(qint64 mkelvin)
+QString SmartStatus::tempToString(quint64 mkelvin)
 {
     const double celsius = (mkelvin - 273150.0) / 1000.0;
     const double fahrenheit = 9.0 * celsius / 5.0 + 32;

@@ -134,8 +134,8 @@ public:
 
     PartitionRole::Roles childRoles(const Partition& p) const;
 
-    int numPrimaries() const;
-    int maxPrimaries() const {
+    qint32 numPrimaries() const;
+    qint32 maxPrimaries() const {
         return m_MaxPrimaries;    /**< @return max number of primary partitions this PartitionTable can handle */
     }
 

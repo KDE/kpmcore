@@ -105,21 +105,21 @@ typedef struct _GPTDiskData GPTDiskData;
     @param d the Device in question
     @return the first sector usable by a Partition
 */
-static quint64 firstUsableSector(const Device& d)
+static qint64 firstUsableSector(const Device& d)
 {
     PedDevice* pedDevice = ped_device_get(d.deviceNode().toLatin1().constData());
     PedDisk* pedDisk = pedDevice ? ped_disk_new(pedDevice) : nullptr;
 
-    quint64 rval = 0;
+    qint64 rval = 0;
     if (pedDisk)
-        rval = pedDisk->dev->bios_geom.sectors;
+        rval = static_cast<qint64>(pedDisk->dev->bios_geom.sectors);
 
     if (pedDisk && strcmp(pedDisk->type->name, "gpt") == 0) {
         GPTDiskData* gpt_disk_data = reinterpret_cast<GPTDiskData*>(pedDisk->disk_specific);
         PedGeometry* geom = reinterpret_cast<PedGeometry*>(&gpt_disk_data->data_area);
 
         if (geom)
-            rval = geom->start;
+            rval = static_cast<qint64>(geom->start);
         else
             rval += 32;
     }
@@ -133,16 +133,16 @@ static quint64 firstUsableSector(const Device& d)
     @param d the Device in question
     @return the last sector usable by a Partition
 */
-static quint64 lastUsableSector(const Device& d)
+static qint64 lastUsableSector(const Device& d)
 {
     PedDevice* pedDevice = ped_device_get(d.deviceNode().toLatin1().constData());
     PedDisk* pedDisk = pedDevice ? ped_disk_new(pedDevice) : nullptr;
 
-    quint64 rval = 0;
+    qint64 rval = 0;
     if (pedDisk)
-        rval = static_cast< quint64 >( pedDisk->dev->bios_geom.sectors ) *
-               pedDisk->dev->bios_geom.heads *
-               pedDisk->dev->bios_geom.cylinders - 1;
+        rval = static_cast< qint64 >( pedDisk->dev->bios_geom.sectors ) *
+               static_cast< qint64 >( pedDisk->dev->bios_geom.heads ) *
+               static_cast< qint64 >( pedDisk->dev->bios_geom.cylinders - 1 );
 
     if (pedDisk && strcmp(pedDisk->type->name, "gpt") == 0) {
         GPTDiskData* gpt_disk_data = reinterpret_cast<GPTDiskData*>(pedDisk->disk_specific);
@@ -446,8 +446,8 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
             deviceNodes << deviceNode;
         }
 
-        quint32 totalDevices = deviceNodes.length();
-        for (quint32 i = 0; i < totalDevices; ++i) {
+        int totalDevices = deviceNodes.length();
+        for (int i = 0; i < totalDevices; ++i) {
             const QString deviceNode = deviceNodes[i];
 
             emitScanProgress(deviceNode, i * 100 / totalDevices);

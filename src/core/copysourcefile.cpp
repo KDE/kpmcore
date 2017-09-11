@@ -25,7 +25,7 @@
     @param filename filename of the file to copy from
     @param sectorsize the sector size to assume for the file, usually the target Device's sector size
 */
-CopySourceFile::CopySourceFile(const QString& filename, qint32 sectorsize) :
+CopySourceFile::CopySourceFile(const QString& filename, qint64 sectorsize) :
     CopySource(),
     m_File(filename),
     m_SectorSize(sectorsize)

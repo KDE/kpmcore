@@ -93,7 +93,7 @@ void PartWidget::paintEvent(QPaintEvent*)
     if (partition() == nullptr)
         return;
 
-    const int usedPercentage = partition()->used() * 100 / partition()->capacity();
+    const int usedPercentage = static_cast<int>(partition()->used() * 100 / partition()->capacity());
     const int w = width() * usedPercentage / 100;
 
     QPainter painter(this);

@@ -34,14 +34,14 @@ class CopyTarget;
 class CopySourceShred : public CopySource
 {
 public:
-    CopySourceShred(qint64 size, qint32 sectorsize, bool randomShred);
+    CopySourceShred(qint64 size, qint64 sectorsize, bool randomShred);
 
 public:
     bool open() override;
     bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) override;
     qint64 length() const override;
 
-    qint32 sectorSize() const override {
+    qint64 sectorSize() const override {
         return m_SectorSize;    /**< @return the file's sector size */
     }
     bool overlaps(const CopyTarget&) const override {
@@ -67,7 +67,7 @@ protected:
 
 private:
     qint64 m_Size;
-    qint32 m_SectorSize;
+    qint64 m_SectorSize;
     QFile m_SourceFile;
 };
 

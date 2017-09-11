@@ -81,16 +81,16 @@ public:
     const QString& firmware() const {
         return m_Firmware;
     }
-    qint64 temp() const {
+    quint64 temp() const {
         return m_Temp;
     }
-    qint64 badSectors() const {
+    quint64 badSectors() const {
         return m_BadSectors;
     }
-    qint64 powerCycles() const {
+    quint64 powerCycles() const {
         return m_PowerCycles;
     }
-    qint64 poweredOn() const {
+    quint64 poweredOn() const {
         return m_PoweredOn;
     }
     const Attributes& attributes() const {
@@ -103,7 +103,7 @@ public:
         return m_SelfTestStatus;
     }
 
-    static QString tempToString(qint64 mkelvin);
+    static QString tempToString(quint64 mkelvin);
     static QString overallAssessmentToString(Overall o);
     static QString selfTestStatusToString(SmartStatus::SelfTestStatus s);
 
@@ -120,19 +120,19 @@ protected:
     void setFirmware(const QString& f) {
         m_Firmware = f;
     }
-    void setTemp(qint64 t) {
+    void setTemp(quint64 t) {
         m_Temp = t;
     }
     void setInitSuccess(bool b) {
         m_InitSuccess = b;
     }
-    void setBadSectors(qint64 s) {
+    void setBadSectors(quint64 s) {
         m_BadSectors = s;
     }
-    void setPowerCycles(qint64 p) {
+    void setPowerCycles(quint64 p) {
         m_PowerCycles = p;
     }
-    void setPoweredOn(qint64 t) {
+    void setPoweredOn(quint64 t) {
         m_PoweredOn = t;
     }
     void setOverall(Overall o) {
@@ -153,10 +153,10 @@ private:
     QString m_Firmware;
     Overall m_Overall;
     SelfTestStatus m_SelfTestStatus;
-    qint64 m_Temp;
-    qint64 m_BadSectors;
-    qint64 m_PowerCycles;
-    qint64 m_PoweredOn;
+    quint64 m_Temp;
+    quint64 m_BadSectors;
+    quint64 m_PowerCycles;
+    quint64 m_PoweredOn;
     Attributes m_Attributes;
 };
 

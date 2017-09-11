@@ -36,13 +36,13 @@ class QString;
 class CopyTargetFile : public CopyTarget
 {
 public:
-    CopyTargetFile(const QString& filename, qint32 sectorsize);
+    CopyTargetFile(const QString& filename, qint64 sectorsize);
 
 public:
     bool open() override;
     bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) override;
 
-    qint32 sectorSize() const override {
+    qint64 sectorSize() const override {
         return m_SectorSize;    /**< @return the file's sector size */
     }
     qint64 firstSector() const override {
@@ -62,7 +62,7 @@ protected:
 
 protected:
     QFile m_File;
-    qint32 m_SectorSize;
+    qint64 m_SectorSize;
 };
 
 #endif

@@ -30,7 +30,7 @@
 */
 Device::Device(const QString& name,
                const QString& deviceNode,
-               const qint32 logicalSize,
+               const qint64 logicalSize,
                const qint64 totalLogical,
                const QString& iconName,
                Device::Type type)

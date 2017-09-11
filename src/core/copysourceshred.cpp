@@ -22,7 +22,7 @@
     @param s the size the copy source will (pretend to) have
     @param sectorsize the sectorsize the copy source will (pretend to) have
 */
-CopySourceShred::CopySourceShred(qint64 s, qint32 sectorsize, bool randomShred) :
+CopySourceShred::CopySourceShred(qint64 s, qint64 sectorsize, bool randomShred) :
     CopySource(),
     m_Size(s),
     m_SectorSize(sectorsize),

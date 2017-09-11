@@ -28,7 +28,7 @@
 
 static QString getAttrName(qint32 id);
 static QString getAttrDescription(qint32 id);
-static QString getPrettyValue(qint64 value, qint64 unit);
+static QString getPrettyValue(quint64 value, qint64 unit);
 static SmartAttribute::Assessment getAssessment(const SkSmartAttributeParsedData* a);
 static QString getRaw(const uint8_t*);
 
@@ -68,7 +68,7 @@ QString SmartAttribute::assessmentToString(Assessment a)
     }
 }
 
-static QString getPrettyValue(qint64 value, qint64 unit)
+static QString getPrettyValue(quint64 value, qint64 unit)
 {
     QString rval;
 

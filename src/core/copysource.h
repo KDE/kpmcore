@@ -41,7 +41,7 @@ protected:
 
 public:
     virtual bool open() = 0;
-    virtual qint32 sectorSize() const = 0;
+    virtual qint64 sectorSize() const = 0;
     virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) = 0;
     virtual qint64 length() const = 0;
     virtual bool overlaps(const CopyTarget& target) const = 0;

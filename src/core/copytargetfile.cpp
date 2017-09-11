@@ -21,7 +21,7 @@
     @param filename name of the file to write to
     @param sectorsize the "sector size" of the file to write to, usually the sector size of the CopySourceDevice
 */
-CopyTargetFile::CopyTargetFile(const QString& filename, qint32 sectorsize) :
+CopyTargetFile::CopyTargetFile(const QString& filename, qint64 sectorsize) :
     CopyTarget(),
     m_File(filename),
     m_SectorSize(sectorsize)

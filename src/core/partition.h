@@ -162,7 +162,7 @@ public:
         return m_LastSector;    /**< @return the Partition's last sector on the Device */
     }
     qint64 sectorsUsed() const;
-    qint32 sectorSize() const {
+    qint64 sectorSize() const {
         return m_SectorSize;    /**< @return the sector size on the Partition's Device */
     }
     qint64 length() const {
@@ -293,7 +293,7 @@ private:
     PartitionTable::Flags m_AvailableFlags;
     PartitionTable::Flags m_ActiveFlags;
     bool m_IsMounted;
-    qint32 m_SectorSize;
+    qint64 m_SectorSize;
     State m_State;
 };
 

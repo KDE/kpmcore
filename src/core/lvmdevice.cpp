@@ -147,7 +147,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
                 fs->setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / logicalSize() );
         }
         else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
-            fs->setSectorsUsed(qCeil(fs->readUsedCapacity(lvPath) / static_cast<float>(logicalSize())));
+            fs->setSectorsUsed(qCeil(fs->readUsedCapacity(lvPath) / static_cast<double>(logicalSize())));
    }
 
     if (fs->supportGetLabel() != FileSystem::cmdSupportNone) {
@@ -250,7 +250,7 @@ const QStringList LvmDevice::getLVs(const QString& vgName)
 qint64 LvmDevice::getPeSize(const QString& vgName)
 {
     QString val = getField(QStringLiteral("vg_extent_size"), vgName);
-    return val.isEmpty() ? -1 : val.toInt();
+    return val.isEmpty() ? -1 : val.toLongLong();
 }
 
 qint64 LvmDevice::getTotalPE(const QString& vgName)

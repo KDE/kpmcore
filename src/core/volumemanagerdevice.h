@@ -42,7 +42,7 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
 
 public:
 
-    VolumeManagerDevice(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
+    VolumeManagerDevice(const QString& name, const QString& deviceNode, const qint64 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
 
     /**
      *  @return list of physical device's path that makes up volumeManagerDevice.(e.g: /dev/sda, /dev/sdb1)

@@ -36,14 +36,14 @@ class CopyTarget;
 class CopySourceFile : public CopySource
 {
 public:
-    CopySourceFile(const QString& filename, qint32 sectorsize);
+    CopySourceFile(const QString& filename, qint64 sectorsize);
 
 public:
     bool open() override;
     bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) override;
     qint64 length() const override;
 
-    qint32 sectorSize() const override {
+    qint64 sectorSize() const override {
         return m_SectorSize;    /**< @return the file's sector size */
     }
     bool overlaps(const CopyTarget&) const override {
@@ -66,7 +66,7 @@ protected:
 
 protected:
     QFile m_File;
-    qint32 m_SectorSize;
+    qint64 m_SectorSize;
 };
 
 #endif

@@ -54,7 +54,7 @@ bool CopyTargetDevice::open()
 }
 
 /** @return the Device's sector size */
-qint32 CopyTargetDevice::sectorSize() const
+qint64 CopyTargetDevice::sectorSize() const
 {
     return device().logicalSize();
 }

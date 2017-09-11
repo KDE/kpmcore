@@ -83,7 +83,7 @@ bool levelChildrenWidths(QList<qint32>& childrenWidth, const QList<qint32>& minC
     // if we have adjusted one or more partitions (and not ALL of them, because in that
     // case, nothing will help us), go through the partitions again and reduce the
     // on screen widths of those big enough anyway
-    const qint32 reduce = ceil(1.0 * adjust / numReducable);
+    const qint32 reduce = static_cast<qint32>(std::ceil(1.0 * adjust / numReducable));
     for (qint32 i = 0; i < childrenWidth.size(); i++)
         if (childrenWidth[i] > minChildrenWidth[i])
             childrenWidth[i] -= reduce;
@@ -115,7 +115,7 @@ void PartWidgetBase::positionChildren(const QWidget* destWidget, const Partition
 
     // calculate unleveled width for each child and store it
     for (const auto &p : partitions) {
-        childrenWidth.append(p->length() * destWidgetWidth / totalLength);
+        childrenWidth.append(static_cast<qint32>(p->length() * destWidgetWidth / totalLength));
 
         // Calculate the minimum width for the widget. This is easy for primary and logical partitions: they
         // just have a fixed min width (configured in m_MinWidth). But for extended partitions things

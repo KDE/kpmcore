@@ -54,7 +54,7 @@ public:
     };
 
 protected:
-    explicit Device(const QString& name, const QString& deviceNode, const qint32 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
+    explicit Device(const QString& name, const QString& deviceNode, const qint64 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
 
 public:
     explicit Device(const Device& other);
@@ -108,7 +108,7 @@ public:
         m_PartitionTable = ptable;
     }
 
-    virtual qint32 logicalSize() const {
+    virtual qint64 logicalSize() const {
         return m_LogicalSize;
     }
 
@@ -125,7 +125,7 @@ public:
 protected:
     QString m_Name;
     QString m_DeviceNode;
-    qint32  m_LogicalSize;
+    qint64  m_LogicalSize;
     qint64  m_TotalLogical;
     PartitionTable* m_PartitionTable;
     QString m_IconName;

@@ -48,11 +48,11 @@ bool fat32::create(Report& report, const QString& deviceNode)
 
 bool fat32::updateUUID(Report& report, const QString& deviceNode) const
 {
-    qint32 t = time(nullptr);
+    qint64 t = time(nullptr);
 
     char uuid[4];
     for (auto &u : uuid) {
-        u = t & 0xff;
+        u = static_cast<char>(t & 0xff);
         t >>= 8;
     }
 

@@ -30,6 +30,9 @@ class Partition;
 class PartWidget;
 class QWidget;
 
+bool distributeLostPixels(QList<qint32>& childrenWidth, qint32 lostPixels);
+bool levelChildrenWidths(QList<qint32>& childrenWidth, const QList<qint32>& minChildrenWidth, const qint32 destWidgetWidth);
+
 /** Base class for all widgets that need to position Partitions.
     @author Volker Lanz <vl@fidra.de>
 */

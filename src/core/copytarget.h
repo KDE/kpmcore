@@ -40,7 +40,7 @@ protected:
 
 public:
     virtual bool open() = 0;
-    virtual qint32 sectorSize() const = 0;
+    virtual qint64 sectorSize() const = 0;
     virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) = 0;
     virtual qint64 firstSector() const = 0;
     virtual qint64 lastSector() const = 0;

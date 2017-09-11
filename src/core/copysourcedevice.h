@@ -44,7 +44,7 @@ public:
 
 public:
     bool open() override;
-    qint32 sectorSize() const override;
+    qint64 sectorSize() const override;
     bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) override;
     qint64 length() const override;
     bool overlaps(const CopyTarget& target) const override;

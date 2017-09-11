@@ -39,7 +39,7 @@
 #define BLKPBSZGET _IO(0x12,123)/* get block physical sector size */
 #endif
 
-static qint32 getPhysicalSectorSize(const QString& device_node)
+static qint64 getPhysicalSectorSize(const QString& device_node)
 {
     /*
      * possible ways of getting the physical sector size for a drive:
@@ -85,7 +85,7 @@ DiskDevice::DiskDevice(const QString& name,
                        qint32 heads,
                        qint32 numSectors,
                        qint32 cylinders,
-                       qint32 sectorSize,
+                       qint64 sectorSize,
                        const QString& iconName)
     : Device(name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Disk_Device)
     , m_Heads(heads)
