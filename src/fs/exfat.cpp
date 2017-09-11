@@ -87,7 +87,7 @@ qint64 exfat::maxCapacity() const
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
-qint64 exfat::maxLabelLength() const
+int exfat::maxLabelLength() const
 {
     return 15;
 }

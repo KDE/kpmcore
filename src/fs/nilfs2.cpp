@@ -104,7 +104,7 @@ qint64 nilfs2::maxCapacity() const
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
-qint64 nilfs2::maxLabelLength() const
+int nilfs2::maxLabelLength() const
 {
     return 80;
 }

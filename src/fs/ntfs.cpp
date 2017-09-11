@@ -99,7 +99,7 @@ qint64 ntfs::maxCapacity() const
     return 256 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
 }
 
-qint64 ntfs::maxLabelLength() const
+int ntfs::maxLabelLength() const
 {
     return 128;
 }

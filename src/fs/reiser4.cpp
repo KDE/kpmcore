@@ -78,7 +78,7 @@ qint64 reiser4::maxCapacity() const
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
-qint64 reiser4::maxLabelLength() const
+int reiser4::maxLabelLength() const
 {
     return 16;
 }

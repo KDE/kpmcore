@@ -87,7 +87,7 @@ qint64 jfs::maxCapacity() const
     return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
 }
 
-qint64 jfs::maxLabelLength() const
+int jfs::maxLabelLength() const
 {
     return 11;
 }

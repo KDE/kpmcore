@@ -76,7 +76,7 @@ FileSystem::SupportTool linuxswap::supportToolName() const
     return SupportTool(QStringLiteral("util-linux"), QUrl(QStringLiteral("http://www.kernel.org/pub/linux/utils/util-linux-ng/")));
 }
 
-qint64 linuxswap::maxLabelLength() const
+int linuxswap::maxLabelLength() const
 {
     return 15;
 }

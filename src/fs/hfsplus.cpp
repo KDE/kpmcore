@@ -76,7 +76,7 @@ qint64 hfsplus::maxCapacity() const
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
-qint64 hfsplus::maxLabelLength() const
+int hfsplus::maxLabelLength() const
 {
     return 63;
 }

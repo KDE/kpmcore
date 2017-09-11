@@ -102,7 +102,7 @@ qint64 f2fs::maxCapacity() const
     return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
 }
 
-qint64 f2fs::maxLabelLength() const
+int f2fs::maxLabelLength() const
 {
     return 80;
 }

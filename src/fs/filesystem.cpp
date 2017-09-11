@@ -383,7 +383,7 @@ qint64 FileSystem::maxCapacity() const
 }
 
 /** @return the maximum label length valid for this FileSystem */
-qint64 FileSystem::maxLabelLength() const
+int FileSystem::maxLabelLength() const
 {
     return 16;
 }

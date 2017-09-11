@@ -99,7 +99,7 @@ qint64 btrfs::maxCapacity() const
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
-qint64 btrfs::maxLabelLength() const
+int btrfs::maxLabelLength() const
 {
     return 255;
 }

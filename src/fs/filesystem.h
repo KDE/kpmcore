@@ -183,7 +183,7 @@ public:
 
     virtual qint64 minCapacity() const;
     virtual qint64 maxCapacity() const;
-    virtual qint64 maxLabelLength() const;
+    virtual int maxLabelLength() const;
     virtual QValidator* labelValidator(QObject *parent = nullptr) const;
 
     virtual SupportTool supportToolName() const;

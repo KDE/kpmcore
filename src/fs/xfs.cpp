@@ -91,7 +91,7 @@ qint64 xfs::maxCapacity() const
     return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
 }
 
-qint64 xfs::maxLabelLength() const
+int xfs::maxLabelLength() const
 {
     return 12;
 }

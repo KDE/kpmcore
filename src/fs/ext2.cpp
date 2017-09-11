@@ -87,7 +87,7 @@ qint64 ext2::maxCapacity() const
     return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
 }
 
-qint64 ext2::maxLabelLength() const
+int ext2::maxLabelLength() const
 {
     return 16;
 }

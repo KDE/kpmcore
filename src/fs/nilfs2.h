@@ -97,7 +97,7 @@ public:
 
     qint64 minCapacity() const override;
     qint64 maxCapacity() const override;
-    qint64 maxLabelLength() const override;
+    int maxLabelLength() const override;
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
 

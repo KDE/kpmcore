@@ -91,7 +91,7 @@ public:
         return m_GetUUID;
     }
 
-    qint64 maxLabelLength() const override;
+    int maxLabelLength() const override;
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
 

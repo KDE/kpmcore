@@ -72,7 +72,7 @@ qint64 udf::maxCapacity() const
     return MAX_UDF_BLOCKS * sectorSize();
 }
 
-qint64 udf::maxLabelLength() const
+int udf::maxLabelLength() const
 {
     return 126;
 }
