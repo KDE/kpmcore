@@ -36,10 +36,10 @@
 #include <QJsonDocument>
 #include <QRegularExpression>
 #include <QPointer>
+#include <QStorageInfo>
 #include <QString>
 #include <QUuid>
 
-#include <KDiskFreeSpaceInfo>
 #include <KLocalizedString>
 #include <KPasswordDialog>
 
@@ -337,7 +337,7 @@ void luks::loadInnerFileSystem(const QString& mapperNode)
     setLabel(m_innerFs->readLabel(mapperNode));
     setUUID(m_innerFs->readUUID(mapperNode));
     if (m_innerFs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
-        setSectorsUsed(std::ceil((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / static_cast<float>(sectorSize()) ));
+        setSectorsUsed(std::ceil((m_innerFs->readUsedCapacity(mapperNode) + payloadOffset()) / static_cast<double>(sectorSize()) ));
     m_innerFs->scan(mapperNode);
 }
 
@@ -393,9 +393,9 @@ bool luks::mount(Report& report, const QString& deviceNode, const QString& mount
         {
             m_isMounted = true;
 
-            const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-            if (freeSpaceInfo.isValid() && !mountPoint.isEmpty())
-                setSectorsUsed((freeSpaceInfo.used() + payloadOffset()) / sectorSize());
+            const QStorageInfo storageInfo = QStorageInfo(mountPoint);
+            if (storageInfo.isValid() && !mountPoint.isEmpty())
+                setSectorsUsed( (storageInfo.bytesTotal() - storageInfo.bytesFree() + payloadOffset()) / sectorSize());
 
             return true;
         }
