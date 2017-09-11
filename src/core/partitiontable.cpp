@@ -483,7 +483,7 @@ QString PartitionTable::tableTypeToName(TableType l)
     return xi18nc("@item partition table name", "unknown");
 }
 
-qint64 PartitionTable::maxPrimariesForTableType(TableType l)
+qint32 PartitionTable::maxPrimariesForTableType(TableType l)
 {
     for (const auto &type : tableTypes)
         if (l == type.type)

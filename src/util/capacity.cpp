@@ -46,8 +46,7 @@ Capacity::Capacity(const Partition& p, Type t) :
     switch (t) {
     case Used: m_Size = p.used(); break;
     case Available: m_Size = p.available(); break;
-    case Total: m_Size = p.capacity(); break;
-    default: break;
+    case Total: m_Size = p.capacity();
     }
 }
 

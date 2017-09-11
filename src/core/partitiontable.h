@@ -179,7 +179,7 @@ public:
 
     static PartitionTable::TableType nameToTableType(const QString& n);
     static QString tableTypeToName(TableType l);
-    static qint64 maxPrimariesForTableType(TableType l);
+    static qint32 maxPrimariesForTableType(TableType l);
     static bool tableTypeSupportsExtended(TableType l);
     static bool tableTypeIsReadOnly(TableType l);
 

@@ -68,7 +68,7 @@ bool SetPartFlagsJob::run(Report& parent)
                     : backendPartitionTable->getPartitionBySector(partition().firstSector());
 
             if (backendPartition) {
-                quint32 count = 0;
+                int count = 0;
 
                 for (const auto &f : PartitionTable::flagList()) {
                     emit progress(++count);

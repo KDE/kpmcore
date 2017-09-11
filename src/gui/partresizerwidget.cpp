@@ -98,11 +98,11 @@ void PartResizerWidget::init(Device& d, Partition& p, qint64 minFirst, qint64 ma
     if (!readOnly()) {
         QPixmap pixmap(handleWidth(), handleHeight());
         pixmap.fill(Qt::transparent);
-        QPainter p(&pixmap);
+        QPainter painter(&pixmap);
         QStyleOption opt;
         opt.state |= QStyle::State_Horizontal;
         opt.rect = pixmap.rect().adjusted(0, 2, 0, -2);
-        style()->drawControl(QStyle::CE_Splitter, &opt, &p, this);
+        style()->drawControl(QStyle::CE_Splitter, &opt, &painter, this);
 
         if (moveAllowed())
             leftHandle().setPixmap(pixmap);

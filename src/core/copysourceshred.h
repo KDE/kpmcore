@@ -61,7 +61,7 @@ protected:
     const QFile& sourceFile() const {
         return m_SourceFile;
     }
-    qint32 size() const {
+    qint64 size() const {
         return m_Size;
     }
 

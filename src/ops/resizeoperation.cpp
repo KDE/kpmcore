@@ -227,7 +227,7 @@ QString ResizeOperation::description() const
     case MoveRightShrink:
         return xi18nc("@info:status describe resize/move action", "Move partition <filename>%1</filename> to the right by %2 and shrink it from %3 to %4", partition().deviceNode(), moveDelta, origCapacity, newCapacity);
 
-    default:
+    case None:
         qWarning() << "Could not determine what to do with partition " << partition().deviceNode() << ".";
         break;
     }
