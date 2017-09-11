@@ -29,9 +29,9 @@
 #include "util/report.h"
 
 #include <QRegularExpression>
+#include <QStorageInfo>
 #include <QtMath>
 
-#include <KDiskFreeSpaceInfo>
 #include <KLocalizedString>
 
 /** Constructs a representation of LVM device with initialized LV as Partitions
@@ -141,11 +141,10 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
         mountPoint = FileSystem::detectMountPoint(fs, lvPath);
         mounted = FileSystem::detectMountStatus(fs, lvPath);
 
-        // KDiskFreeSpaceInfo does not work with swap
         if (mountPoint != QString() && fs->type() != FileSystem::LinuxSwap) {
-            const KDiskFreeSpaceInfo freeSpaceInfo = KDiskFreeSpaceInfo::freeSpaceInfo(mountPoint);
-            if (logicalSize() > 0 && fs->type() != FileSystem::Luks && mounted && freeSpaceInfo.isValid())
-                fs->setSectorsUsed(freeSpaceInfo.used() / logicalSize());
+            const QStorageInfo storage = QStorageInfo(mountPoint);
+            if (logicalSize() > 0 && fs->type() != FileSystem::Luks && mounted && storage.isValid())
+                fs->setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / logicalSize() );
         }
         else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
             fs->setSectorsUsed(qCeil(fs->readUsedCapacity(lvPath) / static_cast<float>(logicalSize())));
