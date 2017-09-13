@@ -24,6 +24,7 @@
 #include <QChar>
 #include <QFile>
 #include <QFileInfo>
+#include <QRegularExpression>
 
 static QString findBlkIdDevice(const QString& token, const QString& value)
 {
@@ -86,7 +87,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             }
 
             QString comment = line.section( QLatin1Char('#'), 1 );
-            QStringList splitLine = line.section( QLatin1Char('#'), 0, 0 ).split( QLatin1Char(' ') );
+            QStringList splitLine = line.section( QLatin1Char('#'), 0, 0 ).split( QRegularExpression(QStringLiteral("\\s")) );
 
             // We now split the standard components of /etc/fstab entry:
             // (0) path, or UUID, or LABEL, etc,
