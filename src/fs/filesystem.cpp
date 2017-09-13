@@ -142,7 +142,7 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
 
     mountPoints.append(possibleMountPoints(partitionPath));
 
-    return mountPoints.first();
+    return mountPoints.isEmpty() ? QString() : mountPoints.first();
 }
 
 bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
