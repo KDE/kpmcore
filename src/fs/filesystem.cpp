@@ -17,6 +17,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+#include "core/fstab.h"
+
 #include "fs/filesystem.h"
 #include "fs/lvm2_pv.h"
 
@@ -29,10 +31,10 @@
 
 #include <blkid/blkid.h>
 
-#include <KMountPoint>
 #include <KLocalizedString>
 
-#include <QDebug>
+#include <QFileInfo>
+#include <QStorageInfo>
 
 const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode =
 {
@@ -125,19 +127,22 @@ FileSystem::Type FileSystem::detectFileSystem(const QString& partitionPath)
 
 QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPath)
 {
-    QString mountPoint = QString();
+    if (fs->type() == FileSystem::Lvm2_PV)
+        return FS::lvm2_pv::getVGName(partitionPath);
 
-    KMountPoint::List mountPoints = KMountPoint::currentMountPoints(KMountPoint::NeedRealDeviceName);
-    mountPoints.append(KMountPoint::possibleMountPoints(KMountPoint::NeedRealDeviceName));
-
-    if (fs->type() == FileSystem::Lvm2_PV) {
-        mountPoint = FS::lvm2_pv::getVGName(partitionPath);
-    } else {
-        mountPoint = mountPoints.findByDevice(partitionPath) ?
-                     mountPoints.findByDevice(partitionPath)->mountPoint() :
-                     QString();
+    QStringList mountPoints;
+    QFileInfo kernelPath(partitionPath);
+    const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
+    for (const QStorageInfo &storage : QStorageInfo::mountedVolumes()) {
+        QFileInfo kernelPath2(QString::fromUtf8(storage.device()));
+        if (kernelPath2.canonicalFilePath() == kernelPath.canonicalFilePath() ) {
+            mountPoints.append(storage.rootPath());
+        }
     }
-    return mountPoint;
+
+    mountPoints.append(possibleMountPoints(partitionPath));
+
+    return mountPoints.first();
 }
 
 bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)

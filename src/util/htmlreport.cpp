@@ -29,7 +29,7 @@
 
 #include <KAboutData>
 #include <KLocalizedString>
-#include <kio_version.h>
+#include <ki18n_version.h>
 
 #include <sys/utsname.h>
 
@@ -77,7 +77,7 @@ QString HtmlReport::header()
       << tableLine(i18n("Date:"), QLocale().toString(QDateTime::currentDateTime(), QLocale::ShortFormat))
       << tableLine(i18n("Program version:"), QCoreApplication::applicationVersion())
       << tableLine(i18n("Backend:"), QStringLiteral("%1 (%2)").arg(CoreBackendManager::self()->backend()->id()).arg(CoreBackendManager::self()->backend()->version()))
-      << tableLine(i18n("KDE Frameworks version:"), QStringLiteral(KIO_VERSION_STRING))
+      << tableLine(i18n("KDE Frameworks version:"), QStringLiteral(KI18N_VERSION_STRING))
       << tableLine(i18n("Machine:"), unameString)
       << "</table>\n<br/>\n";
 

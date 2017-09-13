@@ -55,7 +55,6 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 # Load the frameworks we need
 find_package(KF5 REQUIRED
   I18n
-  KIO
   Service
   WidgetsAddons
 )
