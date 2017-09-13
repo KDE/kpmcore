@@ -1,26 +1,27 @@
 set(CORE_SRC
-    core/copysourceshred.cpp
     core/copysource.cpp
-    core/partition.cpp
-    core/mountentry.cpp
-    core/copytargetdevice.cpp
-    core/copytarget.cpp
     core/copysourcedevice.cpp
-    core/operationrunner.cpp
-    core/partitiontable.cpp
-    core/copytargetfile.cpp
-    core/smartstatus.cpp
     core/copysourcefile.cpp
-    core/smartattribute.cpp
-    core/devicescanner.cpp
-    core/partitionnode.cpp
-    core/partitionalignment.cpp
+    core/copysourceshred.cpp
+    core/copytarget.cpp
+    core/copytargetdevice.cpp
+    core/copytargetfile.cpp
     core/device.cpp
+    core/devicescanner.cpp
     core/diskdevice.cpp
-    core/volumemanagerdevice.cpp
+    core/fstab.cpp
     core/lvmdevice.cpp
+    core/mountentry.cpp
+    core/operationrunner.cpp
     core/operationstack.cpp
+    core/partition.cpp
+    core/partitionalignment.cpp
+    core/partitionnode.cpp
     core/partitionrole.cpp
+    core/partitiontable.cpp
+    core/smartstatus.cpp
+    core/smartattribute.cpp
+    core/volumemanagerdevice.cpp
 )
 
 set(CORE_LIB_HDRS
@@ -29,10 +30,10 @@ set(CORE_LIB_HDRS
     core/copytarget.h
     core/copytargetdevice.h
     core/device.h
-    core/diskdevice.h
-    core/volumemanagerdevice.h
-    core/lvmdevice.h
     core/devicescanner.h
+    core/diskdevice.h
+    core/fstab.h
+    core/lvmdevice.h
     core/mountentry.h
     core/operationrunner.h
     core/operationstack.h
@@ -43,5 +44,6 @@ set(CORE_LIB_HDRS
     core/partitiontable.h
     core/smartattribute.h
     core/smartstatus.h
+    core/volumemanagerdevice.h
 )
 
