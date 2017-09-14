@@ -33,6 +33,7 @@
 
 #include <KLocalizedString>
 
+#include <QDebug>
 #include <QFileInfo>
 #include <QStorageInfo>
 
@@ -130,12 +131,16 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
     if (fs->type() == FileSystem::Lvm2_PV)
         return FS::lvm2_pv::getVGName(partitionPath);
 
+    if (partitionPath.isEmpty()) // Happens when during initial scan LUKS is closed
+        return QString();
+
     QStringList mountPoints;
-    QFileInfo kernelPath(partitionPath);
+    QFileInfo partitionPathFileInfo(partitionPath);
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
-        QFileInfo kernelPath2(QString::fromUtf8(storage.device()));
-        if (kernelPath2.canonicalFilePath() == kernelPath.canonicalFilePath() ) {
+        QFileInfo deviceFileInfo(QString::fromUtf8(storage.device()));
+        qDebug() << storage.device() << storage.rootPath();
+        if (partitionPathFileInfo.canonicalFilePath() == deviceFileInfo.canonicalFilePath() ) {
             mountPoints.append(storage.rootPath());
         }
     }
