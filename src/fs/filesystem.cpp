@@ -133,7 +133,7 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
     QStringList mountPoints;
     QFileInfo kernelPath(partitionPath);
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
-    for (const QStorageInfo &storage : QStorageInfo::mountedVolumes()) {
+    for (const QStorageInfo &storage : mountedVolumes) {
         QFileInfo kernelPath2(QString::fromUtf8(storage.device()));
         if (kernelPath2.canonicalFilePath() == kernelPath.canonicalFilePath() ) {
             mountPoints.append(storage.rootPath());
@@ -150,7 +150,7 @@ bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
     bool mounted = false;
 
     if (fs->type() == FileSystem::Lvm2_PV) {
-        mounted = FS::lvm2_pv::getVGName(partitionPath) != QString(); // FIXME: VG name is scanned twice
+        mounted = FS::lvm2_pv::getVGName(partitionPath) != QString();
     } else {
         mounted = isMounted(partitionPath);
     }

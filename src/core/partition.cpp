@@ -333,7 +333,7 @@ bool Partition::unmount(Report& report)
     }
 
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
-    for (const QStorageInfo &storage : QStorageInfo::mountedVolumes()) {
+    for (const QStorageInfo &storage : mountedVolumes) {
         if (QString::fromUtf8(storage.device()) == deviceNode() ) {
             success = false;
             break;
