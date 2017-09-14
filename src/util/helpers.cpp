@@ -25,12 +25,6 @@
 #include <KAboutData>
 #include <KLocalizedString>
 
-#include <QAction>
-#include <QMenu>
-#include <QHeaderView>
-#include <QRect>
-#include <QTreeWidget>
-
 void registerMetaTypes()
 {
     qRegisterMetaType<Operation*>("Operation*");
@@ -40,33 +34,6 @@ void registerMetaTypes()
 bool caseInsensitiveLessThan(const QString& s1, const QString& s2)
 {
     return s1.toLower() < s2.toLower();
-}
-
-void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree)
-{
-    QMenu headerMenu(xi18nc("@title:menu", "Columns"));
-
-    QHeaderView* header = tree.header();
-
-    for (qint32 i = 0; i < tree.model()->columnCount(); i++) {
-        const int idx = header->logicalIndex(i);
-        const QString text = tree.model()->headerData(idx, Qt::Horizontal).toString();
-
-        QAction* action = headerMenu.addAction(text);
-        action->setCheckable(true);
-        action->setChecked(!header->isSectionHidden(idx));
-        action->setData(idx);
-        action->setEnabled(idx > 0);
-    }
-
-    QAction* action = headerMenu.exec(tree.header()->mapToGlobal(p));
-
-    if (action != nullptr) {
-        const bool hidden = !action->isChecked();
-        tree.setColumnHidden(action->data().toInt(), hidden);
-        if (!hidden)
-            tree.resizeColumnToContents(action->data().toInt());
-    }
 }
 
 bool isMounted(const QString& deviceNode)

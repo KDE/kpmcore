@@ -29,19 +29,11 @@ class KAboutData;
 
 class Partition;
 class QString;
-class QPoint;
-class QTreeWidget;
 
 LIBKPMCORE_EXPORT void registerMetaTypes();
-
 LIBKPMCORE_EXPORT bool caseInsensitiveLessThan(const QString& s1, const QString& s2);
-
-LIBKPMCORE_EXPORT void showColumnsContextMenu(const QPoint& p, QTreeWidget& tree);
-
 LIBKPMCORE_EXPORT bool checkAccessibleDevices();
-
 LIBKPMCORE_EXPORT bool isMounted(const QString& deviceNode);
-
 LIBKPMCORE_EXPORT KAboutData aboutKPMcore();
 
 /** Pointer to the file system (which might be inside LUKS container) contained in the partition
