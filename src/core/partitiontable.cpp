@@ -444,25 +444,25 @@ qint64 PartitionTable::defaultLastUsable(const Device& d, TableType t)
 }
 
 static struct {
-    const QString name; /**< name of partition table type */
+    const QLatin1String name; /**< name of partition table type */
     quint32 maxPrimaries; /**< max numbers of primary partitions supported */
     bool canHaveExtended; /**< does partition table type support extended partitions */
     bool isReadOnly; /**< does KDE Partition Manager support this only in read only mode */
     PartitionTable::TableType type; /**< enum type */
 } tableTypes[] = {
-    { QStringLiteral("aix"), 4, false, true, PartitionTable::aix },
-    { QStringLiteral("bsd"), 8, false, true, PartitionTable::bsd },
-    { QStringLiteral("dasd"), 1, false, true, PartitionTable::dasd },
-    { QStringLiteral("msdos"), 4, true, false, PartitionTable::msdos },
-    { QStringLiteral("msdos"), 4, true, false, PartitionTable::msdos_sectorbased },
-    { QStringLiteral("dvh"), 16, true, true, PartitionTable::dvh },
-    { QStringLiteral("gpt"), 128, false, false, PartitionTable::gpt },
-    { QStringLiteral("loop"), 1, false, true, PartitionTable::loop },
-    { QStringLiteral("mac"), 0xffff, false, true, PartitionTable::mac },
-    { QStringLiteral("pc98"), 16, false, true, PartitionTable::pc98 },
-    { QStringLiteral("amiga"), 128, false, true, PartitionTable::amiga },
-    { QStringLiteral("sun"), 8, false, true, PartitionTable::sun },
-    { QStringLiteral("vmd"), 0xffff, false, false, PartitionTable::vmd }
+    { QLatin1String("aix"), 4, false, true, PartitionTable::aix },
+    { QLatin1String("bsd"), 8, false, true, PartitionTable::bsd },
+    { QLatin1String("dasd"), 1, false, true, PartitionTable::dasd },
+    { QLatin1String("msdos"), 4, true, false, PartitionTable::msdos },
+    { QLatin1String("msdos"), 4, true, false, PartitionTable::msdos_sectorbased },
+    { QLatin1String("dvh"), 16, true, true, PartitionTable::dvh },
+    { QLatin1String("gpt"), 128, false, false, PartitionTable::gpt },
+    { QLatin1String("loop"), 1, false, true, PartitionTable::loop },
+    { QLatin1String("mac"), 0xffff, false, true, PartitionTable::mac },
+    { QLatin1String("pc98"), 16, false, true, PartitionTable::pc98 },
+    { QLatin1String("amiga"), 128, false, true, PartitionTable::amiga },
+    { QLatin1String("sun"), 8, false, true, PartitionTable::sun },
+    { QLatin1String("vmd"), 0xffff, false, false, PartitionTable::vmd }
 };
 
 PartitionTable::TableType PartitionTable::nameToTableType(const QString& n)
