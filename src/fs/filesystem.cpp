@@ -408,6 +408,12 @@ QString FileSystem::name() const
     return nameForType(type());
 }
 
+/** @return this FileSystem's type as printable untranslated name */
+QLatin1String FileSystem::untranslatedName() const
+{
+    return untranslatedNameForType(type());
+}
+
 /** @return a pointer to a QString C array with all FileSystem names */
 static const QString* typeNames()
 {
@@ -446,6 +452,44 @@ static const QString* typeNames()
     return s;
 }
 
+/** @return a pointer to a QLatin1String C array with all FileSystem names */
+static const QLatin1String* untranslatedTypeNames()
+{
+    static const QLatin1String s[] = {
+        QLatin1String("unknown"),
+        QLatin1String("extended"),
+
+        QLatin1String("ext2"),
+        QLatin1String("ext3"),
+        QLatin1String("ext4"),
+        QLatin1String("linuxswap"),
+        QLatin1String("fat16"),
+        QLatin1String("fat32"),
+        QLatin1String("ntfs"),
+        QLatin1String("reiser"),
+        QLatin1String("reiser4"),
+        QLatin1String("xfs"),
+        QLatin1String("jfs"),
+        QLatin1String("hfs"),
+        QLatin1String("hfsplus"),
+        QLatin1String("ufs"),
+        QLatin1String("unformatted"),
+        QLatin1String("btrfs"),
+        QLatin1String("hpfs"),
+        QLatin1String("luks"),
+        QLatin1String("ocfs2"),
+        QLatin1String("zfs"),
+        QLatin1String("exfat"),
+        QLatin1String("nilfs2"),
+        QLatin1String("lvm2 pv"),
+        QLatin1String("f2fs"),
+        QLatin1String("udf"),
+        QLatin1String("iso9660")
+    };
+
+    return s;
+}
+
 /** @param t the type to get the name for
     @return the printable name for the given type
 */
@@ -457,6 +501,17 @@ QString FileSystem::nameForType(FileSystem::Type t)
     return typeNames()[t];
 }
 
+/** @param t the type to get the untranslated name for
+    @return the printable untranslated name for the given type
+*/
+QLatin1String FileSystem::untranslatedNameForType(FileSystem::Type t)
+{
+    Q_ASSERT(t >= 0);
+    Q_ASSERT(t < __lastType);
+
+    return untranslatedTypeNames()[t];
+}
+
 /** @param s the name to get the type for
     @return the type for the name or FileSystem::Unknown if not found
 */
@@ -464,6 +519,18 @@ FileSystem::Type FileSystem::typeForName(const QString& s)
 {
     for (quint32 i = 0; i < __lastType; i++)
         if (typeNames()[i] == s)
+            return static_cast<FileSystem::Type>(i);
+
+    return Unknown;
+}
+
+/** @param s the untranslated name to get the type for
+    @return the type for the name or FileSystem::Unknown if not found
+*/
+FileSystem::Type FileSystem::typeForUntranslatedName(const QLatin1String& s)
+{
+    for (quint32 i = 0; i < __lastType; i++)
+        if (untranslatedTypeNames()[i] == s)
             return static_cast<FileSystem::Type>(i);
 
     return Unknown;
