@@ -33,7 +33,6 @@
 
 #include <KLocalizedString>
 
-#include <QDebug>
 #include <QFileInfo>
 #include <QStorageInfo>
 
@@ -139,7 +138,6 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
         QFileInfo deviceFileInfo(QString::fromUtf8(storage.device()));
-        qDebug() << storage.device() << storage.rootPath();
         if (partitionPathFileInfo.canonicalFilePath() == deviceFileInfo.canonicalFilePath() ) {
             mountPoints.append(storage.rootPath());
         }
@@ -408,88 +406,44 @@ QValidator* FileSystem::labelValidator(QObject *parent) const
 }
 
 /** @return this FileSystem's type as printable name */
-QString FileSystem::name() const
+QString FileSystem::name(const QStringList& languages) const
 {
-    return nameForType(type());
-}
-
-/** @return this FileSystem's type as printable untranslated name */
-QLatin1String FileSystem::untranslatedName() const
-{
-    return untranslatedNameForType(type());
+    return nameForType(type(), languages);
 }
 
 /** @return a pointer to a QString C array with all FileSystem names */
-static const QString* typeNames()
+static const KLocalizedString* typeNames()
 {
-    static const QString s[] = {
-        xi18nc("@item filesystem name", "unknown"),
-        xi18nc("@item filesystem name", "extended"),
+    static const KLocalizedString s[] = {
+        kxi18nc("@item filesystem name", "unknown"),
+        kxi18nc("@item filesystem name", "extended"),
 
-        xi18nc("@item filesystem name", "ext2"),
-        xi18nc("@item filesystem name", "ext3"),
-        xi18nc("@item filesystem name", "ext4"),
-        xi18nc("@item filesystem name", "linuxswap"),
-        xi18nc("@item filesystem name", "fat16"),
-        xi18nc("@item filesystem name", "fat32"),
-        xi18nc("@item filesystem name", "ntfs"),
-        xi18nc("@item filesystem name", "reiser"),
-        xi18nc("@item filesystem name", "reiser4"),
-        xi18nc("@item filesystem name", "xfs"),
-        xi18nc("@item filesystem name", "jfs"),
-        xi18nc("@item filesystem name", "hfs"),
-        xi18nc("@item filesystem name", "hfsplus"),
-        xi18nc("@item filesystem name", "ufs"),
-        xi18nc("@item filesystem name", "unformatted"),
-        xi18nc("@item filesystem name", "btrfs"),
-        xi18nc("@item filesystem name", "hpfs"),
-        xi18nc("@item filesystem name", "luks"),
-        xi18nc("@item filesystem name", "ocfs2"),
-        xi18nc("@item filesystem name", "zfs"),
-        xi18nc("@item filesystem name", "exfat"),
-        xi18nc("@item filesystem name", "nilfs2"),
-        xi18nc("@item filesystem name", "lvm2 pv"),
-        xi18nc("@item filesystem name", "f2fs"),
-        xi18nc("@item filesystem name", "udf"),
-        xi18nc("@item filesystem name", "iso9660"),
-    };
-
-    return s;
-}
-
-/** @return a pointer to a QLatin1String C array with all FileSystem names */
-static const QLatin1String* untranslatedTypeNames()
-{
-    static const QLatin1String s[] = {
-        QLatin1String("unknown"),
-        QLatin1String("extended"),
-
-        QLatin1String("ext2"),
-        QLatin1String("ext3"),
-        QLatin1String("ext4"),
-        QLatin1String("linuxswap"),
-        QLatin1String("fat16"),
-        QLatin1String("fat32"),
-        QLatin1String("ntfs"),
-        QLatin1String("reiser"),
-        QLatin1String("reiser4"),
-        QLatin1String("xfs"),
-        QLatin1String("jfs"),
-        QLatin1String("hfs"),
-        QLatin1String("hfsplus"),
-        QLatin1String("ufs"),
-        QLatin1String("unformatted"),
-        QLatin1String("btrfs"),
-        QLatin1String("hpfs"),
-        QLatin1String("luks"),
-        QLatin1String("ocfs2"),
-        QLatin1String("zfs"),
-        QLatin1String("exfat"),
-        QLatin1String("nilfs2"),
-        QLatin1String("lvm2 pv"),
-        QLatin1String("f2fs"),
-        QLatin1String("udf"),
-        QLatin1String("iso9660")
+        kxi18nc("@item filesystem name", "ext2"),
+        kxi18nc("@item filesystem name", "ext3"),
+        kxi18nc("@item filesystem name", "ext4"),
+        kxi18nc("@item filesystem name", "linuxswap"),
+        kxi18nc("@item filesystem name", "fat16"),
+        kxi18nc("@item filesystem name", "fat32"),
+        kxi18nc("@item filesystem name", "ntfs"),
+        kxi18nc("@item filesystem name", "reiser"),
+        kxi18nc("@item filesystem name", "reiser4"),
+        kxi18nc("@item filesystem name", "xfs"),
+        kxi18nc("@item filesystem name", "jfs"),
+        kxi18nc("@item filesystem name", "hfs"),
+        kxi18nc("@item filesystem name", "hfsplus"),
+        kxi18nc("@item filesystem name", "ufs"),
+        kxi18nc("@item filesystem name", "unformatted"),
+        kxi18nc("@item filesystem name", "btrfs"),
+        kxi18nc("@item filesystem name", "hpfs"),
+        kxi18nc("@item filesystem name", "luks"),
+        kxi18nc("@item filesystem name", "ocfs2"),
+        kxi18nc("@item filesystem name", "zfs"),
+        kxi18nc("@item filesystem name", "exfat"),
+        kxi18nc("@item filesystem name", "nilfs2"),
+        kxi18nc("@item filesystem name", "lvm2 pv"),
+        kxi18nc("@item filesystem name", "f2fs"),
+        kxi18nc("@item filesystem name", "udf"),
+        kxi18nc("@item filesystem name", "iso9660"),
     };
 
     return s;
@@ -498,44 +452,21 @@ static const QLatin1String* untranslatedTypeNames()
 /** @param t the type to get the name for
     @return the printable name for the given type
 */
-QString FileSystem::nameForType(FileSystem::Type t)
+QString FileSystem::nameForType(FileSystem::Type t, const QStringList& languages)
 {
     Q_ASSERT(t >= 0);
     Q_ASSERT(t < __lastType);
 
-    return typeNames()[t];
-}
-
-/** @param t the type to get the untranslated name for
-    @return the printable untranslated name for the given type
-*/
-QLatin1String FileSystem::untranslatedNameForType(FileSystem::Type t)
-{
-    Q_ASSERT(t >= 0);
-    Q_ASSERT(t < __lastType);
-
-    return untranslatedTypeNames()[t];
+    return typeNames()[t].toString(languages);
 }
 
 /** @param s the name to get the type for
     @return the type for the name or FileSystem::Unknown if not found
 */
-FileSystem::Type FileSystem::typeForName(const QString& s)
+FileSystem::Type FileSystem::typeForName(const QString& s, const QStringList& languages )
 {
     for (quint32 i = 0; i < __lastType; i++)
-        if (typeNames()[i] == s)
-            return static_cast<FileSystem::Type>(i);
-
-    return Unknown;
-}
-
-/** @param s the untranslated name to get the type for
-    @return the type for the name or FileSystem::Unknown if not found
-*/
-FileSystem::Type FileSystem::typeForUntranslatedName(const QLatin1String& s)
-{
-    for (quint32 i = 0; i < __lastType; i++)
-        if (untranslatedTypeNames()[i] == s)
+        if (typeNames()[i].toString(languages) == s)
             return static_cast<FileSystem::Type>(i);
 
     return Unknown;

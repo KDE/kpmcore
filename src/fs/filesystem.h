@@ -189,17 +189,14 @@ public:
     virtual SupportTool supportToolName() const;
     virtual bool supportToolFound() const;
 
-    virtual QString name() const;
-    virtual QLatin1String untranslatedName() const;
+    virtual QString name(const QStringList& languages = {}) const;
     virtual FileSystem::Type type() const {
         return m_Type;    /**< @return the FileSystem's type */
     }
 
-    static QString nameForType(FileSystem::Type t);
-    static QLatin1String untranslatedNameForType(FileSystem::Type t);
+    static QString nameForType(FileSystem::Type t, const QStringList& languages = {});
     static QList<FileSystem::Type> types();
-    static FileSystem::Type typeForName(const QString& s);
-    static FileSystem::Type typeForUntranslatedName(const QLatin1String& s);
+    static FileSystem::Type typeForName(const QString& s, const QStringList& languages = {});
     static FileSystem::Type detectFileSystem(const QString& partitionPath);
     static QString detectMountPoint(FileSystem* fs, const QString& partitionPath);
     static bool detectMountStatus(FileSystem* fs, const QString& partitionPath);
