@@ -118,6 +118,12 @@ void ExternalCommand::onReadOutput()
 {
     const QString s = QString::fromUtf8(readAllStandardOutput());
 
+    if(m_Output.length() > 10*1024*1024) { // prevent memory overflow for badly corrupted file systems
+        if (report())
+            report()->line() << xi18nc("@info:status", "(Command is printing too much output)");
+        return;
+    }
+
     m_Output += s;
 
     if (report())
