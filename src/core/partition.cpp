@@ -391,7 +391,7 @@ QTextStream& operator<<(QTextStream& stream, const Partition& p)
            << p.firstSector() << sep
            << p.lastSector() << sep
            << p.fileSystem().name({ QStringLiteral("C") }) << sep
-           << p.roles().toString() << sep
+           << p.roles().toString({ QStringLiteral("C") }) << sep
            << "\"" << p.fileSystem().label() << QStringLiteral("\"") << sep
            << "\"" << flagList.join(QStringLiteral(",")) << QStringLiteral("\"")
            << "\n";

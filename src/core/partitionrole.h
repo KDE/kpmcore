@@ -23,8 +23,7 @@
 #include "util/libpartitionmanagerexport.h"
 
 #include <QtGlobal>
-
-class QString;
+#include <QStringList>
 
 /** A Partition's role.
 
@@ -66,7 +65,7 @@ public:
         return !operator==(other);    /**< @param other object to compare with @return true if not the same */
     }
 
-    QString toString() const;
+    QString toString(const QStringList& languages = {}) const;
 
 private:
     Roles m_Roles;

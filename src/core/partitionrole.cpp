@@ -19,29 +19,28 @@
 
 #include "core/partitionrole.h"
 
-#include <QString>
 #include <KLocalizedString>
 
 /** @return the role as string */
-QString PartitionRole::toString() const
+QString PartitionRole::toString(const QStringList& languages) const
 {
     if (roles() & Unallocated)
-        return xi18nc("@item partition role", "unallocated");
+        return kxi18nc("@item partition role", "unallocated").toString(languages);
 
     if (roles() & Logical)
-        return xi18nc("@item partition role", "logical");
+        return kxi18nc("@item partition role", "logical").toString(languages);
 
     if (roles() & Extended)
-        return xi18nc("@item partition role", "extended");
+        return kxi18nc("@item partition role", "extended").toString(languages);
 
     if (roles() & Primary)
-        return xi18nc("@item partition role", "primary");
+        return kxi18nc("@item partition role", "primary").toString(languages);
 
     if (roles() & Luks)
-        return xi18nc("@item partition role", "LUKS");
+        return kxi18nc("@item partition role", "LUKS").toString(languages);
 
     if (roles() & Lvm_Lv)
-        return xi18nc("@item partition role", "LVM logical volume");
+        return kxi18nc("@item partition role", "LVM logical volume").toString(languages);
 
-    return xi18nc("@item partition role", "none");
+    return kxi18nc("@item partition role", "none").toString(languages);
 }
