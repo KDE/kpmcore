@@ -40,5 +40,8 @@ QString PartitionRole::toString() const
     if (roles() & Luks)
         return xi18nc("@item partition role", "LUKS");
 
+    if (roles() & Luks)
+        return xi18nc("@item partition role", "LVM logical volume");
+
     return xi18nc("@item partition role", "none");
 }
