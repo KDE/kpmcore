@@ -49,7 +49,7 @@ public:
     const QString& type() const {
         return m_type; /**< @return the type of the file system */
     }
-    const QString& options() const {
+    const QStringList& options() const {
         return m_options; /**< @return the mount options associated with the file system */
     }
     int dumpFreq() const {
@@ -70,7 +70,7 @@ private:
     QString m_deviceNode;
     QString m_mountPoint;
     QString m_type;
-    QString m_options;
+    QStringList m_options;
     int m_dumpFreq;
     int m_passNumber;
     QString m_comment;
@@ -79,7 +79,7 @@ private:
 
 typedef QList<FstabEntry> FstabEntryList;
 
-FstabEntryList readFstabEntries(const QString& fstabPath = QStringLiteral("/etc/fstab"));
-QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabPath = QStringLiteral("/etc/fstab"));
+LIBKPMCORE_EXPORT FstabEntryList readFstabEntries(const QString& fstabPath = QStringLiteral("/etc/fstab"));
+LIBKPMCORE_EXPORT QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabPath = QStringLiteral("/etc/fstab"));
 
 #endif

@@ -47,11 +47,11 @@ FstabEntry::FstabEntry(const QString& fsSpec, const QString& mountPoint, const Q
     : m_fsSpec(fsSpec)
     , m_mountPoint(mountPoint)
     , m_type(type)
-    , m_options(options)
     , m_dumpFreq(dumpFreq)
     , m_passNumber(passNumber)
     , m_comment(comment)
 {
+    m_options = options.split(QLatin1Char(','));
     m_entryType = FstabEntryType::comment;
     if (fsSpec.startsWith(QStringLiteral("UUID="))) {
         m_entryType = FstabEntryType::uuid;
