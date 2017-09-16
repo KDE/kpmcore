@@ -104,14 +104,12 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
 QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabPath)
 {
     QStringList mountPoints;
-    QFileInfo kernelPath(deviceNode);
-    QString canonicalPath = kernelPath.canonicalFilePath();
+    QString canonicalPath = QFileInfo(deviceNode).canonicalFilePath();
     const FstabEntryList fstabEntryList = readFstabEntries( fstabPath );
-    for (const FstabEntry &entry : fstabEntryList) {
-        QFileInfo kernelPath2(entry.deviceNode());
-        if (kernelPath2.canonicalFilePath() == canonicalPath)
+    for (const FstabEntry &entry : fstabEntryList)
+        if (QFileInfo(entry.deviceNode()).canonicalFilePath() == canonicalPath)
             mountPoints.append(entry.mountPoint());
-    }
+
     return mountPoints;
 }
 

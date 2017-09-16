@@ -135,10 +135,10 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
 
     QStringList mountPoints;
     QFileInfo partitionPathFileInfo(partitionPath);
+    QString partitionCanonicalPath = partitionPathFileInfo.canonicalFilePath();
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
-        QFileInfo deviceFileInfo(QString::fromUtf8(storage.device()));
-        if (partitionPathFileInfo.canonicalFilePath() == deviceFileInfo.canonicalFilePath() ) {
+        if (partitionCanonicalPath == QFileInfo(QString::fromUtf8(storage.device())).canonicalFilePath() ) {
             mountPoints.append(storage.rootPath());
         }
     }
