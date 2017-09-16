@@ -11,7 +11,6 @@ set(CORE_SRC
     core/diskdevice.cpp
     core/fstab.cpp
     core/lvmdevice.cpp
-    core/mountentry.cpp
     core/operationrunner.cpp
     core/operationstack.cpp
     core/partition.cpp
@@ -34,7 +33,6 @@ set(CORE_LIB_HDRS
     core/diskdevice.h
     core/fstab.h
     core/lvmdevice.h
-    core/mountentry.h
     core/operationrunner.h
     core/operationstack.h
     core/partition.h
