@@ -65,6 +65,19 @@ public:
         return m_entryType; /**< @return the type of fstab entry, e.g. device node or UUID or comment only */
     }
 
+    void setFsSpec(const QString& s);
+    void setMountPoint(const QString& s) {
+        m_mountPoint = s; /**< @param s the new value for the mount point */
+    }
+    void setOptions(const QStringList& s) {
+        m_options = s; /**< @param s the new list with the mount options */
+    }
+    void setDumpFreq(int s) {
+        m_dumpFreq = s; /**< @param s the new value for the dump frequency */
+    }
+    void setPassNumber(int s) {
+        m_passNumber = s; /**< @param s the new value for the pass number */
+    }
 private:
     QString m_fsSpec;
     QString m_deviceNode;
