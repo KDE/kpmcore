@@ -94,5 +94,6 @@ typedef QList<FstabEntry> FstabEntryList;
 
 LIBKPMCORE_EXPORT FstabEntryList readFstabEntries(const QString& fstabPath = QStringLiteral("/etc/fstab"));
 LIBKPMCORE_EXPORT QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabPath = QStringLiteral("/etc/fstab"));
+LIBKPMCORE_EXPORT bool writeMountpoints(const FstabEntryList fstabEntries, const QString& filename = QStringLiteral("/etc/fstab"));
 
 #endif

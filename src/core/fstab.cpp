@@ -22,9 +22,11 @@
 #include <blkid/blkid.h>
 
 #include <QChar>
+#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QRegularExpression>
+#include <QTextStream>
 
 static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QString& m_deviceNode);
 static QString findBlkIdDevice(const QString& token, const QString& value);
@@ -92,6 +94,8 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
         }
 
         fstabFile.close();
+        if (fstabEntries.last().entryType() == comment && fstabEntries.last().comment().isEmpty())
+            fstabEntries.removeLast();
     }
 
     return fstabEntries;
@@ -147,4 +151,53 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QS
         m_entryType = FstabEntryType::deviceNode;
         m_deviceNode = m_fsSpec;
     }
+}
+
+static void writeEntry(QFile& output, const FstabEntry& entry)
+{
+    QTextStream s(&output);
+    if (entry.entryType() == FstabEntryType::comment) {
+        s << entry.comment() << "\n";
+        return;
+    }
+
+    s << entry.fsSpec() << "\t"
+      << entry.mountPoint() << "\t"
+      << entry.type() << "\t"
+      << (entry.options().size() > 0 ? entry.options().join(QLatin1Char(',')) : QStringLiteral("defaults")) << "\t"
+      << entry.dumpFreq() << "\t"
+      << entry.passNumber() << "\t"
+      << entry.comment() << "\n";
+}
+
+bool writeMountpoints(const FstabEntryList fstabEntries, const QString& filename)
+{
+    bool rval = true;
+    const QString newFilename = QStringLiteral("%1.new").arg(filename);
+    QFile out(newFilename);
+
+    if (!out.open(QFile::ReadWrite | QFile::Truncate)) {
+        qWarning() << "could not open output file " << newFilename;
+        rval = false;
+    } else {
+        for (const auto &e : fstabEntries)
+            writeEntry(out, e);
+
+        out.close();
+
+        const QString bakFilename = QStringLiteral("%1.bak").arg(filename);
+        QFile::remove(bakFilename);
+
+        if (QFile::exists(filename) && !QFile::rename(filename, bakFilename)) {
+            qWarning() << "could not rename " << filename << " to " << bakFilename;
+            rval = false;
+        }
+
+        if (rval && !QFile::rename(newFilename, filename)) {
+            qWarning() << "could not rename " << newFilename << " to " << filename;
+            rval = false;
+        }
+    }
+
+    return rval;
 }
