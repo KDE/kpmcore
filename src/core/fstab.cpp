@@ -68,7 +68,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             }
 
             QString comment = line.section( QLatin1Char('#'), 1 );
-            QStringList splitLine = line.section( QLatin1Char('#'), 0, 0 ).split( QRegularExpression(QStringLiteral("[\\s]+")) );
+            QStringList splitLine = line.section( QLatin1Char('#'), 0, 0 ).split( QRegularExpression(QStringLiteral("[\\s]+")), QString::SkipEmptyParts );
 
             // We now split the standard components of /etc/fstab entry:
             // (0) path, or UUID, or LABEL, etc,
@@ -86,7 +86,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
                     fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt() } );
                     break;
                 case 6:
-                    fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt(), splitLine.at(5).toInt(), comment } );
+                    fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt(), splitLine.at(5).toInt(), QLatin1Char('#') + comment } );
                     break;
                 default:
                     fstabEntries.append( { {}, {}, {}, {}, {}, {}, QLatin1Char('#') + line } );
