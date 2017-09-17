@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=KDE Partition Manager sfdisk Backend
+Comment=A KDE Partition Manager sfdisk backend.
+Type=Service
+ServiceTypes=PartitionManager/Plugin
+Icon=preferences-plugin
+
+X-KDE-Library=pmsfdiskbackendplugin
+X-KDE-PluginInfo-Name=pmsfdiskbackendplugin
+X-KDE-PluginInfo-Author=Andrius Štikonas
+X-KDE-PluginInfo-Email=andrius@stikonas.eu
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-Category=BackendPlugin
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-PluginInfo-Version=1
+X-KDE-PluginInfo-Website=http://www.partitionmanager.org

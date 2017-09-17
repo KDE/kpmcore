@@ -455,6 +455,7 @@ static struct {
     { QLatin1String("dasd"), 1, false, true, PartitionTable::dasd },
     { QLatin1String("msdos"), 4, true, false, PartitionTable::msdos },
     { QLatin1String("msdos"), 4, true, false, PartitionTable::msdos_sectorbased },
+    { QLatin1String("dos"), 4, true, false, PartitionTable::msdos_sectorbased },
     { QLatin1String("dvh"), 16, true, true, PartitionTable::dvh },
     { QLatin1String("gpt"), 128, false, false, PartitionTable::gpt },
     { QLatin1String("loop"), 1, false, true, PartitionTable::loop },

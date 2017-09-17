@@ -13,20 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-############################################
+set (pmsfdiskbackendplugin_SRCS
+    sfdiskbackend.cpp
+    sfdiskdevice.cpp
+    sfdiskpartition.cpp
+    sfdiskpartitiontable.cpp
+)
 
-install(FILES pmcorebackendplugin.desktop DESTINATION ${SERVICETYPES_INSTALL_DIR})
+add_library(pmsfdiskbackendplugin SHARED ${pmsfdiskbackendplugin_SRCS})
 
-option(PARTMAN_LIBPARTEDBACKEND "Build the libparted backend plugin." ON)
+target_link_libraries(pmsfdiskbackendplugin kpmcore)
 
-if (PARTMAN_LIBPARTEDBACKEND)
-    add_subdirectory(libparted)
-endif (PARTMAN_LIBPARTEDBACKEND)
-
-option(PARTMAN_DUMMYBACKEND "Build the dummy backend plugin." ON)
-
-if (PARTMAN_DUMMYBACKEND)
-    add_subdirectory(dummy)
-endif (PARTMAN_DUMMYBACKEND)
-
-add_subdirectory(sfdisk)
+install(TARGETS pmsfdiskbackendplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})
+kcoreaddons_desktop_to_json(pmsfdiskbackendplugin pmsfdiskbackendplugin.desktop)
+install(FILES pmsfdiskbackendplugin.desktop DESTINATION ${SERVICES_INSTALL_DIR})
