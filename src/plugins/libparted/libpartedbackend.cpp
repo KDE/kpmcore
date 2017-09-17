@@ -362,7 +362,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
 
         // GPT partitions support partition labels and partition UUIDs
         if(d.partitionTable()->type() == PartitionTable::TableType::gpt)
-            fs->setLabel(fs->readLabel(part->deviceNode()));
+            part->setLabel(QLatin1String(ped_partition_get_name(pedPartition)));
 
         if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
             fs->setUUID(fs->readUUID(part->deviceNode()));
