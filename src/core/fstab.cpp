@@ -61,7 +61,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
         const QStringList fstabLines = QString::fromLocal8Bit(fstabFile.readAll()).split( QLatin1Char('\n') );
         for ( const QString& rawLine : fstabLines )
         {
-            QString line = rawLine.trimmed().trimmed();
+            QString line = rawLine.trimmed();
             if ( line.startsWith( QLatin1Char('#') ) || line.isEmpty()) {
                 fstabEntries.append( { {}, {}, {}, {}, {}, {}, line } );
                 continue;
