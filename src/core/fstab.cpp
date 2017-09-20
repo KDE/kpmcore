@@ -86,7 +86,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
                     fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt() } );
                     break;
                 case 6:
-                    fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt(), splitLine.at(5).toInt(), QLatin1Char('#') + comment } );
+                    fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt(), splitLine.at(5).toInt(), comment.isEmpty() ? QString() : QLatin1Char('#') + comment } );
                     break;
                 default:
                     fstabEntries.append( { {}, {}, {}, {}, {}, {}, QLatin1Char('#') + line } );
@@ -159,10 +159,19 @@ static void writeEntry(QFile& output, const FstabEntry& entry)
         return;
     }
 
+    QString options;
+    if (entry.options().size() > 0) {
+        options = entry.options().join(QLatin1Char(','));
+        if (options.isEmpty())
+            options = QStringLiteral("defaults");
+    }
+    else
+        options = QStringLiteral("defaults");
+
     s << entry.fsSpec() << "\t"
-      << entry.mountPoint() << "\t"
+      << (entry.mountPoint().isEmpty() ? QStringLiteral("none") : entry.mountPoint()) << "\t"
       << entry.type() << "\t"
-      << (entry.options().size() > 0 ? entry.options().join(QLatin1Char(',')) : QStringLiteral("defaults")) << "\t"
+      << options << "\t"
       << entry.dumpFreq() << "\t"
       << entry.passNumber() << "\t"
       << entry.comment() << "\n";
