@@ -105,7 +105,7 @@ int fat16::maxLabelLength() const
 QValidator* fat16::labelValidator(QObject *parent) const
 {
     QRegularExpressionValidator *m_LabelValidator = new QRegularExpressionValidator(parent);
-    m_LabelValidator->setRegularExpression(QRegularExpression(QStringLiteral(R"(^[^*?.,;:\/\\|+=<>\[\]"]*$)")));
+    m_LabelValidator->setRegularExpression(QRegularExpression(QStringLiteral(R"(^[^\x{0000}-\x{001F}\x{007F}-\x{FFFF}*?.,;:\/\\|+=<>\[\]"]*$)")));
     return m_LabelValidator;
 }
 
