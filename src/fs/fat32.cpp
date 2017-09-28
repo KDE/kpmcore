@@ -56,6 +56,7 @@ bool fat32::updateUUID(Report& report, const QString& deviceNode) const
         t >>= 8;
     }
 
+    // HACK: replace this hack with fatlabel "-i" (dosfstools 4.2)
     ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode, QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=67") });
 
     if (!cmd.start())
