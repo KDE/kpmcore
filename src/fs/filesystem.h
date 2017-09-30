@@ -189,11 +189,24 @@ public:
     virtual SupportTool supportToolName() const;
     virtual bool supportToolFound() const;
 
+    /**
+     * Returns the (possibly translated) name of the type of this filesystem.
+     * @see nameForType()
+     */
     virtual QString name(const QStringList& languages = {}) const;
     virtual FileSystem::Type type() const {
         return m_Type;    /**< @return the FileSystem's type */
     }
 
+    /**
+     * Returns the name of the given filesystem type. If @p languages
+     * is an empty list, uses the translated name of the filesystem,
+     * in the default locale. If languages is {"C"}, an untranslated
+     * string is returned. Passing other lists of language identifiers
+     * may yield unpredicatable results -- see the documentation of
+     * KLocalizedString() for details on the way toString() is used.
+     * Returns a single QString with the name.
+     */
     static QString nameForType(FileSystem::Type t, const QStringList& languages = {});
     static QList<FileSystem::Type> types();
     static FileSystem::Type typeForName(const QString& s, const QStringList& languages = {});
