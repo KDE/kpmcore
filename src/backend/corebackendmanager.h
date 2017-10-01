@@ -21,10 +21,11 @@
 
 #include "util/libpartitionmanagerexport.h"
 
-#include <KService>
+#include <QVector>
 
 class QString;
 class QStringList;
+class KPluginMetaData;
 class CoreBackend;
 
 /**
@@ -55,7 +56,7 @@ public:
     /**
       * @return a list of available backend plugins
       */
-    KService::List list() const;
+    QVector<KPluginMetaData> list() const;
 
     /**
        * Loads the given backend plugin into the application.

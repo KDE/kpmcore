@@ -23,10 +23,12 @@
 #include <QDebug>
 #include <QStringList>
 #include <QString>
+#include <QVector>
 
 #include <KLocalizedString>
+#include <KPluginFactory>
 #include <KPluginLoader>
-#include <KServiceTypeTrader>
+#include <KPluginMetaData>
 
 CoreBackendManager::CoreBackendManager() :
     m_Backend(nullptr)
@@ -43,10 +45,15 @@ CoreBackendManager* CoreBackendManager::self()
     return instance;
 }
 
-KService::List CoreBackendManager::list() const
+QVector<KPluginMetaData> CoreBackendManager::list() const
 {
-    return KServiceTypeTrader::self()->query(QStringLiteral("PartitionManager/Plugin"),
-            QStringLiteral("[X-KDE-PluginInfo-Category] == 'BackendPlugin'"));
+    auto filter = [&](const KPluginMetaData &metaData) {
+        return metaData.serviceTypes().contains(QStringLiteral("PartitionManager/Plugin")) &&
+               metaData.category().contains(QStringLiteral("BackendPlugin"));
+    };
+
+    // find backend plugins in standard path (e.g. /usr/lib64/qt5/plugins) using filter from above
+    return KPluginLoader::findPlugins(QString(), filter);
 }
 
 bool CoreBackendManager::load(const QString& name)
