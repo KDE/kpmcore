@@ -74,13 +74,13 @@ result in undefined behavior.
 ### Devices [FIXME: WIP]
 
 After the backend is initialized you can scan for available devices.
-If you want only devices from the loaded backend you can call
+If you only want devices from the loaded backend you can call
 
 ```
     QList<Device*> devices = backend->scanDevices( excludeReadOnly );
 ```
 
-where bool option `excludeReadOnly` specified whether to exclude
+where `bool` option `excludeReadOnly` specified whether to exclude
 read only devices.
 
 #### KPMcore device scanner
