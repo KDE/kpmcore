@@ -1,16 +1,42 @@
+/*************************************************************************
+ *  Copyright 2017 by Adriaan de Groot <groot@kde.org>                   *
+ *                                                                       *
+ *  This program is free software; you can redistribute it and/or        *
+ *  modify it under the terms of the GNU General Public License as       *
+ *  published by the Free Software Foundation; either version 3 of       *
+ *  the License, or (at your option) any later version.                  *
+ *                                                                       *
+ *  This program is distributed in the hope that it will be useful,      *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of       *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        *
+ *  GNU General Public License for more details.                         *
+ *                                                                       *
+ *  You should have received a copy of the GNU General Public License    *
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
+ *************************************************************************/
+
+//  SPDX-License-Identifier: GPL-3.0+
+
 #ifndef TEST_KPMHELPERS_H
 #define TEST_KPMHELPERS_H
 
 class QString;
 
+/**
+ * Use RAII to initialize the KPMcore library. Just instantiatie one
+ * object of this class to do "normal" initialization.
+ */
 class KPMCoreInitializer
 {
 public:
-    KPMCoreInitializer();
-    KPMCoreInitializer(const QString& backend);
-    KPMCoreInitializer(const char *backend);
+    KPMCoreInitializer(); /// Default backend
+    KPMCoreInitializer( const QString& backend );  /// Use named backend
+    KPMCoreInitializer( const char* backend );  /// Use named backend
 
-    bool isValid() const { return m_isValid; }
+    bool isValid() const
+    {
+        return m_isValid;
+    }
 private:
     bool m_isValid;
 } ;
