@@ -77,7 +77,7 @@ After the backend is initialized you can scan for available devices.
 If you want only devices from the loaded backend you can call
 
 ```
-QList<Device*> devices = backend->scanDevices( excludeReadOnly );
+    QList<Device*> devices = backend->scanDevices( excludeReadOnly );
 ```
 
 where bool option `excludeReadOnly` specified whether to exclude
@@ -89,10 +89,12 @@ Alternatively, you can use KPMcore device scanner which also finds
 LVM Volume Groups.
 
 ```
-DeviceScanner *deviceScanner = new DeviceScanner(this, operationStack()))
-deviceScanner->start();
+    // First create operationStack with another QObject as parent.
+    OperationStack *operationStack = new OperationStack(parent);
+    DeviceScanner *deviceScanner = new DeviceScanner(parent, *operationStack));
+    deviceScanner->start();
 ```
 
 The `deviceScanner` scans for the devices in a background thread. After
 scanning is complete `DeviceScanner::finished()` signal will be emitted.
-Then the devices can accessed using `operationStack().previewDevices()`.
+Then the devices can accessed using `operationStack->previewDevices()`.
