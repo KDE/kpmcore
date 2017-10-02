@@ -20,7 +20,6 @@ add_library(testhelpers OBJECT helpers.cpp)
 macro (kpm_test name)
     add_executable(${name} ${ARGN} $<TARGET_OBJECTS:testhelpers>)
     target_link_libraries(${name} kpmcore)
-    add_test(${name} ${name})
 endmacro()
 
 ###
@@ -32,4 +31,14 @@ if(TARGET pmdummybackendplugin)
 endif()
 if(TARGET pmlibpartedbackendplugin)
     add_test(NAME testinit-parted COMMAND testinit $<TARGET_FILE:pmlibpartedbackendplugin>)
+else()
+    return()  # All the rest really needs a working backend
 endif()
+
+set(BACKEND $<TARGET_FILE:pmlibpartedbackendplugin>)
+
+###
+#
+# Listing devices, partitions
+kpm_test(testlist testlist.cpp)
+add_test(NAME testlist COMMAND testlist ${BACKEND})
