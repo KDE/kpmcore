@@ -21,8 +21,6 @@
 
 #include "util/libpartitionmanagerexport.h"
 
-#include <vector>
-
 #include <QProcess>
 #include <QStringList>
 #include <QString>
