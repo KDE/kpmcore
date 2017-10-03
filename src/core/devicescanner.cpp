@@ -66,19 +66,23 @@ void DeviceScanner::scan()
 
     const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
     const QList<LvmDevice*> lvmList = LvmDevice::scanSystemLVM();
+
+    // Some LVM operations require additional information about LVM physical volumes which we store in LVM::pvList
     LVM::pvList = FS::lvm2_pv::getPVs(deviceList);
 
     for (const auto &d : deviceList)
         operationStack().addDevice(d);
 
+    // Display alphabetically sorted disk devices above LVM VGs
     operationStack().sortDevices();
 
+    // Look for LVM physical volumes in LVM VGs
     for (const auto &d : lvmList) {
         operationStack().addDevice(d);
         LVM::pvList.append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
     }
 
-    // Store list of physical volumes in LvmDevice
+    // Inform LvmDevice about which physical volumes form that particular LvmDevice
     for (const auto &d : lvmList)
         for (const auto &p : qAsConst(LVM::pvList))
             if (p.vgName() == d->name())
