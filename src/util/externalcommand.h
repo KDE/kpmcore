@@ -61,7 +61,11 @@ public:
         return m_ExitCode;    /**< @return the exit code */
     }
 
-    const QString& output() const {
+    const QString output() const {
+        return QString::fromLocal8Bit(m_Output);    /**< @return the command output */
+    }
+
+    const QByteArray& rawOutput() const {
         return m_Output;    /**< @return the command output */
     }
 
@@ -83,7 +87,7 @@ private:
     QString m_Command;
     QStringList m_Args;
     int m_ExitCode;
-    QString m_Output;
+    QByteArray m_Output;
 };
 
 #endif

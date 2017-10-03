@@ -116,7 +116,7 @@ bool ExternalCommand::run(int timeout)
 
 void ExternalCommand::onReadOutput()
 {
-    const QString s = QString::fromUtf8(readAllStandardOutput());
+    const QByteArray s = readAllStandardOutput();
 
     if(m_Output.length() > 10*1024*1024) { // prevent memory overflow for badly corrupted file systems
         if (report())
@@ -127,7 +127,7 @@ void ExternalCommand::onReadOutput()
     m_Output += s;
 
     if (report())
-        *report() << s;
+        *report() << QString::fromLocal8Bit(s);
 }
 
 void ExternalCommand::onFinished(int exitCode, QProcess::ExitStatus exitStatus)

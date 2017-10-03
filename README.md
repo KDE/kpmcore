@@ -82,7 +82,7 @@ If you only want devices from the loaded backend you can call
     QList<Device*> devices = backend->scanDevices( excludeReadOnly );
 ```
 
-where bool option `excludeReadOnly` specifies whether to exclude
+where `bool` option `excludeReadOnly` specifies whether to exclude
 read only devices.
 
 #### KPMcore device scanner
