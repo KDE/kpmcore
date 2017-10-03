@@ -93,6 +93,8 @@ public:
       *         not, including CD ROM devices, are returned.
       * @return a QList of pointers to Device instances. The caller is responsible
       *         for deleting these objects.
+      * @note A Device object is a description of the device, not
+      *         an object to operate on. See openDevice().
       */
     virtual QList<Device*> scanDevices(bool excludeReadOnly = false) = 0;
 

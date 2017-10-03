@@ -29,9 +29,11 @@ class CreatePartitionTableOperation;
 class CoreBackend;
 class SmartStatus;
 
-/** A abstract device interface.
+/** A device description.
 
-    Represents a device like /dev/sda.
+    Represents a device like /dev/sda. Contains information about
+    the device (name, status, size ..) but does not operate on
+    the device itself. @see CoreBackendDevice
 
     Devices are the outermost entity; they contain a PartitionTable that itself contains Partitions.
 
@@ -104,6 +106,11 @@ public:
         return *m_SmartStatus;
     }
 
+    /**
+     * Change the description of the partition table for different one.
+     * The device itself is not changed; use CreatePartitionTableOperation
+     * for that. The Device instance becomes the owner of @p ptable .
+     */
     virtual void setPartitionTable(PartitionTable* ptable) {
         m_PartitionTable = ptable;
     }

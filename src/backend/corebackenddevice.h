@@ -30,7 +30,11 @@ class PartitionTable;
 class Report;
 
 /**
-  * Interface class representing a device in the backend plugin.
+  * Interface class for devices in the backend plugin.
+  * For a device description, see Device. This
+  * CoreBackendDevice can be used for (read- and) write
+  * operations on the raw device.
+  *
   * @author Volker Lanz <vl@fidra.de>
   */
 class LIBKPMCORE_EXPORT CoreBackendDevice
