@@ -82,7 +82,7 @@ int main( int argc, char **argv )
 
     auto devices = backend->scanDevices();
     qDebug() << "Found" << devices.length() << "devices.";
-    for (const auto pdev : devices)
+    for (const auto pdev : qAsConst(devices))
     {
         qDebug() << "Device @" << (void *)pdev;
         qDebug() << "  " << pdev->prettyName();
@@ -92,8 +92,8 @@ int main( int argc, char **argv )
             << (partitiontable ? partitiontable->typeName() : QLatin1String("null")) << ')';
 
         const auto partitionlist = flatten(partitiontable);
-       for (const auto &p : qAsConst(partitionlist))
-           qDebug() << "      "
+        for (const auto &p : qAsConst(partitionlist))
+            qDebug() << "      "
             << p->number()
             << p->partitionPath()
             << p->label()
