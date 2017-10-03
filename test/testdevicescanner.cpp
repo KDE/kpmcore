@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright 2017 by Adriaan de Groot <groot@kde.org>                   *
+ *  Copyright 2017 by Andrius Štikonas <andrius@stikonas.eu>             *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -24,6 +25,8 @@
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
 #include "core/device.h"
+#include "core/devicescanner.h"
+#include "core/operationstack.h"
 #include "core/partition.h"
 #include "util/capacity.h"
 
@@ -80,7 +83,12 @@ int main( int argc, char **argv )
         return 1;
     }
 
-    const auto devices = backend->scanDevices();
+     // First create operationStack with another QObject as parent.
+    OperationStack *operationStack = new OperationStack();
+    DeviceScanner *deviceScanner = new DeviceScanner(nullptr, *operationStack);
+    deviceScanner->scan();
+
+    const auto devices = operationStack->previewDevices();
     qDebug() << "Found" << devices.length() << "devices.";
     for (const auto pdev : devices)
     {

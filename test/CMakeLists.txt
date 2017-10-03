@@ -42,3 +42,6 @@ set(BACKEND $<TARGET_FILE:pmlibpartedbackendplugin>)
 # Listing devices, partitions
 kpm_test(testlist testlist.cpp)
 add_test(NAME testlist COMMAND testlist ${BACKEND})
+
+kpm_test(testdevicescanner testdevicescanner.cpp)
+add_test(NAME testdevicescanner COMMAND testdevicescanner ${BACKEND})
