@@ -87,10 +87,14 @@ public:
 
     /**
       * Scan for devices in the system.
+      * @param excludeReadOnly when true, devices that are read-only
+      *         according to the kernel are left out of the list.
+      *         When false (the default) all devices, writable or
+      *         not, including CD ROM devices, are returned.
       * @return a QList of pointers to Device instances. The caller is responsible
       *         for deleting these objects.
       */
-    virtual QList<Device*> scanDevices(bool excludeLoop = false) = 0;
+    virtual QList<Device*> scanDevices(bool excludeReadOnly = false) = 0;
 
     /**
       * Scan a single device in the system.
