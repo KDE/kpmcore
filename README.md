@@ -45,7 +45,7 @@ and typical initialization code will look like this (or use the
 class `KPMCoreInitializer` from `test/helpers.h`):
 
 ```
-    #include <kpmcore/backend/corebackendmanager.h>
+    #include <backend/corebackendmanager.h>
     #include <QDebug>
 
     bool initKPMcore()
@@ -91,12 +91,17 @@ Alternatively, you can use KPMcore device scanner which also finds
 LVM Volume Groups.
 
 ```
-    // First create operationStack with another QObject as parent.
-    OperationStack *operationStack = new OperationStack(parent);
-    DeviceScanner *deviceScanner = new DeviceScanner(parent, *operationStack));
-    deviceScanner->start();
+    #include <core/device.h>
+    #include <core/devicescanner.h>
+    #include <core/operationstack.h>
+
+    // First create operationStack with another QObject as parent, we will use nullptr here.
+    OperationStack *operationStack = new OperationStack(nullptr);
+    DeviceScanner *deviceScanner = new DeviceScanner(nullptr, *operationStack);
+    deviceScanner->scan(); // use start() for scanning in the background thread
+    QList<Device*> devices = operationStack->previewDevices();
 ```
 
-The `deviceScanner` scans for the devices in a background thread. After
+When `deviceScanner` scans for the devices in a background thread. After
 scanning is complete `DeviceScanner::finished()` signal will be emitted.
 Then the devices can accessed using `operationStack->previewDevices()`.
