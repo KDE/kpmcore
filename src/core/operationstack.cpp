@@ -554,6 +554,10 @@ void OperationStack::addDevice(Device* d)
 
 static bool deviceLessThan(const Device* d1, const Device* d2)
 {
+    // Display alphabetically sorted disk devices above LVM VGs
+    if (d1->type() == Device::LVM_Device && d2->type() == Device::Disk_Device )
+        return false;
+
     return d1->deviceNode() <= d2->deviceNode();
 }
 

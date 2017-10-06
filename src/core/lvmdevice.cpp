@@ -171,15 +171,30 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
 
 /** scan and construct list of initialized LvmDevice objects.
  *
- *  @return list of initialized LvmDevices
+ *  @param devices list of initialized Devices
  */
-QList<LvmDevice*> LvmDevice::scanSystemLVM()
+void LvmDevice::scanSystemLVM(QList<Device*>& devices)
 {
     QList<LvmDevice*> lvmList;
     for (const auto &vgName : getVGs()) {
         lvmList.append(new LvmDevice(vgName));
     }
-    return lvmList;
+
+    // Some LVM operations require additional information about LVM physical volumes which we store in LVM::pvList
+    LVM::pvList = FS::lvm2_pv::getPVs(devices);
+
+    // Look for LVM physical volumes in LVM VGs
+    for (const auto &d : lvmList) {
+        devices.append(d);
+        LVM::pvList.append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
+    }
+
+    // Inform LvmDevice about which physical volumes form that particular LvmDevice
+    for (const auto &d : lvmList)
+        for (const auto &p : qAsConst(LVM::pvList))
+            if (p.vgName() == d->name())
+                d->physicalVolumes().append(p.partition());
+
 }
 
 qint64 LvmDevice::mappedSector(const QString& lvPath, qint64 sector) const

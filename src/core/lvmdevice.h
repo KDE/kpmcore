@@ -58,7 +58,7 @@ public:
     static QVector<const Partition*> s_DirtyPVs;
 
 public:
-    static QList<LvmDevice*> scanSystemLVM();
+    static void scanSystemLVM(QList<Device*>& devices);
 
     static const QStringList getVGs();
     static const QStringList getLVs(const QString& vgName);

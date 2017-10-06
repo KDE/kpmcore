@@ -71,9 +71,7 @@ back to a default backend suitable for the current platform.
 Calling KPMcore functions before the library is initialized will
 result in undefined behavior.
 
-### Devices [FIXME: WIP]
-
-#### Backend device scanner
+### Devices
 
 After the backend is initialized you can scan for available devices.
 If you only want devices from the loaded backend you can call
@@ -87,8 +85,7 @@ read only devices.
 
 #### KPMcore device scanner
 
-Alternatively, you can use KPMcore device scanner which also finds
-LVM Volume Groups.
+Alternatively, you can use KPMcore device scanner
 
 ```
     #include <core/device.h>
@@ -102,6 +99,6 @@ LVM Volume Groups.
     QList<Device*> devices = operationStack->previewDevices();
 ```
 
-When `deviceScanner` scans for the devices in a background thread. After
+Then `deviceScanner` scans for the devices in a background thread. After
 scanning is complete `DeviceScanner::finished()` signal will be emitted.
 Then the devices can accessed using `operationStack->previewDevices()`.

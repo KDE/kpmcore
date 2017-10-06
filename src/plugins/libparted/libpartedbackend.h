@@ -23,6 +23,7 @@
 #include "backend/corebackend.h"
 
 #include "core/partitiontable.h"
+#include "core/diskdevice.h"
 #include "util/libpartitionmanagerexport.h"
 
 #include "fs/filesystem.h"
@@ -63,7 +64,7 @@ public:
     CoreBackendDevice* openDevice(const QString& deviceNode) override;
     CoreBackendDevice* openDeviceExclusive(const QString& deviceNode) override;
     bool closeDevice(CoreBackendDevice* core_device) override;
-    Device* scanDevice(const QString& deviceNode) override;
+    DiskDevice* scanDevice(const QString& deviceNode) override;
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;
     FileSystem::Type detectFileSystem(const QString& partitionPath) override;
 

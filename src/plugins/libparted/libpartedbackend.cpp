@@ -24,7 +24,7 @@
 #include "plugins/libparted/libparteddevice.h"
 #include "plugins/libparted/pedflags.h"
 
-#include "core/diskdevice.h"
+#include "core/lvmdevice.h"
 #include "core/partition.h"
 #include "core/partitiontable.h"
 #include "core/partitionalignment.h"
@@ -384,7 +384,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
     @param deviceNode the device node (e.g. "/dev/sda")
     @return the created Device object. callers need to free this.
 */
-Device* LibPartedBackend::scanDevice(const QString& deviceNode)
+DiskDevice* LibPartedBackend::scanDevice(const QString& deviceNode)
 {
     PedDevice* pedDevice = ped_device_get(deviceNode.toLocal8Bit().constData());
 
@@ -456,6 +456,8 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
                 result.append(device);
             }
         }
+
+        LvmDevice::scanSystemLVM(result);
     }
 
     return result;
