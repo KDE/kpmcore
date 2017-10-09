@@ -20,6 +20,7 @@
 
 #include "util/report.h"
 
+#include <QtGlobal>
 #include <QString>
 #include <QStringList>
 
@@ -61,7 +62,7 @@ void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMod
     setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromUtf8(getenv("PATH")) << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
     setProcessChannelMode(processChannelMode);
 
-    connect(this, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &ExternalCommand::onFinished);
+    connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
 }
 
