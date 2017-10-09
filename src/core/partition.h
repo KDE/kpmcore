@@ -63,7 +63,7 @@ class QTextStream;
 
 /** A partition or some unallocated space on a Device.
 
-    Repesent partitions in a PartitionTable on a Device. Partitions can be unallocated, thus not all
+    Represent partitions in a PartitionTable on a Device. Partitions can be unallocated, thus not all
     instances really are partitions in the way the user would see them.
 
     Extended partitions have child objects that represent the logicals inside them.
