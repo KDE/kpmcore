@@ -73,36 +73,6 @@ class QTextStream;
 */
 class LIBKPMCORE_EXPORT Partition : public PartitionNode
 {
-    friend class PartitionTable;
-    friend class OperationStack;
-    friend class Device;
-    friend class PartitionNode;
-    friend class CoreBackendPartitionTable;
-    friend class PartitionAlignment;
-
-    friend class PartResizerWidget;
-    friend class ResizeDialog;
-    friend class InsertDialog;
-    friend class NewDialog;
-    friend class EditMountPointDialog;
-    friend class PartPropsDialog;
-    friend class SizeDialogBase;
-
-    friend class CreateFileSystemOperation;
-    friend class RestoreOperation;
-    friend class SetPartFlagsOperation;
-    friend class CopyOperation;
-    friend class NewOperation;
-    friend class ResizeOperation;
-
-    friend class SetPartGeometryJob;
-    friend class CreatePartitionJob;
-    friend class SetPartFlagsJob;
-    friend class RestoreFileSystemJob;
-
-    friend class DeactivateVolumeGroupJob;
-
-    friend QTextStream& operator<<(QTextStream& stream, const Partition& p);
 
 public:
     /** A Partition state -- where did it come from? */
@@ -235,7 +205,6 @@ public:
         m_UUID = s;    /**< @param s the new UUID */
     }
 
-protected:
     void append(Partition* p) override {
         m_Children.append(p);
     }
