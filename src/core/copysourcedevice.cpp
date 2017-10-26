@@ -28,14 +28,14 @@
 
 /** Constructs a CopySource on the given Device
     @param d Device from which to copy
-    @param firstsector First sector that will be copied
-    @param lastsector Last sector that will be copied
+    @param firstbyte the first byte that will be copied
+    @param lastbyte the last byte that will be copied
 */
-CopySourceDevice::CopySourceDevice(Device& d, qint64 firstsector, qint64 lastsector) :
+CopySourceDevice::CopySourceDevice(Device& d, qint64 firstbyte, qint64 lastbyte) :
     CopySource(),
     m_Device(d),
-    m_FirstSector(firstsector),
-    m_LastSector(lastsector),
+    m_FirstByte(firstbyte),
+    m_LastByte(lastbyte),
     m_BackendDevice(nullptr)
 {
 }
@@ -55,36 +55,28 @@ bool CopySourceDevice::open()
     return m_BackendDevice != nullptr;
 }
 
-/** Returns the Device's sector size
-    @return the sector size
-*/
-qint64 CopySourceDevice::sectorSize() const
-{
-    return device().logicalSize();
-}
-
 /** Returns the length of this CopySource
     @return length of the copy source
 */
 qint64 CopySourceDevice::length() const
 {
-    return lastSector() - firstSector() + 1;
+    return lastByte() - firstByte() + 1;
 }
 
-/** Reads a given number of sectors from the Device into the given buffer.
+/** Reads a given number of bytes from the Device into the given buffer.
 
     Note that @p readOffset must be greater or equal than zero.
 
-    @param buffer the buffer to store the read sectors in
+    @param buffer the buffer to store the read bytes in
     @param readOffset the offset to begin reading
-    @param numSectors the number of sector to read
+    @param size the number of bytes to read
 
     @return true if successful
 */
-bool CopySourceDevice::readSectors(void* buffer, qint64 readOffset, qint64 numSectors)
+bool CopySourceDevice::readData(QByteArray& buffer, qint64 readOffset, qint64 size)
 {
     Q_ASSERT(readOffset >= 0);
-    return m_BackendDevice->readSectors(buffer, readOffset, numSectors);
+    return m_BackendDevice->readData(buffer, readOffset, size);
 }
 
 /** Checks if this CopySourceDevice overlaps with the given CopyTarget
@@ -100,11 +92,11 @@ bool CopySourceDevice::overlaps(const CopyTarget& target) const
             return false;
 
         // overlapping at the front?
-        if (firstSector() <= t.firstSector() && lastSector() >= t.firstSector())
+        if (firstByte() <= t.firstByte() && lastByte() >= t.firstByte())
             return true;
 
         // overlapping at the back?
-        if (firstSector() <= t.lastSector() && lastSector() >= t.lastSector())
+        if (firstByte() <= t.lastByte() && lastByte() >= t.lastByte())
             return true;
     } catch (...) {
     }

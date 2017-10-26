@@ -23,12 +23,10 @@
 
 /** Constructs a CopySourceFile from the given @p filename.
     @param filename filename of the file to copy from
-    @param sectorsize the sector size to assume for the file, usually the target Device's sector size
 */
-CopySourceFile::CopySourceFile(const QString& filename, qint64 sectorsize) :
+CopySourceFile::CopySourceFile(const QString& filename) :
     CopySource(),
-    m_File(filename),
-    m_SectorSize(sectorsize)
+    m_File(filename)
 {
 }
 
@@ -40,24 +38,25 @@ bool CopySourceFile::open()
     return file().open(QIODevice::ReadOnly);
 }
 
-/** Returns the length of the file in sectors.
-    @return length of the file in sectors.
+/** Returns the length of the file in bytes.
+    @return length of the file in bytes.
 */
 qint64 CopySourceFile::length() const
 {
-    return QFileInfo(file()).size() / sectorSize();
+    return QFileInfo(file()).size();
 }
 
-/** Reads the given number of sectors from the file into the given buffer.
-    @param buffer buffer to store the sectors read in
+/** Reads the given number of bytes from the file into the given buffer.
+    @param buffer buffer to store the bytes read in
     @param readOffset offset where to begin reading
-    @param numSectors number of sectors to read
+    @param size the number of bytes to read
     @return true on success
 */
-bool CopySourceFile::readSectors(void* buffer, qint64 readOffset, qint64 numSectors)
+bool CopySourceFile::readData(QByteArray& buffer, qint64 readOffset, qint64 size)
 {
-    if (!file().seek(readOffset * sectorSize()))
+    if (!file().seek(readOffset))
         return false;
 
-    return file().read(static_cast<char*>(buffer), numSectors * sectorSize()) == numSectors * sectorSize();
+    buffer = file().read(size);
+    return !buffer.isEmpty();
 }

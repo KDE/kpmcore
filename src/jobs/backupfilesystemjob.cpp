@@ -56,8 +56,8 @@ bool BackupFileSystemJob::run(Report& parent)
     if (sourcePartition().fileSystem().supportBackup() == FileSystem::cmdSupportFileSystem)
         rval = sourcePartition().fileSystem().backup(*report, sourceDevice(), sourcePartition().deviceNode(), fileName());
     else if (sourcePartition().fileSystem().supportBackup() == FileSystem::cmdSupportCore) {
-        CopySourceDevice copySource(sourceDevice(), sourcePartition().fileSystem().firstSector(), sourcePartition().fileSystem().lastSector());
-        CopyTargetFile copyTarget(fileName(), sourceDevice().logicalSize());
+        CopySourceDevice copySource(sourceDevice(), sourcePartition().fileSystem().firstByte(), sourcePartition().fileSystem().lastByte());
+        CopyTargetFile copyTarget(fileName());
 
         if (!copySource.open())
             report->line() << xi18nc("@info:progress", "Could not open file system on source partition <filename>%1</filename> for backup.", sourcePartition().deviceNode());

@@ -67,11 +67,11 @@ bool DummyDevice::createPartitionTable(Report& report, const PartitionTable& pta
     return true;
 }
 
-bool DummyDevice::readSectors(void* buffer, qint64 offset, qint64 numSectors)
+bool DummyDevice::readData(QByteArray& buffer, qint64 offset, qint64 size)
 {
     Q_UNUSED(buffer);
     Q_UNUSED(offset);
-    Q_UNUSED(numSectors);
+    Q_UNUSED(size);
 
     if (!isExclusive())
         return false;
@@ -79,11 +79,10 @@ bool DummyDevice::readSectors(void* buffer, qint64 offset, qint64 numSectors)
     return true;
 }
 
-bool DummyDevice::writeSectors(void* buffer, qint64 offset, qint64 numSectors)
+bool DummyDevice::writeData(QByteArray& buffer, qint64 offset)
 {
     Q_UNUSED(buffer);
     Q_UNUSED(offset);
-    Q_UNUSED(numSectors);
 
     if (!isExclusive())
         return false;

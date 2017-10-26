@@ -60,8 +60,8 @@ bool CopyFileSystemJob::run(Report& parent)
     else if (sourcePartition().fileSystem().supportCopy() == FileSystem::cmdSupportFileSystem)
         rval = sourcePartition().fileSystem().copy(*report, targetPartition().deviceNode(), sourcePartition().deviceNode());
     else if (sourcePartition().fileSystem().supportCopy() == FileSystem::cmdSupportCore) {
-        CopySourceDevice copySource(sourceDevice(), sourcePartition().fileSystem().firstSector(), sourcePartition().fileSystem().lastSector());
-        CopyTargetDevice copyTarget(targetDevice(), targetPartition().fileSystem().firstSector(), targetPartition().fileSystem().lastSector());
+        CopySourceDevice copySource(sourceDevice(), sourcePartition().fileSystem().firstByte(), sourcePartition().fileSystem().lastByte());
+        CopyTargetDevice copyTarget(targetDevice(), targetPartition().fileSystem().firstByte(), targetPartition().fileSystem().lastByte());
 
         if (!copySource.open())
             report->line() << xi18nc("@info:progress", "Could not open file system on source partition <filename>%1</filename> for copying.", sourcePartition().deviceNode());

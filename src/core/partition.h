@@ -131,6 +131,12 @@ public:
     qint64 lastSector() const {
         return m_LastSector;    /**< @return the Partition's last sector on the Device */
     }
+    qint64 firstByte() const {
+        return firstSector() * sectorSize();    /**< @return the Partition's first byte on the Device */
+    }
+    qint64 lastByte() const {
+        return firstByte() + length() * sectorSize() - 1;    /**< @return the Partition's last byte on the Device */
+    }
     qint64 sectorsUsed() const;
     qint64 sectorSize() const {
         return m_SectorSize;    /**< @return the sector size on the Partition's Device */

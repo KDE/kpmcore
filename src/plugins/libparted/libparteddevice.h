@@ -47,8 +47,8 @@ public:
 
     bool createPartitionTable(Report& report, const PartitionTable& ptable) override;
 
-    bool readSectors(void* buffer, qint64 offset, qint64 numSectors) override;
-    bool writeSectors(void* buffer, qint64 offset, qint64 numSectors) override;
+    bool readData(QByteArray& buffer, qint64 offset, qint64 size) override;
+    bool writeData(QByteArray& buffer, qint64 offset) override;
 
 protected:
     PedDevice* pedDevice() {

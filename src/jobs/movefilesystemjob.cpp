@@ -55,8 +55,9 @@ bool MoveFileSystemJob::run(Report& parent)
     // say we're finished: The CopyTargetDevice dtor asks the backend to close the device
     // and that may take a while.
     {
-        CopySourceDevice moveSource(device(), partition().fileSystem().firstSector(), partition().fileSystem().lastSector());
-        CopyTargetDevice moveTarget(device(), newStart(), newStart() + partition().fileSystem().length());
+        qint64 length = partition().fileSystem().lastByte() - partition().fileSystem().firstByte();
+        CopySourceDevice moveSource(device(), partition().fileSystem().firstByte(), partition().fileSystem().lastByte());
+        CopyTargetDevice moveTarget(device(), newStart() * device().logicalSize(), newStart() * device().logicalSize() + length);
 
         if (!moveSource.open())
             report->line() << xi18nc("@info:progress", "Could not open file system on partition <filename>%1</filename> for moving.", partition().deviceNode());

@@ -20,12 +20,10 @@
 
 /** Constructs a CopySourceShred with the given @p size
     @param s the size the copy source will (pretend to) have
-    @param sectorsize the sectorsize the copy source will (pretend to) have
 */
-CopySourceShred::CopySourceShred(qint64 s, qint64 sectorsize, bool randomShred) :
+CopySourceShred::CopySourceShred(qint64 s, bool randomShred) :
     CopySource(),
     m_Size(s),
-    m_SectorSize(sectorsize),
     m_SourceFile(randomShred ? QStringLiteral("/dev/urandom") : QStringLiteral("/dev/zero"))
 {
 }
@@ -38,23 +36,24 @@ bool CopySourceShred::open()
     return sourceFile().open(QIODevice::ReadOnly);
 }
 
-/** Returns the length of the source in sectors.
-    @return length of the source in sectors.
+/** Returns the length of the source in bytes.
+    @return length of the source in bytes.
 */
 qint64 CopySourceShred::length() const
 {
-    return size() / sectorSize();
+    return size();
 }
 
-/** Reads the given number of sectors from the source into the given buffer.
-    @param buffer buffer to store the sectors read in
+/** Reads the given number of bytes from the source into the given buffer.
+    @param buffer buffer to store the data read in
     @param readOffset offset where to begin reading (unused)
-    @param numSectors number of sectors to read
+    @param size the number of bytes to read
     @return true on success
 */
-bool CopySourceShred::readSectors(void* buffer, qint64 readOffset, qint64 numSectors)
+bool CopySourceShred::readData(QByteArray& buffer, qint64 readOffset, qint64 size)
 {
     Q_UNUSED(readOffset);
 
-    return sourceFile().read(static_cast<char*>(buffer), numSectors * sectorSize()) == numSectors * sectorSize();
+    buffer = sourceFile().read(size);
+    return !buffer.isEmpty();
 }

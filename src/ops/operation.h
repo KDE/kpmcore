@@ -94,7 +94,7 @@ protected:
     virtual ~Operation();
 
 Q_SIGNALS:
-    int progress(int);
+    void progress(int);
     void jobStarted(Job*, Operation*);
     void jobFinished(Job*, Operation*);
 

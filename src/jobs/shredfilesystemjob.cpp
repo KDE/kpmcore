@@ -64,8 +64,8 @@ bool ShredFileSystemJob::run(Report& parent)
 
     // Again, a scope for copyTarget and copySource. See MoveFileSystemJob::run()
     {
-        CopyTargetDevice copyTarget(device(), partition().fileSystem().firstSector(), partition().fileSystem().lastSector());
-        CopySourceShred copySource(partition().capacity(), copyTarget.sectorSize(), m_RandomShred);
+        CopyTargetDevice copyTarget(device(), partition().fileSystem().firstByte(), partition().fileSystem().lastByte());
+        CopySourceShred copySource(partition().capacity(), m_RandomShred);
 
         if (!copySource.open())
             report->line() << xi18nc("@info:progress", "Could not open random data source to overwrite file system.");

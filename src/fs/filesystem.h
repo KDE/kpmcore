@@ -235,6 +235,12 @@ public:
     qint64 length() const {
         return lastSector() - firstSector() + 1;    /**< @return the FileSystem's length */
     }
+    qint64 firstByte() const {
+        return firstSector() * sectorSize();    /**< @return the FileSystem's first byte */
+    }
+    qint64 lastByte() const {
+        return firstByte() + length() * sectorSize() - 1;    /**< @return the FileSystem's last byte */
+    }
 
     void setFirstSector(qint64 s) {
         m_FirstSector = s;    /**< @param s the new first sector */

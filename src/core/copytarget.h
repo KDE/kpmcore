@@ -35,27 +35,26 @@ class CopyTarget
     Q_DISABLE_COPY(CopyTarget)
 
 protected:
-    CopyTarget() : m_SectorsWritten(0) {}
+    CopyTarget() : m_BytesWritten(0) {}
     virtual ~CopyTarget() {}
 
 public:
     virtual bool open() = 0;
-    virtual qint64 sectorSize() const = 0;
-    virtual bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) = 0;
-    virtual qint64 firstSector() const = 0;
-    virtual qint64 lastSector() const = 0;
+    virtual bool writeData(QByteArray& buffer, qint64 writeOffset) = 0;
+    virtual qint64 firstByte() const = 0;
+    virtual qint64 lastByte() const = 0;
 
-    qint64 sectorsWritten() const {
-        return m_SectorsWritten;
+    qint64 bytesWritten() const {
+        return m_BytesWritten;
     }
 
 protected:
-    void setSectorsWritten(qint64 s) {
-        m_SectorsWritten = s;
+    void setBytesWritten(qint64 s) {
+        m_BytesWritten = s;
     }
 
 private:
-    qint64 m_SectorsWritten;
+    qint64 m_BytesWritten;
 };
 
 #endif

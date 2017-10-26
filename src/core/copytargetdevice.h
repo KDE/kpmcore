@@ -41,18 +41,17 @@ class LIBKPMCORE_EXPORT CopyTargetDevice : public CopyTarget
     Q_DISABLE_COPY(CopyTargetDevice)
 
 public:
-    CopyTargetDevice(Device& d, qint64 firstsector, qint64 lastsector);
+    CopyTargetDevice(Device& d, qint64 firstbyte, qint64 lastbyte);
     ~CopyTargetDevice();
 
 public:
     bool open() override;
-    qint64 sectorSize() const override;
-    bool writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors) override;
-    qint64 firstSector() const override {
-        return m_FirstSector;    /**< @return the first sector to write to */
+    bool writeData(QByteArray& buffer, qint64 writeOffset) override;
+    qint64 firstByte() const override {
+        return m_FirstByte;    /**< @return the first byte to write to */
     }
-    qint64 lastSector() const override {
-        return m_LastSector;    /**< @return the last sector to write to */
+    qint64 lastByte() const override {
+        return m_LastByte;    /**< @return the last byte to write to */
     }
 
     Device& device() {
@@ -65,8 +64,8 @@ public:
 protected:
     Device& m_Device;
     CoreBackendDevice* m_BackendDevice;
-    const qint64 m_FirstSector;
-    const qint64 m_LastSector;
+    const qint64 m_FirstByte;
+    const qint64 m_LastByte;
 };
 
 #endif

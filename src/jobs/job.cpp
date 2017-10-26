@@ -26,7 +26,6 @@
 
 #include "util/report.h"
 
-#include <QDebug>
 #include <QIcon>
 #include <QTime>
 
@@ -39,78 +38,68 @@ Job::Job() :
 
 bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
 {
-    /** @todo copyBlocks() assumes that source.sectorSize() == target.sectorSize(). */
-
-    if (source.sectorSize() != target.sectorSize()) {
-        report.line() << xi18nc("@info:progress", "The logical sector sizes in the source and target for copying are not the same. This is currently unsupported.");
-        return false;
-    }
-
     bool rval = true;
-    const qint64 blockSize = 16065 * 8; // number of sectors per block to copy
+    const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
     const qint64 blocksToCopy = source.length() / blockSize;
 
-    qint64 readOffset = source.firstSector();
-    qint64 writeOffset = target.firstSector();
-    qint32 copyDir = 1;
+    qint64 readOffset = source.firstByte();
+    qint64 writeOffset = target.firstByte();
+    qint32 copyDirection = 1;
 
-    if (target.firstSector() > source.firstSector()) {
-        readOffset = source.firstSector() + source.length() - blockSize;
-        writeOffset = target.firstSector() + source.length() - blockSize;
-        copyDir = -1;
+    if (target.firstByte() > source.firstByte()) {
+        readOffset = source.firstByte() + source.length() - blockSize;
+        writeOffset = target.firstByte() + source.length() - blockSize;
+        copyDirection = -1;
     }
 
-    report.line() << xi18nc("@info:progress", "Copying %1 blocks (%2 sectors) from %3 to %4, direction: %5.", blocksToCopy, source.length(), readOffset, writeOffset, copyDir);
+    report.line() << xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy, source.length(), readOffset, writeOffset, copyDirection);
 
     qint64 blocksCopied = 0;
 
-    void* buffer = malloc(blockSize * source.sectorSize());
+    QByteArray buffer;
     int percent = 0;
     QTime t;
     t.start();
-
     while (blocksCopied < blocksToCopy) {
-        if (!(rval = source.readSectors(buffer, readOffset + blockSize * blocksCopied * copyDir, blockSize)))
+        if (!(rval = source.readData(buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
             break;
 
-        if (!(rval = target.writeSectors(buffer, writeOffset + blockSize * blocksCopied * copyDir, blockSize)))
+        if (!(rval = target.writeData(buffer, writeOffset + blockSize * blocksCopied * copyDirection)))
             break;
 
         if (++blocksCopied * 100 / blocksToCopy != percent) {
             percent = blocksCopied * 100 / blocksToCopy;
 
             if (percent % 5 == 0 && t.elapsed() > 1000) {
-                const qint64 mibsPerSec = (blocksCopied * blockSize * source.sectorSize() / 1024 / 1024) / (t.elapsed() / 1000);
+                const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (t.elapsed() / 1000);
                 const qint64 estSecsLeft = (100 - percent) * t.elapsed() / percent / 1000;
                 report.line() << xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
             }
             emit progress(percent);
         }
     }
-
     const qint64 lastBlock = source.length() % blockSize;
 
     // copy the remainder
     if (rval && lastBlock > 0) {
         Q_ASSERT(lastBlock < blockSize);
 
-        const qint64 lastBlockReadOffset = copyDir > 0 ? readOffset + blockSize * blocksCopied : source.firstSector();
-        const qint64 lastBlockWriteOffset = copyDir > 0 ? writeOffset + blockSize * blocksCopied : target.firstSector();
+        const qint64 lastBlockReadOffset = copyDirection > 0 ? readOffset + blockSize * blocksCopied : source.firstByte();
+        const qint64 lastBlockWriteOffset = copyDirection > 0 ? writeOffset + blockSize * blocksCopied : target.firstByte();
 
         report.line() << xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
 
-        rval = source.readSectors(buffer, lastBlockReadOffset, lastBlock);
+        rval = source.readData(buffer, lastBlockReadOffset, lastBlock);
 
         if (rval)
-            rval = target.writeSectors(buffer, lastBlockWriteOffset, lastBlock);
+            rval = target.writeData(buffer, lastBlockWriteOffset);
 
         if (rval)
             emit progress(100);
     }
 
-    free(buffer);
 
-    report.line() << xi18ncp("@info:progress argument 2 is a string such as 7 sectors (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 sector", "%1 sectors", target.sectorsWritten()));
+    report.line() << xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", target.bytesWritten()));
 
     return rval;
 }
@@ -127,31 +116,31 @@ bool Job::rollbackCopyBlocks(Report& report, CopyTarget& origTarget, CopySource&
         CopyTargetDevice& ctd = dynamic_cast<CopyTargetDevice&>(origTarget);
 
         // default: use values as if we were copying from front to back.
-        qint64 undoSourceFirstSector = origTarget.firstSector();
-        qint64 undoSourceLastSector = origTarget.firstSector() + origTarget.sectorsWritten() - 1;
+        qint64 undoSourceFirstByte = origTarget.firstByte();
+        qint64 undoSourceLastByte = origTarget.firstByte() + origTarget.bytesWritten() - 1;
 
-        qint64 undoTargetFirstSector = origSource.firstSector();
-        qint64 undoTargetLastSector = origSource.firstSector() + origTarget.sectorsWritten() - 1;
+        qint64 undoTargetFirstByte = origSource.firstByte();
+        qint64 undoTargetLastByte = origSource.firstByte() + origTarget.bytesWritten() - 1;
 
-        if (origTarget.firstSector() > origSource.firstSector()) {
+        if (origTarget.firstByte() > origSource.firstByte()) {
             // we were copying from back to front
-            undoSourceFirstSector = origTarget.firstSector() + origSource.length() - origTarget.sectorsWritten();
-            undoSourceLastSector = origTarget.firstSector() + origSource.length() - 1;
+            undoSourceFirstByte = origTarget.firstByte() + origSource.length() - origTarget.bytesWritten();
+            undoSourceLastByte = origTarget.firstByte() + origSource.length() - 1;
 
-            undoTargetFirstSector = origSource.lastSector() - origTarget.sectorsWritten() + 1;
-            undoTargetLastSector = origSource.lastSector();
+            undoTargetFirstByte = origSource.lastByte() - origTarget.bytesWritten() + 1;
+            undoTargetLastByte = origSource.lastByte();
         }
 
-        report.line() << xi18nc("@info:progress", "Rollback from: First sector: %1, last sector: %2.", undoSourceFirstSector, undoSourceLastSector);
-        report.line() << xi18nc("@info:progress", "Rollback to: First sector: %1, last sector: %2.", undoTargetFirstSector, undoTargetLastSector);
+        report.line() << xi18nc("@info:progress", "Rollback from: First byte: %1, last byte: %2.", undoSourceFirstByte, undoSourceLastByte);
+        report.line() << xi18nc("@info:progress", "Rollback to: First byte: %1, last byte: %2.", undoTargetFirstByte, undoTargetLastByte);
 
-        CopySourceDevice undoSource(ctd.device(), undoSourceFirstSector, undoSourceLastSector);
+        CopySourceDevice undoSource(ctd.device(), undoSourceFirstByte, undoSourceLastByte);
         if (!undoSource.open()) {
             report.line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to rollback copying.", ctd.device().deviceNode());
             return false;
         }
 
-        CopyTargetDevice undoTarget(csd.device(), undoTargetFirstSector, undoTargetLastSector);
+        CopyTargetDevice undoTarget(csd.device(), undoTargetFirstByte, undoTargetLastByte);
         if (!undoTarget.open()) {
             report.line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to rollback copying.", csd.device().deviceNode());
             return false;

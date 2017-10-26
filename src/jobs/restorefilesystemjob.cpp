@@ -66,8 +66,8 @@ bool RestoreFileSystemJob::run(Report& parent)
     // Again, a scope for copyTarget and copySource. See MoveFileSystemJob::run()
     {
         // FileSystems are restored to _partitions_, so don't use first and last sector of file system here
-        CopyTargetDevice copyTarget(targetDevice(), targetPartition().firstSector(), targetPartition().lastSector());
-        CopySourceFile copySource(fileName(), copyTarget.sectorSize());
+        CopyTargetDevice copyTarget(targetDevice(), targetPartition().firstByte(), targetPartition().lastByte());
+        CopySourceFile copySource(fileName());
 
         if (!copySource.open())
             report->line() << xi18nc("@info:progress", "Could not open backup file <filename>%1</filename> to restore from.", fileName());

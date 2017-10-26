@@ -41,13 +41,12 @@ protected:
 
 public:
     virtual bool open() = 0;
-    virtual qint64 sectorSize() const = 0;
-    virtual bool readSectors(void* buffer, qint64 readOffset, qint64 numSectors) = 0;
+    virtual bool readData(QByteArray& buffer, qint64 readOffset, qint64 size) = 0;
     virtual qint64 length() const = 0;
     virtual bool overlaps(const CopyTarget& target) const = 0;
 
-    virtual qint64 firstSector() const = 0;
-    virtual qint64 lastSector() const = 0;
+    virtual qint64 firstByte() const = 0;
+    virtual qint64 lastByte() const = 0;
 
 private:
 };

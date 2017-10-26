@@ -26,15 +26,15 @@
 
 /** Constructs a device to copy to.
     @param d the Device to copy to
-    @param firstsector the first sector on the Device to write to
-    @param lastsector the last sector on the Device to write to
+    @param firstbyte the first byte on the Device to write to
+    @param lastbyte the last byte on the Device to write to
 */
-CopyTargetDevice::CopyTargetDevice(Device& d, qint64 firstsector, qint64 lastsector) :
+CopyTargetDevice::CopyTargetDevice(Device& d, qint64 firstbyte, qint64 lastbyte) :
     CopyTarget(),
     m_Device(d),
     m_BackendDevice(nullptr),
-    m_FirstSector(firstsector),
-    m_LastSector(lastsector)
+    m_FirstByte(firstbyte),
+    m_LastByte(lastbyte)
 {
 }
 
@@ -53,28 +53,21 @@ bool CopyTargetDevice::open()
     return m_BackendDevice != nullptr;
 }
 
-/** @return the Device's sector size */
-qint64 CopyTargetDevice::sectorSize() const
-{
-    return device().logicalSize();
-}
-
-/** Writes the given number of sectors to the Device.
+/** Writes the given number of bytes to the Device.
 
     Note that @p writeOffset must be greater or equal than zero.
 
     @param buffer the data to write
     @param writeOffset where to start writing on the Device
-    @param numSectors the number of sectors in @p buffer
     @return true on success
 */
-bool CopyTargetDevice::writeSectors(void* buffer, qint64 writeOffset, qint64 numSectors)
+bool CopyTargetDevice::writeData(QByteArray& buffer, qint64 writeOffset)
 {
     Q_ASSERT(writeOffset >= 0);
-    bool rval = m_BackendDevice->writeSectors(buffer, writeOffset, numSectors);
+    bool rval = m_BackendDevice->writeData(buffer, writeOffset);
 
     if (rval)
-        setSectorsWritten(sectorsWritten() + numSectors);
+        setBytesWritten(bytesWritten() + buffer.size());
 
     return rval;
 }

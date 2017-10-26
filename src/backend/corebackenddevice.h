@@ -94,22 +94,21 @@ public:
     virtual bool createPartitionTable(Report& report, const PartitionTable& ptable) = 0;
 
     /**
-      * Read sectors from an opened device into a buffer.
+      * Read data from an opened device into a buffer.
       * @param buffer the buffer to write the read data to
-      * @param offset offset sector where to start reading on the device
-      * @param numSectors number of sectors to read
+      * @param offset offset byte where to start reading on the device
+      * @param size the number of bytes to read
       * @return true on success
       */
-    virtual bool readSectors(void* buffer, qint64 offset, qint64 numSectors) = 0;
+    virtual bool readData(QByteArray& buffer, qint64 offset, qint64 size) = 0;
 
     /**
-      * Write sectors from a buffer to an exclusively opened device.
+      * Write data from a buffer to an exclusively opened device.
       * @param buffer the buffer with the data
-      * @param offset offset sector where to start writing to the device
-      * @param numSectors number of sectors to write
+      * @param offset offset byte where to start writing to the device
       * @return true on success
       */
-    virtual bool writeSectors(void* buffer, qint64 offset, qint64 numSectors) = 0;
+    virtual bool writeData(QByteArray& buffer, qint64 offset) = 0;
 
 protected:
     void setExclusive(bool b) {
