@@ -52,7 +52,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
         copyDirection = -1;
     }
 
-    report.line() << xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy, source.length(), readOffset, writeOffset, copyDirection);
+    report.line() << xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy, source.length(), readOffset, writeOffset, copyDirection == 1 ? i18nc("direction: left", "left") : i18nc("direction: right", "right"));
 
     qint64 blocksCopied = 0;
 
