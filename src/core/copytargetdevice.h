@@ -36,7 +36,7 @@ class CoreBackendDevice;
 
     @author Volker Lanz <vl@fidra.de>
 */
-class LIBKPMCORE_EXPORT CopyTargetDevice : public CopyTarget
+class CopyTargetDevice : public CopyTarget
 {
     Q_DISABLE_COPY(CopyTargetDevice)
 

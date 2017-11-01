@@ -34,7 +34,7 @@ class CoreBackendDevice;
     another Device or to backup its FileSystem to a file.
     @author Volker Lanz <vl@fidra.de>
  */
-class LIBKPMCORE_EXPORT CopySourceDevice : public CopySource
+class CopySourceDevice : public CopySource
 {
     Q_DISABLE_COPY(CopySourceDevice)
 
