@@ -57,7 +57,7 @@ void btrfs::init()
     m_Shrink = (m_Grow != cmdSupportNone && m_GetUsed != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_SetLabel = findExternal(QStringLiteral("btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_UpdateUUID = cmdSupportNone;
+    m_UpdateUUID = findExternal(QStringLiteral("btrfstune")) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
@@ -191,9 +191,7 @@ bool btrfs::writeLabelOnline(Report& report, const QString& deviceNode, const QS
 
 bool btrfs::updateUUID(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
-
-    return false;
+    ExternalCommand cmd(report, QStringLiteral("btrfstune"), { QStringLiteral("-f"), QStringLiteral("-u"), deviceNode });
+    return cmd.run(-1) && cmd.exitCode() == 0;
 }
 }
