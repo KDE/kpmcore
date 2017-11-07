@@ -16,14 +16,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+#include "backend/corebackendmanager.h"
 #include "util/externalcommand.h"
-
 #include "util/report.h"
 
+#include <QDebug>
+#include <QEventLoop>
 #include <QtGlobal>
+#include <QStandardPaths>
 #include <QString>
 #include <QStringList>
+#include <QTimer>
+#include <QThread>
 
+#include <KAuth>
 #include <KLocalizedString>
 
 /** Creates a new ExternalCommand instance without Report.
@@ -31,7 +37,6 @@
     @param args the arguments to pass to the command
 */
 ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, const QProcess::ProcessChannelMode processChannelMode) :
-    QProcess(),
     m_Report(nullptr),
     m_Command(cmd),
     m_Args(args),
@@ -47,7 +52,6 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
     @param args the arguments to pass to the command
  */
 ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStringList& args, const QProcess::ProcessChannelMode processChannelMode) :
-    QProcess(),
     m_Report(report.newChild()),
     m_Command(cmd),
     m_Args(args),
@@ -59,11 +63,11 @@ ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStri
 
 void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMode)
 {
-    setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromLocal8Bit(getenv("PATH")) << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
-    setProcessChannelMode(processChannelMode);
+    arguments.insert(QStringLiteral("environment"), QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
+    arguments.insert(QStringLiteral("processChannelMode"), processChannelMode);
 
-    connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
-    connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
+//     connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
+//     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
 }
 
 /** Starts the external command.
@@ -72,19 +76,61 @@ void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMod
 */
 bool ExternalCommand::start(int timeout)
 {
-    QProcess::start(command(), args());
+    this->moveToThread(CoreBackendManager::self()->kauthThread());
+    QTimer::singleShot(0, this, &ExternalCommand::execute);
+    QEventLoop loop;
+    connect(this, &ExternalCommand::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+    return true;
+}
 
+/** Executes the external command in kauthThread() thread.
+*/
+void ExternalCommand::execute()
+{
     if (report()) {
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
     }
 
-    if (!waitForStarted(timeout))
-    {
-        if (report())
-            report()->line() << xi18nc("@info:status", "(Command timeout while starting)");
-        return false;
+    QString cmd = QStandardPaths::findExecutable(command());
+    if (cmd.isEmpty())
+        cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+
+    KAuth::Action action(QStringLiteral("org.kde.kpmcore.externalcommand.start"));
+    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
+    arguments.insert(QStringLiteral("command"), cmd);
+    arguments.insert(QStringLiteral("input"), m_Input);
+    arguments.insert(QStringLiteral("arguments"), args());
+    action.setArguments(arguments);
+
+    KAuth::ExecuteJob *job = action.execute();
+    if (!job->exec()) {
+        qWarning() << "KAuth returned an error code: " << job->errorString();
+//         return false;
+        emit finished();
+        return;
     }
 
+    m_Output = job->data()[QStringLiteral("output")].toByteArray();
+    setExitCode(job->data()[QStringLiteral("exitCode")].toInt());
+
+//     QProcess::start(command(), args());
+
+    // FIXME
+//     if (!waitForStarted(timeout))
+//     {
+//         if (report())
+//             report()->line() << xi18nc("@info:status", "(Command timeout while starting)");
+//         return false;
+//     }
+
+//     return true;
+    emit finished();
+}
+
+bool ExternalCommand::write(const QByteArray& input)
+{
+    m_Input = input;
     return true;
 }
 
@@ -94,15 +140,15 @@ bool ExternalCommand::start(int timeout)
 */
 bool ExternalCommand::waitFor(int timeout)
 {
-    closeWriteChannel();
-
+//     closeWriteChannel();
+/*
     if (!waitForFinished(timeout)) {
         if (report())
             report()->line() << xi18nc("@info:status", "(Command timeout while running)");
         return false;
-    }
+    }*/
 
-    onReadOutput();
+//     onReadOutput();
     return true;
 }
 
@@ -112,23 +158,23 @@ bool ExternalCommand::waitFor(int timeout)
 */
 bool ExternalCommand::run(int timeout)
 {
-    return start(timeout) && waitFor(timeout) && exitStatus() == 0;
+    return start(timeout) && waitFor(timeout)/* && exitStatus() == 0*/;
 }
 
 void ExternalCommand::onReadOutput()
 {
-    const QByteArray s = readAllStandardOutput();
-
-    if(m_Output.length() > 10*1024*1024) { // prevent memory overflow for badly corrupted file systems
-        if (report())
-            report()->line() << xi18nc("@info:status", "(Command is printing too much output)");
-        return;
-    }
-
-    m_Output += s;
-
-    if (report())
-        *report() << QString::fromLocal8Bit(s);
+//     const QByteArray s = readAllStandardOutput();
+//
+//     if(m_Output.length() > 10*1024*1024) { // prevent memory overflow for badly corrupted file systems
+//         if (report())
+//             report()->line() << xi18nc("@info:status", "(Command is printing too much output)");
+//         return;
+//     }
+//
+//     m_Output += s;
+//
+//     if (report())
+//         *report() << QString::fromLocal8Bit(s);
 }
 
 void ExternalCommand::onFinished(int exitCode, QProcess::ExitStatus exitStatus)

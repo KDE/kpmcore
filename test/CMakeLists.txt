@@ -45,3 +45,10 @@ add_test(NAME testlist COMMAND testlist ${BACKEND})
 
 kpm_test(testdevicescanner testdevicescanner.cpp)
 add_test(NAME testdevicescanner COMMAND testdevicescanner ${BACKEND})
+
+find_package (Threads)
+###
+#
+# Execute external commands as root
+kpm_test(testexternalcommand testexternalcommand.cpp)
+add_test(NAME testexternalcommand COMMAND testexternalcommand ${BACKEND})

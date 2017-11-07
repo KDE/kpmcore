@@ -96,7 +96,7 @@ qint64 jfs::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("jfs_debugfs"), QStringList() << deviceNode);
 
-    if (cmd.start() && cmd.write("dm") == 2 && cmd.waitFor()) {
+    if (cmd.write(QByteArrayLiteral("dm")) && cmd.start() && cmd.waitFor()) {
         qint64 blockSize = -1;
         QRegularExpression re(QStringLiteral("Block Size: (\\d+)"));
         QRegularExpressionMatch reBlockSize = re.match(cmd.output());

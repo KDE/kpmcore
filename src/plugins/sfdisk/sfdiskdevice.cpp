@@ -74,8 +74,8 @@ bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& pt
         tableType = ptable.typeName().toLocal8Bit();
 
     ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { m_device->deviceNode() } );
-    if ( createCommand.start(-1) && createCommand.write(QByteArrayLiteral("label: ") + tableType +
-                                    QByteArrayLiteral("\nwrite\n")) && createCommand.waitFor() ) {
+    if ( createCommand.write(QByteArrayLiteral("label: ") + tableType +
+                                    QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) && createCommand.waitFor() ) {
         return createCommand.output().contains(QStringLiteral("Script header accepted."));
     }
 
@@ -112,7 +112,7 @@ bool SfdiskDevice::writeData(QByteArray& buffer, qint64 offset)
                 QStringLiteral("bs=1M"),
                 QStringLiteral("oflag=seek_bytes"),
                 QStringLiteral("conv=fsync") }, QProcess::SeparateChannels);
-    if ( ddCommand.start(-1) && ddCommand.write(buffer) == buffer.size() && ddCommand.waitFor() && ddCommand.exitCode() == 0 ) {
+    if ( ddCommand.write(buffer) && ddCommand.start(-1) && ddCommand.waitFor() && ddCommand.exitCode() == 0 ) {
         return true;
     }
 

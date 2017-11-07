@@ -23,6 +23,7 @@
 
 #include <QVector>
 
+class QThread;
 class QString;
 class QStringList;
 class KPluginMetaData;
@@ -77,8 +78,16 @@ public:
         return m_Backend;
     }
 
+    /**
+      * @return a pointer to the thread where ExternalCommand will start KAuth job
+      */
+    QThread* kauthThread() {
+        return m_KAuthThread;
+    }
+
 private:
     CoreBackend* m_Backend;
+    QThread* m_KAuthThread;
 };
 
 #endif

@@ -1,0 +1,5 @@
+[org.kde.kpmcore.externalcommand.start]
+Name=Run external command action
+Description=Run external command as privileged user
+Policy=auth_admin
+Persistence=session

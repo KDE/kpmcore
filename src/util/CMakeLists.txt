@@ -16,3 +16,10 @@ set(UTIL_LIB_HDRS
     util/htmlreport.h
     util/report.h
 )
+
+add_executable(kpmcore_externalcommand util/externalcommandhelper.cpp)
+target_link_libraries(kpmcore_externalcommand  KF5::Auth)
+install(TARGETS kpmcore_externalcommand DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
+
+kauth_install_helper_files(kpmcore_externalcommand org.kde.kpmcore.externalcommand root)
+kauth_install_actions(org.kde.kpmcore.externalcommand util/org.kde.kpmcore.externalcommand.actions)

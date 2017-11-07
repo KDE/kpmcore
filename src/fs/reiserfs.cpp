@@ -154,12 +154,12 @@ bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) 
     ExternalCommand cmd(report, QStringLiteral("resize_reiserfs"),
                         { deviceNode, QStringLiteral("-q"), QStringLiteral("-s"), QString::number(length) });
 
-    bool rval = cmd.start(-1);
+    bool rval = cmd.write(QByteArrayLiteral("y\n"));
 
     if (!rval)
         return false;
 
-    if (cmd.write("y\n", 2) != 2)
+    if (!cmd.start(-1))
         return false;
 
     return cmd.waitFor(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 256);

@@ -21,10 +21,12 @@
 
 #include "util/libpartitionmanagerexport.h"
 
+#include <QDebug>
+#include <QtGlobal>
 #include <QProcess>
 #include <QStringList>
 #include <QString>
-#include <QtGlobal>
+#include <QVariant>
 
 class Report;
 
@@ -35,13 +37,14 @@ class Report;
     @author Volker Lanz <vl@fidra.de>
     @author Andrius Štikonas <andrius@stikonas.eu>
 */
-class LIBKPMCORE_EXPORT ExternalCommand : public QProcess
+class LIBKPMCORE_EXPORT ExternalCommand : public QObject
 {
+    Q_OBJECT
     Q_DISABLE_COPY(ExternalCommand)
 
 public:
-    explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = MergedChannels);
-    explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = MergedChannels);
+    explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
+    explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
 
 public:
     void setCommand(const QString& cmd) { m_Command = cmd; } /**< @param cmd the command to run */
@@ -50,6 +53,7 @@ public:
     void addArg(const QString& s) { m_Args << s; } /**< @param s the argument to add */
     const QStringList& args() const { return m_Args; } /**< @return the arguments */
     void setArgs(const QStringList& args) { m_Args = args; } /**< @param args the new arguments */
+    bool write(const QByteArray& input); /**< @param input the input for the program */
 
     bool start(int timeout = 30000);
     bool waitFor(int timeout = 30000);
@@ -71,7 +75,12 @@ public:
         return m_Report;    /**< @return pointer to the Report or nullptr */
     }
 
+Q_SIGNALS:
+    void finished();
+
 protected:
+    void execute();
+
     void setExitCode(int i) {
         m_ExitCode = i;
     }
@@ -81,11 +90,14 @@ protected:
     void onReadOutput();
 
 private:
+    QVariantMap arguments;
+
     Report *m_Report;
     QString m_Command;
     QStringList m_Args;
     int m_ExitCode;
     QByteArray m_Output;
+    QByteArray m_Input;
 };
 
 #endif

@@ -113,9 +113,9 @@ bool ocfs2::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.ocfs2"), { deviceNode });
 
-    if (cmd.start())
+    if (cmd.write("y\n"))
     {
-        cmd.write("y\n");
+        cmd.start();
         cmd.waitFor(-1);
 
         return cmd.exitCode() == 0;

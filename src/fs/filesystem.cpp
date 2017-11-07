@@ -34,6 +34,7 @@
 #include <KLocalizedString>
 
 #include <QFileInfo>
+#include <QStandardPaths>
 #include <QStorageInfo>
 
 const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode =
@@ -548,13 +549,14 @@ bool FileSystem::unmount(Report& report, const QString& deviceNode)
     return false;
 }
 
+// FIXME: args and expectedCode is now unused.
 bool FileSystem::findExternal(const QString& cmdName, const QStringList& args, int expectedCode)
 {
-    ExternalCommand cmd(cmdName, args);
-    if (!cmd.run())
-        return false;
+    QString cmd = QStandardPaths::findExecutable(cmdName);
+    if (cmd.isEmpty())
+        cmd = QStandardPaths::findExecutable(cmdName, { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
-    return cmd.exitCode() == 0 || cmd.exitCode() == expectedCode;
+    return !cmd.isEmpty();
 }
 
 bool FileSystem::supportToolFound() const

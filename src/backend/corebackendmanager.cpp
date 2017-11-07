@@ -24,6 +24,7 @@
 #include <QStringList>
 #include <QString>
 #include <QVector>
+#include <QThread>
 
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -33,6 +34,8 @@
 CoreBackendManager::CoreBackendManager() :
     m_Backend(nullptr)
 {
+    m_KAuthThread = new QThread();
+    kauthThread()->start();
 }
 
 CoreBackendManager* CoreBackendManager::self()

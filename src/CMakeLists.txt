@@ -44,6 +44,7 @@ target_link_libraries( kpmcore
     ${BLKID_LIBRARIES}
     ${LIBATASMART_LIBRARIES}
     Qt5::DBus
+    KF5::Auth
     KF5::I18n
     KF5::CoreAddons
     KF5::WidgetsAddons

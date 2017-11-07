@@ -74,9 +74,9 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
 
     // NOTE: at least on GPT partition types "are" partition flags
     ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--force"), QStringLiteral("--append"), partition.devicePath() } );
-    if ( createCommand.start(-1) && createCommand.write(QByteArrayLiteral("start=") + QByteArray::number(partition.firstSector()) +
+    if ( createCommand.write(QByteArrayLiteral("start=") + QByteArray::number(partition.firstSector()) +
                                                         type +
-                                                        QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.waitFor() ) {
+                                                        QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) && createCommand.waitFor() ) {
         QRegularExpression re(QStringLiteral("Created a new partition (\\d)"));
         QRegularExpressionMatch rem = re.match(createCommand.output());
         if (rem.hasMatch())
@@ -101,10 +101,10 @@ bool SfdiskPartitionTable::deletePartition(Report& report, const Partition& part
 bool SfdiskPartitionTable::updateGeometry(Report& report, const Partition& partition, qint64 sectorStart, qint64 sectorEnd)
 {
     ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--force"), partition.devicePath(), QStringLiteral("-N"), QString::number(partition.number()) } );
-    if ( sfdiskCommand.start(-1) && sfdiskCommand.write(QByteArrayLiteral("start=") + QByteArray::number(sectorStart) +
+    if ( sfdiskCommand.write(QByteArrayLiteral("start=") + QByteArray::number(sectorStart) +
                                                         QByteArrayLiteral(" size=") + QByteArray::number(sectorEnd - sectorStart + 1) +
                                                         QByteArrayLiteral("\nY\n"))
-                                                        && sfdiskCommand.waitFor() && sfdiskCommand.exitCode() == 0) {
+                                                        && sfdiskCommand.start(-1) && sfdiskCommand.waitFor() && sfdiskCommand.exitCode() == 0) {
         return true;
     }
 

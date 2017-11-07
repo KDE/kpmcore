@@ -127,8 +127,8 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("--force-password"),
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
-    if (!( createCmd.start(-1) &&
-                createCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 &&
+    if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
+                createCmd.start(-1) &&
                 createCmd.waitFor() && createCmd.exitCode() == 0))
     {
         return false;
@@ -139,7 +139,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 && openCmd.waitFor()))
+    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1) && openCmd.waitFor()))
         return false;
 
     scan(deviceNode);
@@ -261,8 +261,8 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&
-                    openCmd.write(passphrase.toLocal8Bit() + '\n') == passphrase.toLocal8Bit().length() + 1 &&
+    if (!( openCmd.write(passphrase.toLocal8Bit() + '\n') &&
+                    openCmd.start(-1) &&
                     openCmd.waitFor() && openCmd.exitCode() == 0) )
         return false;
 
