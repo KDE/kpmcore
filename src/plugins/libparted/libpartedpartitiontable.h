@@ -43,9 +43,6 @@ public:
     bool commit(quint32 timeout = 10) override;
     static bool commit(PedDisk* pd, quint32 timeout = 10);
 
-    CoreBackendPartition* getExtendedPartition() override;
-    CoreBackendPartition* getPartitionBySector(qint64 sector) override;
-
     QString createPartition(Report& report, const Partition& partition) override;
     bool deletePartition(Report& report, const Partition& partition) override;
     bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end) override;
@@ -53,6 +50,7 @@ public:
     bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength) override;
     FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector) override;
     bool setPartitionSystemType(Report& report, const Partition& partition) override;
+    bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state) override;
 
 private:
     PedDevice* pedDevice() {

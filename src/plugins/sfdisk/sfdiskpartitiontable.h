@@ -40,9 +40,6 @@ public:
 
     bool commit(quint32 timeout = 10) override;
 
-    CoreBackendPartition* getExtendedPartition() override;
-    CoreBackendPartition* getPartitionBySector(qint64 sector) override;
-
     QString createPartition(Report& report, const Partition& partition) override;
     bool deletePartition(Report& report, const Partition& partition) override;
     bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end) override;
@@ -50,6 +47,7 @@ public:
     bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength) override;
     FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector) override;
     bool setPartitionSystemType(Report& report, const Partition& partition) override;
+    bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state) override;
 
 private:
     QString m_deviceNode;

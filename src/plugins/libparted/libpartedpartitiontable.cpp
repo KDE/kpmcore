@@ -17,7 +17,6 @@
  *************************************************************************/
 
 #include "plugins/libparted/libpartedpartitiontable.h"
-#include "plugins/libparted/libpartedpartition.h"
 #include "plugins/libparted/libpartedbackend.h"
 
 #include "backend/corebackend.h"
@@ -74,26 +73,6 @@ bool LibPartedPartitionTable::commit(PedDisk* pd, quint32 timeout)
         sleep(timeout);
 
     return rval;
-}
-
-CoreBackendPartition* LibPartedPartitionTable::getExtendedPartition()
-{
-    PedPartition* pedPartition = ped_disk_extended_partition(pedDisk());
-
-    if (pedPartition == nullptr)
-        return nullptr;
-
-    return new LibPartedPartition(pedPartition);
-}
-
-CoreBackendPartition* LibPartedPartitionTable::getPartitionBySector(qint64 sector)
-{
-    PedPartition* pedPartition = ped_disk_get_partition_by_sector(pedDisk(), sector);
-
-    if (pedPartition == nullptr)
-        return nullptr;
-
-    return new LibPartedPartition(pedPartition);
 }
 
 static const struct {
@@ -302,9 +281,9 @@ bool LibPartedPartitionTable::resizeFileSystem(Report& report, const Partition& 
     } else
         report.line() << xi18nc("@info:progress", "Could not read geometry for partition <filename>%1</filename> while trying to resize the file system.", partition.deviceNode());
 #else
-    Q_UNUSED(report);
-    Q_UNUSED(partition);
-    Q_UNUSED(newLength);
+    Q_UNUSED(report)
+    Q_UNUSED(partition)
+    Q_UNUSED(newLength)
 #endif
 
     return rval;
@@ -344,3 +323,34 @@ bool LibPartedPartitionTable::setPartitionSystemType(Report& report, const Parti
     return ped_partition_set_system(pedPartition, pedFsType) != 0;
 }
 
+bool LibPartedPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
+{
+    PedPartition* pedPartition;
+    if (partition.roles().has(PartitionRole::Extended))
+        pedPartition = ped_disk_extended_partition(pedDisk());
+    else
+        pedPartition = ped_disk_get_partition_by_sector(pedDisk(), partition.firstSector());
+    if (pedPartition == nullptr) {
+        QString deviceNode = QString::fromUtf8(pedDevice()->path);
+        report.line() << xi18nc("@info:progress", "Could not find partition <filename>%1</filename> on device <filename>%2</filename> to set partition flags.", partition.deviceNode(), deviceNode);
+        return false;
+    }
+
+    const PedPartitionFlag f = LibPartedBackend::getPedFlag(partitionManagerFlag);
+
+    // ignore flags that don't exist for this partition
+    if (!ped_partition_is_flag_available(pedPartition, f)) {
+        report.line() << xi18nc("@info:progress", "The flag \"%1\" is not available on the partition's partition table.", PartitionTable::flagName(partitionManagerFlag));
+        return true;
+    }
+
+    // Workaround: libparted claims the hidden flag is available for extended partitions, but
+    // throws an error when we try to set or clear it. So skip this combination.
+    if (pedPartition->type == PED_PARTITION_EXTENDED && partitionManagerFlag == PartitionTable::FlagHidden)
+        return true;
+
+    if (!ped_partition_set_flag(pedPartition, f, state ? 1 : 0))
+        return false;
+
+    return true;
+}

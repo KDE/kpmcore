@@ -21,7 +21,6 @@
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
 #include "backend/corebackenddevice.h"
-#include "backend/corebackendpartition.h"
 #include "backend/corebackendpartitiontable.h"
 
 #include "core/device.h"
@@ -63,29 +62,18 @@ bool SetPartFlagsJob::run(Report& parent)
         CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
 
         if (backendPartitionTable) {
-            CoreBackendPartition* backendPartition = (partition().roles().has(PartitionRole::Extended))
-                    ? backendPartitionTable->getExtendedPartition()
-                    : backendPartitionTable->getPartitionBySector(partition().firstSector());
+            int count = 0;
 
-            if (backendPartition) {
-                int count = 0;
+            for (const auto &f : PartitionTable::flagList()) {
+                emit progress(++count);
 
-                for (const auto &f : PartitionTable::flagList()) {
-                    emit progress(++count);
+                const bool state = (flags() & f) ? true : false;
 
-                    const bool state = (flags() & f) ? true : false;
+                if (!backendPartitionTable->setFlag(*report, partition(), f, state)) {
+                    report->line() << xi18nc("@info:progress", "There was an error setting flag %1 for partition <filename>%2</filename> to state %3.", PartitionTable::flagName(f), partition().deviceNode(), state ? xi18nc("@info:progress flag turned on, active", "on") : xi18nc("@info:progress flag turned off, inactive", "off"));
 
-                    if (!backendPartition->setFlag(*report, f, state)) {
-                        report->line() << xi18nc("@info:progress", "There was an error setting flag %1 for partition <filename>%2</filename> to state %3.", PartitionTable::flagName(f), partition().deviceNode(), state ? xi18nc("@info:progress flag turned on, active", "on") : xi18nc("@info:progress flag turned off, inactive", "off"));
-
-                        rval = false;
-                    }
+                    rval = false;
                 }
-
-                delete backendPartition;
-            } else {
-                report->line() << xi18nc("@info:progress", "Could not find partition <filename>%1</filename> on device <filename>%2</filename> to set partition flags.", partition().deviceNode(), device().deviceNode());
-                rval = false;
             }
 
             if (rval)

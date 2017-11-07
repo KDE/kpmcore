@@ -16,7 +16,6 @@
  *************************************************************************/
 
 #include "plugins/sfdisk/sfdiskpartitiontable.h"
-#include "plugins/sfdisk/sfdiskpartition.h"
 
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
@@ -60,18 +59,6 @@ bool SfdiskPartitionTable::commit(quint32 timeout)
         sleep(timeout);
 
     return true;
-}
-
-CoreBackendPartition* SfdiskPartitionTable::getExtendedPartition()
-{
-    return new SfdiskPartition();
-}
-
-CoreBackendPartition* SfdiskPartitionTable::getPartitionBySector(qint64 sector)
-{
-    Q_UNUSED(sector);
-
-    return nullptr;
 }
 
 QString SfdiskPartitionTable::createPartition(Report& report, const Partition& partition)
@@ -139,9 +126,9 @@ bool SfdiskPartitionTable::clobberFileSystem(Report& report, const Partition& pa
 bool SfdiskPartitionTable::resizeFileSystem(Report& report, const Partition& partition, qint64 newLength)
 {
     // sfdisk does not have any partition resize capabilities
-    Q_UNUSED(report);
-    Q_UNUSED(partition);
-    Q_UNUSED(newLength);
+    Q_UNUSED(report)
+    Q_UNUSED(partition)
+    Q_UNUSED(newLength)
 
     return false;
 }
@@ -171,8 +158,18 @@ FileSystem::Type SfdiskPartitionTable::detectFileSystemBySector(Report& report, 
 
 bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(partition);
+    Q_UNUSED(report)
+    Q_UNUSED(partition)
+
+    return true;
+}
+
+bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
+{
+    Q_UNUSED(report)
+    Q_UNUSED(partition)
+    Q_UNUSED(partitionManagerFlag)
+    Q_UNUSED(state)
 
     return true;
 }

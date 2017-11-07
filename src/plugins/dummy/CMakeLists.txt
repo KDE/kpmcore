@@ -16,7 +16,6 @@
 set (pmdummybackendplugin_SRCS
     dummybackend.cpp
     dummydevice.cpp
-    dummypartition.cpp
     dummypartitiontable.cpp
 )
 

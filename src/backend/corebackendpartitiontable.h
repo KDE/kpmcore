@@ -19,9 +19,9 @@
 
 #define KPMCORE_COREBACKENDPARTITIONTABLE_H
 
-#include "util/libpartitionmanagerexport.h"
-
+#include "core/partitiontable.h"
 #include "fs/filesystem.h"
+#include "util/libpartitionmanagerexport.h"
 
 #include <QtGlobal>
 
@@ -51,17 +51,6 @@ public:
       * @return true on success
     */
     virtual bool commit(quint32 timeout = 10) = 0;
-
-    /**
-      * @return pointer to the extended partition as a CoreBackendPartition or nullptr if there is none
-      */
-    virtual CoreBackendPartition* getExtendedPartition() = 0;
-
-    /**
-      * @param sector sector the partition occupies
-      * @return the CoreBackendPartition to occupy the given sector or nullptr if not found
-      */
-    virtual CoreBackendPartition* getPartitionBySector(qint64 sector) = 0;
 
     /**
       * Delete a partition.
@@ -123,6 +112,15 @@ public:
      * @return true on success
      */
     virtual bool setPartitionSystemType(Report& report, const Partition& partition) = 0;
+
+    /**
+      * Set a flag for the partition
+      * @param report the Report to write information to
+      * @param flag the flag to set
+      * @param state the state to set the flag to (i.e., on or off)
+      * @return true on success
+      */
+    virtual bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state) = 0;
 };
 
 #endif

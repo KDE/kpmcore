@@ -28,7 +28,6 @@ include_directories(${LIBPARTED_INCLUDE_DIR})
 set (pmlibpartedbackendplugin_SRCS
     libpartedbackend.cpp
     libparteddevice.cpp
-    libpartedpartition.cpp
     libpartedpartitiontable.cpp
 )
 

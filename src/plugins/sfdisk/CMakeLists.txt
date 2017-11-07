@@ -16,7 +16,6 @@
 set (pmsfdiskbackendplugin_SRCS
     sfdiskbackend.cpp
     sfdiskdevice.cpp
-    sfdiskpartition.cpp
     sfdiskpartitiontable.cpp
 )
 
