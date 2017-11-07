@@ -83,8 +83,10 @@ bool SetPartFlagsJob::run(Report& parent)
                 }
 
                 delete backendPartition;
-            } else
+            } else {
                 report->line() << xi18nc("@info:progress", "Could not find partition <filename>%1</filename> on device <filename>%2</filename> to set partition flags.", partition().deviceNode(), device().deviceNode());
+                rval = false;
+            }
 
             if (rval)
                 backendPartitionTable->commit();
