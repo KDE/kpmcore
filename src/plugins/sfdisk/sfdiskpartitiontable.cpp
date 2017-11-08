@@ -164,12 +164,42 @@ bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partitio
     return true;
 }
 
-bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
+bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state)
 {
-    Q_UNUSED(report)
-    Q_UNUSED(partition)
-    Q_UNUSED(partitionManagerFlag)
-    Q_UNUSED(state)
+    if (flag == PartitionTable::FlagBoot && state == true) {
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_deviceNode, QString::number(partition.number()) } );
+        if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
+            return true;
+        else
+            return false;
+    } else if (flag == PartitionTable::FlagBoot && state == false) {
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_deviceNode, QStringLiteral("-") } );
+        if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
+            return true;
+        // FIXME: Do not return false since we have no way of checking if partition table is MBR
+    }
+
+    if (flag == PartitionTable::FlagEsp && state == true) {
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_deviceNode, QString::number(partition.number()),
+                QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B") } );
+        if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
+            return true;
+        else
+            return false;
+    }
+    if (flag == PartitionTable::FlagEsp && state == false)
+        setPartitionSystemType(report, partition);
+
+    if (flag == PartitionTable::FlagBiosGrub && state == true) {
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_deviceNode, QString::number(partition.number()),
+                QStringLiteral("21686148-6449-6E6F-744E-656564454649") } );
+        if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
+            return true;
+        else
+            return false;
+    }
+    if (flag == PartitionTable::FlagBiosGrub && state == false)
+        setPartitionSystemType(report, partition);
 
     return true;
 }

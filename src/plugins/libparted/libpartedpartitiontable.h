@@ -50,7 +50,7 @@ public:
     bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength) override;
     FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector) override;
     bool setPartitionSystemType(Report& report, const Partition& partition) override;
-    bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state) override;
+    bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state) override;
 
 private:
     PedDevice* pedDevice() {

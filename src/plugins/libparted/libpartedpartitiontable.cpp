@@ -323,7 +323,7 @@ bool LibPartedPartitionTable::setPartitionSystemType(Report& report, const Parti
     return ped_partition_set_system(pedPartition, pedFsType) != 0;
 }
 
-bool LibPartedPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
+bool LibPartedPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state)
 {
     PedPartition* pedPartition;
     if (partition.roles().has(PartitionRole::Extended))
@@ -336,17 +336,17 @@ bool LibPartedPartitionTable::setFlag(Report& report, const Partition& partition
         return false;
     }
 
-    const PedPartitionFlag f = LibPartedBackend::getPedFlag(partitionManagerFlag);
+    const PedPartitionFlag f = LibPartedBackend::getPedFlag(flag);
 
     // ignore flags that don't exist for this partition
     if (!ped_partition_is_flag_available(pedPartition, f)) {
-        report.line() << xi18nc("@info:progress", "The flag \"%1\" is not available on the partition's partition table.", PartitionTable::flagName(partitionManagerFlag));
+        report.line() << xi18nc("@info:progress", "The flag \"%1\" is not available on the partition's partition table.", PartitionTable::flagName(flag));
         return true;
     }
 
     // Workaround: libparted claims the hidden flag is available for extended partitions, but
     // throws an error when we try to set or clear it. So skip this combination.
-    if (pedPartition->type == PED_PARTITION_EXTENDED && partitionManagerFlag == PartitionTable::FlagHidden)
+    if (pedPartition->type == PED_PARTITION_EXTENDED && flag == PartitionTable::FlagHidden)
         return true;
 
     if (!ped_partition_set_flag(pedPartition, f, state ? 1 : 0))
