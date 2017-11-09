@@ -47,6 +47,7 @@ public:
     bool create(Report& report, const QString& deviceNode) override;
     bool updateUUID(Report& report, const QString& deviceNode) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
 
     CommandSupportType supportGetUsed() const override {
         return m_GetUsed;

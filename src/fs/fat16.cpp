@@ -60,6 +60,8 @@ void fat16::init()
     m_Copy = cmdSupportCore;
     m_Backup = cmdSupportCore;
     m_UpdateUUID = findExternal(QStringLiteral("dd")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = findExternal(QStringLiteral("fatresize")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Shrink = findExternal(QStringLiteral("fatresize")) ? cmdSupportFileSystem : cmdSupportNone;
     m_GetUUID = cmdSupportCore;
 }
 
@@ -154,6 +156,12 @@ bool fat16::check(Report& report, const QString& deviceNode) const
 bool fat16::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.fat"), { QStringLiteral("-F16"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool fat16::resize(Report& report, const QString& deviceNode, qint64 length) const
+{
+    ExternalCommand cmd(report, QStringLiteral("fatresize"), { QStringLiteral("--verbose"), QStringLiteral("--size"), QString::number(length), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
