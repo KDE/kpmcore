@@ -43,6 +43,7 @@ FileSystem::CommandSupportType f2fs::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType f2fs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType f2fs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType f2fs::m_GetUUID = FileSystem::cmdSupportNone;
+bool f2fs::oldVersion = false; // 1.8.x or older
 
 f2fs::f2fs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
     FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::F2fs)
@@ -53,6 +54,11 @@ void f2fs::init()
 {
     m_Create = findExternal(QStringLiteral("mkfs.f2fs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Check = findExternal(QStringLiteral("fsck.f2fs")) ? cmdSupportFileSystem : cmdSupportNone;
+
+    if (m_Create == cmdSupportFileSystem) {
+        ExternalCommand cmd(QStringLiteral("mkfs.f2fs"), {});
+        oldVersion = cmd.run(-1) && !cmd.output().contains(QStringLiteral("-f"));
+    }
 
     m_GetLabel = cmdSupportCore;
 //     m_SetLabel = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -115,6 +121,11 @@ bool f2fs::check(Report& report, const QString& deviceNode) const
 
 bool f2fs::create(Report& report, const QString& deviceNode)
 {
+    QStringList args;
+    if (oldVersion)
+        args << deviceNode;
+    else
+        args << QStringLiteral("-f") << deviceNode;
     ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
