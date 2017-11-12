@@ -94,7 +94,7 @@ FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused
 */
 qint64 FileSystem::readUsedCapacity(const QString& deviceNode) const
 {
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(deviceNode)
 
     return -1;
 }
@@ -202,7 +202,7 @@ bool FileSystem::createWithLabel(Report& report, const QString& deviceNode, cons
 */
 void FileSystem::scan(const QString& deviceNode)
 {
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(deviceNode)
 }
 
 /** Resize a FileSystem to a given new length
@@ -229,10 +229,10 @@ bool FileSystem::resize(Report& report, const QString& deviceNode, qint64 newLen
 */
 bool FileSystem::resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 newLength) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(mountPoint);
-    Q_UNUSED(newLength);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(mountPoint)
+    Q_UNUSED(newLength)
 
     return true;
 }
@@ -245,9 +245,9 @@ bool FileSystem::resizeOnline(Report& report, const QString& deviceNode, const Q
 */
 bool FileSystem::move(Report& report, const QString& deviceNode, qint64 newStartSector) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(newStartSector);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(newStartSector)
 
     return true;
 }
@@ -260,9 +260,9 @@ bool FileSystem::move(Report& report, const QString& deviceNode, qint64 newStart
 */
 bool FileSystem::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(newLabel);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(newLabel)
 
     return true;
 }
@@ -276,10 +276,10 @@ bool FileSystem::writeLabel(Report& report, const QString& deviceNode, const QSt
 */
 bool FileSystem::writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(mountPoint);
-    Q_UNUSED(newLabel);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(mountPoint)
+    Q_UNUSED(newLabel)
 
     return true;
 }
@@ -292,9 +292,9 @@ bool FileSystem::writeLabelOnline(Report& report, const QString& deviceNode, con
 */
 bool FileSystem::copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(targetDeviceNode);
-    Q_UNUSED(sourceDeviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(targetDeviceNode)
+    Q_UNUSED(sourceDeviceNode)
 
     return true;
 }
@@ -308,10 +308,10 @@ bool FileSystem::copy(Report& report, const QString& targetDeviceNode, const QSt
 */
 bool FileSystem::backup(Report& report, const Device& sourceDevice, const QString& deviceNode, const QString& filename) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(sourceDevice);
-    Q_UNUSED(deviceNode);
-    Q_UNUSED(filename);
+    Q_UNUSED(report)
+    Q_UNUSED(sourceDevice)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(filename)
 
     return false;
 }
@@ -323,8 +323,8 @@ bool FileSystem::backup(Report& report, const Device& sourceDevice, const QStrin
 */
 bool FileSystem::remove(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
 
     return true;
 }
@@ -336,8 +336,8 @@ bool FileSystem::remove(Report& report, const QString& deviceNode) const
 */
 bool FileSystem::check(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
 
     return true;
 }
@@ -349,8 +349,8 @@ bool FileSystem::check(Report& report, const QString& deviceNode) const
 */
 bool FileSystem::updateUUID(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
 
     return true;
 }
@@ -372,8 +372,8 @@ QString FileSystem::readUUID(const QString& deviceNode) const
 */
 bool FileSystem::updateBootSector(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
 
     return true;
 }
@@ -507,7 +507,7 @@ void FileSystem::move(qint64 newStartSector)
 }
 bool FileSystem::canMount(const QString& deviceNode, const QString& mountPoint) const
 {
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(deviceNode)
     // cannot mount if we have no mount points
     return !mountPoint.isEmpty();
 }
