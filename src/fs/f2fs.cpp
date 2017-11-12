@@ -121,18 +121,17 @@ bool f2fs::check(Report& report, const QString& deviceNode) const
 
 bool f2fs::create(Report& report, const QString& deviceNode)
 {
-    QStringList args;
-    if (oldVersion)
-        args << deviceNode;
-    else
-        args << QStringLiteral("-f") << deviceNode;
-    ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), { deviceNode });
-    return cmd.run(-1) && cmd.exitCode() == 0;
+    return createWithLabel(report, deviceNode, QString());
 }
 
 bool f2fs::createWithLabel(Report& report, const QString& deviceNode, const QString& label)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), { QStringLiteral("-l"), label, deviceNode });
+    QStringList args;
+    if (oldVersion)
+        args << QStringLiteral("-l") << label << deviceNode;
+    else
+        args << QStringLiteral("-f") << QStringLiteral("-l") << label << deviceNode;
+    ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
