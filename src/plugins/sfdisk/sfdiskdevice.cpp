@@ -71,7 +71,7 @@ bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& pt
     if (ptable.type() == PartitionTable::msdos || ptable.type() == PartitionTable::msdos_sectorbased)
         tableType = QByteArrayLiteral("dos");
     else
-        tableType = ptable.typeName().toLatin1();
+        tableType = ptable.typeName().toLocal8Bit();
 
     ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { m_deviceNode } );
     if ( createCommand.start(-1) && createCommand.write(QByteArrayLiteral("label: ") + tableType +

@@ -139,7 +139,7 @@ FileSystem::Type SfdiskPartitionTable::detectFileSystemBySector(Report& report, 
 
     ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), device.deviceNode() } );
     if (jsonCommand.run(-1) && jsonCommand.exitCode() == 0) {
-        const QJsonArray partitionTable = QJsonDocument::fromJson(jsonCommand.output().toUtf8()).object()[QLatin1String("partitiontable")].toObject()[QLatin1String("partitions")].toArray();
+        const QJsonArray partitionTable = QJsonDocument::fromJson(jsonCommand.output().toLocal8Bit()).object()[QLatin1String("partitiontable")].toObject()[QLatin1String("partitions")].toArray();
         for (const auto &partition : partitionTable) {
             const QJsonObject partitionObject = partition.toObject();
             const qint64 start = partitionObject[QLatin1String("start")].toVariant().toLongLong();
