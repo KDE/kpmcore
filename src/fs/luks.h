@@ -113,8 +113,6 @@ public:
         return m_Backup;
     }
     CommandSupportType supportSetLabel() const override {
-        if (!m_isCryptOpen)
-            return cmdSupportNone;
         if (m_Check && m_innerFs)
             return m_innerFs->supportSetLabel();
         return cmdSupportNone;
