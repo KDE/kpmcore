@@ -47,7 +47,7 @@ public:
     bool create(Report& report, const QString& deviceNode) override;
     bool createWithLabel(Report& report, const QString& deviceNode, const QString& label) override;
 //     qint64 readUsedCapacity(const QString& deviceNode) const override;
-//     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
 //     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 //     bool updateUUID(Report& report, const QString& deviceNode) const override;
 
@@ -110,6 +110,10 @@ public:
     static CommandSupportType m_SetLabel;
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
+
+private:
+    static bool oldVersion;
+
 };
 }
 

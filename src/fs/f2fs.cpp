@@ -43,6 +43,7 @@ FileSystem::CommandSupportType f2fs::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType f2fs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType f2fs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType f2fs::m_GetUUID = FileSystem::cmdSupportNone;
+bool f2fs::oldVersion = false; // 1.8.x or older
 
 f2fs::f2fs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
     FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::F2fs)
@@ -54,11 +55,16 @@ void f2fs::init()
     m_Create = findExternal(QStringLiteral("mkfs.f2fs")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Check = findExternal(QStringLiteral("fsck.f2fs")) ? cmdSupportFileSystem : cmdSupportNone;
 
+    if (m_Create == cmdSupportFileSystem) {
+        ExternalCommand cmd(QStringLiteral("mkfs.f2fs"), {});
+        oldVersion = cmd.run(-1) && !cmd.output().contains(QStringLiteral("-f"));
+    }
+
     m_GetLabel = cmdSupportCore;
 //     m_SetLabel = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
 //     m_UpdateUUID = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
 
-//     m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("nilfs-resize"))) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("resize.f2fs"))) ? cmdSupportFileSystem : cmdSupportNone;
 //     m_GetUsed = findExternal(QStringLiteral("nilfs-tune")) ? cmdSupportFileSystem : cmdSupportNone;
 //     m_Shrink = (m_Grow != cmdSupportNone && m_GetUsed != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
 
@@ -79,7 +85,7 @@ bool f2fs::supportToolFound() const
         m_Create != cmdSupportNone &&
         m_Check != cmdSupportNone &&
 //         m_UpdateUUID != cmdSupportNone &&
-//         m_Grow != cmdSupportNone &&
+        m_Grow != cmdSupportNone &&
 //         m_Shrink != cmdSupportNone &&
         m_Copy != cmdSupportNone &&
         m_Move != cmdSupportNone &&
@@ -115,13 +121,24 @@ bool f2fs::check(Report& report, const QString& deviceNode) const
 
 bool f2fs::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), { deviceNode });
-    return cmd.run(-1) && cmd.exitCode() == 0;
+    return createWithLabel(report, deviceNode, QString());
 }
 
 bool f2fs::createWithLabel(Report& report, const QString& deviceNode, const QString& label)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), { QStringLiteral("-l"), label, deviceNode });
+    QStringList args;
+    if (oldVersion)
+        args << QStringLiteral("-l") << label << deviceNode;
+    else
+        args << QStringLiteral("-f") << QStringLiteral("-l") << label << deviceNode;
+    ExternalCommand cmd(report, QStringLiteral("mkfs.f2fs"), args);
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool f2fs::resize(Report& report, const QString& deviceNode, qint64 length) const
+{
+    Q_UNUSED(length)
+    ExternalCommand cmd(report, QStringLiteral("resize.f2fs"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

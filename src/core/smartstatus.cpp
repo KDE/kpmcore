@@ -77,9 +77,9 @@ void SmartStatus::update()
     if (sk_disk_identify_parse(skDisk, &skIdentify) < 0)
         qDebug() << "getting identify data failed for " <<  devicePath() << ": " << strerror(errno);
     else {
-        setModelName(QString::fromUtf8(skIdentify->model));
-        setFirmware(QString::fromUtf8(skIdentify->firmware));
-        setSerial(QString::fromUtf8(skIdentify->serial));
+        setModelName(QString::fromLocal8Bit(skIdentify->model));
+        setFirmware(QString::fromLocal8Bit(skIdentify->firmware));
+        setSerial(QString::fromLocal8Bit(skIdentify->serial));
     }
 
     const SkSmartParsedData* skParsed;

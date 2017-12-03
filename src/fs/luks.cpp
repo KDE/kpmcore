@@ -128,7 +128,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
     if (!( createCmd.start(-1) &&
-                createCmd.write(m_passphrase.toUtf8() + '\n') == m_passphrase.toUtf8().length() + 1 &&
+                createCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 &&
                 createCmd.waitFor() && createCmd.exitCode() == 0))
     {
         return false;
@@ -139,7 +139,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toUtf8() + '\n') == m_passphrase.toUtf8().length() + 1 && openCmd.waitFor()))
+    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 && openCmd.waitFor()))
         return false;
 
     scan(deviceNode);
@@ -262,7 +262,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
                                 suggestedMapperName(deviceNode) });
 
     if (!( openCmd.start(-1) &&
-                    openCmd.write(passphrase.toUtf8() + '\n') == passphrase.toUtf8().length() + 1 &&
+                    openCmd.write(passphrase.toLocal8Bit() + '\n') == passphrase.toLocal8Bit().length() + 1 &&
                     openCmd.waitFor() && openCmd.exitCode() == 0) )
         return false;
 
@@ -572,7 +572,7 @@ void luks::getMapperName(const QString& deviceNode)
     m_MapperName = QString();
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toUtf8());
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toLocal8Bit());
         QJsonObject jsonObject = jsonDocument.object();
         const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
         for (const auto &deviceLine : jsonArray) {

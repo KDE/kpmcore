@@ -104,7 +104,7 @@ static PedFileSystemType* getPedFileSystemType(FileSystem::Type t)
 {
     for (quint32 i = 0; i < sizeof(mapFileSystemTypeToLibPartedName) / sizeof(mapFileSystemTypeToLibPartedName[0]); i++)
         if (mapFileSystemTypeToLibPartedName[i].type == t)
-            return ped_file_system_type_get(mapFileSystemTypeToLibPartedName[i].name.toLatin1().constData());
+            return ped_file_system_type_get(mapFileSystemTypeToLibPartedName[i].name.toLocal8Bit().constData());
 
     // if we didn't find anything, go with ext2 as a safe fallback
     return ped_file_system_type_get("ext2");
@@ -112,7 +112,7 @@ static PedFileSystemType* getPedFileSystemType(FileSystem::Type t)
 
 QString LibPartedPartitionTable::createPartition(Report& report, const Partition& partition)
 {
-    Q_ASSERT(partition.devicePath() == QString::fromUtf8(pedDevice()->path));
+    Q_ASSERT(partition.devicePath() == QString::fromLocal8Bit(pedDevice()->path));
 
     QString rval = QString();
 
@@ -156,11 +156,11 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
 
     if (ped_disk_add_partition(pedDisk(), pedPartition, pedConstraint)) {
         char *pedPath = ped_partition_get_path(pedPartition);
-        rval = QString::fromUtf8(pedPath);
+        rval = QString::fromLocal8Bit(pedPath);
         free(pedPath);
     }
     else {
-        report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), QString::fromUtf8(pedDisk()->dev->path));
+        report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), QString::fromLocal8Bit(pedDisk()->dev->path));
         report.line() << LibPartedBackend::lastPartedExceptionMessage();
     }
 
@@ -171,7 +171,7 @@ QString LibPartedPartitionTable::createPartition(Report& report, const Partition
 
 bool LibPartedPartitionTable::deletePartition(Report& report, const Partition& partition)
 {
-    Q_ASSERT(partition.devicePath() == QString::fromUtf8(pedDevice()->path));
+    Q_ASSERT(partition.devicePath() == QString::fromLocal8Bit(pedDevice()->path));
 
     bool rval = false;
 
@@ -192,7 +192,7 @@ bool LibPartedPartitionTable::deletePartition(Report& report, const Partition& p
 
 bool LibPartedPartitionTable::updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end)
 {
-    Q_ASSERT(partition.devicePath() == QString::fromUtf8(pedDevice()->path));
+    Q_ASSERT(partition.devicePath() == QString::fromLocal8Bit(pedDevice()->path));
 
     bool rval = false;
 
@@ -296,7 +296,7 @@ FileSystem::Type LibPartedPartitionTable::detectFileSystemBySector(Report& repor
     char* pedPath = ped_partition_get_path(pedPartition);
     FileSystem::Type type = FileSystem::Unknown;
     if (pedPartition && pedPath)
-        type = CoreBackendManager::self()->backend()->detectFileSystem(QString::fromUtf8(pedPath));
+        type = CoreBackendManager::self()->backend()->detectFileSystem(QString::fromLocal8Bit(pedPath));
     else
         report.line() << xi18nc("@info:progress", "Could not determine file system of partition at sector %1 on device <filename>%2</filename>.", sector, device.deviceNode());
     free(pedPath);
