@@ -45,7 +45,7 @@ bool LibPartedDevice::open()
     if (pedDevice())
         return false;
 
-    m_PedDevice = ped_device_get(deviceNode().toLatin1().constData());
+    m_PedDevice = ped_device_get(deviceNode().toLocal8Bit().constData());
 
     return m_PedDevice != nullptr;
 }
@@ -87,14 +87,14 @@ CoreBackendPartitionTable* LibPartedDevice::openPartitionTable()
 
 bool LibPartedDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
-    PedDiskType* pedDiskType = ped_disk_type_get(ptable.typeName().toLatin1().constData());
+    PedDiskType* pedDiskType = ped_disk_type_get(ptable.typeName().toLocal8Bit().constData());
 
     if (pedDiskType == nullptr) {
         report.line() << xi18nc("@info:progress", "Creating partition table failed: Could not retrieve partition table type \"%1\" for <filename>%2</filename>.", ptable.typeName(), deviceNode());
         return false;
     }
 
-    PedDevice* dev = ped_device_get(deviceNode().toLatin1().constData());
+    PedDevice* dev = ped_device_get(deviceNode().toLocal8Bit().constData());
 
     if (dev == nullptr) {
         report.line() << xi18nc("@info:progress", "Creating partition table failed: Could not open backend device <filename>%1</filename>.", deviceNode());

@@ -335,7 +335,7 @@ bool Partition::unmount(Report& report)
     const QString canonicalDeviceNode = QFileInfo(deviceNode()).canonicalFilePath();
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
-        if (QFileInfo(QString::fromUtf8(storage.device())).canonicalFilePath() == canonicalDeviceNode ) {
+        if (QFileInfo(QString::fromLocal8Bit(storage.device())).canonicalFilePath() == canonicalDeviceNode ) {
             success = false;
             break;
         }

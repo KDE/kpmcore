@@ -107,7 +107,7 @@ typedef struct _GPTDiskData GPTDiskData;
 */
 static qint64 firstUsableSector(const Device& d)
 {
-    PedDevice* pedDevice = ped_device_get(d.deviceNode().toLatin1().constData());
+    PedDevice* pedDevice = ped_device_get(d.deviceNode().toLocal8Bit().constData());
     PedDisk* pedDisk = pedDevice ? ped_disk_new(pedDevice) : nullptr;
 
     qint64 rval = 0;
@@ -135,7 +135,7 @@ static qint64 firstUsableSector(const Device& d)
 */
 static qint64 lastUsableSector(const Device& d)
 {
-    PedDevice* pedDevice = ped_device_get(d.deviceNode().toLatin1().constData());
+    PedDevice* pedDevice = ped_device_get(d.deviceNode().toLocal8Bit().constData());
     PedDisk* pedDisk = pedDevice ? ped_disk_new(pedDevice) : nullptr;
 
     qint64 rval = 0;
@@ -305,7 +305,7 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
 
         FileSystem::Type type = FileSystem::Unknown;
         char* pedPath = ped_partition_get_path(pedPartition);
-        const QString partitionNode = pedPath ? QString::fromUtf8(pedPath) : QString();
+        const QString partitionNode = pedPath ? QString::fromLocal8Bit(pedPath) : QString();
         free(pedPath);
         type = detectFileSystem(partitionNode);
 
@@ -393,14 +393,14 @@ DiskDevice* LibPartedBackend::scanDevice(const QString& deviceNode)
         return nullptr;
     }
 
-    Log(Log::information) << xi18nc("@info:status", "Device found: %1", QString::fromUtf8(pedDevice->model));
+    Log(Log::information) << xi18nc("@info:status", "Device found: %1", QString::fromLocal8Bit(pedDevice->model));
 
-    DiskDevice* d = new DiskDevice(QString::fromUtf8(pedDevice->model), QString::fromUtf8(pedDevice->path), pedDevice->bios_geom.heads, pedDevice->bios_geom.sectors, pedDevice->bios_geom.cylinders, pedDevice->sector_size);
+    DiskDevice* d = new DiskDevice(QString::fromLocal8Bit(pedDevice->model), QString::fromLocal8Bit(pedDevice->path), pedDevice->bios_geom.heads, pedDevice->bios_geom.sectors, pedDevice->bios_geom.cylinders, pedDevice->sector_size);
 
     PedDisk* pedDisk = ped_disk_new(pedDevice);
 
     if (pedDisk) {
-        const PartitionTable::TableType type = PartitionTable::nameToTableType(QString::fromUtf8(pedDisk->type->name));
+        const PartitionTable::TableType type = PartitionTable::nameToTableType(QString::fromLocal8Bit(pedDisk->type->name));
         CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(type, firstUsableSector(*d), lastUsableSector(*d)));
         CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), ped_disk_get_max_primary_partition_count(pedDisk));
 
@@ -426,7 +426,7 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
                           QStringLiteral("type,name") });
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toUtf8());
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toLocal8Bit());
         QJsonObject jsonObject = jsonDocument.object();
         const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
         for (const auto &deviceLine : jsonArray) {
@@ -479,7 +479,7 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath
                                  partitionPath.toLocal8Bit().constData(),
                                  BLKID_DEV_NORMAL)) != nullptr) {
             char *string = blkid_get_tag_value(cache, "TYPE", partitionPath.toLocal8Bit().constData());
-            QString s = QString::fromUtf8(string);
+            QString s = QString::fromLocal8Bit(string);
             free(string);
 
             if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
@@ -497,7 +497,7 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath
             else if (s == QStringLiteral("vfat")) {
                 // libblkid uses SEC_TYPE to distinguish between FAT16 and FAT32
                 string = blkid_get_tag_value(cache, "SEC_TYPE", partitionPath.toLocal8Bit().constData());
-                QString st = QString::fromUtf8(string);
+                QString st = QString::fromLocal8Bit(string);
                 free(string);
                 if (st == QStringLiteral("msdos"))
                     rval = FileSystem::Fat16;

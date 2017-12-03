@@ -59,7 +59,7 @@ ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStri
 
 void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMode)
 {
-    setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromUtf8(getenv("PATH")) << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
+    setEnvironment(QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("PATH=") + QString::fromLocal8Bit(getenv("PATH")) << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
     setProcessChannelMode(processChannelMode);
 
     connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);

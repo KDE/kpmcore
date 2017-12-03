@@ -110,7 +110,7 @@ static QString readBlkIdValue(const QString& deviceNode, const QString& tag)
         char* label = nullptr;
         if ((dev = blkid_get_dev(cache, deviceNode.toLocal8Bit().constData(), BLKID_DEV_NORMAL)) != nullptr &&
                 (label = blkid_get_tag_value(cache, tag.toLocal8Bit().constData(), deviceNode.toLocal8Bit().constData()))) {
-            rval = QString::fromUtf8(label);
+            rval = QString::fromLocal8Bit(label);
             free(label);
         }
 
@@ -138,7 +138,7 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
     QString partitionCanonicalPath = partitionPathFileInfo.canonicalFilePath();
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
-        if (partitionCanonicalPath == QFileInfo(QString::fromUtf8(storage.device())).canonicalFilePath() ) {
+        if (partitionCanonicalPath == QFileInfo(QString::fromLocal8Bit(storage.device())).canonicalFilePath() ) {
             mountPoints.append(storage.rootPath());
         }
     }

@@ -71,7 +71,7 @@ QString HtmlReport::header()
 
     struct utsname info;
     uname(&info);
-    const QString unameString = QString::fromUtf8(info.sysname) + QStringLiteral(" ") + QString::fromUtf8(info.nodename) + QStringLiteral(" ") + QString::fromUtf8(info.release) + QStringLiteral(" ") + QString::fromUtf8(info.version) + QStringLiteral(" ") + QString::fromUtf8(info.machine);
+    const QString unameString = QString::fromLocal8Bit(info.sysname) + QStringLiteral(" ") + QString::fromLocal8Bit(info.nodename) + QStringLiteral(" ") + QString::fromLocal8Bit(info.release) + QStringLiteral(" ") + QString::fromLocal8Bit(info.version) + QStringLiteral(" ") + QString::fromLocal8Bit(info.machine);
 
     s << "<table>\n"
       << tableLine(i18n("Date:"), QLocale().toString(QDateTime::currentDateTime(), QLocale::ShortFormat))
