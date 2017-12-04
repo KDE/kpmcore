@@ -426,7 +426,7 @@ QList<Device*> LibPartedBackend::scanDevices(bool excludeReadOnly)
                           QStringLiteral("type,name") });
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toLocal8Bit());
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.rawOutput());
         QJsonObject jsonObject = jsonDocument.object();
         const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
         for (const auto &deviceLine : jsonArray) {

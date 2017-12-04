@@ -572,7 +572,7 @@ void luks::getMapperName(const QString& deviceNode)
     m_MapperName = QString();
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toLocal8Bit());
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.rawOutput());
         QJsonObject jsonObject = jsonDocument.object();
         const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
         for (const auto &deviceLine : jsonArray) {

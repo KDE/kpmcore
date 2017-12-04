@@ -72,7 +72,7 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
                           QStringLiteral("type,name") });
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
-        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.output().toLocal8Bit());
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(cmd.rawOutput());
         const QJsonObject jsonObject = jsonDocument.object();
         const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
         for (const auto &deviceLine : jsonArray) {
@@ -140,7 +140,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         if (jsonCommand.exitCode() != 0)
             return d;
 
-        const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.output().toLocal8Bit()).object();
+        const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.rawOutput()).object();
         const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
 
         QString tableType = partitionTable[QLatin1String("label")].toString();
@@ -298,7 +298,7 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
                                  partitionPath });
 
     if (lsblkCommand.run(-1) && lsblkCommand.exitCode() == 0) {
-        const QJsonArray partitionArray = QJsonDocument::fromJson(lsblkCommand.output().toLocal8Bit()).object()[QLatin1String("blockdevices")].toArray();
+        const QJsonArray partitionArray = QJsonDocument::fromJson(lsblkCommand.rawOutput()).object()[QLatin1String("blockdevices")].toArray();
 
         for (const auto &partition : partitionArray) {
             QJsonObject partitionObject = partition.toObject();
