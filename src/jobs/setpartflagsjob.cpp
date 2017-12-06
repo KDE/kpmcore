@@ -73,7 +73,10 @@ bool SetPartFlagsJob::run(Report& parent)
                 for (const auto &f : PartitionTable::flagList()) {
                     emit progress(++count);
 
+                    const bool oldState = (partition().activeFlags() & f) ? true : false;
                     const bool state = (flags() & f) ? true : false;
+                    if (oldState == state)
+                        continue;
 
                     if (!backendPartition->setFlag(*report, f, state)) {
                         report->line() << xi18nc("@info:progress", "There was an error setting flag %1 for partition <filename>%2</filename> to state %3.", PartitionTable::flagName(f), partition().deviceNode(), state ? xi18nc("@info:progress flag turned on, active", "on") : xi18nc("@info:progress flag turned off, inactive", "off"));
