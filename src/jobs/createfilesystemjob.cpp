@@ -60,7 +60,7 @@ bool CreateFileSystemJob::run(Report& parent)
             createResult = partition().fileSystem().create(*report, partition().deviceNode());
         if (createResult) {
             if (device().type() == Device::Disk_Device) {
-                CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+                CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
                 if (backendDevice) {
                     CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();

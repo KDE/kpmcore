@@ -49,7 +49,7 @@ CopyTargetDevice::~CopyTargetDevice()
 */
 bool CopyTargetDevice::open()
 {
-    m_BackendDevice = CoreBackendManager::self()->backend()->openDeviceExclusive(device().deviceNode());
+    m_BackendDevice = CoreBackendManager::self()->backend()->openDeviceExclusive(device());
     return m_BackendDevice != nullptr;
 }
 

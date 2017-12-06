@@ -47,8 +47,8 @@ public:
     void initFSSupport() override;
 
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;
-    CoreBackendDevice* openDevice(const QString& deviceNode) override;
-    CoreBackendDevice* openDeviceExclusive(const QString& deviceNode) override;
+    CoreBackendDevice* openDevice(const Device& d) override;
+    CoreBackendDevice* openDeviceExclusive(const Device& d) override;
     bool closeDevice(CoreBackendDevice* coreDevice) override;
     Device* scanDevice(const QString& deviceNode) override;
     FileSystem::Type detectFileSystem(const QString& partitionPath) override;

@@ -51,7 +51,7 @@ bool CreatePartitionJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     if (device().type() == Device::Disk_Device) {
-        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {
             CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();

@@ -524,9 +524,9 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath
     return rval;
 }
 
-CoreBackendDevice* LibPartedBackend::openDevice(const QString& deviceNode)
+CoreBackendDevice* LibPartedBackend::openDevice(const Device& d)
 {
-    LibPartedDevice* device = new LibPartedDevice(deviceNode);
+    LibPartedDevice* device = new LibPartedDevice(d.deviceNode());
 
     if (device == nullptr || !device->open()) {
         delete device;
@@ -536,9 +536,9 @@ CoreBackendDevice* LibPartedBackend::openDevice(const QString& deviceNode)
     return device;
 }
 
-CoreBackendDevice* LibPartedBackend::openDeviceExclusive(const QString& deviceNode)
+CoreBackendDevice* LibPartedBackend::openDeviceExclusive(const Device& d)
 {
-    LibPartedDevice* device = new LibPartedDevice(deviceNode);
+    LibPartedDevice* device = new LibPartedDevice(d.deviceNode());
 
     if (device == nullptr || !device->openExclusive()) {
         delete device;

@@ -56,7 +56,7 @@ bool SetPartFlagsJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
     if (backendDevice) {
         CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();

@@ -61,8 +61,8 @@ private:
 public:
     void initFSSupport() override;
 
-    CoreBackendDevice* openDevice(const QString& deviceNode) override;
-    CoreBackendDevice* openDeviceExclusive(const QString& deviceNode) override;
+    CoreBackendDevice* openDevice(const Device& d) override;
+    CoreBackendDevice* openDeviceExclusive(const Device& d) override;
     bool closeDevice(CoreBackendDevice* core_device) override;
     DiskDevice* scanDevice(const QString& deviceNode) override;
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;

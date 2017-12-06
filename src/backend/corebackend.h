@@ -120,7 +120,7 @@ public:
       *         an instance is returned, it's the caller's responsibility to delete the
       *         object.
       */
-    virtual CoreBackendDevice* openDevice(const QString& deviceNode) = 0;
+    virtual CoreBackendDevice* openDevice(const Device& d) = 0;
 
     /**
       * Open a device in exclusive mode for writing.
@@ -129,7 +129,7 @@ public:
       *         an instance is returned, it's the caller's responsibility to delete the
       *         object.
       */
-    virtual CoreBackendDevice* openDeviceExclusive(const QString& deviceNode) = 0;
+    virtual CoreBackendDevice* openDeviceExclusive(const Device& d) = 0;
 
     /**
       * Close a CoreBackendDevice that has previously been opened.

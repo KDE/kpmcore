@@ -74,7 +74,7 @@ bool DeleteFileSystemJob::run(Report& parent)
             return false;
         }
 
-        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device().deviceNode());
+        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {
             CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();

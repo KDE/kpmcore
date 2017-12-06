@@ -57,9 +57,9 @@ QList<Device*> DummyBackend::scanDevices(bool excludeLoop)
     return result;
 }
 
-Device* DummyBackend::scanDevice(const QString& device_node)
+Device* DummyBackend::scanDevice(const QString& deviceNode)
 {
-    DiskDevice* d = new DiskDevice(QStringLiteral("Dummy Device"), QStringLiteral("/tmp") + device_node, 255, 30, 63, 512);
+    DiskDevice* d = new DiskDevice(QStringLiteral("Dummy Device"), QStringLiteral("/tmp") + deviceNode, 255, 30, 63, 512);
     CoreBackend::setPartitionTableForDevice(*d, new PartitionTable(PartitionTable::msdos_sectorbased, 2048, d->totalSectors() - 2048));
     CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), 128);
     d->partitionTable()->updateUnallocated(*d);
@@ -77,9 +77,9 @@ FileSystem::Type DummyBackend::detectFileSystem(const QString& deviceNode)
     return FileSystem::Unknown;
 }
 
-CoreBackendDevice* DummyBackend::openDevice(const QString& device_node)
+CoreBackendDevice* DummyBackend::openDevice(const Device& d)
 {
-    DummyDevice* device = new DummyDevice(device_node);
+    DummyDevice* device = new DummyDevice(d.deviceNode());
 
     if (device == nullptr || !device->open()) {
         delete device;
@@ -89,9 +89,9 @@ CoreBackendDevice* DummyBackend::openDevice(const QString& device_node)
     return device;
 }
 
-CoreBackendDevice* DummyBackend::openDeviceExclusive(const QString& device_node)
+CoreBackendDevice* DummyBackend::openDeviceExclusive(const Device& d)
 {
-    DummyDevice* device = new DummyDevice(device_node);
+    DummyDevice* device = new DummyDevice(d.deviceNode());
 
     if (device == nullptr || !device->openExclusive()) {
         delete device;
@@ -101,9 +101,9 @@ CoreBackendDevice* DummyBackend::openDeviceExclusive(const QString& device_node)
     return device;
 }
 
-bool DummyBackend::closeDevice(CoreBackendDevice* core_device)
+bool DummyBackend::closeDevice(CoreBackendDevice* coreDevice)
 {
-    return core_device->close();
+    return coreDevice->close();
 }
 
 #include "dummybackend.moc"
