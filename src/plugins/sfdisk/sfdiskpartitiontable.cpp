@@ -37,9 +37,9 @@
 
 #include <KLocalizedString>
 
-SfdiskPartitionTable::SfdiskPartitionTable(const QString& deviceNode) :
+SfdiskPartitionTable::SfdiskPartitionTable(const Device* d) :
     CoreBackendPartitionTable(),
-    m_deviceNode(deviceNode)
+    m_device(d)
 {
 }
 
@@ -83,7 +83,7 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
             return partition.devicePath() + rem.captured(1);
     }
 
-    report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), m_deviceNode);
+    report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), m_device->deviceNode());
 
     return QString();
 }
@@ -167,20 +167,20 @@ bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partitio
 bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state)
 {
     if (flag == PartitionTable::FlagBoot && state == true) {
-        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_deviceNode, QString::number(partition.number()) } );
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_device->deviceNode(), QString::number(partition.number()) } );
         if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
             return true;
         else
             return false;
     } else if (flag == PartitionTable::FlagBoot && state == false) {
-        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_deviceNode, QStringLiteral("-") } );
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_device->deviceNode(), QStringLiteral("-") } );
         if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
             return true;
         // FIXME: Do not return false since we have no way of checking if partition table is MBR
     }
 
     if (flag == PartitionTable::FlagEsp && state == true) {
-        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_deviceNode, QString::number(partition.number()),
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_device->deviceNode(), QString::number(partition.number()),
                 QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B") } );
         if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
             return true;
@@ -191,7 +191,7 @@ bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, P
         setPartitionSystemType(report, partition);
 
     if (flag == PartitionTable::FlagBiosGrub && state == true) {
-        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_deviceNode, QString::number(partition.number()),
+        ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_device->deviceNode(), QString::number(partition.number()),
                 QStringLiteral("21686148-6449-6E6F-744E-656564454649") } );
         if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
             return true;

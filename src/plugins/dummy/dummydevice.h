@@ -33,7 +33,7 @@ class DummyDevice : public CoreBackendDevice
     Q_DISABLE_COPY(DummyDevice)
 
 public:
-    DummyDevice(const QString& device_node);
+    DummyDevice(const QString& deviceNode);
     ~DummyDevice();
 
 public:

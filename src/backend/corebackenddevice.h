@@ -40,7 +40,7 @@ class Report;
 class LIBKPMCORE_EXPORT CoreBackendDevice
 {
 public:
-    CoreBackendDevice(const QString& device_node);
+    CoreBackendDevice(const QString& deviceNode);
     virtual ~CoreBackendDevice() {}
 
 public:

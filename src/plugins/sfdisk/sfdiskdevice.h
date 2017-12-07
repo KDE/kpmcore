@@ -20,6 +20,7 @@
 #define SFDISKDEVICE__H
 
 #include "backend/corebackenddevice.h"
+#include "core/device.h"
 
 #include <QtGlobal>
 
@@ -33,7 +34,7 @@ class SfdiskDevice : public CoreBackendDevice
     Q_DISABLE_COPY(SfdiskDevice);
 
 public:
-    SfdiskDevice(const QString& deviceNode);
+    SfdiskDevice(const Device& d);
     ~SfdiskDevice();
 
 public:
@@ -49,7 +50,7 @@ public:
     bool writeData(QByteArray& buffer, qint64 offset) override;
 
 private:
-    QString m_deviceNode;
+    const Device *m_device;
 };
 
 #endif

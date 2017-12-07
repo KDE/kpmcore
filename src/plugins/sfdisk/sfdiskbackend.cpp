@@ -365,7 +365,7 @@ PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType ty
 
 CoreBackendDevice* SfdiskBackend::openDevice(const Device& d)
 {
-    SfdiskDevice* device = new SfdiskDevice(d.deviceNode());
+    SfdiskDevice* device = new SfdiskDevice(d);
 
     if (device == nullptr || !device->open()) {
         delete device;
@@ -377,7 +377,7 @@ CoreBackendDevice* SfdiskBackend::openDevice(const Device& d)
 
 CoreBackendDevice* SfdiskBackend::openDeviceExclusive(const Device& d)
 {
-    SfdiskDevice* device = new SfdiskDevice(d.deviceNode());
+    SfdiskDevice* device = new SfdiskDevice(d);
 
     if (device == nullptr || !device->openExclusive()) {
         delete device;

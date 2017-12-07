@@ -23,9 +23,9 @@
 #include "util/externalcommand.h"
 #include "util/report.h"
 
-SfdiskDevice::SfdiskDevice(const QString& deviceNode) :
-    CoreBackendDevice(deviceNode),
-    m_deviceNode(deviceNode)
+SfdiskDevice::SfdiskDevice(const Device& d) :
+    CoreBackendDevice(d.deviceNode()),
+    m_device(&d)
 {
 }
 
@@ -55,7 +55,7 @@ bool SfdiskDevice::close()
 
 CoreBackendPartitionTable* SfdiskDevice::openPartitionTable()
 {
-    CoreBackendPartitionTable* ptable = new SfdiskPartitionTable(m_deviceNode);
+    CoreBackendPartitionTable* ptable = new SfdiskPartitionTable(m_device);
 
     if (ptable == nullptr || !ptable->open()) {
         delete ptable;
@@ -73,7 +73,7 @@ bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& pt
     else
         tableType = ptable.typeName().toLocal8Bit();
 
-    ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { m_deviceNode } );
+    ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { m_device->deviceNode() } );
     if ( createCommand.start(-1) && createCommand.write(QByteArrayLiteral("label: ") + tableType +
                                     QByteArrayLiteral("\nwrite\n")) && createCommand.waitFor() ) {
         return createCommand.output().contains(QStringLiteral("Script header accepted."));
@@ -92,7 +92,7 @@ bool SfdiskDevice::readData(QByteArray& buffer, qint64 offset, qint64 size)
                 QStringLiteral("bs=") + QString::number(size),
                 QStringLiteral("count=1"),
                 QStringLiteral("iflag=skip_bytes"),
-                QStringLiteral("if=") + m_deviceNode }, QProcess::SeparateChannels);
+                QStringLiteral("if=") + m_device->deviceNode() }, QProcess::SeparateChannels);
     if (ddCommand.run(-1) && ddCommand.exitCode() == 0) {
         buffer = ddCommand.rawOutput();
         return true;
@@ -107,7 +107,7 @@ bool SfdiskDevice::writeData(QByteArray& buffer, qint64 offset)
         return false;
 
     ExternalCommand ddCommand(QStringLiteral("dd"), {
-                QStringLiteral("of=") + m_deviceNode,
+                QStringLiteral("of=") + m_device->deviceNode(),
                 QStringLiteral("seek=") + QString::number(offset),
                 QStringLiteral("bs=1M"),
                 QStringLiteral("oflag=seek_bytes"),

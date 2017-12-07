@@ -17,8 +17,8 @@
 
 #include "backend/corebackenddevice.h"
 
-CoreBackendDevice::CoreBackendDevice(const QString& device_node) :
-    m_DeviceNode(device_node),
+CoreBackendDevice::CoreBackendDevice(const QString& deviceNode) :
+    m_DeviceNode(deviceNode),
     m_Exclusive(false)
 {
 }

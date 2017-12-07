@@ -32,7 +32,7 @@ class Partition;
 class SfdiskPartitionTable : public CoreBackendPartitionTable
 {
 public:
-    SfdiskPartitionTable(const QString& deviceNode);
+    SfdiskPartitionTable(const Device *d);
     ~SfdiskPartitionTable();
 
 public:
@@ -50,7 +50,7 @@ public:
     bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state) override;
 
 private:
-    QString m_deviceNode;
+    const Device *m_device;
 };
 
 #endif

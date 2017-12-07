@@ -23,8 +23,8 @@
 #include "util/globallog.h"
 #include "util/report.h"
 
-DummyDevice::DummyDevice(const QString& device_node) :
-    CoreBackendDevice(device_node)
+DummyDevice::DummyDevice(const QString& deviceNode) :
+    CoreBackendDevice(deviceNode)
 {
 }
 
