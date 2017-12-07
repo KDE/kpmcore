@@ -156,12 +156,55 @@ FileSystem::Type SfdiskPartitionTable::detectFileSystemBySector(Report& report, 
     return type;
 }
 
+static struct {
+    FileSystem::Type type;
+    QLatin1String partitionType[2]; // GPT, MBR
+} typemap[] = {
+    { FileSystem::Btrfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Ext2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Ext3, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Ext4, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::LinuxSwap, { QLatin1String("0657FD6D-A4AB-43C4-84E5-0933C84B4F4F"), QLatin1String("82") } },
+    { FileSystem::Fat16, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
+    { FileSystem::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::Nilfs2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Ntfs, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::Exfat, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::ReiserFS, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Reiser4, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Xfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Jfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Hfs, { QLatin1String("48465300-0000-11AA-AA11-00306543ECAC"), QLatin1String("af")} },
+    { FileSystem::HfsPlus, { QLatin1String("48465300-0000-11AA-AA11-00306543ECAC"), QLatin1String("af") } },
+    { FileSystem::Udf, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } }
+    // Add ZFS too
+};
+
+static QLatin1String getPartitionType(FileSystem::Type t, PartitionTable::TableType tableType)
+{
+    quint8 type;
+    switch (tableType) {
+    case PartitionTable::gpt:
+        type = 0;
+        break;
+    case PartitionTable::msdos:
+    case PartitionTable::msdos_sectorbased:
+        type = 1;
+        break;
+    default:;
+    }
+    for (quint32 i = 0; i < sizeof(typemap) / sizeof(typemap[0]); i++)
+        if (typemap[i].type == t)
+            return typemap[i].partitionType[type];
+
+    return QLatin1String();
+}
+
 bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
-    Q_UNUSED(report)
-    Q_UNUSED(partition)
-
-    return true;
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_device->deviceNode(), QString::number(partition.number()),
+                getPartitionType(partition.fileSystem().type(), m_device->partitionTable()->type()) } );
+    return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
 }
 
 bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state)
