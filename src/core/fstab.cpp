@@ -23,9 +23,9 @@
 
 #include <QChar>
 #include <QDebug>
-#include <QFile>
 #include <QFileInfo>
 #include <QRegularExpression>
+#include <QTemporaryFile>
 #include <QTextStream>
 
 static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QString& m_deviceNode);
@@ -180,11 +180,11 @@ static void writeEntry(QFile& output, const FstabEntry& entry)
 bool writeMountpoints(const FstabEntryList fstabEntries, const QString& filename)
 {
     bool rval = true;
-    const QString newFilename = QStringLiteral("%1.new").arg(filename);
-    QFile out(newFilename);
+    QTemporaryFile out;
+    out.setAutoRemove(false);
 
-    if (!out.open(QFile::ReadWrite | QFile::Truncate)) {
-        qWarning() << "could not open output file " << newFilename;
+    if (!out.open()) {
+        qWarning() << "could not open output file " << out.fileName();
         rval = false;
     } else {
         for (const auto &e : fstabEntries)
@@ -200,8 +200,8 @@ bool writeMountpoints(const FstabEntryList fstabEntries, const QString& filename
             rval = false;
         }
 
-        if (rval && !QFile::rename(newFilename, filename)) {
-            qWarning() << "could not rename " << newFilename << " to " << filename;
+        if (rval && !QFile::rename(out.fileName(), filename)) {
+            qWarning() << "could not rename " << out.fileName() << " to " << filename;
             rval = false;
         }
     }
