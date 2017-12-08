@@ -18,6 +18,7 @@
  *************************************************************************/
 
 #include "core/fstab.h"
+#include "util/externalcommand.h"
 
 #include <blkid/blkid.h>
 
@@ -179,32 +180,32 @@ static void writeEntry(QFile& output, const FstabEntry& entry)
 
 bool writeMountpoints(const FstabEntryList fstabEntries, const QString& filename)
 {
-    bool rval = true;
     QTemporaryFile out;
     out.setAutoRemove(false);
 
     if (!out.open()) {
         qWarning() << "could not open output file " << out.fileName();
-        rval = false;
+        return false;
     } else {
         for (const auto &e : fstabEntries)
             writeEntry(out, e);
 
         out.close();
-
         const QString bakFilename = QStringLiteral("%1.bak").arg(filename);
-        QFile::remove(bakFilename);
+        ExternalCommand mvCmd(QStringLiteral("mv"), { filename, bakFilename } );
 
-        if (QFile::exists(filename) && !QFile::rename(filename, bakFilename)) {
-            qWarning() << "could not rename " << filename << " to " << bakFilename;
-            rval = false;
+        if ( !(mvCmd.run(-1) && mvCmd.exitCode() == 0) ) {
+            qWarning() << "could not backup " << filename << " to " << bakFilename;
+            return false;
         }
 
-        if (rval && !QFile::rename(out.fileName(), filename)) {
-            qWarning() << "could not rename " << out.fileName() << " to " << filename;
-            rval = false;
+        ExternalCommand mvCmd2(QStringLiteral("mv"), { out.fileName(), filename } );
+
+        if ( !(mvCmd2.run(-1) && mvCmd2.exitCode() == 0) ) {
+            qWarning() << "could not move " << out.fileName() << " to " << filename;
+            return false;
         }
     }
 
-    return rval;
+    return true;
 }
