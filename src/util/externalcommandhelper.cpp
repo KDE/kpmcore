@@ -32,6 +32,7 @@ ActionReply ExternalCommandHelper::start(const QVariantMap& args)
     cmd.setEnvironment(environment);
     cmd.start(command, arguments);
     cmd.write(input);
+    cmd.closeWriteChannel();
     cmd.waitForFinished(-1);
     QByteArray output = cmd.readAllStandardOutput();
     reply.addData(QStringLiteral("output"), output);
