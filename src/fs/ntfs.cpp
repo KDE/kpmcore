@@ -190,11 +190,11 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
 
     ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=28") });
 
+    cmd.write(QByteArray(s, sizeof(s)));
     if (!cmd.start()) {
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
-    cmd.write(QByteArray(s, sizeof(s)));
     cmd.waitFor(-1);
 
     // Also update backup NTFS boot sector located at the end of the partition
@@ -202,11 +202,11 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
     qint64 pos = (lastSector() - firstSector()) * sectorSize() + 28;
     ExternalCommand cmd2(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=") + QString::number(pos) });
 
+    cmd2.write(QByteArray(s, sizeof(s)));
     if (!cmd2.start()) {
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
-    cmd2.write(QByteArray(s, sizeof(s)));
     cmd2.waitFor(-1);
 
     Log() << xi18nc("@info:progress", "Updated NTFS boot sector for partition <filename>%1</filename> successfully.", deviceNode);
