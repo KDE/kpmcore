@@ -48,15 +48,6 @@ bool CheckFileSystemJob::run(Report& parent)
     if (partition().fileSystem().supportCheck() == FileSystem::cmdSupportFileSystem)
         rval = partition().fileSystem().check(*report, partition().deviceNode());
 
-    // HACK
-    // In rare cases after moving file system to a new location file system check
-    // fails on the first try. As a temporary workaround, wait a bit and try again.
-    if (!rval) {
-        QThread::sleep(2);
-        qDebug() << "Partition might not be ready yet. Retrying...";
-        rval = partition().fileSystem().check(*report, partition().deviceNode());
-    }
-
     jobFinished(*report, rval);
 
     return rval;
