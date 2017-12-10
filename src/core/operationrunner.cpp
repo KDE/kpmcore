@@ -25,9 +25,6 @@
 #include <QDBusReply>
 #include <QMutex>
 
-#include <pwd.h>
-#include <unistd.h>
-
 /** Constructs an OperationRunner.
     @param ostack the OperationStack to act on
 */
