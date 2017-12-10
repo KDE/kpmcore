@@ -189,21 +189,26 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
     std::swap(s[1], s[2]);
 #endif
 
-    QFile device(deviceNode);
-    if (!device.open(QFile::ReadWrite | QFile::Unbuffered)) {
-        Log() << xi18nc("@info:progress", "Could not open partition <filename>%1</filename> for writing when trying to update the NTFS boot sector.", deviceNode);
-        return false;
-    }
+    ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=28") });
 
-    if (!device.seek(0x1c)) {
-        Log() << xi18nc("@info:progress", "Could not seek to position 0x1c on partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
-        return false;
-    }
-
-    if (device.write(s, 4) != 4) {
+    if (!cmd.start()) {
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
+    cmd.write(QByteArray(s, sizeof(s)));
+    cmd.waitFor(-1);
+
+    // Also update backup NTFS boot sector located at the end of the partition
+    // NOTE: this should fail if filesystem does not span the whole partition
+    qint64 pos = (lastSector() - firstSector()) * sectorSize() + 28;
+    ExternalCommand cmd2(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=") + QString::number(pos) });
+
+    if (!cmd2.start()) {
+        Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
+        return false;
+    }
+    cmd2.write(QByteArray(s, sizeof(s)));
+    cmd2.waitFor(-1);
 
     Log() << xi18nc("@info:progress", "Updated NTFS boot sector for partition <filename>%1</filename> successfully.", deviceNode);
 
