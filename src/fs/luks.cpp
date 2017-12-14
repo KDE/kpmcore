@@ -61,8 +61,9 @@ FileSystem::CommandSupportType luks::m_GetUUID = FileSystem::cmdSupportNone;
 luks::luks(qint64 firstsector,
            qint64 lastsector,
            qint64 sectorsused,
-           const QString& label)
-    : FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Luks)
+           const QString& label,
+           FileSystem::Type t)
+    : FileSystem(firstsector, lastsector, sectorsused, label, t)
     , m_innerFs(nullptr)
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)

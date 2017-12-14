@@ -66,7 +66,8 @@ const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode 
     QColor( 160,210,180 ),
     QColor( 255,170,0 ),
     QColor( 170, 120, 255 ),
-    QColor( 177, 82, 69 )
+    QColor( 177, 82, 69 ),
+    QColor( 170,30,77 )
 }
 };
 
@@ -444,6 +445,7 @@ static const KLocalizedString* typeNames()
         kxi18nc("@item filesystem name", "f2fs"),
         kxi18nc("@item filesystem name", "udf"),
         kxi18nc("@item filesystem name", "iso9660"),
+        kxi18nc("@item filesystem name", "luks2")
     };
 
     return s;

@@ -35,6 +35,7 @@
 #include "fs/jfs.h"
 #include "fs/linuxswap.h"
 #include "fs/luks.h"
+#include "fs/luks2.h"
 #include "fs/lvm2_pv.h"
 #include "fs/nilfs2.h"
 #include "fs/ntfs.h"
@@ -75,6 +76,7 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Jfs, new FS::jfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Luks, new FS::luks(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Luks2, new FS::luks2(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Nilfs2, new FS::nilfs2(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Ntfs, new FS::ntfs(-1, -1, -1, QString()));
@@ -123,6 +125,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     case FileSystem::Jfs:          fs = new FS::jfs(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::LinuxSwap:    fs = new FS::linuxswap(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Luks:         fs = new FS::luks(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Luks2:        fs = new FS::luks2(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Lvm2_PV:      fs = new FS::lvm2_pv(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Nilfs2:       fs = new FS::nilfs2(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Ntfs:         fs = new FS::ntfs(firstsector, lastsector, sectorsused, label); break;
@@ -138,10 +141,11 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     default:                       break;
     }
 
-    if (fs != nullptr)
+    if (fs != nullptr) {
         fs->setUUID(uuid);
+        fs->setSectorSize(sectorSize);
+    }
 
-    fs->setSectorSize(sectorSize);
     return fs;
 }
 

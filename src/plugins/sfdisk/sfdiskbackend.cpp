@@ -28,6 +28,7 @@
 
 #include "fs/filesystemfactory.h"
 #include "fs/luks.h"
+#include "fs/luks2.h"
 
 #include "util/globallog.h"
 #include "util/externalcommand.h"
@@ -232,7 +233,7 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         QString mountPoint;
         bool mounted;
         // sfdisk does not handle LUKS partitions
-        if (fs->type() == FileSystem::Luks) {
+        if (fs->type() == FileSystem::Luks || fs->type() == FileSystem::Luks2) {
             r |= PartitionRole::Luks;
             FS::luks* luksFs = static_cast<FS::luks*>(fs);
             luksFs->initLUKS();
@@ -339,7 +340,7 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
             if (version == QStringLiteral("1"))
                 rval = FileSystem::Luks;
             else if (version == QStringLiteral("2")) {
-                rval = FileSystem::Luks;
+                rval = FileSystem::Luks2;
             }
         }
         else if (s == QStringLiteral("exfat")) rval = FileSystem::Exfat;

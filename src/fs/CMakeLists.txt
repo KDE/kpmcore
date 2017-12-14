@@ -17,6 +17,7 @@ set(FS_SRC
     fs/jfs.cpp
     fs/linuxswap.cpp
     fs/luks.cpp
+    fs/luks2.cpp
     fs/lvm2_pv.cpp
     fs/nilfs2.cpp
     fs/ntfs.cpp
@@ -50,6 +51,7 @@ set(FS_LIB_HDRS
     fs/jfs.h
     fs/linuxswap.h
     fs/luks.h
+    fs/luks2.h
     fs/lvm2_pv.h
     fs/nilfs2.h
     fs/ntfs.h
