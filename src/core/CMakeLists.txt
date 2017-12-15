@@ -24,10 +24,6 @@ set(CORE_SRC
 )
 
 set(CORE_LIB_HDRS
-    core/copysource.h
-    core/copysourcedevice.h
-    core/copytarget.h
-    core/copytargetdevice.h
     core/device.h
     core/devicescanner.h
     core/diskdevice.h
