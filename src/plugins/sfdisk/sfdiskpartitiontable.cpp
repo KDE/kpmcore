@@ -68,7 +68,7 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
         return QString();
     }
 
-    QByteArray type = QByteArray(); // FIXME add map between fs types and default partition types
+    QByteArray type = QByteArray();
     if (partition.roles().has(PartitionRole::Extended))
         type = QByteArrayLiteral(" type=5");
 
