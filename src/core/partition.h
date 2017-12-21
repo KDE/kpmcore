@@ -213,6 +213,7 @@ public:
 
     void append(Partition* p) override {
         m_Children.append(p);
+        std::sort(m_Children.begin(), m_Children.end(), [] (const Partition *a, const Partition *b) -> bool {return a->firstSector() < b->firstSector();});
     }
     void setDevicePath(const QString& s) {
         m_DevicePath = s;
