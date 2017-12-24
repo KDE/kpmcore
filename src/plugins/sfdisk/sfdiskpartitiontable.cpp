@@ -165,6 +165,7 @@ static struct {
     { FileSystem::Ext3, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
     { FileSystem::Ext4, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
     { FileSystem::LinuxSwap, { QLatin1String("0657FD6D-A4AB-43C4-84E5-0933C84B4F4F"), QLatin1String("82") } },
+    { FileSystem::Fat12, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
     { FileSystem::Fat16, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
     { FileSystem::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
     { FileSystem::Nilfs2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
