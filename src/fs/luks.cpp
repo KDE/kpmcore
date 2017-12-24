@@ -316,7 +316,7 @@ bool luks::cryptClose(const QString& deviceNode)
     m_innerFs = nullptr;
 
     m_passphrase.clear();
-    setLabel({});
+    setLabel(FileSystem::readLabel(deviceNode));
     setUUID(readUUID(deviceNode));
     setSectorsUsed(-1);
 
@@ -469,11 +469,12 @@ QString luks::suggestedMapperName(const QString& deviceNode) const
     return QStringLiteral("luks-") + readOuterUUID(deviceNode);
 }
 
-QString luks::readLabel(const QString&) const
+QString luks::readLabel(const QString& deviceNode) const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->readLabel(mapperName());
-    return QString();
+
+    return FileSystem::readLabel(deviceNode);
 }
 
 bool luks::writeLabel(Report& report, const QString&, const QString& newLabel)
