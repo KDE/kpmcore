@@ -88,8 +88,9 @@ public:
         Udf = 26,
         Iso9660 = 27,
         Luks2 = 28,
+        Fat12 = 29,
 
-        __lastType = 29
+        __lastType = 30
     };
 
     /** The type of support for a given FileSystem action */

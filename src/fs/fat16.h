@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008,2009 by Volker Lanz <vl@fidra.de>                 *
+ *  Copyright (C) 2017 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -19,11 +20,7 @@
 
 #define KPMCORE_FAT16_H
 
-#include "util/libpartitionmanagerexport.h"
-
-#include "fs/filesystem.h"
-
-#include <QtGlobal>
+#include "fs/fat12.h"
 
 class Report;
 
@@ -34,78 +31,21 @@ namespace FS
 /** A fat16 file system.
     @author Volker Lanz <vl@fidra.de>
  */
-class LIBKPMCORE_EXPORT fat16 : public FileSystem
+class LIBKPMCORE_EXPORT fat16 : public fat12
 {
 public:
-    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Fat16);
+    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
 
 public:
     void init() override;
 
-    qint64 readUsedCapacity(const QString& deviceNode) const override;
-    bool check(Report& report, const QString& deviceNode) const override;
     bool create(Report& report, const QString& deviceNode) override;
-    bool updateUUID(Report& report, const QString& deviceNode) const override;
-    bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
-
-    CommandSupportType supportGetUsed() const override {
-        return m_GetUsed;
-    }
-    CommandSupportType supportGetLabel() const override {
-        return m_GetLabel;
-    }
-    CommandSupportType supportSetLabel() const override {
-        return m_SetLabel;
-    }
-    CommandSupportType supportCreate() const override {
-        return m_Create;
-    }
-    CommandSupportType supportGrow() const override {
-        return m_Grow;
-    }
-    CommandSupportType supportShrink() const override {
-        return m_Shrink;
-    }
-    CommandSupportType supportMove() const override {
-        return m_Move;
-    }
-    CommandSupportType supportCheck() const override {
-        return m_Check;
-    }
-    CommandSupportType supportCopy() const override {
-        return m_Copy;
-    }
-    CommandSupportType supportBackup() const override {
-        return m_Backup;
-    }
-    CommandSupportType supportUpdateUUID() const override {
-        return m_UpdateUUID;
-    }
-    CommandSupportType supportGetUUID() const override {
-        return m_GetUUID;
-    }
 
     qint64 minCapacity() const override;
     qint64 maxCapacity() const override;
-    int maxLabelLength() const override;
-    QValidator* labelValidator(QObject *parent) const override;
-    SupportTool supportToolName() const override;
     bool supportToolFound() const override;
-
-public:
-    static CommandSupportType m_GetUsed;
-    static CommandSupportType m_GetLabel;
-    static CommandSupportType m_SetLabel;
-    static CommandSupportType m_Create;
-    static CommandSupportType m_Grow;
-    static CommandSupportType m_Shrink;
-    static CommandSupportType m_Move;
-    static CommandSupportType m_Check;
-    static CommandSupportType m_Copy;
-    static CommandSupportType m_Backup;
-    static CommandSupportType m_UpdateUUID;
-    static CommandSupportType m_GetUUID;
 };
 }
 

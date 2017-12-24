@@ -327,10 +327,12 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
         else if (s == QStringLiteral("hfsplus")) rval = FileSystem::HfsPlus;
         else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
         else if (s == QStringLiteral("vfat")) {
-            if (version == QStringLiteral("FAT12") || version == QStringLiteral("FAT16"))
-                rval = FileSystem::Fat16;
-            else if (version == QStringLiteral("FAT32"))
+            if (version == QStringLiteral("FAT32"))
                 rval = FileSystem::Fat32;
+            else if (version == QStringLiteral("FAT16"))
+                rval = FileSystem::Fat16;
+            else if (version == QStringLiteral("FAT12"))
+                rval = FileSystem::Fat12;
         }
         else if (s == QStringLiteral("btrfs")) rval = FileSystem::Btrfs;
         else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Ocfs2;

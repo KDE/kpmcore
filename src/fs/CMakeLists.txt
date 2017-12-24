@@ -6,6 +6,7 @@ set(FS_SRC
     fs/ext4.cpp
     fs/extended.cpp
     fs/f2fs.cpp
+    fs/fat12.cpp
     fs/fat16.cpp
     fs/fat32.cpp
     fs/filesystem.cpp
@@ -40,6 +41,7 @@ set(FS_LIB_HDRS
     fs/ext4.h
     fs/extended.h
     fs/f2fs.h
+    fs/fat12.h
     fs/fat16.h
     fs/fat32.h
     fs/filesystem.h
