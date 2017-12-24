@@ -26,7 +26,7 @@
 #include "fs/filesystem.h"
 
 #include <QtGlobal>
-#include <QPointer>
+#include <QWidget>
 
 class Report;
 
@@ -40,7 +40,7 @@ namespace FS
 class LIBKPMCORE_EXPORT luks : public FileSystem
 {
 public:
-    luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Luks);
     ~luks() override;
 
 public:
@@ -199,7 +199,7 @@ public:
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
 
-private:
+protected:
     mutable FileSystem* m_innerFs;
 
     mutable bool m_isCryptOpen;

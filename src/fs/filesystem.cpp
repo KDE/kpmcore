@@ -40,34 +40,36 @@
 const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode =
 {
 {
-    QColor( 220,205,175 ),
-    QColor( 187,249,207 ),
-    QColor( 102,121,150 ),
-    QColor( 122,145,180 ),
-    QColor( 143,170,210 ),
-    QColor( 155,155,130 ),
-    QColor( 204,179,215 ),
-    QColor( 229,201,240 ),
-    QColor( 244,214,255 ),
-    QColor( 216,220,135 ),
-    QColor( 251,255,157 ),
-    QColor( 200,255,254 ),
-    QColor( 137,200,198 ),
-    QColor( 210,136,142 ),
-    QColor( 240,165,171 ),
-    QColor( 151,220,134 ),
-    QColor( 220,205,175 ),
-    QColor( 173,205,255 ),
-    QColor( 176,155,185 ),
-    QColor( 170,30,77 ),
-    QColor( 96,140,85 ),
-    QColor( 33,137,108 ),
-    QColor( 250,230,255 ),
-    QColor( 242,155,104 ),
-    QColor( 160,210,180 ),
-    QColor( 255,170,0 ),
-    QColor( 170, 120, 255 ),
-    QColor( 177, 82, 69 )
+    QColor( 220,205,175 ), // unknown
+    QColor( 187,249,207 ), // extended
+    QColor( 102,121,150 ), // ext2
+    QColor( 122,145,180 ), // ext3
+    QColor( 143,170,210 ), // ext4
+    QColor( 155,155,130 ), // swap
+    QColor( 204,179,215 ), // fat16
+    QColor( 229,201,240 ), // fat32
+    QColor( 244,214,255 ), // ntfs
+    QColor( 216,220,135 ), // reiser
+    QColor( 251,255,157 ), // reiser4
+    QColor( 200,255,254 ), // xfs
+    QColor( 137,200,198 ), // jfs
+    QColor( 210,136,142 ), // hfs
+    QColor( 240,165,171 ), // hfs+
+    QColor( 151,220,134 ), // ufs
+    QColor( 220,205,175 ), // unformatted
+    QColor( 173,205,255 ), // btrfs
+    QColor( 176,155,185 ), // hpfs
+    QColor( 170,30,77 ),   // luks
+    QColor( 96,140,85 ),   // ocfs2
+    QColor( 33,137,108 ),  // zfs
+    QColor( 250,230,255 ), // exfat
+    QColor( 242,155,104 ), // nilfs2
+    QColor( 160,210,180 ), // lvm2 pv
+    QColor( 255,170,0 ),   // f2fs
+    QColor( 170,120,255 ), // udf
+    QColor( 177,82,69 ),   // iso9660
+    QColor( 223,39,104 ),  // luks2
+    QColor( 204,179,255 )  // fat12
 }
 };
 
@@ -445,6 +447,8 @@ static const KLocalizedString* typeNames()
         kxi18nc("@item filesystem name", "f2fs"),
         kxi18nc("@item filesystem name", "udf"),
         kxi18nc("@item filesystem name", "iso9660"),
+        kxi18nc("@item filesystem name", "luks2"),
+        kxi18nc("@item filesystem name", "fat12")
     };
 
     return s;

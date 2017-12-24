@@ -8,8 +8,8 @@ libparted: Either get it from http://www.gnu.org/software/parted/download.shtml
 and build it yourself or, preferably, install your distribution's packages
 (don't forget the dev-package).
 
-libblkid: Part of the util-linux-ng project available at
-http://userweb.kernel.org/~kzak/util-linux-ng/.
+libblkid: Part of the util-linux project available at
+https://github.com/karelzak/util-linux
 
 libatasmart: Available from http://0pointer.de/blog/projects/being-smart.html
 
@@ -18,11 +18,11 @@ KDE Frameworks: The minimum required version is 5.0.
 
 2. Configure
 
-KDE Partition Manager is built with cmake. It is recommended to build out of tree:
+KPMcore is built with cmake. It is recommended to build out of tree:
 After unpacking the source, create a separate build directory and run cmake there:
 
 $ tar xfj kpmcore-x.y.z.tar.bz2
-$ cd partitionmanager-x.y.z
+$ cd kpmcore-x.y.z
 $ mkdir build
 $ cd build
 $ cmake ..

@@ -1,5 +1,4 @@
 /*************************************************************************
- *  Copyright (C) 2008,2009 by Volker Lanz <vl@fidra.de>                 *
  *  Copyright (C) 2017 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
@@ -16,36 +15,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_FAT16_H)
+#if !defined(KPMCORE_LUKS2_H)
 
-#define KPMCORE_FAT16_H
+#define KPMCORE_LUKS2_H
 
-#include "fs/fat12.h"
+#include "util/libpartitionmanagerexport.h"
 
-class Report;
+#include "fs/luks.h"
+
+#include <QtGlobal>
 
 class QString;
 
 namespace FS
 {
-/** A fat16 file system.
-    @author Volker Lanz <vl@fidra.de>
- */
-class LIBKPMCORE_EXPORT fat16 : public fat12
+/** A LUKS2 crypto file system.
+    @author Andrius Štikonas <andrius@stikonas.eu>
+*/
+class LIBKPMCORE_EXPORT luks2 : public luks
 {
 public:
-    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
-    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
+    luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    ~luks2() override;
 
-public:
-    void init() override;
-
-    bool create(Report& report, const QString& deviceNode) override;
-    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
-
-    qint64 minCapacity() const override;
-    qint64 maxCapacity() const override;
-    bool supportToolFound() const override;
+    FileSystem::Type type() const override;
 };
 }
 

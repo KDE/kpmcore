@@ -61,8 +61,9 @@ FileSystem::CommandSupportType luks::m_GetUUID = FileSystem::cmdSupportNone;
 luks::luks(qint64 firstsector,
            qint64 lastsector,
            qint64 sectorsused,
-           const QString& label)
-    : FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Luks)
+           const QString& label,
+           FileSystem::Type t)
+    : FileSystem(firstsector, lastsector, sectorsused, label, t)
     , m_innerFs(nullptr)
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)
@@ -315,7 +316,7 @@ bool luks::cryptClose(const QString& deviceNode)
     m_innerFs = nullptr;
 
     m_passphrase.clear();
-    setLabel({});
+    setLabel(FileSystem::readLabel(deviceNode));
     setUUID(readUUID(deviceNode));
     setSectorsUsed(-1);
 
@@ -468,11 +469,12 @@ QString luks::suggestedMapperName(const QString& deviceNode) const
     return QStringLiteral("luks-") + readOuterUUID(deviceNode);
 }
 
-QString luks::readLabel(const QString&) const
+QString luks::readLabel(const QString& deviceNode) const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->readLabel(mapperName());
-    return QString();
+
+    return FileSystem::readLabel(deviceNode);
 }
 
 bool luks::writeLabel(Report& report, const QString&, const QString& newLabel)

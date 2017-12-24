@@ -1,5 +1,4 @@
 /*************************************************************************
- *  Copyright (C) 2008,2009 by Volker Lanz <vl@fidra.de>                 *
  *  Copyright (C) 2017 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
@@ -16,37 +15,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_FAT16_H)
-
-#define KPMCORE_FAT16_H
-
-#include "fs/fat12.h"
-
-class Report;
-
-class QString;
+#include "fs/luks2.h"
 
 namespace FS
 {
-/** A fat16 file system.
-    @author Volker Lanz <vl@fidra.de>
- */
-class LIBKPMCORE_EXPORT fat16 : public fat12
+
+luks2::luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label)
+    : luks(firstsector, lastsector, sectorsused, label, FileSystem::Luks2)
 {
-public:
-    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
-    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
-
-public:
-    void init() override;
-
-    bool create(Report& report, const QString& deviceNode) override;
-    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
-
-    qint64 minCapacity() const override;
-    qint64 maxCapacity() const override;
-    bool supportToolFound() const override;
-};
 }
 
-#endif
+luks2::~luks2()
+{
+}
+
+FileSystem::Type luks2::type() const
+{
+    if (m_isCryptOpen && m_innerFs)
+        return m_innerFs->type();
+    return FileSystem::Luks2;
+}
+
+}

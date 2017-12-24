@@ -173,6 +173,7 @@ int PartitionTable::numPrimaries() const
 void PartitionTable::append(Partition* partition)
 {
     children().append(partition);
+    std::sort(children().begin(), children().end(), [] (const Partition *a, const Partition *b) -> bool {return a->firstSector() < b->firstSector();});
 }
 
 /** @param f the flag to get the name for

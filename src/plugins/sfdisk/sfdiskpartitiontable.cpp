@@ -68,7 +68,7 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
         return QString();
     }
 
-    QByteArray type = QByteArray(); // FIXME add map between fs types and default partition types
+    QByteArray type = QByteArray();
     if (partition.roles().has(PartitionRole::Extended))
         type = QByteArrayLiteral(" type=5");
 
@@ -212,6 +212,7 @@ bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partitio
 
 bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state)
 {
+    // We only allow setting one active partition per device
     if (flag == PartitionTable::FlagBoot && state == true) {
         ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_device->deviceNode(), QString::number(partition.number()) } );
         if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0)
