@@ -31,6 +31,7 @@ SfdiskDevice::SfdiskDevice(const Device& d) :
 
 SfdiskDevice::~SfdiskDevice()
 {
+    close();
 }
 
 bool SfdiskDevice::open()
@@ -50,19 +51,16 @@ bool SfdiskDevice::close()
     if (isExclusive())
         setExclusive(false);
 
+    CoreBackendPartitionTable* ptable = new SfdiskPartitionTable(m_device);
+    ptable->commit();
+    delete ptable;
+
     return true;
 }
 
 CoreBackendPartitionTable* SfdiskDevice::openPartitionTable()
 {
-    CoreBackendPartitionTable* ptable = new SfdiskPartitionTable(m_device);
-
-    if (ptable == nullptr || !ptable->open()) {
-        delete ptable;
-        ptable = nullptr;
-    }
-
-    return ptable;
+    return new SfdiskPartitionTable(m_device);
 }
 
 bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
