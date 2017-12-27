@@ -7,7 +7,5 @@ set(BACKEND_SRC
 
 set(BACKEND_LIB_HDRS
     backend/corebackend.h
-    backend/corebackenddevice.h
     backend/corebackendmanager.h
-    backend/corebackendpartitiontable.h
 )
