@@ -43,6 +43,46 @@ FileSystem::Type luks2::type() const
     return FileSystem::Luks2;
 }
 
+bool luks2::create(Report& report, const QString& deviceNode)
+{
+    Q_ASSERT(m_innerFs);
+    Q_ASSERT(!m_passphrase.isEmpty());
+
+    ExternalCommand createCmd(report, QStringLiteral("cryptsetup"),
+                              { QStringLiteral("-s"),
+                                QStringLiteral("512"),
+                                QStringLiteral("--batch-mode"),
+                                QStringLiteral("--force-password"),
+                                QStringLiteral("--type"), QStringLiteral("luks2"),
+                                QStringLiteral("luksFormat"),
+                                deviceNode });
+    if (!( createCmd.start(-1) &&
+                createCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 &&
+                createCmd.waitFor() && createCmd.exitCode() == 0))
+    {
+        return false;
+    }
+
+    ExternalCommand openCmd(report, QStringLiteral("cryptsetup"),
+                              { QStringLiteral("open"),
+                                deviceNode,
+                                suggestedMapperName(deviceNode) });
+
+    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 && openCmd.waitFor()))
+        return false;
+
+    setPayloadSize();
+    scan(deviceNode);
+
+    if (mapperName().isEmpty())
+        return false;
+
+    if (!m_innerFs->create(report, mapperName()))
+        return false;
+
+    return true;
+}
+
 bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) const
 {
     Q_ASSERT(m_innerFs);

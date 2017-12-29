@@ -126,6 +126,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("512"),
                                 QStringLiteral("--batch-mode"),
                                 QStringLiteral("--force-password"),
+                                QStringLiteral("--type"), QStringLiteral("luks1"),
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
     if (!( createCmd.start(-1) &&
