@@ -43,7 +43,7 @@ public:
 
     FileSystem::Type type() const override;
 
-    luks::KeyLocation keyLocation() override;
+    luks::KeyLocation keyLocation();
 };
 }
 

@@ -188,7 +188,6 @@ public:
     static bool canEncryptType(FileSystem::Type type);
     void initLUKS();
 
-    virtual luks::KeyLocation keyLocation() { return luks::dmcrypt; };
     bool testPassphrase(const QString& deviceNode, const QString& passphrase) const;
 
 protected:
