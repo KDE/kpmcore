@@ -38,7 +38,11 @@ public:
     luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
     ~luks2() override;
 
+    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+
     FileSystem::Type type() const override;
+
+    luks::KeyLocation keyLocation() override;
 };
 }
 
