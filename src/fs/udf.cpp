@@ -30,9 +30,12 @@
 
 namespace FS
 {
-constexpr qint64 MIN_UDF_BLOCKS = 282;
+constexpr qint64 MIN_UDF_BLOCKS = 300;
 constexpr qint64 MAX_UDF_BLOCKS = ((1ULL << 32) - 1);
 
+FileSystem::CommandSupportType udf::m_GetUsed = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType udf::m_SetLabel = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType udf::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType udf::m_Create = FileSystem::cmdSupportNone;
 bool udf::oldMkudffsVersion = false;
 
@@ -43,6 +46,8 @@ udf::udf(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QStrin
 
 void udf::init()
 {
+    m_GetUsed = findExternal(QStringLiteral("udfinfo"), {}, 1) ? cmdSupportFileSystem : cmdSupportNone;
+    m_SetLabel = m_UpdateUUID = findExternal(QStringLiteral("udflabel"), {}, 1) ? cmdSupportFileSystem : cmdSupportNone;
     m_Create = findExternal(QStringLiteral("mkudffs"), {}, 1) ? cmdSupportFileSystem : cmdSupportNone;
 
     if (m_Create == cmdSupportFileSystem) {
@@ -54,7 +59,11 @@ void udf::init()
 
 bool udf::supportToolFound() const
 {
-    return m_Create != cmdSupportNone;
+    return
+        m_GetUsed != cmdSupportNone &&
+        m_SetLabel != cmdSupportNone &&
+        m_UpdateUUID != cmdSupportNone &&
+        m_Create != cmdSupportNone;
 }
 
 FileSystem::SupportTool udf::supportToolName() const
@@ -91,6 +100,36 @@ QValidator* udf::labelValidator(QObject *parent) const
         m_LabelValidator->setRegularExpression(QRegularExpression(QStringLiteral("[\\x{0001}-\\x{00FF}]{0,126}|[\\x{0001}-\\x{FFFF}]{0,63}")));
     }
     return m_LabelValidator;
+}
+
+qint64 udf::readUsedCapacity(const QString& deviceNode) const
+{
+    ExternalCommand cmd(QStringLiteral("udfinfo"), { QStringLiteral("--utf8"), deviceNode });
+    if (!cmd.run(-1) || cmd.exitCode() != 0)
+        return -1;
+
+    QRegularExpressionMatch reBlockSize = QRegularExpression(QStringLiteral("^blocksize=([0-9]+)$"), QRegularExpression::MultilineOption).match(cmd.output());
+    QRegularExpressionMatch reUsedBlocks = QRegularExpression(QStringLiteral("^usedblocks=([0-9]+)$"), QRegularExpression::MultilineOption).match(cmd.output());
+
+    if (!reBlockSize.hasMatch() || !reUsedBlocks.hasMatch())
+        return -1;
+
+    qint64 blockSize = reBlockSize.captured(1).toLongLong();
+    qint64 usedBlocks = reUsedBlocks.captured(1).toLongLong();
+
+    return usedBlocks * blockSize;
+}
+
+bool udf::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
+{
+    ExternalCommand cmd(report, QStringLiteral("udflabel"), { QStringLiteral("--utf8"), deviceNode, newLabel });
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool udf::updateUUID(Report& report, const QString& deviceNode) const
+{
+    ExternalCommand cmd(report, QStringLiteral("udflabel"), { QStringLiteral("--utf8"), QStringLiteral("--uuid=random"), deviceNode });
+    return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool udf::create(Report& report, const QString& deviceNode)

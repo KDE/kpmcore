@@ -42,9 +42,15 @@ public:
 public:
     void init() override;
 
+    qint64 readUsedCapacity(const QString& deviceNode) const override;
     bool create(Report& report, const QString& deviceNode) override;
     bool createWithLabel(Report& report, const QString& deviceNode, const QString& label) override;
+    bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    bool updateUUID(Report& report, const QString& deviceNode) const override;
 
+    CommandSupportType supportGetUsed() const override {
+        return m_GetUsed;
+    }
     CommandSupportType supportGetLabel() const override {
         return cmdSupportCore;
     }
@@ -63,6 +69,12 @@ public:
     CommandSupportType supportBackup() const override {
         return cmdSupportCore;
     }
+    CommandSupportType supportSetLabel() const override {
+        return m_SetLabel;
+    }
+    CommandSupportType supportUpdateUUID() const override {
+        return m_UpdateUUID;
+    }
     CommandSupportType supportGetUUID() const override {
         return cmdSupportCore;
     }
@@ -75,6 +87,9 @@ public:
     bool supportToolFound() const override;
 
 public:
+    static CommandSupportType m_GetUsed;
+    static CommandSupportType m_SetLabel;
+    static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_Create;
 
 private:
