@@ -58,91 +58,115 @@ public:
     typedef QList<SmartAttribute> Attributes;
 
 public:
-    SmartStatus(const QString& device_path);
+    SmartStatus(const QString &device_path);
 
 public:
     void update();
 
-    const QString& devicePath() const {
+    const QString &devicePath() const
+    {
         return m_DevicePath;
     }
-    bool isValid() const {
+    bool isValid() const
+    {
         return m_InitSuccess;
     }
-    bool status() const {
+    bool status() const
+    {
         return m_Status;
     }
-    const QString& modelName() const {
+    const QString &modelName() const
+    {
         return m_ModelName;
     }
-    const QString& serial() const {
+    const QString &serial() const
+    {
         return m_Serial;
     }
-    const QString& firmware() const {
+    const QString &firmware() const
+    {
         return m_Firmware;
     }
-    quint64 temp() const {
+    quint64 temp() const
+    {
         return m_Temp;
     }
-    quint64 badSectors() const {
+    quint64 badSectors() const
+    {
         return m_BadSectors;
     }
-    quint64 powerCycles() const {
+    quint64 powerCycles() const
+    {
         return m_PowerCycles;
     }
-    quint64 poweredOn() const {
+    quint64 poweredOn() const
+    {
         return m_PoweredOn;
     }
-    const Attributes& attributes() const {
+    const Attributes &attributes() const
+    {
         return m_Attributes;
     }
-    Overall overall() const {
+    Overall overall() const
+    {
         return m_Overall;
     }
-    SelfTestStatus selfTestStatus() const {
+    SelfTestStatus selfTestStatus() const
+    {
         return m_SelfTestStatus;
     }
+
+    void addAttributes(QList<SmartAttributeParsedData> attr);
 
     static QString tempToString(quint64 mkelvin);
     static QString overallAssessmentToString(Overall o);
     static QString selfTestStatusToString(SmartStatus::SelfTestStatus s);
 
 protected:
-    void setStatus(bool s) {
+    void setStatus(bool s)
+    {
         m_Status = s;
     }
-    void setModelName(const QString& name) {
+    void setModelName(const QString &name)
+    {
         m_ModelName = name;
     }
-    void setSerial(const QString& s) {
+    void setSerial(const QString &s)
+    {
         m_Serial = s;
     }
-    void setFirmware(const QString& f) {
+    void setFirmware(const QString &f)
+    {
         m_Firmware = f;
     }
-    void setTemp(quint64 t) {
+    void setTemp(quint64 t)
+    {
         m_Temp = t;
     }
-    void setInitSuccess(bool b) {
+    void setInitSuccess(bool b)
+    {
         m_InitSuccess = b;
     }
-    void setBadSectors(quint64 s) {
+    void setBadSectors(quint64 s)
+    {
         m_BadSectors = s;
     }
-    void setPowerCycles(quint64 p) {
+    void setPowerCycles(quint64 p)
+    {
         m_PowerCycles = p;
     }
-    void setPoweredOn(quint64 t) {
+    void setPoweredOn(quint64 t)
+    {
         m_PoweredOn = t;
     }
-    void setOverall(Overall o) {
+    void setOverall(Overall o)
+    {
         m_Overall = o;
     }
-    void setSelfTestStatus(SelfTestStatus s) {
+    void setSelfTestStatus(SelfTestStatus s)
+    {
         m_SelfTestStatus = s;
     }
-
-    static void callback(SkDisk* skDisk, const SkSmartAttributeParsedData* a, void* user_data);
 
 private:
     const QString m_DevicePath;

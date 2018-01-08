@@ -20,6 +20,9 @@ set(CORE_SRC
     core/partitiontable.cpp
     core/smartstatus.cpp
     core/smartattribute.cpp
+    core/smartparser.cpp
+    core/smartattributeparseddata.cpp
+    core/smartdiskinformation.cpp
     core/volumemanagerdevice.cpp
 )
 
@@ -38,6 +41,9 @@ set(CORE_LIB_HDRS
     core/partitiontable.h
     core/smartattribute.h
     core/smartstatus.h
+    core/smartparser.h
+    core/smartattributeparseddata.h
+    core/smartdiskinformation.h
     core/volumemanagerdevice.h
 )
 

@@ -18,33 +18,33 @@
 
 #include "core/smartattribute.h"
 #include "core/smartstatus.h"
+#include "core/smartattributeparseddata.h"
 
 #include <QLocale>
 
 #include <KLocalizedString>
 #include <KFormat>
 
-#include <atasmart.h>
-
 static QString getAttrName(qint32 id);
 static QString getAttrDescription(qint32 id);
 static QString getPrettyValue(quint64 value, qint64 unit);
-static SmartAttribute::Assessment getAssessment(const SkSmartAttributeParsedData* a);
-static QString getRaw(const uint8_t*);
+static SmartAttribute::Assessment getAssessment(const SmartAttributeParsedData& a);
+static QString getRaw(quint64 raw);
 
-SmartAttribute::SmartAttribute(const SkSmartAttributeParsedData* a) :
-    m_Id(a->id),
-    m_Name(getAttrName(a->id)),
-    m_Desc(getAttrDescription(a->id)),
-    m_FailureType(a->prefailure ? PreFailure : OldAge),
-    m_UpdateType(a->online ? Online : Offline),
-    m_Current(a->current_value_valid ?  a->current_value : -1),
-    m_Worst(a->worst_value_valid ? a->worst_value : -1),
-    m_Threshold(a->threshold_valid ? a->threshold : -1),
-    m_Raw(getRaw(a->raw)),
+SmartAttribute::SmartAttribute(const SmartAttributeParsedData& a) :
+    m_Id(a.id()),
+    m_Name(getAttrName(a.id())),
+    m_Desc(getAttrDescription(a.id())),
+    m_FailureType(a.prefailure() ? PreFailure : OldAge),
+    m_UpdateType(a.online() ? Online : Offline),
+    m_Current(a.currentValueValid() ?  a.currentValue() : -1),
+    m_Worst(a.worstValueValid() ? a.worstValue() : -1),
+    m_Threshold(a.thresholdValid() ? a.threshold() : -1),
+    m_Raw(getRaw(a.raw())),
     m_Assessment(getAssessment(a)),
-    m_Value(getPrettyValue(a->pretty_value, a->pretty_unit))
+    m_Value(getPrettyValue(a.prettyValue(), a.prettyUnit()))
 {
+    
 }
 
 QString SmartAttribute::assessmentToString(Assessment a)
@@ -73,23 +73,23 @@ static QString getPrettyValue(quint64 value, qint64 unit)
     QString rval;
 
     switch (unit) {
-    case SK_SMART_ATTRIBUTE_UNIT_MSECONDS:
+    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS:
         rval = KFormat().formatDuration(value);
         break;
 
-    case SK_SMART_ATTRIBUTE_UNIT_SECTORS:
+    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_SECTORS:
         rval = xi18ncp("@item:intable", "%1 sector", "%1 sectors", value);
         break;
 
-    case SK_SMART_ATTRIBUTE_UNIT_MKELVIN:
+    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN:
         rval = SmartStatus::tempToString(value);
         break;
 
-    case SK_SMART_ATTRIBUTE_UNIT_NONE:
+    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE:
         rval = QLocale().toString(value);
         break;
 
-    case SK_SMART_ATTRIBUTE_UNIT_UNKNOWN:
+    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN:
     default:
         rval = xi18nc("@item:intable not applicable", "N/A");
         break;
@@ -214,23 +214,23 @@ static QString getAttrDescription(qint32 id)
     return QString();
 }
 
-static SmartAttribute::Assessment getAssessment(const SkSmartAttributeParsedData* a)
+static SmartAttribute::Assessment getAssessment(const SmartAttributeParsedData& a)
 {
     SmartAttribute::Assessment rval = SmartAttribute::NotApplicable;
 
     bool failed = false;
     bool hasFailed = false;
 
-    if (a->prefailure) {
-        if (a->good_now_valid && !a->good_now)
+    if (a.prefailure()) {
+        if (a.goodNowValid() && !a.goodNow())
             failed = true;
 
-        if (a->good_in_the_past_valid && !a->good_in_the_past)
+        if (a.goodInThePastValid() && !a.goodInThePast())
             hasFailed = true;
-    } else if (a->threshold_valid) {
-        if (a->current_value_valid && a->current_value <= a->threshold)
+    } else if (a.thresholdValid()) {
+        if (a.currentValueValid() && a.currentValue() <= a.threshold())
             failed = true;
-        else if (a->worst_value_valid && a->worst_value <= a->threshold)
+        else if (a.worstValueValid() && a.worstValue() <= a.threshold())
             hasFailed = true;
     }
 
@@ -238,19 +238,17 @@ static SmartAttribute::Assessment getAssessment(const SkSmartAttributeParsedData
         rval = SmartAttribute::Failing;
     else if (hasFailed)
         rval = SmartAttribute::HasFailed;
-    else if (a->warn)
+    else if (a.warn())
         rval = SmartAttribute::Warning;
-    else if (a->good_now_valid)
+    else if (a.goodNowValid())
         rval = SmartAttribute::Good;
 
     return rval;
 }
 
-static QString getRaw(const uint8_t* raw)
+static QString getRaw(quint64 raw)
 {
     QString rval = QStringLiteral("0x");
-    for (qint32 i = 5; i >= 0; i--)
-        rval += QStringLiteral("%1").arg(raw[i], 2, 16, QLatin1Char('0'));
-
+    rval += QStringLiteral("%1").arg(raw, 12, 16, QLatin1Char('0'));
     return rval;
 }
