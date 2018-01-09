@@ -20,7 +20,7 @@
 
 #include <QJsonObject>
 #include <QMap>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QVariant>
 
 #define MKELVIN_VALID_MIN ((qint64) ((-15LL*1000LL) + 273150LL))
@@ -632,18 +632,20 @@ static SmartAttributeParsedData::SmartQuirk getQuirk(QString model, QString firm
 {
     const SmartAttributeParsedData::SmartQuirkDataBase *db;
 
-    QRegExp modelRegex;
-    QRegExp firmwareRegex;
+    QRegularExpression modelRegex;
+    QRegularExpression firmwareRegex;
 
     for (db = quirkDatabase(); db->model || db->firmware; db++) {
         if (db->model) {
             modelRegex.setPattern(QString::fromLocal8Bit(db->model));
-            if (!modelRegex.exactMatch(model))
+            QRegularExpressionMatch match = modelRegex.match(model);
+            if (!match.hasMatch())
                 continue;
         }
         if (db->firmware) {
             firmwareRegex.setPattern(QString::fromLocal8Bit(db->firmware));
-            if (!firmwareRegex.exactMatch(firmware))
+            QRegularExpressionMatch match = firmwareRegex.match(firmware);
+            if (!match.hasMatch())
                 continue;
         }
         return db->quirk;

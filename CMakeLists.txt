@@ -79,7 +79,6 @@ kde_enable_exceptions()
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(BLKID REQUIRED blkid>=2.30)
-pkg_check_modules(LIBATASMART REQUIRED libatasmart)
 
 include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE_DIRS} lib/ src/)
 
