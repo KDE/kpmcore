@@ -20,11 +20,12 @@
 #include "core/smartattributeparseddata.h"
 #include "core/smartdiskinformation.h"
 
+#include "util/externalcommand.h"
+
 #include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QProcess>
 #include <QString>
 
 SmartParser::SmartParser(const QString &device_path) :
@@ -80,7 +81,7 @@ bool SmartParser::init()
     m_DiskInformation->setModel(smartJson[model_name].toString());
     m_DiskInformation->setFirmware(smartJson[firmware].toString());
     m_DiskInformation->setSerial(smartJson[serial_number].toString());
-    m_DiskInformation->setSize(smartJson[user_capacity].toString().toULongLong());
+    m_DiskInformation->setSize(smartJson[user_capacity].toVariant().toULongLong());
 
     QJsonObject selfTest = smartJson[self_test].toObject();
     QJsonObject selfTestStatus = selfTest[status].toObject();
@@ -114,20 +115,15 @@ void SmartParser::loadSmartOutput()
         args.append(QString::fromLocal8Bit("-j"));
         args.append(devicePath());
 
-        QProcess smartctl;
-        smartctl.start(QString::fromLocal8Bit("smartctl"), args);
+        ExternalCommand smartctl(QString::fromLocal8Bit("smartctl"), args);
 
-        bool success = smartctl.waitForFinished();
+        if (smartctl.run() && smartctl.exitCode() == 0) {
+            QByteArray output = smartctl.rawOutput();
 
-        if (!success || smartctl.exitStatus() == QProcess::CrashExit) {
-            qDebug() << "smartctl initialization failed for " << devicePath() << ": " << strerror(errno);
-            return;
+            m_SmartOutput = QJsonDocument::fromJson(output);
         }
-
-        QByteArray output = smartctl.readAllStandardOutput();
-        smartctl.close();
-
-        m_SmartOutput = QJsonDocument::fromJson(output);
+        else
+            qDebug() << "smartctl initialization failed for " << devicePath() << ": " << strerror(errno);
     }
 }
 
@@ -152,7 +148,7 @@ void SmartParser::loadAttributes()
         return;
     }
 
-    foreach (QJsonValue value, attributeArray) {
+    for (const QJsonValue &value : qAsConst(attributeArray)) {
         SmartAttributeParsedData parsedObject(m_DiskInformation, value.toObject());
         m_DiskInformation->addAttribute(parsedObject);
     }

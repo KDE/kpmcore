@@ -201,7 +201,7 @@ private:
     bool m_Warn;
     SmartAttributeUnit m_PrettyUnit;
     SmartDiskInformation *m_Disk;
-    SmartQuirk *m_Quirk;
+    SmartQuirk m_Quirk;
 };
 
 #endif // SMARTATTRIBUTEPARSEDDATA_H

@@ -154,7 +154,7 @@ bool SmartDiskInformation::updatePowerCycle()
 
 void SmartDiskInformation::validateBadAttributes()
 {
-    foreach (SmartAttributeParsedData attribute, m_Attributes) {
+    for (const SmartAttributeParsedData &attribute : qAsConst(m_Attributes)) {
         if (attribute.prefailure()) {
             if (attribute.goodNowValid() && !attribute.goodNow())
                 m_BadAttributeNow = true;
@@ -167,7 +167,7 @@ void SmartDiskInformation::validateBadAttributes()
 SmartAttributeParsedData *SmartDiskInformation::findAttribute(quint32 id)
 {
     SmartAttributeParsedData *attr = nullptr;
-    foreach (SmartAttributeParsedData attribute, m_Attributes) {
+    for (const SmartAttributeParsedData &attribute : qAsConst(m_Attributes)) {
         if (id == attribute.id()) {
             attr = new SmartAttributeParsedData(attribute);
             break;

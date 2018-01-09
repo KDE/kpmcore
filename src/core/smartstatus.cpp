@@ -230,7 +230,7 @@ void SmartStatus::addAttributes(QList<SmartAttributeParsedData> attr)
 {
     m_Attributes.clear();
 
-    foreach (SmartAttributeParsedData at, attr) {
+    for (const SmartAttributeParsedData &at : qAsConst(attr)) {
         SmartAttribute sm(at);
         m_Attributes.append(sm);
     }

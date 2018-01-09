@@ -21,6 +21,7 @@
 #include <QJsonObject>
 #include <QMap>
 #include <QRegExp>
+#include <QVariant>
 
 #define MKELVIN_VALID_MIN ((qint64) ((-15LL*1000LL) + 273150LL))
 #define MKELVIN_VALID_MAX ((qint64) ((100LL*1000LL) + 273150LL))
@@ -30,7 +31,7 @@
 #define MSECOND_VALID_LONG_MAX (30ULL * 365ULL * 24ULL * 60ULL * 60ULL * 1000ULL)
 
 static const QMap<qint32, SmartAttributeParsedData::SmartAttributeUnit> tableUnit();
-static SmartAttributeParsedData::SmartQuirk *getQuirk(QString model, QString firmware);
+static SmartAttributeParsedData::SmartQuirk getQuirk(QString model, QString firmware);
 
 SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
                                                    QJsonObject jsonAttribute) :
@@ -52,7 +53,7 @@ SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
     m_Warn(false),
     m_PrettyUnit(SMART_ATTRIBUTE_UNIT_UNKNOWN),
     m_Disk(disk),
-    m_Quirk(nullptr)
+    m_Quirk((SmartAttributeParsedData::SmartQuirk) 0)
 {
     if (disk)
         m_Quirk = getQuirk(disk->model(), disk->firmware());
@@ -63,7 +64,6 @@ SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
         QString worst = QString::fromLocal8Bit("worst");
         QString thresh = QString::fromLocal8Bit("thresh");
         QString raw = QString::fromLocal8Bit("raw");
-        QString str = QString::fromLocal8Bit("string");
         QString flags = QString::fromLocal8Bit("flags");
         QString prefailure = QString::fromLocal8Bit("prefailure");
         QString online = QString::fromLocal8Bit("updated_online");
@@ -75,7 +75,7 @@ SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
 
         QJsonObject rawObj = jsonAttribute[raw].toObject();
 
-        m_Raw = rawObj[str].toString().toULongLong();
+        m_Raw = rawObj[value].toVariant().toULongLong();
 
         QJsonObject flagsObj = jsonAttribute[flags].toObject();
 
@@ -264,119 +264,119 @@ bool SmartAttributeParsedData::updateUnit()
     if (m_Quirk) {
         switch (id()) {
         case 3:
-            if (*m_Quirk & SMART_QUIRK_3_UNUSED) {
+            if (m_Quirk & SMART_QUIRK_3_UNUSED) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
                 return true;
             }
             break;
 
         case 4:
-            if (*m_Quirk & SMART_QUIRK_4_UNUSED) {
+            if (m_Quirk & SMART_QUIRK_4_UNUSED) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
                 return true;
             }
             break;
 
         case 5:
-            if (*m_Quirk & SMART_QUIRK_5_UNKNOWN)
+            if (m_Quirk & SMART_QUIRK_5_UNKNOWN)
                 return false;
             break;
 
         case 9:
-            if (*m_Quirk & SMART_QUIRK_9_POWERONMINUTES) {
+            if (m_Quirk & SMART_QUIRK_9_POWERONMINUTES) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
                 return true;
-            } else if (*m_Quirk & SMART_QUIRK_9_POWERONSECONDS) {
+            } else if (m_Quirk & SMART_QUIRK_9_POWERONSECONDS) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
                 return true;
-            } else if (*m_Quirk & SMART_QUIRK_9_POWERONHALFMINUTES) {
+            } else if (m_Quirk & SMART_QUIRK_9_POWERONHALFMINUTES) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
                 return true;
-            } else if (*m_Quirk & SMART_QUIRK_9_UNKNOWN)
+            } else if (m_Quirk & SMART_QUIRK_9_UNKNOWN)
                 return false;
             break;
 
         case 190:
-            if (*m_Quirk & SMART_QUIRK_190_UNKNOWN)
+            if (m_Quirk & SMART_QUIRK_190_UNKNOWN)
                 return false;
             break;
 
         case 192:
-            if (*m_Quirk & SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT) {
+            if (m_Quirk & SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_NONE;
                 return true;
             }
             break;
 
         case 194:
-            if (*m_Quirk & SMART_QUIRK_194_10XCELSIUS) {
+            if (m_Quirk & SMART_QUIRK_194_10XCELSIUS) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MKELVIN;
                 return true;
-            } else if (*m_Quirk & SMART_QUIRK_194_UNKNOWN)
+            } else if (m_Quirk & SMART_QUIRK_194_UNKNOWN)
                 return false;
             break;
 
         case 197:
-            if (*m_Quirk & SMART_QUIRK_197_UNKNOWN)
+            if (m_Quirk & SMART_QUIRK_197_UNKNOWN)
                 return false;
             break;
 
         case 198:
-            if (*m_Quirk & SMART_QUIRK_198_UNKNOWN)
+            if (m_Quirk & SMART_QUIRK_198_UNKNOWN)
                 return false;
             break;
 
         case 200:
-            if (*m_Quirk & SMART_QUIRK_200_WRITEERRORCOUNT) {
+            if (m_Quirk & SMART_QUIRK_200_WRITEERRORCOUNT) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_NONE;
                 return true;
             }
             break;
 
         case 201:
-            if (*m_Quirk & SMART_QUIRK_201_DETECTEDTACOUNT) {
+            if (m_Quirk & SMART_QUIRK_201_DETECTEDTACOUNT) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_NONE;
                 return true;
             }
             break;
 
         case 225:
-            if (*m_Quirk & SMART_QUIRK_225_TOTALLBASWRITTEN) {
+            if (m_Quirk & SMART_QUIRK_225_TOTALLBASWRITTEN) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MB;
                 return true;
             }
             break;
 
         case 226:
-            if (*m_Quirk & SMART_QUIRK_226_TIMEWORKLOADMEDIAWEAR) {
+            if (m_Quirk & SMART_QUIRK_226_TIMEWORKLOADMEDIAWEAR) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_SMALL_PERCENT;
                 return true;
             }
             break;
 
         case 227:
-            if (*m_Quirk & SMART_QUIRK_227_TIMEWORKLOADHOSTREADS) {
+            if (m_Quirk & SMART_QUIRK_227_TIMEWORKLOADHOSTREADS) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_SMALL_PERCENT;
                 return true;
             }
             break;
 
         case 228:
-            if (*m_Quirk & SMART_QUIRK_228_WORKLOADTIMER) {
+            if (m_Quirk & SMART_QUIRK_228_WORKLOADTIMER) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
                 return true;
             }
             break;
 
         case 232:
-            if (*m_Quirk & SMART_QUIRK_232_AVAILABLERESERVEDSPACE) {
+            if (m_Quirk & SMART_QUIRK_232_AVAILABLERESERVEDSPACE) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_PERCENT;
                 return true;
             }
             break;
 
         case 233:
-            if (*m_Quirk & SMART_QUIRK_233_MEDIAWEAROUTINDICATOR) {
+            if (m_Quirk & SMART_QUIRK_233_MEDIAWEAROUTINDICATOR) {
                 m_PrettyUnit = SMART_ATTRIBUTE_UNIT_PERCENT;
                 return true;
             }
@@ -628,7 +628,7 @@ static const SmartAttributeParsedData::SmartQuirkDataBase *quirkDatabase()
     return quirkDb;
 }
 
-static SmartAttributeParsedData::SmartQuirk *getQuirk(QString model, QString firmware)
+static SmartAttributeParsedData::SmartQuirk getQuirk(QString model, QString firmware)
 {
     const SmartAttributeParsedData::SmartQuirkDataBase *db;
 
@@ -646,8 +646,8 @@ static SmartAttributeParsedData::SmartQuirk *getQuirk(QString model, QString fir
             if (!firmwareRegex.exactMatch(firmware))
                 continue;
         }
-        return (SmartAttributeParsedData::SmartQuirk *)&db->quirk;
+        return db->quirk;
     }
 
-    return nullptr;
+    return (SmartAttributeParsedData::SmartQuirk) 0;
 }
