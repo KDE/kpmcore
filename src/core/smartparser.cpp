@@ -28,6 +28,9 @@
 #include <QJsonObject>
 #include <QString>
 
+/** Creates a new SmartParser object
+    @param device_path device path that indicates the device that SMART must analyse
+*/
 SmartParser::SmartParser(const QString &device_path) :
     m_DevicePath(device_path),
     m_DiskInformation(nullptr)
@@ -35,6 +38,7 @@ SmartParser::SmartParser(const QString &device_path) :
 
 }
 
+/** Initialize SmartParser data, retrieve the information from SMART JSON and initialize the disk information data */
 bool SmartParser::init()
 {
     loadSmartOutput();
@@ -107,6 +111,7 @@ bool SmartParser::init()
     return true;
 }
 
+/** Run smartctl command and recover its output */
 void SmartParser::loadSmartOutput()
 {
     if (m_SmartOutput.isEmpty()) {
@@ -122,6 +127,7 @@ void SmartParser::loadSmartOutput()
     }
 }
 
+/** Load SMART disk attributes from JSON data */
 void SmartParser::loadAttributes()
 {
     loadSmartOutput();

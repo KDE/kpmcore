@@ -23,9 +23,16 @@
 
 class SmartAttributeParsedData;
 
+/** Disk information retrieved by SMART.
+
+    It includes a list with your SMART attributes.
+
+    @author Caio Carvalho <caiojcarvalho@gmail.com>
+*/
 class SmartDiskInformation
 {
 public:
+    /** SMART self test execution state */
     enum SmartSelfTestExecutionStatus {
         SMART_SELF_TEST_EXECUTION_STATUS_SUCCESS_OR_NEVER = 0,
         SMART_SELF_TEST_EXECUTION_STATUS_ABORTED = 1,
@@ -40,6 +47,7 @@ public:
         _SMART_SELF_TEST_EXECUTION_STATUS_MAX
     };
 
+    /** SMART overall state */
     enum SmartOverall {
         SMART_OVERALL_GOOD,
         SMART_OVERALL_BAD_ATTRIBUTE_IN_THE_PAST,
@@ -69,62 +77,62 @@ public:
 public:
     const QString model() const
     {
-        return m_ModelName;
+        return m_ModelName;   /**< @return the disk model name */
     }
 
     const QString firmware() const
     {
-        return m_FirmwareVersion;
+        return m_FirmwareVersion;    /**< @return the disk firmware version */
     }
 
     const QString serial() const
     {
-        return m_SerialNumber;
+        return m_SerialNumber;    /**< @return the disk serial number */
     }
 
     quint64 size() const
     {
-        return m_Size;
+        return m_Size;    /**< @return disk size */
     }
 
     bool smartStatus() const
     {
-        return m_SmartStatus;
+        return m_SmartStatus;    /**< @return a boolean representing SMART status */
     }
 
     SmartSelfTestExecutionStatus selfTestExecutionStatus() const
     {
-        return m_SelfTestExecutionStatus;
+        return m_SelfTestExecutionStatus;    /**< @return SMART self execution status */
     }
 
     SmartOverall overall() const
     {
-        return m_Overall;
+        return m_Overall;    /**< @return SMART overall status */
     }
 
     quint64 temperature() const
     {
-        return m_Temperature;
+        return m_Temperature;    /**< @return disk temperature in kelvin */
     }
 
     quint64 badSectors() const
     {
-        return m_BadSectors;
+        return m_BadSectors;    /**< @return the number of bad sectors */
     }
 
     quint64 poweredOn() const
     {
-        return m_PoweredOn;
+        return m_PoweredOn;    /**< @return quantity of time that device is powered on */
     }
 
     quint64 powerCycles() const
     {
-        return m_PowerCycles;
+        return m_PowerCycles;    /**< @return quantity of power cycles */
     }
 
     QList<SmartAttributeParsedData> attributes() const
     {
-        return m_Attributes;
+        return m_Attributes;    /**< @return a list that contains the disk SMART attributes */
     }
 
 public:

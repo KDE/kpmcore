@@ -33,6 +33,10 @@
 static const QMap<qint32, SmartAttributeParsedData::SmartAttributeUnit> tableUnit();
 static SmartAttributeParsedData::SmartQuirk getQuirk(QString model, QString firmware);
 
+/** Creates a new SmartAttributeParsedData object.
+    @param disk the reference to the disk that this attribute is allocated to
+    @param jsonAttribute JSON attribute data
+*/
 SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
                                                    QJsonObject jsonAttribute) :
     m_Id(0),
@@ -93,6 +97,8 @@ SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
     }
 }
 
+/** @param other SmartAttributeParsedData to copy
+*/
 SmartAttributeParsedData::SmartAttributeParsedData(const SmartAttributeParsedData &other) :
     m_Id(other.id()),
     m_CurrentValue(other.currentValue()),
@@ -117,6 +123,7 @@ SmartAttributeParsedData::SmartAttributeParsedData(const SmartAttributeParsedDat
 
 }
 
+/** Validate values from the current attribute */
 void SmartAttributeParsedData::validateValues()
 {
     m_CurrentValueValid = m_CurrentValue >= 1 && m_CurrentValue <= 0xFD;
@@ -137,6 +144,7 @@ void SmartAttributeParsedData::validateValues()
     m_Warn = (m_GoodNowValid && !m_GoodNow) || (m_GoodInThePastValid && !m_GoodInThePast);
 }
 
+/** Make a pretty value from raw based on attribute's id */
 void SmartAttributeParsedData::makePretty()
 {
     if (m_PrettyUnit == SMART_ATTRIBUTE_UNIT_UNKNOWN)
@@ -206,6 +214,7 @@ void SmartAttributeParsedData::makePretty()
     }
 }
 
+/** Verify attribute's unit */
 void SmartAttributeParsedData::verifyAttribute()
 {
     if (id() == 3 || id() == 226)

@@ -23,9 +23,17 @@
 
 class SmartDiskInformation;
 
+/** A SMART parsed attribute.
+
+    It receives the attribute data from JSON, retrieve its data and validates its values.
+
+    @author Caio Carvalho <caiojcarvalho@gmail.com>
+*/
 class SmartAttributeParsedData
 {
 public:
+
+    /** A unit for SMART attributes */
     enum SmartAttributeUnit {
         SMART_ATTRIBUTE_UNIT_UNKNOWN,
         SMART_ATTRIBUTE_UNIT_NONE,
@@ -38,6 +46,7 @@ public:
         _SMART_ATTRIBUTE_UNIT_MAX
     };
 
+    /** SMART Quirk */
     enum SmartQuirk {
         SMART_QUIRK_9_POWERONMINUTES            = 0x000001,
         SMART_QUIRK_9_POWERONSECONDS            = 0x000002,
@@ -63,6 +72,7 @@ public:
         SMART_QUIRK_3_UNUSED                    = 0x200000
     };
 
+    /** SMART Quirk to some particular model and firmware */
     struct SmartQuirkDataBase {
         const char *model;
         const char *firmware;
@@ -77,92 +87,92 @@ public:
 public:
     quint32 id() const
     {
-        return m_Id;
+        return m_Id;    /**< @return attribute id */
     }
 
     qint32 currentValue() const
     {
-        return m_CurrentValue;
+        return m_CurrentValue;    /**< @return attribute current value */
     }
 
     qint32 worstValue() const
     {
-        return m_WorstValue;
+        return m_WorstValue;    /**< @return attribute worst value */
     }
 
     qint32 threshold() const
     {
-        return m_Threshold;
+        return m_Threshold;    /**< @return attribute threshold value */
     }
 
     bool prefailure() const
     {
-        return m_Prefailure;
+        return m_Prefailure;    /**< @return attribute prefailure status */
     }
 
     bool online() const
     {
-        return m_Online;
+        return m_Online;    /**< @return attribute online status */
     }
 
     quint64 raw() const
     {
-        return m_Raw;
+        return m_Raw;    /**< @return attribute raw value */
     }
 
     quint64 prettyValue() const
     {
-        return m_PrettyValue;
+        return m_PrettyValue;    /**< @return attribute pretty value */
     }
 
     SmartAttributeUnit prettyUnit() const
     {
-        return m_PrettyUnit;
+        return m_PrettyUnit;    /**< @return pretty unit value */
     }
 
     bool goodNowValid() const
     {
-        return m_GoodNowValid;
+        return m_GoodNowValid;    /**< @return good now attribute status validation */
     }
 
     bool goodNow() const
     {
-        return m_GoodNow;
+        return m_GoodNow;    /**< @return good now attribute status */
     }
 
     bool goodInThePastValid() const
     {
-        return m_GoodInThePastValid;
+        return m_GoodInThePastValid;    /**< @return good in the past attribute status validation */
     }
 
     bool goodInThePast() const
     {
-        return m_GoodInThePast;
+        return m_GoodInThePast;    /**< @return good in the past attribute status */
     }
 
     bool thresholdValid() const
     {
-        return m_ThresholdValid;
+        return m_ThresholdValid;    /**< @return threshold value validation */
     }
 
     bool currentValueValid() const
     {
-        return m_CurrentValueValid;
+        return m_CurrentValueValid;    /**< @return current value validation */
     }
 
     bool worstValueValid() const
     {
-        return m_WorstValueValid;
+        return m_WorstValueValid;    /**< @return worst value validation */
     }
 
     bool warn() const
     {
-        return m_Warn;
+        return m_Warn;    /**< @return warn status */
     }
 
     SmartDiskInformation *disk() const
     {
-        return m_Disk;
+        return m_Disk;    /**< @return attribute's disk reference */
     }
 
 protected:

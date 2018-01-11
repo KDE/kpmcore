@@ -20,6 +20,7 @@
 
 static quint64 u64log2(quint64 n);
 
+/** Creates a new SmartDiskInformationObject */
 SmartDiskInformation::SmartDiskInformation() :
     m_ModelName(QString()),
     m_FirmwareVersion(QString()),
@@ -38,6 +39,7 @@ SmartDiskInformation::SmartDiskInformation() :
 
 }
 
+/** Update the number of bad sectors based on reallocated sector count and current pending sector attributes data */
 void SmartDiskInformation::updateBadSectors()
 {
     SmartAttributeParsedData *reallocatedSectorCt;
@@ -56,6 +58,7 @@ void SmartDiskInformation::updateBadSectors()
         m_BadSectors = currentPendingSector->prettyValue();
 }
 
+/** Update SMART overall data based on the quantity of bad sectors and the status of SMART attributes */
 void SmartDiskInformation::updateOverall()
 {
     if (!smartStatus()) {
@@ -91,6 +94,9 @@ void SmartDiskInformation::updateOverall()
 
 }
 
+/** Update the temperature value based on SMART attributes
+    @return a boolean representing the status of the operation
+*/
 bool SmartDiskInformation::updateTemperature()
 {
     SmartAttributeParsedData *temperatureCelsius;
@@ -118,6 +124,9 @@ bool SmartDiskInformation::updateTemperature()
     return false;
 }
 
+/** Update the powered on value based on SMART attributes
+    @return a boolean representing the status of the operation
+*/
 bool SmartDiskInformation::updatePowerOn()
 {
     SmartAttributeParsedData *powerOnHours;
@@ -138,6 +147,9 @@ bool SmartDiskInformation::updatePowerOn()
     return false;
 }
 
+/** Update the power cycles value based on SMART attributes
+    @return a boolean representing the status of the operation
+*/
 bool SmartDiskInformation::updatePowerCycle()
 {
     SmartAttributeParsedData *powerCycleCount;
@@ -152,6 +164,7 @@ bool SmartDiskInformation::updatePowerCycle()
     return false;
 }
 
+/** Validate disk attributes status */
 void SmartDiskInformation::validateBadAttributes()
 {
     for (const SmartAttributeParsedData &attribute : qAsConst(m_Attributes)) {
@@ -164,6 +177,9 @@ void SmartDiskInformation::validateBadAttributes()
     }
 }
 
+/** Search for a attribute based on its id number
+    @return a reference to the attribute
+*/
 SmartAttributeParsedData *SmartDiskInformation::findAttribute(quint32 id)
 {
     SmartAttributeParsedData *attr = nullptr;

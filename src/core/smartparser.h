@@ -23,6 +23,12 @@
 
 class SmartDiskInformation;
 
+/** A parser to SMART JSON output.
+
+    Responsable to execute smartctl and parse its output.
+
+    @author Caio Carvalho <caiojcarvalho@gmail.com>
+*/
 class SmartParser
 {
 public:
@@ -34,12 +40,12 @@ public:
 public:
     const QString &devicePath() const
     {
-        return m_DevicePath;
+        return m_DevicePath; /**< @return the device path that SMART must analyse */
     }
 
     SmartDiskInformation *diskInformation() const
     {
-        return m_DiskInformation;
+        return m_DiskInformation; /**< @return a reference to parsed disk information */
     }
 
 protected:
