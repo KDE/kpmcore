@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright (C) 2017 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2018 by Caio Carvalho <caiojcarvalho@gmail.com>        *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -15,36 +15,43 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_LUKS2_H)
+#if !defined(KPMCORE_SMARTPARSER_H)
+#define KPMCORE_SMARTPARSER_H
 
-#define KPMCORE_LUKS2_H
+#include <QJsonDocument>
+#include <QString>
 
-#include "util/libpartitionmanagerexport.h"
+class SmartDiskInformation;
 
-#include "fs/luks.h"
-
-#include <QtGlobal>
-
-class QString;
-
-namespace FS
-{
-/** A LUKS2 crypto file system.
-    @author Andrius Štikonas <andrius@stikonas.eu>
-*/
-class LIBKPMCORE_EXPORT luks2 : public luks
+class SmartParser
 {
 public:
-    luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
-    ~luks2() override;
+    SmartParser(const QString &device_path);
 
-    bool create(Report& report, const QString& deviceNode) override;
-    bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+public:
+    bool init();
 
-    FileSystem::Type type() const override;
+public:
+    const QString &devicePath() const
+    {
+        return m_DevicePath;
+    }
 
-    luks::KeyLocation keyLocation();
+    SmartDiskInformation *diskInformation() const
+    {
+        return m_DiskInformation;
+    }
+
+protected:
+    void loadSmartOutput();
+
+    void loadAttributes();
+
+private:
+    const QString m_DevicePath;
+    QJsonDocument m_SmartOutput;
+    SmartDiskInformation *m_DiskInformation;
+
 };
-}
 
-#endif
+#endif // SMARTPARSER_H

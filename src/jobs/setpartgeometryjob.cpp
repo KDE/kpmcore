@@ -73,7 +73,6 @@ bool SetPartGeometryJob::run(Report& parent)
                 delete backendPartitionTable;
             }
 
-
             delete backendDevice;
         } else
             report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> while trying to resize/move partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());

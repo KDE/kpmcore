@@ -126,6 +126,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("512"),
                                 QStringLiteral("--batch-mode"),
                                 QStringLiteral("--force-password"),
+                                QStringLiteral("--type"), QStringLiteral("luks1"),
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
     if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
@@ -143,6 +144,7 @@ bool luks::create(Report& report, const QString& deviceNode)
     if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1) && openCmd.waitFor()))
         return false;
 
+    setPayloadSize();
     scan(deviceNode);
 
     if (mapperName().isEmpty())
@@ -259,6 +261,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     QString passphrase = dlg.password();
     ExternalCommand openCmd(QStringLiteral("cryptsetup"),
                               { QStringLiteral("open"),
+                                QStringLiteral("--tries"), QStringLiteral("1"),
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
@@ -490,19 +493,18 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     if (mapperName().isEmpty())
         return false;
 
-    qint64 payloadLength = newLength - payloadOffset();
     if ( newLength - length() * sectorSize() > 0 )
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
-            return m_innerFs->resize(report, mapperName(), payloadLength);
+            return m_innerFs->resize(report, mapperName(), m_PayloadSize);
     }
-    else if (m_innerFs->resize(report, mapperName(), payloadLength))
+    else if (m_innerFs->resize(report, mapperName(), m_PayloadSize))
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"),
-                {  QStringLiteral("--size"), QString::number(payloadLength / 512), // LUKS payload length is specified in multiples of 512 bytes
+                {  QStringLiteral("--size"), QString::number(m_PayloadSize / 512), // LUKS1 payload length is specified in multiples of 512 bytes
                    QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
@@ -589,8 +591,7 @@ void luks::getMapperName(const QString& deviceNode)
 
 void luks::getLuksInfo(const QString& deviceNode)
 {
-    ExternalCommand cmd(QStringLiteral("cryptsetup"),
-                        { QStringLiteral("luksDump"), deviceNode });
+    ExternalCommand cmd(QStringLiteral("cryptsetup"), { QStringLiteral("luksDump"), deviceNode });
     if (cmd.run(-1) && cmd.exitCode() == 0) {
         QRegularExpression re(QStringLiteral("Cipher name:\\s+(\\w+)"));
         QRegularExpressionMatch rem = re.match(cmd.output());
@@ -667,6 +668,7 @@ bool luks::canEncryptType(FileSystem::Type type)
 
 void luks::initLUKS()
 {
+    setPayloadSize();
     QString mapperNode = mapperName();
     bool isCryptOpen = !mapperNode.isEmpty();
     setCryptOpen(isCryptOpen);
@@ -674,6 +676,24 @@ void luks::initLUKS()
         loadInnerFileSystem(mapperNode);
         setMounted(detectMountStatus(innerFS(), mapperNode));
     }
+}
+
+void luks::setPayloadSize()
+{
+    ExternalCommand dmsetupCmd(QStringLiteral("dmsetup"), { QStringLiteral("table"), mapperName() });
+    dmsetupCmd.run();
+    QRegularExpression re(QStringLiteral("\\d+ (\\d+)"));
+    QRegularExpressionMatch rem = re.match(dmsetupCmd.output());
+    if (rem.hasMatch())
+        m_PayloadSize = rem.captured(1).toLongLong() * sectorSize();
+}
+
+bool luks::testPassphrase(const QString& deviceNode, const QString& passphrase) const {
+    ExternalCommand cmd(QStringLiteral("cryptsetup"), { QStringLiteral("open"), QStringLiteral("--tries"), QStringLiteral("1"), QStringLiteral("--test-passphrase"), deviceNode });
+    if (cmd.start(-1) && cmd.write(passphrase.toLocal8Bit() + '\n') == passphrase.toLocal8Bit().length() + 1 && cmd.waitFor() && cmd.exitCode() == 0)
+        return true;
+
+    return false;
 }
 
 }

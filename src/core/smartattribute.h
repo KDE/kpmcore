@@ -20,10 +20,10 @@
 #define KPMCORE_SMARTATTRIBUTE_H
 
 #include "util/libpartitionmanagerexport.h"
+#include "core/smartattributeparseddata.h"
 
 #include <QString>
 
-struct SkSmartAttributeParsedData;
 
 class LIBKPMCORE_EXPORT SmartAttribute
 {
@@ -47,7 +47,7 @@ public:
     };
 
 public:
-    SmartAttribute(const SkSmartAttributeParsedData* a);
+    SmartAttribute(const SmartAttributeParsedData& a);
 
 public:
     qint32 id() const {

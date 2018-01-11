@@ -43,6 +43,12 @@ public:
     luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Luks);
     ~luks() override;
 
+    enum KeyLocation {
+        unknown,
+        dmcrypt,
+        keyring
+    };
+
 public:
     void init() override;
     void scan(const QString& deviceNode) override;
@@ -167,9 +173,9 @@ public:
     QString suggestedMapperName(const QString& deviceNode) const;
 
     void getMapperName(const QString& deviceNode);
-    void getLuksInfo(const QString& deviceNode);
+    virtual void getLuksInfo(const QString& deviceNode);
 
-    FileSystem* innerFS() const { return m_innerFs; } // avoid calling this unless necessary
+    FileSystem* innerFS() const { return m_innerFs; }
     QString outerUuid() const;
 
     QString mapperName() const { return m_MapperName; }
@@ -182,8 +188,11 @@ public:
     static bool canEncryptType(FileSystem::Type type);
     void initLUKS();
 
+    bool testPassphrase(const QString& deviceNode, const QString& passphrase) const;
+
 protected:
     virtual QString readOuterUUID(const QString& deviceNode) const;
+    void setPayloadSize();
 
 public:
     static CommandSupportType m_GetUsed;
@@ -213,7 +222,10 @@ protected:
     QString m_HashName;
     qint64 m_KeySize;
     qint64 m_PayloadOffset;
+    qint64 m_PayloadSize;
     QString m_outerUuid;
+
+    luks::KeyLocation m_KeyLocation = unknown;
 };
 }
 
