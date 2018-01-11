@@ -25,7 +25,7 @@ class SmartDiskInformation;
 
 /** A parser to SMART JSON output.
 
-    Responsable to execute smartctl and parse its output.
+    Responsible to execute smartctl and parse its output.
 
     @author Caio Carvalho <caiojcarvalho@gmail.com>
 */
