@@ -44,16 +44,16 @@ bool SmartParser::init()
 
     QJsonObject smartJson = m_SmartOutput.object();
 
-    QString model_name = QString::fromLocal8Bit("model_name");
-    QString firmware = QString::fromLocal8Bit("firmware_version");
-    QString serial_number = QString::fromLocal8Bit("serial_number");
-    QString device = QString::fromLocal8Bit("device");
-    QString smart_status = QString::fromLocal8Bit("smart_status");
-    QString passed = QString::fromLocal8Bit("passed");
-    QString self_test = QString::fromLocal8Bit("self_test");
-    QString status = QString::fromLocal8Bit("status");
-    QString value = QString::fromLocal8Bit("value");
-    QString user_capacity = QString::fromLocal8Bit("user_capacity");
+    QString model_name = QStringLiteral("model_name");
+    QString firmware = QStringLiteral("firmware_version");
+    QString serial_number = QStringLiteral("serial_number");
+    QString device = QStringLiteral("device");
+    QString smart_status = QStringLiteral("smart_status");
+    QString passed = QStringLiteral("passed");
+    QString self_test = QStringLiteral("self_test");
+    QString status = QStringLiteral("status");
+    QString value = QStringLiteral("value");
+    QString user_capacity = QStringLiteral("user_capacity");
 
     if (!smartJson.contains(device)) {
         qDebug() << "smart disk open failed for " << devicePath() << ": " << strerror(errno);
@@ -110,12 +110,7 @@ bool SmartParser::init()
 void SmartParser::loadSmartOutput()
 {
     if (m_SmartOutput.isEmpty()) {
-        QStringList args;
-        args.append(QString::fromLocal8Bit("--all"));
-        args.append(QString::fromLocal8Bit("--json"));
-        args.append(devicePath());
-
-        ExternalCommand smartctl(QString::fromLocal8Bit("smartctl"), args);
+        ExternalCommand smartctl(QStringLiteral("smartctl"), { QStringLiteral("--all"), QStringLiteral("--json"), devicePath() });
 
         if (smartctl.run() && smartctl.exitCode() == 0) {
             QByteArray output = smartctl.rawOutput();
@@ -136,8 +131,8 @@ void SmartParser::loadAttributes()
 
     QJsonObject smartJson = m_SmartOutput.object();
 
-    QString ata_smart_attributes = QString::fromLocal8Bit("ata_smart_attributes");
-    QString table = QString::fromLocal8Bit("table");
+    QString ata_smart_attributes = QStringLiteral("ata_smart_attributes");
+    QString table = QStringLiteral("table");
 
     QJsonObject ataSmartAttributes = smartJson[ata_smart_attributes].toObject();
 

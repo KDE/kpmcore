@@ -59,14 +59,14 @@ SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
         m_Quirk = getQuirk(disk->model(), disk->firmware());
 
     if (!jsonAttribute.isEmpty()) {
-        QString id = QString::fromLocal8Bit("id");
-        QString value = QString::fromLocal8Bit("value");
-        QString worst = QString::fromLocal8Bit("worst");
-        QString thresh = QString::fromLocal8Bit("thresh");
-        QString raw = QString::fromLocal8Bit("raw");
-        QString flags = QString::fromLocal8Bit("flags");
-        QString prefailure = QString::fromLocal8Bit("prefailure");
-        QString online = QString::fromLocal8Bit("updated_online");
+        QString id = QStringLiteral("id");
+        QString value = QStringLiteral("value");
+        QString worst = QStringLiteral("worst");
+        QString thresh = QStringLiteral("thresh");
+        QString raw = QStringLiteral("raw");
+        QString flags = QStringLiteral("flags");
+        QString prefailure = QStringLiteral("prefailure");
+        QString online = QStringLiteral("updated_online");
 
         m_Id = jsonAttribute[id].toInt();
         m_CurrentValue = jsonAttribute[value].toInt();
