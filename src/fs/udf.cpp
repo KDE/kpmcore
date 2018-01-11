@@ -52,9 +52,8 @@ void udf::init()
 
     if (m_Create == cmdSupportFileSystem) {
         // Detect old mkudffs prior to version 1.1 by lack of --label option
-//         ExternalCommand cmd(QStringLiteral("mkudffs"), { QStringLiteral("--help") });
-//         oldMkudffsVersion = cmd.run(-1) && !cmd.output().contains(QStringLiteral("--label"));
-        oldMkudffsVersion = false;
+        ExternalCommand cmd(QStringLiteral("mkudffs"), { QStringLiteral("--help") });
+        oldMkudffsVersion = cmd.run(-1) && !cmd.output().contains(QStringLiteral("--label"));
     }
 }
 

@@ -690,7 +690,7 @@ void luks::setPayloadSize()
 
 bool luks::testPassphrase(const QString& deviceNode, const QString& passphrase) const {
     ExternalCommand cmd(QStringLiteral("cryptsetup"), { QStringLiteral("open"), QStringLiteral("--tries"), QStringLiteral("1"), QStringLiteral("--test-passphrase"), deviceNode });
-    if (cmd.start(-1) && cmd.write(passphrase.toLocal8Bit() + '\n') == passphrase.toLocal8Bit().length() + 1 && cmd.waitFor() && cmd.exitCode() == 0)
+    if (cmd.write(passphrase.toLocal8Bit() + '\n') && cmd.start(-1) && cmd.waitFor() && cmd.exitCode() == 0)
         return true;
 
     return false;

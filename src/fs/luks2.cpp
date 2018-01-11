@@ -56,9 +56,8 @@ bool luks2::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("--type"), QStringLiteral("luks2"),
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
-    if (!( createCmd.start(-1) &&
-                createCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 &&
-                createCmd.waitFor() && createCmd.exitCode() == 0))
+    if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
+                createCmd.start(-1) && createCmd.waitFor() && createCmd.exitCode() == 0))
     {
         return false;
     }
@@ -68,7 +67,7 @@ bool luks2::create(Report& report, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 && openCmd.waitFor()))
+    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1) && openCmd.waitFor()))
         return false;
 
     setPayloadSize();
@@ -95,12 +94,12 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
-        cryptResizeCmd.start(-1);
         if (m_KeyLocation == keyring) {
             if (m_passphrase.isEmpty())
                 return false;
             cryptResizeCmd.write(m_passphrase.toLocal8Bit() + '\n');
         }
+        cryptResizeCmd.start(-1);
         cryptResizeCmd.waitFor();
         if ( cryptResizeCmd.exitCode() == 0 )
             return m_innerFs->resize(report, mapperName(), m_PayloadSize);
@@ -111,12 +110,12 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
                 {  QStringLiteral("--size"), QString::number(m_PayloadSize / 512), // FIXME, LUKS2 can have different sector sizes
                    QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
-        cryptResizeCmd.start(-1);
         if (m_KeyLocation == keyring) {
             if (m_passphrase.isEmpty())
                 return false;
             cryptResizeCmd.write(m_passphrase.toLocal8Bit() + '\n');
         }
+        cryptResizeCmd.start(-1);
         cryptResizeCmd.waitFor();
         if ( cryptResizeCmd.exitCode() == 0 )
             return true;
