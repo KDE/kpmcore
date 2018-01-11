@@ -112,7 +112,7 @@ void SmartParser::loadSmartOutput()
     if (m_SmartOutput.isEmpty()) {
         QStringList args;
         args.append(QString::fromLocal8Bit("--all"));
-        args.append(QString::fromLocal8Bit("-j"));
+        args.append(QString::fromLocal8Bit("--json"));
         args.append(devicePath());
 
         ExternalCommand smartctl(QString::fromLocal8Bit("smartctl"), args);
