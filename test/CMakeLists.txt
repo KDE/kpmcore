@@ -52,3 +52,7 @@ find_package (Threads)
 # Execute external commands as root
 kpm_test(testexternalcommand testexternalcommand.cpp)
 add_test(NAME testexternalcommand COMMAND testexternalcommand ${BACKEND})
+
+# Test SMART support
+kpm_test(testsmart testsmart.cpp)
+add_test(NAME testsmart COMMAND testsmart ${BACKEND})
