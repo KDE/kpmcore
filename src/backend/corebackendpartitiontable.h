@@ -21,7 +21,6 @@
 
 #include "core/partitiontable.h"
 #include "fs/filesystem.h"
-#include "util/libpartitionmanagerexport.h"
 
 #include <QtGlobal>
 
@@ -33,7 +32,7 @@ class Partition;
   * Interface class to represent a partition table in the backend.
   * @author Volker Lanz <vl@fidra.de>
   */
-class LIBKPMCORE_EXPORT CoreBackendPartitionTable
+class CoreBackendPartitionTable
 {
 public:
     virtual ~CoreBackendPartitionTable() {}
