@@ -53,6 +53,11 @@ find_package (Threads)
 kpm_test(testexternalcommand testexternalcommand.cpp)
 add_test(NAME testexternalcommand COMMAND testexternalcommand ${BACKEND})
 
+# Including SMART files reference
+set(SMARTPARSER ${CMAKE_SOURCE_DIR}/src/core/smartdiskinformation.cpp
+                ${CMAKE_SOURCE_DIR}/src/core/smartattributeparseddata.cpp
+                ${CMAKE_SOURCE_DIR}/src/core/smartparser.cpp)
+
 # Test SMART support
-kpm_test(testsmart testsmart.cpp)
+kpm_test(testsmart testsmart.cpp ${SMARTPARSER})
 add_test(NAME testsmart COMMAND testsmart ${BACKEND})

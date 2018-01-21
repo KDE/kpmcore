@@ -18,8 +18,6 @@
 #if !defined(KPMCORE_SMARTPARSER_H)
 #define KPMCORE_SMARTPARSER_H
 
-#include "util/libpartitionmanagerexport.h"
-
 #include <QJsonDocument>
 #include <QString>
 
@@ -31,7 +29,7 @@ class SmartDiskInformation;
 
     @author Caio Carvalho <caiojcarvalho@gmail.com>
 */
-class LIBKPMCORE_EXPORT SmartParser
+class SmartParser
 {
 public:
     SmartParser(const QString &device_path);
