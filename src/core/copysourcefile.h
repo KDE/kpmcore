@@ -52,6 +52,9 @@ public:
     qint64 lastByte() const override {
         return length();    /**< @return equal to length for file. @see length() */
     }
+    QString path() const override {
+        return m_File.fileName();
+    }
 
 protected:
     QFile& file() {

@@ -49,6 +49,10 @@ public:
         return bytesWritten();    /**< @return the number of bytes written so far */
     }
 
+    QString path() const override {
+        return m_File.fileName();
+    }
+
 protected:
     QFile& file() {
         return m_File;

@@ -20,6 +20,10 @@
 #define KPMCORE_EXTERNALCOMMAND_H
 
 #include "util/libpartitionmanagerexport.h"
+#include "core/copysourcedevice.h"
+#include "core/copytargetfile.h"
+
+#include <KJob>
 
 #include <QDebug>
 #include <QtGlobal>
@@ -45,8 +49,10 @@ class LIBKPMCORE_EXPORT ExternalCommand : public QObject
 public:
     explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
     explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
+    explicit ExternalCommand(CopySource& source, CopyTarget& target, QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
 
 public:
+    bool copyBlocks();
     void setCommand(const QString& cmd) { m_Command = cmd; } /**< @param cmd the command to run */
     const QString& command() const { return m_Command; } /**< @return the command to run */
 
@@ -55,6 +61,7 @@ public:
     void setArgs(const QStringList& args) { m_Args = args; } /**< @param args the new arguments */
     bool write(const QByteArray& input); /**< @param input the input for the program */
 
+    bool startCopyBlocks(int timeout =30000);
     bool start(int timeout = 30000);
     bool waitFor(int timeout = 30000);
     bool run(int timeout = 30000);
@@ -76,7 +83,11 @@ public:
     }
 
 Q_SIGNALS:
+    void progress(int);
     void finished();
+
+public Q_SLOTS:
+    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };
 
 protected:
     void execute();
@@ -98,6 +109,8 @@ private:
     int m_ExitCode;
     QByteArray m_Output;
     QByteArray m_Input;
+    CopySource *m_Source;
+    CopyTarget *m_Target;
 };
 
 #endif

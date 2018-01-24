@@ -22,7 +22,7 @@
 #include "jobs/job.h"
 
 #include <QString>
-
+#include <QDebug>
 class Partition;
 class Device;
 class Report;

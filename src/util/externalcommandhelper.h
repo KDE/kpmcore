@@ -21,6 +21,7 @@
 
 #include <KAuth>
 
+#include <QString>
 #include <QProcess>
 
 using namespace KAuth;
@@ -29,12 +30,23 @@ class ExternalCommandHelper : public QObject
 {
     Q_OBJECT
 
+Q_SIGNALS:
+    void progress(int);
+
+public:
+    bool readData(QByteArray& buffer, qint64 offset, qint64 size);
+    bool writeData(QByteArray& buffer, qint64 offset);
+
 public Q_SLOTS:
     ActionReply start(const QVariantMap& args);
+    ActionReply copyblockshelper(const QVariantMap& args);
 
 private:
     void onReadOutput();
 
+    QString command;
+    QString sourceDevice;
+    QString targetDevice;
     QProcess cmd;
 //     QByteArray output;
 };

@@ -103,3 +103,8 @@ bool CopySourceDevice::overlaps(const CopyTarget& target) const
 
     return false;
 }
+
+QString CopySourceDevice::path() const
+{
+    return m_Device.deviceNode();
+}

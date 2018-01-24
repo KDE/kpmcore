@@ -24,7 +24,7 @@
 #include "core/copytargetfile.h"
 
 #include "fs/filesystem.h"
-
+#include "util/externalcommand.h"
 #include "util/report.h"
 
 #include <KLocalizedString>
@@ -63,8 +63,11 @@ bool BackupFileSystemJob::run(Report& parent)
             report->line() << xi18nc("@info:progress", "Could not open file system on source partition <filename>%1</filename> for backup.", sourcePartition().deviceNode());
         else if (!copyTarget.open())
             report->line() << xi18nc("@info:progress", "Could not create backup file <filename>%1</filename>.", fileName());
-        else
-            rval = copyBlocks(*report, copyTarget, copySource);
+        else {
+            ExternalCommand copyCmd(copySource, copyTarget, QProcess::SeparateChannels);
+            connect(&copyCmd, &ExternalCommand::progress, this, [=] (int percent) { emit progress(percent); }, Qt::QueuedConnection);
+            rval = copyCmd.startCopyBlocks(-1);
+        }
     }
 
     jobFinished(*report, rval);

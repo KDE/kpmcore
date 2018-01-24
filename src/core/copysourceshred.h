@@ -24,6 +24,7 @@
 #include <QFile>
 
 class CopyTarget;
+class QString;
 
 /** A source for securely overwriting a partition (shredding).
 
@@ -49,6 +50,9 @@ public:
     }
     qint64 lastByte() const override {
         return length();    /**< @return equal to length for shred source. @see length() */
+    }
+    QString path() const override {
+        return m_SourceFile.fileName();
     }
 
 protected:

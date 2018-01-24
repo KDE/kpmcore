@@ -23,7 +23,6 @@
 
 #include "core/device.h"
 
-
 /** Constructs a device to copy to.
     @param d the Device to copy to
     @param firstbyte the first byte on the Device to write to
@@ -70,4 +69,9 @@ bool CopyTargetDevice::writeData(QByteArray& buffer, qint64 writeOffset)
         setBytesWritten(bytesWritten() + buffer.size());
 
     return rval;
+}
+
+QString CopyTargetDevice::path() const
+{
+    return m_Device.deviceNode();
 }

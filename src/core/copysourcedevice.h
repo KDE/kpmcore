@@ -27,6 +27,7 @@
 class Device;
 class CopyTarget;
 class CoreBackendDevice;
+class QString;
 
 /** A Device to copy from.
 
@@ -62,12 +63,13 @@ public:
         return m_Device;    /**< @return Device to copy from */
     }
 
+    QString path() const override;
+
 protected:
     Device& m_Device;
     const qint64 m_FirstByte;
     const qint64 m_LastByte;
-    CoreBackendDevice* m_BackendDevice
-    ;
+    CoreBackendDevice* m_BackendDevice;
 };
 
 #endif

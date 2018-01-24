@@ -17,6 +17,11 @@
  *************************************************************************/
 
 #include "backend/corebackendmanager.h"
+#include "core/device.h"
+#include "core/copysource.h"
+#include "core/copytarget.h"
+#include "core/copysourcedevice.h"
+#include "core/copytargetdevice.h"
 #include "util/externalcommand.h"
 #include "util/report.h"
 
@@ -31,6 +36,92 @@
 
 #include <KAuth>
 #include <KLocalizedString>
+
+
+ExternalCommand::ExternalCommand(CopySource& source, CopyTarget& target,const QProcess::ProcessChannelMode processChannelMode) :
+   m_Source(&source),
+   m_Target(&target),
+   m_ExitCode(-1)
+{
+    setup(processChannelMode);
+}
+
+
+/** Starts copyBlocks command.
+    @param timeout timeout to wait for the process to start
+    @return true on success
+*/
+bool ExternalCommand::startCopyBlocks(int timeout)
+{
+    this->moveToThread(CoreBackendManager::self()->kauthThread());
+    QTimer::singleShot(0, this, &ExternalCommand::copyBlocks);
+    QEventLoop loop;
+    connect(this, &ExternalCommand::finished, &loop, &QEventLoop::quit);
+    loop.exec();
+    return true;
+}
+
+bool ExternalCommand::copyBlocks()
+{
+    bool rval = true;
+    qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
+    qint64 blocksToCopy = m_Source->length() / blockSize;
+
+    qint64 readOffset = m_Source->firstByte();
+    qint64 writeOffset = m_Target->firstByte();
+    qint32 copyDirection = 1;
+
+    if (m_Target->firstByte() > m_Source->firstByte()) {
+        readOffset = m_Source->firstByte() + m_Source->length() - blockSize;
+        writeOffset = m_Target->firstByte() + m_Source->length() - blockSize;
+        copyDirection = -1;
+    }
+    qint64 lastBlock = m_Source->length() % blockSize;
+
+    //report()->line() << xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy, m_source.length(), readOffset, writeOffset, copyDirection == 1 ? i18nc("direction: left", "left") : i18nc("direction: right", "right"));
+
+    QString cmd = QStandardPaths::findExecutable(QStringLiteral("dd"));
+
+    if (cmd.isEmpty())
+        cmd = QStandardPaths::findExecutable(QStringLiteral("dd"), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+
+    qDebug() << "ExternalCommand::copyBlocks\n";
+
+    KAuth::Action action(QStringLiteral("org.kde.kpmcore.externalcommand.copyblockshelper"));
+    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
+
+    arguments.insert(QStringLiteral("command"), cmd);
+    arguments.insert(QStringLiteral("sourceDevice"), m_Source->path() );
+    arguments.insert(QStringLiteral("targetDevice"), m_Target->path());
+    arguments.insert(QStringLiteral("blockSize"), blockSize);
+    arguments.insert(QStringLiteral("blocksToCopy"), blocksToCopy);
+    arguments.insert(QStringLiteral("readOffset"), readOffset);
+    arguments.insert(QStringLiteral("writeOffset"), writeOffset);
+    arguments.insert(QStringLiteral("copyDirection"), copyDirection);
+    arguments.insert(QStringLiteral("sourceFirstByte"), m_Source->firstByte());
+    arguments.insert(QStringLiteral("targetFirstByte"), m_Target->firstByte());
+    arguments.insert(QStringLiteral("lastBlock"), lastBlock);
+
+    action.setArguments(arguments);
+    action.setTimeout(24 * 3600 * 1000); // set 1 day DBus timeout
+
+    KAuth::ExecuteJob *job = action.execute();
+    // TODO KF6:Use new signal-slot syntax
+    connect(job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
+    if (!job->exec()) {
+        qWarning() << "KAuth returned an error code: " << job->errorString();
+//         return false;
+        emit finished();
+        return false;
+    }
+
+    m_Output = job->data()[QStringLiteral("output")].toByteArray();
+    setExitCode(job->data()[QStringLiteral("exitCode")].toInt());
+
+    qDebug() << "ExternalCommand::copyBlocks finished";
+    emit finished();
+    return true;
+}
 
 /** Creates a new ExternalCommand instance without Report.
     @param cmd the command to run
@@ -74,6 +165,7 @@ void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMod
     @param timeout timeout to wait for the process to start
     @return true on success
 */
+
 bool ExternalCommand::start(int timeout)
 {
     this->moveToThread(CoreBackendManager::self()->kauthThread());
@@ -149,6 +241,7 @@ bool ExternalCommand::waitFor(int timeout)
     }*/
 
 //     onReadOutput();
+
     return true;
 }
 

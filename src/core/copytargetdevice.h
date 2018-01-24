@@ -60,6 +60,7 @@ public:
     const Device& device() const {
         return m_Device;    /**< @return the Device to write to */
     }
+    QString path() const override;
 
 protected:
     Device& m_Device;
