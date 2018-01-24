@@ -63,11 +63,8 @@ bool BackupFileSystemJob::run(Report& parent)
             report->line() << xi18nc("@info:progress", "Could not open file system on source partition <filename>%1</filename> for backup.", sourcePartition().deviceNode());
         else if (!copyTarget.open())
             report->line() << xi18nc("@info:progress", "Could not create backup file <filename>%1</filename>.", fileName());
-        else {
-            ExternalCommand copyCmd(copySource, copyTarget, QProcess::SeparateChannels);
-            connect(&copyCmd, &ExternalCommand::progress, this, [=] (int percent) { emit progress(percent); }, Qt::QueuedConnection);
-            rval = copyCmd.startCopyBlocks(-1);
-        }
+        else
+            rval = copyBlocks(*report, copyTarget, copySource);
     }
 
     jobFinished(*report, rval);
