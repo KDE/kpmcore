@@ -59,17 +59,14 @@ bool ExternalCommandHelper::writeData(QByteArray& buffer, qint64 offset)
         return true;
     }
 
-    qDebug() << "cmd exitCode "<<cmd.exitCode() << "\n";
+    qDebug() << "cmd exitCode " << cmd.exitCode() << "\n";
 
     return false;
 }
 
 ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
 {
-    qDebug() << "ExternalCommandHelper::copyBlocksHelper\n";
-
     command = args[QStringLiteral("command")].toString();
-
     qint64 blockSize = args[QStringLiteral("blockSize")].toInt();
     qint64 blocksToCopy = args[QStringLiteral("blocksToCopy")].toInt();
     qint64 readOffset = args[QStringLiteral("readOffset")].toInt();
@@ -83,19 +80,15 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
 
     QStringList environment = args[QStringLiteral("environment")].toStringList();
 
-    //qDebug() << command<< " " << sourceDevice <<" " << targetDevice << " blocksToCopy: " << blocksToCopy << " blockSize" << blockSize << " " << readOffset<<" "<<writeOffset<<" "<<environment<<"\n";
-
     ActionReply reply;
 
     //connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
-
-    QByteArray buffer;
 
     cmd.setEnvironment(environment);
 
     qint64 blocksCopied = 0;
 
-    //QByteArray buffer;
+    QByteArray buffer;
     int percent = 0;
     //QTime t;
     bool rval = true;
@@ -111,6 +104,7 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
         if (++blocksCopied * 100 / blocksToCopy != percent) {
             percent = blocksCopied * 100 / blocksToCopy;
 
+            // FIXME
             //if (percent % 5 == 0 && t.elapsed() > 1000) {
               //  const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (t.elapsed() / 1000);
                // const qint64 estSecsLeft = (100 - percent) * t.elapsed() / percent / 1000;
@@ -135,10 +129,8 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
         if (rval)
             rval = writeData(buffer, lastBlockWriteOffset);
 
-        if (rval){
-            qDebug() << "Percent 100"<<"\n";
+        if (rval)
             emit progress(100);
-        }
 
     }
 

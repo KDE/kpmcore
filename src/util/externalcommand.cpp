@@ -25,7 +25,6 @@
 #include "util/externalcommand.h"
 #include "util/report.h"
 
-#include <QDebug>
 #include <QEventLoop>
 #include <QtGlobal>
 #include <QStandardPaths>
@@ -85,8 +84,6 @@ bool ExternalCommand::copyBlocks()
     if (cmd.isEmpty())
         cmd = QStandardPaths::findExecutable(QStringLiteral("dd"), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
-    qDebug() << "ExternalCommand::copyBlocks\n";
-
     KAuth::Action action(QStringLiteral("org.kde.kpmcore.externalcommand.copyblockshelper"));
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
 
@@ -118,7 +115,6 @@ bool ExternalCommand::copyBlocks()
     m_Output = job->data()[QStringLiteral("output")].toByteArray();
     setExitCode(job->data()[QStringLiteral("exitCode")].toInt());
 
-    qDebug() << "ExternalCommand::copyBlocks finished";
     emit finished();
     return true;
 }
