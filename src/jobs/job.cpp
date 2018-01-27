@@ -29,19 +29,22 @@
 
 #include <QIcon>
 #include <QTime>
+#include <QVariantMap>
 
 #include <KLocalizedString>
 
 Job::Job() :
+    m_Report(nullptr),
     m_Status(Pending)
 {
 }
 
 bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
 {
-//     FIXME: report
+    m_Report = &report;
     ExternalCommand copyCmd(source, target, QProcess::SeparateChannels);
     connect(&copyCmd, &ExternalCommand::progress, this, &Job::progress, Qt::QueuedConnection);
+    connect(&copyCmd, &ExternalCommand::reportSignal, this, &Job::updateReport, Qt::QueuedConnection);
     return copyCmd.startCopyBlocks(-1);
 }
 
@@ -98,6 +101,11 @@ bool Job::rollbackCopyBlocks(Report& report, CopyTarget& origTarget, CopySource&
 void Job::emitProgress(int i)
 {
     emit progress(i);
+}
+
+void Job::updateReport(const QVariantMap& reportString)
+{
+    m_Report->line() << reportString[QStringLiteral("report")].toString();
 }
 
 Report* Job::jobStarted(Report& parent)

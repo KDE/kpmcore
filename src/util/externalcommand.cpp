@@ -32,6 +32,7 @@
 #include <QStringList>
 #include <QTimer>
 #include <QThread>
+#include <QVariant>
 
 #include <KAuth>
 #include <KLocalizedString>
@@ -88,7 +89,7 @@ bool ExternalCommand::copyBlocks()
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
 
     arguments.insert(QStringLiteral("command"), cmd);
-    arguments.insert(QStringLiteral("sourceDevice"), m_Source->path() );
+    arguments.insert(QStringLiteral("sourceDevice"), m_Source->path());
     arguments.insert(QStringLiteral("targetDevice"), m_Target->path());
     arguments.insert(QStringLiteral("blockSize"), blockSize);
     arguments.insert(QStringLiteral("blocksToCopy"), blocksToCopy);
@@ -98,6 +99,7 @@ bool ExternalCommand::copyBlocks()
     arguments.insert(QStringLiteral("sourceFirstByte"), m_Source->firstByte());
     arguments.insert(QStringLiteral("targetFirstByte"), m_Target->firstByte());
     arguments.insert(QStringLiteral("lastBlock"), lastBlock);
+    arguments.insert(QStringLiteral("sourceLength"), m_Source->length());
 
     action.setArguments(arguments);
     action.setTimeout(24 * 3600 * 1000); // set 1 day DBus timeout
@@ -105,6 +107,8 @@ bool ExternalCommand::copyBlocks()
     KAuth::ExecuteJob *job = action.execute();
     // TODO KF6:Use new signal-slot syntax
     connect(job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
+    connect(job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
+
     if (!job->exec()) {
         qWarning() << "KAuth returned an error code: " << job->errorString();
 //         return false;

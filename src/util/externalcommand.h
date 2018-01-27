@@ -26,10 +26,10 @@
 #include <KJob>
 
 #include <QDebug>
-#include <QtGlobal>
 #include <QProcess>
-#include <QStringList>
 #include <QString>
+#include <QStringList>
+#include <QtGlobal>
 #include <QVariant>
 
 class Report;
@@ -82,9 +82,12 @@ public:
         return m_Report;    /**< @return pointer to the Report or nullptr */
     }
 
+    void emitReport(const QVariantMap& report) { emit reportSignal(report); }
+
 Q_SIGNALS:
     void progress(int);
     void finished();
+    void reportSignal(const QVariantMap&);
 
 public Q_SLOTS:
     void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };

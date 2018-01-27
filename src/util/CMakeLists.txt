@@ -18,7 +18,7 @@ set(UTIL_LIB_HDRS
 )
 
 add_executable(kpmcore_externalcommand util/externalcommandhelper.cpp)
-target_link_libraries(kpmcore_externalcommand  KF5::Auth)
+target_link_libraries(kpmcore_externalcommand  KF5::Auth  KF5::I18n)
 install(TARGETS kpmcore_externalcommand DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 
 kauth_install_helper_files(kpmcore_externalcommand org.kde.kpmcore.externalcommand root)

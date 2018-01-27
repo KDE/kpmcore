@@ -81,6 +81,7 @@ public:
     }
 
     void emitProgress(int i);
+    void updateReport(const QVariantMap& reportString);
 
 protected:
     bool copyBlocks(Report& report, CopyTarget& target, CopySource& source);
@@ -94,6 +95,7 @@ protected:
     }
 
 private:
+    Report *m_Report;
     JobStatus m_Status;
 };
 
