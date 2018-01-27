@@ -45,9 +45,9 @@ public:
 
 public:
     void run();
-    LIBKPMCORE_EXPORT qint32 numJobs() const;
-    LIBKPMCORE_EXPORT qint32 numOperations() const;
-    LIBKPMCORE_EXPORT qint32 numProgressSub() const;
+    qint32 numJobs() const;
+    qint32 numOperations() const;
+    qint32 numProgressSub() const;
     bool isCancelling() const {
         return m_Cancelling;    /**< @return if the user has requested cancelling */
     }
