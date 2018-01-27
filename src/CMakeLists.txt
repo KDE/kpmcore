@@ -42,7 +42,6 @@ add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore
     ${UUID_LIBRARIES}
     ${BLKID_LIBRARIES}
-    ${LIBATASMART_LIBRARIES}
     Qt5::DBus
     KF5::Auth
     KF5::I18n
