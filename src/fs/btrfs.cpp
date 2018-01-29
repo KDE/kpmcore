@@ -51,12 +51,12 @@ btrfs::btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QS
 void btrfs::init()
 {
     m_Create = findExternal(QStringLiteral("mkfs.btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check = findExternal(QStringLiteral("btrfsck"), QStringList(), 1) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Grow = (m_Check != cmdSupportNone && findExternal(QStringLiteral("btrfs"))) ? cmdSupportFileSystem : cmdSupportNone;
-    m_GetUsed = findExternal(QStringLiteral("btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = findExternal(QStringLiteral("btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Grow = m_Check;
+    m_GetUsed = m_Check;
     m_Shrink = (m_Grow != cmdSupportNone && m_GetUsed != cmdSupportNone) ? cmdSupportFileSystem : cmdSupportNone;
 
-    m_SetLabel = findExternal(QStringLiteral("btrfs")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_SetLabel = m_Check;
     m_UpdateUUID = findExternal(QStringLiteral("btrfstune")) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
@@ -122,7 +122,7 @@ qint64 btrfs::readUsedCapacity(const QString& deviceNode) const
 
 bool btrfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("btrfsck"), { deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("btrfs"), { QStringLiteral("check"), QStringLiteral("--repair"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
