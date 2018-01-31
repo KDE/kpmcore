@@ -358,6 +358,35 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
     return rval;
 }
 
+QString SfdiskBackend::readLabel(const QString& deviceNode) const
+{
+    ExternalCommand udevCommand(QStringLiteral("udevadm"), {
+                                 QStringLiteral("info"),
+                                 QStringLiteral("--query=property"),
+                                 deviceNode });
+
+    QRegularExpression re(QStringLiteral("ID_FS_LABEL=(\\w+)"));
+    QRegularExpressionMatch reFileSystemLabel = re.match(udevCommand.output());
+    if (reFileSystemLabel.hasMatch())
+        return reFileSystemLabel.captured(1);
+
+    return QString();
+}
+
+QString SfdiskBackend::readUUID(const QString& deviceNode) const
+{
+    ExternalCommand udevCommand(QStringLiteral("udevadm"), {
+                                 QStringLiteral("info"),
+                                 QStringLiteral("--query=property"),
+                                 deviceNode });
+    QRegularExpression re(QStringLiteral("ID_FS_UUID=(\\w+)"));
+    QRegularExpressionMatch reFileSystemUUID = re.match(udevCommand.output());
+    if (reFileSystemUUID.hasMatch())
+        return reFileSystemUUID.captured(1);
+
+    return QString();
+}
+
 PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType type)
 {
     PartitionTable::Flags flags;

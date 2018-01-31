@@ -193,6 +193,7 @@ static QLatin1String getPartitionType(FileSystem::Type t, PartitionTable::TableT
         type = 1;
         break;
     default:;
+        return QLatin1String();
     }
     for (quint32 i = 0; i < sizeof(typemap) / sizeof(typemap[0]); i++)
         if (typemap[i].type == t)

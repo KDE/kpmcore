@@ -67,6 +67,8 @@ public:
     DiskDevice* scanDevice(const QString& deviceNode) override;
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;
     FileSystem::Type detectFileSystem(const QString& partitionPath) override;
+    QString readLabel(const QString& deviceNode) const override;
+    QString readUUID(const QString& deviceNode) const override;
 
     static QString lastPartedExceptionMessage();
 

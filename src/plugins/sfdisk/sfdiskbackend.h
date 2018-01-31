@@ -52,6 +52,8 @@ public:
     bool closeDevice(CoreBackendDevice* coreDevice) override;
     Device* scanDevice(const QString& deviceNode) override;
     FileSystem::Type detectFileSystem(const QString& partitionPath) override;
+    QString readLabel(const QString& deviceNode) const override;
+    QString readUUID(const QString& deviceNode) const override;
 
 private:
     static void readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint);

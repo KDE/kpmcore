@@ -50,6 +50,8 @@ public:
     bool closeDevice(CoreBackendDevice* coreDevice) override;
     Device* scanDevice(const QString& deviceNode) override;
     FileSystem::Type detectFileSystem(const QString& deviceNode) override;
+    QString readLabel(const QString& deviceNode) const override;
+    QString readUUID(const QString& deviceNode) const override;
 };
 
 #endif

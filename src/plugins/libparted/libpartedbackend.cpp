@@ -524,6 +524,37 @@ FileSystem::Type LibPartedBackend::detectFileSystem(const QString& partitionPath
     return rval;
 }
 
+static QString readBlkIdValue(const QString& deviceNode, const QString& tag)
+{
+    blkid_cache cache;
+    QString rval;
+
+    if (blkid_get_cache(&cache, nullptr) == 0) {
+        blkid_dev dev;
+
+        char* label = nullptr;
+        if ((dev = blkid_get_dev(cache, deviceNode.toLocal8Bit().constData(), BLKID_DEV_NORMAL)) != nullptr &&
+                (label = blkid_get_tag_value(cache, tag.toLocal8Bit().constData(), deviceNode.toLocal8Bit().constData()))) {
+            rval = QString::fromLocal8Bit(label);
+            free(label);
+        }
+
+        blkid_put_cache(cache);
+    }
+
+    return rval;
+}
+
+QString LibPartedBackend::readLabel(const QString& deviceNode) const
+{
+    return readBlkIdValue(deviceNode, QStringLiteral("LABEL"));
+}
+
+QString LibPartedBackend::readUUID(const QString& deviceNode) const
+{
+    return readBlkIdValue(deviceNode, QStringLiteral("UUID"));
+}
+
 CoreBackendDevice* LibPartedBackend::openDevice(const Device& d)
 {
     LibPartedDevice* device = new LibPartedDevice(d.deviceNode());

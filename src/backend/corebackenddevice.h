@@ -19,8 +19,6 @@
 
 #define KPMCORE_COREBACKENDDEVICE_H
 
-#include "util/libpartitionmanagerexport.h"
-
 #include <QString>
 
 class CoreBackendPartition;
@@ -37,7 +35,7 @@ class Report;
   *
   * @author Volker Lanz <vl@fidra.de>
   */
-class LIBKPMCORE_EXPORT CoreBackendDevice
+class CoreBackendDevice
 {
 public:
     CoreBackendDevice(const QString& deviceNode);

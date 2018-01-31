@@ -29,6 +29,7 @@ set (pmlibpartedbackendplugin_SRCS
     libpartedbackend.cpp
     libparteddevice.cpp
     libpartedpartitiontable.cpp
+    ${CMAKE_SOURCE_DIR}/src/backend/corebackenddevice.cpp
 )
 
 add_library(pmlibpartedbackendplugin SHARED ${pmlibpartedbackendplugin_SRCS})

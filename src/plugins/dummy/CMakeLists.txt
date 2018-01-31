@@ -17,6 +17,7 @@ set (pmdummybackendplugin_SRCS
     dummybackend.cpp
     dummydevice.cpp
     dummypartitiontable.cpp
+    ${CMAKE_SOURCE_DIR}/src/backend/corebackenddevice.cpp
 )
 
 add_library(pmdummybackendplugin SHARED ${pmdummybackendplugin_SRCS})
