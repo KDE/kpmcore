@@ -20,7 +20,9 @@
 #include "core/fstab.h"
 #include "util/externalcommand.h"
 
-#include <blkid/blkid.h>
+#if defined(Q_OS_LINUX)
+    #include <blkid/blkid.h>
+#endif
 
 #include <QChar>
 #include <QDebug>
@@ -118,10 +120,12 @@ static QString findBlkIdDevice(const QString& token, const QString& value)
 {
     QString rval;
 
+#if defined(Q_OS_LINUX)
     if (char* c = blkid_evaluate_tag(token.toLocal8Bit().constData(), value.toLocal8Bit().constData(), nullptr)) {
         rval = QString::fromLocal8Bit(c);
         free(c);
     }
+#endif
 
     return rval;
 }
