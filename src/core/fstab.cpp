@@ -32,7 +32,7 @@
 #include <QTextStream>
 
 static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QString& m_deviceNode);
-static QString findBlkIdDevice(const QString& token, const QString& value);
+static QString findBlkIdDevice(const char *token, const QString& value);
 
 FstabEntry::FstabEntry(const QString& fsSpec, const QString& mountPoint, const QString& type, const QString& options, int dumpFreq, int passNumber, const QString& comment)
     : m_fsSpec(fsSpec)
@@ -116,12 +116,12 @@ QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabP
     return mountPoints;
 }
 
-static QString findBlkIdDevice(const QString& token, const QString& value)
+static QString findBlkIdDevice(const char *token, const QString& value)
 {
     QString rval;
 
 #if defined(Q_OS_LINUX)
-    if (char* c = blkid_evaluate_tag(token.toLocal8Bit().constData(), value.toLocal8Bit().constData(), nullptr)) {
+    if (char* c = blkid_evaluate_tag(token, value.toLocal8Bit().constData(), nullptr)) {
         rval = QString::fromLocal8Bit(c);
         free(c);
     }
@@ -135,16 +135,16 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QS
     m_entryType = FstabEntryType::comment;
     if (m_fsSpec.startsWith(QStringLiteral("UUID="))) {
         m_entryType = FstabEntryType::uuid;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("UUID"), QString(m_fsSpec).remove(QStringLiteral("UUID=")));
+        m_deviceNode = findBlkIdDevice("UUID", QString(m_fsSpec).remove(QStringLiteral("UUID=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("LABEL="))) {
         m_entryType = FstabEntryType::label;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("LABEL"), QString(m_fsSpec).remove(QStringLiteral("LABEL=")));
+        m_deviceNode = findBlkIdDevice("LABEL", QString(m_fsSpec).remove(QStringLiteral("LABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("PARTUUID="))) {
         m_entryType = FstabEntryType::uuid;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("PARTUUID"), QString(m_fsSpec).remove(QStringLiteral("PARTUUID=")));
+        m_deviceNode = findBlkIdDevice("PARTUUID", QString(m_fsSpec).remove(QStringLiteral("PARTUUID=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("PARTLABEL="))) {
         m_entryType = FstabEntryType::label;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("PARTLABEL"), QString(m_fsSpec).remove(QStringLiteral("PARTLABEL=")));
+        m_deviceNode = findBlkIdDevice("PARTLABEL", QString(m_fsSpec).remove(QStringLiteral("PARTLABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("/"))) {
         m_entryType = FstabEntryType::deviceNode;
         m_deviceNode = m_fsSpec;
