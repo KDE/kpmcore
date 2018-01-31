@@ -16,7 +16,7 @@
  *************************************************************************/
 
 #if !defined(KPMCORE_SMARTDISKINFORMATION_H)
-#define SMARTDISKINFORMATION_H
+#define KPMCORE_SMARTDISKINFORMATION_H
 
 #include <QList>
 #include <QString>

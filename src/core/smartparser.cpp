@@ -22,6 +22,8 @@
 
 #include "util/externalcommand.h"
 
+#include <errno.h>
+
 #include <QDebug>
 #include <QJsonArray>
 #include <QJsonDocument>
