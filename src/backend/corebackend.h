@@ -100,10 +100,24 @@ public:
 
     /**
       * Scan a single device in the system.
-      * @param deviceNode The path to the device that is to be scanned (e.g. /dev/sda)
+      * @param deviceNode The path to the device that is to be scanned (e.g. /dev/sda1)
       * @return FileSystem type of the device on deviceNode
       */
     virtual FileSystem::Type detectFileSystem(const QString& deviceNode) = 0;
+
+    /**
+      * Read a file system label
+      * @param deviceNode The path to the device that is to be scanned (e.g. /dev/sda1)
+      * @return FileSystem label on deviceNode
+      */
+    virtual QString readLabel(const QString& deviceNode) const = 0;
+
+    /**
+      * Read a file system UUID
+      * @param deviceNode The path to the device that is to be scanned (e.g. /dev/sda1)
+      * @return FileSystem UUID on deviceNode
+      */
+    virtual QString readUUID(const QString& deviceNode) const = 0;
 
     /**
       * Scan a single device in the system.

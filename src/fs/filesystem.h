@@ -18,8 +18,8 @@
  *************************************************************************/
 
 #if !defined(KPMCORE_FILESYSTEM_H)
-
 #define KPMCORE_FILESYSTEM_H
+
 #include "util/libpartitionmanagerexport.h"
 
 #include <QColor>

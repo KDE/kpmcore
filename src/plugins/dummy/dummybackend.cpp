@@ -77,6 +77,20 @@ FileSystem::Type DummyBackend::detectFileSystem(const QString& deviceNode)
     return FileSystem::Unknown;
 }
 
+QString DummyBackend::readLabel(const QString& deviceNode) const
+{
+    Q_UNUSED(deviceNode)
+
+    return QString();
+}
+
+QString DummyBackend::readUUID(const QString& deviceNode) const
+{
+    Q_UNUSED(deviceNode)
+
+    return QString();
+}
+
 CoreBackendDevice* DummyBackend::openDevice(const Device& d)
 {
     DummyDevice* device = new DummyDevice(d.deviceNode());

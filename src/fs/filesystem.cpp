@@ -29,8 +29,6 @@
 #include "util/capacity.h"
 #include "util/helpers.h"
 
-#include <blkid/blkid.h>
-
 #include <KLocalizedString>
 
 #include <QFileInfo>
@@ -101,27 +99,6 @@ qint64 FileSystem::readUsedCapacity(const QString& deviceNode) const
     return -1;
 }
 
-static QString readBlkIdValue(const QString& deviceNode, const QString& tag)
-{
-    blkid_cache cache;
-    QString rval;
-
-    if (blkid_get_cache(&cache, nullptr) == 0) {
-        blkid_dev dev;
-
-        char* label = nullptr;
-        if ((dev = blkid_get_dev(cache, deviceNode.toLocal8Bit().constData(), BLKID_DEV_NORMAL)) != nullptr &&
-                (label = blkid_get_tag_value(cache, tag.toLocal8Bit().constData(), deviceNode.toLocal8Bit().constData()))) {
-            rval = QString::fromLocal8Bit(label);
-            free(label);
-        }
-
-        blkid_put_cache(cache);
-    }
-
-    return rval;
-}
-
 FileSystem::Type FileSystem::detectFileSystem(const QString& partitionPath)
 {
     return CoreBackendManager::self()->backend()->detectFileSystem(partitionPath);
@@ -168,7 +145,7 @@ bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
 */
 QString FileSystem::readLabel(const QString& deviceNode) const
 {
-    return readBlkIdValue(deviceNode, QStringLiteral("LABEL"));
+    return CoreBackendManager::self()->backend()->readLabel(deviceNode);
 }
 
 /** Creates a new FileSystem
@@ -363,7 +340,7 @@ bool FileSystem::updateUUID(Report& report, const QString& deviceNode) const
  */
 QString FileSystem::readUUID(const QString& deviceNode) const
 {
-    return readBlkIdValue(deviceNode, QStringLiteral("UUID"));
+    return CoreBackendManager::self()->backend()->readUUID(deviceNode);
 }
 
 /** Give implementations of FileSystem a chance to update the boot sector after the
