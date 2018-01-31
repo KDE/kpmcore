@@ -51,7 +51,7 @@ public:
       * @return the name of the default backend plugin
       */
     static QString defaultBackendName() {
-        return QStringLiteral("pmlibpartedbackendplugin");
+        return QStringLiteral("pmsfdiskbackendplugin");
     }
 
     /**
