@@ -116,16 +116,11 @@ QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabP
 
 static QString findBlkIdDevice(const QString& token, const QString& value)
 {
-    blkid_cache cache;
     QString rval;
 
-    if (blkid_get_cache(&cache, nullptr) == 0) {
-        if (char* c = blkid_evaluate_tag(token.toLocal8Bit().constData(), value.toLocal8Bit().constData(), &cache)) {
-            rval = QString::fromLocal8Bit(c);
-            free(c);
-        }
-
-        blkid_put_cache(cache);
+    if (char* c = blkid_evaluate_tag(token.toLocal8Bit().constData(), value.toLocal8Bit().constData(), nullptr)) {
+        rval = QString::fromLocal8Bit(c);
+        free(c);
     }
 
     return rval;

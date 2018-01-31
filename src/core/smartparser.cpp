@@ -37,7 +37,6 @@ SmartParser::SmartParser(const QString &device_path) :
     m_DevicePath(device_path),
     m_DiskInformation(nullptr)
 {
-
 }
 
 /** Initialize SmartParser data, retrieve the information from SMART JSON and initialize the disk information data */
