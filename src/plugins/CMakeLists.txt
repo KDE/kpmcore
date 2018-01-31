@@ -23,10 +23,14 @@ if (PARTMAN_LIBPARTEDBACKEND)
     add_subdirectory(libparted)
 endif (PARTMAN_LIBPARTEDBACKEND)
 
+option(PARTMAN_SFDISKBACKEND "Build the sfdisk backend plugin." ON)
+
+if (PARTMAN_SFDISKBACKEND)
+    add_subdirectory(sfdisk)
+endif (PARTMAN_SFDISKBACKEND)
+
 option(PARTMAN_DUMMYBACKEND "Build the dummy backend plugin." ON)
 
 if (PARTMAN_DUMMYBACKEND)
     add_subdirectory(dummy)
 endif (PARTMAN_DUMMYBACKEND)
-
-add_subdirectory(sfdisk)
