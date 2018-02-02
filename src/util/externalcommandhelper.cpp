@@ -71,17 +71,17 @@ bool ExternalCommandHelper::writeData(QByteArray& buffer, qint64 offset)
 ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
 {
     command = args[QStringLiteral("command")].toString();
-    qint64 blockSize = args[QStringLiteral("blockSize")].toInt();
-    qint64 blocksToCopy = args[QStringLiteral("blocksToCopy")].toInt();
-    qint64 readOffset = args[QStringLiteral("readOffset")].toInt();
-    qint64 writeOffset = args[QStringLiteral("writeOffset")].toInt();
-    qint32 copyDirection = args[QStringLiteral("copyDirection")].toInt();
+    qint64 blockSize = args[QStringLiteral("blockSize")].toLongLong();
+    qint64 blocksToCopy = args[QStringLiteral("blocksToCopy")].toLongLong();
+    qint64 readOffset = args[QStringLiteral("readOffset")].toLongLong();
+    qint64 writeOffset = args[QStringLiteral("writeOffset")].toLongLong();
+    qint32 copyDirection = args[QStringLiteral("copyDirection")].toLongLong();
     sourceDevice = args[QStringLiteral("sourceDevice")].toString();
     targetDevice = args[QStringLiteral("targetDevice")].toString();
-    qint64 lastBlock = args[QStringLiteral("lastBlock")].toInt();
-    qint64 sourceFirstByte = args[QStringLiteral("sourceFirstByte")].toInt();
-    qint64 targetFirstByte = args[QStringLiteral("targetFirstByte")].toInt();
-    qint64 sourceLength = args[QStringLiteral("sourceLength")].toInt();
+    qint64 lastBlock = args[QStringLiteral("lastBlock")].toLongLong();
+    qint64 sourceFirstByte = args[QStringLiteral("sourceFirstByte")].toLongLong();
+    qint64 targetFirstByte = args[QStringLiteral("targetFirstByte")].toLongLong();
+    qint64 sourceLength = args[QStringLiteral("sourceLength")].toLongLong();
 
     QStringList environment = args[QStringLiteral("environment")].toStringList();
 
