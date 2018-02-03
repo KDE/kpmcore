@@ -18,6 +18,7 @@
 #include "externalcommandhelper.h"
 
 #include <QDebug>
+#include <QFile>
 #include <QString>
 #include <QTime>
 #include <QVariant>
@@ -25,7 +26,7 @@
 #include <KLocalizedString>
 
 
-bool ExternalCommandHelper::readData(QByteArray& buffer, qint64 offset, qint64 size)
+bool ExternalCommandHelper::readData(QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size)
 {
     QStringList arguments = {
                 QStringLiteral("skip=") + QString::number(offset),
@@ -46,26 +47,24 @@ bool ExternalCommandHelper::readData(QByteArray& buffer, qint64 offset, qint64 s
     return false;
 }
 
-bool ExternalCommandHelper::writeData(QByteArray& buffer, qint64 offset)
+bool ExternalCommandHelper::writeData(QString &targetDevice, QByteArray& buffer, qint64 offset)
 {
-     QStringList arguments = {
-                QStringLiteral("of=") + targetDevice,
-                QStringLiteral("seek=") + QString::number(offset),
-                QStringLiteral("bs=1M"),
-                QStringLiteral("oflag=seek_bytes"),
-                QStringLiteral("conv=fsync") };
-
-    cmd.start(command, arguments);
-    cmd.write(buffer);
-    cmd.closeWriteChannel();
-    cmd.waitForFinished(-1);
-
-    if (cmd.exitCode() == 0 ) {
-        return true;
+    QFile device(targetDevice);
+    if (!device.open(QFile::WriteOnly | QFile::Unbuffered)) {
+        qCritical() << xi18n("Could not open device <filename>%1</filename> for writing.", targetDevice);
+        return false;
     }
 
-    //qDebug() << "cmd exitCode " << cmd.exitCode() << "\n";
-    return false;
+    if (!device.seek(offset)) {
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%1</filename>.", targetDevice);
+        return false;
+    }
+
+    if (device.write(buffer) != buffer.size()) {
+        qCritical() << xi18n("Could not write to device <filename>%1</filename>.", targetDevice);
+        return false;
+    }
+    return true;
 }
 
 ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
@@ -76,8 +75,8 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
     qint64 readOffset = args[QStringLiteral("readOffset")].toLongLong();
     qint64 writeOffset = args[QStringLiteral("writeOffset")].toLongLong();
     qint32 copyDirection = args[QStringLiteral("copyDirection")].toLongLong();
-    sourceDevice = args[QStringLiteral("sourceDevice")].toString();
-    targetDevice = args[QStringLiteral("targetDevice")].toString();
+    QString sourceDevice = args[QStringLiteral("sourceDevice")].toString();
+    QString targetDevice = args[QStringLiteral("targetDevice")].toString();
     qint64 lastBlock = args[QStringLiteral("lastBlock")].toLongLong();
     qint64 sourceFirstByte = args[QStringLiteral("sourceFirstByte")].toLongLong();
     qint64 targetFirstByte = args[QStringLiteral("targetFirstByte")].toLongLong();
@@ -109,10 +108,10 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
     bool rval = true;
 
     while (blocksCopied < blocksToCopy) {
-        if (!(rval = readData(buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
+        if (!(rval = readData(sourceDevice, buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
             break;
 
-        if (!(rval = writeData(buffer, writeOffset + blockSize * blocksCopied * copyDirection)))
+        if (!(rval = writeData(targetDevice, buffer, writeOffset + blockSize * blocksCopied * copyDirection)))
             break;
 
         bytesWritten += buffer.size();
@@ -120,7 +119,6 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
         if (++blocksCopied * 100 / blocksToCopy != percent) {
             percent = blocksCopied * 100 / blocksToCopy;
 
-            // FIXME
             if (percent % 5 == 0 && t.elapsed() > 1000) {
                 const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (t.elapsed() / 1000);
                 const qint64 estSecsLeft = (100 - percent) * t.elapsed() / percent / 1000;
@@ -139,10 +137,10 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
         const qint64 lastBlockWriteOffset = copyDirection > 0 ? writeOffset + blockSize * blocksCopied : targetFirstByte;
         report[QStringLiteral("report")]= xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
         HelperSupport::progressStep(report);
-        rval = readData(buffer, lastBlockReadOffset, lastBlock);
+        rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
 
         if (rval)
-            rval = writeData(buffer, lastBlockWriteOffset);
+            rval = writeData(targetDevice, buffer, lastBlockWriteOffset);
 
         if (rval) {
             HelperSupport::progressStep(100);

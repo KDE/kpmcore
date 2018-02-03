@@ -34,8 +34,8 @@ Q_SIGNALS:
     void progress(int);
 
 public:
-    bool readData(QByteArray& buffer, qint64 offset, qint64 size);
-    bool writeData(QByteArray& buffer, qint64 offset);
+    bool readData(QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size);
+    bool writeData(QString& targetDevice, QByteArray& buffer, qint64 offset);
 
 public Q_SLOTS:
     ActionReply start(const QVariantMap& args);
@@ -46,7 +46,6 @@ private:
 
     QString command;
     QString sourceDevice;
-    QString targetDevice;
     QProcess cmd;
 //     QByteArray output;
 };
