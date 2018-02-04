@@ -99,6 +99,8 @@ Partition::Partition(const Partition& other, PartitionNode* parent) :
     m_FirstSector(other.m_FirstSector),
     m_LastSector(other.m_LastSector),
     m_DevicePath(other.m_DevicePath),
+    m_Label(other.m_Label),
+    m_UUID(other.m_UUID),
     m_MountPoint(other.m_MountPoint),
     m_AvailableFlags(other.m_AvailableFlags),
     m_ActiveFlags(other.m_ActiveFlags),
@@ -136,6 +138,8 @@ Partition& Partition::operator=(const Partition& other)
     m_FirstSector = other.m_FirstSector;
     m_LastSector = other.m_LastSector;
     m_DevicePath = other.m_DevicePath;
+    m_Label = other.m_Label;
+    m_UUID = other.m_UUID;
     m_PartitionPath = other.m_PartitionPath;
     m_MountPoint = other.m_MountPoint;
     m_AvailableFlags = other.m_AvailableFlags;
