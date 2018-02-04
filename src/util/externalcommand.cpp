@@ -39,9 +39,9 @@
 
 
 ExternalCommand::ExternalCommand(CopySource& source, CopyTarget& target,const QProcess::ProcessChannelMode processChannelMode) :
+   m_ExitCode(-1),
    m_Source(&source),
-   m_Target(&target),
-   m_ExitCode(-1)
+   m_Target(&target)
 {
     setup(processChannelMode);
 }
