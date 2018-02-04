@@ -17,21 +17,17 @@
 
 install(FILES pmcorebackendplugin.desktop DESTINATION ${SERVICETYPES_INSTALL_DIR})
 
-#if(LINUX)
-#    option(PARTMAN_LIBPARTEDBACKEND "Build the libparted backend plugin." ON)
+#option(PARTMAN_LIBPARTEDBACKEND "Build the libparted backend plugin." ON)
 
-#    if (PARTMAN_LIBPARTEDBACKEND)
-#        add_subdirectory(libparted)
-#    endif (PARTMAN_LIBPARTEDBACKEND)
-#endif(LINUX)
+#if (PARTMAN_LIBPARTEDBACKEND)
+#    add_subdirectory(libparted)
+#endif (PARTMAN_LIBPARTEDBACKEND)
 
-if(LINUX)
-    option(PARTMAN_SFDISKBACKEND "Build the sfdisk backend plugin." ON)
+option(PARTMAN_SFDISKBACKEND "Build the sfdisk backend plugin." ON)
 
-    if (PARTMAN_SFDISKBACKEND)
-        add_subdirectory(sfdisk)
-    endif (PARTMAN_SFDISKBACKEND)
-endif(LINUX)
+if (PARTMAN_SFDISKBACKEND)
+    add_subdirectory(sfdisk)
+endif (PARTMAN_SFDISKBACKEND)
 
 option(PARTMAN_DUMMYBACKEND "Build the dummy backend plugin." ON)
 
