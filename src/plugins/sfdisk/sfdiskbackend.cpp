@@ -364,7 +364,7 @@ QString SfdiskBackend::readLabel(const QString& deviceNode) const
                                  QStringLiteral("info"),
                                  QStringLiteral("--query=property"),
                                  deviceNode });
-
+    udevCommand.run();
     QRegularExpression re(QStringLiteral("ID_FS_LABEL=(\\w+)"));
     QRegularExpressionMatch reFileSystemLabel = re.match(udevCommand.output());
     if (reFileSystemLabel.hasMatch())
@@ -379,6 +379,7 @@ QString SfdiskBackend::readUUID(const QString& deviceNode) const
                                  QStringLiteral("info"),
                                  QStringLiteral("--query=property"),
                                  deviceNode });
+    udevCommand.run();
     QRegularExpression re(QStringLiteral("ID_FS_UUID=(\\w+)"));
     QRegularExpressionMatch reFileSystemUUID = re.match(udevCommand.output());
     if (reFileSystemUUID.hasMatch())
