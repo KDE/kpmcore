@@ -23,11 +23,13 @@ install(FILES pmcorebackendplugin.desktop DESTINATION ${SERVICETYPES_INSTALL_DIR
 #    add_subdirectory(libparted)
 #endif (PARTMAN_LIBPARTEDBACKEND)
 
-option(PARTMAN_SFDISKBACKEND "Build the sfdisk backend plugin." ON)
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    option(PARTMAN_SFDISKBACKEND "Build the sfdisk backend plugin." ON)
 
-if (PARTMAN_SFDISKBACKEND)
-    add_subdirectory(sfdisk)
-endif (PARTMAN_SFDISKBACKEND)
+    if (PARTMAN_SFDISKBACKEND)
+        add_subdirectory(sfdisk)
+    endif (PARTMAN_SFDISKBACKEND)
+endif()
 
 option(PARTMAN_DUMMYBACKEND "Build the dummy backend plugin." ON)
 

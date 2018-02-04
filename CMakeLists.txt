@@ -77,7 +77,7 @@ add_definitions(
 )
 kde_enable_exceptions()
 
-if(LINUX)
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   find_package(PkgConfig REQUIRED)
   pkg_check_modules(BLKID REQUIRED blkid>=2.30)
 endif()
