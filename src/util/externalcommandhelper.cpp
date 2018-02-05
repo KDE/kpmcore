@@ -28,23 +28,26 @@
 
 bool ExternalCommandHelper::readData(QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size)
 {
-    QStringList arguments = {
-                QStringLiteral("skip=") + QString::number(offset),
-                QStringLiteral("bs=") + QString::number(size),
-                QStringLiteral("count=1"),
-                QStringLiteral("iflag=skip_bytes"),
-                QStringLiteral("if=") + sourceDevice
-                };
+    QFile device(sourceDevice);
 
-    cmd.start(command, arguments);
-    cmd.waitForFinished(-1);
-
-    if (cmd.exitCode() == 0) {
-        buffer = cmd.readAllStandardOutput();
-        return true;
+    if (!device.open(QIODevice::ReadOnly | QIODevice::Unbuffered)) {
+        qCritical() << xi18n("Could not open device <filename>%1</filename> for reading.", sourceDevice);
+        return false;
     }
-    //qDebug() << sourceDevice << " " << offset << " " << size << " cmd exitCode " << cmd.exitCode() << "\n";
-    return false;
+
+    if (!device.seek(offset)) {
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%1</filename>.", sourceDevice);
+        return false;
+    }
+
+    buffer = device.read(size);
+
+    if (size != buffer.size()) {
+        qCritical() << xi18n("Could not read from device <filename>%1</filename>.", sourceDevice);
+         return false;
+    }
+
+    return true;
 }
 
 bool ExternalCommandHelper::writeData(QString &targetDevice, QByteArray& buffer, qint64 offset)
