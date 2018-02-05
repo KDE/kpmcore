@@ -50,7 +50,7 @@ bool ExternalCommandHelper::readData(QString& sourceDevice, QByteArray& buffer, 
 bool ExternalCommandHelper::writeData(QString &targetDevice, QByteArray& buffer, qint64 offset)
 {
     QFile device(targetDevice);
-    if (!device.open(QFile::WriteOnly | QFile::Unbuffered)) {
+    if (!device.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Unbuffered)) {
         qCritical() << xi18n("Could not open device <filename>%1</filename> for writing.", targetDevice);
         return false;
     }
