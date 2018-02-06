@@ -66,26 +66,3 @@ bool DummyDevice::createPartitionTable(Report& report, const PartitionTable& pta
 
     return true;
 }
-
-bool DummyDevice::readData(QByteArray& buffer, qint64 offset, qint64 size)
-{
-    Q_UNUSED(buffer);
-    Q_UNUSED(offset);
-    Q_UNUSED(size);
-
-    if (!isExclusive())
-        return false;
-
-    return true;
-}
-
-bool DummyDevice::writeData(QByteArray& buffer, qint64 offset)
-{
-    Q_UNUSED(buffer);
-    Q_UNUSED(offset);
-
-    if (!isExclusive())
-        return false;
-
-    return true;
-}

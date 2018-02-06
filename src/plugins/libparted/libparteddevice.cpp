@@ -110,23 +110,3 @@ bool LibPartedDevice::createPartitionTable(Report& report, const PartitionTable&
 
     return LibPartedPartitionTable::commit(disk);
 }
-
-bool LibPartedDevice::readData(QByteArray& buffer, qint64 offset, qint64 size)
-{
-     if (!isExclusive())
-         return false;
-
-    void *data = malloc(size);
-    bool rval = ped_device_read(pedDevice(), data, offset / pedDevice()->sector_size, size / pedDevice()->sector_size);
-    buffer = QByteArray(static_cast<char*>(data), size);
-    free(data);
-    return rval;
-}
-
-bool LibPartedDevice::writeData(QByteArray& buffer, qint64 offset)
-{
-    if (!isExclusive())
-        return false;
-
-    return ped_device_write(pedDevice(), static_cast<const void *>(buffer.constData()), offset / pedDevice()->sector_size, buffer.size() / pedDevice()->sector_size);
-}

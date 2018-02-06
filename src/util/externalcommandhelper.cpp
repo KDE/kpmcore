@@ -25,7 +25,13 @@
 
 #include <KLocalizedString>
 
-
+/** Reads the given number of bytes from the sourceDevice into the given buffer.
+    @param sourceDevice device or file to read from
+    @param buffer buffer to store the bytes read in
+    @param offset offset where to begin reading
+    @param size the number of bytes to read
+    @return true on success
+*/
 bool ExternalCommandHelper::readData(QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size)
 {
     QFile device(sourceDevice);
@@ -50,6 +56,12 @@ bool ExternalCommandHelper::readData(QString& sourceDevice, QByteArray& buffer, 
     return true;
 }
 
+/** Writes the data from buffer to a given device or file.
+    @param targetDevice device or file to write to
+    @param buffer the data that we write
+    @param offset offset where to begin writing
+    @return true on success
+*/
 bool ExternalCommandHelper::writeData(QString &targetDevice, QByteArray& buffer, qint64 offset)
 {
     QFile device(targetDevice);

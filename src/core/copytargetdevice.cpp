@@ -52,25 +52,6 @@ bool CopyTargetDevice::open()
     return m_BackendDevice != nullptr;
 }
 
-/** Writes the given number of bytes to the Device.
-
-    Note that @p writeOffset must be greater or equal than zero.
-
-    @param buffer the data to write
-    @param writeOffset where to start writing on the Device
-    @return true on success
-*/
-bool CopyTargetDevice::writeData(QByteArray& buffer, qint64 writeOffset)
-{
-    Q_ASSERT(writeOffset >= 0);
-    bool rval = m_BackendDevice->writeData(buffer, writeOffset);
-
-    if (rval)
-        setBytesWritten(bytesWritten() + buffer.size());
-
-    return rval;
-}
-
 QString CopyTargetDevice::path() const
 {
     return m_Device.deviceNode();

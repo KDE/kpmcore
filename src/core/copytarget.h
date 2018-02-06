@@ -41,7 +41,6 @@ protected:
 
 public:
     virtual bool open() = 0;
-    virtual bool writeData(QByteArray& buffer, qint64 writeOffset) = 0;
     virtual qint64 firstByte() const = 0;
     virtual qint64 lastByte() const = 0;
     virtual QString path() const = 0;

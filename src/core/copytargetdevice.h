@@ -46,7 +46,6 @@ public:
 
 public:
     bool open() override;
-    bool writeData(QByteArray& buffer, qint64 writeOffset) override;
     qint64 firstByte() const override {
         return m_FirstByte;    /**< @return the first byte to write to */
     }

@@ -45,18 +45,3 @@ qint64 CopySourceFile::length() const
 {
     return QFileInfo(file()).size();
 }
-
-/** Reads the given number of bytes from the file into the given buffer.
-    @param buffer buffer to store the bytes read in
-    @param readOffset offset where to begin reading
-    @param size the number of bytes to read
-    @return true on success
-*/
-bool CopySourceFile::readData(QByteArray& buffer, qint64 readOffset, qint64 size)
-{
-    if (!file().seek(readOffset))
-        return false;
-
-    buffer = file().read(size);
-    return !buffer.isEmpty();
-}

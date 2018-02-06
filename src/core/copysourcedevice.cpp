@@ -63,22 +63,6 @@ qint64 CopySourceDevice::length() const
     return lastByte() - firstByte() + 1;
 }
 
-/** Reads a given number of bytes from the Device into the given buffer.
-
-    Note that @p readOffset must be greater or equal than zero.
-
-    @param buffer the buffer to store the read bytes in
-    @param readOffset the offset to begin reading
-    @param size the number of bytes to read
-
-    @return true if successful
-*/
-bool CopySourceDevice::readData(QByteArray& buffer, qint64 readOffset, qint64 size)
-{
-    Q_ASSERT(readOffset >= 0);
-    return m_BackendDevice->readData(buffer, readOffset, size);
-}
-
 /** Checks if this CopySourceDevice overlaps with the given CopyTarget
     @param target the CopyTarget to check overlapping with
     @return true if overlaps

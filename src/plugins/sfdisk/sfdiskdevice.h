@@ -46,9 +46,6 @@ public:
 
     bool createPartitionTable(Report& report, const PartitionTable& ptable) override;
 
-    bool readData(QByteArray& buffer, qint64 offset, qint64 size) override;
-    bool writeData(QByteArray& buffer, qint64 offset) override;
-
 private:
     const Device *m_device;
 };

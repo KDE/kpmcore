@@ -39,7 +39,6 @@ public:
 
 public:
     bool open() override;
-    bool readData(QByteArray& buffer, qint64 readOffset, qint64 size) override;
     qint64 length() const override;
 
     bool overlaps(const CopyTarget&) const override {

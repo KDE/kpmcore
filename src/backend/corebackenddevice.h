@@ -91,23 +91,6 @@ public:
       */
     virtual bool createPartitionTable(Report& report, const PartitionTable& ptable) = 0;
 
-    /**
-      * Read data from an opened device into a buffer.
-      * @param buffer the buffer to write the read data to
-      * @param offset offset byte where to start reading on the device
-      * @param size the number of bytes to read
-      * @return true on success
-      */
-    virtual bool readData(QByteArray& buffer, qint64 offset, qint64 size) = 0;
-
-    /**
-      * Write data from a buffer to an exclusively opened device.
-      * @param buffer the buffer with the data
-      * @param offset offset byte where to start writing to the device
-      * @return true on success
-      */
-    virtual bool writeData(QByteArray& buffer, qint64 offset) = 0;
-
 protected:
     void setExclusive(bool b) {
         m_Exclusive = b;

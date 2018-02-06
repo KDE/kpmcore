@@ -43,17 +43,3 @@ qint64 CopySourceShred::length() const
 {
     return size();
 }
-
-/** Reads the given number of bytes from the source into the given buffer.
-    @param buffer buffer to store the data read in
-    @param readOffset offset where to begin reading (unused)
-    @param size the number of bytes to read
-    @return true on success
-*/
-bool CopySourceShred::readData(QByteArray& buffer, qint64 readOffset, qint64 size)
-{
-    Q_UNUSED(readOffset);
-
-    buffer = sourceFile().read(size);
-    return !buffer.isEmpty();
-}
