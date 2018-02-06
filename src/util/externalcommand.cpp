@@ -114,11 +114,11 @@ bool ExternalCommand::copyBlocks()
         return false;
     }
 
-    m_Output = job->data()[QStringLiteral("output")].toByteArray();
-    setExitCode(job->data()[QStringLiteral("exitCode")].toInt());
+    rval = job->data()[QStringLiteral("success")].toInt();
+    setExitCode(!rval);
 
     emit finished();
-    return true;
+    return rval;
 }
 
 /** Creates a new ExternalCommand instance without Report.

@@ -166,6 +166,8 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
     report[QStringLiteral("report")] = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
     HelperSupport::progressStep(report);
 
+    reply.addData(QStringLiteral("success"), rval);
+
     return reply;
 }
 
