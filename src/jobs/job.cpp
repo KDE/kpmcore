@@ -45,7 +45,7 @@ bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
     ExternalCommand copyCmd(source, target, QProcess::SeparateChannels);
     connect(&copyCmd, &ExternalCommand::progress, this, &Job::progress, Qt::QueuedConnection);
     connect(&copyCmd, &ExternalCommand::reportSignal, this, &Job::updateReport, Qt::QueuedConnection);
-    return copyCmd.startCopyBlocks(-1);
+    return copyCmd.startCopyBlocks();
 }
 
 bool Job::rollbackCopyBlocks(Report& report, CopyTarget& origTarget, CopySource& origSource)

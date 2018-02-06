@@ -48,10 +48,8 @@ ExternalCommand::ExternalCommand(CopySource& source, CopyTarget& target,const QP
 
 
 /** Starts copyBlocks command.
-    @param timeout timeout to wait for the process to start
-    @return true on success
 */
-bool ExternalCommand::startCopyBlocks(int timeout)
+bool ExternalCommand::startCopyBlocks()
 {
     this->moveToThread(CoreBackendManager::self()->kauthThread());
     QTimer::singleShot(0, this, &ExternalCommand::copyBlocks);

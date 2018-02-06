@@ -61,7 +61,7 @@ public:
     void setArgs(const QStringList& args) { m_Args = args; } /**< @param args the new arguments */
     bool write(const QByteArray& input); /**< @param input the input for the program */
 
-    bool startCopyBlocks(int timeout =30000);
+    bool startCopyBlocks();
     bool start(int timeout = 30000);
     bool waitFor(int timeout = 30000);
     bool run(int timeout = 30000);
