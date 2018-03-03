@@ -30,7 +30,7 @@
     @param parent pointer to the parent widget
     @param p pointer to the Partition this widget will show. must not be nullptr.
 */
-PartWidget::PartWidget(QWidget* parent, const Partition* p) :
+PartWidget::PartWidget(QWidget* parent, Partition* p) :
     PartWidgetBase(parent),
     m_Partition(nullptr),
     m_Active(false)
@@ -40,7 +40,7 @@ PartWidget::PartWidget(QWidget* parent, const Partition* p) :
     m_fileSystemColorCode = FileSystem::defaultColorCode;
 }
 
-void PartWidget::init(const Partition* p)
+void PartWidget::init(Partition* p)
 {
     m_Partition = p;
 
