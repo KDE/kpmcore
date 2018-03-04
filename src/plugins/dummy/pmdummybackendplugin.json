@@ -3,16 +3,29 @@
         "Authors": [
             {
                 "Email": "vl@fidra.de",
-                "Name": "Volker Lanz"
+                "Name": "Volker Lanz",
+                "Name[x-test]": "xxVolker Lanzxx"
             }
         ],
         "Category": "BackendPlugin",
         "Description": "A KDE Partition Manager dummy backend for testing purposes.",
+        "Description[ca]": "Un dorsal fals del gestor de particions del KDE amb la finalitat de fer proves.",
+        "Description[nl]": "Dummy backend van KDE-partitiebeheerder voor testdoeleinden",
+        "Description[pt]": "Uma infra-estrutura de testes para o Gestor de Partições do KDE.",
+        "Description[sv]": "Ett bakgrundsprogram till KDE:s partitionshanterare i testsyfte.",
+        "Description[uk]": "Тестовий додаток сервера Керування розділами KDE.",
+        "Description[x-test]": "xxA KDE Partition Manager dummy backend for testing purposes.xx",
         "EnabledByDefault": true,
         "Icon": "preferences-plugin",
         "Id": "pmdummybackendplugin",
         "License": "GPL",
         "Name": "KDE Partition Manager Dummy Backend",
+        "Name[ca]": "Dorsal fals del gestor de particions del KDE",
+        "Name[nl]": "Dummy backend van KDE-partitiebeheerder",
+        "Name[pt]": "Infra-Estrutura de Testes para o Gestor de Partições do KDE",
+        "Name[sv]": "KDE:s partitionshanterare bakgrundsprogram för test",
+        "Name[uk]": "Тестовий додаток сервера Керування розділами KDE",
+        "Name[x-test]": "xxKDE Partition Manager Dummy Backendxx",
         "ServiceTypes": [
             "PartitionManager/Plugin"
         ],

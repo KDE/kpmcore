@@ -3,16 +3,31 @@
         "Authors": [
             {
                 "Email": "andrius@stikonas.eu",
-                "Name": "Andrius Štikonas"
+                "Name": "Andrius Štikonas",
+                "Name[x-test]": "xxAndrius Štikonasxx"
             }
         ],
         "Category": "BackendPlugin",
         "Description": "A KDE Partition Manager sfdisk backend.",
+        "Description[ca]": "Un dorsal «sfdisk» del gestor de particions del KDE.",
+        "Description[es]": "Motor sfdisk para el gestor de particiones de KDE.",
+        "Description[nl]": "Een sfdisk backend van KDE-partitiebeheerder.",
+        "Description[pt]": "A infra-estrutura do 'sfdisk' para o Gestor de Partições do KDE.",
+        "Description[sv]": "Ett sfdisk bakgrundsprogram till KDE:s partitionshanterare",
+        "Description[uk]": "Додаток sfdisk сервера Керування розділами KDE.",
+        "Description[x-test]": "xxA KDE Partition Manager sfdisk backend.xx",
         "EnabledByDefault": true,
         "Icon": "preferences-plugin",
         "Id": "pmsfdiskbackendplugin",
         "License": "GPL",
         "Name": "KDE Partition Manager sfdisk Backend",
+        "Name[ca]": "Dorsal «sfdisk» del gestor de particions del KDE",
+        "Name[es]": "Motor sfdisk para el gestor de particiones de KDE",
+        "Name[nl]": "Sfdisk backend van KDE-partitiebeheerder",
+        "Name[pt]": "Infra-Estrutura do Sfdisk para o Gestor de Partições do KDE",
+        "Name[sv]": "KDE:s partitionshanterare sfdisk bakgrundsprogram",
+        "Name[uk]": "Додаток sfdisk сервера Керування розділами KDE",
+        "Name[x-test]": "xxKDE Partition Manager sfdisk Backendxx",
         "ServiceTypes": [
             "PartitionManager/Plugin"
         ],
