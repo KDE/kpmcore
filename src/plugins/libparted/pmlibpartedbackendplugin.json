@@ -23,6 +23,7 @@
         "Name": "KDE Partition Manager LibParted Backend",
         "Name[ca]": "Dorsal pel LibParted del gestor de particions del KDE",
         "Name[es]": "Motor LibParted para el gestor de particiones de KDE",
+        "Name[fr]": "Moteur LibParted pour le gestionnaire de partitions de KDE",
         "Name[nl]": "KDE-partitiebeheerder LibParted-backend",
         "Name[pt]": "Infra-Estrutura da LibParted para o Gestor de Partições do KDE",
         "Name[sv]": "KDE:s partitionshanterare LibParted bakgrundsprogram",

@@ -21,6 +21,7 @@
         "License": "GPL",
         "Name": "KDE Partition Manager Dummy Backend",
         "Name[ca]": "Dorsal fals del gestor de particions del KDE",
+        "Name[fr]": "Moteur de test pour le gestionnaire de partitions de KDE",
         "Name[nl]": "Dummy backend van KDE-partitiebeheerder",
         "Name[pt]": "Infra-Estrutura de Testes para o Gestor de Partições do KDE",
         "Name[sv]": "KDE:s partitionshanterare bakgrundsprogram för test",
