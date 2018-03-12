@@ -28,6 +28,7 @@
         "Name[fr]": "Moteur de test pour le gestionnaire de partitions de KDE",
         "Name[id]": "Backend Tiruan Pengelola Partisi KDE",
         "Name[it]": "Motore fittizio del gestore delle partizioni di KDE",
+        "Name[nb]": "Attrapp-motor for KDE partisjonsbehandler",
         "Name[nl]": "Dummy backend van KDE-partitiebeheerder",
         "Name[pt]": "Infra-Estrutura de Testes para o Gestor de Partições do KDE",
         "Name[sk]": "Testovací program v pozadí KDE Správcu partícií",
