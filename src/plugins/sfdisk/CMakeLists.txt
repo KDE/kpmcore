@@ -25,5 +25,3 @@ add_library(pmsfdiskbackendplugin SHARED ${pmsfdiskbackendplugin_SRCS})
 target_link_libraries(pmsfdiskbackendplugin kpmcore)
 
 install(TARGETS pmsfdiskbackendplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})
-kcoreaddons_desktop_to_json(pmsfdiskbackendplugin pmsfdiskbackendplugin.desktop)
-install(FILES pmsfdiskbackendplugin.desktop DESTINATION ${SERVICES_INSTALL_DIR})

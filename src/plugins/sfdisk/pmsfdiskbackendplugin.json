@@ -1,0 +1,44 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "andrius@stikonas.eu",
+                "Name": "Andrius Štikonas",
+                "Name[x-test]": "xxAndrius Štikonasxx"
+            }
+        ],
+        "Category": "BackendPlugin",
+        "Description": "A KDE Partition Manager sfdisk backend.",
+        "Description[ca@valencia]": "Un dorsal «sfdisk» del gestor de particions del KDE.",
+        "Description[ca]": "Un dorsal «sfdisk» del gestor de particions del KDE.",
+        "Description[de]": "Ein sfdisk-Backend für die KDE-Partitionsverwaltung.",
+        "Description[es]": "Motor sfdisk para el gestor de particiones de KDE.",
+        "Description[nl]": "Een sfdisk backend van KDE-partitiebeheerder.",
+        "Description[pt]": "A infra-estrutura do 'sfdisk' para o Gestor de Partições do KDE.",
+        "Description[sk]": "Backend KDE správcu partícií sfdisk.",
+        "Description[sv]": "Ett sfdisk bakgrundsprogram till KDE:s partitionshanterare",
+        "Description[uk]": "Додаток sfdisk сервера Керування розділами KDE.",
+        "Description[x-test]": "xxA KDE Partition Manager sfdisk backend.xx",
+        "EnabledByDefault": true,
+        "Icon": "preferences-plugin",
+        "Id": "pmsfdiskbackendplugin",
+        "License": "GPL",
+        "Name": "KDE Partition Manager sfdisk Backend",
+        "Name[ca@valencia]": "Dorsal «sfdisk» del gestor de particions del KDE",
+        "Name[ca]": "Dorsal «sfdisk» del gestor de particions del KDE",
+        "Name[de]": "KDE-Partitionsverwaltung sfdisk-Backend",
+        "Name[es]": "Motor sfdisk para el gestor de particiones de KDE",
+        "Name[it]": "Motore sfdisk del gestore delle partizioni di KDE",
+        "Name[nl]": "Sfdisk backend van KDE-partitiebeheerder",
+        "Name[pt]": "Infra-Estrutura do Sfdisk para o Gestor de Partições do KDE",
+        "Name[sk]": "Backend KDE správcu partícií sfdisk",
+        "Name[sv]": "KDE:s partitionshanterare sfdisk bakgrundsprogram",
+        "Name[uk]": "Додаток sfdisk сервера Керування розділами KDE",
+        "Name[x-test]": "xxKDE Partition Manager sfdisk Backendxx",
+        "ServiceTypes": [
+            "PartitionManager/Plugin"
+        ],
+        "Version": "1",
+        "Website": "http://www.partitionmanager.org"
+    }
+}

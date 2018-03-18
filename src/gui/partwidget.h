@@ -44,9 +44,9 @@ class LIBKPMCORE_EXPORT PartWidget : public PartWidgetBase
     Q_OBJECT
 
 public:
-    explicit PartWidget(QWidget* parent, const Partition* p = nullptr);
+    explicit PartWidget(QWidget* parent, Partition* p = nullptr);
 
-    void init(const Partition* p);
+    void init(Partition* p);
     void setActive(bool b) {
         m_Active = b;
     }
@@ -54,6 +54,10 @@ public:
         return m_Active;    /**< @return true if this is the currently active widget */
     }
     void updateChildren();
+
+    Partition* partition() {
+        return m_Partition;    /**< @return the widget's Partition */
+    }
 
     const Partition* partition() const {
         return m_Partition;    /**< @return the widget's Partition */
@@ -70,7 +74,7 @@ protected:
     void drawGradient(QPainter* painter, const QColor& color, const QRect& rect, bool active = false) const;
 
 private:
-    const Partition* m_Partition;
+    Partition* m_Partition;
     bool m_Active;
     std::array< QColor, FileSystem::__lastType > m_fileSystemColorCode;
 };

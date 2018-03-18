@@ -25,6 +25,3 @@ add_library(pmdummybackendplugin SHARED ${pmdummybackendplugin_SRCS})
 target_link_libraries(pmdummybackendplugin kpmcore)
 
 install(TARGETS pmdummybackendplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})
-kcoreaddons_desktop_to_json(pmdummybackendplugin pmdummybackendplugin.desktop DEFAULT_SERVICE_TYPE)
-install(FILES pmdummybackendplugin.desktop DESTINATION ${SERVICES_INSTALL_DIR})
-
