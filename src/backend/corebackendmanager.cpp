@@ -74,6 +74,9 @@ void CoreBackendManager::startExternalCommandHelper()
     action.setArguments(arguments);
     KAuth::ExecuteJob *job = action.execute();
     job->start();
+    QEventLoop loop;
+    QObject::connect(job, &KAuth::ExecuteJob::newData, [&] () {loop.exit();});
+    loop.exec();
 }
 
 bool CoreBackendManager::load(const QString& name)

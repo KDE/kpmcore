@@ -46,6 +46,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     }
     QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots);
 
+    HelperSupport::progressStep(QVariantMap());
     m_loop.exec();
     reply.addData(QStringLiteral("success"), true);
     return reply;
