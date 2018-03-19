@@ -16,11 +16,11 @@
  *************************************************************************/
 
 #ifndef KPMCORE_EXTERNALCOMMANDHELPER_H
-
 #define KPMCORE_EXTERNALCOMMANDHELPER_H
 
 #include <KAuth>
 
+#include <QEventLoop>
 #include <QString>
 #include <QProcess>
 
@@ -29,24 +29,30 @@ using namespace KAuth;
 class ExternalCommandHelper : public QObject
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.externalcommand")
 
 Q_SIGNALS:
     void progress(int);
+    void quit();
 
 public:
     bool readData(QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size);
     bool writeData(QString& targetDevice, QByteArray& buffer, qint64 offset);
 
 public Q_SLOTS:
-    ActionReply start(const QVariantMap& args);
+    ActionReply init(const QVariantMap& args);
+    Q_SCRIPTABLE QVariantMap start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment);
+    Q_SCRIPTABLE void exit(const QString& Uuid);
     ActionReply copyblockshelper(const QVariantMap& args);
 
 private:
     void onReadOutput();
 
-    QString command;
-    QString sourceDevice;
-    QProcess cmd;
+    QEventLoop m_loop;
+    QString m_callerUuid;
+    QString m_command;
+    QString m_sourceDevice;
+    QProcess m_cmd;
 //     QByteArray output;
 };
 

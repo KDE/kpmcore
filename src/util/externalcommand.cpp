@@ -25,6 +25,8 @@
 #include "util/externalcommand.h"
 #include "util/report.h"
 
+#include <QDBusInterface>
+#include <QDBusReply>
 #include <QEventLoop>
 #include <QtGlobal>
 #include <QStandardPaths>
@@ -45,7 +47,6 @@ ExternalCommand::ExternalCommand(CopySource& source, CopyTarget& target,const QP
 {
     setup(processChannelMode);
 }
-
 
 /** Starts copyBlocks command.
 */
@@ -166,11 +167,13 @@ void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMod
 
 bool ExternalCommand::start(int timeout)
 {
-    this->moveToThread(CoreBackendManager::self()->kauthThread());
-    QTimer::singleShot(0, this, &ExternalCommand::execute);
-    QEventLoop loop;
-    connect(this, &ExternalCommand::finished, &loop, &QEventLoop::quit);
-    loop.exec();
+//     this->moveToThread(CoreBackendManager::self()->kauthThread());
+//     QTimer::singleShot(0, this, &ExternalCommand::execute);
+//     QEventLoop loop;
+//     connect(this, &ExternalCommand::finished, &loop, &QEventLoop::quit);
+//     loop.exec();
+//     return true;
+    execute();
     return true;
 }
 
@@ -186,35 +189,23 @@ void ExternalCommand::execute()
     if (cmd.isEmpty())
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
-    KAuth::Action action(QStringLiteral("org.kde.kpmcore.externalcommand.start"));
-    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
-    arguments.insert(QStringLiteral("command"), cmd);
-    arguments.insert(QStringLiteral("input"), m_Input);
-    arguments.insert(QStringLiteral("arguments"), args());
-    action.setArguments(arguments);
-
-    KAuth::ExecuteJob *job = action.execute();
-    if (!job->exec()) {
-        qWarning() << "KAuth returned an error code: " << job->errorString();
-//         return false;
-        emit finished();
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << "Could not connect to DBus session bus";
         return;
     }
 
-    m_Output = job->data()[QStringLiteral("output")].toByteArray();
-    setExitCode(job->data()[QStringLiteral("exitCode")].toInt());
+    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    if (iface.isValid()) {
+        QDBusReply<QVariantMap> reply = iface.call(QStringLiteral("start"), CoreBackendManager::self()->Uuid(), cmd, args(), m_Input, QStringList());
+        if (reply.isValid()) {
+            m_Output = reply.value()[QStringLiteral("output")].toByteArray();
+            setExitCode(reply.value()[QStringLiteral("exitCode")].toInt());
+        }
+        else {
+            qWarning() << reply.error().message();
+        }
+    }
 
-//     QProcess::start(command(), args());
-
-    // FIXME
-//     if (!waitForStarted(timeout))
-//     {
-//         if (report())
-//             report()->line() << xi18nc("@info:status", "(Command timeout while starting)");
-//         return false;
-//     }
-
-//     return true;
     emit finished();
 }
 

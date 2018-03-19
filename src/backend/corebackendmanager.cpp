@@ -20,12 +20,16 @@
 #include "backend/corebackendmanager.h"
 #include "backend/corebackend.h"
 
+#include <QCoreApplication>
 #include <QDebug>
+#include <QDBusInterface>
 #include <QStringList>
 #include <QString>
 #include <QVector>
 #include <QThread>
+#include <QUuid>
 
+#include <KAuth>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KPluginLoader>
@@ -59,6 +63,19 @@ QVector<KPluginMetaData> CoreBackendManager::list() const
     return KPluginLoader::findPlugins(QString(), filter);
 }
 
+void CoreBackendManager::startExternalCommandHelper()
+{
+    KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
+    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
+    action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
+    QVariantMap arguments;
+    m_Uuid = QUuid::createUuid().toString();
+    arguments.insert(QStringLiteral("callerUuid"), Uuid());
+    action.setArguments(arguments);
+    KAuth::ExecuteJob *job = action.execute();
+    job->start();
+}
+
 bool CoreBackendManager::load(const QString& name)
 {
     if (backend())
@@ -81,6 +98,9 @@ bool CoreBackendManager::load(const QString& name)
         backend()->setId(id);
         backend()->setVersion(version);
         qDebug() << "Loaded backend plugin: " << backend()->id();
+
+        startExternalCommandHelper();
+
         return true;
     }
 

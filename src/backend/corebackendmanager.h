@@ -21,6 +21,7 @@
 
 #include "util/libpartitionmanagerexport.h"
 
+#include <QObject>
 #include <QVector>
 
 class QThread;
@@ -85,9 +86,21 @@ public:
         return m_KAuthThread;
     }
 
+    /**
+    * @return a pointer to the currently loaded backend
+      */
+    QString& Uuid() {
+        return m_Uuid;
+    }
+
+private:
+    void startExternalCommandHelper();
+
 private:
     CoreBackend* m_Backend;
     QThread* m_KAuthThread;
+
+    QString m_Uuid;
 };
 
 #endif

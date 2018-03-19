@@ -17,6 +17,8 @@
 
 #include "externalcommandhelper.h"
 
+#include <QtDBus>
+#include <QDBusContext>
 #include <QDebug>
 #include <QFile>
 #include <QString>
@@ -24,6 +26,30 @@
 #include <QVariant>
 
 #include <KLocalizedString>
+
+/** Initialize ExternalCommandHelper Daemon and prepare DBus interface
+*/
+ActionReply ExternalCommandHelper::init(const QVariantMap& args)
+{
+    ActionReply reply;
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << "Could not connect to DBus session bus";
+        reply.addData(QStringLiteral("success"), false);
+        return reply;
+    }
+    m_callerUuid = args[QStringLiteral("callerUuid")].toString();
+
+    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
+        qWarning() << QDBusConnection::systemBus().lastError().message();
+        reply.addData(QStringLiteral("success"), false);
+        return reply;
+    }
+    QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots);
+
+    m_loop.exec();
+    reply.addData(QStringLiteral("success"), true);
+    return reply;
+}
 
 /** Reads the given number of bytes from the sourceDevice into the given buffer.
     @param sourceDevice device or file to read from
@@ -84,7 +110,7 @@ bool ExternalCommandHelper::writeData(QString &targetDevice, QByteArray& buffer,
 
 ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
 {
-    command = args[QStringLiteral("command")].toString();
+    m_command = args[QStringLiteral("command")].toString();
     qint64 blockSize = args[QStringLiteral("blockSize")].toLongLong();
     qint64 blocksToCopy = args[QStringLiteral("blocksToCopy")].toLongLong();
     qint64 readOffset = args[QStringLiteral("readOffset")].toLongLong();
@@ -101,7 +127,7 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
 
     ActionReply reply;
 
-    cmd.setEnvironment(environment);
+    m_cmd.setEnvironment(environment);
 
     qint64 bytesWritten = 0;
     qint64 blocksCopied = 0;
@@ -171,26 +197,31 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
     return reply;
 }
 
-ActionReply ExternalCommandHelper::start(const QVariantMap& args)
+QVariantMap ExternalCommandHelper::start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment)
 {
-    ActionReply reply;
-    QString command = args[QStringLiteral("command")].toString();
-    QStringList arguments = args[QStringLiteral("arguments")].toStringList();
-    QStringList environment = args[QStringLiteral("environment")].toStringList();
-    QByteArray input = args[QStringLiteral("input")].toByteArray();
+    QVariantMap reply;
+    if (Uuid != m_callerUuid) {
+        qWarning() << "Caller is not authorized";
+        return reply;
+    }
 
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
 
-    cmd.setEnvironment(environment);
-    cmd.start(command, arguments);
-    cmd.write(input);
-    cmd.closeWriteChannel();
-    cmd.waitForFinished(-1);
-    QByteArray output = cmd.readAllStandardOutput();
-    reply.addData(QStringLiteral("output"), output);
-    reply.addData(QStringLiteral("exitCode"), cmd.exitCode());
+    m_cmd.setEnvironment(environment);
+    m_cmd.start(command, arguments);
+    m_cmd.write(input);
+    m_cmd.closeWriteChannel();
+    m_cmd.waitForFinished(-1);
+    QByteArray output = m_cmd.readAllStandardOutput();
+    reply[QStringLiteral("output")] = output;
+    reply[QStringLiteral("exitCode")] = m_cmd.exitCode();
 
     return reply;
+}
+
+void ExternalCommandHelper::exit(const QString& Uuid)
+{
+    m_loop.exit();
 }
 
 void ExternalCommandHelper::onReadOutput()
