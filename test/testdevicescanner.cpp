@@ -30,6 +30,7 @@
 #include "core/partition.h"
 #include "util/capacity.h"
 
+#include <QCoreApplication>
 #include <QDebug>
 #include <QList>
 
@@ -63,6 +64,7 @@ PartitionList flatten(PartitionTable *table)
 
 int main( int argc, char **argv )
 {
+    QCoreApplication app(argc, argv);
     if (argc != 2)
     {
         KPMCoreInitializer i;

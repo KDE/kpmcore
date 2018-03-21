@@ -36,17 +36,18 @@ Q_SIGNALS:
     void quit();
 
 public:
-    bool readData(QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size);
-    bool writeData(QString& targetDevice, QByteArray& buffer, qint64 offset);
+    bool readData(const QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size);
+    bool writeData(const QString& targetDevice, const QByteArray& buffer, qint64 offset);
 
 public Q_SLOTS:
     ActionReply init(const QVariantMap& args);
     Q_SCRIPTABLE QVariantMap start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment);
+    Q_SCRIPTABLE QVariantMap copyblocks(const QString& Uuid, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE void exit(const QString& Uuid);
-    ActionReply copyblockshelper(const QVariantMap& args);
 
 private:
     void onReadOutput();
+    bool isCallerAuthorized(const QString& Uuid);
 
     QEventLoop m_loop;
     QString m_callerUuid;

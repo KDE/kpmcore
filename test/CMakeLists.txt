@@ -15,11 +15,12 @@ add_compile_options(-fPIC)
 # Helper macro to link to the helper (for initialization of kpmcore)
 # and to add a test with the given name.
 #
-add_library(testhelpers OBJECT helpers.cpp)
+add_library(testhelpers STATIC helpers.cpp)
+target_link_libraries(testhelpers KF5::Auth)
 
 macro (kpm_test name)
-    add_executable(${name} ${ARGN} $<TARGET_OBJECTS:testhelpers>)
-    target_link_libraries(${name} kpmcore)
+    add_executable(${name} ${ARGN})
+    target_link_libraries(${name} testhelpers kpmcore)
 endmacro()
 
 ###
@@ -29,13 +30,13 @@ kpm_test(testinit testinit.cpp)  # Default backend
 if(TARGET pmdummybackendplugin)
     add_test(NAME testinit-dummy COMMAND testinit $<TARGET_FILE:pmdummybackendplugin>)
 endif()
-if(TARGET pmlibpartedbackendplugin)
-    add_test(NAME testinit-parted COMMAND testinit $<TARGET_FILE:pmlibpartedbackendplugin>)
+if(TARGET pmsfdiskbackendplugin)
+    add_test(NAME testinit-sfdisk COMMAND testinit $<TARGET_FILE:pmsfdiskbackendplugin>)
 else()
     return()  # All the rest really needs a working backend
 endif()
 
-set(BACKEND $<TARGET_FILE:pmlibpartedbackendplugin>)
+set(BACKEND $<TARGET_FILE:pmsfdiskbackendplugin>)
 
 ###
 #

@@ -59,7 +59,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     @param size the number of bytes to read
     @return true on success
 */
-bool ExternalCommandHelper::readData(QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size)
+bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size)
 {
     QFile device(sourceDevice);
 
@@ -89,7 +89,7 @@ bool ExternalCommandHelper::readData(QString& sourceDevice, QByteArray& buffer, 
     @param offset offset where to begin writing
     @return true on success
 */
-bool ExternalCommandHelper::writeData(QString &targetDevice, QByteArray& buffer, qint64 offset)
+bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteArray& buffer, qint64 offset)
 {
     QFile device(targetDevice);
     if (!device.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Unbuffered)) {
@@ -109,26 +109,23 @@ bool ExternalCommandHelper::writeData(QString &targetDevice, QByteArray& buffer,
     return true;
 }
 
-ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
+QVariantMap ExternalCommandHelper::copyblocks(const QString& Uuid, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
-    m_command = args[QStringLiteral("command")].toString();
-    qint64 blockSize = args[QStringLiteral("blockSize")].toLongLong();
-    qint64 blocksToCopy = args[QStringLiteral("blocksToCopy")].toLongLong();
-    qint64 readOffset = args[QStringLiteral("readOffset")].toLongLong();
-    qint64 writeOffset = args[QStringLiteral("writeOffset")].toLongLong();
-    qint32 copyDirection = args[QStringLiteral("copyDirection")].toLongLong();
-    QString sourceDevice = args[QStringLiteral("sourceDevice")].toString();
-    QString targetDevice = args[QStringLiteral("targetDevice")].toString();
-    qint64 lastBlock = args[QStringLiteral("lastBlock")].toLongLong();
-    qint64 sourceFirstByte = args[QStringLiteral("sourceFirstByte")].toLongLong();
-    qint64 targetFirstByte = args[QStringLiteral("targetFirstByte")].toLongLong();
-    qint64 sourceLength = args[QStringLiteral("sourceLength")].toLongLong();
+    isCallerAuthorized(Uuid);
+    QVariantMap reply;
 
-    QStringList environment = args[QStringLiteral("environment")].toStringList();
+    const qint64 blocksToCopy = sourceLength / blockSize;
+    qint64 readOffset = sourceFirstByte;
+    qint64 writeOffset = targetFirstByte;
+    qint32 copyDirection = 1;
 
-    ActionReply reply;
+    if (targetFirstByte > sourceFirstByte) {
+        readOffset = sourceFirstByte + sourceLength - blockSize;
+        writeOffset = targetFirstByte + sourceLength - blockSize;
+        copyDirection = -1;
+    }
 
-    m_cmd.setEnvironment(environment);
+    const qint64 lastBlock = sourceLength % blockSize;
 
     qint64 bytesWritten = 0;
     qint64 blocksCopied = 0;
@@ -193,18 +190,15 @@ ActionReply ExternalCommandHelper::copyblockshelper(const QVariantMap& args)
     report[QStringLiteral("report")] = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
     HelperSupport::progressStep(report);
 
-    reply.addData(QStringLiteral("success"), rval);
+    reply[QStringLiteral("success")] = rval;
 
     return reply;
 }
 
 QVariantMap ExternalCommandHelper::start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment)
 {
+    isCallerAuthorized(Uuid);
     QVariantMap reply;
-    if (Uuid != m_callerUuid) {
-        qWarning() << "Caller is not authorized";
-        return reply;
-    }
 
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
 
@@ -220,8 +214,19 @@ QVariantMap ExternalCommandHelper::start(const QString& Uuid, const QString& com
     return reply;
 }
 
+bool ExternalCommandHelper::isCallerAuthorized(const QString& Uuid)
+{
+    if (Uuid != m_callerUuid) {
+        qWarning() << "Caller is not authorized";
+        return false;
+    }
+
+    return true;
+}
+
 void ExternalCommandHelper::exit(const QString& Uuid)
 {
+    isCallerAuthorized(Uuid);
     m_loop.exit();
 }
 

@@ -6,7 +6,7 @@
 #include "core/smartstatus.h"
 #include "core/smartparser.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDebug>
 
 static QString getDefaultDevicePath();
@@ -15,7 +15,7 @@ static bool testSmartParser();
 
 int main(int argc, char **argv)
 {
-    QApplication app(argc, argv);
+    QCoreApplication app(argc, argv);
 
     KPMCoreInitializer i;
 

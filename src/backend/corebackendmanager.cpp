@@ -72,11 +72,18 @@ void CoreBackendManager::startExternalCommandHelper()
     m_Uuid = QUuid::createUuid().toString();
     arguments.insert(QStringLiteral("callerUuid"), Uuid());
     action.setArguments(arguments);
-    KAuth::ExecuteJob *job = action.execute();
-    job->start();
+    m_job = action.execute();
+    job()->start();
     QEventLoop loop;
-    QObject::connect(job, &KAuth::ExecuteJob::newData, [&] () {loop.exit();});
+    auto exitLoop = [&] () {loop.exit();};
+    auto conn = QObject::connect(job(), &KAuth::ExecuteJob::newData, exitLoop);
     loop.exec();
+    QObject::disconnect(conn);
+
+}
+
+KAuth::ExecuteJob* CoreBackendManager::job() {
+    return m_job;
 }
 
 bool CoreBackendManager::load(const QString& name)

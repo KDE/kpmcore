@@ -39,7 +39,7 @@ set(kpmcore_SRCS
 ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
-target_link_libraries( kpmcore
+target_link_libraries( kpmcore PUBLIC
     ${UUID_LIBRARIES}
     ${BLKID_LIBRARIES}
     Qt5::DBus

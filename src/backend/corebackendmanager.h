@@ -21,6 +21,8 @@
 
 #include "util/libpartitionmanagerexport.h"
 
+#include <KAuth>
+
 #include <QObject>
 #include <QVector>
 
@@ -93,12 +95,18 @@ public:
         return m_Uuid;
     }
 
+    /**
+    * @return a pointer to the KAuth job
+      */
+    KAuth::ExecuteJob* job();
+
 private:
     void startExternalCommandHelper();
 
 private:
-    CoreBackend* m_Backend;
-    QThread* m_KAuthThread;
+    CoreBackend *m_Backend;
+    QThread *m_KAuthThread;
+    KAuth::ExecuteJob *m_job;
 
     QString m_Uuid;
 };

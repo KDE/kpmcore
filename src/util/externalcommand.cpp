@@ -63,62 +63,31 @@ bool ExternalCommand::startCopyBlocks()
 bool ExternalCommand::copyBlocks()
 {
     bool rval = true;
-    qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
-    qint64 blocksToCopy = m_Source->length() / blockSize;
+    const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
 
-    qint64 readOffset = m_Source->firstByte();
-    qint64 writeOffset = m_Target->firstByte();
-    qint32 copyDirection = 1;
-
-    if (m_Target->firstByte() > m_Source->firstByte()) {
-        readOffset = m_Source->firstByte() + m_Source->length() - blockSize;
-        writeOffset = m_Target->firstByte() + m_Source->length() - blockSize;
-        copyDirection = -1;
-    }
-    qint64 lastBlock = m_Source->length() % blockSize;
-
-    //report()->line() << xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy, m_source.length(), readOffset, writeOffset, copyDirection == 1 ? i18nc("direction: left", "left") : i18nc("direction: right", "right"));
-
-    QString cmd = QStandardPaths::findExecutable(QStringLiteral("dd"));
-
-    if (cmd.isEmpty())
-        cmd = QStandardPaths::findExecutable(QStringLiteral("dd"), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
-
-    KAuth::Action action(QStringLiteral("org.kde.kpmcore.externalcommand.copyblockshelper"));
-    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
-
-    arguments.insert(QStringLiteral("command"), cmd);
-    arguments.insert(QStringLiteral("sourceDevice"), m_Source->path());
-    arguments.insert(QStringLiteral("targetDevice"), m_Target->path());
-    arguments.insert(QStringLiteral("blockSize"), blockSize);
-    arguments.insert(QStringLiteral("blocksToCopy"), blocksToCopy);
-    arguments.insert(QStringLiteral("readOffset"), readOffset);
-    arguments.insert(QStringLiteral("writeOffset"), writeOffset);
-    arguments.insert(QStringLiteral("copyDirection"), copyDirection);
-    arguments.insert(QStringLiteral("sourceFirstByte"), m_Source->firstByte());
-    arguments.insert(QStringLiteral("targetFirstByte"), m_Target->firstByte());
-    arguments.insert(QStringLiteral("lastBlock"), lastBlock);
-    arguments.insert(QStringLiteral("sourceLength"), m_Source->length());
-
-    action.setArguments(arguments);
-    action.setTimeout(24 * 3600 * 1000); // set 1 day DBus timeout
-
-    KAuth::ExecuteJob *job = action.execute();
-    // TODO KF6:Use new signal-slot syntax
-    connect(job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
-    connect(job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
-
-    if (!job->exec()) {
-        qWarning() << "KAuth returned an error code: " << job->errorString();
-//         return false;
-        emit finished();
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << "Could not connect to DBus system bus";
         return false;
     }
 
-    rval = job->data()[QStringLiteral("success")].toInt();
-    setExitCode(!rval);
+    // TODO KF6:Use new signal-slot syntax
+    connect(CoreBackendManager::self()->job(), SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
+    connect(CoreBackendManager::self()->job(), &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
+
+    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    if (iface.isValid()) {
+        QDBusReply<QVariantMap> reply = iface.call(QStringLiteral("copyblocks"), CoreBackendManager::self()->Uuid(), m_Source->path(), m_Source->firstByte(), m_Source->length(), m_Target->path(), m_Target->firstByte(), blockSize);
+        if (reply.isValid()) {
+            rval = reply.value()[QStringLiteral("success")].toInt();
+            qDebug() << rval;
+        }
+        else {
+            qWarning() << reply.error().message();
+        }
+    }
 
     emit finished();
+    setExitCode(!rval);
     return rval;
 }
 
@@ -190,7 +159,7 @@ void ExternalCommand::execute()
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus session bus";
+        qWarning() << "Could not connect to DBus system bus";
         return;
     }
 
