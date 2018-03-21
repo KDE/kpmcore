@@ -56,3 +56,8 @@ KPMCoreInitializer::KPMCoreInitializer( const QString& backendName ) :
 KPMCoreInitializer::KPMCoreInitializer( const char* backend ) : KPMCoreInitializer( QString::fromLatin1( backend ) )
 {
 }
+
+KPMCoreInitializer::~KPMCoreInitializer()
+{
+    CoreBackendManager::stopExternalCommandHelper();
+}

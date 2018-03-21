@@ -32,6 +32,7 @@ public:
     KPMCoreInitializer(); /// Default backend
     KPMCoreInitializer( const QString& backend );  /// Use named backend
     KPMCoreInitializer( const char* backend );  /// Use named backend
+    ~KPMCoreInitializer();
 
     bool isValid() const
     {

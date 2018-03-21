@@ -79,7 +79,13 @@ void CoreBackendManager::startExternalCommandHelper()
     auto conn = QObject::connect(job(), &KAuth::ExecuteJob::newData, exitLoop);
     loop.exec();
     QObject::disconnect(conn);
+}
 
+void CoreBackendManager::stopExternalCommandHelper()
+{
+    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    if (iface.isValid())
+        iface.call(QStringLiteral("exit"), CoreBackendManager::self()->Uuid());
 }
 
 KAuth::ExecuteJob* CoreBackendManager::job() {

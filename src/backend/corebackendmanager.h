@@ -100,6 +100,11 @@ public:
       */
     KAuth::ExecuteJob* job();
 
+    /**
+      * stop ExternalCommand Helper
+      */
+    static void stopExternalCommandHelper();
+
 private:
     void startExternalCommandHelper();
 
