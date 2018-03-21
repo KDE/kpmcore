@@ -75,11 +75,11 @@ bool ExternalCommand::copyBlocks()
     connect(CoreBackendManager::self()->job(), &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
 
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     if (iface.isValid()) {
         QDBusReply<QVariantMap> reply = iface.call(QStringLiteral("copyblocks"), CoreBackendManager::self()->Uuid(), m_Source->path(), m_Source->firstByte(), m_Source->length(), m_Target->path(), m_Target->firstByte(), blockSize);
         if (reply.isValid()) {
             rval = reply.value()[QStringLiteral("success")].toInt();
-            qDebug() << rval;
         }
         else {
             qWarning() << reply.error().message();
@@ -164,6 +164,7 @@ void ExternalCommand::execute()
     }
 
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     if (iface.isValid()) {
         QDBusReply<QVariantMap> reply = iface.call(QStringLiteral("start"), CoreBackendManager::self()->Uuid(), cmd, args(), m_Input, QStringList());
         if (reply.isValid()) {
