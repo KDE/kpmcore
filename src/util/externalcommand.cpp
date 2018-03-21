@@ -77,17 +77,27 @@ bool ExternalCommand::copyBlocks()
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
     iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     if (iface.isValid()) {
-        QDBusReply<QVariantMap> reply = iface.call(QStringLiteral("copyblocks"), CoreBackendManager::self()->Uuid(), m_Source->path(), m_Source->firstByte(), m_Source->length(), m_Target->path(), m_Target->firstByte(), blockSize);
-        if (reply.isValid()) {
-            rval = reply.value()[QStringLiteral("success")].toInt();
-        }
-        else {
-            qWarning() << reply.error().message();
-        }
+        QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"), CoreBackendManager::self()->Uuid(), m_Source->path(), m_Source->firstByte(), m_Source->length(), m_Target->path(), m_Target->firstByte(), blockSize);
+        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+        QEventLoop loop;
+
+        auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+            loop.exit();
+            if (watcher->isError()) {
+                qWarning() << watcher->error();
+            }
+            else {
+                QDBusPendingReply<bool> reply = *watcher;
+                rval = reply.argumentAt<0>();
+            }
+            emit finished();
+            setExitCode(!rval);
+        };
+
+        connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+        loop.exec();
     }
 
-    emit finished();
-    setExitCode(!rval);
     return rval;
 }
 
