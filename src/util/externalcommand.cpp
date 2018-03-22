@@ -1,6 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -39,28 +39,7 @@
 #include <KAuth>
 #include <KLocalizedString>
 
-
-ExternalCommand::ExternalCommand(CopySource& source, CopyTarget& target,const QProcess::ProcessChannelMode processChannelMode) :
-   m_ExitCode(-1),
-   m_Source(&source),
-   m_Target(&target)
-{
-    setup(processChannelMode);
-}
-
-/** Starts copyBlocks command.
-*/
-bool ExternalCommand::startCopyBlocks()
-{
-    this->moveToThread(CoreBackendManager::self()->kauthThread());
-    QTimer::singleShot(0, this, &ExternalCommand::copyBlocks);
-    QEventLoop loop;
-    connect(this, &ExternalCommand::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-    return true;
-}
-
-bool ExternalCommand::copyBlocks()
+bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
 {
     bool rval = true;
     const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
@@ -77,7 +56,7 @@ bool ExternalCommand::copyBlocks()
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
     iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     if (iface.isValid()) {
-        QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"), CoreBackendManager::self()->Uuid(), m_Source->path(), m_Source->firstByte(), m_Source->length(), m_Target->path(), m_Target->firstByte(), blockSize);
+        QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"), CoreBackendManager::self()->Uuid(), source.path(), source.firstByte(), source.length(), target.path(), target.firstByte(), blockSize);
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
         QEventLoop loop;
 
@@ -90,7 +69,6 @@ bool ExternalCommand::copyBlocks()
                 QDBusPendingReply<bool> reply = *watcher;
                 rval = reply.argumentAt<0>();
             }
-            emit finished();
             setExitCode(!rval);
         };
 
@@ -190,15 +168,14 @@ bool ExternalCommand::start(int timeout)
 
                 m_Output = reply.value()[QStringLiteral("output")].toByteArray();
                 setExitCode(reply.value()[QStringLiteral("exitCode")].toInt());
+                rval = true;
             }
-
-            emit finished();
-            rval = true;
         };
 
         connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
         loop.exec();
     }
+
     return rval;
 }
 

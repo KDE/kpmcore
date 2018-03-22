@@ -25,7 +25,6 @@
 #include "util/report.h"
 
 #include <QDebug>
-#include <QThread>
 
 #include <KLocalizedString>
 

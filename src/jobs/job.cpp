@@ -1,6 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008, 2009, 2010 by Volker Lanz <vl@fidra.de>          *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -42,10 +42,10 @@ Job::Job() :
 bool Job::copyBlocks(Report& report, CopyTarget& target, CopySource& source)
 {
     m_Report = &report;
-    ExternalCommand copyCmd(source, target, QProcess::SeparateChannels);
+    ExternalCommand copyCmd;
     connect(&copyCmd, &ExternalCommand::progress, this, &Job::progress, Qt::QueuedConnection);
     connect(&copyCmd, &ExternalCommand::reportSignal, this, &Job::updateReport, Qt::QueuedConnection);
-    if (copyCmd.startCopyBlocks() && copyCmd.exitCode() == 0) {
+    if (copyCmd.copyBlocks(source, target)) {
         return true;
     }
 

@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -49,10 +50,9 @@ class LIBKPMCORE_EXPORT ExternalCommand : public QObject
 public:
     explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
     explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
-    explicit ExternalCommand(CopySource& source, CopyTarget& target, QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
 
 public:
-    bool copyBlocks();
+    bool copyBlocks(CopySource& source, CopyTarget& target);
     void setCommand(const QString& cmd) { m_Command = cmd; } /**< @param cmd the command to run */
     const QString& command() const { return m_Command; } /**< @return the command to run */
 
@@ -86,7 +86,6 @@ public:
 
 Q_SIGNALS:
     void progress(int);
-    void finished();
     void reportSignal(const QVariantMap&);
 
 public Q_SLOTS:
@@ -110,8 +109,6 @@ private:
     int m_ExitCode;
     QByteArray m_Output;
     QByteArray m_Input;
-    CopySource *m_Source;
-    CopyTarget *m_Target;
 };
 
 #endif

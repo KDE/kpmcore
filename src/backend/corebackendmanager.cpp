@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2010 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -26,7 +26,6 @@
 #include <QStringList>
 #include <QString>
 #include <QVector>
-#include <QThread>
 #include <QUuid>
 
 #include <KAuth>
@@ -38,8 +37,6 @@
 CoreBackendManager::CoreBackendManager() :
     m_Backend(nullptr)
 {
-    m_KAuthThread = new QThread();
-    kauthThread()->start();
 }
 
 CoreBackendManager* CoreBackendManager::self()

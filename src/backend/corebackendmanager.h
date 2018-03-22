@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2010 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2018 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -26,7 +27,6 @@
 #include <QObject>
 #include <QVector>
 
-class QThread;
 class QString;
 class QStringList;
 class KPluginMetaData;
@@ -82,13 +82,6 @@ public:
     }
 
     /**
-      * @return a pointer to the thread where ExternalCommand will start KAuth job
-      */
-    QThread* kauthThread() {
-        return m_KAuthThread;
-    }
-
-    /**
     * @return a pointer to the currently loaded backend
       */
     QString& Uuid() {
@@ -110,7 +103,6 @@ private:
 
 private:
     CoreBackend *m_Backend;
-    QThread *m_KAuthThread;
     KAuth::ExecuteJob *m_job;
 
     QString m_Uuid;
