@@ -65,8 +65,6 @@ QVector<KPluginMetaData> CoreBackendManager::list() const
 
 void CoreBackendManager::startExternalCommandHelper()
 {
-    stopExternalCommandHelper();
-
     KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
     action.setTimeout(10 * 24 * 3600 * 1000); // 10 days

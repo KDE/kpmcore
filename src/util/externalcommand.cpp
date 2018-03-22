@@ -139,28 +139,14 @@ void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMod
 //     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
 }
 
-/** Starts the external command.
+/** Executes the external command.
     @param timeout timeout to wait for the process to start
     @return true on success
 */
-
 bool ExternalCommand::start(int timeout)
 {
-//     this->moveToThread(CoreBackendManager::self()->kauthThread());
-//     QTimer::singleShot(0, this, &ExternalCommand::execute);
-//     QEventLoop loop;
-//     connect(this, &ExternalCommand::finished, &loop, &QEventLoop::quit);
-//     loop.exec();
-//     return true;
     Q_UNUSED(timeout)
-    execute();
-    return true;
-}
 
-/** Executes the external command in kauthThread() thread.
-*/
-void ExternalCommand::execute()
-{
     if (report()) {
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
     }
@@ -171,7 +157,7 @@ void ExternalCommand::execute()
 
     if (!QDBusConnection::systemBus().isConnected()) {
         qWarning() << "Could not connect to DBus system bus";
-        return;
+        return false;
     }
 
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"),
@@ -181,6 +167,7 @@ void ExternalCommand::execute()
 
     iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
 
+    bool rval = false;
     if (iface.isValid()) {
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("start"),
                                                  CoreBackendManager::self()->Uuid(),
@@ -206,11 +193,13 @@ void ExternalCommand::execute()
             }
 
             emit finished();
+            rval = true;
         };
 
         connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
         loop.exec();
     }
+    return rval;
 }
 
 bool ExternalCommand::write(const QByteArray& input)

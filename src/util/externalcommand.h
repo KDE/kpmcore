@@ -93,8 +93,6 @@ public Q_SLOTS:
     void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };
 
 protected:
-    void execute();
-
     void setExitCode(int i) {
         m_ExitCode = i;
     }

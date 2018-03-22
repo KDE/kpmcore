@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright (C) 2017 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2017-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -111,7 +111,8 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
 
 bool ExternalCommandHelper::copyblocks(const QString& Uuid, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
-    isCallerAuthorized(Uuid);
+    if (!isCallerAuthorized(Uuid))
+        return false;
 
     const qint64 blocksToCopy = sourceLength / blockSize;
     qint64 readOffset = sourceFirstByte;
@@ -194,8 +195,11 @@ bool ExternalCommandHelper::copyblocks(const QString& Uuid, const QString& sourc
 
 QVariantMap ExternalCommandHelper::start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment)
 {
-    isCallerAuthorized(Uuid);
     QVariantMap reply;
+    if (!isCallerAuthorized(Uuid)) {
+        reply[QStringLiteral("success")] = false;
+        return reply;
+    }
 
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
 
@@ -223,7 +227,8 @@ bool ExternalCommandHelper::isCallerAuthorized(const QString& Uuid)
 
 void ExternalCommandHelper::exit(const QString& Uuid)
 {
-    isCallerAuthorized(Uuid);
+    if (!isCallerAuthorized(Uuid))
+        return;
     m_loop.exit();
 
     if (QDBusConnection::systemBus().unregisterService(QStringLiteral("org.kde.kpmcore.helperinterface")))
