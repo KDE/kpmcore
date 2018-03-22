@@ -152,6 +152,7 @@ bool ExternalCommand::start(int timeout)
 //     connect(this, &ExternalCommand::finished, &loop, &QEventLoop::quit);
 //     loop.exec();
 //     return true;
+    Q_UNUSED(timeout)
     execute();
     return true;
 }
@@ -173,20 +174,43 @@ void ExternalCommand::execute()
         return;
     }
 
-    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
-    iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
-    if (iface.isValid()) {
-        QDBusReply<QVariantMap> reply = iface.call(QStringLiteral("start"), CoreBackendManager::self()->Uuid(), cmd, args(), m_Input, QStringList());
-        if (reply.isValid()) {
-            m_Output = reply.value()[QStringLiteral("output")].toByteArray();
-            setExitCode(reply.value()[QStringLiteral("exitCode")].toInt());
-        }
-        else {
-            qWarning() << reply.error().message();
-        }
-    }
+    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"),
+                         QStringLiteral("/Helper"),
+                         QStringLiteral("org.kde.kpmcore.externalcommand"),
+                         QDBusConnection::systemBus());
 
-    emit finished();
+    iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
+
+    if (iface.isValid()) {
+        QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("start"),
+                                                 CoreBackendManager::self()->Uuid(),
+                                                 cmd,
+                                                 args(),
+                                                 m_Input,
+                                                 QStringList());
+
+        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+
+        QEventLoop loop;
+
+        auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+            loop.exit();
+
+            if (watcher->isError())
+                qWarning() << watcher->error();
+            else {
+                QDBusPendingReply<QVariantMap> reply = *watcher;
+
+                m_Output = reply.value()[QStringLiteral("output")].toByteArray();
+                setExitCode(reply.value()[QStringLiteral("exitCode")].toInt());
+            }
+
+            emit finished();
+        };
+
+        connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+        loop.exec();
+    }
 }
 
 bool ExternalCommand::write(const QByteArray& input)
@@ -210,7 +234,7 @@ bool ExternalCommand::waitFor(int timeout)
     }*/
 
 //     onReadOutput();
-
+    Q_UNUSED(timeout)
     return true;
 }
 
