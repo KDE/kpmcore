@@ -71,6 +71,8 @@ void CoreBackendManager::startExternalCommandHelper()
     action.setArguments(arguments);
     m_job = action.execute();
     job()->start();
+
+    // Wait until ExternalCommand Helper is ready (helper sends newData signal just before it enters event loop)
     QEventLoop loop;
     auto exitLoop = [&] () {loop.exit();};
     auto conn = QObject::connect(job(), &KAuth::ExecuteJob::newData, exitLoop);

@@ -39,46 +39,6 @@
 #include <KAuth>
 #include <KLocalizedString>
 
-bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
-{
-    bool rval = true;
-    const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
-
-    if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus system bus";
-        return false;
-    }
-
-    // TODO KF6:Use new signal-slot syntax
-    connect(CoreBackendManager::self()->job(), SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
-    connect(CoreBackendManager::self()->job(), &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
-
-    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
-    iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
-    if (iface.isValid()) {
-        QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"), CoreBackendManager::self()->Uuid(), source.path(), source.firstByte(), source.length(), target.path(), target.firstByte(), blockSize);
-        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
-        QEventLoop loop;
-
-        auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
-            loop.exit();
-            if (watcher->isError()) {
-                qWarning() << watcher->error();
-            }
-            else {
-                QDBusPendingReply<bool> reply = *watcher;
-                rval = reply.argumentAt<0>();
-            }
-            setExitCode(!rval);
-        };
-
-        connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
-        loop.exec();
-    }
-
-    return rval;
-}
-
 /** Creates a new ExternalCommand instance without Report.
     @param cmd the command to run
     @param args the arguments to pass to the command
@@ -178,6 +138,52 @@ bool ExternalCommand::start(int timeout)
 
     return rval;
 }
+
+bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
+{
+    bool rval = true;
+    const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
+
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << "Could not connect to DBus system bus";
+        return false;
+    }
+
+    // TODO KF6:Use new signal-slot syntax
+    connect(CoreBackendManager::self()->job(), SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
+    connect(CoreBackendManager::self()->job(), &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
+
+    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
+    if (iface.isValid()) {
+        // Use asynchronous DBus calls, so that we can process reports and progress
+        QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"),
+                                                CoreBackendManager::self()->Uuid(),
+                                                source.path(), source.firstByte(), source.length(),
+                                                target.path(), target.firstByte(), blockSize);
+
+        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+        QEventLoop loop;
+
+        auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+            loop.exit();
+            if (watcher->isError()) {
+                qWarning() << watcher->error();
+            }
+            else {
+                QDBusPendingReply<bool> reply = *watcher;
+                rval = reply.argumentAt<0>();
+            }
+            setExitCode(!rval);
+        };
+
+        connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+        loop.exec();
+    }
+
+    return rval;
+}
+
 
 bool ExternalCommand::write(const QByteArray& input)
 {
