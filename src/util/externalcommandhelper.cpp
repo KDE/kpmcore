@@ -47,15 +47,15 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     }
     QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots);
 
-    HelperSupport::progressStep(QVariantMap());
-    m_loop.exec();
-    reply.addData(QStringLiteral("success"), true);
-
     m_pingTime = new QDateTime(QDateTime::currentDateTime());
 
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &ExternalCommandHelper::checkPing);
     timer->start(20000); // check ping every 20 secs
+
+    HelperSupport::progressStep(QVariantMap());
+    m_loop.exec();
+    reply.addData(QStringLiteral("success"), true);
 
     return reply;
 }
@@ -259,11 +259,9 @@ void ExternalCommandHelper::checkPing()
 {
     qint64 mSecsSinceLastPing = m_pingTime->msecsTo(QDateTime::currentDateTime());
 
-    qDebug() << (((double)mSecsSinceLastPing) / 1000) << " seconds since the last ping.";
+    qDebug() << mSecsSinceLastPing / 1000.0 << " seconds since the last ping.";
 
     if (mSecsSinceLastPing >= 42000) { // more than 42 seconds since the last ping
-        qDebug() << "Ending DBus service";
-
         exit(m_callerUuid);
     }
 }
