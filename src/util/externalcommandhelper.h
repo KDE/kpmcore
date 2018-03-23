@@ -20,10 +20,11 @@
 
 #include <KAuth>
 
-#include <QDateTime>
 #include <QEventLoop>
 #include <QString>
 #include <QProcess>
+
+class QTimer;
 
 using namespace KAuth;
 
@@ -47,9 +48,6 @@ public Q_SLOTS:
     Q_SCRIPTABLE void exit(const QString& Uuid);
     Q_SCRIPTABLE void ping(const QString& Uuid);
 
-private Q_SLOTS:
-    void checkPing();
-
 private:
     void onReadOutput();
     bool isCallerAuthorized(const QString& Uuid);
@@ -60,7 +58,7 @@ private:
     QString m_sourceDevice;
     QProcess m_cmd;
 
-    QDateTime *m_pingTime;
+    QTimer *timer;
 //     QByteArray output;
 };
 

@@ -17,9 +17,7 @@
 
 #include "externalcommandhelper.h"
 
-#include <QDate>
 #include <QtDBus>
-#include <QDBusContext>
 #include <QDebug>
 #include <QFile>
 #include <QString>
@@ -27,6 +25,9 @@
 #include <QVariant>
 
 #include <KLocalizedString>
+
+// exit helper if no ping for 42s
+#define TIMEOUT 42000
 
 /** Initialize ExternalCommandHelper Daemon and prepare DBus interface
 */
@@ -47,11 +48,9 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     }
     QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots);
 
-    m_pingTime = new QDateTime(QDateTime::currentDateTime());
-
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &ExternalCommandHelper::checkPing);
-    timer->start(20000); // check ping every 20 secs
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, [=] () { exit(m_callerUuid); });
+    timer->start(TIMEOUT);
 
     HelperSupport::progressStep(QVariantMap());
     m_loop.exec();
@@ -250,20 +249,7 @@ void ExternalCommandHelper::ping(const QString &Uuid)
     if (!isCallerAuthorized(Uuid))
         return;
 
-    // update ping
-    m_pingTime->setDate(QDate::currentDate());
-    m_pingTime->setTime(QTime::currentTime());
-}
-
-void ExternalCommandHelper::checkPing()
-{
-    qint64 mSecsSinceLastPing = m_pingTime->msecsTo(QDateTime::currentDateTime());
-
-    qDebug() << mSecsSinceLastPing / 1000.0 << " seconds since the last ping.";
-
-    if (mSecsSinceLastPing >= 42000) { // more than 42 seconds since the last ping
-        exit(m_callerUuid);
-    }
+    timer->setInterval(TIMEOUT);
 }
 
 void ExternalCommandHelper::onReadOutput()
