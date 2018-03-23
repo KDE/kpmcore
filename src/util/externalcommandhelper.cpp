@@ -17,6 +17,7 @@
 
 #include "externalcommandhelper.h"
 
+#include <QDate>
 #include <QtDBus>
 #include <QDBusContext>
 #include <QDebug>
@@ -49,6 +50,13 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     HelperSupport::progressStep(QVariantMap());
     m_loop.exec();
     reply.addData(QStringLiteral("success"), true);
+
+    m_pingTime = new QDateTime(QDateTime::currentDateTime());
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &ExternalCommandHelper::checkPing);
+    timer->start(20000); // check ping every 20 secs
+
     return reply;
 }
 
@@ -235,6 +243,29 @@ void ExternalCommandHelper::exit(const QString& Uuid)
         qDebug() << "org.kde.kpmcore.helperinterface unregistered";
 
     QDBusConnection::systemBus().unregisterObject(QStringLiteral("/Helper"));
+}
+
+void ExternalCommandHelper::ping(const QString &Uuid)
+{
+    if (!isCallerAuthorized(Uuid))
+        return;
+
+    // update ping
+    m_pingTime->setDate(QDate::currentDate());
+    m_pingTime->setTime(QTime::currentTime());
+}
+
+void ExternalCommandHelper::checkPing()
+{
+    qint64 mSecsSinceLastPing = m_pingTime->msecsTo(QDateTime::currentDateTime());
+
+    qDebug() << (((double)mSecsSinceLastPing) / 1000) << " seconds since the last ping.";
+
+    if (mSecsSinceLastPing >= 42000) { // more than 42 seconds since the last ping
+        qDebug() << "Ending DBus service";
+
+        exit(m_callerUuid);
+    }
 }
 
 void ExternalCommandHelper::onReadOutput()

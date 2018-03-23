@@ -20,6 +20,7 @@
 
 #include <KAuth>
 
+#include <QDateTime>
 #include <QEventLoop>
 #include <QString>
 #include <QProcess>
@@ -44,6 +45,10 @@ public Q_SLOTS:
     Q_SCRIPTABLE QVariantMap start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment);
     Q_SCRIPTABLE bool copyblocks(const QString& Uuid, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE void exit(const QString& Uuid);
+    Q_SCRIPTABLE void ping(const QString& Uuid);
+
+private Q_SLOTS:
+    void checkPing();
 
 private:
     void onReadOutput();
@@ -54,6 +59,8 @@ private:
     QString m_command;
     QString m_sourceDevice;
     QProcess m_cmd;
+
+    QDateTime *m_pingTime;
 //     QByteArray output;
 };
 

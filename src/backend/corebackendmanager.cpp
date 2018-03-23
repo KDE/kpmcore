@@ -25,6 +25,7 @@
 #include <QDBusInterface>
 #include <QStringList>
 #include <QString>
+#include <QTimer>
 #include <QVector>
 #include <QUuid>
 
@@ -78,6 +79,22 @@ void CoreBackendManager::startExternalCommandHelper()
     auto conn = QObject::connect(job(), &KAuth::ExecuteJob::newData, exitLoop);
     loop.exec();
     QObject::disconnect(conn);
+
+    // Watchdog Timer for the DBus service
+    QTimer *timer = new QTimer;
+
+    auto sendDBusPing = [&] () {
+        QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"),
+                             QStringLiteral("/Helper"),
+                             QStringLiteral("org.kde.kpmcore.externalcommand"),
+                             QDBusConnection::systemBus());
+
+        if (iface.isValid())
+            iface.call(QStringLiteral("ping"), CoreBackendManager::self()->Uuid());
+    };
+
+    QObject::connect(timer, &QTimer::timeout, sendDBusPing);
+    timer->start(20000); // 20 seconds
 }
 
 void CoreBackendManager::stopExternalCommandHelper()
