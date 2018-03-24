@@ -74,9 +74,18 @@ public:
 
     /** SMART Quirk to some particular model and firmware */
     struct SmartQuirkDataBase {
-        const char *model;
-        const char *firmware;
+        QString model;
+        QString firmware;
         SmartAttributeParsedData::SmartQuirk quirk;
+        
+        SmartQuirkDataBase(const QString &m = QString(), 
+                           const QString &f = QString(), 
+                           SmartAttributeParsedData::SmartQuirk q = (SmartAttributeParsedData::SmartQuirk) 0) :
+            model(m),
+            firmware(f),
+            quirk(q)
+        {
+        };
     };
 
 public:
