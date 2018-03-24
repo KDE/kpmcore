@@ -77,9 +77,9 @@ public:
         QString model;
         QString firmware;
         SmartAttributeParsedData::SmartQuirk quirk;
-        
-        SmartQuirkDataBase(const QString &m = QString(), 
-                           const QString &f = QString(), 
+
+        SmartQuirkDataBase(const QString &m = QString(),
+                           const QString &f = QString(),
                            SmartAttributeParsedData::SmartQuirk q = (SmartAttributeParsedData::SmartQuirk) 0) :
             model(m),
             firmware(f),

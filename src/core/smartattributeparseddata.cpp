@@ -481,7 +481,7 @@ static const QMap<qint32, SmartAttributeParsedData::SmartAttributeUnit> tableUni
 static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase()
 {
     typedef SmartAttributeParsedData::SmartQuirkDataBase QuirkDatabase;
-    
+
     QVector<QuirkDatabase> quirkDb;
 
     quirkDb << QuirkDatabase(QStringLiteral("^(FUJITSU MHY2120BH|FUJITSU MHY2250BH)$"), QStringLiteral("^0085000B$"),
@@ -499,7 +499,7 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                                                                     SmartAttributeParsedData::SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT |
                                                                     SmartAttributeParsedData::SMART_QUIRK_200_WRITEERRORCOUNT |
                                                                     SmartAttributeParsedData::SMART_QUIRK_201_DETECTEDTACOUNT));
-    
+
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "FUJITSU M1623TAU|"
                             "FUJITSU MHG2...ATU?.*|"
@@ -517,14 +517,14 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             ")$"),
                             QStringLiteral(),
                             SmartAttributeParsedData::SMART_QUIRK_9_POWERONSECONDS);
-              
+
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "SAMSUNG SV4012H|"
                             "SAMSUNG SP(0451|08[0124]2|12[0145]3|16[0145]4)[CN]"
                             ")$"),
                             QStringLiteral(),
                             SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "SAMSUNG SV0412H|"
                             "SAMSUNG SV1204H"
@@ -532,19 +532,19 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             QStringLiteral(),
                             (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES |
                                                                     SmartAttributeParsedData::SMART_QUIRK_194_10XCELSIUS));
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^SAMSUNG SP40A2H$"),
                             QStringLiteral("^RR100-07$"),
                             SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^SAMSUNG SP80A4H$"),
                             QStringLiteral("^RT100-06$"),
                             SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^SAMSUNG SP8004H$"),
                             QStringLiteral("^QW100-61$"),
                             SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "Maxtor 2B0(0[468]|1[05]|20)H1|"
                             "Maxtor 4G(120J6|160J[68])|"
@@ -553,7 +553,7 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             QStringLiteral(),
                             (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONMINUTES |
                                                                     SmartAttributeParsedData::SMART_QUIRK_194_UNKNOWN));
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "Maxtor 2F0[234]0[JL]0|"
                             "Maxtor 8(1280A2|2160A4|2560A4|3840A6|4000A6|5120A8)|"
@@ -586,7 +586,7 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             ")$"),
                             QStringLiteral(),
                             SmartAttributeParsedData::SMART_QUIRK_9_POWERONMINUTES);
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "HITACHI_DK14FA-20B|"
                             "HITACHI_DK23..-..B?|"
@@ -597,16 +597,16 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             QStringLiteral(),
                             (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONMINUTES |
                                                                     SmartAttributeParsedData::SMART_QUIRK_193_LOADUNLOAD));
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^HTS541010G9SA00$"),
                             QStringLiteral("^MBZOC60P$"),
                             SmartAttributeParsedData::SMART_QUIRK_5_UNKNOWN);
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^MCCOE64GEMPP$"),
                             QStringLiteral("^2.9.0[3-9]$"),
                             (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_5_UNKNOWN |
                                                                     SmartAttributeParsedData::SMART_QUIRK_190_UNKNOWN));
-               
+
     quirkDb << QuirkDatabase(QStringLiteral("^INTEL SSDSA2(CT|BT|CW|BW)[0-9]{3}G3.*$"), 
                             QStringLiteral(), 
                             (SmartAttributeParsedData::SmartQuirk) 
