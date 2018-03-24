@@ -38,6 +38,7 @@
 CoreBackendManager::CoreBackendManager() :
     m_Backend(nullptr)
 {
+    startExternalCommandHelper();
 }
 
 CoreBackendManager* CoreBackendManager::self()
@@ -130,8 +131,6 @@ bool CoreBackendManager::load(const QString& name)
         backend()->setId(id);
         backend()->setVersion(version);
         qDebug() << "Loaded backend plugin: " << backend()->id();
-
-        startExternalCommandHelper();
 
         return true;
     }
