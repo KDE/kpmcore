@@ -78,6 +78,7 @@ void CoreBackendManager::startExternalCommandHelper()
     QEventLoop loop;
     auto exitLoop = [&] () {loop.exit();};
     auto conn = QObject::connect(job(), &KAuth::ExecuteJob::newData, exitLoop);
+    QObject::connect(job(), &KJob::finished, [=] () { if(job()->error()) exitLoop(); } );
     loop.exec();
     QObject::disconnect(conn);
 
