@@ -26,6 +26,7 @@
         "Name": "KDE Partition Manager Dummy Backend",
         "Name[ca@valencia]": "Dorsal fals del gestor de particions del KDE",
         "Name[ca]": "Dorsal fals del gestor de particions del KDE",
+        "Name[cs]": "Podpůrná vrstva pro správce diskových oddílů pro KDE",
         "Name[de]": "KDE-Partitionsverwaltung Dummy-Backend",
         "Name[es]": "Motor de simulación para el gestor de particiones de KDE",
         "Name[fi]": "KDE:n osionhallinnan valetaustaosa",
