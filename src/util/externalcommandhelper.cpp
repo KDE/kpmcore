@@ -48,10 +48,6 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     }
     QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots);
 
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, [=] () { exit(m_callerUuid); });
-    timer->start(TIMEOUT);
-
     HelperSupport::progressStep(QVariantMap());
     m_loop.exec();
     reply.addData(QStringLiteral("success"), true);
@@ -242,14 +238,6 @@ void ExternalCommandHelper::exit(const QString& Uuid)
         qDebug() << "org.kde.kpmcore.helperinterface unregistered";
 
     QDBusConnection::systemBus().unregisterObject(QStringLiteral("/Helper"));
-}
-
-void ExternalCommandHelper::ping(const QString &Uuid)
-{
-    if (!isCallerAuthorized(Uuid))
-        return;
-
-    timer->setInterval(TIMEOUT);
 }
 
 void ExternalCommandHelper::onReadOutput()

@@ -46,7 +46,6 @@ public Q_SLOTS:
     Q_SCRIPTABLE QVariantMap start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment);
     Q_SCRIPTABLE bool copyblocks(const QString& Uuid, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE void exit(const QString& Uuid);
-    Q_SCRIPTABLE void ping(const QString& Uuid);
 
 private:
     void onReadOutput();
