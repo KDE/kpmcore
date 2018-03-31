@@ -31,6 +31,8 @@
 #include "util/report.h"
 #include "util/capacity.h"
 
+#include <memory>
+
 #include <QDebug>
 
 #include <KLocalizedString>
@@ -112,7 +114,7 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
 {
     bool rval = false;
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
+    std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
     if (backendDevice) {
         CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
@@ -131,7 +133,6 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
         } else
             report.line() << xi18nc("@info:progress", "Could not open partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
 
-        delete backendDevice;
     } else
         report.line() << xi18nc("@info:progress", "Could not read geometry for partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
 

@@ -136,25 +136,21 @@ public:
       *         an instance is returned, it's the caller's responsibility to delete the
       *         object.
       */
-    virtual CoreBackendDevice* openDevice(const Device& d) = 0;
+    virtual std::unique_ptr<CoreBackendDevice> openDevice(const Device& d) = 0;
 
     /**
       * Open a device in exclusive mode for writing.
       * @param deviceNode The path of the device that is to be opened (e.g. /dev/sda)
-      * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
-      *         an instance is returned, it's the caller's responsibility to delete the
-      *         object.
+      * @return a pointer to a CoreBackendDevice or nullptr if the open failed.
       */
-    virtual CoreBackendDevice* openDeviceExclusive(const Device& d) = 0;
+    virtual std::unique_ptr<CoreBackendDevice> openDeviceExclusive(const Device& d) = 0;
 
     /**
       * Close a CoreBackendDevice that has previously been opened.
       * @param core_device Pointer to the CoreBackendDevice to be closed. Must not be nullptr.
       * @return true if closing the CoreBackendDevice succeeded, otherwise false.
-      *
-      * This method does not delete the object.
       */
-    virtual bool closeDevice(CoreBackendDevice* core_device) = 0;
+    virtual bool closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice) = 0;
 
     /**
       * Emit progress.

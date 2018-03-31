@@ -74,7 +74,7 @@ bool DeleteFileSystemJob::run(Report& parent)
             return false;
         }
 
-        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
+        std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {
             CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
@@ -92,7 +92,6 @@ bool DeleteFileSystemJob::run(Report& parent)
             } else
                 report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to delete file system on <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-            delete backendDevice;
         } else
             report->line() << xi18nc("@info:progress", "Could not delete file system signature for partition <filename>%1</filename>: Failed to open device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
     }

@@ -45,14 +45,12 @@ bool CreatePartitionTableJob::run(Report& parent)
     Report* report = jobStarted(parent);
 
     if (device().type() == Device::Disk_Device) {
-        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
+        std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice != nullptr) {
             Q_ASSERT(device().partitionTable());
 
             rval = backendDevice->createPartitionTable(*report, *device().partitionTable());
-
-            delete backendDevice;
         } else
             report->line() << xi18nc("@info:progress", "Creating partition table failed: Could not open device <filename>%1</filename>.", device().deviceNode());
     } else if (device().type() == Device::LVM_Device) {

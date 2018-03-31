@@ -19,7 +19,6 @@
 
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
-#include "backend/corebackenddevice.h"
 
 #include "core/device.h"
 
@@ -35,12 +34,6 @@ CopyTargetDevice::CopyTargetDevice(Device& d, qint64 firstbyte, qint64 lastbyte)
     m_FirstByte(firstbyte),
     m_LastByte(lastbyte)
 {
-}
-
-/** Destructs a CopyTargetDevice */
-CopyTargetDevice::~CopyTargetDevice()
-{
-    delete m_BackendDevice;
 }
 
 /** Opens a CopyTargetDevice for writing to.

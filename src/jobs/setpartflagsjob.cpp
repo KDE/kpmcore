@@ -56,7 +56,7 @@ bool SetPartFlagsJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
+    std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
     if (backendDevice) {
         CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
@@ -85,8 +85,6 @@ bool SetPartFlagsJob::run(Report& parent)
             delete backendPartitionTable;
         } else
             report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to set partition flags for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
-
-        delete backendDevice;
     } else
         report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to set partition flags for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 

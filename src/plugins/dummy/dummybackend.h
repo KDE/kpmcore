@@ -45,9 +45,9 @@ public:
     void initFSSupport() override;
 
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;
-    CoreBackendDevice* openDevice(const Device& d) override;
-    CoreBackendDevice* openDeviceExclusive(const Device& d) override;
-    bool closeDevice(CoreBackendDevice* coreDevice) override;
+    std::unique_ptr<CoreBackendDevice> openDevice(const Device& d) override;
+    std::unique_ptr<CoreBackendDevice> openDeviceExclusive(const Device& d) override;
+    bool closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice) override;
     Device* scanDevice(const QString& deviceNode) override;
     FileSystem::Type detectFileSystem(const QString& deviceNode) override;
     QString readLabel(const QString& deviceNode) const override;

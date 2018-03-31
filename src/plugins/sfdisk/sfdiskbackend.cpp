@@ -403,31 +403,27 @@ PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType ty
     return flags;
 }
 
-CoreBackendDevice* SfdiskBackend::openDevice(const Device& d)
+std::unique_ptr<CoreBackendDevice> SfdiskBackend::openDevice(const Device& d)
 {
-    SfdiskDevice* device = new SfdiskDevice(d);
+    std::unique_ptr<SfdiskDevice> device = std::make_unique<SfdiskDevice>(d);
 
-    if (device == nullptr || !device->open()) {
-        delete device;
+    if (!device->open())
         device = nullptr;
-    }
 
     return device;
 }
 
-CoreBackendDevice* SfdiskBackend::openDeviceExclusive(const Device& d)
+std::unique_ptr<CoreBackendDevice> SfdiskBackend::openDeviceExclusive(const Device& d)
 {
-    SfdiskDevice* device = new SfdiskDevice(d);
+    std::unique_ptr<SfdiskDevice> device = std::make_unique<SfdiskDevice>(d);
 
-    if (device == nullptr || !device->openExclusive()) {
-        delete device;
+    if (!device->openExclusive())
         device = nullptr;
-    }
 
     return device;
 }
 
-bool SfdiskBackend::closeDevice(CoreBackendDevice* coreDevice)
+bool SfdiskBackend::closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice)
 {
     return coreDevice->close();
 }

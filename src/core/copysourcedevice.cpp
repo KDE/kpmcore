@@ -20,7 +20,6 @@
 
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
-#include "backend/corebackenddevice.h"
 
 #include "core/copytarget.h"
 #include "core/copytargetdevice.h"
@@ -38,12 +37,6 @@ CopySourceDevice::CopySourceDevice(Device& d, qint64 firstbyte, qint64 lastbyte)
     m_LastByte(lastbyte),
     m_BackendDevice(nullptr)
 {
-}
-
-/** Destructs a CopySourceDevice */
-CopySourceDevice::~CopySourceDevice()
-{
-    delete m_BackendDevice;
 }
 
 /** Opens the Device

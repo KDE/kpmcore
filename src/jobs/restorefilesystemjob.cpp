@@ -80,7 +80,7 @@ bool RestoreFileSystemJob::run(Report& parent)
                 // create a new file system for what was restored with the length of the image file
                 const qint64 newLastSector = targetPartition().firstSector() + copySource.length() - 1;
 
-                CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(targetDevice());
+                std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(targetDevice());
 
                 FileSystem::Type t = FileSystem::Unknown;
 
