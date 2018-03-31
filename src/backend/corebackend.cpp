@@ -31,13 +31,12 @@ public:
 };
 
 CoreBackend::CoreBackend() :
-    d(new CoreBackendPrivate())
+    d(std::make_unique<CoreBackendPrivate>())
 {
 }
 
 CoreBackend::~CoreBackend()
 {
-    delete d;
 }
 
 void CoreBackend::emitProgress(int i)

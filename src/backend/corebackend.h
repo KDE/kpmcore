@@ -23,6 +23,8 @@
 #include "util/libpartitionmanagerexport.h"
 #include "fs/filesystem.h"
 
+#include <memory>
+
 #include <QObject>
 #include <QList>
 
@@ -187,7 +189,7 @@ private:
     QString m_id, m_version;
 
     class CoreBackendPrivate;
-    CoreBackendPrivate* d;
+    std::unique_ptr<CoreBackendPrivate> d;
 };
 
 #endif
