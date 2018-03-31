@@ -30,6 +30,7 @@
 
 class CoreBackendManager;
 class CoreBackendDevice;
+class CoreBackendPrivate;
 class Device;
 class PartitionTable;
 
@@ -70,17 +71,13 @@ public:
       * Return the plugin's unique Id from JSON metadata
       * @return the plugin's unique Id from JSON metadata
       */
-    QString id() {
-        return m_id;
-    }
+    QString id();
 
     /**
       * Return the plugin's version from JSON metadata
       * @return the plugin's version from JSON metadata
       */
-    QString version() {
-        return m_version;
-    }
+    QString version();
 
     /**
       * Initialize the plugin's FileSystem support
@@ -172,17 +169,10 @@ protected:
     static void setPartitionTableMaxPrimaries(PartitionTable& p, qint32 max_primaries);
 
 private:
-    void setId(const QString& id) {
-        m_id = id;
-    }
-    void setVersion(const QString& version) {
-        m_version = version;
-    }
+    void setId(const QString& id);
+    void setVersion(const QString& version);
 
 private:
-    QString m_id, m_version;
-
-    class CoreBackendPrivate;
     std::unique_ptr<CoreBackendPrivate> d;
 };
 
