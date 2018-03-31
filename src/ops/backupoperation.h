@@ -61,6 +61,7 @@ protected:
     Device& targetDevice() {
         return m_TargetDevice;
     }
+
     const Device& targetDevice() const {
         return m_TargetDevice;
     }

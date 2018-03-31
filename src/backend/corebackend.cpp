@@ -69,6 +69,7 @@ QString CoreBackend::version() {
 void CoreBackend::setId(const QString& id) {
     d->m_id = id;
 }
+
 void CoreBackend::setVersion(const QString& version) {
     d->m_version = version;
 }

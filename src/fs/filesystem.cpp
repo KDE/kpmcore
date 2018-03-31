@@ -531,14 +531,17 @@ bool FileSystem::unmount(Report& report, const QString& deviceNode)
     return false;
 }
 
-// FIXME: args and expectedCode is now unused.
 bool FileSystem::findExternal(const QString& cmdName, const QStringList& args, int expectedCode)
 {
-    QString cmd = QStandardPaths::findExecutable(cmdName);
-    if (cmd.isEmpty())
-        cmd = QStandardPaths::findExecutable(cmdName, { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+    QString cmdFullPath = QStandardPaths::findExecutable(cmdName);
+    if (cmdFullPath.isEmpty())
+        cmdFullPath = QStandardPaths::findExecutable(cmdName, { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
-    return !cmd.isEmpty();
+    ExternalCommand cmd(cmdFullPath, args);
+    if (!cmd.run())
+        return false;
+
+    return cmd.exitCode() == 0 || cmd.exitCode() == expectedCode;
 }
 
 bool FileSystem::supportToolFound() const
