@@ -63,7 +63,7 @@ bool CreateFileSystemJob::run(Report& parent)
                 std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
                 if (backendDevice) {
-                    CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+                    std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
 
                     if (backendPartitionTable) {
                         if (backendPartitionTable->setPartitionSystemType(*report, partition())) {
@@ -71,8 +71,6 @@ bool CreateFileSystemJob::run(Report& parent)
                             backendPartitionTable->commit();
                         } else
                             report->line() << xi18nc("@info:progress", "Failed to set the system type for the file system on partition <filename>%1</filename>.", partition().deviceNode());
-
-                        delete backendPartitionTable;
                     } else
                         report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
                 } else

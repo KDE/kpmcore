@@ -85,7 +85,7 @@ bool RestoreFileSystemJob::run(Report& parent)
                 FileSystem::Type t = FileSystem::Unknown;
 
                 if (backendDevice) {
-                    CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+                    std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
 
                     if (backendPartitionTable)
                         t = backendPartitionTable->detectFileSystemBySector(*report, targetDevice(), targetPartition().firstSector());

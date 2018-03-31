@@ -61,7 +61,7 @@ bool DeletePartitionJob::run(Report& parent)
         std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {
-            CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+            std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
 
             if (backendPartitionTable) {
                 rval = backendPartitionTable->deletePartition(*report, partition());
@@ -70,9 +70,6 @@ bool DeletePartitionJob::run(Report& parent)
                     report->line() << xi18nc("@info:progress", "Could not delete partition <filename>%1</filename>.", partition().deviceNode());
                 else
                     backendPartitionTable->commit();
-
-                delete backendPartitionTable;
-
             } else
                 report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to delete partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
         } else

@@ -59,7 +59,7 @@ bool SetPartGeometryJob::run(Report& parent)
         std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {
-            CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+            std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
 
             if (backendPartitionTable) {
                 rval = backendPartitionTable->updateGeometry(*report, partition(), newStart(), newStart() + newLength() - 1);
@@ -69,8 +69,6 @@ bool SetPartGeometryJob::run(Report& parent)
                     partition().setLastSector(newStart() + newLength() - 1);
                     backendPartitionTable->commit();
                 }
-
-                delete backendPartitionTable;
             }
         } else
             report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> while trying to resize/move partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());

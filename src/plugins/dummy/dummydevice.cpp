@@ -47,16 +47,9 @@ bool DummyDevice::close()
     return true;
 }
 
-CoreBackendPartitionTable* DummyDevice::openPartitionTable()
+std::unique_ptr<CoreBackendPartitionTable> DummyDevice::openPartitionTable()
 {
-    CoreBackendPartitionTable* ptable = new DummyPartitionTable();
-
-    if (ptable == nullptr || !ptable->open()) {
-        delete ptable;
-        ptable = nullptr;
-    }
-
-    return ptable;
+    return std::make_unique<DummyPartitionTable>(DummyPartitionTable());
 }
 
 bool DummyDevice::createPartitionTable(Report& report, const PartitionTable& ptable)

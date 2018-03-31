@@ -18,7 +18,6 @@
  *************************************************************************/
 
 #include "backend/corebackendmanager.h"
-#include "backend/corebackendmanager_p.h"
 #include "backend/corebackend.h"
 
 #include <QCoreApplication>
@@ -34,6 +33,14 @@
 #include <KPluginFactory>
 #include <KPluginLoader>
 #include <KPluginMetaData>
+
+struct CoreBackendManagerPrivate
+{
+    KAuth::ExecuteJob *m_job;
+    CoreBackend *m_Backend;
+
+    QString m_Uuid;
+};
 
 CoreBackendManager::CoreBackendManager() :
     d(std::make_unique<CoreBackendManagerPrivate>())

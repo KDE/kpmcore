@@ -132,9 +132,7 @@ public:
     /**
       * Open a device for reading.
       * @param deviceNode The path of the device that is to be opened (e.g. /dev/sda)
-      * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
-      *         an instance is returned, it's the caller's responsibility to delete the
-      *         object.
+      * @return a pointer to a CoreBackendDevice or nullptr if the open failed.
       */
     virtual std::unique_ptr<CoreBackendDevice> openDevice(const Device& d) = 0;
 

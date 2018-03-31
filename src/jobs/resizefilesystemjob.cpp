@@ -117,7 +117,7 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
     std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
     if (backendDevice) {
-        CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+        std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
 
         if (backendPartitionTable) {
             connect(CoreBackendManager::self()->backend(), &CoreBackend::progress, this, &ResizeFileSystemJob::progress);
@@ -128,8 +128,6 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
                 report.line() << xi18nc("@info:progress", "Successfully resized file system using internal backend functions.");
                 backendPartitionTable->commit();
             }
-
-            delete backendPartitionTable;
         } else
             report.line() << xi18nc("@info:progress", "Could not open partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
 

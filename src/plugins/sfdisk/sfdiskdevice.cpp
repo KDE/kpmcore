@@ -58,9 +58,9 @@ bool SfdiskDevice::close()
     return true;
 }
 
-CoreBackendPartitionTable* SfdiskDevice::openPartitionTable()
+std::unique_ptr<CoreBackendPartitionTable> SfdiskDevice::openPartitionTable()
 {
-    return new SfdiskPartitionTable(m_device);
+    return std::make_unique<SfdiskPartitionTable>(m_device);
 }
 
 bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& ptable)

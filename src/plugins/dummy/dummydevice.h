@@ -41,7 +41,7 @@ public:
     bool openExclusive() override;
     bool close() override;
 
-    CoreBackendPartitionTable* openPartitionTable() override;
+    std::unique_ptr<CoreBackendPartitionTable> openPartitionTable() override;
 
     bool createPartitionTable(Report& report, const PartitionTable& ptable) override;
 };

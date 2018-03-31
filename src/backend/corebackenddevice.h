@@ -19,6 +19,7 @@
 
 #define KPMCORE_COREBACKENDDEVICE_H
 
+#include <memory>
 #include <QString>
 
 class CoreBackendPartition;
@@ -81,7 +82,7 @@ public:
       * @return a pointer to the CoreBackendPartitionTable for this device or nullptr in case
       *         of errors
       */
-    virtual CoreBackendPartitionTable* openPartitionTable() = 0;
+    virtual std::unique_ptr<CoreBackendPartitionTable> openPartitionTable() = 0;
 
     /**
       * Create a new partition table on this device.
