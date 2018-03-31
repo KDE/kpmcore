@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_COREBACKENDMANAGER_P_H)
+#ifndef KPMCORE_COREBACKENDMANAGER_P_H
 
 #define KPMCORE_COREBACKENDMANAGER_P_H
 

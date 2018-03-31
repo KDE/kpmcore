@@ -15,13 +15,6 @@
 
 ############################################
 
-
-#option(PARTMAN_LIBPARTEDBACKEND "Build the libparted backend plugin." ON)
-
-#if (PARTMAN_LIBPARTEDBACKEND)
-#    add_subdirectory(libparted)
-#endif (PARTMAN_LIBPARTEDBACKEND)
-
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     option(PARTMAN_SFDISKBACKEND "Build the sfdisk backend plugin." ON)
 
