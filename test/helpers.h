@@ -23,7 +23,7 @@
 class QString;
 
 /**
- * Use RAII to initialize the KPMcore library. Just instantiatie one
+ * Use RAII to initialize the KPMcore library. Just instantiate one
  * object of this class to do "normal" initialization.
  */
 class KPMCoreInitializer
