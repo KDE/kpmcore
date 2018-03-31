@@ -16,13 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_COREBACKENDMANAGER_H)
+#ifndef KPMCORE_COREBACKENDMANAGER_H
 
 #define KPMCORE_COREBACKENDMANAGER_H
 
 #include "util/libpartitionmanagerexport.h"
 
-#include <KAuth>
+#include <memory>
 
 #include <QObject>
 #include <QVector>
@@ -31,6 +31,8 @@ class QString;
 class QStringList;
 class KPluginMetaData;
 class CoreBackend;
+namespace KAuth { class ExecuteJob; }
+struct CoreBackendManagerPrivate;
 
 /**
   * The backend manager class.
@@ -77,16 +79,12 @@ public:
     /**
       * @return a pointer to the currently loaded backend
       */
-    CoreBackend* backend() {
-        return m_Backend;
-    }
+    CoreBackend* backend();
 
     /**
     * @return a pointer to the currently loaded backend
       */
-    QString& Uuid() {
-        return m_Uuid;
-    }
+    QString& Uuid();
 
     /**
     * @return a pointer to the KAuth job
@@ -102,10 +100,7 @@ private:
     void startExternalCommandHelper();
 
 private:
-    CoreBackend *m_Backend;
-    KAuth::ExecuteJob *m_job;
-
-    QString m_Uuid;
+    std::unique_ptr<CoreBackendManagerPrivate> d;
 };
 
 #endif

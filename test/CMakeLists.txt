@@ -16,7 +16,7 @@ add_compile_options(-fPIC)
 # and to add a test with the given name.
 #
 add_library(testhelpers STATIC helpers.cpp)
-target_link_libraries(testhelpers KF5::Auth)
+target_link_libraries(testhelpers)
 
 macro (kpm_test name)
     add_executable(${name} ${ARGN})

@@ -18,6 +18,7 @@
  *************************************************************************/
 
 #include "backend/corebackendmanager.h"
+#include "backend/corebackendmanager_p.h"
 #include "backend/corebackend.h"
 
 #include <QCoreApplication>
@@ -36,7 +37,7 @@
 #include <KPluginMetaData>
 
 CoreBackendManager::CoreBackendManager() :
-    m_Backend(nullptr)
+    d(std::make_unique<CoreBackendManagerPrivate>())
 {
     startExternalCommandHelper();
 }
@@ -49,6 +50,10 @@ CoreBackendManager* CoreBackendManager::self()
         instance = new CoreBackendManager;
 
     return instance;
+}
+
+CoreBackend* CoreBackendManager::backend() {
+    return d->m_Backend;
 }
 
 QVector<KPluginMetaData> CoreBackendManager::list() const
@@ -68,17 +73,17 @@ void CoreBackendManager::startExternalCommandHelper()
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
     action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     QVariantMap arguments;
-    m_Uuid = QUuid::createUuid().toString();
+    d->m_Uuid = QUuid::createUuid().toString();
     arguments.insert(QStringLiteral("callerUuid"), Uuid());
     action.setArguments(arguments);
-    m_job = action.execute();
+    d->m_job = action.execute();
     job()->start();
 
     // Wait until ExternalCommand Helper is ready (helper sends newData signal just before it enters event loop)
     QEventLoop loop;
-    auto exitLoop = [&] () {loop.exit();};
+    auto exitLoop = [&] () { loop.exit(); };
     auto conn = QObject::connect(job(), &KAuth::ExecuteJob::newData, exitLoop);
-    QObject::connect(job(), &KJob::finished, [=] () { if(job()->error()) exitLoop(); } );
+    QObject::connect(job(), &KJob::finished, [=] () { if(d->m_job->error()) exitLoop(); } );
     loop.exec();
     QObject::disconnect(conn);
 
@@ -107,7 +112,11 @@ void CoreBackendManager::stopExternalCommandHelper()
 }
 
 KAuth::ExecuteJob* CoreBackendManager::job() {
-    return m_job;
+    return d->m_job;
+}
+
+QString& CoreBackendManager::Uuid() {
+    return d->m_Uuid;
 }
 
 bool CoreBackendManager::load(const QString& name)
@@ -120,7 +129,7 @@ bool CoreBackendManager::load(const QString& name)
     KPluginFactory* factory = loader.factory();
 
     if (factory != nullptr) {
-        m_Backend = factory->create<CoreBackend>(nullptr);
+        d->m_Backend = factory->create<CoreBackend>(nullptr);
 
         QString id = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
                      .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Id")).toString();
@@ -142,6 +151,4 @@ bool CoreBackendManager::load(const QString& name)
 
 void CoreBackendManager::unload()
 {
-    delete m_Backend;
-    m_Backend = nullptr;
 }

@@ -43,10 +43,11 @@ target_link_libraries( kpmcore PUBLIC
     ${UUID_LIBRARIES}
     ${BLKID_LIBRARIES}
     Qt5::DBus
-    KF5::Auth
     KF5::I18n
     KF5::CoreAddons
     KF5::WidgetsAddons
+    PRIVATE
+    KF5::Auth
 )
 
 install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})
