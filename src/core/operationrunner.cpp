@@ -73,9 +73,9 @@ void OperationRunner::run()
 
     for (int i = 0; i < numOperations(); i++) {
         suspendMutex().lock();
+        suspendMutex().unlock();
 
         if (!status || isCancelling()) {
-            suspendMutex().unlock();
             break;
         }
 
@@ -92,13 +92,6 @@ void OperationRunner::run()
         disconnect(op, &Operation::progress, this, &OperationRunner::progressSub);
 
         emit opFinished(i + 1, op);
-
-        suspendMutex().unlock();
-
-        // Sleep a little to give others a chance to suspend us. This should normally not be
-        // required -- is it possible that the compiler just optimizes our unlock/lock away
-        // if we don't sleep?
-        msleep(5);
     }
 
     if (automounter)
