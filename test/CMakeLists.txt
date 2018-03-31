@@ -20,7 +20,7 @@ target_link_libraries(testhelpers)
 
 macro (kpm_test name)
     add_executable(${name} ${ARGN})
-    target_link_libraries(${name} testhelpers kpmcore)
+    target_link_libraries(${name} testhelpers kpmcore Qt5::Core)
 endmacro()
 
 ###

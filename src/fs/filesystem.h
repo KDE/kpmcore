@@ -22,7 +22,6 @@
 
 #include "util/libpartitionmanagerexport.h"
 
-#include <QColor>
 #include <QList>
 #include <QStringList>
 #include <QString>
@@ -31,6 +30,7 @@
 
 #include <array>
 
+class QColor;
 class QValidator;
 class Device;
 class Report;

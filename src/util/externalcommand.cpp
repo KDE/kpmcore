@@ -37,6 +37,7 @@
 #include <QVariant>
 
 #include <KAuth>
+#include <KJob>
 #include <KLocalizedString>
 
 /** Creates a new ExternalCommand instance without Report.

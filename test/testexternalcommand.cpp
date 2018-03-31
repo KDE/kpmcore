@@ -22,7 +22,7 @@
 #include "backend/corebackendmanager.h"
 #include "util/externalcommand.h"
 
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDebug>
 #include <QThread>
 
@@ -52,7 +52,7 @@ void run()
 
 int main( int argc, char **argv )
 {
-    QApplication app(argc, argv);
+    QCoreApplication app(argc, argv);
     KPMCoreInitializer i(QStringLiteral("pmsfdiskbackendplugin"));
 
     runcmd a;

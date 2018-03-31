@@ -26,11 +26,11 @@
 #include "fs/filesystem.h"
 
 #include <QtGlobal>
-#include <QWidget>
 
 class Report;
 
 class QString;
+class QWidget;
 
 namespace FS
 {

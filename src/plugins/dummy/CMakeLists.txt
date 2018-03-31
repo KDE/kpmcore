@@ -22,6 +22,6 @@ set (pmdummybackendplugin_SRCS
 
 add_library(pmdummybackendplugin SHARED ${pmdummybackendplugin_SRCS})
 
-target_link_libraries(pmdummybackendplugin kpmcore)
+target_link_libraries(pmdummybackendplugin kpmcore KF5::I18n KF5::CoreAddons)
 
 install(TARGETS pmdummybackendplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})

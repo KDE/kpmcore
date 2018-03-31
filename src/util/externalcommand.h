@@ -24,8 +24,6 @@
 #include "core/copysourcedevice.h"
 #include "core/copytargetfile.h"
 
-#include <KJob>
-
 #include <QDebug>
 #include <QProcess>
 #include <QString>
@@ -33,6 +31,7 @@
 #include <QtGlobal>
 #include <QVariant>
 
+class KJob;
 class Report;
 
 /** An external command.

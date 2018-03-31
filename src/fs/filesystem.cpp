@@ -31,6 +31,7 @@
 
 #include <KLocalizedString>
 
+#include <QColor>
 #include <QFileInfo>
 #include <QStandardPaths>
 #include <QStorageInfo>

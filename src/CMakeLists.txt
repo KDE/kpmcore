@@ -40,13 +40,14 @@ ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore PUBLIC
-    ${UUID_LIBRARIES}
-    ${BLKID_LIBRARIES}
+    PRIVATE
+    Qt5::Core
     Qt5::DBus
+    Qt5::Gui
     KF5::I18n
     KF5::CoreAddons
     KF5::WidgetsAddons
-    PRIVATE
+    ${BLKID_LIBRARIES}
     KF5::Auth
 )
 

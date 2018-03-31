@@ -39,6 +39,7 @@
 #include <QStorageInfo>
 #include <QString>
 #include <QUuid>
+#include <QWidget>
 
 #include <KLocalizedString>
 #include <KPasswordDialog>
