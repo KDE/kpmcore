@@ -40,8 +40,8 @@ ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore PUBLIC
-    PRIVATE
     Qt5::Core
+    PRIVATE
     Qt5::DBus
     Qt5::Gui
     KF5::I18n

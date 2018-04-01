@@ -58,18 +58,22 @@ void CoreBackend::setPartitionTableMaxPrimaries(PartitionTable& p, qint32 max_pr
     p.setMaxPrimaries(max_primaries);
 }
 
-QString CoreBackend::id() {
+QString CoreBackend::id()
+{
     return d->m_id;
 }
 
-QString CoreBackend::version() {
+QString CoreBackend::version()
+{
     return d->m_version;
 }
 
-void CoreBackend::setId(const QString& id) {
+void CoreBackend::setId(const QString& id)
+{
     d->m_id = id;
 }
 
-void CoreBackend::setVersion(const QString& version) {
+void CoreBackend::setVersion(const QString& version)
+{
     d->m_version = version;
 }

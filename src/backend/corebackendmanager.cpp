@@ -58,7 +58,8 @@ CoreBackendManager* CoreBackendManager::self()
     return instance;
 }
 
-CoreBackend* CoreBackendManager::backend() {
+CoreBackend* CoreBackendManager::backend()
+{
     return d->m_Backend;
 }
 
@@ -101,11 +102,13 @@ void CoreBackendManager::stopExternalCommandHelper()
         iface.call(QStringLiteral("exit"), CoreBackendManager::self()->Uuid());
 }
 
-KAuth::ExecuteJob* CoreBackendManager::job() {
+KAuth::ExecuteJob* CoreBackendManager::job()
+{
     return d->m_job;
 }
 
-QString& CoreBackendManager::Uuid() {
+QString& CoreBackendManager::Uuid()
+{
     return d->m_Uuid;
 }
 
