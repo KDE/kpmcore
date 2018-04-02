@@ -43,4 +43,3 @@ set(CORE_LIB_HDRS
     core/smartstatus.h
     core/volumemanagerdevice.h
 )
-
