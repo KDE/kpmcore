@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_SMARTATTRIBUTEPARSEDDATA_H)
+#ifndef KPMCORE_SMARTATTRIBUTEPARSEDDATA_H
 #define KPMCORE_SMARTATTRIBUTEPARSEDDATA_H
 
 #include <QJsonObject>

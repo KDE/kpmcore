@@ -48,8 +48,6 @@ public:
 
     virtual qint64 firstByte() const = 0;
     virtual qint64 lastByte() const = 0;
-
-private:
 };
 
 #endif

@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_SMARTPARSER_H)
+#ifndef KPMCORE_SMARTPARSER_H
 #define KPMCORE_SMARTPARSER_H
 
 #include <QJsonDocument>

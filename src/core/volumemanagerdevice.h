@@ -80,9 +80,9 @@ protected:
 
 public:
 
-    /** string deviceNodes together into comma-sperated list
+    /** join deviceNodes together into comma-separated list
      *
-     *  @return comma-seperated list of deviceNodes
+     *  @return comma-separated list of deviceNodes
      */
     virtual QString prettyDeviceNodeList() const;
 

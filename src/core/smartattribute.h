@@ -15,15 +15,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_SMARTATTRIBUTE_H)
-
+#ifndef KPMCORE_SMARTATTRIBUTE_H
 #define KPMCORE_SMARTATTRIBUTE_H
 
 #include "util/libpartitionmanagerexport.h"
-#include "core/smartattributeparseddata.h"
 
 #include <QString>
 
+class SmartAttributeParsedData;
 
 class LIBKPMCORE_EXPORT SmartAttribute
 {
@@ -104,4 +103,3 @@ private:
 };
 
 #endif
-

@@ -15,8 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_SMARTSTATUS_H)
-
+#ifndef KPMCORE_SMARTSTATUS_H
 #define KPMCORE_SMARTSTATUS_H
 
 #include "util/libpartitionmanagerexport.h"

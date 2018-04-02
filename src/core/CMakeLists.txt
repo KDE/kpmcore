@@ -41,9 +41,6 @@ set(CORE_LIB_HDRS
     core/partitiontable.h
     core/smartattribute.h
     core/smartstatus.h
-    core/smartparser.h
-    core/smartattributeparseddata.h
-    core/smartdiskinformation.h
     core/volumemanagerdevice.h
 )
 
