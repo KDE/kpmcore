@@ -131,10 +131,10 @@ qint64 DiskDevice::logicalSectorSize() const
 
 qint64 DiskDevice::totalSectors() const
 {
-    return static_cast<qint64>(heads()) * cylinders() * sectorsPerTrack();
+    return static_cast<qint64>(d->m_Heads) * d->m_Cylinders * d->m_SectorsPerTrack;
 }
 
 qint64 DiskDevice::cylinderSize() const
 {
-    return static_cast<qint64>(heads()) * sectorsPerTrack();
+    return static_cast<qint64>(d->m_Heads) * d->m_SectorsPerTrack;
 }

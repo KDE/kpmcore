@@ -58,11 +58,13 @@ public:
     /**
      * @return the number of heads on the Device in CHS notation
      */
+    [[deprecated]]
     qint32 heads() const;
 
     /**
      * @return the number of cylinders on the Device in CHS notation
      */
+    [[deprecated]]
     qint32 cylinders() const;
 
     /**
