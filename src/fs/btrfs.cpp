@@ -44,7 +44,7 @@ FileSystem::CommandSupportType btrfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType btrfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 btrfs::btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Btrfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Btrfs)
 {
 }
 

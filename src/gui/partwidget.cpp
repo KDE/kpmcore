@@ -71,7 +71,7 @@ void PartWidget::updateChildren()
     }
 }
 
-void PartWidget::setFileSystemColorCode(const std::array< QColor, FileSystem::__lastType >& colorCode)
+void PartWidget::setFileSystemColorCode(const std::vector<QColor>& colorCode)
 {
     m_fileSystemColorCode = colorCode;
     repaint();

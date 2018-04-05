@@ -36,7 +36,7 @@
 #include <QStandardPaths>
 #include <QStorageInfo>
 
-const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode =
+const std::vector<QColor> FileSystem::defaultColorCode =
 {
 {
     QColor( 220,205,175 ), // unknown

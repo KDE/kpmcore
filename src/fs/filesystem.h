@@ -28,7 +28,7 @@
 #include <QtGlobal>
 #include <QUrl>
 
-#include <array>
+#include <vector>
 
 class QColor;
 class QValidator;
@@ -57,7 +57,7 @@ public:
     };
 
     /** Supported FileSystem types */
-    enum Type {
+    enum Type : int {
         Unknown = 0,
         Extended = 1,
 
@@ -101,7 +101,7 @@ public:
         cmdSupportBackend = 4           /**< supported by the backend */
     };
 
-    static const std::array< QColor, __lastType > defaultColorCode;
+    static const std::vector<QColor> defaultColorCode;
 
     Q_DECLARE_FLAGS(CommandSupportTypes, CommandSupportType)
 
