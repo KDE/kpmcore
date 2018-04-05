@@ -27,7 +27,7 @@
 
 static QString getAttrName(qint32 id);
 static QString getAttrDescription(qint32 id);
-static QString getPrettyValue(quint64 value, qint64 unit);
+static QString getPrettyValue(quint64 value, SmartAttributeUnit unit);
 static SmartAttribute::Assessment getAssessment(const SmartAttributeParsedData& a);
 static QString getRaw(quint64 raw);
 
@@ -68,28 +68,28 @@ QString SmartAttribute::assessmentToString(Assessment a)
     }
 }
 
-static QString getPrettyValue(quint64 value, qint64 unit)
+static QString getPrettyValue(quint64 value, SmartAttributeUnit unit)
 {
     QString rval;
 
     switch (unit) {
-    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS:
+    case SmartAttributeUnit::Miliseconds:
         rval = KFormat().formatDuration(value);
         break;
 
-    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_SECTORS:
+    case SmartAttributeUnit::Sectors:
         rval = xi18ncp("@item:intable", "%1 sector", "%1 sectors", value);
         break;
 
-    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN:
+    case SmartAttributeUnit::Milikelvin:
         rval = SmartStatus::tempToString(value);
         break;
 
-    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE:
+    case SmartAttributeUnit::None:
         rval = QLocale().toString(value);
         break;
 
-    case SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN:
+    case SmartAttributeUnit::Unknown:
     default:
         rval = xi18nc("@item:intable not applicable", "N/A");
         break;

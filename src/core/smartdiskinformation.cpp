@@ -108,16 +108,16 @@ bool SmartDiskInformation::updateTemperature()
     airflowTemperatureCelsius = findAttribute(190);
 
     if (temperatureCelsius != nullptr
-            && temperatureCelsius->prettyUnit() == SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN) {
+            && temperatureCelsius->prettyUnit() == SmartAttributeUnit::Milikelvin) {
         m_Temperature = temperatureCelsius->prettyValue();
         return true;
     } else if (temperatureCelsius2 != nullptr
-               && temperatureCelsius2->prettyUnit() == SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN) {
+               && temperatureCelsius2->prettyUnit() == SmartAttributeUnit::Milikelvin) {
         m_Temperature = temperatureCelsius2->prettyValue();
         return true;
     } else if (airflowTemperatureCelsius != nullptr
                && airflowTemperatureCelsius->prettyUnit() ==
-               SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN) {
+               SmartAttributeUnit::Milikelvin) {
         m_Temperature = airflowTemperatureCelsius->prettyValue();
         return true;
     }
@@ -136,11 +136,11 @@ bool SmartDiskInformation::updatePowerOn()
     powerOnSeconds = findAttribute(233);
 
     if (powerOnHours != nullptr
-            && powerOnHours->prettyUnit() == SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS) {
+            && powerOnHours->prettyUnit() == SmartAttributeUnit::Miliseconds) {
         m_PoweredOn = powerOnHours->prettyValue();
         return true;
     } else if (powerOnSeconds != nullptr
-               && powerOnSeconds->prettyUnit() == SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS) {
+               && powerOnSeconds->prettyUnit() == SmartAttributeUnit::Miliseconds) {
         m_PoweredOn = powerOnSeconds->prettyValue();
         return true;
     }
@@ -157,7 +157,7 @@ bool SmartDiskInformation::updatePowerCycle()
     powerCycleCount = findAttribute(12);
 
     if (powerCycleCount != nullptr
-            && powerCycleCount->prettyUnit() == SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE) {
+            && powerCycleCount->prettyUnit() == SmartAttributeUnit::None) {
         m_PowerCycles = powerCycleCount->prettyValue();
         return true;
     }

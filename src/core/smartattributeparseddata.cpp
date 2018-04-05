@@ -31,8 +31,8 @@
 #define MSECOND_VALID_SHORT_MAX (60ULL * 60ULL * 1000ULL)
 #define MSECOND_VALID_LONG_MAX (30ULL * 365ULL * 24ULL * 60ULL * 60ULL * 1000ULL)
 
-static const QMap<qint32, SmartAttributeParsedData::SmartAttributeUnit> tableUnit();
-static SmartAttributeParsedData::SmartQuirk getQuirk(QString model, QString firmware);
+static QMap<qint32, SmartAttributeUnit> tableUnit();
+static SmartQuirk getQuirk(QString model, QString firmware);
 
 /** Creates a new SmartAttributeParsedData object.
     @param disk the reference to the disk that this attribute is allocated to
@@ -56,9 +56,9 @@ SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
     m_GoodInThePast(true),
     m_GoodInThePastValid(false),
     m_Warn(false),
-    m_PrettyUnit(SMART_ATTRIBUTE_UNIT_UNKNOWN),
+    m_PrettyUnit(SmartAttributeUnit::Unknown),
     m_Disk(disk),
-    m_Quirk((SmartAttributeParsedData::SmartQuirk) 0)
+    m_Quirk(SmartQuirk::None)
 {
     if (disk)
         m_Quirk = getQuirk(disk->model(), disk->firmware());
@@ -88,7 +88,7 @@ SmartAttributeParsedData::SmartAttributeParsedData(SmartDiskInformation *disk,
         m_Online = flagsObj[online].toBool();
 
         if (!updateUnit())
-            m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
+            m_PrettyUnit = SmartAttributeUnit::Unknown;
 
         makePretty();
 
@@ -148,7 +148,7 @@ void SmartAttributeParsedData::validateValues()
 /** Make a pretty value from raw based on attribute's id */
 void SmartAttributeParsedData::makePretty()
 {
-    if (m_PrettyUnit == SMART_ATTRIBUTE_UNIT_UNKNOWN)
+    if (m_PrettyUnit == SmartAttributeUnit::Unknown)
         return;
 
     switch (id()) {
@@ -230,41 +230,41 @@ void SmartAttributeParsedData::verifyAttribute()
 
 void SmartAttributeParsedData::verifyTemperature()
 {
-    if (prettyUnit() != SMART_ATTRIBUTE_UNIT_MKELVIN)
+    if (prettyUnit() != SmartAttributeUnit::Milikelvin)
         return;
 
     if (prettyValue() < MKELVIN_VALID_MIN || prettyValue() > MKELVIN_VALID_MAX)
-        m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
+        m_PrettyUnit = SmartAttributeUnit::Unknown;
 }
 
 void SmartAttributeParsedData::verifyShortTime()
 {
-    if (prettyUnit() != SMART_ATTRIBUTE_UNIT_MSECONDS)
+    if (prettyUnit() != SmartAttributeUnit::Miliseconds)
         return;
 
     if (prettyValue() < MSECOND_VALID_MIN || prettyValue() > MSECOND_VALID_SHORT_MAX)
-        m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
+        m_PrettyUnit = SmartAttributeUnit::Unknown;
 }
 
 void SmartAttributeParsedData::verifyLongTime()
 {
-    if (prettyUnit() != SMART_ATTRIBUTE_UNIT_MSECONDS)
+    if (prettyUnit() != SmartAttributeUnit::Miliseconds)
         return;
 
     if (prettyValue() < MSECOND_VALID_MIN || prettyValue() > MSECOND_VALID_LONG_MAX)
-        m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
+        m_PrettyUnit = SmartAttributeUnit::Unknown;
 }
 
 void SmartAttributeParsedData::verifySectors()
 {
-    if (prettyUnit() != SMART_ATTRIBUTE_UNIT_SECTORS)
+    if (prettyUnit() != SmartAttributeUnit::Sectors)
         return;
 
     quint64 maxSectors = disk()->size() / 512ULL;
 
     if (prettyValue() == 0xFFFFFFFFULL || prettyValue() == 0xFFFFFFFFFFFFULL || (maxSectors > 0
                                                                                  && prettyValue() > maxSectors))
-        m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
+        m_PrettyUnit = SmartAttributeUnit::Unknown;
     else if ((id() == 5 || id() == 197) && prettyValue() > 0)
         m_Warn = true;
 }
@@ -274,120 +274,120 @@ bool SmartAttributeParsedData::updateUnit()
     if (m_Quirk) {
         switch (id()) {
         case 3:
-            if (m_Quirk & SMART_QUIRK_3_UNUSED) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_3_UNUSED) {
+                m_PrettyUnit = SmartAttributeUnit::Unknown;
                 return true;
             }
             break;
 
         case 4:
-            if (m_Quirk & SMART_QUIRK_4_UNUSED) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_UNKNOWN;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_4_UNUSED) {
+                m_PrettyUnit = SmartAttributeUnit::Unknown;
                 return true;
             }
             break;
 
         case 5:
-            if (m_Quirk & SMART_QUIRK_5_UNKNOWN)
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_5_UNKNOWN)
                 return false;
             break;
 
         case 9:
-            if (m_Quirk & SMART_QUIRK_9_POWERONMINUTES) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_9_POWERONMINUTES) {
+                m_PrettyUnit = SmartAttributeUnit::Miliseconds;
                 return true;
-            } else if (m_Quirk & SMART_QUIRK_9_POWERONSECONDS) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
+            } else if (m_Quirk & SmartQuirk::SMART_QUIRK_9_POWERONSECONDS) {
+                m_PrettyUnit = SmartAttributeUnit::Miliseconds;
                 return true;
-            } else if (m_Quirk & SMART_QUIRK_9_POWERONHALFMINUTES) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
+            } else if (m_Quirk & SmartQuirk::SMART_QUIRK_9_POWERONHALFMINUTES) {
+                m_PrettyUnit = SmartAttributeUnit::Miliseconds;
                 return true;
-            } else if (m_Quirk & SMART_QUIRK_9_UNKNOWN)
+            } else if (m_Quirk & SmartQuirk::SMART_QUIRK_9_UNKNOWN)
                 return false;
             break;
 
         case 190:
-            if (m_Quirk & SMART_QUIRK_190_UNKNOWN)
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_190_UNKNOWN)
                 return false;
             break;
 
         case 192:
-            if (m_Quirk & SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_NONE;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT) {
+                m_PrettyUnit = SmartAttributeUnit::None;
                 return true;
             }
             break;
 
         case 194:
-            if (m_Quirk & SMART_QUIRK_194_10XCELSIUS) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MKELVIN;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_194_10XCELSIUS) {
+                m_PrettyUnit = SmartAttributeUnit::Milikelvin;
                 return true;
-            } else if (m_Quirk & SMART_QUIRK_194_UNKNOWN)
+            } else if (m_Quirk & SmartQuirk::SMART_QUIRK_194_UNKNOWN)
                 return false;
             break;
 
         case 197:
-            if (m_Quirk & SMART_QUIRK_197_UNKNOWN)
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_197_UNKNOWN)
                 return false;
             break;
 
         case 198:
-            if (m_Quirk & SMART_QUIRK_198_UNKNOWN)
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_198_UNKNOWN)
                 return false;
             break;
 
         case 200:
-            if (m_Quirk & SMART_QUIRK_200_WRITEERRORCOUNT) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_NONE;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_200_WRITEERRORCOUNT) {
+                m_PrettyUnit = SmartAttributeUnit::None;
                 return true;
             }
             break;
 
         case 201:
-            if (m_Quirk & SMART_QUIRK_201_DETECTEDTACOUNT) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_NONE;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_201_DETECTEDTACOUNT) {
+                m_PrettyUnit = SmartAttributeUnit::None;
                 return true;
             }
             break;
 
         case 225:
-            if (m_Quirk & SMART_QUIRK_225_TOTALLBASWRITTEN) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MB;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_225_TOTALLBASWRITTEN) {
+                m_PrettyUnit = SmartAttributeUnit::MB;
                 return true;
             }
             break;
 
         case 226:
-            if (m_Quirk & SMART_QUIRK_226_TIMEWORKLOADMEDIAWEAR) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_SMALL_PERCENT;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_226_TIMEWORKLOADMEDIAWEAR) {
+                m_PrettyUnit = SmartAttributeUnit::SmallPercent;
                 return true;
             }
             break;
 
         case 227:
-            if (m_Quirk & SMART_QUIRK_227_TIMEWORKLOADHOSTREADS) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_SMALL_PERCENT;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_227_TIMEWORKLOADHOSTREADS) {
+                m_PrettyUnit = SmartAttributeUnit::SmallPercent;
                 return true;
             }
             break;
 
         case 228:
-            if (m_Quirk & SMART_QUIRK_228_WORKLOADTIMER) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_MSECONDS;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_228_WORKLOADTIMER) {
+                m_PrettyUnit = SmartAttributeUnit::Miliseconds;
                 return true;
             }
             break;
 
         case 232:
-            if (m_Quirk & SMART_QUIRK_232_AVAILABLERESERVEDSPACE) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_PERCENT;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_232_AVAILABLERESERVEDSPACE) {
+                m_PrettyUnit = SmartAttributeUnit::Percent;
                 return true;
             }
             break;
 
         case 233:
-            if (m_Quirk & SMART_QUIRK_233_MEDIAWEAROUTINDICATOR) {
-                m_PrettyUnit = SMART_ATTRIBUTE_UNIT_PERCENT;
+            if (m_Quirk & SmartQuirk::SMART_QUIRK_233_MEDIAWEAROUTINDICATOR) {
+                m_PrettyUnit = SmartAttributeUnit::Percent;
                 return true;
             }
             break;
@@ -403,77 +403,77 @@ bool SmartAttributeParsedData::updateUnit()
     return false;
 }
 
-static const QMap<qint32, SmartAttributeParsedData::SmartAttributeUnit> tableUnit()
+static QMap<qint32, SmartAttributeUnit> tableUnit()
 {
-    QMap<qint32, SmartAttributeParsedData::SmartAttributeUnit> table;
-    table.insert(1, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(2, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(3, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS);
-    table.insert(4, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(5, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_SECTORS);
-    table.insert(6, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(7, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(8, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(9, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS);
-    table.insert(10, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(11, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(12, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(13, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(170, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_PERCENT);
-    table.insert(171, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(172, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(175, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(176, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(177, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(178, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(179, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(180, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(181, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(182, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(183, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(184, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(187, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_SECTORS);
-    table.insert(188, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(189, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(190, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN);
-    table.insert(191, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(192, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(193, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(194, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN);
-    table.insert(195, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(196, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(197, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_SECTORS);
-    table.insert(198, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_SECTORS);
-    table.insert(199, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(200, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(201, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(202, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(203, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(204, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(205, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(206, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(207, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(208, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(209, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(220, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(221, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(222, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS);
-    table.insert(223, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(224, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(225, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(226, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS);
-    table.insert(227, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(228, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
-    table.insert(230, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(231, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MKELVIN);
-    table.insert(232, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_PERCENT);
-    table.insert(233, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(234, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_SECTORS);
-    table.insert(235, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_UNKNOWN);
-    table.insert(240, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MSECONDS);
-    table.insert(241, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MB);
-    table.insert(242, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_MB);
-    table.insert(250, SmartAttributeParsedData::SMART_ATTRIBUTE_UNIT_NONE);
+    QMap<qint32, SmartAttributeUnit> table;
+    table.insert(1, SmartAttributeUnit::None);
+    table.insert(2, SmartAttributeUnit::Unknown);
+    table.insert(3, SmartAttributeUnit::Miliseconds);
+    table.insert(4, SmartAttributeUnit::None);
+    table.insert(5, SmartAttributeUnit::Sectors);
+    table.insert(6, SmartAttributeUnit::Unknown);
+    table.insert(7, SmartAttributeUnit::None);
+    table.insert(8, SmartAttributeUnit::Unknown);
+    table.insert(9, SmartAttributeUnit::Miliseconds);
+    table.insert(10, SmartAttributeUnit::None);
+    table.insert(11, SmartAttributeUnit::None);
+    table.insert(12, SmartAttributeUnit::None);
+    table.insert(13, SmartAttributeUnit::None);
+    table.insert(170, SmartAttributeUnit::Percent);
+    table.insert(171, SmartAttributeUnit::None);
+    table.insert(172, SmartAttributeUnit::None);
+    table.insert(175, SmartAttributeUnit::None);
+    table.insert(176, SmartAttributeUnit::None);
+    table.insert(177, SmartAttributeUnit::None);
+    table.insert(178, SmartAttributeUnit::None);
+    table.insert(179, SmartAttributeUnit::None);
+    table.insert(180, SmartAttributeUnit::None);
+    table.insert(181, SmartAttributeUnit::None);
+    table.insert(182, SmartAttributeUnit::None);
+    table.insert(183, SmartAttributeUnit::None);
+    table.insert(184, SmartAttributeUnit::None);
+    table.insert(187, SmartAttributeUnit::Sectors);
+    table.insert(188, SmartAttributeUnit::None);
+    table.insert(189, SmartAttributeUnit::None);
+    table.insert(190, SmartAttributeUnit::Milikelvin);
+    table.insert(191, SmartAttributeUnit::None);
+    table.insert(192, SmartAttributeUnit::None);
+    table.insert(193, SmartAttributeUnit::None);
+    table.insert(194, SmartAttributeUnit::Milikelvin);
+    table.insert(195, SmartAttributeUnit::None);
+    table.insert(196, SmartAttributeUnit::None);
+    table.insert(197, SmartAttributeUnit::Sectors);
+    table.insert(198, SmartAttributeUnit::Sectors);
+    table.insert(199, SmartAttributeUnit::None);
+    table.insert(200, SmartAttributeUnit::None);
+    table.insert(201, SmartAttributeUnit::None);
+    table.insert(202, SmartAttributeUnit::None);
+    table.insert(203, SmartAttributeUnit::Unknown);
+    table.insert(204, SmartAttributeUnit::None);
+    table.insert(205, SmartAttributeUnit::None);
+    table.insert(206, SmartAttributeUnit::Unknown);
+    table.insert(207, SmartAttributeUnit::Unknown);
+    table.insert(208, SmartAttributeUnit::Unknown);
+    table.insert(209, SmartAttributeUnit::Unknown);
+    table.insert(220, SmartAttributeUnit::Unknown);
+    table.insert(221, SmartAttributeUnit::None);
+    table.insert(222, SmartAttributeUnit::Miliseconds);
+    table.insert(223, SmartAttributeUnit::None);
+    table.insert(224, SmartAttributeUnit::Unknown);
+    table.insert(225, SmartAttributeUnit::None);
+    table.insert(226, SmartAttributeUnit::Miliseconds);
+    table.insert(227, SmartAttributeUnit::None);
+    table.insert(228, SmartAttributeUnit::None);
+    table.insert(230, SmartAttributeUnit::Unknown);
+    table.insert(231, SmartAttributeUnit::Milikelvin);
+    table.insert(232, SmartAttributeUnit::Percent);
+    table.insert(233, SmartAttributeUnit::Unknown);
+    table.insert(234, SmartAttributeUnit::Sectors);
+    table.insert(235, SmartAttributeUnit::Unknown);
+    table.insert(240, SmartAttributeUnit::Miliseconds);
+    table.insert(241, SmartAttributeUnit::MB);
+    table.insert(242, SmartAttributeUnit::MB);
+    table.insert(250, SmartAttributeUnit::None);
 
     return table;
 }
@@ -485,20 +485,20 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
     QVector<QuirkDatabase> quirkDb;
 
     quirkDb << QuirkDatabase(QStringLiteral("^(FUJITSU MHY2120BH|FUJITSU MHY2250BH)$"), QStringLiteral("^0085000B$"),
-                            (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONMINUTES |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_197_UNKNOWN |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_198_UNKNOWN));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_9_POWERONMINUTES |
+                                                    SmartQuirk::SMART_QUIRK_197_UNKNOWN |
+                                                    SmartQuirk::SMART_QUIRK_198_UNKNOWN));
 
     quirkDb << QuirkDatabase(QStringLiteral("^FUJITSU MHR2040AT$"), QStringLiteral(), 
-                            (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONSECONDS |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_200_WRITEERRORCOUNT));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_9_POWERONSECONDS |
+                                                    SmartQuirk::SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT |
+                                                    SmartQuirk::SMART_QUIRK_200_WRITEERRORCOUNT));
 
     quirkDb << QuirkDatabase(QStringLiteral("^FUJITSU MHS20[6432]0AT(  .)?$"), QStringLiteral(),
-                            (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONSECONDS |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_200_WRITEERRORCOUNT |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_201_DETECTEDTACOUNT));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_9_POWERONSECONDS |
+                                                    SmartQuirk::SMART_QUIRK_192_EMERGENCYRETRACTCYCLECT |
+                                                    SmartQuirk::SMART_QUIRK_200_WRITEERRORCOUNT |
+                                                    SmartQuirk::SMART_QUIRK_201_DETECTEDTACOUNT));
 
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "FUJITSU M1623TAU|"
@@ -516,34 +516,33 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             "FUJITSU MP[A-G]3...A[HTEV]U?.*"
                             ")$"),
                             QStringLiteral(),
-                            SmartAttributeParsedData::SMART_QUIRK_9_POWERONSECONDS);
+                            SmartQuirk::SMART_QUIRK_9_POWERONSECONDS);
 
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "SAMSUNG SV4012H|"
                             "SAMSUNG SP(0451|08[0124]2|12[0145]3|16[0145]4)[CN]"
                             ")$"),
                             QStringLiteral(),
-                            SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
+                            SmartQuirk::SMART_QUIRK_9_POWERONHALFMINUTES);
 
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "SAMSUNG SV0412H|"
                             "SAMSUNG SV1204H"
                             ")$"),
                             QStringLiteral(),
-                            (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_194_10XCELSIUS));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_9_POWERONHALFMINUTES | SmartQuirk::SMART_QUIRK_194_10XCELSIUS));
 
     quirkDb << QuirkDatabase(QStringLiteral("^SAMSUNG SP40A2H$"),
                             QStringLiteral("^RR100-07$"),
-                            SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
+                            SmartQuirk::SMART_QUIRK_9_POWERONHALFMINUTES);
 
     quirkDb << QuirkDatabase(QStringLiteral("^SAMSUNG SP80A4H$"),
                             QStringLiteral("^RT100-06$"),
-                            SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
+                            SmartQuirk::SMART_QUIRK_9_POWERONHALFMINUTES);
 
     quirkDb << QuirkDatabase(QStringLiteral("^SAMSUNG SP8004H$"),
                             QStringLiteral("^QW100-61$"),
-                            SmartAttributeParsedData::SMART_QUIRK_9_POWERONHALFMINUTES);
+                            SmartQuirk::SMART_QUIRK_9_POWERONHALFMINUTES);
 
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "Maxtor 2B0(0[468]|1[05]|20)H1|"
@@ -551,8 +550,7 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             "Maxtor 4D0(20H1|40H2|60H3|80H4)"
                             ")$"),
                             QStringLiteral(),
-                            (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONMINUTES |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_194_UNKNOWN));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_9_POWERONMINUTES | SmartQuirk::SMART_QUIRK_194_UNKNOWN));
 
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "Maxtor 2F0[234]0[JL]0|"
@@ -585,7 +583,7 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             "Maxtor 7L(25|30)0[SR]0"
                             ")$"),
                             QStringLiteral(),
-                            SmartAttributeParsedData::SMART_QUIRK_9_POWERONMINUTES);
+                            SmartQuirk::SMART_QUIRK_9_POWERONMINUTES);
 
     quirkDb << QuirkDatabase(QStringLiteral("^("
                             "HITACHI_DK14FA-20B|"
@@ -595,34 +593,31 @@ static const QVector<SmartAttributeParsedData::SmartQuirkDataBase> quirkDatabase
                             "HTC4260[23]0G5CE00|HTC4260[56]0G8CE00"
                             ")$"),
                             QStringLiteral(),
-                            (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_9_POWERONMINUTES |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_193_LOADUNLOAD));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_9_POWERONMINUTES | SmartQuirk::SMART_QUIRK_193_LOADUNLOAD));
 
     quirkDb << QuirkDatabase(QStringLiteral("^HTS541010G9SA00$"),
                             QStringLiteral("^MBZOC60P$"),
-                            SmartAttributeParsedData::SMART_QUIRK_5_UNKNOWN);
+                            SmartQuirk::SMART_QUIRK_5_UNKNOWN);
 
     quirkDb << QuirkDatabase(QStringLiteral("^MCCOE64GEMPP$"),
                             QStringLiteral("^2.9.0[3-9]$"),
-                            (SmartAttributeParsedData::SmartQuirk) (SmartAttributeParsedData::SMART_QUIRK_5_UNKNOWN |
-                                                                    SmartAttributeParsedData::SMART_QUIRK_190_UNKNOWN));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_5_UNKNOWN | SmartQuirk::SMART_QUIRK_190_UNKNOWN));
 
     quirkDb << QuirkDatabase(QStringLiteral("^INTEL SSDSA2(CT|BT|CW|BW)[0-9]{3}G3.*$"), 
                             QStringLiteral(), 
-                            (SmartAttributeParsedData::SmartQuirk) 
-                            (SmartAttributeParsedData::SMART_QUIRK_3_UNUSED |
-                            SmartAttributeParsedData::SMART_QUIRK_4_UNUSED |
-                            SmartAttributeParsedData::SMART_QUIRK_225_TOTALLBASWRITTEN |
-                            SmartAttributeParsedData::SMART_QUIRK_226_TIMEWORKLOADMEDIAWEAR |
-                            SmartAttributeParsedData::SMART_QUIRK_227_TIMEWORKLOADHOSTREADS |
-                            SmartAttributeParsedData::SMART_QUIRK_228_WORKLOADTIMER |
-                            SmartAttributeParsedData::SMART_QUIRK_232_AVAILABLERESERVEDSPACE |
-                            SmartAttributeParsedData::SMART_QUIRK_233_MEDIAWEAROUTINDICATOR));
+                            static_cast<SmartQuirk>(SmartQuirk::SMART_QUIRK_3_UNUSED |
+                                                    SmartQuirk::SMART_QUIRK_4_UNUSED |
+                                                    SmartQuirk::SMART_QUIRK_225_TOTALLBASWRITTEN |
+                                                    SmartQuirk::SMART_QUIRK_226_TIMEWORKLOADMEDIAWEAR |
+                                                    SmartQuirk::SMART_QUIRK_227_TIMEWORKLOADHOSTREADS |
+                                                    SmartQuirk::SMART_QUIRK_228_WORKLOADTIMER |
+                                                    SmartQuirk::SMART_QUIRK_232_AVAILABLERESERVEDSPACE |
+                                                    SmartQuirk::SMART_QUIRK_233_MEDIAWEAROUTINDICATOR));
 
     return quirkDb;
 }
 
-static SmartAttributeParsedData::SmartQuirk getQuirk(QString model, QString firmware)
+static SmartQuirk getQuirk(QString model, QString firmware)
 {
     const QVector<SmartAttributeParsedData::SmartQuirkDataBase> db = quirkDatabase();
 
@@ -645,5 +640,5 @@ static SmartAttributeParsedData::SmartQuirk getQuirk(QString model, QString firm
         return item.quirk;
     }
 
-    return (SmartAttributeParsedData::SmartQuirk) 0;
+    return SmartQuirk::None;
 }
