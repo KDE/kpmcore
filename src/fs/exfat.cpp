@@ -39,7 +39,7 @@ FileSystem::CommandSupportType exfat::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType exfat::m_GetUUID = FileSystem::cmdSupportNone;
 
 exfat::exfat(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Exfat)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Exfat)
 {
 }
 

@@ -49,7 +49,7 @@ bool CreateFileSystemJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    if (partition().fileSystem().type() == FileSystem::Unformatted)
+    if (partition().fileSystem().type() == FileSystem::Type::Unformatted)
         return true;
 
     bool createResult;

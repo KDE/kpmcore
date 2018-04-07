@@ -22,7 +22,7 @@ namespace FS
 FileSystem::CommandSupportType unformatted::m_Create = FileSystem::cmdSupportFileSystem;
 
 unformatted::unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Unformatted)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Unformatted)
 {
 }
 

@@ -288,7 +288,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
         return false;
 
     for (auto &p : LVM::pvList)
-        if (p.isLuks() && p.partition()->deviceNode() == deviceNode && p.partition()->fileSystem().type() == FileSystem::Lvm2_PV)
+        if (p.isLuks() && p.partition()->deviceNode() == deviceNode && p.partition()->fileSystem().type() == FileSystem::Type::Lvm2_PV)
             p.setLuks(false);
 
     m_passphrase = passphrase;
@@ -465,7 +465,7 @@ FileSystem::Type luks::type() const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->type();
-    return FileSystem::Luks;
+    return FileSystem::Type::Luks;
 }
 
 QString luks::suggestedMapperName(const QString& deviceNode) const
@@ -648,19 +648,19 @@ bool luks::canEncryptType(FileSystem::Type type)
 {
     switch (type)
     {
-        case Btrfs:
-        case F2fs:
-        case Ext2:
-        case Ext3:
-        case Ext4:
-        case Jfs:
-        case LinuxSwap:
-        case Lvm2_PV:
-        case Nilfs2:
-        case ReiserFS:
-        case Reiser4:
-        case Xfs:
-        case Zfs:
+        case Type::Btrfs:
+        case Type::F2fs:
+        case Type::Ext2:
+        case Type::Ext3:
+        case Type::Ext4:
+        case Type::Jfs:
+        case Type::LinuxSwap:
+        case Type::Lvm2_PV:
+        case Type::Nilfs2:
+        case Type::ReiserFS:
+        case Type::Reiser4:
+        case Type::Xfs:
+        case Type::Zfs:
             return true;
         default:
             return false;

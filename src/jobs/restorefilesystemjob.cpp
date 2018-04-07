@@ -82,7 +82,7 @@ bool RestoreFileSystemJob::run(Report& parent)
 
                 std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(targetDevice());
 
-                FileSystem::Type t = FileSystem::Unknown;
+                FileSystem::Type t = FileSystem::Type::Unknown;
 
                 if (backendDevice) {
                     std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();

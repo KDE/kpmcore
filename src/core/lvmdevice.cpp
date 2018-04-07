@@ -129,7 +129,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     bool mounted;
 
     // Handle LUKS partition
-    if (fs->type() == FileSystem::Luks) {
+    if (fs->type() == FileSystem::Type::Luks) {
         r |= PartitionRole::Luks;
         FS::luks* luksFs = static_cast<FS::luks*>(fs);
         luksFs->initLUKS();
@@ -141,9 +141,9 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
         mountPoint = FileSystem::detectMountPoint(fs, lvPath);
         mounted = FileSystem::detectMountStatus(fs, lvPath);
 
-        if (mountPoint != QString() && fs->type() != FileSystem::LinuxSwap) {
+        if (mountPoint != QString() && fs->type() != FileSystem::Type::LinuxSwap) {
             const QStorageInfo storage = QStorageInfo(mountPoint);
-            if (logicalSize() > 0 && fs->type() != FileSystem::Luks && mounted && storage.isValid())
+            if (logicalSize() > 0 && fs->type() != FileSystem::Type::Luks && mounted && storage.isValid())
                 fs->setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / logicalSize() );
         }
         else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem)

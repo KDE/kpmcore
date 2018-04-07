@@ -50,7 +50,7 @@ FileSystem::CommandSupportType ntfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ntfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 ntfs::ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Ntfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ntfs)
 {
 }
 

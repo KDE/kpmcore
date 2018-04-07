@@ -74,7 +74,7 @@ FileSystem::Type DummyBackend::detectFileSystem(const QString& deviceNode)
 {
     Q_UNUSED(deviceNode)
 
-    return FileSystem::Unknown;
+    return FileSystem::Type::Unknown;
 }
 
 QString DummyBackend::readLabel(const QString& deviceNode) const

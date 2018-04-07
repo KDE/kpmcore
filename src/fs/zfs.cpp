@@ -40,7 +40,7 @@ FileSystem::CommandSupportType zfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType zfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 zfs::zfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Zfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Zfs)
 {
 }
 

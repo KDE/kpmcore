@@ -43,7 +43,7 @@ FileSystem::CommandSupportType lvm2_pv::m_GetUUID = FileSystem::cmdSupportNone;
 
 lvm2_pv::lvm2_pv(qint64 firstsector, qint64 lastsector,
                  qint64 sectorsused, const QString& label)
-    : FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Lvm2_PV)
+    : FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Lvm2_PV)
     , m_PESize(0)
     , m_TotalPE(0)
     , m_AllocatedPE(0)
@@ -270,10 +270,10 @@ QList<LvmPV> lvm2_pv::getPVinNode(const PartitionNode* parent)
             partitions.append(getPVinNode(node));
 
         // FIXME: reenable newly created PVs (before applying) once everything works
-        if(p->fileSystem().type() == FileSystem::Lvm2_PV && p->deviceNode() == p->partitionPath())
+        if(p->fileSystem().type() == FileSystem::Type::Lvm2_PV && p->deviceNode() == p->partitionPath())
             partitions.append(LvmPV(p->mountPoint(), p));
 
-        if(p->fileSystem().type() == FileSystem::Luks && p->deviceNode() == p->partitionPath())
+        if(p->fileSystem().type() == FileSystem::Type::Luks && p->deviceNode() == p->partitionPath())
             partitions.append(LvmPV(p->mountPoint(), p, true));
     }
 

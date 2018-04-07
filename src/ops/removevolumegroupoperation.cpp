@@ -67,7 +67,7 @@ bool RemoveVolumeGroupOperation::isRemovable(const VolumeManagerDevice* dev)
         else if (dev->partitionTable()->children().count() > 1)
             return false;
         else
-            if (dev->partitionTable()->children().first()->fileSystem().type() == FileSystem::Unknown)
+            if (dev->partitionTable()->children().first()->fileSystem().type() == FileSystem::Type::Unknown)
                 return true;
     }
 

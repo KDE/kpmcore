@@ -35,7 +35,7 @@ FileSystem::CommandSupportType hfs::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfs::m_Backup = FileSystem::cmdSupportNone;
 
 hfs::hfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Hfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Hfs)
 {
 }
 

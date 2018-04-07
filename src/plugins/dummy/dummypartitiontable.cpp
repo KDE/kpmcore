@@ -96,7 +96,7 @@ FileSystem::Type DummyPartitionTable::detectFileSystemBySector(Report& report, c
     Q_UNUSED(device)
     Q_UNUSED(sector)
 
-    FileSystem::Type rval = FileSystem::Unknown;
+    FileSystem::Type rval = FileSystem::Type::Unknown;
     return rval;
 }
 

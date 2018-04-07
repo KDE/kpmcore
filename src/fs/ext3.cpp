@@ -25,7 +25,7 @@
 namespace FS
 {
 ext3::ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    ext2(firstsector, lastsector, sectorsused, label, FileSystem::Ext3)
+    ext2(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ext3)
 {
 }
 

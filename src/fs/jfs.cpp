@@ -40,7 +40,7 @@ FileSystem::CommandSupportType jfs::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType jfs::m_SetLabel = FileSystem::cmdSupportNone;
 
 jfs::jfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Jfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Jfs)
 {
 }
 

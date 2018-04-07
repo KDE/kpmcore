@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT ext2 : public FileSystem
 {
 public:
-    ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Ext2);
+    ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Type::Ext2);
 
 public:
     void init() override;

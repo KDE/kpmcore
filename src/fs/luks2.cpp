@@ -28,7 +28,7 @@ namespace FS
 {
 
 luks2::luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label)
-    : luks(firstsector, lastsector, sectorsused, label, FileSystem::Luks2)
+    : luks(firstsector, lastsector, sectorsused, label, FileSystem::Type::Luks2)
 {
 }
 
@@ -40,7 +40,7 @@ FileSystem::Type luks2::type() const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->type();
-    return FileSystem::Luks2;
+    return FileSystem::Type::Luks2;
 }
 
 bool luks2::create(Report& report, const QString& deviceNode)

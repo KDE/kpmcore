@@ -101,12 +101,12 @@ void PartWidget::paintEvent(QPaintEvent*)
 
     if (partition()->roles().has(PartitionRole::Extended)) {
         drawGradient(&painter, activeColor(
-                         m_fileSystemColorCode[ partition()->fileSystem().type() ]),
+                         m_fileSystemColorCode[ static_cast<int>(partition()->fileSystem().type()) ]),
                      QRect(0, 0, width(), height()));
         return;
     }
 
-    const QColor base = activeColor(m_fileSystemColorCode[ partition()->fileSystem().type() ]);
+    const QColor base = activeColor(m_fileSystemColorCode[ static_cast<int>(partition()->fileSystem().type()) ]);
 
     if (!partition()->roles().has(PartitionRole::Unallocated)) {
         const QColor dark = base.darker(105);

@@ -42,7 +42,7 @@ FileSystem::CommandSupportType xfs::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType xfs::m_SetLabel = FileSystem::cmdSupportNone;
 
 xfs::xfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Xfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Xfs)
 {
 }
 

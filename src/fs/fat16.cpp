@@ -33,7 +33,7 @@
 namespace FS
 {
 fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    fat12(firstsector, lastsector, sectorsused, label, FileSystem::Fat16)
+    fat12(firstsector, lastsector, sectorsused, label, FileSystem::Type::Fat16)
 {
 }
 

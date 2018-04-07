@@ -46,7 +46,7 @@ FileSystem::CommandSupportType f2fs::m_GetUUID = FileSystem::cmdSupportNone;
 bool f2fs::oldVersion = false; // 1.8.x or older
 
 f2fs::f2fs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::F2fs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::F2fs)
 {
 }
 

@@ -108,7 +108,7 @@ FileSystem::Type FileSystem::detectFileSystem(const QString& partitionPath)
 
 QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPath)
 {
-    if (fs->type() == FileSystem::Lvm2_PV)
+    if (fs->type() == FileSystem::Type::Lvm2_PV)
         return FS::lvm2_pv::getVGName(partitionPath);
 
     if (partitionPath.isEmpty()) // Happens when during initial scan LUKS is closed
@@ -133,7 +133,7 @@ bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
 {
     bool mounted = false;
 
-    if (fs->type() == FileSystem::Lvm2_PV) {
+    if (fs->type() == FileSystem::Type::Lvm2_PV) {
         mounted = FS::lvm2_pv::getVGName(partitionPath) != QString();
     } else {
         mounted = isMounted(partitionPath);
@@ -437,10 +437,9 @@ static const KLocalizedString* typeNames()
 */
 QString FileSystem::nameForType(FileSystem::Type t, const QStringList& languages)
 {
-    Q_ASSERT(t >= 0);
-    Q_ASSERT(t < __lastType);
+    Q_ASSERT(t < Type::__lastType);
 
-    return typeNames()[t].toString(languages);
+    return typeNames()[static_cast<int>(t)].toString(languages);
 }
 
 /** @param s the name to get the type for
@@ -448,11 +447,11 @@ QString FileSystem::nameForType(FileSystem::Type t, const QStringList& languages
 */
 FileSystem::Type FileSystem::typeForName(const QString& s, const QStringList& languages )
 {
-    for (quint32 i = 0; i < __lastType; i++)
+    for (quint32 i = 0; i < static_cast<int>(Type::__lastType); i++)
         if (typeNames()[i].toString(languages) == s)
             return static_cast<FileSystem::Type>(i);
 
-    return Unknown;
+    return Type::Unknown;
 }
 
 /** @return a QList of all known types */
@@ -460,8 +459,8 @@ QList<FileSystem::Type> FileSystem::types()
 {
     QList<FileSystem::Type> result;
 
-    int i = Ext2; // first "real" filesystem
-    while (i != __lastType)
+    int i = static_cast<int>(Type::Ext2); // first "real" filesystem
+    while (i != static_cast<int>(Type::__lastType))
         result.append(static_cast<FileSystem::Type>(i++));
 
     return result;

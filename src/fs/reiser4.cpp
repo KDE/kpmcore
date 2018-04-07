@@ -35,7 +35,7 @@ FileSystem::CommandSupportType reiser4::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType reiser4::m_Backup = FileSystem::cmdSupportNone;
 
 reiser4::reiser4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Reiser4)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Reiser4)
 {
 }
 

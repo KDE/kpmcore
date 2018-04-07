@@ -38,7 +38,7 @@ namespace FS
 class LIBKPMCORE_EXPORT fat12 : public FileSystem
 {
 public:
-    fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Fat12);
+    fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Type::Fat12);
 
 public:
     void init() override;

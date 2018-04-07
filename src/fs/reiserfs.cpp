@@ -42,7 +42,7 @@ FileSystem::CommandSupportType reiserfs::m_UpdateUUID = FileSystem::cmdSupportNo
 FileSystem::CommandSupportType reiserfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 reiserfs::reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::ReiserFS)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::ReiserFS)
 {
 }
 
