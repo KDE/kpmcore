@@ -121,7 +121,7 @@ public:
     static QString overallAssessmentToString(Overall o);
     static QString selfTestStatusToString(SmartStatus::SelfTestStatus s);
 
-protected:
+private:
     void setStatus(bool s)
     {
         m_Status = s;

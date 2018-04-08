@@ -19,6 +19,8 @@
 
 #include <QString>
 
+#include <memory>
+
 class PartitionTable;
 class SmartStatus;
 
@@ -30,6 +32,6 @@ struct DevicePrivate
     qint64  m_TotalLogical;
     PartitionTable* m_PartitionTable;
     QString m_IconName;
-    SmartStatus* m_SmartStatus;
+    std::shared_ptr<SmartStatus> m_SmartStatus;
     Device::Type m_Type;
 };
