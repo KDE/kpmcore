@@ -24,8 +24,9 @@
 class PartitionTable;
 class SmartStatus;
 
-struct DevicePrivate
+class DevicePrivate
 {
+public:
     QString m_Name;
     QString m_DeviceNode;
     qint64  m_LogicalSectorSize;

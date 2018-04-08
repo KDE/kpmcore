@@ -32,7 +32,7 @@ class PartitionTable;
 class CreatePartitionTableOperation;
 class CoreBackend;
 class SmartStatus;
-struct DiskDevicePrivate;
+class DiskDevicePrivate;
 
 /** A disk device.
 
@@ -91,9 +91,6 @@ public:
      * @return the size of a cylinder on this Device in sectors
      */
     qint64 cylinderSize() const;
-
-private:
-    std::unique_ptr<DiskDevicePrivate> d;
 };
 
 #endif

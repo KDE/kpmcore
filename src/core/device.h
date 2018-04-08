@@ -29,7 +29,7 @@ class PartitionTable;
 class CreatePartitionTableOperation;
 class CoreBackend;
 class SmartStatus;
-struct DevicePrivate;
+class DevicePrivate;
 
 /** A device description.
 
@@ -60,11 +60,12 @@ public:
 protected:
     explicit Device(const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
 
+    explicit Device(std::shared_ptr<DevicePrivate> d_ptr, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
+
 public:
     explicit Device(const Device& other);
     virtual ~Device();
 
-public:
     virtual bool operator==(const Device& other) const;
     virtual bool operator!=(const Device& other) const;
 

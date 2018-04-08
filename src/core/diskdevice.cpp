@@ -17,6 +17,7 @@
  *************************************************************************/
 
 #include "core/diskdevice.h"
+#include "core/device_p.h"
 
 #include "core/partitiontable.h"
 #include "core/smartstatus.h"
@@ -39,7 +40,11 @@
 #define BLKPBSZGET _IO(0x12,123)/* get block physical sector size */
 #endif
 
-struct DiskDevicePrivate {
+#define d_ptr std::static_pointer_cast<DiskDevicePrivate>(d)
+
+class DiskDevicePrivate : public DevicePrivate
+{
+public:
     qint32 m_Heads;
     qint32 m_SectorsPerTrack;
     qint32 m_Cylinders;
@@ -94,47 +99,46 @@ DiskDevice::DiskDevice(const QString& name,
                        qint32 cylinders,
                        qint64 sectorSize,
                        const QString& iconName)
-    : Device(name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Disk_Device)
-    , d(std::make_unique<DiskDevicePrivate>())
+    : Device(std::make_shared<DiskDevicePrivate>(), name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Disk_Device)
 {
-    d->m_Heads = heads;
-    d->m_SectorsPerTrack = numSectors;
-    d->m_Cylinders = cylinders;
-    d->m_LogicalSectorSize = sectorSize;
-    d->m_PhysicalSectorSize = getPhysicalSectorSize(deviceNode);
+    d_ptr->m_Heads = heads;
+    d_ptr->m_SectorsPerTrack = numSectors;
+    d_ptr->m_Cylinders = cylinders;
+    d_ptr->m_LogicalSectorSize = sectorSize;
+    d_ptr->m_PhysicalSectorSize = getPhysicalSectorSize(deviceNode);
 }
 
 qint32 DiskDevice::heads() const
 {
-    return d->m_Heads;
+    return d_ptr->m_Heads;
 }
 
 qint32 DiskDevice::cylinders() const
 {
-    return d->m_Cylinders;
+    return d_ptr->m_Cylinders;
 }
 
 qint32 DiskDevice::sectorsPerTrack() const
 {
-    return d->m_SectorsPerTrack;
+    return d_ptr->m_SectorsPerTrack;
 }
 
 qint64 DiskDevice::physicalSectorSize() const
 {
-    return d->m_PhysicalSectorSize;
+    return d_ptr->m_PhysicalSectorSize;
 }
 
 qint64 DiskDevice::logicalSectorSize() const
 {
-    return d->m_LogicalSectorSize;
+    return d_ptr->m_LogicalSectorSize;
 }
 
 qint64 DiskDevice::totalSectors() const
 {
-    return static_cast<qint64>(d->m_Heads) * d->m_Cylinders * d->m_SectorsPerTrack;
+    return static_cast<qint64>(d_ptr->m_Heads) * d_ptr->m_Cylinders * d_ptr->m_SectorsPerTrack;
 }
 
 qint64 DiskDevice::cylinderSize() const
 {
-    return static_cast<qint64>(d->m_Heads) * d->m_SectorsPerTrack;
+    return static_cast<qint64>(d_ptr->m_Heads) * d_ptr->m_SectorsPerTrack;
 }
