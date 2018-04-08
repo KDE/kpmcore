@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -72,21 +72,35 @@ const std::vector<QColor> FileSystem::defaultColorCode =
 }
 };
 
+struct FileSystemPrivate {
+    FileSystem::Type m_Type;
+    qint64 m_FirstSector;
+    qint64 m_LastSector;
+    qint64 m_SectorSize;
+    qint64 m_SectorsUsed;
+    QString m_Label;
+    QString m_UUID;
+};
 
 /** Creates a new FileSystem object
     @param firstsector the first sector used by this FileSystem on the Device
     @param lastsector the last sector used by this FileSystem on the Device
     @param sectorsused the number of sectors in use on the FileSystem
-    @param l the FileSystem label
-    @param t the FileSystem type
+    @param label the FileSystem label
+    @param type the FileSystem type
 */
-FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& l, FileSystem::Type t) :
-    m_Type(t),
-    m_FirstSector(firstsector),
-    m_LastSector(lastsector),
-    m_SectorsUsed(sectorsused),
-    m_Label(l),
-    m_UUID()
+FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type) :
+    d(std::make_unique<FileSystemPrivate>())
+{
+    d->m_Type = type;
+    d->m_FirstSector = firstsector;
+    d->m_LastSector = lastsector;
+    d->m_SectorsUsed = sectorsused;
+    d->m_Label = label;
+    d->m_UUID = QString();
+}
+
+FileSystem::~FileSystem()
 {
 }
 
@@ -392,6 +406,11 @@ QString FileSystem::name(const QStringList& languages) const
     return nameForType(type(), languages);
 }
 
+FileSystem::Type FileSystem::type() const
+{
+    return d->m_Type;
+}
+
 /** @return a pointer to a QString C array with all FileSystem names */
 static const KLocalizedString* typeNames()
 {
@@ -530,6 +549,16 @@ bool FileSystem::unmount(Report& report, const QString& deviceNode)
     return false;
 }
 
+qint64 FileSystem::firstSector() const
+{
+    return d->m_FirstSector;
+}
+
+qint64 FileSystem::lastSector() const
+{
+        return d->m_LastSector;
+}
+
 bool FileSystem::findExternal(const QString& cmdName, const QStringList& args, int expectedCode)
 {
     QString cmdFullPath = QStandardPaths::findExecutable(cmdName);
@@ -551,4 +580,54 @@ bool FileSystem::supportToolFound() const
 FileSystem::SupportTool FileSystem::supportToolName() const
 {
     return SupportTool();
+}
+
+void FileSystem::setFirstSector(qint64 s)
+{
+    d->m_FirstSector = s;
+}
+
+void FileSystem::setLastSector(qint64 s)
+{
+    d->m_LastSector = s;
+}
+
+const QString& FileSystem::label() const
+{
+    return d->m_Label;
+}
+
+qint64 FileSystem::sectorSize() const
+{
+    return d->m_SectorSize;
+}
+
+qint64 FileSystem::sectorsUsed() const
+{
+    return d->m_SectorsUsed;
+}
+
+const QString& FileSystem::uuid() const
+{
+    return d->m_UUID;
+}
+
+void FileSystem::setSectorSize(qint64 s)
+{
+    d->m_SectorSize = s;
+}
+
+void FileSystem::setSectorsUsed(qint64 s)
+{
+    d->m_SectorsUsed = s;
+}
+
+void FileSystem::setLabel(const QString& s)
+{
+    d->m_Label = s;
+}
+
+void FileSystem::setUUID(const QString& s)
+{
+    d->m_UUID = s;
 }
