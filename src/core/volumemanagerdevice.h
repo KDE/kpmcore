@@ -15,8 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_VOLUMEMANAGERDEVICE_H)
-
+#ifndef KPMCORE_VOLUMEMANAGERDEVICE_H
 #define KPMCORE_VOLUMEMANAGERDEVICE_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -76,7 +75,7 @@ protected:
      *  @sector sector value to be mapped (if 0, will return start sector of the partition)
      *  @return absolute sector value as represented inside device's partitionTable
      */
-    virtual qint64  mappedSector(const QString& partitionPath, qint64 sector) const = 0;
+    virtual qint64 mappedSector(const QString& partitionPath, qint64 sector) const = 0;
 
 public:
 
@@ -90,10 +89,7 @@ public:
      *
      * @param n Number of sectors.
      */
-    void setTotalLogical(qint64 n) {
-        Q_ASSERT(n > 0);
-        m_TotalLogical = n;
-    }
+    void setTotalLogical(qint64 n);
 };
 
 #endif
