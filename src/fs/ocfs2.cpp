@@ -89,12 +89,12 @@ FileSystem::SupportTool ocfs2::supportToolName() const
 
 qint64 ocfs2::minCapacity() const
 {
-    return 14000 * Capacity::unitFactor(Capacity::Byte, Capacity::KiB);
+    return 14000 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::KiB);
 }
 
 qint64 ocfs2::maxCapacity() const
 {
-    return 4 * Capacity::unitFactor(Capacity::Byte, Capacity::PiB);
+    return 4 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::PiB);
 }
 
 qint64 ocfs2::readUsedCapacity(const QString& deviceNode) const

@@ -74,7 +74,7 @@ static bool testSmartStatus()
     if (smart.serial() == QString())
         return false;
 
-    if (smart.selfTestStatus())
+    if (smart.selfTestStatus() != SmartStatus::SelfTestStatus::Success)
         return false;
 
     if (!smart.isValid())

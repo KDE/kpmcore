@@ -75,7 +75,7 @@ qint64 reiser4::maxCapacity() const
 {
     // looks like it's actually unknown. see
     // http://en.wikipedia.org/wiki/Comparison_of_file_systems
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int reiser4::maxLabelLength() const

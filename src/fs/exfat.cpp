@@ -84,7 +84,7 @@ FileSystem::SupportTool exfat::supportToolName() const
 
 qint64 exfat::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int exfat::maxLabelLength() const

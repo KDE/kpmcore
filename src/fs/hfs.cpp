@@ -73,7 +73,7 @@ FileSystem::SupportTool hfs::supportToolName() const
 
 qint64 hfs::maxCapacity() const
 {
-    return 2 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 2 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 
 int hfs::maxLabelLength() const

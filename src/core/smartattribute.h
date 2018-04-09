@@ -27,17 +27,17 @@ class SmartAttributeParsedData;
 class LIBKPMCORE_EXPORT SmartAttribute
 {
 public:
-    enum FailureType {
+    enum class FailureType {
         PreFailure,
         OldAge
     };
 
-    enum UpdateType {
+    enum class UpdateType {
         Online,
         Offline
     };
 
-    enum Assessment {
+    enum class Assessment {
         NotApplicable,
         Failing,
         HasFailed,

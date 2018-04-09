@@ -376,13 +376,13 @@ bool FileSystem::updateBootSector(Report& report, const QString& deviceNode) con
 /** @return the minimum capacity valid for this FileSystem in bytes */
 qint64 FileSystem::minCapacity() const
 {
-    return 8 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 8 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 /** @return the maximum capacity valid for this FileSystem in bytes */
 qint64 FileSystem::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 /** @return the maximum label length valid for this FileSystem */

@@ -35,8 +35,8 @@ SmartAttribute::SmartAttribute(const SmartAttributeParsedData& a) :
     m_Id(a.id()),
     m_Name(getAttrName(a.id())),
     m_Desc(getAttrDescription(a.id())),
-    m_FailureType(a.prefailure() ? PreFailure : OldAge),
-    m_UpdateType(a.online() ? Online : Offline),
+    m_FailureType(a.prefailure() ? FailureType::PreFailure : FailureType::OldAge),
+    m_UpdateType(a.online() ? UpdateType::Online : UpdateType::Offline),
     m_Current(a.currentValueValid() ?  a.currentValue() : -1),
     m_Worst(a.worstValueValid() ? a.worstValue() : -1),
     m_Threshold(a.thresholdValid() ? a.threshold() : -1),
@@ -50,19 +50,19 @@ SmartAttribute::SmartAttribute(const SmartAttributeParsedData& a) :
 QString SmartAttribute::assessmentToString(Assessment a)
 {
     switch (a) {
-    case Failing:
+    case Assessment::Failing:
         return xi18nc("@item:intable", "failing");
 
-    case HasFailed:
+    case Assessment::HasFailed:
         return xi18nc("@item:intable", "has failed");
 
-    case Warning:
+    case Assessment::Warning:
         return xi18nc("@item:intable", "warning");
 
-    case Good:
+    case Assessment::Good:
         return xi18nc("@item:intable", "good");
 
-    case NotApplicable:
+    case Assessment::NotApplicable:
     default:
         return xi18nc("@item:intable not applicable", "N/A");
     }
@@ -216,7 +216,7 @@ static QString getAttrDescription(qint32 id)
 
 static SmartAttribute::Assessment getAssessment(const SmartAttributeParsedData& a)
 {
-    SmartAttribute::Assessment rval = SmartAttribute::NotApplicable;
+    SmartAttribute::Assessment rval = SmartAttribute::Assessment::NotApplicable;
 
     bool failed = false;
     bool hasFailed = false;
@@ -235,13 +235,13 @@ static SmartAttribute::Assessment getAssessment(const SmartAttributeParsedData& 
     }
 
     if (failed)
-        rval = SmartAttribute::Failing;
+        rval = SmartAttribute::Assessment::Failing;
     else if (hasFailed)
-        rval = SmartAttribute::HasFailed;
+        rval = SmartAttribute::Assessment::HasFailed;
     else if (a.warn())
-        rval = SmartAttribute::Warning;
+        rval = SmartAttribute::Assessment::Warning;
     else if (a.goodNowValid())
-        rval = SmartAttribute::Good;
+        rval = SmartAttribute::Assessment::Good;
 
     return rval;
 }

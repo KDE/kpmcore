@@ -48,14 +48,13 @@ public:
     };
 
     /** SMART overall state */
-    enum SmartOverall {
-        SMART_OVERALL_GOOD,
-        SMART_OVERALL_BAD_ATTRIBUTE_IN_THE_PAST,
-        SMART_OVERALL_BAD_SECTOR,
-        SMART_OVERALL_BAD_ATTRIBUTE_NOW,
-        SMART_OVERALL_BAD_SECTOR_MANY,
-        SMART_OVERALL_BAD_STATUS,
-        _SMART_OVERALL_MAX
+    enum class Overall {
+        Good,
+        BadAttributeInThePast,
+        BadSector,
+        BadAttributeNow,
+        BadSectorsMany,
+        BadStatus,
     };
 
 public:
@@ -105,7 +104,7 @@ public:
         return m_SelfTestExecutionStatus;    /**< @return SMART self execution status */
     }
 
-    SmartOverall overall() const
+    Overall overall() const
     {
         return m_Overall;    /**< @return SMART overall status */
     }
@@ -192,7 +191,7 @@ private:
     bool m_BadAttributeNow;
     bool m_BadAttributeInThePast;
     SmartSelfTestExecutionStatus m_SelfTestExecutionStatus;
-    SmartOverall m_Overall;
+    Overall m_Overall;
     QList<SmartAttributeParsedData> m_Attributes;
 
 };

@@ -100,12 +100,12 @@ FileSystem::SupportTool f2fs::supportToolName() const
 
 qint64 f2fs::minCapacity() const
 {
-    return 30 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 30 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 f2fs::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 
 int f2fs::maxLabelLength() const

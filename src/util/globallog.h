@@ -28,15 +28,15 @@
 class LIBKPMCORE_EXPORT Log
 {
 public:
-    enum Level {
-        debug = 0,
-        information = 1,
-        warning = 2,
-        error = 3
+    enum class Level {
+        debug,
+        information,
+        warning,
+        error,
     };
 
 public:
-    Log(Level lev = information) : ref(1), level(lev) {}
+    Log(Level lev = Level::information) : ref(1), level(lev) {}
     ~Log();
     Log(const Log& other) : ref(other.ref + 1), level(other.level) {}
 

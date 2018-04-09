@@ -31,7 +31,7 @@
 #include <QTemporaryFile>
 #include <QTextStream>
 
-static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QString& m_deviceNode);
+static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode);
 static QString findBlkIdDevice(const char *token, const QString& value);
 
 struct FstabEntryPrivate
@@ -44,7 +44,7 @@ struct FstabEntryPrivate
     int m_dumpFreq;
     int m_passNumber;
     QString m_comment;
-    FstabEntryType m_entryType;
+    FstabEntry::Type m_entryType;
 };
 
 FstabEntry::FstabEntry(const QString& fsSpec, const QString& mountPoint, const QString& type, const QString& options, int dumpFreq, int passNumber, const QString& comment) :
@@ -103,7 +103,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
         }
 
         fstabFile.close();
-        if (fstabEntries.back().entryType() == comment && fstabEntries.back().comment().isEmpty())
+        if (fstabEntries.back().entryType() == FstabEntry::Type::comment && fstabEntries.back().comment().isEmpty())
             fstabEntries.pop_back();
     }
 
@@ -156,7 +156,7 @@ const QString& FstabEntry::comment() const
     return d->m_comment;
 }
 
-FstabEntryType FstabEntry::entryType() const
+FstabEntry::Type FstabEntry::entryType() const
 {
     return d->m_entryType;
 }
@@ -207,23 +207,23 @@ static QString findBlkIdDevice(const char *token, const QString& value)
     return rval;
 }
 
-static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QString& m_deviceNode)
+static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode)
 {
-    m_entryType = FstabEntryType::comment;
+    m_entryType = FstabEntry::Type::comment;
     if (m_fsSpec.startsWith(QStringLiteral("UUID="))) {
-        m_entryType = FstabEntryType::uuid;
+        m_entryType = FstabEntry::Type::uuid;
         m_deviceNode = findBlkIdDevice("UUID", QString(m_fsSpec).remove(QStringLiteral("UUID=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("LABEL="))) {
-        m_entryType = FstabEntryType::label;
+        m_entryType = FstabEntry::Type::label;
         m_deviceNode = findBlkIdDevice("LABEL", QString(m_fsSpec).remove(QStringLiteral("LABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("PARTUUID="))) {
-        m_entryType = FstabEntryType::uuid;
+        m_entryType = FstabEntry::Type::uuid;
         m_deviceNode = findBlkIdDevice("PARTUUID", QString(m_fsSpec).remove(QStringLiteral("PARTUUID=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("PARTLABEL="))) {
-        m_entryType = FstabEntryType::label;
+        m_entryType = FstabEntry::Type::label;
         m_deviceNode = findBlkIdDevice("PARTLABEL", QString(m_fsSpec).remove(QStringLiteral("PARTLABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("/"))) {
-        m_entryType = FstabEntryType::deviceNode;
+        m_entryType = FstabEntry::Type::deviceNode;
         m_deviceNode = m_fsSpec;
     }
 }
@@ -231,7 +231,7 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QS
 static void writeEntry(QFile& output, const FstabEntry& entry)
 {
     QTextStream s(&output);
-    if (entry.entryType() == FstabEntryType::comment) {
+    if (entry.entryType() == FstabEntry::Type::comment) {
         s << entry.comment() << "\n";
         return;
     }

@@ -77,12 +77,12 @@ FileSystem::SupportTool zfs::supportToolName() const
 
 qint64 zfs::minCapacity() const
 {
-    return 64 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 64 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 zfs::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 bool zfs::remove(Report& report, const QString& deviceNode) const

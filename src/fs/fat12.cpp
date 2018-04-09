@@ -87,12 +87,12 @@ FileSystem::SupportTool fat12::supportToolName() const
 
 qint64 fat12::minCapacity() const
 {
-    return 1 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 1 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 fat12::maxCapacity() const
 {
-    return 255 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 255 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 int fat12::maxLabelLength() const

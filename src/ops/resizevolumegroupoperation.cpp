@@ -89,12 +89,12 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QVect
         // *DO NOTHING*
     } else {
         if (!toInsertList.isEmpty()) {
-            m_GrowVolumeGroupJob = new ResizeVolumeGroupJob(d, toInsertList, ResizeVolumeGroupJob::Grow);
+            m_GrowVolumeGroupJob = new ResizeVolumeGroupJob(d, toInsertList, ResizeVolumeGroupJob::Type::Grow);
             addJob(growVolumeGroupJob());
         }
         if (!toRemoveList.isEmpty()) {
             m_MovePhysicalVolumeJob = new MovePhysicalVolumeJob(d, toRemoveList);
-            m_ShrinkVolumeGroupJob = new ResizeVolumeGroupJob(d, toRemoveList, ResizeVolumeGroupJob::Shrink);
+            m_ShrinkVolumeGroupJob = new ResizeVolumeGroupJob(d, toRemoveList, ResizeVolumeGroupJob::Type::Shrink);
             addJob(movePhysicalVolumeJob());
             addJob(shrinkvolumegroupjob());
         }

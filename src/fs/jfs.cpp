@@ -79,12 +79,12 @@ FileSystem::SupportTool jfs::supportToolName() const
 
 qint64 jfs::minCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 jfs::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 
 int jfs::maxLabelLength() const

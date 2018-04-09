@@ -37,8 +37,8 @@ SmartStatus::SmartStatus(const QString &device_path) :
     m_ModelName(),
     m_Serial(),
     m_Firmware(),
-    m_Overall(Bad),
-    m_SelfTestStatus(Success),
+    m_Overall(Overall::Bad),
+    m_SelfTestStatus(SelfTestStatus::Success),
     m_Temp(0),
     m_BadSectors(0),
     m_PowerCycles(0),
@@ -73,72 +73,72 @@ void SmartStatus::update()
 
     switch (disk->selfTestExecutionStatus()) {
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ABORTED:
-        setSelfTestStatus(Aborted);
+        setSelfTestStatus(SelfTestStatus::Aborted);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_INTERRUPTED:
-        setSelfTestStatus(Interrupted);
+        setSelfTestStatus(SelfTestStatus::Interrupted);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_FATAL:
-        setSelfTestStatus(Fatal);
+        setSelfTestStatus(SelfTestStatus::Fatal);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_UNKNOWN:
-        setSelfTestStatus(ErrorUnknown);
+        setSelfTestStatus(SelfTestStatus::ErrorUnknown);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_ELECTRICAL:
-        setSelfTestStatus(ErrorEletrical);
+        setSelfTestStatus(SelfTestStatus::ErrorEletrical);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_SERVO:
-        setSelfTestStatus(ErrorServo);
+        setSelfTestStatus(SelfTestStatus::ErrorServo);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_READ:
-        setSelfTestStatus(ErrorRead);
+        setSelfTestStatus(SelfTestStatus::ErrorRead);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_HANDLING:
-        setSelfTestStatus(ErrorHandling);
+        setSelfTestStatus(SelfTestStatus::ErrorHandling);
         break;
 
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_INPROGRESS:
-        setSelfTestStatus(InProgress);
+        setSelfTestStatus(SelfTestStatus::InProgress);
         break;
 
     default:
     case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_SUCCESS_OR_NEVER:
-        setSelfTestStatus(Success);
+        setSelfTestStatus(SelfTestStatus::Success);
         break;
 
     }
 
     switch (disk->overall()) {
-    case SmartDiskInformation::SMART_OVERALL_GOOD:
-        setOverall(Good);
+    case SmartDiskInformation::Overall::Good:
+        setOverall(Overall::Good);
         break;
 
-    case SmartDiskInformation::SMART_OVERALL_BAD_ATTRIBUTE_IN_THE_PAST:
-        setOverall(BadPast);
+    case SmartDiskInformation::Overall::BadAttributeInThePast:
+        setOverall(Overall::BadPast);
         break;
 
-    case SmartDiskInformation::SMART_OVERALL_BAD_SECTOR:
-        setOverall(BadSectors);
+    case SmartDiskInformation::Overall::BadSector:
+        setOverall(Overall::BadSectors);
         break;
 
-    case SmartDiskInformation::SMART_OVERALL_BAD_ATTRIBUTE_NOW:
-        setOverall(BadNow);
+    case SmartDiskInformation::Overall::BadAttributeNow:
+        setOverall(Overall::BadNow);
         break;
 
-    case SmartDiskInformation::SMART_OVERALL_BAD_SECTOR_MANY:
-        setOverall(BadSectorsMany);
+    case SmartDiskInformation::Overall::BadSectorsMany:
+        setOverall(Overall::BadSectorsMany);
         break;
 
     default:
-    case SmartDiskInformation::SMART_OVERALL_BAD_STATUS:
-        setOverall(Bad);
+    case SmartDiskInformation::Overall::BadStatus:
+        setOverall(Overall::Bad);
         break;
 
     }
@@ -167,34 +167,34 @@ QString SmartStatus::tempToString(quint64 mkelvin)
 QString SmartStatus::selfTestStatusToString(SmartStatus::SelfTestStatus s)
 {
     switch (s) {
-    case Aborted:
+    case SelfTestStatus::Aborted:
         return xi18nc("@item", "Aborted");
 
-    case Interrupted:
+    case SelfTestStatus::Interrupted:
         return xi18nc("@item", "Interrupted");
 
-    case Fatal:
+    case SelfTestStatus::Fatal:
         return xi18nc("@item", "Fatal error");
 
-    case ErrorUnknown:
+    case SelfTestStatus::ErrorUnknown:
         return xi18nc("@item", "Unknown error");
 
-    case ErrorEletrical:
+    case SelfTestStatus::ErrorEletrical:
         return xi18nc("@item", "Electrical error");
 
-    case ErrorServo:
+    case SelfTestStatus::ErrorServo:
         return xi18nc("@item", "Servo error");
 
-    case ErrorRead:
+    case SelfTestStatus::ErrorRead:
         return xi18nc("@item", "Read error");
 
-    case ErrorHandling:
+    case SelfTestStatus::ErrorHandling:
         return xi18nc("@item", "Handling error");
 
-    case InProgress:
+    case SelfTestStatus::InProgress:
         return xi18nc("@item", "Self test in progress");
 
-    case Success:
+    case SelfTestStatus::Success:
     default:
         return xi18nc("@item", "Success");
     }
@@ -204,22 +204,22 @@ QString SmartStatus::selfTestStatusToString(SmartStatus::SelfTestStatus s)
 QString SmartStatus::overallAssessmentToString(Overall o)
 {
     switch (o) {
-    case Good:
+    case Overall::Good:
         return xi18nc("@item", "Healthy");
 
-    case BadPast:
+    case Overall::BadPast:
         return xi18nc("@item", "Has been used outside of its design parameters in the past.");
 
-    case BadSectors:
+    case Overall::BadSectors:
         return xi18nc("@item", "Has some bad sectors.");
 
-    case BadNow:
+    case Overall::BadNow:
         return xi18nc("@item", "Is being used outside of its design parameters right now.");
 
-    case BadSectorsMany:
+    case Overall::BadSectorsMany:
         return xi18nc("@item", "Has many bad sectors.");
 
-    case Bad:
+    case Overall::Bad:
     default:
         return xi18nc("@item", "Disk failure is imminent. Backup all data!");
     }

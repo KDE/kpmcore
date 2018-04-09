@@ -83,12 +83,12 @@ FileSystem::SupportTool xfs::supportToolName() const
 
 qint64 xfs::minCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 32 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 xfs::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int xfs::maxLabelLength() const

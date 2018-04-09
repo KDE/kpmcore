@@ -85,12 +85,12 @@ FileSystem::SupportTool reiserfs::supportToolName() const
 
 qint64 reiserfs::minCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 32 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 reiserfs::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB) - Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 int reiserfs::maxLabelLength() const

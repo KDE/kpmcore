@@ -27,8 +27,6 @@
 
 struct FstabEntryPrivate;
 
-enum FstabEntryType { deviceNode, uuid, label, partlabel, partuuid, comment };
-
 /** Base class for fstab handling.
 
     FstabEntry stores a single line of /etc/fstab file which can be a comment
@@ -39,6 +37,8 @@ enum FstabEntryType { deviceNode, uuid, label, partlabel, partuuid, comment };
 class LIBKPMCORE_EXPORT FstabEntry
 {
 public:
+    enum class Type { deviceNode, uuid, label, partlabel, partuuid, comment };
+
     FstabEntry(const QString& fsSpec, const QString& mountPoint, const QString& type, const QString& options, int dumpFreq = 0, int passNumber = 0, const QString& comment = QString());
 
     /**
@@ -84,7 +84,7 @@ public:
     /**
       * @return the type of fstab entry, e.g. device node or UUID or comment only
       */
-    FstabEntryType entryType() const;
+    Type entryType() const;
 
     /**
       * @param s the new value for the fs_spec field of fstab entry

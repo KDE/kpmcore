@@ -31,7 +31,7 @@ struct SkDisk;
 class LIBKPMCORE_EXPORT SmartStatus
 {
 public:
-    enum Overall {
+    enum class Overall {
         Good,
         BadPast,
         BadSectors,
@@ -40,7 +40,7 @@ public:
         Bad
     };
 
-    enum SelfTestStatus {
+    enum class SelfTestStatus {
         Success,
         Aborted,
         Interrupted,

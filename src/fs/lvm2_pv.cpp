@@ -99,7 +99,7 @@ FileSystem::SupportTool lvm2_pv::supportToolName() const
 
 qint64 lvm2_pv::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 qint64 lvm2_pv::readUsedCapacity(const QString& deviceNode) const

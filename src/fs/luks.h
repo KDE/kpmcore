@@ -17,8 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_LUKS_H)
-
+#ifndef KPMCORE_LUKS_H
 #define KPMCORE_LUKS_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -43,7 +42,7 @@ public:
     luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Type::Luks);
     ~luks() override;
 
-    enum KeyLocation {
+    enum class KeyLocation {
         unknown,
         dmcrypt,
         keyring
@@ -225,7 +224,7 @@ protected:
     qint64 m_PayloadSize;
     QString m_outerUuid;
 
-    luks::KeyLocation m_KeyLocation = unknown;
+    luks::KeyLocation m_KeyLocation = KeyLocation::unknown;
 };
 }
 

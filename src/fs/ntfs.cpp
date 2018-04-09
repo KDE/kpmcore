@@ -91,12 +91,12 @@ FileSystem::SupportTool ntfs::supportToolName() const
 
 qint64 ntfs::minCapacity() const
 {
-    return 2 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 2 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 ntfs::maxCapacity() const
 {
-    return 256 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 256 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 
 int ntfs::maxLabelLength() const

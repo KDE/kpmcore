@@ -45,13 +45,13 @@ DeleteOperation::DeleteOperation(Device& d, Partition* p, ShredAction shred) :
     m_DeletePartitionJob(new DeletePartitionJob(targetDevice(), deletedPartition()))
 {
     switch (shredAction()) {
-    case NoShred:
+    case ShredAction::NoShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new DeleteFileSystemJob(targetDevice(), deletedPartition()));
         break;
-    case ZeroShred:
+    case ShredAction::ZeroShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition(), false));
         break;
-    case RandomShred:
+    case ShredAction::RandomShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition(), true));
     }
 
@@ -89,7 +89,7 @@ void DeleteOperation::undo()
 
 QString DeleteOperation::description() const
 {
-    if (shredAction() != NoShred)
+    if (shredAction() != ShredAction::NoShred)
         return xi18nc("@info:status", "Shred partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
     else
         return xi18nc("@info:status", "Delete partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
