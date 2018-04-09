@@ -51,7 +51,7 @@ public:
 
 public:
     const QStringList deviceNodes() const override;
-    const QStringList partitionNodes() const override;
+    const QStringList& partitionNodes() const override;
     qint64 partitionSize(QString& partitionPath) const override;
 
     static QVector<const Partition*> s_DirtyPVs;
@@ -98,12 +98,11 @@ public:
     qint64 allocatedPE() const;
     qint64 freePE() const;
     QString UUID() const;
-    QStringList* LVPathList() const;
     QVector <const Partition*>& physicalVolumes();
     const QVector <const Partition*>& physicalVolumes() const;
 
 protected:
-    QHash<QString, qint64>* LVSizeMap() const;
+    std::unique_ptr<QHash<QString, qint64>>& LVSizeMap() const;
 };
 
 #endif

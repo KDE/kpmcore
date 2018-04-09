@@ -52,7 +52,7 @@ public:
     /**
      * @return list of logical partition's path.
      */
-    virtual const QStringList partitionNodes() const = 0;
+    virtual const QStringList& partitionNodes() const = 0;
 
     /**
      * @return size of logical partition at the given path in bytes.
