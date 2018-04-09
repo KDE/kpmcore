@@ -18,6 +18,8 @@
 #include "core/smartdiskinformation.h"
 #include "core/smartattributeparseddata.h"
 
+#include <memory>
+
 static quint64 u64log2(quint64 n);
 
 /** Creates a new SmartDiskInformationObject */
@@ -41,11 +43,8 @@ SmartDiskInformation::SmartDiskInformation() :
 /** Update the number of bad sectors based on reallocated sector count and current pending sector attributes data */
 void SmartDiskInformation::updateBadSectors()
 {
-    SmartAttributeParsedData *reallocatedSectorCt;
-    reallocatedSectorCt = findAttribute(5);
-
-    SmartAttributeParsedData *currentPendingSector;
-    currentPendingSector = findAttribute(197);
+    std::unique_ptr<SmartAttributeParsedData> reallocatedSectorCt(findAttribute(5));
+    std::unique_ptr<SmartAttributeParsedData> currentPendingSector(findAttribute(197));
 
     if (!reallocatedSectorCt && !currentPendingSector)
         m_BadSectors = 0;
@@ -97,13 +96,9 @@ void SmartDiskInformation::updateOverall()
 */
 bool SmartDiskInformation::updateTemperature()
 {
-    SmartAttributeParsedData *temperatureCelsius;
-    SmartAttributeParsedData *temperatureCelsius2;
-    SmartAttributeParsedData *airflowTemperatureCelsius;
-
-    temperatureCelsius = findAttribute(231);
-    temperatureCelsius2 = findAttribute(194);
-    airflowTemperatureCelsius = findAttribute(190);
+    std::unique_ptr<SmartAttributeParsedData> temperatureCelsius(findAttribute(231));
+    std::unique_ptr<SmartAttributeParsedData> temperatureCelsius2(findAttribute(194));
+    std::unique_ptr<SmartAttributeParsedData> airflowTemperatureCelsius(findAttribute(190));
 
     if (temperatureCelsius != nullptr
             && temperatureCelsius->prettyUnit() == SmartAttributeUnit::Milikelvin) {
@@ -127,11 +122,8 @@ bool SmartDiskInformation::updateTemperature()
 */
 bool SmartDiskInformation::updatePowerOn()
 {
-    SmartAttributeParsedData *powerOnHours;
-    SmartAttributeParsedData *powerOnSeconds;
-
-    powerOnHours = findAttribute(9);
-    powerOnSeconds = findAttribute(233);
+    std::unique_ptr<SmartAttributeParsedData> powerOnHours(findAttribute(9));
+    std::unique_ptr<SmartAttributeParsedData> powerOnSeconds(findAttribute(233));
 
     if (powerOnHours != nullptr
             && powerOnHours->prettyUnit() == SmartAttributeUnit::Miliseconds) {
@@ -150,9 +142,7 @@ bool SmartDiskInformation::updatePowerOn()
 */
 bool SmartDiskInformation::updatePowerCycle()
 {
-    SmartAttributeParsedData *powerCycleCount;
-
-    powerCycleCount = findAttribute(12);
+    std::unique_ptr<SmartAttributeParsedData> powerCycleCount(findAttribute(12));
 
     if (powerCycleCount != nullptr
             && powerCycleCount->prettyUnit() == SmartAttributeUnit::None) {
