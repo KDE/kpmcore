@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2018 by Caio Carvalho <caiojcarvalho@gmail.com>        *
+ *  Copyright (C) 2018 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -17,6 +18,8 @@
 
 #ifndef KPMCORE_SMARTDISKINFORMATION_H
 #define KPMCORE_SMARTDISKINFORMATION_H
+
+#include "core/smartstatus.h"
 
 #include <QList>
 #include <QString>
@@ -45,16 +48,6 @@ public:
         SMART_SELF_TEST_EXECUTION_STATUS_ERROR_HANDLING = 8,
         SMART_SELF_TEST_EXECUTION_STATUS_INPROGRESS = 15,
         _SMART_SELF_TEST_EXECUTION_STATUS_MAX
-    };
-
-    /** SMART overall state */
-    enum class Overall {
-        Good,
-        BadAttributeInThePast,
-        BadSector,
-        BadAttributeNow,
-        BadSectorsMany,
-        BadStatus,
     };
 
 public:
@@ -104,7 +97,7 @@ public:
         return m_SelfTestExecutionStatus;    /**< @return SMART self execution status */
     }
 
-    Overall overall() const
+    SmartStatus::Overall overall() const
     {
         return m_Overall;    /**< @return SMART overall status */
     }
@@ -191,7 +184,7 @@ private:
     bool m_BadAttributeNow;
     bool m_BadAttributeInThePast;
     SmartSelfTestExecutionStatus m_SelfTestExecutionStatus;
-    Overall m_Overall;
+    SmartStatus::Overall m_Overall;
     QList<SmartAttributeParsedData> m_Attributes;
 
 };

@@ -115,33 +115,7 @@ void SmartStatus::update()
 
     }
 
-    switch (disk->overall()) {
-    case SmartDiskInformation::Overall::Good:
-        setOverall(Overall::Good);
-        break;
-
-    case SmartDiskInformation::Overall::BadAttributeInThePast:
-        setOverall(Overall::BadPast);
-        break;
-
-    case SmartDiskInformation::Overall::BadSector:
-        setOverall(Overall::BadSectors);
-        break;
-
-    case SmartDiskInformation::Overall::BadAttributeNow:
-        setOverall(Overall::BadNow);
-        break;
-
-    case SmartDiskInformation::Overall::BadSectorsMany:
-        setOverall(Overall::BadSectorsMany);
-        break;
-
-    default:
-    case SmartDiskInformation::Overall::BadStatus:
-        setOverall(Overall::Bad);
-        break;
-
-    }
+    setOverall(disk->overall());
 
     setTemp(disk->temperature());
 

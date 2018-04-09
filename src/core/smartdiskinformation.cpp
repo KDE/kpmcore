@@ -34,9 +34,8 @@ SmartDiskInformation::SmartDiskInformation() :
     m_BadAttributeNow(false),
     m_BadAttributeInThePast(false),
     m_SelfTestExecutionStatus(SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_SUCCESS_OR_NEVER),
-    m_Overall(SmartDiskInformation::Overall::BadStatus)
+    m_Overall(SmartStatus::Overall::Bad)
 {
-
 }
 
 /** Update the number of bad sectors based on reallocated sector count and current pending sector attributes data */
@@ -62,35 +61,35 @@ void SmartDiskInformation::updateBadSectors()
 void SmartDiskInformation::updateOverall()
 {
     if (!smartStatus()) {
-        m_Overall = Overall::BadStatus;
+        m_Overall = SmartStatus::Overall::Bad;
         return;
     }
 
     quint64 sector_threshold = u64log2(size() / 512) * 1024;
 
     if (badSectors() >= sector_threshold) {
-        m_Overall = Overall::BadSectorsMany;
+        m_Overall = SmartStatus::Overall::BadSectorsMany;
         return;
     }
 
     validateBadAttributes();
 
     if (m_BadAttributeNow) {
-        m_Overall = Overall::BadAttributeNow;
+        m_Overall = SmartStatus::Overall::BadNow;
         return;
     }
 
     if (badSectors() > 0) {
-        m_Overall = Overall::BadSector;
+        m_Overall = SmartStatus::Overall::BadSectors;
         return;
     }
 
     if (m_BadAttributeInThePast) {
-        m_Overall = Overall::BadAttributeInThePast;
+        m_Overall = SmartStatus::Overall::BadPast;
         return;
     }
 
-    m_Overall = Overall::Good;
+    m_Overall = SmartStatus::Overall::Good;
 }
 
 /** Update the temperature value based on SMART attributes
