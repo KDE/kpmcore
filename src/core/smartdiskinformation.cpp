@@ -33,7 +33,7 @@ SmartDiskInformation::SmartDiskInformation() :
     m_SmartStatus(false),
     m_BadAttributeNow(false),
     m_BadAttributeInThePast(false),
-    m_SelfTestExecutionStatus(SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_SUCCESS_OR_NEVER),
+    m_SelfTestExecutionStatus(SmartStatus::SelfTestStatus::Success),
     m_Overall(SmartStatus::Overall::Bad)
 {
 }

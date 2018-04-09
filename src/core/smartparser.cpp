@@ -91,8 +91,7 @@ bool SmartParser::init()
     QJsonObject selfTest = smartJson[self_test].toObject();
     QJsonObject selfTestStatus = selfTest[status].toObject();
 
-    m_DiskInformation->setSelfTestExecutionStatus((SmartDiskInformation::SmartSelfTestExecutionStatus)
-                                                  selfTestStatus[value].toInt());
+    m_DiskInformation->setSelfTestExecutionStatus(static_cast<SmartStatus::SelfTestStatus>(selfTestStatus[value].toInt()));
 
     loadAttributes();
 

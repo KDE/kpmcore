@@ -50,7 +50,7 @@ public:
         ErrorServo,
         ErrorRead,
         ErrorHandling,
-        InProgress
+        InProgress = 15,
     };
 
 public:

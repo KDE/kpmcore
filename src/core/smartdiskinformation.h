@@ -35,22 +35,6 @@ class SmartAttributeParsedData;
 class SmartDiskInformation
 {
 public:
-    /** SMART self test execution state */
-    enum SmartSelfTestExecutionStatus {
-        SMART_SELF_TEST_EXECUTION_STATUS_SUCCESS_OR_NEVER = 0,
-        SMART_SELF_TEST_EXECUTION_STATUS_ABORTED = 1,
-        SMART_SELF_TEST_EXECUTION_STATUS_INTERRUPTED = 2,
-        SMART_SELF_TEST_EXECUTION_STATUS_FATAL = 3,
-        SMART_SELF_TEST_EXECUTION_STATUS_ERROR_UNKNOWN = 4,
-        SMART_SELF_TEST_EXECUTION_STATUS_ERROR_ELECTRICAL = 5,
-        SMART_SELF_TEST_EXECUTION_STATUS_ERROR_SERVO = 6,
-        SMART_SELF_TEST_EXECUTION_STATUS_ERROR_READ = 7,
-        SMART_SELF_TEST_EXECUTION_STATUS_ERROR_HANDLING = 8,
-        SMART_SELF_TEST_EXECUTION_STATUS_INPROGRESS = 15,
-        _SMART_SELF_TEST_EXECUTION_STATUS_MAX
-    };
-
-public:
     SmartDiskInformation();
 
 public:
@@ -92,7 +76,7 @@ public:
         return m_SmartStatus;    /**< @return a boolean representing SMART status */
     }
 
-    SmartSelfTestExecutionStatus selfTestExecutionStatus() const
+    SmartStatus::SelfTestStatus selfTestExecutionStatus() const
     {
         return m_SelfTestExecutionStatus;    /**< @return SMART self execution status */
     }
@@ -158,7 +142,7 @@ public:
         m_SmartStatus = smartStatus;
     }
 
-    void setSelfTestExecutionStatus(SmartSelfTestExecutionStatus status)
+    void setSelfTestExecutionStatus(SmartStatus::SelfTestStatus status)
     {
         m_SelfTestExecutionStatus = status;
     }
@@ -183,10 +167,9 @@ private:
     bool m_SmartStatus;
     bool m_BadAttributeNow;
     bool m_BadAttributeInThePast;
-    SmartSelfTestExecutionStatus m_SelfTestExecutionStatus;
+    SmartStatus::SelfTestStatus m_SelfTestExecutionStatus;
     SmartStatus::Overall m_Overall;
     QList<SmartAttributeParsedData> m_Attributes;
-
 };
 
 #endif // SMARTDISKINFORMATION_H

@@ -64,69 +64,16 @@ void SmartStatus::update()
         return;
 
     setStatus(disk->smartStatus());
-
     setModelName(disk->model());
-
     setFirmware(disk->firmware());
-
     setSerial(disk->serial());
-
-    switch (disk->selfTestExecutionStatus()) {
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ABORTED:
-        setSelfTestStatus(SelfTestStatus::Aborted);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_INTERRUPTED:
-        setSelfTestStatus(SelfTestStatus::Interrupted);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_FATAL:
-        setSelfTestStatus(SelfTestStatus::Fatal);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_UNKNOWN:
-        setSelfTestStatus(SelfTestStatus::ErrorUnknown);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_ELECTRICAL:
-        setSelfTestStatus(SelfTestStatus::ErrorEletrical);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_SERVO:
-        setSelfTestStatus(SelfTestStatus::ErrorServo);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_READ:
-        setSelfTestStatus(SelfTestStatus::ErrorRead);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_ERROR_HANDLING:
-        setSelfTestStatus(SelfTestStatus::ErrorHandling);
-        break;
-
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_INPROGRESS:
-        setSelfTestStatus(SelfTestStatus::InProgress);
-        break;
-
-    default:
-    case SmartDiskInformation::SMART_SELF_TEST_EXECUTION_STATUS_SUCCESS_OR_NEVER:
-        setSelfTestStatus(SelfTestStatus::Success);
-        break;
-
-    }
-
+    setSelfTestStatus(disk->selfTestExecutionStatus());
     setOverall(disk->overall());
-
     setTemp(disk->temperature());
-
     setBadSectors(disk->badSectors());
-
     setPoweredOn(disk->poweredOn());
-
     setPowerCycles(disk->powerCycles());
-
     addAttributes(disk->attributes());
-
     setInitSuccess(true);
 }
 
