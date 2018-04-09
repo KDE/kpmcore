@@ -167,13 +167,13 @@ QString Partition::deviceNode() const
     if (roles().has(PartitionRole::None) || roles().has(PartitionRole::Unallocated))
         return xi18nc("@item partition name", "unallocated");
 
-    if (state() == StateNew)
+    if (state() == State::New)
         return xi18nc("@item partition name", "New Partition");
 
-    if (state() == StateRestore)
+    if (state() == State::Restore)
         return xi18nc("@item partition name", "Restored Partition");
 
-    if (state() == StateCopy)
+    if (state() == State::Copy)
         return xi18nc("@item partition name", "Copy of %1", partitionPath());
 
     return partitionPath();

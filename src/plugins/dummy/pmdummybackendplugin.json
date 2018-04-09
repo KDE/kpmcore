@@ -19,6 +19,7 @@
         "Description[sv]": "Ett bakgrundsprogram till KDE:s partitionshanterare i testsyfte.",
         "Description[uk]": "Тестовий додаток сервера Керування розділами KDE.",
         "Description[x-test]": "xxA KDE Partition Manager dummy backend for testing purposes.xx",
+        "Description[zh_CN]": "测试用的 KDE 分区管理器的虚拟后端",
         "EnabledByDefault": true,
         "Icon": "preferences-plugin",
         "Id": "pmdummybackendplugin",
@@ -40,6 +41,7 @@
         "Name[sv]": "KDE:s partitionshanterare bakgrundsprogram för test",
         "Name[uk]": "Тестовий додаток сервера Керування розділами KDE",
         "Name[x-test]": "xxKDE Partition Manager Dummy Backendxx",
+        "Name[zh_CN]": "KDE 分区管理器虚拟后端",
         "ServiceTypes": [
             "PartitionManager/Plugin"
         ],
