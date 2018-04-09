@@ -15,8 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_PARTITION_H)
-
+#ifndef KPMCORE_PARTITION_H
 #define KPMCORE_PARTITION_H
 
 #include "core/partitionnode.h"
@@ -81,10 +80,10 @@ public:
         New,       /**< from a NewOperation */
         Copy,      /**< from a CopyOperation */
         Restore,   /**< from a RestoreOperation */
-        StateNone, /**< deprecated */
-        StateNew,  /**< deprecated */
-        StateCopy, /**< deprecated */
-        StateRestore /**< deprecated */
+        StateNone = 0,   /**< deprecated */
+        StateNew = 1,    /**< deprecated */
+        StateCopy = 2,   /**< deprecated */
+        StateRestore = 3 /**< deprecated */
     };
 
     Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = State::None);
