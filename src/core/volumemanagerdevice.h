@@ -26,6 +26,8 @@
 #include <QObject>
 #include <QtGlobal>
 
+class VolumeManagerDevicePrivate;
+
 /** A Volume Manager of physical devices represented as an abstract device.
  *
  *   VolumeManagerDevice is an abstract device class for volume manager. e.g: LVM, SoftRAID.
@@ -40,8 +42,7 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
     Q_DISABLE_COPY(VolumeManagerDevice)
 
 public:
-
-    VolumeManagerDevice(const QString& name, const QString& deviceNode, const qint64 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
+    VolumeManagerDevice(std::shared_ptr<VolumeManagerDevicePrivate> d, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
 
     /**
      *  @return list of physical device's path that makes up volumeManagerDevice.(e.g: /dev/sda, /dev/sdb1)

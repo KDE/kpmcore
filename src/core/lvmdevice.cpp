@@ -18,6 +18,7 @@
 
 #include "core/lvmdevice.h"
 #include "core/partition.h"
+#include "core/volumemanagerdevice_p.h"
 #include "fs/filesystem.h"
 #include "fs/lvm2_pv.h"
 #include "fs/luks.h"
@@ -34,26 +35,43 @@
 
 #include <KLocalizedString>
 
+#define d_ptr std::static_pointer_cast<LvmDevicePrivate>(d)
+
+class LvmDevicePrivate : public VolumeManagerDevicePrivate
+{
+public:
+    qint64 m_peSize;
+    qint64 m_totalPE;
+    qint64 m_allocPE;
+    qint64 m_freePE;
+    QString m_UUID;
+
+    mutable QStringList* m_LVPathList;
+    QVector <const Partition*> m_PVs;
+    mutable QHash<QString, qint64>* m_LVSizeMap;
+};
+
 /** Constructs a representation of LVM device with initialized LV as Partitions
  *
  *  @param vgName Volume Group name
  *  @param iconName Icon representing LVM Volume group
  */
 LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
-    : VolumeManagerDevice(vgName,
+    : VolumeManagerDevice(std::make_shared<LvmDevicePrivate>(),
+                          vgName,
                           (QStringLiteral("/dev/") + vgName),
                           getPeSize(vgName),
                           getTotalPE(vgName),
                           iconName,
                           Device::LVM_Device)
 {
-    m_peSize  = logicalSize();
-    m_totalPE = totalLogical();
-    m_freePE  = getFreePE(vgName);
-    m_allocPE = m_totalPE - m_freePE;
-    m_UUID    = getUUID(vgName);
-    m_LVPathList = new QStringList(getLVs(vgName));
-    m_LVSizeMap  = new QHash<QString, qint64>();
+    d_ptr->m_peSize  = logicalSize();
+    d_ptr->m_totalPE = totalLogical();
+    d_ptr->m_freePE  = getFreePE(vgName);
+    d_ptr->m_allocPE = d_ptr->m_totalPE - d_ptr->m_freePE;
+    d_ptr->m_UUID    = getUUID(vgName);
+    d_ptr->m_LVPathList = new QStringList(getLVs(vgName));
+    d_ptr->m_LVSizeMap  = new QHash<QString, qint64>();
 
     initPartitions();
 }
@@ -66,8 +84,8 @@ QVector<const Partition*> LvmDevice::s_DirtyPVs;
 
 LvmDevice::~LvmDevice()
 {
-    delete m_LVPathList;
-    delete m_LVSizeMap;
+    delete d_ptr->m_LVPathList;
+    delete d_ptr->m_LVSizeMap;
 }
 
 void LvmDevice::initPartitions()
@@ -491,4 +509,49 @@ bool LvmDevice::activateLV(const QString& lvPath)
               QStringLiteral("--activate"), QStringLiteral("y"),
               lvPath });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
+}
+
+qint64 LvmDevice::peSize() const
+{
+    return d_ptr->m_peSize;
+}
+
+qint64 LvmDevice::totalPE() const
+{
+    return d_ptr->m_totalPE;
+}
+
+qint64 LvmDevice::allocatedPE() const
+{
+    return d_ptr->m_allocPE;
+}
+
+qint64 LvmDevice::freePE() const
+{
+    return d_ptr->m_freePE;
+}
+
+QString LvmDevice::UUID() const
+{
+    return d_ptr->m_UUID;
+}
+
+QStringList* LvmDevice::LVPathList() const
+{
+    return d_ptr->m_LVPathList;
+}
+
+QVector <const Partition*>& LvmDevice::physicalVolumes()
+{
+    return d_ptr->m_PVs;
+}
+
+const QVector <const Partition*>& LvmDevice::physicalVolumes() const
+{
+    return d_ptr->m_PVs;
+}
+
+QHash<QString, qint64>* LvmDevice::LVSizeMap() const
+{
+    return d_ptr->m_LVSizeMap;
 }

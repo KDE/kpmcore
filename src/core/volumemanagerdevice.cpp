@@ -18,17 +18,22 @@
 
 #include "core/device_p.h"
 #include "core/volumemanagerdevice.h"
+#include "core/volumemanagerdevice_p.h"
 
 /** Constructs an abstract Volume Manager Device with an empty PartitionTable.
  *
+ * @param name the Device's name
+ * @param deviceNode the Device's node
+ * @param logicalExtentSize the logical extent size that device uses
 */
-VolumeManagerDevice::VolumeManagerDevice(const QString& name,
+VolumeManagerDevice::VolumeManagerDevice(std::shared_ptr<VolumeManagerDevicePrivate> d,
+                                         const QString& name,
                                          const QString& deviceNode,
-                                         const qint64 logicalSize,
+                                         const qint64 logicalExtentSize,
                                          const qint64 totalLogical,
                                          const QString& iconName,
                                          Device::Type type)
-    : Device(name, deviceNode, logicalSize, totalLogical, iconName, type)
+    : Device(std::static_pointer_cast<DevicePrivate>(d), name, deviceNode, logicalExtentSize, totalLogical, iconName, type)
 {
 }
 

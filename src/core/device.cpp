@@ -29,29 +29,6 @@
     @param name the Device's name, usually some string defined by the manufacturer
     @param deviceNode the Device's node, for example "/dev/sda"
 */
-Device::Device(const QString& name,
-               const QString& deviceNode,
-               const qint64 logicalSectorSize,
-               const qint64 totalLogicalSectors,
-               const QString& iconName,
-               Device::Type type)
-    : QObject()
-    , d(std::make_shared<DevicePrivate>())
-{
-    d->m_Name = name.length() > 0 ? name : i18n("Unknown Device");
-    d->m_DeviceNode = deviceNode;
-    d->m_LogicalSectorSize = logicalSectorSize;
-    d->m_TotalLogical = totalLogicalSectors;
-    d->m_PartitionTable = nullptr;
-    d->m_IconName = iconName.isEmpty() ? QStringLiteral("drive-harddisk") : iconName;
-    d->m_SmartStatus = type == Device::Disk_Device ? std::make_shared<SmartStatus>(deviceNode) : nullptr;
-    d->m_Type = type;
-}
-
-/** Constructs a Device with an empty PartitionTable.
-    @param name the Device's name, usually some string defined by the manufacturer
-    @param deviceNode the Device's node, for example "/dev/sda"
-*/
 Device::Device(std::shared_ptr<DevicePrivate> d_ptr,
                const QString& name,
                const QString& deviceNode,

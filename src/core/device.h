@@ -58,8 +58,6 @@ public:
     };
 
 protected:
-    explicit Device(const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
-
     explicit Device(std::shared_ptr<DevicePrivate> d_ptr, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
 
 public:

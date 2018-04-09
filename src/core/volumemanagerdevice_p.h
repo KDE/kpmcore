@@ -15,29 +15,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_DEVICE_P_H
-#define KPMCORE_DEVICE_P_H
+#ifndef KPMCORE_VOLUMEMANAGERDEVICE_P_H
+#define KPMCORE_VOLUMEMANAGERDEVICE_P_H
 
-#include "core/device.h"
+#include "core/device_p.h"
 
-#include <QString>
-
-#include <memory>
-
-class PartitionTable;
-class SmartStatus;
-
-class DevicePrivate
+class VolumeManagerDevicePrivate : public DevicePrivate
 {
-public:
-    QString m_Name;
-    QString m_DeviceNode;
-    qint64  m_LogicalSectorSize;
-    qint64  m_TotalLogical;
-    PartitionTable* m_PartitionTable;
-    QString m_IconName;
-    std::shared_ptr<SmartStatus> m_SmartStatus;
-    Device::Type m_Type;
 };
 
 #endif
