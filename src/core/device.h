@@ -50,15 +50,15 @@ class LIBKPMCORE_EXPORT Device : public QObject
     friend class CoreBackend;
 
 public:
-    enum Type {
-        Disk_Device = 0,
-        LVM_Device  = 1, /* VG */
-        RAID_Device = 2, /* software RAID device */
-        Unknown_Device = 4
+    enum class Type {
+        Unknown_Device,
+        Disk_Device,
+        LVM_Device, /* VG */
+        RAID_Device, /* software RAID device */
     };
 
 protected:
-    explicit Device(std::shared_ptr<DevicePrivate> d_ptr, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Disk_Device);
+    explicit Device(std::shared_ptr<DevicePrivate> d_ptr, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Type::Disk_Device);
 
 public:
     explicit Device(const Device& other);

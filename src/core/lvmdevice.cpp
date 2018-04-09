@@ -63,7 +63,7 @@ LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
                           getPeSize(vgName),
                           getTotalPE(vgName),
                           iconName,
-                          Device::LVM_Device)
+                          Device::Type::LVM_Device)
 {
     d_ptr->m_peSize  = logicalSize();
     d_ptr->m_totalPE = totalLogical();

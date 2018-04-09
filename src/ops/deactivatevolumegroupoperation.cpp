@@ -63,7 +63,7 @@ void DeactivateVolumeGroupOperation::undo()
  */
 bool DeactivateVolumeGroupOperation::isDeactivatable(const VolumeManagerDevice* dev)
 {
-    if (dev->type() == Device::LVM_Device) {
+    if (dev->type() == Device::Type::LVM_Device) {
         for (const auto &p : dev->partitionTable()->children()) {
             if (p->isMounted()) {
                 return false;

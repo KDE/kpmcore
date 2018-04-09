@@ -61,7 +61,7 @@ void RemoveVolumeGroupOperation::undo()
 bool RemoveVolumeGroupOperation::isRemovable(const VolumeManagerDevice* dev)
 {
     // TODO: allow removal when LVs are inactive.
-    if (dev->type() == Device::LVM_Device) {
+    if (dev->type() == Device::Type::LVM_Device) {
         if (dev->partitionTable()->children().count() == 0) // This is necessary to prevent a crash during applying of operations
             return true;
         else if (dev->partitionTable()->children().count() > 1)

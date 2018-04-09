@@ -57,7 +57,7 @@ bool DeletePartitionJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    if (device().type() == Device::Disk_Device) {
+    if (device().type() == Device::Type::Disk_Device) {
         std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {
@@ -74,7 +74,7 @@ bool DeletePartitionJob::run(Report& parent)
                 report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to delete partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
         } else
             report->line() << xi18nc("@info:progress", "Deleting partition failed: Could not open device <filename>%1</filename>.", device().deviceNode());
-    } else if (device().type() == Device::LVM_Device) {
+    } else if (device().type() == Device::Type::LVM_Device) {
         LvmDevice& dev = dynamic_cast<LvmDevice&>(device());
         rval = LvmDevice::removeLV(*report, dev, partition());
     }

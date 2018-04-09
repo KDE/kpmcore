@@ -274,7 +274,7 @@ QStringList PartitionTable::flagNames(Flags flags)
 
 bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent, qint64& start, qint64& end)
 {
-    if (d.type() == Device::Disk_Device) {
+    if (d.type() == Device::Type::Disk_Device) {
         const DiskDevice& device = dynamic_cast<const DiskDevice&>(d);
         if (!parent.isRoot()) {
             Partition* extended = dynamic_cast<Partition*>(&parent);
@@ -295,7 +295,7 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
         }
 
         return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
-    } else if (d.type() == Device::LVM_Device) {
+    } else if (d.type() == Device::Type::LVM_Device) {
         if (end - start + 1 > 0) {
             return true;
         }
@@ -319,7 +319,7 @@ Partition* createUnallocated(const Device& device, PartitionNode& parent, qint64
         r |= PartitionRole::Logical;
 
     // Mark unallocated space in LVM VG as LVM LV so that pasting can be easily disabled (it does not work yet)
-    if (device.type() == Device::LVM_Device)
+    if (device.type() == Device::Type::LVM_Device)
         r |= PartitionRole::Lvm_Lv;
 
     if (!PartitionTable::getUnallocatedRange(device, parent, start, end))
@@ -379,7 +379,7 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
 
     qint64 lastEnd = start;
 
-    if (d.type() == Device::LVM_Device && !p->children().isEmpty()) {
+    if (d.type() == Device::Type::LVM_Device && !p->children().isEmpty()) {
         // rearranging the sectors of all partitions to keep unallocated space at the end
         lastEnd = 0;
         std::sort(children().begin(), children().end(), [](const Partition* p1, const Partition* p2) { return p1->deviceNode() < p2->deviceNode(); });
@@ -428,7 +428,7 @@ void PartitionTable::updateUnallocated(const Device& d)
 qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
 {
     Q_UNUSED(t)
-    if (d.type() == Device::LVM_Device) {
+    if (d.type() == Device::Type::LVM_Device) {
         return 0;
     }
 
@@ -518,7 +518,7 @@ bool PartitionTable::tableTypeIsReadOnly(TableType l)
 */
 bool PartitionTable::isSectorBased(const Device& d) const
 {
-    if (d.type() == Device::Disk_Device) {
+    if (d.type() == Device::Type::Disk_Device) {
         const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
 
         if (type() == PartitionTable::msdos) {

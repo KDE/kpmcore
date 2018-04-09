@@ -65,7 +65,7 @@ bool DeleteFileSystemJob::run(Report& parent)
 
     if (partition().roles().has(PartitionRole::Extended)) {
         rval = true;
-    } else if (device().type() == Device::LVM_Device) {
+    } else if (device().type() == Device::Type::LVM_Device) {
         rval = true;
     }
     else {

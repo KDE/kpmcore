@@ -99,7 +99,7 @@ DiskDevice::DiskDevice(const QString& name,
                        qint32 cylinders,
                        qint64 sectorSize,
                        const QString& iconName)
-    : Device(std::make_shared<DiskDevicePrivate>(), name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Disk_Device)
+    : Device(std::make_shared<DiskDevicePrivate>(), name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Type::Disk_Device)
 {
     d_ptr->m_Heads = heads;
     d_ptr->m_SectorsPerTrack = numSectors;

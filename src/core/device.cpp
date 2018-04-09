@@ -45,7 +45,7 @@ Device::Device(std::shared_ptr<DevicePrivate> d_ptr,
     d->m_TotalLogical = totalLogicalSectors;
     d->m_PartitionTable = nullptr;
     d->m_IconName = iconName.isEmpty() ? QStringLiteral("drive-harddisk") : iconName;
-    d->m_SmartStatus = type == Device::Disk_Device ? std::make_shared<SmartStatus>(deviceNode) : nullptr;
+    d->m_SmartStatus = type == Device::Type::Disk_Device ? std::make_shared<SmartStatus>(deviceNode) : nullptr;
     d->m_Type = type;
 }
 

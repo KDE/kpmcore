@@ -42,7 +42,7 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
     Q_DISABLE_COPY(VolumeManagerDevice)
 
 public:
-    VolumeManagerDevice(std::shared_ptr<VolumeManagerDevicePrivate> d, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
+    VolumeManagerDevice(std::shared_ptr<VolumeManagerDevicePrivate> d, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Type::Unknown_Device);
 
     /**
      *  @return list of physical device's path that makes up volumeManagerDevice.(e.g: /dev/sda, /dev/sdb1)
