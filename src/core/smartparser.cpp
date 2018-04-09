@@ -39,6 +39,11 @@ SmartParser::SmartParser(const QString &device_path) :
 {
 }
 
+SmartParser::~SmartParser()
+{
+    delete m_DiskInformation;
+}
+
 /** Initialize SmartParser data, retrieve the information from SMART JSON and initialize the disk information data */
 bool SmartParser::init()
 {

@@ -33,6 +33,7 @@ class SmartParser
 {
 public:
     SmartParser(const QString &device_path);
+    ~SmartParser();
 
 public:
     bool init();
