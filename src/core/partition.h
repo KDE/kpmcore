@@ -77,13 +77,17 @@ class LIBKPMCORE_EXPORT Partition : public PartitionNode
 public:
     /** A Partition state -- where did it come from? */
     enum State {
-        StateNone = 0,      /**< exists on disk */
-        StateNew = 1,       /**< from a NewOperation */
-        StateCopy = 2,      /**< from a CopyOperation */
-        StateRestore = 3    /**< from a RestoreOperation */
+        None,      /**< exists on disk */
+        New,       /**< from a NewOperation */
+        Copy,      /**< from a CopyOperation */
+        Restore,   /**< from a RestoreOperation */
+        StateNone, /**< deprecated */
+        StateNew,  /**< deprecated */
+        StateCopy, /**< deprecated */
+        StateRestore /**< deprecated */
     };
 
-    Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = StateNone);
+    Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = State::None);
     ~Partition() override;
 
     Partition(const Partition& other, PartitionNode* parent = nullptr);

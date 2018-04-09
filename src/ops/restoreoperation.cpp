@@ -60,7 +60,7 @@ RestoreOperation::RestoreOperation(Device& d, Partition* p, const QString& filen
     m_CheckTargetJob(nullptr),
     m_MaximizeJob(nullptr)
 {
-    restorePartition().setState(Partition::StateRestore);
+    restorePartition().setState(Partition::State::Restore);
 
     Q_ASSERT(targetDevice().partitionTable());
 
@@ -128,7 +128,7 @@ bool RestoreOperation::execute(Report& parent)
         restorePartition().setPartitionPath(overwrittenPartition()->devicePath());
 
     if (overwrittenPartition() || (rval = createPartitionJob()->run(*report))) {
-        restorePartition().setState(Partition::StateNone);
+        restorePartition().setState(Partition::State::None);
 
         if ((rval = restoreJob()->run(*report))) {
             if ((rval = checkTargetJob()->run(*report))) {
@@ -173,7 +173,7 @@ void RestoreOperation::setOverwrittenPartition(Partition* p)
 
     cleanupOverwrittenPartition();
     m_OverwrittenPartition = p;
-    m_MustDeleteOverwritten = (p && p->state() == Partition::StateNone);
+    m_MustDeleteOverwritten = (p && p->state() == Partition::State::None);
 }
 
 void RestoreOperation::cleanupOverwrittenPartition()
@@ -227,7 +227,7 @@ Partition* RestoreOperation::createRestorePartition(const Device& device, Partit
     const qint64 end = start + fileInfo.size() / device.logicalSize() - 1;
     Partition* p = new Partition(&parent, device, PartitionRole(r), FileSystemFactory::create(FileSystem::Unknown, start, end, device.logicalSize()), start, end, QString());
 
-    p->setState(Partition::StateRestore);
+    p->setState(Partition::State::Restore);
     return p;
 }
 

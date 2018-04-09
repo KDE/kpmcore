@@ -137,7 +137,7 @@ bool CopyOperation::execute(Report& parent)
             // set the state of the target partition from StateCopy to StateNone or checking
             // it will fail (because its deviceNode() will still be "Copy of sdXn"). This is
             // only required for overwritten partitions, but doesn't hurt in any case.
-            copiedPartition().setState(Partition::StateNone);
+            copiedPartition().setState(Partition::State::None);
 
             // if we have overwritten a partition, reset device path and number
             if (overwrittenPartition()) {
@@ -237,7 +237,7 @@ void CopyOperation::setOverwrittenPartition(Partition* p)
     // have executed and we're asked to clean up after ourselves, the state of the overwritten partition
     // might have changed: If it was a new one and the NewOperation has successfully run, the state will
     // then be StateNone.
-    m_MustDeleteOverwritten = (p && p->state() == Partition::StateNone);
+    m_MustDeleteOverwritten = (p && p->state() == Partition::State::None);
 }
 
 void CopyOperation::cleanupOverwrittenPartition()
@@ -259,7 +259,7 @@ Partition* CopyOperation::createCopy(const Partition& target, const Partition& s
 
     p->setDevicePath(source.devicePath());
     p->setPartitionPath(source.partitionPath());
-    p->setState(Partition::StateCopy);
+    p->setState(Partition::State::Copy);
 
     p->deleteFileSystem();
     p->setFileSystem(FileSystemFactory::create(source.fileSystem()));
@@ -281,7 +281,7 @@ bool CopyOperation::canCopy(const Partition* p)
     if (p == nullptr)
         return false;
 
-    if (p->state() == Partition::StateNew && p->roles().has(PartitionRole::Luks))
+    if (p->state() == Partition::State::New && p->roles().has(PartitionRole::Luks))
         return false;
 
     if (p->isMounted())

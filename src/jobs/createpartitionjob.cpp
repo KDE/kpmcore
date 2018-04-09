@@ -62,7 +62,7 @@ bool CreatePartitionJob::run(Report& parent)
                 if (partitionPath != QString()) {
                     rval = true;
                     partition().setPartitionPath(partitionPath);
-                    partition().setState(Partition::StateNone);
+                    partition().setState(Partition::State::None);
                     backendPartitionTable->commit();
                 } else
                     report->line() << xi18nc("@info/plain", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
@@ -76,7 +76,7 @@ bool CreatePartitionJob::run(Report& parent)
             report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to create new partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
     } else if (device().type() == Device::LVM_Device) {
         LvmDevice& dev = dynamic_cast<LvmDevice&>(device());
-        partition().setState(Partition::StateNone);
+        partition().setState(Partition::State::None);
 
         QString partPath = partition().partitionPath();
         QString lvname   = partPath.right(partPath.length() - partPath.lastIndexOf(QStringLiteral("/")) - 1);
