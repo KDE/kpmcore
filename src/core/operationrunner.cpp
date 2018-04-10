@@ -1,6 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -19,6 +19,8 @@
 #include "core/operationrunner.h"
 #include "core/operationstack.h"
 #include "ops/operation.h"
+
+#include "util/externalcommand.h"
 #include "util/report.h"
 
 #include <QDBusInterface>
@@ -45,6 +47,11 @@ void OperationRunner::run()
     setCancelling(false);
 
     bool status = true;
+
+    // Disable udev event queue. systemd sometimes likes to automount devices when refreshing partition table
+    // While this does not prevent automounting, it will at least delay it until partitioning operations are finished
+    ExternalCommand udevadmStopQueue(report(), QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--stop-exec-queue") });
+    udevadmStopQueue.run();
 
     // Disable Plasma removable device automounting
     QStringList modules;
@@ -83,6 +90,9 @@ void OperationRunner::run()
 
     if (automounter)
         kdedInterface.call( QStringLiteral("loadModule"), automounterService );
+
+    ExternalCommand udevadmStartQueue(report(), QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--start-exec-queue") });
+    udevadmStartQueue.run();
 
     if (!status)
         emit error();
