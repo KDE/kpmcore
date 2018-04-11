@@ -15,15 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-// #include "libpartitionmanager_export.h"
-
-#if !defined(KPMCORE_LIBPARTITIONMANAGEREXPORT_H)
-#define KPMCORE_LIBPARTITIONMANAGEREXPORT_H
+#ifndef LIBKPMCORE_EXPORT
 
 #include <QtGlobal>
-
-#if !defined(LIBKPMCORE_EXPORT)
 #define LIBKPMCORE_EXPORT Q_DECL_EXPORT
-#endif
 
 #endif

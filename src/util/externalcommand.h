@@ -16,8 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_EXTERNALCOMMAND_H)
-
+#ifndef KPMCORE_EXTERNALCOMMAND_H
 #define KPMCORE_EXTERNALCOMMAND_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -31,8 +30,11 @@
 #include <QtGlobal>
 #include <QVariant>
 
+#include <memory>
+
 class KJob;
 class Report;
+struct ExternalCommandPrivate;
 
 /** An external command.
 
@@ -50,14 +52,24 @@ public:
     explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
     explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
 
+    ~ExternalCommand();
+
 public:
     bool copyBlocks(CopySource& source, CopyTarget& target);
-    void setCommand(const QString& cmd) { m_Command = cmd; } /**< @param cmd the command to run */
-    const QString& command() const { return m_Command; } /**< @return the command to run */
 
-    void addArg(const QString& s) { m_Args << s; } /**< @param s the argument to add */
-    const QStringList& args() const { return m_Args; } /**< @return the arguments */
-    void setArgs(const QStringList& args) { m_Args = args; } /**< @param args the new arguments */
+    /**< @param cmd the command to run */
+    void setCommand(const QString& cmd);
+     /**< @return the command to run */
+    const QString& command() const;
+
+    /**< @return the arguments */
+    const QStringList& args() const;
+
+    /**< @param s the argument to add */
+    void addArg(const QString& s);
+    /**< @param args the new arguments */
+    void setArgs(const QStringList& args);
+
     bool write(const QByteArray& input); /**< @param input the input for the program */
 
     bool startCopyBlocks();
@@ -65,21 +77,16 @@ public:
     bool waitFor(int timeout = 30000);
     bool run(int timeout = 30000);
 
-    int exitCode() const {
-        return m_ExitCode;    /**< @return the exit code */
-    }
+    /**< @return the exit code */
+    int exitCode() const;
 
-    const QString output() const {
-        return QString::fromLocal8Bit(m_Output);    /**< @return the command output */
-    }
+    /**< @return the command output */
+    const QString output() const;
+    /**< @return the command output */
+    const QByteArray& rawOutput() const;
 
-    const QByteArray& rawOutput() const {
-        return m_Output;    /**< @return the command output */
-    }
-
-    Report* report() {
-        return m_Report;    /**< @return pointer to the Report or nullptr */
-    }
+    /**< @return pointer to the Report or nullptr */
+    Report* report();
 
     void emitReport(const QVariantMap& report) { emit reportSignal(report); }
 
@@ -91,23 +98,14 @@ public Q_SLOTS:
     void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };
 
 protected:
-    void setExitCode(int i) {
-        m_ExitCode = i;
-    }
+    void setExitCode(int i);
     void setup(const QProcess::ProcessChannelMode processChannelMode);
 
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadOutput();
 
 private:
-    QVariantMap arguments;
-
-    Report *m_Report;
-    QString m_Command;
-    QStringList m_Args;
-    int m_ExitCode;
-    QByteArray m_Output;
-    QByteArray m_Input;
+    std::unique_ptr<ExternalCommandPrivate> d;
 };
 
 #endif

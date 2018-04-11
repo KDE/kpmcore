@@ -40,17 +40,31 @@
 #include <KJob>
 #include <KLocalizedString>
 
+struct ExternalCommandPrivate
+{
+    QVariantMap arguments;
+
+    Report *m_Report;
+    QString m_Command;
+    QStringList m_Args;
+    int m_ExitCode;
+    QByteArray m_Output;
+    QByteArray m_Input;
+};
+
 /** Creates a new ExternalCommand instance without Report.
     @param cmd the command to run
     @param args the arguments to pass to the command
 */
 ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, const QProcess::ProcessChannelMode processChannelMode) :
-    m_Report(nullptr),
-    m_Command(cmd),
-    m_Args(args),
-    m_ExitCode(-1),
-    m_Output()
+    d(std::make_unique<ExternalCommandPrivate>())
 {
+    d->m_Report = nullptr;
+    d->m_Command = cmd;
+    d->m_Args = args;
+    d->m_ExitCode = -1;
+    d->m_Output = QByteArray();
+
     setup(processChannelMode);
 }
 
@@ -60,19 +74,25 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
     @param args the arguments to pass to the command
  */
 ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStringList& args, const QProcess::ProcessChannelMode processChannelMode) :
-    m_Report(report.newChild()),
-    m_Command(cmd),
-    m_Args(args),
-    m_ExitCode(-1),
-    m_Output()
+    d(std::make_unique<ExternalCommandPrivate>())
 {
+    d->m_Report = report.newChild();
+    d->m_Command = cmd;
+    d->m_Args = args;
+    d->m_ExitCode = -1;
+    d->m_Output = QByteArray();
+
     setup(processChannelMode);
+}
+
+ExternalCommand::~ExternalCommand()
+{
 }
 
 void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMode)
 {
-    arguments.insert(QStringLiteral("environment"), QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
-    arguments.insert(QStringLiteral("processChannelMode"), processChannelMode);
+    d->arguments.insert(QStringLiteral("environment"), QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
+    d->arguments.insert(QStringLiteral("processChannelMode"), processChannelMode);
 
 //     connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
 //     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
@@ -112,7 +132,7 @@ bool ExternalCommand::start(int timeout)
                                                  CoreBackendManager::self()->Uuid(),
                                                  cmd,
                                                  args(),
-                                                 m_Input,
+                                                 d->m_Input,
                                                  QStringList());
 
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
@@ -127,7 +147,7 @@ bool ExternalCommand::start(int timeout)
             else {
                 QDBusPendingReply<QVariantMap> reply = *watcher;
 
-                m_Output = reply.value()[QStringLiteral("output")].toByteArray();
+                d->m_Output = reply.value()[QStringLiteral("output")].toByteArray();
                 setExitCode(reply.value()[QStringLiteral("exitCode")].toInt());
                 rval = true;
             }
@@ -188,7 +208,7 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
 
 bool ExternalCommand::write(const QByteArray& input)
 {
-    m_Input = input;
+    d->m_Input = input;
     return true;
 }
 
@@ -240,4 +260,54 @@ void ExternalCommand::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     Q_UNUSED(exitStatus)
     setExitCode(exitCode);
+}
+
+void ExternalCommand::setCommand(const QString& cmd)
+{
+    d->m_Command = cmd;
+}
+
+const QString& ExternalCommand::command() const
+{
+    return d->m_Command;
+}
+
+const QStringList& ExternalCommand::args() const
+{
+    return d->m_Args;
+}
+
+void ExternalCommand::addArg(const QString& s)
+{
+    d->m_Args << s;
+}
+
+void ExternalCommand::setArgs(const QStringList& args)
+{
+    d->m_Args = args;
+}
+
+int ExternalCommand::exitCode() const
+{
+    return d->m_ExitCode;
+}
+
+const QString ExternalCommand::output() const
+{
+    return QString::fromLocal8Bit(d->m_Output);
+}
+
+const QByteArray& ExternalCommand::rawOutput() const
+{
+    return d->m_Output;
+}
+
+Report* ExternalCommand::report()
+{
+    return d->m_Report;
+}
+
+void ExternalCommand::setExitCode(int i)
+{
+    d->m_ExitCode = i;
 }

@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_CAPACITY_H)
-
+#ifndef KPMCORE_CAPACITY_H
 #define KPMCORE_CAPACITY_H
+
 #include "util/libpartitionmanagerexport.h"
 
 class Partition;
@@ -40,7 +40,7 @@ public:
     /** Type of capacity to print */
     enum class Type { Used, Available, Total };
     /** Flags for printing */
-    enum Flag { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
+    enum class Flag { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
     Q_DECLARE_FLAGS(Flags, Flag)
 
 public:
