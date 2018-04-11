@@ -16,7 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#include "ops/operation.h"
+#include "ops/operation_p.h"
 
 #include "core/partition.h"
 #include "core/device.h"
@@ -32,10 +32,10 @@
 #include <KLocalizedString>
 
 Operation::Operation() :
-    m_Status(StatusNone),
-    m_Jobs(),
-    m_ProgressBase(0)
+    d(std::make_unique<OperationPrivate>())
 {
+    d->m_Status = StatusNone;
+    d->m_ProgressBase = 0;
 }
 
 Operation::~Operation()
@@ -171,4 +171,34 @@ bool Operation::execute(Report& parent)
     report->setStatus(xi18nc("@info:status (success, error, warning...) of operation", "%1: %2", description(), statusText()));
 
     return rval;
+}
+
+Operation::OperationStatus Operation::status() const
+{
+    return d->m_Status;
+}
+
+void Operation::setStatus(OperationStatus s)
+{
+    d->m_Status = s;
+}
+
+QList<Job*>& Operation::jobs()
+{
+    return d->m_Jobs;
+}
+
+const QList<Job*>& Operation::jobs() const
+{
+    return d->m_Jobs;
+}
+
+void Operation::setProgressBase(qint32 i)
+{
+    d->m_ProgressBase = i;
+}
+
+qint32 Operation::progressBase() const
+{
+    return d->m_ProgressBase;
 }

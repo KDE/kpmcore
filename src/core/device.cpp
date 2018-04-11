@@ -54,8 +54,8 @@ Device::Device(std::shared_ptr<DevicePrivate> d_ptr,
  */
 Device::Device(const Device& other)
     : QObject()
+    , d(std::make_shared<DevicePrivate>())
 {
-    d = std::make_shared<DevicePrivate>();
     d->m_Name = other.d->m_Name;
     d->m_DeviceNode = other.d->m_DeviceNode;
     d->m_LogicalSectorSize = other.d->m_LogicalSectorSize;
