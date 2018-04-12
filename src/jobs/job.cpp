@@ -35,7 +35,7 @@
 
 Job::Job() :
     m_Report(nullptr),
-    m_Status(Pending)
+    m_Status(Status::Pending)
 {
 }
 
@@ -121,7 +121,7 @@ Report* Job::jobStarted(Report& parent)
 
 void Job::jobFinished(Report& report, bool b)
 {
-    setStatus(b ? Success : Error);
+    setStatus(b ? Status::Success : Status::Error);
     emit progress(numSteps());
     emit finished();
 
@@ -137,12 +137,7 @@ QString Job::statusIcon() const
         QStringLiteral("dialog-error")
     };
 
-    Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(icons) / sizeof(icons[0]));
-
-    if (status() < 0 || static_cast<quint32>(status()) >= sizeof(icons) / sizeof(icons[0]))
-        return QString();
-
-    return icons[status()];
+    return icons[static_cast<int>(status())];
 }
 
 /** @return the Job's current status text */
@@ -154,10 +149,5 @@ QString Job::statusText() const
         xi18nc("@info:progress job", "Error")
     };
 
-    Q_ASSERT(status() >= 0 && static_cast<quint32>(status()) < sizeof(s) / sizeof(s[0]));
-
-    if (status() < 0 || static_cast<quint32>(status()) >= sizeof(s) / sizeof(s[0]))
-        return QString();
-
-    return s[status()];
+    return s[static_cast<int>(status())];
 }
