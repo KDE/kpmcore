@@ -40,6 +40,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
         return reply;
     }
     m_callerUuid = args[QStringLiteral("callerUuid")].toString();
+    m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
 
     if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
@@ -196,10 +197,19 @@ bool ExternalCommandHelper::copyblocks(const QString& Uuid, const QString& sourc
     return rval;
 }
 
-QVariantMap ExternalCommandHelper::start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment)
+QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment)
 {
     QVariantMap reply;
-    if (!isCallerAuthorized(Uuid)) {
+
+    QByteArray request;
+    request.setNum(++m_Counter);
+    request.append(command.toLocal8Bit());
+    for (const auto &argument : arguments)
+        request.append(argument.toUtf8());
+    request.append(input);
+    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
+        qCritical() << xi18n("Invalid cryptographic signature");
         reply[QStringLiteral("success")] = false;
         return reply;
     }

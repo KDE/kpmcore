@@ -42,12 +42,13 @@ add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore PUBLIC
     Qt5::Core
     PRIVATE
+    ${BLKID_LIBRARIES}
     Qt5::DBus
     Qt5::Gui
+    qca-qt5
     KF5::I18n
     KF5::CoreAddons
     KF5::WidgetsAddons
-    ${BLKID_LIBRARIES}
     KF5::Auth
 )
 

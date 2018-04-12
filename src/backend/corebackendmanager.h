@@ -32,6 +32,7 @@ class QStringList;
 class KPluginMetaData;
 class CoreBackend;
 namespace KAuth { class ExecuteJob; }
+namespace QCA { class PrivateKey; }
 struct CoreBackendManagerPrivate;
 
 /**
@@ -96,8 +97,13 @@ public:
       */
     static void stopExternalCommandHelper();
 
+    /**< @return RSA private key used for signing External Command requests. */
+    QCA::PrivateKey privateKey();
+
+    unsigned int& counter();
+
 private:
-    void startExternalCommandHelper();
+    bool startExternalCommandHelper();
 
 private:
     std::unique_ptr<CoreBackendManagerPrivate> d;

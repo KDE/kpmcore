@@ -24,7 +24,7 @@
 #include <QString>
 #include <QProcess>
 
-class QTimer;
+#include <QtCrypto>
 
 using namespace KAuth;
 
@@ -43,7 +43,7 @@ public:
 
 public Q_SLOTS:
     ActionReply init(const QVariantMap& args);
-    Q_SCRIPTABLE QVariantMap start(const QString& Uuid, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment);
+    Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment);
     Q_SCRIPTABLE bool copyblocks(const QString& Uuid, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE void exit(const QString& Uuid);
 
@@ -53,11 +53,13 @@ private:
 
     QEventLoop m_loop;
     QString m_callerUuid;
+    QCA::Initializer initializer;
+    QCA::PublicKey m_publicKey;
+    unsigned int m_Counter;
     QString m_command;
     QString m_sourceDevice;
     QProcess m_cmd;
 
-    QTimer *timer;
 //     QByteArray output;
 };
 

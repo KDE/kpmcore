@@ -63,6 +63,8 @@ find_package(KF5 REQUIRED
   WidgetsAddons
 )
 
+find_package(Qca-qt5 REQUIRED)
+
 # use sane compile flags
 add_definitions(
   -DQT_USE_QSTRINGBUILDER

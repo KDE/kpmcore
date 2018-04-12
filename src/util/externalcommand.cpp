@@ -25,6 +25,7 @@
 #include "util/externalcommand.h"
 #include "util/report.h"
 
+#include <QCryptographicHash>
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QEventLoop>
@@ -36,14 +37,14 @@
 #include <QThread>
 #include <QVariant>
 
+#include <QtCrypto>
+
 #include <KAuth>
 #include <KJob>
 #include <KLocalizedString>
 
 struct ExternalCommandPrivate
 {
-    QVariantMap arguments;
-
     Report *m_Report;
     QString m_Command;
     QStringList m_Args;
@@ -91,8 +92,7 @@ ExternalCommand::~ExternalCommand()
 
 void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMode)
 {
-    d->arguments.insert(QStringLiteral("environment"), QStringList() << QStringLiteral("LC_ALL=C") << QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1"));
-    d->arguments.insert(QStringLiteral("processChannelMode"), processChannelMode);
+//     d->arguments.insert(QStringLiteral("processChannelMode"), processChannelMode); // FIXME
 
 //     connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
 //     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
@@ -128,8 +128,17 @@ bool ExternalCommand::start(int timeout)
 
     bool rval = false;
     if (iface.isValid()) {
+        QByteArray request;
+        request.setNum(++CoreBackendManager::self()->counter());
+
+        request.append(cmd.toUtf8());
+        for (const auto &argument : qAsConst(d->m_Args))
+            request.append(argument.toLocal8Bit());
+        request.append(d->m_Input);
+        QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("start"),
-                                                 CoreBackendManager::self()->Uuid(),
+                                                 CoreBackendManager::self()->privateKey().signMessage(hash, QCA::EMSA3_Raw),
                                                  cmd,
                                                  args(),
                                                  d->m_Input,

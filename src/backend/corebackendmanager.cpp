@@ -28,6 +28,8 @@
 #include <QVector>
 #include <QUuid>
 
+#include <QtCrypto>
+
 #include <KAuth>
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -40,6 +42,9 @@ struct CoreBackendManagerPrivate
     CoreBackend *m_Backend;
 
     QString m_Uuid;
+    QCA::Initializer init;
+    QCA::PrivateKey privateKey;
+    unsigned int counter = 0;
 };
 
 CoreBackendManager::CoreBackendManager() :
@@ -74,14 +79,34 @@ QVector<KPluginMetaData> CoreBackendManager::list() const
     return KPluginLoader::findPlugins(QString(), filter);
 }
 
-void CoreBackendManager::startExternalCommandHelper()
+bool CoreBackendManager::startExternalCommandHelper()
 {
+    // Generate RSA key pair for signing external command requests
+    if (!QCA::isSupported("pkey") || !QCA::PKey::supportedIOTypes().contains(QCA::PKey::RSA)) {
+        qCritical() << xi18n("QCA does not support RSA.");
+        return false;
+    }
+
+    d->privateKey = QCA::KeyGenerator().createRSA(4096);
+    if(d->privateKey.isNull()) {
+        qCritical() << xi18n("Failed to make private RSA key.");
+        return false;
+    }
+
+    if (!d->privateKey.canSign()) {
+        qCritical() << xi18n("Generated key cannot be used for signatures.");
+        return false;
+    }
+
+    QCA::PublicKey pubkey = d->privateKey.toPublicKey();
+
     KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
     action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     QVariantMap arguments;
     d->m_Uuid = QUuid::createUuid().toString();
     arguments.insert(QStringLiteral("callerUuid"), Uuid());
+    arguments.insert(QStringLiteral("pubkey"), pubkey.toDER());
     action.setArguments(arguments);
     d->m_job = action.execute();
     job()->start();
@@ -93,6 +118,8 @@ void CoreBackendManager::startExternalCommandHelper()
     QObject::connect(job(), &KJob::finished, [=] () { if(d->m_job->error()) exitLoop(); } );
     loop.exec();
     QObject::disconnect(conn);
+
+    return true;
 }
 
 void CoreBackendManager::stopExternalCommandHelper()
@@ -144,4 +171,14 @@ bool CoreBackendManager::load(const QString& name)
 
 void CoreBackendManager::unload()
 {
+}
+
+QCA::PrivateKey CoreBackendManager::privateKey()
+{
+    return d->privateKey;
+}
+
+unsigned int& CoreBackendManager::counter()
+{
+    return d->counter;
 }
