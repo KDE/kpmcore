@@ -41,6 +41,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     }
     m_callerUuid = args[QStringLiteral("callerUuid")].toString();
     m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
+    m_Counter = 0;
 
     if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
