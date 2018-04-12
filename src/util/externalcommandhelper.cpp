@@ -26,9 +26,6 @@
 
 #include <KLocalizedString>
 
-// exit helper if no ping for 42s
-#define TIMEOUT 42000
-
 /** Initialize ExternalCommandHelper Daemon and prepare DBus interface
 */
 ActionReply ExternalCommandHelper::init(const QVariantMap& args)
@@ -198,8 +195,9 @@ bool ExternalCommandHelper::copyblocks(const QString& Uuid, const QString& sourc
     return rval;
 }
 
-QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const QStringList& environment)
+QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input)
 {
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
 
     QByteArray request;
@@ -217,7 +215,7 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
 
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
 
-    m_cmd.setEnvironment(environment);
+    m_cmd.setEnvironment( { QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1") } );
     m_cmd.start(command, arguments);
     m_cmd.write(input);
     m_cmd.closeWriteChannel();

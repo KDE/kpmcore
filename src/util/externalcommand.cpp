@@ -141,8 +141,7 @@ bool ExternalCommand::start(int timeout)
                                                  CoreBackendManager::self()->privateKey().signMessage(hash, QCA::EMSA3_Raw),
                                                  cmd,
                                                  args(),
-                                                 d->m_Input,
-                                                 QStringList());
+                                                 d->m_Input);
 
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
 
