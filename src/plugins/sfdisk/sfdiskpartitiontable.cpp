@@ -28,8 +28,6 @@
 #include "util/report.h"
 #include "util/externalcommand.h"
 
-#include <unistd.h>
-
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -54,9 +52,9 @@ bool SfdiskPartitionTable::open()
 
 bool SfdiskPartitionTable::commit(quint32 timeout)
 {
-    if ( !(ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("settle"), QStringLiteral("--timeout=") + QString::number(timeout) }).run() &&
-            ExternalCommand(QStringLiteral("blockdev"), { QStringLiteral("--rereadpt"), m_device->deviceNode() }).run()))
-        sleep(1);
+    ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("settle"), QStringLiteral("--timeout=") + QString::number(timeout) }).run();
+    ExternalCommand(QStringLiteral("blockdev"), { QStringLiteral("--rereadpt"), m_device->deviceNode() }).run();
+    ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("trigger") }).run();
 
     return true;
 }

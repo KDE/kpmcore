@@ -57,7 +57,6 @@ public:
         RAID_Device, /* software RAID device */
     };
 
-protected:
     explicit Device(std::shared_ptr<DevicePrivate> d_ptr, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Type::Disk_Device);
 
 public:
