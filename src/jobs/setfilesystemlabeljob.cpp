@@ -69,6 +69,8 @@ bool SetFileSystemLabelJob::run(Report& parent)
         if (rval)
             partition().fileSystem().setLabel(label());
     }
+    else
+        rval = false;
 
     // A hack to reread partition table (commit() should be called even on non DiskDevices)
     Device dev(std::make_shared<DevicePrivate>(), QString(), QString(), 0, 0, QString(), Device::Type::Unknown_Device);
