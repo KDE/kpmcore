@@ -129,12 +129,13 @@ bool ExternalCommand::start(int timeout)
     bool rval = false;
     if (iface.isValid()) {
         QByteArray request;
-        request.setNum(++CoreBackendManager::self()->counter());
 
+        request.setNum(++CoreBackendManager::self()->counter());
         request.append(cmd.toUtf8());
         for (const auto &argument : qAsConst(d->m_Args))
-            request.append(argument.toLocal8Bit());
+            request.append(argument.toUtf8());
         request.append(d->m_Input);
+
         QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
 
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("start"),
@@ -185,9 +186,21 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
     iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     if (iface.isValid()) {
+        QByteArray request;
+
+        request.setNum(++CoreBackendManager::self()->counter());
+        request.append(source.path().toUtf8());
+        request.append(QByteArray::number(source.firstByte()));
+        request.append(QByteArray::number(source.length()));
+        request.append(target.path().toUtf8());
+        request.append(QByteArray::number(target.firstByte()));
+        request.append(QByteArray::number(blockSize));
+
+        QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+
         // Use asynchronous DBus calls, so that we can process reports and progress
         QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"),
-                                                CoreBackendManager::self()->Uuid(),
+                                                CoreBackendManager::self()->privateKey().signMessage(hash, QCA::EMSA3_Raw),
                                                 source.path(), source.firstByte(), source.length(),
                                                 target.path(), target.firstByte(), blockSize);
 

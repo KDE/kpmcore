@@ -21,12 +21,12 @@
 #include "backend/corebackend.h"
 
 #include <QCoreApplication>
+#include <QCryptographicHash>
 #include <QDebug>
 #include <QDBusInterface>
 #include <QStringList>
 #include <QString>
 #include <QVector>
-#include <QUuid>
 
 #include <QtCrypto>
 
@@ -41,7 +41,6 @@ struct CoreBackendManagerPrivate
     KAuth::ExecuteJob *m_job;
     CoreBackend *m_Backend;
 
-    QString m_Uuid;
     QCA::Initializer init;
     QCA::PrivateKey privateKey;
     unsigned int counter = 0;
@@ -104,8 +103,6 @@ bool CoreBackendManager::startExternalCommandHelper()
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
     action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     QVariantMap arguments;
-    d->m_Uuid = QUuid::createUuid().toString();
-    arguments.insert(QStringLiteral("callerUuid"), Uuid());
     arguments.insert(QStringLiteral("pubkey"), pubkey.toDER());
     action.setArguments(arguments);
     d->m_job = action.execute();
@@ -125,18 +122,17 @@ bool CoreBackendManager::startExternalCommandHelper()
 void CoreBackendManager::stopExternalCommandHelper()
 {
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
-    if (iface.isValid())
-        iface.call(QStringLiteral("exit"), CoreBackendManager::self()->Uuid());
+    if (iface.isValid()) {
+        QByteArray request;
+        request.setNum(++CoreBackendManager::self()->counter());
+        QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+        iface.call(QStringLiteral("exit"), d->privateKey.signMessage(hash, QCA::EMSA3_Raw));
+    }
 }
 
 KAuth::ExecuteJob* CoreBackendManager::job()
 {
     return d->m_job;
-}
-
-QString& CoreBackendManager::Uuid()
-{
-    return d->m_Uuid;
 }
 
 bool CoreBackendManager::load(const QString& name)

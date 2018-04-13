@@ -36,7 +36,6 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
         reply.addData(QStringLiteral("success"), false);
         return reply;
     }
-    m_callerUuid = args[QStringLiteral("callerUuid")].toString();
     m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
     m_Counter = 0;
 
@@ -111,10 +110,23 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
     return true;
 }
 
-bool ExternalCommandHelper::copyblocks(const QString& Uuid, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
+bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
-    if (!isCallerAuthorized(Uuid))
+    QByteArray request;
+
+    request.setNum(++m_Counter);
+    request.append(sourceDevice.toUtf8());
+    request.append(QByteArray::number(sourceFirstByte));
+    request.append(QByteArray::number(sourceLength));
+    request.append(targetDevice.toUtf8());
+    request.append(QByteArray::number(targetFirstByte));
+    request.append(QByteArray::number(blockSize));
+
+    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
+        qCritical() << xi18n("Invalid cryptographic signature");
         return false;
+    }
 
     const qint64 blocksToCopy = sourceLength / blockSize;
     qint64 readOffset = sourceFirstByte;
@@ -202,7 +214,7 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
 
     QByteArray request;
     request.setNum(++m_Counter);
-    request.append(command.toLocal8Bit());
+    request.append(command.toUtf8());
     for (const auto &argument : arguments)
         request.append(argument.toUtf8());
     request.append(input);
@@ -227,20 +239,15 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
     return reply;
 }
 
-bool ExternalCommandHelper::isCallerAuthorized(const QString& Uuid)
+void ExternalCommandHelper::exit(const QByteArray& signature)
 {
-    if (Uuid != m_callerUuid) {
-        qWarning() << "Caller is not authorized";
-        return false;
+    QByteArray request;
+    request.setNum(++m_Counter);
+    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
+        return;
     }
 
-    return true;
-}
-
-void ExternalCommandHelper::exit(const QString& Uuid)
-{
-    if (!isCallerAuthorized(Uuid))
-        return;
     m_loop.exit();
 
     if (QDBusConnection::systemBus().unregisterService(QStringLiteral("org.kde.kpmcore.helperinterface")))

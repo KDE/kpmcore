@@ -83,11 +83,6 @@ public:
     CoreBackend* backend();
 
     /**
-    * @return a pointer to the currently loaded backend
-      */
-    QString& Uuid();
-
-    /**
     * @return a pointer to the KAuth job
       */
     KAuth::ExecuteJob* job();
@@ -95,7 +90,7 @@ public:
     /**
       * stop ExternalCommand Helper
       */
-    static void stopExternalCommandHelper();
+    void stopExternalCommandHelper();
 
     /**< @return RSA private key used for signing External Command requests. */
     QCA::PrivateKey privateKey();
