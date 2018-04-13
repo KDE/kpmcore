@@ -55,8 +55,8 @@ bool SfdiskPartitionTable::open()
 bool SfdiskPartitionTable::commit(quint32 timeout)
 {
     if ( !(ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("settle"), QStringLiteral("--timeout=") + QString::number(timeout) }).run() &&
-            ExternalCommand(QStringLiteral("partx"), { QStringLiteral("--update"), m_device->deviceNode() }).run()) )
-        sleep(timeout);
+            ExternalCommand(QStringLiteral("blockdev"), { QStringLiteral("--rereadpt"), m_device->deviceNode() }).run()))
+        sleep(1);
 
     return true;
 }

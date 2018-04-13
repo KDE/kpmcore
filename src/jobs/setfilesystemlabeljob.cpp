@@ -61,6 +61,8 @@ bool SetFileSystemLabelJob::run(Report& parent)
             partition().fileSystem().setLabel(label());
     }
 
+    // FIXME: need to commit to device
+
     jobFinished(*report, rval);
 
     return rval;
