@@ -245,6 +245,7 @@ void ExternalCommandHelper::exit(const QByteArray& signature)
     request.setNum(++m_Counter);
     QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
     if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
+        qCritical() << xi18n("Invalid cryptographic signature");
         return;
     }
 
