@@ -14,7 +14,7 @@ of storage devices on a system:
 There are multiple backends so that KPMcore can support different
 operating systems, although the only functional backend is the
 one for Linux systems:
-* libparted backend (Linux)
+* sfdisk backend (Linux)
 * null backend
 
 ## Using KPMcore
