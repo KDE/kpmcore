@@ -58,6 +58,8 @@ KAuth::ExecuteJob* ExternalCommand::m_job;
 QCA::PrivateKey* ExternalCommand::privateKey;
 QCA::Initializer* ExternalCommand::init;
 bool ExternalCommand::helperStarted = false;
+QWidget* ExternalCommand::parent;
+
 
 /** Creates a new ExternalCommand instance without Report.
     @param cmd the command to run
@@ -368,6 +370,7 @@ bool ExternalCommand::startHelper()
     KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
     action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
+    action.setParentWidget(parent);
     QVariantMap arguments;
     arguments.insert(QStringLiteral("pubkey"), pubkey.toDER());
     action.setArguments(arguments);

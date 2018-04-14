@@ -99,6 +99,13 @@ public:
     /**< stop ExternalCommand Helper */
     static void stopHelper();
 
+    /**< Sets a parent widget for the authentication dialog.
+     * @param p parent widget
+     */
+    static void setParentWidget(QWidget *p) {
+        parent = p;
+    }
+
 Q_SIGNALS:
     void progress(int);
     void reportSignal(const QVariantMap&);
@@ -122,6 +129,7 @@ private:
     static QCA::Initializer *init;
     static QCA::PrivateKey *privateKey;
     static bool helperStarted;
+    static QWidget *parent;
 };
 
 #endif
