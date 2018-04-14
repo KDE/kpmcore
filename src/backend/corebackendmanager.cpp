@@ -21,16 +21,10 @@
 #include "backend/corebackend.h"
 
 #include <QCoreApplication>
-#include <QCryptographicHash>
 #include <QDebug>
-#include <QDBusInterface>
-#include <QStringList>
 #include <QString>
 #include <QVector>
 
-#include <QtCrypto>
-
-#include <KAuth>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KPluginLoader>
@@ -38,18 +32,16 @@
 
 struct CoreBackendManagerPrivate
 {
-    KAuth::ExecuteJob *m_job;
     CoreBackend *m_Backend;
-
-    QCA::Initializer init;
-    QCA::PrivateKey privateKey;
-    unsigned int counter = 0;
 };
 
 CoreBackendManager::CoreBackendManager() :
     d(std::make_unique<CoreBackendManagerPrivate>())
 {
-    startExternalCommandHelper();
+}
+
+CoreBackendManager::~CoreBackendManager()
+{
 }
 
 CoreBackendManager* CoreBackendManager::self()
@@ -76,63 +68,6 @@ QVector<KPluginMetaData> CoreBackendManager::list() const
 
     // find backend plugins in standard path (e.g. /usr/lib64/qt5/plugins) using filter from above
     return KPluginLoader::findPlugins(QString(), filter);
-}
-
-bool CoreBackendManager::startExternalCommandHelper()
-{
-    // Generate RSA key pair for signing external command requests
-    if (!QCA::isSupported("pkey") || !QCA::PKey::supportedIOTypes().contains(QCA::PKey::RSA)) {
-        qCritical() << xi18n("QCA does not support RSA.");
-        return false;
-    }
-
-    d->privateKey = QCA::KeyGenerator().createRSA(4096);
-    if(d->privateKey.isNull()) {
-        qCritical() << xi18n("Failed to make private RSA key.");
-        return false;
-    }
-
-    if (!d->privateKey.canSign()) {
-        qCritical() << xi18n("Generated key cannot be used for signatures.");
-        return false;
-    }
-
-    QCA::PublicKey pubkey = d->privateKey.toPublicKey();
-
-    KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
-    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
-    action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
-    QVariantMap arguments;
-    arguments.insert(QStringLiteral("pubkey"), pubkey.toDER());
-    action.setArguments(arguments);
-    d->m_job = action.execute();
-    job()->start();
-
-    // Wait until ExternalCommand Helper is ready (helper sends newData signal just before it enters event loop)
-    QEventLoop loop;
-    auto exitLoop = [&] () { loop.exit(); };
-    auto conn = QObject::connect(job(), &KAuth::ExecuteJob::newData, exitLoop);
-    QObject::connect(job(), &KJob::finished, [=] () { if(d->m_job->error()) exitLoop(); } );
-    loop.exec();
-    QObject::disconnect(conn);
-
-    return true;
-}
-
-void CoreBackendManager::stopExternalCommandHelper()
-{
-    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
-    if (iface.isValid()) {
-        QByteArray request;
-        request.setNum(++CoreBackendManager::self()->counter());
-        QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-        iface.call(QStringLiteral("exit"), d->privateKey.signMessage(hash, QCA::EMSA3_Raw));
-    }
-}
-
-KAuth::ExecuteJob* CoreBackendManager::job()
-{
-    return d->m_job;
 }
 
 bool CoreBackendManager::load(const QString& name)
@@ -167,14 +102,4 @@ bool CoreBackendManager::load(const QString& name)
 
 void CoreBackendManager::unload()
 {
-}
-
-QCA::PrivateKey CoreBackendManager::privateKey()
-{
-    return d->privateKey;
-}
-
-unsigned int& CoreBackendManager::counter()
-{
-    return d->counter;
 }

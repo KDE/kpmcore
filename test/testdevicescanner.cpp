@@ -34,6 +34,8 @@
 #include <QDebug>
 #include <QList>
 
+#include <memory>
+
 using PartitionList = QList<Partition *>;
 
 // Recursive helper for flatten(), adds partitions that
@@ -65,16 +67,18 @@ PartitionList flatten(PartitionTable *table)
 int main( int argc, char **argv )
 {
     QCoreApplication app(argc, argv);
+    std::unique_ptr<KPMCoreInitializer> i;
+
     if (argc != 2)
     {
-        KPMCoreInitializer i;
-        if (!i.isValid())
+        i = std::make_unique<KPMCoreInitializer>();
+        if (!i->isValid())
             return 1;
     }
     else
     {
-        KPMCoreInitializer i( argv[1] );
-        if (!i.isValid())
+        i = std::make_unique<KPMCoreInitializer>( argv[1] );
+        if (!i->isValid())
             return 1;
     }
 
@@ -112,6 +116,5 @@ int main( int argc, char **argv )
     }
 
     return 0;
-
 }
 

@@ -17,22 +17,18 @@
  *************************************************************************/
 
 #ifndef KPMCORE_COREBACKENDMANAGER_H
-
 #define KPMCORE_COREBACKENDMANAGER_H
 
 #include "util/libpartitionmanagerexport.h"
 
 #include <memory>
 
-#include <QObject>
 #include <QVector>
 
 class QString;
 class QStringList;
 class KPluginMetaData;
 class CoreBackend;
-namespace KAuth { class ExecuteJob; }
-namespace QCA { class PrivateKey; }
 struct CoreBackendManagerPrivate;
 
 /**
@@ -44,8 +40,8 @@ struct CoreBackendManagerPrivate;
   */
 class LIBKPMCORE_EXPORT CoreBackendManager
 {
-private:
     CoreBackendManager();
+    ~CoreBackendManager();
 
 public:
     /**
@@ -81,24 +77,6 @@ public:
       * @return a pointer to the currently loaded backend
       */
     CoreBackend* backend();
-
-    /**
-    * @return a pointer to the KAuth job
-      */
-    KAuth::ExecuteJob* job();
-
-    /**
-      * stop ExternalCommand Helper
-      */
-    void stopExternalCommandHelper();
-
-    /**< @return RSA private key used for signing External Command requests. */
-    QCA::PrivateKey privateKey();
-
-    unsigned int& counter();
-
-private:
-    bool startExternalCommandHelper();
 
 private:
     std::unique_ptr<CoreBackendManagerPrivate> d;

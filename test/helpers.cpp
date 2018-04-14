@@ -20,6 +20,7 @@
 #include "helpers.h"
 
 #include "backend/corebackendmanager.h"
+#include "util/externalcommand.h"
 
 #include <QDebug>
 #include <QString>
@@ -59,5 +60,5 @@ KPMCoreInitializer::KPMCoreInitializer( const char* backend ) : KPMCoreInitializ
 
 KPMCoreInitializer::~KPMCoreInitializer()
 {
-    CoreBackendManager::self()->stopExternalCommandHelper();
+    ExternalCommand::stopHelper();
 }

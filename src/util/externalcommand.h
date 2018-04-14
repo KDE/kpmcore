@@ -20,8 +20,6 @@
 #define KPMCORE_EXTERNALCOMMAND_H
 
 #include "util/libpartitionmanagerexport.h"
-#include "core/copysourcedevice.h"
-#include "core/copytargetfile.h"
 
 #include <QDebug>
 #include <QProcess>
@@ -33,7 +31,11 @@
 #include <memory>
 
 class KJob;
+namespace KAuth { class ExecuteJob; }
+namespace QCA { class PrivateKey; class Initializer; }
 class Report;
+class CopySource;
+class CopyTarget;
 struct ExternalCommandPrivate;
 
 /** An external command.
@@ -90,6 +92,13 @@ public:
 
     void emitReport(const QVariantMap& report) { emit reportSignal(report); }
 
+    // KAuth
+    /**< start ExternalCommand Helper */
+    static bool startHelper();
+
+    /**< stop ExternalCommand Helper */
+    static void stopHelper();
+
 Q_SIGNALS:
     void progress(int);
     void reportSignal(const QVariantMap&);
@@ -97,7 +106,7 @@ Q_SIGNALS:
 public Q_SLOTS:
     void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };
 
-protected:
+private:
     void setExitCode(int i);
     void setup(const QProcess::ProcessChannelMode processChannelMode);
 
@@ -106,6 +115,13 @@ protected:
 
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
+
+    // KAuth stuff
+    static unsigned int counter;
+    static KAuth::ExecuteJob *m_job;
+    static QCA::Initializer *init;
+    static QCA::PrivateKey *privateKey;
+    static bool helperStarted;
 };
 
 #endif

@@ -53,6 +53,12 @@ struct ExternalCommandPrivate
     QByteArray m_Input;
 };
 
+unsigned int ExternalCommand::counter = 0;
+KAuth::ExecuteJob* ExternalCommand::m_job;
+QCA::PrivateKey* ExternalCommand::privateKey;
+QCA::Initializer* ExternalCommand::init;
+bool ExternalCommand::helperStarted = false;
+
 /** Creates a new ExternalCommand instance without Report.
     @param cmd the command to run
     @param args the arguments to pass to the command
@@ -65,6 +71,9 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
     d->m_Args = args;
     d->m_ExitCode = -1;
     d->m_Output = QByteArray();
+
+    if (!helperStarted)
+        startHelper();
 
     setup(processChannelMode);
 }
@@ -130,7 +139,7 @@ bool ExternalCommand::start(int timeout)
     if (iface.isValid()) {
         QByteArray request;
 
-        request.setNum(++CoreBackendManager::self()->counter());
+        request.setNum(++counter);
         request.append(cmd.toUtf8());
         for (const auto &argument : qAsConst(d->m_Args))
             request.append(argument.toUtf8());
@@ -139,7 +148,7 @@ bool ExternalCommand::start(int timeout)
         QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
 
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("start"),
-                                                 CoreBackendManager::self()->privateKey().signMessage(hash, QCA::EMSA3_Raw),
+                                                 privateKey->signMessage(hash, QCA::EMSA3_Raw),
                                                  cmd,
                                                  args(),
                                                  d->m_Input);
@@ -180,15 +189,15 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
     }
 
     // TODO KF6:Use new signal-slot syntax
-    connect(CoreBackendManager::self()->job(), SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
-    connect(CoreBackendManager::self()->job(), &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
+    connect(m_job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
+    connect(m_job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
 
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
     iface.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     if (iface.isValid()) {
         QByteArray request;
 
-        request.setNum(++CoreBackendManager::self()->counter());
+        request.setNum(++counter);
         request.append(source.path().toUtf8());
         request.append(QByteArray::number(source.firstByte()));
         request.append(QByteArray::number(source.length()));
@@ -200,7 +209,7 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
 
         // Use asynchronous DBus calls, so that we can process reports and progress
         QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"),
-                                                CoreBackendManager::self()->privateKey().signMessage(hash, QCA::EMSA3_Raw),
+                                                privateKey->signMessage(hash, QCA::EMSA3_Raw),
                                                 source.path(), source.firstByte(), source.length(),
                                                 target.path(), target.firstByte(), blockSize);
 
@@ -331,4 +340,62 @@ Report* ExternalCommand::report()
 void ExternalCommand::setExitCode(int i)
 {
     d->m_ExitCode = i;
+}
+
+bool ExternalCommand::startHelper()
+{
+    init = new QCA::Initializer;
+    // Generate RSA key pair for signing external command requests
+    if (!QCA::isSupported("pkey") || !QCA::PKey::supportedIOTypes().contains(QCA::PKey::RSA)) {
+        qCritical() << xi18n("QCA does not support RSA.");
+        return false;
+    }
+
+    privateKey = new QCA::PrivateKey;
+    *privateKey = QCA::KeyGenerator().createRSA(4096);
+    if(privateKey->isNull()) {
+        qCritical() << xi18n("Failed to make private RSA key.");
+        return false;
+    }
+
+    if (!privateKey->canSign()) {
+        qCritical() << xi18n("Generated key cannot be used for signatures.");
+        return false;
+    }
+
+    QCA::PublicKey pubkey = privateKey->toPublicKey();
+
+    KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
+    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
+    action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
+    QVariantMap arguments;
+    arguments.insert(QStringLiteral("pubkey"), pubkey.toDER());
+    action.setArguments(arguments);
+    m_job = action.execute();
+    m_job->start();
+
+    // Wait until ExternalCommand Helper is ready (helper sends newData signal just before it enters event loop)
+    QEventLoop loop;
+    auto exitLoop = [&] () { loop.exit(); };
+    auto conn = QObject::connect(m_job, &KAuth::ExecuteJob::newData, exitLoop);
+    QObject::connect(m_job, &KJob::finished, [=] () { if(m_job->error()) exitLoop(); } );
+    loop.exec();
+    QObject::disconnect(conn);
+
+    helperStarted = true;
+    return true;
+}
+
+void ExternalCommand::stopHelper()
+{
+    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    if (iface.isValid()) {
+        QByteArray request;
+        request.setNum(++counter);
+        QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+        iface.call(QStringLiteral("exit"), privateKey->signMessage(hash, QCA::EMSA3_Raw));
+    }
+
+    delete privateKey;
+    delete init;
 }
