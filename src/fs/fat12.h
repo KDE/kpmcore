@@ -16,8 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_FAT12_H)
-
+#ifndef KPMCORE_FAT12_H
 #define KPMCORE_FAT12_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -62,10 +61,10 @@ public:
         return m_Create;
     }
     CommandSupportType supportGrow() const override {
-        return m_Grow;
+        return cmdSupportNone;
     }
     CommandSupportType supportShrink() const override {
-        return m_Shrink;
+        return cmdSupportNone;
     }
     CommandSupportType supportMove() const override {
         return m_Move;
