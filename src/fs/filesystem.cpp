@@ -564,6 +564,8 @@ bool FileSystem::findExternal(const QString& cmdName, const QStringList& args, i
     QString cmdFullPath = QStandardPaths::findExecutable(cmdName);
     if (cmdFullPath.isEmpty())
         cmdFullPath = QStandardPaths::findExecutable(cmdName, { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+    if (cmdFullPath.isEmpty())
+        return false;
 
     ExternalCommand cmd(cmdFullPath, args);
     if (!cmd.run())
