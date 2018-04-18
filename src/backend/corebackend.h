@@ -30,7 +30,7 @@
 
 class CoreBackendManager;
 class CoreBackendDevice;
-class CoreBackendPrivate;
+struct CoreBackendPrivate;
 class Device;
 class PartitionTable;
 

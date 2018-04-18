@@ -21,10 +21,10 @@
 #include "fs/filesystem.h"
 #include "util/capacity.h"
 
-#include <QPainter>
-#include <QStyleOptionButton>
 #include <QApplication>
 #include <QFontDatabase>
+#include <QPainter>
+#include <QStyleOptionButton>
 
 /** Creates a new PartWidget
     @param parent pointer to the parent widget
