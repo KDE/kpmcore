@@ -435,8 +435,7 @@ bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList&
     if (FS::lvm2_pv::getAllocatedPE(pvPath) <= 0)
         return true;
 
-    QStringList args = QStringList();
-    args << QStringLiteral("pvmove");
+    QStringList args = { QStringLiteral("pvmove") };
     args << pvPath;
     if (!destinations.isEmpty())
         for (const auto &destPath : destinations)
@@ -448,8 +447,7 @@ bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList&
 
 bool LvmDevice::createVG(Report& report, const QString vgName, const QVector<const Partition*>& pvList, const qint32 peSize)
 {
-    QStringList args = QStringList();
-    args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
+    QStringList args = { QStringLiteral("vgcreate"), QStringLiteral("--physicalextentsize"), QString::number(peSize) };
     args << vgName;
     for (const auto &p : pvList) {
         if (p->roles().has(PartitionRole::Luks))
