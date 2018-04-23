@@ -169,12 +169,12 @@ QString luks::unmountTitle() const
 
 QString luks::cryptOpenTitle() const
 {
-    return xi18nc("@title:menu", "Decrypt");
+    return xi18nc("@title:menu", "Unlock");
 }
 
 QString luks::cryptCloseTitle() const
 {
-    return xi18nc("@title:menu", "Deactivate");
+    return xi18nc("@title:menu", "Lock");
 }
 
 void luks::setPassphrase(const QString& passphrase)
