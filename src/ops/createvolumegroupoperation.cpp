@@ -45,8 +45,12 @@ QString CreateVolumeGroupOperation::description() const
     return xi18nc("@info/plain", "Create a new LVM volume group.");
 }
 
-bool CreateVolumeGroupOperation::targets(const Partition&) const
+bool CreateVolumeGroupOperation::targets(const Partition& partition) const
 {
+    for (const auto &p : m_PVList) {
+        if (partition == *p)
+            return true;
+    }
     return false;
 }
 
