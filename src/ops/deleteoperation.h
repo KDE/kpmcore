@@ -68,7 +68,7 @@ public:
     bool targets(const Device& d) const override;
     bool targets(const Partition& p) const override;
 
-    static bool canDelete(const Partition* p);
+    static bool canDelete(const Partition* p, const QList<Operation *> pendingOps = QList<Operation *>());
 
 protected:
     Device& targetDevice() {

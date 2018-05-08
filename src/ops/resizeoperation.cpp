@@ -30,8 +30,10 @@
 #include "jobs/movefilesystemjob.h"
 
 #include "ops/checkoperation.h"
+#include "ops/createvolumegroupoperation.h"
 
 #include "fs/filesystem.h"
+#include "fs/luks.h"
 
 #include "util/capacity.h"
 #include "util/report.h"
@@ -346,10 +348,30 @@ bool ResizeOperation::canGrow(const Partition* p)
     @param p the Partition in question, may be nullptr.
     @return true if @p p can be shrunk.
  */
-bool ResizeOperation::canShrink(const Partition* p)
+bool ResizeOperation::canShrink(const Partition* p, const QList<Operation *> pendingOps)
 {
     if (p == nullptr)
         return false;
+
+    if (p->fileSystem().type() == FileSystem::Type::Lvm2_PV) {
+        // See if there is a newly created VG targeting this partition
+        for (Operation *op : qAsConst(pendingOps)) {
+            if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
+                return false;
+        }
+    }
+    else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
+        // See if innerFS is LVM
+        FileSystem *fs = static_cast<const FS::luks *>(&p->fileSystem())->innerFS();
+
+        if (fs->type() == FileSystem::Type::Lvm2_PV) {
+            // See if there is a newly created VG targeting this partition
+            for (Operation *op : qAsConst(pendingOps)) {
+                if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
+                    return false;
+            }
+        }
+    }
 
     // we can always grow, shrink or move a partition not yet written to disk
     if (p->state() == Partition::State::New && !p->roles().has(PartitionRole::Luks))
@@ -368,10 +390,30 @@ bool ResizeOperation::canShrink(const Partition* p)
     @param p the Partition in question, may be nullptr.
     @return true if @p p can be moved.
  */
-bool ResizeOperation::canMove(const Partition* p)
+bool ResizeOperation::canMove(const Partition* p, const QList<Operation *> pendingOps)
 {
     if (p == nullptr)
         return false;
+
+    if (p->fileSystem().type() == FileSystem::Type::Lvm2_PV) {
+        // See if there is a newly created VG targeting this partition
+        for (Operation *op : qAsConst(pendingOps)) {
+            if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
+                return false;
+        }
+    }
+    else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
+        // See if innerFS is LVM
+        FileSystem *fs = static_cast<const FS::luks *>(&p->fileSystem())->innerFS();
+
+        if (fs->type() == FileSystem::Type::Lvm2_PV) {
+            // See if there is a newly created VG targeting this partition
+            for (Operation *op : qAsConst(pendingOps)) {
+                if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
+                    return false;
+            }
+        }
+    }
 
     // we can always grow, shrink or move a partition not yet written to disk
     if (p->state() == Partition::State::New)

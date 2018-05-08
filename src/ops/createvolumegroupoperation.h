@@ -69,6 +69,7 @@ protected:
 private:
     CreateVolumeGroupJob* m_CreateVolumeGroupJob;
     const QVector<const Partition*> m_PVList;
+    QString m_vgName;
 };
 
 #endif

@@ -86,8 +86,8 @@ public:
     bool targets(const Partition& p) const override;
 
     static bool canGrow(const Partition* p);
-    static bool canShrink(const Partition* p);
-    static bool canMove(const Partition* p);
+    static bool canShrink(const Partition* p, const QList<Operation *> pendingOps = QList<Operation *>());
+    static bool canMove(const Partition* p, const QList<Operation *> pendingOps = QList<Operation *>());
 
 protected:
     Device& targetDevice() {

@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+#include "ops/createvolumegroupoperation.h"
 #include "ops/deleteoperation.h"
 
 #include "core/partition.h"
@@ -110,13 +111,33 @@ void DeleteOperation::checkAdjustLogicalNumbers(Partition& p, bool undo)
     @param p the Partition in question, may be nullptr.
     @return true if @p p can be deleted.
 */
-bool DeleteOperation::canDelete(const Partition* p)
+bool DeleteOperation::canDelete(const Partition* p, const QList<Operation *> pendingOps)
 {
     if (p == nullptr)
         return false;
 
     if (p->isMounted())
         return false;
+
+    if (p->fileSystem().type() == FileSystem::Type::Lvm2_PV) {
+        // See if there is a newly created VG targeting this partition
+        for (Operation *op : qAsConst(pendingOps)) {
+            if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
+                return false;
+        }
+    }
+    else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
+        // See if innerFS is LVM
+        FileSystem *fs = static_cast<const FS::luks *>(&p->fileSystem())->innerFS();
+
+        if (fs->type() == FileSystem::Type::Lvm2_PV) {
+            // See if there is a newly created VG targeting this partition
+            for (Operation *op : qAsConst(pendingOps)) {
+                if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
+                    return false;
+            }
+        }
+    }
 
     if (p->roles().has(PartitionRole::Unallocated))
         return false;
