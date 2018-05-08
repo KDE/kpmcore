@@ -128,13 +128,15 @@ bool DeleteOperation::canDelete(const Partition* p, const QList<Operation *> pen
     }
     else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
         // See if innerFS is LVM
-        FileSystem *fs = static_cast<const FS::luks *>(&p->fileSystem())->innerFS();
+        FileSystem *fs = dynamic_cast<const FS::luks *>(&p->fileSystem())->innerFS();
 
-        if (fs->type() == FileSystem::Type::Lvm2_PV) {
-            // See if there is a newly created VG targeting this partition
-            for (Operation *op : qAsConst(pendingOps)) {
-                if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
-                    return false;
+        if (fs) {
+            if (fs->type() == FileSystem::Type::Lvm2_PV) {
+                // See if there is a newly created VG targeting this partition
+                for (Operation *op : qAsConst(pendingOps)) {
+                    if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
+                        return false;
+                }
             }
         }
     }
