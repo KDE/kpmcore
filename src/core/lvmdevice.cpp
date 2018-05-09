@@ -196,18 +196,19 @@ void LvmDevice::scanSystemLVM(QList<Device*>& devices)
         lvmList.append(new LvmDevice(vgName));
     }
 
-    // Some LVM operations require additional information about LVM physical volumes which we store in LVM::pvList
-    LVM::pvList = FS::lvm2_pv::getPVs(devices);
+    // Some LVM operations require additional information about LVM physical volumes which we store in LVM::pvList::list()
+    LVM::pvList::list().clear();
+    LVM::pvList::list().append(FS::lvm2_pv::getPVs(devices));
 
     // Look for LVM physical volumes in LVM VGs
     for (const auto &d : lvmList) {
         devices.append(d);
-        LVM::pvList.append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
+        LVM::pvList::list().append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
     }
 
     // Inform LvmDevice about which physical volumes form that particular LvmDevice
     for (const auto &d : lvmList)
-        for (const auto &p : qAsConst(LVM::pvList))
+        for (const auto &p : qAsConst(LVM::pvList::list()))
             if (p.vgName() == d->name())
                 d->physicalVolumes().append(p.partition());
 

@@ -287,7 +287,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     if (!m_isCryptOpen)
         return false;
 
-    for (auto &p : LVM::pvList)
+    for (auto &p : LVM::pvList::list())
         if (p.isLuks() && p.partition()->deviceNode() == deviceNode && p.partition()->fileSystem().type() == FileSystem::Type::Lvm2_PV)
             p.setLuks(false);
 
@@ -326,7 +326,7 @@ bool luks::cryptClose(const QString& deviceNode)
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
-    for (auto &p : LVM::pvList)
+    for (auto &p : LVM::pvList::list())
         if (!p.isLuks() && p.partition()->deviceNode() == deviceNode)
             p.setLuks(true);
 

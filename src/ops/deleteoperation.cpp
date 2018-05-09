@@ -128,7 +128,7 @@ bool DeleteOperation::canDelete(const Partition* p, const QList<Operation *> pen
     }
     else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
         // See if innerFS is LVM
-        FileSystem *fs = dynamic_cast<const FS::luks *>(&p->fileSystem())->innerFS();
+        FileSystem *fs = static_cast<const FS::luks *>(&p->fileSystem())->innerFS();
 
         if (fs) {
             if (fs->type() == FileSystem::Type::Lvm2_PV) {

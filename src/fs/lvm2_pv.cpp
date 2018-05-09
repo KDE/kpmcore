@@ -296,7 +296,11 @@ QList<LvmPV> lvm2_pv::getPVs(const QList<Device*>& devices)
 
 }
 
-QList<LvmPV> LVM::pvList;
+namespace LVM {
+
+QList<LvmPV> pvList::m_list;
+
+}
 
 LvmPV::LvmPV(const QString vgName, const Partition* p, bool isLuks)
     : m_vgName(vgName)

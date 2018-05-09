@@ -85,7 +85,7 @@ public:
     bool targets(const Device& d) const override;
     bool targets(const Partition& p) const override;
 
-    static bool canGrow(const Partition* p);
+    static bool canGrow(const Partition* p, const QList<Operation *> pendingOps = QList<Operation *>());
     static bool canShrink(const Partition* p, const QList<Operation *> pendingOps = QList<Operation *>());
     static bool canMove(const Partition* p, const QList<Operation *> pendingOps = QList<Operation *>());
 
@@ -157,6 +157,9 @@ protected:
     CheckFileSystemJob* checkResizedJob() {
         return m_CheckResizedJob;
     }
+
+private:
+    static bool isLVMPVinNewlyVG(const Partition* p, const QList<Operation *> pendingOps);
 
 private:
     Device& m_TargetDevice;
