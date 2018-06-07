@@ -14,6 +14,7 @@
         "Description[de]": "Ein Dummy-Backend für die KDE-Partitionsverwaltung zu Testzwecken.",
         "Description[es]": "Un motor de simulación para el gestor de particiones de KDE para hacer pruebas.",
         "Description[gl]": "Unha infraestrutura de probas para o xestor de particións de KDE.",
+        "Description[it]": "Un motore fittizio del gestore delle partizioni di KDE per scopi di prova.",
         "Description[nl]": "Dummy backend van KDE-partitiebeheerder voor testdoeleinden",
         "Description[pt]": "Uma infra-estrutura de testes para o Gestor de Partições do KDE.",
         "Description[sk]": "Testovací program v pozadí KDE Správcu partícií",
