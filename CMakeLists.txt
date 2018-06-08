@@ -81,7 +81,7 @@ kde_enable_exceptions()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   find_package(PkgConfig REQUIRED)
-  pkg_check_modules(BLKID REQUIRED blkid>=2.30)
+  pkg_check_modules(BLKID REQUIRED blkid>=2.31.1)
 endif()
 
 include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE_DIRS} lib/ src/)
