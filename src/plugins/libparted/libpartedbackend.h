@@ -64,7 +64,7 @@ public:
     CoreBackendDevice* openDevice(const Device& d) override;
     CoreBackendDevice* openDeviceExclusive(const Device& d) override;
     bool closeDevice(CoreBackendDevice* core_device) override;
-    DiskDevice* scanDevice(const QString& deviceNode) override;
+    Device* scanDevice(const QString& deviceNode) override;
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;
     FileSystem::Type detectFileSystem(const QString& partitionPath) override;
     QString readLabel(const QString& deviceNode) const override;

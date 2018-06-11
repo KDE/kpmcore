@@ -182,6 +182,23 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         scanDevicePartitions(*d, partitionTable[QLatin1String("partitions")].toArray());
         return d;
     }
+    else
+    {
+        // Look if this device is a LVM VG
+        ExternalCommand checkVG(QStringLiteral("lvm"), { QStringLiteral("vgdisplay"), deviceNode });
+
+        if (checkVG.run(-1) && checkVG.exitCode() == 0)
+        {
+            qDebug() << "Trying to find LVM VG";
+            QList<Device *> availableDevices = scanDevices();
+
+            LvmDevice::scanSystemLVM(availableDevices);
+
+            for (Device *device : qAsConst(availableDevices))
+                if (device->deviceNode() == deviceNode)
+                    return device;
+        }
+    }
     return nullptr;
 }
 

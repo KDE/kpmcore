@@ -384,12 +384,28 @@ void LibPartedBackend::scanDevicePartitions(Device& d, PedDisk* pedDisk)
     @param deviceNode the device node (e.g. "/dev/sda")
     @return the created Device object. callers need to free this.
 */
-DiskDevice* LibPartedBackend::scanDevice(const QString& deviceNode)
+Device* LibPartedBackend::scanDevice(const QString& deviceNode)
 {
     PedDevice* pedDevice = ped_device_get(deviceNode.toLocal8Bit().constData());
 
     if (pedDevice == nullptr) {
         Log(Log::warning) << xi18nc("@info:status", "Could not access device <filename>%1</filename>", deviceNode);
+        Log(Log::warning) << xi18nc("@info:status", "Checking if this device is LVM VG");
+
+        // Look if this device is a LVM VG
+        ExternalCommand checkVG(QStringLiteral("lvm"), { QStringLiteral("vgdisplay"), deviceNode });
+
+        if (checkVG.run(-1) && checkVG.exitCode() == 0)
+        {
+            QList<Device *> availableDevices = scanDevices();
+
+            LvmDevice::scanSystemLVM(availableDevices);
+
+            for (Device *device : qAsConst(availableDevices))
+                if (device->deviceNode() == deviceNode)
+                    return device;
+        }
+
         return nullptr;
     }
 
