@@ -11,6 +11,7 @@
         "Description": "The LibParted backend for KDE Partition Manager",
         "Description[ca@valencia]": "Un dorsal pel LibParted del gestor de particions del KDE",
         "Description[ca]": "Un dorsal pel LibParted del gestor de particions del KDE",
+        "Description[cs]": "Podpůrná vrstva LibParted pro správce diskových oddílů pro KDE",
         "Description[de]": "Das LibParted-Backend für die KDE-Partitionsverwaltung",
         "Description[es]": "El motor LibParted para el gestor de particiones de KDE",
         "Description[gl]": "A infraestrutura de LibPartes para o xestor de particións de KDE.",

@@ -11,6 +11,7 @@
         "Description": "A KDE Partition Manager dummy backend for testing purposes.",
         "Description[ca@valencia]": "Un dorsal fals del gestor de particions del KDE amb la finalitat de fer proves.",
         "Description[ca]": "Un dorsal fals del gestor de particions del KDE amb la finalitat de fer proves.",
+        "Description[cs]": "Falešná podpůrná vrstva pro správce diskových oddílů KDE pro testovací účely.",
         "Description[de]": "Ein Dummy-Backend für die KDE-Partitionsverwaltung zu Testzwecken.",
         "Description[es]": "Un motor de simulación para el gestor de particiones de KDE para hacer pruebas.",
         "Description[gl]": "Unha infraestrutura de probas para o xestor de particións de KDE.",
