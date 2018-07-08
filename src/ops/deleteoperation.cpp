@@ -149,7 +149,7 @@ bool DeleteOperation::canDelete(const Partition* p, const QList<Operation *> pen
 
     if (p->roles().has(PartitionRole::Luks))
     {
-        const FS::luks* luksFs = dynamic_cast<const FS::luks*>(&p->fileSystem());
+        const FS::luks* luksFs = static_cast<const FS::luks*>(&p->fileSystem());
         if (!luksFs)
             return false;
 
