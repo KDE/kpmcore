@@ -23,9 +23,9 @@
 
 #include "core/diskdevice.h"
 #include "core/lvmdevice.h"
-#include "core/softwareraid.h"
 #include "core/partitiontable.h"
 #include "core/partitionalignment.h"
+#include "core/raid/softwareraid.h"
 
 #include "fs/filesystemfactory.h"
 #include "fs/luks.h"
