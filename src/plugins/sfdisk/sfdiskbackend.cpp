@@ -23,6 +23,7 @@
 
 #include "core/diskdevice.h"
 #include "core/lvmdevice.h"
+#include "core/softwareraid.h"
 #include "core/partitiontable.h"
 #include "core/partitionalignment.h"
 
@@ -106,6 +107,7 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
         }
 
         LvmDevice::scanSystemLVM(result);
+        SoftwareRAID::scanSoftwareRAID(result);
     }
 
     return result;
@@ -126,61 +128,50 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
     ExternalCommand sizeCommand2(QStringLiteral("blockdev"), { QStringLiteral("--getss"), deviceNode });
     ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode } );
 
-    if ( modelCommand.run(-1) && modelCommand.exitCode() == 0
-                && sizeCommand.run(-1) && sizeCommand.exitCode() == 0
-                && sizeCommand2.run(-1) && sizeCommand2.exitCode() == 0
-                && jsonCommand.run(-1) )
+    if ( sizeCommand.run(-1) && sizeCommand.exitCode() == 0
+         && sizeCommand2.run(-1) && sizeCommand2.exitCode() == 0
+         && jsonCommand.run(-1) )
     {
-        QString modelName = modelCommand.output();
-        modelName = modelName.left(modelName.length() - 1);
+        Device* d = nullptr;
         qint64 deviceSize = sizeCommand.output().trimmed().toLongLong();
-
-        Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", modelName);
         int logicalSectorSize = sizeCommand2.output().trimmed().toLongLong();
-        DiskDevice* d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
 
-        if (jsonCommand.exitCode() != 0)
-            return d;
-
-        const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.rawOutput()).object();
-        const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
-
-        QString tableType = partitionTable[QLatin1String("label")].toString();
-        const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
-
-        qint64 firstUsableSector = 0, lastUsableSector = d->totalSectors();
-        if (type == PartitionTable::gpt) {
-            firstUsableSector = partitionTable[QLatin1String("firstlba")].toVariant().toLongLong();
-            lastUsableSector = partitionTable[QLatin1String("lastlba")].toVariant().toLongLong();
-        }
-        if (lastUsableSector < firstUsableSector) {
-            return nullptr;
-        }
-
-        setPartitionTableForDevice(*d, new PartitionTable(type, firstUsableSector, lastUsableSector));
-        switch (type) {
-        case PartitionTable::gpt:
+        if ( modelCommand.run(-1) && modelCommand.exitCode() == 0 && !modelCommand.output().trimmed().isEmpty() )
         {
-            // Read the maximum number of GPT partitions
-            qint32 maxEntries;
-            ExternalCommand ddCommand(QStringLiteral("dd"), { QStringLiteral("skip=1"), QStringLiteral("count=1"), QStringLiteral("if=") + deviceNode}, QProcess::SeparateChannels);
-            if (ddCommand.run(-1) && ddCommand.exitCode() == 0 ) {
-                QByteArray gptHeader = ddCommand.rawOutput();
-                QByteArray gptMaxEntries = gptHeader.mid(80, 4);
-                QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
-                stream.setByteOrder(QDataStream::LittleEndian);
-                stream >> maxEntries;
-            }
-            else
-                maxEntries = 128;
-            CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), maxEntries);
+            QString modelName = modelCommand.output();
+            modelName = modelName.left(modelName.length() - 1);
+
+            Log(Log::Level::information) << xi18nc("@info:status", "Disk Device found: %1", modelName);
+
+            d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
         }
-        default:
-            break;
+        else // check for software raid
+        {
+            ExternalCommand softwareRaidCommand(QStringLiteral("mdadm"), { QStringLiteral("--detail"), deviceNode });
+
+            if ( softwareRaidCommand.run(-1) && softwareRaidCommand.exitCode() == 0 )
+            {
+                Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
+
+                QString deviceName = deviceNode.mid(5);
+
+                d = new SoftwareRAID( deviceName );
+            }
         }
 
-        scanDevicePartitions(*d, partitionTable[QLatin1String("partitions")].toArray());
-        return d;
+        if ( d )
+        {
+            if (jsonCommand.exitCode() != 0)
+                return d;
+
+            const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.rawOutput()).object();
+            const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
+
+            if (!updateDevicePartitionTable(*d, partitionTable))
+                return nullptr;
+
+            return d;
+        }
     }
     else
     {
@@ -289,6 +280,64 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
 
     for (const Partition * part : qAsConst(partitions))
         PartitionAlignment::isAligned(d, *part);
+}
+
+bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jsonPartitionTable)
+{
+    QString tableType = jsonPartitionTable[QLatin1String("label")].toString();
+    const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
+
+    qint64 firstUsableSector = 0, lastUsableSector;
+
+    if ( d.type() == Device::Type::Disk_Device )
+    {
+        const DiskDevice* diskDevice = static_cast<const DiskDevice*>(&d);
+
+        lastUsableSector = diskDevice->totalSectors();
+    }
+    else if ( d.type() == Device::Type::SoftwareRAID_Device )
+    {
+        const SoftwareRAID* raidDevice = static_cast<const SoftwareRAID*>(&d);
+
+        lastUsableSector = raidDevice->totalLogical() - 1;
+    }
+
+    if (type == PartitionTable::gpt) {
+        firstUsableSector = jsonPartitionTable[QLatin1String("firstlba")].toVariant().toLongLong();
+        lastUsableSector = jsonPartitionTable[QLatin1String("lastlba")].toVariant().toLongLong();
+    }
+
+    if (lastUsableSector < firstUsableSector) {
+        return false;
+    }
+
+    setPartitionTableForDevice(d, new PartitionTable(type, firstUsableSector, lastUsableSector));
+    switch (type) {
+    case PartitionTable::gpt:
+    {
+        // Read the maximum number of GPT partitions
+        qint32 maxEntries;
+        ExternalCommand ddCommand(QStringLiteral("dd"),
+                                 { QStringLiteral("skip=1"), QStringLiteral("count=1"), (QStringLiteral("if=") + d.deviceNode()) },
+                                  QProcess::SeparateChannels);
+        if (ddCommand.run(-1) && ddCommand.exitCode() == 0 ) {
+            QByteArray gptHeader = ddCommand.rawOutput();
+            QByteArray gptMaxEntries = gptHeader.mid(80, 4);
+            QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
+            stream.setByteOrder(QDataStream::LittleEndian);
+            stream >> maxEntries;
+        }
+        else
+            maxEntries = 128;
+        CoreBackend::setPartitionTableMaxPrimaries(*d.partitionTable(), maxEntries);
+    }
+    default:
+        break;
+    }
+
+    scanDevicePartitions(d, jsonPartitionTable[QLatin1String("partitions")].toArray());
+
+    return true;
 }
 
 /** Reads the sectors used in a FileSystem and stores the result in the Partition's FileSystem object.

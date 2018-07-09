@@ -58,6 +58,7 @@ public:
 private:
     static void readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint);
     void scanDevicePartitions(Device& d, const QJsonArray& jsonPartitions);
+    bool updateDevicePartitionTable(Device& d, const QJsonObject& jsonPartitionTable);
     static PartitionTable::Flags availableFlags(PartitionTable::TableType type);
 };
 

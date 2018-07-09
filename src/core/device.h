@@ -54,7 +54,8 @@ public:
         Unknown_Device,
         Disk_Device,
         LVM_Device, /* VG */
-        RAID_Device, /* software RAID device */
+        SoftwareRAID_Device, /* software RAID device, i.e. mdraid */
+        HardwareRAID_Device, /* hardware RAID device (or fake raid), i.e. dmraid */
     };
 
     explicit Device(std::shared_ptr<DevicePrivate> d_ptr, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogicalSectors, const QString& iconName = QString(), Device::Type type = Device::Type::Disk_Device);
