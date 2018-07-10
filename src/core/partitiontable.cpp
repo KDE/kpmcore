@@ -295,7 +295,7 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
         }
 
         return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
-    } else if (d.type() == Device::Type::LVM_Device) {
+    } else if (d.type() == Device::Type::LVM_Device || d.type() == Device::Type::SoftwareRAID_Device) {
         if (end - start + 1 > 0) {
             return true;
         }

@@ -130,7 +130,7 @@ qint64 SoftwareRAID::getChunkSize(const QString &path)
         QRegularExpression re(QStringLiteral("Chunk Size :\\s+(\\d+)"));
         QRegularExpressionMatch reMatch = re.match(output);
         if (reMatch.hasMatch())
-            return reMatch.captured(1).toLongLong() * 1024;
+            return reMatch.captured(1).toLongLong();
     }
     return -1;
 
