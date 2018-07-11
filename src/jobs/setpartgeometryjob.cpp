@@ -55,7 +55,7 @@ bool SetPartGeometryJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    if(device().type() == Device::Type::Disk_Device) {
+    if(device().type() == Device::Type::Disk_Device || device().type() == Device::Type::SoftwareRAID_Device) {
         std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {

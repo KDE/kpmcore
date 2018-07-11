@@ -428,7 +428,7 @@ void PartitionTable::updateUnallocated(const Device& d)
 qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
 {
     Q_UNUSED(t)
-    if (d.type() == Device::Type::LVM_Device) {
+    if (d.type() == Device::Type::LVM_Device || d.type() == Device::Type::SoftwareRAID_Device) {
         return 0;
     }
 
