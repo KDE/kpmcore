@@ -99,7 +99,7 @@ qint64 ocfs2::maxCapacity() const
 
 qint64 ocfs2::readUsedCapacity(const QString& deviceNode) const
 {
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(deviceNode)
     return -1;
 }
 

@@ -170,7 +170,7 @@ bool ntfs::resize(Report& report, const QString& deviceNode, qint64 length) cons
 
 bool ntfs::updateUUID(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
+    Q_UNUSED(report)
     ExternalCommand cmd(QStringLiteral("ntfslabel"), { QStringLiteral("--new-serial"), deviceNode });
 
     return cmd.run(-1) && cmd.exitCode() == 0;

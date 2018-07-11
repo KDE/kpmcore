@@ -112,8 +112,8 @@ bool exfat::writeLabel(Report& report, const QString& deviceNode, const QString&
 
 bool exfat::updateUUID(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
 
     return false;
 }

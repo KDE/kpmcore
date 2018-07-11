@@ -54,8 +54,8 @@ std::unique_ptr<CoreBackendPartitionTable> DummyDevice::openPartitionTable()
 
 bool DummyDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(ptable);
+    Q_UNUSED(report)
+    Q_UNUSED(ptable)
 
     return true;
 }

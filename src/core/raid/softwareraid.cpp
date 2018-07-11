@@ -71,21 +71,21 @@ const QStringList& SoftwareRAID::partitionNodes() const
 
 qint64 SoftwareRAID::partitionSize(QString &partitionPath) const
 {
-    Q_UNUSED(partitionPath);
+    Q_UNUSED(partitionPath)
     return 0;
 }
 
 bool SoftwareRAID::growArray(Report &report, const QStringList &devices)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(devices);
+    Q_UNUSED(report)
+    Q_UNUSED(devices)
     return false;
 }
 
 bool SoftwareRAID::shrinkArray(Report &report, const QStringList &devices)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(devices);
+    Q_UNUSED(report)
+    Q_UNUSED(devices)
     return false;
 }
 
@@ -186,13 +186,13 @@ qint64 SoftwareRAID::getArraySize(const QString &path)
 
 QString SoftwareRAID::getUUID(const QString &path)
 {
-    Q_UNUSED(path);
+    Q_UNUSED(path)
     return QStringLiteral();
 }
 
 QStringList SoftwareRAID::getDevicePathList(const QString &path)
 {
-    Q_UNUSED(path);
+    Q_UNUSED(path)
     return {};
 }
 
@@ -213,22 +213,22 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
 bool SoftwareRAID::deleteSoftwareRAID(Report &report,
                                       SoftwareRAID &raidDevice)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(raidDevice);
+    Q_UNUSED(report)
+    Q_UNUSED(raidDevice)
     return false;
 }
 
 bool SoftwareRAID::assembleSoftwareRAID(Report &report, const SoftwareRAID &raidDevice)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(raidDevice);
+    Q_UNUSED(report)
+    Q_UNUSED(raidDevice)
     return false;
 }
 
 bool SoftwareRAID::stopSoftwareRAID(Report &report, const SoftwareRAID &raidDevice)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(raidDevice);
+    Q_UNUSED(report)
+    Q_UNUSED(raidDevice)
     return false;
 }
 
