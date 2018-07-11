@@ -89,6 +89,36 @@ bool SoftwareRAID::shrinkArray(Report &report, const QStringList &devices)
     return false;
 }
 
+qint32 SoftwareRAID::raidLevel() const
+{
+    return d_ptr->m_raidLevel;
+}
+
+qint64 SoftwareRAID::chunkSize() const
+{
+    return d_ptr->m_chunkSize;
+}
+
+qint64 SoftwareRAID::totalChunk() const
+{
+    return d_ptr->m_totalChunk;
+}
+
+qint64 SoftwareRAID::arraySize() const
+{
+    return d_ptr->m_arraySize;
+}
+
+QString SoftwareRAID::uuid() const
+{
+    return d_ptr->m_UUID;
+}
+
+QStringList SoftwareRAID::devicePathList() const
+{
+    return d_ptr->m_devicePathList;
+}
+
 void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 {
     ExternalCommand scanRaid(QStringLiteral("cat"), { QStringLiteral("/proc/mdstat") });

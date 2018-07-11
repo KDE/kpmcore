@@ -37,6 +37,13 @@ public:
 
     virtual bool shrinkArray(Report& report, const QStringList& devices);
 
+    qint32 raidLevel() const;
+    qint64 chunkSize() const;
+    qint64 totalChunk() const;
+    qint64 arraySize() const;
+    QString uuid() const;
+    QStringList devicePathList() const;
+
 public:
     static void scanSoftwareRAID(QList<Device*>& devices);
 
