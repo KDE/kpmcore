@@ -59,7 +59,7 @@ bool CreateFileSystemJob::run(Report& parent)
         else
             createResult = partition().fileSystem().create(*report, partition().deviceNode());
         if (createResult) {
-            if (device().type() == Device::Type::Disk_Device) {
+            if (device().type() == Device::Type::Disk_Device || device().type() == Device::Type::SoftwareRAID_Device) {
                 std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
                 if (backendDevice) {
