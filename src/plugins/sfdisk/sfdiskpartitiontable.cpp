@@ -22,6 +22,7 @@
 
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/raid/softwareraid.h"
 
 #include "fs/filesystem.h"
 
@@ -77,8 +78,10 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
                                                         QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) && createCommand.waitFor() ) {
         QRegularExpression re(QStringLiteral("Created a new partition (\\d)"));
         QRegularExpressionMatch rem = re.match(createCommand.output());
+
+        // TODO: Needs refactoring. Workaround to check if device path is RAID and include 'p' character before partition number.
         if (rem.hasMatch())
-            return partition.devicePath() + rem.captured(1);
+            return partition.devicePath() + (SoftwareRAID::isRaidPath(partition.devicePath()) ? QStringLiteral("p") : QStringLiteral("")) + rem.captured(1);
     }
 
     report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), m_device->deviceNode());

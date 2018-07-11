@@ -166,6 +166,11 @@ QStringList SoftwareRAID::getDevicePathList(const QString &path)
     return {};
 }
 
+bool SoftwareRAID::isRaidPath(const QString &path)
+{
+    return !getDetail(path).isEmpty();
+}
+
 bool SoftwareRAID::createSoftwareRAID(Report &report,
                                       const QString &name,
                                       const QStringList devicePathList,

@@ -47,6 +47,8 @@ public:
     static QString getUUID(const QString& path);
     static QStringList getDevicePathList(const QString& path);
 
+    static bool isRaidPath(const QString& path);
+
     static bool createSoftwareRAID(Report& report,
                                    const QString& name,
                                    const QStringList devicePathList,
