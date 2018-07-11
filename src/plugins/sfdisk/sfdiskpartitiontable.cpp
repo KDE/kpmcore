@@ -76,12 +76,16 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
     if ( createCommand.write(QByteArrayLiteral("start=") + QByteArray::number(partition.firstSector()) +
                                                         type +
                                                         QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) && createCommand.waitFor() ) {
-        QRegularExpression re(QStringLiteral("Created a new partition (\\d)"));
+        QRegularExpression re(QStringLiteral("Created a new partition (\\d+)"));
         QRegularExpressionMatch rem = re.match(createCommand.output());
 
-        // TODO: Needs refactoring. Workaround to check if device path is RAID and include 'p' character before partition number.
-        if (rem.hasMatch())
-            return partition.devicePath() + (SoftwareRAID::isRaidPath(partition.devicePath()) ? QStringLiteral("p") : QStringLiteral("")) + rem.captured(1);
+        if (rem.hasMatch()) {
+            // TODO: Use back() with Qt 5.10
+            if ( partition.devicePath()[partition.devicePath().size() - 1].isDigit() )
+                return partition.devicePath() + QLatin1Char('p') + rem.captured(1);
+            else
+                return partition.devicePath() + rem.captured(1);
+        }
     }
 
     report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), m_device->deviceNode());
