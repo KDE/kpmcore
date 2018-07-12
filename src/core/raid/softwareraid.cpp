@@ -218,20 +218,31 @@ bool SoftwareRAID::deleteSoftwareRAID(Report &report,
     return false;
 }
 
-bool SoftwareRAID::assembleSoftwareRAID(const SoftwareRAID &raidDevice)
+bool SoftwareRAID::assembleSoftwareRAID(const QString& deviceNode)
 {
+    if (!isRaidPath(deviceNode))
+        return false;
+
     ExternalCommand cmd(QStringLiteral("mdadm"),
-                        { QStringLiteral("--assemble"), QStringLiteral("--scan"), raidDevice.deviceNode() });
+                        { QStringLiteral("--assemble"), QStringLiteral("--scan"), deviceNode });
 
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool SoftwareRAID::stopSoftwareRAID(const SoftwareRAID &raidDevice)
+bool SoftwareRAID::stopSoftwareRAID(const QString& deviceNode)
 {
+    if (!isRaidPath(deviceNode))
+        return false;
+
     ExternalCommand cmd(QStringLiteral("mdadm"),
-                        { QStringLiteral("--stop"), raidDevice.deviceNode() });
+                        { QStringLiteral("--stop"), deviceNode });
 
     return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool SoftwareRAID::reassembleSoftwareRAID(const QString &deviceNode)
+{
+    return stopSoftwareRAID(deviceNode) && assembleSoftwareRAID(deviceNode);
 }
 
 void SoftwareRAID::initPartitions()

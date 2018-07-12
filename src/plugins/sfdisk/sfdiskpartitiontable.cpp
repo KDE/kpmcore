@@ -57,12 +57,7 @@ bool SfdiskPartitionTable::commit(quint32 timeout)
     ExternalCommand(QStringLiteral("blockdev"), { QStringLiteral("--rereadpt"), m_device->deviceNode() }).run();
     ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("trigger") }).run();
 
-    if (m_device->type() == Device::Type::SoftwareRAID_Device)
-    {
-        const SoftwareRAID& raid = static_cast<const SoftwareRAID&>(*m_device);
-        SoftwareRAID::stopSoftwareRAID(raid);
-        SoftwareRAID::assembleSoftwareRAID(raid);
-    }
+    SoftwareRAID::reassembleSoftwareRAID(m_device->deviceNode());
 
     return true;
 }

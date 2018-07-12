@@ -65,9 +65,11 @@ public:
     static bool deleteSoftwareRAID(Report& report,
                                    SoftwareRAID& raidDevice);
 
-    static bool assembleSoftwareRAID(const SoftwareRAID& raidDevice);
+    static bool assembleSoftwareRAID(const QString& deviceNode);
 
-    static bool stopSoftwareRAID(const SoftwareRAID& raidDevice);
+    static bool stopSoftwareRAID(const QString& deviceNode);
+
+    static bool reassembleSoftwareRAID(const QString& deviceNode);
 
 protected:
     void initPartitions() override;
