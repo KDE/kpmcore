@@ -121,6 +121,7 @@ QStringList SoftwareRAID::devicePathList() const
 
 void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 {
+    // TODO: Check configuration file and load all the devices that aren't in /proc/mdstat as innactive
     ExternalCommand scanRaid(QStringLiteral("cat"), { QStringLiteral("/proc/mdstat") });
 
     if (scanRaid.run(-1) && scanRaid.exitCode() == 0) {
@@ -235,7 +236,7 @@ bool SoftwareRAID::stopSoftwareRAID(const QString& deviceNode)
         return false;
 
     ExternalCommand cmd(QStringLiteral("mdadm"),
-                        { QStringLiteral("--stop"), deviceNode });
+                        { QStringLiteral("--manage"), QStringLiteral("--stop"), deviceNode });
 
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
@@ -258,7 +259,6 @@ qint64 SoftwareRAID::mappedSector(const QString &partitionPath, qint64 sector) c
 QString SoftwareRAID::getDetail(const QString &path)
 {
     ExternalCommand cmd(QStringLiteral("mdadm"),
-                       { QStringLiteral("--detail"),
-                         path });
+                       { QStringLiteral("--misc"), QStringLiteral("--detail"), path });
     return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QStringLiteral();
 }
