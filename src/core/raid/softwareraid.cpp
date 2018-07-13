@@ -131,7 +131,7 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
     ExternalCommand scanRaid(QStringLiteral("cat"), { QStringLiteral("/proc/mdstat") });
 
     if (scanRaid.run(-1) && scanRaid.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("md(\\d+)\\s+:"));
+        QRegularExpression re(QStringLiteral("md([\\/\\w]+)\\s+:"));
         QRegularExpressionMatchIterator i  = re.globalMatch(scanRaid.output());
         while (i.hasNext()) {
             QRegularExpressionMatch reMatch = i.next();
