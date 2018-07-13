@@ -25,6 +25,7 @@
 #include "fs/filesystemfactory.h"
 #include "util/externalcommand.h"
 
+#include <KLocalizedString>
 #include <QRegularExpression>
 
 #define d_ptr std::static_pointer_cast<SoftwareRAIDPrivate>(d)
@@ -87,6 +88,11 @@ bool SoftwareRAID::shrinkArray(Report &report, const QStringList &devices)
     Q_UNUSED(report)
     Q_UNUSED(devices)
     return false;
+}
+
+QString SoftwareRAID::prettyName() const
+{
+    return VolumeManagerDevice::prettyName() + xi18nc("@item:inlistbox [RAID level]", " [RAID %1]", raidLevel());
 }
 
 qint32 SoftwareRAID::raidLevel() const

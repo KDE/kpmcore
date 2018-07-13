@@ -37,6 +37,8 @@ public:
 
     virtual bool shrinkArray(Report& report, const QStringList& devices);
 
+    virtual QString prettyName() const override;
+
     qint32 raidLevel() const;
     qint64 chunkSize() const;
     qint64 totalChunk() const;
