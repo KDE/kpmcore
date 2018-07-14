@@ -288,10 +288,8 @@ void ExternalCommandHelper::exit(const QByteArray& signature)
 
     m_loop.exit();
 
-    if (QDBusConnection::systemBus().unregisterService(QStringLiteral("org.kde.kpmcore.helperinterface")))
-        qDebug() << "org.kde.kpmcore.helperinterface unregistered";
-
     QDBusConnection::systemBus().unregisterObject(QStringLiteral("/Helper"));
+    QDBusConnection::systemBus().unregisterService(QStringLiteral("org.kde.kpmcore.helperinterface"));
 }
 
 void ExternalCommandHelper::onReadOutput()
