@@ -32,7 +32,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 {
     ActionReply reply;
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus session bus";
+        qWarning() << "Could not connect to DBus system bus";
         reply.addData(QStringLiteral("success"), false);
         return reply;
     }

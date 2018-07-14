@@ -15,8 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_GLOBALLOG_H)
-
+#ifndef KPMCORE_GLOBALLOG_H
 #define KPMCORE_GLOBALLOG_H
 
 #include "util/libpartitionmanagerexport.h"
