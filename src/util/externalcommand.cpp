@@ -22,10 +22,12 @@
 #include "core/copytarget.h"
 #include "core/copysourcedevice.h"
 #include "core/copytargetdevice.h"
+#include "util/globallog.h"
 #include "util/externalcommand.h"
 #include "util/report.h"
 
 #include <QCryptographicHash>
+#include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QEventLoop>
@@ -51,6 +53,7 @@ struct ExternalCommandPrivate
     int m_ExitCode;
     QByteArray m_Output;
     QByteArray m_Input;
+    DBusThread *m_thread;
 };
 
 unsigned int ExternalCommand::counter = 0;
@@ -75,7 +78,8 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
     d->m_Output = QByteArray();
 
     if (!helperStarted)
-        startHelper();
+        if(!startHelper())
+            Log(Log::Level::error) << xi18nc("@info:status", "Could not obtain administrator privileges.");
 
     setup(processChannelMode);
 }
@@ -346,6 +350,13 @@ void ExternalCommand::setExitCode(int i)
 
 bool ExternalCommand::startHelper()
 {
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << "Could not connect to DBus session bus";
+        return false;
+    }
+    d->m_thread = new DBusThread;
+    d->m_thread->start();
+
     init = new QCA::Initializer;
     // Generate RSA key pair for signing external command requests
     if (!QCA::isSupported("pkey") || !QCA::PKey::supportedIOTypes().contains(QCA::PKey::RSA)) {
@@ -401,4 +412,19 @@ void ExternalCommand::stopHelper()
 
     delete privateKey;
     delete init;
+}
+
+void DBusThread::run()
+{
+    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.applicationinterface"))) {
+        qWarning() << QDBusConnection::systemBus().lastError().message();
+        return;
+    }
+    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Application"), this, QDBusConnection::ExportAllSlots)) {
+        qWarning() << QDBusConnection::systemBus().lastError().message();
+        return;
+    }
+        
+    QEventLoop loop;
+    loop.exec();
 }

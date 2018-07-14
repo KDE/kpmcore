@@ -27,6 +27,18 @@
 #include <KLocalizedString>
 
 /** Initialize ExternalCommandHelper Daemon and prepare DBus interface
+ *
+ * KAuth helper runs in the background until application exits.
+ * To avoid forever running helper in case of application crash
+ * ExternalCommand class opens DBus interface that we ping.
+ * If helper is not busy than it exits when ping fails. Otherwise,
+ * we wait for the current job to finish before exiting, so even in case
+ * of main application crash, we do not leave partially moved data.
+ * 
+ * This helper also starts another DBus interface where it listens to
+ * command execution requests from the application that started the helper.
+ * These requests are validated using public key cryptography, to prevent
+ * other unprivileged applications from gaining root privileges.
 */
 ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 {
@@ -36,17 +48,42 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
         reply.addData(QStringLiteral("success"), false);
         return reply;
     }
-    m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
-    m_Counter = 0;
 
     if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
         reply.addData(QStringLiteral("success"), false);
         return reply;
     }
-    QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots);
+    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
+        qWarning() << QDBusConnection::systemBus().lastError().message();
+        reply.addData(QStringLiteral("success"), false);
+        return reply;
+    }
+
+    m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
+    m_Counter = 0;
 
     HelperSupport::progressStep(QVariantMap());
+    auto timeout = [this] () {
+            QDBusInterface iface(QStringLiteral("org.kde.kpmcore.applicationinterface"),
+                         QStringLiteral("/Application"),
+                         QStringLiteral("org.kde.kpmcore.ping"),
+                         QDBusConnection::systemBus());
+            iface.setTimeout(5000); // 5 seconds;
+            auto pcall = iface.asyncCall(QStringLiteral("ping"));
+            QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+            auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+                    if (watcher->isError()) {
+                        qWarning() << watcher->error();
+                        m_loop.exit();
+                    }
+                    };
+            connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    };
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, timeout);
+    timer->start(5000); // 5 seconds
     m_loop.exec();
     reply.addData(QStringLiteral("success"), true);
 

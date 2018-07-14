@@ -26,6 +26,7 @@
 #include <QString>
 #include <QStringList>
 #include <QtGlobal>
+#include <QThread>
 #include <QVariant>
 
 #include <memory>
@@ -37,6 +38,16 @@ class Report;
 class CopySource;
 class CopyTarget;
 struct ExternalCommandPrivate;
+
+class DBusThread : public QThread
+{
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.ping")
+    void run() override;
+
+public Q_SLOTS:
+    Q_SCRIPTABLE void ping() {return;};
+};
 
 /** An external command.
 
@@ -94,7 +105,7 @@ public:
 
     // KAuth
     /**< start ExternalCommand Helper */
-    static bool startHelper();
+    bool startHelper();
 
     /**< stop ExternalCommand Helper */
     static void stopHelper();
