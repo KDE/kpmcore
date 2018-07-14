@@ -90,26 +90,24 @@ LvmDevice::~LvmDevice()
 void LvmDevice::initPartitions()
 {
     qint64 firstUsable = 0;
-    qint64 lastusable  = totalPE() - 1;
-    PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
+    qint64 lastUsable  = totalPE() - 1;
+    PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastUsable);
 
     for (const auto &p : scanPartitions(pTable)) {
         LVSizeMap()->insert(p->partitionPath(), p->length());
         pTable->append(p);
     }
 
-    if (!pTable)
+    if (pTable)
         pTable->updateUnallocated(*this);
     else
-        pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
+        pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastUsable);
 
     setPartitionTable(pTable);
 }
 
 /**
  *  Scan LVM LV Partitions
- *
- *  This deletes pTable when LVM scanning error is encountered
  *
  *  @param pTable Virtual PartitionTable of LVM device
  *  @return an initialized Partition(LV) list
@@ -119,13 +117,7 @@ const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
     QList<Partition*> pList;
     for (const auto &lvPath : partitionNodes()) {
         Partition *p = scanPartition(lvPath, pTable);
-        if (p)
-            pList.append(p);
-        else {
-            pList.clear();
-            delete pTable;
-            break;
-        }
+        pList.append(p);
     }
     return pList;
 }
@@ -149,9 +141,6 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     activateLV(lvPath);
 
     qint64 lvSize = getTotalLE(lvPath);
-    if (lvSize == -1)
-        return nullptr;
-
     qint64 startSector = mappedSector(lvPath, 0);
     qint64 endSector = startSector + lvSize - 1;
 
