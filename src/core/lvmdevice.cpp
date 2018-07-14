@@ -18,15 +18,16 @@
 
 #include "core/lvmdevice.h"
 #include "core/partition.h"
+#include "core/partitiontable.h"
 #include "core/volumemanagerdevice_p.h"
 #include "fs/filesystem.h"
 #include "fs/lvm2_pv.h"
 #include "fs/luks.h"
 #include "fs/filesystemfactory.h"
 
-#include "core/partitiontable.h"
 #include "util/externalcommand.h"
 #include "util/helpers.h"
+#include "util/globallog.h"
 #include "util/report.h"
 
 #include <QRegularExpression>
@@ -97,19 +98,34 @@ void LvmDevice::initPartitions()
         pTable->append(p);
     }
 
-    pTable->updateUnallocated(*this);
+    if (!pTable)
+        pTable->updateUnallocated(*this);
+    else
+        pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
 
     setPartitionTable(pTable);
 }
 
 /**
+ *  Scan LVM LV Partitions
+ *
+ *  This deletes pTable when LVM scanning error is encountered
+ *
+ *  @param pTable Virtual PartitionTable of LVM device
  *  @return an initialized Partition(LV) list
  */
 const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
     QList<Partition*> pList;
     for (const auto &lvPath : partitionNodes()) {
-        pList.append(scanPartition(lvPath, pTable));
+        Partition *p = scanPartition(lvPath, pTable);
+        if (p)
+            pList.append(p);
+        else {
+            pList.clear();
+            delete pTable;
+            break;
+        }
     }
     return pList;
 }
@@ -133,6 +149,9 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     activateLV(lvPath);
 
     qint64 lvSize = getTotalLE(lvPath);
+    if (lvSize == -1)
+        return nullptr;
+
     qint64 startSector = mappedSector(lvPath, 0);
     qint64 endSector = startSector + lvSize - 1;
 
@@ -350,6 +369,7 @@ qint64 LvmDevice::getTotalLE(const QString& lvPath)
              return  match.captured(1).toInt();
         }
     }
+    Log(Log::Level::error) << xi18nc("@info:status", "An error occurred while running lvdisplay.");
     return -1;
 }
 
