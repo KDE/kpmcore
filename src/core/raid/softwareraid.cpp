@@ -161,12 +161,12 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
     QString config = getRAIDConfiguration(QStringLiteral("/etc/mdadm.conf"));
 
     if (!config.isEmpty()) {
-        QRegularExpression re(QStringLiteral("[\\t\\r\\n\\f\\s]ARRAY \\/dev\\/([\\/\\w-]+)"));
+        QRegularExpression re(QStringLiteral("([\\t\\r\\n\\f\\s]|INACTIVE-)ARRAY \\/dev\\/([\\/\\w-]+)"));
         QRegularExpressionMatchIterator i  = re.globalMatch(config);
 
         while (i.hasNext()) {
             QRegularExpressionMatch reMatch = i.next();
-            QString deviceName = reMatch.captured(1).trimmed();
+            QString deviceName = reMatch.captured(2).trimmed();
 
             SoftwareRAID *raidDevice = new SoftwareRAID(deviceName, false);
 
@@ -177,17 +177,26 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
     ExternalCommand scanRaid(QStringLiteral("cat"), { QStringLiteral("/proc/mdstat") });
 
     if (scanRaid.run(-1) && scanRaid.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("md([\\/\\w]+)\\s+:"));
+        QRegularExpression re(QStringLiteral("md([\\/\\w]+)\\s+:\\s+([\\w]+)"));
         QRegularExpressionMatchIterator i  = re.globalMatch(scanRaid.output());
         while (i.hasNext()) {
             QRegularExpressionMatch reMatch = i.next();
 
             QString deviceNode = QStringLiteral("/dev/md") + reMatch.captured(1).trimmed();
+            QString status = reMatch.captured(2).trimmed();
 
             SoftwareRAID* d = static_cast<SoftwareRAID *>(CoreBackendManager::self()->backend()->scanDevice(deviceNode));
 
-            if (scannedRaid.contains(d))
-                d->setActive(true);
+            if (scannedRaid.contains(d)) {
+                d->setActive(status.toLower() == QStringLiteral("active"));
+
+                QRegularExpression reMirrorStatus(QStringLiteral("\\[[=>.]+\\]\\s+(resync|recovery)"));
+
+                QRegularExpressionMatch reMirrorStatusMatch = reMirrorStatus.match(scanRaid.output());
+
+                if (reMirrorStatusMatch.hasMatch())
+                    d->setActive(false);
+            }
             else
                 scannedRaid << d;
         }
@@ -259,13 +268,13 @@ QString SoftwareRAID::getUUID(const QString &path)
     QString config = getRAIDConfiguration(QStringLiteral("/etc/mdadm.conf"));
 
     if (!config.isEmpty()) {
-        QRegularExpression re(QStringLiteral("[\\t\\r\\n\\f\\s]ARRAY \\/dev\\/md([\\/\\w-]+)(.*)"));
+        QRegularExpression re(QStringLiteral("([\\t\\r\\n\\f\\s]|INACTIVE-)ARRAY \\/dev\\/md([\\/\\w-]+)(.*)"));
         QRegularExpressionMatchIterator i  = re.globalMatch(config);
 
         while (i.hasNext()) {
             QRegularExpressionMatch reMatch = i.next();
-            QString deviceNode = QStringLiteral("/dev/md") + reMatch.captured(1).trimmed();
-            QString otherInfo = reMatch.captured(2).trimmed();
+            QString deviceNode = QStringLiteral("/dev/md") + reMatch.captured(2).trimmed();
+            QString otherInfo = reMatch.captured(3).trimmed();
 
             // Consider device node as name=host:deviceNode when the captured device node string has '-' character
             // It happens when user have included the device to config file using 'mdadm --examine --scan'

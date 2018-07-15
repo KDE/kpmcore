@@ -136,7 +136,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         qint64 deviceSize = sizeCommand.output().trimmed().toLongLong();
         int logicalSectorSize = sizeCommand2.output().trimmed().toLongLong();
 
-        if ( modelCommand.run(-1) && modelCommand.exitCode() == 0 && !modelCommand.output().trimmed().isEmpty() )
+        if ( modelCommand.run(-1) && modelCommand.exitCode() == 0 )
         {
             QString modelName = modelCommand.output();
             modelName = modelName.left(modelName.length() - 1);
