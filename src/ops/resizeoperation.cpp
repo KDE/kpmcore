@@ -20,6 +20,7 @@
 
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/lvmdevice.h"
 #include "core/partitiontable.h"
 #include "core/copysourcedevice.h"
 #include "core/copytargetdevice.h"
@@ -30,7 +31,6 @@
 #include "jobs/movefilesystemjob.h"
 
 #include "ops/checkoperation.h"
-#include "ops/createvolumegroupoperation.h"
 
 #include "fs/filesystem.h"
 #include "fs/luks.h"
@@ -329,12 +329,12 @@ bool ResizeOperation::grow(Report& report)
     @param p the Partition in question, may be nullptr.
     @return true if @p p can be grown.
  */
-bool ResizeOperation::canGrow(const Partition* p, const QList<Operation *> pendingOps)
+bool ResizeOperation::canGrow(const Partition* p)
 {
     if (p == nullptr)
         return false;
 
-    if (isLVMPVinNewlyVG(p, pendingOps))
+    if (isLVMPVinNewlyVG(p))
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
@@ -351,12 +351,12 @@ bool ResizeOperation::canGrow(const Partition* p, const QList<Operation *> pendi
     @param p the Partition in question, may be nullptr.
     @return true if @p p can be shrunk.
  */
-bool ResizeOperation::canShrink(const Partition* p, const QList<Operation *> pendingOps)
+bool ResizeOperation::canShrink(const Partition* p)
 {
     if (p == nullptr)
         return false;
 
-    if (isLVMPVinNewlyVG(p, pendingOps))
+    if (isLVMPVinNewlyVG(p))
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
@@ -376,12 +376,12 @@ bool ResizeOperation::canShrink(const Partition* p, const QList<Operation *> pen
     @param p the Partition in question, may be nullptr.
     @return true if @p p can be moved.
  */
-bool ResizeOperation::canMove(const Partition* p, const QList<Operation *> pendingOps)
+bool ResizeOperation::canMove(const Partition* p)
 {
     if (p == nullptr)
         return false;
 
-    if (isLVMPVinNewlyVG(p, pendingOps))
+    if (isLVMPVinNewlyVG(p))
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
@@ -399,14 +399,11 @@ bool ResizeOperation::canMove(const Partition* p, const QList<Operation *> pendi
     return p->fileSystem().supportMove() != FileSystem::cmdSupportNone;
 }
 
-bool ResizeOperation::isLVMPVinNewlyVG(const Partition *p, const QList<Operation *> pendingOps)
+bool ResizeOperation::isLVMPVinNewlyVG(const Partition *p)
 {
     if (p->fileSystem().type() == FileSystem::Type::Lvm2_PV) {
-        // See if there is a newly created VG targeting this partition
-        for (Operation *op : qAsConst(pendingOps)) {
-            if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
-                return true;
-        }
+        if (LvmDevice::s_DirtyPVs.contains(p))
+            return true;
     }
     else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
         // See if innerFS is LVM
@@ -414,11 +411,8 @@ bool ResizeOperation::isLVMPVinNewlyVG(const Partition *p, const QList<Operation
 
         if (fs) {
             if (fs->type() == FileSystem::Type::Lvm2_PV) {
-                // See if there is a newly created VG targeting this partition
-                for (Operation *op : qAsConst(pendingOps)) {
-                    if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
-                        return true;
-                }
+                if (LvmDevice::s_DirtyPVs.contains(p))
+                    return true;
             }
         }
     }

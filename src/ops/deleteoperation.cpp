@@ -16,12 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#include "ops/createvolumegroupoperation.h"
 #include "ops/deleteoperation.h"
 
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/lvmdevice.h"
 #include "core/partitiontable.h"
+#include "core/raid/softwareraid.h"
 #include "fs/luks.h"
 
 #include "jobs/deletepartitionjob.h"
@@ -111,7 +112,7 @@ void DeleteOperation::checkAdjustLogicalNumbers(Partition& p, bool undo)
     @param p the Partition in question, may be nullptr.
     @return true if @p p can be deleted.
 */
-bool DeleteOperation::canDelete(const Partition* p, const QList<Operation *> pendingOps)
+bool DeleteOperation::canDelete(const Partition* p)
 {
     if (p == nullptr)
         return false;
@@ -120,11 +121,12 @@ bool DeleteOperation::canDelete(const Partition* p, const QList<Operation *> pen
         return false;
 
     if (p->fileSystem().type() == FileSystem::Type::Lvm2_PV) {
-        // See if there is a newly created VG targeting this partition
-        for (Operation *op : qAsConst(pendingOps)) {
-            if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
-                return false;
-        }
+        if (LvmDevice::s_DirtyPVs.contains(p))
+            return false;
+    }
+    else if (p->fileSystem().type() == FileSystem::Type::LinuxRaidMember) {
+        if (SoftwareRAID::isRaidMember(p->partitionPath()))
+            return false;
     }
     else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
         // See if innerFS is LVM
@@ -132,11 +134,12 @@ bool DeleteOperation::canDelete(const Partition* p, const QList<Operation *> pen
 
         if (fs) {
             if (fs->type() == FileSystem::Type::Lvm2_PV) {
-                // See if there is a newly created VG targeting this partition
-                for (Operation *op : qAsConst(pendingOps)) {
-                    if (dynamic_cast<CreateVolumeGroupOperation *>(op) && op->targets(*p))
-                        return false;
-                }
+                if (LvmDevice::s_DirtyPVs.contains(p))
+                    return false;
+            }
+            else if (fs->type() == FileSystem::Type::LinuxRaidMember) {
+                if (SoftwareRAID::isRaidMember(p->partitionPath()))
+                    return false;
             }
         }
     }
