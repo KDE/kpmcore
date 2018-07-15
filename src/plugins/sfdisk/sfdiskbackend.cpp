@@ -415,6 +415,7 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
         else if (s == QStringLiteral("f2fs")) rval = FileSystem::Type::F2fs;
         else if (s == QStringLiteral("udf")) rval = FileSystem::Type::Udf;
         else if (s == QStringLiteral("iso9660")) rval = FileSystem::Type::Iso9660;
+        else if (s == QStringLiteral("linux_raid_member")) rval = FileSystem::Type::LinuxRaidMember;
         else
             qWarning() << "unknown file system type " << s << " on " << partitionPath;
     }

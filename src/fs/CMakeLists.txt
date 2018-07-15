@@ -16,6 +16,7 @@ set(FS_SRC
     fs/hpfs.cpp
     fs/iso9660.cpp
     fs/jfs.cpp
+    fs/linuxraidmember.cpp
     fs/linuxswap.cpp
     fs/luks.cpp
     fs/luks2.cpp
@@ -51,6 +52,7 @@ set(FS_LIB_HDRS
     fs/hpfs.h
     fs/iso9660.h
     fs/jfs.h
+    fs/linuxraidmember.h
     fs/linuxswap.h
     fs/luks.h
     fs/luks2.h

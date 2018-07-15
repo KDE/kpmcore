@@ -91,6 +91,7 @@ public:
         Iso9660,
         Luks2,
         Fat12,
+        LinuxRaidMember,
 
         __lastType
     };
