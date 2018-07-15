@@ -126,7 +126,6 @@ public Q_SLOTS:
 
 private:
     void setExitCode(int i);
-    void setup(const QProcess::ProcessChannelMode processChannelMode);
 
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadOutput();

@@ -54,6 +54,7 @@ struct ExternalCommandPrivate
     QByteArray m_Output;
     QByteArray m_Input;
     DBusThread *m_thread;
+    QProcess::ProcessChannelMode processChannelMode;
 };
 
 unsigned int ExternalCommand::counter = 0;
@@ -81,7 +82,7 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
         if(!startHelper())
             Log(Log::Level::error) << xi18nc("@info:status", "Could not obtain administrator privileges.");
 
-    setup(processChannelMode);
+    d->processChannelMode = processChannelMode;
 }
 
 /** Creates a new ExternalCommand instance with Report.
@@ -98,20 +99,18 @@ ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStri
     d->m_ExitCode = -1;
     d->m_Output = QByteArray();
 
-    setup(processChannelMode);
+    d->processChannelMode = processChannelMode;
 }
 
 ExternalCommand::~ExternalCommand()
 {
 }
 
-void ExternalCommand::setup(const QProcess::ProcessChannelMode processChannelMode)
-{
-//     d->arguments.insert(QStringLiteral("processChannelMode"), processChannelMode); // FIXME
-
+// void ExternalCommand::setup()
+// {
 //     connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
 //     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
-}
+// }
 
 /** Executes the external command.
     @param timeout timeout to wait for the process to start
@@ -150,6 +149,7 @@ bool ExternalCommand::start(int timeout)
         for (const auto &argument : qAsConst(d->m_Args))
             request.append(argument.toUtf8());
         request.append(d->m_Input);
+        request.append(d->processChannelMode);
 
         QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
 
@@ -157,7 +157,8 @@ bool ExternalCommand::start(int timeout)
                                                  privateKey->signMessage(hash, QCA::EMSA3_Raw),
                                                  cmd,
                                                  args(),
-                                                 d->m_Input);
+                                                 d->m_Input,
+                                                 d->processChannelMode);
 
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
 

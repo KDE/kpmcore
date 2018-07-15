@@ -43,7 +43,7 @@ public:
 
 public Q_SLOTS:
     ActionReply init(const QVariantMap& args);
-    Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input);
+    Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
     Q_SCRIPTABLE bool copyblocks(const QByteArray& signature, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE void exit(const QByteArray& signature);
 

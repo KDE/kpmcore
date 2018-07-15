@@ -244,7 +244,7 @@ bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const QStrin
     return rval;
 }
 
-QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input)
+QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
@@ -255,6 +255,7 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
     for (const auto &argument : arguments)
         request.append(argument.toUtf8());
     request.append(input);
+    request.append(processChannelMode);
     QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
     if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
         qCritical() << xi18n("Invalid cryptographic signature");
@@ -265,6 +266,7 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
 
     m_cmd.setEnvironment( { QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1") } );
+    m_cmd.setProcessChannelMode(static_cast<QProcess::ProcessChannelMode>(processChannelMode));
     m_cmd.start(command, arguments);
     m_cmd.write(input);
     m_cmd.closeWriteChannel();
