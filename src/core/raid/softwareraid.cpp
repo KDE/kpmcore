@@ -96,8 +96,12 @@ QString SoftwareRAID::prettyName() const
 {
     QString raidInfo;
 
-    if (status() != SoftwareRAID::Status::Inactive)
+    if (status() == SoftwareRAID::Status::Active)
         raidInfo = xi18nc("@item:inlistbox [RAID level]", " [RAID %1]", raidLevel());
+    else if (status() == SoftwareRAID::Status::Recovery)
+        raidInfo = xi18nc("@item:inlistbox [RAID level - Recovering]", " [RAID %1 - Recovering]", raidLevel());
+    else if (status() == SoftwareRAID::Status::Resync)
+        raidInfo = xi18nc("@item:inlistbox [RAID level - Resyncing]", " [RAID %1 - Resyncing]", raidLevel());
     else
         raidInfo = QStringLiteral(" [RAID]");
 
@@ -193,12 +197,11 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 
             SoftwareRAID* d = static_cast<SoftwareRAID *>(CoreBackendManager::self()->backend()->scanDevice(deviceNode));
 
-            if (scannedRaid.contains(d)) {
-                if (status == QStringLiteral("inactive"))
-                    d->setStatus(SoftwareRAID::Status::Inactive);
-            }
-            else
+            if (!scannedRaid.contains(d))
                 scannedRaid << d;
+
+            if (status == QStringLiteral("inactive"))
+                d->setStatus(SoftwareRAID::Status::Inactive);
 
             if (d->raidLevel() > 0) {
                 QRegularExpression reMirrorStatus(QStringLiteral("\\[[=>.]+\\]\\s+(resync|recovery)"));
