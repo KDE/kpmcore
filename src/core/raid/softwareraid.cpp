@@ -26,6 +26,7 @@
 #include "util/externalcommand.h"
 
 #include <KLocalizedString>
+#include <QFile>
 #include <QRegularExpression>
 
 #define d_ptr std::static_pointer_cast<SoftwareRAIDPrivate>(d)
@@ -181,11 +182,17 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
         }
     }
 
-    ExternalCommand scanRaid(QStringLiteral("cat"), { QStringLiteral("/proc/mdstat") });
+    QFile mdstat(QStringLiteral("/proc/mdstat"));
 
-    if (scanRaid.run(-1) && scanRaid.exitCode() == 0) {
+    if (mdstat.open(QIODevice::ReadOnly)) {
+        QTextStream stream(&mdstat);
+
+        QString content = stream.readAll();
+
+        mdstat.close();
+
         QRegularExpression re(QStringLiteral("md([\\/\\w]+)\\s+:\\s+([\\w]+)"));
-        QRegularExpressionMatchIterator i  = re.globalMatch(scanRaid.output());
+        QRegularExpressionMatchIterator i  = re.globalMatch(content);
         while (i.hasNext()) {
             QRegularExpressionMatch reMatch = i.next();
 
@@ -193,6 +200,10 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
             QString status = reMatch.captured(2).trimmed();
 
             SoftwareRAID* d = static_cast<SoftwareRAID *>(CoreBackendManager::self()->backend()->scanDevice(deviceNode));
+
+            // Just to prevent segfault in some case
+            if (d == nullptr)
+                continue;
 
             const QStringList constAvailableInConf = availableInConf;
 
@@ -206,14 +217,14 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
                 d->setStatus(SoftwareRAID::Status::Inactive);
 
             if (d->raidLevel() > 0) {
-                QRegularExpression reMirrorStatus(QStringLiteral("\\[[=>.]+\\]\\s+(resync|recovery)"));
+                QRegularExpression reMirrorStatus(d->name() + QStringLiteral("\\s+:\\s+(.*\\n\\s+)+\\[[=>.]+\\]\\s+(resync|recovery)"));
 
-                QRegularExpressionMatch reMirrorStatusMatch = reMirrorStatus.match(scanRaid.output());
+                QRegularExpressionMatch reMirrorStatusMatch = reMirrorStatus.match(content);
 
                 if (reMirrorStatusMatch.hasMatch()) {
-                    if (reMirrorStatusMatch.captured(1) == QStringLiteral("resync"))
+                    if (reMirrorStatusMatch.captured(2) == QStringLiteral("resync"))
                         d->setStatus(SoftwareRAID::Status::Resync);
-                    else if (reMirrorStatusMatch.captured(1) == QStringLiteral("recovery"))
+                    else if (reMirrorStatusMatch.captured(2) == QStringLiteral("recovery"))
                         d->setStatus(SoftwareRAID::Status::Recovery);
                 }
             }
@@ -375,6 +386,34 @@ bool SoftwareRAID::reassembleSoftwareRAID(const QString &deviceNode)
     return stopSoftwareRAID(deviceNode) && assembleSoftwareRAID(deviceNode);
 }
 
+bool SoftwareRAID::isRaidMember(const QString &path)
+{
+    QFile mdstat(QStringLiteral("/proc/mdstat"));
+
+    if (!mdstat.open(QIODevice::ReadOnly))
+        return false;
+
+    QTextStream stream(&mdstat);
+
+    QString content = stream.readAll();
+
+    mdstat.close();
+
+    QRegularExpression re(QStringLiteral("(\\w+)\\[\\d+\\]"));
+    QRegularExpressionMatchIterator i  = re.globalMatch(content);
+
+    while (i.hasNext()) {
+        QRegularExpressionMatch reMatch = i.next();
+
+        QString match = QStringLiteral("/dev/") + reMatch.captured(1);
+
+        if (match == path)
+            return true;
+    }
+
+    return false;
+}
+
 void SoftwareRAID::initPartitions()
 {
 
@@ -394,7 +433,16 @@ QString SoftwareRAID::getDetail(const QString &path)
 
 QString SoftwareRAID::getRAIDConfiguration(const QString &configurationPath)
 {
-    ExternalCommand cmd(QStringLiteral("cat"), { configurationPath });
+    QFile config(configurationPath);
 
-    return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QString();
+    if (!config.open(QIODevice::ReadOnly))
+        return QString();
+
+    QTextStream stream(&config);
+
+    QString result = stream.readAll();
+
+    config.close();
+
+    return result;
 }

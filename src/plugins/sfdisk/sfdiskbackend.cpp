@@ -136,15 +136,33 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         qint64 deviceSize = sizeCommand.output().trimmed().toLongLong();
         int logicalSectorSize = sizeCommand2.output().trimmed().toLongLong();
 
-        ExternalCommand softwareRaidCommand(QStringLiteral("mdadm"), { QStringLiteral("--detail"), deviceNode });
+        QFile mdstat(QStringLiteral("/proc/mdstat"));
 
-        if ( softwareRaidCommand.run(-1) && softwareRaidCommand.exitCode() == 0 )
-        {
-            Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
+        if (mdstat.open(QIODevice::ReadOnly)) {
+            QTextStream stream(&mdstat);
 
-            QString deviceName = deviceNode.mid(5);
+            QString content = stream.readAll();
 
-            d = new SoftwareRAID( deviceName, SoftwareRAID::Status::Active );
+            mdstat.close();
+
+            QRegularExpression re(QStringLiteral("md([\\/\\w]+)\\s+:"));
+            QRegularExpressionMatchIterator i  = re.globalMatch(content);
+
+            while (i.hasNext()) {
+
+                QRegularExpressionMatch reMatch = i.next();
+
+                QString name = reMatch.captured(1);
+
+                if ((QStringLiteral("/dev/md") + name) == deviceNode) {
+                    Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
+
+                    d = new SoftwareRAID( QStringLiteral("md") + name, SoftwareRAID::Status::Active );
+
+                    break;
+                }
+
+            }
         }
 
         if ( d == nullptr && modelCommand.run(-1) && modelCommand.exitCode() == 0 )

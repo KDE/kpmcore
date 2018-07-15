@@ -87,6 +87,8 @@ public:
 
     static bool reassembleSoftwareRAID(const QString& deviceNode);
 
+    static bool isRaidMember(const QString& path);
+
 protected:
     void initPartitions() override;
 
