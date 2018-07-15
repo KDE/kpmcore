@@ -69,7 +69,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
                          QStringLiteral("/Application"),
                          QStringLiteral("org.kde.kpmcore.ping"),
                          QDBusConnection::systemBus());
-            iface.setTimeout(5000); // 5 seconds;
+            iface.setTimeout(2000); // 2 seconds;
             auto pcall = iface.asyncCall(QStringLiteral("ping"));
             QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
             auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {

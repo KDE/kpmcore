@@ -354,6 +354,11 @@ bool ExternalCommand::startHelper()
         qWarning() << "Could not connect to DBus session bus";
         return false;
     }
+    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
+    if (iface.isValid()) {
+        exit(0);
+    }
+
     d->m_thread = new DBusThread;
     d->m_thread->start();
 
