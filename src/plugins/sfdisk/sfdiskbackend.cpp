@@ -106,8 +106,8 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
             }
         }
 
-        LvmDevice::scanSystemLVM(result);
         SoftwareRAID::scanSoftwareRAID(result);
+        LvmDevice::scanSystemLVM(result); // LVM scanner needs all other devices, so should be last
     }
 
     return result;
