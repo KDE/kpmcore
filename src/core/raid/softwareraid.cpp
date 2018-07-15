@@ -190,12 +190,14 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
             if (scannedRaid.contains(d)) {
                 d->setActive(status.toLower() == QStringLiteral("active"));
 
-                QRegularExpression reMirrorStatus(QStringLiteral("\\[[=>.]+\\]\\s+(resync|recovery)"));
+                if (d->raidLevel() > 0) {
+                    QRegularExpression reMirrorStatus(QStringLiteral("\\[[=>.]+\\]\\s+(resync|recovery)"));
 
-                QRegularExpressionMatch reMirrorStatusMatch = reMirrorStatus.match(scanRaid.output());
+                    QRegularExpressionMatch reMirrorStatusMatch = reMirrorStatus.match(scanRaid.output());
 
-                if (reMirrorStatusMatch.hasMatch())
-                    d->setActive(false);
+                    if (reMirrorStatusMatch.hasMatch())
+                        d->setActive(false);
+                }
             }
             else
                 scannedRaid << d;
