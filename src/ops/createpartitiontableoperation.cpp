@@ -100,7 +100,7 @@ bool CreatePartitionTableOperation::canCreate(const Device* device)
     if (device->type() == Device::Type::SoftwareRAID_Device) {
         const SoftwareRAID* raid = static_cast<const SoftwareRAID *>(device);
 
-        if (!raid->isActive())
+        if (raid->status() == SoftwareRAID::Status::Inactive)
             return false;
     }
 

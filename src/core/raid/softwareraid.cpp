@@ -39,10 +39,10 @@ public:
     qint64 m_arraySize;
     QString m_UUID;
     QStringList m_devicePathList;
-    bool m_active;
+    SoftwareRAID::Status m_status;
 };
 
-SoftwareRAID::SoftwareRAID(const QString& name, bool active, const QString& iconName)
+SoftwareRAID::SoftwareRAID(const QString& name, SoftwareRAID::Status status, const QString& iconName)
     : VolumeManagerDevice(std::make_shared<SoftwareRAIDPrivate>(),
                           name,
                           (QStringLiteral("/dev/") + name),
@@ -57,7 +57,7 @@ SoftwareRAID::SoftwareRAID(const QString& name, bool active, const QString& icon
     d_ptr->m_arraySize = getArraySize(deviceNode());
     d_ptr->m_UUID = getUUID(deviceNode());
     d_ptr->m_devicePathList = getDevicePathList(deviceNode());
-    d_ptr->m_active = active;
+    d_ptr->m_status = status;
 
     initPartitions();
 }
@@ -94,9 +94,14 @@ bool SoftwareRAID::shrinkArray(Report &report, const QStringList &devices)
 
 QString SoftwareRAID::prettyName() const
 {
-    return VolumeManagerDevice::prettyName() +
-            (isActive() ? xi18nc("@item:inlistbox [RAID level]", " [RAID %1]", raidLevel()) :
-                          QStringLiteral(" [RAID]"));
+    QString raidInfo;
+
+    if (status() != SoftwareRAID::Status::Inactive)
+        raidInfo = xi18nc("@item:inlistbox [RAID level]", " [RAID %1]", raidLevel());
+    else
+        raidInfo = QStringLiteral(" [RAID]");
+
+    return VolumeManagerDevice::prettyName() + raidInfo;
 }
 
 bool SoftwareRAID::operator ==(const Device& other) const
@@ -143,14 +148,14 @@ QStringList SoftwareRAID::devicePathList() const
     return d_ptr->m_devicePathList;
 }
 
-bool SoftwareRAID::isActive() const
+SoftwareRAID::Status SoftwareRAID::status() const
 {
-    return d_ptr->m_active;
+    return d_ptr->m_status;
 }
 
-void SoftwareRAID::setActive(bool active)
+void SoftwareRAID::setStatus(SoftwareRAID::Status status)
 {
-    d_ptr->m_active = active;
+    d_ptr->m_status = status;
 }
 
 void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
@@ -168,7 +173,8 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
             QRegularExpressionMatch reMatch = i.next();
             QString deviceName = reMatch.captured(2).trimmed();
 
-            SoftwareRAID *raidDevice = new SoftwareRAID(deviceName, false);
+            SoftwareRAID *raidDevice = new SoftwareRAID(deviceName,
+                                                        SoftwareRAID::Status::Inactive);
 
             scannedRaid << raidDevice;
         }
@@ -188,19 +194,24 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
             SoftwareRAID* d = static_cast<SoftwareRAID *>(CoreBackendManager::self()->backend()->scanDevice(deviceNode));
 
             if (scannedRaid.contains(d)) {
-                d->setActive(status.toLower() == QStringLiteral("active"));
-
-                if (d->raidLevel() > 0) {
-                    QRegularExpression reMirrorStatus(QStringLiteral("\\[[=>.]+\\]\\s+(resync|recovery)"));
-
-                    QRegularExpressionMatch reMirrorStatusMatch = reMirrorStatus.match(scanRaid.output());
-
-                    if (reMirrorStatusMatch.hasMatch())
-                        d->setActive(false);
-                }
+                if (status == QStringLiteral("inactive"))
+                    d->setStatus(SoftwareRAID::Status::Inactive);
             }
             else
                 scannedRaid << d;
+
+            if (d->raidLevel() > 0) {
+                QRegularExpression reMirrorStatus(QStringLiteral("\\[[=>.]+\\]\\s+(resync|recovery)"));
+
+                QRegularExpressionMatch reMirrorStatusMatch = reMirrorStatus.match(scanRaid.output());
+
+                if (reMirrorStatusMatch.hasMatch()) {
+                    if (reMirrorStatusMatch.captured(1) == QStringLiteral("resync"))
+                        d->setStatus(SoftwareRAID::Status::Resync);
+                    else if (reMirrorStatusMatch.captured(1) == QStringLiteral("recovery"))
+                        d->setStatus(SoftwareRAID::Status::Recovery);
+                }
+            }
         }
     }
 

@@ -136,7 +136,18 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         qint64 deviceSize = sizeCommand.output().trimmed().toLongLong();
         int logicalSectorSize = sizeCommand2.output().trimmed().toLongLong();
 
-        if ( modelCommand.run(-1) && modelCommand.exitCode() == 0 )
+        ExternalCommand softwareRaidCommand(QStringLiteral("mdadm"), { QStringLiteral("--detail"), deviceNode });
+
+        if ( softwareRaidCommand.run(-1) && softwareRaidCommand.exitCode() == 0 )
+        {
+            Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
+
+            QString deviceName = deviceNode.mid(5);
+
+            d = new SoftwareRAID( deviceName, SoftwareRAID::Status::Active );
+        }
+
+        if ( d == nullptr && modelCommand.run(-1) && modelCommand.exitCode() == 0 )
         {
             QString modelName = modelCommand.output();
             modelName = modelName.left(modelName.length() - 1);
@@ -144,19 +155,6 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             Log(Log::Level::information) << xi18nc("@info:status", "Disk Device found: %1", modelName);
 
             d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
-        }
-        else // check for software raid
-        {
-            ExternalCommand softwareRaidCommand(QStringLiteral("mdadm"), { QStringLiteral("--detail"), deviceNode });
-
-            if ( softwareRaidCommand.run(-1) && softwareRaidCommand.exitCode() == 0 )
-            {
-                Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
-
-                QString deviceName = deviceNode.mid(5);
-
-                d = new SoftwareRAID( deviceName );
-            }
         }
 
         if ( d )

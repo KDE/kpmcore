@@ -27,7 +27,16 @@ class LIBKPMCORE_EXPORT SoftwareRAID : public VolumeManagerDevice
     Q_DISABLE_COPY(SoftwareRAID)
 
 public:
-    SoftwareRAID(const QString& name, bool active = true, const QString& iconName = QString());
+    enum class Status {
+        Active,
+        Inactive,
+        Resync,
+        Recovery,
+    };
+
+    SoftwareRAID(const QString& name,
+                 SoftwareRAID::Status status = SoftwareRAID::Status::Active,
+                 const QString& iconName = QString());
 
     const QStringList deviceNodes() const override;
     const QStringList& partitionNodes() const override;
@@ -47,9 +56,9 @@ public:
     qint64 arraySize() const;
     QString uuid() const;
     QStringList devicePathList() const;
-    bool isActive() const;
+    SoftwareRAID::Status status() const;
 
-    void setActive(bool active);
+    void setStatus(SoftwareRAID::Status status);
 
 public:
     static void scanSoftwareRAID(QList<Device*>& devices);
