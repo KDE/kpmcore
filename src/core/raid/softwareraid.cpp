@@ -39,9 +39,10 @@ public:
     qint64 m_arraySize;
     QString m_UUID;
     QStringList m_devicePathList;
+    bool m_active;
 };
 
-SoftwareRAID::SoftwareRAID(const QString& name, const QString& iconName)
+SoftwareRAID::SoftwareRAID(const QString& name, bool active, const QString& iconName)
     : VolumeManagerDevice(std::make_shared<SoftwareRAIDPrivate>(),
                           name,
                           (QStringLiteral("/dev/") + name),
@@ -56,6 +57,7 @@ SoftwareRAID::SoftwareRAID(const QString& name, const QString& iconName)
     d_ptr->m_arraySize = getArraySize(deviceNode());
     d_ptr->m_UUID = getUUID(deviceNode());
     d_ptr->m_devicePathList = getDevicePathList(deviceNode());
+    d_ptr->m_active = active;
 
     initPartitions();
 }
@@ -92,7 +94,23 @@ bool SoftwareRAID::shrinkArray(Report &report, const QStringList &devices)
 
 QString SoftwareRAID::prettyName() const
 {
-    return VolumeManagerDevice::prettyName() + xi18nc("@item:inlistbox [RAID level]", " [RAID %1]", raidLevel());
+    return VolumeManagerDevice::prettyName() +
+            (isActive() ? xi18nc("@item:inlistbox [RAID level]", " [RAID %1]", raidLevel()) :
+                          QStringLiteral(" [RAID]"));
+}
+
+bool SoftwareRAID::operator ==(const Device& other) const
+{
+    bool equalDeviceNode = Device::operator ==(other);
+
+    if (other.type() == Device::Type::SoftwareRAID_Device) {
+        const SoftwareRAID& raid = static_cast<const SoftwareRAID&>(other);
+
+        if (!equalDeviceNode)
+            return raid.uuid() == uuid();
+    }
+
+    return equalDeviceNode;
 }
 
 qint32 SoftwareRAID::raidLevel() const
@@ -125,9 +143,37 @@ QStringList SoftwareRAID::devicePathList() const
     return d_ptr->m_devicePathList;
 }
 
+bool SoftwareRAID::isActive() const
+{
+    return d_ptr->m_active;
+}
+
+void SoftwareRAID::setActive(bool active)
+{
+    d_ptr->m_active = active;
+}
+
 void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 {
-    // TODO: Check configuration file and load all the devices that aren't in /proc/mdstat as innactive
+    QList<Device *> scannedRaid;
+
+    // TODO: Support custom config files.
+    QString config = getRAIDConfiguration(QStringLiteral("/etc/mdadm.conf"));
+
+    if (!config.isEmpty()) {
+        QRegularExpression re(QStringLiteral("[\\t\\r\\n\\f\\s]ARRAY \\/dev\\/([\\/\\w-]+)"));
+        QRegularExpressionMatchIterator i  = re.globalMatch(config);
+
+        while (i.hasNext()) {
+            QRegularExpressionMatch reMatch = i.next();
+            QString deviceName = reMatch.captured(1).trimmed();
+
+            SoftwareRAID *raidDevice = new SoftwareRAID(deviceName, false);
+
+            scannedRaid << raidDevice;
+        }
+    }
+
     ExternalCommand scanRaid(QStringLiteral("cat"), { QStringLiteral("/proc/mdstat") });
 
     if (scanRaid.run(-1) && scanRaid.exitCode() == 0) {
@@ -136,14 +182,18 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
         while (i.hasNext()) {
             QRegularExpressionMatch reMatch = i.next();
 
-            QString deviceNode = QStringLiteral("/dev/") + QStringLiteral("md") + reMatch.captured(1).trimmed();
+            QString deviceNode = QStringLiteral("/dev/md") + reMatch.captured(1).trimmed();
 
-            Device* d = CoreBackendManager::self()->backend()->scanDevice(deviceNode);
+            SoftwareRAID* d = static_cast<SoftwareRAID *>(CoreBackendManager::self()->backend()->scanDevice(deviceNode));
 
-            if ( d )
-                devices << d;
+            if (scannedRaid.contains(d))
+                d->setActive(true);
+            else
+                scannedRaid << d;
         }
     }
+
+    devices << scannedRaid;
 }
 
 qint32 SoftwareRAID::getRaidLevel(const QString &path)
@@ -193,8 +243,51 @@ qint64 SoftwareRAID::getArraySize(const QString &path)
 
 QString SoftwareRAID::getUUID(const QString &path)
 {
-    Q_UNUSED(path)
-    return QStringLiteral();
+    QString output = getDetail(path);
+
+    if (!output.isEmpty()) {
+        QRegularExpression re(QStringLiteral("UUID :\\s+([\\w:]+)"));
+        QRegularExpressionMatch reMatch = re.match(output);
+
+        if (reMatch.hasMatch())
+            return reMatch.captured(1);
+    }
+
+    // If UUID was not found in detail output, it should be searched in config file
+
+    // TODO: Support custom config files.
+    QString config = getRAIDConfiguration(QStringLiteral("/etc/mdadm.conf"));
+
+    if (!config.isEmpty()) {
+        QRegularExpression re(QStringLiteral("[\\t\\r\\n\\f\\s]ARRAY \\/dev\\/md([\\/\\w-]+)(.*)"));
+        QRegularExpressionMatchIterator i  = re.globalMatch(config);
+
+        while (i.hasNext()) {
+            QRegularExpressionMatch reMatch = i.next();
+            QString deviceNode = QStringLiteral("/dev/md") + reMatch.captured(1).trimmed();
+            QString otherInfo = reMatch.captured(2).trimmed();
+
+            // Consider device node as name=host:deviceNode when the captured device node string has '-' character
+            // It happens when user have included the device to config file using 'mdadm --examine --scan'
+            if (deviceNode.contains(QLatin1Char('-'))) {
+                QRegularExpression reName(QStringLiteral("name=[\\w:]+\\/dev\\/md\\/([\\/\\w]+)"));
+                QRegularExpressionMatch nameMatch = reName.match(otherInfo);
+
+                if (nameMatch.hasMatch())
+                    deviceNode = nameMatch.captured(1);
+            }
+
+            if (deviceNode == path) {
+                QRegularExpression reUUID(QStringLiteral("(UUID=|uuid=)([\\w:]+)"));
+                QRegularExpressionMatch uuidMatch = reUUID.match(otherInfo);
+
+                if (uuidMatch.hasMatch())
+                    return uuidMatch.captured(2);
+            }
+        }
+    }
+
+    return QString();
 }
 
 QStringList SoftwareRAID::getDevicePathList(const QString &path)
@@ -266,5 +359,12 @@ QString SoftwareRAID::getDetail(const QString &path)
 {
     ExternalCommand cmd(QStringLiteral("mdadm"),
                        { QStringLiteral("--misc"), QStringLiteral("--detail"), path });
-    return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QStringLiteral();
+    return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QString();
+}
+
+QString SoftwareRAID::getRAIDConfiguration(const QString &configurationPath)
+{
+    ExternalCommand cmd(QStringLiteral("cat"), { configurationPath });
+
+    return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QString();
 }

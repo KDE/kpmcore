@@ -27,7 +27,7 @@ class LIBKPMCORE_EXPORT SoftwareRAID : public VolumeManagerDevice
     Q_DISABLE_COPY(SoftwareRAID)
 
 public:
-    SoftwareRAID(const QString& name, const QString& iconName = QString());
+    SoftwareRAID(const QString& name, bool active = true, const QString& iconName = QString());
 
     const QStringList deviceNodes() const override;
     const QStringList& partitionNodes() const override;
@@ -39,12 +39,17 @@ public:
 
     virtual QString prettyName() const override;
 
+    virtual bool operator==(const Device& other) const override;
+
     qint32 raidLevel() const;
     qint64 chunkSize() const;
     qint64 totalChunk() const;
     qint64 arraySize() const;
     QString uuid() const;
     QStringList devicePathList() const;
+    bool isActive() const;
+
+    void setActive(bool active);
 
 public:
     static void scanSoftwareRAID(QList<Device*>& devices);
@@ -80,6 +85,8 @@ protected:
 
 private:
     static QString getDetail(const QString& path);
+
+    static QString getRAIDConfiguration(const QString& configurationPath);
 };
 
 #endif // SOFTWARERAID_H
