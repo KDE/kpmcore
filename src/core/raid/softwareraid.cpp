@@ -164,7 +164,7 @@ void SoftwareRAID::setStatus(SoftwareRAID::Status status)
 
 void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 {
-    QList<Device *> scannedRaid;
+    QStringList availableInConf;
 
     // TODO: Support custom config files.
     QString config = getRAIDConfiguration(QStringLiteral("/etc/mdadm.conf"));
@@ -177,10 +177,7 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
             QRegularExpressionMatch reMatch = i.next();
             QString deviceName = reMatch.captured(2).trimmed();
 
-            SoftwareRAID *raidDevice = new SoftwareRAID(deviceName,
-                                                        SoftwareRAID::Status::Inactive);
-
-            scannedRaid << raidDevice;
+            availableInConf << deviceName;
         }
     }
 
@@ -197,8 +194,18 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 
             SoftwareRAID* d = static_cast<SoftwareRAID *>(CoreBackendManager::self()->backend()->scanDevice(deviceNode));
 
-            if (!scannedRaid.contains(d))
-                scannedRaid << d;
+            bool isInConf = false;
+
+            for (const QString& path : qAsConst(availableInConf)) {
+                if (getUUID(QStringLiteral("/dev/") + path) == d->uuid()) {
+                    isInConf = true;
+                    availableInConf.removeAll(path);
+                    break;
+                }
+            }
+
+            if (isInConf)
+                devices << d;
 
             if (status == QStringLiteral("inactive"))
                 d->setStatus(SoftwareRAID::Status::Inactive);
@@ -218,7 +225,10 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
         }
     }
 
-    devices << scannedRaid;
+    for (const QString& name : qAsConst(availableInConf)) {
+        SoftwareRAID *raidDevice = new SoftwareRAID(name, SoftwareRAID::Status::Inactive);
+        devices << raidDevice;
+    }
 }
 
 qint32 SoftwareRAID::getRaidLevel(const QString &path)
