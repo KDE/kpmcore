@@ -194,18 +194,13 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 
             SoftwareRAID* d = static_cast<SoftwareRAID *>(CoreBackendManager::self()->backend()->scanDevice(deviceNode));
 
-            bool isInConf = false;
+            const QStringList constAvailableInConf = availableInConf;
 
-            for (const QString& path : qAsConst(availableInConf)) {
-                if (getUUID(QStringLiteral("/dev/") + path) == d->uuid()) {
-                    isInConf = true;
+            for (const QString& path : constAvailableInConf)
+                if (getUUID(QStringLiteral("/dev/") + path) == d->uuid())
                     availableInConf.removeAll(path);
-                    break;
-                }
-            }
 
-            if (isInConf)
-                devices << d;
+            devices << d;
 
             if (status == QStringLiteral("inactive"))
                 d->setStatus(SoftwareRAID::Status::Inactive);
