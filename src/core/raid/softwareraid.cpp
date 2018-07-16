@@ -253,12 +253,28 @@ qint32 SoftwareRAID::getRaidLevel(const QString &path)
 
 qint64 SoftwareRAID::getChunkSize(const QString &path)
 {
-    QString output = getDetail(path);
-    if (!output.isEmpty()) {
-        QRegularExpression re(QStringLiteral("Chunk Size :\\s+(\\d+)"));
-        QRegularExpressionMatch reMatch = re.match(output);
-        if (reMatch.hasMatch())
-            return reMatch.captured(1).toLongLong();
+    if (getRaidLevel(path) == 1) {
+        QStringList devices = getDevicePathList(path);
+
+        if (!devices.isEmpty()) {
+            QString device = devices[0];
+            // Look sector size for the first device/partition on the list, as RAID 1 is composed by mirrored devices
+            ExternalCommand sectorSize(QStringLiteral("blockdev"), { QStringLiteral("--getss"), device });
+
+            if (sectorSize.run(-1) && sectorSize.exitCode() == 0) {
+                int sectors = sectorSize.output().trimmed().toLongLong();
+                return sectors;
+            }
+        }
+    }
+    else {
+        QString output = getDetail(path);
+        if (!output.isEmpty()) {
+            QRegularExpression re(QStringLiteral("Chunk Size :\\s+(\\d+)"));
+            QRegularExpressionMatch reMatch = re.match(output);
+            if (reMatch.hasMatch())
+                return reMatch.captured(1).toLongLong();
+        }
     }
     return -1;
 
@@ -333,8 +349,24 @@ QString SoftwareRAID::getUUID(const QString &path)
 
 QStringList SoftwareRAID::getDevicePathList(const QString &path)
 {
-    Q_UNUSED(path)
-    return {};
+    QStringList result;
+
+    QString detail = getDetail(path);
+
+    if (!detail.isEmpty()) {
+        QRegularExpression re(QStringLiteral("\\s+\\/dev\\/(\\w+)"));
+        QRegularExpressionMatchIterator i = re.globalMatch(detail);
+
+        while (i.hasNext()) {
+            QRegularExpressionMatch match = i.next();
+
+            QString device = QStringLiteral("/dev/") + match.captured(1);
+            if (device != path)
+                result << device;
+        }
+    }
+
+    return result;
 }
 
 bool SoftwareRAID::isRaidPath(const QString &path)
