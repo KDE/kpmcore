@@ -82,8 +82,7 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
         QRegularExpressionMatch rem = re.match(createCommand.output());
 
         if (rem.hasMatch()) {
-            // TODO: Use back() with Qt 5.10
-            if ( partition.devicePath()[partition.devicePath().size() - 1].isDigit() )
+            if ( partition.devicePath().back().isDigit() )
                 return partition.devicePath() + QLatin1Char('p') + rem.captured(1);
             else
                 return partition.devicePath() + rem.captured(1);
