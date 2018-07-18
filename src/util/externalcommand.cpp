@@ -174,7 +174,7 @@ bool ExternalCommand::start(int timeout)
 
                 d->m_Output = reply.value()[QStringLiteral("output")].toByteArray();
                 setExitCode(reply.value()[QStringLiteral("exitCode")].toInt());
-                rval = true;
+                rval = reply.value()[QStringLiteral("success")].toBool();
             }
         };
 
