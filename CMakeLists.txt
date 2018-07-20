@@ -41,7 +41,6 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
-include(ECMPackageConfigHelpers)
 
 ecm_setup_version(${VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
@@ -92,7 +91,7 @@ add_subdirectory(src)
 set(INCLUDE_INSTALL_DIR "include/kpmcore/")
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KPMcore")
 
-ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
+configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
                               "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"
                               INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
                               PATH_VARS INCLUDE_INSTALL_DIR
