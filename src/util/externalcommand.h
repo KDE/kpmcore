@@ -37,6 +37,7 @@ namespace QCA { class PrivateKey; class Initializer; }
 class Report;
 class CopySource;
 class CopyTarget;
+class QDBusInterface;
 struct ExternalCommandPrivate;
 
 class DBusThread : public QThread
@@ -129,12 +130,13 @@ private:
 
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadOutput();
+    static unsigned long long getNonce(QDBusInterface& iface);
 
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
 
     // KAuth stuff
-    static unsigned int counter;
+    static unsigned long long m_Nonce;
     static KAuth::ExecuteJob *m_job;
     static QCA::Initializer *init;
     static QCA::PrivateKey *privateKey;

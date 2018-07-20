@@ -57,7 +57,6 @@ struct ExternalCommandPrivate
     QProcess::ProcessChannelMode processChannelMode;
 };
 
-unsigned int ExternalCommand::counter = 0;
 KAuth::ExecuteJob* ExternalCommand::m_job;
 QCA::PrivateKey* ExternalCommand::privateKey;
 QCA::Initializer* ExternalCommand::init;
@@ -144,7 +143,7 @@ bool ExternalCommand::start(int timeout)
     if (iface.isValid()) {
         QByteArray request;
 
-        request.setNum(++counter);
+        request.setNum(getNonce(iface));
         request.append(cmd.toUtf8());
         for (const auto &argument : qAsConst(d->m_Args))
             request.append(argument.toUtf8());
@@ -204,7 +203,7 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
     if (iface.isValid()) {
         QByteArray request;
 
-        request.setNum(++counter);
+        request.setNum(getNonce(iface));
         request.append(source.path().toUtf8());
         request.append(QByteArray::number(source.firstByte()));
         request.append(QByteArray::number(source.length()));
@@ -411,13 +410,36 @@ void ExternalCommand::stopHelper()
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
     if (iface.isValid()) {
         QByteArray request;
-        request.setNum(++counter);
+        request.setNum(getNonce(iface));
         QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
         iface.call(QStringLiteral("exit"), privateKey->signMessage(hash, QCA::EMSA3_Raw));
     }
 
     delete privateKey;
     delete init;
+}
+
+unsigned long long ExternalCommand::getNonce(QDBusInterface& iface)
+{
+        QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("getNonce"));
+        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall);
+        QEventLoop loop;
+        unsigned long long rval = 0;
+
+        auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+            loop.exit();
+
+            if (watcher->isError())
+                qWarning() << watcher->error();
+            else {
+                QDBusPendingReply<unsigned long long> reply = *watcher;
+                rval = reply;
+            }
+        };
+
+        connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+        loop.exec();
+        return rval;
 }
 
 void DBusThread::run()

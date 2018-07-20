@@ -196,7 +196,6 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
         if (checkVG.run(-1) && checkVG.exitCode() == 0)
         {
-            qDebug() << "Trying to find LVM VG";
             QList<Device *> availableDevices = scanDevices();
 
             LvmDevice::scanSystemLVM(availableDevices);

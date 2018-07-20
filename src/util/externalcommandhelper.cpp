@@ -61,7 +61,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     }
 
     m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
-    m_Counter = 0;
+    m_Nonce = m_Generator.generate();
 
     HelperSupport::progressStep(QVariantMap());
     auto timeout = [this] () {
@@ -88,6 +88,15 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     reply.addData(QStringLiteral("success"), true);
 
     return reply;
+}
+
+/** Generates cryptographic nonce
+ *  @return nonce
+*/
+unsigned long long ExternalCommandHelper::getNonce()
+{
+    m_Nonce = m_Generator.generate();
+    return m_Nonce;
 }
 
 /** Reads the given number of bytes from the sourceDevice into the given buffer.
@@ -151,7 +160,7 @@ bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const QStrin
 {
     QByteArray request;
 
-    request.setNum(++m_Counter);
+    request.setNum(m_Nonce);
     request.append(sourceDevice.toUtf8());
     request.append(QByteArray::number(sourceFirstByte));
     request.append(QByteArray::number(sourceLength));
@@ -248,9 +257,10 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
+    reply[QStringLiteral("success")] = true;
 
     QByteArray request;
-    request.setNum(++m_Counter);
+    request.setNum(m_Nonce);
     request.append(command.toUtf8());
     for (const auto &argument : arguments)
         request.append(argument.toUtf8());
@@ -281,7 +291,7 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
 void ExternalCommandHelper::exit(const QByteArray& signature)
 {
     QByteArray request;
-    request.setNum(++m_Counter);
+    request.setNum(m_Nonce);
     QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
     if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
         qCritical() << xi18n("Invalid cryptographic signature");

@@ -21,6 +21,7 @@
 #include <KAuth>
 
 #include <QEventLoop>
+#include <QRandomGenerator64>
 #include <QString>
 #include <QProcess>
 
@@ -43,6 +44,7 @@ public:
 
 public Q_SLOTS:
     ActionReply init(const QVariantMap& args);
+    Q_SCRIPTABLE unsigned long long getNonce();
     Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
     Q_SCRIPTABLE bool copyblocks(const QByteArray& signature, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE void exit(const QByteArray& signature);
@@ -53,7 +55,8 @@ private:
     QEventLoop m_loop;
     QCA::Initializer initializer;
     QCA::PublicKey m_publicKey;
-    unsigned int m_Counter;
+    QRandomGenerator64 m_Generator;
+    unsigned long long m_Nonce;
     QString m_command;
     QString m_sourceDevice;
     QProcess m_cmd;
