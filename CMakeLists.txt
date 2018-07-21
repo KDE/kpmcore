@@ -21,7 +21,15 @@ cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 set(CMAKE_USE_RELATIVE_PATHS OFF)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 
+# Dependencies
 set(QT_MIN_VERSION "5.10.0")
+set(KF5_MIN_VERSION "5.25")
+set(BLKID_MIN_VERSION "2.32")
+# Qca-qt5
+
+# Runtime
+# smartmontools 6.7
+
 set(VERSION_MAJOR "3")
 set(VERSION_MINOR "50")
 set(VERSION_RELEASE "0")
@@ -32,7 +40,7 @@ add_definitions(-D'VERSION="${VERSION}"') #"
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(ECM 1.0.0 REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
 
 include(KDEInstallDirs)
@@ -55,7 +63,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 )
 
 # Load the frameworks we need
-find_package(KF5 REQUIRED
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
   Auth
   I18n
   CoreAddons
@@ -80,7 +88,7 @@ kde_enable_exceptions()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   find_package(PkgConfig REQUIRED)
-  pkg_check_modules(BLKID REQUIRED blkid>=2.31.1)
+  pkg_check_modules(BLKID REQUIRED blkid>=${BLKID_MIN_VERSION})
 endif()
 
 include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE_DIRS} lib/ src/)
