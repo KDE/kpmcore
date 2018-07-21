@@ -25,7 +25,7 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 set(QT_MIN_VERSION "5.10.0")
 set(KF5_MIN_VERSION "5.25")
 set(BLKID_MIN_VERSION "2.32")
-# Qca-qt5
+# Qca-qt5 (tested with botan and ossl backends)
 
 # Runtime
 # smartmontools 6.7
