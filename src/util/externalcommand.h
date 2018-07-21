@@ -130,13 +130,13 @@ private:
 
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadOutput();
-    static unsigned long long getNonce(QDBusInterface& iface);
+    static quint64 getNonce(QDBusInterface& iface);
 
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
 
-    // KAuth stuff
-    static unsigned long long m_Nonce;
+    // KAuth
+    static quint64 m_Nonce;
     static KAuth::ExecuteJob *m_job;
     static QCA::Initializer *init;
     static QCA::PrivateKey *privateKey;

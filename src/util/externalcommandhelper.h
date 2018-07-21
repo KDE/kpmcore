@@ -18,6 +18,8 @@
 #ifndef KPMCORE_EXTERNALCOMMANDHELPER_H
 #define KPMCORE_EXTERNALCOMMANDHELPER_H
 
+#include <unordered_set>
+
 #include <KAuth>
 
 #include <QEventLoop>
@@ -44,10 +46,10 @@ public:
 
 public Q_SLOTS:
     ActionReply init(const QVariantMap& args);
-    Q_SCRIPTABLE unsigned long long getNonce();
-    Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
-    Q_SCRIPTABLE bool copyblocks(const QByteArray& signature, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
-    Q_SCRIPTABLE void exit(const QByteArray& signature);
+    Q_SCRIPTABLE quint64 getNonce();
+    Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const quint64 nonce, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
+    Q_SCRIPTABLE bool copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
+    Q_SCRIPTABLE void exit(const QByteArray& signature, const quint64 nonce);
 
 private:
     void onReadOutput();
@@ -56,7 +58,7 @@ private:
     QCA::Initializer initializer;
     QCA::PublicKey m_publicKey;
     QRandomGenerator64 m_Generator;
-    unsigned long long m_Nonce;
+    std::unordered_set<quint64> m_Nonces;
     QString m_command;
     QString m_sourceDevice;
     QProcess m_cmd;

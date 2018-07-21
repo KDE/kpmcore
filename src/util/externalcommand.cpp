@@ -142,8 +142,8 @@ bool ExternalCommand::start(int timeout)
     bool rval = false;
     if (iface.isValid()) {
         QByteArray request;
-
-        request.setNum(getNonce(iface));
+        const quint64 nonce = getNonce(iface);
+        request.setNum(nonce);
         request.append(cmd.toUtf8());
         for (const auto &argument : qAsConst(d->m_Args))
             request.append(argument.toUtf8());
@@ -154,6 +154,7 @@ bool ExternalCommand::start(int timeout)
 
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("start"),
                                                  privateKey->signMessage(hash, QCA::EMSA3_Raw),
+                                                 nonce,
                                                  cmd,
                                                  args(),
                                                  d->m_Input,
@@ -203,7 +204,8 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
     if (iface.isValid()) {
         QByteArray request;
 
-        request.setNum(getNonce(iface));
+        const quint64 nonce = getNonce(iface);
+        request.setNum(nonce);
         request.append(source.path().toUtf8());
         request.append(QByteArray::number(source.firstByte()));
         request.append(QByteArray::number(source.length()));
@@ -214,8 +216,9 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
         QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
 
         // Use asynchronous DBus calls, so that we can process reports and progress
-        QDBusPendingCall pcall= iface.asyncCall(QStringLiteral("copyblocks"),
+        QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("copyblocks"),
                                                 privateKey->signMessage(hash, QCA::EMSA3_Raw),
+                                                nonce,
                                                 source.path(), source.firstByte(), source.length(),
                                                 target.path(), target.firstByte(), blockSize);
 
@@ -410,16 +413,17 @@ void ExternalCommand::stopHelper()
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
     if (iface.isValid()) {
         QByteArray request;
-        request.setNum(getNonce(iface));
+        const quint64 nonce = getNonce(iface);
+        request.setNum(nonce);
         QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-        iface.call(QStringLiteral("exit"), privateKey->signMessage(hash, QCA::EMSA3_Raw));
+        iface.call(QStringLiteral("exit"), privateKey->signMessage(hash, QCA::EMSA3_Raw), nonce);
     }
 
     delete privateKey;
     delete init;
 }
 
-unsigned long long ExternalCommand::getNonce(QDBusInterface& iface)
+quint64 ExternalCommand::getNonce(QDBusInterface& iface)
 {
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("getNonce"));
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall);

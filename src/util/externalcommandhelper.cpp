@@ -61,7 +61,6 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     }
 
     m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
-    m_Nonce = m_Generator.generate();
 
     HelperSupport::progressStep(QVariantMap());
     auto timeout = [this] () {
@@ -93,10 +92,11 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 /** Generates cryptographic nonce
  *  @return nonce
 */
-unsigned long long ExternalCommandHelper::getNonce()
+quint64 ExternalCommandHelper::getNonce()
 {
-    m_Nonce = m_Generator.generate();
-    return m_Nonce;
+    quint64 nonce = m_Generator.generate();
+    m_Nonces.insert(nonce);
+    return nonce;
 }
 
 /** Reads the given number of bytes from the sourceDevice into the given buffer.
@@ -156,11 +156,16 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
     return true;
 }
 
-bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
+bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
+    if (m_Nonces.find(nonce) != m_Nonces.end())
+        m_Nonces.erase( nonce );
+    else
+        return false;
+
     QByteArray request;
 
-    request.setNum(m_Nonce);
+    request.setNum(nonce);
     request.append(sourceDevice.toUtf8());
     request.append(QByteArray::number(sourceFirstByte));
     request.append(QByteArray::number(sourceLength));
@@ -253,14 +258,21 @@ bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const QStrin
     return rval;
 }
 
-QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
+QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quint64 nonce, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
+    if (m_Nonces.find(nonce) != m_Nonces.end())
+        m_Nonces.erase( nonce );
+    else {
+        reply[QStringLiteral("success")] = false;
+        return reply;
+    }
+
     QByteArray request;
-    request.setNum(m_Nonce);
+    request.setNum(nonce);
     request.append(command.toUtf8());
     for (const auto &argument : arguments)
         request.append(argument.toUtf8());
@@ -288,10 +300,13 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const QStr
     return reply;
 }
 
-void ExternalCommandHelper::exit(const QByteArray& signature)
+void ExternalCommandHelper::exit(const QByteArray& signature, const quint64 nonce)
 {
     QByteArray request;
-    request.setNum(m_Nonce);
+    if (m_Nonces.find(nonce) == m_Nonces.end())
+        return;
+
+    request.setNum(nonce);
     QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
     if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
         qCritical() << xi18n("Invalid cryptographic signature");
