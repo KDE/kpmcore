@@ -167,12 +167,7 @@ bool fat12::updateUUID(Report& report, const QString& deviceNode) const
 
     ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=39") });
 
-    if (!cmd.write(QByteArray(uuid, sizeof(uuid))))
-        return false;
-
-    if (!cmd.start())
-        return false;
-
-    return cmd.waitFor(-1);
+    cmd.write(QByteArray(uuid, sizeof(uuid)));
+    return cmd.start();
 }
 }

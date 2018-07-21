@@ -251,32 +251,13 @@ bool ExternalCommand::write(const QByteArray& input)
     return true;
 }
 
-/** Waits for the external command to finish.
-    @param timeout timeout to wait until the process finishes.
-    @return true on success
-*/
-bool ExternalCommand::waitFor(int timeout)
-{
-//     closeWriteChannel();
-/*
-    if (!waitForFinished(timeout)) {
-        if (report())
-            report()->line() << xi18nc("@info:status", "(Command timeout while running)");
-        return false;
-    }*/
-
-//     onReadOutput();
-    Q_UNUSED(timeout)
-    return true;
-}
-
 /** Runs the command.
     @param timeout timeout to use for waiting when starting and when waiting for the process to finish
     @return true on success
 */
 bool ExternalCommand::run(int timeout)
 {
-    return start(timeout) && waitFor(timeout)/* && exitStatus() == 0*/;
+    return start(timeout) /* && exitStatus() == 0*/;
 }
 
 void ExternalCommand::onReadOutput()

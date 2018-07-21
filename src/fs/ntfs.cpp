@@ -195,7 +195,6 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
-    cmd.waitFor(-1);
 
     // Also update backup NTFS boot sector located at the end of the partition
     // NOTE: this should fail if filesystem does not span the whole partition
@@ -207,7 +206,6 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
-    cmd2.waitFor(-1);
 
     Log() << xi18nc("@info:progress", "Updated NTFS boot sector for partition <filename>%1</filename> successfully.", deviceNode);
 

@@ -88,7 +88,6 @@ public:
 
     bool startCopyBlocks();
     bool start(int timeout = 30000);
-    bool waitFor(int timeout = 30000);
     bool run(int timeout = 30000);
 
     /**< @return the exit code */

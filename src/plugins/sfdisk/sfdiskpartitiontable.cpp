@@ -77,7 +77,7 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
     ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--force"), QStringLiteral("--append"), partition.devicePath() } );
     if ( createCommand.write(QByteArrayLiteral("start=") + QByteArray::number(partition.firstSector()) +
                                                         type +
-                                                        QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) && createCommand.waitFor() ) {
+                                                        QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) ) {
         QRegularExpression re(QStringLiteral("Created a new partition (\\d+)"));
         QRegularExpressionMatch rem = re.match(createCommand.output());
 
@@ -110,7 +110,7 @@ bool SfdiskPartitionTable::updateGeometry(Report& report, const Partition& parti
     if ( sfdiskCommand.write(QByteArrayLiteral("start=") + QByteArray::number(sectorStart) +
                                                         QByteArrayLiteral(" size=") + QByteArray::number(sectorEnd - sectorStart + 1) +
                                                         QByteArrayLiteral("\nY\n"))
-                                                        && sfdiskCommand.start(-1) && sfdiskCommand.waitFor() && sfdiskCommand.exitCode() == 0) {
+                                                        && sfdiskCommand.start(-1) && sfdiskCommand.exitCode() == 0) {
         return true;
     }
 

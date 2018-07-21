@@ -57,7 +57,7 @@ bool luks2::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
     if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
-                createCmd.start(-1) && createCmd.waitFor() && createCmd.exitCode() == 0))
+                createCmd.start(-1) && createCmd.exitCode() == 0))
     {
         return false;
     }
@@ -67,7 +67,7 @@ bool luks2::create(Report& report, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1) && openCmd.waitFor()))
+    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1)))
         return false;
 
     setPayloadSize();
@@ -99,8 +99,8 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
                 return false;
             cryptResizeCmd.write(m_passphrase.toLocal8Bit() + '\n');
         }
-        cryptResizeCmd.start(-1);
-        cryptResizeCmd.waitFor();
+        if (!cryptResizeCmd.start(-1))
+            return false;
         if ( cryptResizeCmd.exitCode() == 0 )
             return m_innerFs->resize(report, mapperName(), m_PayloadSize);
     }
@@ -115,8 +115,8 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
                 return false;
             cryptResizeCmd.write(m_passphrase.toLocal8Bit() + '\n');
         }
-        cryptResizeCmd.start(-1);
-        cryptResizeCmd.waitFor();
+        if (!cryptResizeCmd.start(-1))
+            return false;
         if ( cryptResizeCmd.exitCode() == 0 )
             return true;
     }

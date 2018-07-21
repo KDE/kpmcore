@@ -131,8 +131,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
     if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
-                createCmd.start(-1) &&
-                createCmd.waitFor() && createCmd.exitCode() == 0))
+                createCmd.start(-1) && createCmd.exitCode() == 0))
     {
         return false;
     }
@@ -142,7 +141,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1) && openCmd.waitFor()))
+    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1)))
         return false;
 
     setPayloadSize();
@@ -267,8 +266,7 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
                                 suggestedMapperName(deviceNode) });
 
     if (!( openCmd.write(passphrase.toLocal8Bit() + '\n') &&
-                    openCmd.start(-1) &&
-                    openCmd.waitFor() && openCmd.exitCode() == 0) )
+                    openCmd.start(-1) && openCmd.exitCode() == 0) )
         return false;
 
     if (m_innerFs) {
@@ -691,7 +689,7 @@ void luks::setPayloadSize()
 
 bool luks::testPassphrase(const QString& deviceNode, const QString& passphrase) const {
     ExternalCommand cmd(QStringLiteral("cryptsetup"), { QStringLiteral("open"), QStringLiteral("--tries"), QStringLiteral("1"), QStringLiteral("--test-passphrase"), deviceNode });
-    if (cmd.write(passphrase.toLocal8Bit() + '\n') && cmd.start(-1) && cmd.waitFor() && cmd.exitCode() == 0)
+    if (cmd.write(passphrase.toLocal8Bit() + '\n') && cmd.start(-1) && cmd.exitCode() == 0)
         return true;
 
     return false;

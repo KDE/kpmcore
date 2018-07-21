@@ -162,7 +162,7 @@ bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) 
     if (!cmd.start(-1))
         return false;
 
-    return cmd.waitFor(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 256);
+    return cmd.exitCode() == 0 || cmd.exitCode() == 256;
 }
 
 bool reiserfs::resizeOnline(Report& report, const QString& deviceNode, const QString&, qint64 length) const
