@@ -127,7 +127,6 @@ public Q_SLOTS:
 private:
     void setExitCode(int i);
 
-    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadOutput();
     static quint64 getNonce(QDBusInterface& iface);
 

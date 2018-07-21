@@ -276,12 +276,6 @@ void ExternalCommand::onReadOutput()
 //         *report() << QString::fromLocal8Bit(s);
 }
 
-void ExternalCommand::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
-{
-    Q_UNUSED(exitStatus)
-    setExitCode(exitCode);
-}
-
 void ExternalCommand::setCommand(const QString& cmd)
 {
     d->m_Command = cmd;
