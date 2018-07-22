@@ -399,7 +399,7 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
         else if (s == QStringLiteral("ext3")) rval = FileSystem::Type::Ext3;
         else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Type::Ext4;
         else if (s == QStringLiteral("swap")) rval = FileSystem::Type::LinuxSwap;
-        else if (s == QStringLiteral("ntfs-3g")) rval = FileSystem::Type::Ntfs;
+        else if (s == QStringLiteral("ntfs")) rval = FileSystem::Type::Ntfs;
         else if (s == QStringLiteral("reiserfs")) rval = FileSystem::Type::ReiserFS;
         else if (s == QStringLiteral("reiser4")) rval = FileSystem::Type::Reiser4;
         else if (s == QStringLiteral("xfs")) rval = FileSystem::Type::Xfs;
