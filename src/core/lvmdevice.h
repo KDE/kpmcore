@@ -55,6 +55,7 @@ public:
     qint64 partitionSize(QString& partitionPath) const override;
 
     static QVector<const Partition*> s_DirtyPVs;
+    static QVector<const Partition*> s_OrphanPVs;
 
     static void scanSystemLVM(QList<Device*>& devices);
 

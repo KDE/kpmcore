@@ -18,6 +18,7 @@
 #include "ops/removevolumegroupoperation.h"
 #include "jobs/removevolumegroupjob.h"
 
+#include "core/lvmdevice.h"
 #include "core/partition.h"
 #include "core/partitiontable.h"
 #include "core/volumemanagerdevice.h"
@@ -45,11 +46,28 @@ QString RemoveVolumeGroupOperation::description() const
 void RemoveVolumeGroupOperation::preview()
 {
     m_PartitionTable = device().partitionTable();
+
+    if (device().type() == Device::Type::LVM_Device) {
+        LvmDevice& lvm = static_cast<LvmDevice&>(device());
+
+        LvmDevice::s_OrphanPVs << lvm.physicalVolumes();
+    }
+
     device().setPartitionTable(new PartitionTable(PartitionTable::vmd, 0, device().totalLogical() - 1));
 }
 
 void RemoveVolumeGroupOperation::undo()
 {
+    if (device().type() == Device::Type::LVM_Device) {
+        LvmDevice& lvm = static_cast<LvmDevice&>(device());
+
+        const QVector<const Partition*> constOrphanList = LvmDevice::s_OrphanPVs;
+
+        for (const Partition* p : constOrphanList)
+            if (lvm.physicalVolumes().contains(p))
+                LvmDevice::s_OrphanPVs.removeAll(p);
+    }
+
     device().setPartitionTable(m_PartitionTable);
 }
 

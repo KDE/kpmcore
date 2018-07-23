@@ -83,6 +83,12 @@ LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
 */
 QVector<const Partition*> LvmDevice::s_DirtyPVs;
 
+
+/**
+ * shared list of PVs paths that are member of VGs that will be deleted soon.
+ */
+QVector<const Partition*> LvmDevice::s_OrphanPVs;
+
 LvmDevice::~LvmDevice()
 {
 }
@@ -199,6 +205,8 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
  */
 void LvmDevice::scanSystemLVM(QList<Device*>& devices)
 {
+    LvmDevice::s_OrphanPVs.clear();
+
     QList<LvmDevice*> lvmList;
     for (const auto &vgName : getVGs()) {
         lvmList.append(new LvmDevice(vgName));
