@@ -53,9 +53,15 @@ bool SfdiskPartitionTable::open()
 
 bool SfdiskPartitionTable::commit(quint32 timeout)
 {
+    if (m_device->type() == Device::Type::SoftwareRAID_Device)
+        ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--stop-exec-queue") }).run();
+
     ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("settle"), QStringLiteral("--timeout=") + QString::number(timeout) }).run();
     ExternalCommand(QStringLiteral("blockdev"), { QStringLiteral("--rereadpt"), m_device->deviceNode() }).run();
     ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("trigger") }).run();
+
+    if (m_device->type() == Device::Type::SoftwareRAID_Device)
+        ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--start-exec-queue") }).run();
 
     return true;
 }
