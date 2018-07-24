@@ -402,18 +402,26 @@ void PartitionTable::insertUnallocated(const Device& d, PartitionNode* p, qint64
         }
     }
 
-    // Take care of the free space between the end of the last child and the end
-    // of the device or the extended partition.
-    qint64 parentEnd = lastUsable();
-
-    if (!p->isRoot()) {
-        Partition* extended = dynamic_cast<Partition*>(p);
-        parentEnd = extended ? extended->lastSector() : -1;
-        Q_ASSERT(extended);
+    if (d.type() == Device::Type::LVM_Device)
+    {
+        const LvmDevice& lvm = static_cast<const LvmDevice&>(d);
+        p->insert(createUnallocated(d, *p, lastEnd, lastEnd + lvm.freePE() - 1));
     }
+    else
+    {
+        // Take care of the free space between the end of the last child and the end
+        // of the device or the extended partition.
+        qint64 parentEnd = lastUsable();
 
-    if (parentEnd >= firstUsable() && parentEnd >= lastEnd)
-        p->insert(createUnallocated(d, *p, lastEnd, parentEnd));
+        if (!p->isRoot()) {
+            Partition* extended = dynamic_cast<Partition*>(p);
+            parentEnd = extended ? extended->lastSector() : -1;
+            Q_ASSERT(extended);
+        }
+
+        if (parentEnd >= firstUsable() && parentEnd >= lastEnd)
+            p->insert(createUnallocated(d, *p, lastEnd, parentEnd));
+    }
 }
 
 /** Updates the unallocated Partitions for this PartitionTable.
