@@ -15,9 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_CAPACITY_H)
-
+#ifndef KPMCORE_CAPACITY_H
 #define KPMCORE_CAPACITY_H
+
 #include "util/libpartitionmanagerexport.h"
 
 class Partition;
@@ -36,16 +36,16 @@ class LIBKPMCORE_EXPORT Capacity
 {
 public:
     /** Units we can deal with */
-    enum Unit { Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
+    enum Unit : uint { Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
     /** Type of capacity to print */
-    enum Type { Used, Available, Total };
+    enum class Type { Used, Available, Total };
     /** Flags for printing */
-    enum Flag { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
+    enum class Flag { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
     Q_DECLARE_FLAGS(Flags, Flag)
 
 public:
     explicit Capacity(qint64 size);
-    explicit Capacity(const Partition& p, Type t = Total);
+    explicit Capacity(const Partition& p, Type t = Type::Total);
     Capacity(const Device& d);
 
 public:

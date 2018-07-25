@@ -25,13 +25,13 @@
 namespace FS
 {
 ext4::ext4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    ext2(firstsector, lastsector, sectorsused, label, FileSystem::Ext4)
+    ext2(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ext4)
 {
 }
 
 qint64 ext4::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 bool ext4::create(Report& report, const QString& deviceNode)

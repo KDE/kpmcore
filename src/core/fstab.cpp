@@ -18,38 +18,47 @@
  *************************************************************************/
 
 #include "core/fstab.h"
+#include "util/externalcommand.h"
 
-#include <blkid/blkid.h>
+#if defined(Q_OS_LINUX)
+    #include <blkid/blkid.h>
+#endif
 
 #include <QChar>
 #include <QDebug>
-#include <QFile>
 #include <QFileInfo>
 #include <QRegularExpression>
+#include <QTemporaryFile>
 #include <QTextStream>
 
-static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QString& m_deviceNode);
-static QString findBlkIdDevice(const QString& token, const QString& value);
+static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode);
+static QString findBlkIdDevice(const char *token, const QString& value);
 
-FstabEntry::FstabEntry(const QString& fsSpec, const QString& mountPoint, const QString& type, const QString& options, int dumpFreq, int passNumber, const QString& comment)
-    : m_fsSpec(fsSpec)
-    , m_mountPoint(mountPoint)
-    , m_type(type)
-    , m_dumpFreq(dumpFreq)
-    , m_passNumber(passNumber)
-    , m_comment(comment)
+struct FstabEntryPrivate
 {
-    m_options = options.split(QLatin1Char(','));
-    parseFsSpec(m_fsSpec, m_entryType, m_deviceNode);
-}
+    QString m_fsSpec;
+    QString m_deviceNode;
+    QString m_mountPoint;
+    QString m_type;
+    QStringList m_options;
+    int m_dumpFreq;
+    int m_passNumber;
+    QString m_comment;
+    FstabEntry::Type m_entryType;
+};
 
-/**
-  @param s the new value for the fs_spec field of fstab entry
-*/
-void FstabEntry::setFsSpec(const QString& s)
+FstabEntry::FstabEntry(const QString& fsSpec, const QString& mountPoint, const QString& type, const QString& options, int dumpFreq, int passNumber, const QString& comment) :
+    d(std::make_unique<FstabEntryPrivate>())
 {
-    m_fsSpec = s;
-    parseFsSpec(m_fsSpec, m_entryType, m_deviceNode);
+    d->m_fsSpec = fsSpec;
+    d->m_mountPoint = mountPoint;
+    d->m_type = type;
+    d->m_dumpFreq = dumpFreq;
+    d->m_passNumber = passNumber;
+    d->m_comment = comment;
+
+    d->m_options = options.split(QLatin1Char(','));
+    parseFsSpec(d->m_fsSpec, d->m_entryType, d->m_deviceNode);
 }
 
 FstabEntryList readFstabEntries( const QString& fstabPath )
@@ -63,7 +72,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
         {
             QString line = rawLine.trimmed();
             if ( line.startsWith( QLatin1Char('#') ) || line.isEmpty()) {
-                fstabEntries.append( { {}, {}, {}, {}, {}, {}, line } );
+                fstabEntries.push_back( { {}, {}, {}, {}, {}, {}, line } );
                 continue;
             }
 
@@ -80,25 +89,96 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             // (#) comment (optional).
             switch (splitLine.length()) {
                 case 4:
-                    fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3) } );
+                    fstabEntries.push_back( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3) } );
                     break;
                 case 5:
-                    fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt() } );
+                    fstabEntries.push_back( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt() } );
                     break;
                 case 6:
-                    fstabEntries.append( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt(), splitLine.at(5).toInt(), comment.isEmpty() ? QString() : QLatin1Char('#') + comment } );
+                    fstabEntries.push_back( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt(), splitLine.at(5).toInt(), comment.isEmpty() ? QString() : QLatin1Char('#') + comment } );
                     break;
                 default:
-                    fstabEntries.append( { {}, {}, {}, {}, {}, {}, QLatin1Char('#') + line } );
+                    fstabEntries.push_back( { {}, {}, {}, {}, {}, {}, QLatin1Char('#') + line } );
             }
         }
 
         fstabFile.close();
-        if (fstabEntries.last().entryType() == comment && fstabEntries.last().comment().isEmpty())
-            fstabEntries.removeLast();
+        if (fstabEntries.back().entryType() == FstabEntry::Type::comment && fstabEntries.back().comment().isEmpty())
+            fstabEntries.pop_back();
     }
 
     return fstabEntries;
+}
+
+void FstabEntry::setFsSpec(const QString& s)
+{
+    d->m_fsSpec = s;
+    parseFsSpec(d->m_fsSpec, d->m_entryType, d->m_deviceNode);
+}
+
+const QString& FstabEntry::fsSpec() const
+{
+    return d->m_fsSpec;
+}
+
+const QString& FstabEntry::deviceNode() const
+{
+    return d->m_deviceNode;
+}
+
+const QString& FstabEntry::mountPoint() const
+{
+    return d->m_mountPoint;
+}
+
+const QString& FstabEntry::type() const
+{
+    return d->m_type;
+}
+
+const QStringList& FstabEntry::options() const
+{
+    return d->m_options;
+}
+
+int FstabEntry::dumpFreq() const
+{
+    return d->m_dumpFreq;
+}
+
+int FstabEntry::passNumber() const
+{
+    return d->m_passNumber;
+}
+
+const QString& FstabEntry::comment() const
+{
+    return d->m_comment;
+}
+
+FstabEntry::Type FstabEntry::entryType() const
+{
+    return d->m_entryType;
+}
+
+void FstabEntry::setMountPoint(const QString& s)
+{
+    d->m_mountPoint = s;
+}
+
+void FstabEntry::setOptions(const QStringList& s)
+{
+    d->m_options = s;
+}
+
+void FstabEntry::setDumpFreq(int s)
+{
+    d->m_dumpFreq = s;
+}
+
+void FstabEntry::setPassNumber(int s)
+{
+    d->m_passNumber = s;
 }
 
 QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabPath)
@@ -113,40 +193,37 @@ QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabP
     return mountPoints;
 }
 
-static QString findBlkIdDevice(const QString& token, const QString& value)
+static QString findBlkIdDevice(const char *token, const QString& value)
 {
-    blkid_cache cache;
     QString rval;
 
-    if (blkid_get_cache(&cache, nullptr) == 0) {
-        if (char* c = blkid_evaluate_tag(token.toLocal8Bit().constData(), value.toLocal8Bit().constData(), &cache)) {
-            rval = QString::fromLocal8Bit(c);
-            free(c);
-        }
-
-        blkid_put_cache(cache);
+#if defined(Q_OS_LINUX)
+    if (char* c = blkid_evaluate_tag(token, value.toLocal8Bit().constData(), nullptr)) {
+        rval = QString::fromLocal8Bit(c);
+        free(c);
     }
+#endif
 
     return rval;
 }
 
-static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QString& m_deviceNode)
+static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode)
 {
-    m_entryType = FstabEntryType::comment;
+    m_entryType = FstabEntry::Type::comment;
     if (m_fsSpec.startsWith(QStringLiteral("UUID="))) {
-        m_entryType = FstabEntryType::uuid;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("UUID"), QString(m_fsSpec).remove(QStringLiteral("UUID=")));
+        m_entryType = FstabEntry::Type::uuid;
+        m_deviceNode = findBlkIdDevice("UUID", QString(m_fsSpec).remove(QStringLiteral("UUID=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("LABEL="))) {
-        m_entryType = FstabEntryType::label;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("LABEL"), QString(m_fsSpec).remove(QStringLiteral("LABEL=")));
+        m_entryType = FstabEntry::Type::label;
+        m_deviceNode = findBlkIdDevice("LABEL", QString(m_fsSpec).remove(QStringLiteral("LABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("PARTUUID="))) {
-        m_entryType = FstabEntryType::uuid;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("PARTUUID"), QString(m_fsSpec).remove(QStringLiteral("PARTUUID=")));
+        m_entryType = FstabEntry::Type::uuid;
+        m_deviceNode = findBlkIdDevice("PARTUUID", QString(m_fsSpec).remove(QStringLiteral("PARTUUID=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("PARTLABEL="))) {
-        m_entryType = FstabEntryType::label;
-        m_deviceNode = findBlkIdDevice(QStringLiteral("PARTLABEL"), QString(m_fsSpec).remove(QStringLiteral("PARTLABEL=")));
+        m_entryType = FstabEntry::Type::label;
+        m_deviceNode = findBlkIdDevice("PARTLABEL", QString(m_fsSpec).remove(QStringLiteral("PARTLABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("/"))) {
-        m_entryType = FstabEntryType::deviceNode;
+        m_entryType = FstabEntry::Type::deviceNode;
         m_deviceNode = m_fsSpec;
     }
 }
@@ -154,7 +231,7 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntryType& m_entryType, QS
 static void writeEntry(QFile& output, const FstabEntry& entry)
 {
     QTextStream s(&output);
-    if (entry.entryType() == FstabEntryType::comment) {
+    if (entry.entryType() == FstabEntry::Type::comment) {
         s << entry.comment() << "\n";
         return;
     }
@@ -177,34 +254,34 @@ static void writeEntry(QFile& output, const FstabEntry& entry)
       << entry.comment() << "\n";
 }
 
-bool writeMountpoints(const FstabEntryList fstabEntries, const QString& filename)
+bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filename)
 {
-    bool rval = true;
-    const QString newFilename = QStringLiteral("%1.new").arg(filename);
-    QFile out(newFilename);
+    QTemporaryFile out;
+    out.setAutoRemove(false);
 
-    if (!out.open(QFile::ReadWrite | QFile::Truncate)) {
-        qWarning() << "could not open output file " << newFilename;
-        rval = false;
+    if (!out.open()) {
+        qWarning() << "could not open output file " << out.fileName();
+        return false;
     } else {
         for (const auto &e : fstabEntries)
             writeEntry(out, e);
 
         out.close();
-
         const QString bakFilename = QStringLiteral("%1.bak").arg(filename);
-        QFile::remove(bakFilename);
+        ExternalCommand mvCmd(QStringLiteral("mv"), { filename, bakFilename } );
 
-        if (QFile::exists(filename) && !QFile::rename(filename, bakFilename)) {
-            qWarning() << "could not rename " << filename << " to " << bakFilename;
-            rval = false;
+        if ( !(mvCmd.run(-1) && mvCmd.exitCode() == 0) ) {
+            qWarning() << "could not backup " << filename << " to " << bakFilename;
+            return false;
         }
 
-        if (rval && !QFile::rename(newFilename, filename)) {
-            qWarning() << "could not rename " << newFilename << " to " << filename;
-            rval = false;
+        ExternalCommand mvCmd2(QStringLiteral("mv"), { out.fileName(), filename } );
+
+        if ( !(mvCmd2.run(-1) && mvCmd2.exitCode() == 0) ) {
+            qWarning() << "could not move " << out.fileName() << " to " << filename;
+            return false;
         }
     }
 
-    return rval;
+    return true;
 }

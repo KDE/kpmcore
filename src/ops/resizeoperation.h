@@ -159,6 +159,9 @@ protected:
     }
 
 private:
+    static bool isLVMPVinNewlyVG(const Partition* p);
+
+private:
     Device& m_TargetDevice;
     Partition& m_Partition;
     const qint64 m_OrigFirstSector;

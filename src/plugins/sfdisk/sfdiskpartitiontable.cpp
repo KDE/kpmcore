@@ -22,13 +22,12 @@
 
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/raid/softwareraid.h"
 
 #include "fs/filesystem.h"
 
 #include "util/report.h"
 #include "util/externalcommand.h"
-
-#include <unistd.h>
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -54,9 +53,15 @@ bool SfdiskPartitionTable::open()
 
 bool SfdiskPartitionTable::commit(quint32 timeout)
 {
-    if ( !(ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("settle"), QStringLiteral("--timeout=") + QString::number(timeout) }).run() &&
-            ExternalCommand(QStringLiteral("partx"), { QStringLiteral("--update"), m_device->deviceNode() }).run()) )
-        sleep(timeout);
+    if (m_device->type() == Device::Type::SoftwareRAID_Device)
+        ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--stop-exec-queue") }).run();
+
+    ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("settle"), QStringLiteral("--timeout=") + QString::number(timeout) }).run();
+    ExternalCommand(QStringLiteral("blockdev"), { QStringLiteral("--rereadpt"), m_device->deviceNode() }).run();
+    ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("trigger") }).run();
+
+    if (m_device->type() == Device::Type::SoftwareRAID_Device)
+        ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--start-exec-queue") }).run();
 
     return true;
 }
@@ -74,13 +79,18 @@ QString SfdiskPartitionTable::createPartition(Report& report, const Partition& p
 
     // NOTE: at least on GPT partition types "are" partition flags
     ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--force"), QStringLiteral("--append"), partition.devicePath() } );
-    if ( createCommand.start(-1) && createCommand.write(QByteArrayLiteral("start=") + QByteArray::number(partition.firstSector()) +
+    if ( createCommand.write(QByteArrayLiteral("start=") + QByteArray::number(partition.firstSector()) +
                                                         type +
-                                                        QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.waitFor() ) {
-        QRegularExpression re(QStringLiteral("Created a new partition (\\d)"));
+                                                        QByteArrayLiteral(" size=") + QByteArray::number(partition.length()) + QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) ) {
+        QRegularExpression re(QStringLiteral("Created a new partition (\\d+)"));
         QRegularExpressionMatch rem = re.match(createCommand.output());
-        if (rem.hasMatch())
-            return partition.devicePath() + rem.captured(1);
+
+        if (rem.hasMatch()) {
+            if ( partition.devicePath().back().isDigit() )
+                return partition.devicePath() + QLatin1Char('p') + rem.captured(1);
+            else
+                return partition.devicePath() + rem.captured(1);
+        }
     }
 
     report.line() << xi18nc("@info:progress", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition.deviceNode(), m_device->deviceNode());
@@ -101,10 +111,10 @@ bool SfdiskPartitionTable::deletePartition(Report& report, const Partition& part
 bool SfdiskPartitionTable::updateGeometry(Report& report, const Partition& partition, qint64 sectorStart, qint64 sectorEnd)
 {
     ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--force"), partition.devicePath(), QStringLiteral("-N"), QString::number(partition.number()) } );
-    if ( sfdiskCommand.start(-1) && sfdiskCommand.write(QByteArrayLiteral("start=") + QByteArray::number(sectorStart) +
+    if ( sfdiskCommand.write(QByteArrayLiteral("start=") + QByteArray::number(sectorStart) +
                                                         QByteArrayLiteral(" size=") + QByteArray::number(sectorEnd - sectorStart + 1) +
                                                         QByteArrayLiteral("\nY\n"))
-                                                        && sfdiskCommand.waitFor() && sfdiskCommand.exitCode() == 0) {
+                                                        && sfdiskCommand.start(-1) && sfdiskCommand.exitCode() == 0) {
         return true;
     }
 
@@ -135,7 +145,7 @@ bool SfdiskPartitionTable::resizeFileSystem(Report& report, const Partition& par
 
 FileSystem::Type SfdiskPartitionTable::detectFileSystemBySector(Report& report, const Device& device, qint64 sector)
 {
-    FileSystem::Type type = FileSystem::Unknown;
+    FileSystem::Type type = FileSystem::Type::Unknown;
 
     ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), device.deviceNode() } );
     if (jsonCommand.run(-1) && jsonCommand.exitCode() == 0) {
@@ -160,24 +170,24 @@ static struct {
     FileSystem::Type type;
     QLatin1String partitionType[2]; // GPT, MBR
 } typemap[] = {
-    { FileSystem::Btrfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Ext2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Ext3, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Ext4, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::LinuxSwap, { QLatin1String("0657FD6D-A4AB-43C4-84E5-0933C84B4F4F"), QLatin1String("82") } },
-    { FileSystem::Fat12, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
-    { FileSystem::Fat16, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
-    { FileSystem::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
-    { FileSystem::Nilfs2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Ntfs, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
-    { FileSystem::Exfat, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
-    { FileSystem::ReiserFS, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Reiser4, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Xfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Jfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
-    { FileSystem::Hfs, { QLatin1String("48465300-0000-11AA-AA11-00306543ECAC"), QLatin1String("af")} },
-    { FileSystem::HfsPlus, { QLatin1String("48465300-0000-11AA-AA11-00306543ECAC"), QLatin1String("af") } },
-    { FileSystem::Udf, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } }
+    { FileSystem::Type::Btrfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Ext2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Ext3, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Ext4, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::LinuxSwap, { QLatin1String("0657FD6D-A4AB-43C4-84E5-0933C84B4F4F"), QLatin1String("82") } },
+    { FileSystem::Type::Fat12, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
+    { FileSystem::Type::Fat16, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
+    { FileSystem::Type::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::Type::Nilfs2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Ntfs, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::Type::Exfat, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::Type::ReiserFS, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Reiser4, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Xfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Jfs, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
+    { FileSystem::Type::Hfs, { QLatin1String("48465300-0000-11AA-AA11-00306543ECAC"), QLatin1String("af")} },
+    { FileSystem::Type::HfsPlus, { QLatin1String("48465300-0000-11AA-AA11-00306543ECAC"), QLatin1String("af") } },
+    { FileSystem::Type::Udf, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } }
     // Add ZFS too
 };
 

@@ -37,7 +37,7 @@ bool RemoveVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    if (device().type() == Device::LVM_Device) {
+    if (device().type() == Device::Type::LVM_Device) {
         rval = LvmDevice::removeVG(*report, dynamic_cast<LvmDevice&>(device()));
     }
 

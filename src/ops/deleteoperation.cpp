@@ -20,7 +20,9 @@
 
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/lvmdevice.h"
 #include "core/partitiontable.h"
+#include "core/raid/softwareraid.h"
 #include "fs/luks.h"
 
 #include "jobs/deletepartitionjob.h"
@@ -45,13 +47,13 @@ DeleteOperation::DeleteOperation(Device& d, Partition* p, ShredAction shred) :
     m_DeletePartitionJob(new DeletePartitionJob(targetDevice(), deletedPartition()))
 {
     switch (shredAction()) {
-    case NoShred:
+    case ShredAction::NoShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new DeleteFileSystemJob(targetDevice(), deletedPartition()));
         break;
-    case ZeroShred:
+    case ShredAction::ZeroShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition(), false));
         break;
-    case RandomShred:
+    case ShredAction::RandomShred:
         m_DeleteFileSystemJob = static_cast<Job*>(new ShredFileSystemJob(targetDevice(), deletedPartition(), true));
     }
 
@@ -89,7 +91,7 @@ void DeleteOperation::undo()
 
 QString DeleteOperation::description() const
 {
-    if (shredAction() != NoShred)
+    if (shredAction() != ShredAction::NoShred)
         return xi18nc("@info:status", "Shred partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
     else
         return xi18nc("@info:status", "Delete partition <filename>%1</filename> (%2, %3)", deletedPartition().deviceNode(), Capacity::formatByteSize(deletedPartition().capacity()), deletedPartition().fileSystem().name());
@@ -118,6 +120,30 @@ bool DeleteOperation::canDelete(const Partition* p)
     if (p->isMounted())
         return false;
 
+    if (p->fileSystem().type() == FileSystem::Type::Lvm2_PV) {
+        if (LvmDevice::s_DirtyPVs.contains(p))
+            return false;
+    }
+    else if (p->fileSystem().type() == FileSystem::Type::LinuxRaidMember) {
+        if (SoftwareRAID::isRaidMember(p->partitionPath()))
+            return false;
+    }
+    else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
+        // See if innerFS is LVM
+        FileSystem *fs = static_cast<const FS::luks *>(&p->fileSystem())->innerFS();
+
+        if (fs) {
+            if (fs->type() == FileSystem::Type::Lvm2_PV) {
+                if (LvmDevice::s_DirtyPVs.contains(p))
+                    return false;
+            }
+            else if (fs->type() == FileSystem::Type::LinuxRaidMember) {
+                if (SoftwareRAID::isRaidMember(p->partitionPath()))
+                    return false;
+            }
+        }
+    }
+
     if (p->roles().has(PartitionRole::Unallocated))
         return false;
 
@@ -126,7 +152,7 @@ bool DeleteOperation::canDelete(const Partition* p)
 
     if (p->roles().has(PartitionRole::Luks))
     {
-        const FS::luks* luksFs = dynamic_cast<const FS::luks*>(&p->fileSystem());
+        const FS::luks* luksFs = static_cast<const FS::luks*>(&p->fileSystem());
         if (!luksFs)
             return false;
 

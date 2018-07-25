@@ -74,7 +74,7 @@ FileSystem::Type DummyBackend::detectFileSystem(const QString& deviceNode)
 {
     Q_UNUSED(deviceNode)
 
-    return FileSystem::Unknown;
+    return FileSystem::Type::Unknown;
 }
 
 QString DummyBackend::readLabel(const QString& deviceNode) const
@@ -91,31 +91,27 @@ QString DummyBackend::readUUID(const QString& deviceNode) const
     return QString();
 }
 
-CoreBackendDevice* DummyBackend::openDevice(const Device& d)
+std::unique_ptr<CoreBackendDevice> DummyBackend::openDevice(const Device& d)
 {
-    DummyDevice* device = new DummyDevice(d.deviceNode());
+    std::unique_ptr<DummyDevice> device = std::make_unique<DummyDevice>(d.deviceNode());
 
-    if (device == nullptr || !device->open()) {
-        delete device;
+    if (!device->open())
         device = nullptr;
-    }
 
     return device;
 }
 
-CoreBackendDevice* DummyBackend::openDeviceExclusive(const Device& d)
+std::unique_ptr<CoreBackendDevice> DummyBackend::openDeviceExclusive(const Device& d)
 {
-    DummyDevice* device = new DummyDevice(d.deviceNode());
+    std::unique_ptr<DummyDevice> device = std::make_unique<DummyDevice>(d.deviceNode());
 
-    if (device == nullptr || !device->openExclusive()) {
-        delete device;
+    if (!device->openExclusive())
         device = nullptr;
-    }
 
     return device;
 }
 
-bool DummyBackend::closeDevice(CoreBackendDevice* coreDevice)
+bool DummyBackend::closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice)
 {
     return coreDevice->close();
 }

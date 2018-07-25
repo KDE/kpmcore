@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -31,10 +31,12 @@
 
 #include <KLocalizedString>
 
+#include <QColor>
 #include <QFileInfo>
+#include <QStandardPaths>
 #include <QStorageInfo>
 
-const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode =
+const std::vector<QColor> FileSystem::defaultColorCode =
 {
 {
     QColor( 220,205,175 ), // unknown
@@ -66,25 +68,40 @@ const std::array< QColor, FileSystem::__lastType > FileSystem::defaultColorCode 
     QColor( 170,120,255 ), // udf
     QColor( 177,82,69 ),   // iso9660
     QColor( 223,39,104 ),  // luks2
-    QColor( 204,179,255 )  // fat12
+    QColor( 204,179,255 ),  // fat12
+    QColor( 255,100,100 ) // linux_raid_member
 }
 };
 
+struct FileSystemPrivate {
+    FileSystem::Type m_Type;
+    qint64 m_FirstSector;
+    qint64 m_LastSector;
+    qint64 m_SectorSize;
+    qint64 m_SectorsUsed;
+    QString m_Label;
+    QString m_UUID;
+};
 
 /** Creates a new FileSystem object
     @param firstsector the first sector used by this FileSystem on the Device
     @param lastsector the last sector used by this FileSystem on the Device
     @param sectorsused the number of sectors in use on the FileSystem
-    @param l the FileSystem label
-    @param t the FileSystem type
+    @param label the FileSystem label
+    @param type the FileSystem type
 */
-FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& l, FileSystem::Type t) :
-    m_Type(t),
-    m_FirstSector(firstsector),
-    m_LastSector(lastsector),
-    m_SectorsUsed(sectorsused),
-    m_Label(l),
-    m_UUID()
+FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type) :
+    d(std::make_unique<FileSystemPrivate>())
+{
+    d->m_Type = type;
+    d->m_FirstSector = firstsector;
+    d->m_LastSector = lastsector;
+    d->m_SectorsUsed = sectorsused;
+    d->m_Label = label;
+    d->m_UUID = QString();
+}
+
+FileSystem::~FileSystem()
 {
 }
 
@@ -106,7 +123,7 @@ FileSystem::Type FileSystem::detectFileSystem(const QString& partitionPath)
 
 QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPath)
 {
-    if (fs->type() == FileSystem::Lvm2_PV)
+    if (fs->type() == FileSystem::Type::Lvm2_PV)
         return FS::lvm2_pv::getVGName(partitionPath);
 
     if (partitionPath.isEmpty()) // Happens when during initial scan LUKS is closed
@@ -131,7 +148,7 @@ bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
 {
     bool mounted = false;
 
-    if (fs->type() == FileSystem::Lvm2_PV) {
+    if (fs->type() == FileSystem::Type::Lvm2_PV) {
         mounted = FS::lvm2_pv::getVGName(partitionPath) != QString();
     } else {
         mounted = isMounted(partitionPath);
@@ -360,13 +377,13 @@ bool FileSystem::updateBootSector(Report& report, const QString& deviceNode) con
 /** @return the minimum capacity valid for this FileSystem in bytes */
 qint64 FileSystem::minCapacity() const
 {
-    return 8 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 8 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 /** @return the maximum capacity valid for this FileSystem in bytes */
 qint64 FileSystem::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 /** @return the maximum label length valid for this FileSystem */
@@ -388,6 +405,11 @@ QValidator* FileSystem::labelValidator(QObject *parent) const
 QString FileSystem::name(const QStringList& languages) const
 {
     return nameForType(type(), languages);
+}
+
+FileSystem::Type FileSystem::type() const
+{
+    return d->m_Type;
 }
 
 /** @return a pointer to a QString C array with all FileSystem names */
@@ -424,7 +446,8 @@ static const KLocalizedString* typeNames()
         kxi18nc("@item filesystem name", "udf"),
         kxi18nc("@item filesystem name", "iso9660"),
         kxi18nc("@item filesystem name", "luks2"),
-        kxi18nc("@item filesystem name", "fat12")
+        kxi18nc("@item filesystem name", "fat12"),
+        kxi18nc("@item filesystem name", "linux_raid_member"),
     };
 
     return s;
@@ -435,10 +458,9 @@ static const KLocalizedString* typeNames()
 */
 QString FileSystem::nameForType(FileSystem::Type t, const QStringList& languages)
 {
-    Q_ASSERT(t >= 0);
-    Q_ASSERT(t < __lastType);
+    Q_ASSERT(t < Type::__lastType);
 
-    return typeNames()[t].toString(languages);
+    return typeNames()[static_cast<int>(t)].toString(languages);
 }
 
 /** @param s the name to get the type for
@@ -446,11 +468,11 @@ QString FileSystem::nameForType(FileSystem::Type t, const QStringList& languages
 */
 FileSystem::Type FileSystem::typeForName(const QString& s, const QStringList& languages )
 {
-    for (quint32 i = 0; i < __lastType; i++)
+    for (quint32 i = 0; i < static_cast<int>(Type::__lastType); i++)
         if (typeNames()[i].toString(languages) == s)
             return static_cast<FileSystem::Type>(i);
 
-    return Unknown;
+    return Type::Unknown;
 }
 
 /** @return a QList of all known types */
@@ -458,8 +480,8 @@ QList<FileSystem::Type> FileSystem::types()
 {
     QList<FileSystem::Type> result;
 
-    int i = Ext2; // first "real" filesystem
-    while (i != __lastType)
+    int i = static_cast<int>(Type::Ext2); // first "real" filesystem
+    while (i != static_cast<int>(Type::__lastType))
         result.append(static_cast<FileSystem::Type>(i++));
 
     return result;
@@ -529,9 +551,25 @@ bool FileSystem::unmount(Report& report, const QString& deviceNode)
     return false;
 }
 
+qint64 FileSystem::firstSector() const
+{
+    return d->m_FirstSector;
+}
+
+qint64 FileSystem::lastSector() const
+{
+        return d->m_LastSector;
+}
+
 bool FileSystem::findExternal(const QString& cmdName, const QStringList& args, int expectedCode)
 {
-    ExternalCommand cmd(cmdName, args);
+    QString cmdFullPath = QStandardPaths::findExecutable(cmdName);
+    if (cmdFullPath.isEmpty())
+        cmdFullPath = QStandardPaths::findExecutable(cmdName, { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+    if (cmdFullPath.isEmpty())
+        return false;
+
+    ExternalCommand cmd(cmdFullPath, args);
     if (!cmd.run())
         return false;
 
@@ -546,4 +584,54 @@ bool FileSystem::supportToolFound() const
 FileSystem::SupportTool FileSystem::supportToolName() const
 {
     return SupportTool();
+}
+
+void FileSystem::setFirstSector(qint64 s)
+{
+    d->m_FirstSector = s;
+}
+
+void FileSystem::setLastSector(qint64 s)
+{
+    d->m_LastSector = s;
+}
+
+const QString& FileSystem::label() const
+{
+    return d->m_Label;
+}
+
+qint64 FileSystem::sectorSize() const
+{
+    return d->m_SectorSize;
+}
+
+qint64 FileSystem::sectorsUsed() const
+{
+    return d->m_SectorsUsed;
+}
+
+const QString& FileSystem::uuid() const
+{
+    return d->m_UUID;
+}
+
+void FileSystem::setSectorSize(qint64 s)
+{
+    d->m_SectorSize = s;
+}
+
+void FileSystem::setSectorsUsed(qint64 s)
+{
+    d->m_SectorsUsed = s;
+}
+
+void FileSystem::setLabel(const QString& s)
+{
+    d->m_Label = s;
+}
+
+void FileSystem::setUUID(const QString& s)
+{
+    d->m_UUID = s;
 }

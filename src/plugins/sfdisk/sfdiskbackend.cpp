@@ -25,6 +25,7 @@
 #include "core/lvmdevice.h"
 #include "core/partitiontable.h"
 #include "core/partitionalignment.h"
+#include "core/raid/softwareraid.h"
 
 #include "fs/filesystemfactory.h"
 #include "fs/luks.h"
@@ -105,7 +106,8 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
             }
         }
 
-        LvmDevice::scanSystemLVM(result);
+        SoftwareRAID::scanSoftwareRAID(result);
+        LvmDevice::scanSystemLVM(result); // LVM scanner needs all other devices, so should be last
     }
 
     return result;
@@ -126,61 +128,66 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
     ExternalCommand sizeCommand2(QStringLiteral("blockdev"), { QStringLiteral("--getss"), deviceNode });
     ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode } );
 
-    if ( modelCommand.run(-1) && modelCommand.exitCode() == 0
-                && sizeCommand.run(-1) && sizeCommand.exitCode() == 0
-                && sizeCommand2.run(-1) && sizeCommand2.exitCode() == 0
-                && jsonCommand.run(-1) )
+    if ( sizeCommand.run(-1) && sizeCommand.exitCode() == 0
+         && sizeCommand2.run(-1) && sizeCommand2.exitCode() == 0
+         && jsonCommand.run(-1) )
     {
-        QString modelName = modelCommand.output();
-        modelName = modelName.left(modelName.length() - 1);
+        Device* d = nullptr;
         qint64 deviceSize = sizeCommand.output().trimmed().toLongLong();
-
-        Log(Log::information) << xi18nc("@info:status", "Device found: %1", modelName);
         int logicalSectorSize = sizeCommand2.output().trimmed().toLongLong();
-        DiskDevice* d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
 
-        if (jsonCommand.exitCode() != 0)
-            return d;
+        QFile mdstat(QStringLiteral("/proc/mdstat"));
 
-        const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.rawOutput()).object();
-        const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
+        if (mdstat.open(QIODevice::ReadOnly)) {
+            QTextStream stream(&mdstat);
 
-        QString tableType = partitionTable[QLatin1String("label")].toString();
-        const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
+            QString content = stream.readAll();
 
-        qint64 firstUsableSector = 0, lastUsableSector = d->totalSectors();
-        if (type == PartitionTable::gpt) {
-            firstUsableSector = partitionTable[QLatin1String("firstlba")].toVariant().toLongLong();
-            lastUsableSector = partitionTable[QLatin1String("lastlba")].toVariant().toLongLong();
-        }
-        if (lastUsableSector < firstUsableSector) {
-            return nullptr;
-        }
+            mdstat.close();
 
-        setPartitionTableForDevice(*d, new PartitionTable(type, firstUsableSector, lastUsableSector));
-        switch (type) {
-        case PartitionTable::gpt:
-        {
-            // Read the maximum number of GPT partitions
-            qint32 maxEntries;
-            ExternalCommand ddCommand(QStringLiteral("dd"), { QStringLiteral("skip=1"), QStringLiteral("count=1"), QStringLiteral("if=") + deviceNode}, QProcess::SeparateChannels);
-            if (ddCommand.run(-1) && ddCommand.exitCode() == 0 ) {
-                QByteArray gptHeader = ddCommand.rawOutput();
-                QByteArray gptMaxEntries = gptHeader.mid(80, 4);
-                QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
-                stream.setByteOrder(QDataStream::LittleEndian);
-                stream >> maxEntries;
+            QRegularExpression re(QStringLiteral("md([\\/\\w]+)\\s+:"));
+            QRegularExpressionMatchIterator i  = re.globalMatch(content);
+
+            while (i.hasNext()) {
+
+                QRegularExpressionMatch reMatch = i.next();
+
+                QString name = reMatch.captured(1);
+
+                if ((QStringLiteral("/dev/md") + name) == deviceNode) {
+                    Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
+
+                    d = new SoftwareRAID( QStringLiteral("md") + name, SoftwareRAID::Status::Active );
+
+                    break;
+                }
+
             }
-            else
-                maxEntries = 128;
-            CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), maxEntries);
-        }
-        default:
-            break;
         }
 
-        scanDevicePartitions(*d, partitionTable[QLatin1String("partitions")].toArray());
-        return d;
+        if ( d == nullptr && modelCommand.run(-1) && modelCommand.exitCode() == 0 )
+        {
+            QString modelName = modelCommand.output();
+            modelName = modelName.left(modelName.length() - 1);
+
+            Log(Log::Level::information) << xi18nc("@info:status", "Disk Device found: %1", modelName);
+
+            d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
+        }
+
+        if ( d )
+        {
+            if (jsonCommand.exitCode() != 0)
+                return d;
+
+            const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.rawOutput()).object();
+            const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
+
+            if (!updateDevicePartitionTable(*d, partitionTable))
+                return nullptr;
+
+            return d;
+        }
     }
     else
     {
@@ -189,7 +196,6 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
         if (checkVG.run(-1) && checkVG.exitCode() == 0)
         {
-            qDebug() << "Trying to find LVM VG";
             QList<Device *> availableDevices = scanDevices();
 
             LvmDevice::scanSystemLVM(availableDevices);
@@ -226,13 +232,13 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
             activeFlags = PartitionTable::FlagBiosGrub;
 
-        FileSystem::Type type = FileSystem::Unknown;
+        FileSystem::Type type = FileSystem::Type::Unknown;
         type = detectFileSystem(partitionNode);
         PartitionRole::Roles r = PartitionRole::Primary;
 
         if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) && partitionType.toInt() == 5 ) {
             r = PartitionRole::Extended;
-            type = FileSystem::Extended;
+            type = FileSystem::Type::Extended;
         }
 
         // Find an extended partition this partition is in.
@@ -250,7 +256,7 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         QString mountPoint;
         bool mounted;
         // sfdisk does not handle LUKS partitions
-        if (fs->type() == FileSystem::Luks || fs->type() == FileSystem::Luks2) {
+        if (fs->type() == FileSystem::Type::Luks || fs->type() == FileSystem::Type::Luks2) {
             r |= PartitionRole::Luks;
             FS::luks* luksFs = static_cast<FS::luks*>(fs);
             luksFs->initLUKS();
@@ -291,13 +297,71 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         PartitionAlignment::isAligned(d, *part);
 }
 
+bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jsonPartitionTable)
+{
+    QString tableType = jsonPartitionTable[QLatin1String("label")].toString();
+    const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
+
+    qint64 firstUsableSector = 0, lastUsableSector;
+
+    if ( d.type() == Device::Type::Disk_Device )
+    {
+        const DiskDevice* diskDevice = static_cast<const DiskDevice*>(&d);
+
+        lastUsableSector = diskDevice->totalSectors();
+    }
+    else if ( d.type() == Device::Type::SoftwareRAID_Device )
+    {
+        const SoftwareRAID* raidDevice = static_cast<const SoftwareRAID*>(&d);
+
+        lastUsableSector = raidDevice->totalLogical() - 1;
+    }
+
+    if (type == PartitionTable::gpt) {
+        firstUsableSector = jsonPartitionTable[QLatin1String("firstlba")].toVariant().toLongLong();
+        lastUsableSector = jsonPartitionTable[QLatin1String("lastlba")].toVariant().toLongLong();
+    }
+
+    if (lastUsableSector < firstUsableSector) {
+        return false;
+    }
+
+    setPartitionTableForDevice(d, new PartitionTable(type, firstUsableSector, lastUsableSector));
+    switch (type) {
+    case PartitionTable::gpt:
+    {
+        // Read the maximum number of GPT partitions
+        qint32 maxEntries;
+        ExternalCommand ddCommand(QStringLiteral("dd"),
+                                 { QStringLiteral("skip=1"), QStringLiteral("count=1"), (QStringLiteral("if=") + d.deviceNode()) },
+                                  QProcess::SeparateChannels);
+        if (ddCommand.run(-1) && ddCommand.exitCode() == 0 ) {
+            QByteArray gptHeader = ddCommand.rawOutput();
+            QByteArray gptMaxEntries = gptHeader.mid(80, 4);
+            QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
+            stream.setByteOrder(QDataStream::LittleEndian);
+            stream >> maxEntries;
+        }
+        else
+            maxEntries = 128;
+        CoreBackend::setPartitionTableMaxPrimaries(*d.partitionTable(), maxEntries);
+    }
+    default:
+        break;
+    }
+
+    scanDevicePartitions(d, jsonPartitionTable[QLatin1String("partitions")].toArray());
+
+    return true;
+}
+
 /** Reads the sectors used in a FileSystem and stores the result in the Partition's FileSystem object.
     @param p the Partition the FileSystem is on
     @param mountPoint mount point of the partition in question
 */
 void SfdiskBackend::readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint)
 {
-    if (!mountPoint.isEmpty() && p.fileSystem().type() != FileSystem::LinuxSwap && p.fileSystem().type() != FileSystem::Lvm2_PV) {
+    if (!mountPoint.isEmpty() && p.fileSystem().type() != FileSystem::Type::LinuxSwap && p.fileSystem().type() != FileSystem::Type::Lvm2_PV) {
         const QStorageInfo storage = QStorageInfo(mountPoint);
         if (p.isMounted() && storage.isValid())
             p.fileSystem().setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / d.logicalSize());
@@ -308,7 +372,7 @@ void SfdiskBackend::readSectorsUsed(const Device& d, Partition& p, const QString
 
 FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
 {
-    FileSystem::Type rval = FileSystem::Unknown;
+    FileSystem::Type rval = FileSystem::Type::Unknown;
 
     ExternalCommand udevCommand(QStringLiteral("udevadm"), {
                                  QStringLiteral("info"),
@@ -331,43 +395,44 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
             version = reFileSystemVersion.captured(1);
         }
 
-        if (s == QStringLiteral("ext2")) rval = FileSystem::Ext2;
-        else if (s == QStringLiteral("ext3")) rval = FileSystem::Ext3;
-        else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Ext4;
-        else if (s == QStringLiteral("swap")) rval = FileSystem::LinuxSwap;
-        else if (s == QStringLiteral("ntfs-3g")) rval = FileSystem::Ntfs;
-        else if (s == QStringLiteral("reiserfs")) rval = FileSystem::ReiserFS;
-        else if (s == QStringLiteral("reiser4")) rval = FileSystem::Reiser4;
-        else if (s == QStringLiteral("xfs")) rval = FileSystem::Xfs;
-        else if (s == QStringLiteral("jfs")) rval = FileSystem::Jfs;
-        else if (s == QStringLiteral("hfs")) rval = FileSystem::Hfs;
-        else if (s == QStringLiteral("hfsplus")) rval = FileSystem::HfsPlus;
-        else if (s == QStringLiteral("ufs")) rval = FileSystem::Ufs;
+        if (s == QStringLiteral("ext2")) rval = FileSystem::Type::Ext2;
+        else if (s == QStringLiteral("ext3")) rval = FileSystem::Type::Ext3;
+        else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Type::Ext4;
+        else if (s == QStringLiteral("swap")) rval = FileSystem::Type::LinuxSwap;
+        else if (s == QStringLiteral("ntfs")) rval = FileSystem::Type::Ntfs;
+        else if (s == QStringLiteral("reiserfs")) rval = FileSystem::Type::ReiserFS;
+        else if (s == QStringLiteral("reiser4")) rval = FileSystem::Type::Reiser4;
+        else if (s == QStringLiteral("xfs")) rval = FileSystem::Type::Xfs;
+        else if (s == QStringLiteral("jfs")) rval = FileSystem::Type::Jfs;
+        else if (s == QStringLiteral("hfs")) rval = FileSystem::Type::Hfs;
+        else if (s == QStringLiteral("hfsplus")) rval = FileSystem::Type::HfsPlus;
+        else if (s == QStringLiteral("ufs")) rval = FileSystem::Type::Ufs;
         else if (s == QStringLiteral("vfat")) {
             if (version == QStringLiteral("FAT32"))
-                rval = FileSystem::Fat32;
+                rval = FileSystem::Type::Fat32;
             else if (version == QStringLiteral("FAT16"))
-                rval = FileSystem::Fat16;
+                rval = FileSystem::Type::Fat16;
             else if (version == QStringLiteral("FAT12"))
-                rval = FileSystem::Fat12;
+                rval = FileSystem::Type::Fat12;
         }
-        else if (s == QStringLiteral("btrfs")) rval = FileSystem::Btrfs;
-        else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Ocfs2;
-        else if (s == QStringLiteral("zfs_member")) rval = FileSystem::Zfs;
-        else if (s == QStringLiteral("hpfs")) rval = FileSystem::Hpfs;
+        else if (s == QStringLiteral("btrfs")) rval = FileSystem::Type::Btrfs;
+        else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Type::Ocfs2;
+        else if (s == QStringLiteral("zfs_member")) rval = FileSystem::Type::Zfs;
+        else if (s == QStringLiteral("hpfs")) rval = FileSystem::Type::Hpfs;
         else if (s == QStringLiteral("crypto_LUKS")) {
             if (version == QStringLiteral("1"))
-                rval = FileSystem::Luks;
+                rval = FileSystem::Type::Luks;
             else if (version == QStringLiteral("2")) {
-                rval = FileSystem::Luks2;
+                rval = FileSystem::Type::Luks2;
             }
         }
-        else if (s == QStringLiteral("exfat")) rval = FileSystem::Exfat;
-        else if (s == QStringLiteral("nilfs2")) rval = FileSystem::Nilfs2;
-        else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Lvm2_PV;
-        else if (s == QStringLiteral("f2fs")) rval = FileSystem::F2fs;
-        else if (s == QStringLiteral("udf")) rval = FileSystem::Udf;
-        else if (s == QStringLiteral("iso9660")) rval = FileSystem::Iso9660;
+        else if (s == QStringLiteral("exfat")) rval = FileSystem::Type::Exfat;
+        else if (s == QStringLiteral("nilfs2")) rval = FileSystem::Type::Nilfs2;
+        else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Type::Lvm2_PV;
+        else if (s == QStringLiteral("f2fs")) rval = FileSystem::Type::F2fs;
+        else if (s == QStringLiteral("udf")) rval = FileSystem::Type::Udf;
+        else if (s == QStringLiteral("iso9660")) rval = FileSystem::Type::Iso9660;
+        else if (s == QStringLiteral("linux_raid_member")) rval = FileSystem::Type::LinuxRaidMember;
         else
             qWarning() << "unknown file system type " << s << " on " << partitionPath;
     }
@@ -420,31 +485,27 @@ PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType ty
     return flags;
 }
 
-CoreBackendDevice* SfdiskBackend::openDevice(const Device& d)
+std::unique_ptr<CoreBackendDevice> SfdiskBackend::openDevice(const Device& d)
 {
-    SfdiskDevice* device = new SfdiskDevice(d);
+    std::unique_ptr<SfdiskDevice> device = std::make_unique<SfdiskDevice>(d);
 
-    if (device == nullptr || !device->open()) {
-        delete device;
+    if (!device->open())
         device = nullptr;
-    }
 
     return device;
 }
 
-CoreBackendDevice* SfdiskBackend::openDeviceExclusive(const Device& d)
+std::unique_ptr<CoreBackendDevice> SfdiskBackend::openDeviceExclusive(const Device& d)
 {
-    SfdiskDevice* device = new SfdiskDevice(d);
+    std::unique_ptr<SfdiskDevice> device = std::make_unique<SfdiskDevice>(d);
 
-    if (device == nullptr || !device->openExclusive()) {
-        delete device;
+    if (!device->openExclusive())
         device = nullptr;
-    }
 
     return device;
 }
 
-bool SfdiskBackend::closeDevice(CoreBackendDevice* coreDevice)
+bool SfdiskBackend::closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice)
 {
     return coreDevice->close();
 }

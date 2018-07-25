@@ -25,9 +25,6 @@
 #include <QDBusReply>
 #include <QMutex>
 
-#include <pwd.h>
-#include <unistd.h>
-
 /** Constructs an OperationRunner.
     @param ostack the OperationStack to act on
 */
@@ -50,15 +47,6 @@ void OperationRunner::run()
     bool status = true;
 
     // Disable Plasma removable device automounting
-    unsigned int currentUid = getuid(); // 0 if running as root
-    char *login = getlogin();
-    if (login != nullptr){
-        passwd* pwnam = getpwnam(login);
-        if (pwnam != nullptr) {
-            unsigned int userId = pwnam->pw_uid; // uid of original user before sudo
-            seteuid(userId);
-        }
-    }
     QStringList modules;
     QDBusConnection bus = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QStringLiteral("sessionBus"));
     QDBusInterface kdedInterface( QStringLiteral("org.kde.kded5"), QStringLiteral("/kded"), QStringLiteral("org.kde.kded5"), bus );
@@ -69,7 +57,6 @@ void OperationRunner::run()
     bool automounter = modules.contains(automounterService);
     if (automounter)
         kdedInterface.call( QStringLiteral("unloadModule"), automounterService );
-    seteuid(currentUid);
 
     for (int i = 0; i < numOperations(); i++) {
         suspendMutex().lock();

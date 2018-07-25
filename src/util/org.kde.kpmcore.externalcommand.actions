@@ -1,0 +1,8 @@
+[Domain]
+Icon=partitionmanager
+
+[org.kde.kpmcore.externalcommand.init]
+Name=Start external command daemon
+Description=Root privileges are needed to manage disks
+Policy=auth_admin
+Persistence=session

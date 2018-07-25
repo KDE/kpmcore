@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -15,18 +16,39 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_EXTERNALCOMMAND_H)
-
+#ifndef KPMCORE_EXTERNALCOMMAND_H
 #define KPMCORE_EXTERNALCOMMAND_H
 
 #include "util/libpartitionmanagerexport.h"
 
+#include <QDebug>
 #include <QProcess>
-#include <QStringList>
 #include <QString>
+#include <QStringList>
 #include <QtGlobal>
+#include <QThread>
+#include <QVariant>
 
+#include <memory>
+
+class KJob;
+namespace KAuth { class ExecuteJob; }
+namespace QCA { class PrivateKey; class Initializer; }
 class Report;
+class CopySource;
+class CopyTarget;
+class QDBusInterface;
+struct ExternalCommandPrivate;
+
+class DBusThread : public QThread
+{
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.ping")
+    void run() override;
+
+public Q_SLOTS:
+    Q_SCRIPTABLE void ping() {return;};
+};
 
 /** An external command.
 
@@ -35,57 +57,89 @@ class Report;
     @author Volker Lanz <vl@fidra.de>
     @author Andrius Štikonas <andrius@stikonas.eu>
 */
-class LIBKPMCORE_EXPORT ExternalCommand : public QProcess
+class LIBKPMCORE_EXPORT ExternalCommand : public QObject
 {
+    Q_OBJECT
     Q_DISABLE_COPY(ExternalCommand)
 
 public:
-    explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = MergedChannels);
-    explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = MergedChannels);
+    explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
+    explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
+
+    ~ExternalCommand();
 
 public:
-    void setCommand(const QString& cmd) { m_Command = cmd; } /**< @param cmd the command to run */
-    const QString& command() const { return m_Command; } /**< @return the command to run */
+    bool copyBlocks(CopySource& source, CopyTarget& target);
 
-    void addArg(const QString& s) { m_Args << s; } /**< @param s the argument to add */
-    const QStringList& args() const { return m_Args; } /**< @return the arguments */
-    void setArgs(const QStringList& args) { m_Args = args; } /**< @param args the new arguments */
+    /**< @param cmd the command to run */
+    void setCommand(const QString& cmd);
+     /**< @return the command to run */
+    const QString& command() const;
 
+    /**< @return the arguments */
+    const QStringList& args() const;
+
+    /**< @param s the argument to add */
+    void addArg(const QString& s);
+    /**< @param args the new arguments */
+    void setArgs(const QStringList& args);
+
+    bool write(const QByteArray& input); /**< @param input the input for the program */
+
+    bool startCopyBlocks();
     bool start(int timeout = 30000);
-    bool waitFor(int timeout = 30000);
     bool run(int timeout = 30000);
 
-    int exitCode() const {
-        return m_ExitCode;    /**< @return the exit code */
+    /**< @return the exit code */
+    int exitCode() const;
+
+    /**< @return the command output */
+    const QString output() const;
+    /**< @return the command output */
+    const QByteArray& rawOutput() const;
+
+    /**< @return pointer to the Report or nullptr */
+    Report* report();
+
+    void emitReport(const QVariantMap& report) { emit reportSignal(report); }
+
+    // KAuth
+    /**< start ExternalCommand Helper */
+    bool startHelper();
+
+    /**< stop ExternalCommand Helper */
+    static void stopHelper();
+
+    /**< Sets a parent widget for the authentication dialog.
+     * @param p parent widget
+     */
+    static void setParentWidget(QWidget *p) {
+        parent = p;
     }
 
-    const QString output() const {
-        return QString::fromLocal8Bit(m_Output);    /**< @return the command output */
-    }
+Q_SIGNALS:
+    void progress(int);
+    void reportSignal(const QVariantMap&);
 
-    const QByteArray& rawOutput() const {
-        return m_Output;    /**< @return the command output */
-    }
-
-    Report* report() {
-        return m_Report;    /**< @return pointer to the Report or nullptr */
-    }
-
-protected:
-    void setExitCode(int i) {
-        m_ExitCode = i;
-    }
-    void setup(const QProcess::ProcessChannelMode processChannelMode);
-
-    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onReadOutput();
+public Q_SLOTS:
+    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };
 
 private:
-    Report *m_Report;
-    QString m_Command;
-    QStringList m_Args;
-    int m_ExitCode;
-    QByteArray m_Output;
+    void setExitCode(int i);
+
+    void onReadOutput();
+    static quint64 getNonce(QDBusInterface& iface);
+
+private:
+    std::unique_ptr<ExternalCommandPrivate> d;
+
+    // KAuth
+    static quint64 m_Nonce;
+    static KAuth::ExecuteJob *m_job;
+    static QCA::Initializer *init;
+    static QCA::PrivateKey *privateKey;
+    static bool helperStarted;
+    static QWidget *parent;
 };
 
 #endif

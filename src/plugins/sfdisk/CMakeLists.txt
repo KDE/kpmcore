@@ -22,6 +22,6 @@ set (pmsfdiskbackendplugin_SRCS
 
 add_library(pmsfdiskbackendplugin SHARED ${pmsfdiskbackendplugin_SRCS})
 
-target_link_libraries(pmsfdiskbackendplugin kpmcore)
+target_link_libraries(pmsfdiskbackendplugin kpmcore KF5::I18n KF5::CoreAddons)
 
 install(TARGETS pmsfdiskbackendplugin DESTINATION ${KDE_INSTALL_PLUGINDIR})

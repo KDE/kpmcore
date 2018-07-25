@@ -47,45 +47,15 @@ bool DummyDevice::close()
     return true;
 }
 
-CoreBackendPartitionTable* DummyDevice::openPartitionTable()
+std::unique_ptr<CoreBackendPartitionTable> DummyDevice::openPartitionTable()
 {
-    CoreBackendPartitionTable* ptable = new DummyPartitionTable();
-
-    if (ptable == nullptr || !ptable->open()) {
-        delete ptable;
-        ptable = nullptr;
-    }
-
-    return ptable;
+    return std::make_unique<DummyPartitionTable>(DummyPartitionTable());
 }
 
 bool DummyDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
-    Q_UNUSED(report);
-    Q_UNUSED(ptable);
-
-    return true;
-}
-
-bool DummyDevice::readData(QByteArray& buffer, qint64 offset, qint64 size)
-{
-    Q_UNUSED(buffer);
-    Q_UNUSED(offset);
-    Q_UNUSED(size);
-
-    if (!isExclusive())
-        return false;
-
-    return true;
-}
-
-bool DummyDevice::writeData(QByteArray& buffer, qint64 offset)
-{
-    Q_UNUSED(buffer);
-    Q_UNUSED(offset);
-
-    if (!isExclusive())
-        return false;
+    Q_UNUSED(report)
+    Q_UNUSED(ptable)
 
     return true;
 }

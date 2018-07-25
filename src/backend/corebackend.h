@@ -23,11 +23,14 @@
 #include "util/libpartitionmanagerexport.h"
 #include "fs/filesystem.h"
 
+#include <memory>
+
 #include <QObject>
 #include <QList>
 
 class CoreBackendManager;
 class CoreBackendDevice;
+struct CoreBackendPrivate;
 class Device;
 class PartitionTable;
 
@@ -68,17 +71,13 @@ public:
       * Return the plugin's unique Id from JSON metadata
       * @return the plugin's unique Id from JSON metadata
       */
-    QString id() {
-        return m_id;
-    }
+    QString id();
 
     /**
       * Return the plugin's version from JSON metadata
       * @return the plugin's version from JSON metadata
       */
-    QString version() {
-        return m_version;
-    }
+    QString version();
 
     /**
       * Initialize the plugin's FileSystem support
@@ -130,29 +129,23 @@ public:
     /**
       * Open a device for reading.
       * @param deviceNode The path of the device that is to be opened (e.g. /dev/sda)
-      * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
-      *         an instance is returned, it's the caller's responsibility to delete the
-      *         object.
+      * @return a pointer to a CoreBackendDevice or nullptr if the open failed.
       */
-    virtual CoreBackendDevice* openDevice(const Device& d) = 0;
+    virtual std::unique_ptr<CoreBackendDevice> openDevice(const Device& d) = 0;
 
     /**
       * Open a device in exclusive mode for writing.
       * @param deviceNode The path of the device that is to be opened (e.g. /dev/sda)
-      * @return a pointer to a CoreBackendDevice or nullptr if the open failed. If a pointer to
-      *         an instance is returned, it's the caller's responsibility to delete the
-      *         object.
+      * @return a pointer to a CoreBackendDevice or nullptr if the open failed.
       */
-    virtual CoreBackendDevice* openDeviceExclusive(const Device& d) = 0;
+    virtual std::unique_ptr<CoreBackendDevice> openDeviceExclusive(const Device& d) = 0;
 
     /**
       * Close a CoreBackendDevice that has previously been opened.
       * @param core_device Pointer to the CoreBackendDevice to be closed. Must not be nullptr.
       * @return true if closing the CoreBackendDevice succeeded, otherwise false.
-      *
-      * This method does not delete the object.
       */
-    virtual bool closeDevice(CoreBackendDevice* core_device) = 0;
+    virtual bool closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice) = 0;
 
     /**
       * Emit progress.
@@ -176,18 +169,11 @@ protected:
     static void setPartitionTableMaxPrimaries(PartitionTable& p, qint32 max_primaries);
 
 private:
-    void setId(const QString& id) {
-        m_id = id;
-    }
-    void setVersion(const QString& version) {
-        m_version = version;
-    }
+    void setId(const QString& id);
+    void setVersion(const QString& version);
 
 private:
-    QString m_id, m_version;
-
-    class CoreBackendPrivate;
-    CoreBackendPrivate* d;
+    std::unique_ptr<CoreBackendPrivate> d;
 };
 
 #endif

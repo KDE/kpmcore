@@ -42,12 +42,9 @@ public:
     bool openExclusive() override;
     bool close() override;
 
-    CoreBackendPartitionTable* openPartitionTable() override;
+    std::unique_ptr<CoreBackendPartitionTable> openPartitionTable() override;
 
     bool createPartitionTable(Report& report, const PartitionTable& ptable) override;
-
-    bool readData(QByteArray& buffer, qint64 offset, qint64 size) override;
-    bool writeData(QByteArray& buffer, qint64 offset) override;
 
 private:
     const Device *m_device;

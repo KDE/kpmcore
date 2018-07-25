@@ -15,8 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_VOLUMEMANAGERDEVICE_H)
-
+#ifndef KPMCORE_VOLUMEMANAGERDEVICE_H
 #define KPMCORE_VOLUMEMANAGERDEVICE_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -26,6 +25,8 @@
 #include <QStringList>
 #include <QObject>
 #include <QtGlobal>
+
+class VolumeManagerDevicePrivate;
 
 /** A Volume Manager of physical devices represented as an abstract device.
  *
@@ -41,8 +42,7 @@ class LIBKPMCORE_EXPORT VolumeManagerDevice : public Device
     Q_DISABLE_COPY(VolumeManagerDevice)
 
 public:
-
-    VolumeManagerDevice(const QString& name, const QString& deviceNode, const qint64 logicalSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Unknown_Device);
+    VolumeManagerDevice(std::shared_ptr<VolumeManagerDevicePrivate> d, const QString& name, const QString& deviceNode, const qint64 logicalSectorSize, const qint64 totalLogical, const QString& iconName = QString(), Device::Type type = Device::Type::Unknown_Device);
 
     /**
      *  @return list of physical device's path that makes up volumeManagerDevice.(e.g: /dev/sda, /dev/sdb1)
@@ -52,7 +52,7 @@ public:
     /**
      * @return list of logical partition's path.
      */
-    virtual const QStringList partitionNodes() const = 0;
+    virtual const QStringList& partitionNodes() const = 0;
 
     /**
      * @return size of logical partition at the given path in bytes.
@@ -76,13 +76,13 @@ protected:
      *  @sector sector value to be mapped (if 0, will return start sector of the partition)
      *  @return absolute sector value as represented inside device's partitionTable
      */
-    virtual qint64  mappedSector(const QString& partitionPath, qint64 sector) const = 0;
+    virtual qint64 mappedSector(const QString& partitionPath, qint64 sector) const = 0;
 
 public:
 
-    /** string deviceNodes together into comma-sperated list
+    /** join deviceNodes together into comma-separated list
      *
-     *  @return comma-seperated list of deviceNodes
+     *  @return comma-separated list of deviceNodes
      */
     virtual QString prettyDeviceNodeList() const;
 
@@ -90,10 +90,7 @@ public:
      *
      * @param n Number of sectors.
      */
-    void setTotalLogical(qint64 n) {
-        Q_ASSERT(n > 0);
-        m_TotalLogical = n;
-    }
+    void setTotalLogical(qint64 n);
 };
 
 #endif

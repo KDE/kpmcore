@@ -39,14 +39,17 @@ set(kpmcore_SRCS
 ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
-target_link_libraries( kpmcore
-    ${UUID_LIBRARIES}
+target_link_libraries( kpmcore PUBLIC
+    Qt5::Core
+    PRIVATE
     ${BLKID_LIBRARIES}
-    ${LIBATASMART_LIBRARIES}
     Qt5::DBus
+    Qt5::Gui
+    qca-qt5
     KF5::I18n
     KF5::CoreAddons
     KF5::WidgetsAddons
+    KF5::Auth
 )
 
 install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})

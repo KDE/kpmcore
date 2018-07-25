@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2010 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2018 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -15,11 +16,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_COREBACKENDMANAGER_H)
-
+#ifndef KPMCORE_COREBACKENDMANAGER_H
 #define KPMCORE_COREBACKENDMANAGER_H
 
 #include "util/libpartitionmanagerexport.h"
+
+#include <memory>
 
 #include <QVector>
 
@@ -27,6 +29,7 @@ class QString;
 class QStringList;
 class KPluginMetaData;
 class CoreBackend;
+struct CoreBackendManagerPrivate;
 
 /**
   * The backend manager class.
@@ -37,8 +40,8 @@ class CoreBackend;
   */
 class LIBKPMCORE_EXPORT CoreBackendManager
 {
-private:
     CoreBackendManager();
+    ~CoreBackendManager();
 
 public:
     /**
@@ -50,7 +53,7 @@ public:
       * @return the name of the default backend plugin
       */
     static QString defaultBackendName() {
-        return QStringLiteral("pmlibpartedbackendplugin");
+        return QStringLiteral("pmsfdiskbackendplugin");
     }
 
     /**
@@ -73,12 +76,10 @@ public:
     /**
       * @return a pointer to the currently loaded backend
       */
-    CoreBackend* backend() {
-        return m_Backend;
-    }
+    CoreBackend* backend();
 
 private:
-    CoreBackend* m_Backend;
+    std::unique_ptr<CoreBackendManagerPrivate> d;
 };
 
 #endif

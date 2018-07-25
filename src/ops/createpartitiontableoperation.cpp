@@ -21,6 +21,7 @@
 #include "core/device.h"
 #include "core/partitiontable.h"
 #include "core/partition.h"
+#include "core/raid/softwareraid.h"
 
 #include "jobs/createpartitiontablejob.h"
 
@@ -93,7 +94,18 @@ bool CreatePartitionTableOperation::execute(Report& parent)
 */
 bool CreatePartitionTableOperation::canCreate(const Device* device)
 {
-    return (device != nullptr) && (device->partitionTable() == nullptr || !device->partitionTable()->isChildMounted()) && (device->type() != Device::LVM_Device);
+    if (device == nullptr)
+        return false;
+
+    if (device->type() == Device::Type::SoftwareRAID_Device) {
+        const SoftwareRAID* raid = static_cast<const SoftwareRAID *>(device);
+
+        if (raid->status() == SoftwareRAID::Status::Inactive)
+            return false;
+    }
+
+    return (device->partitionTable() == nullptr || !device->partitionTable()->isChildMounted())
+            && (device->type() != Device::Type::LVM_Device);
 }
 
 QString CreatePartitionTableOperation::description() const

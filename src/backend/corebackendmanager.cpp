@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2010 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -20,8 +20,8 @@
 #include "backend/corebackendmanager.h"
 #include "backend/corebackend.h"
 
+#include <QCoreApplication>
 #include <QDebug>
-#include <QStringList>
 #include <QString>
 #include <QVector>
 
@@ -30,8 +30,17 @@
 #include <KPluginLoader>
 #include <KPluginMetaData>
 
+struct CoreBackendManagerPrivate
+{
+    CoreBackend *m_Backend;
+};
+
 CoreBackendManager::CoreBackendManager() :
-    m_Backend(nullptr)
+    d(std::make_unique<CoreBackendManagerPrivate>())
+{
+}
+
+CoreBackendManager::~CoreBackendManager()
 {
 }
 
@@ -43,6 +52,11 @@ CoreBackendManager* CoreBackendManager::self()
         instance = new CoreBackendManager;
 
     return instance;
+}
+
+CoreBackend* CoreBackendManager::backend()
+{
+    return d->m_Backend;
 }
 
 QVector<KPluginMetaData> CoreBackendManager::list() const
@@ -66,7 +80,7 @@ bool CoreBackendManager::load(const QString& name)
     KPluginFactory* factory = loader.factory();
 
     if (factory != nullptr) {
-        m_Backend = factory->create<CoreBackend>(nullptr);
+        d->m_Backend = factory->create<CoreBackend>(nullptr);
 
         QString id = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
                      .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Id")).toString();
@@ -78,6 +92,7 @@ bool CoreBackendManager::load(const QString& name)
         backend()->setId(id);
         backend()->setVersion(version);
         qDebug() << "Loaded backend plugin: " << backend()->id();
+
         return true;
     }
 
@@ -87,6 +102,4 @@ bool CoreBackendManager::load(const QString& name)
 
 void CoreBackendManager::unload()
 {
-    delete m_Backend;
-    m_Backend = nullptr;
 }

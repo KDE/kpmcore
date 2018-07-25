@@ -44,9 +44,9 @@ Capacity::Capacity(const Partition& p, Type t) :
     m_Size(-1)
 {
     switch (t) {
-    case Used: m_Size = p.used(); break;
-    case Available: m_Size = p.available(); break;
-    case Total: m_Size = p.capacity();
+    case Type::Used: m_Size = p.used(); break;
+    case Type::Available: m_Size = p.available(); break;
+    case Type::Total: m_Size = p.capacity();
     }
 }
 
@@ -64,7 +64,7 @@ Capacity::Capacity(const Device& d) :
 */
 qint64 Capacity::toInt(Unit u) const
 {
-    return static_cast<qint64>(m_Size / unitFactor(Byte, u));
+    return static_cast<qint64>(m_Size / unitFactor(Unit::Byte, u));
 }
 
 /** Returns the Capacity as double converted to the given Unit.
@@ -73,7 +73,7 @@ qint64 Capacity::toInt(Unit u) const
 */
 double Capacity::toDouble(Unit u) const
 {
-    return static_cast<double>(m_Size) / unitFactor(Byte, u);
+    return static_cast<double>(m_Size) / unitFactor(Unit::Byte, u);
 }
 
 /** Returns a factor to convert between two Units.
@@ -86,14 +86,14 @@ qint64 Capacity::unitFactor(Unit from, Unit to)
     Q_ASSERT(from <= to);
 
     if (from > to) {
-        qWarning() << "from: " << from << ", to: " << to;
+        qWarning() << "from: " << static_cast<uint>(from) << ", to: " << static_cast<uint>(to);
         return 1;
     }
 
     qint64 result = 1;
 
-    qint32 a = from;
-    qint32 b = to;
+    qint32 a = static_cast<uint>(from);
+    qint32 b = static_cast<uint>(to);
 
     while (b-- > a)
         result *= 1024;
@@ -122,7 +122,7 @@ QString Capacity::unitName(Unit u, qint64 val)
     if (static_cast<quint32>(u) >= sizeof(unitNames) / sizeof(unitNames[0]))
         return xi18nc("@item:intext unit", "(unknown unit)");
 
-    return unitNames[u];
+    return unitNames[static_cast<quint32>(u)];
 }
 
 /** Determine if the capacity is valid.

@@ -20,6 +20,7 @@
 
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/lvmdevice.h"
 #include "core/partitiontable.h"
 #include "core/copysourcedevice.h"
 #include "core/copytargetdevice.h"
@@ -32,6 +33,7 @@
 #include "ops/checkoperation.h"
 
 #include "fs/filesystem.h"
+#include "fs/luks.h"
 
 #include "util/capacity.h"
 #include "util/report.h"
@@ -332,6 +334,9 @@ bool ResizeOperation::canGrow(const Partition* p)
     if (p == nullptr)
         return false;
 
+    if (isLVMPVinNewlyVG(p))
+        return false;
+
     // we can always grow, shrink or move a partition not yet written to disk
     if (p->state() == Partition::State::New && !p->roles().has(PartitionRole::Luks))
         return true;
@@ -349,6 +354,9 @@ bool ResizeOperation::canGrow(const Partition* p)
 bool ResizeOperation::canShrink(const Partition* p)
 {
     if (p == nullptr)
+        return false;
+
+    if (isLVMPVinNewlyVG(p))
         return false;
 
     // we can always grow, shrink or move a partition not yet written to disk
@@ -373,6 +381,9 @@ bool ResizeOperation::canMove(const Partition* p)
     if (p == nullptr)
         return false;
 
+    if (isLVMPVinNewlyVG(p))
+        return false;
+
     // we can always grow, shrink or move a partition not yet written to disk
     if (p->state() == Partition::State::New)
         // too many bad things can happen for LUKS partitions
@@ -386,4 +397,25 @@ bool ResizeOperation::canMove(const Partition* p)
         return false;
 
     return p->fileSystem().supportMove() != FileSystem::cmdSupportNone;
+}
+
+bool ResizeOperation::isLVMPVinNewlyVG(const Partition *p)
+{
+    if (p->fileSystem().type() == FileSystem::Type::Lvm2_PV) {
+        if (LvmDevice::s_DirtyPVs.contains(p))
+            return true;
+    }
+    else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
+        // See if innerFS is LVM
+        FileSystem *fs = static_cast<const FS::luks *>(&p->fileSystem())->innerFS();
+
+        if (fs) {
+            if (fs->type() == FileSystem::Type::Lvm2_PV) {
+                if (LvmDevice::s_DirtyPVs.contains(p))
+                    return true;
+            }
+        }
+    }
+
+    return false;
 }

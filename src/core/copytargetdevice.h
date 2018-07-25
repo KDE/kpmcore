@@ -19,8 +19,11 @@
 
 #define KPMCORE_COPYTARGETDEVICE_H
 
+#include "backend/corebackenddevice.h"
 #include "core/copytarget.h"
 #include "util/libpartitionmanagerexport.h"
+
+#include <memory>
 
 #include <QtGlobal>
 
@@ -42,11 +45,9 @@ class CopyTargetDevice : public CopyTarget
 
 public:
     CopyTargetDevice(Device& d, qint64 firstbyte, qint64 lastbyte);
-    ~CopyTargetDevice();
 
 public:
     bool open() override;
-    bool writeData(QByteArray& buffer, qint64 writeOffset) override;
     qint64 firstByte() const override {
         return m_FirstByte;    /**< @return the first byte to write to */
     }
@@ -60,10 +61,11 @@ public:
     const Device& device() const {
         return m_Device;    /**< @return the Device to write to */
     }
+    QString path() const override;
 
 protected:
     Device& m_Device;
-    CoreBackendDevice* m_BackendDevice;
+    std::unique_ptr<CoreBackendDevice> m_BackendDevice;
     const qint64 m_FirstByte;
     const qint64 m_LastByte;
 };

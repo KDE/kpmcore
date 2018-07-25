@@ -44,7 +44,7 @@ FileSystem::CommandSupportType btrfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType btrfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 btrfs::btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Btrfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Btrfs)
 {
 }
 
@@ -91,12 +91,12 @@ FileSystem::SupportTool btrfs::supportToolName() const
 
 qint64 btrfs::minCapacity() const
 {
-    return 256 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 256 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 btrfs::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int btrfs::maxLabelLength() const

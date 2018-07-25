@@ -26,8 +26,6 @@
 
 #include <QColor>
 
-#include <array>
-
 class Partition;
 
 class QPaintEvent;
@@ -63,7 +61,7 @@ public:
         return m_Partition;    /**< @return the widget's Partition */
     }
 
-    void setFileSystemColorCode( const std::array< QColor, FileSystem::__lastType >& colorCode );
+    void setFileSystemColorCode( const std::vector<QColor>& colorCode );
 
 protected:
     void paintEvent(QPaintEvent* event);
@@ -76,7 +74,7 @@ protected:
 private:
     Partition* m_Partition;
     bool m_Active;
-    std::array< QColor, FileSystem::__lastType > m_fileSystemColorCode;
+    std::vector<QColor> m_fileSystemColorCode;
 };
 
 #endif

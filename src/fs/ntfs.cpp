@@ -50,7 +50,7 @@ FileSystem::CommandSupportType ntfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ntfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 ntfs::ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Ntfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ntfs)
 {
 }
 
@@ -91,12 +91,12 @@ FileSystem::SupportTool ntfs::supportToolName() const
 
 qint64 ntfs::minCapacity() const
 {
-    return 2 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 2 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 ntfs::maxCapacity() const
 {
-    return 256 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 256 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 
 int ntfs::maxLabelLength() const
@@ -125,8 +125,7 @@ qint64 ntfs::readUsedCapacity(const QString& deviceNode) const
 
 bool ntfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand writeCmd(report, QStringLiteral("ntfslabel"), { QStringLiteral("--force"), deviceNode, newLabel });
-    writeCmd.setProcessChannelMode(QProcess::SeparateChannels);
+    ExternalCommand writeCmd(report, QStringLiteral("ntfslabel"), { QStringLiteral("--force"), deviceNode, newLabel }, QProcess::SeparateChannels);
 
     if (!writeCmd.run(-1))
         return false;
@@ -171,7 +170,7 @@ bool ntfs::resize(Report& report, const QString& deviceNode, qint64 length) cons
 
 bool ntfs::updateUUID(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
+    Q_UNUSED(report)
     ExternalCommand cmd(QStringLiteral("ntfslabel"), { QStringLiteral("--new-serial"), deviceNode });
 
     return cmd.run(-1) && cmd.exitCode() == 0;
@@ -191,24 +190,22 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
 
     ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=28") });
 
+    cmd.write(QByteArray(s, sizeof(s)));
     if (!cmd.start()) {
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
-    cmd.write(QByteArray(s, sizeof(s)));
-    cmd.waitFor(-1);
 
     // Also update backup NTFS boot sector located at the end of the partition
     // NOTE: this should fail if filesystem does not span the whole partition
     qint64 pos = (lastSector() - firstSector()) * sectorSize() + 28;
     ExternalCommand cmd2(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=") + QString::number(pos) });
 
+    cmd2.write(QByteArray(s, sizeof(s)));
     if (!cmd2.start()) {
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
-    cmd2.write(QByteArray(s, sizeof(s)));
-    cmd2.waitFor(-1);
 
     Log() << xi18nc("@info:progress", "Updated NTFS boot sector for partition <filename>%1</filename> successfully.", deviceNode);
 

@@ -22,6 +22,7 @@
 #include <QtGlobal>
 
 class CopyTarget;
+class QString;
 
 /** Base class for something to copy from.
 
@@ -41,14 +42,12 @@ protected:
 
 public:
     virtual bool open() = 0;
-    virtual bool readData(QByteArray& buffer, qint64 readOffset, qint64 size) = 0;
+    virtual QString path() const = 0;
     virtual qint64 length() const = 0;
     virtual bool overlaps(const CopyTarget& target) const = 0;
 
     virtual qint64 firstByte() const = 0;
     virtual qint64 lastByte() const = 0;
-
-private:
 };
 
 #endif

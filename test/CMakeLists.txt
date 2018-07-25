@@ -15,11 +15,12 @@ add_compile_options(-fPIC)
 # Helper macro to link to the helper (for initialization of kpmcore)
 # and to add a test with the given name.
 #
-add_library(testhelpers OBJECT helpers.cpp)
+add_library(testhelpers STATIC helpers.cpp)
+target_link_libraries(testhelpers)
 
 macro (kpm_test name)
-    add_executable(${name} ${ARGN} $<TARGET_OBJECTS:testhelpers>)
-    target_link_libraries(${name} kpmcore)
+    add_executable(${name} ${ARGN})
+    target_link_libraries(${name} testhelpers kpmcore Qt5::Core)
 endmacro()
 
 ###
@@ -29,13 +30,13 @@ kpm_test(testinit testinit.cpp)  # Default backend
 if(TARGET pmdummybackendplugin)
     add_test(NAME testinit-dummy COMMAND testinit $<TARGET_FILE:pmdummybackendplugin>)
 endif()
-if(TARGET pmlibpartedbackendplugin)
-    add_test(NAME testinit-parted COMMAND testinit $<TARGET_FILE:pmlibpartedbackendplugin>)
+if(TARGET pmsfdiskbackendplugin)
+    add_test(NAME testinit-sfdisk COMMAND testinit $<TARGET_FILE:pmsfdiskbackendplugin>)
 else()
     return()  # All the rest really needs a working backend
 endif()
 
-set(BACKEND $<TARGET_FILE:pmlibpartedbackendplugin>)
+set(BACKEND $<TARGET_FILE:pmsfdiskbackendplugin>)
 
 ###
 #
@@ -45,3 +46,19 @@ add_test(NAME testlist COMMAND testlist ${BACKEND})
 
 kpm_test(testdevicescanner testdevicescanner.cpp)
 add_test(NAME testdevicescanner COMMAND testdevicescanner ${BACKEND})
+
+find_package (Threads)
+###
+#
+# Execute external commands as root
+kpm_test(testexternalcommand testexternalcommand.cpp)
+add_test(NAME testexternalcommand COMMAND testexternalcommand ${BACKEND})
+
+# Including SMART files reference
+set(SMARTPARSER ${CMAKE_SOURCE_DIR}/src/core/smartdiskinformation.cpp
+                ${CMAKE_SOURCE_DIR}/src/core/smartattributeparseddata.cpp
+                ${CMAKE_SOURCE_DIR}/src/core/smartparser.cpp)
+
+# Test SMART support
+kpm_test(testsmart testsmart.cpp ${SMARTPARSER})
+add_test(NAME testsmart COMMAND testsmart ${BACKEND})

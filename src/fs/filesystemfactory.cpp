@@ -34,6 +34,7 @@
 #include "fs/hpfs.h"
 #include "fs/iso9660.h"
 #include "fs/jfs.h"
+#include "fs/linuxraidmember.h"
 #include "fs/linuxswap.h"
 #include "fs/luks.h"
 #include "fs/luks2.h"
@@ -61,36 +62,37 @@ void FileSystemFactory::init()
     qDeleteAll(m_FileSystems);
     m_FileSystems.clear();
 
-    m_FileSystems.insert(FileSystem::Btrfs, new FS::btrfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Exfat, new FS::exfat(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Ext2, new FS::ext2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Ext3, new FS::ext3(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Ext4, new FS::ext4(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Extended, new FS::extended(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::F2fs, new FS::f2fs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Fat12, new FS::fat12(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Fat16, new FS::fat16(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Fat32, new FS::fat32(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Hfs, new FS::hfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::HfsPlus, new FS::hfsplus(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Hpfs, new FS::hpfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Iso9660, new FS::iso9660(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Jfs, new FS::jfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Luks, new FS::luks(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Luks2, new FS::luks2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Nilfs2, new FS::nilfs2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Ntfs, new FS::ntfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Ocfs2, new FS::ocfs2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::ReiserFS, new FS::reiserfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Reiser4, new FS::reiser4(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Udf, new FS::udf(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Ufs, new FS::ufs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Unformatted, new FS::unformatted(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Unknown, new FS::unknown(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Xfs, new FS::xfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Zfs, new FS::zfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Btrfs, new FS::btrfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Exfat, new FS::exfat(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Ext2, new FS::ext2(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Ext3, new FS::ext3(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Ext4, new FS::ext4(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Extended, new FS::extended(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::F2fs, new FS::f2fs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Fat12, new FS::fat12(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Fat16, new FS::fat16(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Fat32, new FS::fat32(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Hfs, new FS::hfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::HfsPlus, new FS::hfsplus(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Hpfs, new FS::hpfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Iso9660, new FS::iso9660(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Jfs, new FS::jfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::LinuxRaidMember, new FS::linuxraidmember(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Luks, new FS::luks(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Luks2, new FS::luks2(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Nilfs2, new FS::nilfs2(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Ntfs, new FS::ntfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Ocfs2, new FS::ocfs2(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::ReiserFS, new FS::reiserfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Reiser4, new FS::reiser4(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Udf, new FS::udf(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Ufs, new FS::ufs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Unformatted, new FS::unformatted(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Unknown, new FS::unknown(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Xfs, new FS::xfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Zfs, new FS::zfs(-1, -1, -1, QString()));
 
     for (const auto &fs : FileSystemFactory::map())
         fs->init();
@@ -111,36 +113,37 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     FileSystem* fs = nullptr;
 
     switch (t) {
-    case FileSystem::Btrfs:        fs = new FS::btrfs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Exfat:        fs = new FS::exfat(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Ext2:         fs = new FS::ext2(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Ext3:         fs = new FS::ext3(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Ext4:         fs = new FS::ext4(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Extended:     fs = new FS::extended(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::F2fs:         fs = new FS::f2fs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Fat12:        fs = new FS::fat12(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Fat16:        fs = new FS::fat16(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Fat32:        fs = new FS::fat32(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Hfs:          fs = new FS::hfs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::HfsPlus:      fs = new FS::hfsplus(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Hpfs:         fs = new FS::hpfs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Iso9660:      fs = new FS::iso9660(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Jfs:          fs = new FS::jfs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::LinuxSwap:    fs = new FS::linuxswap(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Luks:         fs = new FS::luks(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Luks2:        fs = new FS::luks2(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Lvm2_PV:      fs = new FS::lvm2_pv(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Nilfs2:       fs = new FS::nilfs2(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Ntfs:         fs = new FS::ntfs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Ocfs2:        fs = new FS::ocfs2(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::ReiserFS:     fs = new FS::reiserfs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Reiser4:      fs = new FS::reiser4(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Udf:          fs = new FS::udf(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Ufs:          fs = new FS::ufs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Unformatted:  fs = new FS::unformatted(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Unknown:      fs = new FS::unknown(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Xfs:          fs = new FS::xfs(firstsector, lastsector, sectorsused, label); break;
-    case FileSystem::Zfs:          fs = new FS::zfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Btrfs:           fs = new FS::btrfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Exfat:           fs = new FS::exfat(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Ext2:            fs = new FS::ext2(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Ext3:            fs = new FS::ext3(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Ext4:            fs = new FS::ext4(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Extended:        fs = new FS::extended(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::F2fs:            fs = new FS::f2fs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Fat12:           fs = new FS::fat12(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Fat16:           fs = new FS::fat16(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Fat32:           fs = new FS::fat32(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Hfs:             fs = new FS::hfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::HfsPlus:         fs = new FS::hfsplus(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Hpfs:            fs = new FS::hpfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Iso9660:         fs = new FS::iso9660(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Jfs:             fs = new FS::jfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::LinuxRaidMember: fs = new FS::linuxraidmember(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::LinuxSwap:       fs = new FS::linuxswap(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Luks:            fs = new FS::luks(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Luks2:           fs = new FS::luks2(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Lvm2_PV:         fs = new FS::lvm2_pv(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Nilfs2:          fs = new FS::nilfs2(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Ntfs:            fs = new FS::ntfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Ocfs2:           fs = new FS::ocfs2(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::ReiserFS:        fs = new FS::reiserfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Reiser4:         fs = new FS::reiser4(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Udf:             fs = new FS::udf(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Ufs:             fs = new FS::ufs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Unformatted:     fs = new FS::unformatted(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Unknown:         fs = new FS::unknown(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Xfs:             fs = new FS::xfs(firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Zfs:             fs = new FS::zfs(firstsector, lastsector, sectorsused, label); break;
     default:                       break;
     }
 

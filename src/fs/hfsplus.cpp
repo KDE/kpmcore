@@ -35,7 +35,7 @@ FileSystem::CommandSupportType hfsplus::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Backup = FileSystem::cmdSupportNone;
 
 hfsplus::hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::HfsPlus)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::HfsPlus)
 {
 }
 
@@ -73,7 +73,7 @@ FileSystem::SupportTool hfsplus::supportToolName() const
 
 qint64 hfsplus::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int hfsplus::maxLabelLength() const

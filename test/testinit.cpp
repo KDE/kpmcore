@@ -21,10 +21,13 @@
 // the current platform, or if one is named on the command line,
 // loads that one. Returns 0 on success.
 
+#include <QCoreApplication>
+
 #include "helpers.h"
 
 int main( int argc, char** argv )
 {
+    QCoreApplication app(argc, argv);
     if ( argc != 2 )
     {
         KPMCoreInitializer i;

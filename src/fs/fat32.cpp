@@ -26,18 +26,18 @@
 namespace FS
 {
 fat32::fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    fat16(firstsector, lastsector, sectorsused, label, FileSystem::Fat32)
+    fat16(firstsector, lastsector, sectorsused, label, FileSystem::Type::Fat32)
 {
 }
 
 qint64 fat32::minCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 32 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 fat32::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB) - Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 bool fat32::create(Report& report, const QString& deviceNode)
@@ -59,12 +59,7 @@ bool fat32::updateUUID(Report& report, const QString& deviceNode) const
     // HACK: replace this hack with fatlabel "-i" (dosfstools 4.2)
     ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode, QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=67") });
 
-    if (!cmd.start())
-        return false;
-
-    if (cmd.write(uuid, sizeof(uuid)) != sizeof(uuid))
-        return false;
-
-    return cmd.waitFor(-1);
+    cmd.write(QByteArray(uuid, sizeof(uuid)));
+    return cmd.start();
 }
 }

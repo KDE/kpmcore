@@ -18,6 +18,7 @@
 #include "ops/removevolumegroupoperation.h"
 #include "jobs/removevolumegroupjob.h"
 
+#include "core/lvmdevice.h"
 #include "core/partition.h"
 #include "core/partitiontable.h"
 #include "core/volumemanagerdevice.h"
@@ -45,11 +46,28 @@ QString RemoveVolumeGroupOperation::description() const
 void RemoveVolumeGroupOperation::preview()
 {
     m_PartitionTable = device().partitionTable();
+
+    if (device().type() == Device::Type::LVM_Device) {
+        LvmDevice& lvm = static_cast<LvmDevice&>(device());
+
+        LvmDevice::s_OrphanPVs << lvm.physicalVolumes();
+    }
+
     device().setPartitionTable(new PartitionTable(PartitionTable::vmd, 0, device().totalLogical() - 1));
 }
 
 void RemoveVolumeGroupOperation::undo()
 {
+    if (device().type() == Device::Type::LVM_Device) {
+        LvmDevice& lvm = static_cast<LvmDevice&>(device());
+
+        const QVector<const Partition*> constOrphanList = LvmDevice::s_OrphanPVs;
+
+        for (const Partition* p : constOrphanList)
+            if (lvm.physicalVolumes().contains(p))
+                LvmDevice::s_OrphanPVs.removeAll(p);
+    }
+
     device().setPartitionTable(m_PartitionTable);
 }
 
@@ -61,13 +79,13 @@ void RemoveVolumeGroupOperation::undo()
 bool RemoveVolumeGroupOperation::isRemovable(const VolumeManagerDevice* dev)
 {
     // TODO: allow removal when LVs are inactive.
-    if (dev->type() == Device::LVM_Device) {
+    if (dev->type() == Device::Type::LVM_Device) {
         if (dev->partitionTable()->children().count() == 0) // This is necessary to prevent a crash during applying of operations
             return true;
         else if (dev->partitionTable()->children().count() > 1)
             return false;
         else
-            if (dev->partitionTable()->children().first()->fileSystem().type() == FileSystem::Unknown)
+            if (dev->partitionTable()->children().first()->fileSystem().type() == FileSystem::Type::Unknown)
                 return true;
     }
 

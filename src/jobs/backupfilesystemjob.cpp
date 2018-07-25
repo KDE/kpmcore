@@ -24,7 +24,7 @@
 #include "core/copytargetfile.h"
 
 #include "fs/filesystem.h"
-
+#include "util/externalcommand.h"
 #include "util/report.h"
 
 #include <KLocalizedString>

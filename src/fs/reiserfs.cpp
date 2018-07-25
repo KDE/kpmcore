@@ -42,7 +42,7 @@ FileSystem::CommandSupportType reiserfs::m_UpdateUUID = FileSystem::cmdSupportNo
 FileSystem::CommandSupportType reiserfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 reiserfs::reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::ReiserFS)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::ReiserFS)
 {
 }
 
@@ -85,12 +85,12 @@ FileSystem::SupportTool reiserfs::supportToolName() const
 
 qint64 reiserfs::minCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 32 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 reiserfs::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB) - Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 int reiserfs::maxLabelLength() const
@@ -154,15 +154,15 @@ bool reiserfs::resize(Report& report, const QString& deviceNode, qint64 length) 
     ExternalCommand cmd(report, QStringLiteral("resize_reiserfs"),
                         { deviceNode, QStringLiteral("-q"), QStringLiteral("-s"), QString::number(length) });
 
-    bool rval = cmd.start(-1);
+    bool rval = cmd.write(QByteArrayLiteral("y\n"));
 
     if (!rval)
         return false;
 
-    if (cmd.write("y\n", 2) != 2)
+    if (!cmd.start(-1))
         return false;
 
-    return cmd.waitFor(-1) && (cmd.exitCode() == 0 || cmd.exitCode() == 256);
+    return cmd.exitCode() == 0 || cmd.exitCode() == 256;
 }
 
 bool reiserfs::resizeOnline(Report& report, const QString& deviceNode, const QString&, qint64 length) const

@@ -40,7 +40,7 @@ FileSystem::CommandSupportType linuxswap::m_GetUUID = FileSystem::cmdSupportNone
 FileSystem::CommandSupportType linuxswap::m_UpdateUUID = FileSystem::cmdSupportNone;
 
 linuxswap::linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::LinuxSwap)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::LinuxSwap)
 {
 }
 
@@ -89,7 +89,7 @@ bool linuxswap::create(Report& report, const QString& deviceNode)
 
 bool linuxswap::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    Q_UNUSED(length);
+    Q_UNUSED(length)
     const QString label = readLabel(deviceNode);
     const QString uuid = readUUID(deviceNode);
 
@@ -145,14 +145,14 @@ QString linuxswap::unmountTitle() const
 }
 
 bool linuxswap::canMount(const QString& deviceNode, const QString& mountPoint) const {
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(deviceNode)
     // linux swap doesn't require mount point to activate
     return mountPoint != QStringLiteral("/");
 }
 
 bool linuxswap::mount(Report& report, const QString& deviceNode, const QString& mountPoint)
 {
-    Q_UNUSED(mountPoint);
+    Q_UNUSED(mountPoint)
     ExternalCommand cmd(report, QStringLiteral("swapon"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }

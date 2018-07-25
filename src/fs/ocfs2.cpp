@@ -40,7 +40,7 @@ FileSystem::CommandSupportType ocfs2::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ocfs2::m_GetUUID = FileSystem::cmdSupportNone;
 
 ocfs2::ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Ocfs2)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ocfs2)
 {
 }
 
@@ -89,17 +89,17 @@ FileSystem::SupportTool ocfs2::supportToolName() const
 
 qint64 ocfs2::minCapacity() const
 {
-    return 14000 * Capacity::unitFactor(Capacity::Byte, Capacity::KiB);
+    return 14000 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::KiB);
 }
 
 qint64 ocfs2::maxCapacity() const
 {
-    return 4 * Capacity::unitFactor(Capacity::Byte, Capacity::PiB);
+    return 4 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::PiB);
 }
 
 qint64 ocfs2::readUsedCapacity(const QString& deviceNode) const
 {
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(deviceNode)
     return -1;
 }
 
@@ -113,15 +113,12 @@ bool ocfs2::create(Report& report, const QString& deviceNode)
 {
     ExternalCommand cmd(report, QStringLiteral("mkfs.ocfs2"), { deviceNode });
 
-    if (cmd.start())
-    {
-        cmd.write("y\n");
-        cmd.waitFor(-1);
-
-        return cmd.exitCode() == 0;
-    }
-    else
+    cmd.write("y\n");
+    if (!cmd.start())
         return false;
+
+    return cmd.exitCode() == 0;
+
 }
 
 bool ocfs2::resize(Report& report, const QString& deviceNode, qint64 length) const

@@ -23,7 +23,7 @@
 class QString;
 
 /**
- * Use RAII to initialize the KPMcore library. Just instantiatie one
+ * Use RAII to initialize the KPMcore library. Just instantiate one
  * object of this class to do "normal" initialization.
  */
 class KPMCoreInitializer
@@ -32,6 +32,7 @@ public:
     KPMCoreInitializer(); /// Default backend
     KPMCoreInitializer( const QString& backend );  /// Use named backend
     KPMCoreInitializer( const char* backend );  /// Use named backend
+    ~KPMCoreInitializer();
 
     bool isValid() const
     {

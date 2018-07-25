@@ -21,7 +21,7 @@ namespace FS
 {
 
 iso9660::iso9660(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Iso9660)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Iso9660)
 {
 }
 

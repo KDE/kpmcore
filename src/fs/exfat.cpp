@@ -39,7 +39,7 @@ FileSystem::CommandSupportType exfat::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType exfat::m_GetUUID = FileSystem::cmdSupportNone;
 
 exfat::exfat(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Exfat)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Exfat)
 {
 }
 
@@ -84,7 +84,7 @@ FileSystem::SupportTool exfat::supportToolName() const
 
 qint64 exfat::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int exfat::maxLabelLength() const
@@ -112,8 +112,8 @@ bool exfat::writeLabel(Report& report, const QString& deviceNode, const QString&
 
 bool exfat::updateUUID(Report& report, const QString& deviceNode) const
 {
-    Q_UNUSED(report);
-    Q_UNUSED(deviceNode);
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
 
     return false;
 }

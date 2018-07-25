@@ -1,6 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -17,6 +17,7 @@
  *************************************************************************/
 
 #include "core/diskdevice.h"
+#include "core/device_p.h"
 
 #include "core/partitiontable.h"
 #include "core/smartstatus.h"
@@ -39,14 +40,25 @@
 #define BLKPBSZGET _IO(0x12,123)/* get block physical sector size */
 #endif
 
+#define d_ptr std::static_pointer_cast<DiskDevicePrivate>(d)
+
+class DiskDevicePrivate : public DevicePrivate
+{
+public:
+    qint32 m_Heads;
+    qint32 m_SectorsPerTrack;
+    qint32 m_Cylinders;
+    qint64 m_LogicalSectorSize;
+    qint64 m_PhysicalSectorSize;
+};
+
 static qint64 getPhysicalSectorSize(const QString& device_node)
 {
     /*
      * possible ways of getting the physical sector size for a drive:
      * - ioctl(BLKPBSZGET) -- supported with Linux 2.6.32 and later
      * - /sys/block/sda/queue/physical_block_size
-     * - libblkid from util-linux-ng 2.17 or later
-     * TODO: implement the blkid method
+     * - libblkid from util-linux 2.17 or later (not implemented)
      */
 
 #if defined(BLKPBSZGET)
@@ -87,11 +99,46 @@ DiskDevice::DiskDevice(const QString& name,
                        qint32 cylinders,
                        qint64 sectorSize,
                        const QString& iconName)
-    : Device(name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Disk_Device)
-    , m_Heads(heads)
-    , m_SectorsPerTrack(numSectors)
-    , m_Cylinders(cylinders)
-    , m_LogicalSectorSize(sectorSize)
-    , m_PhysicalSectorSize(getPhysicalSectorSize(deviceNode))
+    : Device(std::make_shared<DiskDevicePrivate>(), name, deviceNode, sectorSize, (static_cast<qint64>(heads) * cylinders * numSectors), iconName, Device::Type::Disk_Device)
 {
+    d_ptr->m_Heads = heads;
+    d_ptr->m_SectorsPerTrack = numSectors;
+    d_ptr->m_Cylinders = cylinders;
+    d_ptr->m_LogicalSectorSize = sectorSize;
+    d_ptr->m_PhysicalSectorSize = getPhysicalSectorSize(deviceNode);
+}
+
+qint32 DiskDevice::heads() const
+{
+    return d_ptr->m_Heads;
+}
+
+qint32 DiskDevice::cylinders() const
+{
+    return d_ptr->m_Cylinders;
+}
+
+qint32 DiskDevice::sectorsPerTrack() const
+{
+    return d_ptr->m_SectorsPerTrack;
+}
+
+qint64 DiskDevice::physicalSectorSize() const
+{
+    return d_ptr->m_PhysicalSectorSize;
+}
+
+qint64 DiskDevice::logicalSectorSize() const
+{
+    return d_ptr->m_LogicalSectorSize;
+}
+
+qint64 DiskDevice::totalSectors() const
+{
+    return static_cast<qint64>(d_ptr->m_Heads) * d_ptr->m_Cylinders * d_ptr->m_SectorsPerTrack;
+}
+
+qint64 DiskDevice::cylinderSize() const
+{
+    return static_cast<qint64>(d_ptr->m_Heads) * d_ptr->m_SectorsPerTrack;
 }

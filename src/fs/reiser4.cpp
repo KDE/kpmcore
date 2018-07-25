@@ -35,7 +35,7 @@ FileSystem::CommandSupportType reiser4::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType reiser4::m_Backup = FileSystem::cmdSupportNone;
 
 reiser4::reiser4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Reiser4)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Reiser4)
 {
 }
 
@@ -75,7 +75,7 @@ qint64 reiser4::maxCapacity() const
 {
     // looks like it's actually unknown. see
     // http://en.wikipedia.org/wiki/Comparison_of_file_systems
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int reiser4::maxLabelLength() const

@@ -16,8 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_FAT12_H)
-
+#ifndef KPMCORE_FAT12_H
 #define KPMCORE_FAT12_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -38,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT fat12 : public FileSystem
 {
 public:
-    fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Fat12);
+    fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Type::Fat12);
 
 public:
     void init() override;
@@ -62,10 +61,10 @@ public:
         return m_Create;
     }
     CommandSupportType supportGrow() const override {
-        return m_Grow;
+        return cmdSupportNone;
     }
     CommandSupportType supportShrink() const override {
-        return m_Shrink;
+        return cmdSupportNone;
     }
     CommandSupportType supportMove() const override {
         return m_Move;

@@ -35,18 +35,23 @@
 CreateVolumeGroupOperation::CreateVolumeGroupOperation(const QString& vgName, const QVector<const Partition*>& pvList, const qint32 peSize) :
     Operation(),
     m_CreateVolumeGroupJob(new CreateVolumeGroupJob(vgName, pvList, peSize)),
-    m_PVList(pvList)
+    m_PVList(pvList),
+    m_vgName(vgName)
 {
     addJob(createVolumeGroupJob());
 }
 
 QString CreateVolumeGroupOperation::description() const
 {
-    return xi18nc("@info/plain", "Create a new LVM volume group.");
+    return xi18nc("@info/plain", "Create a new LVM volume group named \'%1\'.", m_vgName);
 }
 
-bool CreateVolumeGroupOperation::targets(const Partition&) const
+bool CreateVolumeGroupOperation::targets(const Partition& partition) const
 {
+    for (const auto &p : m_PVList) {
+        if (partition == *p)
+            return true;
+    }
     return false;
 }
 

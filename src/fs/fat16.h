@@ -16,8 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_FAT16_H)
-
+#ifndef KPMCORE_FAT16_H
 #define KPMCORE_FAT16_H
 
 #include "fs/fat12.h"
@@ -42,6 +41,13 @@ public:
 
     bool create(Report& report, const QString& deviceNode) override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
+
+    CommandSupportType supportGrow() const override {
+        return m_Grow;
+    }
+    CommandSupportType supportShrink() const override {
+        return m_Shrink;
+    }
 
     qint64 minCapacity() const override;
     qint64 maxCapacity() const override;

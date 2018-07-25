@@ -33,21 +33,3 @@ bool CopyTargetFile::open()
 {
     return file().open(QIODevice::WriteOnly | QIODevice::Truncate);
 }
-
-/** Writes the given number of bytes from the given buffer to the file.
-    @param buffer the data to write
-    @param writeOffset where in the file to start writing
-    @return true on success
-*/
-bool CopyTargetFile::writeData(QByteArray& buffer, qint64 writeOffset)
-{
-    if (!file().seek(writeOffset))
-        return false;
-
-    bool rval = file().write(buffer) == buffer.size();
-
-    if (rval)
-        setBytesWritten(bytesWritten() + buffer.size());
-
-    return rval;
-}

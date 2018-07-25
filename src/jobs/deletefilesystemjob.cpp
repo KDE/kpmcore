@@ -65,7 +65,7 @@ bool DeleteFileSystemJob::run(Report& parent)
 
     if (partition().roles().has(PartitionRole::Extended)) {
         rval = true;
-    } else if (device().type() == Device::LVM_Device) {
+    } else if (device().type() == Device::Type::LVM_Device) {
         rval = true;
     }
     else {
@@ -74,10 +74,10 @@ bool DeleteFileSystemJob::run(Report& parent)
             return false;
         }
 
-        CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
+        std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
         if (backendDevice) {
-            CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+            std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
 
             if (backendPartitionTable) {
                 rval = backendPartitionTable->clobberFileSystem(*report, partition());
@@ -86,13 +86,9 @@ bool DeleteFileSystemJob::run(Report& parent)
                     report->line() << xi18nc("@info:progress", "Could not delete file system on <filename>%1</filename>.", partition().deviceNode());
                 else
                     backendPartitionTable->commit();
-
-                delete backendPartitionTable;
-
             } else
                 report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to delete file system on <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
-            delete backendDevice;
         } else
             report->line() << xi18nc("@info:progress", "Could not delete file system signature for partition <filename>%1</filename>: Failed to open device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
     }

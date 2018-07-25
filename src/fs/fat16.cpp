@@ -33,7 +33,7 @@
 namespace FS
 {
 fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    fat12(firstsector, lastsector, sectorsused, label, FileSystem::Fat16)
+    fat12(firstsector, lastsector, sectorsused, label, FileSystem::Type::Fat16)
 {
 }
 
@@ -75,12 +75,12 @@ bool fat16::supportToolFound() const
 
 qint64 fat16::minCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 fat16::maxCapacity() const
 {
-    return 4 * Capacity::unitFactor(Capacity::Byte, Capacity::GiB) - Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 4 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::GiB) - Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 bool fat16::create(Report& report, const QString& deviceNode)

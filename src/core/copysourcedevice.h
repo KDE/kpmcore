@@ -19,14 +19,18 @@
 
 #define KPMCORE_COPYSOURCEDEVICE_H
 
+#include "backend/corebackenddevice.h"
 #include "core/copysource.h"
 #include "util/libpartitionmanagerexport.h"
+
+#include <memory>
 
 #include <QtGlobal>
 
 class Device;
 class CopyTarget;
 class CoreBackendDevice;
+class QString;
 
 /** A Device to copy from.
 
@@ -40,11 +44,9 @@ class CopySourceDevice : public CopySource
 
 public:
     CopySourceDevice(Device& d, qint64 firstbyte, qint64 lastbyte);
-    ~CopySourceDevice();
 
 public:
     bool open() override;
-    bool readData(QByteArray& buffer, qint64 readOffset, qint64 size) override;
     qint64 length() const override;
     bool overlaps(const CopyTarget& target) const override;
 
@@ -62,12 +64,13 @@ public:
         return m_Device;    /**< @return Device to copy from */
     }
 
+    QString path() const override;
+
 protected:
     Device& m_Device;
     const qint64 m_FirstByte;
     const qint64 m_LastByte;
-    CoreBackendDevice* m_BackendDevice
-    ;
+    std::unique_ptr<CoreBackendDevice> m_BackendDevice;
 };
 
 #endif

@@ -31,6 +31,8 @@
 #include "util/report.h"
 #include "util/capacity.h"
 
+#include <memory>
+
 #include <QDebug>
 
 #include <KLocalizedString>
@@ -86,7 +88,7 @@ bool ResizeFileSystemJob::run(Report& parent)
         }
 
         case FileSystem::cmdSupportFileSystem: {
-            const qint64 newLengthInByte = Capacity(newLength() * device().logicalSize()).toInt(Capacity::Byte);
+            const qint64 newLengthInByte = Capacity(newLength() * device().logicalSize()).toInt(Capacity::Unit::Byte);
             if (partition().isMounted())
                 rval = partition().fileSystem().resizeOnline(*report, partition().deviceNode(), partition().mountPoint(), newLengthInByte);
             else
@@ -112,10 +114,10 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
 {
     bool rval = false;
 
-    CoreBackendDevice* backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
+    std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
 
     if (backendDevice) {
-        CoreBackendPartitionTable* backendPartitionTable = backendDevice->openPartitionTable();
+        std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
 
         if (backendPartitionTable) {
             connect(CoreBackendManager::self()->backend(), &CoreBackend::progress, this, &ResizeFileSystemJob::progress);
@@ -126,12 +128,9 @@ bool ResizeFileSystemJob::resizeFileSystemBackend(Report& report)
                 report.line() << xi18nc("@info:progress", "Successfully resized file system using internal backend functions.");
                 backendPartitionTable->commit();
             }
-
-            delete backendPartitionTable;
         } else
             report.line() << xi18nc("@info:progress", "Could not open partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
 
-        delete backendDevice;
     } else
         report.line() << xi18nc("@info:progress", "Could not read geometry for partition <filename>%1</filename> while trying to resize the file system.", partition().deviceNode());
 

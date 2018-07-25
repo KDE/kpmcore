@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2018 by Andrius Štikonas <andrius@stikonas.eu>         *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -15,8 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_OPERATION_H)
-
+#ifndef KPMCORE_OPERATION_H
 #define KPMCORE_OPERATION_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -25,10 +25,13 @@
 #include <QList>
 #include <QtGlobal>
 
+#include <memory>
+
 class Partition;
 class Device;
-class OperationStack;
 class Job;
+class OperationPrivate;
+class OperationStack;
 class OperationRunner;
 class Report;
 
@@ -108,17 +111,16 @@ public:
     virtual bool targets(const Device&) const = 0;
     virtual bool targets(const Partition&) const = 0;
 
-    virtual OperationStatus status() const {
-        return m_Status;    /**< @return the current status */
-    }
+    /**< @return the current status */
+    virtual OperationStatus status() const;
+
     virtual QString statusText() const;
     virtual QString statusIcon() const;
 
-    virtual void setStatus(OperationStatus s) {
-        m_Status = s;    /**< @param s the new status */
-    }
+    /**< @param s the new status */
+    virtual void setStatus(OperationStatus s);
 
-    LIBKPMCORE_EXPORT qint32 totalProgress() const;
+    qint32 totalProgress() const;
 
 protected:
     void onJobStarted();
@@ -129,24 +131,14 @@ protected:
 
     void addJob(Job* job);
 
-    QList<Job*>& jobs() {
-        return m_Jobs;
-    }
-    const QList<Job*>& jobs() const {
-        return m_Jobs;
-    }
+    QList<Job*>& jobs();
+    const QList<Job*>& jobs() const;
 
-    void setProgressBase(qint32 i) {
-        m_ProgressBase = i;
-    }
-    qint32 progressBase() const {
-        return m_ProgressBase;
-    }
+    void setProgressBase(qint32 i);
+    qint32 progressBase() const;
 
 private:
-    OperationStatus m_Status;
-    QList<Job*> m_Jobs;
-    qint32 m_ProgressBase;
+    std::unique_ptr<OperationPrivate> d;
 };
 
 #endif

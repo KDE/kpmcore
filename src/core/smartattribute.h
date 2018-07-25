@@ -15,30 +15,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_SMARTATTRIBUTE_H)
-
+#ifndef KPMCORE_SMARTATTRIBUTE_H
 #define KPMCORE_SMARTATTRIBUTE_H
 
 #include "util/libpartitionmanagerexport.h"
 
 #include <QString>
 
-struct SkSmartAttributeParsedData;
+class SmartAttributeParsedData;
 
 class LIBKPMCORE_EXPORT SmartAttribute
 {
 public:
-    enum FailureType {
+    enum class FailureType {
         PreFailure,
         OldAge
     };
 
-    enum UpdateType {
+    enum class UpdateType {
         Online,
         Offline
     };
 
-    enum Assessment {
+    enum class Assessment {
         NotApplicable,
         Failing,
         HasFailed,
@@ -47,7 +46,7 @@ public:
     };
 
 public:
-    SmartAttribute(const SkSmartAttributeParsedData* a);
+    SmartAttribute(const SmartAttributeParsedData& a);
 
 public:
     qint32 id() const {
@@ -104,4 +103,3 @@ private:
 };
 
 #endif
-

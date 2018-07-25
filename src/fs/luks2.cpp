@@ -28,7 +28,7 @@ namespace FS
 {
 
 luks2::luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label)
-    : luks(firstsector, lastsector, sectorsused, label, FileSystem::Luks2)
+    : luks(firstsector, lastsector, sectorsused, label, FileSystem::Type::Luks2)
 {
 }
 
@@ -40,7 +40,7 @@ FileSystem::Type luks2::type() const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->type();
-    return FileSystem::Luks2;
+    return FileSystem::Type::Luks2;
 }
 
 bool luks2::create(Report& report, const QString& deviceNode)
@@ -56,9 +56,8 @@ bool luks2::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("--type"), QStringLiteral("luks2"),
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
-    if (!( createCmd.start(-1) &&
-                createCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 &&
-                createCmd.waitFor() && createCmd.exitCode() == 0))
+    if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
+                createCmd.start(-1) && createCmd.exitCode() == 0))
     {
         return false;
     }
@@ -68,7 +67,7 @@ bool luks2::create(Report& report, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 && openCmd.waitFor()))
+    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1)))
         return false;
 
     setPayloadSize();
@@ -95,13 +94,13 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
-        cryptResizeCmd.start(-1);
-        if (m_KeyLocation == keyring) {
+        if (m_KeyLocation == KeyLocation::keyring) {
             if (m_passphrase.isEmpty())
                 return false;
             cryptResizeCmd.write(m_passphrase.toLocal8Bit() + '\n');
         }
-        cryptResizeCmd.waitFor();
+        if (!cryptResizeCmd.start(-1))
+            return false;
         if ( cryptResizeCmd.exitCode() == 0 )
             return m_innerFs->resize(report, mapperName(), m_PayloadSize);
     }
@@ -111,13 +110,13 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
                 {  QStringLiteral("--size"), QString::number(m_PayloadSize / 512), // FIXME, LUKS2 can have different sector sizes
                    QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
-        cryptResizeCmd.start(-1);
-        if (m_KeyLocation == keyring) {
+        if (m_KeyLocation == KeyLocation::keyring) {
             if (m_passphrase.isEmpty())
                 return false;
             cryptResizeCmd.write(m_passphrase.toLocal8Bit() + '\n');
         }
-        cryptResizeCmd.waitFor();
+        if (!cryptResizeCmd.start(-1))
+            return false;
         if ( cryptResizeCmd.exitCode() == 0 )
             return true;
     }
@@ -127,16 +126,16 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
 
 luks::KeyLocation luks2::keyLocation()
 {
-    m_KeyLocation = unknown;
+    m_KeyLocation = KeyLocation::unknown;
     ExternalCommand statusCmd(QStringLiteral("cryptsetup"), { QStringLiteral("status"), mapperName() });
     if (statusCmd.run(-1) && statusCmd.exitCode() == 0) {
         QRegularExpression re(QStringLiteral("key location:\\s+(\\w+)"));
         QRegularExpressionMatch rem = re.match(statusCmd.output());
         if (rem.hasMatch()) {
             if (rem.captured(1) == QStringLiteral("keyring"))
-                m_KeyLocation = keyring;
+                m_KeyLocation = KeyLocation::keyring;
             else if (rem.captured(1) == QStringLiteral("dm-crypt"))
-                m_KeyLocation = dmcrypt;
+                m_KeyLocation = KeyLocation::dmcrypt;
         }
     }
 

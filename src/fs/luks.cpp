@@ -39,6 +39,7 @@
 #include <QStorageInfo>
 #include <QString>
 #include <QUuid>
+#include <QWidget>
 
 #include <KLocalizedString>
 #include <KPasswordDialog>
@@ -129,9 +130,8 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 QStringLiteral("--type"), QStringLiteral("luks1"),
                                 QStringLiteral("luksFormat"),
                                 deviceNode });
-    if (!( createCmd.start(-1) &&
-                createCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 &&
-                createCmd.waitFor() && createCmd.exitCode() == 0))
+    if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
+                createCmd.start(-1) && createCmd.exitCode() == 0))
     {
         return false;
     }
@@ -141,7 +141,7 @@ bool luks::create(Report& report, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&  openCmd.write(m_passphrase.toLocal8Bit() + '\n') == m_passphrase.toLocal8Bit().length() + 1 && openCmd.waitFor()))
+    if (!( openCmd.write(m_passphrase.toLocal8Bit() + '\n') && openCmd.start(-1)))
         return false;
 
     setPayloadSize();
@@ -168,12 +168,12 @@ QString luks::unmountTitle() const
 
 QString luks::cryptOpenTitle() const
 {
-    return xi18nc("@title:menu", "Decrypt");
+    return xi18nc("@title:menu", "Unlock");
 }
 
 QString luks::cryptCloseTitle() const
 {
-    return xi18nc("@title:menu", "Deactivate");
+    return xi18nc("@title:menu", "Lock");
 }
 
 void luks::setPassphrase(const QString& passphrase)
@@ -265,9 +265,8 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
                                 deviceNode,
                                 suggestedMapperName(deviceNode) });
 
-    if (!( openCmd.start(-1) &&
-                    openCmd.write(passphrase.toLocal8Bit() + '\n') == passphrase.toLocal8Bit().length() + 1 &&
-                    openCmd.waitFor() && openCmd.exitCode() == 0) )
+    if (!( openCmd.write(passphrase.toLocal8Bit() + '\n') &&
+                    openCmd.start(-1) && openCmd.exitCode() == 0) )
         return false;
 
     if (m_innerFs) {
@@ -286,8 +285,8 @@ bool luks::cryptOpen(QWidget* parent, const QString& deviceNode)
     if (!m_isCryptOpen)
         return false;
 
-    for (auto &p : LVM::pvList)
-        if (p.isLuks() && p.partition()->deviceNode() == deviceNode && p.partition()->fileSystem().type() == FileSystem::Lvm2_PV)
+    for (auto &p : LVM::pvList::list())
+        if (p.isLuks() && p.partition()->deviceNode() == deviceNode && p.partition()->fileSystem().type() == FileSystem::Type::Lvm2_PV)
             p.setLuks(false);
 
     m_passphrase = passphrase;
@@ -325,7 +324,7 @@ bool luks::cryptClose(const QString& deviceNode)
 
     m_isCryptOpen = (m_innerFs != nullptr);
 
-    for (auto &p : LVM::pvList)
+    for (auto &p : LVM::pvList::list())
         if (!p.isLuks() && p.partition()->deviceNode() == deviceNode)
             p.setLuks(true);
 
@@ -464,7 +463,7 @@ FileSystem::Type luks::type() const
 {
     if (m_isCryptOpen && m_innerFs)
         return m_innerFs->type();
-    return FileSystem::Luks;
+    return FileSystem::Type::Luks;
 }
 
 QString luks::suggestedMapperName(const QString& deviceNode) const
@@ -647,19 +646,19 @@ bool luks::canEncryptType(FileSystem::Type type)
 {
     switch (type)
     {
-        case Btrfs:
-        case F2fs:
-        case Ext2:
-        case Ext3:
-        case Ext4:
-        case Jfs:
-        case LinuxSwap:
-        case Lvm2_PV:
-        case Nilfs2:
-        case ReiserFS:
-        case Reiser4:
-        case Xfs:
-        case Zfs:
+        case Type::Btrfs:
+        case Type::F2fs:
+        case Type::Ext2:
+        case Type::Ext3:
+        case Type::Ext4:
+        case Type::Jfs:
+        case Type::LinuxSwap:
+        case Type::Lvm2_PV:
+        case Type::Nilfs2:
+        case Type::ReiserFS:
+        case Type::Reiser4:
+        case Type::Xfs:
+        case Type::Zfs:
             return true;
         default:
             return false;
@@ -690,7 +689,7 @@ void luks::setPayloadSize()
 
 bool luks::testPassphrase(const QString& deviceNode, const QString& passphrase) const {
     ExternalCommand cmd(QStringLiteral("cryptsetup"), { QStringLiteral("open"), QStringLiteral("--tries"), QStringLiteral("1"), QStringLiteral("--test-passphrase"), deviceNode });
-    if (cmd.start(-1) && cmd.write(passphrase.toLocal8Bit() + '\n') == passphrase.toLocal8Bit().length() + 1 && cmd.waitFor() && cmd.exitCode() == 0)
+    if (cmd.write(passphrase.toLocal8Bit() + '\n') && cmd.start(-1) && cmd.exitCode() == 0)
         return true;
 
     return false;

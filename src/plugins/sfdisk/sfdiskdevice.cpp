@@ -58,9 +58,9 @@ bool SfdiskDevice::close()
     return true;
 }
 
-CoreBackendPartitionTable* SfdiskDevice::openPartitionTable()
+std::unique_ptr<CoreBackendPartitionTable> SfdiskDevice::openPartitionTable()
 {
-    return new SfdiskPartitionTable(m_device);
+    return std::make_unique<SfdiskPartitionTable>(m_device);
 }
 
 bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
@@ -72,46 +72,9 @@ bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& pt
         tableType = ptable.typeName().toLocal8Bit();
 
     ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { m_device->deviceNode() } );
-    if ( createCommand.start(-1) && createCommand.write(QByteArrayLiteral("label: ") + tableType +
-                                    QByteArrayLiteral("\nwrite\n")) && createCommand.waitFor() ) {
+    if ( createCommand.write(QByteArrayLiteral("label: ") + tableType +
+                                    QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) ) {
         return createCommand.output().contains(QStringLiteral("Script header accepted."));
-    }
-
-    return false;
-}
-
-bool SfdiskDevice::readData(QByteArray& buffer, qint64 offset, qint64 size)
-{
-    if (!isExclusive())
-        return false;
-
-    ExternalCommand ddCommand(QStringLiteral("dd"), {
-                QStringLiteral("skip=") + QString::number(offset),
-                QStringLiteral("bs=") + QString::number(size),
-                QStringLiteral("count=1"),
-                QStringLiteral("iflag=skip_bytes"),
-                QStringLiteral("if=") + m_device->deviceNode() }, QProcess::SeparateChannels);
-    if (ddCommand.run(-1) && ddCommand.exitCode() == 0) {
-        buffer = ddCommand.rawOutput();
-        return true;
-    }
-
-    return false;
-}
-
-bool SfdiskDevice::writeData(QByteArray& buffer, qint64 offset)
-{
-    if (!isExclusive())
-        return false;
-
-    ExternalCommand ddCommand(QStringLiteral("dd"), {
-                QStringLiteral("of=") + m_device->deviceNode(),
-                QStringLiteral("seek=") + QString::number(offset),
-                QStringLiteral("bs=1M"),
-                QStringLiteral("oflag=seek_bytes"),
-                QStringLiteral("conv=fsync") }, QProcess::SeparateChannels);
-    if ( ddCommand.start(-1) && ddCommand.write(buffer) == buffer.size() && ddCommand.waitFor() && ddCommand.exitCode() == 0 ) {
-        return true;
     }
 
     return false;

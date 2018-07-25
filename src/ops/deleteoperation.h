@@ -43,18 +43,18 @@ class LIBKPMCORE_EXPORT DeleteOperation : public Operation
     Q_DISABLE_COPY(DeleteOperation)
 
 public:
-    enum ShredAction {
-        NoShred = 0,
+    enum class ShredAction {
+        NoShred,
         ZeroShred,
         RandomShred
     };
 
-    DeleteOperation(Device& d, Partition* p, ShredAction shred = NoShred);
+    DeleteOperation(Device& d, Partition* p, ShredAction shred = ShredAction::NoShred);
     ~DeleteOperation();
 
 public:
     QString iconName() const override {
-        return shredAction() == NoShred ?
+        return shredAction() == ShredAction::NoShred ?
                QStringLiteral("edit-delete") :
                QStringLiteral("edit-delete-shred");
     }

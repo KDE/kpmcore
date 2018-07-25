@@ -16,8 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_LVMDEVICE_H)
-
+#ifndef KPMCORE_LVMDEVICE_H
 #define KPMCORE_LVMDEVICE_H
 
 #include "core/device.h"
@@ -52,12 +51,12 @@ public:
 
 public:
     const QStringList deviceNodes() const override;
-    const QStringList partitionNodes() const override;
+    const QStringList& partitionNodes() const override;
     qint64 partitionSize(QString& partitionPath) const override;
 
     static QVector<const Partition*> s_DirtyPVs;
+    static QVector<const Partition*> s_OrphanPVs;
 
-public:
     static void scanSystemLVM(QList<Device*>& devices);
 
     static const QStringList getVGs();
@@ -89,54 +88,22 @@ public:
     static bool activateVG(Report& report, const LvmDevice& d);
 
 protected:
-
     void initPartitions() override;
     const QList<Partition*> scanPartitions(PartitionTable* pTable) const;
     Partition* scanPartition(const QString& lvPath, PartitionTable* pTable) const;
     qint64 mappedSector(const QString& lvPath, qint64 sector) const override;
 
 public:
-    qint64 peSize() const {
-        return m_peSize;
-    }
-    qint64 totalPE() const {
-        return m_totalPE;
-    }
-    qint64 allocatedPE() const {
-        return m_allocPE;
-    }
-    qint64 freePE() const {
-        return m_freePE;
-    }
-    QString UUID() const {
-        return m_UUID;
-    }
-    QStringList* LVPathList() const {
-        return m_LVPathList;
-    }
-    QVector <const Partition*>& physicalVolumes() {
-        return m_PVs;
-    }
-    const QVector <const Partition*>& physicalVolumes() const {
-        return m_PVs;
-    }
+    qint64 peSize() const;
+    qint64 totalPE() const;
+    qint64 allocatedPE() const;
+    qint64 freePE() const;
+    QString UUID() const;
+    QVector <const Partition*>& physicalVolumes();
+    const QVector <const Partition*>& physicalVolumes() const;
 
 protected:
-    QHash<QString, qint64>* LVSizeMap() const {
-        return m_LVSizeMap;
-    }
-
-private:
-    qint64 m_peSize;
-    qint64 m_totalPE;
-    qint64 m_allocPE;
-    qint64 m_freePE;
-    QString m_UUID;
-
-    mutable QStringList* m_LVPathList;
-    QVector <const Partition*> m_PVs;
-    mutable QHash<QString, qint64>* m_LVSizeMap;
-
+    std::unique_ptr<QHash<QString, qint64>>& LVSizeMap() const;
 };
 
 #endif

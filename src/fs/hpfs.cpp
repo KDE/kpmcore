@@ -37,12 +37,12 @@ FileSystem::CommandSupportType hpfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hpfs::m_GetUUID = FileSystem::cmdSupportNone;
 
 hpfs::hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Hpfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Hpfs)
 {
 }
 
 qint64 hpfs::maxCapacity() const
 {
-    return 2 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 2 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 }

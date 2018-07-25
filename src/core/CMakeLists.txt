@@ -1,3 +1,5 @@
+include(core/raid/CMakeLists.txt)
+
 set(CORE_SRC
     core/copysource.cpp
     core/copysourcedevice.cpp
@@ -20,7 +22,11 @@ set(CORE_SRC
     core/partitiontable.cpp
     core/smartstatus.cpp
     core/smartattribute.cpp
+    core/smartparser.cpp
+    core/smartattributeparseddata.cpp
+    core/smartdiskinformation.cpp
     core/volumemanagerdevice.cpp
+    ${RAID_SRC}
 )
 
 set(CORE_LIB_HDRS
@@ -39,5 +45,5 @@ set(CORE_LIB_HDRS
     core/smartattribute.h
     core/smartstatus.h
     core/volumemanagerdevice.h
+    ${RAID_LIB_HDRS}
 )
-

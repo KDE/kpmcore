@@ -55,7 +55,7 @@ NewOperation::NewOperation(Device& d, Partition* p) :
 
     const FileSystem& fs = newPartition().fileSystem();
 
-    if (fs.type() != FileSystem::Extended) {
+    if (fs.type() != FileSystem::Type::Extended) {
         // It would seem tempting to skip the CreateFileSystemJob or the
         // SetFileSystemLabelJob if either has nothing to do (unformatted FS or
         // empty label). However, the user might later on decide to change FS or
@@ -65,7 +65,7 @@ NewOperation::NewOperation(Device& d, Partition* p) :
         m_CreateFileSystemJob = new CreateFileSystemJob(targetDevice(), newPartition(), fs.label());
         addJob(createFileSystemJob());
 
-        if (fs.type() == FileSystem::Lvm2_PV) {
+        if (fs.type() == FileSystem::Type::Lvm2_PV) {
             m_SetPartFlagsJob = new SetPartFlagsJob(targetDevice(), newPartition(), PartitionTable::FlagLvm);
             addJob(setPartFlagsJob());
         }

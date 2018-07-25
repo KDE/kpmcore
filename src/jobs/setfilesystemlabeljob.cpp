@@ -18,6 +18,13 @@
 
 #include "jobs/setfilesystemlabeljob.h"
 
+#include "backend/corebackend.h"
+#include "backend/corebackendmanager.h"
+#include "backend/corebackenddevice.h"
+#include "backend/corebackendpartitiontable.h"
+
+#include "core/device_p.h"
+#include "core/operationstack.h"
 #include "core/partition.h"
 
 #include "fs/filesystem.h"
@@ -25,6 +32,8 @@
 #include "util/report.h"
 
 #include <KLocalizedString>
+
+#include <memory>
 
 /** Creates a new SetFileSystemLabelJob
     @param p the Partition the FileSystem whose label is to be set is on
@@ -59,6 +68,18 @@ bool SetFileSystemLabelJob::run(Report& parent)
 
         if (rval)
             partition().fileSystem().setLabel(label());
+    }
+    else
+        rval = false;
+
+    // A hack to reread partition table (commit() should be called even on non DiskDevices)
+    Device dev(std::make_shared<DevicePrivate>(), QString(), QString(), 0, 0, QString(), Device::Type::Unknown_Device);
+    std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(dev);
+    if (backendDevice) {
+        std::unique_ptr<CoreBackendPartitionTable> backendPartitionTable = backendDevice->openPartitionTable();
+
+        if (backendPartitionTable)
+            backendPartitionTable->commit();
     }
 
     jobFinished(*report, rval);

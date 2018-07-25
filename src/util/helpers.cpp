@@ -56,7 +56,7 @@ KAboutData aboutKPMcore()
     KAboutData aboutData( QStringLiteral("kpmcore"),
                           xi18nc("@title", "<application>KPMcore</application>"), QStringLiteral(VERSION),
                           xi18nc("@title", "Library for managing partitions"),
-                          KAboutLicense::GPL_V3, xi18nc("@info:credit", "&copy; 2008-2017 KPMcore developers" ) );
+                          KAboutLicense::GPL_V3, xi18nc("@info:credit", "&copy; 2008-2018 KPMcore developers" ) );
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.setProductName(QByteArray("kpmcore"));
     aboutData.setHomepage(QStringLiteral("https://commits.kde.org/kpmcore"));
@@ -67,6 +67,7 @@ KAboutData aboutKPMcore()
     aboutData.addCredit(xi18nc("@info:credit", "Chantara Tith"), i18nc("@info:credit", "LVM support"), QStringLiteral("tith.chantara@gmail.com"));
     aboutData.addCredit(xi18nc("@info:credit", "Pali Rohár"), i18nc("@info:credit", "UDF support"), QStringLiteral("pali.rohar@gmail.com"));
     aboutData.addCredit(xi18nc("@info:credit", "Adriaan de Groot"), i18nc("@info:credit", "Calamares maintainer"), QStringLiteral("groot@kde.org"));
+    aboutData.addCredit(xi18nc("@info:credit", "Caio Carvalho"), i18nc("@info:credit", "Improved SMART support"), QStringLiteral("caiojcarvalho@gmail.com"));
 
     return aboutData;
 }

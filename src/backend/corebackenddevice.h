@@ -19,6 +19,7 @@
 
 #define KPMCORE_COREBACKENDDEVICE_H
 
+#include <memory>
 #include <QString>
 
 class CoreBackendPartition;
@@ -81,7 +82,7 @@ public:
       * @return a pointer to the CoreBackendPartitionTable for this device or nullptr in case
       *         of errors
       */
-    virtual CoreBackendPartitionTable* openPartitionTable() = 0;
+    virtual std::unique_ptr<CoreBackendPartitionTable> openPartitionTable() = 0;
 
     /**
       * Create a new partition table on this device.
@@ -90,23 +91,6 @@ public:
       * @return true if successful
       */
     virtual bool createPartitionTable(Report& report, const PartitionTable& ptable) = 0;
-
-    /**
-      * Read data from an opened device into a buffer.
-      * @param buffer the buffer to write the read data to
-      * @param offset offset byte where to start reading on the device
-      * @param size the number of bytes to read
-      * @return true on success
-      */
-    virtual bool readData(QByteArray& buffer, qint64 offset, qint64 size) = 0;
-
-    /**
-      * Write data from a buffer to an exclusively opened device.
-      * @param buffer the buffer with the data
-      * @param offset offset byte where to start writing to the device
-      * @return true on success
-      */
-    virtual bool writeData(QByteArray& buffer, qint64 offset) = 0;
 
 protected:
     void setExclusive(bool b) {

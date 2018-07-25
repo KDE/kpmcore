@@ -21,10 +21,10 @@
 #include "fs/filesystem.h"
 #include "util/capacity.h"
 
-#include <QPainter>
-#include <QStyleOptionButton>
 #include <QApplication>
 #include <QFontDatabase>
+#include <QPainter>
+#include <QStyleOptionButton>
 
 /** Creates a new PartWidget
     @param parent pointer to the parent widget
@@ -71,7 +71,7 @@ void PartWidget::updateChildren()
     }
 }
 
-void PartWidget::setFileSystemColorCode(const std::array< QColor, FileSystem::__lastType >& colorCode)
+void PartWidget::setFileSystemColorCode(const std::vector<QColor>& colorCode)
 {
     m_fileSystemColorCode = colorCode;
     repaint();
@@ -101,12 +101,12 @@ void PartWidget::paintEvent(QPaintEvent*)
 
     if (partition()->roles().has(PartitionRole::Extended)) {
         drawGradient(&painter, activeColor(
-                         m_fileSystemColorCode[ partition()->fileSystem().type() ]),
+                         m_fileSystemColorCode[ static_cast<int>(partition()->fileSystem().type()) ]),
                      QRect(0, 0, width(), height()));
         return;
     }
 
-    const QColor base = activeColor(m_fileSystemColorCode[ partition()->fileSystem().type() ]);
+    const QColor base = activeColor(m_fileSystemColorCode[ static_cast<int>(partition()->fileSystem().type()) ]);
 
     if (!partition()->roles().has(PartitionRole::Unallocated)) {
         const QColor dark = base.darker(105);

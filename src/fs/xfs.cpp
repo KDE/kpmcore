@@ -42,7 +42,7 @@ FileSystem::CommandSupportType xfs::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType xfs::m_SetLabel = FileSystem::cmdSupportNone;
 
 xfs::xfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Xfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Xfs)
 {
 }
 
@@ -83,12 +83,12 @@ FileSystem::SupportTool xfs::supportToolName() const
 
 qint64 xfs::minCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 32 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 xfs::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int xfs::maxLabelLength() const

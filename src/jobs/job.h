@@ -15,8 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_JOB_H)
-
+#ifndef KPMCORE_JOB_H
 #define KPMCORE_JOB_H
 
 #include "fs/filesystem.h"
@@ -49,10 +48,10 @@ class LIBKPMCORE_EXPORT Job : public QObject
 
 public:
     /** Status of this Job */
-    enum JobStatus {
-        Pending = 0,        /**< Pending, not yet run */
-        Success,            /**< Successfully run */
-        Error               /**< Running generated an error */
+    enum class Status : int {
+        Pending,        /**< Pending, not yet run */
+        Success,        /**< Successfully run */
+        Error           /**< Running generated an error */
     };
 
 protected:
@@ -76,11 +75,12 @@ public:
     virtual QString statusIcon() const;
     virtual QString statusText() const;
 
-    JobStatus status() const {
+    Status status() const {
         return m_Status;    /**< @return the Job's current status */
     }
 
     void emitProgress(int i);
+    void updateReport(const QVariantMap& reportString);
 
 protected:
     bool copyBlocks(Report& report, CopyTarget& target, CopySource& source);
@@ -89,12 +89,13 @@ protected:
     Report* jobStarted(Report& parent);
     void jobFinished(Report& report, bool b);
 
-    void setStatus(JobStatus s) {
+    void setStatus(Status s) {
         m_Status = s;
     }
 
 private:
-    JobStatus m_Status;
+    Report *m_Report;
+    Status m_Status;
 };
 
 #endif

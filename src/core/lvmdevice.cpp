@@ -18,14 +18,16 @@
 
 #include "core/lvmdevice.h"
 #include "core/partition.h"
+#include "core/partitiontable.h"
+#include "core/volumemanagerdevice_p.h"
 #include "fs/filesystem.h"
 #include "fs/lvm2_pv.h"
 #include "fs/luks.h"
 #include "fs/filesystemfactory.h"
 
-#include "core/partitiontable.h"
 #include "util/externalcommand.h"
 #include "util/helpers.h"
+#include "util/globallog.h"
 #include "util/report.h"
 
 #include <QRegularExpression>
@@ -34,26 +36,43 @@
 
 #include <KLocalizedString>
 
+#define d_ptr std::static_pointer_cast<LvmDevicePrivate>(d)
+
+class LvmDevicePrivate : public VolumeManagerDevicePrivate
+{
+public:
+    qint64 m_peSize;
+    qint64 m_totalPE;
+    qint64 m_allocPE;
+    qint64 m_freePE;
+    QString m_UUID;
+
+    mutable QStringList m_LVPathList;
+    QVector <const Partition*> m_PVs;
+    mutable std::unique_ptr<QHash<QString, qint64>> m_LVSizeMap;
+};
+
 /** Constructs a representation of LVM device with initialized LV as Partitions
  *
  *  @param vgName Volume Group name
  *  @param iconName Icon representing LVM Volume group
  */
 LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
-    : VolumeManagerDevice(vgName,
+    : VolumeManagerDevice(std::make_shared<LvmDevicePrivate>(),
+                          vgName,
                           (QStringLiteral("/dev/") + vgName),
                           getPeSize(vgName),
                           getTotalPE(vgName),
                           iconName,
-                          Device::LVM_Device)
+                          Device::Type::LVM_Device)
 {
-    m_peSize  = logicalSize();
-    m_totalPE = totalLogical();
-    m_freePE  = getFreePE(vgName);
-    m_allocPE = m_totalPE - m_freePE;
-    m_UUID    = getUUID(vgName);
-    m_LVPathList = new QStringList(getLVs(vgName));
-    m_LVSizeMap  = new QHash<QString, qint64>();
+    d_ptr->m_peSize  = logicalSize();
+    d_ptr->m_totalPE = totalLogical();
+    d_ptr->m_freePE  = getFreePE(vgName);
+    d_ptr->m_allocPE = d_ptr->m_totalPE - d_ptr->m_freePE;
+    d_ptr->m_UUID    = getUUID(vgName);
+    d_ptr->m_LVPathList = getLVs(vgName);
+    d_ptr->m_LVSizeMap  = std::make_unique<QHash<QString, qint64>>();
 
     initPartitions();
 }
@@ -64,36 +83,47 @@ LvmDevice::LvmDevice(const QString& vgName, const QString& iconName)
 */
 QVector<const Partition*> LvmDevice::s_DirtyPVs;
 
+
+/**
+ * shared list of PVs paths that are member of VGs that will be deleted soon.
+ */
+QVector<const Partition*> LvmDevice::s_OrphanPVs;
+
 LvmDevice::~LvmDevice()
 {
-    delete m_LVPathList;
-    delete m_LVSizeMap;
 }
 
 void LvmDevice::initPartitions()
 {
     qint64 firstUsable = 0;
-    qint64 lastusable  = totalPE() - 1;
-    PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastusable);
+    qint64 lastUsable  = totalPE() - 1;
+    PartitionTable* pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastUsable);
 
     for (const auto &p : scanPartitions(pTable)) {
         LVSizeMap()->insert(p->partitionPath(), p->length());
         pTable->append(p);
     }
 
-    pTable->updateUnallocated(*this);
+    if (pTable)
+        pTable->updateUnallocated(*this);
+    else
+        pTable = new PartitionTable(PartitionTable::vmd, firstUsable, lastUsable);
 
     setPartitionTable(pTable);
 }
 
 /**
+ *  Scan LVM LV Partitions
+ *
+ *  @param pTable Virtual PartitionTable of LVM device
  *  @return an initialized Partition(LV) list
  */
 const QList<Partition*> LvmDevice::scanPartitions(PartitionTable* pTable) const
 {
     QList<Partition*> pList;
     for (const auto &lvPath : partitionNodes()) {
-        pList.append(scanPartition(lvPath, pTable));
+        Partition *p = scanPartition(lvPath, pTable);
+        pList.append(p);
     }
     return pList;
 }
@@ -129,7 +159,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
     bool mounted;
 
     // Handle LUKS partition
-    if (fs->type() == FileSystem::Luks) {
+    if (fs->type() == FileSystem::Type::Luks) {
         r |= PartitionRole::Luks;
         FS::luks* luksFs = static_cast<FS::luks*>(fs);
         luksFs->initLUKS();
@@ -141,9 +171,9 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
         mountPoint = FileSystem::detectMountPoint(fs, lvPath);
         mounted = FileSystem::detectMountStatus(fs, lvPath);
 
-        if (mountPoint != QString() && fs->type() != FileSystem::LinuxSwap) {
+        if (mountPoint != QString() && fs->type() != FileSystem::Type::LinuxSwap) {
             const QStorageInfo storage = QStorageInfo(mountPoint);
-            if (logicalSize() > 0 && fs->type() != FileSystem::Luks && mounted && storage.isValid())
+            if (logicalSize() > 0 && fs->type() != FileSystem::Type::Luks && mounted && storage.isValid())
                 fs->setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / logicalSize() );
         }
         else if (fs->supportGetUsed() == FileSystem::cmdSupportFileSystem)
@@ -175,23 +205,26 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
  */
 void LvmDevice::scanSystemLVM(QList<Device*>& devices)
 {
+    LvmDevice::s_OrphanPVs.clear();
+
     QList<LvmDevice*> lvmList;
     for (const auto &vgName : getVGs()) {
         lvmList.append(new LvmDevice(vgName));
     }
 
-    // Some LVM operations require additional information about LVM physical volumes which we store in LVM::pvList
-    LVM::pvList = FS::lvm2_pv::getPVs(devices);
+    // Some LVM operations require additional information about LVM physical volumes which we store in LVM::pvList::list()
+    LVM::pvList::list().clear();
+    LVM::pvList::list().append(FS::lvm2_pv::getPVs(devices));
 
     // Look for LVM physical volumes in LVM VGs
     for (const auto &d : lvmList) {
         devices.append(d);
-        LVM::pvList.append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
+        LVM::pvList::list().append(FS::lvm2_pv::getPVinNode(d->partitionTable()));
     }
 
     // Inform LvmDevice about which physical volumes form that particular LvmDevice
     for (const auto &d : lvmList)
-        for (const auto &p : qAsConst(LVM::pvList))
+        for (const auto &p : qAsConst(LVM::pvList::list()))
             if (p.vgName() == d->name())
                 d->physicalVolumes().append(p.partition());
 
@@ -225,9 +258,9 @@ const QStringList LvmDevice::deviceNodes() const
     return pvList;
 }
 
-const QStringList LvmDevice::partitionNodes() const
+const QStringList& LvmDevice::partitionNodes() const
 {
-    return *LVPathList();
+    return d_ptr->m_LVPathList;
 }
 
 qint64 LvmDevice::partitionSize(QString& partitionPath) const
@@ -240,7 +273,7 @@ const QStringList LvmDevice::getVGs()
     QStringList vgList;
     QString output = getField(QStringLiteral("vg_name"));
     if (!output.isEmpty()) {
-        const QStringList vgNameList = output.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        const QStringList vgNameList = output.split(QLatin1Char('\n'), QString::SkipEmptyParts);
         for (const auto &vgName : vgNameList) {
             vgList.append(vgName.trimmed());
         }
@@ -254,7 +287,7 @@ const QStringList LvmDevice::getLVs(const QString& vgName)
     QString cmdOutput = getField(QStringLiteral("lv_path"), vgName);
 
     if (cmdOutput.size()) {
-        const QStringList tempPathList = cmdOutput.split(QStringLiteral("\n"), QString::SkipEmptyParts);
+        const QStringList tempPathList = cmdOutput.split(QLatin1Char('\n'), QString::SkipEmptyParts);
         for (const auto &lvPath : tempPathList) {
             lvPathList.append(lvPath.trimmed());
         }
@@ -333,6 +366,7 @@ qint64 LvmDevice::getTotalLE(const QString& lvPath)
              return  match.captured(1).toInt();
         }
     }
+    Log(Log::Level::error) << xi18nc("@info:status", "An error occurred while running lvdisplay.");
     return -1;
 }
 
@@ -419,8 +453,7 @@ bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList&
     if (FS::lvm2_pv::getAllocatedPE(pvPath) <= 0)
         return true;
 
-    QStringList args = QStringList();
-    args << QStringLiteral("pvmove");
+    QStringList args = { QStringLiteral("pvmove") };
     args << pvPath;
     if (!destinations.isEmpty())
         for (const auto &destPath : destinations)
@@ -432,8 +465,7 @@ bool LvmDevice::movePV(Report& report, const QString& pvPath, const QStringList&
 
 bool LvmDevice::createVG(Report& report, const QString vgName, const QVector<const Partition*>& pvList, const qint32 peSize)
 {
-    QStringList args = QStringList();
-    args << QStringLiteral("vgcreate") << QStringLiteral("--physicalextentsize") << QString::number(peSize);
+    QStringList args = { QStringLiteral("vgcreate"), QStringLiteral("--physicalextentsize"), QString::number(peSize) };
     args << vgName;
     for (const auto &p : pvList) {
         if (p->roles().has(PartitionRole::Luks))
@@ -491,4 +523,44 @@ bool LvmDevice::activateLV(const QString& lvPath)
               QStringLiteral("--activate"), QStringLiteral("y"),
               lvPath });
     return deactivate.run(-1) && deactivate.exitCode() == 0;
+}
+
+qint64 LvmDevice::peSize() const
+{
+    return d_ptr->m_peSize;
+}
+
+qint64 LvmDevice::totalPE() const
+{
+    return d_ptr->m_totalPE;
+}
+
+qint64 LvmDevice::allocatedPE() const
+{
+    return d_ptr->m_allocPE;
+}
+
+qint64 LvmDevice::freePE() const
+{
+    return d_ptr->m_freePE;
+}
+
+QString LvmDevice::UUID() const
+{
+    return d_ptr->m_UUID;
+}
+
+QVector <const Partition*>& LvmDevice::physicalVolumes()
+{
+    return d_ptr->m_PVs;
+}
+
+const QVector <const Partition*>& LvmDevice::physicalVolumes() const
+{
+    return d_ptr->m_PVs;
+}
+
+std::unique_ptr<QHash<QString, qint64>>& LvmDevice::LVSizeMap() const
+{
+    return d_ptr->m_LVSizeMap;
 }

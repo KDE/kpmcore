@@ -47,7 +47,7 @@ FileSystem::CommandSupportType nilfs2::m_UpdateUUID = FileSystem::cmdSupportNone
 FileSystem::CommandSupportType nilfs2::m_GetUUID = FileSystem::cmdSupportNone;
 
 nilfs2::nilfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Nilfs2)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Nilfs2)
 {
 }
 
@@ -96,12 +96,12 @@ FileSystem::SupportTool nilfs2::supportToolName() const
 
 qint64 nilfs2::minCapacity() const
 {
-    return 128 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 128 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 nilfs2::maxCapacity() const
 {
-    return Capacity::unitFactor(Capacity::Byte, Capacity::EiB);
+    return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
 int nilfs2::maxLabelLength() const

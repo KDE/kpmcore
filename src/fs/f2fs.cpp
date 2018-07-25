@@ -46,7 +46,7 @@ FileSystem::CommandSupportType f2fs::m_GetUUID = FileSystem::cmdSupportNone;
 bool f2fs::oldVersion = false; // 1.8.x or older
 
 f2fs::f2fs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::F2fs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::F2fs)
 {
 }
 
@@ -100,12 +100,12 @@ FileSystem::SupportTool f2fs::supportToolName() const
 
 qint64 f2fs::minCapacity() const
 {
-    return 30 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 30 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 f2fs::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 
 int f2fs::maxLabelLength() const

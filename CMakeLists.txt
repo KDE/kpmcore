@@ -16,14 +16,22 @@
 
 project(kpmcore)
 
-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 set(CMAKE_USE_RELATIVE_PATHS OFF)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 
-set(QT_MIN_VERSION "5.7.0")
+# Dependencies
+set(QT_MIN_VERSION "5.10.0")
+set(KF5_MIN_VERSION "5.25")
+set(BLKID_MIN_VERSION "2.32")
+# Qca-qt5 (tested with botan and ossl backends)
+
+# Runtime
+# smartmontools 6.7
+
 set(VERSION_MAJOR "3")
-set(VERSION_MINOR "3")
+set(VERSION_MINOR "50")
 set(VERSION_RELEASE "0")
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE})
 set(SOVERSION "8")
@@ -32,7 +40,7 @@ add_definitions(-D'VERSION="${VERSION}"') #"
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(ECM 1.0.0 REQUIRED NO_MODULE)
+find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
 
 include(KDEInstallDirs)
@@ -41,7 +49,6 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
-include(ECMPackageConfigHelpers)
 
 ecm_setup_version(${VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
@@ -56,11 +63,14 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
 )
 
 # Load the frameworks we need
-find_package(KF5 REQUIRED
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+  Auth
   I18n
   CoreAddons
   WidgetsAddons
 )
+
+find_package(Qca-qt5 REQUIRED)
 
 # use sane compile flags
 add_definitions(
@@ -76,10 +86,10 @@ add_definitions(
 )
 kde_enable_exceptions()
 
-
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(BLKID REQUIRED blkid>=2.30)
-pkg_check_modules(LIBATASMART REQUIRED libatasmart)
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(BLKID REQUIRED blkid>=${BLKID_MIN_VERSION})
+endif()
 
 include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE_DIRS} lib/ src/)
 
@@ -89,7 +99,7 @@ add_subdirectory(src)
 set(INCLUDE_INSTALL_DIR "include/kpmcore/")
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KPMcore")
 
-ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
+configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
                               "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"
                               INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
                               PATH_VARS INCLUDE_INSTALL_DIR

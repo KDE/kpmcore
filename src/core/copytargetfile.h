@@ -40,13 +40,16 @@ public:
 
 public:
     bool open() override;
-    bool writeData(QByteArray& buffer, qint64 writeOffset) override;
 
     qint64 firstByte() const override {
         return 0;    /**< @return always 0 for a file */
     }
     qint64 lastByte() const override {
         return bytesWritten();    /**< @return the number of bytes written so far */
+    }
+
+    QString path() const override {
+        return m_File.fileName();
     }
 
 protected:

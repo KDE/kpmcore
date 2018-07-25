@@ -39,7 +39,7 @@ bool DeactivateVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    if (device().type() == Device::LVM_Device) {
+    if (device().type() == Device::Type::LVM_Device) {
         rval = LvmDevice::deactivateVG(*report, static_cast<LvmDevice&>(device()));
     }
     const auto lvmPVs = static_cast<LvmDevice&>(device()).physicalVolumes();

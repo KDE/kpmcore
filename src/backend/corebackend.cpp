@@ -24,20 +24,18 @@
 
 #include <QDebug>
 
-class CoreBackend::CoreBackendPrivate
+struct CoreBackendPrivate
 {
-public:
-    CoreBackendPrivate() {}
+    QString m_id, m_version;
 };
 
 CoreBackend::CoreBackend() :
-    d(new CoreBackendPrivate())
+    d(std::make_unique<CoreBackendPrivate>())
 {
 }
 
 CoreBackend::~CoreBackend()
 {
-    delete d;
 }
 
 void CoreBackend::emitProgress(int i)
@@ -58,4 +56,24 @@ void CoreBackend::setPartitionTableForDevice(Device& d, PartitionTable* p)
 void CoreBackend::setPartitionTableMaxPrimaries(PartitionTable& p, qint32 max_primaries)
 {
     p.setMaxPrimaries(max_primaries);
+}
+
+QString CoreBackend::id()
+{
+    return d->m_id;
+}
+
+QString CoreBackend::version()
+{
+    return d->m_version;
+}
+
+void CoreBackend::setId(const QString& id)
+{
+    d->m_id = id;
+}
+
+void CoreBackend::setVersion(const QString& version)
+{
+    d->m_version = version;
 }

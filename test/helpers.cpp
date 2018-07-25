@@ -20,6 +20,7 @@
 #include "helpers.h"
 
 #include "backend/corebackendmanager.h"
+#include "util/externalcommand.h"
 
 #include <QDebug>
 #include <QString>
@@ -55,4 +56,9 @@ KPMCoreInitializer::KPMCoreInitializer( const QString& backendName ) :
 
 KPMCoreInitializer::KPMCoreInitializer( const char* backend ) : KPMCoreInitializer( QString::fromLatin1( backend ) )
 {
+}
+
+KPMCoreInitializer::~KPMCoreInitializer()
+{
+    ExternalCommand::stopHelper();
 }

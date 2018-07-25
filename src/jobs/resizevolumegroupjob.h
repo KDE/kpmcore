@@ -31,9 +31,9 @@ class ResizeVolumeGroupJob : public Job
 {
 
 public:
-    enum Type {
-        Grow = 0,
-        Shrink = 1
+    enum class Type {
+        Grow,
+        Shrink
     };
 
 public:

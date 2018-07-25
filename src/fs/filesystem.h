@@ -1,7 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
  *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -17,23 +17,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_FILESYSTEM_H)
+#ifndef KPMCORE_FILESYSTEM_H
 #define KPMCORE_FILESYSTEM_H
 
 #include "util/libpartitionmanagerexport.h"
 
-#include <QColor>
 #include <QList>
 #include <QStringList>
 #include <QString>
 #include <QtGlobal>
 #include <QUrl>
 
-#include <array>
+#include <memory>
+#include <vector>
 
+class QColor;
 class QValidator;
 class Device;
 class Report;
+struct FileSystemPrivate;
 
 /** Base class for all FileSystems.
 
@@ -57,40 +59,41 @@ public:
     };
 
     /** Supported FileSystem types */
-    enum Type {
-        Unknown = 0,
-        Extended = 1,
+    enum Type : int {
+        Unknown,
+        Extended,
 
-        Ext2 = 2,
-        Ext3 = 3,
-        Ext4 = 4,
-        LinuxSwap = 5,
-        Fat16 = 6,
-        Fat32 = 7,
-        Ntfs = 8,
-        ReiserFS = 9,
-        Reiser4 = 10,
-        Xfs = 11,
-        Jfs = 12,
-        Hfs = 13,
-        HfsPlus = 14,
-        Ufs = 15,
-        Unformatted = 16,
-        Btrfs = 17,
-        Hpfs = 18,
-        Luks = 19,
-        Ocfs2 = 20,
-        Zfs = 21,
-        Exfat = 22,
-        Nilfs2 = 23,
-        Lvm2_PV = 24,
-        F2fs = 25,
-        Udf = 26,
-        Iso9660 = 27,
-        Luks2 = 28,
-        Fat12 = 29,
+        Ext2,
+        Ext3,
+        Ext4,
+        LinuxSwap,
+        Fat16,
+        Fat32,
+        Ntfs,
+        ReiserFS,
+        Reiser4,
+        Xfs,
+        Jfs,
+        Hfs,
+        HfsPlus,
+        Ufs,
+        Unformatted,
+        Btrfs,
+        Hpfs,
+        Luks,
+        Ocfs2,
+        Zfs,
+        Exfat,
+        Nilfs2,
+        Lvm2_PV,
+        F2fs,
+        Udf,
+        Iso9660,
+        Luks2,
+        Fat12,
+        LinuxRaidMember,
 
-        __lastType = 30
+        __lastType
     };
 
     /** The type of support for a given FileSystem action */
@@ -101,15 +104,15 @@ public:
         cmdSupportBackend = 4           /**< supported by the backend */
     };
 
-    static const std::array< QColor, __lastType > defaultColorCode;
+    static const std::vector<QColor> defaultColorCode;
 
     Q_DECLARE_FLAGS(CommandSupportTypes, CommandSupportType)
 
 protected:
-    FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t);
+    FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
 
 public:
-    virtual ~FileSystem() {}
+    virtual ~FileSystem();
 
 public:
     virtual void init() {}
@@ -196,9 +199,11 @@ public:
      * @see nameForType()
      */
     virtual QString name(const QStringList& languages = {}) const;
-    virtual FileSystem::Type type() const {
-        return m_Type;    /**< @return the FileSystem's type */
-    }
+
+    /**
+     * @return the FileSystem's type
+     */
+    virtual FileSystem::Type type() const;
 
     /**
      * Returns the name of the given filesystem type. If @p languages
@@ -228,12 +233,12 @@ public:
     virtual bool mount(Report& report, const QString& deviceNode, const QString& mountPoint);
     virtual bool unmount(Report& report, const QString& deviceNode);
 
-    qint64 firstSector() const {
-        return m_FirstSector;    /**< @return the FileSystem's first sector */
-    }
-    qint64 lastSector() const {
-        return m_LastSector;    /**< @return the FileSystem's last sector */
-    }
+    /**< @return the FileSystem's first sector */
+    qint64 firstSector() const;
+
+    /**< @return the FileSystem's last sector */
+    qint64 lastSector() const;
+
     qint64 length() const {
         return lastSector() - firstSector() + 1;    /**< @return the FileSystem's length */
     }
@@ -244,52 +249,42 @@ public:
         return firstByte() + length() * sectorSize() - 1;    /**< @return the FileSystem's last byte */
     }
 
-    void setFirstSector(qint64 s) {
-        m_FirstSector = s;    /**< @param s the new first sector */
-    }
-    void setLastSector(qint64 s) {
-        m_LastSector = s;    /**< @param s the new last sector */
-    }
+    /**< @param s the new first sector */
+    void setFirstSector(qint64 s);
+
+    /**< @param s the new last sector */
+    void setLastSector(qint64 s);
 
     void move(qint64 newStartSector);
 
-    const QString& label() const {
-        return m_Label;    /**< @return the FileSystem's label */
-    }
-    qint64 sectorSize() const {
-        return m_SectorSize;    /**< @return the sector size in the underlying Device */
-    }
-    qint64 sectorsUsed() const {
-        return m_SectorsUsed;    /**< @return the sectors in use on the FileSystem */
-    }
-    const QString& uuid() const {
-        return m_UUID;    /**< @return the FileSystem's UUID */
-    }
+    /**< @return the FileSystem's label */
+    const QString& label() const;
 
-    void setSectorSize(qint64 s) {
-        m_SectorSize = s;    /**< @param s the new value for sector size */
-    }
-    void setSectorsUsed(qint64 s) {
-        m_SectorsUsed = s;    /**< @param s the new value for sectors in use */
-    }
-    void setLabel(const QString& s) {
-        m_Label = s;    /**< @param s the new label */
-    }
-    void setUUID(const QString& s) {
-        m_UUID = s;    /**< @param s the new UUID */
-    }
+    /**< @return the sector size in the underlying Device */
+    qint64 sectorSize() const;
+
+    /**< @return the sectors in use on the FileSystem */
+    qint64 sectorsUsed() const;
+
+    /**< @return the FileSystem's UUID */
+    const QString& uuid() const;
+
+    /**< @param s the new value for sector size */
+    void setSectorSize(qint64 s);
+
+    /**< @param s the new value for sectors in use */
+    void setSectorsUsed(qint64 s);
+
+    /**< @param s the new label */
+    void setLabel(const QString& s);
+
+    /**< @param s the new UUID */
+    void setUUID(const QString& s);
 
 protected:
     static bool findExternal(const QString& cmdName, const QStringList& args = QStringList(), int exptectedCode = 1);
 
-protected:
-    FileSystem::Type m_Type;
-    qint64 m_FirstSector;
-    qint64 m_LastSector;
-    qint64 m_SectorSize;
-    qint64 m_SectorsUsed;
-    QString m_Label;
-    QString m_UUID;
+    std::unique_ptr<FileSystemPrivate> d;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(FileSystem::CommandSupportTypes)

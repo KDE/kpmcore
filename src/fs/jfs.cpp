@@ -40,7 +40,7 @@ FileSystem::CommandSupportType jfs::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType jfs::m_SetLabel = FileSystem::cmdSupportNone;
 
 jfs::jfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Jfs)
+    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Jfs)
 {
 }
 
@@ -79,12 +79,12 @@ FileSystem::SupportTool jfs::supportToolName() const
 
 qint64 jfs::minCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::MiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 jfs::maxCapacity() const
 {
-    return 16 * Capacity::unitFactor(Capacity::Byte, Capacity::TiB);
+    return 16 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::TiB);
 }
 
 int jfs::maxLabelLength() const
@@ -96,7 +96,7 @@ qint64 jfs::readUsedCapacity(const QString& deviceNode) const
 {
     ExternalCommand cmd(QStringLiteral("jfs_debugfs"), QStringList() << deviceNode);
 
-    if (cmd.start() && cmd.write("dm") == 2 && cmd.waitFor()) {
+    if (cmd.write(QByteArrayLiteral("dm")) && cmd.start()) {
         qint64 blockSize = -1;
         QRegularExpression re(QStringLiteral("Block Size: (\\d+)"));
         QRegularExpressionMatch reBlockSize = re.match(cmd.output());

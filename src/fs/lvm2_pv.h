@@ -62,7 +62,22 @@ private:
 };
 
 namespace LVM {
-    extern LIBKPMCORE_EXPORT QList<LvmPV> pvList;
+/** Class to access a global LVM PV list.
+    @author Caio Carvalho <caiojcarvalho@gmail.com>
+*/
+class LIBKPMCORE_EXPORT pvList
+{
+public:
+    static QList<LvmPV> &list() {
+        return m_list;
+    }
+
+private:
+    pvList() { }
+
+private:
+    static QList<LvmPV> m_list;
+};
 }
 
 namespace FS

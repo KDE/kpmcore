@@ -80,10 +80,10 @@ public:
         New,       /**< from a NewOperation */
         Copy,      /**< from a CopyOperation */
         Restore,   /**< from a RestoreOperation */
-        StateNone = None,
-        StateNew = New,
-        StateCopy = Copy,
-        StateRestore = Restore
+        StateNone __attribute__((deprecated("Use Partition::State::None"))) = None,
+        StateNew __attribute__((deprecated("Use Partition::State::New"))) = New,
+        StateCopy __attribute__((deprecated("Use Partition::State::Copy"))) = Copy,
+        StateRestore __attribute__((deprecated("Use Partition::State::Restore"))) = Restore
     };
 
     Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = State::None);
