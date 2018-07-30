@@ -170,7 +170,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             QString modelName = modelCommand.output();
             modelName = modelName.left(modelName.length() - 1);
 
-            Log(Log::Level::information) << xi18nc("@info:status", "Disk Device found: %1", modelName);
+            Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", modelName);
 
             d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
         }
