@@ -95,6 +95,10 @@ protected:
     qint64 mappedSector(const QString &partitionPath, qint64 sector) const override;
 
 private:
+    static bool eraseDeviceMDSuperblock(const QString& path);
+
+    static bool updateConfigurationFile(const QString& configurationPath, const QString& info);
+
     static QString getDetail(const QString& path);
 
     static QString getRAIDConfiguration(const QString& configurationPath);

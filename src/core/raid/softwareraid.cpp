@@ -380,7 +380,26 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
                                       const qint32 raidLevel,
                                       const qint32 chunkSize)
 {
-    return false;
+    QStringList args;
+    args << QStringLiteral("--create") << name;
+    args << QStringLiteral("--level=") + QString::number(raidLevel);
+    args << QStringLiteral("--chunk=") + QString::number(chunkSize);
+    args << QStringLiteral("--raid-devices=") + QString::number(devicePathList.size());
+
+    for (const QString path : qAsConst(devicePathList)) {
+        if (!eraseDeviceMDSuperblock(path))
+            return false;
+
+        args << path;
+    }
+
+    ExternalCommand cmd(QStringLiteral("mdadm"), args);
+
+    if (!cmd.run(-1) || cmd.exitCode() != 0)
+        return false;
+
+    // TODO: Support custom config files.
+    return updateConfigurationFile(QStringLiteral("/etc/mdadm.conf"), cmd.output());
 }
 
 bool SoftwareRAID::deleteSoftwareRAID(Report &report,
@@ -454,6 +473,30 @@ void SoftwareRAID::initPartitions()
 qint64 SoftwareRAID::mappedSector(const QString &partitionPath, qint64 sector) const
 {
     return -1;
+}
+
+bool SoftwareRAID::eraseDeviceMDSuperblock(const QString &path)
+{
+    ExternalCommand cmd(QStringLiteral("mdadm"),
+                        { QStringLiteral("--misc"), QStringLiteral("--zero-superblock"), path});
+
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool SoftwareRAID::updateConfigurationFile(const QString &configurationPath, const QString &info)
+{
+    QFile config(configurationPath);
+
+    if (!config.open(QIODevice::WriteOnly | QIODevice::Append))
+        return false;
+
+    QTextStream out(&config);
+
+    out << info << QLatin1Char('\n');
+
+    config.close();
+
+    return true;
 }
 
 QString SoftwareRAID::getDetail(const QString &path)
