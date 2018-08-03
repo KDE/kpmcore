@@ -62,6 +62,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 
     m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
 
+    m_loop = std::make_unique<QEventLoop>();
     HelperSupport::progressStep(QVariantMap());
     auto timeout = [this] () {
             QDBusInterface iface(QStringLiteral("org.kde.kpmcore.applicationinterface"),
@@ -74,7 +75,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
             auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
                     if (watcher->isError()) {
                         qWarning() << watcher->error();
-                        m_loop.exit();
+                        m_loop->exit();
                     }
                     };
             connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
@@ -83,7 +84,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, timeout);
     timer->start(5000); // 5 seconds
-    m_loop.exec();
+    m_loop->exec();
     reply.addData(QStringLiteral("success"), true);
 
     return reply;
@@ -313,7 +314,7 @@ void ExternalCommandHelper::exit(const QByteArray& signature, const quint64 nonc
         return;
     }
 
-    m_loop.exit();
+    m_loop->exit();
 
     QDBusConnection::systemBus().unregisterObject(QStringLiteral("/Helper"));
     QDBusConnection::systemBus().unregisterService(QStringLiteral("org.kde.kpmcore.helperinterface"));
