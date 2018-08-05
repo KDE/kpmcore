@@ -14,6 +14,7 @@
         "Description[cs]": "Falešná podpůrná vrstva pro správce diskových oddílů KDE pro testovací účely.",
         "Description[de]": "Ein Dummy-Backend für die KDE-Partitionsverwaltung zu Testzwecken.",
         "Description[es]": "Un motor de simulación para el gestor de particiones de KDE para hacer pruebas.",
+        "Description[fi]": "KDE:n osionhallinnan valetaustaosa testaustarkoituksiin.",
         "Description[fr]": "Un moteur de test pour le gestionnaire de partitions de KDE pour faire des essais.",
         "Description[gl]": "Unha infraestrutura de probas para o xestor de particións de KDE.",
         "Description[it]": "Un motore fittizio del gestore delle partizioni di KDE per scopi di prova.",
