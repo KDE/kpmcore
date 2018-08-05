@@ -43,11 +43,11 @@ struct ExternalCommandPrivate;
 class DBusThread : public QThread
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.ping")
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.applicationinterface")
     void run() override;
 
 public Q_SLOTS:
-    Q_SCRIPTABLE void ping() {return;};
+    Q_SCRIPTABLE void ping() { return; };
 };
 
 /** An external command.

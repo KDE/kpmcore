@@ -16,6 +16,7 @@
  *************************************************************************/
 
 #include "externalcommandhelper.h"
+#include "externalcommand_interface.h"
 
 #include <QtDBus>
 #include <QDebug>
@@ -65,13 +66,12 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     m_loop = std::make_unique<QEventLoop>();
     HelperSupport::progressStep(QVariantMap());
     auto timeout = [this] () {
-            QDBusInterface iface(QStringLiteral("org.kde.kpmcore.applicationinterface"),
-                         QStringLiteral("/Application"),
-                         QStringLiteral("org.kde.kpmcore.ping"),
-                         QDBusConnection::systemBus());
-            iface.setTimeout(2000); // 2 seconds;
-            auto pcall = iface.asyncCall(QStringLiteral("ping"));
-            QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+            auto *interface = new org::kde::kpmcore::applicationinterface(QStringLiteral("org.kde.kpmcore.applicationinterface"),
+                              QStringLiteral("/Application"), QDBusConnection::systemBus(), this);
+            interface->setTimeout(2000); // 2 seconds;
+            auto pendingCall = interface->ping();
+
+            QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall, this);
             auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
                     if (watcher->isError()) {
                         qWarning() << watcher->error();
