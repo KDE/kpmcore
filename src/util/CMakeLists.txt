@@ -37,7 +37,6 @@ set(UTIL_LIB_HDRS
 )
 
 add_executable(kpmcore_externalcommand
-    ${ApplicationInterface_SRCS}
     util/externalcommandhelper.cpp
 )
 
