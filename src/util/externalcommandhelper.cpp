@@ -31,11 +31,12 @@
  *
  * KAuth helper runs in the background until application exits.
  * To avoid forever running helper in case of application crash
- * ExternalCommand class opens DBus interface that we ping.
- * If helper is not busy than it exits when ping fails. Otherwise,
+ * ExternalCommand class opens a DBus service that we monitor for changes.
+ * If helper is not busy then it exits when the client services gets
+ * unregistered. Otherwise,
  * we wait for the current job to finish before exiting, so even in case
  * of main application crash, we do not leave partially moved data.
- * 
+ *
  * This helper also starts another DBus interface where it listens to
  * command execution requests from the application that started the helper.
  * These requests are validated using public key cryptography, to prevent
@@ -65,25 +66,18 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 
     m_loop = std::make_unique<QEventLoop>();
     HelperSupport::progressStep(QVariantMap());
-    auto timeout = [this] () {
-            auto *interface = new org::kde::kpmcore::applicationinterface(QStringLiteral("org.kde.kpmcore.applicationinterface"),
-                              QStringLiteral("/Application"), QDBusConnection::systemBus(), this);
-            interface->setTimeout(2000); // 2 seconds;
-            auto pendingCall = interface->ping();
 
-            QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall, this);
-            auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
-                    if (watcher->isError()) {
-                        qWarning() << watcher->error();
-                        m_loop->exit();
-                    }
-                    };
-            connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
-    };
+    // End the loop and return only once the client is done using us.
+    auto serviceWatcher =
+            new QDBusServiceWatcher(QStringLiteral("org.kde.kpmcore.applicationinterface"),
+                                    QDBusConnection::systemBus(),
+                                    QDBusServiceWatcher::WatchForUnregistration,
+                                    this);
+    connect(serviceWatcher, &QDBusServiceWatcher::serviceUnregistered,
+            [this]() {
+        m_loop->exit();
+    });
 
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, timeout);
-    timer->start(5000); // 5 seconds
     m_loop->exec();
     reply.addData(QStringLiteral("success"), true);
 
