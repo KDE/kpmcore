@@ -18,6 +18,7 @@ Name[x-test]=xxStart external command daemonxx
 Description=Administrative privileges are required to manage disks
 Description[ca]=Es requereixen privilegis d'administrador per gestionar discs
 Description[ca@valencia]=Es requereixen privilegis d'administrador per gestionar discs
+Description[es]=Se necesitan permisos de administrador para gestionar discos
 Description[fi]=Levyjen hallinta vaatii pääkäyttäjäoikeuksia
 Description[lt]=Diskų tvarkymui reikalingos administratoriaus teisės
 Description[nl]=Er zijn administratieve rechten vereist om schijven te beheren
