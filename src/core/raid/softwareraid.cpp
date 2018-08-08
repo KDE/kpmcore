@@ -387,8 +387,7 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
     args << QStringLiteral("--raid-devices=") + QString::number(devicePathList.size());
 
     for (const QString path : qAsConst(devicePathList)) {
-        if (!eraseDeviceMDSuperblock(path))
-            return false;
+        eraseDeviceMDSuperblock(path);
 
         args << path;
     }
