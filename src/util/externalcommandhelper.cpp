@@ -17,6 +17,7 @@
 
 #include "externalcommandhelper.h"
 #include "externalcommand_interface.h"
+#include "externalcommand_whitelist.h"
 
 #include <QtDBus>
 #include <QDebug>
@@ -278,6 +279,20 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quin
         qCritical() << xi18n("Invalid cryptographic signature");
         reply[QStringLiteral("success")] = false;
         return reply;
+    }
+
+    // Compare with command whitelist
+    QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
+    bool success = false;
+    for (const auto& command : allowedCommands) {
+        if (basename == command) {
+            success = true;
+            break;
+        }
+    }
+    if ( !success ) {
+        // TODO: notify the user
+        m_loop->exit();
     }
 
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
