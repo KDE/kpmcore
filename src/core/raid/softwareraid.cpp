@@ -47,8 +47,8 @@ SoftwareRAID::SoftwareRAID(const QString& name, SoftwareRAID::Status status, con
     : VolumeManagerDevice(std::make_shared<SoftwareRAIDPrivate>(),
                           name,
                           (QStringLiteral("/dev/") + name),
-                          getChunkSize(QStringLiteral("/dev/") + name),
-                          getTotalChunk(QStringLiteral("/dev/") + name),
+                          status == SoftwareRAID::Status::Inactive ? 0 : getChunkSize(QStringLiteral("/dev/") + name),
+                          status == SoftwareRAID::Status::Inactive ? 0 : getTotalChunk(QStringLiteral("/dev/") + name),
                           iconName,
                           Device::Type::SoftwareRAID_Device)
 {
