@@ -83,7 +83,7 @@ public:
 
     static bool assembleSoftwareRAID(const QString& deviceNode);
 
-    static bool stopSoftwareRAID(const QString& deviceNode);
+    static bool stopSoftwareRAID(Report& report, const QString& deviceNode);
 
     static bool reassembleSoftwareRAID(const QString& deviceNode);
 

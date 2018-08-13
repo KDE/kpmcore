@@ -392,7 +392,7 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
         args << path;
     }
 
-    ExternalCommand cmd(QStringLiteral("mdadm"), args);
+    ExternalCommand cmd(report, QStringLiteral("mdadm"), args);
 
     if (!cmd.run(-1) || cmd.exitCode() != 0)
         return false;
@@ -420,12 +420,12 @@ bool SoftwareRAID::assembleSoftwareRAID(const QString& deviceNode)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool SoftwareRAID::stopSoftwareRAID(const QString& deviceNode)
+bool SoftwareRAID::stopSoftwareRAID(Report& report, const QString& deviceNode)
 {
     if (!isRaidPath(deviceNode))
         return false;
 
-    ExternalCommand cmd(QStringLiteral("mdadm"),
+    ExternalCommand cmd(report, QStringLiteral("mdadm"),
                         { QStringLiteral("--manage"), QStringLiteral("--stop"), deviceNode });
 
     return cmd.run(-1) && cmd.exitCode() == 0;

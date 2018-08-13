@@ -1,6 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2016 by Chantara Tith <tith.chantara@gmail.com>        *
  *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2018 by Caio Carvalho <caiojcarvalho@gmail.com>        *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -20,6 +21,7 @@
 
 #include "core/lvmdevice.h"
 #include "core/partition.h"
+#include "core/raid/softwareraid.h"
 
 #include "util/report.h"
 
@@ -41,12 +43,14 @@ bool DeactivateVolumeGroupJob::run(Report& parent)
 
     if (device().type() == Device::Type::LVM_Device) {
         rval = LvmDevice::deactivateVG(*report, static_cast<LvmDevice&>(device()));
+        const auto lvmPVs = static_cast<LvmDevice&>(device()).physicalVolumes();
+        for (auto &p : lvmPVs) {
+            Partition *partition = static_cast<Partition *>(p);
+            partition->setMounted(false);
+        }
     }
-    const auto lvmPVs = static_cast<LvmDevice&>(device()).physicalVolumes();
-    for (auto &p : lvmPVs) {
-        Partition *partition = const_cast<Partition *>(p);
-        partition->setMounted(false);
-    }
+    else if (device().type() == Device::Type::SoftwareRAID_Device)
+        rval = SoftwareRAID::stopSoftwareRAID(*report, device().deviceNode());
 
     jobFinished(*report, rval);
 

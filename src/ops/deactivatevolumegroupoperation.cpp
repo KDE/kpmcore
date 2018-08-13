@@ -64,12 +64,14 @@ void DeactivateVolumeGroupOperation::undo()
 bool DeactivateVolumeGroupOperation::isDeactivatable(const VolumeManagerDevice* dev)
 {
     if (dev->type() == Device::Type::LVM_Device) {
-        for (const auto &p : dev->partitionTable()->children()) {
-            if (p->isMounted()) {
+        for (const auto &p : dev->partitionTable()->children())
+            if (p->isMounted())
                 return false;
-            }
-        }
+
         return true;
+    }
+    else if (dev->type() == Device::Type::SoftwareRAID_Device) {
+        // TODO: Look if this device is contained in configuration file and is in mdstat
     }
 
     return false;
