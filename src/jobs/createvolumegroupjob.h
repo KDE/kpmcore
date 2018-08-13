@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2016 by Chantara Tith <tith.chantara@gmail.com>        *
+ *  Copyright (C) 2018 by Caio Carvalho <caiojcarvalho@gmail.com>        *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -20,6 +21,7 @@
 #define KPMCORE_CREATEVOLUMEGROUPJOB_H
 
 #include "core/partition.h"
+#include "core/volumemanagerdevice.h"
 #include "jobs/job.h"
 
 #include <QVector>
@@ -32,34 +34,48 @@ class QString;
 class CreateVolumeGroupJob : public Job
 {
 public:
-    CreateVolumeGroupJob(const QString& vgName, const QVector<const Partition*>& pvList, const qint32 peSize);
+    CreateVolumeGroupJob(const QString& vgName, const QVector<const Partition*>& pvList,
+                         const Device::Type type, const qint32 peSize);
+
+    CreateVolumeGroupJob(const QString &vgName, const QVector<const Partition *> &pvList,
+                         const Device::Type type, const qint32 raidLevel, const qint32 chunkSize);
 
 public:
     bool run(Report& parent) override;
     QString description() const override;
 
 protected:
-    QString vgName() {
-        return m_vgName;
-    }
     const QString vgName() const {
         return m_vgName;
     }
-    QVector<const Partition*>& pvList() {
-        return m_pvList;
-    }
+
     const QVector<const Partition*>& pvList() const {
         return m_pvList;
     }
 
-    qint32 peSize() {
+    qint32 peSize() const {
         return m_PESize;
+    }
+
+    Device::Type type() const {
+        return m_type;
+    }
+
+    qint32 raidLevel() const {
+        return m_raidLevel;
+    }
+
+    qint32 chunkSize() const {
+        return m_chunkSize;
     }
 
 private:
     QString m_vgName;
     QVector<const Partition*> m_pvList;
+    Device::Type m_type;
     qint32 m_PESize;
+    qint32 m_raidLevel;
+    qint32 m_chunkSize;
 };
 
 #endif

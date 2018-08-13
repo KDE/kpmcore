@@ -1,6 +1,7 @@
 /*************************************************************************
  *  Copyright (C) 2016 by Chantara Tith <tith.chantara@gmail.com>        *
  *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
+ *  Copyright (C) 2018 by Caio Carvalho <caiojcarvalho@gmail.com>        *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -19,6 +20,7 @@
 #include "jobs/createvolumegroupjob.h"
 
 #include "core/lvmdevice.h"
+#include "core/raid/softwareraid.h"
 
 #include "util/report.h"
 
@@ -29,11 +31,27 @@
  * @param pvList List of LVM Physical Volumes used to create Volume Group
  * @param peSize LVM Physical Extent size in MiB
 */
-CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgName, const QVector<const Partition*>& pvList, const qint32 peSize) :
-    Job(),
-    m_vgName(vgName),
-    m_pvList(pvList),
-    m_PESize(peSize)
+CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgName, const QVector<const Partition*>& pvList,
+                                           const Device::Type type, const qint32 peSize)
+    : Job()
+    , m_vgName(vgName)
+    , m_pvList(pvList)
+    , m_type(type)
+    , m_PESize(peSize)
+    , m_raidLevel(-1)
+    , m_chunkSize(-1)
+{
+}
+
+CreateVolumeGroupJob::CreateVolumeGroupJob(const QString& vgName, const QVector<const Partition *>& pvList,
+                                           const Device::Type type, const qint32 raidLevel, const qint32 chunkSize)
+    : Job()
+    , m_vgName(vgName)
+    , m_pvList(pvList)
+    , m_type(type)
+    , m_PESize(-1)
+    , m_raidLevel(raidLevel)
+    , m_chunkSize(chunkSize)
 {
 }
 
@@ -43,7 +61,16 @@ bool CreateVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    rval = LvmDevice::createVG(*report, vgName(), pvList(), peSize());
+    if (type() == Device::Type::LVM_Device)
+        rval = LvmDevice::createVG(*report, vgName(), pvList(), peSize());
+    else if (type() == Device::Type::SoftwareRAID_Device) {
+        QStringList pathList;
+
+        for (auto partition : pvList())
+            pathList << partition->partitionPath();
+
+        rval = SoftwareRAID::createSoftwareRAID(*report, vgName(), pathList, raidLevel(), chunkSize());
+    }
 
     jobFinished(*report, rval);
 
@@ -52,10 +79,12 @@ bool CreateVolumeGroupJob::run(Report& parent)
 
 QString CreateVolumeGroupJob::description() const
 {
-    QString tmp = QString();
-    for (const auto &p : pvList()) {
+    QString tmp;
+
+    for (const auto &p : pvList())
         tmp += p->deviceNode() + QStringLiteral(", ");
-    }
+
     tmp.chop(2);
+
     return xi18nc("@info/plain", "Create a new Volume Group: <filename>%1</filename> with PV: %2", vgName(), tmp);
 }
