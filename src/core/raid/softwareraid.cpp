@@ -398,7 +398,7 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
         return false;
 
     // TODO: Support custom config files.
-    return updateConfigurationFile(QStringLiteral("/etc/mdadm.conf"), cmd.output());
+    return updateConfigurationFile(QStringLiteral("/etc/mdadm.conf"), name);
 }
 
 bool SoftwareRAID::deleteSoftwareRAID(Report &report,
@@ -431,9 +431,10 @@ bool SoftwareRAID::stopSoftwareRAID(Report& report, const QString& deviceNode)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool SoftwareRAID::reassembleSoftwareRAID(const QString &deviceNode)
+bool SoftwareRAID::reassembleSoftwareRAID(Report& report, const QString &deviceNode)
 {
-    return stopSoftwareRAID(deviceNode) && assembleSoftwareRAID(deviceNode);
+    // TODO: Include report
+    return stopSoftwareRAID(report, deviceNode) && assembleSoftwareRAID(deviceNode);
 }
 
 bool SoftwareRAID::isRaidMember(const QString &path)
@@ -482,7 +483,7 @@ bool SoftwareRAID::eraseDeviceMDSuperblock(const QString &path)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool SoftwareRAID::updateConfigurationFile(const QString &configurationPath, const QString &info)
+bool SoftwareRAID::updateConfigurationFile(const QString &configurationPath, const QString &deviceName)
 {
     QFile config(configurationPath);
 
@@ -491,7 +492,10 @@ bool SoftwareRAID::updateConfigurationFile(const QString &configurationPath, con
 
     QTextStream out(&config);
 
-    out << info << QLatin1Char('\n');
+    QString info = getDeviceInformation(deviceName);
+
+    if (!info.isEmpty())
+        out << info << QLatin1Char('\n');
 
     config.close();
 
@@ -519,4 +523,14 @@ QString SoftwareRAID::getRAIDConfiguration(const QString &configurationPath)
     config.close();
 
     return result;
+}
+
+QString SoftwareRAID::getDeviceInformation(const QString &deviceName)
+{
+    ExternalCommand cmd(QStringLiteral("mdadm"),
+                        { QStringLiteral("--misc"), QStringLiteral("--detail"), QStringLiteral("--scan"), deviceName });
+
+    // TODO: Get only information about the device line.
+    // Because if there is any error on config file, it will print more information than needed.
+    return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QString();
 }

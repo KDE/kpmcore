@@ -85,7 +85,7 @@ public:
 
     static bool stopSoftwareRAID(Report& report, const QString& deviceNode);
 
-    static bool reassembleSoftwareRAID(const QString& deviceNode);
+    static bool reassembleSoftwareRAID(Report& report, const QString& deviceNode);
 
     static bool isRaidMember(const QString& path);
 
@@ -97,11 +97,13 @@ protected:
 private:
     static bool eraseDeviceMDSuperblock(const QString& path);
 
-    static bool updateConfigurationFile(const QString& configurationPath, const QString& info);
+    static bool updateConfigurationFile(const QString& configurationPath, const QString& deviceName);
 
     static QString getDetail(const QString& path);
 
     static QString getRAIDConfiguration(const QString& configurationPath);
+
+    static QString getDeviceInformation(const QString& deviceName);
 };
 
 #endif // SOFTWARERAID_H

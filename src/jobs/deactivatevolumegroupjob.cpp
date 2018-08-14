@@ -45,7 +45,7 @@ bool DeactivateVolumeGroupJob::run(Report& parent)
         rval = LvmDevice::deactivateVG(*report, static_cast<LvmDevice&>(device()));
         const auto lvmPVs = static_cast<LvmDevice&>(device()).physicalVolumes();
         for (auto &p : lvmPVs) {
-            Partition *partition = static_cast<Partition *>(p);
+            Partition *partition = const_cast<Partition *>(p);
             partition->setMounted(false);
         }
     }
