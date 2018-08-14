@@ -125,7 +125,7 @@ bool DeleteOperation::canDelete(const Partition* p)
             return false;
     }
     else if (p->fileSystem().type() == FileSystem::Type::LinuxRaidMember) {
-        if (SoftwareRAID::isRaidMember(p->partitionPath()))
+        if (!SoftwareRAID::getRaidArrayName(p->partitionPath()).isEmpty())
             return false;
     }
     else if (p->fileSystem().type() == FileSystem::Type::Luks || p->fileSystem().type() == FileSystem::Type::Luks2) {
@@ -138,7 +138,7 @@ bool DeleteOperation::canDelete(const Partition* p)
                     return false;
             }
             else if (fs->type() == FileSystem::Type::LinuxRaidMember) {
-                if (SoftwareRAID::isRaidMember(p->partitionPath()))
+                if (!SoftwareRAID::getRaidArrayName(p->partitionPath()).isEmpty())
                     return false;
             }
         }

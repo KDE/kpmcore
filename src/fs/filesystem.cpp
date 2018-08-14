@@ -18,6 +18,7 @@
  *************************************************************************/
 
 #include "core/fstab.h"
+#include "core/raid/softwareraid.h"
 
 #include "fs/filesystem.h"
 #include "fs/lvm2_pv.h"
@@ -125,6 +126,8 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
 {
     if (fs->type() == FileSystem::Type::Lvm2_PV)
         return FS::lvm2_pv::getVGName(partitionPath);
+    else if (fs->type() == FileSystem::Type::LinuxRaidMember)
+        return SoftwareRAID::getRaidArrayName(partitionPath);
 
     if (partitionPath.isEmpty()) // Happens when during initial scan LUKS is closed
         return QString();

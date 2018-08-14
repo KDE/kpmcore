@@ -369,9 +369,9 @@ QStringList SoftwareRAID::getDevicePathList(const QString &path)
     return result;
 }
 
-bool SoftwareRAID::isRaidPath(const QString &path)
+bool SoftwareRAID::isRaidPath(const QString &devicePath)
 {
-    return !getDetail(path).isEmpty();
+    return !getDetail(devicePath).isEmpty();
 }
 
 bool SoftwareRAID::createSoftwareRAID(Report &report,
@@ -437,32 +437,20 @@ bool SoftwareRAID::reassembleSoftwareRAID(Report& report, const QString &deviceN
     return stopSoftwareRAID(report, deviceNode) && assembleSoftwareRAID(deviceNode);
 }
 
-bool SoftwareRAID::isRaidMember(const QString &path)
+QString SoftwareRAID::getRaidArrayName(const QString &partitionPath)
 {
-    QFile mdstat(QStringLiteral("/proc/mdstat"));
+    ExternalCommand cmd(QStringLiteral("mdadm"),
+                        { QStringLiteral("--misc"), QStringLiteral("--query"), partitionPath });
 
-    if (!mdstat.open(QIODevice::ReadOnly))
-        return false;
+    if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression ex(QStringLiteral("device active raid\\d+\\s([\\/\\w]+)."));
+        QRegularExpressionMatch match = ex.match(cmd.output());
 
-    QTextStream stream(&mdstat);
-
-    QString content = stream.readAll();
-
-    mdstat.close();
-
-    QRegularExpression re(QStringLiteral("(\\w+)\\[\\d+\\]"));
-    QRegularExpressionMatchIterator i  = re.globalMatch(content);
-
-    while (i.hasNext()) {
-        QRegularExpressionMatch reMatch = i.next();
-
-        QString match = QStringLiteral("/dev/") + reMatch.captured(1);
-
-        if (match == path)
-            return true;
+        if (match.hasMatch())
+            return match.captured(1);
     }
 
-    return false;
+    return QString();
 }
 
 void SoftwareRAID::initPartitions()

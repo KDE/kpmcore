@@ -70,7 +70,7 @@ public:
     static QString getUUID(const QString& path);
     static QStringList getDevicePathList(const QString& path);
 
-    static bool isRaidPath(const QString& path);
+    static bool isRaidPath(const QString& devicePath);
 
     static bool createSoftwareRAID(Report& report,
                                    const QString& name,
@@ -87,7 +87,7 @@ public:
 
     static bool reassembleSoftwareRAID(Report& report, const QString& deviceNode);
 
-    static bool isRaidMember(const QString& path);
+    static QString getRaidArrayName(const QString& partitionPath);
 
 protected:
     void initPartitions() override;
