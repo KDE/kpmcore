@@ -27,7 +27,7 @@
 #include <sys/utsname.h>
 
 /** Creates a new Report instance.
-    @param p pointer to the parent instance. May be nullptr ig this is a new root Report.
+    @param p pointer to the parent instance. May be nullptr if this is a new root Report.
     @param cmd the command
 */
 Report::Report(Report* p, const QString& cmd) :

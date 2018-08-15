@@ -1,4 +1,23 @@
+set(application_interface_xml org.kde.kpmcore.applicationinterface.xml)
+set(helper_interface_xml org.kde.kpmcore.helperinterface.xml)
+
+qt5_generate_dbus_interface(
+    util/externalcommand.h
+    ${application_interface_xml}
+    OPTIONS -a
+)
+
+qt5_generate_dbus_interface(
+    util/externalcommandhelper.h
+    ${helper_interface_xml}
+    OPTIONS -a
+)
+
+qt5_add_dbus_interface(ApplicationInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${application_interface_xml} externalcommand_interface)
+qt5_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_interface_xml} externalcommandhelper_interface)
+
 set(UTIL_SRC
+    ${HelperInterface_SRCS}
     util/capacity.cpp
     util/externalcommand.cpp
     util/globallog.cpp
@@ -17,12 +36,10 @@ set(UTIL_LIB_HDRS
     util/report.h
 )
 
-qt5_generate_dbus_interface(
-    externalcommand_interface.h
-    org.kde.kpmcore.externalcommand.xml
+add_executable(kpmcore_externalcommand
+    ${ApplicationInterface_SRCS}
+    util/externalcommandhelper.cpp
 )
-
-add_executable(kpmcore_externalcommand util/externalcommandhelper.cpp)
 
 target_link_libraries(kpmcore_externalcommand
     qca-qt5

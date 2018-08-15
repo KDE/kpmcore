@@ -18,6 +18,7 @@
 #ifndef KPMCORE_EXTERNALCOMMANDHELPER_H
 #define KPMCORE_EXTERNALCOMMANDHELPER_H
 
+#include <memory>
 #include <unordered_set>
 
 #include <KAuth>
@@ -54,7 +55,7 @@ public Q_SLOTS:
 private:
     void onReadOutput();
 
-    QEventLoop m_loop;
+    std::unique_ptr<QEventLoop> m_loop;
     QCA::Initializer initializer;
     QCA::PublicKey m_publicKey;
     QRandomGenerator64 m_Generator;

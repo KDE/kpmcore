@@ -29,6 +29,7 @@ set(BLKID_MIN_VERSION "2.32")
 
 # Runtime
 # smartmontools 6.7
+# Qca plugin (botan or ossl)
 
 set(VERSION_MAJOR "3")
 set(VERSION_MINOR "50")

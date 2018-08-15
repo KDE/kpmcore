@@ -43,11 +43,10 @@ struct ExternalCommandPrivate;
 class DBusThread : public QThread
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.ping")
+    // We register on DBus so the helper can monitor us and terminate if we
+    // terminate.
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.applicationinterface")
     void run() override;
-
-public Q_SLOTS:
-    Q_SCRIPTABLE void ping() {return;};
 };
 
 /** An external command.
