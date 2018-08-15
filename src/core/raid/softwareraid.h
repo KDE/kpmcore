@@ -89,6 +89,10 @@ public:
 
     static QString getRaidArrayName(const QString& partitionPath);
 
+    static void setRaidConfigurationFilePath(const QString& filePath);
+
+    static QString raidConfigurationFilePath();
+
 protected:
     void initPartitions() override;
 
@@ -97,13 +101,18 @@ protected:
 private:
     static bool eraseDeviceMDSuperblock(const QString& path);
 
-    static bool updateConfigurationFile(const QString& configurationPath, const QString& deviceName);
+    static bool updateConfigurationFile(const QString& deviceName);
 
     static QString getDetail(const QString& path);
 
-    static QString getRAIDConfiguration(const QString& configurationPath);
+    static QString getRAIDConfiguration();
 
     static QString getDeviceInformation(const QString& deviceName);
+
+    static QString getDefaultRaidConfigFile();
+
+private:
+    static QString s_raidConfigurationFile;
 };
 
 #endif // SOFTWARERAID_H

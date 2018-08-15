@@ -31,6 +31,8 @@
 
 #define d_ptr std::static_pointer_cast<SoftwareRAIDPrivate>(d)
 
+QString SoftwareRAID::s_raidConfigurationFile = QString();
+
 class SoftwareRAIDPrivate : public VolumeManagerDevicePrivate
 {
 public:
@@ -168,7 +170,7 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
     QStringList availableInConf;
 
     // TODO: Support custom config files.
-    QString config = getRAIDConfiguration(QStringLiteral("/etc/mdadm.conf"));
+    QString config = getRAIDConfiguration();
 
     if (!config.isEmpty()) {
         QRegularExpression re(QStringLiteral("([\\t\\r\\n\\f\\s]|INACTIVE-)ARRAY \\/dev\\/([\\/\\w-]+)"));
@@ -313,7 +315,7 @@ QString SoftwareRAID::getUUID(const QString &path)
     // If UUID was not found in detail output, it should be searched in config file
 
     // TODO: Support custom config files.
-    QString config = getRAIDConfiguration(QStringLiteral("/etc/mdadm.conf"));
+    QString config = getRAIDConfiguration();
 
     if (!config.isEmpty()) {
         QRegularExpression re(QStringLiteral("([\\t\\r\\n\\f\\s]|INACTIVE-)ARRAY \\/dev\\/md([\\/\\w-]+)(.*)"));
@@ -398,7 +400,7 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
         return false;
 
     // TODO: Support custom config files.
-    return updateConfigurationFile(QStringLiteral("/etc/mdadm.conf"), name);
+    return updateConfigurationFile(name);
 }
 
 bool SoftwareRAID::deleteSoftwareRAID(Report &report,
@@ -471,9 +473,10 @@ bool SoftwareRAID::eraseDeviceMDSuperblock(const QString &path)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool SoftwareRAID::updateConfigurationFile(const QString &configurationPath, const QString &deviceName)
+bool SoftwareRAID::updateConfigurationFile(const QString &deviceName)
 {
-    QFile config(configurationPath);
+    // TODO: Don't use QFile, it is not authenticated and will fail without sudo
+    QFile config(raidConfigurationFilePath());
 
     if (!config.open(QIODevice::WriteOnly | QIODevice::Append))
         return false;
@@ -497,9 +500,9 @@ QString SoftwareRAID::getDetail(const QString &path)
     return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QString();
 }
 
-QString SoftwareRAID::getRAIDConfiguration(const QString &configurationPath)
+QString SoftwareRAID::getRAIDConfiguration()
 {
-    QFile config(configurationPath);
+    QFile config(raidConfigurationFilePath());
 
     if (!config.open(QIODevice::ReadOnly))
         return QString();
@@ -521,4 +524,25 @@ QString SoftwareRAID::getDeviceInformation(const QString &deviceName)
     // TODO: Get only information about the device line.
     // Because if there is any error on config file, it will print more information than needed.
     return (cmd.run(-1) && cmd.exitCode() == 0) ? cmd.output() : QString();
+}
+
+void SoftwareRAID::setRaidConfigurationFilePath(const QString &filePath)
+{
+    s_raidConfigurationFile = filePath;
+}
+
+QString SoftwareRAID::raidConfigurationFilePath()
+{
+    if (s_raidConfigurationFile.isEmpty())
+        s_raidConfigurationFile = getDefaultRaidConfigFile();
+    return s_raidConfigurationFile;
+}
+
+QString SoftwareRAID::getDefaultRaidConfigFile()
+{
+    if (QFile::exists(QStringLiteral("/etc/mdadm.conf")))
+        return QStringLiteral("/etc/mdadm.conf");
+    else if (QFile::exists(QStringLiteral("/etc/mdadm/mdadm.conf")))
+        return QStringLiteral("/etc/mdadm/mdadm.conf");
+    return QString();
 }
