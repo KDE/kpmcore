@@ -267,6 +267,11 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quin
         return reply;
     }
 
+    if (command.isEmpty()) {
+        reply[QStringLiteral("success")] = false;
+        return reply;
+    }
+
     QByteArray request;
     request.setNum(nonce);
     request.append(command.toUtf8());
