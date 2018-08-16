@@ -93,6 +93,8 @@ public:
 
     static QString raidConfigurationFilePath();
 
+    static QString getDefaultRaidConfigFile();
+
 protected:
     void initPartitions() override;
 
@@ -108,8 +110,6 @@ private:
     static QString getRAIDConfiguration();
 
     static QString getDeviceInformation(const QString& deviceName);
-
-    static QString getDefaultRaidConfigFile();
 
 private:
     static QString s_raidConfigurationFile;
