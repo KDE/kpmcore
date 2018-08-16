@@ -22,6 +22,7 @@
 #include "core/volumemanagerdevice.h"
 #include "core/partitiontable.h"
 #include "core/partition.h"
+#include "core/raid/softwareraid.h"
 
 #include <QString>
 
@@ -71,7 +72,8 @@ bool DeactivateVolumeGroupOperation::isDeactivatable(const VolumeManagerDevice* 
         return true;
     }
     else if (dev->type() == Device::Type::SoftwareRAID_Device) {
-        // TODO: Look if this device is contained in configuration file and is in mdstat
+        const SoftwareRAID* raid = static_cast<const SoftwareRAID*>(dev);
+        return raid->status() == SoftwareRAID::Status::Active;
     }
 
     return false;
