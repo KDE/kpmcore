@@ -121,6 +121,9 @@ bool ExternalCommand::start(int timeout)
 {
     Q_UNUSED(timeout)
 
+    if (command().isEmpty())
+        return false;
+
     if (report()) {
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
     }
