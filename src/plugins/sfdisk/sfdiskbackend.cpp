@@ -126,7 +126,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
                           deviceNode });
     ExternalCommand sizeCommand(QStringLiteral("blockdev"), { QStringLiteral("--getsize64"), deviceNode });
     ExternalCommand sizeCommand2(QStringLiteral("blockdev"), { QStringLiteral("--getss"), deviceNode });
-    ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode } );
+    ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode }, QProcess::ProcessChannelMode::SeparateChannels );
 
     if ( sizeCommand.run(-1) && sizeCommand.exitCode() == 0
          && sizeCommand2.run(-1) && sizeCommand2.exitCode() == 0
