@@ -112,7 +112,7 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
     }
 
     if (!device.seek(offset)) {
-        qCritical() << xi18n("Could not seek position %1 on device <filename>%1</filename>.", sourceDevice);
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, sourceDevice);
         return false;
     }
 
@@ -141,7 +141,7 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
     }
 
     if (!device.seek(offset)) {
-        qCritical() << xi18n("Could not seek position %1 on device <filename>%1</filename>.", targetDevice);
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, targetDevice);
         return false;
     }
 
