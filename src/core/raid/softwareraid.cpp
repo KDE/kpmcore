@@ -417,7 +417,8 @@ bool SoftwareRAID::assembleSoftwareRAID(const QString& deviceNode)
         return false;
 
     ExternalCommand cmd(QStringLiteral("mdadm"),
-                        { QStringLiteral("--assemble"), QStringLiteral("--scan"), deviceNode });
+                        { QStringLiteral("--assemble"), QStringLiteral("--scan"), deviceNode,
+                        QStringLiteral("--config=") + raidConfigurationFilePath() });
 
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
