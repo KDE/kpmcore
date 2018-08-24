@@ -288,16 +288,11 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quin
 
     // Compare with command whitelist
     QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
-    bool success = false;
-    for (const auto& command : allowedCommands) {
-        if (basename == command) {
-            success = true;
-            break;
-        }
-    }
-    if ( !success ) {
+    if (std::find(std::begin(allowedCommands), std::end(allowedCommands), basename) == std::end(allowedCommands)) {
         // TODO: notify the user
         m_loop->exit();
+        reply[QStringLiteral("success")] = false;
+        return reply;
     }
 
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
