@@ -49,8 +49,14 @@ bool DeactivateVolumeGroupJob::run(Report& parent)
             partition->setMounted(false);
         }
     }
-    else if (device().type() == Device::Type::SoftwareRAID_Device)
+    else if (device().type() == Device::Type::SoftwareRAID_Device) {
         rval = SoftwareRAID::stopSoftwareRAID(*report, device().deviceNode());
+
+        if (rval) {
+            SoftwareRAID *raid = static_cast< SoftwareRAID* >(&device());
+            raid->setStatus(SoftwareRAID::Status::Inactive);
+        }
+    }
 
     jobFinished(*report, rval);
 
