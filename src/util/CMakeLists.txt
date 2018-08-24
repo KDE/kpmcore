@@ -41,6 +41,14 @@ add_executable(kpmcore_externalcommand
     util/externalcommandhelper.cpp
 )
 
+add_executable(kpmcore_mdadmupdateconf
+    util/mdadmupdateconf.cpp
+)
+
+add_definitions(
+    -DLIBEXECDIRPATH="${LIBEXEC_INSTALL_DIR}"
+)
+
 target_link_libraries(kpmcore_externalcommand
     qca-qt5
     Qt5::Core
@@ -49,6 +57,7 @@ target_link_libraries(kpmcore_externalcommand
     KF5::I18n
 )
 
+install(TARGETS kpmcore_mdadmupdateconf DESTINATION ${LIBEXEC_INSTALL_DIR})
 install(TARGETS kpmcore_externalcommand DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
 install( FILES util/org.kde.kpmcore.helperinterface.conf DESTINATION ${SYSCONF_INSTALL_DIR}/dbus-1/system.d )
 install( FILES util/org.kde.kpmcore.applicationinterface.conf DESTINATION ${SYSCONF_INSTALL_DIR}/dbus-1/system.d )

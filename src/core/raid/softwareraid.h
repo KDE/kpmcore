@@ -103,7 +103,7 @@ protected:
 private:
     static bool eraseDeviceMDSuperblock(const QString& path);
 
-    static bool updateConfigurationFile(const QString& deviceName);
+    static bool updateConfigurationFile(const QString& path);
 
     static QString getDetail(const QString& path);
 

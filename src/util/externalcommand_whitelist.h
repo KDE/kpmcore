@@ -18,7 +18,7 @@
 #ifndef KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 #define KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 
-QString allowedCommands[] = {
+const QString allowedCommands[] = {
 // TODO try to remove these later
 QStringLiteral("mv"),
 QStringLiteral("dd"),
@@ -101,7 +101,8 @@ QStringLiteral("xfs_repair"),
 QStringLiteral("mkfs.xfs"),
 QStringLiteral("xfs_copy"),
 QStringLiteral("xfs_growfs"),
-QStringLiteral("zpool")
+QStringLiteral("zpool"),
+QStringLiteral("kpmcore_mdadmupdateconf")
 };
 
 #endif

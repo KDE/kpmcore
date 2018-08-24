@@ -247,7 +247,7 @@ qint32 SoftwareRAID::getRaidLevel(const QString &path)
         QRegularExpression re(QStringLiteral("Raid Level :\\s+\\w+(\\d+)"));
         QRegularExpressionMatch reMatch = re.match(output);
         if (reMatch.hasMatch())
-            return reMatch.captured(1).toLongLong();
+            return reMatch.captured(1).toInt();
     }
 
     return -1;
@@ -263,10 +263,8 @@ qint64 SoftwareRAID::getChunkSize(const QString &path)
             // Look sector size for the first device/partition on the list, as RAID 1 is composed by mirrored devices
             ExternalCommand sectorSize(QStringLiteral("blockdev"), { QStringLiteral("--getss"), device });
 
-            if (sectorSize.run(-1) && sectorSize.exitCode() == 0) {
-                int sectors = sectorSize.output().trimmed().toLongLong();
-                return sectors;
-            }
+            if (sectorSize.run(-1) && sectorSize.exitCode() == 0)
+                return sectorSize.output().trimmed().toLongLong();
         }
     }
     else {
@@ -279,7 +277,6 @@ qint64 SoftwareRAID::getChunkSize(const QString &path)
         }
     }
     return -1;
-
 }
 
 qint64 SoftwareRAID::getTotalChunk(const QString &path)
@@ -382,16 +379,18 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
                                       const qint32 raidLevel,
                                       const qint32 chunkSize)
 {
+    QString path = QStringLiteral("/dev/") + name;
+
     QStringList args;
-    args << QStringLiteral("--create") << name;
+    args << QStringLiteral("--create") << path;
     args << QStringLiteral("--level=") + QString::number(raidLevel);
     args << QStringLiteral("--chunk=") + QString::number(chunkSize);
     args << QStringLiteral("--raid-devices=") + QString::number(devicePathList.size());
 
-    for (const QString path : qAsConst(devicePathList)) {
-        eraseDeviceMDSuperblock(path);
+    for (const QString &p : qAsConst(devicePathList)) {
+        eraseDeviceMDSuperblock(p);
 
-        args << path;
+        args << p;
     }
 
     ExternalCommand cmd(report, QStringLiteral("mdadm"), args);
@@ -399,8 +398,9 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
     if (!cmd.run(-1) || cmd.exitCode() != 0)
         return false;
 
-    // TODO: Support custom config files.
-    return updateConfigurationFile(name);
+    updateConfigurationFile(path);
+
+    return true;
 }
 
 bool SoftwareRAID::deleteSoftwareRAID(Report &report,
@@ -462,6 +462,8 @@ void SoftwareRAID::initPartitions()
 
 qint64 SoftwareRAID::mappedSector(const QString &partitionPath, qint64 sector) const
 {
+    Q_UNUSED(partitionPath);
+    Q_UNUSED(sector);
     return -1;
 }
 
@@ -473,24 +475,12 @@ bool SoftwareRAID::eraseDeviceMDSuperblock(const QString &path)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool SoftwareRAID::updateConfigurationFile(const QString &deviceName)
+bool SoftwareRAID::updateConfigurationFile(const QString &path)
 {
-    // TODO: Don't use QFile, it is not authenticated and will fail without sudo
-    QFile config(raidConfigurationFilePath());
+    ExternalCommand cmd(QStringLiteral("/usr/") + QStringLiteral(LIBEXECDIRPATH) + QStringLiteral("/kpmcore_mdadmupdateconf"),
+                        { path, raidConfigurationFilePath() });
 
-    if (!config.open(QIODevice::WriteOnly | QIODevice::Append))
-        return false;
-
-    QTextStream out(&config);
-
-    QString info = getDeviceInformation(deviceName);
-
-    if (!info.isEmpty())
-        out << info << QLatin1Char('\n');
-
-    config.close();
-
-    return true;
+    return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 QString SoftwareRAID::getDetail(const QString &path)
