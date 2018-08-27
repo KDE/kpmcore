@@ -1,20 +1,16 @@
 #include <cstdlib>
-#include <cstring>
+#include <string>
+
+using std::string;
 
 int main(int argc, char *argv[])
 {
     if (argc != 3)
         return 1;
 
-    char command[] = "mdadm --detail --scan ";
+    string command = "mdadm --detail --scan " + string(argv[1]) + " >> " + string(argv[2]);
 
-    strcat(command, argv[1]);
-
-    strcat(command, " >> ");
-
-    strcat(command, argv[2]);
-
-    system(command);
+    system(command.c_str());
 
     return 0;
 }
