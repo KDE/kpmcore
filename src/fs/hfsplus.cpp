@@ -41,8 +41,8 @@ hfsplus::hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, cons
 
 void hfsplus::init()
 {
-    m_Check = findExternal(QStringLiteral("fsck_hfs")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Create = findExternal(QStringLiteral("newfs_hfs")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Check = findExternal(QStringLiteral("fsck.hfsplus")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Create = findExternal(QStringLiteral("mkfs.hfsplus")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Backup = cmdSupportCore;

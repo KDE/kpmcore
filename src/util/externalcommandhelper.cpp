@@ -112,7 +112,7 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
     }
 
     if (!device.seek(offset)) {
-        qCritical() << xi18n("Could not seek position %1 on device <filename>%1</filename>.", sourceDevice);
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, sourceDevice);
         return false;
     }
 
@@ -141,7 +141,7 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
     }
 
     if (!device.seek(offset)) {
-        qCritical() << xi18n("Could not seek position %1 on device <filename>%1</filename>.", targetDevice);
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, targetDevice);
         return false;
     }
 
@@ -288,16 +288,11 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quin
 
     // Compare with command whitelist
     QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
-    bool success = false;
-    for (const auto& command : allowedCommands) {
-        if (basename == command) {
-            success = true;
-            break;
-        }
-    }
-    if ( !success ) {
+    if (std::find(std::begin(allowedCommands), std::end(allowedCommands), basename) == std::end(allowedCommands)) {
         // TODO: notify the user
         m_loop->exit();
+        reply[QStringLiteral("success")] = false;
+        return reply;
     }
 
 //     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
