@@ -88,7 +88,7 @@ public:
         FlagLegacyBoot = 16384,
         FlagMsftData = 32768,
         FlagIrst = 65536,
-        FlagEsp = 131072
+        FlagEsp [[deprecated]] = FlagBoot
     };
 
     Q_DECLARE_FLAGS(Flags, Flag)
