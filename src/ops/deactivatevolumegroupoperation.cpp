@@ -64,17 +64,20 @@ void DeactivateVolumeGroupOperation::undo()
  */
 bool DeactivateVolumeGroupOperation::isDeactivatable(const VolumeManagerDevice* dev)
 {
-    if (dev->type() == Device::Type::LVM_Device) {
+    if (dev->type() != Device::Type::SoftwareRAID_Device &&
+            dev->type() != Device::Type::LVM_Device)
+        return false;
+
+    if (dev->partitionTable()) {
         for (const auto &p : dev->partitionTable()->children())
             if (p->isMounted())
                 return false;
-
-        return true;
     }
-    else if (dev->type() == Device::Type::SoftwareRAID_Device) {
+    
+    if (dev->type() == Device::Type::SoftwareRAID_Device) {
         const SoftwareRAID* raid = static_cast<const SoftwareRAID*>(dev);
         return raid->status() == SoftwareRAID::Status::Active;
     }
 
-    return false;
+    return true;
 }

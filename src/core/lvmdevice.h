@@ -99,8 +99,6 @@ public:
     qint64 allocatedPE() const;
     qint64 freePE() const;
     QString UUID() const;
-    QVector <const Partition*>& physicalVolumes();
-    const QVector <const Partition*>& physicalVolumes() const;
 
 protected:
     std::unique_ptr<QHash<QString, qint64>>& LVSizeMap() const;

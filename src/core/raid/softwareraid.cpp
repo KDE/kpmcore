@@ -381,11 +381,10 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
 {
     QString path = QStringLiteral("/dev/") + name;
 
-    QStringList args;
-    args << QStringLiteral("--create") << path;
-    args << QStringLiteral("--level=") + QString::number(raidLevel);
-    args << QStringLiteral("--chunk=") + QString::number(chunkSize);
-    args << QStringLiteral("--raid-devices=") + QString::number(devicePathList.size());
+    QStringList args = { QStringLiteral("--create"), path,
+                         QStringLiteral("--level=") + QString::number(raidLevel),
+                         QStringLiteral("--chunk=") + QString::number(chunkSize),
+                         QStringLiteral("--raid-devices=") + QString::number(devicePathList.size()) };
 
     for (const QString &p : qAsConst(devicePathList)) {
         eraseDeviceMDSuperblock(p);
@@ -398,7 +397,8 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
     if (!cmd.run(-1) || cmd.exitCode() != 0)
         return false;
 
-    updateConfigurationFile(path);
+    if (updateConfigurationFile(path))
+        qDebug() << QStringLiteral("Updated RAID config: ") + path;
 
     return true;
 }
@@ -408,6 +408,12 @@ bool SoftwareRAID::deleteSoftwareRAID(Report &report,
 {
     Q_UNUSED(report)
     Q_UNUSED(raidDevice)
+
+    // TODO: Need to stop and remove it from config file
+    // Erase md superblock for every physical partition of it
+    // The device should be removed from config file
+    // according to its UID, not by name
+
     return false;
 }
 

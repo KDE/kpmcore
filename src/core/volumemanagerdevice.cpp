@@ -17,8 +17,11 @@
  *************************************************************************/
 
 #include "core/device_p.h"
+#include "core/partition.h"
 #include "core/volumemanagerdevice.h"
 #include "core/volumemanagerdevice_p.h"
+
+#define d_ptr std::static_pointer_cast<VolumeManagerDevicePrivate>(d)
 
 /** Constructs an abstract Volume Manager Device with an empty PartitionTable.
  *
@@ -45,5 +48,15 @@ QString VolumeManagerDevice::prettyDeviceNodeList() const
 void VolumeManagerDevice::setTotalLogical(qint64 n)
 {
     Q_ASSERT(n > 0);
-    d->m_TotalLogical = n;
+    d_ptr->m_TotalLogical = n;
+}
+
+QVector<const Partition*>& VolumeManagerDevice::physicalVolumes()
+{
+    return d_ptr->m_PVs;
+}
+
+const QVector<const Partition*>& VolumeManagerDevice::physicalVolumes() const
+{
+    return d_ptr->m_PVs;
 }

@@ -26,6 +26,7 @@
 #include <QObject>
 #include <QtGlobal>
 
+class Partition;
 class VolumeManagerDevicePrivate;
 
 /** A Volume Manager of physical devices represented as an abstract device.
@@ -91,6 +92,10 @@ public:
      * @param n Number of sectors.
      */
     void setTotalLogical(qint64 n);
+
+    QVector<const Partition*>& physicalVolumes();
+    
+    const QVector<const Partition*>& physicalVolumes() const;
 };
 
 #endif

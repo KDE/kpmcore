@@ -20,8 +20,14 @@
 
 #include "core/device_p.h"
 
+#include <QVector>
+
+class Partition;
+
 class VolumeManagerDevicePrivate : public DevicePrivate
 {
+public:
+    QVector<const Partition*> m_PVs;
 };
 
 #endif

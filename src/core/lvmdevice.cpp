@@ -48,7 +48,6 @@ public:
     QString m_UUID;
 
     mutable QStringList m_LVPathList;
-    QVector <const Partition*> m_PVs;
     mutable std::unique_ptr<QHash<QString, qint64>> m_LVSizeMap;
 };
 
@@ -548,16 +547,6 @@ qint64 LvmDevice::freePE() const
 QString LvmDevice::UUID() const
 {
     return d_ptr->m_UUID;
-}
-
-QVector <const Partition*>& LvmDevice::physicalVolumes()
-{
-    return d_ptr->m_PVs;
-}
-
-const QVector <const Partition*>& LvmDevice::physicalVolumes() const
-{
-    return d_ptr->m_PVs;
 }
 
 std::unique_ptr<QHash<QString, qint64>>& LvmDevice::LVSizeMap() const
