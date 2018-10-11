@@ -22,6 +22,7 @@
 #include "core/partition.h"
 #include "core/partitiontable.h"
 #include "core/volumemanagerdevice.h"
+#include "core/raid/softwareraid.h"
 
 #include <QString>
 
@@ -40,7 +41,7 @@ RemoveVolumeGroupOperation::RemoveVolumeGroupOperation(VolumeManagerDevice& d) :
 
 QString RemoveVolumeGroupOperation::description() const
 {
-    return xi18nc("@info/plain", "Remove a LVM volume group.");
+    return xi18nc("@info/plain", "Remove a %1 volume group.", (device().type() == Device::Type::SoftwareRAID_Device ? QStringLiteral("RAID") : QStringLiteral("LVM")));
 }
 
 void RemoveVolumeGroupOperation::preview()
@@ -87,6 +88,10 @@ bool RemoveVolumeGroupOperation::isRemovable(const VolumeManagerDevice* dev)
         else
             if (dev->partitionTable()->children().first()->fileSystem().type() == FileSystem::Type::Unknown)
                 return true;
+    }
+    else if (dev->type() == Device::Type::SoftwareRAID_Device) {
+        const SoftwareRAID* raid = static_cast<const SoftwareRAID*>(dev);
+        return raid->status() == SoftwareRAID::Status::Inactive;
     }
 
     return false;

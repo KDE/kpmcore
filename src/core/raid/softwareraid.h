@@ -55,7 +55,6 @@ public:
     qint64 totalChunk() const;
     qint64 arraySize() const;
     QString uuid() const;
-    QStringList devicePathList() const;
     SoftwareRAID::Status status() const;
 
     void setStatus(SoftwareRAID::Status status);
@@ -110,6 +109,8 @@ private:
     static QString getRAIDConfiguration();
 
     static QString getDeviceInformation(const QString& deviceName);
+
+    void setPartitionNodes(const QStringList& partitionNodes);
 
 private:
     static QString s_raidConfigurationFile;

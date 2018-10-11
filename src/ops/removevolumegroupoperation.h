@@ -49,6 +49,7 @@ public:
     virtual bool targets(const Device&) const override {
         return true;
     }
+
     virtual bool targets(const Partition&) const override {
         return false;
     }
@@ -59,11 +60,11 @@ public:
     static bool isRemovable(const VolumeManagerDevice* dev);
 
 protected:
-    RemoveVolumeGroupJob* removeVolumeGroupJob() {
+    RemoveVolumeGroupJob* removeVolumeGroupJob() const {
         return m_RemoveVolumeGroupJob;
     }
 
-    VolumeManagerDevice& device() {
+    VolumeManagerDevice& device() const {
         return m_Device;
     }
 

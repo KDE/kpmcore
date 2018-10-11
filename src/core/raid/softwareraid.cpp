@@ -42,6 +42,7 @@ public:
     qint64 m_arraySize;
     QString m_UUID;
     QStringList m_devicePathList;
+    QStringList m_partitionPathList;
     SoftwareRAID::Status m_status;
 };
 
@@ -72,7 +73,7 @@ const QStringList SoftwareRAID::deviceNodes() const
 
 const QStringList& SoftwareRAID::partitionNodes() const
 {
-    return {};
+    return d_ptr->m_partitionPathList;
 }
 
 qint64 SoftwareRAID::partitionSize(QString &partitionPath) const
@@ -150,11 +151,6 @@ QString SoftwareRAID::uuid() const
     return d_ptr->m_UUID;
 }
 
-QStringList SoftwareRAID::devicePathList() const
-{
-    return d_ptr->m_devicePathList;
-}
-
 SoftwareRAID::Status SoftwareRAID::status() const
 {
     return d_ptr->m_status;
@@ -169,7 +165,6 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 {
     QStringList availableInConf;
 
-    // TODO: Support custom config files.
     QString config = getRAIDConfiguration();
 
     if (!config.isEmpty()) {
@@ -212,6 +207,13 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
             for (const QString& path : constAvailableInConf)
                 if (getUUID(QStringLiteral("/dev/") + path) == d->uuid())
                     availableInConf.removeAll(path);
+
+            QStringList partitionNodes;
+
+            for (const Partition *p : d->partitionTable()->children())
+                partitionNodes << p->partitionPath();
+
+            d->setPartitionNodes(partitionNodes);
 
             devices << d;
 
@@ -311,7 +313,6 @@ QString SoftwareRAID::getUUID(const QString &path)
 
     // If UUID was not found in detail output, it should be searched in config file
 
-    // TODO: Support custom config files.
     QString config = getRAIDConfiguration();
 
     if (!config.isEmpty()) {
@@ -406,15 +407,28 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
 bool SoftwareRAID::deleteSoftwareRAID(Report &report,
                                       SoftwareRAID &raidDevice)
 {
-    Q_UNUSED(report)
-    Q_UNUSED(raidDevice)
+    if (raidDevice.status() == SoftwareRAID::Status::Active)
+        stopSoftwareRAID(report, raidDevice.deviceNode());
 
-    // TODO: Need to stop and remove it from config file
-    // Erase md superblock for every physical partition of it
-    // The device should be removed from config file
-    // according to its UID, not by name
+    for (const QString& path : raidDevice.deviceNodes())
+        eraseDeviceMDSuperblock(path);
 
-    return false;
+    QString config = getRAIDConfiguration();
+
+    QStringList lines = config.split(QLatin1Char('\n'));
+
+    QString contentUpdated = QStringLiteral("\"");
+
+    for (const QString line : lines)
+        if (!line.isEmpty() && !line.contains(raidDevice.uuid()))
+            contentUpdated += line + QLatin1Char('\n');
+
+    contentUpdated += QLatin1Char('\"');
+
+    ExternalCommand cmd(QStringLiteral("/usr/") + QStringLiteral(LIBEXECDIRPATH) + QStringLiteral("/kpmcore_mdadmupdateconf"),
+                        { QStringLiteral("--write"), contentUpdated, raidConfigurationFilePath() });
+
+    return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool SoftwareRAID::assembleSoftwareRAID(const QString& deviceNode)
@@ -482,7 +496,7 @@ bool SoftwareRAID::eraseDeviceMDSuperblock(const QString &path)
 bool SoftwareRAID::updateConfigurationFile(const QString &path)
 {
     ExternalCommand cmd(QStringLiteral("/usr/") + QStringLiteral(LIBEXECDIRPATH) + QStringLiteral("/kpmcore_mdadmupdateconf"),
-                        { path, raidConfigurationFilePath() });
+                        { QStringLiteral("--append"), path, raidConfigurationFilePath() });
 
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
@@ -539,4 +553,9 @@ QString SoftwareRAID::getDefaultRaidConfigFile()
     else if (QFile::exists(QStringLiteral("/etc/mdadm/mdadm.conf")))
         return QStringLiteral("/etc/mdadm/mdadm.conf");
     return QString();
+}
+
+void SoftwareRAID::setPartitionNodes(const QStringList& partitionNodes)
+{
+    d_ptr->m_partitionPathList = partitionNodes;
 }

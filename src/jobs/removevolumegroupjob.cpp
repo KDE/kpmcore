@@ -1,5 +1,6 @@
 /*************************************************************************
  *  Copyright (C) 2016 by Chantara Tith <tith.chantara@gmail.com>        *
+ *  Copyright (C) 2018 by Caio Carvalho <caiojcarvalho@gmail.com>        *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -18,6 +19,7 @@
 #include "jobs/removevolumegroupjob.h"
 
 #include "core/lvmdevice.h"
+#include "core/raid/softwareraid.h"
 
 #include "util/report.h"
 
@@ -37,9 +39,10 @@ bool RemoveVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    if (device().type() == Device::Type::LVM_Device) {
+    if (device().type() == Device::Type::LVM_Device)
         rval = LvmDevice::removeVG(*report, dynamic_cast<LvmDevice&>(device()));
-    }
+    else if (device().type() == Device::Type::SoftwareRAID_Device)
+        rval = SoftwareRAID::deleteSoftwareRAID(*report, dynamic_cast<SoftwareRAID&>(device()));
 
     jobFinished(*report, rval);
 
@@ -48,5 +51,5 @@ bool RemoveVolumeGroupJob::run(Report& parent)
 
 QString RemoveVolumeGroupJob::description() const
 {
-    return xi18nc("@info/plain", "Remove Volume Group: <filename>%1</filename>", device().name());
+    return xi18nc("@info/plain", "Remove %1 Volume Group: <filename>%2</filename>", (device().type() == Device::Type::SoftwareRAID_Device ? QStringLiteral("RAID") : QStringLiteral("LVM")), device().name());
 }
