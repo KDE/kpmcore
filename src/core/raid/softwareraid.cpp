@@ -419,9 +419,6 @@ bool SoftwareRAID::deleteSoftwareRAID(Report &report,
 
 bool SoftwareRAID::assembleSoftwareRAID(const QString& deviceNode)
 {
-    if (!isRaidPath(deviceNode))
-        return false;
-
     ExternalCommand cmd(QStringLiteral("mdadm"),
                         { QStringLiteral("--assemble"), QStringLiteral("--scan"), deviceNode,
                         QStringLiteral("--config=") + raidConfigurationFilePath() });

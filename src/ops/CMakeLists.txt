@@ -15,6 +15,7 @@ set(OPS_SRC
     ops/checkoperation.cpp
     ops/backupoperation.cpp
     ops/copyoperation.cpp
+    ops/activateraidoperation.cpp
 )
 
 set(OPS_LIB_HDRS
@@ -34,4 +35,5 @@ set(OPS_LIB_HDRS
     ops/restoreoperation.h
     ops/setfilesystemlabeloperation.h
     ops/setpartflagsoperation.h
+    ops/activateraidoperation.h
 )

@@ -21,6 +21,7 @@ set(JOBS_SRC
     jobs/setpartflagsjob.cpp
     jobs/copyfilesystemjob.cpp
     jobs/movefilesystemjob.cpp
+    jobs/activateraidjob.cpp
 )
 
 set(JOBS_LIB_HDRS
