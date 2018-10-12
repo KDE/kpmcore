@@ -23,6 +23,7 @@
 #include "core/volumemanagerdevice_p.h"
 #include "fs/filesystem.h"
 #include "fs/filesystemfactory.h"
+#include "ops/createpartitiontableoperation.h"
 #include "util/externalcommand.h"
 
 #include <KLocalizedString>
@@ -407,8 +408,21 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
 bool SoftwareRAID::deleteSoftwareRAID(Report &report,
                                       SoftwareRAID &raidDevice)
 {
-    if (raidDevice.status() == SoftwareRAID::Status::Active)
+    // We need raid activated to erase its partition table
+    if (assembleSoftwareRAID(raidDevice.deviceNode()))
+        raidDevice.setStatus(SoftwareRAID::Status::Active); // check this behaviour on mirror devices during resync
+
+    if (raidDevice.status() == SoftwareRAID::Status::Active) {
+        // Erasing device's partition table
+        if (raidDevice.partitionTable() != nullptr) {
+            CreatePartitionTableOperation updatePartitionTable(raidDevice, raidDevice.partitionTable()->type());
+
+            if (!updatePartitionTable.execute(report))
+                return false;
+        }
+
         stopSoftwareRAID(report, raidDevice.deviceNode());
+    }
 
     for (const QString& path : raidDevice.deviceNodes())
         eraseDeviceMDSuperblock(path);

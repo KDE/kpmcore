@@ -49,7 +49,10 @@ QString DeactivateVolumeGroupOperation::description() const
 void DeactivateVolumeGroupOperation::preview()
 {
     m_PartitionTable = device().partitionTable();
-    device().setPartitionTable(new PartitionTable(PartitionTable::vmd, 0, device().totalLogical() - 1));
+    if (device().type() == Device::Type::LVM_Device)
+        device().setPartitionTable(new PartitionTable(PartitionTable::vmd, 0, device().totalLogical() - 1));
+    else if (device().type() == Device::Type::SoftwareRAID_Device && device().partitionTable() != nullptr)
+        device().setPartitionTable(new PartitionTable(device().partitionTable()->type(), 0, device().totalLogical() - 1));
 }
 
 void DeactivateVolumeGroupOperation::undo()
