@@ -201,7 +201,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             LvmDevice::scanSystemLVM(availableDevices);
 
             for (Device *device : qAsConst(availableDevices))
-                if (device->deviceNode() == deviceNode)
+                if (device && device->deviceNode() == deviceNode)
                     return device;
         }
     }

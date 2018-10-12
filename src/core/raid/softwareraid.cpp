@@ -211,8 +211,9 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 
             QStringList partitionNodes;
 
-            for (const Partition *p : d->partitionTable()->children())
-                partitionNodes << p->partitionPath();
+            if (d->partitionTable() != nullptr)
+                for (const Partition *p : d->partitionTable()->children())
+                    partitionNodes << p->partitionPath();
 
             d->setPartitionNodes(partitionNodes);
 
