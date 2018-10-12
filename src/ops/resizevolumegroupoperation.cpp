@@ -25,6 +25,7 @@
 #include "jobs/movephysicalvolumejob.h"
 #include "util/helpers.h"
 
+#include <QDebug>
 #include <QString>
 
 #include <KLocalizedString>
@@ -33,7 +34,7 @@
     @param d the Device to create the new PartitionTable on
     @param partList list of LVM Physical Volumes that should be in LVM Volume Group
 */
-ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QVector<const Partition*>& partList)
+ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(VolumeManagerDevice& d, const QVector<const Partition*>& partList)
     : Operation()
     , m_Device(d)
     , m_TargetList(partList)
@@ -59,45 +60,16 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QVect
         if (!currentList().contains(p))
             toInsertList.append(p);
 
-    qint64 currentFreePE = 0;
-    for (const auto &p : currentList()) {
-        FS::lvm2_pv *lvm2PVFs;
-        innerFS(p, lvm2PVFs);
-        currentFreePE += lvm2PVFs->freePE();
-    }
-    qint64 removedFreePE = 0;
-    for (const auto &p : qAsConst(toRemoveList)) {
-        FS::lvm2_pv *lvm2PVFs;
-        innerFS(p, lvm2PVFs);
-        removedFreePE += lvm2PVFs->freePE();
-    }
-    qint64 freePE = currentFreePE - removedFreePE;
-    qint64 movePE = 0;
-    for (const auto &p : qAsConst(toRemoveList)) {
-        FS::lvm2_pv *lvm2PVFs;
-        innerFS(p, lvm2PVFs);
-        movePE += lvm2PVFs->allocatedPE();
-    }
-    qint64 growPE = 0;
-    for (const auto &p : qAsConst(toInsertList)) {
-        growPE += p->capacity() / device().peSize();
+    if (!toInsertList.isEmpty()) {
+        m_GrowVolumeGroupJob = new ResizeVolumeGroupJob(d, toInsertList, ResizeVolumeGroupJob::Type::Grow);
+        addJob(growVolumeGroupJob());
     }
 
-    if ( movePE > (freePE + growPE)) {
-        // *ABORT* can't move
-    } else if (partList == currentList()) {
-        // *DO NOTHING*
-    } else {
-        if (!toInsertList.isEmpty()) {
-            m_GrowVolumeGroupJob = new ResizeVolumeGroupJob(d, toInsertList, ResizeVolumeGroupJob::Type::Grow);
-            addJob(growVolumeGroupJob());
-        }
-        if (!toRemoveList.isEmpty()) {
-            m_MovePhysicalVolumeJob = new MovePhysicalVolumeJob(d, toRemoveList);
-            m_ShrinkVolumeGroupJob = new ResizeVolumeGroupJob(d, toRemoveList, ResizeVolumeGroupJob::Type::Shrink);
-            addJob(movePhysicalVolumeJob());
-            addJob(shrinkvolumegroupjob());
-        }
+    if (!toRemoveList.isEmpty()) {
+        m_MovePhysicalVolumeJob = new MovePhysicalVolumeJob(d, toRemoveList);
+        m_ShrinkVolumeGroupJob = new ResizeVolumeGroupJob(d, toRemoveList, ResizeVolumeGroupJob::Type::Shrink);
+        addJob(movePhysicalVolumeJob());
+        addJob(shrinkvolumegroupjob());
     }
 }
 

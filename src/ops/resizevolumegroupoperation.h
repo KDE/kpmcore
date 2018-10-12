@@ -24,9 +24,10 @@
 
 #include "ops/operation.h"
 
-#include "core/lvmdevice.h"
+#include "core/volumemanagerdevice.h"
 
 #include <QString>
+#include <QVector>
 
 class ResizeVolumeGroupJob;
 class MovePhysicalVolumeJob;
@@ -40,7 +41,7 @@ class LIBKPMCORE_EXPORT ResizeVolumeGroupOperation : public Operation
     friend class OperationStack;
 
 public:
-    ResizeVolumeGroupOperation(LvmDevice& dev, const QVector<const Partition*>& partlist);
+    ResizeVolumeGroupOperation(VolumeManagerDevice& dev, const QVector<const Partition*>& partlist);
 
 public:
     QString iconName() const override {
@@ -59,10 +60,10 @@ public:
     QStringList getToInsertList();
 
 protected:
-    LvmDevice& device() {
+    VolumeManagerDevice& device() {
         return m_Device;
     }
-    const LvmDevice& device() const {
+    const VolumeManagerDevice& device() const {
         return m_Device;
     }
     const QVector<const Partition*>& targetList() const {
@@ -94,7 +95,7 @@ protected:
     }
 
 private:
-    LvmDevice& m_Device;
+    VolumeManagerDevice& m_Device;
 
     QVector<const Partition*> m_TargetList;
     QVector<const Partition*> m_CurrentList;

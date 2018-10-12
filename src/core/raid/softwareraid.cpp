@@ -217,6 +217,14 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 
             d->setPartitionNodes(partitionNodes);
 
+            for (const Device* dev : qAsConst(devices)) {
+                if (dev->partitionTable()) {
+                    for (const Partition* p : dev->partitionTable()->children())
+                        if (getRaidArrayName(p->deviceNode()) == d->deviceNode())
+                            d->physicalVolumes() << p;
+                }
+            }
+
             devices << d;
 
             if (status == QStringLiteral("inactive"))

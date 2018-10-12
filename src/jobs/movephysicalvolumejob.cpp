@@ -19,6 +19,7 @@
 #include "jobs/movephysicalvolumejob.h"
 
 #include "core/lvmdevice.h"
+#include "core/volumemanagerdevice.h"
 
 #include "util/report.h"
 
@@ -27,7 +28,7 @@
 /** Creates a new MovePhysicalVolumeJob
  * @param d Device representing LVM Volume Group
 */
-MovePhysicalVolumeJob::MovePhysicalVolumeJob(LvmDevice& d, const QList <const Partition*>& partList) :
+MovePhysicalVolumeJob::MovePhysicalVolumeJob(VolumeManagerDevice& d, const QList <const Partition*>& partList) :
     Job(),
     m_Device(d),
     m_PartList(partList)

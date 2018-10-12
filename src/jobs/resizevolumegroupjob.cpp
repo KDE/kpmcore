@@ -19,6 +19,7 @@
 #include "jobs/resizevolumegroupjob.h"
 
 #include "core/lvmdevice.h"
+#include "core/volumemanagerdevice.h"
 #include "fs/luks.h"
 
 #include "util/report.h"
@@ -27,7 +28,7 @@
 
 /** Creates a new ResizeVolumeGroupJob
 */
-ResizeVolumeGroupJob::ResizeVolumeGroupJob(LvmDevice& dev, const QList <const Partition*>& partlist, const Type type) :
+ResizeVolumeGroupJob::ResizeVolumeGroupJob(VolumeManagerDevice& dev, const QList <const Partition*>& partlist, const Type type) :
     Job(),
     m_Device(dev),
     m_PartList(partlist),
@@ -41,15 +42,18 @@ bool ResizeVolumeGroupJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    for (const auto &p : partList()) {
-        const QString deviceNode = p->roles().has(PartitionRole::Luks) ? static_cast<const FS::luks*>(&p->fileSystem())->mapperName() : p->partitionPath();
-        if (type() == ResizeVolumeGroupJob::Type::Grow)
-            rval = LvmDevice::insertPV(*report, device(), deviceNode);
-        else if (type() == ResizeVolumeGroupJob::Type::Shrink)
-            rval = LvmDevice::removePV(*report, device(), deviceNode);
+    if (device().type() == Device::Type::LVM_Device) {
+        LvmDevice& lvm = static_cast<LvmDevice&>(device());
+        for (const auto &p : partList()) {
+            const QString deviceNode = p->roles().has(PartitionRole::Luks) ? static_cast<const FS::luks*>(&p->fileSystem())->mapperName() : p->partitionPath();
+            if (type() == ResizeVolumeGroupJob::Type::Grow)
+                rval = LvmDevice::insertPV(*report, lvm, deviceNode);
+            else if (type() == ResizeVolumeGroupJob::Type::Shrink)
+                rval = LvmDevice::removePV(*report, lvm, deviceNode);
 
-        if (rval == false)
-            break;
+            if (rval == false)
+                break;
+        }
     }
 
     jobFinished(*report, rval);
