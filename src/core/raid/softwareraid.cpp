@@ -405,6 +405,8 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
 
     ExternalCommand cmd(report, QStringLiteral("mdadm"), args);
 
+    cmd.write(QByteArrayLiteral("y"));
+
     if (!cmd.run(-1) || cmd.exitCode() != 0)
         return false;
 
