@@ -580,6 +580,24 @@ QString SoftwareRAID::getDefaultRaidConfigFile()
     return QString();
 }
 
+bool SoftwareRAID::failPV(Report& report, const QString& devicePath, const QString& physicalVolume)
+{
+    ExternalCommand cmd(QStringLiteral("mdadm"),
+                        { QStringLiteral("--manage"), QStringLiteral("--fail"), devicePath, physicalVolume });
+
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
+bool SoftwareRAID::removePV(Report& report, const QString& devicePath, const QString& physicalVolume)
+{
+    failPV(report, devicePath, physicalVolume);
+
+    ExternalCommand cmd(QStringLiteral("mdadm"),
+                        { QStringLiteral("--manage"), QStringLiteral("--remove"), devicePath, physicalVolume });
+
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
 void SoftwareRAID::setPartitionNodes(const QStringList& partitionNodes)
 {
     d_ptr->m_partitionPathList = partitionNodes;

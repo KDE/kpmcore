@@ -94,6 +94,12 @@ public:
 
     static QString getDefaultRaidConfigFile();
 
+    static bool failPV(Report& report, const QString& devicePath, const QString& physicalVolume);
+
+    //static bool insertPV(Report& report, SoftwareRAID& raid, const QString& deviceNode);
+
+    static bool removePV(Report& report, const QString& devicePath, const QString& physicalVolume);
+
 protected:
     void initPartitions() override;
 
