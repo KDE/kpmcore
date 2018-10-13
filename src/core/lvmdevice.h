@@ -98,6 +98,7 @@ public:
     qint64 totalPE() const;
     qint64 allocatedPE() const;
     qint64 freePE() const;
+    void setFreePE(qint64 freePE) const;
     QString UUID() const;
     QVector <const Partition*>& physicalVolumes();
     const QVector <const Partition*>& physicalVolumes() const;

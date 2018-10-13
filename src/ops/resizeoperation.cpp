@@ -67,7 +67,7 @@ ResizeOperation::ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint6
     m_GrowSetGeomJob(nullptr),
     m_CheckResizedJob(nullptr)
 {
-    if(CheckOperation::canCheck(&partition()))
+    if (CheckOperation::canCheck(&partition()))
         addJob(checkOriginalJob());
 
     if (partition().roles().has(PartitionRole::Extended)) {
@@ -121,6 +121,11 @@ bool ResizeOperation::targets(const Partition& p) const
 
 void ResizeOperation::preview()
 {
+    if (targetDevice().type() == Device::Type::LVM_Device) {
+        const LvmDevice& lvm = static_cast<const LvmDevice&>(targetDevice());
+        lvm.setFreePE(lvm.freePE() + partition().lastSector() - newLastSector());
+    }
+
     // If the operation has already been executed, the partition will of course have newFirstSector and
     // newLastSector as first and last sector. But to remove it from its original position, we need to
     // temporarily set these values back to where they were before the operation was executed.
@@ -139,6 +144,11 @@ void ResizeOperation::preview()
 
 void ResizeOperation::undo()
 {
+    if (targetDevice().type() == Device::Type::LVM_Device) {
+        const LvmDevice& lvm = static_cast<const LvmDevice&>(targetDevice());
+        lvm.setFreePE(lvm.freePE() - origLastSector() + partition().lastSector());
+    }
+
     removePreviewPartition(targetDevice(), partition());
     partition().setFirstSector(origFirstSector());
     partition().setLastSector(origLastSector());
