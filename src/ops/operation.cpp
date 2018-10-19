@@ -51,11 +51,14 @@ void Operation::insertPreviewPartition(Device& device, Partition& p)
 
     device.partitionTable()->removeUnallocated();
 
-    p.parent()->insert(&p);
-    if (device.type() == Device::Type::LVM_Device) {
-        const LvmDevice& lvm = static_cast<const LvmDevice&>(device);
-        lvm.setFreePE(lvm.freePE() - p.length());
+    if (p.parent()->insert(&p)) {
+        if (device.type() == Device::Type::LVM_Device) {
+            const LvmDevice& lvm = static_cast<const LvmDevice&>(device);
+            lvm.setFreePE(lvm.freePE() - p.length());
+        }
     }
+    else
+        qWarning() << "failed to insert preview partition " << p.deviceNode() << " at " << &p << ".";
 
     device.partitionTable()->updateUnallocated(device);
 }
