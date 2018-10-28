@@ -6,6 +6,7 @@ set(CORE_SRC
     core/copysourcefile.cpp
     core/copysourceshred.cpp
     core/copytarget.cpp
+    core/copytargetbytearray.cpp
     core/copytargetdevice.cpp
     core/copytargetfile.cpp
     core/device.cpp

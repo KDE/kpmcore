@@ -18,6 +18,9 @@ set (pmsfdiskbackendplugin_SRCS
     sfdiskdevice.cpp
     sfdiskpartitiontable.cpp
     ${CMAKE_SOURCE_DIR}/src/backend/corebackenddevice.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/copysourcedevice.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/copytargetdevice.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/copytargetbytearray.cpp
 )
 
 add_library(pmsfdiskbackendplugin SHARED ${pmsfdiskbackendplugin_SRCS})

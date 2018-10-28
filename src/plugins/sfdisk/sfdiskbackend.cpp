@@ -21,6 +21,8 @@
 #include "plugins/sfdisk/sfdiskbackend.h"
 #include "plugins/sfdisk/sfdiskdevice.h"
 
+#include "core/copysourcedevice.h"
+#include "core/copytargetbytearray.h"
 #include "core/diskdevice.h"
 #include "core/lvmdevice.h"
 #include "core/partitiontable.h"
@@ -332,11 +334,12 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
     {
         // Read the maximum number of GPT partitions
         qint32 maxEntries;
-        ExternalCommand ddCommand(QStringLiteral("dd"),
-                                 { QStringLiteral("skip=1"), QStringLiteral("count=1"), (QStringLiteral("if=") + d.deviceNode()) },
-                                  QProcess::SeparateChannels);
-        if (ddCommand.run(-1) && ddCommand.exitCode() == 0 ) {
-            QByteArray gptHeader = ddCommand.rawOutput();
+        QByteArray gptHeader;
+        CopySourceDevice source(d, 512, 1023);
+        CopyTargetByteArray target(gptHeader);
+
+        ExternalCommand copyCmd;
+        if (copyCmd.copyBlocks(source, target)) {
             QByteArray gptMaxEntries = gptHeader.mid(80, 4);
             QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
             stream.setByteOrder(QDataStream::LittleEndian);
