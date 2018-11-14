@@ -36,6 +36,7 @@ Description[lt]=Diskų tvarkymui reikalingos administratoriaus teisės
 Description[nl]=Er zijn administratieve rechten vereist om schijven te beheren
 Description[pl]=Do zarządzania dyskami wymagane są uprawnienia administratora
 Description[pt]=São necessários privilégios de administrador para gerir os discos
+Description[pt_BR]=São necessários privilégios administrativos para gerenciar discos
 Description[sv]=Administratörsprivilegier krävs för att hantera diskar
 Description[uk]=Для керування дисками потрібні права доступу адміністратора (root)
 Description[x-test]=xxAdministrative privileges are required to manage disksxx
