@@ -169,12 +169,23 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
         if ( d == nullptr && modelCommand.run(-1) && modelCommand.exitCode() == 0 )
         {
-            QString modelName = modelCommand.output();
-            modelName = modelName.left(modelName.length() - 1);
+            QString name = modelCommand.output();
+            name = name.left(name.length() - 1);
 
-            Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", modelName);
+            if (name.trimmed().isEmpty()) {
+                // Get 'lsblk --output kname' in the cases where the model name is not available.
+                // As lsblk doesn't have an option to include a separator in its output, it is
+                // necessary to run it again getting only the kname as output.
+                ExternalCommand kname(QStringLiteral("lsblk"), {QStringLiteral("--nodeps"), QStringLiteral("--noheadings"), QStringLiteral("--output"), QStringLiteral("kname"),
+                                                                deviceNode});
 
-            d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
+                if (kname.run(-1) && kname.exitCode() == 0)
+                    name = kname.output();
+            }
+
+            Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", name);
+
+            d = new DiskDevice(name, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
         }
 
         if ( d )
