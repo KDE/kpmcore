@@ -152,6 +152,7 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
     return true;
 }
 
+// If targetDevice is empty then return QByteArray with data that was read from disk.
 QVariantMap ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
     QVariantMap reply;
@@ -213,7 +214,7 @@ QVariantMap ExternalCommandHelper::copyblocks(const QByteArray& signature, const
 
     bool rval = true;
 
-    while (blocksCopied < blocksToCopy) {
+    while (blocksCopied < blocksToCopy && !targetDevice.isEmpty()) {
         if (!(rval = readData(sourceDevice, buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
             break;
 
@@ -264,6 +265,33 @@ QVariantMap ExternalCommandHelper::copyblocks(const QByteArray& signature, const
     reply[QStringLiteral("success")] = rval;
     return reply;
 }
+
+bool ExternalCommandHelper::writeData(const QByteArray& signature, const quint64 nonce, const QByteArray buffer, const QString& targetDevice, const qint64 targetFirstByte)
+{
+    if (m_Nonces.find(nonce) != m_Nonces.end())
+        m_Nonces.erase( nonce );
+    else
+        return false;
+
+    QByteArray request;
+    request.setNum(nonce);
+    request.append(buffer);
+    request.append(targetDevice.toUtf8());
+    request.append(QByteArray::number(targetFirstByte));
+
+    // Do not allow using this helper for writing to arbitrary location
+    if ( targetDevice.left(5) != QStringLiteral("/dev/") && !targetDevice.contains(QStringLiteral("/etc/fstab")))
+        return false;
+
+    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
+        qCritical() << xi18n("Invalid cryptographic signature");
+        return false;
+    }
+
+    return writeData(targetDevice, buffer, targetFirstByte);
+}
+
 
 QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quint64 nonce, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {

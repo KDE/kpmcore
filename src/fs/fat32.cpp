@@ -14,6 +14,7 @@
  *  You should have received a copy of the GNU General Public License    *
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
+
 #include "fs/fat32.h"
 
 #include "util/externalcommand.h"
@@ -48,7 +49,8 @@ bool fat32::create(Report& report, const QString& deviceNode)
 
 bool fat32::updateUUID(Report& report, const QString& deviceNode) const
 {
-    qint64 t = time(nullptr);
+    // HACK: replace this hack with fatlabel "-i" (dosfstools 4.2)
+    long int t = time(nullptr);
 
     char uuid[4];
     for (auto &u : uuid) {
@@ -56,10 +58,7 @@ bool fat32::updateUUID(Report& report, const QString& deviceNode) const
         t >>= 8;
     }
 
-    // HACK: replace this hack with fatlabel "-i" (dosfstools 4.2)
-    ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode, QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=67") });
-
-    cmd.write(QByteArray(uuid, sizeof(uuid)));
-    return cmd.start();
+    ExternalCommand cmd;
+    return cmd.writeData(report, QByteArray(uuid, sizeof(uuid)), deviceNode, 67);
 }
 }

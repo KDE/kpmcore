@@ -50,6 +50,7 @@ public Q_SLOTS:
     Q_SCRIPTABLE quint64 getNonce();
     Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const quint64 nonce, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
     Q_SCRIPTABLE QVariantMap copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
+    Q_SCRIPTABLE bool writeData(const QByteArray& signature, const quint64 nonce, const QByteArray buffer, const QString& targetDevice, const qint64 targetFirstByte);
     Q_SCRIPTABLE void exit(const QByteArray& signature, const quint64 nonce);
 
 private:
