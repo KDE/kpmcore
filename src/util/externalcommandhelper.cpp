@@ -266,7 +266,7 @@ QVariantMap ExternalCommandHelper::copyblocks(const QByteArray& signature, const
     return reply;
 }
 
-bool ExternalCommandHelper::writeData(const QByteArray& signature, const quint64 nonce, const QByteArray buffer, const QString& targetDevice, const qint64 targetFirstByte)
+bool ExternalCommandHelper::writeData(const QByteArray& signature, const quint64 nonce, const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
 {
     if (m_Nonces.find(nonce) != m_Nonces.end())
         m_Nonces.erase( nonce );

@@ -59,7 +59,7 @@ void fat12::init()
     m_Move = cmdSupportCore;
     m_Copy = cmdSupportCore;
     m_Backup = cmdSupportCore;
-    m_UpdateUUID = findExternal(QStringLiteral("dd")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_UpdateUUID = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
 }
 
