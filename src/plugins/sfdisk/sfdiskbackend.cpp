@@ -183,9 +183,16 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
                     name = kname.output();
             }
 
+            ExternalCommand transport(QStringLiteral("lsblk"), {QStringLiteral("--nodeps"), QStringLiteral("--noheadings"), QStringLiteral("--output"), QStringLiteral("tran"),
+                                                                deviceNode});
+            QString icon;
+            if (transport.run(-1) && transport.exitCode() == 0)
+                if (transport.output().trimmed() == QStringLiteral("usb"))
+                    icon = QStringLiteral("drive-removable-media-usb");
+
             Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", name);
 
-            d = new DiskDevice(name, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
+            d = new DiskDevice(name, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize, icon);
         }
 
         if ( d )
