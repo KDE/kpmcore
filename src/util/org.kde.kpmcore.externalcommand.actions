@@ -24,6 +24,7 @@ Name[sv]=Starta extern kommandodemon
 Name[uk]=Запуск фонової служби зовнішньої команди
 Name[x-test]=xxStart external command daemonxx
 Description=Administrative privileges are required to manage disks
+Description[ast]=Ríquense los privilexos alministrativos pa xestionar discos
 Description[ca]=Es requereixen privilegis d'administrador per gestionar discs
 Description[ca@valencia]=Es requereixen privilegis d'administrador per gestionar discs
 Description[cs]=Pro správu disků jsou potřeba práva administrátora
