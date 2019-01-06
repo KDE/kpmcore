@@ -544,6 +544,12 @@ qint64 LvmDevice::freePE() const
     return d_ptr->m_freePE;
 }
 
+void LvmDevice::setFreePE(qint64 freePE) const
+{
+    d_ptr->m_freePE = freePE;
+    d_ptr->m_allocPE = d_ptr->m_totalPE - freePE;
+}
+
 QString LvmDevice::UUID() const
 {
     return d_ptr->m_UUID;

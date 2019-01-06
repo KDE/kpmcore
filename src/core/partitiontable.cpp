@@ -216,8 +216,6 @@ QString PartitionTable::flagName(Flag f)
         return xi18nc("@item partition flag", "msft-data");
     case PartitionTable::FlagIrst:
         return xi18nc("@item partition flag", "irst");
-    case PartitionTable::FlagEsp:
-        return xi18nc("@item partition flag", "esp");
     default:
         break;
     }
@@ -247,7 +245,6 @@ const QList<PartitionTable::Flag> PartitionTable::flagList()
     rval.append(PartitionTable::FlagLegacyBoot);
     rval.append(PartitionTable::FlagMsftData);
     rval.append(PartitionTable::FlagIrst);
-    rval.append(PartitionTable::FlagEsp);
 
     return rval;
 }

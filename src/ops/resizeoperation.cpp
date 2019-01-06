@@ -67,7 +67,7 @@ ResizeOperation::ResizeOperation(Device& d, Partition& p, qint64 newfirst, qint6
     m_GrowSetGeomJob(nullptr),
     m_CheckResizedJob(nullptr)
 {
-    if(CheckOperation::canCheck(&partition()))
+    if (CheckOperation::canCheck(&partition()))
         addJob(checkOriginalJob());
 
     if (partition().roles().has(PartitionRole::Extended)) {

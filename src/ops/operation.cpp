@@ -20,6 +20,7 @@
 
 #include "core/partition.h"
 #include "core/device.h"
+#include "core/lvmdevice.h"
 
 #include "jobs/job.h"
 
@@ -50,7 +51,14 @@ void Operation::insertPreviewPartition(Device& device, Partition& p)
 
     device.partitionTable()->removeUnallocated();
 
-    p.parent()->insert(&p);
+    if (p.parent()->insert(&p)) {
+        if (device.type() == Device::Type::LVM_Device) {
+            const LvmDevice& lvm = static_cast<const LvmDevice&>(device);
+            lvm.setFreePE(lvm.freePE() - p.length());
+        }
+    }
+    else
+        qWarning() << "failed to insert preview partition " << p.deviceNode() << " at " << &p << ".";
 
     device.partitionTable()->updateUnallocated(device);
 }
@@ -59,8 +67,14 @@ void Operation::removePreviewPartition(Device& device, Partition& p)
 {
     Q_ASSERT(device.partitionTable());
 
-    if (p.parent()->remove(&p))
+    if (p.parent()->remove(&p)) {
+        if (device.type() == Device::Type::LVM_Device) {
+            const LvmDevice& lvm = static_cast<const LvmDevice&>(device);
+            lvm.setFreePE(lvm.freePE() + p.length());
+        }
+
         device.partitionTable()->updateUnallocated(device);
+    }
     else
         qWarning() << "failed to remove partition " << p.deviceNode() << " at " << &p << " from preview.";
 }

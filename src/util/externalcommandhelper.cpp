@@ -152,12 +152,18 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
     return true;
 }
 
-bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
+// If targetDevice is empty then return QByteArray with data that was read from disk.
+QVariantMap ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
+    QVariantMap reply;
+    reply[QStringLiteral("success")] = true;
+
     if (m_Nonces.find(nonce) != m_Nonces.end())
         m_Nonces.erase( nonce );
-    else
-        return false;
+    else {
+        reply[QStringLiteral("success")] = false;
+        return reply;
+    }
 
     QByteArray request;
 
@@ -172,7 +178,8 @@ bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint6
     QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
     if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
         qCritical() << xi18n("Invalid cryptographic signature");
-        return false;
+        reply[QStringLiteral("success")] = false;
+        return reply;
     }
 
     const qint64 blocksToCopy = sourceLength / blockSize;
@@ -207,7 +214,7 @@ bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint6
 
     bool rval = true;
 
-    while (blocksCopied < blocksToCopy) {
+    while (blocksCopied < blocksToCopy && !targetDevice.isEmpty()) {
         if (!(rval = readData(sourceDevice, buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
             break;
 
@@ -239,8 +246,12 @@ bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint6
         HelperSupport::progressStep(report);
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
 
-        if (rval)
-            rval = writeData(targetDevice, buffer, lastBlockWriteOffset);
+        if (rval) {
+            if (targetDevice.isEmpty())
+                reply[QStringLiteral("targetByteArray")] = buffer;
+            else
+                rval = writeData(targetDevice, buffer, lastBlockWriteOffset);
+        }
 
         if (rval) {
             HelperSupport::progressStep(100);
@@ -251,8 +262,36 @@ bool ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint6
     report[QStringLiteral("report")] = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
     HelperSupport::progressStep(report);
 
-    return rval;
+    reply[QStringLiteral("success")] = rval;
+    return reply;
 }
+
+bool ExternalCommandHelper::writeData(const QByteArray& signature, const quint64 nonce, const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
+{
+    if (m_Nonces.find(nonce) != m_Nonces.end())
+        m_Nonces.erase( nonce );
+    else
+        return false;
+
+    QByteArray request;
+    request.setNum(nonce);
+    request.append(buffer);
+    request.append(targetDevice.toUtf8());
+    request.append(QByteArray::number(targetFirstByte));
+
+    // Do not allow using this helper for writing to arbitrary location
+    if ( targetDevice.left(5) != QStringLiteral("/dev/") && !targetDevice.contains(QStringLiteral("/etc/fstab")))
+        return false;
+
+    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
+        qCritical() << xi18n("Invalid cryptographic signature");
+        return false;
+    }
+
+    return writeData(targetDevice, buffer, targetFirstByte);
+}
+
 
 QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quint64 nonce, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {

@@ -28,7 +28,7 @@ set(BLKID_MIN_VERSION "2.32")
 # Qca-qt5 (tested with botan and ossl backends)
 
 # Runtime
-# smartmontools 6.7
+# smartmontools 7.0
 # Qca plugin (botan or ossl)
 
 set(VERSION_MAJOR "3")

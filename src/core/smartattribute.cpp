@@ -128,6 +128,7 @@ static const AttrDetails* attrDetails()
         { 175,  i18nc("SMART attr name", "SSD Power Loss Protection Failure"), i18nc("SMART attr description", "Last test result, saturated at its maximum value. Bytes 0-1: last test result as microseconds to discharge cap in range [25, 5000000], lower indicates specific error code. Bytes 2-3: minutes since last test. Bytes 4-5: lifetime number of tests. Normalized value is set to 1 on test failure or 11 if the capacitor has been tested in an excessive temperature condition, otherwise 100.") },
         { 176,  i18nc("SMART attr name", "SSD Erase Fail Count (chip)"), i18nc("SMART attr description", "Number of flash erase command failures.") },
         { 177,  i18nc("SMART attr name", "SSD Wear Range Delta"), i18nc("SMART attr description", "Delta between most-worn and least-worn flash blocks.") },
+        { 178,  i18nc("SMART attr name", "SSD Used Reserved Block Count Total"), i18nc("SMART attr description", "\"Pre-Fail\" Samsung attribute.") },
         { 179,  i18nc("SMART attr name", "SSD Used Reserved Block Count Total"), i18nc("SMART attr description", "\"Pre-Fail\" Samsung attribute.") },
         { 180,  i18nc("SMART attr name", "SSD Unused Reserved Block Count Total"), i18nc("SMART attr description", "\"Pre-Fail\" HP attribute.") },
         { 181,  i18nc("SMART attr name", "SSD Program Fail Count Total or Non-4K Aligned Access Count"), i18nc("SMART attr description", "Number of flash program operation failures since the drive was deployed.") },

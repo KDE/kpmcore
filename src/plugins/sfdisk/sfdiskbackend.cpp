@@ -21,6 +21,8 @@
 #include "plugins/sfdisk/sfdiskbackend.h"
 #include "plugins/sfdisk/sfdiskdevice.h"
 
+#include "core/copysourcedevice.h"
+#include "core/copytargetbytearray.h"
 #include "core/diskdevice.h"
 #include "core/lvmdevice.h"
 #include "core/partitiontable.h"
@@ -167,12 +169,30 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
         if ( d == nullptr && modelCommand.run(-1) && modelCommand.exitCode() == 0 )
         {
-            QString modelName = modelCommand.output();
-            modelName = modelName.left(modelName.length() - 1);
+            QString name = modelCommand.output();
+            name = name.left(name.length() - 1);
 
-            Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", modelName);
+            if (name.trimmed().isEmpty()) {
+                // Get 'lsblk --output kname' in the cases where the model name is not available.
+                // As lsblk doesn't have an option to include a separator in its output, it is
+                // necessary to run it again getting only the kname as output.
+                ExternalCommand kname(QStringLiteral("lsblk"), {QStringLiteral("--nodeps"), QStringLiteral("--noheadings"), QStringLiteral("--output"), QStringLiteral("kname"),
+                                                                deviceNode});
 
-            d = new DiskDevice(modelName, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize);
+                if (kname.run(-1) && kname.exitCode() == 0)
+                    name = kname.output();
+            }
+
+            ExternalCommand transport(QStringLiteral("lsblk"), {QStringLiteral("--nodeps"), QStringLiteral("--noheadings"), QStringLiteral("--output"), QStringLiteral("tran"),
+                                                                deviceNode});
+            QString icon;
+            if (transport.run(-1) && transport.exitCode() == 0)
+                if (transport.output().trimmed() == QStringLiteral("usb"))
+                    icon = QStringLiteral("drive-removable-media-usb");
+
+            Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", name);
+
+            d = new DiskDevice(name, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize, icon);
         }
 
         if ( d )
@@ -225,12 +245,12 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         const qint64 start = partitionObject[QLatin1String("start")].toVariant().toLongLong();
         const qint64 size = partitionObject[QLatin1String("size")].toVariant().toLongLong();
         const QString partitionType = partitionObject[QLatin1String("type")].toString();
-        PartitionTable::Flag activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::FlagBoot : PartitionTable::FlagNone;
+        PartitionTable::Flags activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::FlagBoot : PartitionTable::FlagNone;
 
         if (partitionType == QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B"))
-            activeFlags = PartitionTable::FlagEsp;
+            activeFlags |= PartitionTable::FlagBoot;
         else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
-            activeFlags = PartitionTable::FlagBiosGrub;
+            activeFlags |= PartitionTable::FlagBiosGrub;
 
         FileSystem::Type type = FileSystem::Type::Unknown;
         type = detectFileSystem(partitionNode);
@@ -332,11 +352,12 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
     {
         // Read the maximum number of GPT partitions
         qint32 maxEntries;
-        ExternalCommand ddCommand(QStringLiteral("dd"),
-                                 { QStringLiteral("skip=1"), QStringLiteral("count=1"), (QStringLiteral("if=") + d.deviceNode()) },
-                                  QProcess::SeparateChannels);
-        if (ddCommand.run(-1) && ddCommand.exitCode() == 0 ) {
-            QByteArray gptHeader = ddCommand.rawOutput();
+        QByteArray gptHeader;
+        CopySourceDevice source(d, 512, 1023);
+        CopyTargetByteArray target(gptHeader);
+
+        ExternalCommand copyCmd;
+        if (copyCmd.copyBlocks(source, target)) {
             QByteArray gptMaxEntries = gptHeader.mid(80, 4);
             QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
             stream.setByteOrder(QDataStream::LittleEndian);
@@ -476,8 +497,8 @@ PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType ty
     if (type == PartitionTable::gpt) {
         // These are not really flags but for now keep them for compatibility
         // We should implement changing partition type
-        flags = PartitionTable::FlagBiosGrub |
-                PartitionTable::FlagEsp;
+        flags = PartitionTable::Flag::FlagBiosGrub |
+                PartitionTable::Flag::FlagBoot;
     }
     else if (type == PartitionTable::msdos || type == PartitionTable::msdos_sectorbased)
         flags = PartitionTable::FlagBoot;

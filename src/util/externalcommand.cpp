@@ -20,6 +20,7 @@
 #include "core/device.h"
 #include "core/copysource.h"
 #include "core/copytarget.h"
+#include "core/copytargetbytearray.h"
 #include "core/copysourcedevice.h"
 #include "core/copytargetdevice.h"
 #include "util/globallog.h"
@@ -124,9 +125,11 @@ bool ExternalCommand::start(int timeout)
     if (command().isEmpty())
         return false;
 
-    if (report()) {
+    if (report())
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
-    }
+
+    if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" ))
+        qDebug() << xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" ")));
 
     QString cmd = QStandardPaths::findExecutable(command());
     if (cmd.isEmpty())
@@ -213,6 +216,59 @@ bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
     QDBusPendingCall pcall = interface->copyblocks(privateKey->signMessage(hash, QCA::EMSA3_Raw), nonce,
                                             source.path(), source.firstByte(), source.length(),
                                             target.path(), target.firstByte(), blockSize);
+
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+    QEventLoop loop;
+
+    auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+        loop.exit();
+        if (watcher->isError())
+            qWarning() << watcher->error();
+        else {
+            QDBusPendingReply<QVariantMap> reply = *watcher;
+            rval = reply.value()[QStringLiteral("success")].toBool();
+
+            CopyTargetByteArray *byteArrayTarget = dynamic_cast<CopyTargetByteArray*>(&target);
+            if (byteArrayTarget)
+                byteArrayTarget->m_Array = reply.value()[QStringLiteral("targetByteArray")].toByteArray();
+        }
+        setExitCode(!rval);
+    };
+
+    connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    loop.exec();
+
+    return rval;
+}
+
+bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte)
+{
+    d->m_Report = commandReport.newChild();
+    if (report())
+        report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
+
+    bool rval = true;
+
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << "Could not connect to DBus system bus";
+        return false;
+    }
+
+    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
+                QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
+    interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
+    QByteArray request;
+
+    const quint64 nonce = interface->getNonce();
+    request.setNum(nonce);
+    request.append(buffer);
+    request.append(deviceNode.toUtf8());
+    request.append(QByteArray::number(firstByte));
+
+    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
+
+    QDBusPendingCall pcall = interface->writeData(privateKey->signMessage(hash, QCA::EMSA3_Raw), nonce,
+                                            buffer, deviceNode, firstByte);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QEventLoop loop;

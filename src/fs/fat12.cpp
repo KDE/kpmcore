@@ -59,7 +59,7 @@ void fat12::init()
     m_Move = cmdSupportCore;
     m_Copy = cmdSupportCore;
     m_Backup = cmdSupportCore;
-    m_UpdateUUID = findExternal(QStringLiteral("dd")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_UpdateUUID = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
 }
 
@@ -157,7 +157,7 @@ bool fat12::create(Report& report, const QString& deviceNode)
 
 bool fat12::updateUUID(Report& report, const QString& deviceNode) const
 {
-    qint64 t = time(nullptr);
+    long int t = time(nullptr);
 
     char uuid[4];
     for (auto &u : uuid) {
@@ -165,9 +165,7 @@ bool fat12::updateUUID(Report& report, const QString& deviceNode) const
         t >>= 8;
     }
 
-    ExternalCommand cmd(report, QStringLiteral("dd"), { QStringLiteral("of=") + deviceNode , QStringLiteral("bs=1"), QStringLiteral("count=4"), QStringLiteral("seek=39") });
-
-    cmd.write(QByteArray(uuid, sizeof(uuid)));
-    return cmd.start();
+    ExternalCommand cmd;
+    return cmd.writeData(report, QByteArray(uuid, sizeof(uuid)), deviceNode, 39);
 }
 }
