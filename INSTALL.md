@@ -1,15 +1,19 @@
 Building and installing KDE Partition Manager Core Library from source
 =========================================================
 
-1. Dependencies
+## Dependencies
 
-util-linux 2.32: available at https://github.com/karelzak/util-linux
+* [util-linux](https://github.com/karelzak/util-linux) 2.32
 
-KDE Frameworks: The minimum required version is 5.0.
+* [Qt](https://www.qt.io/) 5.10
 
-2. Configure
+* QCA
 
-KPMcore is built with cmake. It is recommended to build out of tree:
+* Tier 2 [KDE Frameworks](https://www.kde.org/products/frameworks/) 5.25
+
+## Configure
+
+KPMcore is built with [cmake](https://cmake.org/). It is recommended to build out of tree:
 After unpacking the source, create a separate build directory and run cmake there:
 
 ```
@@ -23,7 +27,7 @@ $ cmake ..
 If all dependencies are met, cmake configures the build directory.
 
 
-3. Build and install
+## Build and install
 
 Just run make and make install in the build directory. The default install path
 is `/usr/local`, so installing will need write privileges there. You can
