@@ -40,6 +40,7 @@ public:
     qint64 m_arraySize;
     QString m_UUID;
     QStringList m_devicePathList;
+    QStringList m_partitionPathList;
     SoftwareRAID::Status m_status;
 };
 
@@ -70,7 +71,7 @@ const QStringList SoftwareRAID::deviceNodes() const
 
 const QStringList& SoftwareRAID::partitionNodes() const
 {
-    return {};
+    return d_ptr->m_partitionPathList;
 }
 
 qint64 SoftwareRAID::partitionSize(QString &partitionPath) const
@@ -380,6 +381,11 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
                                       const qint32 raidLevel,
                                       const qint32 chunkSize)
 {
+    Q_UNUSED(report)
+    Q_UNUSED(name)
+    Q_UNUSED(devicePathList)
+    Q_UNUSED(raidLevel)
+    Q_UNUSED(chunkSize)
     return false;
 }
 
@@ -453,6 +459,8 @@ void SoftwareRAID::initPartitions()
 
 qint64 SoftwareRAID::mappedSector(const QString &partitionPath, qint64 sector) const
 {
+    Q_UNUSED(partitionPath)
+    Q_UNUSED(sector)
     return -1;
 }
 
