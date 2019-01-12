@@ -170,7 +170,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         if ( d == nullptr && modelCommand.run(-1) && modelCommand.exitCode() == 0 )
         {
             QString name = modelCommand.output();
-            name = name.left(name.length() - 1);
+            name = name.left(name.length() - 1).replace(QLatin1Char('_'), QLatin1Char(' '));
 
             if (name.trimmed().isEmpty()) {
                 // Get 'lsblk --output kname' in the cases where the model name is not available.
