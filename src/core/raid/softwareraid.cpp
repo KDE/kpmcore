@@ -505,8 +505,8 @@ void SoftwareRAID::initPartitions()
 
 qint64 SoftwareRAID::mappedSector(const QString &partitionPath, qint64 sector) const
 {
-    Q_UNUSED(partitionPath);
-    Q_UNUSED(sector);
+    Q_UNUSED(partitionPath)
+    Q_UNUSED(sector)
     return -1;
 }
 

@@ -180,7 +180,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
                                                                 deviceNode});
 
                 if (kname.run(-1) && kname.exitCode() == 0)
-                    name = kname.output();
+                    name = kname.output().trimmed();
             }
 
             ExternalCommand transport(QStringLiteral("lsblk"), {QStringLiteral("--nodeps"), QStringLiteral("--noheadings"), QStringLiteral("--output"), QStringLiteral("tran"),
