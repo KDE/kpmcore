@@ -19,9 +19,6 @@
 #define KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 
 QString allowedCommands[] = {
-// TODO try to remove these later
-QStringLiteral("mv"),
-
 // TODO no root needed
 QStringLiteral("lsblk"),
 QStringLiteral("udevadm"),

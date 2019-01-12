@@ -151,19 +151,14 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             QRegularExpressionMatchIterator i  = re.globalMatch(content);
 
             while (i.hasNext()) {
-
                 QRegularExpressionMatch reMatch = i.next();
-
                 QString name = reMatch.captured(1);
 
                 if ((QStringLiteral("/dev/md") + name) == deviceNode) {
                     Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
-
                     d = new SoftwareRAID( QStringLiteral("md") + name, SoftwareRAID::Status::Active );
-
                     break;
                 }
-
             }
         }
 

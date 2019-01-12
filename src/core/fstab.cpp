@@ -19,6 +19,7 @@
 
 #include "core/fstab.h"
 #include "util/externalcommand.h"
+#include "util/report.h"
 
 #if defined(Q_OS_LINUX)
     #include <blkid/blkid.h>
@@ -228,9 +229,8 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, 
     }
 }
 
-static void writeEntry(QFile& output, const FstabEntry& entry)
+static void writeEntry(QTextStream& s, const FstabEntry& entry)
 {
-    QTextStream s(&output);
     if (entry.entryType() == FstabEntry::Type::comment) {
         s << entry.comment() << "\n";
         return;
@@ -256,32 +256,13 @@ static void writeEntry(QFile& output, const FstabEntry& entry)
 
 bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filename)
 {
-    QTemporaryFile out;
-    out.setAutoRemove(false);
+    Report report(nullptr);
+    QByteArray fstabContents;
+    QTextStream out(&fstabContents);
 
-    if (!out.open()) {
-        qWarning() << "could not open output file " << out.fileName();
-        return false;
-    } else {
-        for (const auto &e : fstabEntries)
-            writeEntry(out, e);
+    for (const auto &e : fstabEntries)
+        writeEntry(out, e);
 
-        out.close();
-        const QString bakFilename = QStringLiteral("%1.bak").arg(filename);
-        ExternalCommand mvCmd(QStringLiteral("mv"), { filename, bakFilename } );
-
-        if ( !(mvCmd.run(-1) && mvCmd.exitCode() == 0) ) {
-            qWarning() << "could not backup " << filename << " to " << bakFilename;
-            return false;
-        }
-
-        ExternalCommand mvCmd2(QStringLiteral("mv"), { out.fileName(), filename } );
-
-        if ( !(mvCmd2.run(-1) && mvCmd2.exitCode() == 0) ) {
-            qWarning() << "could not move " << out.fileName() << " to " << filename;
-            return false;
-        }
-    }
-
-    return true;
+    ExternalCommand cmd;
+    return cmd.writeData(report, fstabContents, filename, 0);
 }
