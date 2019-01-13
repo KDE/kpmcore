@@ -92,6 +92,7 @@ public:
         Luks2,
         Fat12,
         LinuxRaidMember,
+        BitLocker,
 
         __lastType
     };

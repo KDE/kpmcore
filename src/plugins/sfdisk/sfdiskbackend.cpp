@@ -449,6 +449,7 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
         else if (s == QStringLiteral("udf")) rval = FileSystem::Type::Udf;
         else if (s == QStringLiteral("iso9660")) rval = FileSystem::Type::Iso9660;
         else if (s == QStringLiteral("linux_raid_member")) rval = FileSystem::Type::LinuxRaidMember;
+        else if (s == QStringLiteral("BitLocker")) rval = FileSystem::Type::BitLocker;
         else
             qWarning() << "unknown file system type " << s << " on " << partitionPath;
     }

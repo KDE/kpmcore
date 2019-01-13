@@ -19,6 +19,7 @@
 #include "fs/filesystemfactory.h"
 #include "fs/filesystem.h"
 
+#include "fs/bitlocker.h"
 #include "fs/btrfs.h"
 #include "fs/exfat.h"
 #include "fs/ext2.h"
@@ -62,6 +63,7 @@ void FileSystemFactory::init()
     qDeleteAll(m_FileSystems);
     m_FileSystems.clear();
 
+    m_FileSystems.insert(FileSystem::Type::BitLocker, new FS::btrfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Btrfs, new FS::btrfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Exfat, new FS::exfat(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Ext2, new FS::ext2(-1, -1, -1, QString()));
@@ -113,6 +115,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     FileSystem* fs = nullptr;
 
     switch (t) {
+    case FileSystem::Type::BitLocker:       fs = new FS::bitlocker(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Btrfs:           fs = new FS::btrfs(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Exfat:           fs = new FS::exfat(firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Ext2:            fs = new FS::ext2(firstsector, lastsector, sectorsused, label); break;
