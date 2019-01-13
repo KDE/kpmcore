@@ -1,4 +1,5 @@
 set(FS_SRC
+    fs/apfs.cpp
     fs/bitlocker.cpp
     fs/btrfs.cpp
     fs/exfat.cpp
@@ -36,6 +37,7 @@ set(FS_SRC
 )
 
 set(FS_LIB_HDRS
+    fs/apfs.h
     fs/bitlocker.h
     fs/btrfs.h
     fs/exfat.h

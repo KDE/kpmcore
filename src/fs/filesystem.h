@@ -93,6 +93,7 @@ public:
         Fat12,
         LinuxRaidMember,
         BitLocker,
+        Apfs,
 
         __lastType
     };
