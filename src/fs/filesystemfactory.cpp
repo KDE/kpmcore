@@ -63,7 +63,7 @@ void FileSystemFactory::init()
     qDeleteAll(m_FileSystems);
     m_FileSystems.clear();
 
-    m_FileSystems.insert(FileSystem::Type::BitLocker, new FS::btrfs(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::BitLocker, new FS::bitlocker(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Btrfs, new FS::btrfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Exfat, new FS::exfat(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Ext2, new FS::ext2(-1, -1, -1, QString()));
