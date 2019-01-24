@@ -251,7 +251,8 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         type = detectFileSystem(partitionNode);
         PartitionRole::Roles r = PartitionRole::Primary;
 
-        if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) && partitionType.toInt() == 5 ) {
+        if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) &&
+            ( partitionType == QStringLiteral("5") || partitionType == QStringLiteral("f") ) ) {
             r = PartitionRole::Extended;
             type = FileSystem::Type::Extended;
         }
