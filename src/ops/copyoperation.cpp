@@ -267,7 +267,7 @@ Partition* CopyOperation::createCopy(const Partition& target, const Partition& s
     p->fileSystem().setFirstSector(p->firstSector());
     p->fileSystem().setLastSector(p->lastSector());
 
-    p->setFlags(PartitionTable::FlagNone);
+    p->setFlags(PartitionTable::Flag::None);
 
     return p;
 }

@@ -251,12 +251,12 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         const qint64 start = partitionObject[QLatin1String("start")].toVariant().toLongLong();
         const qint64 size = partitionObject[QLatin1String("size")].toVariant().toLongLong();
         const QString partitionType = partitionObject[QLatin1String("type")].toString();
-        PartitionTable::Flags activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::FlagBoot : PartitionTable::FlagNone;
+        PartitionTable::Flags activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::Flag::Boot : PartitionTable::Flag::None;
 
         if (partitionType == QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B"))
-            activeFlags |= PartitionTable::FlagBoot;
+            activeFlags |= PartitionTable::Flag::Boot;
         else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
-            activeFlags |= PartitionTable::FlagBiosGrub;
+            activeFlags |= PartitionTable::Flag::BiosGrub;
 
         FileSystem::Type type = FileSystem::Type::Unknown;
         type = detectFileSystem(partitionNode);
@@ -506,11 +506,11 @@ PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType ty
     if (type == PartitionTable::gpt) {
         // These are not really flags but for now keep them for compatibility
         // We should implement changing partition type
-        flags = PartitionTable::Flag::FlagBiosGrub |
-                PartitionTable::Flag::FlagBoot;
+        flags = PartitionTable::Flag::BiosGrub |
+                PartitionTable::Flag::Boot;
     }
     else if (type == PartitionTable::msdos || type == PartitionTable::msdos_sectorbased)
-        flags = PartitionTable::FlagBoot;
+        flags = PartitionTable::Flag::Boot;
 
     return flags;
 }

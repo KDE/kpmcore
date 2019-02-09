@@ -182,39 +182,39 @@ void PartitionTable::append(Partition* partition)
 QString PartitionTable::flagName(Flag f)
 {
     switch (f) {
-    case PartitionTable::FlagBoot:
+    case PartitionTable::Flag::Boot:
         return xi18nc("@item partition flag", "boot");
-    case PartitionTable::FlagRoot:
+    case PartitionTable::Flag::Root:
         return xi18nc("@item partition flag", "root");
-    case PartitionTable::FlagSwap:
+    case PartitionTable::Flag::Swap:
         return xi18nc("@item partition flag", "swap");
-    case PartitionTable::FlagHidden:
+    case PartitionTable::Flag::Hidden:
         return xi18nc("@item partition flag", "hidden");
-    case PartitionTable::FlagRaid:
+    case PartitionTable::Flag::Raid:
         return xi18nc("@item partition flag", "raid");
-    case PartitionTable::FlagLvm:
+    case PartitionTable::Flag::Lvm:
         return xi18nc("@item partition flag", "lvm");
-    case PartitionTable::FlagLba:
+    case PartitionTable::Flag::Lba:
         return xi18nc("@item partition flag", "lba");
-    case PartitionTable::FlagHpService:
+    case PartitionTable::Flag::HpService:
         return xi18nc("@item partition flag", "hpservice");
-    case PartitionTable::FlagPalo:
+    case PartitionTable::Flag::Palo:
         return xi18nc("@item partition flag", "palo");
-    case PartitionTable::FlagPrep:
+    case PartitionTable::Flag::Prep:
         return xi18nc("@item partition flag", "prep");
-    case PartitionTable::FlagMsftReserved:
+    case PartitionTable::Flag::MsftReserved:
         return xi18nc("@item partition flag", "msft-reserved");
-    case PartitionTable::FlagBiosGrub:
+    case PartitionTable::Flag::BiosGrub:
         return xi18nc("@item partition flag", "bios-grub");
-    case PartitionTable::FlagAppleTvRecovery:
+    case PartitionTable::Flag::AppleTvRecovery:
         return xi18nc("@item partition flag", "apple-tv-recovery");
-    case PartitionTable::FlagDiag:
+    case PartitionTable::Flag::Diag:
         return xi18nc("@item partition flag", "diag");
-    case PartitionTable::FlagLegacyBoot:
+    case PartitionTable::Flag::LegacyBoot:
         return xi18nc("@item partition flag", "legacy-boot");
-    case PartitionTable::FlagMsftData:
+    case PartitionTable::Flag::MsftData:
         return xi18nc("@item partition flag", "msft-data");
-    case PartitionTable::FlagIrst:
+    case PartitionTable::Flag::Irst:
         return xi18nc("@item partition flag", "irst");
     default:
         break;
@@ -228,23 +228,23 @@ const QList<PartitionTable::Flag> PartitionTable::flagList()
 {
     QList<PartitionTable::Flag> rval;
 
-    rval.append(PartitionTable::FlagBoot);
-    rval.append(PartitionTable::FlagRoot);
-    rval.append(PartitionTable::FlagSwap);
-    rval.append(PartitionTable::FlagHidden);
-    rval.append(PartitionTable::FlagRaid);
-    rval.append(PartitionTable::FlagLvm);
-    rval.append(PartitionTable::FlagLba);
-    rval.append(PartitionTable::FlagHpService);
-    rval.append(PartitionTable::FlagPalo);
-    rval.append(PartitionTable::FlagPrep);
-    rval.append(PartitionTable::FlagMsftReserved);
-    rval.append(PartitionTable::FlagBiosGrub);
-    rval.append(PartitionTable::FlagAppleTvRecovery);
-    rval.append(PartitionTable::FlagDiag);
-    rval.append(PartitionTable::FlagLegacyBoot);
-    rval.append(PartitionTable::FlagMsftData);
-    rval.append(PartitionTable::FlagIrst);
+    rval.append(PartitionTable::Flag::Boot);
+    rval.append(PartitionTable::Flag::Root);
+    rval.append(PartitionTable::Flag::Swap);
+    rval.append(PartitionTable::Flag::Hidden);
+    rval.append(PartitionTable::Flag::Raid);
+    rval.append(PartitionTable::Flag::Lvm);
+    rval.append(PartitionTable::Flag::Lba);
+    rval.append(PartitionTable::Flag::HpService);
+    rval.append(PartitionTable::Flag::Palo);
+    rval.append(PartitionTable::Flag::Prep);
+    rval.append(PartitionTable::Flag::MsftReserved);
+    rval.append(PartitionTable::Flag::BiosGrub);
+    rval.append(PartitionTable::Flag::AppleTvRecovery);
+    rval.append(PartitionTable::Flag::Diag);
+    rval.append(PartitionTable::Flag::LegacyBoot);
+    rval.append(PartitionTable::Flag::MsftData);
+    rval.append(PartitionTable::Flag::Irst);
 
     return rval;
 }
