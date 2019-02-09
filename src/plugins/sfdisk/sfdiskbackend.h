@@ -47,6 +47,7 @@ public:
     void initFSSupport() override;
 
     QList<Device*> scanDevices(bool excludeReadOnly = false) override;
+    QList<Device*> scanDevices(const ScanFlags scanFlags) override;
     std::unique_ptr<CoreBackendDevice> openDevice(const Device& d) override;
     std::unique_ptr<CoreBackendDevice> openDeviceExclusive(const Device& d) override;
     bool closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice) override;

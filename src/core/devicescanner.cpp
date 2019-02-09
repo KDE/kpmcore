@@ -63,7 +63,7 @@ void DeviceScanner::scan()
 
     clear();
 
-    const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices();
+    const QList<Device*> deviceList = CoreBackendManager::self()->backend()->scanDevices(ScanFlag::includeLoopback);
 
     for (const auto &d : deviceList)
         operationStack().addDevice(d);

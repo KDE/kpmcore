@@ -64,7 +64,14 @@ void SfdiskBackend::initFSSupport()
 
 QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
 {
-//  TODO: add another bool option for loopDevices
+    return scanDevices(excludeReadOnly ? ScanFlags() : ScanFlag::includeReadOnly);
+}
+
+QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
+{
+    const bool includeReadOnly = scanFlags.testFlag(ScanFlag::includeReadOnly);
+    const bool includeLoopback = scanFlags.testFlag(ScanFlag::includeLoopback);
+
     QList<Device*> result;
     QStringList deviceNodes;
 
@@ -82,11 +89,14 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
         const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
         for (const auto &deviceLine : jsonArray) {
             QJsonObject deviceObject = deviceLine.toObject();
-            if (deviceObject[QLatin1String("type")].toString() != QLatin1String("disk"))
+            if (! (deviceObject[QLatin1String("type")].toString() == QLatin1String("disk")
+                || (includeLoopback && deviceObject[QLatin1String("type")].toString() == QLatin1String("loop")) ))
+            {
                 continue;
+            }
 
             const QString deviceNode = deviceObject[QLatin1String("name")].toString();
-            if (excludeReadOnly) {
+            if (!includeReadOnly) {
                 QString deviceName = deviceNode;
                 deviceName.remove(QStringLiteral("/dev/"));
                 QFile f(QStringLiteral("/sys/block/%1/ro").arg(deviceName));
@@ -114,6 +124,7 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
 
     return result;
 }
+
 
 /** Create a Device for the given device_node and scan it for partitions.
     @param deviceNode the device node (e.g. "/dev/sda")
