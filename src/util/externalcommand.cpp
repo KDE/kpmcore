@@ -293,6 +293,8 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
 
 bool ExternalCommand::write(const QByteArray& input)
 {
+    if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" ))
+        qDebug() << "Command input:" << QString::fromLocal8Bit(input);
     d->m_Input = input;
     return true;
 }
