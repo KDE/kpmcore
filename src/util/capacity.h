@@ -36,7 +36,7 @@ class LIBKPMCORE_EXPORT Capacity
 {
 public:
     /** Units we can deal with */
-    enum Unit : uint { Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
+    enum class Unit : uint { Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
     /** Type of capacity to print */
     enum class Type { Used, Available, Total };
     /** Flags for printing */
