@@ -16,8 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_PARTITIONTABLE_H)
-
+#ifndef KPMCORE_PARTITIONTABLE_H
 #define KPMCORE_PARTITIONTABLE_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -50,7 +49,7 @@ class LIBKPMCORE_EXPORT PartitionTable : public PartitionNode
     friend LIBKPMCORE_EXPORT QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable);
 
 public:
-    enum TableType : qint8 {
+    enum TableType : int8_t {
         unknownTableType = -1,
 
         aix,
