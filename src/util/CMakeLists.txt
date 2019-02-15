@@ -45,7 +45,7 @@ target_link_libraries(kpmcore_externalcommand
     qca-qt5
     Qt5::Core
     Qt5::DBus
-    KF5::Auth
+    KF5::AuthCore
     KF5::I18n
 )
 
