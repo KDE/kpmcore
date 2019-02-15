@@ -142,11 +142,11 @@ protected:
         m_Device = &d;
     }
 
-    void paintEvent(QPaintEvent* event);
-    void resizeEvent(QResizeEvent* event);
-    void mousePressEvent(QMouseEvent* event);
-    void mouseMoveEvent(QMouseEvent* event);
-    void mouseReleaseEvent(QMouseEvent* event);
+    void paintEvent(QPaintEvent* event) override;
+    void resizeEvent(QResizeEvent* event) override;
+    void mousePressEvent(QMouseEvent* event) override;
+    void mouseMoveEvent(QMouseEvent* event) override;
+    void mouseReleaseEvent(QMouseEvent* event) override;
 
     PartWidget& partWidget() {
         Q_ASSERT(m_PartWidget);

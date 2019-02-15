@@ -29,7 +29,7 @@
 class runcmd : public QThread {
 public:
 
-void run()
+void run() override
 {
     ExternalCommand blkidCmd(QStringLiteral("blkid"), {});
     blkidCmd.run();
@@ -41,7 +41,7 @@ void run()
 class runcmd2 : public QThread {
 public:
 
-void run()
+void run() override
 {
     ExternalCommand lsblkCmd(QStringLiteral("lsblk"), { QStringLiteral("--nodeps"), QStringLiteral("--json") });
     lsblkCmd.run();
