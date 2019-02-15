@@ -23,7 +23,7 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 
 # Dependencies
 set(QT_MIN_VERSION "5.10.0")
-set(KF5_MIN_VERSION "5.25")
+set(KF5_MIN_VERSION "5.56")
 set(BLKID_MIN_VERSION "2.32")
 # Qca-qt5 (tested with botan and ossl backends)
 
