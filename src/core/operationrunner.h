@@ -44,7 +44,7 @@ public:
     OperationRunner(QObject* parent, OperationStack& ostack);
 
 public:
-    void run();
+    void run() override;
     qint32 numJobs() const;
     qint32 numOperations() const;
     qint32 numProgressSub() const;
