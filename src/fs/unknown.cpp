@@ -19,6 +19,9 @@
 
 namespace FS
 {
+
+FileSystem::CommandSupportType unknown::m_Move = FileSystem::cmdSupportNone;
+
 unknown::unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
     FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Unknown)
 {
