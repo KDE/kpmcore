@@ -28,7 +28,7 @@ KPMcore supports CMake as (meta-)build system and installs suitable
 CMake support files. Typical use of of KPMcore in a `CMakeLists.txt`
 looks like this:
 
-```
+```cmake
     find_package( KPMcore 3.2 REQUIRED )
     include_directories( ${KPMCORE_INCLUDE_DIR} )
     target_link_libraries( target kpmcore )
@@ -44,7 +44,7 @@ environment variable `KPMCORE_BACKEND` names a backend,
 and typical initialization code will look like this (or use the
 class `KPMCoreInitializer` from `test/helpers.h`):
 
-```
+```cpp
     #include <backend/corebackendmanager.h>
     #include <QDebug>
 
@@ -76,7 +76,7 @@ result in undefined behavior.
 After the backend is initialized you can scan for available devices.
 If you only want devices from the loaded backend you can call
 
-```
+```cpp
     QList<Device*> devices = backend->scanDevices( excludeReadOnly );
 ```
 
@@ -87,7 +87,7 @@ read only devices.
 
 Alternatively, you can use KPMcore device scanner
 
-```
+```cpp
     #include <core/device.h>
     #include <core/devicescanner.h>
     #include <core/operationstack.h>
