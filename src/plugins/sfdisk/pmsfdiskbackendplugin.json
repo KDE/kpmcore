@@ -27,7 +27,8 @@
                 "Name[sv]": "Andrius Štikonas",
                 "Name[uk]": "Andrius Štikonas",
                 "Name[x-test]": "xxAndrius Štikonasxx",
-                "Name[zh_CN]": "Andrius Štikonas"
+                "Name[zh_CN]": "Andrius Štikonas",
+                "Name[zh_TW]": "Andrius Štikonas"
             }
         ],
         "Category": "BackendPlugin",
@@ -53,6 +54,7 @@
         "Description[sv]": "Ett sfdisk bakgrundsprogram till KDE:s partitionshanterare",
         "Description[uk]": "Додаток sfdisk сервера Керування розділами KDE.",
         "Description[x-test]": "xxA KDE Partition Manager sfdisk backend.xx",
+        "Description[zh_TW]": "使用 sfdisk 作為後端的 KDE 磁碟分割區管理員。",
         "EnabledByDefault": true,
         "Icon": "preferences-plugin",
         "Id": "pmsfdiskbackendplugin",
@@ -79,6 +81,7 @@
         "Name[sv]": "KDE:s partitionshanterare sfdisk bakgrundsprogram",
         "Name[uk]": "Додаток sfdisk сервера Керування розділами KDE",
         "Name[x-test]": "xxKDE Partition Manager sfdisk Backendxx",
+        "Name[zh_TW]": "KDE 磁碟分割區管理員 (sfdisk 後端)",
         "ServiceTypes": [
             "PartitionManager/Plugin"
         ],
