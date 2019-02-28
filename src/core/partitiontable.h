@@ -184,6 +184,7 @@ public:
     static const QList<Flag> flagList();
     static QString flagName(Flag f);
     static QStringList flagNames(Flags f);
+    static PartitionTable::Flags flagsFromList(const QStringList list);
 
     static bool getUnallocatedRange(const Device& device, PartitionNode& parent, qint64& start, qint64& end);
 

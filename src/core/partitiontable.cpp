@@ -269,6 +269,20 @@ QStringList PartitionTable::flagNames(Flags flags)
     return rval;
 }
 
+/** @param list QStringList of the flags' names
+    @returns flags corresponding to names
+*/
+PartitionTable::Flags PartitionTable::flagsFromList(const QStringList list)
+{
+    Flags flags;
+
+    for (const auto &flag : flagList())
+        if (list.contains(flagName(flag)))
+            flags.setFlag(flag);
+
+    return flags;
+}
+
 bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent, qint64& start, qint64& end)
 {
     if (d.type() == Device::Type::Disk_Device) {
