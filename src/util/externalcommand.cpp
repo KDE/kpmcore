@@ -450,7 +450,7 @@ quint64 ExternalCommand::getNonce(QDBusInterface& iface)
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("getNonce"));
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall);
         QEventLoop loop;
-        unsigned long long rval = 0;
+        quint64 rval = 0;
 
         auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
             loop.exit();
@@ -458,7 +458,7 @@ quint64 ExternalCommand::getNonce(QDBusInterface& iface)
             if (watcher->isError())
                 qWarning() << watcher->error();
             else {
-                QDBusPendingReply<unsigned long long> reply = *watcher;
+                QDBusPendingReply<quint64> reply = *watcher;
                 rval = reply;
             }
         };
