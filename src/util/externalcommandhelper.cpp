@@ -90,7 +90,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 */
 quint64 ExternalCommandHelper::getNonce()
 {
-    quint64 nonce = m_Generator.generate();
+    const quint64 nonce = m_Generator.generate();
     m_Nonces.insert(nonce);
     return nonce;
 }
@@ -135,6 +135,7 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
 bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteArray& buffer, const qint64 offset)
 {
     QFile device(targetDevice);
+
     if (!device.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Unbuffered)) {
         qCritical() << xi18n("Could not open device <filename>%1</filename> for writing.", targetDevice);
         return false;
@@ -149,6 +150,7 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
         qCritical() << xi18n("Could not write to device <filename>%1</filename>.", targetDevice);
         return false;
     }
+
     return true;
 }
 
