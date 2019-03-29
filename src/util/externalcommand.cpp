@@ -377,7 +377,7 @@ void ExternalCommand::setExitCode(int i)
 bool ExternalCommand::startHelper()
 {
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus session bus";
+        qWarning() << "Could not connect to DBus system bus";
         return false;
     }
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
