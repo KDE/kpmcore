@@ -19,6 +19,8 @@
 #include "core/device_p.h"
 #include "core/volumemanagerdevice.h"
 #include "core/volumemanagerdevice_p.h"
+#include "core/lvmdevice.h"
+#include "core/raid/softwareraid.h"
 
 /** Constructs an abstract Volume Manager Device with an empty PartitionTable.
  *
@@ -35,6 +37,12 @@ VolumeManagerDevice::VolumeManagerDevice(std::shared_ptr<VolumeManagerDevicePriv
                                          Device::Type type)
     : Device(std::static_pointer_cast<DevicePrivate>(d), name, deviceNode, logicalExtentSize, totalLogical, iconName, type)
 {
+}
+
+void VolumeManagerDevice::scanDevices(QList<Device*>& devices)
+{
+    SoftwareRAID::scanSoftwareRAID(devices);
+    LvmDevice::scanSystemLVM(devices); // LVM scanner needs all other devices, so should be last
 }
 
 QString VolumeManagerDevice::prettyDeviceNodeList() const

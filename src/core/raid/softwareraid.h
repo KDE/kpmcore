@@ -26,6 +26,8 @@ class LIBKPMCORE_EXPORT SoftwareRAID : public VolumeManagerDevice
 {
     Q_DISABLE_COPY(SoftwareRAID)
 
+    friend class VolumeManagerDevice;
+
 public:
     enum class Status {
         Active,
@@ -61,8 +63,6 @@ public:
     void setStatus(SoftwareRAID::Status status);
 
 public:
-    static void scanSoftwareRAID(QList<Device*>& devices);
-
     static qint32 getRaidLevel(const QString& path);
     static qint64 getChunkSize(const QString& path);
     static qint64 getTotalChunk(const QString& path);
@@ -95,6 +95,8 @@ protected:
     qint64 mappedSector(const QString &partitionPath, qint64 sector) const override;
 
 private:
+    static void scanSoftwareRAID(QList<Device*>& devices);
+
     static QString getDetail(const QString& path);
 
     static QString getRAIDConfiguration(const QString& configurationPath);
