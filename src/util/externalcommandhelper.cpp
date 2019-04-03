@@ -102,7 +102,7 @@ quint64 ExternalCommandHelper::getNonce()
     @param size the number of bytes to read
     @return true on success
 */
-bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size)
+bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& buffer, const qint64 offset, const qint64 size)
 {
     QFile device(sourceDevice);
 
@@ -132,7 +132,7 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
     @param offset offset where to begin writing
     @return true on success
 */
-bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteArray& buffer, qint64 offset)
+bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteArray& buffer, const qint64 offset)
 {
     QFile device(targetDevice);
     if (!device.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Unbuffered)) {

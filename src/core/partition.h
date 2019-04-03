@@ -86,7 +86,7 @@ public:
         StateRestore [[deprecated("Use Partition::State::Restore")]] = Restore
     };
 
-    Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::FlagNone, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::FlagNone, State state = State::None);
+    Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::Flag::None, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::Flag::None, State state = State::None);
     ~Partition() override;
 
     Partition(const Partition& other, PartitionNode* parent = nullptr);
@@ -238,10 +238,10 @@ public:
     void setMounted(bool b);
 
     void setFlag(PartitionTable::Flag f) {
-        m_ActiveFlags |= f;
+        m_ActiveFlags = m_ActiveFlags.setFlag(f);
     }
     void unsetFlag(PartitionTable::Flag f) {
-        m_ActiveFlags &= ~f;
+        m_ActiveFlags = m_ActiveFlags.setFlag(f, false);
     }
     void setParent(PartitionNode* p) {
         m_Parent = p;

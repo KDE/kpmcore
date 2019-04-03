@@ -36,11 +36,11 @@ class LIBKPMCORE_EXPORT Capacity
 {
 public:
     /** Units we can deal with */
-    enum Unit : uint { Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
+    enum class Unit : uint8_t {Byte, KiB, MiB, GiB, TiB, PiB, EiB, ZiB, YiB };
     /** Type of capacity to print */
-    enum class Type { Used, Available, Total };
+    enum class Type : uint8_t { Used, Available, Total };
     /** Flags for printing */
-    enum class Flag { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
+    enum class Flag : uint8_t { NoFlags = 0, AppendUnit = 1, AppendBytes = 2 };
     Q_DECLARE_FLAGS(Flags, Flag)
 
 public:

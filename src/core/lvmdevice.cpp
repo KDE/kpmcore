@@ -192,7 +192,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
                     startSector,
                     endSector,
                     lvPath,
-                    PartitionTable::Flag::FlagNone,
+                    PartitionTable::Flag::None,
                     mountPoint,
                     mounted);
     return part;

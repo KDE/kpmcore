@@ -49,7 +49,7 @@ target_link_libraries( kpmcore PUBLIC
     KF5::I18n
     KF5::CoreAddons
     KF5::WidgetsAddons
-    KF5::Auth
+    KF5::AuthCore
 )
 
 install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})

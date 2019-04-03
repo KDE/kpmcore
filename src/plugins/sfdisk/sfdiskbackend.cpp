@@ -64,7 +64,14 @@ void SfdiskBackend::initFSSupport()
 
 QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
 {
-//  TODO: add another bool option for loopDevices
+    return scanDevices(excludeReadOnly ? ScanFlags() : ScanFlag::includeReadOnly);
+}
+
+QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
+{
+    const bool includeReadOnly = scanFlags.testFlag(ScanFlag::includeReadOnly);
+    const bool includeLoopback = scanFlags.testFlag(ScanFlag::includeLoopback);
+
     QList<Device*> result;
     QStringList deviceNodes;
 
@@ -82,11 +89,14 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
         const QJsonArray jsonArray = jsonObject[QLatin1String("blockdevices")].toArray();
         for (const auto &deviceLine : jsonArray) {
             QJsonObject deviceObject = deviceLine.toObject();
-            if (deviceObject[QLatin1String("type")].toString() != QLatin1String("disk"))
+            if (! (deviceObject[QLatin1String("type")].toString() == QLatin1String("disk")
+                || (includeLoopback && deviceObject[QLatin1String("type")].toString() == QLatin1String("loop")) ))
+            {
                 continue;
+            }
 
             const QString deviceNode = deviceObject[QLatin1String("name")].toString();
-            if (excludeReadOnly) {
+            if (!includeReadOnly) {
                 QString deviceName = deviceNode;
                 deviceName.remove(QStringLiteral("/dev/"));
                 QFile f(QStringLiteral("/sys/block/%1/ro").arg(deviceName));
@@ -107,13 +117,14 @@ QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
                 result.append(device);
             }
         }
-
-        SoftwareRAID::scanSoftwareRAID(result);
-        LvmDevice::scanSystemLVM(result); // LVM scanner needs all other devices, so should be last
+        
     }
+
+    VolumeManagerDevice::scanDevices(result); // scan all types of VolumeManagerDevices
 
     return result;
 }
+
 
 /** Create a Device for the given device_node and scan it for partitions.
     @param deviceNode the device node (e.g. "/dev/sda")
@@ -151,26 +162,21 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             QRegularExpressionMatchIterator i  = re.globalMatch(content);
 
             while (i.hasNext()) {
-
                 QRegularExpressionMatch reMatch = i.next();
-
                 QString name = reMatch.captured(1);
 
                 if ((QStringLiteral("/dev/md") + name) == deviceNode) {
                     Log(Log::Level::information) << xi18nc("@info:status", "Software RAID Device found: %1", deviceNode);
-
                     d = new SoftwareRAID( QStringLiteral("md") + name, SoftwareRAID::Status::Active );
-
                     break;
                 }
-
             }
         }
 
         if ( d == nullptr && modelCommand.run(-1) && modelCommand.exitCode() == 0 )
         {
             QString name = modelCommand.output();
-            name = name.left(name.length() - 1);
+            name = name.left(name.length() - 1).replace(QLatin1Char('_'), QLatin1Char(' '));
 
             if (name.trimmed().isEmpty()) {
                 // Get 'lsblk --output kname' in the cases where the model name is not available.
@@ -218,8 +224,6 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         {
             QList<Device *> availableDevices = scanDevices();
 
-            LvmDevice::scanSystemLVM(availableDevices);
-
             for (Device *device : qAsConst(availableDevices))
                 if (device && device->deviceNode() == deviceNode)
                     return device;
@@ -245,18 +249,19 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         const qint64 start = partitionObject[QLatin1String("start")].toVariant().toLongLong();
         const qint64 size = partitionObject[QLatin1String("size")].toVariant().toLongLong();
         const QString partitionType = partitionObject[QLatin1String("type")].toString();
-        PartitionTable::Flags activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::FlagBoot : PartitionTable::FlagNone;
+        PartitionTable::Flags activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::Flag::Boot : PartitionTable::Flag::None;
 
         if (partitionType == QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B"))
-            activeFlags |= PartitionTable::FlagBoot;
+            activeFlags |= PartitionTable::Flag::Boot;
         else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
-            activeFlags |= PartitionTable::FlagBiosGrub;
+            activeFlags |= PartitionTable::Flag::BiosGrub;
 
         FileSystem::Type type = FileSystem::Type::Unknown;
         type = detectFileSystem(partitionNode);
         PartitionRole::Roles r = PartitionRole::Primary;
 
-        if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) && partitionType.toInt() == 5 ) {
+        if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) &&
+            ( partitionType == QStringLiteral("5") || partitionType == QStringLiteral("f") ) ) {
             r = PartitionRole::Extended;
             type = FileSystem::Type::Extended;
         }
@@ -322,16 +327,15 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
     QString tableType = jsonPartitionTable[QLatin1String("label")].toString();
     const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
 
-    qint64 firstUsableSector = 0, lastUsableSector;
+    qint64 firstUsableSector = 0;
+    qint64 lastUsableSector;
 
-    if ( d.type() == Device::Type::Disk_Device )
-    {
+    if (d.type() == Device::Type::Disk_Device) {
         const DiskDevice* diskDevice = static_cast<const DiskDevice*>(&d);
 
         lastUsableSector = diskDevice->totalSectors();
     }
-    else if ( d.type() == Device::Type::SoftwareRAID_Device )
-    {
+    else if (d.type() == Device::Type::SoftwareRAID_Device) {
         const SoftwareRAID* raidDevice = static_cast<const SoftwareRAID*>(&d);
 
         lastUsableSector = raidDevice->totalLogical() - 1;
@@ -366,6 +370,7 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
         else
             maxEntries = 128;
         CoreBackend::setPartitionTableMaxPrimaries(*d.partitionTable(), maxEntries);
+        break;
     }
     default:
         break;
@@ -454,6 +459,8 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
         else if (s == QStringLiteral("udf")) rval = FileSystem::Type::Udf;
         else if (s == QStringLiteral("iso9660")) rval = FileSystem::Type::Iso9660;
         else if (s == QStringLiteral("linux_raid_member")) rval = FileSystem::Type::LinuxRaidMember;
+        else if (s == QStringLiteral("BitLocker")) rval = FileSystem::Type::BitLocker;
+        else if (s == QStringLiteral("apfs")) rval = FileSystem::Type::Apfs;
         else
             qWarning() << "unknown file system type " << s << " on " << partitionPath;
     }
@@ -497,11 +504,11 @@ PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType ty
     if (type == PartitionTable::gpt) {
         // These are not really flags but for now keep them for compatibility
         // We should implement changing partition type
-        flags = PartitionTable::Flag::FlagBiosGrub |
-                PartitionTable::Flag::FlagBoot;
+        flags = PartitionTable::Flag::BiosGrub |
+                PartitionTable::Flag::Boot;
     }
     else if (type == PartitionTable::msdos || type == PartitionTable::msdos_sectorbased)
-        flags = PartitionTable::FlagBoot;
+        flags = PartitionTable::Flag::Boot;
 
     return flags;
 }

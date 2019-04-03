@@ -36,6 +36,13 @@ class PartitionTable;
 
 class QString;
 
+enum class ScanFlag : uint8_t {
+    includeReadOnly = 0x1, /**< devices that are read-only according to the kernel */
+    includeLoopback = 0x2,
+};
+Q_DECLARE_FLAGS(ScanFlags, ScanFlag)
+Q_DECLARE_OPERATORS_FOR_FLAGS(ScanFlags)
+
 /**
   * Interface class for backend plugins.
   * @author Volker Lanz <vl@fidra.de>
@@ -86,8 +93,7 @@ public:
 
     /**
       * Scan for devices in the system.
-      * @param excludeReadOnly when true, devices that are read-only
-      *         according to the kernel are left out of the list.
+      * @param excludeReadOnly when true,  are left out of the list.
       *         When false (the default) all devices, writable or
       *         not, including CD ROM devices, are returned.
       * @return a QList of pointers to Device instances. The caller is responsible
@@ -95,7 +101,17 @@ public:
       * @note A Device object is a description of the device, not
       *         an object to operate on. See openDevice().
       */
-    virtual QList<Device*> scanDevices(bool excludeReadOnly = false) = 0;
+    [[deprecated("port to scanDevices(ScanFlags)")]] virtual QList<Device*> scanDevices(bool excludeReadOnly = false) = 0;
+
+    /**
+      * Scan for devices in the system.
+      * @param scanFlags can be used to expand the list of scanned devices.
+      * @return a QList of pointers to Device instances. The caller is responsible
+      *         for deleting these objects.
+      * @note A Device object is a description of the device, not
+      *         an object to operate on. See openDevice().
+      */
+    virtual QList<Device*> scanDevices(const ScanFlags scanFlags) = 0;
 
     /**
       * Scan a single device in the system.

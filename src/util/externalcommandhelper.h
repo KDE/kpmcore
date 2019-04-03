@@ -42,8 +42,8 @@ Q_SIGNALS:
     void quit();
 
 public:
-    bool readData(const QString& sourceDevice, QByteArray& buffer, qint64 offset, qint64 size);
-    bool writeData(const QString& targetDevice, const QByteArray& buffer, qint64 offset);
+    bool readData(const QString& sourceDevice, QByteArray& buffer, const qint64 offset, const qint64 size);
+    bool writeData(const QString& targetDevice, const QByteArray& buffer, const qint64 offset);
 
 public Q_SLOTS:
     ActionReply init(const QVariantMap& args);

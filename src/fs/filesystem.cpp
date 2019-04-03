@@ -69,8 +69,10 @@ const std::vector<QColor> FileSystem::defaultColorCode =
     QColor( 170,120,255 ), // udf
     QColor( 177,82,69 ),   // iso9660
     QColor( 223,39,104 ),  // luks2
-    QColor( 204,179,255 ),  // fat12
-    QColor( 255,100,100 ) // linux_raid_member
+    QColor( 204,179,255 ), // fat12
+    QColor( 255,100,100 ), // linux_raid_member
+    QColor( 110,20,50 ),   // bitlocker
+    QColor( 255,155,174 ), // apfs
 }
 };
 
@@ -451,6 +453,8 @@ static const KLocalizedString* typeNames()
         kxi18nc("@item filesystem name", "luks2"),
         kxi18nc("@item filesystem name", "fat12"),
         kxi18nc("@item filesystem name", "linux_raid_member"),
+        kxi18nc("@item filesystem name", "BitLocker"),
+        kxi18nc("@item filesystem name", "apfs"),
     };
 
     return s;

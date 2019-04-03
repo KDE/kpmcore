@@ -81,6 +81,8 @@ protected:
 
 public:
 
+    static void scanDevices(QList<Device*>& devices);
+
     /** join deviceNodes together into comma-separated list
      *
      *  @return comma-separated list of deviceNodes

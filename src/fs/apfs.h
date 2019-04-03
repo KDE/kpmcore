@@ -1,5 +1,5 @@
 /*************************************************************************
- *  Copyright (C) 2008 by Volker Lanz <vl@fidra.de>                      *
+ *  Copyright (C) 2019 by Andrius Štikonas <stikonas@kde.org>            *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -15,22 +15,47 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#include "fs/unknown.h"
+#ifndef KPMCORE_APFS_H
+#define KPMCORE_APFS_H
+
+#include "util/libpartitionmanagerexport.h"
+
+#include "fs/filesystem.h"
+
+#include <QtGlobal>
+
+class QString;
 
 namespace FS
 {
-
-FileSystem::CommandSupportType unknown::m_Move = FileSystem::cmdSupportNone;
-
-unknown::unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Unknown)
+/** An APFS file system.
+    @author Andrius Štikonas <stikonas@kde.org>
+ */
+class LIBKPMCORE_EXPORT apfs : public FileSystem
 {
+public:
+    apfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+
+public:
+    CommandSupportType supportMove() const override {
+        return m_Move;
+    }
+    CommandSupportType supportCopy() const override {
+        return m_Copy;
+    }
+    CommandSupportType supportBackup() const override {
+        return m_Backup;
+    }
+
+    bool supportToolFound() const override {
+        return true;
+    }
+
+public:
+    static CommandSupportType m_Move;
+    static CommandSupportType m_Copy;
+    static CommandSupportType m_Backup;
+};
 }
 
-bool unknown::canMount(const QString & deviceNode, const QString & mountPoint) const
-{
-    Q_UNUSED(deviceNode)
-    Q_UNUSED(mountPoint)
-    return false;
-}
-}
+#endif

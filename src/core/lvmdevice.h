@@ -45,6 +45,8 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
 {
     Q_DISABLE_COPY(LvmDevice)
 
+    friend class VolumeManagerDevice;
+
 public:
     LvmDevice(const QString& name, const QString& iconName = QString());
     ~LvmDevice();
@@ -56,8 +58,6 @@ public:
 
     static QVector<const Partition*> s_DirtyPVs;
     static QVector<const Partition*> s_OrphanPVs;
-
-    static void scanSystemLVM(QList<Device*>& devices);
 
     static const QStringList getVGs();
     static const QStringList getLVs(const QString& vgName);
@@ -103,6 +103,9 @@ public:
 
 protected:
     std::unique_ptr<QHash<QString, qint64>>& LVSizeMap() const;
+
+private:
+    static void scanSystemLVM(QList<Device*>& devices);
 };
 
 #endif

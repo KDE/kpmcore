@@ -18,10 +18,7 @@
 #ifndef KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 #define KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 
-const QString allowedCommands[] = {
-// TODO try to remove these later
-QStringLiteral("mv"),
-
+QString allowedCommands[] = {
 // TODO no root needed
 QStringLiteral("lsblk"),
 QStringLiteral("udevadm"),

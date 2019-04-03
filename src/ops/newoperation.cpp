@@ -66,7 +66,7 @@ NewOperation::NewOperation(Device& d, Partition* p) :
         addJob(createFileSystemJob());
 
         if (fs.type() == FileSystem::Type::Lvm2_PV) {
-            m_SetPartFlagsJob = new SetPartFlagsJob(targetDevice(), newPartition(), PartitionTable::FlagLvm);
+            m_SetPartFlagsJob = new SetPartFlagsJob(targetDevice(), newPartition(), PartitionTable::Flag::Lvm);
             addJob(setPartFlagsJob());
         }
 

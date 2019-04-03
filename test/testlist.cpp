@@ -86,7 +86,7 @@ int main( int argc, char **argv )
         return 1;
     }
 
-    const auto devices = backend->scanDevices();
+    const auto devices = backend->scanDevices(ScanFlag::includeLoopback);
     qDebug() << "Found" << devices.length() << "devices.";
     for (const auto pdev : devices)
     {

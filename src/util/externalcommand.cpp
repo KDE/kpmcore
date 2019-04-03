@@ -293,6 +293,8 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
 
 bool ExternalCommand::write(const QByteArray& input)
 {
+    if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" ))
+        qDebug() << "Command input:" << QString::fromLocal8Bit(input);
     d->m_Input = input;
     return true;
 }
@@ -375,7 +377,7 @@ void ExternalCommand::setExitCode(int i)
 bool ExternalCommand::startHelper()
 {
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus session bus";
+        qWarning() << "Could not connect to DBus system bus";
         return false;
     }
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
@@ -448,7 +450,7 @@ quint64 ExternalCommand::getNonce(QDBusInterface& iface)
         QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("getNonce"));
         QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall);
         QEventLoop loop;
-        unsigned long long rval = 0;
+        quint64 rval = 0;
 
         auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
             loop.exit();
@@ -456,7 +458,7 @@ quint64 ExternalCommand::getNonce(QDBusInterface& iface)
             if (watcher->isError())
                 qWarning() << watcher->error();
             else {
-                QDBusPendingReply<unsigned long long> reply = *watcher;
+                QDBusPendingReply<quint64> reply = *watcher;
                 rval = reply;
             }
         };

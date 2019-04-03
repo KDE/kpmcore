@@ -15,8 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#if !defined(KPMCORE_UNKNOWN_H)
-
+#ifndef KPMCORE_UNKNOWN_H
 #define KPMCORE_UNKNOWN_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -40,6 +39,12 @@ public:
         return true;
     }
     bool canMount(const QString & deviceNode, const QString & mountPoint) const override;
+
+    CommandSupportType supportMove() const override {
+        return m_Move;
+    }
+
+    static CommandSupportType m_Move;
 };
 }
 

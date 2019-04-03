@@ -1,5 +1,5 @@
 # Copyright (C) 2008 by Volker Lanz <vl@fidra.de>
-# Copyright (C) 2014-2017 by Andrius Štikonas <andrius@stikonas.eu>
+# Copyright (C) 2014-2019 by Andrius Štikonas <andrius@stikonas.eu>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -23,7 +23,7 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 
 # Dependencies
 set(QT_MIN_VERSION "5.10.0")
-set(KF5_MIN_VERSION "5.25")
+set(KF5_MIN_VERSION "5.56")
 set(BLKID_MIN_VERSION "2.32")
 # Qca-qt5 (tested with botan and ossl backends)
 
@@ -32,7 +32,7 @@ set(BLKID_MIN_VERSION "2.32")
 # Qca plugin (botan or ossl)
 
 set(VERSION_MAJOR "3")
-set(VERSION_MINOR "50")
+set(VERSION_MINOR "80")
 set(VERSION_RELEASE "0")
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE})
 set(SOVERSION "8")

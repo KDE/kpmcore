@@ -46,15 +46,21 @@ void DummyBackend::initFSSupport()
 {
 }
 
-QList<Device*> DummyBackend::scanDevices(bool excludeLoop)
+QList<Device*> DummyBackend::scanDevices(bool excludeReadOnly)
 {
-    Q_UNUSED(excludeLoop)
+    Q_UNUSED(excludeReadOnly)
+    return scanDevices(ScanFlags());
+}
+
+QList<Device*> DummyBackend::scanDevices(const ScanFlags scanFlags)
+{
+    Q_UNUSED(scanFlags)
     QList<Device*> result;
     result.append(scanDevice(QStringLiteral("/dev/sda")));
 
     emitScanProgress(QStringLiteral("/dev/sda"), 100);
 
-    return result;
+    return scanDevices(false);
 }
 
 Device* DummyBackend::scanDevice(const QString& deviceNode)
