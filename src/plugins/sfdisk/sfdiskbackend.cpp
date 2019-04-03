@@ -117,10 +117,10 @@ QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
                 result.append(device);
             }
         }
-
-        SoftwareRAID::scanSoftwareRAID(result);
-        LvmDevice::scanSystemLVM(result); // LVM scanner needs all other devices, so should be last
+        
     }
+
+    VolumeManagerDevice::scanDevices(result); // scan all types of VolumeManagerDevices
 
     return result;
 }
@@ -223,8 +223,6 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         if (checkVG.run(-1) && checkVG.exitCode() == 0)
         {
             QList<Device *> availableDevices = scanDevices();
-
-            LvmDevice::scanSystemLVM(availableDevices);
 
             for (Device *device : qAsConst(availableDevices))
                 if (device->deviceNode() == deviceNode)
@@ -329,16 +327,15 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
     QString tableType = jsonPartitionTable[QLatin1String("label")].toString();
     const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
 
-    qint64 firstUsableSector = 0, lastUsableSector;
+    qint64 firstUsableSector = 0;
+    qint64 lastUsableSector;
 
-    if ( d.type() == Device::Type::Disk_Device )
-    {
+    if (d.type() == Device::Type::Disk_Device) {
         const DiskDevice* diskDevice = static_cast<const DiskDevice*>(&d);
 
         lastUsableSector = diskDevice->totalSectors();
     }
-    else if ( d.type() == Device::Type::SoftwareRAID_Device )
-    {
+    else if (d.type() == Device::Type::SoftwareRAID_Device) {
         const SoftwareRAID* raidDevice = static_cast<const SoftwareRAID*>(&d);
 
         lastUsableSector = raidDevice->totalLogical() - 1;
@@ -373,6 +370,7 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
         else
             maxEntries = 128;
         CoreBackend::setPartitionTableMaxPrimaries(*d.partitionTable(), maxEntries);
+        break;
     }
     default:
         break;
