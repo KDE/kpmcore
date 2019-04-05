@@ -68,8 +68,8 @@ public:
     ~ExternalCommand();
 
 public:
-    bool copyBlocks(CopySource& source, CopyTarget& target);
-    bool writeData(Report& report, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
+    bool copyBlocks(const CopySource& source, CopyTarget& target);
+    bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
 
     /**< @param cmd the command to run */
     void setCommand(const QString& cmd);

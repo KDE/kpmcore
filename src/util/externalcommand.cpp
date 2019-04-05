@@ -183,7 +183,7 @@ bool ExternalCommand::start(int timeout)
     return rval;
 }
 
-bool ExternalCommand::copyBlocks(CopySource& source, CopyTarget& target)
+bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
 {
     bool rval = true;
     const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
