@@ -203,6 +203,9 @@ static QString findBlkIdDevice(const char *token, const QString& value)
         rval = QString::fromLocal8Bit(c);
         free(c);
     }
+#else
+    Q_UNUSED(token);
+    Q_UNUSED(value);
 #endif
 
     return rval;
