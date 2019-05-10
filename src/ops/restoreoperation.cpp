@@ -125,7 +125,7 @@ bool RestoreOperation::execute(Report& parent)
     Report* report = parent.newChild(description());
 
     if (overwrittenPartition())
-        restorePartition().setPartitionPath(overwrittenPartition()->devicePath());
+        restorePartition().setPartitionPath(overwrittenPartition()->partitionPath());
 
     if (overwrittenPartition() || (rval = createPartitionJob()->run(*report))) {
         restorePartition().setState(Partition::State::None);
