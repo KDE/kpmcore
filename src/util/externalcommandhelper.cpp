@@ -45,18 +45,9 @@
 ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 {
     ActionReply reply;
-    if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus system bus";
-        reply.addData(QStringLiteral("success"), false);
-        return reply;
-    }
 
-    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        reply.addData(QStringLiteral("success"), false);
-        return reply;
-    }
-    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
+    if (!QDBusConnection::systemBus().isConnected() || !QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface")) || 
+        !QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
         reply.addData(QStringLiteral("success"), false);
         return reply;

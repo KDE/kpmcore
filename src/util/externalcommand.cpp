@@ -136,7 +136,7 @@ bool ExternalCommand::start(int timeout)
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus system bus";
+        qWarning() << QDBusConnection::systemBus().lastError().message();
         return false;
     }
 
@@ -189,7 +189,7 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
 
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus system bus";
+        qWarning() << QDBusConnection::systemBus().lastError().message();
         return false;
     }
 
@@ -250,7 +250,7 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
     bool rval = true;
 
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus system bus";
+        qWarning() << QDBusConnection::systemBus().lastError().message();
         return false;
     }
 
@@ -377,9 +377,10 @@ void ExternalCommand::setExitCode(int i)
 bool ExternalCommand::startHelper()
 {
     if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << "Could not connect to DBus system bus";
+        qWarning() << QDBusConnection::systemBus().lastError().message();
         return false;
     }
+    
     QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
     if (iface.isValid()) {
         exit(0);
@@ -470,11 +471,8 @@ quint64 ExternalCommand::getNonce(QDBusInterface& iface)
 
 void DBusThread::run()
 {
-    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.applicationinterface"))) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return;
-    }
-    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Application"), this, QDBusConnection::ExportAllSlots)) {
+    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.applicationinterface")) || 
+        !QDBusConnection::systemBus().registerObject(QStringLiteral("/Application"), this, QDBusConnection::ExportAllSlots)) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
         return;
     }
