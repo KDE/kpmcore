@@ -16,7 +16,6 @@
  *************************************************************************/
 
 #include "externalcommandhelper.h"
-#include "externalcommand_interface.h"
 #include "externalcommand_whitelist.h"
 
 #include <QtDBus>
