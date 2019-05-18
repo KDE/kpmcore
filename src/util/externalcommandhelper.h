@@ -61,8 +61,6 @@ private:
     QCA::PublicKey m_publicKey;
     QRandomGenerator64 m_Generator;
     std::unordered_set<quint64> m_Nonces;
-    QString m_command;
-    QString m_sourceDevice;
     QProcess m_cmd;
 
 //     QByteArray output;
