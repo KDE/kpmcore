@@ -39,11 +39,12 @@
  *
  * This helper also starts another DBus interface where it listens to
  * command execution requests from the application that started the helper.
- * These requests are validated using public key cryptography, to prevent
- * other unprivileged applications from gaining root privileges.
+ * 
 */
 ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 {
+    Q_UNUSED(args)
+    
     ActionReply reply;
 
     if (!QDBusConnection::systemBus().isConnected() || !QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface")) || 
@@ -52,9 +53,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
         reply.addData(QStringLiteral("success"), false);
         return reply;
     }
-
-    m_publicKey = QCA::PublicKey::fromDER(args[QStringLiteral("pubkey")].toByteArray());
-
+    
     m_loop = std::make_unique<QEventLoop>();
     HelperSupport::progressStep(QVariantMap());
 
@@ -73,16 +72,6 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     reply.addData(QStringLiteral("success"), true);
 
     return reply;
-}
-
-/** Generates cryptographic nonce
- *  @return nonce
-*/
-quint64 ExternalCommandHelper::getNonce()
-{
-    const quint64 nonce = m_Generator.generate();
-    m_Nonces.insert(nonce);
-    return nonce;
 }
 
 /** Reads the given number of bytes from the sourceDevice into the given buffer.
@@ -145,34 +134,10 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
 }
 
 // If targetDevice is empty then return QByteArray with data that was read from disk.
-QVariantMap ExternalCommandHelper::copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
+QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
-
-    if (m_Nonces.find(nonce) != m_Nonces.end())
-        m_Nonces.erase( nonce );
-    else {
-        reply[QStringLiteral("success")] = false;
-        return reply;
-    }
-
-    QByteArray request;
-
-    request.setNum(nonce);
-    request.append(sourceDevice.toUtf8());
-    request.append(QByteArray::number(sourceFirstByte));
-    request.append(QByteArray::number(sourceLength));
-    request.append(targetDevice.toUtf8());
-    request.append(QByteArray::number(targetFirstByte));
-    request.append(QByteArray::number(blockSize));
-
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
-        qCritical() << xi18n("Invalid cryptographic signature");
-        reply[QStringLiteral("success")] = false;
-        return reply;
-    }
 
     const qint64 blocksToCopy = sourceLength / blockSize;
     qint64 readOffset = sourceFirstByte;
@@ -258,61 +223,23 @@ QVariantMap ExternalCommandHelper::copyblocks(const QByteArray& signature, const
     return reply;
 }
 
-bool ExternalCommandHelper::writeData(const QByteArray& signature, const quint64 nonce, const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
+bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
 {
-    if (m_Nonces.find(nonce) != m_Nonces.end())
-        m_Nonces.erase( nonce );
-    else
-        return false;
-
-    QByteArray request;
-    request.setNum(nonce);
-    request.append(buffer);
-    request.append(targetDevice.toUtf8());
-    request.append(QByteArray::number(targetFirstByte));
-
     // Do not allow using this helper for writing to arbitrary location
     if ( targetDevice.left(5) != QStringLiteral("/dev/") && !targetDevice.contains(QStringLiteral("/etc/fstab")))
         return false;
-
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
-        qCritical() << xi18n("Invalid cryptographic signature");
-        return false;
-    }
 
     return writeData(targetDevice, buffer, targetFirstByte);
 }
 
 
-QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quint64 nonce, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
+QVariantMap ExternalCommandHelper::start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
-    if (m_Nonces.find(nonce) != m_Nonces.end())
-        m_Nonces.erase( nonce );
-    else {
-        reply[QStringLiteral("success")] = false;
-        return reply;
-    }
-
     if (command.isEmpty()) {
-        reply[QStringLiteral("success")] = false;
-        return reply;
-    }
-
-    QByteArray request;
-    request.setNum(nonce);
-    request.append(command.toUtf8());
-    for (const auto &argument : arguments)
-        request.append(argument.toUtf8());
-    request.append(input);
-    request.append(processChannelMode);
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
-        qCritical() << xi18n("Invalid cryptographic signature");
         reply[QStringLiteral("success")] = false;
         return reply;
     }
@@ -326,7 +253,7 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quin
         return reply;
     }
 
-//     connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
+//  connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
 
     m_cmd.setEnvironment( { QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1") } );
     m_cmd.setProcessChannelMode(static_cast<QProcess::ProcessChannelMode>(processChannelMode));
@@ -341,19 +268,8 @@ QVariantMap ExternalCommandHelper::start(const QByteArray& signature, const quin
     return reply;
 }
 
-void ExternalCommandHelper::exit(const QByteArray& signature, const quint64 nonce)
+void ExternalCommandHelper::exit()
 {
-    QByteArray request;
-    if (m_Nonces.find(nonce) == m_Nonces.end())
-        return;
-
-    request.setNum(nonce);
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-    if (!m_publicKey.verifyMessage(hash, signature, QCA::EMSA3_Raw)) {
-        qCritical() << xi18n("Invalid cryptographic signature");
-        return;
-    }
-
     m_loop->exit();
 
     QDBusConnection::systemBus().unregisterObject(QStringLiteral("/Helper"));
@@ -362,18 +278,18 @@ void ExternalCommandHelper::exit(const QByteArray& signature, const quint64 nonc
 
 void ExternalCommandHelper::onReadOutput()
 {
-//     const QByteArray s = cmd.readAllStandardOutput();
+/*    const QByteArray s = cmd.readAllStandardOutput();
 
-//     if(output.length() > 10*1024*1024) { // prevent memory overflow for badly corrupted file systems
-//         if (report())
-//             report()->line() << xi18nc("@info:status", "(Command is printing too much output)");
-//         return;
-//     }
+      if(output.length() > 10*1024*1024) { // prevent memory overflow for badly corrupted file systems
+        if (report())
+            report()->line() << xi18nc("@info:status", "(Command is printing too much output)");
+            return;
+     }
 
-//     output += s;
+     output += s;
 
-//     if (report())
-//         *report() << QString::fromLocal8Bit(s);
+     if (report())
+         *report() << QString::fromLocal8Bit(s);*/
 }
 
 KAUTH_HELPER_MAIN("org.kde.kpmcore.externalcommand", ExternalCommandHelper)

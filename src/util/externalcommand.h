@@ -31,13 +31,14 @@
 
 #include <memory>
 
-class KJob;
 namespace KAuth { class ExecuteJob; }
-namespace QCA { class PrivateKey; class Initializer; }
+
+class KJob;
 class Report;
 class CopySource;
 class CopyTarget;
 class QDBusInterface;
+
 struct ExternalCommandPrivate;
 
 class DBusThread : public QThread
@@ -126,18 +127,13 @@ public Q_SLOTS:
 
 private:
     void setExitCode(int i);
-
     void onReadOutput();
-    static quint64 getNonce(QDBusInterface& iface);
 
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
 
     // KAuth
-    static quint64 m_Nonce;
     static KAuth::ExecuteJob *m_job;
-    static QCA::Initializer *init;
-    static QCA::PrivateKey *privateKey;
     static bool helperStarted;
     static QWidget *parent;
 };

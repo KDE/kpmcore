@@ -42,8 +42,6 @@
 #include <QThread>
 #include <QVariant>
 
-#include <QtCrypto>
-
 #include <KAuth>
 #include <KJob>
 #include <KLocalizedString>
@@ -61,8 +59,6 @@ struct ExternalCommandPrivate
 };
 
 KAuth::ExecuteJob* ExternalCommand::m_job;
-QCA::PrivateKey* ExternalCommand::privateKey;
-QCA::Initializer* ExternalCommand::init;
 bool ExternalCommand::helperStarted = false;
 QWidget* ExternalCommand::parent;
 
@@ -106,13 +102,16 @@ ExternalCommand::ExternalCommand(Report& report, const QString& cmd, const QStri
 
 ExternalCommand::~ExternalCommand()
 {
+    
 }
 
-// void ExternalCommand::setup()
-// {
-//     connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
-//     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
-// }
+/*
+void ExternalCommand::setup()
+{
+     connect(this, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), this, &ExternalCommand::onFinished);
+     connect(this, &ExternalCommand::readyReadStandardOutput, this, &ExternalCommand::onReadOutput);
+}
+*/
 
 /** Executes the external command.
     @param timeout timeout to wait for the process to start
@@ -146,19 +145,8 @@ bool ExternalCommand::start(int timeout)
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
 
     bool rval = false;
-    QByteArray request;
-    const quint64 nonce = interface->getNonce();
-    request.setNum(nonce);
-    request.append(cmd.toUtf8());
-    for (const auto &argument : qAsConst(d->m_Args))
-        request.append(argument.toUtf8());
-    request.append(d->m_Input);
-    request.append(d->processChannelMode);
 
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-
-    QDBusPendingCall pcall = interface->start(privateKey->signMessage(hash, QCA::EMSA3_Raw),
-                                             nonce, cmd, args(), d->m_Input, d->processChannelMode);
+    QDBusPendingCall pcall = interface->start(cmd, args(), d->m_Input, d->processChannelMode);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QEventLoop loop;
@@ -200,22 +188,9 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
                 QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
-    QByteArray request;
 
-    const quint64 nonce = interface->getNonce();
-    request.setNum(nonce);
-    request.append(source.path().toUtf8());
-    request.append(QByteArray::number(source.firstByte()));
-    request.append(QByteArray::number(source.length()));
-    request.append(target.path().toUtf8());
-    request.append(QByteArray::number(target.firstByte()));
-    request.append(QByteArray::number(blockSize));
-
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-
-    QDBusPendingCall pcall = interface->copyblocks(privateKey->signMessage(hash, QCA::EMSA3_Raw), nonce,
-                                            source.path(), source.firstByte(), source.length(),
-                                            target.path(), target.firstByte(), blockSize);
+    QDBusPendingCall pcall = interface->copyblocks(source.path(), source.firstByte(), source.length(),
+                                                   target.path(), target.firstByte(), blockSize);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QEventLoop loop;
@@ -257,18 +232,8 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
                 QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
-    QByteArray request;
-
-    const quint64 nonce = interface->getNonce();
-    request.setNum(nonce);
-    request.append(buffer);
-    request.append(deviceNode.toUtf8());
-    request.append(QByteArray::number(firstByte));
-
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-
-    QDBusPendingCall pcall = interface->writeData(privateKey->signMessage(hash, QCA::EMSA3_Raw), nonce,
-                                            buffer, deviceNode, firstByte);
+ 
+    QDBusPendingCall pcall = interface->writeData(buffer, deviceNode, firstByte);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QEventLoop loop;
@@ -389,33 +354,11 @@ bool ExternalCommand::startHelper()
     d->m_thread = new DBusThread;
     d->m_thread->start();
 
-    init = new QCA::Initializer;
-    // Generate RSA key pair for signing external command requests
-    if (!QCA::isSupported("pkey") || !QCA::PKey::supportedIOTypes().contains(QCA::PKey::RSA)) {
-        qCritical() << xi18n("QCA does not support RSA.");
-        return false;
-    }
-
-    privateKey = new QCA::PrivateKey;
-    *privateKey = QCA::KeyGenerator().createRSA(4096);
-    if(privateKey->isNull()) {
-        qCritical() << xi18n("Failed to make private RSA key.");
-        return false;
-    }
-
-    if (!privateKey->canSign()) {
-        qCritical() << xi18n("Generated key cannot be used for signatures.");
-        return false;
-    }
-
-    QCA::PublicKey pubkey = privateKey->toPublicKey();
-
     KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
     action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
     action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
     action.setParentWidget(parent);
     QVariantMap arguments;
-    arguments.insert(QStringLiteral("pubkey"), pubkey.toDER());
     action.setArguments(arguments);
     m_job = action.execute();
     m_job->start();
@@ -435,38 +378,9 @@ bool ExternalCommand::startHelper()
 void ExternalCommand::stopHelper()
 {
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
-                    QStringLiteral("/Helper"), QDBusConnection::systemBus());
-    QByteArray request;
-    const quint64 nonce = interface->getNonce();
-    request.setNum(nonce);
-    QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
-    interface->exit(privateKey->signMessage(hash, QCA::EMSA3_Raw), nonce);
+                                                             QStringLiteral("/Helper"), QDBusConnection::systemBus());
+    interface->exit();
 
-    delete privateKey;
-    delete init;
-}
-
-quint64 ExternalCommand::getNonce(QDBusInterface& iface)
-{
-        QDBusPendingCall pcall = iface.asyncCall(QStringLiteral("getNonce"));
-        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall);
-        QEventLoop loop;
-        quint64 rval = 0;
-
-        auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
-            loop.exit();
-
-            if (watcher->isError())
-                qWarning() << watcher->error();
-            else {
-                QDBusPendingReply<quint64> reply = *watcher;
-                rval = reply;
-            }
-        };
-
-        connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
-        loop.exec();
-        return rval;
 }
 
 void DBusThread::run()
