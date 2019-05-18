@@ -44,7 +44,10 @@ public:
 void run() override
 {
     ExternalCommand lsblkCmd(QStringLiteral("lsblk"), { QStringLiteral("--nodeps"), QStringLiteral("--json") });
-    lsblkCmd.run();
+    
+//  ExternalCommadHelper will refuse to run this or any other command which is not whitelisted.
+//  See src/util/externalcommand_whitelist.h for whitelisted commands.
+    lsblkCmd.run(); 
     qDebug().noquote() << lsblkCmd.output();
 }
 };
