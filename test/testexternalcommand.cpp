@@ -32,7 +32,7 @@ public:
 void run() override
 {
     ExternalCommand blkidCmd(QStringLiteral("blkid"), {});
-    
+
 //  ExternalCommadHelper will refuse to run this or any other command which is not whitelisted.
 //  See src/util/externalcommand_whitelist.h for whitelisted commands.
     blkidCmd.run();
