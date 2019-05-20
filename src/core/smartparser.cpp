@@ -91,7 +91,15 @@ bool SmartParser::init()
     m_DiskInformation->setModel(smartJson[model_name].toString());
     m_DiskInformation->setFirmware(smartJson[firmware].toString());
     m_DiskInformation->setSerial(smartJson[serial_number].toString());
-    m_DiskInformation->setSize(smartJson[user_capacity].toVariant().toULongLong());
+    
+    if (smartJson[user_capacity].isObject()) {
+        // smartmontools 7.0+
+        const auto user_capacity_object = smartJson[user_capacity].toObject();
+        QString user_capacity_bytes = QStringLiteral("bytes");
+        m_DiskInformation->setSize(user_capacity_object[user_capacity_bytes].toVariant().toULongLong());
+    } else {
+        m_DiskInformation->setSize(smartJson[user_capacity].toVariant().toULongLong());
+    }
 
     QJsonObject selfTest = smartJson[self_test].toObject();
     QJsonObject selfTestStatus = selfTest[status].toObject();
