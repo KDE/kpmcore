@@ -69,22 +69,19 @@ int main( int argc, char **argv )
     QCoreApplication app(argc, argv);
     std::unique_ptr<KPMCoreInitializer> i;
 
-    if (argc != 2)
-    {
+    if (argc != 2) {
         i = std::make_unique<KPMCoreInitializer>();
         if (!i->isValid())
             return 1;
-    }
-    else
-    {
+    } else {
         i = std::make_unique<KPMCoreInitializer>( argv[1] );
         if (!i->isValid())
             return 1;
     }
 
     auto backend = CoreBackendManager::self()->backend();
-    if (!backend)
-    {
+
+    if (!backend) {
         qWarning() << "Could not get backend.";
         return 1;
     }
@@ -96,8 +93,8 @@ int main( int argc, char **argv )
 
     const auto devices = operationStack->previewDevices();
     qDebug() << "Found" << devices.length() << "devices.";
-    for (const auto pdev : devices)
-    {
+
+    for (const auto &pdev : devices) {
         qDebug() << "Device @" << (void *)pdev;
         qDebug() << "  " << pdev->prettyName();
 

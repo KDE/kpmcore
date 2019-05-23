@@ -55,7 +55,7 @@ static QString getDefaultDevicePath()
 
 static bool testSmartStatus()
 {
-    QString devicePath = getDefaultDevicePath();
+    const QString devicePath = getDefaultDevicePath();
 
     SmartStatus smart(devicePath);
 
@@ -85,7 +85,7 @@ static bool testSmartStatus()
 
 static bool testSmartParser()
 {
-    QString devicePath = getDefaultDevicePath();
+    const QString devicePath = getDefaultDevicePath();
 
     SmartParser parser(devicePath);
 
