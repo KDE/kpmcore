@@ -247,7 +247,7 @@ QVariantMap ExternalCommandHelper::start(const QString& command, const QStringLi
     // Compare with command whitelist
     QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
     if (std::find(std::begin(allowedCommands), std::end(allowedCommands), basename) == std::end(allowedCommands)) {
-        // TODO: notify the user
+        qInfo() << command <<" command is not one of the whitelisted command";
         m_loop->exit();
         reply[QStringLiteral("success")] = false;
         return reply;
