@@ -123,7 +123,7 @@ Q_SIGNALS:
     void reportSignal(const QVariantMap&);
 
 public Q_SLOTS:
-    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };
+    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); }
 
 private:
     void setExitCode(int i);
