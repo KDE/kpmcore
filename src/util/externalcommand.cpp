@@ -124,6 +124,11 @@ bool ExternalCommand::start(int timeout)
     if (command().isEmpty())
         return false;
 
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << QDBusConnection::systemBus().lastError().message();
+        return false;
+    }
+
     if (report())
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
 
@@ -133,11 +138,6 @@ bool ExternalCommand::start(int timeout)
     QString cmd = QStandardPaths::findExecutable(command());
     if (cmd.isEmpty())
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
-
-    if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return false;
-    }
 
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
                     QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
