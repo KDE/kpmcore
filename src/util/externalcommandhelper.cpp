@@ -20,6 +20,7 @@
 #include "externalcommand_whitelist.h"
 
 #include <QtDBus>
+#include <QCoreApplication>
 #include <QDebug>
 #include <QFile>
 #include <QString>
@@ -81,6 +82,11 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
 
     m_loop->exec();
     reply.addData(QStringLiteral("success"), true);
+
+    // Also end the application loop started by KAuth's main() code. Our loop
+    // exits when our client disappears. Without client we have no reason to
+    // live.
+    qApp->quit();
 
     return reply;
 }
