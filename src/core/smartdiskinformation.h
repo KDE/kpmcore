@@ -66,9 +66,9 @@ public:
         return m_SerialNumber;    /**< @return the disk serial number */
     }
 
-    quint64 size() const
+    quint64 sectors() const
     {
-        return m_Size;    /**< @return disk size */
+        return m_Sectors;    /**< @return disk size */
     }
 
     bool smartStatus() const
@@ -127,9 +127,9 @@ public:
         m_SerialNumber = serial;
     }
 
-    void setSize(quint64 size)
+    void setSectors(quint64 numSectors)
     {
-        m_Size = size;
+        m_Sectors = numSectors;
     }
 
     void setPowerCycles(quint64 powerCycleCt)
@@ -159,7 +159,7 @@ private:
     QString m_ModelName;
     QString m_FirmwareVersion;
     QString m_SerialNumber;
-    quint64 m_Size;
+    quint64 m_Sectors;
     quint64 m_Temperature;
     quint64 m_BadSectors;
     quint64 m_PoweredOn;

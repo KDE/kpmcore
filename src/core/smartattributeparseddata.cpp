@@ -260,7 +260,7 @@ void SmartAttributeParsedData::verifySectors()
     if (prettyUnit() != SmartAttributeUnit::Sectors)
         return;
 
-    quint64 maxSectors = disk()->size() / 512ULL;
+    quint64 maxSectors = disk()->sectors();
 
     if (prettyValue() == 0xFFFFFFFFULL || prettyValue() == 0xFFFFFFFFFFFFULL || (maxSectors > 0
                                                                                  && prettyValue() > maxSectors))

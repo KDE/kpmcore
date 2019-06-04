@@ -27,7 +27,7 @@ SmartDiskInformation::SmartDiskInformation() :
     m_ModelName(QString()),
     m_FirmwareVersion(QString()),
     m_SerialNumber(QString()),
-    m_Size(0),
+    m_Sectors(0),
     m_Temperature(0),
     m_BadSectors(0),
     m_PoweredOn(0),
@@ -64,7 +64,7 @@ void SmartDiskInformation::updateOverall()
         return;
     }
 
-    quint64 sector_threshold = u64log2(size() / 512) * 1024;
+    quint64 sector_threshold = u64log2(sectors()) * 1024;
 
     if (badSectors() >= sector_threshold) {
         m_Overall = SmartStatus::Overall::BadSectorsMany;

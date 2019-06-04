@@ -64,6 +64,7 @@ bool SmartParser::init()
     QString status = QStringLiteral("status");
     QString value = QStringLiteral("value");
     QString user_capacity = QStringLiteral("user_capacity");
+    QString blocks = QStringLiteral("blocks");
 
     if (!smartJson.contains(device)) {
         qDebug() << "smart disk open failed for " << devicePath() << ": " << strerror(errno);
@@ -91,15 +92,10 @@ bool SmartParser::init()
     m_DiskInformation->setModel(smartJson[model_name].toString());
     m_DiskInformation->setFirmware(smartJson[firmware].toString());
     m_DiskInformation->setSerial(smartJson[serial_number].toString());
-    
-    if (smartJson[user_capacity].isObject()) {
-        // smartmontools 7.0+
-        const auto user_capacity_object = smartJson[user_capacity].toObject();
-        QString user_capacity_bytes = QStringLiteral("bytes");
-        m_DiskInformation->setSize(user_capacity_object[user_capacity_bytes].toVariant().toULongLong());
-    } else {
-        m_DiskInformation->setSize(smartJson[user_capacity].toVariant().toULongLong());
-    }
+
+    const auto user_capacity_object = smartJson[user_capacity].toObject();
+    QString user_capacity_blocks = QStringLiteral("bytes");
+    m_DiskInformation->setSectors(user_capacity_object[user_capacity_blocks].toVariant().toULongLong());
 
     QJsonObject selfTest = smartJson[self_test].toObject();
     QJsonObject selfTestStatus = selfTest[status].toObject();
