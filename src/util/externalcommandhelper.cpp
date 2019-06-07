@@ -80,6 +80,7 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
     return reply;
 }
 
+
 /** Reads the given number of bytes from the sourceDevice into the given buffer.
     @param sourceDevice device or file to read from
     @param buffer buffer to store the bytes read in
