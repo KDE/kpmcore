@@ -72,6 +72,7 @@ const std::vector<QColor> FileSystem::defaultColorCode =
     QColor( 255,100,100 ), // linux_raid_member
     QColor( 110,20,50 ),   // bitlocker
     QColor( 255,155,174 ), // apfs
+    QColor( 0,170,255 ), // minix
 }
 };
 
@@ -452,6 +453,7 @@ static const KLocalizedString* typeNames()
         kxi18nc("@item filesystem name", "linux_raid_member"),
         kxi18nc("@item filesystem name", "BitLocker"),
         kxi18nc("@item filesystem name", "apfs"),
+        kxi18nc("@item filesystem name", "minix"),
     };
 
     return s;

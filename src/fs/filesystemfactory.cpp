@@ -41,6 +41,7 @@
 #include "fs/luks.h"
 #include "fs/luks2.h"
 #include "fs/lvm2_pv.h"
+#include "fs/minix.h"
 #include "fs/nilfs2.h"
 #include "fs/ntfs.h"
 #include "fs/ocfs2.h"
@@ -86,6 +87,7 @@ void FileSystemFactory::init()
     m_FileSystems.insert(FileSystem::Type::Luks, new FS::luks(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Luks2, new FS::luks2(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
+    m_FileSystems.insert(FileSystem::Type::Minix, new FS::minix(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Nilfs2, new FS::nilfs2(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Ntfs, new FS::ntfs(-1, -1, -1, QString()));
     m_FileSystems.insert(FileSystem::Type::Ocfs2, new FS::ocfs2(-1, -1, -1, QString()));
@@ -139,6 +141,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     case FileSystem::Type::Luks:            fs = new FS::luks           (firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Luks2:           fs = new FS::luks2          (firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Lvm2_PV:         fs = new FS::lvm2_pv        (firstsector, lastsector, sectorsused, label); break;
+    case FileSystem::Type::Minix:           fs = new FS::minix          (firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Nilfs2:          fs = new FS::nilfs2         (firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Ntfs:            fs = new FS::ntfs           (firstsector, lastsector, sectorsused, label); break;
     case FileSystem::Type::Ocfs2:           fs = new FS::ocfs2          (firstsector, lastsector, sectorsused, label); break;

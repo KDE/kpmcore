@@ -94,6 +94,7 @@ public:
         LinuxRaidMember,
         BitLocker,
         Apfs,
+        Minix,
 
         __lastType
     };
