@@ -328,7 +328,7 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
     const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
 
     qint64 firstUsableSector = 0;
-    qint64 lastUsableSector;
+    qint64 lastUsableSector = 0;
 
     if (d.type() == Device::Type::Disk_Device) {
         const DiskDevice* diskDevice = static_cast<const DiskDevice*>(&d);
