@@ -52,6 +52,12 @@ ActionReply ExternalCommandHelper::init(const QVariantMap& args)
         !QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
         reply.addData(QStringLiteral("success"), false);
+    
+        // Also end the application loop started by KAuth's main() code. Our loop
+        // exits when our client disappears. Without client we have no reason to
+        // live.
+        qApp->quit();
+    
         return reply;
     }
     
