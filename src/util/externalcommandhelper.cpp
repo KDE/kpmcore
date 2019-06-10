@@ -22,7 +22,6 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QFile>
-#include <QString>
 #include <QTime>
 #include <QVariant>
 

@@ -26,8 +26,6 @@
 
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
-#include <QString>
-#include <QStringList>
 
 #include <ctime>
 

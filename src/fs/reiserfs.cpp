@@ -22,8 +22,6 @@
 #include "util/capacity.h"
 
 #include <QRegularExpression>
-#include <QString>
-#include <QStringList>
 #include <QUuid>
 
 namespace FS

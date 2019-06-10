@@ -23,8 +23,6 @@
 
 class Report;
 
-class QString;
-
 namespace FS
 {
 /** A fat16 file system.

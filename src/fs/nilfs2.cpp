@@ -25,7 +25,6 @@
 #include <cmath>
 
 #include <QRegularExpression>
-#include <QString>
 #include <QTemporaryDir>
 #include <QUuid>
 

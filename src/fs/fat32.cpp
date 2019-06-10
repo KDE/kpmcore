@@ -20,8 +20,6 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
-#include <QStringList>
-
 #include <ctime>
 
 namespace FS

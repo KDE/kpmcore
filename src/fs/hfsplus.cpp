@@ -21,8 +21,6 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
-#include <QStringList>
-
 namespace FS
 {
 FileSystem::CommandSupportType hfsplus::m_GetLabel = FileSystem::cmdSupportNone;

@@ -23,7 +23,6 @@
 
 #include <cmath>
 
-#include <QString>
 #include <QTemporaryDir>
 #include <QUuid>
 

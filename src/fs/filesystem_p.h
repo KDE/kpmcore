@@ -20,8 +20,6 @@
 
 #include "fs/filesystem.h"
 
-#include <QString>
-
 class FileSystemPrivate {
 public:
     FileSystem::Type m_Type;

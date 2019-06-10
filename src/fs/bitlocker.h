@@ -22,10 +22,6 @@
 
 #include "fs/filesystem.h"
 
-#include <QtGlobal>
-
-class QString;
-
 namespace FS
 {
 /** A Bitlocker encrypted file system.

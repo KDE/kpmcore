@@ -23,8 +23,6 @@
 #include "util/libpartitionmanagerexport.h"
 
 #include <QList>
-#include <QStringList>
-#include <QString>
 #include <QtGlobal>
 #include <QUrl>
 

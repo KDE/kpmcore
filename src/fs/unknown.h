@@ -22,8 +22,6 @@
 
 #include "fs/filesystem.h"
 
-#include <QtGlobal>
-
 namespace FS
 {
 /** A pseudo file system for partitions whose file system we cannot determine.

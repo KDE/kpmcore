@@ -22,7 +22,6 @@
 #include "util/capacity.h"
 
 #include <QRegularExpression>
-#include <QStringList>
 #include <QTemporaryDir>
 
 #include <KLocalizedString>

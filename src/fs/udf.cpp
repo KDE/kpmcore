@@ -25,8 +25,6 @@
 
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
-#include <QString>
-#include <QStringList>
 
 namespace FS
 {
