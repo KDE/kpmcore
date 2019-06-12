@@ -37,6 +37,7 @@
 #include <QRegularExpression>
 #include <QPointer>
 #include <QStorageInfo>
+#include <QString>
 #include <QUuid>
 #include <QWidget>
 

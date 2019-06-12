@@ -23,6 +23,9 @@
 #include "util/libpartitionmanagerexport.h"
 
 #include <QMap>
+#include <QtGlobal>
+
+class QString;
 
 /** Factory to create instances of FileSystem.
     @author Volker Lanz <vl@fidra.de>

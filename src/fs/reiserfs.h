@@ -15,7 +15,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_REISERFS_H
+#if !defined(KPMCORE_REISERFS_H)
+
 #define KPMCORE_REISERFS_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -24,7 +25,11 @@
 
 #include "util/capacity.h"
 
+#include <QtGlobal>
+
 class Report;
+
+class QString;
 
 namespace FS
 {

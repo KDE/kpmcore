@@ -16,7 +16,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_LVM2_PV_H
+#if !defined(KPMCORE_LVM2_PV_H)
+
 #define KPMCORE_LVM2_PV_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -24,7 +25,10 @@
 #include "core/partition.h"
 #include "fs/filesystem.h"
 
+#include <QtGlobal>
+
 class Report;
+class QString;
 
 /** Stores information about LVM PV or potentially encrypted LVM PV
  * @author Andrius Štikonas <andrius@stikonas.eu>

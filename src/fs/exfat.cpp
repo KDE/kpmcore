@@ -21,6 +21,8 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
+#include <QString>
+
 namespace FS
 {
 FileSystem::CommandSupportType exfat::m_GetUsed = FileSystem::cmdSupportNone;

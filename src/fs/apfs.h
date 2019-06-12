@@ -22,6 +22,10 @@
 
 #include "fs/filesystem.h"
 
+#include <QtGlobal>
+
+class QString;
+
 namespace FS
 {
 /** An APFS file system.

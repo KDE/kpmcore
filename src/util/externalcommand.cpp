@@ -36,6 +36,8 @@
 #include <QEventLoop>
 #include <QtGlobal>
 #include <QStandardPaths>
+#include <QString>
+#include <QStringList>
 #include <QTimer>
 #include <QThread>
 #include <QVariant>

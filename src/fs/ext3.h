@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_EXT3_H
+#if !defined(KPMCORE_EXT3_H)
 
 #define KPMCORE_EXT3_H
 
@@ -23,7 +23,11 @@
 
 #include "fs/ext2.h"
 
+#include <QtGlobal>
+
 class Report;
+
+class QString;
 
 namespace FS
 {

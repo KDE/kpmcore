@@ -15,14 +15,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_UNFORMATTED_H
+#if !defined(KPMCORE_UNFORMATTED_H)
+
 #define KPMCORE_UNFORMATTED_H
 
 #include "util/libpartitionmanagerexport.h"
 
 #include "fs/filesystem.h"
 
+#include <QtGlobal>
+
 class Report;
+
+class QString;
 
 namespace FS
 {

@@ -22,6 +22,7 @@
 #include "util/externalcommand.h"
 
 #include <QRegularExpression>
+#include <QStringList>
 
 namespace FS
 {

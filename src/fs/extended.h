@@ -15,12 +15,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_EXTENDED_H
+#if !defined(KPMCORE_EXTENDED_H)
+
 #define KPMCORE_EXTENDED_H
 
 #include "util/libpartitionmanagerexport.h"
 
 #include "fs/filesystem.h"
+
+#include <QtGlobal>
+
+class QString;
 
 namespace FS
 {

@@ -15,7 +15,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_ISO9660_H
+#if !defined(KPMCORE_ISO9660_H)
+
 #define KPMCORE_ISO9660_H
 
 #include "util/libpartitionmanagerexport.h"
@@ -23,6 +24,8 @@
 #include "fs/filesystem.h"
 
 class Report;
+
+class QString;
 
 namespace FS
 {

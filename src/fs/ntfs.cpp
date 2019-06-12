@@ -26,6 +26,8 @@
 #include <KLocalizedString>
 
 #include <QRegularExpression>
+#include <QString>
+#include <QStringList>
 #include <QFile>
 
 #include <algorithm>

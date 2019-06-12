@@ -22,6 +22,8 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
+#include <QString>
+
 #include <KLocalizedString>
 
 namespace FS

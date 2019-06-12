@@ -23,6 +23,8 @@
 
 #include <QDebug>
 #include <QProcess>
+#include <QString>
+#include <QStringList>
 #include <QtGlobal>
 #include <QThread>
 #include <QVariant>

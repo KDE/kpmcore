@@ -19,6 +19,8 @@
 
 #include "util/capacity.h"
 
+#include <QString>
+
 namespace FS
 {
 FileSystem::CommandSupportType hpfs::m_GetUsed = FileSystem::cmdSupportNone;

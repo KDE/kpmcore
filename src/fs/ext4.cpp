@@ -20,6 +20,8 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
+#include <QStringList>
+
 namespace FS
 {
 ext4::ext4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :

@@ -24,6 +24,8 @@
 
 class Report;
 
+class QString;
+
 namespace FS
 {
 /** A linux_raid_member file system.

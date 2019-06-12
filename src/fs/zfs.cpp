@@ -22,6 +22,8 @@
 #include "util/capacity.h"
 #include "util/report.h"
 
+#include <QString>
+
 namespace FS
 {
 FileSystem::CommandSupportType zfs::m_GetUsed = FileSystem::cmdSupportNone;

@@ -24,6 +24,9 @@
 
 #include <KLocalizedString>
 
+#include <QString>
+#include <QStringList>
+
 #include <ctime>
 
 namespace FS

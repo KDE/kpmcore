@@ -23,6 +23,8 @@
 #include "util/report.h"
 
 #include <QRegularExpression>
+#include <QString>
+#include <QStringList>
 #include <QTemporaryDir>
 
 #include <KLocalizedString>

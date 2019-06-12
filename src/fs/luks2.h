@@ -15,12 +15,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#ifndef KPMCORE_LUKS2_H
+#if !defined(KPMCORE_LUKS2_H)
+
 #define KPMCORE_LUKS2_H
 
 #include "util/libpartitionmanagerexport.h"
 
 #include "fs/luks.h"
+
+#include <QtGlobal>
+
+class QString;
 
 namespace FS
 {

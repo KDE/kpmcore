@@ -21,6 +21,8 @@
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 
+#include <QStringList>
+
 namespace FS
 {
 FileSystem::CommandSupportType hfs::m_GetUsed = FileSystem::cmdSupportNone;

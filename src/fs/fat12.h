@@ -23,7 +23,11 @@
 
 #include "fs/filesystem.h"
 
+#include <QtGlobal>
+
 class Report;
+
+class QString;
 
 namespace FS
 {

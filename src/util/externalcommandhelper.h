@@ -24,6 +24,7 @@
 #include <KAuth>
 
 #include <QEventLoop>
+#include <QString>
 #include <QProcess>
 
 using namespace KAuth;
