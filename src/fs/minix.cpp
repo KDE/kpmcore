@@ -20,6 +20,8 @@
 #include "util/capacity.h"
 #include "util/externalcommand.h"
 
+#include <QString>
+
 namespace FS
 {
 FileSystem::CommandSupportType minix::m_GetLabel = FileSystem::cmdSupportNone;

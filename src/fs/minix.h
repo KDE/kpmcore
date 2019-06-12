@@ -24,6 +24,8 @@
 
 class Report;
 
+class QString;
+
 namespace FS
 {
 /** A minix(Mini Unix) file system.
