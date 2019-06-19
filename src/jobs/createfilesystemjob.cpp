@@ -35,11 +35,12 @@
 /** Creates a new CreateFileSystemJob
     @param p the Partition the FileSystem to create is on
 */
-CreateFileSystemJob::CreateFileSystemJob(Device& d, Partition& p, const QString& label) :
+CreateFileSystemJob::CreateFileSystemJob(Device& d, Partition& p, const QString& label, const QStringList& features) :
     Job(),
     m_Device(d),
     m_Partition(p),
-    m_Label(label)
+    m_Label(label),
+    m_Features(features)
 {
 }
 
@@ -54,10 +55,15 @@ bool CreateFileSystemJob::run(Report& parent)
 
     bool createResult;
     if (partition().fileSystem().supportCreate() == FileSystem::cmdSupportFileSystem) {
-        if (partition().fileSystem().supportCreateWithLabel() == FileSystem::cmdSupportFileSystem)
+        if (partition().fileSystem().supportCreateWithFeatures() == FileSystem::cmdSupportFileSystem) {
+            createResult = partition().fileSystem().createWithFeatures(*report, partition().deviceNode(), m_Features);
+            if (createResult && partition().fileSystem().supportSetLabel() == FileSystem::cmdSupportFileSystem)
+                partition().fileSystem().writeLabel(*report, partition().deviceNode(), m_Label);
+        } else if (partition().fileSystem().supportCreateWithLabel() == FileSystem::cmdSupportFileSystem) {
             createResult = partition().fileSystem().createWithLabel(*report, partition().deviceNode(), m_Label);
-        else
+        } else {
             createResult = partition().fileSystem().create(*report, partition().deviceNode());
+        }
         if (createResult) {
             if (device().type() == Device::Type::Disk_Device || device().type() == Device::Type::SoftwareRAID_Device) {
                 std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
