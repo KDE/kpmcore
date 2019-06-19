@@ -44,6 +44,7 @@ public:
 
 public:
     bool create(Report& report, const QString& deviceNode) override;
+    bool createWithFeatures(Report& report, const QString& deviceNode, const QStringList& features) override;
     bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     qint64 maxCapacity() const override;
 

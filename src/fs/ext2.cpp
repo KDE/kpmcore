@@ -137,6 +137,18 @@ bool ext2::create(Report& report, const QString& deviceNode)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
+bool ext2::createWithFeatures(Report& report, const QString& deviceNode, const QStringList& features)
+{
+    QStringList args = QStringList();
+
+    if (features.count() > 0)
+        args << QStringLiteral("-O") << features.join(QStringLiteral(","));
+    args << QStringLiteral("-qF") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ext2"), args);
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
 bool ext2::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
     const QString len = QString::number(length / 512) + QStringLiteral("s");

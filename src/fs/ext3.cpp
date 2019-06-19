@@ -40,6 +40,18 @@ bool ext3::create(Report& report, const QString& deviceNode)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
+bool ext3::createWithFeatures(Report& report, const QString& deviceNode, const QStringList& features)
+{
+    QStringList args = QStringList();
+
+    if (features.count() > 0)
+        args << QStringLiteral("-O") << features.join(QStringLiteral(","));
+    args << QStringLiteral("-qF") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ext3"), args);
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
 bool ext3::resizeOnline(Report& report, const QString& deviceNode, const QString&, qint64 length) const
 {
     return resize(report, deviceNode, length);
