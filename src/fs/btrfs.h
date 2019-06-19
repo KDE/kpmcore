@@ -46,6 +46,7 @@ public:
     qint64 readUsedCapacity(const QString& deviceNode) const override;
     bool check(Report& report, const QString& deviceNode) const override;
     bool create(Report& report, const QString& deviceNode) override;
+    bool createWithFeatures(Report& report, const QString& deviceNode, const QStringList& features) override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
     bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
@@ -59,6 +60,9 @@ public:
         return m_GetLabel;
     }
     CommandSupportType supportCreate() const override {
+        return m_Create;
+    }
+    CommandSupportType supportCreateWithFeatures() const override {
         return m_Create;
     }
     CommandSupportType supportGrow() const override {

@@ -132,6 +132,18 @@ bool btrfs::create(Report& report, const QString& deviceNode)
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
+bool btrfs::createWithFeatures(Report& report, const QString& deviceNode, const QStringList& features)
+{
+    QStringList args = QStringList();
+
+    if (features.count() > 0)
+        args << QStringLiteral("--features") << features.join(QStringLiteral(","));
+    args << QStringLiteral("--force") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), args);
+    return cmd.run(-1) && cmd.exitCode() == 0;
+}
+
 bool btrfs::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
     QTemporaryDir tempDir;
