@@ -38,7 +38,7 @@ namespace FS
 class LIBKPMCORE_EXPORT btrfs : public FileSystem
 {
 public:
-    btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
     void init() override;

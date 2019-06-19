@@ -39,8 +39,8 @@ FileSystem::CommandSupportType ocfs2::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ocfs2::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ocfs2::m_GetUUID = FileSystem::cmdSupportNone;
 
-ocfs2::ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ocfs2)
+ocfs2::ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Ocfs2)
 {
 }
 

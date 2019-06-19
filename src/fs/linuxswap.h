@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT linuxswap : public FileSystem
 {
 public:
-    linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
     void init() override;

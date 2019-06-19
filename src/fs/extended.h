@@ -40,7 +40,7 @@ namespace FS
 class LIBKPMCORE_EXPORT extended : public FileSystem
 {
 public:
-    extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
 

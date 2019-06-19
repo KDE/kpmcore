@@ -36,8 +36,8 @@ FileSystem::CommandSupportType hpfs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hpfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hpfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-hpfs::hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Hpfs)
+hpfs::hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Hpfs)
 {
 }
 

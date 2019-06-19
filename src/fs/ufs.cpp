@@ -23,8 +23,8 @@ FileSystem::CommandSupportType ufs::m_Move = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType ufs::m_Copy = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType ufs::m_Backup = FileSystem::cmdSupportCore;
 
-ufs::ufs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ufs)
+ufs::ufs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Ufs)
 {
 }
 }

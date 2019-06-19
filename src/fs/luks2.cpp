@@ -27,8 +27,8 @@
 namespace FS
 {
 
-luks2::luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label)
-    : luks(firstsector, lastsector, sectorsused, label, FileSystem::Type::Luks2)
+luks2::luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features)
+    : luks(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Luks2)
 {
 }
 

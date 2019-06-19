@@ -32,12 +32,12 @@
 namespace FS
 {
 fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    fat12(firstsector, lastsector, sectorsused, label, FileSystem::Type::Fat16)
+    fat12(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Fat16)
 {
 }
 
-fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type) :
-    fat12(firstsector, lastsector, sectorsused, label, type)
+fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features, FileSystem::Type type) :
+    fat12(firstsector, lastsector, sectorsused, label, features, type)
 {
 }
 

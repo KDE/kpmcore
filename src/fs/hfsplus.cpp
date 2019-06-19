@@ -34,8 +34,8 @@ FileSystem::CommandSupportType hfsplus::m_Create = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Backup = FileSystem::cmdSupportNone;
 
-hfsplus::hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::HfsPlus)
+hfsplus::hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::HfsPlus)
 {
 }
 

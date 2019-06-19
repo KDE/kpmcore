@@ -39,7 +39,7 @@ namespace FS
 class LIBKPMCORE_EXPORT reiserfs : public FileSystem
 {
 public:
-    reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
     void init() override;

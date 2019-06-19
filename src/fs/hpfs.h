@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT hpfs : public FileSystem
 {
 public:
-    hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    hpfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
     CommandSupportType supportGetUsed() const override {

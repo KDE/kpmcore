@@ -35,7 +35,7 @@ namespace FS
 class LIBKPMCORE_EXPORT ufs : public FileSystem
 {
 public:
-    ufs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    ufs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
     CommandSupportType supportMove() const override {

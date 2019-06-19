@@ -84,6 +84,7 @@ struct FileSystemPrivate {
     qint64 m_SectorsUsed;
     QString m_Label;
     QString m_UUID;
+    QStringList m_Features;
 };
 
 /** Creates a new FileSystem object
@@ -101,6 +102,26 @@ FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused
     d->m_LastSector = lastsector;
     d->m_SectorsUsed = sectorsused;
     d->m_Label = label;
+    d->m_UUID = QString();
+}
+
+/** Creates a new FileSystem object
+    @param firstsector the first sector used by this FileSystem on the Device
+    @param lastsector the last sector used by this FileSystem on the Device
+    @param sectorsused the number of sectors in use on the FileSystem
+    @param label the FileSystem label
+    @param features the FileSystem features
+    @param type the FileSystem type
+*/
+FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features, FileSystem::Type type) :
+    d(std::make_unique<FileSystemPrivate>())
+{
+    d->m_Type = type;
+    d->m_FirstSector = firstsector;
+    d->m_LastSector = lastsector;
+    d->m_SectorsUsed = sectorsused;
+    d->m_Label = label;
+    d->m_Features = features;
     d->m_UUID = QString();
 }
 
@@ -192,6 +213,21 @@ bool FileSystem::createWithLabel(Report& report, const QString& deviceNode, cons
     Q_UNUSED(report)
     Q_UNUSED(deviceNode)
     Q_UNUSED(label)
+
+    return true;
+}
+
+/** Creates a new FileSystem with a specified features set
+    @param report Report to write status information to
+    @param deviceNode the device node for the Partition to create the FileSystem on
+    @param features the list of features for the FileSystem
+    @return true if successful
+*/
+bool FileSystem::createWithFeatures(Report& report, const QString& deviceNode, const QStringList& features)
+{
+    Q_UNUSED(report)
+    Q_UNUSED(deviceNode)
+    Q_UNUSED(features)
 
     return true;
 }
@@ -605,6 +641,11 @@ void FileSystem::setLastSector(qint64 s)
 const QString& FileSystem::label() const
 {
     return d->m_Label;
+}
+
+const QStringList& FileSystem::features() const
+{
+    return d->m_Features;
 }
 
 qint64 FileSystem::sectorSize() const

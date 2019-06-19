@@ -113,6 +113,7 @@ public:
 
 protected:
     FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
+    FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features, FileSystem::Type type);
 
 public:
     virtual ~FileSystem();
@@ -124,6 +125,7 @@ public:
     virtual QString readLabel(const QString& deviceNode) const;
     virtual bool create(Report& report, const QString& deviceNode);
     virtual bool createWithLabel(Report& report, const QString& deviceNode, const QString& label);
+    virtual bool createWithFeatures(Report& report, const QString& deviceNode, const QStringList& features);
     virtual bool resize(Report& report, const QString& deviceNode, qint64 newLength) const;
     virtual bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 newLength) const;
     virtual bool move(Report& report, const QString& deviceNode, qint64 newStartSector) const;
@@ -147,6 +149,9 @@ public:
         return cmdSupportNone;    /**< @return CommandSupportType for creating */
     }
     virtual CommandSupportType supportCreateWithLabel() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for creating */
+    }
+    virtual CommandSupportType supportCreateWithFeatures() const {
         return cmdSupportNone;    /**< @return CommandSupportType for creating */
     }
     virtual CommandSupportType supportGrow() const {
@@ -262,6 +267,9 @@ public:
 
     /**< @return the FileSystem's label */
     const QString& label() const;
+
+    /**< @return the FileSystem's features */
+    const QStringList& features() const;
 
     /**< @return the sector size in the underlying Device */
     qint64 sectorSize() const;

@@ -34,7 +34,7 @@ namespace FS
 class LIBKPMCORE_EXPORT linuxraidmember : public FileSystem
 {
 public:
-    linuxraidmember(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    linuxraidmember(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 };
 }
 

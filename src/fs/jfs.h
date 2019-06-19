@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT jfs : public FileSystem
 {
 public:
-    jfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    jfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
     void init() override;

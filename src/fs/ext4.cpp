@@ -24,8 +24,8 @@
 
 namespace FS
 {
-ext4::ext4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    ext2(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ext4)
+ext4::ext4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features) :
+    ext2(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Ext4)
 {
 }
 

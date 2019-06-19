@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT unformatted : public FileSystem
 {
 public:
-    unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    unformatted(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features = QStringList());
 
 public:
     bool create(Report&, const QString&) override;

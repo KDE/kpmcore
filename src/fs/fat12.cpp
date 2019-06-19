@@ -46,8 +46,8 @@ FileSystem::CommandSupportType fat12::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType fat12::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType fat12::m_GetUUID = FileSystem::cmdSupportNone;
 
-fat12::fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t) :
-    FileSystem(firstsector, lastsector, sectorsused, label, t)
+fat12::fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QStringList& features, FileSystem::Type t) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, t)
 {
 }
 
