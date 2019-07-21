@@ -62,3 +62,7 @@ set(SMARTPARSER ${CMAKE_SOURCE_DIR}/src/core/smartdiskinformation.cpp
 # Test SMART support
 kpm_test(testsmart testsmart.cpp ${SMARTPARSER})
 add_test(NAME testsmart COMMAND testsmart ${BACKEND})
+
+# Test Device
+kpm_test(testdevice testdevice.cpp)
+add_test(NAME testdevice COMMAND testdevice ${BACKEND})
