@@ -3,6 +3,7 @@ Icon=partitionmanager
 
 [org.kde.kpmcore.externalcommand.init]
 Name=Start external command daemon
+Name[ast]=Aniciu del degorriu de comandos esternos
 Name[ca]=Inicia el dimoni d'ordres externes
 Name[ca@valencia]=Inicia el dimoni d'ordres externes
 Name[cs]=Spustit démona externích příkazů
