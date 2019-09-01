@@ -82,7 +82,7 @@ QString SmartStatus::tempToString(quint64 mkelvin)
     const double celsius = (mkelvin - 273150.0) / 1000.0;
     const double fahrenheit = 9.0 * celsius / 5.0 + 32;
     return xi18nc("@item:intable degrees in Celsius and Fahrenheit", "%1° C / %2° F",
-                  QLocale().toString(celsius, 1), QLocale().toString(fahrenheit, 1));
+                  QLocale().toString(celsius, 'g', 2), QLocale().toString(fahrenheit, 'g', 2));
 }
 
 QString SmartStatus::selfTestStatusToString(SmartStatus::SelfTestStatus s)
