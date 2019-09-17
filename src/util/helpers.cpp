@@ -67,7 +67,7 @@ KAboutData aboutKPMcore()
     aboutData.addCredit(xi18nc("@info:credit", "Chantara Tith"), i18nc("@info:credit", "LVM support"), QStringLiteral("tith.chantara@gmail.com"));
     aboutData.addCredit(xi18nc("@info:credit", "Pali Rohár"), i18nc("@info:credit", "UDF support"), QStringLiteral("pali.rohar@gmail.com"));
     aboutData.addCredit(xi18nc("@info:credit", "Adriaan de Groot"), i18nc("@info:credit", "Calamares maintainer"), QStringLiteral("groot@kde.org"));
-    aboutData.addCredit(xi18nc("@info:credit", "Caio Carvalho"), i18nc("@info:credit", "Improved SMART support"), QStringLiteral("caiojcarvalho@gmail.com"));
+    aboutData.addCredit(xi18nc("@info:credit", "Caio Jordão Carvalho"), i18nc("@info:credit", "Improved SMART support"), QStringLiteral("caiojcarvalho@gmail.com"));
 
     return aboutData;
 }
