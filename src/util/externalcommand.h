@@ -104,9 +104,6 @@ public:
 
     void emitReport(const QVariantMap& report) { emit reportSignal(report); }
 
-    /**< Dummy function for QTimer when needed. */
-    void quit();
-    
     // KAuth
     /**< start ExternalCommand Helper */
     bool startHelper();

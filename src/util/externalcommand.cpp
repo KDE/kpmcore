@@ -119,12 +119,13 @@ void ExternalCommand::setup()
 */
 bool ExternalCommand::start(int timeout)
 {
+    Q_UNUSED(timeout)
+
     if (command().isEmpty())
         return false;
 
     if (!QDBusConnection::systemBus().isConnected()) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
-        QTimer::singleShot(timeout, this, &ExternalCommand::quit);
         return false;
     }
 
@@ -166,8 +167,6 @@ bool ExternalCommand::start(int timeout)
 
     connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
     loop.exec();
-
-    QTimer::singleShot(timeout, this, &ExternalCommand::quit);
 
     return rval;
 }
@@ -338,12 +337,6 @@ Report* ExternalCommand::report()
 void ExternalCommand::setExitCode(int i)
 {
     d->m_ExitCode = i;
-}
-
-/**< Dummy function for QTimer when needed. */
-void ExternalCommand::quit()
-{
-    
 }
 
 bool ExternalCommand::startHelper()
