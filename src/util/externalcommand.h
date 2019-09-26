@@ -31,13 +31,14 @@
 
 #include <memory>
 
-class KJob;
 namespace KAuth { class ExecuteJob; }
-namespace QCA { class PrivateKey; class Initializer; }
+
+class KJob;
 class Report;
 class CopySource;
 class CopyTarget;
 class QDBusInterface;
+
 struct ExternalCommandPrivate;
 
 class DBusThread : public QThread
@@ -68,8 +69,8 @@ public:
     ~ExternalCommand();
 
 public:
-    bool copyBlocks(CopySource& source, CopyTarget& target);
-    bool writeData(Report& report, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
+    bool copyBlocks(const CopySource& source, CopyTarget& target);
+    bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
 
     /**< @param cmd the command to run */
     void setCommand(const QString& cmd);
@@ -122,22 +123,17 @@ Q_SIGNALS:
     void reportSignal(const QVariantMap&);
 
 public Q_SLOTS:
-    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); };
+    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); }
 
 private:
     void setExitCode(int i);
-
     void onReadOutput();
-    static quint64 getNonce(QDBusInterface& iface);
 
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
 
     // KAuth
-    static quint64 m_Nonce;
     static KAuth::ExecuteJob *m_job;
-    static QCA::Initializer *init;
-    static QCA::PrivateKey *privateKey;
     static bool helperStarted;
     static QWidget *parent;
 };

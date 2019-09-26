@@ -24,7 +24,6 @@
 
 #include <KLocalizedString>
 
-#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
 

@@ -24,11 +24,8 @@
 #include <KAuth>
 
 #include <QEventLoop>
-#include <QRandomGenerator64>
 #include <QString>
 #include <QProcess>
-
-#include <QtCrypto>
 
 using namespace KAuth;
 
@@ -47,25 +44,17 @@ public:
 
 public Q_SLOTS:
     ActionReply init(const QVariantMap& args);
-    Q_SCRIPTABLE quint64 getNonce();
-    Q_SCRIPTABLE QVariantMap start(const QByteArray& signature, const quint64 nonce, const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
-    Q_SCRIPTABLE QVariantMap copyblocks(const QByteArray& signature, const quint64 nonce, const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
-    Q_SCRIPTABLE bool writeData(const QByteArray& signature, const quint64 nonce, const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte);
-    Q_SCRIPTABLE void exit(const QByteArray& signature, const quint64 nonce);
+    Q_SCRIPTABLE QVariantMap start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
+    Q_SCRIPTABLE QVariantMap copyblocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
+    Q_SCRIPTABLE bool writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte);
+    Q_SCRIPTABLE void exit();
 
 private:
     void onReadOutput();
 
     std::unique_ptr<QEventLoop> m_loop;
-    QCA::Initializer initializer;
-    QCA::PublicKey m_publicKey;
-    QRandomGenerator64 m_Generator;
-    std::unordered_set<quint64> m_Nonces;
-    QString m_command;
-    QString m_sourceDevice;
     QProcess m_cmd;
-
-//     QByteArray output;
+//  QByteArray output;
 };
 
 #endif

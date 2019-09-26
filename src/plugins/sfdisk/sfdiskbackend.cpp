@@ -328,7 +328,7 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
     const PartitionTable::TableType type = PartitionTable::nameToTableType(tableType);
 
     qint64 firstUsableSector = 0;
-    qint64 lastUsableSector;
+    qint64 lastUsableSector = 0;
 
     if (d.type() == Device::Type::Disk_Device) {
         const DiskDevice* diskDevice = static_cast<const DiskDevice*>(&d);
@@ -461,6 +461,7 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
         else if (s == QStringLiteral("linux_raid_member")) rval = FileSystem::Type::LinuxRaidMember;
         else if (s == QStringLiteral("BitLocker")) rval = FileSystem::Type::BitLocker;
         else if (s == QStringLiteral("apfs")) rval = FileSystem::Type::Apfs;
+        else if (s == QStringLiteral("minix")) rval = FileSystem::Type::Minix;
         else
             qWarning() << "unknown file system type " << s << " on " << partitionPath;
     }

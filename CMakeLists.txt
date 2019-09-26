@@ -24,15 +24,15 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 # Dependencies
 set(QT_MIN_VERSION "5.10.0")
 set(KF5_MIN_VERSION "5.56")
-set(BLKID_MIN_VERSION "2.32")
+set(BLKID_MIN_VERSION "2.33.2")
 # Qca-qt5 (tested with botan and ossl backends)
 
 # Runtime
 # smartmontools 7.0
 # Qca plugin (botan or ossl)
 
-set(VERSION_MAJOR "3")
-set(VERSION_MINOR "80")
+set(VERSION_MAJOR "4")
+set(VERSION_MINOR "0")
 set(VERSION_RELEASE "0")
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE})
 set(SOVERSION "8")

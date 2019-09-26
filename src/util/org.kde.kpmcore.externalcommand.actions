@@ -3,6 +3,7 @@ Icon=partitionmanager
 
 [org.kde.kpmcore.externalcommand.init]
 Name=Start external command daemon
+Name[ast]=Aniciu del degorriu de comandos esternos
 Name[ca]=Inicia el dimoni d'ordres externes
 Name[ca@valencia]=Inicia el dimoni d'ordres externes
 Name[cs]=Spustit démona externích příkazů
@@ -46,6 +47,7 @@ Description[nl]=Er zijn administratieve rechten vereist om schijven te beheren
 Description[pl]=Do zarządzania dyskami wymagane są uprawnienia administratora
 Description[pt]=São necessários privilégios de administrador para gerir os discos
 Description[pt_BR]=São necessários privilégios administrativos para gerenciar discos
+Description[sk]=Práva správcu sú potrebné na správu diskov
 Description[sv]=Administratörsprivilegier krävs för att hantera diskar
 Description[uk]=Для керування дисками потрібні права доступу адміністратора (root)
 Description[x-test]=xxAdministrative privileges are required to manage disksxx

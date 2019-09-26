@@ -23,6 +23,7 @@ set(FS_SRC
     fs/luks.cpp
     fs/luks2.cpp
     fs/lvm2_pv.cpp
+    fs/minix.cpp
     fs/nilfs2.cpp
     fs/ntfs.cpp
     fs/ocfs2.cpp
@@ -61,6 +62,7 @@ set(FS_LIB_HDRS
     fs/luks.h
     fs/luks2.h
     fs/lvm2_pv.h
+    fs/minix.h
     fs/nilfs2.h
     fs/ntfs.h
     fs/ocfs2.h

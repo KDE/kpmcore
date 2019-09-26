@@ -59,8 +59,8 @@ target_link_libraries(kpmcore_externalcommand
 
 install(TARGETS kpmcore_mdadmupdateconf DESTINATION ${LIBEXEC_INSTALL_DIR})
 install(TARGETS kpmcore_externalcommand DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
-install( FILES util/org.kde.kpmcore.helperinterface.conf DESTINATION ${SYSCONF_INSTALL_DIR}/dbus-1/system.d )
-install( FILES util/org.kde.kpmcore.applicationinterface.conf DESTINATION ${SYSCONF_INSTALL_DIR}/dbus-1/system.d )
+install( FILES util/org.kde.kpmcore.helperinterface.conf DESTINATION ${KDE_INSTALL_DBUSDIR}/system.d )
+install( FILES util/org.kde.kpmcore.applicationinterface.conf DESTINATION ${KDE_INSTALL_DBUSDIR}/system.d )
 
 kauth_install_helper_files(kpmcore_externalcommand org.kde.kpmcore.externalcommand root)
 kauth_install_actions(org.kde.kpmcore.externalcommand util/org.kde.kpmcore.externalcommand.actions)

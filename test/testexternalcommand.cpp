@@ -26,27 +26,29 @@
 #include <QDebug>
 #include <QThread>
 
-class runcmd : public QThread {
-public:
-
-void run() override
+class runcmd : public QThread
 {
-    ExternalCommand blkidCmd(QStringLiteral("blkid"), {});
-    blkidCmd.run();
-    qDebug().noquote() << blkidCmd.output();
-}
+    public:
+    void run() override
+    {
+        ExternalCommand blkidCmd(QStringLiteral("blkid"), {});
 
+        // ExternalCommadHelper will refuse to run this or any other command which is not whitelisted.
+        // See src/util/externalcommand_whitelist.h for whitelisted commands.
+        blkidCmd.run();
+        qDebug().noquote() << blkidCmd.output();
+    }
 };
 
-class runcmd2 : public QThread {
-public:
-
-void run() override
+class runcmd2 : public QThread
 {
-    ExternalCommand lsblkCmd(QStringLiteral("lsblk"), { QStringLiteral("--nodeps"), QStringLiteral("--json") });
-    lsblkCmd.run();
-    qDebug().noquote() << lsblkCmd.output();
-}
+    public:
+    void run() override
+    {
+        ExternalCommand lsblkCmd(QStringLiteral("lsblk"), { QStringLiteral("--nodeps"), QStringLiteral("--json") });
+        lsblkCmd.run();
+        qDebug().noquote() << lsblkCmd.output();
+    }
 };
 
 
@@ -57,8 +59,10 @@ int main( int argc, char **argv )
 
     runcmd a;
     runcmd2 b;
+
     a.start();
     a.wait();
+
     b.start();
     b.wait();
 

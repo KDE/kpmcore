@@ -1,5 +1,5 @@
-/*************************************************************************
- *  Copyright 2017 by Adriaan de Groot <groot@kde.org>                   *
+ /*************************************************************************
+ *  Copyright (C) 2019 by Shubham <aryan100jangid@gmail.com>             *
  *                                                                       *
  *  This program is free software; you can redistribute it and/or        *
  *  modify it under the terms of the GNU General Public License as       *
@@ -13,27 +13,34 @@
  *                                                                       *
  *  You should have received a copy of the GNU General Public License    *
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
- *************************************************************************/
+**************************************************************************/
+ 
+//  SPDX-License-Identifier: GPL-3.0+ 
+ 
+#ifndef TESTDEVICE_H
+#define TESTDEVICE_H
 
-//  SPDX-License-Identifier: GPL-3.0+
-
-// Initializes KPMcore, and either loads the default backend for
-// the current platform, or if one is named on the command line,
-// loads that one. Returns 0 on success.
-
-#include <QCoreApplication>
-
-#include "helpers.h"
-
-int main( int argc, char** argv )
+#include "core/device.h"
+#include "core/devicescanner.h"
+#include "core/operationstack.h" 
+ 
+#include <QList> 
+ 
+class TestDevice
 {
-    QCoreApplication app(argc, argv);
-    if ( argc != 2 ) {
-        KPMCoreInitializer i;
-        return i.isValid() ? 0 : 1;
-    } else {
-        KPMCoreInitializer i( argv[1] );
-        return i.isValid() ? 0 : 1;
-    }
-}
+public:
+    TestDevice();
+   ~TestDevice();
 
+    bool testDeviceName();
+    bool testDeviceNode();
+    bool testDeviceSize();
+    bool testDeviceTotalSectors();
+    
+private:
+    OperationStack *operationStack;
+    DeviceScanner *deviceScanner;
+    QList <Device*> devices;
+};
+
+#endif // TESTDEVICE_H
