@@ -19,12 +19,12 @@
 
 #define KPMCORE_PARTRESIZERWIDGET_H
 
+#include "core/partition.h"
 #include "util/libpartitionmanagerexport.h"
 
 #include <QWidget>
 #include <QLabel>
 
-class Partition;
 class PartWidget;
 class Device;
 
@@ -97,6 +97,8 @@ public:
     }
 
     bool align() const {
+        if (partition().isMounted())
+            return false;
         return m_Align;    /**< @return  true if the Partition is to be aligned */
     }
     void setAlign(bool b) {
