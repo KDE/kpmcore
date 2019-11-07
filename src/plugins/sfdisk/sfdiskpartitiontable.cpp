@@ -178,7 +178,7 @@ static struct {
     { FileSystem::Type::LinuxSwap, { QLatin1String("0657FD6D-A4AB-43C4-84E5-0933C84B4F4F"), QLatin1String("82") } },
     { FileSystem::Type::Fat12, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
     { FileSystem::Type::Fat16, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
-    { FileSystem::Type::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::Type::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("c") } },
     { FileSystem::Type::Nilfs2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
     { FileSystem::Type::Ntfs, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
     { FileSystem::Type::Exfat, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
