@@ -433,6 +433,8 @@ bool ExternalCommand::startHelper()
 
 void ExternalCommand::stopHelper()
 {
+    if (!helperStarted)
+        return;
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
                     QStringLiteral("/Helper"), QDBusConnection::systemBus());
     QByteArray request;
@@ -441,6 +443,7 @@ void ExternalCommand::stopHelper()
     QByteArray hash = QCryptographicHash::hash(request, QCryptographicHash::Sha512);
     interface->exit(privateKey->signMessage(hash, QCA::EMSA3_Raw), nonce);
 
+    helperStarted = false;
     delete privateKey;
     delete init;
 }
