@@ -62,46 +62,48 @@ FileSystemFactory::FileSystems FileSystemFactory::m_FileSystems;
 /** Initializes the instance. */
 void FileSystemFactory::init()
 {
+    FileSystems fileSystems;
+    fileSystems.insert(FileSystem::Type::Apfs, new FS::apfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::BitLocker, new FS::bitlocker(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Btrfs, new FS::btrfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Exfat, new FS::exfat(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Ext2, new FS::ext2(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Ext3, new FS::ext3(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Ext4, new FS::ext4(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Extended, new FS::extended(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::F2fs, new FS::f2fs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Fat12, new FS::fat12(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Fat16, new FS::fat16(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Fat32, new FS::fat32(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Hfs, new FS::hfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::HfsPlus, new FS::hfsplus(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Hpfs, new FS::hpfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Iso9660, new FS::iso9660(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Jfs, new FS::jfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::LinuxRaidMember, new FS::linuxraidmember(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Luks, new FS::luks(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Luks2, new FS::luks2(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Minix, new FS::minix(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Nilfs2, new FS::nilfs2(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Ntfs, new FS::ntfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Ocfs2, new FS::ocfs2(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::ReiserFS, new FS::reiserfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Reiser4, new FS::reiser4(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Udf, new FS::udf(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Ufs, new FS::ufs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Unformatted, new FS::unformatted(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Unknown, new FS::unknown(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Xfs, new FS::xfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Zfs, new FS::zfs(-1, -1, -1, QString()));
+
+    for (const auto &fs : qAsConst(fileSystems))
+        fs->init();
+
     qDeleteAll(m_FileSystems);
     m_FileSystems.clear();
-
-    m_FileSystems.insert(FileSystem::Type::Apfs, new FS::apfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::BitLocker, new FS::bitlocker(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Btrfs, new FS::btrfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Exfat, new FS::exfat(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Ext2, new FS::ext2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Ext3, new FS::ext3(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Ext4, new FS::ext4(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Extended, new FS::extended(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::F2fs, new FS::f2fs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Fat12, new FS::fat12(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Fat16, new FS::fat16(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Fat32, new FS::fat32(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Hfs, new FS::hfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::HfsPlus, new FS::hfsplus(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Hpfs, new FS::hpfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Iso9660, new FS::iso9660(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Jfs, new FS::jfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::LinuxRaidMember, new FS::linuxraidmember(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Luks, new FS::luks(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Luks2, new FS::luks2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Minix, new FS::minix(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Nilfs2, new FS::nilfs2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Ntfs, new FS::ntfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Ocfs2, new FS::ocfs2(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::ReiserFS, new FS::reiserfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Reiser4, new FS::reiser4(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Udf, new FS::udf(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Ufs, new FS::ufs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Unformatted, new FS::unformatted(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Unknown, new FS::unknown(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Xfs, new FS::xfs(-1, -1, -1, QString()));
-    m_FileSystems.insert(FileSystem::Type::Zfs, new FS::zfs(-1, -1, -1, QString()));
-
-    for (const auto &fs : FileSystemFactory::map())
-        fs->init();
+    m_FileSystems = fileSystems;
 
     CoreBackendManager::self()->backend()->initFSSupport();
 }
