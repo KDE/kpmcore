@@ -85,7 +85,7 @@ bool ntfs::supportToolFound() const
 
 FileSystem::SupportTool ntfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("ntfs-3g"), QUrl(QStringLiteral("http://www.tuxera.com/community/ntfs-3g-download/")));
+    return SupportTool(QStringLiteral("ntfs-3g"), QUrl(QStringLiteral("https://www.tuxera.com/community/open-source-ntfs-3g/")));
 }
 
 qint64 ntfs::minCapacity() const

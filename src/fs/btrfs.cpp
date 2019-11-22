@@ -86,7 +86,7 @@ bool btrfs::supportToolFound() const
 
 FileSystem::SupportTool btrfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("btrfs-tools"), QUrl(QStringLiteral("http://btrfs.wiki.kernel.org/")));
+    return SupportTool(QStringLiteral("btrfs-tools"), QUrl(QStringLiteral("https://btrfs.wiki.kernel.org/")));
 }
 
 qint64 btrfs::minCapacity() const

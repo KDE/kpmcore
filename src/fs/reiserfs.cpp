@@ -80,7 +80,7 @@ bool reiserfs::supportToolFound() const
 
 FileSystem::SupportTool reiserfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("reiserfsprogs"), QUrl(QStringLiteral("http://www.kernel.org/pub/linux/utils/fs/reiserfs/")));
+    return SupportTool(QStringLiteral("reiserfsprogs"), QUrl(QStringLiteral("https://reiser4.wiki.kernel.org/index.php/Reiserfsprogs")));
 }
 
 qint64 reiserfs::minCapacity() const

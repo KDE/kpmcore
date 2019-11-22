@@ -68,7 +68,7 @@ bool hfsplus::supportToolFound() const
 
 FileSystem::SupportTool hfsplus::supportToolName() const
 {
-    return SupportTool(QStringLiteral("diskdev_cmds"), QUrl(QStringLiteral("http://opendarwin.org")));
+    return SupportTool(QStringLiteral("diskdev_cmds"), QUrl(QStringLiteral("https://opensource.apple.com/tarballs/diskdev_cmds/")));
 }
 
 qint64 hfsplus::maxCapacity() const

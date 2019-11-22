@@ -79,7 +79,7 @@ bool exfat::supportToolFound() const
 
 FileSystem::SupportTool exfat::supportToolName() const
 {
-    return SupportTool(QStringLiteral("exfat-utils"), QUrl(QStringLiteral("http://code.google.com/p/exfat/")));
+    return SupportTool(QStringLiteral("exfat-utils"), QUrl(QStringLiteral("https://github.com/relan/exfat")));
 }
 
 qint64 exfat::maxCapacity() const

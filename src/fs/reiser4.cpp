@@ -68,13 +68,13 @@ bool reiser4::supportToolFound() const
 
 FileSystem::SupportTool reiser4::supportToolName() const
 {
-    return SupportTool(QStringLiteral("reiser4progs"), QUrl(QStringLiteral("http://www.kernel.org/pub/linux/utils/fs/reiser4/reiser4progs/")));
+    return SupportTool(QStringLiteral("reiser4progs"), QUrl(QStringLiteral("https://github.com/edward6/reiser4progs")));
 }
 
 qint64 reiser4::maxCapacity() const
 {
     // looks like it's actually unknown. see
-    // http://en.wikipedia.org/wiki/Comparison_of_file_systems
+    // https://en.wikipedia.org/wiki/Comparison_of_file_systems
     return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 

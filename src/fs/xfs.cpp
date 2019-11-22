@@ -78,7 +78,7 @@ bool xfs::supportToolFound() const
 
 FileSystem::SupportTool xfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("xfsprogs"), QUrl(QStringLiteral("http://oss.sgi.com/projects/xfs/")));
+    return SupportTool(QStringLiteral("xfsprogs"), QUrl(QStringLiteral("https://xfs.org/index.php/Getting_the_latest_source_code")));
 }
 
 qint64 xfs::minCapacity() const
@@ -153,7 +153,7 @@ bool xfs::copy(Report& report, const QString& targetDeviceNode, const QString& s
 
     // xfs_copy behaves a little strangely. It apparently kills itself at the end of main, causing QProcess
     // to report that it crashed.
-    // See http://oss.sgi.com/archives/xfs/2004-11/msg00169.html
+    // See https://marc.info/?l=linux-xfs&m=110178337825926&w=2
     // So we cannot rely on QProcess::exitStatus() and thus not on ExternalCommand::run() returning true.
 
     cmd.run(-1);

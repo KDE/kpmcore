@@ -67,7 +67,7 @@ bool hfs::supportToolFound() const
 
 FileSystem::SupportTool hfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("hfsutils"), QUrl(QStringLiteral("http://www.mars.org/home/rob/proj/hfs/")));
+    return SupportTool(QStringLiteral("hfsutils"), QUrl(QStringLiteral("https://www.mars.org/home/rob/proj/hfs/")));
 }
 
 

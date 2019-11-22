@@ -91,7 +91,7 @@ bool nilfs2::supportToolFound() const
 
 FileSystem::SupportTool nilfs2::supportToolName() const
 {
-    return SupportTool(QStringLiteral("nilfs2-utils"), QUrl(QStringLiteral("http://code.google.com/p/nilfs2/")));
+    return SupportTool(QStringLiteral("nilfs2-utils"), QUrl(QStringLiteral("https://github.com/nilfs-dev/nilfs-utils")));
 }
 
 qint64 nilfs2::minCapacity() const

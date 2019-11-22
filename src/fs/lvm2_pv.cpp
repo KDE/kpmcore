@@ -94,7 +94,7 @@ bool lvm2_pv::supportToolFound() const
 
 FileSystem::SupportTool lvm2_pv::supportToolName() const
 {
-    return SupportTool(QStringLiteral("lvm2"), QUrl(QStringLiteral("http://sourceware.org/lvm2/")));
+    return SupportTool(QStringLiteral("lvm2"), QUrl(QStringLiteral("https://sourceware.org/lvm2/")));
 }
 
 qint64 lvm2_pv::maxCapacity() const

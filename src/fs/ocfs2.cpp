@@ -84,7 +84,7 @@ bool ocfs2::supportToolFound() const
 
 FileSystem::SupportTool ocfs2::supportToolName() const
 {
-    return SupportTool(QStringLiteral("ocfs2-tools"), QUrl(QStringLiteral("http://oss.oracle.com/projects/ocfs2-tools/")));
+    return SupportTool(QStringLiteral("ocfs2-tools"), QUrl(QStringLiteral("https://oss.oracle.com/projects/ocfs2-tools/")));
 }
 
 qint64 ocfs2::minCapacity() const

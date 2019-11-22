@@ -73,7 +73,7 @@ bool linuxswap::supportToolFound() const
 
 FileSystem::SupportTool linuxswap::supportToolName() const
 {
-    return SupportTool(QStringLiteral("util-linux"), QUrl(QStringLiteral("http://www.kernel.org/pub/linux/utils/util-linux-ng/")));
+    return SupportTool(QStringLiteral("util-linux"), QUrl(QStringLiteral("https://github.com/karelzak/util-linux")));
 }
 
 int linuxswap::maxLabelLength() const

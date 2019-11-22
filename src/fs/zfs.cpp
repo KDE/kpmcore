@@ -72,7 +72,7 @@ bool zfs::supportToolFound() const
 
 FileSystem::SupportTool zfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("zfs"), QUrl(QStringLiteral("http://zfsonlinux.org/")));
+    return SupportTool(QStringLiteral("zfs"), QUrl(QStringLiteral("https://zfsonlinux.org/")));
 }
 
 qint64 zfs::minCapacity() const
