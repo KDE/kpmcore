@@ -41,7 +41,7 @@ public:
 public:
     const QString &devicePath() const
     {
-        return m_DevicePath; /**< @return the device path that SMART must analyse */
+        return m_DevicePath; /**< @return the device path that SMART must analyze */
     }
 
     SmartDiskInformation *diskInformation() const

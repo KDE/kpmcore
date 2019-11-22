@@ -31,7 +31,7 @@
 #include <QString>
 
 /** Creates a new SmartParser object
-    @param device_path device path that indicates the device that SMART must analyse
+    @param device_path device path that indicates the device that SMART must analyze
 */
 SmartParser::SmartParser(const QString &device_path) :
     m_DevicePath(device_path),
