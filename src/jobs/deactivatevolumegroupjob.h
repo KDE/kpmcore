@@ -30,7 +30,7 @@ class QString;
 class DeactivateVolumeGroupJob : public Job
 {
 public:
-    DeactivateVolumeGroupJob(VolumeManagerDevice& dev);
+    explicit DeactivateVolumeGroupJob(VolumeManagerDevice& dev);
 
 public:
     bool run(Report& parent) override;

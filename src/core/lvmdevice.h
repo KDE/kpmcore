@@ -48,7 +48,7 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
     friend class VolumeManagerDevice;
 
 public:
-    LvmDevice(const QString& name, const QString& iconName = QString());
+    explicit LvmDevice(const QString& name, const QString& iconName = QString());
     ~LvmDevice();
 
 public:

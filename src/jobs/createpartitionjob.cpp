@@ -59,7 +59,7 @@ bool CreatePartitionJob::run(Report& parent)
             if (backendPartitionTable) {
                 QString partitionPath = backendPartitionTable->createPartition(*report, partition());
 
-                if (partitionPath != QString()) {
+                if (!partitionPath.isEmpty()) {
                     rval = true;
                     partition().setPartitionPath(partitionPath);
                     partition().setState(Partition::State::None);

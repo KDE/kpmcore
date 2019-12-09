@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+#include "util/externalcommand.h"
 #include "backend/corebackendmanager.h"
 #include "core/device.h"
 #include "core/copysource.h"
@@ -24,7 +25,6 @@
 #include "core/copysourcedevice.h"
 #include "core/copytargetdevice.h"
 #include "util/globallog.h"
-#include "util/externalcommand.h"
 #include "util/report.h"
 
 #include "externalcommandhelper_interface.h"

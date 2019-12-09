@@ -16,9 +16,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
-#include "core/device_p.h"
 #include "core/volumemanagerdevice.h"
 #include "core/volumemanagerdevice_p.h"
+#include "core/device_p.h"
 #include "core/lvmdevice.h"
 #include "core/raid/softwareraid.h"
 

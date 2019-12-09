@@ -36,7 +36,7 @@ public:
         Recovery,
     };
 
-    SoftwareRAID(const QString& name,
+    explicit SoftwareRAID(const QString& name,
                  SoftwareRAID::Status status = SoftwareRAID::Status::Active,
                  const QString& iconName = QString());
 

@@ -32,7 +32,7 @@ class SmartDiskInformation;
 class SmartParser
 {
 public:
-    SmartParser(const QString &device_path);
+    explicit SmartParser(const QString &device_path);
     ~SmartParser();
 
 public:

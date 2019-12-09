@@ -36,7 +36,7 @@ class QString;
 class CopyTargetFile : public CopyTarget
 {
 public:
-    CopyTargetFile(const QString& filename);
+    explicit CopyTargetFile(const QString& filename);
 
 public:
     bool open() override;

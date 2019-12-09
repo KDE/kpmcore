@@ -171,7 +171,7 @@ Partition* LvmDevice::scanPartition(const QString& lvPath, PartitionTable* pTabl
         mountPoint = FileSystem::detectMountPoint(fs, lvPath);
         mounted = FileSystem::detectMountStatus(fs, lvPath);
 
-        if (mountPoint != QString() && fs->type() != FileSystem::Type::LinuxSwap) {
+        if (!mountPoint.isEmpty() && fs->type() != FileSystem::Type::LinuxSwap) {
             const QStorageInfo storage = QStorageInfo(mountPoint);
             if (logicalSize() > 0 && fs->type() != FileSystem::Type::Luks && mounted && storage.isValid())
                 fs->setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / logicalSize() );

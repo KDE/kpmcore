@@ -36,7 +36,7 @@ class CopyTarget;
 class CopySourceFile : public CopySource
 {
 public:
-    CopySourceFile(const QString& filename);
+    explicit CopySourceFile(const QString& filename);
 
 public:
     bool open() override;

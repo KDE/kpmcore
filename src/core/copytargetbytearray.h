@@ -34,7 +34,7 @@
 class CopyTargetByteArray : public CopyTarget
 {
 public:
-    CopyTargetByteArray(QByteArray& array);
+    explicit CopyTargetByteArray(QByteArray& array);
 
 public:
     bool open() override {

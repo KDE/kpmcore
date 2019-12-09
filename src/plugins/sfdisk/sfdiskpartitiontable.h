@@ -32,7 +32,7 @@ class Partition;
 class SfdiskPartitionTable : public CoreBackendPartitionTable
 {
 public:
-    SfdiskPartitionTable(const Device *d);
+    explicit SfdiskPartitionTable(const Device *d);
     ~SfdiskPartitionTable();
 
 public:

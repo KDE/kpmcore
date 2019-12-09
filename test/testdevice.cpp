@@ -17,8 +17,8 @@
  
  //  SPDX-License-Identifier: GPL-3.0+
 
-#include "helpers.h"
 #include "testdevice.h" 
+#include "helpers.h"
 
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
@@ -81,7 +81,7 @@ void TestDevice::testDeviceName()
         exit(EXIT_FAILURE);
     } else {
         for (const auto &device : devices) {
-            if (device->name() == QString())
+            if (device->name().isEmpty())
                 exit(EXIT_FAILURE);
         }
     }

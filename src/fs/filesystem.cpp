@@ -17,9 +17,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+#include "fs/filesystem.h"
 #include "core/fstab.h"
 
-#include "fs/filesystem.h"
 #include "fs/lvm2_pv.h"
 
 #include "backend/corebackend.h"
@@ -174,7 +174,7 @@ bool FileSystem::detectMountStatus(FileSystem* fs, const QString& partitionPath)
     bool mounted = false;
 
     if (fs->type() == FileSystem::Type::Lvm2_PV) {
-        mounted = FS::lvm2_pv::getVGName(partitionPath) != QString();
+        mounted = !FS::lvm2_pv::getVGName(partitionPath).isEmpty();
     } else {
         mounted = isMounted(partitionPath);
     }

@@ -46,7 +46,7 @@ public:
     };
 
 public:
-    SmartAttribute(const SmartAttributeParsedData& a);
+    explicit SmartAttribute(const SmartAttributeParsedData& a);
 
 public:
     qint32 id() const {

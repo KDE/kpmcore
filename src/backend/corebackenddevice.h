@@ -39,7 +39,7 @@ class Report;
 class CoreBackendDevice
 {
 public:
-    CoreBackendDevice(const QString& deviceNode);
+    explicit CoreBackendDevice(const QString& deviceNode);
     virtual ~CoreBackendDevice() {}
 
 public:
