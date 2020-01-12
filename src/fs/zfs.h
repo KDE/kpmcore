@@ -38,7 +38,7 @@ namespace FS
 class LIBKPMCORE_EXPORT zfs : public FileSystem
 {
 public:
-    zfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    zfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
 
 public:
     void init() override;

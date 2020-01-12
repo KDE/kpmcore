@@ -32,7 +32,7 @@ namespace FS
 class LIBKPMCORE_EXPORT unknown : public FileSystem
 {
 public:
-    unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
 
 public:
     bool supportToolFound() const override {

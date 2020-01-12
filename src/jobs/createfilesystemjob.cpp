@@ -54,10 +54,11 @@ bool CreateFileSystemJob::run(Report& parent)
 
     bool createResult;
     if (partition().fileSystem().supportCreate() == FileSystem::cmdSupportFileSystem) {
-        if (partition().fileSystem().supportCreateWithLabel() == FileSystem::cmdSupportFileSystem)
+        if (partition().fileSystem().supportCreateWithLabel() == FileSystem::cmdSupportFileSystem) {
             createResult = partition().fileSystem().createWithLabel(*report, partition().deviceNode(), m_Label);
-        else
+        } else {
             createResult = partition().fileSystem().create(*report, partition().deviceNode());
+        }
         if (createResult) {
             if (device().type() == Device::Type::Disk_Device || device().type() == Device::Type::SoftwareRAID_Device) {
                 std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());

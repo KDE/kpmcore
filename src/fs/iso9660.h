@@ -35,7 +35,7 @@ namespace FS
 class LIBKPMCORE_EXPORT iso9660 : public FileSystem
 {
 public:
-    iso9660(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    iso9660(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
 
 };
 

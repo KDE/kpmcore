@@ -41,8 +41,8 @@ FileSystem::CommandSupportType reiserfs::m_SetLabel = FileSystem::cmdSupportNone
 FileSystem::CommandSupportType reiserfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType reiserfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-reiserfs::reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::ReiserFS)
+reiserfs::reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::ReiserFS)
 {
 }
 

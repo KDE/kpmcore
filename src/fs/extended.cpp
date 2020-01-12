@@ -24,8 +24,8 @@ FileSystem::CommandSupportType extended::m_Grow = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType extended::m_Shrink = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType extended::m_Move = FileSystem::cmdSupportCore;
 
-extended::extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Extended)
+extended::extended(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Extended)
 {
 }
 

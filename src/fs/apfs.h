@@ -34,7 +34,7 @@ namespace FS
 class LIBKPMCORE_EXPORT apfs : public FileSystem
 {
 public:
-    apfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    apfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
 
 public:
     CommandSupportType supportMove() const override {

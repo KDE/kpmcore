@@ -33,8 +33,7 @@ namespace FS
 class LIBKPMCORE_EXPORT fat16 : public fat12
 {
 public:
-    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
-    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
+    fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {}, FileSystem::Type type = FileSystem::Type::Fat16);
 
 public:
     void init() override;

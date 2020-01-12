@@ -24,8 +24,8 @@
 
 namespace FS
 {
-ext3::ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    ext2(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ext3)
+ext3::ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+    ext2(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Ext3)
 {
 }
 
@@ -36,7 +36,23 @@ qint64 ext3::maxCapacity() const
 
 bool ext3::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.ext3"), QStringList() << QStringLiteral("-qF") << deviceNode);
+    QStringList args = QStringList();
+
+    if (!this->features().isEmpty()) {
+        QStringList feature_list = QStringList();
+        for (auto f : this->features()) {
+            if (f.type() == FSFeature::Type::Bool) {
+                if (f.bValue())
+                    feature_list << f.name();
+                else
+                    feature_list << (QStringLiteral("^") +  f.name());
+            }
+        }
+        args << QStringLiteral("-O") << feature_list.join(QStringLiteral(","));
+    }
+    args << QStringLiteral("-qF") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ext3"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

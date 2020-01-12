@@ -20,7 +20,10 @@
 #ifndef KPMCORE_FILESYSTEM_H
 #define KPMCORE_FILESYSTEM_H
 
+
 #include "util/libpartitionmanagerexport.h"
+
+#include "fs/feature.h"
 
 #include <QList>
 #include <QStringList>
@@ -113,6 +116,7 @@ public:
 
 protected:
     FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
+    FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features, FileSystem::Type type);
 
 public:
     virtual ~FileSystem();
@@ -147,6 +151,9 @@ public:
         return cmdSupportNone;    /**< @return CommandSupportType for creating */
     }
     virtual CommandSupportType supportCreateWithLabel() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for creating */
+    }
+    virtual CommandSupportType supportCreateWithFeatures() const {
         return cmdSupportNone;    /**< @return CommandSupportType for creating */
     }
     virtual CommandSupportType supportGrow() const {
@@ -263,6 +270,18 @@ public:
     /**< @return the FileSystem's label */
     const QString& label() const;
 
+    /**< @return the FileSystem's available features */
+    const QList<FSFeature>& availableFeatures() const;
+
+    /**< @return the FileSystem's features */
+    const QList<FSFeature>& features() const;
+
+    /**< @param feature the feature to add to the FileSystem */
+    void addFeature(const FSFeature& feature);
+
+    /**< @param features the list of features to add to the FileSystem */
+    void addFeatures(const QList<FSFeature>& features);
+
     /**< @return the sector size in the underlying Device */
     qint64 sectorSize() const;
 
@@ -286,6 +305,8 @@ public:
 
 protected:
     static bool findExternal(const QString& cmdName, const QStringList& args = QStringList(), int exptectedCode = 1);
+    void addAvailableFeature(const FSFeature& feature);
+    void addAvailableFeature(const QString& name, FSFeature::Type type = FSFeature::Type::Bool);
 
     std::unique_ptr<FileSystemPrivate> d;
 };

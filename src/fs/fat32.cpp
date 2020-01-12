@@ -26,8 +26,8 @@
 
 namespace FS
 {
-fat32::fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    fat16(firstsector, lastsector, sectorsused, label, FileSystem::Type::Fat32)
+fat32::fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+    fat16(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Fat32)
 {
 }
 
@@ -43,8 +43,7 @@ qint64 fat32::maxCapacity() const
 
 bool fat32::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.fat"), { QStringLiteral("-F32"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
-    return cmd.run(-1) && cmd.exitCode() == 0;
+    return createWithFatSize(report, deviceNode, 32);
 }
 
 bool fat32::updateUUID(Report& report, const QString& deviceNode) const

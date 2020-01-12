@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT fat12 : public FileSystem
 {
 public:
-    fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Type::Fat12);
+    fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {}, FileSystem::Type t = FileSystem::Type::Fat12);
 
 public:
     void init() override;
@@ -91,6 +91,9 @@ public:
     QValidator* labelValidator(QObject *parent) const override;
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
+
+protected:
+    bool createWithFatSize(Report &report, const QString& deviceNode, int fatSize);
 
 public:
     static CommandSupportType m_GetUsed;

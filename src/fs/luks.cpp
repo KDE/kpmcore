@@ -63,8 +63,9 @@ luks::luks(qint64 firstsector,
            qint64 lastsector,
            qint64 sectorsused,
            const QString& label,
+           const QList<FSFeature>& features,
            FileSystem::Type t)
-    : FileSystem(firstsector, lastsector, sectorsused, label, t)
+    : FileSystem(firstsector, lastsector, sectorsused, label, features, t)
     , m_innerFs(nullptr)
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)

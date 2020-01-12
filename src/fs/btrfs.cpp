@@ -43,8 +43,8 @@ FileSystem::CommandSupportType btrfs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType btrfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType btrfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-btrfs::btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Btrfs)
+btrfs::btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Btrfs)
 {
 }
 
@@ -65,6 +65,22 @@ void btrfs::init()
     m_GetLabel = cmdSupportCore;
     m_Backup = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
+
+    if (m_Create == cmdSupportFileSystem) {
+        ExternalCommand cmd(QStringLiteral("mkfs.btrfs"), QStringList() << QStringLiteral("-O") << QStringLiteral("list-all"));
+        if (cmd.run(-1) && cmd.exitCode() == 0) {
+            QStringList lines = cmd.output().split(QStringLiteral("\n"));
+
+            // First line is introductory text, we don't need it
+            lines.removeFirst();
+
+            for (auto l : lines) {
+                if (!l.isEmpty())
+                    addAvailableFeature(l.split(QStringLiteral(" ")).first());
+            }
+        }
+    }
+
 }
 
 bool btrfs::supportToolFound() const
@@ -128,7 +144,23 @@ bool btrfs::check(Report& report, const QString& deviceNode) const
 
 bool btrfs::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), { QStringLiteral("--force"), deviceNode });
+    QStringList args = QStringList();
+
+    if (!this->features().isEmpty()) {
+        QStringList feature_list = QStringList();
+        for (auto f : this->features()) {
+            if (f.type() == FSFeature::Type::Bool) {
+                if (f.bValue())
+                    feature_list << f.name();
+                else
+                    feature_list << (QStringLiteral("^") +  f.name());
+            }
+        }
+        args << QStringLiteral("--features") << feature_list.join(QStringLiteral(","));
+    }
+    args << QStringLiteral("--force") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

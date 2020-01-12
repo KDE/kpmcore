@@ -39,8 +39,8 @@ FileSystem::CommandSupportType ext2::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ext2::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ext2::m_GetUUID = FileSystem::cmdSupportNone;
 
-ext2::ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t) :
-    FileSystem(firstsector, lastsector, sectorsused, label, t)
+ext2::ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features, FileSystem::Type t) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, t)
 {
 }
 
@@ -58,6 +58,37 @@ void ext2::init()
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_Backup = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
+
+    if (m_Create == cmdSupportFileSystem) {
+        addAvailableFeature(QStringLiteral("64bit"));
+        addAvailableFeature(QStringLiteral("bigalloc"));
+        addAvailableFeature(QStringLiteral("casefold"));
+        addAvailableFeature(QStringLiteral("dir_index"));
+        addAvailableFeature(QStringLiteral("dir_nlink"));
+        addAvailableFeature(QStringLiteral("ea_inode"));
+        addAvailableFeature(QStringLiteral("encrypt"));
+        addAvailableFeature(QStringLiteral("ext_attr"));
+        addAvailableFeature(QStringLiteral("extent"));
+        addAvailableFeature(QStringLiteral("extra_isize"));
+        addAvailableFeature(QStringLiteral("filetype"));
+        addAvailableFeature(QStringLiteral("flex_bg"));
+        addAvailableFeature(QStringLiteral("has_journal"));
+        addAvailableFeature(QStringLiteral("huge_file"));
+        addAvailableFeature(QStringLiteral("inline_data"));
+        addAvailableFeature(QStringLiteral("journal_dev"));
+        addAvailableFeature(QStringLiteral("large_dir"));
+        addAvailableFeature(QStringLiteral("large_file"));
+        addAvailableFeature(QStringLiteral("metadata_csum"));
+        addAvailableFeature(QStringLiteral("metadata_csum_seed"));
+        addAvailableFeature(QStringLiteral("meta_bg"));
+        addAvailableFeature(QStringLiteral("mmp"));
+        addAvailableFeature(QStringLiteral("project"));
+        addAvailableFeature(QStringLiteral("quota"));
+        addAvailableFeature(QStringLiteral("resize_inode"));
+        addAvailableFeature(QStringLiteral("sparse_super"));
+        addAvailableFeature(QStringLiteral("sparse_super2"));
+        addAvailableFeature(QStringLiteral("uninit_bg"));
+    }
 }
 
 bool ext2::supportToolFound() const
@@ -133,7 +164,23 @@ bool ext2::check(Report& report, const QString& deviceNode) const
 
 bool ext2::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.ext2"), { QStringLiteral("-qF"), deviceNode });
+    QStringList args = QStringList();
+
+    if (!this->features().isEmpty()) {
+        QStringList feature_list = QStringList();
+        for (auto f : this->features()) {
+            if (f.type() == FSFeature::Type::Bool) {
+                if (f.bValue())
+                    feature_list << f.name();
+                else
+                    feature_list << (QStringLiteral("^") +  f.name());
+            }
+        }
+        args << QStringLiteral("-O") << feature_list.join(QStringLiteral(","));
+    }
+    args << QStringLiteral("-qF") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ext2"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

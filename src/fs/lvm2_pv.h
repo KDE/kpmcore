@@ -89,7 +89,7 @@ class LIBKPMCORE_EXPORT lvm2_pv : public FileSystem
 {
 
 public:
-    lvm2_pv(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    lvm2_pv(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
 
 public:
     void init() override;
