@@ -32,8 +32,8 @@ set(BLKID_MIN_VERSION "2.33.2")
 # Qca plugin (botan or ossl)
 
 set(VERSION_MAJOR "4")
-set(VERSION_MINOR "0")
-set(VERSION_RELEASE "1")
+set(VERSION_MINOR "1")
+set(VERSION_RELEASE "0")
 set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE})
 set(SOVERSION "8")
 add_definitions(-D'VERSION="${VERSION}"') #"
