@@ -18,6 +18,7 @@
 #ifndef KPMCORE_FILESYSTEMFACTORY_H
 #define KPMCORE_FILESYSTEMFACTORY_H
 
+#include "fs/feature.h"
 #include "fs/filesystem.h"
 
 #include "util/libpartitionmanagerexport.h"
