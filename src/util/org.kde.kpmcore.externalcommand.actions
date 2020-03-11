@@ -56,6 +56,7 @@ Description[sk]=Práva správcu sú potrebné na správu diskov
 Description[sv]=Administratörsprivilegier krävs för att hantera diskar
 Description[uk]=Для керування дисками потрібні права доступу адміністратора (root)
 Description[x-test]=xxAdministrative privileges are required to manage disksxx
+Description[zh_CN]=管理磁盘需要管理权限
 Description[zh_TW]=管理硬碟需要管理員權限
 Policy=auth_admin
 Persistence=session
