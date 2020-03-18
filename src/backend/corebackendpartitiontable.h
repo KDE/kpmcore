@@ -115,6 +115,17 @@ public:
     virtual bool setPartitionLabel(Report& report, const Partition& partition, const QString& label) = 0;
 
     /**
+     * Set the UUID of a partition in the partition table (GPT only).
+     * The partition UUID is known as PARTUUID by several utilities. The device-manager links
+     * the device under /dev/disk/by-partuuid/<uuid>.
+     * @param report the report to write information to
+     * @param partition the partition to set the UUID for
+     * @param uuid the new UUID for the partition
+     * @return true on success
+     */
+    virtual bool setPartitionUUID(Report& report, const Partition& partition, const QString& uuid) = 0;
+
+    /**
      * Set the system type (e.g. 83 for Linux) of a partition. The type to set is taken from
      * the partition's file system.
      * @param report the report to write information to

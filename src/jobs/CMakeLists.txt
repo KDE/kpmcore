@@ -7,6 +7,7 @@ set(JOBS_SRC
     jobs/createpartitionjob.cpp
     jobs/createpartitiontablejob.cpp
     jobs/setpartitionlabeljob.cpp
+    jobs/setpartitionuuidjob.cpp
     jobs/createvolumegroupjob.cpp
     jobs/removevolumegroupjob.cpp
     jobs/deactivatevolumegroupjob.cpp

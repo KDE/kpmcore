@@ -222,6 +222,15 @@ bool SfdiskPartitionTable::setPartitionLabel(Report& report, const Partition& pa
     return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
 }
 
+bool SfdiskPartitionTable::setPartitionUUID(Report& report, const Partition& partition, const QString& uuid)
+{
+    if (uuid.isEmpty())
+        return true;
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-uuid"), m_device->deviceNode(), QString::number(partition.number()),
+                uuid } );
+    return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
+}
+
 bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
     QString partitionType = partition.type();
