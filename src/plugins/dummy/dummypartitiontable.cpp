@@ -108,6 +108,15 @@ bool DummyPartitionTable::setPartitionSystemType(Report& report, const Partition
     return true;
 }
 
+bool DummyPartitionTable::setPartitionLabel(Report& report, const Partition& partition, const QString& label)
+{
+    Q_UNUSED(report)
+    Q_UNUSED(partition)
+    Q_UNUSED(label)
+
+    return true;
+}
+
 bool DummyPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
 {
     Q_UNUSED(report)

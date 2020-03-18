@@ -213,6 +213,15 @@ static QLatin1String getPartitionType(FileSystem::Type t, PartitionTable::TableT
     return QLatin1String();
 }
 
+bool SfdiskPartitionTable::setPartitionLabel(Report& report, const Partition& partition, const QString& label)
+{
+    if (label.isEmpty())
+        return true;
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-label"), m_device->deviceNode(), QString::number(partition.number()),
+                label } );
+    return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
+}
+
 bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
     QString partitionType = getPartitionType(partition.fileSystem().type(), m_device->partitionTable()->type());

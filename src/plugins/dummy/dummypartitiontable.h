@@ -46,6 +46,7 @@ public:
     bool clobberFileSystem(Report& report, const Partition& partition) override;
     bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength) override;
     FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector) override;
+    bool setPartitionLabel(Report& report, const Partition& partition, const QString& label) override;
     bool setPartitionSystemType(Report& report, const Partition& partition) override;
     bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state) override;
 };
