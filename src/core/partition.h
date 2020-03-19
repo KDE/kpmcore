@@ -125,6 +125,9 @@ public:
     const QString& label() const {
         return m_Label;    /**< @return the GPT Partition label */
     }
+    const QString& type() const {
+        return m_Type;    /**< @return the GPT Partition type */
+    }
     const QString& uuid() const {
         return m_UUID;    /**< @return the GPT Partition UUID */
     }
@@ -210,6 +213,9 @@ public:
     void setLabel(const QString& s) {
         m_Label = s;    /**< @param s the new label */
     }
+    void setType(const QString& s) {
+        m_Type = s;    /**< @param s the new type */
+    }
     void setUUID(const QString& s) {
         m_UUID = s;    /**< @param s the new UUID */
     }
@@ -266,6 +272,7 @@ private:
     qint64 m_LastSector;
     QString m_DevicePath;
     QString m_Label;
+    QString m_Type;
     QString m_UUID;
     QString m_PartitionPath;
     QString m_MountPoint;

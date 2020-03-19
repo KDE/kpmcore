@@ -215,7 +215,9 @@ static QLatin1String getPartitionType(FileSystem::Type t, PartitionTable::TableT
 
 bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
-    QString partitionType = getPartitionType(partition.fileSystem().type(), m_device->partitionTable()->type());
+    QString partitionType = partition.type();
+    if (partitionType.isEmpty())
+        partitionType = getPartitionType(partition.fileSystem().type(), m_device->partitionTable()->type());
     if (partitionType.isEmpty())
         return true;
     ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_device->deviceNode(), QString::number(partition.number()),
