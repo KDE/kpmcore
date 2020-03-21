@@ -40,7 +40,7 @@ namespace FS
 class LIBKPMCORE_EXPORT fat32 : public fat16
 {
 public:
-    fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
+    fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     bool create(Report& report, const QString& deviceNode) override;

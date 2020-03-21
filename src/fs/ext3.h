@@ -40,7 +40,7 @@ namespace FS
 class LIBKPMCORE_EXPORT ext3 : public ext2
 {
 public:
-    ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
+    ext3(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     bool create(Report& report, const QString& deviceNode) override;

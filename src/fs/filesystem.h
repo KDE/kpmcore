@@ -23,8 +23,7 @@
 
 #include "util/libpartitionmanagerexport.h"
 
-#include "fs/feature.h"
-
+#include <QVariant>
 #include <QList>
 #include <QStringList>
 #include <QString>
@@ -116,7 +115,7 @@ public:
 
 protected:
     FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
-    FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features, FileSystem::Type type);
+    FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features, FileSystem::Type type);
 
 public:
     virtual ~FileSystem();
@@ -271,16 +270,17 @@ public:
     const QString& label() const;
 
     /**< @return the FileSystem's available features */
-    const QList<FSFeature>& availableFeatures() const;
+    const QStringList& availableFeatures() const;
 
     /**< @return the FileSystem's features */
-    const QList<FSFeature>& features() const;
+    const QVariantMap& features() const;
 
-    /**< @param feature the feature to add to the FileSystem */
-    void addFeature(const FSFeature& feature);
+    /**< @param the feature's name to add to the FileSystem */
+    /**< @param the feature's value to add to the FileSystem */
+    void addFeature(const QString& name, const QVariant& value);
 
     /**< @param features the list of features to add to the FileSystem */
-    void addFeatures(const QList<FSFeature>& features);
+    void addFeatures(const QVariantMap& features);
 
     /**< @return the sector size in the underlying Device */
     qint64 sectorSize() const;
@@ -305,8 +305,7 @@ public:
 
 protected:
     static bool findExternal(const QString& cmdName, const QStringList& args = QStringList(), int exptectedCode = 1);
-    void addAvailableFeature(const FSFeature& feature);
-    void addAvailableFeature(const QString& name, FSFeature::Type type = FSFeature::Type::Bool);
+    void addAvailableFeature(const QString& name);
 
     std::unique_ptr<FileSystemPrivate> d;
 };

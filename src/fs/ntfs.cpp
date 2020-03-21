@@ -48,7 +48,7 @@ FileSystem::CommandSupportType ntfs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ntfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ntfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-ntfs::ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+ntfs::ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Ntfs)
 {
 }

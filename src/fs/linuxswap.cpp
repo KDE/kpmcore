@@ -39,7 +39,7 @@ FileSystem::CommandSupportType linuxswap::m_SetLabel = FileSystem::cmdSupportNon
 FileSystem::CommandSupportType linuxswap::m_GetUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType linuxswap::m_UpdateUUID = FileSystem::cmdSupportNone;
 
-linuxswap::linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+linuxswap::linuxswap(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::LinuxSwap)
 {
 }

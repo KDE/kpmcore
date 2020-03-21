@@ -23,7 +23,7 @@ FileSystem::CommandSupportType bitlocker::m_Move = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType bitlocker::m_Copy = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType bitlocker::m_Backup = FileSystem::cmdSupportCore;
 
-bitlocker::bitlocker(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+bitlocker::bitlocker(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::BitLocker)
 {
 }

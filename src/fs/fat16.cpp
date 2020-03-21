@@ -31,7 +31,7 @@
 
 namespace FS
 {
-fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features, FileSystem::Type type) :
+fat16::fat16(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features, FileSystem::Type type) :
     fat12(firstsector, lastsector, sectorsused, label, features, type)
 {
 }
@@ -50,8 +50,8 @@ void fat16::init()
     m_GetUUID = cmdSupportCore;
 
     if (m_Create == cmdSupportFileSystem) {
-        addAvailableFeature(QStringLiteral("sector-size"), FSFeature::Type::Int);
-        addAvailableFeature(QStringLiteral("sectors-per-cluster"), FSFeature::Type::Int);
+        addAvailableFeature(QStringLiteral("sector-size"));
+        addAvailableFeature(QStringLiteral("sectors-per-cluster"));
     }
 }
 

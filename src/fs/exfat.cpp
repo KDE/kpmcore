@@ -38,7 +38,7 @@ FileSystem::CommandSupportType exfat::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType exfat::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType exfat::m_GetUUID = FileSystem::cmdSupportNone;
 
-exfat::exfat(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+exfat::exfat(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Exfat)
 {
 }

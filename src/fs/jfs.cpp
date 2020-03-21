@@ -39,7 +39,7 @@ FileSystem::CommandSupportType jfs::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType jfs::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType jfs::m_SetLabel = FileSystem::cmdSupportNone;
 
-jfs::jfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+jfs::jfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Jfs)
 {
 }

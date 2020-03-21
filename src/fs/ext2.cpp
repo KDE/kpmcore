@@ -39,7 +39,7 @@ FileSystem::CommandSupportType ext2::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ext2::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ext2::m_GetUUID = FileSystem::cmdSupportNone;
 
-ext2::ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features, FileSystem::Type t) :
+ext2::ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features, FileSystem::Type t) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, t)
 {
 }
@@ -168,12 +168,15 @@ bool ext2::create(Report& report, const QString& deviceNode)
 
     if (!this->features().isEmpty()) {
         QStringList feature_list = QStringList();
-        for (auto f : this->features()) {
-            if (f.type() == FSFeature::Type::Bool) {
-                if (f.bValue())
-                    feature_list << f.name();
-                else
-                    feature_list << (QStringLiteral("^") +  f.name());
+        for (const auto& k : this->features().keys()) {
+	    const auto& v = this->features().value(k);
+            if (v.type() == QVariant::Type::Bool) {
+                if (v.toBool())
+                    feature_list << k;
+		else
+                    feature_list << (QStringLiteral("^") +  k);
+            } else {
+                qWarning() << "Ignoring feature" << k << "of type" << v.type() << "; requires type QVariant::bool.";
             }
         }
         args << QStringLiteral("-O") << feature_list.join(QStringLiteral(","));

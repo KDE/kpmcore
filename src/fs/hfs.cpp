@@ -34,7 +34,7 @@ FileSystem::CommandSupportType hfs::m_Check = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfs::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfs::m_Backup = FileSystem::cmdSupportNone;
 
-hfs::hfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+hfs::hfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Hfs)
 {
 }

@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT ocfs2 : public FileSystem
 {
 public:
-    ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
+    ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     void init() override;
