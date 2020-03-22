@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT reiser4 : public FileSystem
 {
 public:
-    reiser4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
+    reiser4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     void init() override;

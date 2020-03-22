@@ -34,7 +34,7 @@ namespace FS
 class LIBKPMCORE_EXPORT bitlocker : public FileSystem
 {
 public:
-    bitlocker(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features = {});
+    bitlocker(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     CommandSupportType supportMove() const override {

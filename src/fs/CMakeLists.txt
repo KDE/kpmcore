@@ -11,7 +11,6 @@ set(FS_SRC
     fs/fat12.cpp
     fs/fat16.cpp
     fs/fat32.cpp
-    fs/feature.cpp
     fs/filesystem.cpp
     fs/filesystemfactory.cpp
     fs/hfs.cpp
@@ -51,7 +50,6 @@ set(FS_LIB_HDRS
     fs/fat12.h
     fs/fat16.h
     fs/fat32.h
-    fs/feature.h
     fs/filesystem.h
     fs/filesystemfactory.h
     fs/hfs.h

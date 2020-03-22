@@ -26,7 +26,7 @@
 
 namespace FS
 {
-fat32::fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+fat32::fat32(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     fat16(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Fat32)
 {
 }

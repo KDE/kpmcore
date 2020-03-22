@@ -49,7 +49,7 @@ FileSystem::CommandSupportType fat12::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType fat12::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType fat12::m_GetUUID = FileSystem::cmdSupportNone;
 
-fat12::fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features, FileSystem::Type t) :
+fat12::fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features, FileSystem::Type t) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, t)
 {
 }
@@ -66,8 +66,8 @@ void fat12::init()
     m_GetUUID = cmdSupportCore;
 
     if (m_Create == cmdSupportFileSystem) {
-        addAvailableFeature(QStringLiteral("sector-size"), FSFeature::Type::Int);
-        addAvailableFeature(QStringLiteral("sectors-per-cluster"), FSFeature::Type::Int);
+        addAvailableFeature(QStringLiteral("sector-size"));
+        addAvailableFeature(QStringLiteral("sectors-per-cluster"));
     }
 }
 
@@ -169,17 +169,18 @@ bool fat12::createWithFatSize(Report &report, const QString& deviceNode, int fat
     if (fatSize != 12 && fatSize != 16 && fatSize != 32)
         return false;
 
-    for (auto f : this->features()) {
-        if (f.name() == QStringLiteral("sector-size")) {
-            quint32 sectorSize = f.iValue();
+    for (const auto& k : this->features().keys()) {
+	const auto& v = this->features().value(k);
+        if (k == QStringLiteral("sector-size")) {
+            quint32 sectorSize = v.toInt();
 
             /* sectorSize has to be a power of 2 between 512 and 32768 */
             if (sectorSize >= 512 && sectorSize <= 32768 && sectorSize == qNextPowerOfTwo(sectorSize - 1))
                 args << QStringLiteral("-S%1").arg(sectorSize);
             else
                 qWarning() << QStringLiteral("FAT sector size %1 is invalid, using default").arg(sectorSize);
-        } else if (f.name() == QStringLiteral("sectors-per-cluster")) {
-            quint32 sectorsPerCluster = f.iValue();
+        } else if (k == QStringLiteral("sectors-per-cluster")) {
+            quint32 sectorsPerCluster = v.toInt();
 
             /* sectorsPerCluster has to be a power of 2 between 2 and 128 */
             if (sectorsPerCluster <= 128 && sectorsPerCluster == qNextPowerOfTwo(sectorsPerCluster - 1))

@@ -116,7 +116,7 @@ void FileSystemFactory::init()
     @param label the FileSystem's label
     @return pointer to the newly created FileSystem object or nullptr if FileSystem could not be created
 */
-FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorSize, qint64 sectorsused, const QString& label, const QList<FSFeature>& features, const QString& uuid)
+FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorSize, qint64 sectorsused, const QString& label, const QVariantMap& features, const QString& uuid)
 {
     FileSystem* fs = nullptr;
 

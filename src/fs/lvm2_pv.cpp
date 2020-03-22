@@ -42,7 +42,7 @@ FileSystem::CommandSupportType lvm2_pv::m_UpdateUUID = FileSystem::cmdSupportNon
 FileSystem::CommandSupportType lvm2_pv::m_GetUUID = FileSystem::cmdSupportNone;
 
 lvm2_pv::lvm2_pv(qint64 firstsector, qint64 lastsector,
-                 qint64 sectorsused, const QString& label, const QList<FSFeature>& features)
+                 qint64 sectorsused, const QString& label, const QVariantMap& features)
     : FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Lvm2_PV)
     , m_PESize(0)
     , m_TotalPE(0)

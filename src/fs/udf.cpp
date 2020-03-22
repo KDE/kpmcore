@@ -39,7 +39,7 @@ FileSystem::CommandSupportType udf::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType udf::m_Create = FileSystem::cmdSupportNone;
 bool udf::oldMkudffsVersion = false;
 
-udf::udf(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QList<FSFeature>& features) :
+udf::udf(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Udf)
 {
 }

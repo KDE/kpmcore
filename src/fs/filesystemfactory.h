@@ -18,7 +18,6 @@
 #ifndef KPMCORE_FILESYSTEMFACTORY_H
 #define KPMCORE_FILESYSTEMFACTORY_H
 
-#include "fs/feature.h"
 #include "fs/filesystem.h"
 
 #include "util/libpartitionmanagerexport.h"
@@ -42,7 +41,7 @@ private:
 
 public:
     static void init();
-    static FileSystem* create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorSize, qint64 sectorsused = -1, const QString& label = QString(), const QList<FSFeature>& features = {}, const QString& uuid = QString());
+    static FileSystem* create(FileSystem::Type t, qint64 firstsector, qint64 lastsector, qint64 sectorSize, qint64 sectorsused = -1, const QString& label = QString(), const QVariantMap& features = {}, const QString& uuid = QString());
     static FileSystem* create(const FileSystem& other);
     static FileSystem* cloneWithNewType(FileSystem::Type newType, const FileSystem& other);
     static const FileSystems& map();
