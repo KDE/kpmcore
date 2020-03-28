@@ -6,6 +6,7 @@ set(JOBS_SRC
     jobs/shredfilesystemjob.cpp
     jobs/createpartitionjob.cpp
     jobs/createpartitiontablejob.cpp
+    jobs/setpartitionlabeljob.cpp
     jobs/createvolumegroupjob.cpp
     jobs/removevolumegroupjob.cpp
     jobs/deactivatevolumegroupjob.cpp

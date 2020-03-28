@@ -24,6 +24,7 @@
 
 #include "jobs/createpartitionjob.h"
 #include "jobs/createfilesystemjob.h"
+#include "jobs/setpartitionlabeljob.h"
 #include "jobs/setfilesystemlabeljob.h"
 #include "jobs/setpartflagsjob.h"
 #include "jobs/checkfilesystemjob.h"
@@ -46,12 +47,18 @@ NewOperation::NewOperation(Device& d, Partition* p) :
     m_TargetDevice(d),
     m_NewPartition(p),
     m_CreatePartitionJob(new CreatePartitionJob(targetDevice(), newPartition())),
+    m_SetPartitionLabelJob(nullptr),
     m_CreateFileSystemJob(nullptr),
     m_SetPartFlagsJob(nullptr),
     m_SetFileSystemLabelJob(nullptr),
     m_CheckFileSystemJob(nullptr)
 {
     addJob(createPartitionJob());
+
+    if (!p->label().isEmpty()) {
+        m_SetPartitionLabelJob = new SetPartitionLabelJob(targetDevice(), newPartition(), p->label());
+        addJob(setPartitionLabelJob());
+    }
 
     const FileSystem& fs = newPartition().fileSystem();
 

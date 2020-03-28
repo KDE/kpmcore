@@ -30,6 +30,7 @@ class Device;
 class OperationStack;
 
 class CreatePartitionJob;
+class SetPartitionLabelJob;
 class CreateFileSystemJob;
 class SetFileSystemLabelJob;
 class SetPartFlagsJob;
@@ -83,6 +84,9 @@ protected:
     CreatePartitionJob* createPartitionJob() {
         return m_CreatePartitionJob;
     }
+    SetPartitionLabelJob* setPartitionLabelJob() {
+        return m_SetPartitionLabelJob;
+    }
     CreateFileSystemJob* createFileSystemJob() {
         return m_CreateFileSystemJob;
     }
@@ -100,6 +104,7 @@ private:
     Device& m_TargetDevice;
     Partition* m_NewPartition;
     CreatePartitionJob* m_CreatePartitionJob;
+    SetPartitionLabelJob* m_SetPartitionLabelJob;
     CreateFileSystemJob* m_CreateFileSystemJob;
     SetPartFlagsJob* m_SetPartFlagsJob;
     SetFileSystemLabelJob* m_SetFileSystemLabelJob;
