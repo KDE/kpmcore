@@ -1,3 +1,5 @@
+FAT12 support
+
 # KPMcore
 
 > KPMcore, the KDE Partition Manager core, is a library for examining
