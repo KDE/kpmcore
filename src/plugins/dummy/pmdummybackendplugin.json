@@ -54,7 +54,7 @@
         "Description[gl]": "Unha infraestrutura de probas para o xestor de particións de KDE.",
         "Description[id]": "Sebuah backend dumi Pengelola Partisi KDE untuk tujuan pengujian.",
         "Description[it]": "Un motore fittizio del gestore delle partizioni di KDE per scopi di prova.",
-        "Description[ko]": "테스트를 위한 KDE 파티션 관리자 더미 백엔드입니다.",
+        "Description[ko]": "테스트용 KDE 파티션 관리자 더미 백엔드입니다.",
         "Description[lt]": "KDE skaidinių tvarkyklės netikra galinė sąsaja skirta testavimui.",
         "Description[nl]": "Dummy backend van KDE-partitiebeheerder voor testdoeleinden",
         "Description[nn]": "Ein eksempelbakgrunnsmotor for KDE-partisjonshandtering, for testformål.",
