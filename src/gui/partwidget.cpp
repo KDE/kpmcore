@@ -93,20 +93,21 @@ void PartWidget::paintEvent(QPaintEvent*)
     if (partition() == nullptr)
         return;
 
-    const int usedPercentage = static_cast<int>(partition()->used() * 100 / partition()->capacity());
+    auto partitionCapacity = partition()->capacity();
+    if (partitionCapacity <= 0)
+        return;
+
+    const int usedPercentage = static_cast<int>(partition()->used() * 100 / partitionCapacity);
     const int w = width() * usedPercentage / 100;
 
     QPainter painter(this);
     painter.setRenderHints(QPainter::Antialiasing);
 
+    const QColor base = activeColor(m_fileSystemColorCode[ static_cast<int>(partition()->fileSystem().type()) ]);
     if (partition()->roles().has(PartitionRole::Extended)) {
-        drawGradient(&painter, activeColor(
-                         m_fileSystemColorCode[ static_cast<int>(partition()->fileSystem().type()) ]),
-                     QRect(0, 0, width(), height()));
+        drawGradient(&painter, base, QRect(0, 0, width(), height()));
         return;
     }
-
-    const QColor base = activeColor(m_fileSystemColorCode[ static_cast<int>(partition()->fileSystem().type()) ]);
 
     if (!partition()->roles().has(PartitionRole::Unallocated)) {
         const QColor dark = base.darker(105);
@@ -124,11 +125,11 @@ void PartWidget::paintEvent(QPaintEvent*)
     QString text = partition()->deviceNode().remove(QStringLiteral("/dev/")) + QStringLiteral("\n") + QString(Capacity::formatByteSize(partition()->capacity()));
 
     const QRect textRect(0, 0, width() - 1, height() - 1);
-    const QRect boundingRect = painter.boundingRect(textRect, Qt::AlignVCenter | Qt::AlignHCenter, text);
+    const QRect boundingRect = painter.boundingRect(textRect, Qt::AlignCenter, text);
     if (boundingRect.x() > PartWidgetBase::borderWidth() && boundingRect.y() > PartWidgetBase::borderHeight()) {
         if (isActive())
-            painter.setPen(QColor(255, 255, 255));
-        painter.drawText(textRect, Qt::AlignVCenter | Qt::AlignHCenter, text);
+            painter.setPen(Qt::white);
+        painter.drawText(textRect, Qt::AlignCenter, text);
     }
 }
 
