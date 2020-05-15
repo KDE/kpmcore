@@ -117,6 +117,14 @@ bool DummyPartitionTable::setPartitionLabel(Report& report, const Partition& par
     return true;
 }
 
+QString DummyPartitionTable::getPartitionUUID(Report& report, const Partition& partition)
+{
+    Q_UNUSED(report)
+    Q_UNUSED(partition)
+
+    return QString();
+}
+
 bool DummyPartitionTable::setPartitionUUID(Report& report, const Partition& partition, const QString& uuid)
 {
     Q_UNUSED(report)

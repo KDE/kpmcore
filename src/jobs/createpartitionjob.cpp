@@ -64,6 +64,10 @@ bool CreatePartitionJob::run(Report& parent)
                     partition().setPartitionPath(partitionPath);
                     partition().setState(Partition::State::None);
                     backendPartitionTable->commit();
+                    // The UUID is supported by GPT only; it is generated automatically once the creation of a partition.
+                    // Store the generated UUID to the partition object if no UUID is set.
+                    if (m_Device.partitionTable()->type() == PartitionTable::gpt && partition().uuid().isEmpty())
+                        partition().setUUID(backendPartitionTable->getPartitionUUID(*report, partition()));
                 } else
                     report->line() << xi18nc("@info/plain", "Failed to add partition <filename>%1</filename> to device <filename>%2</filename>.", partition().deviceNode(), device().deviceNode());
             } else
