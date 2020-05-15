@@ -67,11 +67,11 @@ bool SetPartitionLabelJob::run(Report& parent)
                     partition().setLabel(m_Label);
                     backendPartitionTable->commit();
                 } else
-                    report->line() << xi18nc("@info:progress", "Failed to set the system type for the file system on partition <filename>%1</filename>.", partition().deviceNode());
+                    report->line() << xi18nc("@info:progress", "Failed to set the name for the partition <filename>%1</filename>.", partition().deviceNode());
             } else
-                report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+                report->line() << xi18nc("@info:progress", "Could not open partition table on device <filename>%1</filename> to set the name for the partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
         } else
-                report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to set the system type for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
+                report->line() << xi18nc("@info:progress", "Could not open device <filename>%1</filename> to set the name for partition <filename>%2</filename>.", device().deviceNode(), partition().deviceNode());
 
     }
 
