@@ -104,6 +104,16 @@ public:
     virtual bool updateGeometry(Report& report, const Partition& partition, qint64 sector_start, qint64 sector_end) = 0;
 
     /**
+     * Get the UUID of a partition in the partition table (GPT only).
+     * The partition UUID is known as PARTUUID by several utilities. The device-manager links
+     * the device under /dev/disk/by-partuuid/<uuid>.
+     * @param report the report to write information to
+     * @param partition the partition to get the UUID for
+     * @return the partition UUID
+     */
+    virtual QString getPartitionUUID(Report& report, const Partition& partition) = 0;
+
+    /**
      * Set the label of a partition in the partition table (GPT only).
      * The label is set in the GPT partition name entry. The partition name is known as PARTLABEL by
      * several utilities. The device-manager links the device under /dev/disk/by-partlabel/<label>.
@@ -113,6 +123,17 @@ public:
      * @return true on success
      */
     virtual bool setPartitionLabel(Report& report, const Partition& partition, const QString& label) = 0;
+
+    /**
+     * Set the UUID of a partition in the partition table (GPT only).
+     * The partition UUID is known as PARTUUID by several utilities. The device-manager links
+     * the device under /dev/disk/by-partuuid/<uuid>.
+     * @param report the report to write information to
+     * @param partition the partition to set the UUID for
+     * @param uuid the new UUID for the partition
+     * @return true on success
+     */
+    virtual bool setPartitionUUID(Report& report, const Partition& partition, const QString& uuid) = 0;
 
     /**
      * Set the system type (e.g. 83 for Linux) of a partition. The type to set is taken from

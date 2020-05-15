@@ -31,6 +31,7 @@ class OperationStack;
 
 class CreatePartitionJob;
 class SetPartitionLabelJob;
+class SetPartitionUUIDJob;
 class CreateFileSystemJob;
 class SetFileSystemLabelJob;
 class SetPartFlagsJob;
@@ -87,6 +88,9 @@ protected:
     SetPartitionLabelJob* setPartitionLabelJob() {
         return m_SetPartitionLabelJob;
     }
+    SetPartitionUUIDJob* setPartitionUUIDJob() {
+        return m_SetPartitionUUIDJob;
+    }
     CreateFileSystemJob* createFileSystemJob() {
         return m_CreateFileSystemJob;
     }
@@ -105,6 +109,7 @@ private:
     Partition* m_NewPartition;
     CreatePartitionJob* m_CreatePartitionJob;
     SetPartitionLabelJob* m_SetPartitionLabelJob;
+    SetPartitionUUIDJob* m_SetPartitionUUIDJob;
     CreateFileSystemJob* m_CreateFileSystemJob;
     SetPartFlagsJob* m_SetPartFlagsJob;
     SetFileSystemLabelJob* m_SetFileSystemLabelJob;
