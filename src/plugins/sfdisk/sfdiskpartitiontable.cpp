@@ -213,6 +213,22 @@ static QLatin1String getPartitionType(FileSystem::Type t, PartitionTable::TableT
     return QLatin1String();
 }
 
+static QStringList getAttributeList(quint64 attrs)
+{
+    QStringList list;
+    if (attrs & 0x01)
+        list += QStringLiteral("RequiredPartition");
+    if (attrs & 0x02)
+        list += QStringLiteral("NoBlockIOProtocol");
+    if (attrs & 0x04)
+        list += QStringLiteral("LegacyBIOSBootable");
+    for (int bit = 48; bit < 64; bit++)
+        if (attrs & (1 << bit))
+            list += QString::number(bit);
+
+    return list;
+}
+
 bool SfdiskPartitionTable::setPartitionLabel(Report& report, const Partition& partition, const QString& label)
 {
     if (label.isEmpty())
@@ -243,6 +259,16 @@ bool SfdiskPartitionTable::setPartitionUUID(Report& report, const Partition& par
         return true;
     ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-uuid"), m_device->deviceNode(), QString::number(partition.number()),
                 uuid } );
+    return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
+}
+
+bool SfdiskPartitionTable::setPartitionAttributes(Report& report, const Partition& partition, quint64 attrs)
+{
+    QStringList attributes = getAttributeList(attrs);
+    if (attributes.isEmpty())
+        return true;
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-attrs"), m_device->deviceNode(), QString::number(partition.number()),
+                attributes.join(QStringLiteral(",")) } );
     return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
 }
 

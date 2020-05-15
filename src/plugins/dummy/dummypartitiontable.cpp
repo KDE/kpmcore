@@ -134,6 +134,15 @@ bool DummyPartitionTable::setPartitionUUID(Report& report, const Partition& part
     return true;
 }
 
+bool DummyPartitionTable::setPartitionAttributes(Report& report, const Partition& partition, quint64 attrs)
+{
+    Q_UNUSED(report)
+    Q_UNUSED(partition)
+    Q_UNUSED(attrs)
+
+    return true;
+}
+
 bool DummyPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
 {
     Q_UNUSED(report)

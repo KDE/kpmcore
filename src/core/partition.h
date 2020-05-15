@@ -24,7 +24,6 @@
 
 #include "util/libpartitionmanagerexport.h"
 
-#include <QStringList>
 #include <QtGlobal>
 #include <QPointer>
 
@@ -131,6 +130,9 @@ public:
     const QString& uuid() const {
         return m_UUID;    /**< @return the GPT Partition UUID */
     }
+    quint64 attributes() const {
+        return m_Attributes;    /**< @return the GPT Partition attributes */
+    }
     qint64 firstSector() const {
         return m_FirstSector;    /**< @return the Partition's first sector on the Device */
     }
@@ -219,6 +221,9 @@ public:
     void setUUID(const QString& s) {
         m_UUID = s;    /**< @param s the new UUID */
     }
+    void setAttributes(quint64 f) {
+        m_Attributes = f;    /**< @param f the new attributes */
+    }
 
     void append(Partition* p) override {
         m_Children.append(p);
@@ -274,6 +279,7 @@ private:
     QString m_Label;
     QString m_Type;
     QString m_UUID;
+    quint64 m_Attributes;
     QString m_PartitionPath;
     QString m_MountPoint;
     PartitionTable::Flags m_AvailableFlags;

@@ -136,6 +136,15 @@ public:
     virtual bool setPartitionUUID(Report& report, const Partition& partition, const QString& uuid) = 0;
 
     /**
+     * Set the attributes of a partition in the partition table (GPT only).
+     * @param report the report to write information to
+     * @param partition the partition to set the attributes for
+     * @param attrs the new attributes for the partition
+     * @return true on success
+     */
+    virtual bool setPartitionAttributes(Report& report, const Partition& partition, quint64 attrs) = 0;
+
+    /**
      * Set the system type (e.g. 83 for Linux) of a partition. The type to set is taken from
      * the partition's file system.
      * @param report the report to write information to
