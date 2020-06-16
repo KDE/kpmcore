@@ -304,6 +304,18 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         if (d.partitionTable()->type() == PartitionTable::TableType::gpt) {
             part->setLabel(partitionObject[QLatin1String("name")].toString());
             part->setUUID(partitionObject[QLatin1String("uuid")].toString());
+            part->setType(partitionObject[QLatin1String("type")].toString());
+            quint64 attrs = 0;
+            for (auto& attr: QStringList(partitionObject[QLatin1String("attrs")].toString().split(QLatin1Char(' '))))
+                if (attr.compare(QStringLiteral("RequiredPartition")) == 0)
+                    attrs |= 0x0000000000000001;
+                else if (attr.compare(QStringLiteral("NoBlockIOProtocol")) == 0)
+                    attrs |= 0x0000000000000002;
+                else if (attr.compare(QStringLiteral("LegacyBIOSBootable")) == 0)
+                    attrs |= 0x0000000000000004;
+                else if (attr.startsWith(QStringLiteral("GUID:")))
+                    attrs |= 1ULL << QStringRef(&attr, 5, attr.length() - 5).toULongLong();
+            part->setAttributes(attrs);
         }
 
         if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
