@@ -16,6 +16,7 @@
 set (pmsfdiskbackendplugin_SRCS
     sfdiskbackend.cpp
     sfdiskdevice.cpp
+    sfdiskgptattributes.cpp
     sfdiskpartitiontable.cpp
     ${CMAKE_SOURCE_DIR}/src/backend/corebackenddevice.cpp
     ${CMAKE_SOURCE_DIR}/src/core/copysourcedevice.cpp
