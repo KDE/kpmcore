@@ -32,7 +32,6 @@
                 "Name[sl]": "Volker Lanz",
                 "Name[sv]": "Volker Lanz",
                 "Name[uk]": "Volker Lanz",
-                "Name[x-test]": "xxVolker Lanzxx",
                 "Name[zh_CN]": "Volker Lanz",
                 "Name[zh_TW]": "Volker Lanz"
             }
@@ -65,7 +64,6 @@
         "Description[sl]": "KDE Partition Manager prazen zaledni program za testne namene.",
         "Description[sv]": "Ett bakgrundsprogram till KDE:s partitionshanterare i testsyfte.",
         "Description[uk]": "Тестовий додаток сервера Керування розділами KDE.",
-        "Description[x-test]": "xxA KDE Partition Manager dummy backend for testing purposes.xx",
         "Description[zh_CN]": "测试用的 KDE 分区管理器的虚拟后端",
         "Description[zh_TW]": "使用虛設後端的 KDE 磁碟分割區管理員，可用來測試。",
         "EnabledByDefault": true,
@@ -100,7 +98,6 @@
         "Name[sl]": "KDE Partition Manager prazen zaledni program",
         "Name[sv]": "KDE:s partitionshanterare bakgrundsprogram för test",
         "Name[uk]": "Тестовий додаток сервера Керування розділами KDE",
-        "Name[x-test]": "xxKDE Partition Manager Dummy Backendxx",
         "Name[zh_CN]": "KDE 分区管理器虚拟后端",
         "Name[zh_TW]": "KDE 磁碟分割區管理員 (虛設後端)",
         "ServiceTypes": [
