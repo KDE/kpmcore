@@ -27,6 +27,7 @@
 #include <QVariant>
 
 class Device;
+class Partition;
 class KPluginFactory;
 class QString;
 
@@ -59,6 +60,7 @@ public:
 private:
     static void readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint);
     void scanDevicePartitions(Device& d, const QJsonArray& jsonPartitions);
+    void setupPartitionInfo(const Device& d, Partition* partition, const QJsonObject& partitionObject, const QString mountPoint);
     bool updateDevicePartitionTable(Device& d, const QJsonObject& jsonPartitionTable);
     static PartitionTable::Flags availableFlags(PartitionTable::TableType type);
 };

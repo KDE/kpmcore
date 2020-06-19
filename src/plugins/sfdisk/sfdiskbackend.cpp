@@ -276,7 +276,8 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         else
             r = PartitionRole::Logical;
 
-        FileSystem* fs = FileSystemFactory::create(type, start, start + size - 1, d.logicalSize());
+        auto lastSector = start + size - 1;
+        FileSystem* fs = FileSystemFactory::create(type, start, lastSector, d.logicalSize());
         fs->scan(partitionNode);
 
         QString mountPoint;
@@ -294,21 +295,12 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
             mounted = FileSystem::detectMountStatus(fs, partitionNode);
         }
 
-        Partition* part = new Partition(parent, d, PartitionRole(r), fs, start, start + size - 1, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
+        Partition* part = new Partition(parent, d, PartitionRole(r), fs, start, lastSector, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
 
-        if (!part->roles().has(PartitionRole::Luks))
-            readSectorsUsed(d, *part, mountPoint);
+        setupPartitionInfo(d, part, partitionObject, mountPoint);
 
         if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
             fs->setLabel(fs->readLabel(part->deviceNode()));
-
-        if (d.partitionTable()->type() == PartitionTable::TableType::gpt) {
-            part->setLabel(partitionObject[QLatin1String("name")].toString());
-            part->setUUID(partitionObject[QLatin1String("uuid")].toString());
-            part->setType(partitionObject[QLatin1String("type")].toString());
-            QString attrs = partitionObject[QLatin1String("attrs")].toString();
-            part->setAttributes(SfdiskGptAttributes::toULongLong(attrs.split(QLatin1Char(' '))));
-        }
 
         if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
             fs->setUUID(fs->readUUID(part->deviceNode()));
@@ -324,6 +316,20 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
 
     for (const Partition * part : qAsConst(partitions))
         PartitionAlignment::isAligned(d, *part);
+}
+
+void SfdiskBackend::setupPartitionInfo(const Device &d, Partition *partition, const QJsonObject& partitionObject, const QString mountPoint)
+{
+    if (!partition->roles().has(PartitionRole::Luks))
+        readSectorsUsed(d, *partition, mountPoint);
+
+    if (d.partitionTable()->type() == PartitionTable::TableType::gpt) {
+        partition->setLabel(partitionObject[QLatin1String("name")].toString());
+        partition->setUUID(partitionObject[QLatin1String("uuid")].toString());
+        partition->setType(partitionObject[QLatin1String("type")].toString());
+        QString attrs = partitionObject[QLatin1String("attrs")].toString();
+        partition->setAttributes(SfdiskGptAttributes::toULongLong(attrs.split(QLatin1Char(' '))));
+    }
 }
 
 bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jsonPartitionTable)
