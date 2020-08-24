@@ -126,6 +126,58 @@ QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
     return result;
 }
 
+/*** @brief Fix up bogus JSON from `sfdisk --json /dev/sdb`
+ *
+ * The command `sfdisk --json /dev/sdb` outputs a JSON representation
+ * of the partition table, with general device characteristics and
+ * the list of partitions, **but**..
+ *
+ * This isn't necessarily valid JSON: in particular, when there are
+ * no partitions on the disk because it is empty / was recently zeroed /
+ * is a USB stick for testing purposes, the output is changed **only**
+ * by there being no partitions in the partition table. However,
+ * the comma (",") after sectorsize is still printed. Bogus output looks
+ * like this:
+ *
+ * {
+ *   "partitiontable": {
+ *       "label":"gpt",
+ *       "id":"1F9E80D9-DD78-024F-94A3-B61EC82B18C8",
+ *       "device":"/dev/sdb",
+ *       "unit":"sectors",
+ *       "firstlba":2048,
+ *       "lastlba":30949342,
+ *       "sectorsize":512,
+ *   }
+ * }
+ *
+ * That's not valid JSON because of the "," followed by nothing until
+ * the brace, and yields an empty object is passed to fromJson().
+ *
+ * We'll go through and check if there's a "," followed by whitespace
+ * and then a }. If there is, replace the ,.
+ */
+static void
+removeCommaFollowedByBrace( QByteArray& s )
+{
+    // -1 if there is no comma (but then there's no useful JSON either),
+    //    not is 0 a valid place (the start) for a , in a JSON document.
+    int lastComma = s.lastIndexOf(',');
+    if ( lastComma > 0 )
+    {
+        for ( int charIndex = lastComma + 1; charIndex < s.length(); ++charIndex )
+        {
+            if ( s[charIndex] == '}' )
+            {
+                s[lastComma] = ' ';  // Erase that comma
+            }
+            if ( !isspace( s[charIndex] ) )
+            {
+                break;
+            }
+        }
+    }
+}
 
 /** Create a Device for the given device_node and scan it for partitions.
     @param deviceNode the device node (e.g. "/dev/sda")
@@ -207,7 +259,10 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             if (jsonCommand.exitCode() != 0)
                 return d;
 
-            const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.rawOutput()).object();
+            auto s = jsonCommand.rawOutput();
+            fixInvalidJsonFromSFDisk(s);
+
+            const QJsonObject jsonObject = QJsonDocument::fromJson(s).object();
             const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
 
             if (!updateDevicePartitionTable(*d, partitionTable))
