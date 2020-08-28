@@ -156,6 +156,8 @@ QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
  *
  * We'll go through and check if there's a "," followed by whitespace
  * and then a }. If there is, replace the ,.
+ *
+ * This is also fixed in util-linux 2.37.
  */
 static void
 removeCommaFollowedByBrace( QByteArray& s )
