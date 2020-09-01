@@ -160,7 +160,7 @@ QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
  * This is also fixed in util-linux 2.37.
  */
 static void
-removeCommaFollowedByBrace( QByteArray& s )
+fixInvalidJsonFromSFDisk( QByteArray& s )
 {
     // -1 if there is no comma (but then there's no useful JSON either),
     //    not is 0 a valid place (the start) for a , in a JSON document.
