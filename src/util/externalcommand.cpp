@@ -232,8 +232,47 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
                 QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
- 
+
     QDBusPendingCall pcall = interface->writeData(buffer, deviceNode, firstByte);
+
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+    QEventLoop loop;
+
+    auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+        loop.exit();
+        if (watcher->isError())
+            qWarning() << watcher->error();
+        else {
+            QDBusPendingReply<bool> reply = *watcher;
+            rval = reply.argumentAt<0>();
+        }
+        setExitCode(!rval);
+    };
+
+    connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    loop.exec();
+
+    return rval;
+}
+
+bool ExternalCommand::createFile(Report& commandReport, const QByteArray& buffer, const QString& deviceNode)
+{
+    d->m_Report = commandReport.newChild();
+    if (report())
+        report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
+
+    bool rval = true;
+
+    if (!QDBusConnection::systemBus().isConnected()) {
+        qWarning() << QDBusConnection::systemBus().lastError().message();
+        return false;
+    }
+
+    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
+                QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
+    interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
+
+    QDBusPendingCall pcall = interface->createFile(buffer, deviceNode);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QEventLoop loop;
