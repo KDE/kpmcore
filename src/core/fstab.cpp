@@ -259,7 +259,6 @@ static void writeEntry(QTextStream& s, const FstabEntry& entry)
 
 bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filename)
 {
-    Report report(nullptr);
     QString fstabContents;
     QTextStream out(&fstabContents);
 
@@ -267,5 +266,5 @@ bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filenam
         writeEntry(out, e);
 
     ExternalCommand cmd;
-    return cmd.createFile(report, fstabContents.toLocal8Bit(), filename);
+    return cmd.createFile(fstabContents.toLocal8Bit(), filename);
 }
