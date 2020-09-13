@@ -21,9 +21,9 @@
 #include <QtDBus>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QString>
-#include <QTime>
 #include <QVariant>
 
 #include <KLocalizedString>
@@ -170,9 +170,9 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
 
     QByteArray buffer;
     int percent = 0;
-    QTime t;
+    QElapsedTimer timer;
 
-    t.start();
+    timer.start();
 
     QVariantMap report;
 
@@ -196,9 +196,9 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
         if (++blocksCopied * 100 / blocksToCopy != percent) {
             percent = blocksCopied * 100 / blocksToCopy;
 
-            if (percent % 5 == 0 && t.elapsed() > 1000) {
-                const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (t.elapsed() / 1000);
-                const qint64 estSecsLeft = (100 - percent) * t.elapsed() / percent / 1000;
+            if (percent % 5 == 0 && timer.elapsed() > 1000) {
+                const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (timer.elapsed() / 1000);
+                const qint64 estSecsLeft = (100 - percent) * timer.elapsed() / percent / 1000;
                 report[QStringLiteral("report")]=  xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
                 HelperSupport::progressStep(report);
             }
