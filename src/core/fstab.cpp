@@ -21,6 +21,8 @@
 #include "util/externalcommand.h"
 #include "util/report.h"
 
+#include <algorithm>
+
 #if defined(Q_OS_LINUX)
     #include <blkid/blkid.h>
 #endif
@@ -34,6 +36,8 @@
 
 static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode);
 static QString findBlkIdDevice(const char *token, const QString& value);
+static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsigned int, 4> columnWidth);
+std::array<unsigned int, 4> fstabColumnWidth(const FstabEntryList& fstabEntries);
 
 struct FstabEntryPrivate
 {
@@ -142,6 +146,11 @@ const QStringList& FstabEntry::options() const
     return d->m_options;
 }
 
+const QString FstabEntry::optionsString() const
+{
+    return options().size() > 0 ? options().join(QLatin1Char(',')) : QStringLiteral("defaults");
+}
+
 int FstabEntry::dumpFreq() const
 {
     return d->m_dumpFreq;
@@ -232,28 +241,37 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, 
     }
 }
 
-static void writeEntry(QTextStream& s, const FstabEntry& entry)
+
+// Used to nicely format fstab file
+std::array<unsigned int, 4> fstabColumnWidth(const FstabEntryList& fstabEntries)
+{
+    std::array<unsigned int, 4> columnWidth;
+
+#define FIELD_WIDTH(x) 3 + std::max_element(fstabEntries.begin(), fstabEntries.end(), [](const FstabEntry& a, const FstabEntry& b) {return a.x().length() < b.x().length(); })->x().length();
+
+    columnWidth[0] = FIELD_WIDTH(fsSpec);
+    columnWidth[1] = FIELD_WIDTH(mountPoint);
+    columnWidth[2] = FIELD_WIDTH(type);
+    columnWidth[3] = FIELD_WIDTH(optionsString);
+
+    return columnWidth;
+}
+
+static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsigned int, 4> columnWidth)
 {
     if (entry.entryType() == FstabEntry::Type::comment) {
         s << entry.comment() << "\n";
         return;
     }
 
-    QString options;
-    if (entry.options().size() > 0) {
-        options = entry.options().join(QLatin1Char(','));
-        if (options.isEmpty())
-            options = QStringLiteral("defaults");
-    }
-    else
-        options = QStringLiteral("defaults");
-
-    s << entry.fsSpec() << "\t"
-      << (entry.mountPoint().isEmpty() ? QStringLiteral("none") : entry.mountPoint()) << "\t"
-      << entry.type() << "\t"
-      << options << "\t"
-      << entry.dumpFreq() << "\t"
-      << entry.passNumber() << "\t"
+    s.setFieldAlignment(QTextStream::AlignLeft);
+    s.setFieldWidth(columnWidth[0]);
+    s << entry.fsSpec()
+      << qSetFieldWidth(columnWidth[1]) << (entry.mountPoint().isEmpty() ? QStringLiteral("none") : entry.mountPoint())
+      << qSetFieldWidth(columnWidth[2]) << entry.type()
+      << qSetFieldWidth(columnWidth[3]) << entry.optionsString() << qSetFieldWidth(0)
+      << entry.dumpFreq() << " "
+      << entry.passNumber() << " "
       << entry.comment() << "\n";
 }
 
@@ -262,8 +280,10 @@ bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filenam
     QString fstabContents;
     QTextStream out(&fstabContents);
 
+    std::array<unsigned int, 4> columnWidth = fstabColumnWidth(fstabEntries);
+
     for (const auto &e : fstabEntries)
-        writeEntry(out, e);
+        writeEntry(out, e, columnWidth);
 
     ExternalCommand cmd;
     return cmd.createFile(fstabContents.toLocal8Bit(), filename);
