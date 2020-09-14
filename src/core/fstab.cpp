@@ -92,15 +92,20 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             // (4) dump frequency (optional, defaults to 0), no comment is allowed if omitted,
             // (5) pass number (optional, defaults to 0), no comment is allowed if omitted,
             // (#) comment (optional).
+            auto fsSpec = splitLine.at(0);
+            auto mountPoint = splitLine.at(1);
+            auto fsType = splitLine.at(2);
+            auto options = splitLine.at(3);
+
             switch (splitLine.length()) {
                 case 4:
-                    fstabEntries.push_back( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3) } );
+                    fstabEntries.push_back( {fsSpec, mountPoint, fsType, options } );
                     break;
                 case 5:
-                    fstabEntries.push_back( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt() } );
+                    fstabEntries.push_back( {fsSpec, mountPoint, fsType, options, splitLine.at(4).toInt() } );
                     break;
                 case 6:
-                    fstabEntries.push_back( {splitLine.at(0), splitLine.at(1), splitLine.at(2), splitLine.at(3), splitLine.at(4).toInt(), splitLine.at(5).toInt(), comment.isEmpty() ? QString() : QLatin1Char('#') + comment } );
+                    fstabEntries.push_back( {fsSpec, mountPoint, fsType, options, splitLine.at(4).toInt(), splitLine.at(5).toInt(), comment.isEmpty() ? QString() : QLatin1Char('#') + comment } );
                     break;
                 default:
                     fstabEntries.push_back( { {}, {}, {}, {}, {}, {}, QLatin1Char('#') + line } );
