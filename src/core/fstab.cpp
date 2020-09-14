@@ -63,6 +63,7 @@ FstabEntry::FstabEntry(const QString& fsSpec, const QString& mountPoint, const Q
     d->m_comment = comment;
 
     d->m_options = options.split(QLatin1Char(','));
+    d->m_options.removeAll(QStringLiteral("defaults"));
     parseFsSpec(d->m_fsSpec, d->m_entryType, d->m_deviceNode);
 }
 
