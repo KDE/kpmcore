@@ -38,6 +38,8 @@ class Report;
 class CopySource;
 class CopyTarget;
 class QDBusInterface;
+class QDBusPendingCall;
+class OrgKdeKpmcoreExternalcommandInterface;
 
 struct ExternalCommandPrivate;
 
@@ -71,6 +73,7 @@ public:
 public:
     bool copyBlocks(const CopySource& source, CopyTarget& target);
     bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
+    bool createFile(const QByteArray& buffer, const QString& deviceNode); // similar to writeData but creates a new file
 
     /**< @param cmd the command to run */
     void setCommand(const QString& cmd);
@@ -128,6 +131,8 @@ public Q_SLOTS:
 private:
     void setExitCode(int i);
     void onReadOutput();
+    bool waitForDbusReply(QDBusPendingCall &pcall);
+    OrgKdeKpmcoreExternalcommandInterface* helperInterface();
 
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
