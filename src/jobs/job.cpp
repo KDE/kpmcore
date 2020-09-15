@@ -100,7 +100,7 @@ bool Job::rollbackCopyBlocks(Report& report, CopyTarget& origTarget, CopySource&
 
 void Job::emitProgress(int i)
 {
-    emit progress(i);
+    Q_EMIT progress(i);
 }
 
 void Job::updateReport(const QVariantMap& reportString)
@@ -110,7 +110,7 @@ void Job::updateReport(const QVariantMap& reportString)
 
 Report* Job::jobStarted(Report& parent)
 {
-    emit started();
+    Q_EMIT started();
 
     return parent.newChild(xi18nc("@info:progress", "Job: %1", description()));
 }
@@ -118,8 +118,8 @@ Report* Job::jobStarted(Report& parent)
 void Job::jobFinished(Report& report, bool b)
 {
     setStatus(b ? Status::Success : Status::Error);
-    emit progress(numSteps());
-    emit finished();
+    Q_EMIT progress(numSteps());
+    Q_EMIT finished();
 
     report.setStatus(xi18nc("@info:progress job status (error, warning, ...)", "%1: %2", description(), statusText()));
 }

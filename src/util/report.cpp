@@ -130,7 +130,7 @@ void Report::addOutput(const QString& s)
 
 void Report::emitOutputChanged()
 {
-    emit outputChanged();
+    Q_EMIT outputChanged();
 }
 
 /** @return the root Report */

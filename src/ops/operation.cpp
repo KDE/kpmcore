@@ -141,7 +141,7 @@ void Operation::onJobStarted()
     Job* job = qobject_cast<Job*>(sender());
 
     if (job)
-        emit jobStarted(job, this);
+        Q_EMIT jobStarted(job, this);
 }
 
 void Operation::onJobFinished()
@@ -150,7 +150,7 @@ void Operation::onJobFinished()
 
     if (job) {
         setProgressBase(progressBase() + job->numSteps());
-        emit jobFinished(job, this);
+        Q_EMIT jobFinished(job, this);
     }
 }
 

@@ -40,12 +40,12 @@ CoreBackend::~CoreBackend()
 
 void CoreBackend::emitProgress(int i)
 {
-    emit progress(i);
+    Q_EMIT progress(i);
 }
 
 void CoreBackend::emitScanProgress(const QString& deviceNode, int i)
 {
-    emit scanProgress(deviceNode, i);
+    Q_EMIT scanProgress(deviceNode, i);
 }
 
 void CoreBackend::setPartitionTableForDevice(Device& d, PartitionTable* p)

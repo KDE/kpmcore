@@ -105,7 +105,7 @@ public:
     /**< @return pointer to the Report or nullptr */
     Report* report();
 
-    void emitReport(const QVariantMap& report) { emit reportSignal(report); }
+    void emitReport(const QVariantMap& report) { Q_EMIT reportSignal(report); }
 
     // KAuth
     /**< start ExternalCommand Helper */
@@ -126,7 +126,7 @@ Q_SIGNALS:
     void reportSignal(const QVariantMap&);
 
 public Q_SLOTS:
-    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); }
+    void emitProgress(KJob*, unsigned long percent) { Q_EMIT progress(percent); }
 
 private:
     void setExitCode(int i);

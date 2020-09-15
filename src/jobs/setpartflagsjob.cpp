@@ -65,7 +65,7 @@ bool SetPartFlagsJob::run(Report& parent)
             int count = 0;
 
             for (const auto &f : PartitionTable::flagList()) {
-                emit progress(++count);
+                Q_EMIT progress(++count);
 
                 const bool oldState = (partition().activeFlags() & f) ? true : false;
                 const bool state = (flags() & f) ? true : false;
