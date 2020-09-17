@@ -63,8 +63,9 @@ luks::luks(qint64 firstsector,
            qint64 lastsector,
            qint64 sectorsused,
            const QString& label,
+           const QVariantMap& features,
            FileSystem::Type t)
-    : FileSystem(firstsector, lastsector, sectorsused, label, t)
+    : FileSystem(firstsector, lastsector, sectorsused, label, features, t)
     , m_innerFs(nullptr)
     , m_isCryptOpen(false)
     , m_cryptsetupFound(m_Create != cmdSupportNone)
@@ -492,18 +493,20 @@ bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) c
     if (mapperName().isEmpty())
         return false;
 
-    if ( newLength - length() * sectorSize() > 0 )
+    const qint64 sizeDiff = newLength - length() * sectorSize();
+    const qint64 newPayloadSize = m_PayloadSize + sizeDiff;
+    if ( sizeDiff > 0 ) // grow
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
 
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)
-            return m_innerFs->resize(report, mapperName(), m_PayloadSize);
+            return m_innerFs->resize(report, mapperName(), newPayloadSize);
     }
-    else if (m_innerFs->resize(report, mapperName(), m_PayloadSize))
+    else if (m_innerFs->resize(report, mapperName(), newPayloadSize)) // shrink
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"),
-                {  QStringLiteral("--size"), QString::number(m_PayloadSize / 512), // LUKS1 payload length is specified in multiples of 512 bytes
+                {  QStringLiteral("--size"), QString::number(newPayloadSize / 512), // LUKS1 payload length is specified in multiples of 512 bytes
                    QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (cryptResizeCmd.run(-1) && cryptResizeCmd.exitCode() == 0)

@@ -34,8 +34,8 @@ FileSystem::CommandSupportType reiser4::m_Check = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType reiser4::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType reiser4::m_Backup = FileSystem::cmdSupportNone;
 
-reiser4::reiser4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Reiser4)
+reiser4::reiser4(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Reiser4)
 {
 }
 
@@ -68,13 +68,13 @@ bool reiser4::supportToolFound() const
 
 FileSystem::SupportTool reiser4::supportToolName() const
 {
-    return SupportTool(QStringLiteral("reiser4progs"), QUrl(QStringLiteral("http://www.kernel.org/pub/linux/utils/fs/reiser4/reiser4progs/")));
+    return SupportTool(QStringLiteral("reiser4progs"), QUrl(QStringLiteral("https://github.com/edward6/reiser4progs")));
 }
 
 qint64 reiser4::maxCapacity() const
 {
     // looks like it's actually unknown. see
-    // http://en.wikipedia.org/wiki/Comparison_of_file_systems
+    // https://en.wikipedia.org/wiki/Comparison_of_file_systems
     return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 

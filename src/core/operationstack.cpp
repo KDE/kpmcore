@@ -452,9 +452,9 @@ void OperationStack::push(Operation* o)
         o->setStatus(Operation::StatusPending);
     }
 
-    // emit operationsChanged even if o is nullptr because it has been merged: merging might
+    // Q_EMIT operationsChanged even if o is nullptr because it has been merged: merging might
     // have led to an existing operation changing.
-    emit operationsChanged();
+    Q_EMIT operationsChanged();
 }
 
 /** Removes the topmost Operation from the OperationStack, calls Operation::undo() on it and deletes it. */
@@ -463,7 +463,7 @@ void OperationStack::pop()
     Operation* o = operations().takeLast();
     o->undo();
     delete o;
-    emit operationsChanged();
+    Q_EMIT operationsChanged();
 }
 
 /** Check whether previous operations involve given partition.
@@ -499,7 +499,7 @@ void OperationStack::clearOperations()
         delete o;
     }
 
-    emit operationsChanged();
+    Q_EMIT operationsChanged();
 }
 
 /** Clears the list of Devices. */
@@ -509,7 +509,7 @@ void OperationStack::clearDevices()
 
     qDeleteAll(previewDevices());
     previewDevices().clear();
-    emit devicesChanged();
+    Q_EMIT devicesChanged();
 }
 
 /** Finds a Device a Partition is on.
@@ -549,7 +549,7 @@ void OperationStack::addDevice(Device* d)
     QWriteLocker lockDevices(&lock());
 
     previewDevices().append(d);
-    emit devicesChanged();
+    Q_EMIT devicesChanged();
 }
 
 static bool deviceLessThan(const Device* d1, const Device* d2)
@@ -567,5 +567,5 @@ void OperationStack::sortDevices()
 
     std::sort(previewDevices().begin(), previewDevices().end(), deviceLessThan);
 
-    emit devicesChanged();
+    Q_EMIT devicesChanged();
 }

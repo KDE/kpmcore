@@ -32,10 +32,10 @@ public:
     TestDevice();
    ~TestDevice();
 
-    bool testDeviceName();
-    bool testDeviceNode();
-    bool testDeviceSize();
-    bool testDeviceTotalSectors();
+    void testDeviceName();
+    void testDeviceNode();
+    void testDeviceSize();
+    void testDeviceTotalSectors();
     
 private:
     OperationStack *operationStack;

@@ -20,8 +20,8 @@
 namespace FS
 {
 
-linuxraidmember::linuxraidmember(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::LinuxRaidMember)
+linuxraidmember::linuxraidmember(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::LinuxRaidMember)
 {
 }
 

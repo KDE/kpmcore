@@ -39,7 +39,7 @@ namespace FS
 class LIBKPMCORE_EXPORT luks : public FileSystem
 {
 public:
-    luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Type::Luks);
+    luks(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {}, FileSystem::Type t = FileSystem::Type::Luks);
     ~luks() override;
 
     enum class KeyLocation {

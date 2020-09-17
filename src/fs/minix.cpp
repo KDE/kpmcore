@@ -33,8 +33,8 @@ FileSystem::CommandSupportType minix::m_Create = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType minix::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType minix::m_Backup = FileSystem::cmdSupportNone;
 
-minix::minix(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Minix)
+minix::minix(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Minix)
 {
 }
 

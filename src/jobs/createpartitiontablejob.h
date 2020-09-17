@@ -32,7 +32,7 @@ class QString;
 class CreatePartitionTableJob : public Job
 {
 public:
-    CreatePartitionTableJob(Device& d);
+    explicit CreatePartitionTableJob(Device& d);
 
 public:
     bool run(Report& parent) override;

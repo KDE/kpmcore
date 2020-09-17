@@ -34,8 +34,8 @@ namespace FS
 class LIBKPMCORE_EXPORT minix : public FileSystem
 {
 public:
-    minix(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
-    
+    minix(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
+
     void init() override;
     
     bool check(Report& report, const QString&deviceNode) const override;

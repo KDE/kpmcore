@@ -59,7 +59,7 @@ void DeviceScanner::run()
 
 void DeviceScanner::scan()
 {
-    emit progress(QString(), 0);
+    Q_EMIT progress(QString(), 0);
 
     clear();
 

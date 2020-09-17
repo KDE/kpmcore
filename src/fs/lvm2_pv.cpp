@@ -42,8 +42,8 @@ FileSystem::CommandSupportType lvm2_pv::m_UpdateUUID = FileSystem::cmdSupportNon
 FileSystem::CommandSupportType lvm2_pv::m_GetUUID = FileSystem::cmdSupportNone;
 
 lvm2_pv::lvm2_pv(qint64 firstsector, qint64 lastsector,
-                 qint64 sectorsused, const QString& label)
-    : FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Lvm2_PV)
+                 qint64 sectorsused, const QString& label, const QVariantMap& features)
+    : FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Lvm2_PV)
     , m_PESize(0)
     , m_TotalPE(0)
     , m_AllocatedPE(0)
@@ -94,7 +94,7 @@ bool lvm2_pv::supportToolFound() const
 
 FileSystem::SupportTool lvm2_pv::supportToolName() const
 {
-    return SupportTool(QStringLiteral("lvm2"), QUrl(QStringLiteral("http://sourceware.org/lvm2/")));
+    return SupportTool(QStringLiteral("lvm2"), QUrl(QStringLiteral("https://sourceware.org/lvm2/")));
 }
 
 qint64 lvm2_pv::maxCapacity() const

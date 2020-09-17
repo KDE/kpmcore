@@ -27,8 +27,8 @@
 namespace FS
 {
 
-luks2::luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label)
-    : luks(firstsector, lastsector, sectorsused, label, FileSystem::Type::Luks2)
+luks2::luks2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features)
+    : luks(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Luks2)
 {
 }
 
@@ -89,7 +89,9 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
     if (mapperName().isEmpty())
         return false;
 
-    if ( newLength - length() * sectorSize() > 0 )
+    const qint64 sizeDiff = newLength - length() * sectorSize();
+    const qint64 newPayloadSize = m_PayloadSize + sizeDiff;
+    if ( sizeDiff > 0 ) // grow
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"), { QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
@@ -102,12 +104,12 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
         if (!cryptResizeCmd.start(-1))
             return false;
         if ( cryptResizeCmd.exitCode() == 0 )
-            return m_innerFs->resize(report, mapperName(), m_PayloadSize);
+            return m_innerFs->resize(report, mapperName(), newPayloadSize);
     }
-    else if (m_innerFs->resize(report, mapperName(), m_PayloadSize))
+    else if (m_innerFs->resize(report, mapperName(), newPayloadSize))
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"),
-                {  QStringLiteral("--size"), QString::number(m_PayloadSize / 512), // FIXME, LUKS2 can have different sector sizes
+                {  QStringLiteral("--size"), QString::number(newPayloadSize / 512), // FIXME, LUKS2 can have different sector sizes
                    QStringLiteral("resize"), mapperName() });
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (m_KeyLocation == KeyLocation::keyring) {

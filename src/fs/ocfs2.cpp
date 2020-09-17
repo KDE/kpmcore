@@ -39,8 +39,8 @@ FileSystem::CommandSupportType ocfs2::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ocfs2::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ocfs2::m_GetUUID = FileSystem::cmdSupportNone;
 
-ocfs2::ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ocfs2)
+ocfs2::ocfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Ocfs2)
 {
 }
 
@@ -84,7 +84,7 @@ bool ocfs2::supportToolFound() const
 
 FileSystem::SupportTool ocfs2::supportToolName() const
 {
-    return SupportTool(QStringLiteral("ocfs2-tools"), QUrl(QStringLiteral("http://oss.oracle.com/projects/ocfs2-tools/")));
+    return SupportTool(QStringLiteral("ocfs2-tools"), QUrl(QStringLiteral("https://oss.oracle.com/projects/ocfs2-tools/")));
 }
 
 qint64 ocfs2::minCapacity() const

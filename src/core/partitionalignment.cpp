@@ -75,7 +75,7 @@ bool PartitionAlignment::isLengthAligned(const Device& d, const Partition& p)
     @param d device the partition is on
     @param p the partition to check
     @param quiet if true, will not print warning
-    @return true if propertly aligned
+    @return true if properly aligned
 */
 bool PartitionAlignment::isAligned(const Device& d, const Partition& p, bool quiet)
 {

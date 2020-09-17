@@ -48,8 +48,8 @@ FileSystem::CommandSupportType ntfs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ntfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType ntfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-ntfs::ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Ntfs)
+ntfs::ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Ntfs)
 {
 }
 
@@ -85,7 +85,7 @@ bool ntfs::supportToolFound() const
 
 FileSystem::SupportTool ntfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("ntfs-3g"), QUrl(QStringLiteral("http://www.tuxera.com/community/ntfs-3g-download/")));
+    return SupportTool(QStringLiteral("ntfs-3g"), QUrl(QStringLiteral("https://www.tuxera.com/community/open-source-ntfs-3g/")));
 }
 
 qint64 ntfs::minCapacity() const

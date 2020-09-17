@@ -16,6 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
  *************************************************************************/
 
+#include "util/externalcommand.h"
 #include "backend/corebackendmanager.h"
 #include "core/device.h"
 #include "core/copysource.h"
@@ -24,7 +25,6 @@
 #include "core/copysourcedevice.h"
 #include "core/copytargetdevice.h"
 #include "util/globallog.h"
-#include "util/externalcommand.h"
 #include "util/report.h"
 
 #include "externalcommandhelper_interface.h"
@@ -124,11 +124,6 @@ bool ExternalCommand::start(int timeout)
     if (command().isEmpty())
         return false;
 
-    if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return false;
-    }
-
     if (report())
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
 
@@ -139,10 +134,9 @@ bool ExternalCommand::start(int timeout)
     if (cmd.isEmpty())
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
-                    QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
-
-    interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
+    auto interface = helperInterface();
+    if (!interface)
+        return false;
 
     bool rval = false;
 
@@ -176,18 +170,13 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     bool rval = true;
     const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
 
-    if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return false;
-    }
-
     // TODO KF6:Use new signal-slot syntax
     connect(m_job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
     connect(m_job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
 
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
-                QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
-    interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
+    auto interface = helperInterface();
+    if (!interface)
+        return false;
 
     QDBusPendingCall pcall = interface->copyblocks(source.path(), source.firstByte(), source.length(),
                                                    target.path(), target.firstByte(), blockSize);
@@ -222,19 +211,40 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
     if (report())
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
 
-    bool rval = true;
+    auto interface = helperInterface();
+    if (!interface)
+        return false;
 
+    QDBusPendingCall pcall = interface->writeData(buffer, deviceNode, firstByte);
+    return waitForDbusReply(pcall);
+}
+
+bool ExternalCommand::createFile(const QByteArray& buffer, const QString& deviceNode)
+{
+    auto interface = helperInterface();
+    if (!interface)
+        return false;
+
+    QDBusPendingCall pcall = interface->createFile(buffer, deviceNode);
+    return waitForDbusReply(pcall);
+}
+
+OrgKdeKpmcoreExternalcommandInterface* ExternalCommand::helperInterface()
+{
     if (!QDBusConnection::systemBus().isConnected()) {
         qWarning() << QDBusConnection::systemBus().lastError().message();
-        return false;
+        return nullptr;
     }
 
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
                 QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
- 
-    QDBusPendingCall pcall = interface->writeData(buffer, deviceNode, firstByte);
+    return interface;
+}
 
+bool ExternalCommand::waitForDbusReply(QDBusPendingCall &pcall)
+{
+    bool rval = true;
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QEventLoop loop;
 
@@ -254,7 +264,6 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
 
     return rval;
 }
-
 
 bool ExternalCommand::write(const QByteArray& input)
 {

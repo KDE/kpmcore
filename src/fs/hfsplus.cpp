@@ -34,8 +34,8 @@ FileSystem::CommandSupportType hfsplus::m_Create = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfsplus::m_Backup = FileSystem::cmdSupportNone;
 
-hfsplus::hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::HfsPlus)
+hfsplus::hfsplus(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::HfsPlus)
 {
 }
 
@@ -68,7 +68,7 @@ bool hfsplus::supportToolFound() const
 
 FileSystem::SupportTool hfsplus::supportToolName() const
 {
-    return SupportTool(QStringLiteral("diskdev_cmds"), QUrl(QStringLiteral("http://opendarwin.org")));
+    return SupportTool(QStringLiteral("diskdev_cmds"), QUrl(QStringLiteral("https://opensource.apple.com/tarballs/diskdev_cmds/")));
 }
 
 qint64 hfsplus::maxCapacity() const

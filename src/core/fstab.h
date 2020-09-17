@@ -67,6 +67,11 @@ public:
     const QStringList& options() const;
 
     /**
+      * @return the mount options associated with the file system
+      */
+    const QString optionsString() const;
+
+    /**
       * @return the fs_freq field of fstab entry
       */
     int dumpFreq() const;

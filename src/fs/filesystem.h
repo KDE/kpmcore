@@ -20,8 +20,10 @@
 #ifndef KPMCORE_FILESYSTEM_H
 #define KPMCORE_FILESYSTEM_H
 
+
 #include "util/libpartitionmanagerexport.h"
 
+#include <QVariant>
 #include <QList>
 #include <QStringList>
 #include <QString>
@@ -113,6 +115,7 @@ public:
 
 protected:
     FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
+    FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features, FileSystem::Type type);
 
 public:
     virtual ~FileSystem();
@@ -147,6 +150,9 @@ public:
         return cmdSupportNone;    /**< @return CommandSupportType for creating */
     }
     virtual CommandSupportType supportCreateWithLabel() const {
+        return cmdSupportNone;    /**< @return CommandSupportType for creating */
+    }
+    virtual CommandSupportType supportCreateWithFeatures() const {
         return cmdSupportNone;    /**< @return CommandSupportType for creating */
     }
     virtual CommandSupportType supportGrow() const {
@@ -263,6 +269,19 @@ public:
     /**< @return the FileSystem's label */
     const QString& label() const;
 
+    /**< @return the FileSystem's available features */
+    const QStringList& availableFeatures() const;
+
+    /**< @return the FileSystem's features */
+    const QVariantMap& features() const;
+
+    /**< @param the feature's name to add to the FileSystem */
+    /**< @param the feature's value to add to the FileSystem */
+    void addFeature(const QString& name, const QVariant& value);
+
+    /**< @param features the list of features to add to the FileSystem */
+    void addFeatures(const QVariantMap& features);
+
     /**< @return the sector size in the underlying Device */
     qint64 sectorSize() const;
 
@@ -286,6 +305,7 @@ public:
 
 protected:
     static bool findExternal(const QString& cmdName, const QStringList& args = QStringList(), int exptectedCode = 1);
+    void addAvailableFeature(const QString& name);
 
     std::unique_ptr<FileSystemPrivate> d;
 };

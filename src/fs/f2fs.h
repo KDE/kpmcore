@@ -36,7 +36,7 @@ namespace FS
 class LIBKPMCORE_EXPORT f2fs : public FileSystem
 {
 public:
-    f2fs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    f2fs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     void init() override;

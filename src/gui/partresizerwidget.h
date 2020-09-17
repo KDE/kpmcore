@@ -45,7 +45,7 @@ class LIBKPMCORE_EXPORT PartResizerWidget : public QWidget
     Q_DISABLE_COPY(PartResizerWidget)
 
 public:
-    PartResizerWidget(QWidget* parent);
+    explicit PartResizerWidget(QWidget* parent);
 
 public:
     void init(Device& d, Partition& p, qint64 minFirst, qint64 maxLast, bool read_only = false, bool move_allowed = true);

@@ -55,7 +55,7 @@ class `KPMCoreInitializer` from `test/helpers.h`):
 
         QByteArray env = qgetenv( "KPMCORE_BACKEND" );
         auto backendName = env.isEmpty() ? CoreBackendManager::defaultBackendName() : env;
-        if ( !CoreBackendManager::self()->load( backendName )
+        if ( !CoreBackendManager::self()->load( backendName ) )
         {
             qWarning() << "Failed to load backend plugin" << backendName;
             return false;

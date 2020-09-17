@@ -41,8 +41,8 @@ FileSystem::CommandSupportType reiserfs::m_SetLabel = FileSystem::cmdSupportNone
 FileSystem::CommandSupportType reiserfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType reiserfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-reiserfs::reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::ReiserFS)
+reiserfs::reiserfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::ReiserFS)
 {
 }
 
@@ -80,7 +80,7 @@ bool reiserfs::supportToolFound() const
 
 FileSystem::SupportTool reiserfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("reiserfsprogs"), QUrl(QStringLiteral("http://www.kernel.org/pub/linux/utils/fs/reiserfs/")));
+    return SupportTool(QStringLiteral("reiserfsprogs"), QUrl(QStringLiteral("https://reiser4.wiki.kernel.org/index.php/Reiserfsprogs")));
 }
 
 qint64 reiserfs::minCapacity() const

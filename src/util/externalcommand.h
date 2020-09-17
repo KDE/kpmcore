@@ -38,6 +38,8 @@ class Report;
 class CopySource;
 class CopyTarget;
 class QDBusInterface;
+class QDBusPendingCall;
+class OrgKdeKpmcoreExternalcommandInterface;
 
 struct ExternalCommandPrivate;
 
@@ -71,6 +73,7 @@ public:
 public:
     bool copyBlocks(const CopySource& source, CopyTarget& target);
     bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
+    bool createFile(const QByteArray& buffer, const QString& deviceNode); // similar to writeData but creates a new file
 
     /**< @param cmd the command to run */
     void setCommand(const QString& cmd);
@@ -102,7 +105,7 @@ public:
     /**< @return pointer to the Report or nullptr */
     Report* report();
 
-    void emitReport(const QVariantMap& report) { emit reportSignal(report); }
+    void emitReport(const QVariantMap& report) { Q_EMIT reportSignal(report); }
 
     // KAuth
     /**< start ExternalCommand Helper */
@@ -123,11 +126,13 @@ Q_SIGNALS:
     void reportSignal(const QVariantMap&);
 
 public Q_SLOTS:
-    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); }
+    void emitProgress(KJob*, unsigned long percent) { Q_EMIT progress(percent); }
 
 private:
     void setExitCode(int i);
     void onReadOutput();
+    bool waitForDbusReply(QDBusPendingCall &pcall);
+    OrgKdeKpmcoreExternalcommandInterface* helperInterface();
 
 private:
     std::unique_ptr<ExternalCommandPrivate> d;

@@ -57,7 +57,7 @@ public:
     typedef QList<SmartAttribute> Attributes;
 
 public:
-    SmartStatus(const QString &device_path);
+    explicit SmartStatus(const QString &device_path);
 
 public:
     void update();

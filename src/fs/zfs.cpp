@@ -39,8 +39,8 @@ FileSystem::CommandSupportType zfs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType zfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType zfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-zfs::zfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Zfs)
+zfs::zfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Zfs)
 {
 }
 
@@ -72,7 +72,7 @@ bool zfs::supportToolFound() const
 
 FileSystem::SupportTool zfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("zfs"), QUrl(QStringLiteral("http://zfsonlinux.org/")));
+    return SupportTool(QStringLiteral("zfs"), QUrl(QStringLiteral("https://zfsonlinux.org/")));
 }
 
 qint64 zfs::minCapacity() const

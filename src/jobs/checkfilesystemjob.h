@@ -32,7 +32,7 @@ class QString;
 class CheckFileSystemJob : public Job
 {
 public:
-    CheckFileSystemJob(Partition& p);
+    explicit CheckFileSystemJob(Partition& p);
 
 public:
     bool run(Report& parent) override;

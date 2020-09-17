@@ -21,9 +21,9 @@
 #include <QtDBus>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QString>
-#include <QTime>
 #include <QVariant>
 
 #include <KLocalizedString>
@@ -118,7 +118,7 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
     return true;
 }
 
-/** Writes the data from buffer to a given device or file.
+/** Writes the data from buffer to a given device.
     @param targetDevice device or file to write to
     @param buffer the data that we write
     @param offset offset where to begin writing
@@ -128,7 +128,8 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
 {
     QFile device(targetDevice);
 
-    if (!device.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Unbuffered)) {
+    auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered | QIODevice::Append;
+    if (!device.open(flags)) {
         qCritical() << xi18n("Could not open device <filename>%1</filename> for writing.", targetDevice);
         return false;
     }
@@ -140,6 +141,29 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
 
     if (device.write(buffer) != buffer.size()) {
         qCritical() << xi18n("Could not write to device <filename>%1</filename>.", targetDevice);
+        return false;
+    }
+
+    return true;
+}
+
+/** Creates a new file with given contents.
+    @param filePath file to write to
+    @param fileContents the data that we write
+    @return true on success
+*/
+bool ExternalCommandHelper::createFile(const QString &filePath, const QByteArray& fileContents)
+{
+    QFile device(filePath);
+
+    auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
+    if (!device.open(flags)) {
+        qCritical() << xi18n("Could not open file <filename>%1</filename> for writing.", filePath);
+        return false;
+    }
+
+    if (device.write(fileContents) != fileContents.size()) {
+        qCritical() << xi18n("Could not write to file <filename>%1</filename>.", filePath);
         return false;
     }
 
@@ -170,9 +194,9 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
 
     QByteArray buffer;
     int percent = 0;
-    QTime t;
+    QElapsedTimer timer;
 
-    t.start();
+    timer.start();
 
     QVariantMap report;
 
@@ -196,9 +220,9 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
         if (++blocksCopied * 100 / blocksToCopy != percent) {
             percent = blocksCopied * 100 / blocksToCopy;
 
-            if (percent % 5 == 0 && t.elapsed() > 1000) {
-                const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (t.elapsed() / 1000);
-                const qint64 estSecsLeft = (100 - percent) * t.elapsed() / percent / 1000;
+            if (percent % 5 == 0 && timer.elapsed() > 1000) {
+                const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (timer.elapsed() / 1000);
+                const qint64 estSecsLeft = (100 - percent) * timer.elapsed() / percent / 1000;
                 report[QStringLiteral("report")]=  xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
                 HelperSupport::progressStep(report);
             }
@@ -239,12 +263,20 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
 bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
 {
     // Do not allow using this helper for writing to arbitrary location
-    if ( targetDevice.left(5) != QStringLiteral("/dev/") && !targetDevice.contains(QStringLiteral("/etc/fstab")))
+    if ( targetDevice.left(5) != QStringLiteral("/dev/") )
         return false;
 
     return writeData(targetDevice, buffer, targetFirstByte);
 }
 
+bool ExternalCommandHelper::createFile(const QByteArray& fileContents, const QString& filePath)
+{
+    // Do not allow using this helper for writing to arbitrary location
+    if ( !filePath.contains(QStringLiteral("/etc/fstab")) )
+        return false;
+
+    return createFile(filePath, fileContents);
+}
 
 QVariantMap ExternalCommandHelper::start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {

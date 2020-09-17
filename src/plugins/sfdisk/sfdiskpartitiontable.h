@@ -32,7 +32,7 @@ class Partition;
 class SfdiskPartitionTable : public CoreBackendPartitionTable
 {
 public:
-    SfdiskPartitionTable(const Device *d);
+    explicit SfdiskPartitionTable(const Device *d);
     ~SfdiskPartitionTable();
 
 public:
@@ -46,6 +46,10 @@ public:
     bool clobberFileSystem(Report& report, const Partition& partition) override;
     bool resizeFileSystem(Report& report, const Partition& partition, qint64 newLength) override;
     FileSystem::Type detectFileSystemBySector(Report& report, const Device& device, qint64 sector) override;
+    bool setPartitionLabel(Report& report, const Partition& partition, const QString& label) override;
+    QString getPartitionUUID(Report& report, const Partition& partition) override;
+    bool setPartitionUUID(Report& report, const Partition& partition, const QString& uuid) override;
+    bool setPartitionAttributes(Report& report, const Partition& partition, quint64 attrs) override;
     bool setPartitionSystemType(Report& report, const Partition& partition) override;
     bool setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state) override;
 

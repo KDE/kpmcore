@@ -24,6 +24,9 @@
 
 #include "jobs/createpartitionjob.h"
 #include "jobs/createfilesystemjob.h"
+#include "jobs/setpartitionlabeljob.h"
+#include "jobs/setpartitionuuidjob.h"
+#include "jobs/setpartitionattributesjob.h"
 #include "jobs/setfilesystemlabeljob.h"
 #include "jobs/setpartflagsjob.h"
 #include "jobs/checkfilesystemjob.h"
@@ -46,12 +49,30 @@ NewOperation::NewOperation(Device& d, Partition* p) :
     m_TargetDevice(d),
     m_NewPartition(p),
     m_CreatePartitionJob(new CreatePartitionJob(targetDevice(), newPartition())),
+    m_SetPartitionLabelJob(nullptr),
+    m_SetPartitionUUIDJob(nullptr),
+    m_SetPartitionAttributesJob(nullptr),
     m_CreateFileSystemJob(nullptr),
     m_SetPartFlagsJob(nullptr),
     m_SetFileSystemLabelJob(nullptr),
     m_CheckFileSystemJob(nullptr)
 {
     addJob(createPartitionJob());
+
+    if (!p->label().isEmpty()) {
+        m_SetPartitionLabelJob = new SetPartitionLabelJob(targetDevice(), newPartition(), p->label());
+        addJob(setPartitionLabelJob());
+    }
+
+    if (!p->uuid().isEmpty()) {
+        m_SetPartitionUUIDJob = new SetPartitionUUIDJob(targetDevice(), newPartition(), p->uuid());
+        addJob(setPartitionUUIDJob());
+    }
+
+    if (p->attributes()) {
+        m_SetPartitionAttributesJob = new SetPartitionAttributesJob(targetDevice(), newPartition(), p->attributes());
+        addJob(setPartitionAttributesJob());
+    }
 
     const FileSystem& fs = newPartition().fileSystem();
 

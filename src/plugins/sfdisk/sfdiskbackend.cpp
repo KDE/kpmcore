@@ -20,6 +20,7 @@
 
 #include "plugins/sfdisk/sfdiskbackend.h"
 #include "plugins/sfdisk/sfdiskdevice.h"
+#include "plugins/sfdisk/sfdiskgptattributes.h"
 
 #include "core/copysourcedevice.h"
 #include "core/copytargetbytearray.h"
@@ -125,6 +126,60 @@ QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
     return result;
 }
 
+/*** @brief Fix up bogus JSON from `sfdisk --json /dev/sdb`
+ *
+ * The command `sfdisk --json /dev/sdb` outputs a JSON representation
+ * of the partition table, with general device characteristics and
+ * the list of partitions, **but**..
+ *
+ * This isn't necessarily valid JSON: in particular, when there are
+ * no partitions on the disk because it is empty / was recently zeroed /
+ * is a USB stick for testing purposes, the output is changed **only**
+ * by there being no partitions in the partition table. However,
+ * the comma (",") after sectorsize is still printed. Bogus output looks
+ * like this:
+ *
+ * {
+ *   "partitiontable": {
+ *       "label":"gpt",
+ *       "id":"1F9E80D9-DD78-024F-94A3-B61EC82B18C8",
+ *       "device":"/dev/sdb",
+ *       "unit":"sectors",
+ *       "firstlba":2048,
+ *       "lastlba":30949342,
+ *       "sectorsize":512,
+ *   }
+ * }
+ *
+ * That's not valid JSON because of the "," followed by nothing until
+ * the brace, and yields an empty object is passed to fromJson().
+ *
+ * We'll go through and check if there's a "," followed by whitespace
+ * and then a }. If there is, replace the ,.
+ *
+ * This is also fixed in util-linux 2.37.
+ */
+static void
+fixInvalidJsonFromSFDisk( QByteArray& s )
+{
+    // -1 if there is no comma (but then there's no useful JSON either),
+    //    not is 0 a valid place (the start) for a , in a JSON document.
+    int lastComma = s.lastIndexOf(',');
+    if ( lastComma > 0 )
+    {
+        for ( int charIndex = lastComma + 1; charIndex < s.length(); ++charIndex )
+        {
+            if ( s[charIndex] == '}' )
+            {
+                s[lastComma] = ' ';  // Erase that comma
+            }
+            if ( !isspace( s[charIndex] ) )
+            {
+                break;
+            }
+        }
+    }
+}
 
 /** Create a Device for the given device_node and scan it for partitions.
     @param deviceNode the device node (e.g. "/dev/sda")
@@ -206,7 +261,10 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             if (jsonCommand.exitCode() != 0)
                 return d;
 
-            const QJsonObject jsonObject = QJsonDocument::fromJson(jsonCommand.rawOutput()).object();
+            auto s = jsonCommand.rawOutput();
+            fixInvalidJsonFromSFDisk(s);
+
+            const QJsonObject jsonObject = QJsonDocument::fromJson(s).object();
             const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
 
             if (!updateDevicePartitionTable(*d, partitionTable))
@@ -275,7 +333,8 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         else
             r = PartitionRole::Logical;
 
-        FileSystem* fs = FileSystemFactory::create(type, start, start + size - 1, d.logicalSize());
+        auto lastSector = start + size - 1;
+        FileSystem* fs = FileSystemFactory::create(type, start, lastSector, d.logicalSize());
         fs->scan(partitionNode);
 
         QString mountPoint;
@@ -293,18 +352,12 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
             mounted = FileSystem::detectMountStatus(fs, partitionNode);
         }
 
-        Partition* part = new Partition(parent, d, PartitionRole(r), fs, start, start + size - 1, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
+        Partition* part = new Partition(parent, d, PartitionRole(r), fs, start, lastSector, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
 
-        if (!part->roles().has(PartitionRole::Luks))
-            readSectorsUsed(d, *part, mountPoint);
+        setupPartitionInfo(d, part, partitionObject, mountPoint);
 
         if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
             fs->setLabel(fs->readLabel(part->deviceNode()));
-
-        if (d.partitionTable()->type() == PartitionTable::TableType::gpt) {
-            part->setLabel(partitionObject[QLatin1String("name")].toString());
-            part->setUUID(partitionObject[QLatin1String("uuid")].toString());
-        }
 
         if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
             fs->setUUID(fs->readUUID(part->deviceNode()));
@@ -320,6 +373,20 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
 
     for (const Partition * part : qAsConst(partitions))
         PartitionAlignment::isAligned(d, *part);
+}
+
+void SfdiskBackend::setupPartitionInfo(const Device &d, Partition *partition, const QJsonObject& partitionObject, const QString mountPoint)
+{
+    if (!partition->roles().has(PartitionRole::Luks))
+        readSectorsUsed(d, *partition, mountPoint);
+
+    if (d.partitionTable()->type() == PartitionTable::TableType::gpt) {
+        partition->setLabel(partitionObject[QLatin1String("name")].toString());
+        partition->setUUID(partitionObject[QLatin1String("uuid")].toString());
+        partition->setType(partitionObject[QLatin1String("type")].toString());
+        QString attrs = partitionObject[QLatin1String("attrs")].toString();
+        partition->setAttributes(SfdiskGptAttributes::toULongLong(attrs.split(QLatin1Char(' '))));
+    }
 }
 
 bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jsonPartitionTable)

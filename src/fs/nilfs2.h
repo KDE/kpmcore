@@ -38,7 +38,7 @@ namespace FS
 class LIBKPMCORE_EXPORT nilfs2 : public FileSystem
 {
 public:
-    nilfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    nilfs2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     void init() override;

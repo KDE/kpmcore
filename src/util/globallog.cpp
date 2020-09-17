@@ -29,7 +29,7 @@ GlobalLog* GlobalLog::instance()
 
 void GlobalLog::flush(Log::Level lev)
 {
-    emit newMessage(lev, msg);
+    Q_EMIT newMessage(lev, msg);
     msg.clear();
 }
 

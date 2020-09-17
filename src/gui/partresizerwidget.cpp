@@ -278,8 +278,8 @@ bool PartResizerWidget::movePartition(qint64 newFirstSector)
 
     updatePositions();
 
-    emit firstSectorChanged(partition().firstSector());
-    emit lastSectorChanged(partition().lastSector());
+    Q_EMIT firstSectorChanged(partition().firstSector());
+    Q_EMIT lastSectorChanged(partition().lastSector());
 
     return true;
 }
@@ -335,7 +335,7 @@ bool PartResizerWidget::updateFirstSector(qint64 newFirstSector)
 
         updatePositions();
 
-        emit firstSectorChanged(partition().firstSector());
+        Q_EMIT firstSectorChanged(partition().firstSector());
 
         return true;
     }
@@ -416,7 +416,7 @@ bool PartResizerWidget::updateLastSector(qint64 newLastSector)
         resizeLogicals(0, deltaLast);
         updatePositions();
 
-        emit lastSectorChanged(partition().lastSector());
+        Q_EMIT lastSectorChanged(partition().lastSector());
 
         return true;
     }

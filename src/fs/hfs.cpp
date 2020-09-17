@@ -34,8 +34,8 @@ FileSystem::CommandSupportType hfs::m_Check = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfs::m_Copy = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType hfs::m_Backup = FileSystem::cmdSupportNone;
 
-hfs::hfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Hfs)
+hfs::hfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Hfs)
 {
 }
 
@@ -67,7 +67,7 @@ bool hfs::supportToolFound() const
 
 FileSystem::SupportTool hfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("hfsutils"), QUrl(QStringLiteral("http://www.mars.org/home/rob/proj/hfs/")));
+    return SupportTool(QStringLiteral("hfsutils"), QUrl(QStringLiteral("https://www.mars.org/home/rob/proj/hfs/")));
 }
 
 

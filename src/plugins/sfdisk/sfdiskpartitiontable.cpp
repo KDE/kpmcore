@@ -16,6 +16,7 @@
  *************************************************************************/
 
 #include "plugins/sfdisk/sfdiskpartitiontable.h"
+#include "plugins/sfdisk/sfdiskgptattributes.h"
 
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
@@ -57,11 +58,8 @@ bool SfdiskPartitionTable::commit(quint32 timeout)
         ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--stop-exec-queue") }).run();
 
     ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("settle"), QStringLiteral("--timeout=") + QString::number(timeout) }).run();
-    ExternalCommand(QStringLiteral("blockdev"), { QStringLiteral("--rereadpt"), m_device->deviceNode() }).run();
-
-    QThread::msleep(1000);
-
-    ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("trigger") }).run();
+    ExternalCommand(QStringLiteral("partx"), { QStringLiteral("--update"), m_device->deviceNode() }).run();
+    ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("trigger"), QStringLiteral("--subsystem-match=block") }).run();
 
     if (m_device->type() == Device::Type::SoftwareRAID_Device)
         ExternalCommand(QStringLiteral("udevadm"), { QStringLiteral("control"), QStringLiteral("--start-exec-queue") }).run();
@@ -181,7 +179,7 @@ static struct {
     { FileSystem::Type::LinuxSwap, { QLatin1String("0657FD6D-A4AB-43C4-84E5-0933C84B4F4F"), QLatin1String("82") } },
     { FileSystem::Type::Fat12, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
     { FileSystem::Type::Fat16, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("6") } },
-    { FileSystem::Type::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
+    { FileSystem::Type::Fat32, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("c") } },
     { FileSystem::Type::Nilfs2, { QLatin1String("0FC63DAF-8483-4772-8E79-3D69D8477DE4"), QLatin1String("83") } },
     { FileSystem::Type::Ntfs, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
     { FileSystem::Type::Exfat, { QLatin1String("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"), QLatin1String("7") } },
@@ -216,9 +214,54 @@ static QLatin1String getPartitionType(FileSystem::Type t, PartitionTable::TableT
     return QLatin1String();
 }
 
+bool SfdiskPartitionTable::setPartitionLabel(Report& report, const Partition& partition, const QString& label)
+{
+    if (label.isEmpty())
+        return true;
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-label"), m_device->deviceNode(), QString::number(partition.number()),
+                label } );
+    return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
+}
+
+QString SfdiskPartitionTable::getPartitionUUID(Report& report, const Partition& partition)
+{
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--list"), QStringLiteral("--output"), QStringLiteral("Device,UUID"),
+                m_device->deviceNode() });
+    if (sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0) {
+        QRegularExpression re(m_device->deviceNode() + QString::number(partition.number()) + QStringLiteral(" +(.+)"));
+        QRegularExpressionMatch rem = re.match(sfdiskCommand.output());
+
+        if (rem.hasMatch())
+            return rem.captured(1);
+    }
+
+    return QString();
+}
+
+bool SfdiskPartitionTable::setPartitionUUID(Report& report, const Partition& partition, const QString& uuid)
+{
+    if (uuid.isEmpty())
+        return true;
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-uuid"), m_device->deviceNode(), QString::number(partition.number()),
+                uuid } );
+    return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
+}
+
+bool SfdiskPartitionTable::setPartitionAttributes(Report& report, const Partition& partition, quint64 attrs)
+{
+    QStringList attributes = SfdiskGptAttributes::toStringList(attrs);
+    if (attributes.isEmpty())
+        return true;
+    ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-attrs"), m_device->deviceNode(), QString::number(partition.number()),
+                attributes.join(QStringLiteral(",")) } );
+    return sfdiskCommand.run(-1) && sfdiskCommand.exitCode() == 0;
+}
+
 bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
-    QString partitionType = getPartitionType(partition.fileSystem().type(), m_device->partitionTable()->type());
+    QString partitionType = partition.type();
+    if (partitionType.isEmpty())
+        partitionType = getPartitionType(partition.fileSystem().type(), m_device->partitionTable()->type());
     if (partitionType.isEmpty())
         return true;
     ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--part-type"), m_device->deviceNode(), QString::number(partition.number()),

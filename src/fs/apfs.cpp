@@ -23,8 +23,8 @@ FileSystem::CommandSupportType apfs::m_Move = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType apfs::m_Copy = FileSystem::cmdSupportCore;
 FileSystem::CommandSupportType apfs::m_Backup = FileSystem::cmdSupportCore;
 
-apfs::apfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Apfs)
+apfs::apfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Apfs)
 {
 }
 }

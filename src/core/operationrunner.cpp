@@ -69,7 +69,7 @@ void OperationRunner::run()
         Operation* op = operationStack().operations()[i];
         op->setStatus(Operation::StatusRunning);
 
-        emit opStarted(i + 1, op);
+        Q_EMIT opStarted(i + 1, op);
 
         connect(op, &Operation::progress, this, &OperationRunner::progressSub);
 
@@ -78,18 +78,18 @@ void OperationRunner::run()
 
         disconnect(op, &Operation::progress, this, &OperationRunner::progressSub);
 
-        emit opFinished(i + 1, op);
+        Q_EMIT opFinished(i + 1, op);
     }
 
     if (automounter)
         kdedInterface.call( QStringLiteral("loadModule"), automounterService );
 
     if (!status)
-        emit error();
+        Q_EMIT error();
     else if (isCancelling())
-        emit cancelled();
+        Q_EMIT cancelled();
     else
-        emit finished();
+        Q_EMIT finished();
 }
 
 /** @return the number of Operations to run */

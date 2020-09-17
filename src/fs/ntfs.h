@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT ntfs : public FileSystem
 {
 public:
-    ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label);
+    ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {});
 
 public:
     void init() override;

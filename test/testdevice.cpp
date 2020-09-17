@@ -17,8 +17,8 @@
  
  //  SPDX-License-Identifier: GPL-3.0+
 
-#include "helpers.h"
 #include "testdevice.h" 
+#include "helpers.h"
 
 #include "backend/corebackend.h"
 #include "backend/corebackendmanager.h"
@@ -36,19 +36,21 @@ int main(int argc, char **argv)
     if (argc == 2)
         init = KPMCoreInitializer(argv[1]);
     
-    return init.isValid() ? true : false;
+    return init.isValid() ? EXIT_SUCCESS : EXIT_FAILURE;
 
     CoreBackend *backend = CoreBackendManager::self()->backend();
     
     if (!backend) {
         qWarning() << "Failed to load backend plugin";
-        return false;
+        return EXIT_FAILURE;
     }
     
     TestDevice device;
     
-    if (!device.testDeviceName() || !device.testDeviceNode() || !device.testDeviceSize() || !device.testDeviceTotalSectors())
-        return false;
+    device.testDeviceName();
+    device.testDeviceNode();
+    device.testDeviceSize();
+    device.testDeviceTotalSectors();
     
     return app.exec();
 }
@@ -73,58 +75,50 @@ TestDevice::~TestDevice()
     devices.clear();
 }
 
-bool TestDevice::testDeviceName()
+void TestDevice::testDeviceName()
 {
     if (devices.isEmpty()) {
-        return false;
+        exit(EXIT_FAILURE);
     } else {
         for (const auto &device : devices) {
-            if (device->name() == QString())
-                return false;
+            if (device->name().isEmpty())
+                exit(EXIT_FAILURE);
         }
     }
-    
-    return true;
 }
 
-bool TestDevice::testDeviceNode()
+void TestDevice::testDeviceNode()
 {
     if (devices.isEmpty()) {
-        return false;
+        exit(EXIT_FAILURE);
     } else {
         for (const auto &device : devices) {
             if (device->deviceNode() == QString())
-                return false;
+                exit(EXIT_FAILURE);
         }
     }
-    
-    return true;
 }
 
-bool TestDevice::testDeviceSize()
+void TestDevice::testDeviceSize()
 {
     if (devices.isEmpty()) {
-        return false;
+        exit(EXIT_FAILURE);
     } else {
         for (const auto &device : devices) {
             if (device->logicalSize() < 0)
-                return false;
+                exit(EXIT_FAILURE);
         }
     }
-    
-    return true;
 }
 
-bool TestDevice::testDeviceTotalSectors()
+void TestDevice::testDeviceTotalSectors()
 {
     if (devices.isEmpty()) {
-        return false;
+        exit(EXIT_FAILURE);
     } else {
         for (const auto &device : devices) {
             if (device->totalLogical() < 0)
-                return false;
+                exit(EXIT_FAILURE);
         }
     }
-    
-    return true;    
 }

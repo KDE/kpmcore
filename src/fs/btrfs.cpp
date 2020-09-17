@@ -43,8 +43,8 @@ FileSystem::CommandSupportType btrfs::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType btrfs::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType btrfs::m_GetUUID = FileSystem::cmdSupportNone;
 
-btrfs::btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label) :
-    FileSystem(firstsector, lastsector, sectorsused, label, FileSystem::Type::Btrfs)
+btrfs::btrfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Btrfs)
 {
 }
 
@@ -65,6 +65,22 @@ void btrfs::init()
     m_GetLabel = cmdSupportCore;
     m_Backup = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
+
+    if (m_Create == cmdSupportFileSystem) {
+        ExternalCommand cmd(QStringLiteral("mkfs.btrfs"), QStringList() << QStringLiteral("-O") << QStringLiteral("list-all"));
+        if (cmd.run(-1) && cmd.exitCode() == 0) {
+            QStringList lines = cmd.output().split(QStringLiteral("\n"));
+
+            // First line is introductory text, we don't need it
+            lines.removeFirst();
+
+            for (const auto& l: lines) {
+                if (!l.isEmpty())
+                    addAvailableFeature(l.split(QStringLiteral(" ")).first());
+            }
+        }
+    }
+
 }
 
 bool btrfs::supportToolFound() const
@@ -86,7 +102,7 @@ bool btrfs::supportToolFound() const
 
 FileSystem::SupportTool btrfs::supportToolName() const
 {
-    return SupportTool(QStringLiteral("btrfs-tools"), QUrl(QStringLiteral("http://btrfs.wiki.kernel.org/")));
+    return SupportTool(QStringLiteral("btrfs-tools"), QUrl(QStringLiteral("https://btrfs.wiki.kernel.org/")));
 }
 
 qint64 btrfs::minCapacity() const
@@ -128,7 +144,26 @@ bool btrfs::check(Report& report, const QString& deviceNode) const
 
 bool btrfs::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), { QStringLiteral("--force"), deviceNode });
+    QStringList args = QStringList();
+
+    if (!this->features().isEmpty()) {
+        QStringList feature_list = QStringList();
+        for (const auto& k : this->features().keys()) {
+	    const auto& v = this->features().value(k);
+            if (v.type() == QVariant::Type::Bool) {
+                if (v.toBool())
+                    feature_list << k;
+		else
+                    feature_list << (QStringLiteral("^") +  k);
+            } else {
+                qWarning() << "Ignoring feature" << k << "of type" << v.type() << "; requires type QVariant::bool.";
+            }
+        }
+        args << QStringLiteral("--features") << feature_list.join(QStringLiteral(","));
+    }
+    args << QStringLiteral("--force") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.btrfs"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

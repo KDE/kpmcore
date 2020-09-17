@@ -34,7 +34,7 @@ class SfdiskDevice : public CoreBackendDevice
     Q_DISABLE_COPY(SfdiskDevice);
 
 public:
-    SfdiskDevice(const Device& d);
+    explicit SfdiskDevice(const Device& d);
     ~SfdiskDevice();
 
 public:

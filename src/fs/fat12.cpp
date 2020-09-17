@@ -29,6 +29,9 @@
 #include <QString>
 #include <QStringList>
 
+#include <QDebug>
+#include <QtMath>
+
 #include <ctime>
 
 namespace FS
@@ -46,8 +49,8 @@ FileSystem::CommandSupportType fat12::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType fat12::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType fat12::m_GetUUID = FileSystem::cmdSupportNone;
 
-fat12::fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t) :
-    FileSystem(firstsector, lastsector, sectorsused, label, t)
+fat12::fat12(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features, FileSystem::Type t) :
+    FileSystem(firstsector, lastsector, sectorsused, label, features, t)
 {
 }
 
@@ -61,6 +64,11 @@ void fat12::init()
     m_Backup = cmdSupportCore;
     m_UpdateUUID = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
+
+    if (m_Create == cmdSupportFileSystem) {
+        addAvailableFeature(QStringLiteral("sector-size"));
+        addAvailableFeature(QStringLiteral("sectors-per-cluster"));
+    }
 }
 
 bool fat12::supportToolFound() const
@@ -151,7 +159,39 @@ bool fat12::check(Report& report, const QString& deviceNode) const
 
 bool fat12::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.fat"), { QStringLiteral("-F12"), QStringLiteral("-I"), QStringLiteral("-v"), deviceNode });
+    return createWithFatSize(report, deviceNode, 12);
+}
+
+bool fat12::createWithFatSize(Report &report, const QString& deviceNode, int fatSize)
+{
+    QStringList args = QStringList();
+
+    if (fatSize != 12 && fatSize != 16 && fatSize != 32)
+        return false;
+
+    for (const auto& k : this->features().keys()) {
+	const auto& v = this->features().value(k);
+        if (k == QStringLiteral("sector-size")) {
+            quint32 sectorSize = v.toInt();
+
+            /* sectorSize has to be a power of 2 between 512 and 32768 */
+            if (sectorSize >= 512 && sectorSize <= 32768 && sectorSize == qNextPowerOfTwo(sectorSize - 1))
+                args << QStringLiteral("-S%1").arg(sectorSize);
+            else
+                qWarning() << QStringLiteral("FAT sector size %1 is invalid, using default").arg(sectorSize);
+        } else if (k == QStringLiteral("sectors-per-cluster")) {
+            quint32 sectorsPerCluster = v.toInt();
+
+            /* sectorsPerCluster has to be a power of 2 between 2 and 128 */
+            if (sectorsPerCluster <= 128 && sectorsPerCluster == qNextPowerOfTwo(sectorsPerCluster - 1))
+                args << QStringLiteral("-s%1").arg(sectorsPerCluster);
+            else
+                qWarning() << QStringLiteral("FAT sector size %1 is invalid, using default").arg(sectorsPerCluster);
+        }
+    }
+    args << QStringLiteral("-F%1").arg(fatSize) << QStringLiteral("-I") << QStringLiteral("-v") << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.fat"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

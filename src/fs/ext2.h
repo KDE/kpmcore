@@ -37,7 +37,7 @@ namespace FS
 class LIBKPMCORE_EXPORT ext2 : public FileSystem
 {
 public:
-    ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type t = FileSystem::Type::Ext2);
+    ext2(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features = {}, FileSystem::Type t = FileSystem::Type::Ext2);
 
 public:
     void init() override;
@@ -57,6 +57,9 @@ public:
         return m_GetLabel;
     }
     CommandSupportType supportCreate() const override {
+        return m_Create;
+    }
+    CommandSupportType supportCreateWithFeatures() const override {
         return m_Create;
     }
     CommandSupportType supportGrow() const override {
