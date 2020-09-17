@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2008,2012 Volker Lanz <vl@fidra.de>
+# SPDX-FileCopyrightText: 2015 Chris Campbell <c.j.campbell@ed.ac.uk>
+# SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
+# SPDX-FileCopyrightText: 2015 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2018 Huzaifa Faruqui <huzaifafaruqui@gmail.com>
+# SPDX-FileCopyrightText: 2019 Albert Astals Cid <aacid@kde.org>
+# SPDX-FileCopyrightText: 2019 Antonio Rojas <arojas@archlinux.org>
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 set(application_interface_xml org.kde.kpmcore.applicationinterface.xml)
 set(helper_interface_xml org.kde.kpmcore.helperinterface.xml)
 

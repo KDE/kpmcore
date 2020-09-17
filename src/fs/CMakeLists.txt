@@ -1,3 +1,15 @@
+# SPDX-FileCopyrightText: 2008,2012 Volker Lanz <vl@fidra.de>
+# SPDX-FileCopyrightText: 2015-2019 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2015 Chris Campbell <c.j.campbell@ed.ac.uk>
+# SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
+# SPDX-FileCopyrightText: 2017 Pali Rohár <pali.rohar@gmail.com>
+# SPDX-FileCopyrightText: 2018 Caio Carvalho <caiojcarvalho@gmail.com>
+# SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
+# SPDX-FileCopyrightText: 2020 Arnaud Ferraris <arnaud.ferraris@collabora.com>
+# SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 set(FS_SRC
     fs/apfs.cpp
     fs/bitlocker.cpp
