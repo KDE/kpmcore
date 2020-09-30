@@ -1,3 +1,8 @@
+<!-- SPDX-FileCopyrightText: 2017 Adriaan de Groot <groot@kde.org> 
+     SPDX-FileCopyrightText: 2017-2020 Andrius Štikonas <andrius@stikonas.eu>
+     SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # KPMcore
 
 > KPMcore, the KDE Partition Manager core, is a library for examining

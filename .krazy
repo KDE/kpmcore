@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: no
+# SPDX-License-Identifier: CC0-1.0
+
 #the krazy i18ncheckarg hangs on this file due to extra double-quotes in a QRegularExpression.
 #No idea how to fix properly so let's just skip the file
 SKIP /src/fs/fat12.cpp
