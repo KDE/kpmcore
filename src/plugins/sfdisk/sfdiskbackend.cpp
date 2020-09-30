@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2017-2020 Andrius Štikonas <andrius@stikonas.eu>
-    SPDX-FileCopyrightText: 2018-2019 Caio Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2018-2019 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
     SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
     SPDX-FileCopyrightText: 2020 Adriaan de Groot <groot@kde.org>

@@ -2,7 +2,7 @@
     SPDX-FileCopyrightText: 2008-2011 Volker Lanz <vl@fidra.de>
     SPDX-FileCopyrightText: 2014-2018 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
-    SPDX-FileCopyrightText: 2018 Caio Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2020 Arnaud Ferraris <arnaud.ferraris@collabora.com>
 
     SPDX-License-Identifier: GPL-3.0-or-later

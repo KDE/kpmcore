@@ -2,7 +2,7 @@
     SPDX-FileCopyrightText: 2012-2018 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
     SPDX-FileCopyrightText: 2016 Teo Mrnjavac <teo@kde.org>
-    SPDX-FileCopyrightText: 2018 Caio Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Yuri Chornoivan <yurchor@ukr.net>
     SPDX-FileCopyrightText: 2020 Arnaud Ferraris <arnaud.ferraris@collabora.com>
     SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>

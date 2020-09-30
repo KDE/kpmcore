@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
     SPDX-FileCopyrightText: 2016-2018 Andrius Štikonas <andrius@stikonas.eu>
-    SPDX-FileCopyrightText: 2019 Caio Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2019 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */

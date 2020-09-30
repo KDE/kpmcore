@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2018 Caio Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2020 Arnaud Ferraris <arnaud.ferraris@collabora.com>
     SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
 
@@ -20,7 +20,7 @@ class QString;
 namespace FS
 {
 /** A linux_raid_member file system.
-    @author Caio Carvalho <caiojcarvalho@gmail.com>
+    @author Caio Jordão Carvalho <caiojcarvalho@gmail.com>
  */
 class LIBKPMCORE_EXPORT linuxraidmember : public FileSystem
 {

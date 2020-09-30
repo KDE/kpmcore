@@ -1,20 +1,12 @@
-/*************************************************************************
- *  Copyright (C) 2008, 2009, 2010 by Volker Lanz <vl@fidra.de>          *
- *  Copyright (C) 2016 by Andrius Štikonas <andrius@stikonas.eu>         *
- *                                                                       *
- *  This program is free software; you can redistribute it and/or        *
- *  modify it under the terms of the GNU General Public License as       *
- *  published by the Free Software Foundation; either version 3 of       *
- *  the License, or (at your option) any later version.                  *
- *                                                                       *
- *  This program is distributed in the hope that it will be useful,      *
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of       *
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        *
- *  GNU General Public License for more details.                         *
- *                                                                       *
- *  You should have received a copy of the GNU General Public License    *
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
- *************************************************************************/
+/*
+    SPDX-FileCopyrightText: 2008-2012 Volker Lanz <vl@fidra.de>
+    SPDX-FileCopyrightText: 2012-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2015-2016 Teo Mrnjavac <teo@kde.org>
+    SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
+    SPDX-FileCopyrightText: 2016 Friedrich W. H. Kossebau <kossebau@kde.org>
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+*/
 
 #include "util/helpers.h"
 #include "util/externalcommand.h"
@@ -56,7 +48,7 @@ KAboutData aboutKPMcore()
     KAboutData aboutData( QStringLiteral("kpmcore"),
                           xi18nc("@title", "<application>KPMcore</application>"), QStringLiteral(VERSION),
                           xi18nc("@title", "Library for managing partitions"),
-                          KAboutLicense::GPL_V3, xi18nc("@info:credit", "&copy; 2008-2019 KPMcore developers" ) );
+                          KAboutLicense::GPL_V3, xi18nc("@info:credit", "&copy; 2008-2020 KPMcore developers" ) );
     aboutData.setOrganizationDomain(QByteArray("kde.org"));
     aboutData.setProductName(QByteArray("kpmcore"));
     aboutData.setHomepage(QStringLiteral("https://commits.kde.org/kpmcore"));

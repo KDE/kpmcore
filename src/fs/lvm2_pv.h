@@ -2,7 +2,7 @@
     SPDX-FileCopyrightText: 2012-2017 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015 Chris Campbell <c.j.campbell@ed.ac.uk>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
-    SPDX-FileCopyrightText: 2018 Caio Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2020 Arnaud Ferraris <arnaud.ferraris@collabora.com>
     SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
 
@@ -55,7 +55,7 @@ private:
 
 namespace LVM {
 /** Class to access a global LVM PV list.
-    @author Caio Carvalho <caiojcarvalho@gmail.com>
+    @author Caio Jordão Carvalho <caiojcarvalho@gmail.com>
 */
 class LIBKPMCORE_EXPORT pvList
 {

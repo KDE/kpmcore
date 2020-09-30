@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2018 Caio Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2018 Andrius Štikonas <andrius@stikonas.eu>
 
     SPDX-License-Identifier: GPL-3.0-or-later
@@ -56,7 +56,7 @@ enum class SmartAttributeUnit {
 
     It receives the attribute data from JSON, retrieve its data and validates its values.
 
-    @author Caio Carvalho <caiojcarvalho@gmail.com>
+    @author Caio Jordão Carvalho <caiojcarvalho@gmail.com>
 */
 class SmartAttributeParsedData
 {
