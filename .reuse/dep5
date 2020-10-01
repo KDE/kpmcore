@@ -1,0 +1,24 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: KPMcore
+Source: https://invent.kde.org/system/kpmcore
+
+### TRANSLATIONS
+Files: po/*.po
+License: GPL-3.0-or-later
+Copyright: 2020 KDE translators
+
+### KCoreAddons Plugin info
+Files: src/plugins/*/*.json
+License: GPL-3.0-or-later
+Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
+Copyright: 2020 KDE translators
+
+### DBus interfaces
+Files: src/util/org.kde.kpmcore.*.conf
+License: MIT
+Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
+
+### KAuth actions
+Files: src/util/org.kde.kpmcore.externalcommand.actions
+License: CC0-1.0
+Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
