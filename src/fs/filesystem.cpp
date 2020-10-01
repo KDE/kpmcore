@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2008-2011 Volker Lanz <vl@fidra.de>
-    SPDX-FileCopyrightText: 2012-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2012-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015-2016 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
     SPDX-FileCopyrightText: 2017 Pali Rohár <pali.rohar@gmail.com>
@@ -27,6 +27,7 @@
 #include <KLocalizedString>
 
 #include <QColor>
+#include <QFile>
 #include <QFileInfo>
 #include <QStandardPaths>
 #include <QStorageInfo>
@@ -154,7 +155,7 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
     QString partitionCanonicalPath = partitionPathFileInfo.canonicalFilePath();
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
-        if (partitionCanonicalPath == QFileInfo(QString::fromLocal8Bit(storage.device())).canonicalFilePath() ) {
+        if (partitionCanonicalPath == QFileInfo(QFile::decodeName(storage.device())).canonicalFilePath() ) {
             mountPoints.append(storage.rootPath());
         }
     }

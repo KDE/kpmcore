@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2008-2010 Volker Lanz <vl@fidra.de>
     SPDX-FileCopyrightText: 2008 Laurent Montel <montel@kde.org>
-    SPDX-FileCopyrightText: 2013-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2013-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015-2016 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
 
@@ -19,6 +19,7 @@
 #include "util/externalcommand.h"
 #include "util/report.h"
 
+#include <QFile>
 #include <QRegularExpression>
 #include <QStorageInfo>
 #include <QString>
@@ -329,7 +330,7 @@ bool Partition::unmount(Report& report)
     const QString canonicalDeviceNode = QFileInfo(deviceNode()).canonicalFilePath();
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
-        if (QFileInfo(QString::fromLocal8Bit(storage.device())).canonicalFilePath() == canonicalDeviceNode ) {
+        if (QFileInfo(QFile::decodeName(storage.device())).canonicalFilePath() == canonicalDeviceNode ) {
             success = false;
             break;
         }
