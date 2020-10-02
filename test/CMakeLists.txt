@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2017 Adriaan de Groot <groot@kde.org>
+# SPDX-FileCopyrightText: 2017-2019 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2018 Caio Carvalho <caiojcarvalho@gmail.com>
+# SPDX-FileCopyrightText: 2019 Yuri Chornoivan <yurchor@ukr.net>
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # Tests for KPMcore
 #
 # These are not so much "tests" as "small example programs". They illustrate

@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2008,2012 Volker Lanz <vl@fidra.de>
+# SPDX-FileCopyrightText: 2015 Chris Campbell <c.j.campbell@ed.ac.uk>
+# SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
+# SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 set(JOBS_SRC
     jobs/resizefilesystemjob.cpp
     jobs/createfilesystemjob.cpp

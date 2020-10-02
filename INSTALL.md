@@ -1,3 +1,8 @@
+<!-- SPDX-FileCopyrightText: 2008-2010 Volker Lanz <vl@fidra.de>
+     SPDX-FileCopyrightText: 2015-2019 Andrius Štikonas <andrius@stikonas.eu>
+     SPDX-License-Identifier: CC-BY-4.0
+-->
+
 Building and installing KDE Partition Manager Core Library from source
 =========================================================
 

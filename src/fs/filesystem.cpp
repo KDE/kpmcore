@@ -1,21 +1,16 @@
-/*************************************************************************
- *  Copyright (C) 2012 by Volker Lanz <vl@fidra.de>                      *
- *  Copyright (C) 2015 by Teo Mrnjavac <teo@kde.org>                     *
- *  Copyright (C) 2016-2018 by Andrius Štikonas <andrius@stikonas.eu>    *
- *                                                                       *
- *  This program is free software; you can redistribute it and/or        *
- *  modify it under the terms of the GNU General Public License as       *
- *  published by the Free Software Foundation; either version 3 of       *
- *  the License, or (at your option) any later version.                  *
- *                                                                       *
- *  This program is distributed in the hope that it will be useful,      *
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of       *
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the        *
- *  GNU General Public License for more details.                         *
- *                                                                       *
- *  You should have received a copy of the GNU General Public License    *
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.*
- *************************************************************************/
+/*
+    SPDX-FileCopyrightText: 2008-2011 Volker Lanz <vl@fidra.de>
+    SPDX-FileCopyrightText: 2012-2020 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2015-2016 Teo Mrnjavac <teo@kde.org>
+    SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
+    SPDX-FileCopyrightText: 2017 Pali Rohár <pali.rohar@gmail.com>
+    SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2019 Yuri Chornoivan <yurchor@ukr.net>
+    SPDX-FileCopyrightText: 2020 Arnaud Ferraris <arnaud.ferraris@collabora.com>
+    SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
+
+    SPDX-License-Identifier: GPL-3.0-or-later
+*/
 
 #include "fs/filesystem.h"
 #include "core/fstab.h"
@@ -33,6 +28,7 @@
 #include <KLocalizedString>
 
 #include <QColor>
+#include <QFile>
 #include <QFileInfo>
 #include <QStandardPaths>
 #include <QStorageInfo>
@@ -162,7 +158,7 @@ QString FileSystem::detectMountPoint(FileSystem* fs, const QString& partitionPat
     QString partitionCanonicalPath = partitionPathFileInfo.canonicalFilePath();
     const QList<QStorageInfo> mountedVolumes = QStorageInfo::mountedVolumes();
     for (const QStorageInfo &storage : mountedVolumes) {
-        if (partitionCanonicalPath == QFileInfo(QString::fromLocal8Bit(storage.device())).canonicalFilePath() ) {
+        if (partitionCanonicalPath == QFileInfo(QFile::decodeName(storage.device())).canonicalFilePath() ) {
             mountPoints.append(storage.rootPath());
         }
     }
