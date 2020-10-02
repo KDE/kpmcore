@@ -464,12 +464,20 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
                                  QStringLiteral("--query=property"),
                                  partitionPath });
 
-    QString udevTypeRegExp = QStringLiteral("ID_FS_TYPE=(\\w+)");
-    QString udevVersionRegExp = QStringLiteral("ID_FS_VERSION=(\\w+)");
+    QString typeRegExp = QStringLiteral("ID_FS_TYPE=(\\w+)");
+    QString versionRegExp = QStringLiteral("ID_FS_VERSION=(\\w+)");
 
     QString name = {};
 
-    rval = runDetectFileSystemCommand(udevCommand, udevTypeRegExp, udevVersionRegExp, name);
+    rval = runDetectFileSystemCommand(udevCommand, typeRegExp, versionRegExp, name);
+
+    // Fallback to blkid. blkid has slightly worse detection but it works on whole block device filesystems.
+    if (rval == FileSystem::Type::Unknown) {
+        ExternalCommand blkidCommand(QStringLiteral("blkid"), { partitionPath });
+        typeRegExp = QStringLiteral("TYPE=\"(\\w+)\"");
+        versionRegExp = QStringLiteral("SEC_TYPE=\"(\\w+)\"");
+        rval = runDetectFileSystemCommand(blkidCommand, typeRegExp, versionRegExp, name);
+    }
 
     if (rval == FileSystem::Type::Unknown) {
         qWarning() << "unknown file system type " << name << " on " << partitionPath;
