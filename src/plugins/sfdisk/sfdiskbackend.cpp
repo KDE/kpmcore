@@ -187,11 +187,11 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
                           deviceNode });
     ExternalCommand sizeCommand(QStringLiteral("blockdev"), { QStringLiteral("--getsize64"), deviceNode });
     ExternalCommand sizeCommand2(QStringLiteral("blockdev"), { QStringLiteral("--getss"), deviceNode });
-    ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode }, QProcess::ProcessChannelMode::SeparateChannels );
+    ExternalCommand sfdiskJsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode }, QProcess::ProcessChannelMode::SeparateChannels );
 
     if ( sizeCommand.run(-1) && sizeCommand.exitCode() == 0
          && sizeCommand2.run(-1) && sizeCommand2.exitCode() == 0
-         && jsonCommand.run(-1) )
+         && sfdiskJsonCommand.run(-1) )
     {
         Device* d = nullptr;
         qint64 deviceSize = sizeCommand.output().trimmed().toLongLong();
@@ -251,10 +251,10 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
         if ( d )
         {
-            if (jsonCommand.exitCode() != 0)
+            if (sfdiskJsonCommand.exitCode() != 0)
                 return d;
 
-            auto s = jsonCommand.rawOutput();
+            auto s = sfdiskJsonCommand.rawOutput();
             fixInvalidJsonFromSFDisk(s);
 
             const QJsonObject jsonObject = QJsonDocument::fromJson(s).object();
