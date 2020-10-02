@@ -464,13 +464,29 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
                                  QStringLiteral("--query=property"),
                                  partitionPath });
 
-    if (udevCommand.run(-1) && udevCommand.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("ID_FS_TYPE=(\\w+)"));
-        QRegularExpression re2(QStringLiteral("ID_FS_VERSION=(\\w+)"));
-        QRegularExpressionMatch reFileSystemType = re.match(udevCommand.output());
-        QRegularExpressionMatch reFileSystemVersion = re2.match(udevCommand.output());
+    QString udevTypeRegExp = QStringLiteral("ID_FS_TYPE=(\\w+)");
+    QString udevVersionRegExp = QStringLiteral("ID_FS_VERSION=(\\w+)");
 
-        QString name = {};
+    QString name = {};
+
+    rval = runDetectFileSystemCommand(udevCommand, udevTypeRegExp, udevVersionRegExp, name);
+
+    if (rval == FileSystem::Type::Unknown) {
+        qWarning() << "unknown file system type " << name << " on " << partitionPath;
+    }
+    return rval;
+}
+
+FileSystem::Type SfdiskBackend::runDetectFileSystemCommand(ExternalCommand& command, QString& typeRegExp, QString& versionRegExp, QString& name)
+{
+    FileSystem::Type rval = FileSystem::Type::Unknown;
+
+    if (command.run(-1) && command.exitCode() == 0) {
+        QRegularExpression re(typeRegExp);
+        QRegularExpression re2(versionRegExp);
+        QRegularExpressionMatch reFileSystemType = re.match(command.output());
+        QRegularExpressionMatch reFileSystemVersion = re2.match(command.output());
+
         if (reFileSystemType.hasMatch()) {
             name = reFileSystemType.captured(1);
         }
@@ -480,9 +496,6 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
             version = reFileSystemVersion.captured(1);
         }
         rval = fileSystemNameToType(name, version);
-        if (rval == FileSystem::Type::Unknown) {
-            qWarning() << "unknown file system type " << name << " on " << partitionPath;
-        }
     }
     return rval;
 }

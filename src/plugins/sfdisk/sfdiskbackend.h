@@ -16,6 +16,7 @@
 #include <QVariant>
 
 class Device;
+class ExternalCommand;
 class Partition;
 class KPluginFactory;
 class QString;
@@ -53,6 +54,7 @@ private:
     bool updateDevicePartitionTable(Device& d, const QJsonObject& jsonPartitionTable);
     static PartitionTable::Flags availableFlags(PartitionTable::TableType type);
     static FileSystem::Type fileSystemNameToType(const QString& fileSystemName, const QString& version);
+    static FileSystem::Type runDetectFileSystemCommand(ExternalCommand& command, QString& typeRegExp, QString& versionRegExp, QString& name);
 };
 
 #endif
