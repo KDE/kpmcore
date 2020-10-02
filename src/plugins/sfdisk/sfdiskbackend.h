@@ -52,6 +52,7 @@ private:
     void setupPartitionInfo(const Device& d, Partition* partition, const QJsonObject& partitionObject, const QString mountPoint);
     bool updateDevicePartitionTable(Device& d, const QJsonObject& jsonPartitionTable);
     static PartitionTable::Flags availableFlags(PartitionTable::TableType type);
+    static FileSystem::Type fileSystemNameToType(const QString& fileSystemName, const QString& version);
 };
 
 #endif
