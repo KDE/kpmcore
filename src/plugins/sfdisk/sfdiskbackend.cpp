@@ -300,61 +300,13 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         const qint64 start = partitionObject[QLatin1String("start")].toVariant().toLongLong();
         const qint64 size = partitionObject[QLatin1String("size")].toVariant().toLongLong();
         const QString partitionType = partitionObject[QLatin1String("type")].toString();
-        PartitionTable::Flags activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::Flag::Boot : PartitionTable::Flag::None;
+        const bool bootable = partitionObject[QLatin1String("bootable")].toBool();
+        const auto lastSector = start + size - 1;
 
-        if (partitionType == QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B"))
-            activeFlags |= PartitionTable::Flag::Boot;
-        else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
-            activeFlags |= PartitionTable::Flag::BiosGrub;
+        Partition* part = scanPartition(d, partitionNode, start, lastSector, partitionType, bootable);
 
-        FileSystem::Type type = detectFileSystem(partitionNode);
-        PartitionRole::Roles r = PartitionRole::Primary;
+        setupPartitionInfo(d, part, partitionObject);
 
-        if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) &&
-            ( partitionType == QStringLiteral("5") || partitionType == QStringLiteral("f") ) ) {
-            r = PartitionRole::Extended;
-            type = FileSystem::Type::Extended;
-        }
-
-        // Find an extended partition this partition is in.
-        PartitionNode* parent = d.partitionTable()->findPartitionBySector(start, PartitionRole(PartitionRole::Extended));
-
-        // None found, so it's a primary in the device's partition table.
-        if (parent == nullptr)
-            parent = d.partitionTable();
-        else
-            r = PartitionRole::Logical;
-
-        auto lastSector = start + size - 1;
-        FileSystem* fs = FileSystemFactory::create(type, start, lastSector, d.logicalSize());
-        fs->scan(partitionNode);
-
-        QString mountPoint;
-        bool mounted;
-        // sfdisk does not handle LUKS partitions
-        if (fs->type() == FileSystem::Type::Luks || fs->type() == FileSystem::Type::Luks2) {
-            r |= PartitionRole::Luks;
-            FS::luks* luksFs = static_cast<FS::luks*>(fs);
-            luksFs->initLUKS();
-            QString mapperNode = luksFs->mapperName();
-            mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
-            mounted    = FileSystem::detectMountStatus(fs, mapperNode);
-        } else {
-            mountPoint = FileSystem::detectMountPoint(fs, partitionNode);
-            mounted = FileSystem::detectMountStatus(fs, partitionNode);
-        }
-
-        Partition* part = new Partition(parent, d, PartitionRole(r), fs, start, lastSector, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
-
-        setupPartitionInfo(d, part, partitionObject, mountPoint);
-
-        if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
-            fs->setLabel(fs->readLabel(part->deviceNode()));
-
-        if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
-            fs->setUUID(fs->readUUID(part->deviceNode()));
-
-        parent->append(part);
         partitions.append(part);
     }
 
@@ -363,14 +315,70 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
     if (d.partitionTable()->isSectorBased(d))
         d.partitionTable()->setType(d, PartitionTable::msdos_sectorbased);
 
-    for (const Partition * part : qAsConst(partitions))
+    for (const Partition *part : qAsConst(partitions))
         PartitionAlignment::isAligned(d, *part);
 }
 
-void SfdiskBackend::setupPartitionInfo(const Device &d, Partition *partition, const QJsonObject& partitionObject, const QString mountPoint)
+Partition* SfdiskBackend::scanPartition(Device& d, const QString& partitionNode, const qint64 firstSector, const qint64 lastSector, const QString& partitionType, const bool bootable)
+{
+    PartitionTable::Flags activeFlags = bootable ? PartitionTable::Flag::Boot : PartitionTable::Flag::None;
+    if (partitionType == QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B"))
+        activeFlags |= PartitionTable::Flag::Boot;
+    else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
+        activeFlags |= PartitionTable::Flag::BiosGrub;
+
+    FileSystem::Type type = detectFileSystem(partitionNode);
+    PartitionRole::Roles r = PartitionRole::Primary;
+
+    if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) &&
+        ( partitionType == QStringLiteral("5") || partitionType == QStringLiteral("f") ) ) {
+        r = PartitionRole::Extended;
+        type = FileSystem::Type::Extended;
+    }
+
+    // Find an extended partition this partition is in.
+    PartitionNode* parent = d.partitionTable()->findPartitionBySector(firstSector, PartitionRole(PartitionRole::Extended));
+
+    // None found, so it's a primary in the device's partition table.
+    if (parent == nullptr)
+        parent = d.partitionTable();
+    else
+        r = PartitionRole::Logical;
+
+    FileSystem* fs = FileSystemFactory::create(type, firstSector, lastSector, d.logicalSize());
+    fs->scan(partitionNode);
+
+    QString mountPoint;
+    bool mounted;
+    // sfdisk does not handle LUKS partitions
+    if (fs->type() == FileSystem::Type::Luks || fs->type() == FileSystem::Type::Luks2) {
+        r |= PartitionRole::Luks;
+        FS::luks* luksFs = static_cast<FS::luks*>(fs);
+        luksFs->initLUKS();
+        QString mapperNode = luksFs->mapperName();
+        mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
+        mounted    = FileSystem::detectMountStatus(fs, mapperNode);
+    } else {
+        mountPoint = FileSystem::detectMountPoint(fs, partitionNode);
+        mounted = FileSystem::detectMountStatus(fs, partitionNode);
+    }
+
+    Partition* partition = new Partition(parent, d, PartitionRole(r), fs, firstSector, lastSector, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
+
+    if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
+        fs->setLabel(fs->readLabel(partition->deviceNode()));
+
+    if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
+        fs->setUUID(fs->readUUID(partition->deviceNode()));
+
+    parent->append(partition);
+    return partition;
+}
+
+void SfdiskBackend::setupPartitionInfo(const Device &d, Partition *partition, const QJsonObject& partitionObject)
 {
     if (!partition->roles().has(PartitionRole::Luks))
-        readSectorsUsed(d, *partition, mountPoint);
+        readSectorsUsed(d, *partition, partition->mountPoint());
 
     if (d.partitionTable()->type() == PartitionTable::TableType::gpt) {
         partition->setLabel(partitionObject[QLatin1String("name")].toString());
