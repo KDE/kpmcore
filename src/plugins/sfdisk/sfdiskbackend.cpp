@@ -471,7 +471,7 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
 
     rval = runDetectFileSystemCommand(udevCommand, typeRegExp, versionRegExp, name);
 
-    // Fallback to blkid. blkid has slightly worse detection but it works on whole block device filesystems.
+    // Fallback to blkid which has slightly worse detection but it works on whole block device filesystems.
     if (rval == FileSystem::Type::Unknown) {
         ExternalCommand blkidCommand(QStringLiteral("blkid"), { partitionPath });
         typeRegExp = QStringLiteral("TYPE=\"(\\w+)\"");
