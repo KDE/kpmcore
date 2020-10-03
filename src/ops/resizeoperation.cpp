@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2008-2012 Volker Lanz <vl@fidra.de>
-    SPDX-FileCopyrightText: 2012-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2012-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
@@ -326,6 +326,10 @@ bool ResizeOperation::canGrow(const Partition* p)
     if (p == nullptr)
         return false;
 
+    // Whole block device filesystems cannot be resized
+    if (p->partitionTable()->type() == PartitionTable::TableType::none)
+        return false;
+
     if (isLVMPVinNewlyVG(p))
         return false;
 
@@ -346,6 +350,10 @@ bool ResizeOperation::canGrow(const Partition* p)
 bool ResizeOperation::canShrink(const Partition* p)
 {
     if (p == nullptr)
+        return false;
+
+    // Whole block device filesystems cannot be resized
+    if (p->partitionTable()->type() == PartitionTable::TableType::none)
         return false;
 
     if (isLVMPVinNewlyVG(p))
@@ -371,6 +379,10 @@ bool ResizeOperation::canShrink(const Partition* p)
 bool ResizeOperation::canMove(const Partition* p)
 {
     if (p == nullptr)
+        return false;
+
+    // Whole block device filesystems cannot be moved
+    if (p->partitionTable()->type() == PartitionTable::TableType::none)
         return false;
 
     if (isLVMPVinNewlyVG(p))

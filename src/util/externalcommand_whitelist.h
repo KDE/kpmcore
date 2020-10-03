@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2018-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2018-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
 
     SPDX-License-Identifier: GPL-3.0-or-later
@@ -15,6 +15,7 @@ QStringLiteral("udevadm"),
 
 //Core programs
 QStringLiteral("blockdev"),
+QStringLiteral("blkid"),
 QStringLiteral("partx"),
 QStringLiteral("sfdisk"),
 QStringLiteral("wipefs"),

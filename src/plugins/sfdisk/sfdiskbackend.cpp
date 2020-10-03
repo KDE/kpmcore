@@ -187,11 +187,11 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
                           deviceNode });
     ExternalCommand sizeCommand(QStringLiteral("blockdev"), { QStringLiteral("--getsize64"), deviceNode });
     ExternalCommand sizeCommand2(QStringLiteral("blockdev"), { QStringLiteral("--getss"), deviceNode });
-    ExternalCommand jsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode }, QProcess::ProcessChannelMode::SeparateChannels );
+    ExternalCommand sfdiskJsonCommand(QStringLiteral("sfdisk"), { QStringLiteral("--json"), deviceNode }, QProcess::ProcessChannelMode::SeparateChannels );
 
     if ( sizeCommand.run(-1) && sizeCommand.exitCode() == 0
          && sizeCommand2.run(-1) && sizeCommand2.exitCode() == 0
-         && jsonCommand.run(-1) )
+         && sfdiskJsonCommand.run(-1) )
     {
         Device* d = nullptr;
         qint64 deviceSize = sizeCommand.output().trimmed().toLongLong();
@@ -251,10 +251,13 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
         if ( d )
         {
-            if (jsonCommand.exitCode() != 0)
-                return d;
+            if (sfdiskJsonCommand.exitCode() != 0) {
+                scanWholeDevicePartition(*d);
 
-            auto s = jsonCommand.rawOutput();
+                return d;
+            }
+
+            auto s = sfdiskJsonCommand.rawOutput();
             fixInvalidJsonFromSFDisk(s);
 
             const QJsonObject jsonObject = QJsonDocument::fromJson(s).object();
@@ -283,6 +286,28 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
     return nullptr;
 }
 
+/** Scans a Device for FileSystems spanning the whole block device
+
+    This method  will scan a Device for a FileSystem.
+    It tries to determine the FileSystem usage, reads the FileSystem label and creates
+    PartitionTable of type "none" and a single Partition object.
+*/
+void SfdiskBackend::scanWholeDevicePartition(Device& d) {
+    const QString partitionNode = d.deviceNode();
+    constexpr qint64 firstSector = 0;
+    const qint64 lastSector = d.totalLogical() - 1;
+    setPartitionTableForDevice(d, new PartitionTable(PartitionTable::TableType::none, firstSector, lastSector));
+    Partition *partition = scanPartition(d, partitionNode, firstSector, lastSector, QString(), false);
+
+    if (partition->fileSystem().type() == FileSystem::Type::Unknown) {
+        setPartitionTableForDevice(d, nullptr);
+        delete d.partitionTable();
+    }
+
+    if (!partition->roles().has(PartitionRole::Luks))
+        readSectorsUsed(d, *partition, partition->mountPoint());
+}
+
 /** Scans a Device for Partitions.
 
     This method  will scan a Device for all Partitions on it, detect the FileSystem for each Partition,
@@ -300,62 +325,13 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         const qint64 start = partitionObject[QLatin1String("start")].toVariant().toLongLong();
         const qint64 size = partitionObject[QLatin1String("size")].toVariant().toLongLong();
         const QString partitionType = partitionObject[QLatin1String("type")].toString();
-        PartitionTable::Flags activeFlags = partitionObject[QLatin1String("bootable")].toBool() ? PartitionTable::Flag::Boot : PartitionTable::Flag::None;
+        const bool bootable = partitionObject[QLatin1String("bootable")].toBool();
+        const auto lastSector = start + size - 1;
 
-        if (partitionType == QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B"))
-            activeFlags |= PartitionTable::Flag::Boot;
-        else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
-            activeFlags |= PartitionTable::Flag::BiosGrub;
+        Partition* part = scanPartition(d, partitionNode, start, lastSector, partitionType, bootable);
 
-        FileSystem::Type type = FileSystem::Type::Unknown;
-        type = detectFileSystem(partitionNode);
-        PartitionRole::Roles r = PartitionRole::Primary;
+        setupPartitionInfo(d, part, partitionObject);
 
-        if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) &&
-            ( partitionType == QStringLiteral("5") || partitionType == QStringLiteral("f") ) ) {
-            r = PartitionRole::Extended;
-            type = FileSystem::Type::Extended;
-        }
-
-        // Find an extended partition this partition is in.
-        PartitionNode* parent = d.partitionTable()->findPartitionBySector(start, PartitionRole(PartitionRole::Extended));
-
-        // None found, so it's a primary in the device's partition table.
-        if (parent == nullptr)
-            parent = d.partitionTable();
-        else
-            r = PartitionRole::Logical;
-
-        auto lastSector = start + size - 1;
-        FileSystem* fs = FileSystemFactory::create(type, start, lastSector, d.logicalSize());
-        fs->scan(partitionNode);
-
-        QString mountPoint;
-        bool mounted;
-        // sfdisk does not handle LUKS partitions
-        if (fs->type() == FileSystem::Type::Luks || fs->type() == FileSystem::Type::Luks2) {
-            r |= PartitionRole::Luks;
-            FS::luks* luksFs = static_cast<FS::luks*>(fs);
-            luksFs->initLUKS();
-            QString mapperNode = luksFs->mapperName();
-            mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
-            mounted    = FileSystem::detectMountStatus(fs, mapperNode);
-        } else {
-            mountPoint = FileSystem::detectMountPoint(fs, partitionNode);
-            mounted = FileSystem::detectMountStatus(fs, partitionNode);
-        }
-
-        Partition* part = new Partition(parent, d, PartitionRole(r), fs, start, lastSector, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
-
-        setupPartitionInfo(d, part, partitionObject, mountPoint);
-
-        if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
-            fs->setLabel(fs->readLabel(part->deviceNode()));
-
-        if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
-            fs->setUUID(fs->readUUID(part->deviceNode()));
-
-        parent->append(part);
         partitions.append(part);
     }
 
@@ -364,14 +340,70 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
     if (d.partitionTable()->isSectorBased(d))
         d.partitionTable()->setType(d, PartitionTable::msdos_sectorbased);
 
-    for (const Partition * part : qAsConst(partitions))
+    for (const Partition *part : qAsConst(partitions))
         PartitionAlignment::isAligned(d, *part);
 }
 
-void SfdiskBackend::setupPartitionInfo(const Device &d, Partition *partition, const QJsonObject& partitionObject, const QString mountPoint)
+Partition* SfdiskBackend::scanPartition(Device& d, const QString& partitionNode, const qint64 firstSector, const qint64 lastSector, const QString& partitionType, const bool bootable)
+{
+    PartitionTable::Flags activeFlags = bootable ? PartitionTable::Flag::Boot : PartitionTable::Flag::None;
+    if (partitionType == QStringLiteral("C12A7328-F81F-11D2-BA4B-00A0C93EC93B"))
+        activeFlags |= PartitionTable::Flag::Boot;
+    else if (partitionType == QStringLiteral("21686148-6449-6E6F-744E-656564454649"))
+        activeFlags |= PartitionTable::Flag::BiosGrub;
+
+    FileSystem::Type type = detectFileSystem(partitionNode);
+    PartitionRole::Roles r = PartitionRole::Primary;
+
+    if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) &&
+        ( partitionType == QStringLiteral("5") || partitionType == QStringLiteral("f") ) ) {
+        r = PartitionRole::Extended;
+        type = FileSystem::Type::Extended;
+    }
+
+    // Find an extended partition this partition is in.
+    PartitionNode* parent = d.partitionTable()->findPartitionBySector(firstSector, PartitionRole(PartitionRole::Extended));
+
+    // None found, so it's a primary in the device's partition table.
+    if (parent == nullptr)
+        parent = d.partitionTable();
+    else
+        r = PartitionRole::Logical;
+
+    FileSystem* fs = FileSystemFactory::create(type, firstSector, lastSector, d.logicalSize());
+    fs->scan(partitionNode);
+
+    QString mountPoint;
+    bool mounted;
+    // sfdisk does not handle LUKS partitions
+    if (fs->type() == FileSystem::Type::Luks || fs->type() == FileSystem::Type::Luks2) {
+        r |= PartitionRole::Luks;
+        FS::luks* luksFs = static_cast<FS::luks*>(fs);
+        luksFs->initLUKS();
+        QString mapperNode = luksFs->mapperName();
+        mountPoint = FileSystem::detectMountPoint(fs, mapperNode);
+        mounted    = FileSystem::detectMountStatus(fs, mapperNode);
+    } else {
+        mountPoint = FileSystem::detectMountPoint(fs, partitionNode);
+        mounted = FileSystem::detectMountStatus(fs, partitionNode);
+    }
+
+    Partition* partition = new Partition(parent, d, PartitionRole(r), fs, firstSector, lastSector, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
+
+    if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
+        fs->setLabel(fs->readLabel(partition->deviceNode()));
+
+    if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
+        fs->setUUID(fs->readUUID(partition->deviceNode()));
+
+    parent->append(partition);
+    return partition;
+}
+
+void SfdiskBackend::setupPartitionInfo(const Device &d, Partition *partition, const QJsonObject& partitionObject)
 {
     if (!partition->roles().has(PartitionRole::Luks))
-        readSectorsUsed(d, *partition, mountPoint);
+        readSectorsUsed(d, *partition, partition->mountPoint());
 
     if (d.partitionTable()->type() == PartitionTable::TableType::gpt) {
         partition->setLabel(partitionObject[QLatin1String("name")].toString());
@@ -465,66 +497,95 @@ FileSystem::Type SfdiskBackend::detectFileSystem(const QString& partitionPath)
                                  QStringLiteral("--query=property"),
                                  partitionPath });
 
-    if (udevCommand.run(-1) && udevCommand.exitCode() == 0) {
-        QRegularExpression re(QStringLiteral("ID_FS_TYPE=(\\w+)"));
-        QRegularExpression re2(QStringLiteral("ID_FS_VERSION=(\\w+)"));
-        QRegularExpressionMatch reFileSystemType = re.match(udevCommand.output());
-        QRegularExpressionMatch reFileSystemVersion = re2.match(udevCommand.output());
+    QString typeRegExp = QStringLiteral("ID_FS_TYPE=(\\w+)");
+    QString versionRegExp = QStringLiteral("ID_FS_VERSION=(\\w+)");
 
-        QString s;
+    QString name = {};
+
+    rval = runDetectFileSystemCommand(udevCommand, typeRegExp, versionRegExp, name);
+
+    // Fallback to blkid which has slightly worse detection but it works on whole block device filesystems.
+    if (rval == FileSystem::Type::Unknown) {
+        ExternalCommand blkidCommand(QStringLiteral("blkid"), { partitionPath });
+        typeRegExp = QStringLiteral("TYPE=\"(\\w+)\"");
+        versionRegExp = QStringLiteral("SEC_TYPE=\"(\\w+)\"");
+        rval = runDetectFileSystemCommand(blkidCommand, typeRegExp, versionRegExp, name);
+    }
+
+    if (rval == FileSystem::Type::Unknown) {
+        qWarning() << "unknown file system type " << name << " on " << partitionPath;
+    }
+    return rval;
+}
+
+FileSystem::Type SfdiskBackend::runDetectFileSystemCommand(ExternalCommand& command, QString& typeRegExp, QString& versionRegExp, QString& name)
+{
+    FileSystem::Type rval = FileSystem::Type::Unknown;
+
+    if (command.run(-1) && command.exitCode() == 0) {
+        QRegularExpression re(typeRegExp);
+        QRegularExpression re2(versionRegExp);
+        QRegularExpressionMatch reFileSystemType = re.match(command.output());
+        QRegularExpressionMatch reFileSystemVersion = re2.match(command.output());
+
         if (reFileSystemType.hasMatch()) {
-            s = reFileSystemType.captured(1);
+            name = reFileSystemType.captured(1);
         }
 
-        QString version;
+        QString version = {};
         if (reFileSystemVersion.hasMatch()) {
             version = reFileSystemVersion.captured(1);
         }
-
-        if (s == QStringLiteral("ext2")) rval = FileSystem::Type::Ext2;
-        else if (s == QStringLiteral("ext3")) rval = FileSystem::Type::Ext3;
-        else if (s.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Type::Ext4;
-        else if (s == QStringLiteral("swap")) rval = FileSystem::Type::LinuxSwap;
-        else if (s == QStringLiteral("ntfs")) rval = FileSystem::Type::Ntfs;
-        else if (s == QStringLiteral("reiserfs")) rval = FileSystem::Type::ReiserFS;
-        else if (s == QStringLiteral("reiser4")) rval = FileSystem::Type::Reiser4;
-        else if (s == QStringLiteral("xfs")) rval = FileSystem::Type::Xfs;
-        else if (s == QStringLiteral("jfs")) rval = FileSystem::Type::Jfs;
-        else if (s == QStringLiteral("hfs")) rval = FileSystem::Type::Hfs;
-        else if (s == QStringLiteral("hfsplus")) rval = FileSystem::Type::HfsPlus;
-        else if (s == QStringLiteral("ufs")) rval = FileSystem::Type::Ufs;
-        else if (s == QStringLiteral("vfat")) {
-            if (version == QStringLiteral("FAT32"))
-                rval = FileSystem::Type::Fat32;
-            else if (version == QStringLiteral("FAT16"))
-                rval = FileSystem::Type::Fat16;
-            else if (version == QStringLiteral("FAT12"))
-                rval = FileSystem::Type::Fat12;
-        }
-        else if (s == QStringLiteral("btrfs")) rval = FileSystem::Type::Btrfs;
-        else if (s == QStringLiteral("ocfs2")) rval = FileSystem::Type::Ocfs2;
-        else if (s == QStringLiteral("zfs_member")) rval = FileSystem::Type::Zfs;
-        else if (s == QStringLiteral("hpfs")) rval = FileSystem::Type::Hpfs;
-        else if (s == QStringLiteral("crypto_LUKS")) {
-            if (version == QStringLiteral("1"))
-                rval = FileSystem::Type::Luks;
-            else if (version == QStringLiteral("2")) {
-                rval = FileSystem::Type::Luks2;
-            }
-        }
-        else if (s == QStringLiteral("exfat")) rval = FileSystem::Type::Exfat;
-        else if (s == QStringLiteral("nilfs2")) rval = FileSystem::Type::Nilfs2;
-        else if (s == QStringLiteral("LVM2_member")) rval = FileSystem::Type::Lvm2_PV;
-        else if (s == QStringLiteral("f2fs")) rval = FileSystem::Type::F2fs;
-        else if (s == QStringLiteral("udf")) rval = FileSystem::Type::Udf;
-        else if (s == QStringLiteral("iso9660")) rval = FileSystem::Type::Iso9660;
-        else if (s == QStringLiteral("linux_raid_member")) rval = FileSystem::Type::LinuxRaidMember;
-        else if (s == QStringLiteral("BitLocker")) rval = FileSystem::Type::BitLocker;
-        else if (s == QStringLiteral("apfs")) rval = FileSystem::Type::Apfs;
-        else if (s == QStringLiteral("minix")) rval = FileSystem::Type::Minix;
-        else
-            qWarning() << "unknown file system type " << s << " on " << partitionPath;
+        rval = fileSystemNameToType(name, version);
     }
+    return rval;
+}
+
+FileSystem::Type SfdiskBackend::fileSystemNameToType(const QString& name, const QString& version)
+{
+    FileSystem::Type rval = FileSystem::Type::Unknown;
+
+    if (name == QStringLiteral("ext2")) rval = FileSystem::Type::Ext2;
+    else if (name == QStringLiteral("ext3")) rval = FileSystem::Type::Ext3;
+    else if (name.startsWith(QStringLiteral("ext4"))) rval = FileSystem::Type::Ext4;
+    else if (name == QStringLiteral("swap")) rval = FileSystem::Type::LinuxSwap;
+    else if (name == QStringLiteral("ntfs")) rval = FileSystem::Type::Ntfs;
+    else if (name == QStringLiteral("reiserfs")) rval = FileSystem::Type::ReiserFS;
+    else if (name == QStringLiteral("reiser4")) rval = FileSystem::Type::Reiser4;
+    else if (name == QStringLiteral("xfs")) rval = FileSystem::Type::Xfs;
+    else if (name == QStringLiteral("jfs")) rval = FileSystem::Type::Jfs;
+    else if (name == QStringLiteral("hfs")) rval = FileSystem::Type::Hfs;
+    else if (name == QStringLiteral("hfsplus")) rval = FileSystem::Type::HfsPlus;
+    else if (name == QStringLiteral("ufs")) rval = FileSystem::Type::Ufs;
+    else if (name == QStringLiteral("vfat")) {
+        if (version == QStringLiteral("FAT32"))
+            rval = FileSystem::Type::Fat32;
+        else if (version == QStringLiteral("FAT16"))
+            rval = FileSystem::Type::Fat16;
+        else if (version == QStringLiteral("FAT12"))
+            rval = FileSystem::Type::Fat12;
+    }
+    else if (name == QStringLiteral("btrfs")) rval = FileSystem::Type::Btrfs;
+    else if (name == QStringLiteral("ocfs2")) rval = FileSystem::Type::Ocfs2;
+    else if (name == QStringLiteral("zfs_member")) rval = FileSystem::Type::Zfs;
+    else if (name == QStringLiteral("hpfs")) rval = FileSystem::Type::Hpfs;
+    else if (name == QStringLiteral("crypto_LUKS")) {
+        if (version == QStringLiteral("1"))
+            rval = FileSystem::Type::Luks;
+        else if (version == QStringLiteral("2")) {
+            rval = FileSystem::Type::Luks2;
+        }
+    }
+    else if (name == QStringLiteral("exfat")) rval = FileSystem::Type::Exfat;
+    else if (name == QStringLiteral("nilfs2")) rval = FileSystem::Type::Nilfs2;
+    else if (name == QStringLiteral("LVM2_member")) rval = FileSystem::Type::Lvm2_PV;
+    else if (name == QStringLiteral("f2fs")) rval = FileSystem::Type::F2fs;
+    else if (name == QStringLiteral("udf")) rval = FileSystem::Type::Udf;
+    else if (name == QStringLiteral("iso9660")) rval = FileSystem::Type::Iso9660;
+    else if (name == QStringLiteral("linux_raid_member")) rval = FileSystem::Type::LinuxRaidMember;
+    else if (name == QStringLiteral("BitLocker")) rval = FileSystem::Type::BitLocker;
+    else if (name == QStringLiteral("apfs")) rval = FileSystem::Type::Apfs;
+    else if (name == QStringLiteral("minix")) rval = FileSystem::Type::Minix;
 
     return rval;
 }

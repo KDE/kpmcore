@@ -261,6 +261,15 @@ bool Partition::hasChildren() const
     return false;
 }
 
+/** @return returns the Partition Table which contains this Partition */
+const PartitionTable* Partition::partitionTable() const {
+    const PartitionNode *p = this;
+    while (p->parent() != nullptr) {
+        p = p->parent();
+    }
+    return static_cast<const PartitionTable*>(p);
+}
+
 /** Sets an extended Partition to mounted if any of its children are mounted */
 void Partition::checkChildrenMounted()
 {

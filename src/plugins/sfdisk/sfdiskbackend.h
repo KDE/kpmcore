@@ -16,6 +16,7 @@
 #include <QVariant>
 
 class Device;
+class ExternalCommand;
 class Partition;
 class KPluginFactory;
 class QString;
@@ -49,9 +50,13 @@ public:
 private:
     static void readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint);
     void scanDevicePartitions(Device& d, const QJsonArray& jsonPartitions);
-    void setupPartitionInfo(const Device& d, Partition* partition, const QJsonObject& partitionObject, const QString mountPoint);
+    Partition* scanPartition(Device& d, const QString& partitionNode, const qint64 firstSector, const qint64 lastSector, const QString& partitionType, const bool bootable);
+    void scanWholeDevicePartition(Device& d);
+    static void setupPartitionInfo(const Device& d, Partition* partition, const QJsonObject& partitionObject);
     bool updateDevicePartitionTable(Device& d, const QJsonObject& jsonPartitionTable);
     static PartitionTable::Flags availableFlags(PartitionTable::TableType type);
+    static FileSystem::Type fileSystemNameToType(const QString& fileSystemName, const QString& version);
+    static FileSystem::Type runDetectFileSystemCommand(ExternalCommand& command, QString& typeRegExp, QString& versionRegExp, QString& name);
 };
 
 #endif

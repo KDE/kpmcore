@@ -49,7 +49,8 @@ DeleteOperation::DeleteOperation(Device& d, Partition* p, ShredAction shred) :
     }
 
     addJob(deleteFileSystemJob());
-    addJob(deletePartitionJob());
+    if (d.partitionTable()->type() != PartitionTable::TableType::none)
+        addJob(deletePartitionJob());
 }
 
 DeleteOperation::~DeleteOperation()

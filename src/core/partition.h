@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2008-2010 Volker Lanz <vl@fidra.de>
     SPDX-FileCopyrightText: 2008 Laurent Montel <montel@kde.org>
-    SPDX-FileCopyrightText: 2013-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2013-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015 Chris Campbell <c.j.campbell@ed.ac.uk>
     SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
@@ -95,6 +95,8 @@ public:
     bool isRoot() const override {
         return false;    /**< @return always false for Partition */
     }
+
+    const PartitionTable* partitionTable() const;
 
     PartitionNode* parent() override {
         return m_Parent;    /**< @return the Partition's parent PartitionNode */
