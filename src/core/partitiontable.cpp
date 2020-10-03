@@ -475,7 +475,8 @@ static struct {
     { QLatin1String("pc98"), 16, false, true, PartitionTable::pc98 },
     { QLatin1String("amiga"), 128, false, true, PartitionTable::amiga },
     { QLatin1String("sun"), 8, false, true, PartitionTable::sun },
-    { QLatin1String("vmd"), 0xffff, false, false, PartitionTable::vmd }
+    { QLatin1String("vmd"), 0xffff, false, false, PartitionTable::vmd },
+    { QLatin1String("none"), 1, false, false, PartitionTable::none },
 };
 
 PartitionTable::TableType PartitionTable::nameToTableType(const QString& n)
