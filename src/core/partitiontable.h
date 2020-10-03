@@ -57,7 +57,8 @@ public:
         pc98,
         amiga,
         sun,
-        vmd  /* Volume Manager Device */
+        vmd,  /* Volume Manager Device */
+        none, /* Single FileSystem devices */
     };
 
     /** Partition flags */
