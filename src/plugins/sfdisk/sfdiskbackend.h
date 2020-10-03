@@ -51,6 +51,7 @@ private:
     static void readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint);
     void scanDevicePartitions(Device& d, const QJsonArray& jsonPartitions);
     Partition* scanPartition(Device& d, const QString& partitionNode, const qint64 firstSector, const qint64 lastSector, const QString& partitionType, const bool bootable);
+    void scanWholeDevicePartition(Device& d);
     static void setupPartitionInfo(const Device& d, Partition* partition, const QJsonObject& partitionObject);
     bool updateDevicePartitionTable(Device& d, const QJsonObject& jsonPartitionTable);
     static PartitionTable::Flags availableFlags(PartitionTable::TableType type);

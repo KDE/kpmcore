@@ -251,8 +251,11 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
         if ( d )
         {
-            if (sfdiskJsonCommand.exitCode() != 0)
+            if (sfdiskJsonCommand.exitCode() != 0) {
+                scanWholeDevicePartition(*d);
+
                 return d;
+            }
 
             auto s = sfdiskJsonCommand.rawOutput();
             fixInvalidJsonFromSFDisk(s);
@@ -281,6 +284,28 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         }
     }
     return nullptr;
+}
+
+/** Scans a Device for FileSystems spanning the whole block device
+
+    This method  will scan a Device for a FileSystem.
+    It tries to determine the FileSystem usage, reads the FileSystem label and creates
+    PartitionTable of type "none" and a single Partition object.
+*/
+void SfdiskBackend::scanWholeDevicePartition(Device& d) {
+    const QString partitionNode = d.deviceNode();
+    constexpr qint64 firstSector = 0;
+    const qint64 lastSector = d.totalLogical() - 1;
+    setPartitionTableForDevice(d, new PartitionTable(PartitionTable::TableType::none, firstSector, lastSector));
+    Partition *partition = scanPartition(d, partitionNode, firstSector, lastSector, QString(), false);
+
+    if (partition->fileSystem().type() == FileSystem::Type::Unknown) {
+        setPartitionTableForDevice(d, nullptr);
+        delete d.partitionTable();
+    }
+
+    if (!partition->roles().has(PartitionRole::Luks))
+        readSectorsUsed(d, *partition, partition->mountPoint());
 }
 
 /** Scans a Device for Partitions.
