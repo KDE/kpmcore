@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2008-2010 Volker Lanz <vl@fidra.de>
-    SPDX-FileCopyrightText: 2013-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2013-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Yuri Chornoivan <yurchor@ukr.net>
@@ -40,8 +40,15 @@ bool CreatePartitionJob::run(Report& parent)
     Q_ASSERT(partition().devicePath() == device().deviceNode());
 
     bool rval = false;
-
     Report* report = jobStarted(parent);
+
+    if (device().partitionTable()->type() == PartitionTable::TableType::none) {
+        partition().setPartitionPath(device().deviceNode());
+        partition().setState(Partition::State::None);
+        rval = true;
+        jobFinished(*report, rval);
+        return rval;
+    }
 
     if (device().type() == Device::Type::Disk_Device || device().type() == Device::Type::SoftwareRAID_Device) {
         std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
