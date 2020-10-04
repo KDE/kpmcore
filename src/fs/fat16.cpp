@@ -81,7 +81,7 @@ bool fat16::create(Report& report, const QString& deviceNode)
 
 bool fat16::resize(Report& report, const QString& deviceNode, qint64 length) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fatresize"), { QStringLiteral("--verbose"), QStringLiteral("--size"), QString::number(length), deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("fatresize"), { QStringLiteral("--verbose"), QStringLiteral("--size"), QString::number(length - 1), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
