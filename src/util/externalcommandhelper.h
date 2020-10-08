@@ -18,10 +18,13 @@
 #include <QEventLoop>
 #include <QString>
 #include <QProcess>
+#include <QDBusContext>
+
+class QDBusServiceWatcher;
 
 using namespace KAuth;
 
-class ExternalCommandHelper : public QObject
+class ExternalCommandHelper : public QObject, public QDBusContext
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.externalcommand")
@@ -31,12 +34,12 @@ Q_SIGNALS:
     void quit();
 
 public:
+    ExternalCommandHelper();
     bool readData(const QString& sourceDevice, QByteArray& buffer, const qint64 offset, const qint64 size);
     bool writeData(const QString& targetDevice, const QByteArray& buffer, const qint64 offset);
     bool createFile(const QString& filePath, const QByteArray& fileContents);
 
 public Q_SLOTS:
-    ActionReply init(const QVariantMap& args);
     Q_SCRIPTABLE QVariantMap start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
     Q_SCRIPTABLE QVariantMap copyblocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE bool writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte);
@@ -44,11 +47,12 @@ public Q_SLOTS:
     Q_SCRIPTABLE void exit();
 
 private:
-    void onReadOutput();
 
-    std::unique_ptr<QEventLoop> m_loop;
+    bool isCallerAuthorized();
+
+    void onReadOutput();
     QProcess m_cmd;
-//  QByteArray output;
+    QDBusServiceWatcher *m_serviceWatcher = nullptr;
 };
 
 #endif

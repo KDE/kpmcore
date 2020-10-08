@@ -36,15 +36,6 @@ class OrgKdeKpmcoreExternalcommandInterface;
 
 struct ExternalCommandPrivate;
 
-class DBusThread : public QThread
-{
-    Q_OBJECT
-    // We register on DBus so the helper can monitor us and terminate if we
-    // terminate.
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.applicationinterface")
-    void run() override;
-};
-
 /** An external command.
 
     Runs an external command as a child process.

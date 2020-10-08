@@ -49,7 +49,6 @@ struct ExternalCommandPrivate
     int m_ExitCode;
     QByteArray m_Output;
     QByteArray m_Input;
-    DBusThread *m_thread;
     QProcess::ProcessChannelMode processChannelMode;
 };
 
@@ -71,9 +70,9 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
     d->m_ExitCode = -1;
     d->m_Output = QByteArray();
 
-    if (!helperStarted)
-        if(!startHelper())
-            Log(Log::Level::error) << xi18nc("@info:status", "Could not obtain administrator privileges.");
+//     if (!helperStarted)
+//         if(!startHelper())
+//             Log(Log::Level::error) << xi18nc("@info:status", "Could not obtain administrator privileges.");
 
     d->processChannelMode = processChannelMode;
 }
@@ -128,6 +127,8 @@ bool ExternalCommand::start(int timeout)
     QString cmd = QStandardPaths::findExecutable(command());
     if (cmd.isEmpty())
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+
+    qDebug() << "start";
 
     auto interface = helperInterface();
     if (!interface)
@@ -231,7 +232,7 @@ OrgKdeKpmcoreExternalcommandInterface* ExternalCommand::helperInterface()
         return nullptr;
     }
 
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
+    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.helperinterface"),
                 QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
     return interface;
@@ -355,46 +356,14 @@ bool ExternalCommand::startHelper()
         exit(0);
     }
 
-    d->m_thread = new DBusThread;
-    d->m_thread->start();
-
-    KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
-    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
-    action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
-    action.setParentWidget(parent);
-    QVariantMap arguments;
-    action.setArguments(arguments);
-    m_job = action.execute();
-    m_job->start();
-
-    // Wait until ExternalCommand Helper is ready (helper sends newData signal just before it enters event loop)
-    QEventLoop loop;
-    auto exitLoop = [&] () { loop.exit(); };
-    auto conn = QObject::connect(m_job, &KAuth::ExecuteJob::newData, exitLoop);
-    QObject::connect(m_job, &KJob::finished, [=] () { if(m_job->error()) exitLoop(); } );
-    loop.exec();
-    QObject::disconnect(conn);
-
-    helperStarted = true;
+    qDebug() <<"starting helper";
     return true;
 }
 
 void ExternalCommand::stopHelper()
 {
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
+    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.helperinterface"),
                                                              QStringLiteral("/Helper"), QDBusConnection::systemBus());
     interface->exit();
 
-}
-
-void DBusThread::run()
-{
-    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.applicationinterface")) || 
-        !QDBusConnection::systemBus().registerObject(QStringLiteral("/Application"), this, QDBusConnection::ExportAllSlots)) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return;
-    }
-        
-    QEventLoop loop;
-    loop.exec();
 }

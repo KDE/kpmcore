@@ -13,6 +13,7 @@
 #include "externalcommand_whitelist.h"
 
 #include <QtDBus>
+
 #include <QCoreApplication>
 #include <QDebug>
 #include <QElapsedTimer>
@@ -21,6 +22,10 @@
 #include <QVariant>
 
 #include <KLocalizedString>
+#include <PolkitQt1/Authority>
+#include <PolkitQt1/Subject>
+
+#include <polkitqt1-version.h>
 
 /** Initialize ExternalCommandHelper Daemon and prepare DBus interface
  *
@@ -35,51 +40,33 @@
  * This helper also starts another DBus interface where it listens to
  * command execution requests from the application that started the helper.
  * 
+ *
+ * DAVE - this all needs updating
+ *
 */
-ActionReply ExternalCommandHelper::init(const QVariantMap& args)
+
+ExternalCommandHelper::ExternalCommandHelper()
 {
-    Q_UNUSED(args)
-    
-    ActionReply reply;
-
-    if (!QDBusConnection::systemBus().isConnected() || !QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface")) || 
-        !QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        reply.addData(QStringLiteral("success"), false);
-    
-        // Also end the application loop started by KAuth's main() code. Our loop
-        // exits when our client disappears. Without client we have no reason to
-        // live.
-        qApp->quit();
-    
-        return reply;
+    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
+        ::exit(-1);
     }
-    
-    m_loop = std::make_unique<QEventLoop>();
-    HelperSupport::progressStep(QVariantMap());
 
-    // End the loop and return only once the client is done using us.
-    auto serviceWatcher =
-            new QDBusServiceWatcher(QStringLiteral("org.kde.kpmcore.applicationinterface"),
-                                    QDBusConnection::systemBus(),
-                                    QDBusServiceWatcher::WatchForUnregistration,
-                                    this);
-    connect(serviceWatcher, &QDBusServiceWatcher::serviceUnregistered,
-            [this]() {
-        m_loop->exit();
+    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
+        ::exit(-1);
+    }
+
+    // we know this service must be registered already as DBus policy blocks calls from anyone else
+    m_serviceWatcher = new QDBusServiceWatcher(this);
+    m_serviceWatcher->setConnection(QDBusConnection ::systemBus());
+    m_serviceWatcher->setWatchMode(QDBusServiceWatcher::WatchForUnregistration);
+
+    connect(m_serviceWatcher, &QDBusServiceWatcher::serviceUnregistered, qApp, [this](const QString &service) {
+        m_serviceWatcher->removeWatchedService(service);
+        if (m_serviceWatcher->watchedServices().isEmpty()) {
+            qApp->quit();
+        }
     });
-
-    m_loop->exec();
-    reply.addData(QStringLiteral("success"), true);
-
-    // Also end the application loop started by KAuth's main() code. Our loop
-    // exits when our client disappears. Without client we have no reason to
-    // live.
-    qApp->quit();
-
-    return reply;
 }
-
 
 /** Reads the given number of bytes from the sourceDevice into the given buffer.
     @param sourceDevice device or file to read from
@@ -148,6 +135,9 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
 */
 bool ExternalCommandHelper::createFile(const QString &filePath, const QByteArray& fileContents)
 {
+    if (!isCallerAuthorized()) {
+        return false;
+    }
     QFile device(filePath);
 
     auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
@@ -167,6 +157,9 @@ bool ExternalCommandHelper::createFile(const QString &filePath, const QByteArray
 // If targetDevice is empty then return QByteArray with data that was read from disk.
 QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
+    if (!isCallerAuthorized()) {
+        return QVariantMap();
+    }
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
@@ -256,6 +249,9 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
 
 bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
 {
+    if (!isCallerAuthorized()) {
+        return false;
+    }
     // Do not allow using this helper for writing to arbitrary location
     if ( targetDevice.left(5) != QStringLiteral("/dev/") )
         return false;
@@ -265,6 +261,9 @@ bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& t
 
 bool ExternalCommandHelper::createFile(const QByteArray& fileContents, const QString& filePath)
 {
+    if (!isCallerAuthorized()) {
+        return false;
+    }
     // Do not allow using this helper for writing to arbitrary location
     if ( !filePath.contains(QStringLiteral("/etc/fstab")) )
         return false;
@@ -274,6 +273,9 @@ bool ExternalCommandHelper::createFile(const QByteArray& fileContents, const QSt
 
 QVariantMap ExternalCommandHelper::start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {
+    if (!isCallerAuthorized()) {
+        return QVariantMap();
+    }
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
@@ -287,7 +289,7 @@ QVariantMap ExternalCommandHelper::start(const QString& command, const QStringLi
     QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
     if (std::find(std::begin(allowedCommands), std::end(allowedCommands), basename) == std::end(allowedCommands)) {
         qInfo() << command <<" command is not one of the whitelisted command";
-        m_loop->exit();
+        qApp->quit();
         reply[QStringLiteral("success")] = false;
         return reply;
     }
@@ -309,10 +311,10 @@ QVariantMap ExternalCommandHelper::start(const QString& command, const QStringLi
 
 void ExternalCommandHelper::exit()
 {
-    m_loop->exit();
-
-    QDBusConnection::systemBus().unregisterObject(QStringLiteral("/Helper"));
-    QDBusConnection::systemBus().unregisterService(QStringLiteral("org.kde.kpmcore.helperinterface"));
+    if (!isCallerAuthorized()) {
+        return;
+    }
+    qApp->quit();
 }
 
 void ExternalCommandHelper::onReadOutput()
@@ -331,4 +333,48 @@ void ExternalCommandHelper::onReadOutput()
          *report() << QString::fromLocal8Bit(s);*/
 }
 
-KAUTH_HELPER_MAIN("org.kde.kpmcore.externalcommand", ExternalCommandHelper)
+bool ExternalCommandHelper::isCallerAuthorized()
+{
+    if (!calledFromDBus()) {
+        return false;
+    }
+
+    // track who called into us so we can close when all callers have gone away
+    // this has to happen before authorisation as anyone could have activated us
+    m_serviceWatcher->addWatchedService(message().service());
+
+    PolkitQt1::SystemBusNameSubject subject(message().service());
+    PolkitQt1::Authority *authority = PolkitQt1::Authority::instance();
+
+    PolkitQt1::Authority::Result result;
+    QEventLoop e;
+    connect(authority, &PolkitQt1::Authority::checkAuthorizationFinished, [&result, &e](PolkitQt1::Authority::Result _result) {
+        result = _result;
+        e.quit();
+    });
+
+    authority->checkAuthorization(QStringLiteral("org.kde.kpmcore.externalcommand.init"), subject, PolkitQt1::Authority::AllowUserInteraction);
+    e.exec();
+
+    if (authority->hasError()) {
+        qDebug() << "Encountered error while checking authorization, error code:" << authority->lastError() << authority->errorDetails();
+        authority->clearError();
+    }
+
+    switch (result) {
+    case PolkitQt1::Authority::Yes:
+        return true;
+    default:
+        sendErrorReply(QDBusError::AccessDenied);
+        return false;
+    }
+}
+
+int main(int argc, char ** argv)
+{
+    QCoreApplication app(argc, argv);
+    ExternalCommandHelper helper;
+    app.exec();
+}
+
+#include "externalcommandhelper.moc"
