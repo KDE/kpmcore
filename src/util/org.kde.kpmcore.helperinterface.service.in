@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
+# SPDX-License-Identifier: GPL-3.0-or-later
+[D-BUS Service]
+Name=org.kde.kpmcore.helperinterface
+Exec=@KDE_INSTALL_FULL_LIBEXECDIR@/kpmcore_externalcommand
+User=root

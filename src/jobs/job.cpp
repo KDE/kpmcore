@@ -103,9 +103,9 @@ void Job::emitProgress(int i)
     emit progress(i);
 }
 
-void Job::updateReport(const QVariantMap& reportString)
+void Job::updateReport(const QString& report)
 {
-    m_Report->line() << reportString[QStringLiteral("report")].toString();
+    m_Report->line() << report;
 }
 
 Report* Job::jobStarted(Report& parent)

@@ -19,6 +19,7 @@
 #include "externalcommand_whitelist.h"
 
 #include <QtDBus>
+
 #include <QCoreApplication>
 #include <QDebug>
 #include <QFile>
@@ -27,65 +28,44 @@
 #include <QVariant>
 
 #include <KLocalizedString>
+#include <PolkitQt1/Authority>
+#include <PolkitQt1/Subject>
+
+#include <polkitqt1-version.h>
 
 /** Initialize ExternalCommandHelper Daemon and prepare DBus interface
  *
- * KAuth helper runs in the background until application exits.
- * To avoid forever running helper in case of application crash
- * ExternalCommand class opens a DBus service that we monitor for changes.
+ * This helper runs in the background until all applications using it exit.
  * If helper is not busy then it exits when the client services gets
- * unregistered. Otherwise,
- * we wait for the current job to finish before exiting, so even in case
- * of main application crash, we do not leave partially moved data.
+ * unregistered. In case the client crashes, the helper waits
+ * for the current job to finish before exiting, to avoid leaving partially moved data.
  *
- * This helper also starts another DBus interface where it listens to
- * command execution requests from the application that started the helper.
- * 
+ * This helper starts DBus interface where it listens to command execution requests.
+ * New clients connecting to the helper have to authenticate using Polkit.
 */
-ActionReply ExternalCommandHelper::init(const QVariantMap& args)
+
+ExternalCommandHelper::ExternalCommandHelper()
 {
-    Q_UNUSED(args)
-    
-    ActionReply reply;
-
-    if (!QDBusConnection::systemBus().isConnected() || !QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface")) || 
-        !QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        reply.addData(QStringLiteral("success"), false);
-    
-        // Also end the application loop started by KAuth's main() code. Our loop
-        // exits when our client disappears. Without client we have no reason to
-        // live.
-        qApp->quit();
-    
-        return reply;
+    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals)) {
+        ::exit(-1);
     }
-    
-    m_loop = std::make_unique<QEventLoop>();
-    HelperSupport::progressStep(QVariantMap());
 
-    // End the loop and return only once the client is done using us.
-    auto serviceWatcher =
-            new QDBusServiceWatcher(QStringLiteral("org.kde.kpmcore.applicationinterface"),
-                                    QDBusConnection::systemBus(),
-                                    QDBusServiceWatcher::WatchForUnregistration,
-                                    this);
-    connect(serviceWatcher, &QDBusServiceWatcher::serviceUnregistered,
-            [this]() {
-        m_loop->exit();
+    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
+        ::exit(-1);
+    }
+
+    // we know this service must be registered already as DBus policy blocks calls from anyone else
+    m_serviceWatcher = new QDBusServiceWatcher(this);
+    m_serviceWatcher->setConnection(QDBusConnection ::systemBus());
+    m_serviceWatcher->setWatchMode(QDBusServiceWatcher::WatchForUnregistration);
+
+    connect(m_serviceWatcher, &QDBusServiceWatcher::serviceUnregistered, qApp, [this](const QString &service) {
+        m_serviceWatcher->removeWatchedService(service);
+        if (m_serviceWatcher->watchedServices().isEmpty()) {
+            qApp->quit();
+        }
     });
-
-    m_loop->exec();
-    reply.addData(QStringLiteral("success"), true);
-
-    // Also end the application loop started by KAuth's main() code. Our loop
-    // exits when our client disappears. Without client we have no reason to
-    // live.
-    qApp->quit();
-
-    return reply;
 }
-
 
 /** Reads the given number of bytes from the sourceDevice into the given buffer.
     @param sourceDevice device or file to read from
@@ -149,6 +129,9 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
 // If targetDevice is empty then return QByteArray with data that was read from disk.
 QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
+    if (!isCallerAuthorized()) {
+        return QVariantMap();
+    }
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
@@ -174,13 +157,10 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
 
     t.start();
 
-    QVariantMap report;
-
-    report[QStringLiteral("report")] = xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy,
+    QString reportText = xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy,
                                               sourceLength, readOffset, writeOffset, copyDirection == 1 ? i18nc("direction: left", "left")
                                               : i18nc("direction: right", "right"));
-
-    HelperSupport::progressStep(report);
+    Q_EMIT report(reportText);
 
     bool rval = true;
 
@@ -199,10 +179,10 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
             if (percent % 5 == 0 && t.elapsed() > 1000) {
                 const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (t.elapsed() / 1000);
                 const qint64 estSecsLeft = (100 - percent) * t.elapsed() / percent / 1000;
-                report[QStringLiteral("report")]=  xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
-                HelperSupport::progressStep(report);
+                reportText = xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
+                Q_EMIT report(reportText);
             }
-            HelperSupport::progressStep(percent);
+            Q_EMIT progress(percent);
         }
     }
 
@@ -212,8 +192,8 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
 
         const qint64 lastBlockReadOffset = copyDirection > 0 ? readOffset + blockSize * blocksCopied : sourceFirstByte;
         const qint64 lastBlockWriteOffset = copyDirection > 0 ? writeOffset + blockSize * blocksCopied : targetFirstByte;
-        report[QStringLiteral("report")]= xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
-        HelperSupport::progressStep(report);
+        reportText = xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
+        Q_EMIT report(reportText);
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
 
         if (rval) {
@@ -224,13 +204,13 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
         }
 
         if (rval) {
-            HelperSupport::progressStep(100);
+            Q_EMIT progress(100);
             bytesWritten += buffer.size();
         }
     }
 
-    report[QStringLiteral("report")] = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
-    HelperSupport::progressStep(report);
+    reportText = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
+    Q_EMIT report(reportText);
 
     reply[QStringLiteral("success")] = rval;
     return reply;
@@ -238,6 +218,9 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
 
 bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
 {
+    if (!isCallerAuthorized()) {
+        return false;
+    }
     // Do not allow using this helper for writing to arbitrary location
     if ( targetDevice.left(5) != QStringLiteral("/dev/") && !targetDevice.contains(QStringLiteral("/etc/fstab")))
         return false;
@@ -245,9 +228,11 @@ bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& t
     return writeData(targetDevice, buffer, targetFirstByte);
 }
 
-
 QVariantMap ExternalCommandHelper::start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {
+    if (!isCallerAuthorized()) {
+        return QVariantMap();
+    }
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
@@ -261,7 +246,7 @@ QVariantMap ExternalCommandHelper::start(const QString& command, const QStringLi
     QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
     if (std::find(std::begin(allowedCommands), std::end(allowedCommands), basename) == std::end(allowedCommands)) {
         qInfo() << command <<" command is not one of the whitelisted command";
-        m_loop->exit();
+        qApp->quit();
         reply[QStringLiteral("success")] = false;
         return reply;
     }
@@ -283,10 +268,10 @@ QVariantMap ExternalCommandHelper::start(const QString& command, const QStringLi
 
 void ExternalCommandHelper::exit()
 {
-    m_loop->exit();
-
-    QDBusConnection::systemBus().unregisterObject(QStringLiteral("/Helper"));
-    QDBusConnection::systemBus().unregisterService(QStringLiteral("org.kde.kpmcore.helperinterface"));
+    if (!isCallerAuthorized()) {
+        return;
+    }
+    qApp->quit();
 }
 
 void ExternalCommandHelper::onReadOutput()
@@ -305,4 +290,52 @@ void ExternalCommandHelper::onReadOutput()
          *report() << QString::fromLocal8Bit(s);*/
 }
 
-KAUTH_HELPER_MAIN("org.kde.kpmcore.externalcommand", ExternalCommandHelper)
+bool ExternalCommandHelper::isCallerAuthorized()
+{
+    if (!calledFromDBus()) {
+        return false;
+    }
+
+    // Cache successful authentication requests, so that clients don't need
+    // to authenticate multiple times during long partitioning operations.
+    if (m_serviceWatcher->watchedServices().contains(message().service())) {
+        return true;
+    }
+
+    PolkitQt1::SystemBusNameSubject subject(message().service());
+    PolkitQt1::Authority *authority = PolkitQt1::Authority::instance();
+
+    PolkitQt1::Authority::Result result;
+    QEventLoop e;
+    connect(authority, &PolkitQt1::Authority::checkAuthorizationFinished, &e, [&e, &result](PolkitQt1::Authority::Result _result) {
+        result = _result;
+        e.quit();
+    });
+
+    authority->checkAuthorization(QStringLiteral("org.kde.kpmcore.externalcommand.init"), subject, PolkitQt1::Authority::AllowUserInteraction);
+    e.exec();
+
+    if (authority->hasError()) {
+        qDebug() << "Encountered error while checking authorization, error code:" << authority->lastError() << authority->errorDetails();
+        authority->clearError();
+    }
+
+    switch (result) {
+    case PolkitQt1::Authority::Yes:
+        // track who called into us so we can close when all callers have gone away
+        m_serviceWatcher->addWatchedService(message().service());
+        return true;
+    default:
+        sendErrorReply(QDBusError::AccessDenied);
+        if (m_serviceWatcher->watchedServices().isEmpty())
+            qApp->quit();
+        return false;
+    }
+}
+
+int main(int argc, char ** argv)
+{
+    QCoreApplication app(argc, argv);
+    ExternalCommandHelper helper;
+    app.exec();
+}

@@ -54,12 +54,10 @@ struct ExternalCommandPrivate
     int m_ExitCode;
     QByteArray m_Output;
     QByteArray m_Input;
-    DBusThread *m_thread;
     QProcess::ProcessChannelMode processChannelMode;
 };
 
 KAuth::ExecuteJob* ExternalCommand::m_job;
-bool ExternalCommand::helperStarted = false;
 QWidget* ExternalCommand::parent;
 
 
@@ -75,11 +73,6 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
     d->m_Args = args;
     d->m_ExitCode = -1;
     d->m_Output = QByteArray();
-
-    if (!helperStarted)
-        if(!startHelper())
-            Log(Log::Level::error) << xi18nc("@info:status", "Could not obtain administrator privileges.");
-
     d->processChannelMode = processChannelMode;
 }
 
@@ -139,10 +132,13 @@ bool ExternalCommand::start(int timeout)
     if (cmd.isEmpty())
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
+    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.helperinterface"),
                     QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
 
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
+
+    if (!interface)
+        return false;
 
     bool rval = false;
 
@@ -181,13 +177,15 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
         return false;
     }
 
-    // TODO KF6:Use new signal-slot syntax
-    connect(m_job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
-    connect(m_job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
-
     auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
                 QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
+
+    if (!interface)
+        return false;
+
+    connect(interface, &OrgKdeKpmcoreExternalcommandInterface::progress, this, &ExternalCommand::progress);
+    connect(interface, &OrgKdeKpmcoreExternalcommandInterface::report, this, &ExternalCommand::reportSignal);
 
     QDBusPendingCall pcall = interface->copyblocks(source.path(), source.firstByte(), source.length(),
                                                    target.path(), target.firstByte(), blockSize);
@@ -229,7 +227,7 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
         return false;
     }
 
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
+    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.helperinterface"),
                 QStringLiteral("/Helper"), QDBusConnection::systemBus(), this);
     interface->setTimeout(10 * 24 * 3600 * 1000); // 10 days
  
@@ -339,58 +337,6 @@ void ExternalCommand::setExitCode(int i)
     d->m_ExitCode = i;
 }
 
-bool ExternalCommand::startHelper()
-{
-    if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return false;
-    }
-    
-    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
-    if (iface.isValid()) {
-        exit(0);
-    }
-
-    d->m_thread = new DBusThread;
-    d->m_thread->start();
-
-    KAuth::Action action = KAuth::Action(QStringLiteral("org.kde.kpmcore.externalcommand.init"));
-    action.setHelperId(QStringLiteral("org.kde.kpmcore.externalcommand"));
-    action.setTimeout(10 * 24 * 3600 * 1000); // 10 days
-    action.setParentWidget(parent);
-    QVariantMap arguments;
-    action.setArguments(arguments);
-    m_job = action.execute();
-    m_job->start();
-
-    // Wait until ExternalCommand Helper is ready (helper sends newData signal just before it enters event loop)
-    QEventLoop loop;
-    auto exitLoop = [&] () { loop.exit(); };
-    auto conn = QObject::connect(m_job, &KAuth::ExecuteJob::newData, exitLoop);
-    QObject::connect(m_job, &KJob::finished, [=] () { if(m_job->error()) exitLoop(); } );
-    loop.exec();
-    QObject::disconnect(conn);
-
-    helperStarted = true;
-    return true;
-}
-
 void ExternalCommand::stopHelper()
 {
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.externalcommand"),
-                                                             QStringLiteral("/Helper"), QDBusConnection::systemBus());
-    interface->exit();
-
-}
-
-void DBusThread::run()
-{
-    if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.applicationinterface")) || 
-        !QDBusConnection::systemBus().registerObject(QStringLiteral("/Application"), this, QDBusConnection::ExportAllSlots)) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return;
-    }
-        
-    QEventLoop loop;
-    loop.exec();
 }

@@ -41,15 +41,6 @@ class QDBusInterface;
 
 struct ExternalCommandPrivate;
 
-class DBusThread : public QThread
-{
-    Q_OBJECT
-    // We register on DBus so the helper can monitor us and terminate if we
-    // terminate.
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.applicationinterface")
-    void run() override;
-};
-
 /** An external command.
 
     Runs an external command as a child process.
@@ -102,14 +93,9 @@ public:
     /**< @return pointer to the Report or nullptr */
     Report* report();
 
-    void emitReport(const QVariantMap& report) { emit reportSignal(report); }
-
-    // KAuth
-    /**< start ExternalCommand Helper */
-    bool startHelper();
-
     /**< stop ExternalCommand Helper */
     static void stopHelper();
+
 
     /**< Sets a parent widget for the authentication dialog.
      * @param p parent widget
@@ -120,10 +106,7 @@ public:
 
 Q_SIGNALS:
     void progress(int);
-    void reportSignal(const QVariantMap&);
-
-public Q_SLOTS:
-    void emitProgress(KJob*, unsigned long percent) { emit progress(percent); }
+    void reportSignal(const QString&);
 
 private:
     void setExitCode(int i);
@@ -134,7 +117,6 @@ private:
 
     // KAuth
     static KAuth::ExecuteJob *m_job;
-    static bool helperStarted;
     static QWidget *parent;
 };
 
