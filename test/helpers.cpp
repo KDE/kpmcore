@@ -46,7 +46,3 @@ KPMCoreInitializer::KPMCoreInitializer( const char* backend ) : KPMCoreInitializ
 {
 }
 
-KPMCoreInitializer::~KPMCoreInitializer()
-{
-    ExternalCommand::stopHelper();
-}

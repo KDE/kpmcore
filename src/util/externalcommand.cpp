@@ -7,6 +7,7 @@
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
     SPDX-FileCopyrightText: 2019 Yuri Chornoivan <yurchor@ukr.net>
+    SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -53,7 +54,6 @@ struct ExternalCommandPrivate
 };
 
 KAuth::ExecuteJob* ExternalCommand::m_job;
-bool ExternalCommand::helperStarted = false;
 QWidget* ExternalCommand::parent;
 
 
@@ -69,11 +69,6 @@ ExternalCommand::ExternalCommand(const QString& cmd, const QStringList& args, co
     d->m_Args = args;
     d->m_ExitCode = -1;
     d->m_Output = QByteArray();
-
-//     if (!helperStarted)
-//         if(!startHelper())
-//             Log(Log::Level::error) << xi18nc("@info:status", "Could not obtain administrator privileges.");
-
     d->processChannelMode = processChannelMode;
 }
 
@@ -128,8 +123,6 @@ bool ExternalCommand::start(int timeout)
     if (cmd.isEmpty())
         cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
 
-    qDebug() << "start";
-
     auto interface = helperInterface();
     if (!interface)
         return false;
@@ -167,8 +160,9 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
 
     // TODO KF6:Use new signal-slot syntax
-    connect(m_job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
-    connect(m_job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
+    // FIXME: port and reenable these signals
+    //connect(m_job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
+    //connect(m_job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
 
     auto interface = helperInterface();
     if (!interface)
@@ -342,28 +336,4 @@ Report* ExternalCommand::report()
 void ExternalCommand::setExitCode(int i)
 {
     d->m_ExitCode = i;
-}
-
-bool ExternalCommand::startHelper()
-{
-    if (!QDBusConnection::systemBus().isConnected()) {
-        qWarning() << QDBusConnection::systemBus().lastError().message();
-        return false;
-    }
-    
-    QDBusInterface iface(QStringLiteral("org.kde.kpmcore.helperinterface"), QStringLiteral("/Helper"), QStringLiteral("org.kde.kpmcore.externalcommand"), QDBusConnection::systemBus());
-    if (iface.isValid()) {
-        exit(0);
-    }
-
-    qDebug() <<"starting helper";
-    return true;
-}
-
-void ExternalCommand::stopHelper()
-{
-    auto *interface = new org::kde::kpmcore::externalcommand(QStringLiteral("org.kde.kpmcore.helperinterface"),
-                                                             QStringLiteral("/Helper"), QDBusConnection::systemBus());
-    interface->exit();
-
 }

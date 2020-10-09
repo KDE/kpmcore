@@ -5,6 +5,7 @@
     SPDX-FileCopyrightText: 2018-2019 Harald Sitter <sitter@kde.org>
     SPDX-FileCopyrightText: 2018 Simon Depiets <sdepiets@gmail.com>
     SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
+    SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -191,7 +192,7 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
                                               sourceLength, readOffset, writeOffset, copyDirection == 1 ? i18nc("direction: left", "left")
                                               : i18nc("direction: right", "right"));
 
-    HelperSupport::progressStep(report);
+    //HelperSupport::progressStep(report);
 
     bool rval = true;
 
@@ -211,9 +212,9 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
                 const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (timer.elapsed() / 1000);
                 const qint64 estSecsLeft = (100 - percent) * timer.elapsed() / percent / 1000;
                 report[QStringLiteral("report")]=  xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
-                HelperSupport::progressStep(report);
+                //HelperSupport::progressStep(report);
             }
-            HelperSupport::progressStep(percent);
+            //HelperSupport::progressStep(percent);
         }
     }
 
@@ -224,7 +225,7 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
         const qint64 lastBlockReadOffset = copyDirection > 0 ? readOffset + blockSize * blocksCopied : sourceFirstByte;
         const qint64 lastBlockWriteOffset = copyDirection > 0 ? writeOffset + blockSize * blocksCopied : targetFirstByte;
         report[QStringLiteral("report")]= xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
-        HelperSupport::progressStep(report);
+        //HelperSupport::progressStep(report);
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
 
         if (rval) {
@@ -235,13 +236,13 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
         }
 
         if (rval) {
-            HelperSupport::progressStep(100);
+	    //HelperSupport::progressStep(100);
             bytesWritten += buffer.size();
         }
     }
 
     report[QStringLiteral("report")] = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
-    HelperSupport::progressStep(report);
+    //HelperSupport::progressStep(report);
 
     reply[QStringLiteral("success")] = rval;
     return reply;
@@ -377,4 +378,4 @@ int main(int argc, char ** argv)
     app.exec();
 }
 
-#include "externalcommandhelper.moc"
+// #include "externalcommandhelper.moc"

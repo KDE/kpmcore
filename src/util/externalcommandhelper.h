@@ -3,6 +3,7 @@
     SPDX-FileCopyrightText: 2018 Huzaifa Faruqui <huzaifafaruqui@gmail.com>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
+    SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -13,16 +14,12 @@
 #include <memory>
 #include <unordered_set>
 
-#include <KAuth>
-
 #include <QEventLoop>
 #include <QString>
 #include <QProcess>
 #include <QDBusContext>
 
 class QDBusServiceWatcher;
-
-using namespace KAuth;
 
 class ExternalCommandHelper : public QObject, public QDBusContext
 {

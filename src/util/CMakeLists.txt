@@ -5,6 +5,7 @@
 # SPDX-FileCopyrightText: 2018 Huzaifa Faruqui <huzaifafaruqui@gmail.com>
 # SPDX-FileCopyrightText: 2019 Albert Astals Cid <aacid@kde.org>
 # SPDX-FileCopyrightText: 2019 Antonio Rojas <arojas@archlinux.org>
+# SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 

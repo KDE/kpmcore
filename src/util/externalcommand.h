@@ -91,13 +91,6 @@ public:
 
     void emitReport(const QVariantMap& report) { Q_EMIT reportSignal(report); }
 
-    // KAuth
-    /**< start ExternalCommand Helper */
-    bool startHelper();
-
-    /**< stop ExternalCommand Helper */
-    static void stopHelper();
-
     /**< Sets a parent widget for the authentication dialog.
      * @param p parent widget
      */
@@ -123,7 +116,6 @@ private:
 
     // KAuth
     static KAuth::ExecuteJob *m_job;
-    static bool helperStarted;
     static QWidget *parent;
 };
 

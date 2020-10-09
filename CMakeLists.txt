@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2008 Volker Lanz <vl@fidra.de>
 # SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
 # SPDX-FileCopyrightText: 2014-2020 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
