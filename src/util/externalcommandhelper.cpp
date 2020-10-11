@@ -132,6 +132,10 @@ bool ExternalCommandHelper::createFile(const QString &filePath, const QByteArray
     if (!isCallerAuthorized()) {
         return false;
     }
+    // Do not allow using this helper for writing to arbitrary location
+    if ( !filePath.contains(QStringLiteral("/etc/fstab")) )
+        return false;
+
     QFile device(filePath);
 
     auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
@@ -251,18 +255,6 @@ bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& t
         return false;
 
     return writeData(targetDevice, buffer, targetFirstByte);
-}
-
-bool ExternalCommandHelper::createFile(const QByteArray& fileContents, const QString& filePath)
-{
-    if (!isCallerAuthorized()) {
-        return false;
-    }
-    // Do not allow using this helper for writing to arbitrary location
-    if ( !filePath.contains(QStringLiteral("/etc/fstab")) )
-        return false;
-
-    return createFile(filePath, fileContents);
 }
 
 QVariantMap ExternalCommandHelper::start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)

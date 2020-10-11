@@ -209,13 +209,13 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
     return waitForDbusReply(pcall);
 }
 
-bool ExternalCommand::createFile(const QByteArray& buffer, const QString& deviceNode)
+bool ExternalCommand::createFile(const QByteArray& fileContents, const QString& filePath)
 {
     auto interface = helperInterface();
     if (!interface)
         return false;
 
-    QDBusPendingCall pcall = interface->createFile(buffer, deviceNode);
+    QDBusPendingCall pcall = interface->createFile(filePath, fileContents);
     return waitForDbusReply(pcall);
 }
 
