@@ -349,7 +349,7 @@ bool ExternalCommandHelper::isCallerAuthorized()
 
     PolkitQt1::Authority::Result result;
     QEventLoop e;
-    connect(authority, &PolkitQt1::Authority::checkAuthorizationFinished, [&result, &e](PolkitQt1::Authority::Result _result) {
+    connect(authority, &PolkitQt1::Authority::checkAuthorizationFinished, &e, [&e, &result](PolkitQt1::Authority::Result _result) {
         result = _result;
         e.quit();
     });
