@@ -41,7 +41,6 @@ public Q_SLOTS:
     Q_SCRIPTABLE QVariantMap copyblocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
     Q_SCRIPTABLE bool writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte);
     Q_SCRIPTABLE bool createFile(const QByteArray& fileContents, const QString& filePath);
-    Q_SCRIPTABLE void exit();
 
 private:
 

@@ -303,14 +303,6 @@ QVariantMap ExternalCommandHelper::start(const QString& command, const QStringLi
     return reply;
 }
 
-void ExternalCommandHelper::exit()
-{
-    if (!isCallerAuthorized()) {
-        return;
-    }
-    qApp->quit();
-}
-
 void ExternalCommandHelper::onReadOutput()
 {
 /*    const QByteArray s = cmd.readAllStandardOutput();
