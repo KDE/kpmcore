@@ -129,7 +129,7 @@ bool ExternalCommand::start(int timeout)
 
     bool rval = false;
 
-    QDBusPendingCall pcall = interface->start(cmd, args(), d->m_Input, d->processChannelMode);
+    QDBusPendingCall pcall = interface->RunCommand(cmd, args(), d->m_Input, d->processChannelMode);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
     QEventLoop loop;
@@ -168,7 +168,7 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     if (!interface)
         return false;
 
-    QDBusPendingCall pcall = interface->copyblocks(source.path(), source.firstByte(), source.length(),
+    QDBusPendingCall pcall = interface->CopyBlocks(source.path(), source.firstByte(), source.length(),
                                                    target.path(), target.firstByte(), blockSize);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
@@ -205,7 +205,7 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
     if (!interface)
         return false;
 
-    QDBusPendingCall pcall = interface->writeData(buffer, deviceNode, firstByte);
+    QDBusPendingCall pcall = interface->WriteData(buffer, deviceNode, firstByte);
     return waitForDbusReply(pcall);
 }
 
@@ -215,7 +215,7 @@ bool ExternalCommand::createFile(const QByteArray& fileContents, const QString& 
     if (!interface)
         return false;
 
-    QDBusPendingCall pcall = interface->createFile(filePath, fileContents);
+    QDBusPendingCall pcall = interface->CreateFile(filePath, fileContents);
     return waitForDbusReply(pcall);
 }
 

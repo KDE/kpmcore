@@ -127,7 +127,7 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
     @param fileContents the data that we write
     @return true on success
 */
-bool ExternalCommandHelper::createFile(const QString &filePath, const QByteArray& fileContents)
+bool ExternalCommandHelper::CreateFile(const QString &filePath, const QByteArray& fileContents)
 {
     if (!isCallerAuthorized()) {
         return false;
@@ -153,7 +153,7 @@ bool ExternalCommandHelper::createFile(const QString &filePath, const QByteArray
 }
 
 // If targetDevice is empty then return QByteArray with data that was read from disk.
-QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
+QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
 {
     if (!isCallerAuthorized()) {
         return QVariantMap();
@@ -245,7 +245,7 @@ QVariantMap ExternalCommandHelper::copyblocks(const QString& sourceDevice, const
     return reply;
 }
 
-bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
+bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
 {
     if (!isCallerAuthorized()) {
         return false;
@@ -257,7 +257,7 @@ bool ExternalCommandHelper::writeData(const QByteArray& buffer, const QString& t
     return writeData(targetDevice, buffer, targetFirstByte);
 }
 
-QVariantMap ExternalCommandHelper::start(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
+QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {
     if (!isCallerAuthorized()) {
         return QVariantMap();
