@@ -30,20 +30,13 @@
 
 /** Initialize ExternalCommandHelper Daemon and prepare DBus interface
  *
- * KAuth helper runs in the background until application exits.
- * To avoid forever running helper in case of application crash
- * ExternalCommand class opens a DBus service that we monitor for changes.
+ * This helper runs in the background until all applications using it exit.
  * If helper is not busy then it exits when the client services gets
- * unregistered. Otherwise,
- * we wait for the current job to finish before exiting, so even in case
- * of main application crash, we do not leave partially moved data.
+ * unregistered. In case the client crashes, the helper waits
+ * for the current job to finish before exiting, to avoid leaving partially moved data.
  *
- * This helper also starts another DBus interface where it listens to
- * command execution requests from the application that started the helper.
- * 
- *
- * DAVE - this all needs updating
- *
+ * This helper starts DBus interface where it listens to command execution requests.
+ * New clients connecting to the helper have to authenticate using Polkit.
 */
 
 ExternalCommandHelper::ExternalCommandHelper()
@@ -377,5 +370,3 @@ int main(int argc, char ** argv)
     ExternalCommandHelper helper;
     app.exec();
 }
-
-// #include "externalcommandhelper.moc"
