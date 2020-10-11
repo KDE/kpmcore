@@ -41,7 +41,7 @@
 
 ExternalCommandHelper::ExternalCommandHelper()
 {
-    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots)) {
+    if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals)) {
         ::exit(-1);
     }
 
@@ -183,13 +183,10 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
 
     timer.start();
 
-    QVariantMap report;
-
-    report[QStringLiteral("report")] = xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy,
+    QString reportText = xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy,
                                               sourceLength, readOffset, writeOffset, copyDirection == 1 ? i18nc("direction: left", "left")
                                               : i18nc("direction: right", "right"));
-
-    //HelperSupport::progressStep(report);
+    Q_EMIT report(reportText);
 
     bool rval = true;
 
@@ -208,10 +205,10 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
             if (percent % 5 == 0 && timer.elapsed() > 1000) {
                 const qint64 mibsPerSec = (blocksCopied * blockSize / 1024 / 1024) / (timer.elapsed() / 1000);
                 const qint64 estSecsLeft = (100 - percent) * timer.elapsed() / percent / 1000;
-                report[QStringLiteral("report")]=  xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
-                //HelperSupport::progressStep(report);
+                reportText = xi18nc("@info:progress", "Copying %1 MiB/second, estimated time left: %2", mibsPerSec, QTime(0, 0).addSecs(estSecsLeft).toString());
+                Q_EMIT report(reportText);
             }
-            //HelperSupport::progressStep(percent);
+            Q_EMIT progress(percent);
         }
     }
 
@@ -221,8 +218,8 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
 
         const qint64 lastBlockReadOffset = copyDirection > 0 ? readOffset + blockSize * blocksCopied : sourceFirstByte;
         const qint64 lastBlockWriteOffset = copyDirection > 0 ? writeOffset + blockSize * blocksCopied : targetFirstByte;
-        report[QStringLiteral("report")]= xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
-        //HelperSupport::progressStep(report);
+        reportText = xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
+        Q_EMIT report(reportText);
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
 
         if (rval) {
@@ -233,13 +230,13 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
         }
 
         if (rval) {
-	    //HelperSupport::progressStep(100);
+            Q_EMIT progress(100);
             bytesWritten += buffer.size();
         }
     }
 
-    report[QStringLiteral("report")] = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
-    //HelperSupport::progressStep(report);
+    reportText = xi18ncp("@info:progress argument 2 is a string such as 7 bytes (localized accordingly)", "Copying 1 block (%2) finished.", "Copying %1 blocks (%2) finished.", blocksCopied, i18np("1 byte", "%1 bytes", bytesWritten));
+    Q_EMIT report(reportText);
 
     reply[QStringLiteral("success")] = rval;
     return reply;

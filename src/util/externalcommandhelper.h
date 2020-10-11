@@ -27,8 +27,8 @@ class ExternalCommandHelper : public QObject, public QDBusContext
     Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.externalcommand")
 
 Q_SIGNALS:
-    void progress(int);
-    void quit();
+    Q_SCRIPTABLE void progress(int);
+    Q_SCRIPTABLE void report(QString);
 
 public:
     ExternalCommandHelper();

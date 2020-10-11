@@ -159,14 +159,12 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     bool rval = true;
     const qint64 blockSize = 10 * 1024 * 1024; // number of bytes per block to copy
 
-    // TODO KF6:Use new signal-slot syntax
-    // FIXME: port and reenable these signals
-    //connect(m_job, SIGNAL(percent(KJob*, unsigned long)), this, SLOT(emitProgress(KJob*, unsigned long)));
-    //connect(m_job, &KAuth::ExecuteJob::newData, this, &ExternalCommand::emitReport);
-
     auto interface = helperInterface();
     if (!interface)
         return false;
+
+    connect(interface, &OrgKdeKpmcoreExternalcommandInterface::progress, this, &ExternalCommand::progress);
+    connect(interface, &OrgKdeKpmcoreExternalcommandInterface::report, this, &ExternalCommand::reportSignal);
 
     QDBusPendingCall pcall = interface->CopyBlocks(source.path(), source.firstByte(), source.length(),
                                                    target.path(), target.firstByte(), blockSize);

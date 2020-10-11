@@ -89,8 +89,6 @@ public:
     /**< @return pointer to the Report or nullptr */
     Report* report();
 
-    void emitReport(const QVariantMap& report) { Q_EMIT reportSignal(report); }
-
     /**< Sets a parent widget for the authentication dialog.
      * @param p parent widget
      */
@@ -100,10 +98,7 @@ public:
 
 Q_SIGNALS:
     void progress(int);
-    void reportSignal(const QVariantMap&);
-
-public Q_SLOTS:
-    void emitProgress(KJob*, unsigned long percent) { Q_EMIT progress(percent); }
+    void reportSignal(const QString&);
 
 private:
     void setExitCode(int i);

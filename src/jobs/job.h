@@ -71,7 +71,7 @@ public:
     }
 
     void emitProgress(int i);
-    void updateReport(const QVariantMap& reportString);
+    void updateReport(const QString& report);
 
 protected:
     bool copyBlocks(Report& report, CopyTarget& target, CopySource& source);
