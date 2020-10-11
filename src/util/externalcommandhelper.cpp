@@ -333,9 +333,11 @@ bool ExternalCommandHelper::isCallerAuthorized()
         return false;
     }
 
-    // track who called into us so we can close when all callers have gone away
-    // this has to happen before authorisation as anyone could have activated us
-    m_serviceWatcher->addWatchedService(message().service());
+    // Cache successful authentication requests, so that clients don't need
+    // to authenticate multiple times during long partitioning operations.
+    if (m_serviceWatcher->watchedServices().contains(message().service())) {
+        return true;
+    }
 
     PolkitQt1::SystemBusNameSubject subject(message().service());
     PolkitQt1::Authority *authority = PolkitQt1::Authority::instance();
@@ -357,9 +359,13 @@ bool ExternalCommandHelper::isCallerAuthorized()
 
     switch (result) {
     case PolkitQt1::Authority::Yes:
+        // track who called into us so we can close when all callers have gone away
+        m_serviceWatcher->addWatchedService(message().service());
         return true;
     default:
         sendErrorReply(QDBusError::AccessDenied);
+        if (m_serviceWatcher->watchedServices().isEmpty())
+            qApp->quit();
         return false;
     }
 }
