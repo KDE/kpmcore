@@ -24,8 +24,6 @@
 
 #include <memory>
 
-namespace KAuth { class ExecuteJob; }
-
 class KJob;
 class Report;
 class CopySource;
@@ -89,13 +87,6 @@ public:
     /**< @return pointer to the Report or nullptr */
     Report* report();
 
-    /**< Sets a parent widget for the authentication dialog.
-     * @param p parent widget
-     */
-    static void setParentWidget(QWidget *p) {
-        parent = p;
-    }
-
 Q_SIGNALS:
     void progress(int);
     void reportSignal(const QString&);
@@ -109,9 +100,6 @@ private:
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
 
-    // KAuth
-    static KAuth::ExecuteJob *m_job;
-    static QWidget *parent;
 };
 
 #endif

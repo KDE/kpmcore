@@ -37,8 +37,6 @@
 #include <QTimer>
 #include <QThread>
 #include <QVariant>
-
-#include <KAuth>
 #include <KJob>
 #include <KLocalizedString>
 
@@ -52,10 +50,6 @@ struct ExternalCommandPrivate
     QByteArray m_Input;
     QProcess::ProcessChannelMode processChannelMode;
 };
-
-KAuth::ExecuteJob* ExternalCommand::m_job;
-QWidget* ExternalCommand::parent;
-
 
 /** Creates a new ExternalCommand instance without Report.
     @param cmd the command to run
