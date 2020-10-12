@@ -14,7 +14,7 @@ Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
 Copyright: 2020 KDE translators
 
 ### DBus interfaces
-Files: src/util/org.kde.kpmcore.*.conf
+Files: src/util/org.kde.kpmcore.helperinterface.conf
 License: MIT
 Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
 
