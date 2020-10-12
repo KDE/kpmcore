@@ -16,7 +16,7 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 set(QT_MIN_VERSION "5.10.0")
 set(KF5_MIN_VERSION "5.56")
 set(BLKID_MIN_VERSION "2.33.2")
-# Qca-qt5 (tested with botan and ossl backends)
+# PolkitQt5-1
 
 # Runtime
 # smartmontools 7.0
@@ -62,7 +62,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
   WidgetsAddons
 )
 
-find_package(Qca-qt5 REQUIRED)
+find_package(PolkitQt5-1 REQUIRED)
 
 # use sane compile flags
 add_definitions(

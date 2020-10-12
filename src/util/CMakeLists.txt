@@ -23,9 +23,6 @@ qt5_generate_dbus_interface(
     OPTIONS -a
 )
 
-
-find_package(PolkitQt5-1 REQUIRED)
-
 qt5_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_interface_xml} externalcommandhelper_interface)
 
 set(UTIL_SRC
@@ -53,10 +50,8 @@ add_executable(kpmcore_externalcommand
 )
 
 target_link_libraries(kpmcore_externalcommand
-    qca-qt5
     Qt5::Core
     Qt5::DBus
-    KF5::AuthCore
     KF5::I18n
     PolkitQt5-1::Core
 )
