@@ -10,6 +10,7 @@
 #include "util/report.h"
 
 #include <algorithm>
+#include <array>
 
 #if defined(Q_OS_LINUX)
     #include <blkid/blkid.h>

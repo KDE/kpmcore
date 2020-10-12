@@ -24,8 +24,6 @@
 
 #include <memory>
 
-namespace KAuth { class ExecuteJob; }
-
 class KJob;
 class Report;
 class CopySource;
@@ -35,15 +33,6 @@ class QDBusPendingCall;
 class OrgKdeKpmcoreExternalcommandInterface;
 
 struct ExternalCommandPrivate;
-
-class DBusThread : public QThread
-{
-    Q_OBJECT
-    // We register on DBus so the helper can monitor us and terminate if we
-    // terminate.
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kpmcore.applicationinterface")
-    void run() override;
-};
 
 /** An external command.
 
@@ -66,7 +55,7 @@ public:
 public:
     bool copyBlocks(const CopySource& source, CopyTarget& target);
     bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
-    bool createFile(const QByteArray& buffer, const QString& deviceNode); // similar to writeData but creates a new file
+    bool createFile(const QByteArray& filePath, const QString& fileContents); // similar to writeData but creates a new file
 
     /**< @param cmd the command to run */
     void setCommand(const QString& cmd);
@@ -98,28 +87,9 @@ public:
     /**< @return pointer to the Report or nullptr */
     Report* report();
 
-    void emitReport(const QVariantMap& report) { Q_EMIT reportSignal(report); }
-
-    // KAuth
-    /**< start ExternalCommand Helper */
-    bool startHelper();
-
-    /**< stop ExternalCommand Helper */
-    static void stopHelper();
-
-    /**< Sets a parent widget for the authentication dialog.
-     * @param p parent widget
-     */
-    static void setParentWidget(QWidget *p) {
-        parent = p;
-    }
-
 Q_SIGNALS:
     void progress(int);
-    void reportSignal(const QVariantMap&);
-
-public Q_SLOTS:
-    void emitProgress(KJob*, unsigned long percent) { Q_EMIT progress(percent); }
+    void reportSignal(const QString&);
 
 private:
     void setExitCode(int i);
@@ -130,10 +100,6 @@ private:
 private:
     std::unique_ptr<ExternalCommandPrivate> d;
 
-    // KAuth
-    static KAuth::ExecuteJob *m_job;
-    static bool helperStarted;
-    static QWidget *parent;
 };
 
 #endif

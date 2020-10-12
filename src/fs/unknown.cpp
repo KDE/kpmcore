@@ -12,7 +12,7 @@
 namespace FS
 {
 
-FileSystem::CommandSupportType unknown::m_Move = FileSystem::cmdSupportNone;
+FileSystem::CommandSupportType unknown::m_Move = FileSystem::cmdSupportCore;
 
 unknown::unknown(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Unknown)

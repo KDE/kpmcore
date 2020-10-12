@@ -560,7 +560,7 @@ FileSystem::Type SfdiskBackend::fileSystemNameToType(const QString& name, const 
     else if (name == QStringLiteral("vfat")) {
         if (version == QStringLiteral("FAT32"))
             rval = FileSystem::Type::Fat32;
-        else if (version == QStringLiteral("FAT16"))
+        else if (version == QStringLiteral("FAT16") || version == QStringLiteral("msdos")) // blkid uses msdos for both FAT16 and FAT12
             rval = FileSystem::Type::Fat16;
         else if (version == QStringLiteral("FAT12"))
             rval = FileSystem::Type::Fat12;

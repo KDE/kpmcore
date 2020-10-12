@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2008 Volker Lanz <vl@fidra.de>
 # SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
 # SPDX-FileCopyrightText: 2014-2020 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -39,6 +40,7 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
+include(ECMConfiguredInstall)
 
 ecm_setup_version(${VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"

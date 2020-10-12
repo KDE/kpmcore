@@ -5,6 +5,7 @@
 # SPDX-FileCopyrightText: 2018 Huzaifa Faruqui <huzaifafaruqui@gmail.com>
 # SPDX-FileCopyrightText: 2019 Albert Astals Cid <aacid@kde.org>
 # SPDX-FileCopyrightText: 2019 Antonio Rojas <arojas@archlinux.org>
+# SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -22,6 +23,9 @@ qt5_generate_dbus_interface(
     ${helper_interface_xml}
     OPTIONS -a
 )
+
+
+find_package(PolkitQt5-1 REQUIRED)
 
 qt5_add_dbus_interface(ApplicationInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${application_interface_xml} externalcommand_interface)
 qt5_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_interface_xml} externalcommandhelper_interface)
@@ -65,12 +69,16 @@ target_link_libraries(kpmcore_externalcommand
     Qt5::DBus
     KF5::AuthCore
     KF5::I18n
+    PolkitQt5-1::Core
 )
 
 install(TARGETS kpmcore_mdadmupdateconf DESTINATION ${LIBEXEC_INSTALL_DIR})
-install(TARGETS kpmcore_externalcommand DESTINATION ${KAUTH_HELPER_INSTALL_DIR})
+install(TARGETS kpmcore_externalcommand DESTINATION ${KDE_INSTALL_LIBEXECDIR})
 install( FILES util/org.kde.kpmcore.helperinterface.conf DESTINATION ${KDE_INSTALL_DBUSDIR}/system.d )
 install( FILES util/org.kde.kpmcore.applicationinterface.conf DESTINATION ${KDE_INSTALL_DBUSDIR}/system.d )
 
-kauth_install_helper_files(kpmcore_externalcommand org.kde.kpmcore.externalcommand root)
 kauth_install_actions(org.kde.kpmcore.externalcommand util/org.kde.kpmcore.externalcommand.actions)
+ecm_install_configured_files(
+    INPUT util/org.kde.kpmcore.helperinterface.service.in
+    DESTINATION ${KDE_INSTALL_DBUSDIR}/system-services
+)

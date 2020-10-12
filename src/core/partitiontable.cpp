@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2008-2012 Volker Lanz <vl@fidra.de>
     SPDX-FileCopyrightText: 2009 Andrew Coles <andrew.i.coles@googlemail.com>
-    SPDX-FileCopyrightText: 2013-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2013-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015-2016 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
@@ -439,7 +439,7 @@ void PartitionTable::updateUnallocated(const Device& d)
 qint64 PartitionTable::defaultFirstUsable(const Device& d, TableType t)
 {
     Q_UNUSED(t)
-    if (d.type() == Device::Type::LVM_Device || d.type() == Device::Type::SoftwareRAID_Device) {
+    if (d.type() == Device::Type::LVM_Device || d.type() == Device::Type::SoftwareRAID_Device || t == PartitionTable::TableType::none) {
         return 0;
     }
 
@@ -462,21 +462,21 @@ static struct {
     bool isReadOnly; /**< does KDE Partition Manager support this only in read only mode */
     PartitionTable::TableType type; /**< enum type */
 } tableTypes[] = {
-    { QLatin1String("aix"), 4, false, true, PartitionTable::aix },
-    { QLatin1String("bsd"), 8, false, true, PartitionTable::bsd },
-    { QLatin1String("dasd"), 1, false, true, PartitionTable::dasd },
-    { QLatin1String("msdos"), 4, true, false, PartitionTable::msdos },
-    { QLatin1String("msdos"), 4, true, false, PartitionTable::msdos_sectorbased },
-    { QLatin1String("dos"), 4, true, false, PartitionTable::msdos_sectorbased },
-    { QLatin1String("dvh"), 16, true, true, PartitionTable::dvh },
-    { QLatin1String("gpt"), 128, false, false, PartitionTable::gpt },
-    { QLatin1String("loop"), 1, false, true, PartitionTable::loop },
-    { QLatin1String("mac"), 0xffff, false, true, PartitionTable::mac },
-    { QLatin1String("pc98"), 16, false, true, PartitionTable::pc98 },
-    { QLatin1String("amiga"), 128, false, true, PartitionTable::amiga },
-    { QLatin1String("sun"), 8, false, true, PartitionTable::sun },
-    { QLatin1String("vmd"), 0xffff, false, false, PartitionTable::vmd },
-    { QLatin1String("none"), 1, false, false, PartitionTable::none },
+    { QLatin1String("aix"), 4, false, true, PartitionTable::TableType::aix },
+    { QLatin1String("bsd"), 8, false, true, PartitionTable::TableType::bsd },
+    { QLatin1String("dasd"), 1, false, true, PartitionTable::TableType::dasd },
+    { QLatin1String("msdos"), 4, true, false, PartitionTable::TableType::msdos },
+    { QLatin1String("msdos"), 4, true, false, PartitionTable::TableType::msdos_sectorbased },
+    { QLatin1String("dos"), 4, true, false, PartitionTable::TableType::msdos_sectorbased },
+    { QLatin1String("dvh"), 16, true, true, PartitionTable::TableType::dvh },
+    { QLatin1String("gpt"), 128, false, false, PartitionTable::TableType::gpt },
+    { QLatin1String("loop"), 1, false, true, PartitionTable::TableType::loop },
+    { QLatin1String("mac"), 0xffff, false, true, PartitionTable::TableType::mac },
+    { QLatin1String("pc98"), 16, false, true, PartitionTable::TableType::pc98 },
+    { QLatin1String("amiga"), 128, false, true, PartitionTable::TableType::amiga },
+    { QLatin1String("sun"), 8, false, true, PartitionTable::TableType::sun },
+    { QLatin1String("vmd"), 0xffff, false, false, PartitionTable::TableType::vmd },
+    { QLatin1String("none"), 1, false, false, PartitionTable::TableType::none },
 };
 
 PartitionTable::TableType PartitionTable::nameToTableType(const QString& n)
@@ -485,7 +485,7 @@ PartitionTable::TableType PartitionTable::nameToTableType(const QString& n)
         if (n == type.name)
             return type.type;
 
-    return PartitionTable::unknownTableType;
+    return PartitionTable::TableType::unknownTableType;
 }
 
 QString PartitionTable::tableTypeToName(TableType l)

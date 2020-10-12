@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2008-2010 Volker Lanz <vl@fidra.de>
-    SPDX-FileCopyrightText: 2014-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2014-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
 
@@ -34,6 +34,9 @@ bool CreatePartitionTableJob::run(Report& parent)
     bool rval = false;
 
     Report* report = jobStarted(parent);
+
+    if (device().partitionTable()->type() == PartitionTable::TableType::none)
+        return true;
 
     if (device().type() == Device::Type::Disk_Device || device().type() == Device::Type::SoftwareRAID_Device) {
         std::unique_ptr<CoreBackendDevice> backendDevice = CoreBackendManager::self()->backend()->openDevice(device());
