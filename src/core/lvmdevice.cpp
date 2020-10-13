@@ -264,7 +264,7 @@ const QStringList LvmDevice::getVGs()
     QStringList vgList;
     QString output = getField(QStringLiteral("vg_name"));
     if (!output.isEmpty()) {
-        const QStringList vgNameList = output.split(QLatin1Char('\n'), QString::SkipEmptyParts);
+        const QStringList vgNameList = output.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
         for (const auto &vgName : vgNameList) {
             vgList.append(vgName.trimmed());
         }
@@ -278,7 +278,7 @@ const QStringList LvmDevice::getLVs(const QString& vgName)
     QString cmdOutput = getField(QStringLiteral("lv_path"), vgName);
 
     if (cmdOutput.size()) {
-        const QStringList tempPathList = cmdOutput.split(QLatin1Char('\n'), QString::SkipEmptyParts);
+        const QStringList tempPathList = cmdOutput.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
         for (const auto &lvPath : tempPathList) {
             lvPathList.append(lvPath.trimmed());
         }
