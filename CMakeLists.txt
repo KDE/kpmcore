@@ -50,7 +50,6 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
-include(ECMConfiguredInstall)
 
 ecm_setup_version(${VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
