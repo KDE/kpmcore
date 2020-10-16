@@ -5,9 +5,18 @@
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-project(kpmcore)
-
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
+
+# KDE Application Version, managed by release script
+set (RELEASE_SERVICE_VERSION_MAJOR "20")
+set (RELEASE_SERVICE_VERSION_MINOR "11")
+set (RELEASE_SERVICE_VERSION_MICRO "70")
+set (RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}.${RELEASE_SERVICE_VERSION_MICRO}")
+project(kpmcore VERSION ${RELEASE_SERVICE_VERSION})
+
+set(SOVERSION "10")
+add_definitions(-D'VERSION="${RELEASE_SERVICE_VERSION}"') #"
+
 
 set(CMAKE_USE_RELATIVE_PATHS OFF)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
@@ -20,13 +29,6 @@ set(BLKID_MIN_VERSION "2.33.2")
 
 # Runtime
 # smartmontools 7.0
-
-set(VERSION_MAJOR "4")
-set(VERSION_MINOR "2")
-set(VERSION_RELEASE "0")
-set(VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_RELEASE})
-set(SOVERSION "10")
-add_definitions(-D'VERSION="${VERSION}"') #"
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -42,7 +44,7 @@ include(GenerateExportHeader)
 include(ECMSetupVersion)
 include(ECMConfiguredInstall)
 
-ecm_setup_version(${VERSION} VARIABLE_PREFIX KPMCORE
+ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfigVersion.cmake"
                         SOVERSION ${SOVERSION})
@@ -107,10 +109,10 @@ install(EXPORT KPMcoreTargets DESTINATION "${CMAKECONFIG_INSTALL_DIR}" FILE KPMc
 ki18n_install(po)
 
 set_target_properties( kpmcore
-  PROPERTIES VERSION ${VERSION} SOVERSION ${SOVERSION}
+  PROPERTIES VERSION ${RELEASE_SERVICE_VERSION} SOVERSION ${SOVERSION}
 )
 
-message(STATUS "kpmcore ${VERSION} will be built for install into ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "kpmcore ${RELEASE_SERVICE_VERSION} will be built for install into ${CMAKE_INSTALL_PREFIX}")
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
