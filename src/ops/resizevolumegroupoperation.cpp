@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
-    SPDX-FileCopyrightText: 2016-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2016-2020 Andrius Štikonas <andrius@stikonas.eu>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -13,6 +13,8 @@
 #include "jobs/resizevolumegroupjob.h"
 #include "jobs/movephysicalvolumejob.h"
 #include "util/helpers.h"
+
+#include <utility>
 
 #include <QString>
 
@@ -55,20 +57,20 @@ ResizeVolumeGroupOperation::ResizeVolumeGroupOperation(LvmDevice& d, const QVect
         currentFreePE += lvm2PVFs->freePE();
     }
     qint64 removedFreePE = 0;
-    for (const auto &p : qAsConst(toRemoveList)) {
+    for (const auto &p : std::as_const(toRemoveList)) {
         FS::lvm2_pv *lvm2PVFs;
         innerFS(p, lvm2PVFs);
         removedFreePE += lvm2PVFs->freePE();
     }
     qint64 freePE = currentFreePE - removedFreePE;
     qint64 movePE = 0;
-    for (const auto &p : qAsConst(toRemoveList)) {
+    for (const auto &p : std::as_const(toRemoveList)) {
         FS::lvm2_pv *lvm2PVFs;
         innerFS(p, lvm2PVFs);
         movePE += lvm2PVFs->allocatedPE();
     }
     qint64 growPE = 0;
-    for (const auto &p : qAsConst(toInsertList)) {
+    for (const auto &p : std::as_const(toInsertList)) {
         growPE += p->capacity() / device().peSize();
     }
 

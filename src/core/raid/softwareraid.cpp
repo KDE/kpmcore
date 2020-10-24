@@ -14,6 +14,8 @@
 #include "fs/filesystemfactory.h"
 #include "util/externalcommand.h"
 
+#include <utility>
+
 #include <KLocalizedString>
 #include <QFile>
 #include <QRegularExpression>
@@ -221,7 +223,7 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
         }
     }
 
-    for (const QString& name : qAsConst(availableInConf)) {
+    for (const QString& name : std::as_const(availableInConf)) {
         SoftwareRAID *raidDevice = new SoftwareRAID(name, SoftwareRAID::Status::Inactive);
         devices << raidDevice;
     }

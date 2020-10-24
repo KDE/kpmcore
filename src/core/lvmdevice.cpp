@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
-    SPDX-FileCopyrightText: 2016-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2016-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Yuri Chornoivan <yurchor@ukr.net>
 
@@ -20,6 +20,8 @@
 #include "util/helpers.h"
 #include "util/globallog.h"
 #include "util/report.h"
+
+#include <utility>
 
 #include <QRegularExpression>
 #include <QStorageInfo>
@@ -215,7 +217,7 @@ void LvmDevice::scanSystemLVM(QList<Device*>& devices)
 
     // Inform LvmDevice about which physical volumes form that particular LvmDevice
     for (const auto &d : lvmList)
-        for (const auto &p : qAsConst(LVM::pvList::list()))
+        for (const auto &p : std::as_const(LVM::pvList::list()))
             if (p.vgName() == d->name())
                 d->physicalVolumes().append(p.partition());
 
