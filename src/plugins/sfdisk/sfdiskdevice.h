@@ -20,7 +20,7 @@ class CoreBackendPartitionTable;
 
 class SfdiskDevice : public CoreBackendDevice
 {
-    Q_DISABLE_COPY(SfdiskDevice);
+    Q_DISABLE_COPY(SfdiskDevice)
 
 public:
     explicit SfdiskDevice(const Device& d);
