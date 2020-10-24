@@ -40,7 +40,7 @@ class LIBKPMCORE_EXPORT LvmDevice : public VolumeManagerDevice
 
 public:
     explicit LvmDevice(const QString& name, const QString& iconName = QString());
-    ~LvmDevice();
+    ~LvmDevice() override;
 
 public:
     const QStringList deviceNodes() const override;

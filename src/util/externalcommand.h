@@ -50,7 +50,7 @@ public:
     explicit ExternalCommand(const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
     explicit ExternalCommand(Report& report, const QString& cmd = QString(), const QStringList& args = QStringList(), const QProcess::ProcessChannelMode processChannelMode = QProcess::MergedChannels);
 
-    ~ExternalCommand();
+    ~ExternalCommand() override;
 
 public:
     bool copyBlocks(const CopySource& source, CopyTarget& target);

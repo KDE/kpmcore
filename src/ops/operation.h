@@ -85,7 +85,7 @@ public:
 
 protected:
     Operation();
-    virtual ~Operation();
+    ~Operation() override;
 
 Q_SIGNALS:
     void progress(int);

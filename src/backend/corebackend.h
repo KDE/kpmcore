@@ -47,7 +47,7 @@ class LIBKPMCORE_EXPORT CoreBackend : public QObject
 
 protected:
     CoreBackend();
-    virtual ~CoreBackend();
+    ~CoreBackend() override;
 
 Q_SIGNALS:
     /**

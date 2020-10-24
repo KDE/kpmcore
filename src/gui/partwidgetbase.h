@@ -33,7 +33,7 @@ class LIBKPMCORE_EXPORT PartWidgetBase : public QWidget
 
 protected:
     PartWidgetBase(QWidget* parent) : QWidget(parent) {}
-    virtual ~PartWidgetBase() {}
+    ~PartWidgetBase() override {}
 
 public:
     virtual qint32 borderWidth() const {

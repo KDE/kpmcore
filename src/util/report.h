@@ -36,7 +36,7 @@ class LIBKPMCORE_EXPORT Report : public QObject
 
 public:
     explicit Report(Report* p, const QString& cmd = QString());
-    ~Report();
+    ~Report() override;
 
 Q_SIGNALS:
     void outputChanged();

@@ -49,7 +49,7 @@ protected:
     Job();
 
 public:
-    virtual ~Job() {}
+    ~Job() override {}
 
 Q_SIGNALS:
     void started();

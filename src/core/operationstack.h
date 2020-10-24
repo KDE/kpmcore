@@ -45,7 +45,7 @@ public:
 
 public:
     explicit OperationStack(QObject* parent = nullptr);
-    ~OperationStack();
+    ~OperationStack() override;
 
 Q_SIGNALS:
     void operationsChanged();
