@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE policyconfig PUBLIC
+"-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+"http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+<icon_name>partitionmanager</icon_name>
+   <action id="org.kde.kpmcore.externalcommand.init" >
+      <description xml:lang="ast">Aniciu del degorriu de comandos esternos</description>
+      <description xml:lang="ca">Inicia el dimoni d'ordres externes</description>
+      <description xml:lang="cs">Spustit démona externích příkazů</description>
+      <description xml:lang="da">Start ekstern kommando-dæmon</description>
+      <description xml:lang="de">Externen Befehlsdienst starten</description>
+      <description xml:lang="el">Εκκίνηση διεργασίας με εξωτερική εντολή</description>
+      <description>Start external command daemon</description>
+      <description xml:lang="en_GB">Start external command daemon</description>
+      <description xml:lang="es">Iniciar el demonio de órdenes externas</description>
+      <description xml:lang="et">Välise käsu deemoni käivitamine</description>
+      <description xml:lang="eu">Abiarazi kanpoko komandoen daimona</description>
+      <description xml:lang="fi">Käynnistä ulkoinen komentopalvelu</description>
+      <description xml:lang="fr">Lancer le démon de la commande externe</description>
+      <description xml:lang="gl">Iniciar o servizo de orde externa</description>
+      <description xml:lang="it">Avvia demone per comando esterno</description>
+      <description xml:lang="ko">외부 명령 데몬 시작</description>
+      <description xml:lang="lt">Paleisti išorinių komandų tarnybą</description>
+      <description xml:lang="nl">Start externe opdrachtdaemon</description>
+      <description xml:lang="pl">Rozpocznij usługę zewnętrznego polecenia</description>
+      <description xml:lang="pt">Iniciar o servidor de comandos externos</description>
+      <description xml:lang="pt_BR">Iniciar comando externo do daemon</description>
+      <description xml:lang="sk">Spustiť externé démony príkazov</description>
+      <description xml:lang="sl">Zaženite demon za zunanje ukaze</description>
+      <description xml:lang="sv">Starta extern kommandodemon</description>
+      <description xml:lang="uk">Запуск фонової служби зовнішньої команди</description>
+      <description xml:lang="zh_TW">啟動外部指令守護程式</description>
+      <message xml:lang="ast">Ríquense los privilexos alministrativos pa xestionar discos</message>
+      <message xml:lang="ca">Es requereixen privilegis d'administrador per a gestionar els discs</message>
+      <message xml:lang="cs">Pro správu disků jsou potřeba práva administrátora</message>
+      <message xml:lang="da">Der kræves administrative rettigheder for at håndtere diske</message>
+      <message xml:lang="de">Systemverwalterrechte sind zur Verwaltung von Festplatten erforderlich</message>
+      <message xml:lang="el">Απαιτούνται δικαιώματα διαχειριστή για τη διαχείριση δίσκων</message>
+      <message>Administrative privileges are required to manage disks</message>
+      <message xml:lang="en_GB">Administrative privileges are required to manage disks</message>
+      <message xml:lang="es">Se necesitan permisos de administrador para gestionar discos</message>
+      <message xml:lang="et">Ketaste haldamiseks on tarvis administraatori õigusi</message>
+      <message xml:lang="eu">Administrazio pribilegioak behar dira diskoak kudeatzeko</message>
+      <message xml:lang="fi">Levyjen hallinta vaatii pääkäyttäjäoikeuksia</message>
+      <message xml:lang="fr">Vous devez disposer des privilèges d'administrateur pour gérer les disques</message>
+      <message xml:lang="gl">Requírense privilexios de administración para xestionar discos.</message>
+      <message xml:lang="it">Per gestire il disco sono richiesti privilegi di amministratore</message>
+      <message xml:lang="ja">ディスクを管理するには管理者権限が必要です</message>
+      <message xml:lang="ko">디스크를 관리하려면 권한이 필요함</message>
+      <message xml:lang="lt">Diskų tvarkymui reikalingos administratoriaus teisės</message>
+      <message xml:lang="nl">Er zijn administratieve rechten vereist om schijven te beheren</message>
+      <message xml:lang="pl">Do zarządzania dyskami wymagane są uprawnienia administratora</message>
+      <message xml:lang="pt">São necessários privilégios de administrador para gerir os discos</message>
+      <message xml:lang="pt_BR">São necessários privilégios administrativos para gerenciar discos</message>
+      <message xml:lang="ru">Для управления дисками требуются права администратора</message>
+      <message xml:lang="sk">Na správu diskov sa vyžadujú práva správcu</message>
+      <message xml:lang="sl">Za upravljanje diskov so potrebne pravice upravljavca računalnika</message>
+      <message xml:lang="sv">Administratörsprivilegier krävs för att hantera diskar</message>
+      <message xml:lang="uk">Для керування дисками потрібні права доступу адміністратора (root)</message>
+      <message xml:lang="zh_CN">管理磁盘需要管理权限</message>
+      <message xml:lang="zh_TW">管理硬碟需要管理員權限</message>
+      <defaults>
+         <allow_inactive>no</allow_inactive>
+         <allow_active>auth_admin_keep</allow_active>
+      </defaults>
+   </action>
+</policyconfig>

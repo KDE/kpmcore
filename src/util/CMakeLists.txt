@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2008,2012 Volker Lanz <vl@fidra.de>
 # SPDX-FileCopyrightText: 2015 Chris Campbell <c.j.campbell@ed.ac.uk>
 # SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
-# SPDX-FileCopyrightText: 2015 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2015-2020 Andrius Štikonas <andrius@stikonas.eu>
 # SPDX-FileCopyrightText: 2018 Huzaifa Faruqui <huzaifafaruqui@gmail.com>
 # SPDX-FileCopyrightText: 2019 Albert Astals Cid <aacid@kde.org>
 # SPDX-FileCopyrightText: 2019 Antonio Rojas <arojas@archlinux.org>
@@ -59,7 +59,7 @@ target_link_libraries(kpmcore_externalcommand
 install(TARGETS kpmcore_externalcommand DESTINATION ${KDE_INSTALL_LIBEXECDIR})
 install( FILES util/org.kde.kpmcore.helperinterface.conf DESTINATION ${KDE_INSTALL_DBUSDIR}/system.d )
 
-kauth_install_actions(org.kde.kpmcore.externalcommand util/org.kde.kpmcore.externalcommand.actions)
+install( FILES util/org.kde.kpmcore.externalcommand.policy DESTINATION ${POLKITQT-1_POLICY_FILES_INSTALL_DIR})
 ecm_install_configured_files(
     INPUT util/org.kde.kpmcore.helperinterface.service.in
     DESTINATION ${KDE_INSTALL_DBUSDIR}/system-services
