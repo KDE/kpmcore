@@ -17,6 +17,7 @@
 
 #include <QString>
 
+struct NewOperationPrivate;
 class Device;
 class OperationStack;
 
@@ -60,56 +61,23 @@ public:
     static Partition* createNew(const Partition& cloneFrom, FileSystem::Type type);
 
 protected:
-    Partition& newPartition() {
-        return *m_NewPartition;
-    }
-    const Partition& newPartition() const {
-        return *m_NewPartition;
-    }
+    Partition& newPartition();
+    const Partition& newPartition() const;
 
-    Device& targetDevice() {
-        return m_TargetDevice;
-    }
-    const Device& targetDevice() const {
-        return m_TargetDevice;
-    }
+    Device& targetDevice();
+    const Device& targetDevice() const;
 
-    CreatePartitionJob* createPartitionJob() {
-        return m_CreatePartitionJob;
-    }
-    SetPartitionLabelJob* setPartitionLabelJob() {
-        return m_SetPartitionLabelJob;
-    }
-    SetPartitionUUIDJob* setPartitionUUIDJob() {
-        return m_SetPartitionUUIDJob;
-    }
-    SetPartitionAttributesJob* setPartitionAttributesJob() {
-        return m_SetPartitionAttributesJob;
-    }
-    CreateFileSystemJob* createFileSystemJob() {
-        return m_CreateFileSystemJob;
-    }
-    SetPartFlagsJob* setPartFlagsJob() {
-        return m_SetPartFlagsJob;
-    }
-    SetFileSystemLabelJob* setLabelJob() {
-        return m_SetFileSystemLabelJob;
-    }
-    CheckFileSystemJob* checkJob() {
-        return m_CheckFileSystemJob;
-    }
+    CreatePartitionJob* createPartitionJob();
+    SetPartitionLabelJob* setPartitionLabelJob();
+    SetPartitionUUIDJob* setPartitionUUIDJob();
+    SetPartitionAttributesJob* setPartitionAttributesJob();
+    CreateFileSystemJob* createFileSystemJob();
+    SetPartFlagsJob* setPartFlagsJob();
+    SetFileSystemLabelJob* setLabelJob();
+    CheckFileSystemJob* checkJob();
 
 private:
-    Device& m_TargetDevice;
-    Partition* m_NewPartition;
-    CreatePartitionJob* m_CreatePartitionJob;
-    SetPartitionLabelJob* m_SetPartitionLabelJob;
-    SetPartitionUUIDJob* m_SetPartitionUUIDJob;
-    SetPartitionAttributesJob* m_SetPartitionAttributesJob;
-    CreateFileSystemJob* m_CreateFileSystemJob;
-    SetPartFlagsJob* m_SetPartFlagsJob;
-    SetFileSystemLabelJob* m_SetFileSystemLabelJob;
-    CheckFileSystemJob* m_CheckFileSystemJob;
+    std::unique_ptr<NewOperationPrivate> d;
 };
 
 #endif
