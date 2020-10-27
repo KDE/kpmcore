@@ -17,8 +17,3 @@ Copyright: 2020 KDE translators
 Files: src/util/org.kde.kpmcore.helperinterface.conf
 License: MIT
 Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
-
-### KAuth actions
-Files: src/util/org.kde.kpmcore.externalcommand.actions
-License: CC0-1.0
-Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
