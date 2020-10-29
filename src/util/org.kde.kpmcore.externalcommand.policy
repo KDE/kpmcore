@@ -13,6 +13,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="ca">Inicia el dimoni d'ordres externes</description>
       <description xml:lang="ca@valencia">Inicia el dimoni d'ordres externes</description>
       <description xml:lang="el">Εκκίνηση διεργασίας με εξωτερική εντολή</description>
+      <description xml:lang="es">Iniciar el demonio de órdenes externas</description>
       <description xml:lang="it">Avvia demone per comando esterno</description>
       <description xml:lang="lt">Paleisti išorinių komandų tarnybą</description>
       <description xml:lang="nl">Start externe opdrachtdaemon</description>
@@ -24,6 +25,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="ca">Es requereixen privilegis d'administrador per a gestionar els discs</message>
       <message xml:lang="ca@valencia">Es requereixen privilegis d'administrador per a gestionar els discs</message>
       <message xml:lang="el">Απαιτούνται δικαιώματα διαχειριστή για τη διαχείριση των δίσκων</message>
+      <message xml:lang="es">Se necesitan permisos de administrador para gestionar discos</message>
       <message xml:lang="it">Per gestire il disco sono richiesti privilegi amministrativi</message>
       <message xml:lang="lt">Diskų tvarkymui reikalingos administratoriaus teisės</message>
       <message xml:lang="nl">Er zijn administratieve rechten vereist om schijven te beheren</message>
