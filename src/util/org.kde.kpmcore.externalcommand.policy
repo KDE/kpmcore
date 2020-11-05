@@ -19,6 +19,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="lt">Paleisti išorinių komandų tarnybą</description>
       <description xml:lang="nl">Start externe opdrachtdaemon</description>
       <description xml:lang="pt">Iniciar o servidor de comandos externos</description>
+      <description xml:lang="pt_BR">Iniciar comando externo do daemon</description>
       <description xml:lang="sl">Zaženi demon za zunanje ukaze</description>
       <description xml:lang="sv">Starta extern kommandodemon</description>
       <description xml:lang="uk">Запуск фонової служби зовнішньої команди</description>
@@ -32,6 +33,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="lt">Diskų tvarkymui reikalingos administratoriaus teisės</message>
       <message xml:lang="nl">Er zijn administratieve rechten vereist om schijven te beheren</message>
       <message xml:lang="pt">São necessários privilégios de administração para gerir os discos</message>
+      <message xml:lang="pt_BR">São necessários privilégios administrativos para gerenciar discos</message>
       <message xml:lang="sl">Za upravljanje diskov so potrebne pravice upravljavca računalnika</message>
       <message xml:lang="sv">Administratörsprivilegier krävs för att hantera diskar</message>
       <message xml:lang="uk">Для керування дисками потрібні права доступу адміністратора (root)</message>
