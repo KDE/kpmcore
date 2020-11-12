@@ -65,22 +65,22 @@ struct NewOperationPrivate
 */
 NewOperation::NewOperation(Device& d, Partition* p) :
     Operation(),
-    d(std::make_unique<NewOperationPrivate>(d, p))
+    d_ptr(std::make_unique<NewOperationPrivate>(d, p))
 {
     addJob(createPartitionJob());
 
     if (!p->label().isEmpty()) {
-        this->d->m_SetPartitionLabelJob = new SetPartitionLabelJob(targetDevice(), newPartition(), p->label());
+        d_ptr->m_SetPartitionLabelJob = new SetPartitionLabelJob(targetDevice(), newPartition(), p->label());
         addJob(setPartitionLabelJob());
     }
 
     if (!p->uuid().isEmpty()) {
-        this->d->m_SetPartitionUUIDJob = new SetPartitionUUIDJob(targetDevice(), newPartition(), p->uuid());
+        d_ptr->m_SetPartitionUUIDJob = new SetPartitionUUIDJob(targetDevice(), newPartition(), p->uuid());
         addJob(setPartitionUUIDJob());
     }
 
     if (p->attributes()) {
-        this->d->m_SetPartitionAttributesJob = new SetPartitionAttributesJob(targetDevice(), newPartition(), p->attributes());
+        d_ptr->m_SetPartitionAttributesJob = new SetPartitionAttributesJob(targetDevice(), newPartition(), p->attributes());
         addJob(setPartitionAttributesJob());
     }
 
@@ -93,18 +93,18 @@ NewOperation::NewOperation(Device& d, Partition* p) :
         // label. The operation stack will merge these operations with this one here
         // and if the jobs don't exist things will break.
 
-        this->d->m_CreateFileSystemJob = new CreateFileSystemJob(targetDevice(), newPartition(), fs.label());
+        d_ptr->m_CreateFileSystemJob = new CreateFileSystemJob(targetDevice(), newPartition(), fs.label());
         addJob(createFileSystemJob());
 
         if (fs.type() == FileSystem::Type::Lvm2_PV) {
-            this->d->m_SetPartFlagsJob = new SetPartFlagsJob(targetDevice(), newPartition(), PartitionTable::Flag::Lvm);
+            d_ptr->m_SetPartFlagsJob = new SetPartFlagsJob(targetDevice(), newPartition(), PartitionTable::Flag::Lvm);
             addJob(setPartFlagsJob());
         }
 
-        this->d->m_SetFileSystemLabelJob = new SetFileSystemLabelJob(newPartition(), fs.label());
+        d_ptr->m_SetFileSystemLabelJob = new SetFileSystemLabelJob(newPartition(), fs.label());
         addJob(setLabelJob());
 
-        this->d->m_CheckFileSystemJob = new CheckFileSystemJob(newPartition());
+        d_ptr->m_CheckFileSystemJob = new CheckFileSystemJob(newPartition());
         addJob(checkJob());
     }
 }
@@ -112,67 +112,67 @@ NewOperation::NewOperation(Device& d, Partition* p) :
 NewOperation::~NewOperation()
 {
     if (status() == StatusPending)
-        delete d->m_NewPartition;
+        delete d_ptr->m_NewPartition;
 }
 
 Partition& NewOperation::newPartition()
 {
-    return *d->m_NewPartition;
+    return *d_ptr->m_NewPartition;
 }
 
 const Partition& NewOperation::newPartition() const
 {
-    return *d->m_NewPartition;
+    return *d_ptr->m_NewPartition;
 }
 
 Device& NewOperation::targetDevice()
 {
-    return d->m_TargetDevice;
+    return d_ptr->m_TargetDevice;
 }
 
 const Device& NewOperation::targetDevice() const
 {
-    return d->m_TargetDevice;
+    return d_ptr->m_TargetDevice;
 }
 
 CreatePartitionJob* NewOperation::createPartitionJob()
 {
-    return d->m_CreatePartitionJob;
+    return d_ptr->m_CreatePartitionJob;
 }
 
 SetPartitionLabelJob* NewOperation::setPartitionLabelJob()
 {
-    return d->m_SetPartitionLabelJob;
+    return d_ptr->m_SetPartitionLabelJob;
 }
 
 SetPartitionUUIDJob* NewOperation::setPartitionUUIDJob()
 {
-    return d->m_SetPartitionUUIDJob;
+    return d_ptr->m_SetPartitionUUIDJob;
 }
 
 SetPartitionAttributesJob* NewOperation::setPartitionAttributesJob()
 {
-    return d->m_SetPartitionAttributesJob;
+    return d_ptr->m_SetPartitionAttributesJob;
 }
 
 CreateFileSystemJob* NewOperation::createFileSystemJob()
 {
-    return d->m_CreateFileSystemJob;
+    return d_ptr->m_CreateFileSystemJob;
 }
 
 SetPartFlagsJob* NewOperation::setPartFlagsJob()
 {
-    return d->m_SetPartFlagsJob;
+    return d_ptr->m_SetPartFlagsJob;
 }
 
 SetFileSystemLabelJob* NewOperation::setLabelJob()
 {
-    return d->m_SetFileSystemLabelJob;
+    return d_ptr->m_SetFileSystemLabelJob;
 }
 
 CheckFileSystemJob* NewOperation::checkJob()
 {
-    return d->m_CheckFileSystemJob;
+    return d_ptr->m_CheckFileSystemJob;
 }
 
 bool NewOperation::targets(const Device& d) const

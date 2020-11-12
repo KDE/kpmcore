@@ -77,7 +77,7 @@ protected:
     CheckFileSystemJob* checkJob();
 
 private:
-    std::unique_ptr<NewOperationPrivate> d;
+    std::unique_ptr<NewOperationPrivate> d_ptr;
 };
 
 #endif
