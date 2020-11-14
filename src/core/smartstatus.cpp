@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2010 Volker Lanz <vl@fidra.de>
     SPDX-FileCopyrightText: 2010 Yuri Chornoivan <yurchor@ukr.net>
-    SPDX-FileCopyrightText: 2014-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2014-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015-2016 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
@@ -22,6 +22,7 @@
 #include <QStringList>
 
 #include <errno.h>
+#include <utility>
 
 SmartStatus::SmartStatus(const QString &device_path) :
     m_DevicePath(device_path),
@@ -144,7 +145,7 @@ void SmartStatus::addAttributes(QList<SmartAttributeParsedData> attr)
 {
     m_Attributes.clear();
 
-    for (const SmartAttributeParsedData &at : qAsConst(attr)) {
+    for (const SmartAttributeParsedData &at : std::as_const(attr)) {
         SmartAttribute sm(at);
         m_Attributes.append(sm);
     }

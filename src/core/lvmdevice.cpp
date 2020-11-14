@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
-    SPDX-FileCopyrightText: 2016-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2016-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2019 Yuri Chornoivan <yurchor@ukr.net>
 
@@ -20,6 +20,8 @@
 #include "util/helpers.h"
 #include "util/globallog.h"
 #include "util/report.h"
+
+#include <utility>
 
 #include <QRegularExpression>
 #include <QStorageInfo>
@@ -214,7 +216,7 @@ void LvmDevice::scanSystemLVM(QList<Device*>& devices)
 
     // Inform LvmDevice about which physical volumes form that particular LvmDevice
     for (const auto &d : lvmList)
-        for (const auto &p : qAsConst(LVM::pvList::list()))
+        for (const auto &p : std::as_const(LVM::pvList::list()))
             if (p.vgName() == d->name())
                 d->physicalVolumes().append(p.partition());
 
@@ -263,7 +265,7 @@ const QStringList LvmDevice::getVGs()
     QStringList vgList;
     QString output = getField(QStringLiteral("vg_name"));
     if (!output.isEmpty()) {
-        const QStringList vgNameList = output.split(QLatin1Char('\n'), QString::SkipEmptyParts);
+        const QStringList vgNameList = output.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
         for (const auto &vgName : vgNameList) {
             vgList.append(vgName.trimmed());
         }
@@ -277,7 +279,7 @@ const QStringList LvmDevice::getLVs(const QString& vgName)
     QString cmdOutput = getField(QStringLiteral("lv_path"), vgName);
 
     if (cmdOutput.size()) {
-        const QStringList tempPathList = cmdOutput.split(QLatin1Char('\n'), QString::SkipEmptyParts);
+        const QStringList tempPathList = cmdOutput.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
         for (const auto &lvPath : tempPathList) {
             lvPathList.append(lvPath.trimmed());
         }

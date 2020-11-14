@@ -23,6 +23,8 @@
 
 #include "util/globallog.h"
 
+#include <utility>
+
 #include <KLocalizedString>
 
 #include <QDebug>
@@ -592,7 +594,7 @@ QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 
     std::sort(partitions.begin(), partitions.end(), [](const Partition* p1, const Partition* p2) { return p1->number() < p2->number(); });
 
-    for (const auto &p : qAsConst(partitions))
+    for (const auto &p : std::as_const(partitions))
         stream << *p;
 
     return stream;

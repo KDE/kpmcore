@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2016 Chantara Tith <tith.chantara@gmail.com>
-    SPDX-FileCopyrightText: 2016-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2016-2020 Andrius Štikonas <andrius@stikonas.eu>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -14,7 +14,8 @@
 #include "jobs/movephysicalvolumejob.h"
 #include "util/helpers.h"
 
-#include <QDebug>
+#include <utility>
+
 #include <QString>
 
 #include <KLocalizedString>

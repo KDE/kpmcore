@@ -31,6 +31,8 @@
 #include "util/externalcommand.h"
 #include "util/helpers.h"
 
+#include <utility>
+
 #include <QDataStream>
 #include <QDebug>
 #include <QFile>
@@ -278,7 +280,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         {
             QList<Device *> availableDevices = scanDevices();
 
-            for (Device *device : qAsConst(availableDevices))
+            for (Device *device : std::as_const(availableDevices))
                 if (device && device->deviceNode() == deviceNode)
                     return device;
         }
@@ -340,7 +342,7 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
     if (d.partitionTable()->isSectorBased(d))
         d.partitionTable()->setType(d, PartitionTable::msdos_sectorbased);
 
-    for (const Partition *part : qAsConst(partitions))
+    for (const Partition *part : std::as_const(partitions))
         PartitionAlignment::isAligned(d, *part);
 }
 

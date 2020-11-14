@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
+    SPDX-FileCopyrightText: 2020 Andrius Štikonas <andrius@stikonas.eu>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -12,6 +13,7 @@
 #include "util/externalcommand.h"
 
 #include <errno.h>
+#include <utility>
 
 #include <QDebug>
 #include <QJsonArray>
@@ -147,7 +149,7 @@ void SmartParser::loadAttributes()
         return;
     }
 
-    for (const QJsonValue &value : qAsConst(attributeArray)) {
+    for (const QJsonValue &value : std::as_const(attributeArray)) {
         SmartAttributeParsedData parsedObject(m_DiskInformation, value.toObject());
         m_DiskInformation->addAttribute(parsedObject);
     }

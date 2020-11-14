@@ -31,37 +31,56 @@
 
 #include <KLocalizedString>
 
+struct NewOperationPrivate
+{
+    NewOperationPrivate(Device& d, Partition* p) :
+        m_TargetDevice(d),
+        m_NewPartition(p),
+        m_CreatePartitionJob(new CreatePartitionJob(d, *p)),
+        m_SetPartitionLabelJob(nullptr),
+        m_SetPartitionUUIDJob(nullptr),
+        m_SetPartitionAttributesJob(nullptr),
+        m_CreateFileSystemJob(nullptr),
+        m_SetPartFlagsJob(nullptr),
+        m_SetFileSystemLabelJob(nullptr),
+        m_CheckFileSystemJob(nullptr)
+    {
+    }
+
+    Device& m_TargetDevice;
+    Partition* m_NewPartition;
+    CreatePartitionJob* m_CreatePartitionJob;
+    SetPartitionLabelJob* m_SetPartitionLabelJob;
+    SetPartitionUUIDJob* m_SetPartitionUUIDJob;
+    SetPartitionAttributesJob* m_SetPartitionAttributesJob;
+    CreateFileSystemJob* m_CreateFileSystemJob;
+    SetPartFlagsJob* m_SetPartFlagsJob;
+    SetFileSystemLabelJob* m_SetFileSystemLabelJob;
+    CheckFileSystemJob* m_CheckFileSystemJob;
+};
+
 /** Creates a new NewOperation.
     @param d the Device to create a new Partition on
     @param p pointer to the new Partition to create. May not be nullptr.
 */
 NewOperation::NewOperation(Device& d, Partition* p) :
     Operation(),
-    m_TargetDevice(d),
-    m_NewPartition(p),
-    m_CreatePartitionJob(new CreatePartitionJob(targetDevice(), newPartition())),
-    m_SetPartitionLabelJob(nullptr),
-    m_SetPartitionUUIDJob(nullptr),
-    m_SetPartitionAttributesJob(nullptr),
-    m_CreateFileSystemJob(nullptr),
-    m_SetPartFlagsJob(nullptr),
-    m_SetFileSystemLabelJob(nullptr),
-    m_CheckFileSystemJob(nullptr)
+    d_ptr(std::make_unique<NewOperationPrivate>(d, p))
 {
     addJob(createPartitionJob());
 
     if (!p->label().isEmpty()) {
-        m_SetPartitionLabelJob = new SetPartitionLabelJob(targetDevice(), newPartition(), p->label());
+        d_ptr->m_SetPartitionLabelJob = new SetPartitionLabelJob(targetDevice(), newPartition(), p->label());
         addJob(setPartitionLabelJob());
     }
 
     if (!p->uuid().isEmpty()) {
-        m_SetPartitionUUIDJob = new SetPartitionUUIDJob(targetDevice(), newPartition(), p->uuid());
+        d_ptr->m_SetPartitionUUIDJob = new SetPartitionUUIDJob(targetDevice(), newPartition(), p->uuid());
         addJob(setPartitionUUIDJob());
     }
 
     if (p->attributes()) {
-        m_SetPartitionAttributesJob = new SetPartitionAttributesJob(targetDevice(), newPartition(), p->attributes());
+        d_ptr->m_SetPartitionAttributesJob = new SetPartitionAttributesJob(targetDevice(), newPartition(), p->attributes());
         addJob(setPartitionAttributesJob());
     }
 
@@ -74,18 +93,18 @@ NewOperation::NewOperation(Device& d, Partition* p) :
         // label. The operation stack will merge these operations with this one here
         // and if the jobs don't exist things will break.
 
-        m_CreateFileSystemJob = new CreateFileSystemJob(targetDevice(), newPartition(), fs.label());
+        d_ptr->m_CreateFileSystemJob = new CreateFileSystemJob(targetDevice(), newPartition(), fs.label());
         addJob(createFileSystemJob());
 
         if (fs.type() == FileSystem::Type::Lvm2_PV) {
-            m_SetPartFlagsJob = new SetPartFlagsJob(targetDevice(), newPartition(), PartitionTable::Flag::Lvm);
+            d_ptr->m_SetPartFlagsJob = new SetPartFlagsJob(targetDevice(), newPartition(), PartitionTable::Flag::Lvm);
             addJob(setPartFlagsJob());
         }
 
-        m_SetFileSystemLabelJob = new SetFileSystemLabelJob(newPartition(), fs.label());
+        d_ptr->m_SetFileSystemLabelJob = new SetFileSystemLabelJob(newPartition(), fs.label());
         addJob(setLabelJob());
 
-        m_CheckFileSystemJob = new CheckFileSystemJob(newPartition());
+        d_ptr->m_CheckFileSystemJob = new CheckFileSystemJob(newPartition());
         addJob(checkJob());
     }
 }
@@ -93,7 +112,67 @@ NewOperation::NewOperation(Device& d, Partition* p) :
 NewOperation::~NewOperation()
 {
     if (status() == StatusPending)
-        delete m_NewPartition;
+        delete d_ptr->m_NewPartition;
+}
+
+Partition& NewOperation::newPartition()
+{
+    return *d_ptr->m_NewPartition;
+}
+
+const Partition& NewOperation::newPartition() const
+{
+    return *d_ptr->m_NewPartition;
+}
+
+Device& NewOperation::targetDevice()
+{
+    return d_ptr->m_TargetDevice;
+}
+
+const Device& NewOperation::targetDevice() const
+{
+    return d_ptr->m_TargetDevice;
+}
+
+CreatePartitionJob* NewOperation::createPartitionJob()
+{
+    return d_ptr->m_CreatePartitionJob;
+}
+
+SetPartitionLabelJob* NewOperation::setPartitionLabelJob()
+{
+    return d_ptr->m_SetPartitionLabelJob;
+}
+
+SetPartitionUUIDJob* NewOperation::setPartitionUUIDJob()
+{
+    return d_ptr->m_SetPartitionUUIDJob;
+}
+
+SetPartitionAttributesJob* NewOperation::setPartitionAttributesJob()
+{
+    return d_ptr->m_SetPartitionAttributesJob;
+}
+
+CreateFileSystemJob* NewOperation::createFileSystemJob()
+{
+    return d_ptr->m_CreateFileSystemJob;
+}
+
+SetPartFlagsJob* NewOperation::setPartFlagsJob()
+{
+    return d_ptr->m_SetPartFlagsJob;
+}
+
+SetFileSystemLabelJob* NewOperation::setLabelJob()
+{
+    return d_ptr->m_SetFileSystemLabelJob;
+}
+
+CheckFileSystemJob* NewOperation::checkJob()
+{
+    return d_ptr->m_CheckFileSystemJob;
 }
 
 bool NewOperation::targets(const Device& d) const

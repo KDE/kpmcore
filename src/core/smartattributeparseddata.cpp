@@ -1,13 +1,15 @@
 /*
     SPDX-FileCopyrightText: 2008 Lennart Poettering
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
-    SPDX-FileCopyrightText: 2018-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2018-2020 Andrius Štikonas <andrius@stikonas.eu>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
 #include "smartattributeparseddata.h"
 #include "core/smartdiskinformation.h"
+
+#include <utility>
 
 #include <QJsonObject>
 #include <QMap>
@@ -615,7 +617,7 @@ static SmartQuirk getQuirk(QString model, QString firmware)
     QRegularExpression modelRegex;
     QRegularExpression firmwareRegex;
 
-    for (const SmartAttributeParsedData::SmartQuirkDataBase &item : qAsConst(db)) {
+    for (const SmartAttributeParsedData::SmartQuirkDataBase &item : std::as_const(db)) {
         if (!item.model.isEmpty()) {
             modelRegex.setPattern(item.model);
             QRegularExpressionMatch match = modelRegex.match(model);

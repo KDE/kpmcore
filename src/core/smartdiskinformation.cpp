@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
-    SPDX-FileCopyrightText: 2018-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2018-2020 Andrius Štikonas <andrius@stikonas.eu>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -9,6 +9,7 @@
 #include "core/smartattributeparseddata.h"
 
 #include <memory>
+#include <utility>
 
 static quint64 u64log2(quint64 n);
 
@@ -145,7 +146,7 @@ bool SmartDiskInformation::updatePowerCycle()
 /** Validate disk attributes status */
 void SmartDiskInformation::validateBadAttributes()
 {
-    for (const SmartAttributeParsedData &attribute : qAsConst(m_Attributes)) {
+    for (const SmartAttributeParsedData &attribute : std::as_const(m_Attributes)) {
         if (attribute.prefailure()) {
             if (attribute.goodNowValid() && !attribute.goodNow())
                 m_BadAttributeNow = true;
@@ -161,7 +162,7 @@ void SmartDiskInformation::validateBadAttributes()
 SmartAttributeParsedData *SmartDiskInformation::findAttribute(quint32 id)
 {
     SmartAttributeParsedData *attr = nullptr;
-    for (const SmartAttributeParsedData &attribute : qAsConst(m_Attributes)) {
+    for (const SmartAttributeParsedData &attribute : std::as_const(m_Attributes)) {
         if (id == attribute.id()) {
             attr = new SmartAttributeParsedData(attribute);
             break;

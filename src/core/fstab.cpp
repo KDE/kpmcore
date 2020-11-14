@@ -72,7 +72,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             }
 
             QString comment = line.section( QLatin1Char('#'), 1 );
-            QStringList splitLine = line.section( QLatin1Char('#'), 0, 0 ).split( QRegularExpression(QStringLiteral("[\\s]+")), QString::SkipEmptyParts );
+            QStringList splitLine = line.section( QLatin1Char('#'), 0, 0 ).split( QRegularExpression(QStringLiteral("[\\s]+")), Qt::SkipEmptyParts );
 
             // We now split the standard components of /etc/fstab entry:
             // (0) path, or UUID, or LABEL, etc,
@@ -83,7 +83,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             // (5) pass number (optional, defaults to 0), no comment is allowed if omitted,
             // (#) comment (optional).
             auto fsSpec = splitLine.at(0);
-            auto mountPoint = splitLine.at(1);
+            auto mountPoint = unescapeSpaces(splitLine.at(1));
             auto fsType = splitLine.at(2);
             auto options = splitLine.at(3);
 
@@ -108,6 +108,22 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
     }
 
     return fstabEntries;
+}
+
+QString escapeSpaces(const QString& mountPoint)
+{
+    QString tmp = mountPoint;
+    tmp.replace(QStringLiteral(" "), QStringLiteral("\\040"));
+    tmp.replace(QStringLiteral("\t"), QStringLiteral("\\011"));
+    return tmp;
+}
+
+QString unescapeSpaces(const QString& mountPoint)
+{
+    QString tmp = mountPoint;
+    tmp.replace(QStringLiteral("\\040"), QStringLiteral(" "));
+    tmp.replace(QStringLiteral("\\011"), QStringLiteral("\t"));
+    return tmp;
 }
 
 void FstabEntry::setFsSpec(const QString& s)
@@ -208,8 +224,8 @@ static QString findBlkIdDevice(const char *token, const QString& value)
         free(c);
     }
 #else
-    Q_UNUSED(token);
-    Q_UNUSED(value);
+    Q_UNUSED(token)
+    Q_UNUSED(value)
 #endif
 
     return rval;
@@ -262,7 +278,7 @@ static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsig
     s.setFieldAlignment(QTextStream::AlignLeft);
     s.setFieldWidth(columnWidth[0]);
     s << entry.fsSpec()
-      << qSetFieldWidth(columnWidth[1]) << (entry.mountPoint().isEmpty() ? QStringLiteral("none") : entry.mountPoint())
+      << qSetFieldWidth(columnWidth[1]) << (entry.mountPoint().isEmpty() ? QStringLiteral("none") : escapeSpaces(entry.mountPoint()))
       << qSetFieldWidth(columnWidth[2]) << entry.type()
       << qSetFieldWidth(columnWidth[3]) << entry.optionsString() << qSetFieldWidth(0)
       << entry.dumpFreq() << " "

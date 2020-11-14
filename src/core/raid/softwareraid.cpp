@@ -15,6 +15,8 @@
 #include "ops/createpartitiontableoperation.h"
 #include "util/externalcommand.h"
 
+#include <utility>
+
 #include <KLocalizedString>
 #include <QFile>
 #include <QRegularExpression>
@@ -206,7 +208,7 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
 
             d->setPartitionNodes(partitionNodes);
 
-            for (const Device* dev : qAsConst(devices)) {
+            for (const Device* dev : std::as_const(devices)) {
                 if (dev->partitionTable()) {
                     for (const Partition* p : dev->partitionTable()->children())
                         if (getRaidArrayName(p->deviceNode()) == d->deviceNode())
@@ -234,7 +236,7 @@ void SoftwareRAID::scanSoftwareRAID(QList<Device*>& devices)
         }
     }
 
-    for (const QString& name : qAsConst(availableInConf)) {
+    for (const QString& name : std::as_const(availableInConf)) {
         SoftwareRAID *raidDevice = new SoftwareRAID(name, SoftwareRAID::Status::Inactive);
         devices << raidDevice;
     }
@@ -386,7 +388,7 @@ bool SoftwareRAID::createSoftwareRAID(Report &report,
                          QStringLiteral("--chunk=") + QString::number(chunkSize),
                          QStringLiteral("--raid-devices=") + QString::number(devicePathList.size()) };
 
-    for (const QString &p : qAsConst(devicePathList)) {
+    for (const QString &p : std::as_const(devicePathList)) {
         eraseDeviceMDSuperblock(p);
 
         args << p;

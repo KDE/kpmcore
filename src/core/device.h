@@ -56,7 +56,7 @@ public:
 
 public:
     explicit Device(const Device& other);
-    virtual ~Device();
+    ~Device() override;
 
     virtual bool operator==(const Device& other) const;
     virtual bool operator!=(const Device& other) const;

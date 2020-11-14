@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2008-2010 Volker Lanz <vl@fidra.de>
-    SPDX-FileCopyrightText: 2012-2019 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2012-2020 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015-2016 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2017 Pali Rohár <pali.rohar@gmail.com>
     SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
@@ -9,6 +9,8 @@
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
+
+#include <utility>
 
 #include "fs/filesystemfactory.h"
 #include "fs/filesystem.h"
@@ -92,7 +94,7 @@ void FileSystemFactory::init()
     fileSystems.insert(FileSystem::Type::Xfs, new FS::xfs(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::Zfs, new FS::zfs(-1, -1, -1, QString()));
 
-    for (const auto &fs : qAsConst(fileSystems))
+    for (const auto &fs : std::as_const(fileSystems))
         fs->init();
 
     qDeleteAll(m_FileSystems);

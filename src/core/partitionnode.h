@@ -33,7 +33,7 @@ public:
 
 protected:
     PartitionNode() {}
-    virtual ~PartitionNode() {}
+    ~PartitionNode() override {}
 
 public:
     virtual bool insert(Partition* partNew);
