@@ -224,8 +224,8 @@ static QString findBlkIdDevice(const char *token, const QString& value)
         free(c);
     }
 #else
-    Q_UNUSED(token);
-    Q_UNUSED(value);
+    Q_UNUSED(token)
+    Q_UNUSED(value)
 #endif
 
     return rval;
