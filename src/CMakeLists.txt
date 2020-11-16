@@ -37,6 +37,11 @@ target_link_libraries( kpmcore PUBLIC
     KF5::CoreAddons
     KF5::WidgetsAddons
 )
+generate_export_header(kpmcore
+    BASE_NAME LIBKPMCORE
+    EXPORT_FILE_NAME util/libpartitionmanagerexport.h
+)
+list(APPEND UTIL_LIB_HDRS ${CMAKE_CURRENT_BINARY_DIR}/util/libpartitionmanagerexport.h)
 
 install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES ${CORE_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/core/ COMPONENT Devel)
