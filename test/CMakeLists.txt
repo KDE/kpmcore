@@ -14,7 +14,6 @@ set(CMAKE_SKIP_BUILD_RPATH  FALSE)
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-include_directories(${CMAKE_SOURCE_DIR}/src)  # To get at KPMcore headers
 add_compile_options(-fPIC)
 
 ###
@@ -23,7 +22,7 @@ add_compile_options(-fPIC)
 # and to add a test with the given name.
 #
 add_library(testhelpers STATIC helpers.cpp)
-target_link_libraries(testhelpers)
+target_link_libraries(testhelpers PRIVATE kpmcore)
 
 macro (kpm_test name)
     add_executable(${name} ${ARGN})
