@@ -84,7 +84,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
   pkg_check_modules(BLKID REQUIRED blkid>=${BLKID_MIN_VERSION})
 endif()
 
-include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE_DIRS} lib/ src/)
+include_directories(${Qt5Core_INCLUDE_DIRS} ${UUID_INCLUDE_DIRS} ${BLKID_INCLUDE_DIRS} src/)
 
 add_subdirectory(src)
 
