@@ -27,11 +27,9 @@ class QString;
 */
 class SfdiskBackend : public CoreBackend
 {
-    friend class KPluginFactory;
-
     Q_DISABLE_COPY(SfdiskBackend)
 
-private:
+public:
     SfdiskBackend(QObject* parent, const QList<QVariant>& args);
 
 public:
