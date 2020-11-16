@@ -6,6 +6,10 @@
 
 add_definitions(-DTRANSLATION_DOMAIN=\"kpmcore\")
 
+include_directories(
+    ${BLKID_INCLUDE_DIRS}
+)
+
 include(backend/CMakeLists.txt)
 include(core/CMakeLists.txt)
 include(util/CMakeLists.txt)
