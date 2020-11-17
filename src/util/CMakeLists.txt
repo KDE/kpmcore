@@ -36,7 +36,6 @@ set(UTIL_SRC
 )
 
 set(UTIL_LIB_HDRS
-    util/libpartitionmanagerexport.h
     util/capacity.h
     util/externalcommand.h
     util/globallog.h
