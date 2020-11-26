@@ -46,7 +46,6 @@ private:
     bool isCallerAuthorized();
 
     void onReadOutput();
-    QProcess m_cmd;
     QDBusServiceWatcher *m_serviceWatcher = nullptr;
 };
 

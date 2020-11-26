@@ -284,15 +284,16 @@ QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStr
 
 //  connect(&cmd, &QProcess::readyReadStandardOutput, this, &ExternalCommandHelper::onReadOutput);
 
-    m_cmd.setEnvironment( { QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1") } );
-    m_cmd.setProcessChannelMode(static_cast<QProcess::ProcessChannelMode>(processChannelMode));
-    m_cmd.start(command, arguments);
-    m_cmd.write(input);
-    m_cmd.closeWriteChannel();
-    m_cmd.waitForFinished(-1);
-    QByteArray output = m_cmd.readAllStandardOutput();
+    QProcess cmd;
+    cmd.setEnvironment( { QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1") } );
+    cmd.setProcessChannelMode(static_cast<QProcess::ProcessChannelMode>(processChannelMode));
+    cmd.start(command, arguments);
+    cmd.write(input);
+    cmd.closeWriteChannel();
+    cmd.waitForFinished(-1);
+    QByteArray output = cmd.readAllStandardOutput();
     reply[QStringLiteral("output")] = output;
-    reply[QStringLiteral("exitCode")] = m_cmd.exitCode();
+    reply[QStringLiteral("exitCode")] = cmd.exitCode();
 
     return reply;
 }
