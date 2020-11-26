@@ -166,15 +166,26 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
+    // This enum specified whether individual blocks are moved left or right
+    // When partition is moved to the left, we start with the leftmost block,
+    // and move it further left, then second leftmost block and so on.
+    // But when we move partition to the right, we start with rightmost block.
+    // To account for this difference, we introduce CopyDirection variable which takes
+    // care of some of the differences between these two cases.
+    enum CopyDirection : qint8 {
+        Left = 1,
+        Right = -1,
+    };
+
     const qint64 blocksToCopy = sourceLength / blockSize;
     qint64 readOffset = sourceFirstByte;
     qint64 writeOffset = targetFirstByte;
-    qint32 copyDirection = 1;
+    qint8 copyDirection = CopyDirection::Left;
 
     if (targetFirstByte > sourceFirstByte) {
         readOffset = sourceFirstByte + sourceLength - blockSize;
         writeOffset = targetFirstByte + sourceLength - blockSize;
-        copyDirection = -1;
+        copyDirection = CopyDirection::Right;
     }
 
     const qint64 lastBlock = sourceLength % blockSize;
@@ -189,7 +200,7 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     timer.start();
 
     QString reportText = xi18nc("@info:progress", "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5.", blocksToCopy,
-                                              sourceLength, readOffset, writeOffset, copyDirection == 1 ? i18nc("direction: left", "left")
+                                              sourceLength, readOffset, writeOffset, copyDirection == CopyDirection::Left ? i18nc("direction: left", "left")
                                               : i18nc("direction: right", "right"));
     Q_EMIT report(reportText);
 
@@ -221,8 +232,8 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     if (rval && lastBlock > 0) {
         Q_ASSERT(lastBlock < blockSize);
 
-        const qint64 lastBlockReadOffset = copyDirection > 0 ? readOffset + blockSize * blocksCopied : sourceFirstByte;
-        const qint64 lastBlockWriteOffset = copyDirection > 0 ? writeOffset + blockSize * blocksCopied : targetFirstByte;
+        const qint64 lastBlockReadOffset = copyDirection == CopyDirection::Left ? readOffset + blockSize * blocksCopied : sourceFirstByte;
+        const qint64 lastBlockWriteOffset = copyDirection == CopyDirection::Left ? writeOffset + blockSize * blocksCopied : targetFirstByte;
         reportText = xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
         Q_EMIT report(reportText);
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);

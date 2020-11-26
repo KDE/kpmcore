@@ -42,7 +42,6 @@ public Q_SLOTS:
     Q_SCRIPTABLE bool CreateFile(const QString& filePath, const QByteArray& fileContents);
 
 private:
-
     bool isCallerAuthorized();
 
     void onReadOutput();
