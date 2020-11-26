@@ -158,6 +158,11 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     if (!isCallerAuthorized()) {
         return QVariantMap();
     }
+
+    // Avoid division by zero further down
+    if (!blockSize) {
+        return QVariantMap();
+    }
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
