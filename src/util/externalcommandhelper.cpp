@@ -332,6 +332,9 @@ bool ExternalCommandHelper::isCallerAuthorized()
 
     // Cache successful authentication requests, so that clients don't need
     // to authenticate multiple times during long partitioning operations.
+    // auth_admin_keep is not used intentionally because with current architecture
+    // it might lead to data loss if user cancels sfdisk partition boundary adjustment
+    // after partition data was moved.
     if (m_serviceWatcher->watchedServices().contains(message().service())) {
         return true;
     }
