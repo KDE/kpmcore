@@ -87,7 +87,7 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
 
     if (size != buffer.size()) {
         qCritical() << xi18n("Could not read from device <filename>%1</filename>.", sourceDevice);
-         return false;
+        return false;
     }
 
     return true;
@@ -274,7 +274,7 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     return reply;
 }
 
-bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte)
+bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetOffset)
 {
     if (!isCallerAuthorized()) {
         return false;
@@ -283,7 +283,7 @@ bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& t
     if ( targetDevice.left(5) != QStringLiteral("/dev/") )
         return false;
 
-    return writeData(targetDevice, buffer, targetFirstByte);
+    return writeData(targetDevice, buffer, targetOffset);
 }
 
 QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)

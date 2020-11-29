@@ -37,8 +37,8 @@ public:
 
 public Q_SLOTS:
     Q_SCRIPTABLE QVariantMap RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
-    Q_SCRIPTABLE QVariantMap CopyBlocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize);
-    Q_SCRIPTABLE bool WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetFirstByte);
+    Q_SCRIPTABLE QVariantMap CopyBlocks(const QString& sourceDevice, const qint64 sourceOffset, const qint64 sourceLength, const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize);
+    Q_SCRIPTABLE bool WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetOffset);
     Q_SCRIPTABLE bool CreateFile(const QString& filePath, const QByteArray& fileContents);
 
 private:
