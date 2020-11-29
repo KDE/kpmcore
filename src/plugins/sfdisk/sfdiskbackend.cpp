@@ -452,10 +452,9 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
         qint32 maxEntries;
         QByteArray gptHeader;
         CopySourceDevice source(d, 512, 1023);
-        CopyTargetByteArray target(gptHeader);
 
-        ExternalCommand copyCmd;
-        if (copyCmd.copyBlocks(source, target)) {
+        ExternalCommand readCmd;
+        if (readCmd.readData(source, gptHeader)) {
             QByteArray gptMaxEntries = gptHeader.mid(80, 4);
             QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
             stream.setByteOrder(QDataStream::LittleEndian);

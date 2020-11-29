@@ -103,7 +103,7 @@ bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteAr
 {
     QFile device(targetDevice);
 
-    auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered | QIODevice::Append;
+    auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
     if (!device.open(flags)) {
         qCritical() << xi18n("Could not open device <filename>%1</filename> for writing.", targetDevice);
         return false;
@@ -165,11 +165,7 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     }
 
     // Prevent some out of memory situations
-    constexpr qint64 MiB = 1 << 30;
     if (blockSize > 100 * MiB) {
-        return QVariantMap();
-    }
-    if (targetDevice.isEmpty() && sourceLength > MiB) {
         return QVariantMap();
     }
 
@@ -222,7 +218,7 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
 
     bool rval = true;
 
-    while (blocksCopied < blocksToCopy && !targetDevice.isEmpty()) {
+    while (blocksCopied < blocksToCopy) {
         if (!(rval = readData(sourceDevice, buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
             break;
 
@@ -255,10 +251,7 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
 
         if (rval) {
-            if (targetDevice.isEmpty())
-                reply[QStringLiteral("targetByteArray")] = buffer;
-            else
-                rval = writeData(targetDevice, buffer, lastBlockWriteOffset);
+            rval = writeData(targetDevice, buffer, lastBlockWriteOffset);
         }
 
         if (rval) {
@@ -272,6 +265,24 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
 
     reply[QStringLiteral("success")] = rval;
     return reply;
+}
+
+QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 offset, const qint64 length)
+{
+    if (!isCallerAuthorized()) {
+        return QByteArray();
+    }
+
+    if (length > MiB) {
+        return QByteArray();
+    }
+
+    QByteArray buffer;
+    bool rval = readData(device, buffer, offset, length);
+    if (rval) {
+        return buffer;
+    }
+    return QByteArray();
 }
 
 bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetOffset)

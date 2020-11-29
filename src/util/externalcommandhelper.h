@@ -20,6 +20,7 @@
 #include <QDBusContext>
 
 class QDBusServiceWatcher;
+constexpr qint64 MiB = 1 << 30;
 
 class ExternalCommandHelper : public QObject, public QDBusContext
 {
@@ -37,7 +38,9 @@ public:
 
 public Q_SLOTS:
     Q_SCRIPTABLE QVariantMap RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);
-    Q_SCRIPTABLE QVariantMap CopyBlocks(const QString& sourceDevice, const qint64 sourceOffset, const qint64 sourceLength, const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize);
+    Q_SCRIPTABLE QVariantMap CopyBlocks(const QString& sourceDevice, const qint64 sourceOffset, const qint64 sourceLength,
+                                        const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize);
+    Q_SCRIPTABLE QByteArray ReadData(const QString& device, const qint64 offset, const qint64 length);
     Q_SCRIPTABLE bool WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetOffset);
     Q_SCRIPTABLE bool CreateFile(const QString& filePath, const QByteArray& fileContents);
 

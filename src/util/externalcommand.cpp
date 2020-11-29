@@ -187,6 +187,35 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     return rval;
 }
 
+bool ExternalCommand::readData(const CopySourceDevice& source, QByteArray& target)
+{
+    auto interface = helperInterface();
+    if (!interface)
+        return false;
+
+    QDBusPendingCall pcall = interface->ReadData(source.path(), source.firstByte(), source.length());
+
+    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
+    QEventLoop loop;
+
+    auto exitLoop = [&] (QDBusPendingCallWatcher *watcher) {
+        loop.exit();
+
+        if (watcher->isError())
+            qWarning() << watcher->error();
+        else {
+            QDBusPendingReply<QByteArray> reply = *watcher;
+
+            target = reply.value();
+        }
+    };
+
+    connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    loop.exec();
+
+    return target != QByteArray();
+}
+
 bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte)
 {
     d->m_Report = commandReport.newChild();
