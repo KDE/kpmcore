@@ -8,7 +8,9 @@
 #ifndef KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 #define KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 
-QString allowedCommands[] = {
+#include <unordered_set>
+
+const std::unordered_set<QString> allowedCommands {
 // TODO no root needed
 QStringLiteral("lsblk"),
 QStringLiteral("udevadm"),
