@@ -72,7 +72,6 @@ public:
 
     bool write(const QByteArray& input); /**< @param input the input for the program */
 
-    bool startCopyBlocks();
     bool start(int timeout = 30000);
     bool run(int timeout = 30000);
 
