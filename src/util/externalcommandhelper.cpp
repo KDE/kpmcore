@@ -163,8 +163,13 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     if (!blockSize) {
         return QVariantMap();
     }
+
+    // Prevent some out of memory situations
     constexpr qint64 MiB = 1 << 30;
     if (blockSize > 100 * MiB) {
+        return QVariantMap();
+    }
+    if (targetDevice.isEmpty() && sourceLength > MiB) {
         return QVariantMap();
     }
 
