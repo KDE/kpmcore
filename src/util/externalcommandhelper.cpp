@@ -13,6 +13,8 @@
 #include "externalcommandhelper.h"
 #include "externalcommand_whitelist.h"
 
+#include <filesystem>
+
 #include <QtDBus>
 
 #include <QCoreApplication>
@@ -156,17 +158,17 @@ bool ExternalCommandHelper::CreateFile(const QString &filePath, const QByteArray
 QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const qint64 sourceOffset, const qint64 sourceLength, const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize)
 {
     if (!isCallerAuthorized()) {
-        return QVariantMap();
+        return {};
     }
 
     // Avoid division by zero further down
     if (!blockSize) {
-        return QVariantMap();
+        return {};
     }
 
     // Prevent some out of memory situations
     if (blockSize > 100 * MiB) {
-        return QVariantMap();
+        return {};
     }
 
     QVariantMap reply;
@@ -270,11 +272,15 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
 QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 offset, const qint64 length)
 {
     if (!isCallerAuthorized()) {
-        return QByteArray();
+        return {};
     }
 
     if (length > MiB) {
-        return QByteArray();
+        return {};
+    }
+    if (!std::filesystem::is_block_file(device.toStdString())) {
+        qWarning() << "Not a block device";
+        return {};
     }
 
     QByteArray buffer;
@@ -300,7 +306,7 @@ bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& t
 QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
 {
     if (!isCallerAuthorized()) {
-        return QVariantMap();
+        return {};
     }
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QVariantMap reply;
