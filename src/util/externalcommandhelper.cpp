@@ -153,7 +153,7 @@ bool ExternalCommandHelper::CreateFile(const QString &filePath, const QByteArray
 }
 
 // If targetDevice is empty then return QByteArray with data that was read from disk.
-QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const qint64 sourceFirstByte, const qint64 sourceLength, const QString& targetDevice, const qint64 targetFirstByte, const qint64 blockSize)
+QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const qint64 sourceOffset, const qint64 sourceLength, const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize)
 {
     if (!isCallerAuthorized()) {
         return QVariantMap();
@@ -186,18 +186,24 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
         Left = 1,
         Right = -1,
     };
+    qint8 copyDirection = targetOffset > sourceOffset ? CopyDirection::Right : CopyDirection::Left;
 
-    const qint64 blocksToCopy = sourceLength / blockSize;
-    qint64 readOffset = sourceFirstByte;
-    qint64 writeOffset = targetFirstByte;
-    qint8 copyDirection = CopyDirection::Left;
+    // Let readOffset (r) and writeOffset (w) be the offsets of the first block that we move.
+    // When we move data to the left:
+    // ______target______         ______source______
+    // r                     <-   w=================
+    qint64 readOffset = sourceOffset;
+    qint64 writeOffset = targetOffset;
 
-    if (targetFirstByte > sourceFirstByte) {
-        readOffset = sourceFirstByte + sourceLength - blockSize;
-        writeOffset = targetFirstByte + sourceLength - blockSize;
-        copyDirection = CopyDirection::Right;
+    // When we move data to the right, we start moving data from the last block
+    // ______source______         ______target______
+    // =================r    ->                    w
+    if (copyDirection == CopyDirection::Right) {
+        readOffset = sourceOffset + sourceLength - blockSize;
+        writeOffset = targetOffset + sourceLength - blockSize;
     }
 
+    const qint64 blocksToCopy = sourceLength / blockSize;
     const qint64 lastBlock = sourceLength % blockSize;
 
     qint64 bytesWritten = 0;
@@ -242,8 +248,8 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
     if (rval && lastBlock > 0) {
         Q_ASSERT(lastBlock < blockSize);
 
-        const qint64 lastBlockReadOffset = copyDirection == CopyDirection::Left ? readOffset + blockSize * blocksCopied : sourceFirstByte;
-        const qint64 lastBlockWriteOffset = copyDirection == CopyDirection::Left ? writeOffset + blockSize * blocksCopied : targetFirstByte;
+        const qint64 lastBlockReadOffset = copyDirection == CopyDirection::Left ? readOffset + blockSize * blocksCopied : sourceOffset;
+        const qint64 lastBlockWriteOffset = copyDirection == CopyDirection::Left ? writeOffset + blockSize * blocksCopied : targetOffset;
         reportText = xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
         Q_EMIT report(reportText);
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
