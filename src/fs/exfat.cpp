@@ -28,6 +28,7 @@ FileSystem::CommandSupportType exfat::m_Backup = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType exfat::m_SetLabel = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType exfat::m_UpdateUUID = FileSystem::cmdSupportNone;
 FileSystem::CommandSupportType exfat::m_GetUUID = FileSystem::cmdSupportNone;
+bool exfat::exfatUtils = false;
 
 exfat::exfat(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features) :
     FileSystem(firstsector, lastsector, sectorsused, label, features, FileSystem::Type::Exfat)
@@ -36,11 +37,20 @@ exfat::exfat(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QS
 
 void exfat::init()
 {
-    m_Create = findExternal(QStringLiteral("mkfs.exfat")) ? cmdSupportFileSystem : cmdSupportNone;
-    m_Check = findExternal(QStringLiteral("exfatfsck"), QStringList(), 1) ? cmdSupportFileSystem : cmdSupportNone;
+    // Check if we are using exfat-utils or exfatprogs
+    exfatUtils = findExternal(QStringLiteral("mkexfatfs"));
+    if (exfatUtils) {
+        m_Create = cmdSupportFileSystem;
+        m_Check = findExternal(QStringLiteral("fsck.exfat"), {}, 1) ? cmdSupportFileSystem : cmdSupportNone;
+        m_SetLabel = findExternal(QStringLiteral("exfatlabel")) ? cmdSupportFileSystem : cmdSupportNone;
+    }
+    else {
+        m_Create = findExternal(QStringLiteral("mkfs.exfat"), {}, 1) ? cmdSupportFileSystem : cmdSupportNone;
+        m_Check = findExternal(QStringLiteral("fsck.exfat"), {}, 16) ? cmdSupportFileSystem : cmdSupportNone;
+        m_SetLabel = findExternal(QStringLiteral("tune.exfat")) ? cmdSupportFileSystem : cmdSupportNone;
+    }
 
     m_GetLabel = cmdSupportCore;
-    m_SetLabel = findExternal(QStringLiteral("exfatlabel")) ? cmdSupportFileSystem : cmdSupportNone;
     m_UpdateUUID = cmdSupportNone;
 
     m_Copy = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
@@ -70,7 +80,7 @@ bool exfat::supportToolFound() const
 
 FileSystem::SupportTool exfat::supportToolName() const
 {
-    return SupportTool(QStringLiteral("exfat-utils"), QUrl(QStringLiteral("https://github.com/relan/exfat")));
+    return SupportTool(QStringLiteral("exfatprogs"), QUrl(QStringLiteral("https://github.com/exfatprogs/exfatprogs")));
 }
 
 qint64 exfat::maxCapacity() const
@@ -85,7 +95,7 @@ int exfat::maxLabelLength() const
 
 bool exfat::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("exfatfsck"), { deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("fsck.exfat"), { deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
@@ -97,7 +107,16 @@ bool exfat::create(Report& report, const QString& deviceNode)
 
 bool exfat::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
-    ExternalCommand cmd(report, QStringLiteral("exfatlabel"), { deviceNode, newLabel });
+    ExternalCommand cmd(report);
+    if (exfatUtils) {
+        cmd.setCommand(QStringLiteral("exfatlabel"));
+        cmd.setArgs({ deviceNode, newLabel });
+    }
+    else {
+        cmd.setCommand(QStringLiteral("tune.exfat"));
+        cmd.setArgs({ deviceNode, QStringLiteral("-L"), newLabel });
+    }
+
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

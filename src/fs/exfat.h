@@ -96,6 +96,9 @@ public:
     static CommandSupportType m_SetLabel;
     static CommandSupportType m_UpdateUUID;
     static CommandSupportType m_GetUUID;
+
+private:
+    static bool exfatUtils;
 };
 }
 
