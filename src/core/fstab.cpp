@@ -82,6 +82,12 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             // (4) dump frequency (optional, defaults to 0), no comment is allowed if omitted,
             // (5) pass number (optional, defaults to 0), no comment is allowed if omitted,
             // (#) comment (optional).
+
+            // Handle deprecated subtypes, e.g. sshfs#example. They are not relevant for partitioning, ignore them.
+            if (splitLine.size() < 3) {
+                continue;
+            }
+
             auto fsSpec = splitLine.at(0);
             auto mountPoint = unescapeSpaces(splitLine.at(1));
             auto fsType = splitLine.at(2);
