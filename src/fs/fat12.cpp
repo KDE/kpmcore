@@ -140,7 +140,9 @@ bool fat12::writeLabel(Report& report, const QString& deviceNode, const QString&
 {
     report.line() << xi18nc("@info:progress", "Setting label for partition <filename>%1</filename> to %2", deviceNode, newLabel.toUpper());
 
-    ExternalCommand cmd(report, QStringLiteral("fatlabel"), { deviceNode, newLabel.toUpper() });
+    // This is needed to support new dosfstool 4.2. Later we can drop dosfstools 4.1 and add -r flag.
+    const QString label = newLabel.isEmpty() ? QStringLiteral("NO_LABEL") : newLabel;
+    ExternalCommand cmd(report, QStringLiteral("fatlabel"), { deviceNode, label.toUpper() });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
