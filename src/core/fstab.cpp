@@ -92,7 +92,7 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             auto mountPoint = unescapeSpaces(splitLine.at(1));
             auto fsType = splitLine.at(2);
             // Options may be omitted in some rare cases like NixOS generated fstab.
-            auto options = splitLine.length() >= 4 ? splitLine.at(3) : QString::fromLatin1("defaults");
+            auto options = splitLine.length() >= 4 ? splitLine.at(3) : QStringLiteral("defaults");
 
             switch (splitLine.length()) {
                 case 4:
