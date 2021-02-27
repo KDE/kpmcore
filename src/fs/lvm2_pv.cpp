@@ -46,7 +46,7 @@ lvm2_pv::lvm2_pv(qint64 firstsector, qint64 lastsector,
 
 void lvm2_pv::init()
 {
-    CommandSupportType lvmFound = findExternal(QStringLiteral("lvm")) ? cmdSupportFileSystem : cmdSupportNone;
+    CommandSupportType lvmFound = findExternal(QStringLiteral("lvm"), {}, 3) ? cmdSupportFileSystem : cmdSupportNone;
 
     m_Create     = lvmFound;
     m_Check      = lvmFound;
