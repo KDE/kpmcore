@@ -221,6 +221,7 @@ Partition* NewOperation::createNew(const Partition& cloneFrom,
                      p->sectorSize()));
     p->setState(Partition::State::New);
     p->setPartitionPath(QString());
+    p->setAttributes(0);
 
     return p;
 }
