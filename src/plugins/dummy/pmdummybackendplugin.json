@@ -73,7 +73,7 @@
         "Id": "pmdummybackendplugin",
         "License": "GPL",
         "Name": "KDE Partition Manager Dummy Backend",
-        "Name[ca@valencia]": "Dorsal fals per al gestor de particions del KDE",
+        "Name[ca@valencia]": "Dorsal fals del gestor de particions del KDE",
         "Name[ca]": "Dorsal fals del gestor de particions del KDE",
         "Name[cs]": "Podpůrná vrstva pro správce diskových oddílů pro KDE",
         "Name[da]": "KDE-partitionshåndtering med attrap-backend",
