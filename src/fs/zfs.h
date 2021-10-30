@@ -35,7 +35,6 @@ public:
 public:
     void init() override;
 
-    bool remove(Report& report, const QString& deviceNode) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
 
     CommandSupportType supportGetUsed() const override {
