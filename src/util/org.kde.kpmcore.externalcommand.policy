@@ -19,6 +19,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="en_GB">Start external command daemon</description>
       <description xml:lang="es">Iniciar el demonio de órdenes externas</description>
       <description xml:lang="fr">Lancer le démon externe de commandes</description>
+      <description xml:lang="hu">Külső parancsdémon indítása</description>
       <description xml:lang="it">Avvia demone per comando esterno</description>
       <description xml:lang="ko">외부 명령 데몬 시작</description>
       <description xml:lang="lt">Paleisti išorinių komandų tarnybą</description>
@@ -40,6 +41,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="en_GB">Administrative privileges are required to manage disks</message>
       <message xml:lang="es">Se necesitan permisos de administrador para gestionar discos</message>
       <message xml:lang="fr">Vous devez disposer des privilèges d'administrateur pour gérer les disques.</message>
+      <message xml:lang="hu">A lemzek kezeléséhez adminisztrátori jogosultságok szükségesek</message>
       <message xml:lang="it">Per gestire il disco sono richiesti privilegi amministrativi</message>
       <message xml:lang="ko">디스크를 관리하려면 권한이 필요함</message>
       <message xml:lang="lt">Diskų tvarkymui reikalingos administratoriaus teisės</message>
