@@ -80,7 +80,8 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
         return false;
     }
 
-    if (!device.seek(offset)) {
+    // Sequential devices such as /dev/zero or /dev/urandom return false on seek().
+    if (!device.isSequential() && !device.seek(offset)) {
         qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, sourceDevice);
         return false;
     }
