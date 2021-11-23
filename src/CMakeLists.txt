@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2008,2012 Volker Lanz <vl@fidra.de>
 # SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
 # SPDX-FileCopyrightText: 2014-2020 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2021 Harald Sitter <sitter@kde.org>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -46,6 +47,8 @@ generate_export_header(kpmcore
     EXPORT_FILE_NAME util/libpartitionmanagerexport.h
 )
 list(APPEND UTIL_LIB_HDRS ${CMAKE_CURRENT_BINARY_DIR}/util/libpartitionmanagerexport.h)
+
+target_include_directories(kpmcore INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/kpmcore>")
 
 install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES ${CORE_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/core/ COMPONENT Devel)
