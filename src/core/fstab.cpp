@@ -265,7 +265,7 @@ std::array<unsigned int, 4> fstabColumnWidth(const FstabEntryList& fstabEntries)
 {
     std::array<unsigned int, 4> columnWidth;
 
-#define FIELD_WIDTH(x) 3 + std::max_element(fstabEntries.begin(), fstabEntries.end(), [](const FstabEntry& a, const FstabEntry& b) {return a.x().length() < b.x().length(); })->x().length();
+#define FIELD_WIDTH(x) 3 + escapeSpaces(std::max_element(fstabEntries.begin(), fstabEntries.end(), [](const FstabEntry& a, const FstabEntry& b) {return escapeSpaces(a.x()).length() < escapeSpaces(b.x()).length(); })->x()).length();
 
     columnWidth[0] = FIELD_WIDTH(fsSpec);
     columnWidth[1] = FIELD_WIDTH(mountPoint);
