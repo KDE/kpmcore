@@ -368,6 +368,25 @@ void Partition::setPartitionPath(const QString& s)
     setNumber(-1);
 }
 
+
+bool Partition::execChangePermission(Report& report)
+{
+    if (m_permission.isEmpty()) {
+        return true;
+    }
+
+    ExternalCommand chmodCmd(report,
+                              QStringLiteral("chmod"),
+                            {
+                                    m_permission,
+                                    deviceNode()
+                            });
+
+    if ( chmodCmd.run() && chmodCmd.exitCode() == 0 )
+        return true;
+    return false;
+}
+
 void Partition::setFileSystem(FileSystem* fs)
 {
     m_FileSystem = fs;
