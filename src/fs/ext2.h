@@ -91,6 +91,9 @@ public:
     SupportTool supportToolName() const override;
     bool supportToolFound() const override;
 
+    QString posixPermissions() const override { return implPosixPermissions();  };
+    void setPosixPermissions(const QString& permissions) override { implSetPosixPermissions(permissions); };
+
 public:
     static CommandSupportType m_GetUsed;
     static CommandSupportType m_GetLabel;

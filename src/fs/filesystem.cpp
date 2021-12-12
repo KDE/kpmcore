@@ -31,6 +31,7 @@
 #include <QFileInfo>
 #include <QStandardPaths>
 #include <QStorageInfo>
+#include <QTemporaryDir>
 
 const std::vector<QColor> FileSystem::defaultColorCode =
 {
@@ -80,6 +81,7 @@ struct FileSystemPrivate {
     qint64 m_SectorsUsed;
     QString m_Label;
     QString m_UUID;
+    QString m_posixPermissions;
     QStringList m_AvailableFeatures;
     QVariantMap m_Features;
 };
@@ -124,6 +126,67 @@ FileSystem::FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused
 
 FileSystem::~FileSystem()
 {
+}
+
+QString FileSystem::implPosixPermissions() const
+{
+    return d->m_posixPermissions;
+}
+
+void FileSystem::implSetPosixPermissions(const QString& permissions)
+{
+    d->m_posixPermissions = permissions;
+}
+
+
+bool FileSystem::execChangePosixPermission(Report& report, const QString& deviceNode)
+{
+    // do nothing if the posix permissions is not used here.
+    if (d->m_posixPermissions.isEmpty()) {
+        return true;
+    }
+
+    QTemporaryDir tmpDir;
+
+    ExternalCommand mountCmd(report, QStringLiteral("mount"),
+                             { deviceNode, tmpDir.path() });
+
+    bool step =  mountCmd.run() && mountCmd.exitCode() == 0;
+    if (!step) {
+        return false;
+    }
+
+    ExternalCommand chmodCmd(report, QStringLiteral("chmod"),
+                             // forcing recursive, should be empty but
+                             // programming is weird.
+                            {
+                                d->m_posixPermissions,
+                                tmpDir.path(),
+                                QStringLiteral("-R")
+                            });
+
+    const bool chmodStep =  chmodCmd.run() && chmodCmd.exitCode() == 0;
+
+    ExternalCommand umountCmd(report, QStringLiteral("umount"),
+                            // forcing recursive, should be empty but
+                             // programming is weird.
+                            {
+                                deviceNode,
+                            });
+
+    const bool umountStep =  umountCmd.run() && umountCmd.exitCode() == 0;
+
+    // we can't return false if chmodStep fails because we still need to umount
+    // the drive.
+    if (!chmodStep) {
+        return false;
+    }
+
+    if (!umountStep) {
+        return false;
+    }
+
+    return true;
 }
 
 /** Reads the capacity in use on this FileSystem

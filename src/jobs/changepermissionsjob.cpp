@@ -27,9 +27,11 @@ bool ChangePermissionJob::run(Report& parent)
 {
     bool rval = false;
 
+    auto &fs = m_Partition.fileSystem();
+
     Report* report = jobStarted(parent);
 
-    rval = m_Partition.execChangePermission(*report);
+    rval = fs.execChangePosixPermission(*report, m_Partition.deviceNode());
 
     jobFinished(*report, rval);
 

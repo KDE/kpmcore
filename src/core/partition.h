@@ -259,14 +259,6 @@ public:
     }
     void deleteFileSystem();
 
-    void setPermissions(const QString& permission) {
-        m_permission = permission;
-    }
-
-    // sets the disk to have write and read permissions of 777.
-    // userful for pendrives and such.
-    bool execChangePermission(Report& report);
-
 private:
     void setNumber(qint32 n) {
         m_Number = n;
