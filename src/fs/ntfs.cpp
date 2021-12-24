@@ -47,7 +47,8 @@ ntfs::ntfs(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QStr
 
 void ntfs::init()
 {
-    m_Shrink = m_Grow = m_Check = m_GetUsed = findExternal(QStringLiteral("ntfsresize")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_Shrink = m_Grow = m_Check = findExternal(QStringLiteral("ntfsresize")) ? cmdSupportFileSystem : cmdSupportNone;
+    m_GetUsed = findExternal(QStringLiteral("ntfsinfo")) ? cmdSupportFileSystem : cmdSupportNone;
     m_GetLabel = cmdSupportCore;
     m_SetLabel = findExternal(QStringLiteral("ntfslabel")) ? cmdSupportFileSystem : cmdSupportNone;
     m_Create = findExternal(QStringLiteral("mkfs.ntfs")) ? cmdSupportFileSystem : cmdSupportNone;
@@ -97,18 +98,27 @@ int ntfs::maxLabelLength() const
 
 qint64 ntfs::readUsedCapacity(const QString& deviceNode) const
 {
-    ExternalCommand cmd(QStringLiteral("ntfsresize"), { QStringLiteral("--info"), QStringLiteral("--force"), QStringLiteral("--no-progress-bar"), deviceNode });
+    ExternalCommand cmd(QStringLiteral("ntfsinfo"), { QStringLiteral("--mft"), QStringLiteral("--force"), deviceNode });
 
     if (cmd.run(-1) && cmd.exitCode() == 0) {
+        QRegularExpression re(QStringLiteral("Cluster Size: (\\d+)"));
+        QRegularExpressionMatch reClusterSize = re.match(cmd.output());
+        qint64 clusterSize = reClusterSize.hasMatch() ? reClusterSize.captured(1).toLongLong() : -1;
+
+        QRegularExpression re2(QStringLiteral("Free Clusters: (\\d+)"));
+        QRegularExpressionMatch reFreeClusters = re2.match(cmd.output());
+        qint64 freeClusters = reFreeClusters.hasMatch() ? reFreeClusters.captured(1).toLongLong() : -1;
+
+        QRegularExpression re3(QStringLiteral("Volume Size in Clusters: (\\d+)"));
+        QRegularExpressionMatch reVolumeSize = re3.match(cmd.output());
+        qint64 volumeSize = reVolumeSize.hasMatch() ? reVolumeSize.captured(1).toLongLong() : -1;
+
         qint64 usedBytes = -1;
-        QRegularExpression re(QStringLiteral("resize at (\\d+) bytes"));
-        QRegularExpressionMatch reUsedBytes = re.match(cmd.output());
-
-        if (reUsedBytes.hasMatch())
-            usedBytes = reUsedBytes.captured(1).toLongLong();
-
-        if (usedBytes > -1)
-            return usedBytes;
+        qDebug () << volumeSize << freeClusters << clusterSize;
+        if (clusterSize > -1 && freeClusters > -1 && volumeSize > -1) {
+            usedBytes = (volumeSize - freeClusters) * clusterSize;
+        }
+        return usedBytes;
     }
 
     return -1;
