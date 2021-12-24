@@ -25,7 +25,7 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-K_PLUGIN_FACTORY_WITH_JSON(DummyBackendFactory, "pmdummybackendplugin.json", registerPlugin<DummyBackend>();)
+K_PLUGIN_CLASS_WITH_JSON(DummyBackend, "pmdummybackendplugin.json")
 
 
 DummyBackend::DummyBackend(QObject*, const QList<QVariant>&) :

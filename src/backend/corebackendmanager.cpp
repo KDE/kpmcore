@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2010 Volker Lanz <vl@fidra.de>
-    SPDX-FileCopyrightText: 2014-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2014-2021 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
 
@@ -56,8 +56,7 @@ QVector<KPluginMetaData> CoreBackendManager::list() const
                metaData.category().contains(QStringLiteral("BackendPlugin"));
     };
 
-    // find backend plugins in standard path (e.g. /usr/lib64/qt5/plugins) using filter from above
-    return KPluginLoader::findPlugins(QString(), filter);
+    return KPluginMetaData::findPlugins(QStringLiteral("kpmcore"), filter);
 }
 
 bool CoreBackendManager::load(const QString& name)
@@ -65,7 +64,8 @@ bool CoreBackendManager::load(const QString& name)
     if (backend())
         unload();
 
-    KPluginLoader loader(name);
+    QString path = QStringLiteral("kpmcore/") + name;
+    KPluginLoader loader(path);
 
     KPluginFactory* factory = loader.factory();
 

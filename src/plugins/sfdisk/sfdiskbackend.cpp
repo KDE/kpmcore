@@ -47,7 +47,7 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-K_PLUGIN_FACTORY_WITH_JSON(SfdiskBackendFactory, "pmsfdiskbackendplugin.json", registerPlugin<SfdiskBackend>();)
+K_PLUGIN_CLASS_WITH_JSON(SfdiskBackend, "pmsfdiskbackendplugin.json")
 
 SfdiskBackend::SfdiskBackend(QObject*, const QList<QVariant>&) :
     CoreBackend()
