@@ -162,7 +162,7 @@ bool FileSystem::execChangePosixPermission(Report& report, const QString& device
                             {
                                 d->m_posixPermissions,
                                 tmpDir.path(),
-                                QStringLiteral("-R")
+                                QStringLiteral("--recursive")
                             });
 
     const bool chmodStep =  chmodCmd.run() && chmodCmd.exitCode() == 0;
