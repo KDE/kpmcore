@@ -18,6 +18,7 @@ QStringLiteral("udevadm"),
 //Core programs
 QStringLiteral("blockdev"),
 QStringLiteral("blkid"),
+QStringLiteral("chmod"),
 QStringLiteral("partx"),
 QStringLiteral("sfdisk"),
 QStringLiteral("wipefs"),
