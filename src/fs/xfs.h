@@ -41,6 +41,8 @@ public:
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
     bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    QString posixPermissions() const override { return implPosixPermissions();  };
+    void setPosixPermissions(const QString& permissions) override { implSetPosixPermissions(permissions); };
 
     CommandSupportType supportGetUsed() const override {
         return m_GetUsed;

@@ -38,6 +38,8 @@ public:
     bool createWithLabel(Report& report, const QString& deviceNode, const QString& label) override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
     bool updateUUID(Report& report, const QString& deviceNode) const override;
+    QString posixPermissions() const override { return implPosixPermissions();  };
+    void setPosixPermissions(const QString& permissions) override { implSetPosixPermissions(permissions); };
 
     CommandSupportType supportGetUsed() const override {
         return m_GetUsed;
