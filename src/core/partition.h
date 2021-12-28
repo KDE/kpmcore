@@ -275,7 +275,6 @@ private:
     QString m_Label;
     QString m_Type;
     QString m_UUID;
-    QString m_permission;
     quint64 m_Attributes = 0;
     QString m_PartitionPath;
     QString m_MountPoint;
