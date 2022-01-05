@@ -240,7 +240,8 @@ static QString findBlkIdDevice(const char *token, const QString& value)
 
 static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode)
 {
-    m_entryType = FstabEntry::Type::comment;
+    m_entryType = FstabEntry::Type::other;
+    m_deviceNode = m_fsSpec;
     if (m_fsSpec.startsWith(QStringLiteral("UUID="))) {
         m_entryType = FstabEntry::Type::uuid;
         m_deviceNode = findBlkIdDevice("UUID", QString(m_fsSpec).remove(QStringLiteral("UUID=")));
@@ -255,7 +256,8 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, 
         m_deviceNode = findBlkIdDevice("PARTLABEL", QString(m_fsSpec).remove(QStringLiteral("PARTLABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("/"))) {
         m_entryType = FstabEntry::Type::deviceNode;
-        m_deviceNode = m_fsSpec;
+    } else if (m_fsSpec.isEmpty()) {
+        m_entryType = FstabEntry::Type::comment;
     }
 }
 

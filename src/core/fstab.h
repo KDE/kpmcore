@@ -26,7 +26,7 @@ struct FstabEntryPrivate;
 class LIBKPMCORE_EXPORT FstabEntry
 {
 public:
-    enum class Type { deviceNode, uuid, label, partlabel, partuuid, comment };
+    enum class Type { deviceNode, uuid, label, partlabel, partuuid, comment, other };
 
     FstabEntry(const QString& fsSpec, const QString& mountPoint, const QString& type, const QString& options, int dumpFreq = 0, int passNumber = 0, const QString& comment = QString());
 
