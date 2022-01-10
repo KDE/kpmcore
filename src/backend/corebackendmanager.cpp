@@ -63,7 +63,7 @@ bool CoreBackendManager::load(const QString& name)
     KPluginLoader loader(path);
 
     KPluginFactory* factory = loader.factory();
-    KPluginMetaData metadata(loader);
+    KPluginMetaData metadata(path);
 
     if (factory != nullptr) {
         d->m_Backend = factory->create<CoreBackend>(nullptr);
