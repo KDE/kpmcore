@@ -106,9 +106,6 @@
         "Name[x-test]": "xxKDE Partition Manager Dummy Backendxx",
         "Name[zh_CN]": "KDE 分区管理器（虚拟后端）",
         "Name[zh_TW]": "KDE 磁碟分割區管理員 (虛設後端)",
-        "ServiceTypes": [
-            "PartitionManager/Plugin"
-        ],
         "Version": "1",
         "Website": "http://www.partitionmanager.org"
     }

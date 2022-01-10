@@ -105,9 +105,6 @@
         "Name[x-test]": "xxKDE Partition Manager sfdisk Backendxx",
         "Name[zh_CN]": "KDE 分区管理器（sfdisk 后端）",
         "Name[zh_TW]": "KDE 磁碟分割區管理員 (sfdisk 後端)",
-        "ServiceTypes": [
-            "PartitionManager/Plugin"
-        ],
         "Version": "1",
         "Website": "http://www.partitionmanager.org"
     }

@@ -51,12 +51,7 @@ CoreBackend* CoreBackendManager::backend()
 
 QVector<KPluginMetaData> CoreBackendManager::list() const
 {
-    auto filter = [&](const KPluginMetaData &metaData) {
-        return metaData.serviceTypes().contains(QStringLiteral("PartitionManager/Plugin")) &&
-               metaData.category().contains(QStringLiteral("BackendPlugin"));
-    };
-
-    return KPluginMetaData::findPlugins(QStringLiteral("kpmcore"), filter);
+    return KPluginMetaData::findPlugins(QStringLiteral("kpmcore"));
 }
 
 bool CoreBackendManager::load(const QString& name)
