@@ -63,14 +63,13 @@ bool CoreBackendManager::load(const QString& name)
     KPluginLoader loader(path);
 
     KPluginFactory* factory = loader.factory();
+    KPluginMetaData metadata(loader);
 
     if (factory != nullptr) {
         d->m_Backend = factory->create<CoreBackend>(nullptr);
 
-        QString id = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
-                     .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Id")).toString();
-        QString version = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
-                          .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Version")).toString();
+        QString id = metadata.pluginId();
+        QString version = metadata.version();
         if (id.isEmpty())
             return false;
 
