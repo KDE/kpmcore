@@ -62,26 +62,23 @@ bool CoreBackendManager::load(const QString& name)
     QString path = QStringLiteral("kpmcore/") + name;
     KPluginLoader loader(path);
 
-    KPluginFactory* factory = loader.factory();
     KPluginMetaData metadata(path);
+    d->m_Backend = KPluginFactory::instantiatePlugin<CoreBackend>(metadata).plugin;
 
-    if (factory != nullptr) {
-        d->m_Backend = factory->create<CoreBackend>(nullptr);
-
-        QString id = metadata.pluginId();
-        QString version = metadata.version();
-        if (id.isEmpty())
-            return false;
-
-        backend()->setId(id);
-        backend()->setVersion(version);
-        qDebug() << "Loaded backend plugin: " << backend()->id();
-
-        return true;
+    if (!backend()) {
+        qWarning() << "Could not create instance of plugin  " << name;
+        return false;
     }
 
-    qWarning() << "Could not load plugin for core backend " << name << ": " << loader.errorString();
-    return false;
+    QString id = metadata.pluginId();
+    QString version = metadata.version();
+    if (id.isEmpty())
+        return false;
+
+    backend()->setId(id);
+    backend()->setVersion(version);
+    qDebug() << "Loaded backend plugin: " << backend()->id();
+    return true;
 }
 
 void CoreBackendManager::unload()
