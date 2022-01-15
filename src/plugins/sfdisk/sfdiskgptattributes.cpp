@@ -8,6 +8,7 @@
 
 #include <QString>
 #include <QStringList>
+#include <QStringView>
 
 const static QString requiredPartition = QStringLiteral("RequiredPartition");
 const static QString noBlockIoProtocol = QStringLiteral("NoBlockIOProtocol");
@@ -25,7 +26,7 @@ quint64 SfdiskGptAttributes::toULongLong(const QStringList& attrs)
         else if (attr.compare(legacyBiosBootable) == 0)
             attributes |= 0x4ULL;
         else if (attr.startsWith(guid))
-            attributes |= 1ULL << QStringRef(&attr, guid.length(), attr.length() - guid.length()).toULongLong();
+            attributes |= 1ULL << QStringView{ attr }.mid(guid.length(), attr.length() - guid.length()).toULongLong();
 
     return attributes;
 }

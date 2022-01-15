@@ -8,8 +8,7 @@
 #define SFDISKGPTATTRIBUTES__H
 
 #include <QtGlobal>
-
-class QStringList;
+#include <QStringList>
 
 /** Sfdisk GPT Attributes helpers.
     @author Gaël PORTAY <gael.portay@collabora.com>
