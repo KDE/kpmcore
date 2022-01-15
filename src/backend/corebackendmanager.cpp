@@ -17,7 +17,6 @@
 
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KPluginLoader>
 #include <KPluginMetaData>
 
 struct CoreBackendManagerPrivate
@@ -60,7 +59,6 @@ bool CoreBackendManager::load(const QString& name)
         unload();
 
     QString path = QStringLiteral("kpmcore/") + name;
-    KPluginLoader loader(path);
 
     KPluginMetaData metadata(path);
     d->m_Backend = KPluginFactory::instantiatePlugin<CoreBackend>(metadata).plugin;
