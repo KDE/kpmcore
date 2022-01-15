@@ -40,7 +40,6 @@ public:
     bool create(Report& report, const QString& deviceNode) override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
-    bool writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel) override;
     bool copy(Report& report, const QString& targetDeviceNode, const QString& sourceDeviceNode) const override;
     bool updateUUID(Report& report, const QString& deviceNode) const override;
     qint64 readUsedCapacity(const QString& deviceNode) const override;
@@ -74,9 +73,6 @@ public:
         return m_GetLabel;
     }
     CommandSupportType supportSetLabel() const override {
-        return m_SetLabel;
-    }
-    CommandSupportType supportSetLabelOnline() const override {
         return m_SetLabel;
     }
     CommandSupportType supportUpdateUUID() const override {
