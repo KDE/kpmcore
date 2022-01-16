@@ -22,7 +22,7 @@ set(CMAKE_USE_RELATIVE_PATHS OFF)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 
 # Dependencies
-set(QT_MIN_VERSION "5.14.0")
+set(QT_MIN_VERSION "5.15.0")
 set(KF5_MIN_VERSION "5.88")
 set(BLKID_MIN_VERSION "2.33.2")
 # PolkitQt5-1
@@ -49,7 +49,11 @@ ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KPMCORE
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfigVersion.cmake"
                         SOVERSION ${SOVERSION})
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+if (NOT QT_MAJOR_VERSION)
+    set(QT_MAJOR_VERSION "5")
+endif()
+
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} COMPONENTS REQUIRED
   Core
   DBus
   Gui
@@ -63,7 +67,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
   WidgetsAddons
 )
 
-find_package(PolkitQt5-1 REQUIRED)
+find_package(PolkitQt${QT_MAJOR_VERSION}-1 REQUIRED)
 
 # use sane compile flags
 add_definitions(

@@ -11,19 +11,19 @@
 
 set(helper_interface_xml org.kde.kpmcore.helperinterface.xml)
 
-qt5_generate_dbus_interface(
+qt_generate_dbus_interface(
     util/externalcommand.h
     ${application_interface_xml}
     OPTIONS -a
 )
 
-qt5_generate_dbus_interface(
+qt_generate_dbus_interface(
     util/externalcommandhelper.h
     ${helper_interface_xml}
     OPTIONS -a
 )
 
-qt5_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_interface_xml} externalcommandhelper_interface)
+qt_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_interface_xml} externalcommandhelper_interface)
 
 set(UTIL_SRC
     ${HelperInterface_SRCS}
@@ -49,10 +49,10 @@ add_executable(kpmcore_externalcommand
 )
 
 target_link_libraries(kpmcore_externalcommand
-    Qt5::Core
-    Qt5::DBus
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::DBus
     KF5::I18n
-    PolkitQt5-1::Core
+    PolkitQt${QT_MAJOR_VERSION}-1::Core
 )
 
 install(TARGETS kpmcore_externalcommand DESTINATION ${KDE_INSTALL_LIBEXECDIR})
