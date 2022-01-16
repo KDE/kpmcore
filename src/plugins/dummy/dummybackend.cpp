@@ -51,7 +51,7 @@ QList<Device*> DummyBackend::scanDevices(const ScanFlags scanFlags)
 
     emitScanProgress(QStringLiteral("/dev/sda"), 100);
 
-    return scanDevices(false);
+    return result;
 }
 
 Device* DummyBackend::scanDevice(const QString& deviceNode)
