@@ -24,7 +24,6 @@
 class PartitionTable;
 class Report;
 class Partition;
-class SmartStatus;
 
 /** Representation of LVM Volume Group(VG).
 
