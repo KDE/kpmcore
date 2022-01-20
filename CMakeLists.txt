@@ -92,7 +92,6 @@ endif()
 add_subdirectory(src)
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
-set(INCLUDE_INSTALL_DIR "include/kpmcore/")
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KPMcore")
 
 configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
