@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2008 Volker Lanz <vl@fidra.de>
 # SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
-# SPDX-FileCopyrightText: 2014-2020 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2014-2022 Andrius Štikonas <andrius@stikonas.eu>
 # SPDX-FileCopyrightText: 2020 David Edmundson <kde@davidedmundson.co.uk>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
@@ -30,8 +30,7 @@ set(BLKID_MIN_VERSION "2.33.2")
 # Runtime
 # smartmontools 7.0
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(KDE_COMPILERSETTINGS_LEVEL "5.85")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
@@ -71,15 +70,8 @@ find_package(PolkitQt${QT_MAJOR_VERSION}-1 REQUIRED)
 
 # use sane compile flags
 add_definitions(
-  -DQT_USE_QSTRINGBUILDER
-  -DQT_NO_CAST_TO_ASCII
-  -DQT_NO_CAST_FROM_ASCII
-  -DQT_STRICT_ITERATORS
-  -DQT_NO_URL_CAST_FROM_STRING
-  -DQT_NO_CAST_FROM_BYTEARRAY
   -DQT_NO_CAST_TO_BYTEARRAY
   -DQT_USE_FAST_OPERATOR_PLUS
-  -DQT_NO_KEYWORDS
   -DQT_DISABLE_DEPRECATED_BEFORE=0x050f00
 )
 kde_enable_exceptions()
