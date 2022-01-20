@@ -33,11 +33,11 @@ ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore PUBLIC
-    Qt${QT_MAJOR_VERSION}::Core
+    Qt::Core
     PRIVATE
     ${BLKID_LIBRARIES}
-    Qt${QT_MAJOR_VERSION}::DBus
-    Qt${QT_MAJOR_VERSION}::Gui
+    Qt::DBus
+    Qt::Gui
     KF5::I18n
     KF5::CoreAddons
     KF5::WidgetsAddons
@@ -48,16 +48,16 @@ generate_export_header(kpmcore
 )
 list(APPEND UTIL_LIB_HDRS ${CMAKE_CURRENT_BINARY_DIR}/util/libpartitionmanagerexport.h)
 
-target_include_directories(kpmcore INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/kpmcore>")
+target_include_directories(kpmcore INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/kpmcore>")
 
-install(TARGETS kpmcore EXPORT KPMcoreTargets  ${INSTALL_TARGETS_DEFAULT_ARGS})
-install(FILES ${CORE_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/core/ COMPONENT Devel)
-install(FILES ${BACKEND_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/backend/ COMPONENT Devel)
-install(FILES ${FS_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/fs/ COMPONENT Devel)
-install(FILES ${JOBS_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/jobs/ COMPONENT Devel)
-install(FILES ${OPS_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/ops/ COMPONENT Devel)
-install(FILES ${UTIL_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/util/ COMPONENT Devel)
-install(FILES ${GUI_LIB_HDRS} DESTINATION ${INCLUDE_INSTALL_DIR}/kpmcore/gui/ COMPONENT Devel)
+install(TARGETS kpmcore EXPORT KPMcoreTargets  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(FILES ${CORE_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/core/ COMPONENT Devel)
+install(FILES ${BACKEND_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/backend/ COMPONENT Devel)
+install(FILES ${FS_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/fs/ COMPONENT Devel)
+install(FILES ${JOBS_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/jobs/ COMPONENT Devel)
+install(FILES ${OPS_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/ops/ COMPONENT Devel)
+install(FILES ${UTIL_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/util/ COMPONENT Devel)
+install(FILES ${GUI_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/gui/ COMPONENT Devel)
 
 ############################################
 

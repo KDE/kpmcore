@@ -80,6 +80,7 @@ add_definitions(
   -DQT_NO_CAST_TO_BYTEARRAY
   -DQT_USE_FAST_OPERATOR_PLUS
   -DQT_NO_KEYWORDS
+  -DQT_DISABLE_DEPRECATED_BEFORE=0x050f00
 )
 kde_enable_exceptions()
 
@@ -92,7 +93,7 @@ add_subdirectory(src)
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(INCLUDE_INSTALL_DIR "include/kpmcore/")
-set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KPMcore")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KPMcore")
 
 configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KPMcoreConfig.cmake.in"
                               "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfig.cmake"
