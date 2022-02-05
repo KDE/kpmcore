@@ -160,7 +160,7 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
     connect(interface, &OrgKdeKpmcoreExternalcommandInterface::progress, this, &ExternalCommand::progress);
     connect(interface, &OrgKdeKpmcoreExternalcommandInterface::report, this, &ExternalCommand::reportSignal);
 
-    QDBusPendingCall pcall = interface->CopyBlocks(source.path(), source.firstByte(), source.length(),
+    QDBusPendingCall pcall = interface->CopyFileData(source.path(), source.firstByte(), source.length(),
                                                    target.path(), target.firstByte(), blockSize);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
