@@ -136,7 +136,7 @@ bool ExternalCommandHelper::CreateFile(const QString &filePath, const QByteArray
         return false;
     }
     // Do not allow using this helper for writing to arbitrary location
-    if ( !filePath.contains(QStringLiteral("/etc/fstab")) )
+    if ( filePath != QStringLiteral("/etc/fstab") )
         return false;
 
     QFile device(filePath);
