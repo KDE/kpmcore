@@ -179,6 +179,11 @@ QVariantMap ExternalCommandHelper::CopyFileData(const QString& sourceDevice, con
         return {};
     }
 
+    // Only allow writing to existing files.
+    if(!std::filesystem::exists(targetPath)) {
+        return {};
+    }
+
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
