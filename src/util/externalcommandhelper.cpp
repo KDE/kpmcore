@@ -291,7 +291,7 @@ QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 o
     if (length > MiB) {
         return {};
     }
-    if (!std::filesystem::is_block_file(device.toStdString())) {
+    if (!std::filesystem::is_block_file(device.toStdU16String())) {
         qWarning() << "Not a block device";
         return {};
     }
@@ -313,7 +313,15 @@ bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& t
     if ( targetDevice.left(5) != QStringLiteral("/dev/") )
         return false;
 
-    return writeData(targetDevice, buffer, targetOffset);
+    auto targetPath = std::filesystem::path(targetDevice.toStdU16String());
+    if (!std::filesystem::is_block_file(targetDevice.toStdU16String())) {
+        qWarning() << "Not a block device";
+        return {};
+    }
+
+    auto canonicalTargetPath = std::filesystem::canonical(targetPath);
+
+    return writeData(QLatin1String(canonicalTargetPath.c_str()), buffer, targetOffset);
 }
 
 QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
