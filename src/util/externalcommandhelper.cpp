@@ -330,6 +330,11 @@ QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStr
 
     QProcess cmd;
     cmd.setEnvironment( { QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1") } );
+
+    if((processChannelMode != QProcess::SeparateChannels) && (processChannelMode != QProcess::MergedChannels)) {
+        reply[QStringLiteral("success")] = false;
+        return reply;
+    }
     cmd.setProcessChannelMode(static_cast<QProcess::ProcessChannelMode>(processChannelMode));
     cmd.start(command, arguments);
     cmd.write(input);
