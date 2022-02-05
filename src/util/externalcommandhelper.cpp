@@ -156,7 +156,7 @@ bool ExternalCommandHelper::CreateFile(const QString &filePath, const QByteArray
 }
 
 // If targetDevice is empty then return QByteArray with data that was read from disk.
-QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const qint64 sourceOffset, const qint64 sourceLength, const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize)
+QVariantMap ExternalCommandHelper::CopyFileData(const QString& sourceDevice, const qint64 sourceOffset, const qint64 sourceLength, const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize)
 {
     if (!isCallerAuthorized()) {
         return {};
