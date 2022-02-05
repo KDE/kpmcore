@@ -172,6 +172,13 @@ QVariantMap ExternalCommandHelper::CopyBlocks(const QString& sourceDevice, const
         return {};
     }
 
+    // Check for relative paths
+    std::filesystem::path sourcePath(sourceDevice.toStdU16String());
+    std::filesystem::path targetPath(targetDevice.toStdU16String());
+    if(sourcePath.is_relative() || targetPath.is_relative()) {
+        return {};
+    }
+
     QVariantMap reply;
     reply[QStringLiteral("success")] = true;
 
