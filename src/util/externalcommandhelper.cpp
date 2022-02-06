@@ -71,25 +71,25 @@ ExternalCommandHelper::ExternalCommandHelper()
     @param size the number of bytes to read
     @return true on success
 */
-bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& buffer, const qint64 offset, const qint64 size)
+bool ExternalCommandHelper::readData(QFile& device, QByteArray& buffer, const qint64 offset, const qint64 size)
 {
-    QFile device(sourceDevice);
-
-    if (!device.open(QIODevice::ReadOnly | QIODevice::Unbuffered)) {
-        qCritical() << xi18n("Could not open device <filename>%1</filename> for reading.", sourceDevice);
-        return false;
+    if (!device.isOpen()) {
+        if (!device.open(QIODevice::ReadOnly | QIODevice::Unbuffered)) {
+            qCritical() << xi18n("Could not open device <filename>%1</filename> for reading.", device.fileName());
+            return false;
+        }
     }
 
     // Sequential devices such as /dev/zero or /dev/urandom return false on seek().
     if (!device.isSequential() && !device.seek(offset)) {
-        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, sourceDevice);
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, device.fileName());
         return false;
     }
 
     buffer = device.read(size);
 
     if (size != buffer.size()) {
-        qCritical() << xi18n("Could not read from device <filename>%1</filename>.", sourceDevice);
+        qCritical() << xi18n("Could not read from device <filename>%1</filename>.", device.fileName());
         return false;
     }
 
@@ -233,12 +233,13 @@ QVariantMap ExternalCommandHelper::CopyFileData(const QString& sourceDevice, con
 
     bool rval = true;
 
-    QFile device(targetDevice);
+    QFile target(targetDevice);
+    QFile source(sourceDevice);
     while (blocksCopied < blocksToCopy) {
-        if (!(rval = readData(sourceDevice, buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
+        if (!(rval = readData(source, buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
             break;
 
-        if (!(rval = writeData(device, buffer, writeOffset + blockSize * blocksCopied * copyDirection)))
+        if (!(rval = writeData(target, buffer, writeOffset + blockSize * blocksCopied * copyDirection)))
             break;
 
         bytesWritten += buffer.size();
@@ -264,10 +265,10 @@ QVariantMap ExternalCommandHelper::CopyFileData(const QString& sourceDevice, con
         const qint64 lastBlockWriteOffset = copyDirection == CopyDirection::Left ? writeOffset + blockSize * blocksCopied : targetOffset;
         reportText = xi18nc("@info:progress", "Copying remainder of block size %1 from %2 to %3.", lastBlock, lastBlockReadOffset, lastBlockWriteOffset);
         Q_EMIT report(reportText);
-        rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
+        rval = readData(source, buffer, lastBlockReadOffset, lastBlock);
 
         if (rval) {
-            rval = writeData(device, buffer, lastBlockWriteOffset);
+            rval = writeData(target, buffer, lastBlockWriteOffset);
         }
 
         if (rval) {
@@ -298,7 +299,8 @@ QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 o
     }
 
     QByteArray buffer;
-    bool rval = readData(device, buffer, offset, length);
+    QFile sourceDevice(device);
+    bool rval = readData(sourceDevice, buffer, offset, length);
     if (rval) {
         return buffer;
     }
