@@ -14,10 +14,11 @@
 #include <memory>
 #include <unordered_set>
 
-#include <QEventLoop>
-#include <QString>
-#include <QProcess>
 #include <QDBusContext>
+#include <QEventLoop>
+#include <QFile>
+#include <QProcess>
+#include <QString>
 
 class QDBusServiceWatcher;
 constexpr qint64 MiB = 1 << 30;
@@ -34,7 +35,7 @@ Q_SIGNALS:
 public:
     ExternalCommandHelper();
     bool readData(const QString& sourceDevice, QByteArray& buffer, const qint64 offset, const qint64 size);
-    bool writeData(const QString& targetDevice, const QByteArray& buffer, const qint64 offset);
+    bool writeData(QFile& device, const QByteArray& buffer, const qint64 offset);
 
 public Q_SLOTS:
     Q_SCRIPTABLE QVariantMap RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode);

@@ -97,28 +97,28 @@ bool ExternalCommandHelper::readData(const QString& sourceDevice, QByteArray& bu
 }
 
 /** Writes the data from buffer to a given device.
-    @param targetDevice device or file to write to
+    @param device device or file to write to
     @param buffer the data that we write
     @param offset offset where to begin writing
     @return true on success
 */
-bool ExternalCommandHelper::writeData(const QString &targetDevice, const QByteArray& buffer, const qint64 offset)
+bool ExternalCommandHelper::writeData(QFile& device, const QByteArray& buffer, const qint64 offset)
 {
-    QFile device(targetDevice);
-
     auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
-    if (!device.open(flags)) {
-        qCritical() << xi18n("Could not open device <filename>%1</filename> for writing.", targetDevice);
-        return false;
+    if (!device.isOpen()) {
+        if (!device.open(flags)) {
+            qCritical() << xi18n("Could not open device <filename>%1</filename> for writing.", device.fileName());
+            return false;
+        }
     }
 
     if (!device.seek(offset)) {
-        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, targetDevice);
+        qCritical() << xi18n("Could not seek position %1 on device <filename>%2</filename>.", offset, device.fileName());
         return false;
     }
 
     if (device.write(buffer) != buffer.size()) {
-        qCritical() << xi18n("Could not write to device <filename>%1</filename>.", targetDevice);
+        qCritical() << xi18n("Could not write to device <filename>%1</filename>.", device.fileName());
         return false;
     }
 
@@ -233,11 +233,12 @@ QVariantMap ExternalCommandHelper::CopyFileData(const QString& sourceDevice, con
 
     bool rval = true;
 
+    QFile device(targetDevice);
     while (blocksCopied < blocksToCopy) {
         if (!(rval = readData(sourceDevice, buffer, readOffset + blockSize * blocksCopied * copyDirection, blockSize)))
             break;
 
-        if (!(rval = writeData(targetDevice, buffer, writeOffset + blockSize * blocksCopied * copyDirection)))
+        if (!(rval = writeData(device, buffer, writeOffset + blockSize * blocksCopied * copyDirection)))
             break;
 
         bytesWritten += buffer.size();
@@ -266,7 +267,7 @@ QVariantMap ExternalCommandHelper::CopyFileData(const QString& sourceDevice, con
         rval = readData(sourceDevice, buffer, lastBlockReadOffset, lastBlock);
 
         if (rval) {
-            rval = writeData(targetDevice, buffer, lastBlockWriteOffset);
+            rval = writeData(device, buffer, lastBlockWriteOffset);
         }
 
         if (rval) {
@@ -320,8 +321,8 @@ bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& t
     }
 
     auto canonicalTargetPath = std::filesystem::canonical(targetPath);
-
-    return writeData(QLatin1String(canonicalTargetPath.c_str()), buffer, targetOffset);
+    QFile device(QLatin1String(canonicalTargetPath.c_str()));
+    return writeData(device, buffer, targetOffset);
 }
 
 QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
