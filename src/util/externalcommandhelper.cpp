@@ -44,11 +44,11 @@
 ExternalCommandHelper::ExternalCommandHelper()
 {
     if (!QDBusConnection::systemBus().registerObject(QStringLiteral("/Helper"), this, QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals)) {
-        ::exit(-1);
+        exit(-1);
     }
 
     if (!QDBusConnection::systemBus().registerService(QStringLiteral("org.kde.kpmcore.helperinterface"))) {
-        ::exit(-1);
+        exit(-1);
     }
 
     // we know this service must be registered already as DBus policy blocks calls from anyone else
