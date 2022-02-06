@@ -323,6 +323,7 @@ bool ExternalCommandHelper::WriteData(const QByteArray& buffer, const QString& t
     }
 
     auto canonicalTargetPath = std::filesystem::canonical(targetPath);
+    // TODO: Qt6 supports std::filesystem::path
     QFile device(QLatin1String(canonicalTargetPath.c_str()));
     return writeData(device, buffer, targetOffset);
 }
