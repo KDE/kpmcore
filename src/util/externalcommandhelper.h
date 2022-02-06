@@ -34,7 +34,7 @@ Q_SIGNALS:
 
 public:
     ExternalCommandHelper();
-    bool readData(const QString& sourceDevice, QByteArray& buffer, const qint64 offset, const qint64 size);
+    bool readData(QFile& device, QByteArray& buffer, const qint64 offset, const qint64 size);
     bool writeData(QFile& device, const QByteArray& buffer, const qint64 offset);
 
 public Q_SLOTS:
