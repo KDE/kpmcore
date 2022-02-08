@@ -9,7 +9,7 @@ SPDX-License-Identifier: CC0-1.0
 <policyconfig>
 <icon_name>partitionmanager</icon_name>
    <action id="org.kde.kpmcore.externalcommand.init" >
-      <description>Start external command daemon</description>
+      <description>Run privileged partition manager helper</description>
       <description xml:lang="ast">Aniciu del degorriu de comandos esternos</description>
       <description xml:lang="ca">Inicia el dimoni d'ordres externes</description>
       <description xml:lang="ca@valencia">Inicia el dimoni d'ordres externes</description>
