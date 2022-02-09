@@ -17,9 +17,12 @@ project(kpmcore VERSION ${RELEASE_SERVICE_VERSION})
 set(SOVERSION "12")
 add_definitions(-D'VERSION="${RELEASE_SERVICE_VERSION}"') #"
 
-
 set(CMAKE_USE_RELATIVE_PATHS OFF)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+
+# Note that KPMcore is restricted to only run binaries installed into trusted prefixes
+# See src/util/trustedprefixes
+# By default this is set to / and /usr which is good for majority of distros
 
 # Dependencies
 set(QT_MIN_VERSION "5.15.0")

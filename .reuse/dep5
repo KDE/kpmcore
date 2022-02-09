@@ -17,3 +17,8 @@ Copyright: 2020 KDE translators
 Files: src/util/org.kde.kpmcore.helperinterface.conf
 License: MIT
 Copyright: 2018 Andrius Štikonas <andrius@stikonas.eu>
+
+# Just list of directories
+Files: src/util/trustedprefixes
+License: CC0-1.0
+Copyright: None

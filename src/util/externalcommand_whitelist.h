@@ -9,6 +9,7 @@
 #define KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 
 #include <unordered_set>
+#include "util/externalcommand_trustedprefixes.h"
 
 const std::unordered_set<QString> allowedCommands {
 // TODO no root needed

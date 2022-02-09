@@ -19,8 +19,10 @@
 
 #include <QCoreApplication>
 #include <QDebug>
+#include <QDir>
 #include <QElapsedTimer>
 #include <QFile>
+#include <QFileInfo>
 #include <QString>
 #include <QVariant>
 
@@ -346,9 +348,23 @@ QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStr
     }
 
     // Compare with command whitelist
-    QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
+    QFileInfo fileInfo(command);
+    QString basename = fileInfo.fileName();
     if (allowedCommands.find(basename) == allowedCommands.end()) { // TODO: C++20: replace with contains
-        qInfo() << command <<" command is not one of the whitelisted command";
+        qInfo() << command << "command is not one of the whitelisted commands";
+        reply[QStringLiteral("success")] = false;
+        return reply;
+    }
+
+    // Make sure command is located in the trusted prefix
+    QDir prefix = fileInfo.absoluteDir();
+    QString dirname = prefix.dirName();
+    if (dirname == QStringLiteral("bin") || dirname == QStringLiteral("sbin")) {
+        prefix.cdUp();
+    }
+    if (trustedPrefixes.find(prefix.path()) == trustedPrefixes.end()) { // TODO: C++20: replace with contains
+        qInfo() << prefix.path() << "prefix is not one of the trusted command prefixes";
+        reply[QStringLiteral("success")] = false;
         return reply;
     }
 

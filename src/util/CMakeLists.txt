@@ -11,6 +11,16 @@
 
 set(helper_interface_xml org.kde.kpmcore.helperinterface.xml)
 
+FILE(READ "util/trustedprefixes" TRUSTED_PREFIXES)
+STRING(REGEX REPLACE ";" "\\\\;" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
+STRING(REGEX REPLACE "\n" ";" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
+foreach(TRUSTED_PREFIX ${TRUSTED_PREFIXES})
+    list(APPEND TRUSTED_PREFIXES_LIST "    QStringLiteral(\"${TRUSTED_PREFIX}\")")
+endforeach()
+string(REPLACE ";    QStringLiteral(" ",\n    QStringLiteral(" TRUSTED_PREFIXES_LIST "${TRUSTED_PREFIXES_LIST}")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS util/trustedprefixes)
+configure_file(util/externalcommand_trustedprefixes.h.in util/externalcommand_trustedprefixes.h)
+
 qt_generate_dbus_interface(
     util/externalcommand.h
     ${application_interface_xml}
