@@ -12,7 +12,9 @@ SPDX-License-Identifier: CC0-1.0
       <description>Run privileged partition manager helper</description>
       <description xml:lang="ca">Executa l'ajudant del gestor de particions amb privilegis</description>
       <description xml:lang="es">Ejecutar la aplicación auxiliar de gestión de particiones con privilegios</description>
+      <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
       <description xml:lang="nl">Hulpprogramma voor partitiebeheerder met extra rechten uitvoeren</description>
+      <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
       <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
       <message>Administrative privileges are required to manage disks</message>
       <message xml:lang="ast">Ríquense los privilexos alministrativos pa xestionar discos</message>
