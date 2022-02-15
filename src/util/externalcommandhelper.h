@@ -21,7 +21,7 @@
 #include <QString>
 
 class QDBusServiceWatcher;
-constexpr qint64 MiB = 1 << 30;
+constexpr qint64 MiB = 1 << 20;
 
 class ExternalCommandHelper : public QObject, public QDBusContext
 {
