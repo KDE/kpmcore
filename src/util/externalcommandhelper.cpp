@@ -339,10 +339,9 @@ QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStr
 #endif
 
     QVariantMap reply;
-    reply[QStringLiteral("success")] = true;
+    reply[QStringLiteral("success")] = false;
 
     if (command.isEmpty()) {
-        reply[QStringLiteral("success")] = false;
         return reply;
     }
 
@@ -350,7 +349,6 @@ QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStr
     QString basename = command.mid(command.lastIndexOf(QLatin1Char('/')) + 1);
     if (allowedCommands.find(basename) == allowedCommands.end()) { // TODO: C++20: replace with contains
         qInfo() << command <<" command is not one of the whitelisted command";
-        reply[QStringLiteral("success")] = false;
         return reply;
     }
 
@@ -360,7 +358,6 @@ QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStr
     cmd.setEnvironment( { QStringLiteral("LVM_SUPPRESS_FD_WARNINGS=1") } );
 
     if((processChannelMode != QProcess::SeparateChannels) && (processChannelMode != QProcess::MergedChannels)) {
-        reply[QStringLiteral("success")] = false;
         return reply;
     }
     cmd.setProcessChannelMode(static_cast<QProcess::ProcessChannelMode>(processChannelMode));
@@ -372,6 +369,7 @@ QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStr
     reply[QStringLiteral("output")] = output;
     reply[QStringLiteral("exitCode")] = cmd.exitCode();
 
+    reply[QStringLiteral("success")] = true;
     return reply;
 }
 
