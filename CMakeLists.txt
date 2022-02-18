@@ -23,7 +23,7 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 
 # Dependencies
 set(QT_MIN_VERSION "5.15.0")
-set(KF5_MIN_VERSION "5.88")
+set(KF5_MIN_VERSION "5.90")
 set(BLKID_MIN_VERSION "2.33.2")
 # PolkitQt5-1
 
