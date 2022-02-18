@@ -13,6 +13,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="ca">Executa l'ajudant del gestor de particions amb privilegis</description>
       <description xml:lang="es">Ejecutar la aplicación auxiliar de gestión de particiones con privilegios</description>
       <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
+      <description xml:lang="it">Esegui l'helper per la gestione delle partizioni privilegiate</description>
       <description xml:lang="nl">Hulpprogramma voor partitiebeheerder met extra rechten uitvoeren</description>
       <description xml:lang="pl">Uruchom uprzywilejowane zarządzanie partycjami</description>
       <description xml:lang="sl">Zaženi pooblaščenega pomočnika skrbnika particij</description>
