@@ -231,13 +231,13 @@ bool ExternalCommand::writeData(Report& commandReport, const QByteArray& buffer,
     return waitForDbusReply(pcall);
 }
 
-bool ExternalCommand::createFile(const QByteArray& fileContents, const QString& filePath)
+bool ExternalCommand::writeFstab(const QByteArray& fileContents)
 {
     auto interface = helperInterface();
     if (!interface)
         return false;
 
-    QDBusPendingCall pcall = interface->CreateFile(filePath, fileContents);
+    QDBusPendingCall pcall = interface->WriteFstab(fileContents);
     return waitForDbusReply(pcall);
 }
 

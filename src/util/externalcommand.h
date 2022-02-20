@@ -57,7 +57,7 @@ public:
     bool copyBlocks(const CopySource& source, CopyTarget& target);
     QByteArray readData(const CopySourceDevice& source);
     bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
-    bool createFile(const QByteArray& filePath, const QString& fileContents); // similar to writeData but creates a new file
+    bool writeFstab(const QByteArray& fileContents);
 
     /**< @param cmd the command to run */
     void setCommand(const QString& cmd);

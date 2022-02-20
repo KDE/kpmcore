@@ -295,7 +295,7 @@ static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsig
       << entry.comment() << "\n";
 }
 
-bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filename)
+bool writeMountpoints(const FstabEntryList& fstabEntries)
 {
     QString fstabContents;
     QTextStream out(&fstabContents);
@@ -306,5 +306,5 @@ bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filenam
         writeEntry(out, e, columnWidth);
 
     ExternalCommand cmd;
-    return cmd.createFile(fstabContents.toLocal8Bit(), filename);
+    return cmd.writeFstab(fstabContents.toLocal8Bit());
 }

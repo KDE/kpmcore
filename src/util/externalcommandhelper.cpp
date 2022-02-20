@@ -126,19 +126,15 @@ bool ExternalCommandHelper::writeData(QFile& device, const QByteArray& buffer, c
 }
 
 /** Creates a new file with given contents.
-    @param filePath file to write to
     @param fileContents the data that we write
     @return true on success
 */
-bool ExternalCommandHelper::CreateFile(const QString &filePath, const QByteArray& fileContents)
+bool ExternalCommandHelper::WriteFstab(const QByteArray& fileContents)
 {
     if (!isCallerAuthorized()) {
         return false;
     }
-    // Do not allow using this helper for writing to arbitrary location
-    if ( filePath != QStringLiteral("/etc/fstab") )
-        return false;
-
+    QString filePath = QStringLiteral("/etc/fstab");
     QFile device(filePath);
 
     auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
