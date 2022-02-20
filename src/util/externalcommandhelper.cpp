@@ -1,5 +1,5 @@
 /*
-    SPDX-FileCopyrightText: 2017-2020 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2017-2022 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2018 Huzaifa Faruqui <huzaifafaruqui@gmail.com>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
     SPDX-FileCopyrightText: 2018-2019 Harald Sitter <sitter@kde.org>
@@ -188,11 +188,14 @@ QVariantMap ExternalCommandHelper::CopyFileData(const QString& sourceDevice, con
     reply[QStringLiteral("success")] = true;
 
     // This enum specified whether individual blocks are moved left or right
+    // When source and target devices are the same we have to be careful not to overwrite
+    // source data with newly written data. We don't have to do this if sourceDevice is not
+    // targetDevice but there are no disadvantages in applying the same scheme.
     // When partition is moved to the left, we start with the leftmost block,
     // and move it further left, then second leftmost block and so on.
     // But when we move partition to the right, we start with rightmost block.
     // To account for this difference, we introduce CopyDirection variable which takes
-    // care of some of the differences between these two cases.
+    // care of some of the differences in offset calculation between these two cases.
     enum CopyDirection : qint8 {
         Left = 1,
         Right = -1,
