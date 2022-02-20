@@ -137,6 +137,7 @@ bool ExternalCommandHelper::WriteFstab(const QByteArray& fileContents)
     QString fstabPath = QStringLiteral("/etc/fstab");
     QFile fstabFile(fstabPath);
 
+    // WriteOnly implies O_TRUNC
     auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
     if (!fstabFile.open(flags)) {
         qCritical() << xi18n("Could not open file <filename>%1</filename> for writing.", fstabPath);
