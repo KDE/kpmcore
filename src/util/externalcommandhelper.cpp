@@ -134,17 +134,17 @@ bool ExternalCommandHelper::WriteFstab(const QByteArray& fileContents)
     if (!isCallerAuthorized()) {
         return false;
     }
-    QString filePath = QStringLiteral("/etc/fstab");
-    QFile device(filePath);
+    QString fstabPath = QStringLiteral("/etc/fstab");
+    QFile fstabFile(fstabPath);
 
     auto flags = QIODevice::WriteOnly | QIODevice::Unbuffered;
-    if (!device.open(flags)) {
-        qCritical() << xi18n("Could not open file <filename>%1</filename> for writing.", filePath);
+    if (!fstabFile.open(flags)) {
+        qCritical() << xi18n("Could not open file <filename>%1</filename> for writing.", fstabPath);
         return false;
     }
 
-    if (device.write(fileContents) != fileContents.size()) {
-        qCritical() << xi18n("Could not write to file <filename>%1</filename>.", filePath);
+    if (fstabFile.write(fileContents) != fileContents.size()) {
+        qCritical() << xi18n("Could not write to file <filename>%1</filename>.", fstabPath);
         return false;
     }
 
