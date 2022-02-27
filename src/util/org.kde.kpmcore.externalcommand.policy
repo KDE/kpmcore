@@ -31,7 +31,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="sl">Zaženi demon za zunanje ukaze</description>
       <description xml:lang="sv">Starta extern kommandodemon</description>
       <description xml:lang="uk">Запуск фонової служби зовнішньої команди</description>
-      <description xml:lang="zh_CN">启动外部命令进程守护</description>
+      <description xml:lang="zh_CN">启动外部命令守护进程</description>
       <message>Administrative privileges are required to manage disks</message>
       <message xml:lang="ast">Ríquense los privilexos alministrativos pa xestionar discos</message>
       <message xml:lang="ca">Es requereixen privilegis d'administrador per a gestionar els discs</message>
