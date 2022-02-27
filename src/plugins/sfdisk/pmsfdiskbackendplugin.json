@@ -68,7 +68,7 @@
         "Description[sv]": "Ett sfdisk bakgrundsprogram till KDE:s partitionshanterare",
         "Description[uk]": "Додаток sfdisk сервера Керування розділами KDE.",
         "Description[x-test]": "xxA KDE Partition Manager sfdisk backend.xx",
-        "Description[zh_CN]": "使用 sfdisk 作为后端的 KDE 分区管理器。",
+        "Description[zh_CN]": "KDE 分区管理器 sfdisk 后端程序。",
         "Description[zh_TW]": "使用 sfdisk 作為後端的 KDE 磁碟分割區管理員。",
         "EnabledByDefault": true,
         "Icon": "preferences-plugin",
@@ -103,7 +103,7 @@
         "Name[sv]": "KDE:s partitionshanterare sfdisk bakgrundsprogram",
         "Name[uk]": "Додаток sfdisk сервера Керування розділами KDE",
         "Name[x-test]": "xxKDE Partition Manager sfdisk Backendxx",
-        "Name[zh_CN]": "KDE 分区管理器（sfdisk 后端）",
+        "Name[zh_CN]": "KDE 分区管理器 sfdisk 后端程序",
         "Name[zh_TW]": "KDE 磁碟分割區管理員 (sfdisk 後端)",
         "ServiceTypes": [
             "PartitionManager/Plugin"
