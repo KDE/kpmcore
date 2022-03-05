@@ -18,6 +18,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="ko">상위 권한으로 파티션 관리자 도우미 실행</description>
       <description xml:lang="nl">Hulpprogramma voor partitiebeheerder met extra rechten uitvoeren</description>
       <description xml:lang="pl">Uruchom uprzywilejowane zarządzanie partycjami</description>
+      <description xml:lang="pt_BR">Executa o auxiliar do gerenciador de partições com privilégios</description>
       <description xml:lang="sl">Zaženi pooblaščenega pomočnika skrbnika particij</description>
       <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
       <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
