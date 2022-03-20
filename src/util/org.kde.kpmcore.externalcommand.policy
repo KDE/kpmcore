@@ -11,6 +11,7 @@ SPDX-License-Identifier: CC0-1.0
    <action id="org.kde.kpmcore.externalcommand.init" >
       <description>Run privileged partition manager helper</description>
       <description xml:lang="ca">Executa l'ajudant del gestor de particions amb privilegis</description>
+      <description xml:lang="ca@valencia">Executa l'ajudant del gestor de particions amb privilegis</description>
       <description xml:lang="en_GB">Run privileged partition manager helper</description>
       <description xml:lang="es">Ejecutar la aplicación auxiliar de gestión de particiones con privilegios</description>
       <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
