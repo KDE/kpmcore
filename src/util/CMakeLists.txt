@@ -11,9 +11,9 @@
 
 set(helper_interface_xml org.kde.kpmcore.helperinterface.xml)
 
-FILE(READ "util/trustedprefixes" TRUSTED_PREFIXES)
-STRING(REGEX REPLACE ";" "\\\\;" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
-STRING(REGEX REPLACE "\n" ";" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
+file(READ "util/trustedprefixes" TRUSTED_PREFIXES)
+string(REGEX REPLACE ";" "\\\\;" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
+string(REGEX REPLACE "\n" ";" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
 foreach(TRUSTED_PREFIX ${TRUSTED_PREFIXES})
     list(APPEND TRUSTED_PREFIXES_LIST "    QStringLiteral(\"${TRUSTED_PREFIX}\")")
 endforeach()
