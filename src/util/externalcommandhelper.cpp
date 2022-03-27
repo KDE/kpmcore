@@ -127,13 +127,17 @@ bool ExternalCommandHelper::writeData(QFile& device, const QByteArray& buffer, c
     return true;
 }
 
-/** Creates a new file with given contents.
-    @param fileContents the data that we write
+/** Creates a new fstab file with given contents.
+    @param Contents the data that we write
     @return true on success
 */
-bool ExternalCommandHelper::WriteFstab(const QByteArray& fileContents)
+bool ExternalCommandHelper::WriteFstab(const QByteArray& fstabContents)
 {
     if (!isCallerAuthorized()) {
+        return false;
+    }
+    if (fstabContents.size() > MiB) {
+        qCritical() << QStringLiteral("/etc/fstab size limit exceeded.");
         return false;
     }
     QString fstabPath = QStringLiteral("/etc/fstab");
@@ -146,7 +150,7 @@ bool ExternalCommandHelper::WriteFstab(const QByteArray& fileContents)
         return false;
     }
 
-    if (fstabFile.write(fileContents) != fileContents.size()) {
+    if (fstabFile.write(fstabContents) != fstabContents.size()) {
         qCritical() << xi18n("Could not write to file <filename>%1</filename>.", fstabPath);
         return false;
     }

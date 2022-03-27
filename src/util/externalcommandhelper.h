@@ -43,7 +43,7 @@ public Q_SLOTS:
                                         const QString& targetDevice, const qint64 targetOffset, const qint64 blockSize);
     Q_SCRIPTABLE QByteArray ReadData(const QString& device, const qint64 offset, const qint64 length);
     Q_SCRIPTABLE bool WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetOffset);
-    Q_SCRIPTABLE bool WriteFstab(const QByteArray& fileContents);
+    Q_SCRIPTABLE bool WriteFstab(const QByteArray& fstabContents);
 
 private:
     bool isCallerAuthorized();
