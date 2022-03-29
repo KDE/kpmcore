@@ -27,7 +27,7 @@ SPDX-License-Identifier: CC0-1.0
       <message>Administrative privileges are required to manage disks</message>
       <message xml:lang="ast">Ríquense los privilexos alministrativos pa xestionar discos</message>
       <message xml:lang="ca">Es requereixen privilegis d'administrador per a gestionar els discs</message>
-      <message xml:lang="ca@valencia">Es requereixen privilegis d'administrador per a gestionar els discs</message>
+      <message xml:lang="ca@valencia">Es requerisquen privilegis d'administrador per a gestionar els discs</message>
       <message xml:lang="cs">Pro správu disků jsou potřeba práva administrátora</message>
       <message xml:lang="de">Systemverwalterrechte sind zur Verwaltung von Festplatten erforderlich</message>
       <message xml:lang="el">Απαιτούνται δικαιώματα διαχειριστή για τη διαχείριση των δίσκων</message>
