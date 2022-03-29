@@ -19,6 +19,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="ko">상위 권한으로 파티션 관리자 도우미 실행</description>
       <description xml:lang="nl">Hulpprogramma voor partitiebeheerder met extra rechten uitvoeren</description>
       <description xml:lang="pl">Uruchom uprzywilejowane zarządzanie partycjami</description>
+      <description xml:lang="pt">Executar o utilitário privilegiado do gestor de partições</description>
       <description xml:lang="pt_BR">Executa o auxiliar do gerenciador de partições com privilégios</description>
       <description xml:lang="sl">Zaženi pooblaščenega pomočnika skrbnika particij</description>
       <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
@@ -27,7 +28,7 @@ SPDX-License-Identifier: CC0-1.0
       <message>Administrative privileges are required to manage disks</message>
       <message xml:lang="ast">Ríquense los privilexos alministrativos pa xestionar discos</message>
       <message xml:lang="ca">Es requereixen privilegis d'administrador per a gestionar els discs</message>
-      <message xml:lang="ca@valencia">Es requereixen privilegis d'administrador per a gestionar els discs</message>
+      <message xml:lang="ca@valencia">Es requerisquen privilegis d'administrador per a gestionar els discs</message>
       <message xml:lang="cs">Pro správu disků jsou potřeba práva administrátora</message>
       <message xml:lang="de">Systemverwalterrechte sind zur Verwaltung von Festplatten erforderlich</message>
       <message xml:lang="el">Απαιτούνται δικαιώματα διαχειριστή για τη διαχείριση των δίσκων</message>
