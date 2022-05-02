@@ -9,3 +9,6 @@ Dependencies:
     'frameworks/ki18n': '@latest'
     'frameworks/kwidgetsaddons': '@latest'
     'libraries/polkit-qt-1': '@latest'
+
+Options:
+  require-passing-tests-on: [ 'Linux', 'FreeBSD' ]      
