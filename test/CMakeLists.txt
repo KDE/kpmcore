@@ -34,15 +34,15 @@ endmacro()
 # Tests of initialization: try explicitly loading some backends
 kpm_test(testinit testinit.cpp)  # Default backend
 if(TARGET pmdummybackendplugin)
-    add_test(NAME testinit-dummy COMMAND testinit $<TARGET_FILE:pmdummybackendplugin>)
+    add_test(NAME testinit-dummy COMMAND testinit $<TARGET_FILE_NAME:pmdummybackendplugin>)
 endif()
 if(TARGET pmsfdiskbackendplugin)
-    add_test(NAME testinit-sfdisk COMMAND testinit $<TARGET_FILE:pmsfdiskbackendplugin>)
+    add_test(NAME testinit-sfdisk COMMAND testinit $<TARGET_FILE_NAME:pmsfdiskbackendplugin>)
 else()
     return()  # All the rest really needs a working backend
 endif()
 
-set(BACKEND $<TARGET_FILE:pmsfdiskbackendplugin>)
+set(BACKEND $<TARGET_FILE_NAME:pmsfdiskbackendplugin>)
 
 ###
 #
