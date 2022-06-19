@@ -193,7 +193,9 @@ QByteArray ExternalCommand::readData(const CopySourceDevice& source)
     if (!interface)
         return {};
 
-    QDBusPendingCall pcall = interface->ReadData(source.path(), source.firstByte(), source.length());
+    // Helper is restricted not to resolve symlinks
+    QFileInfo sourceInfo(source.path());
+    QDBusPendingCall pcall = interface->ReadData(sourceInfo.canonicalFilePath(), source.firstByte(), source.length());
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
 

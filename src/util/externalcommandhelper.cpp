@@ -304,6 +304,17 @@ QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 o
         return {};
     }
 
+    // Do not follow symlinks
+    QFileInfo info(device);
+    if (info.isSymbolicLink()) {
+        qWarning() << "ReadData: device should not be symbolic link";
+        return {};
+    }
+    if (device.left(5) != QStringLiteral("/dev/") || device.left(9) != QStringLiteral("/dev/shm/")) {
+        qWarning() << "Error: trying to read data from device not in /dev";
+        return {};
+    }
+
     QByteArray buffer;
     QFile sourceDevice(device);
     bool rval = readData(sourceDevice, buffer, offset, length);
