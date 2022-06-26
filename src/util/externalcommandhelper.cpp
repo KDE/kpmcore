@@ -15,6 +15,8 @@
 
 #include <filesystem>
 
+#include <fcntl.h>
+
 #include <QtDBus>
 
 #include <QCoreApplication>
@@ -316,8 +318,15 @@ QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 o
     }
 
     QByteArray buffer;
-    QFile sourceDevice(device);
-    bool rval = readData(sourceDevice, buffer, offset, length);
+    QFile sourceDevice;
+    int fd = open(device.toLocal8Bit().constData(), O_NOFOLLOW);
+    // Negative numbers are error codes
+    if (fd < 0) {
+        qWarning() << "Error: failed to open device " << device;
+        return QByteArray();
+    }
+    bool rval = sourceDevice.open(fd, QIODevice::ReadOnly | QIODevice::Unbuffered);
+    rval = rval && readData(sourceDevice, buffer, offset, length);
     if (rval) {
         return buffer;
     }
