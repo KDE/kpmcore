@@ -330,6 +330,7 @@ QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 o
     if (rval) {
         return buffer;
     }
+    close(fd);
     return QByteArray();
 }
 
