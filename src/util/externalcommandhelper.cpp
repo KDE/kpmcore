@@ -327,10 +327,10 @@ QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 o
     }
     bool rval = sourceDevice.open(fd, QIODevice::ReadOnly | QIODevice::Unbuffered);
     rval = rval && readData(sourceDevice, buffer, offset, length);
+    close(fd);
     if (rval) {
         return buffer;
     }
-    close(fd);
     return QByteArray();
 }
 
