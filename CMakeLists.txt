@@ -25,7 +25,7 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 # By default this is set to / and /usr which is good for majority of distros
 
 # Dependencies
-set(QT_MIN_VERSION "5.15.0")
+set(QT_MIN_VERSION "5.15.2")
 set(KF5_MIN_VERSION "5.90")
 set(BLKID_MIN_VERSION "2.33.2")
 # PolkitQt5-1
