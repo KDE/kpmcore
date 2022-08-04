@@ -14,6 +14,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="ca@valencia">Executa l'ajudant del gestor de particions amb privilegis</description>
       <description xml:lang="en_GB">Run privileged partition manager helper</description>
       <description xml:lang="es">Ejecutar la aplicación auxiliar de gestión de particiones con privilegios</description>
+      <description xml:lang="fi">Suorita osionhallinta-avustaja pääkäyttäjäoikeuksin</description>
       <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
       <description xml:lang="it">Esegui l'helper per la gestione delle partizioni privilegiate</description>
       <description xml:lang="ko">상위 권한으로 파티션 관리자 도우미 실행</description>
@@ -35,6 +36,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="el">Απαιτούνται δικαιώματα διαχειριστή για τη διαχείριση των δίσκων</message>
       <message xml:lang="en_GB">Administrative privileges are required to manage disks</message>
       <message xml:lang="es">Se necesitan permisos de administrador para gestionar discos</message>
+      <message xml:lang="fi">Levyjen hallintaan vaaditaan pääkäyttäjäoikeuksia</message>
       <message xml:lang="fr">Vous devez disposer des privilèges d'administrateur pour gérer les disques.</message>
       <message xml:lang="hu">A lemzek kezeléséhez adminisztrátori jogosultságok szükségesek</message>
       <message xml:lang="it">Per gestire il disco sono richiesti privilegi amministrativi</message>
