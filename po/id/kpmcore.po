@@ -1,0 +1,5825 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# wantoyo <wantoyo@yahoo.com>, 2014.
+# Wantoyo <wantoyek@gmail.com>, 2017, 2018, 2019, 2020, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-27 00:47+0000\n"
+"PO-Revision-Date: 2022-08-26 23:44+0700\n"
+"Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
+"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Wantoyo"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "wantoyo@yahoo.com"
+
+#: core/device.cpp:33
+#, kde-format
+msgid "Unknown Device"
+msgstr "Peranti Tidak Diketahui"
+
+#: core/device.cpp:82
+#, kde-kuit-format
+msgctxt "@item:inlistbox Device name – Capacity (device node)"
+msgid "%1 – %2 (%3)"
+msgstr "%1 – %2 (%3)"
+
+#: core/lvmdevice.cpp:362
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "An error occurred while running lvdisplay."
+msgstr "Sebuah error terjadi selagi menjalankan lvdisplay."
+
+#: core/operationstack.cpp:101
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just created: Undoing the operation to create the "
+"partition."
+msgstr ""
+"Menghapus partisi yang baru saja diciptakan: Mengurungkan operasi untuk "
+"menciptakan partisi."
+
+#: core/operationstack.cpp:119
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resizing a partition just created: Updating start and end in existing "
+"operation."
+msgstr ""
+"Mengubah ukuran partisi yang baru saja diciptakan: Memperbarui awal dan "
+"akhir dalam operasi yang ada."
+
+#: core/operationstack.cpp:139
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying a new partition: Creating a new partition instead."
+msgstr "Menyalin partisi baru: Menciptakan partisi baru sebagai gantinya."
+
+#: core/operationstack.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label for a new partition: No new operation required."
+msgstr ""
+"Mengubah label untuk partisi baru: Tidak ada operasi baru yang diperlukan."
+
+#: core/operationstack.cpp:169
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing file system for a new partition: No new operation required."
+msgstr ""
+"Mengubah sistem file untuk partisi baru: Tidak ada operasi baru yang "
+"diperlukan."
+
+#: core/operationstack.cpp:186
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking file systems is automatically done when creating them: No new "
+"operation required."
+msgstr ""
+"Memeriksa sistem file telah dilakukan secara otomatis saat menciptakan "
+"mereka: Tidak ada operasi baru yang diperlukan."
+
+#: core/operationstack.cpp:233
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just copied: Removing the copy."
+msgstr "Menghapus partisi yang baru saja disalin: Membuang salinan."
+
+#: core/operationstack.cpp:238
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just copied over an existing partition: Removing the "
+"copy and deleting the existing partition."
+msgstr ""
+"Menghapus partisi yang baru saja disalin lebih dari satu partisi yang ada: "
+"Membuang salinan dan menghapus partisi yang ada."
+
+#: core/operationstack.cpp:251
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copying a partition that is itself a copy: Copying the original source "
+"partition instead."
+msgstr ""
+"Menyalin salinan partisi itu sendiri: Menyalin sumber asli partisi sebagai "
+"gantinya."
+
+#: core/operationstack.cpp:280
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just restored: Removing the restore operation."
+msgstr ""
+"Menghapus partisi yang baru saja dikembalikan: Membuang operasi pemulihan."
+
+#: core/operationstack.cpp:285
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just restored to an existing partition: Removing the "
+"restore operation and deleting the existing partition."
+msgstr ""
+"Menghapus partisi yang baru saja dikembalikan ke partisi yang ada: Membuang "
+"operasi pemulihan dan menghapus partisi yang ada."
+
+#: core/operationstack.cpp:318
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing flags again for the same partition: Removing old operation."
+msgstr "Mengubah bendera lagi untuk partisi yang sama: Membuang operasi lawas."
+
+#: core/operationstack.cpp:349
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label again for the same partition: Removing old operation."
+msgstr "Mengubah label lagi untuk partisi yang sama: Membuang operasi lawas."
+
+#: core/operationstack.cpp:375
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating new partition table, discarding previous operation on device."
+msgstr ""
+"Menciptakan tabel partisi baru, membuang operasi sebelumnya pada peranti."
+
+#: core/operationstack.cpp:395
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing Volume Group, nothing to do."
+msgstr "Mengubah Ukuran Grup Volume, tidak ada hubungannya."
+
+#: core/operationstack.cpp:440
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Add operation: %1"
+msgstr "Tambahkan operasi: %1"
+
+#: core/partition.cpp:159
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "unallocated"
+msgstr "tidak teralokasi"
+
+#: core/partition.cpp:162
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "New Partition"
+msgstr "Partisi Baru"
+
+#: core/partition.cpp:165
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Restored Partition"
+msgstr "Partisi Dikembalikan"
+
+#: core/partition.cpp:168
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Copy of %1"
+msgstr "Salinan dari %1"
+
+#: core/partitionalignment.cpp:80
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Partisi <filename>%1</filename> tidak pantas disejajarkan (sektor pertama: "
+"%2, modul: %3)."
+
+#: core/partitionalignment.cpp:83
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Partisi <filename>%1</filename> tidak pantas disejajarkan (sektor terakhir: "
+"%2, modul: %3)."
+
+#: core/partitionrole.cpp:17
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "unallocated"
+msgstr "tidak teralokasi"
+
+#: core/partitionrole.cpp:20
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "logical"
+msgstr "logikal"
+
+#: core/partitionrole.cpp:23
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "extended"
+msgstr "extended"
+
+#: core/partitionrole.cpp:26
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "primary"
+msgstr "primer"
+
+#: core/partitionrole.cpp:29
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LUKS"
+msgstr "LUKS"
+
+#: core/partitionrole.cpp:32
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LVM logical volume"
+msgstr "Volume logikal LVM"
+
+#: core/partitionrole.cpp:34
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "none"
+msgstr "tidak ada"
+
+#: core/partitiontable.cpp:180
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "boot"
+msgstr "boot"
+
+# Saya tidak menerjemahkan ke akar
+#: core/partitiontable.cpp:182
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "root"
+msgstr "root"
+
+#: core/partitiontable.cpp:184
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "swap"
+msgstr "swap"
+
+#: core/partitiontable.cpp:186
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hidden"
+msgstr "hidden"
+
+#: core/partitiontable.cpp:188
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "raid"
+msgstr "raid"
+
+#: core/partitiontable.cpp:190
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lvm"
+msgstr "lvm"
+
+#: core/partitiontable.cpp:192
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lba"
+msgstr "lba"
+
+#: core/partitiontable.cpp:194
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hpservice"
+msgstr "hpservice"
+
+#: core/partitiontable.cpp:196
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "palo"
+msgstr "palo"
+
+#: core/partitiontable.cpp:198
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "prep"
+msgstr "prep"
+
+#: core/partitiontable.cpp:200
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-reserved"
+msgstr "msft-reserved"
+
+#: core/partitiontable.cpp:202
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "bios-grub"
+msgstr "bios-grub"
+
+#: core/partitiontable.cpp:204
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "apple-tv-recovery"
+msgstr "apple-tv-recovery"
+
+#: core/partitiontable.cpp:206
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "diag"
+msgstr "diag"
+
+#: core/partitiontable.cpp:208
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "legacy-boot"
+msgstr "legacy-boot"
+
+#: core/partitiontable.cpp:210
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-data"
+msgstr "msft-data"
+
+#: core/partitiontable.cpp:212
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "irst"
+msgstr "irst"
+
+#: core/partitiontable.cpp:499
+#, kde-kuit-format
+msgctxt "@item partition table name"
+msgid "unknown"
+msgstr "tidak diketahui"
+
+#: core/raid/softwareraid.cpp:93
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level]"
+msgid " [RAID %1]"
+msgstr " [RAID %1]"
+
+#: core/raid/softwareraid.cpp:95
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Recovering]"
+msgid " [RAID %1 - Recovering]"
+msgstr " [RAID %1 - Pemulihan]"
+
+#: core/raid/softwareraid.cpp:97
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Resyncing]"
+msgid " [RAID %1 - Resyncing]"
+msgstr " [RAID %1 - Penyinkronan]"
+
+#: core/smartattribute.cpp:45
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "failing"
+msgstr "tidak berhasil"
+
+#: core/smartattribute.cpp:48
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "has failed"
+msgstr "telah gagal"
+
+#: core/smartattribute.cpp:51
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "warning"
+msgstr "peringatan"
+
+#: core/smartattribute.cpp:54
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "good"
+msgstr "bagus"
+
+#: core/smartattribute.cpp:58 core/smartattribute.cpp:85
+#, kde-kuit-format
+msgctxt "@item:intable not applicable"
+msgid "N/A"
+msgstr "N/A"
+
+#: core/smartattribute.cpp:72
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 sector"
+msgid_plural "%1 sectors"
+msgstr[0] "%1 sektor"
+msgstr[1] "%1 sektor"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Rate"
+msgstr "Read Error Rate"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Rate of hardware read errors while reading data from the disk surface."
+msgstr "Kadar error baca haedwer selagi membaca data dari permukaan disk."
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Throughput Performance"
+msgstr "Throughput Performance"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Overall (general) throughput performance of a hard disk drive. If the value "
+"of this attribute is decreasing there is a high probability that there is a "
+"problem with the disk."
+msgstr ""
+"Secara keseluruhan (umum) kinerja lalu-lalang dari sebuah perangkat hard "
+"disk. Jika nilai atribut ini menurun ada kemungkinan bahwa ada masalah "
+"dengan disk."
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin-Up Time"
+msgstr "Spin-Up Time"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Average time of spindle spin up from zero RPM to fully operational."
+msgstr ""
+"Waktu rata-rata kisaran-atas gelendong dari nol RPM untuk pengoperasian "
+"secara penuh."
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Start/Stop Count"
+msgstr "Start/Stop Count"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr description"
+msgid "A tally of spindle start/stop cycles."
+msgstr "Sebuah pencatatan siklus gelendong mulai/berhenti."
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocated Sectors Count"
+msgstr "Reallocated Sectors Count"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of reallocated sectors. When the hard drive finds a read/write/"
+"verification error, it marks this sector as &quot;reallocated&quot; and "
+"transfers data to a special reserved area (spare area)."
+msgstr ""
+"Jumlah sektor yang teralokasi. Ketika hard drive menemukan baca/tulis/error "
+"verifikasi, penandaan sektor ini sebagai &quot;teralokasi&quot; dan "
+"transferan data ke daerah tercadang khusus (area cadang)."
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Channel Margin"
+msgstr "Read Channel Margin"
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Margin of a channel while reading data. The function of this attribute is "
+"not specified."
+msgstr ""
+"Margin dari kanal selagi membaca data. Fungsi dari atribut ini tidak "
+"ditetapkan."
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Error Rate"
+msgstr "Seek Error Rate"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Rate of seek errors of the magnetic heads. If there is a partial failure in "
+"the mechanical positioning system, then seek errors will arise."
+msgstr ""
+"Laju error jangka head magnetik.  Jika ada kegagalan sebagian dalam sistem "
+"posisi mekanik, maka error jangka akan muncul."
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Time Performance"
+msgstr "Seek Time Performance"
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Average performance of seek operations of the magnetic heads. If this "
+"attribute is decreasing, it is a sign of problems in the mechanical "
+"subsystem."
+msgstr ""
+"Kinerja rata-rata dari operasi jangka pada head magnetik. Jika atribut ini "
+"menurun, itu adalah tanda ada masalah di mekanik subsistem."
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Hours"
+msgstr "Power-On Hours"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of hours in power-on state."
+msgstr "Jumlah jam dalam keadaan daya nyala."
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Retry Count"
+msgstr "Spin Retry Count"
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of retry of spin start attempts if the first attempt was unsuccessful. "
+"An increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"Jumlah pengulangan kisaran mulai percobaan jika mencoba pertama tidak "
+"berhasil.Peningkatan nilai atribut ini adalah tanda masalah dalam hard "
+"disksubsistem mekanis."
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Recalibration Retries"
+msgstr "Recalibration Retries"
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of recalibrations requested if the first attempt was unsuccessful. An "
+"increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"Jumlah recalibrations diminta jika usaha pertama tidak berhasil. Peningkatan "
+"nilai atribut ini adalah tanda masalah dalam hard disksubsistem mekanis."
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Cycle Count"
+msgstr "Power Cycle Count"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of full hard disk power on/off cycles."
+msgstr "Jumlah siklus daya nyala/mati hard disk penuh."
+
+#: core/smartattribute.cpp:113 core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft Read Error Rate"
+msgstr "Soft Read Error Rate"
+
+#: core/smartattribute.cpp:113
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Uncorrected read errors reported to the operating system."
+msgstr "Baca error tidak terkoreksi dilaporkan ke sistem operasi."
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Available Reserved Space"
+msgstr "SSD Available Reserved Space"
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of available reserved space as a percentage of reserved space."
+msgstr ""
+"Jumlah dari ruang pesanan yang tersedia sebagai presentasi dari jumlah ruang "
+"yang dipesan."
+
+#: core/smartattribute.cpp:115
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count"
+msgstr "SSD Program Fail Count"
+
+#: core/smartattribute.cpp:115 core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of flash program operation failures since the drive was deployed."
+msgstr "Jumlah dari kegagalan operasi program flash semenjak drive dikerahkan."
+
+#: core/smartattribute.cpp:116 core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count"
+msgstr "SSD Erase Fail Count"
+
+#: core/smartattribute.cpp:116
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase operation failures since the drive was deployed."
+msgstr ""
+"Jumlah dari kegagalan operasi penghapusan flash semenjak drive dikerahkan."
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Leveling Count"
+msgstr "SSD Wear Leveling Count"
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Counts the maximum worst erase count on any block."
+msgstr "Hitungan jumlah penghapusan terburuk maksimum pada blok apa pun."
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unexpected power loss count"
+msgstr "SSD Unexpected power loss count"
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of shutdowns without STANDBY IMMEDIATE as the last command "
+"(regardless of PLI activity using capacitor power). Normalized value is "
+"always 100."
+msgstr ""
+"Jumlah mematikan tanpa STANDBY IMMEDIATE sebagai perintah terakhir "
+"(bagaimanapun juga aktivitas PLI menggunakan daya capacitor). Biasanya "
+"nilainya adalah 100."
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Power Loss Protection Failure"
+msgstr "SSD Power Loss Protection Failure"
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Last test result, saturated at its maximum value. Bytes 0-1: last test "
+"result as microseconds to discharge cap in range [25, 5000000], lower "
+"indicates specific error code. Bytes 2-3: minutes since last test. Bytes "
+"4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
+"or 11 if the capacitor has been tested in an excessive temperature "
+"condition, otherwise 100."
+msgstr ""
+"Hasil uji terakhir, saturasi pada nilai maksimumnya. Bytes 0-1: hasil uji "
+"terakhir sebagai mikrodetik untuk melepaskan kap dalam jangkauan [25, "
+"5000000], lebih rendah menunjukkan kode error tertentu. Bytes 2-3: menit "
+"sejak uji terakhir. Bytes 4-5: jumlah uji seumur hidup. Biasanya nilainya "
+"adalah diset ke 1 pada kegagalan uji atau 11 jika kapasitor telah diuji "
+"dalam kondisi temperatur yang berlebihan, kalau enggak 100."
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count (chip)"
+msgstr "SSD Erase Fail Count (chip)"
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase command failures."
+msgstr "Jumlah dari kegagalan perintah penghapusan flash."
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Range Delta"
+msgstr "SSD Wear Range Delta"
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Delta between most-worn and least-worn flash blocks."
+msgstr "Delta antara blok-blok flash yang agak usang dan paling usang."
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Used Reserved Block Count Total"
+msgstr "SSD Used Reserved Block Count Total"
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#: core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" Samsung attribute."
+msgstr "Attribut Samsung \"Pre-Fail\"."
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unused Reserved Block Count Total"
+msgstr "SSD Unused Reserved Block Count Total"
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" HP attribute."
+msgstr "Atribut  HP \"Pre-Fail\"."
+
+#: core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+msgstr "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SATA Downshift Error Count"
+msgstr "Jumlah Error SATA Downshift"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital and Samsung attribute."
+msgstr "Attribut Western Digital dan Samsung"
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr name"
+msgid "End-to-End Error"
+msgstr "End-to-End Error"
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Part of HP's SMART IV technology: After transferring through the cache RAM "
+"data buffer the parity data between the host and the hard drive did not "
+"match."
+msgstr ""
+"Bagian dari teknologi HP SMART IV: Setelah menransfer melalui penyangga data "
+"cache RAM data paritas antara host dan hard drive tidak cocok."
+
+#: core/smartattribute.cpp:129
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Stability"
+msgstr "Head Stability"
+
+#: core/smartattribute.cpp:129 core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital attribute."
+msgstr "Attribut Western Digital"
+
+#: core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Induced Op-Vibration Detection"
+msgstr "Induced Op-Vibration Detection"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reported Uncorrectable Errors"
+msgstr "Reported Uncorrectable Errors"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could not be recovered using hardware ECC."
+msgstr ""
+"Jumlah error yang tidak bisa disembuhkan menggunakan perangkat-keras ECC."
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Command Timeout"
+msgstr "Command Timeout"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of aborted operations due to HDD timeout."
+msgstr "Jumlah operasi yang digugurkan disebabkan batas waktu HDD."
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr name"
+msgid "High Fly Writes"
+msgstr "High Fly Writes"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of fly height errors detected."
+msgstr "Jumlah error terbang tinggi terdeteksi."
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature Difference From 100"
+msgstr "Temperature Difference From 100"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
+"minimum threshold which corresponds to a maximum temperature."
+msgstr ""
+"Nilai sama dengan (suhu 100 &ndash;. °C), yang memungkinkan produsen untuk "
+"mengeset batas minimum yang sesuai dengan suhu maksimum."
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-sense Error Rate"
+msgstr "G-sense Error Rate"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors resulting from externally-induced shock and vibration."
+msgstr "Jumlah error hasil dari induksi secara external goncangan dan getaran."
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Off Retract Count"
+msgstr "Power Off Retract Count"
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of power-off or emergency retract cycles"
+msgstr "Jumlah daya mati atau siklus menarik kembali keadaan darurat"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Cycle Count"
+msgstr "Load Cycle Count"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of load/unload cycles into head landing zone position."
+msgstr "Jumlah siklus muat/bongkar kedalam posisi zona pendaratan kepala."
+
+#: core/smartattribute.cpp:138 core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature"
+msgstr "Temperature"
+
+#: core/smartattribute.cpp:138
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Current internal temperature."
+msgstr "Temperatur internal sekarang."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Hardware ECC Recovered"
+msgstr "Hardware ECC Recovered"
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could be recovered using hardware ECC."
+msgstr "Jumlah error yang bisa disembuhkan menggunakan perangkat-keras ECC."
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocation Event Count"
+msgstr "Reallocation Event Count"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of remap operations. The raw value of this attribute shows the total "
+"number of attempts to transfer data from reallocated sectors to a spare area."
+msgstr ""
+"Jumlah operasi map ulang. Nilai mentah dari atribut ini menunjukkan jumlah "
+"total dari percobaan untuk tranfer data dari sektor terrealokasi ke area "
+"luang."
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Current Pending Sector Count"
+msgstr "Current Pending Sector Count"
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
+"read errors)."
+msgstr ""
+"Jumlah sektor &quot;labil&quot; (menunggu untuk dipetakan ulang, karena "
+"error baca)."
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Uncorrectable Sector Count"
+msgstr "Uncorrectable Sector Count"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of uncorrectable errors when reading/writing a sector."
+msgstr "Jumlah error yang tidak bisa dikoreksi ketika membaca/menulis sektor."
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr name"
+msgid "UltraDMA CRC Error Count"
+msgstr "UltraDMA CRC Error Count"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of errors in data transfer via the interface cable as determined by "
+"ICRC."
+msgstr ""
+"Jumlah error dalam tranfer data via kabel penghubung seperti ditentukan oleh "
+"ICRC."
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Multi-Zone Error Rate<br/>Write Error Rate"
+msgstr "Multi-Zone Error Rate<br/>Write Error Rate"
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr description"
+msgid "The total number of errors when writing a sector."
+msgstr "Jumlah total error ketika menulis sektor."
+
+#: core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of off-track errors."
+msgstr "Jumlah error track mati."
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Data Address Mark Errors"
+msgstr "Data Address Mark Errors"
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of Data Address Mark errors (or vendor-specific)."
+msgstr "Jumlah error Tanda Alamat Data (atau khusus vendor)."
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Run Out Cancel"
+msgstr "Run Out Cancel"
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of ECC errors"
+msgstr "Jumlah error ECC"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft ECC Correction"
+msgstr "Soft ECC Correction"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors corrected by software ECC"
+msgstr "Jumlah error terkoreksi berdasarkan perangkat lunak ECC"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Thermal Asperity Rate"
+msgstr "Thermal Asperity Rate"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors due to high temperature."
+msgstr "Jumlah error karena temperatur tinggi"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Flying Height"
+msgstr "Flying Height"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Height of heads above the disk surface. A flying height that is too low "
+"increases the chances of a head crash while a flying height that is too high "
+"increases the chances of a read/write error."
+msgstr ""
+"Ketinggian kepala di atas permukaan disk. Sebuah ketinggian terbang yang "
+"terlalu rendahmeningkatkan kemungkinan kepala membentur, sementara "
+"ketinggian terbang yang terlalu tinggimeningkatkan kemungkinan error baca/"
+"tulis."
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin High Current"
+msgstr "Spin High Current"
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Amount of surge current used to spin up the drive."
+msgstr "Banyaknya gelombang yang digunakan sekarang untuk kisaran-atas drive."
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Buzz"
+msgstr "Spin Buzz"
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of buzz routines needed to spin up the drive due to insufficient "
+"power."
+msgstr ""
+"Jumlah dengungan terus-menerus diperlukan untuk kisaran-atas drive "
+"sehubungan daya tidak cukup."
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Offline Seek Performance"
+msgstr "Offline Seek Performance"
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive's seek performance during its internal tests."
+msgstr "Kinerja jangka drive sewaktu uji internalnya."
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Vibration During Write"
+msgstr "Vibration During Write"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Vibration During Write"
+msgstr "Getaran Sewaktu Menulis"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Shock During Write"
+msgstr "Shock During Write"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Shock During Write"
+msgstr "Goncangan Sewaktu Tulis"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Disk Shift"
+msgstr "Disk Shift"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Distance the disk has shifted relative to the spindle (usually due to shock "
+"or temperature)."
+msgstr ""
+"Jarak disk relatif tergeser ke gelendong (biasanya karena goncangan atau "
+"temperatur)."
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-Sense Error Rate"
+msgstr "G-Sense Error Rate"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of errors resulting from externally-induced shock and vibration."
+msgstr "Jumlah error hasil dari induksi secara external goncangan dan getaran."
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Loaded Hours"
+msgstr "Loaded Hours"
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time spent operating under data load."
+msgstr "Waktu yang dihabiskan beroperasi di bawah beban data."
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Retry Count"
+msgstr "Load/Unload Retry Count"
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of times head changes position."
+msgstr "Jumlah saat kepala berubah posisi."
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Friction"
+msgstr "Load Friction"
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Resistance caused by friction in mechanical parts while operating."
+msgstr ""
+"Perlawanan disebabkan oleh gesekan di bagian mekanik selagi beroperasi."
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Cycle Count"
+msgstr "Load/Unload Cycle Count"
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total number of load cycles."
+msgstr "Total jumlah siklus beban."
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load-In Time"
+msgstr "Load-In Time"
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Total time of loading on the magnetic heads actuator (time not spent in "
+"parking area)."
+msgstr ""
+"Total waktu memuat pada penggerak kepala magnet (waktu tidak dihabiskan di "
+"area parkir)."
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Torque Amplification Count"
+msgstr "Torque Amplification Count"
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of attempts to compensate for platter speed variations."
+msgstr "Jumlah percobaan untuk mengimbangi atas variasi kecepatan piringan."
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-Off Retract Cycle"
+msgstr "Power-Off Retract Cycle"
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of times the magnetic armature was retracted automatically as a "
+"result of cutting power."
+msgstr ""
+"Jumlah saat jangkar magnetik menarik kembali secara otomatis karena akibat "
+"pemangkasan daya."
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr name"
+msgid "GMR Head Amplitude"
+msgstr "GMR Head Amplitude"
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
+"head motion)"
+msgstr ""
+"Amplitude &quot;thrashing&quot; (jarak berulang maju/mundur gerakan kepala)"
+
+#: core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive Temperature"
+msgstr "Temperatur Drive"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Endurance Remaining"
+msgstr "Endurance Remaining"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of physical erase cycles completed on the drive as a percentage of the "
+"maximum physical erase cycles the drive supports"
+msgstr ""
+"Jumlah siklus hapus fisik lengkap pada drive sebagai presentase dari siklus "
+"hapus fisik maksimum dukungan drive"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Seconds"
+msgstr "Power-On Seconds"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time elapsed in the power-on state"
+msgstr "Waktu berlalu dalam situasi daya nyala"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Unrecoverable ECC Count"
+msgstr "Unrecoverable ECC Count"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of unrecoverable ECC errors"
+msgstr "Jumlah error tidak bisa disembuhkan ECC"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Good Block Rate"
+msgstr "Good Block Rate"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of available reserved blocks as percentage of the total number of "
+"reserved blocks"
+msgstr ""
+"Jumlah blok terpelihara tersedia sebagai presentasi dari jumlah total blok "
+"terpelihara"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+msgstr "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Time while head is positioning<br/>or counts the number of times the link is "
+"reset during a data transfer."
+msgstr ""
+"Waktu ketika head sedang memosisikan<br/>atau mengitung jumlah waktu, tautan "
+"diset ulang sewaktu mentransfer data."
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Written"
+msgstr "Total LBAs Written"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Written"
+msgstr "Total Tulis LBAs"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Read"
+msgstr "Total LBAs Read"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Read"
+msgstr "Total Baca LBAs"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD NAND_Writes_1GiB"
+msgstr "SSD NAND_Writes_1GiB"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of writes to NAND in 1 GB increments"
+msgstr "Jumlah penulisan untuk NAND dalam 1 GB lebih"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Retry Rate"
+msgstr "Read Error Retry Rate"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors while reading from a disk"
+msgstr "Jumlah error selagi membaca dari disk"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Free Fall Protection"
+msgstr "Free Fall Protection"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of &quot;Free Fall Events&quot; detected"
+msgstr "Jumlah pada &quot;Free Fall Events&quot; yang terdeteksi"
+
+#: core/smartstatus.cpp:78
+#, kde-kuit-format
+msgctxt "@item:intable degrees in Celsius and Fahrenheit"
+msgid "%1° C / %2° F"
+msgstr "%1° C / %2° F"
+
+#: core/smartstatus.cpp:86
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Aborted"
+msgstr "Digugurkan"
+
+#: core/smartstatus.cpp:89
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Interrupted"
+msgstr "Terceletuk"
+
+#: core/smartstatus.cpp:92
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Fatal error"
+msgstr "Error fatal"
+
+#: core/smartstatus.cpp:95
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Unknown error"
+msgstr "Error takdiketahui"
+
+#: core/smartstatus.cpp:98
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Electrical error"
+msgstr "Error elektrik"
+
+#: core/smartstatus.cpp:101
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Servo error"
+msgstr "Error servo"
+
+#: core/smartstatus.cpp:104
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Read error"
+msgstr "Errot baca"
+
+#: core/smartstatus.cpp:107
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Handling error"
+msgstr "Error penanganan"
+
+#: core/smartstatus.cpp:110
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Self test in progress"
+msgstr "Uji sendiri sedang berlangsung"
+
+#: core/smartstatus.cpp:114
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Success"
+msgstr "Sukses"
+
+#: core/smartstatus.cpp:123
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Healthy"
+msgstr "Waras"
+
+#: core/smartstatus.cpp:126
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has been used outside of its design parameters in the past."
+msgstr "Telah digunakan di luar parameter disain di masa lalu."
+
+#: core/smartstatus.cpp:129
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has some bad sectors."
+msgstr "Memunyai beberapa sektor buruk."
+
+#: core/smartstatus.cpp:132
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Is being used outside of its design parameters right now."
+msgstr "Sedang digunakan di luar parameter disain sekarang."
+
+#: core/smartstatus.cpp:135
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has many bad sectors."
+msgstr "Memunyai banyak sektor buruk."
+
+#: core/smartstatus.cpp:139
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Disk failure is imminent. Backup all data!"
+msgstr "Diambang kegagalan disk. Cadangkan semua data!"
+
+#: fs/btrfs.cpp:166
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Mengubah ukuran sistem file Btrfs pada partisi <filename>%1</filename>, "
+"gagal: Tidak bisa menciptakan dir temp."
+
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"btrfs file system resize failed."
+msgstr ""
+"Mengubah ukuran sistem file Btrfs pada partisi <filename>%1</filename>, "
+"gagal: Gagal mengubah ukuran sistem file."
+
+#: fs/btrfs.cpp:187
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning> Mengubah-ukuran sistem file Btrfs pada partisi <filename>%1</"
+"filename>: Lepaskait, gagal.</warning>"
+
+#: fs/btrfs.cpp:189
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Mengubah ukuran sistem file Btrfs pada partisi <filename>%1</filename>, "
+"gagal: Inisial kait, gagal."
+
+#: fs/fat12.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Setting label for partition <filename>%1</filename> to %2"
+msgstr "Mengeset label untuk partisi <filename>%1</filename> ke %2"
+
+#: fs/filesystem.cpp:503
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unknown"
+msgstr "tidak diketahui"
+
+#: fs/filesystem.cpp:504
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "extended"
+msgstr "extended"
+
+#: fs/filesystem.cpp:506
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext2"
+msgstr "ext2"
+
+#: fs/filesystem.cpp:507
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext3"
+msgstr "ext3"
+
+#: fs/filesystem.cpp:508
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext4"
+msgstr "ext4"
+
+#: fs/filesystem.cpp:509
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linuxswap"
+msgstr "linuxswap"
+
+#: fs/filesystem.cpp:510
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat16"
+msgstr "fat16"
+
+#: fs/filesystem.cpp:511
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat32"
+msgstr "fat32"
+
+#: fs/filesystem.cpp:512
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ntfs"
+msgstr "ntfs"
+
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser"
+msgstr "reiser"
+
+#: fs/filesystem.cpp:514
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser4"
+msgstr "reiser4"
+
+#: fs/filesystem.cpp:515
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "xfs"
+msgstr "xfs"
+
+#: fs/filesystem.cpp:516
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "jfs"
+msgstr "jfs"
+
+#: fs/filesystem.cpp:517
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfs"
+msgstr "hfs"
+
+#: fs/filesystem.cpp:518
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfsplus"
+msgstr "hfsplus"
+
+#: fs/filesystem.cpp:519
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ufs"
+msgstr "ufs"
+
+#: fs/filesystem.cpp:520
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unformatted"
+msgstr "tidak terformat"
+
+#: fs/filesystem.cpp:521
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "btrfs"
+msgstr "btrfs"
+
+#: fs/filesystem.cpp:522
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hpfs"
+msgstr "hpfs"
+
+#: fs/filesystem.cpp:523
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks"
+msgstr "luks"
+
+#: fs/filesystem.cpp:524
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ocfs2"
+msgstr "ocfs2"
+
+#: fs/filesystem.cpp:525
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "zfs"
+msgstr "zfs"
+
+#: fs/filesystem.cpp:526
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "exfat"
+msgstr "exfat"
+
+#: fs/filesystem.cpp:527
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "nilfs2"
+msgstr "nilfs2"
+
+#: fs/filesystem.cpp:528
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "lvm2 pv"
+msgstr "lvm2 pv"
+
+#: fs/filesystem.cpp:529
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "f2fs"
+msgstr "f2fs"
+
+#: fs/filesystem.cpp:530
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "udf"
+msgstr "udf"
+
+#: fs/filesystem.cpp:531
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "iso9660"
+msgstr "iso9660"
+
+#: fs/filesystem.cpp:532
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks2"
+msgstr "luks2"
+
+#: fs/filesystem.cpp:533
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat12"
+msgstr "fat12"
+
+#: fs/filesystem.cpp:534
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linux_raid_member"
+msgstr "linux_raid_member"
+
+#: fs/filesystem.cpp:535
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:menu"
+#| msgid "Lock"
+msgctxt "@item filesystem name"
+msgid "BitLocker"
+msgstr "Kunci"
+
+#: fs/filesystem.cpp:536
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "apfs"
+msgstr ""
+
+#: fs/filesystem.cpp:537
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "minix"
+msgstr ""
+
+#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Mount"
+msgstr "Kait"
+
+#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unmount"
+msgstr "Lepaskait"
+
+#: fs/jfs.cpp:155
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Mengubah ukuran sistem file JFS pada partisi <filename>%1</filename>, gagal: "
+"Tidak dapat menciptakan dir temp."
+
+#: fs/jfs.cpp:169 fs/jfs.cpp:188
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Remount failed."
+msgstr ""
+"Mengubah ukuran sistem file JFS pada partisi <filename>%1</filename>, gagal: "
+"Kait ulang, gagal."
+
+#: fs/jfs.cpp:174
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing JFS file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Mengubah ukuran sistem file JFS pada partisi <filename>%1</"
+"filename>: Lepaskait, gagal.</warning>"
+
+#: fs/jfs.cpp:176
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Mengubah ukuran sistem file JFS pada partisi <filename>%1</filename>, gagal: "
+"Inisial kait, gagal."
+
+#: fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Aktifkan swap"
+
+#: fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Nonaktifkan swap"
+
+#: fs/luks.cpp:166
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unlock"
+msgstr "Lepas-kunci"
+
+#: fs/luks.cpp:171
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Lock"
+msgstr "Kunci"
+
+#: fs/luks.cpp:252
+#, kde-format
+msgid "Enter passphrase for %1:"
+msgstr "Masukkan sandi frasa untuk %1:"
+
+#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+msgstr "Mengubah ukuran kripsi LUKS pada partisi <filename>%1</filename>."
+
+#: fs/luks.cpp:509 fs/luks2.cpp:116
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing encrypted file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Mengubah-ukuran sistem file terenkripsi pada partisi <filename>%1</"
+"filename>, gagal."
+
+#: fs/nilfs2.cpp:137
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Mengubah-ukuran sistem file NILFS2 pada partisi <filename>%1</filename>, "
+"gagal: Tidak dapat menciptakan dir temp."
+
+#: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"NILFS2 file system resize failed."
+msgstr ""
+"Mengubah-ukuran sistem file NILFS2 pada partisi <filename>%1</filename>, "
+"gagal: Mengubah-ukuran sistem file NILFS2, gagal."
+
+#: fs/nilfs2.cpp:156
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Mengubah-ukuran sistem file NILFS2 pada partisi <filename>%1</"
+"filename>, gagal: Lepaskait, gagal.</warning>"
+
+#: fs/nilfs2.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Mengubah-ukuran sistem file NILFS2 pada partisi <filename>%1</filename>, "
+"gagal: Inisial kait, gagal."
+
+#: fs/ntfs.cpp:182
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updating boot sector for NTFS file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Memperbarui sektor boot untuk sistem file NTFS pada partisi <filename>%1</"
+"filename>."
+
+#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not write new start sector to partition <filename>%1</filename> when "
+"trying to update the NTFS boot sector."
+msgstr ""
+"Tidak bisa menulis sektor awal baru untuk partisi <filename>%1</filename> "
+"ketika mencoba memperbarui sektor boot NTFS."
+
+#: fs/ntfs.cpp:206
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updated NTFS boot sector for partition <filename>%1</filename> successfully."
+msgstr ""
+"Berhasil memperbarui sektor boot NTFS untuk partisi <filename>%1</filename>."
+
+#: fs/xfs.cpp:159
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Mengubah-ukuran sistem file XFS pada partisi <filename>%1</filename>, gagal: "
+"Tidak dapat menciptakan dir temp."
+
+#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"xfs_growfs failed."
+msgstr ""
+"Mengubah-ukuran sistem file XFS pada partisi <filename>%1</filename>, gagal: "
+"xfs_growfs, gagal."
+
+#: fs/xfs.cpp:178
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing XFS file system on partition <filename>%1</filename> "
+"failed: Unmount failed.</warning>"
+msgstr ""
+"<warning>Mengubah-ukuran sistem file XFS pada partisi <filename>%1</"
+"filename>, gagal: Lepaskait, gagal.</warning>"
+
+#: fs/xfs.cpp:180
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Mengubah- ukuran sistem file XFS pada partisi <filename>%1</filename>, "
+"gagal: Inisial kait, gagal."
+
+#: jobs/backupfilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"backup."
+msgstr ""
+"Tidak bisa membuka sistem file pada sumber partisi <filename>%1</filename> "
+"untuk cadangan."
+
+#: jobs/backupfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not create backup file <filename>%1</filename>."
+msgstr "Tidak bisa menciptakan cadangan file <filename>%1</filename>."
+
+#: jobs/backupfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Back up file system on partition <filename>%1</filename> to <filename>%2</"
+"filename>"
+msgstr ""
+"Cadangkan sistem file pada partisi <filename>%1</filename> ke <filename>%2</"
+"filename>"
+
+#: jobs/changepermissionsjob.cpp:43
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info/plain"
+msgid "Change the permissions of: <filename>%1</filename> to %2"
+msgstr "Set label untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: jobs/checkfilesystemjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Check file system on partition <filename>%1</filename>"
+msgstr "Periksa sistem file pada partisi <filename>%1</filename>"
+
+#: jobs/copyfilesystemjob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Cannot copy file system: File system on target partition <filename>%1</"
+"filename> is smaller than the file system on source partition <filename>%2</"
+"filename>."
+msgstr ""
+"Tak bisa menyalin sistem file: Sistem file pada partisi sasaran <filename>"
+"%1</filename> lebih kecil daripada sistem file pada sumber partisi <filename>"
+"%2</filename>."
+
+#: jobs/copyfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Tidak bisa membuka sistem file pada sumber partisi <filename>%1</filename> "
+"untuk penyalinan."
+
+#: jobs/copyfilesystemjob.cpp:58
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on target partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Tidak bisa membuka sistem file pada sasaran partisi <filename>%1</filename> "
+"untuk penyalinan."
+
+#: jobs/copyfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Closing device. This may take a while, especially on slow devices like "
+"Memory Sticks."
+msgstr ""
+"Menutup peranti. Mungkin ini memakan beberapa waktu, terutama pada peranti "
+"lambat seperti Memory Sticks."
+
+#: jobs/copyfilesystemjob.cpp:88
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
+msgstr ""
+"Salin sistem file pada partisi <filename>%1</filename> ke partisi <filename>"
+"%2</filename>"
+
+#: jobs/createfilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to set the system type for the file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Gagal mengeset tipe sistem file untuk sistem file pada partisi <filename>%1</"
+"filename>."
+
+#: jobs/createfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"system type for partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka tabel partisi pada peranti <filename>%1</filename> untuk "
+"mengeset tipe sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/createfilesystemjob.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the system type for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka peranti <filename>%1</filename> untuk mengeset tipe "
+"sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/createfilesystemjob.cpp:84
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Create file system <filename>%1</filename> on partition <filename>%2</"
+"filename>"
+msgstr ""
+"Ciptakan sistem file <filename>%1</filename> pada partisi <filename>%2</"
+"filename>"
+
+#: jobs/createpartitionjob.cpp:72
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Gagal menambahkan partisi <filename>%1</filename> untuk peranti <filename>"
+"%2</filename>."
+
+#: jobs/createpartitionjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to create "
+"new partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka tabel partisi pada peranti <filename>%1</filename> untuk "
+"menciptakan partisi <filename>%2</filename> baru."
+
+#: jobs/createpartitionjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to create new partition "
+"<filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka peranti <filename>%1</filename> untuk menciptakan partisi "
+"<filename>%2</filename> baru."
+
+#: jobs/createpartitionjob.cpp:94
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition <filename>%1</filename>"
+msgstr "Ciptakan partisi <filename>%1</filename> baru"
+
+#: jobs/createpartitionjob.cpp:96
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition on device <filename>%1</filename>"
+msgstr "Ciptakan partisi baru pada peranti <filename>%1</filename>"
+
+#: jobs/createpartitiontablejob.cpp:49
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Creating partition table failed: Could not open device <filename>%1</"
+"filename>."
+msgstr ""
+"Menciptakan tabel partisi, gagal: Tidak dapat membuka peranti <filename>%1</"
+"filename>."
+
+#: jobs/createpartitiontablejob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition table on device <filename>%1</filename>"
+msgstr "Ciptakan tabel partisi baru pada peranti <filename>%1</filename>"
+
+#: jobs/createvolumegroupjob.cpp:49
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
+msgstr ""
+"Ciptakan sebuah Grup Volume baru: <filename>%1</filename> dengan PV: %2"
+
+#: jobs/deactivatelogicalvolumejob.cpp:50
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Logical Volumes: <filename>%1</filename>"
+msgstr "Nonaktifkan Volume Logikal: <filename>%1</filename>"
+
+#: jobs/deactivatevolumegroupjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Volume Group: <filename>%1</filename>"
+msgstr "Nonaktifkan Grup Volume: <filename>%1</filename>"
+
+#: jobs/deletefilesystemjob.cpp:51
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system: file system on <filename>%1</filename> is "
+"mounted."
+msgstr ""
+"Tidak bisa menghapus sistem file: sistem file pada <filename>%1</filename> "
+"telah terkait."
+
+#: jobs/deletefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete file system on <filename>%1</filename>."
+msgstr "Tidak bisa menghapus sistem file pada <filename>%1</filename>."
+
+#: jobs/deletefilesystemjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"file system on <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka tabel partisi pada peranti <filename>%1</filename> untuk "
+"menghapus sistem file pada <filename>%2</filename>."
+
+#: jobs/deletefilesystemjob.cpp:83
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system signature for partition <filename>%1</"
+"filename>: Failed to open device <filename>%2</filename>."
+msgstr ""
+"Tidak dapat menghapus tandatangan sistem file untuk partisi <filename>%1</"
+"filename>: Gagal membuka peranti <filename>%2</filename>."
+
+#: jobs/deletefilesystemjob.cpp:93
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete file system on <filename>%1</filename>"
+msgstr "Hapus sistem file pada <filename>%1</filename>"
+
+#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete partition <filename>%1</filename>."
+msgstr "Tidak bisa menghapus partisi <filename>%1</filename>."
+
+#: jobs/deletepartitionjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka tabel partisi pada peranti <filename>%1</filename> untuk "
+"menghapus partisi <filename>%2</filename>."
+
+#: jobs/deletepartitionjob.cpp:67
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Deleting partition failed: Could not open device <filename>%1</filename>."
+msgstr ""
+"Menghapus partisi, gagal: Tidak dapat membuka peranti <filename>%1</"
+"filename>."
+
+#: jobs/deletepartitionjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete the partition <filename>%1</filename>"
+msgstr "Hapus partisi <filename>%1</filename>"
+
+#: jobs/job.cpp:45
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Source and target for copying do not overlap: Rollback is not required."
+msgstr ""
+"Sumber dan sasaran untuk penyalinan jangan tumpang-tindih: Perpulihan tidak "
+"diperlukan."
+
+#: jobs/job.cpp:69
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback from: First byte: %1, last byte: %2."
+msgstr "Perpulihan dari: Bita pertama: %1, bita terakhir: %2."
+
+#: jobs/job.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback to: First byte: %1, last byte: %2."
+msgstr "Perpulihan ke: Bita pertama: %1, bita terakhir: %2."
+
+#: jobs/job.cpp:74 jobs/job.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open device <filename>%1</filename> to rollback copying."
+msgstr ""
+"Tidak bisa membuka peranti <filename>%1</filename> untuk perpulihan "
+"penyalinan."
+
+#: jobs/job.cpp:86
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback failed: Source or target are not devices."
+msgstr "Perpulihan, gagal: Sumber atau sasaran bukanlah peranti."
+
+#: jobs/job.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Job: %1"
+msgstr "Tugas: %1"
+
+#: jobs/job.cpp:115
+#, kde-kuit-format
+msgctxt "@info:progress job status (error, warning, ...)"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: jobs/job.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Pending"
+msgstr "Tertunda"
+
+#: jobs/job.cpp:135
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Success"
+msgstr "Sukses"
+
+#: jobs/job.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Error"
+msgstr "Error"
+
+#: jobs/movefilesystemjob.cpp:52
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"Tidak dapat membuka sistem file pada partisi <filename>%1</filename> untuk "
+"pemindahan."
+
+#: jobs/movefilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not create target for moving file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Tidak dapat menciptakan sasaran untuk pemindahan sistem file pada partisi "
+"<filename>%1</filename>."
+
+#: jobs/movefilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback for file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Perpulihan untuk sistem file pada partisi <filename>%1</filename>, gagal."
+
+#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/shredfilesystemjob.cpp:66
+#, kde-format, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Closing device. This may take a few seconds."
+msgstr "Mengeluarkan peranti. Mungkin ini memakan beberapa detik."
+
+#: jobs/movefilesystemjob.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Move the file system on partition <filename>%1</filename> to sector %2"
+msgstr "Pindah sistem file pada partisi <filename>%1</filename> ke sektor %2"
+
+#: jobs/movephysicalvolumejob.cpp:57
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Move used PE in %1 on %2 to other available Physical Volumes"
+msgstr ""
+"Pindah menggunakan PE di %1 pada %2 untuk Volume-volume Fisik yang tersedia "
+"lainnya"
+
+#: jobs/removevolumegroupjob.cpp:41
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove Volume Group: <filename>%1</filename>"
+msgstr "Hapus Volume Group: <filename>%1</filename>"
+
+#: jobs/resizefilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of 1 sector."
+msgid_plural ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of %1 sectors."
+msgstr[0] ""
+"Sistem file pada partisi <filename>%2</filename> sudah diminta panjangnya 1 "
+"sektor."
+msgstr[1] ""
+"Sistem file pada partisi <filename>%2</filename> sudah diminta panjangnya %1 "
+"sektor."
+
+#: jobs/resizefilesystemjob.cpp:69
+#, kde-format
+msgctxt "@info:progress"
+msgid "Resizing file system from %1 to %2 sectors."
+msgstr "Mengubah-ukuran sistem file dari sektor %1 ke %2."
+
+#: jobs/resizefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing a %1 file system using internal backend functions."
+msgstr "Mengubah-ukuran sistem file %1 menggunakan fungsi backend internal."
+
+#: jobs/resizefilesystemjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%1</filename> cannot be resized "
+"because there is no support for it."
+msgstr ""
+"Sistem file pada partisi <filename>%1</filename> tidak bisa diubah-ukurannya "
+"karena tidak ada dukungan untuk itu."
+
+#: jobs/resizefilesystemjob.cpp:119
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Successfully resized file system using internal backend functions."
+msgstr ""
+"Berhasil mengubah ukuran sistem file menggunakan fungsi backend internal."
+
+#: jobs/resizefilesystemjob.cpp:123
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition <filename>%1</filename> while trying to resize the "
+"file system."
+msgstr ""
+"Tidak dapat membuka partisi <filename>%1</filename> selagi mencoba mengubah "
+"ukuran sistem file."
+
+#: jobs/resizefilesystemjob.cpp:126
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not read geometry for partition <filename>%1</filename> while trying "
+"to resize the file system."
+msgstr ""
+"Tidak dapat membaca geometri untuk partisi <filename>%1</filename> selagi "
+"mencoba mengubah ukuran sistem file."
+
+#: jobs/resizefilesystemjob.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Maximize file system on <filename>%1</filename> to fill the partition"
+msgstr ""
+"Memaksimalkan sistem file pada <filename>%1</filename> untuk memenuhi partisi"
+
+#: jobs/resizefilesystemjob.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+msgid_plural ""
+"Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgstr[0] ""
+"Mengubah ukuran sistem file pada partisi <filename>%2</filename> ke 1 sektor"
+msgstr[1] ""
+"Mengubah ukuran sistem file pada partisi <filename>%2</filename> ke %1 sektor"
+
+#: jobs/resizevolumegroupjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Adding LVM Physical Volume %2 to %3."
+msgid_plural "Adding LVM Physical Volumes %2 to %3."
+msgstr[0] "Penambahan Volume Fisik LVM %2 ke %3."
+msgstr[1] "Penambahan Volume-volume Fisik LVM %2 ke %3."
+
+#: jobs/resizevolumegroupjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Removing LVM Physical Volume %2 from %3."
+msgid_plural "Removing LVM Physical Volumes %2 from %3."
+msgstr[0] "Pengurangan Volume Fisik LVM %2 dari %3."
+msgstr[1] "Pengurangan Volume Fisik LVM %2 dari %3."
+
+#: jobs/resizevolumegroupjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resizing Volume Group %1 to %2."
+msgstr "Pengubahan ukuran Volume Group %1 ke %2."
+
+#: jobs/restorefilesystemjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgstr ""
+"Tidak dapat membuka cadangan file <filename>%1</filename> untuk pemulihan."
+
+#: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open target partition <filename>%1</filename> to restore to."
+msgstr ""
+"Tidak dapat membuka sasaran partisi <filename>%1</filename> untuk pemulihan."
+
+#: jobs/restorefilesystemjob.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Restore the file system from file <filename>%1</filename> to partition "
+"<filename>%2</filename>"
+msgstr ""
+"Kembalikan sistem file dari file <filename>%1</filename> ke partisi "
+"<filename>%2</filename>"
+
+#: jobs/setfilesystemlabeljob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"File system on partition <filename>%1</filename> does not support setting "
+"labels. Job ignored."
+msgstr ""
+"Sistem file pada partisi <filename>%1</filename> tidak mendukung label "
+"pengaturan. Tugas diabaikan."
+
+#: jobs/setfilesystemlabeljob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgstr "Set label sistem file pada partisi <filename>%1</filename> ke \"%2\""
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned on, active"
+msgid "on"
+msgstr "nyala"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned off, inactive"
+msgid "off"
+msgstr "mati"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"There was an error setting flag %1 for partition <filename>%2</filename> to "
+"state %3."
+msgstr ""
+"Ada error pengaturan bendera %1 terhadap partisi <filename>%2</filename> "
+"untuk keadaan %3."
+
+#: jobs/setpartflagsjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set "
+"partition flags for partition <filename>%2</filename>."
+msgstr ""
+"Tidak dapat membuka tabel partisi pada peranti <filename>%1</filename> untuk "
+"mengeset bendera partisi terhadap partisi <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set partition flags for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Tidak dapat membuka peranti <filename>%1</filename> untuk mengeset bendera "
+"partisi terhadap partisi <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Bersihkan bendera untuk partisi <filename>%1</filename>"
+
+#: jobs/setpartflagsjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Set bendera untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: jobs/setpartgeometryjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> while trying to resize/move "
+"partition <filename>%2</filename>."
+msgstr ""
+"Tidak dapat membuka peranti <filename>%1</filename> selagi mencoba untuk "
+"mengubah-ukuran/memindah partisi <filename>%2</filename>."
+
+#: jobs/setpartgeometryjob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
+"%3"
+msgstr ""
+"Mengeset geometri pada partisi <filename>%1</filename>: Mulai sektor: %2, "
+"panjang: %3"
+
+#: jobs/setpartitionattributesjob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting attributes. Job ignored."
+msgstr ""
+"Sistem file pada partisi <filename>%1</filename> tidak mendukung label "
+"pengaturan. Tugas diabaikan."
+
+#: jobs/setpartitionattributesjob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Failed to create new partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the attributes for the partition <filename>%1</filename>."
+msgstr "Gagal ciptakan partisi baru <filename>%1</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to set "
+#| "the system type for partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"attributes for the partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka tabel partisi pada perangkat <filename>%1</filename> "
+"untuk mengeset tipe sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open device <filename>%1</filename> to set the system type for "
+#| "partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the attributes for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka perangkat <filename>%1</filename> untuk mengeset tipe "
+"sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
+msgstr "Set label untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: jobs/setpartitionlabeljob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting names. Job ignored."
+msgstr ""
+"Sistem file pada partisi <filename>%1</filename> tidak mendukung label "
+"pengaturan. Tugas diabaikan."
+
+#: jobs/setpartitionlabeljob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Failed to create new partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the name for the partition <filename>%1</filename>."
+msgstr "Gagal ciptakan partisi baru <filename>%1</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to set "
+#| "the system type for partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"name for the partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka tabel partisi pada perangkat <filename>%1</filename> "
+"untuk mengeset tipe sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open device <filename>%1</filename> to set the system type for "
+#| "partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the name for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka perangkat <filename>%1</filename> untuk mengeset tipe "
+"sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the label on partition <filename>%1</filename> to \"%2\""
+msgstr "Set label untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: jobs/setpartitionuuidjob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting UUIDs. Job ignored."
+msgstr ""
+"Sistem file pada partisi <filename>%1</filename> tidak mendukung label "
+"pengaturan. Tugas diabaikan."
+
+#: jobs/setpartitionuuidjob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Failed to create new partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the UUID for the partition <filename>%1</filename>."
+msgstr "Gagal ciptakan partisi baru <filename>%1</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to set "
+#| "the system type for partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"UUID for the partition <filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka tabel partisi pada perangkat <filename>%1</filename> "
+"untuk mengeset tipe sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open device <filename>%1</filename> to set the system type for "
+#| "partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the UUID for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Tidak bisa membuka perangkat <filename>%1</filename> untuk mengeset tipe "
+"sistem untuk partisi <filename>%2</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+msgstr "Set label untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: jobs/shredfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open random data source to overwrite file system."
+msgstr "Tidak dapat membuka sumber data acak untuk menimpa sistem file."
+
+#: jobs/shredfilesystemjob.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Shred the file system on <filename>%1</filename>"
+msgstr "Mengiris sistem file pada <filename>%1</filename>"
+
+#: ops/backupoperation.cpp:39
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
+msgstr ""
+"Cadangkan partisi <filename>%1</filename> (%2, %3) ke <filename>%4</filename>"
+
+#: ops/checkoperation.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
+msgstr "Pemeriksaan dan perbaikan partisi <filename>%1</filename> (%2, %3)"
+
+#: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<warning>Maximizing file system on target partition <filename>%1</filename> "
+"to the size of the partition failed.</warning>"
+msgstr ""
+"<warning>Pemaksimalan sistem file pada sasaran partisi <filename>%1</"
+"filename> ke ukuran terhadap partisi, gagal.</warning>"
+
+#: ops/copyoperation.cpp:151
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking target partition <filename>%1</filename> after copy failed."
+msgstr ""
+"Pemeriksaan partisi <filename>%1</filename> sasaran setelah salin, gagal."
+
+#: ops/copyoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying source to target partition failed."
+msgstr "Penyalinan sumber ke partisi sasaran, gagal."
+
+#: ops/copyoperation.cpp:161
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating target partition for copying failed."
+msgstr "Penciptaan partisi sasaran untuk penyalinan, gagal."
+
+#: ops/copyoperation.cpp:163
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking source partition <filename>%1</filename> failed."
+msgstr "Pemeriksaan sumber partisi <filename>%1</filename>, gagal."
+
+#: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
+#: ops/restoreoperation.cpp:148
+#, kde-kuit-format
+msgctxt "@info:status (success, error, warning...) of operation"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/copyoperation.cpp:179
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6)"
+msgstr ""
+"Penyalinan partisi <filename>%1</filename> (%2, %3) ke <filename>%4</"
+"filename> (%5, %6)"
+
+#: ops/copyoperation.cpp:188
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6) and grow it to %7"
+msgstr ""
+"Penyalinan partisi <filename>%1</filename> (%2, %3) ke <filename>%4</"
+"filename> (%5, %6) dan menumbuhkannya ke %7."
+
+#: ops/copyoperation.cpp:200
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename>"
+msgstr ""
+"Penyalinan partisi <filename>%1</filename> (%2, %3) ke ruang tak-teralokasi "
+"(bermulai di %4) pada <filename>%5</filename>"
+
+#: ops/copyoperation.cpp:208
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename> and grow it to %6"
+msgstr ""
+"Penyalinan partisi <filename>%1</filename> (%2, %3) ke ruang tak-teralokasi "
+"(bermulai di %4) pada <filename>%5</filename> dan menumbuhkannya ke %6"
+
+#: ops/createfilesystemoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create filesystem %1 on partition <filename>%2</filename>"
+msgstr "Penciptaan sistem-file %1 pada partisi <filename>%2</filename>"
+
+#: ops/createpartitiontableoperation.cpp:104
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
+msgstr ""
+"Penciptaan sebuah tabel partisi baru (tipe: %1) pada <filename>%2</filename>"
+
+#: ops/createvolumegroupoperation.cpp:36
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new LVM volume group named '%1'."
+msgstr "Ciptakan sebuah grup volume LVM baru bernama '%1'."
+
+#: ops/deactivatevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate volume group."
+msgstr "Nonaktifkan grup volume."
+
+#: ops/deleteoperation.cpp:87
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Shred partition <filename>%1</filename> (%2, %3)"
+msgstr "Pengirisan partisi <filename>%1</filename> (%2, %3)"
+
+#: ops/deleteoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Delete partition <filename>%1</filename> (%2, %3)"
+msgstr "Penghapusan partisi <filename>%1</filename> (%2, %3)"
+
+#: ops/newoperation.cpp:205
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
+msgstr "Penciptaan sebuah partisi baru (%1, %2) pada <filename>%3</filename>"
+
+#: ops/operation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "None"
+msgstr "Nihil"
+
+#: ops/operation.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Pending"
+msgstr "Bertunda"
+
+#: ops/operation.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Running"
+msgstr "Berjalan"
+
+#: ops/operation.cpp:78
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Success"
+msgstr "Sukses"
+
+#: ops/operation.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Warning"
+msgstr "Peringatan"
+
+#: ops/operation.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Error"
+msgstr "Error"
+
+#: ops/removevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove a LVM volume group."
+msgstr "Hapus sebuah grup volume LVM."
+
+#: ops/resizeoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving extended partition <filename>%1</filename> failed."
+msgstr "Pemindahan extended partisi <filename>%1</filename>, gagal."
+
+#: ops/resizeoperation.cpp:165
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgstr ""
+"Pemeriksaan partisi <filename>%1</filename> setelah ubah-ukuran/pindah, "
+"gagal."
+
+#: ops/resizeoperation.cpp:168
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgstr "Pengubahan-ukuran/pemindahan partisi <filename>%1</filename>, gagal."
+
+#: ops/resizeoperation.cpp:171
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> before resize/move failed."
+msgstr ""
+"Pemeriksaan partisi <filename>%1</filename> sebelum ubah-ukuran/pindah, "
+"gagal."
+
+#: ops/resizeoperation.cpp:201
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the left by %2"
+msgstr "Pindah partisi <filename>%1</filename> ke kiri di samping %2"
+
+#: ops/resizeoperation.cpp:204
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the right by %2"
+msgstr "Pindah partisi <filename>%1</filename> ke kanan di samping %2"
+
+#: ops/resizeoperation.cpp:207
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgstr "Tumbuhkan partisi <filename>%1</filename> dari %2 ke %3"
+
+#: ops/resizeoperation.cpp:210
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Shrink partition <filename>%1</filename> from %2 to %3"
+msgstr "Susutkan partisi <filename>%1</filename> dari %2 ke %3"
+
+#: ops/resizeoperation.cpp:213
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
+"to %4"
+msgstr ""
+"Pindahkan partisi <filename>%1</filename> ke kiri di samping %2 dan "
+"menumbuhkannya dari %3 ke %4"
+
+#: ops/resizeoperation.cpp:216
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and grow it from "
+"%3 to %4"
+msgstr ""
+"Pindahkan partisi <filename>%1</filename> ke kanan di samping %2 dan "
+"menumbuhkannya dari %3 ke %4"
+
+#: ops/resizeoperation.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Pindahkan partisi <filename>%1</filename> ke kiri di samping %2 dan "
+"menyusutkannya dari %3 ke %4"
+
+#: ops/resizeoperation.cpp:222
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Pindahkan partisi <filename>%1</filename> ke kanan di samping %2 dan "
+"menyusutkannya dari %3 ke %4"
+
+#: ops/resizeoperation.cpp:229
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Unknown resize/move action."
+msgstr "Aksi ubah-ukuran/pindah, takdiketahui."
+
+#: ops/resizeoperation.cpp:258
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize file system to shrink partition "
+"<filename>%1</filename>."
+msgstr ""
+"Pengubahan-ukuran/pemindahan, gagal: Tidak dapat mengubah-ukuran sistem file "
+"untuk menyusutkan partisi  <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:263
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
+msgstr ""
+"Pengubahan-ukuran/pemindahan, gagal: Tidak dapat menyusutkan partisi  "
+"<filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:282
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving partition <filename>%1</filename> failed."
+msgstr "Pemindahan partisi <filename>%1</filename>, gagal."
+
+#: ops/resizeoperation.cpp:287
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
+"back."
+msgstr ""
+"Pemindahan sistem file untuk partisi <filename>%1</filename>, gagal. "
+"Pulihkan kembali."
+
+#: ops/resizeoperation.cpp:291
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving back partition <filename>%1</filename> to its original position "
+"failed."
+msgstr ""
+"Pemindahan kembali partisi <filename>%1</filename> ke partisi aslinya, gagal."
+
+#: ops/resizeoperation.cpp:304
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
+msgstr ""
+"Pengubahan-ukuran/pemindahan, gagal: Tidak dapat menumbuhkan partisi "
+"<filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:309
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
+msgstr ""
+"Pengubahan-ukuran/pemindahan, gagal: Tidak dapat mengubah-ukuran sistem file "
+"pada partisi  <filename>%1</filename>"
+
+#: ops/resizeoperation.cpp:312
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Could not restore old partition size for partition <filename>%1</filename>."
+msgstr ""
+"Tidak dapat mengembalikan ukuran partisi lawas untuk partisi <filename>%1</"
+"filename>."
+
+#: ops/resizevolumegroupoperation.cpp:108
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resize volume %1 from %2 to %3"
+msgstr "Ubah-ukuran volume %1 dari %2 ke %3."
+
+#: ops/restoreoperation.cpp:133
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking target file system on partition <filename>%1</filename> after the "
+"restore failed."
+msgstr ""
+"Pemeriksaan sistem file sasaran pada partisi <filename>%1</filename> setelah "
+"pemulihan, gagal."
+
+#: ops/restoreoperation.cpp:138
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Restoring file system failed."
+msgstr "Pemulihan sistem file, gagal."
+
+#: ops/restoreoperation.cpp:141
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating the destination partition to restore to failed."
+msgstr "Penciptaan partisi tujuan untuk mengembalikan yang gagal."
+
+#: ops/restoreoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition from <filename>%1</filename> to <filename>%2</filename>"
+msgstr ""
+"Kembalikan partisi dari <filename>%1</filename> ke <filename>%2</filename>"
+
+#: ops/restoreoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
+"filename>"
+msgstr ""
+"Kembalikan partisi pada <filename>%1</filename> di %2 dari <filename>%3</"
+"filename>"
+
+#: ops/setfilesystemlabeloperation.cpp:58
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgstr "Set label untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: ops/setfilesystemlabeloperation.cpp:60
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
+msgstr "Set label untuk partisi <filename>%1</filename> dari \"%2\" ke \"%3\""
+
+#: ops/setpartflagsoperation.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Bersihkan bendera partisi <filename>%1</filename>"
+
+#: ops/setpartflagsoperation.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Set bendera untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: plugins/sfdisk/sfdiskbackend.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Software RAID Device found: %1"
+msgstr "Ditemukan Peranti Lunak Peranti RAID: %1"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:249
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Device found: %1"
+msgstr "Ditemukan perangkat: %1"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr ""
+"Peran partisi takdiketahui untuk partisi <filename>%1</filename> baru "
+"(peran: %2)"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Gagal menambahkan partisi <filename>%1</filename> ke peranti <filename>%2</"
+"filename>."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:114
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not set geometry for partition <filename>%1</filename> while trying to "
+"resize/move it."
+msgstr ""
+"Tidak dapat mengeset geometri untuk partisi <filename>%1</filename> selagi "
+"mencoba untuk mengubah-ukuran/memindahnya."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:124
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to erase filesystem signature on partition <filename>%1</filename>."
+msgstr ""
+"Gagal menghapus tandatangan sistem file pada partisi <filename>%1</filename>."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:157
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not determine file system of partition at sector %1 on device "
+"<filename>%2</filename>."
+msgstr ""
+"Tidak dapat menentukan sistem file partisi di sektor %1 pada peranti "
+"<filename>%2</filename>."
+
+#: util/capacity.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "Byte"
+msgstr[1] "Byte"
+
+#: util/capacity.cpp:101
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "KiB"
+msgstr "KiB"
+
+#: util/capacity.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "MiB"
+msgstr "MiB"
+
+#: util/capacity.cpp:103
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "GiB"
+msgstr "GiB"
+
+#: util/capacity.cpp:104
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "TiB"
+msgstr "TiB"
+
+#: util/capacity.cpp:105
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "PiB"
+msgstr "PiB"
+
+#: util/capacity.cpp:106
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "EiB"
+msgstr "EiB"
+
+#: util/capacity.cpp:107
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "ZiB"
+msgstr "ZiB"
+
+#: util/capacity.cpp:108
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "YiB"
+msgstr "YiB"
+
+#: util/capacity.cpp:112
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "(unknown unit)"
+msgstr "(unit takdiketahui)"
+
+#: util/externalcommand.cpp:111 util/externalcommand.cpp:114
+#: util/externalcommand.cpp:226
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Command: %1 %2"
+msgstr "Perintah: %1 %2"
+
+#: util/externalcommandhelper.cpp:82
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for reading."
+msgstr "Tidak dapat membuka peranti <filename>%1</filename> untuk pembacaan."
+
+#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#, kde-kuit-format
+msgid "Could not seek position %1 on device <filename>%2</filename>."
+msgstr "Tidak dapat menjangka posisi %1 pada peranti <filename>%2</filename>."
+
+#: util/externalcommandhelper.cpp:96
+#, kde-kuit-format
+msgid "Could not read from device <filename>%1</filename>."
+msgstr "Tidak dapat membaca dari peranti <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:114
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for writing."
+msgstr "Tidak dapat membuka peranti <filename>%1</filename> untuk penulisan."
+
+#: util/externalcommandhelper.cpp:125
+#, kde-kuit-format
+msgid "Could not write to device <filename>%1</filename>."
+msgstr "Tidak dapat menulis ke peranti <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:151
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for writing."
+msgid "Could not open file <filename>%1</filename> for writing."
+msgstr "Tidak dapat membuka perangkat <filename>%1</filename> untuk penulisan."
+
+#: util/externalcommandhelper.cpp:156
+#, fuzzy, kde-kuit-format
+#| msgid "Could not write to device <filename>%1</filename>."
+msgid "Could not write to file <filename>%1</filename>."
+msgstr "Tidak dapat menulis ke perangkat <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:237
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+msgctxt "@info:progress"
+msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
+msgstr "Menyalin %1 blok (%2 byte) dari %3 ke %4, tujuan: %5."
+
+#: util/externalcommandhelper.cpp:238
+#, kde-format
+msgctxt "direction: left"
+msgid "left"
+msgstr "kiri"
+
+#: util/externalcommandhelper.cpp:239
+#, kde-format
+msgctxt "direction: right"
+msgid "right"
+msgstr "kanan"
+
+#: util/externalcommandhelper.cpp:261
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 MiB/second, estimated time left: %2"
+msgstr "Menyalin %1 MiB/detik, diperkirakan waktu tinggal: %2"
+
+#: util/externalcommandhelper.cpp:274
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Copying remainder of block size %1 from %2 to %3."
+msgctxt "@info:progress"
+msgid "Copying remainder of chunk size %1 from %2 to %3."
+msgstr "Menyalin sisa ukuran blok %1 dari %2 ke %3."
+
+#: util/externalcommandhelper.cpp:288
+#, kde-format
+msgid "1 byte"
+msgid_plural "%1 bytes"
+msgstr[0] "1 byte"
+msgstr[1] "%1 byte"
+
+#: util/externalcommandhelper.cpp:288
+#, fuzzy, kde-kuit-format
+#| msgctxt ""
+#| "@info:progress argument 2 is a string such as 7 bytes (localized "
+#| "accordingly)"
+#| msgid "Copying 1 block (%2) finished."
+#| msgid_plural "Copying %1 blocks (%2) finished."
+msgctxt ""
+"@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
+msgid "Copying 1 chunk (%2) finished."
+msgid_plural "Copying %1 chunks (%2) finished."
+msgstr[0] "Penyalinan 1 blok (%2) terselesaikan."
+msgstr[1] "Penyalinan %1 blok (%2) terselesaikan."
+
+#: util/helpers.cpp:49
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<application>KPMcore</application>"
+msgstr "<application>KPMcore</application>"
+
+#: util/helpers.cpp:50
+#, kde-kuit-format
+msgctxt "@title"
+msgid "Library for managing partitions"
+msgstr "Pustaka untuk pengelolaan partisi"
+
+#: util/helpers.cpp:51
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:credit"
+#| msgid "&copy; 2008-2018 KPMcore developers"
+msgctxt "@info:credit"
+msgid "&copy; 2008-2022 KPMcore developers"
+msgstr "&copy; 2008-2018 Developer KPMcore"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Volker Lanz"
+msgstr "Volker Lanz"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Former maintainer"
+msgstr "Pengelola yang dahulu"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Andrius Štikonas"
+msgstr "Andrius Štikonas"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Maintainer"
+msgstr "Pemelihara"
+
+#: util/helpers.cpp:58
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Teo Mrnjavac"
+msgstr "Teo Mrnjavac"
+
+#: util/helpers.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Former Calamares maintainer"
+msgstr "Mantan pemelihara Calamares"
+
+#: util/helpers.cpp:59
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Chantara Tith"
+msgstr "Chantara Tith"
+
+#: util/helpers.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "LVM support"
+msgstr "Dukungan LVM"
+
+#: util/helpers.cpp:60
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Pali Rohár"
+msgstr "Pali Rohár"
+
+#: util/helpers.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "UDF support"
+msgstr "Dukungan UDF"
+
+#: util/helpers.cpp:61
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Adriaan de Groot"
+msgstr "Adriaan de Groot"
+
+#: util/helpers.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Calamares maintainer"
+msgstr "Pemelihara Calamares"
+
+#: util/helpers.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:credit"
+#| msgid "Caio Carvalho"
+msgctxt "@info:credit"
+msgid "Caio Jordão Carvalho"
+msgstr "Caio Carvalho"
+
+#: util/helpers.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Improved SMART support"
+msgstr "Menambah-baik dukungan SMART"
+
+#: util/helpers.cpp:63
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "David Edmundson"
+msgstr ""
+
+#: util/helpers.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Port from KAuth to Polkit"
+msgstr ""
+
+#: util/htmlreport.cpp:51 util/htmlreport.cpp:58
+#, kde-format
+msgid "%1: SMART Status Report"
+msgstr "%1: Laporan Status SMART"
+
+#: util/htmlreport.cpp:66
+#, kde-format
+msgid "Date:"
+msgstr "Tanggal:"
+
+#: util/htmlreport.cpp:67
+#, kde-format
+msgid "Program version:"
+msgstr "Versi program:"
+
+#: util/htmlreport.cpp:68
+#, kde-format
+msgid "Backend:"
+msgstr "Backend:"
+
+#: util/htmlreport.cpp:69
+#, kde-format
+msgid "KDE Frameworks version:"
+msgstr "Versi KDE Frameworks:"
+
+#: util/htmlreport.cpp:70
+#, kde-format
+msgid "Machine:"
+msgstr "Mesin:"
+
+#~ msgctxt "@info:status"
+#~ msgid "Could not obtain administrator privileges."
+#~ msgstr "Tidak dapat memperoleh hak istimewa pengurus."
+
+#~ msgid "QCA does not support RSA."
+#~ msgstr "QCA tidak mendukung RSA."
+
+#~ msgid "Failed to make private RSA key."
+#~ msgstr "Gagal membuat kunci privat RSA."
+
+#~ msgid "Generated key cannot be used for signatures."
+#~ msgstr "Kunci yang dihasilkan tidak bisa digunakan untuk tandatangan."
+
+#~ msgid "Invalid cryptographic signature"
+#~ msgstr "Tandatangan cryptographic takabsah"
+
+#~ msgctxt "@item partition flag"
+#~ msgid "esp"
+#~ msgstr "esp"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Decrypt"
+#~ msgstr "Dekripsi"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Deactivate"
+#~ msgstr "Nonaktifkan"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "LibParted Exception: %1"
+#~ msgctxt "@info:status"
+#~ msgid "LibParted Exception: %1"
+#~ msgstr "Perkecualian LibParted: %1"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not retrieve partition table type "
+#~| "\"%1\" for <filename>%2</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not retrieve partition table type "
+#~ "\"%1\" for <filename>%2</filename>."
+#~ msgstr ""
+#~ "Gagal menciptakan tabel partisi: Tidak bisa mengambil tipe tabel partisi "
+#~ "\"%1\" untuk <filename>%2</filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not open backend device <filename>"
+#~| "%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not open backend device <filename>"
+#~ "%1</filename>."
+#~ msgstr ""
+#~ "Gagal menciptakan tabel partisi: Tidak bisa membuka backend perangkat "
+#~ "<filename>%1</filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not create a new partition table "
+#~| "in the backend for device <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not create a new partition table "
+#~ "in the backend for device <filename>%1</filename>."
+#~ msgstr ""
+#~ "Gagal menciptakan tabel partisi: Tidak bisa menciptakan sebuah tabel "
+#~ "partisi baru pada backend untuk perangkat <filename>%1</filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Failed to create a new partition: could not get geometry for constraint."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Failed to create a new partition: could not get geometry for constraint."
+#~ msgstr ""
+#~ "Gagal ciptakan partisi baru: tidak bisa mendapatkan geometri karena "
+#~ "kendala."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
+#~| "not found on disk."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
+#~ "not found on disk."
+#~ msgstr ""
+#~ "Gagal menghapus partisi: Untuk hapus partisi (<filename>%1</filename>) "
+#~ "tidak ditemukan pada disk."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not get constraint for partition <filename>%1</filename> while "
+#~| "trying to resize/move it."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get constraint for partition <filename>%1</filename> while "
+#~ "trying to resize/move it."
+#~ msgstr ""
+#~ "Tidak bisa mendapatkan batasan untuk partisi <filename>%1</filename> "
+#~ "selagi mencoba untuk mengubah ukuran/memindahnya."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not get geometry for partition <filename>%1</filename> while "
+#~| "trying to resize/move it."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for partition <filename>%1</filename> while trying "
+#~ "to resize/move it."
+#~ msgstr ""
+#~ "Tidak bisa mendapatkan geometri untuk partisi <filename>%1</filename> "
+#~ "selagi mencoba untuk mengubah ukuran/memindahnya."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize/"
+#~| "move it."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> while trying to resize/"
+#~ "move it."
+#~ msgstr ""
+#~ "Tidak bisa membuka partisi <filename>%1</filename> selagi mencoba untuk "
+#~ "mengubah ukuran/memindahnya."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not delete file system on partition <filename>%1</filename>: "
+#~| "Failed to get partition."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not delete file system on partition <filename>%1</filename>: Failed "
+#~ "to get partition."
+#~ msgstr ""
+#~ "Tidak bisa menghapus sistem berkas pada partisi <filename>%1</filename>: "
+#~ "Gagal mendapatkan partisi."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Tidak bisa ubah-ukuran sistem berkas pada partisi <filename>%1</filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not get geometry for resized partition <filename>%1</filename> "
+#~| "while trying to resize the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for resized partition <filename>%1</filename> "
+#~ "while trying to resize the file system."
+#~ msgstr ""
+#~ "Tidak bisa mendapatkan geometri untuk ubah-ukuran partisi <filename>%1</"
+#~ "filename> selagi mencoba mengubah ukuran sistem berkas."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not update the system type for partition <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not update the system type for partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Tidak bisa memperbarui tipe sistem berkas untuk partisi <filename>%1</"
+#~ "filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "No file system defined."
+#~ msgctxt "@info:progress"
+#~ msgid "No file system defined."
+#~ msgstr "Tidak ada sistem berkas yang ditetapkan."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "No partition found at sector %1."
+#~ msgctxt "@info:progress"
+#~ msgid "No partition found at sector %1."
+#~ msgstr "Tidak ada partisi yang ditemukan di sektor %1."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not find partition <filename>%1</filename> on device <filename>%2</"
+#~| "filename> to set partition flags."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not find partition <filename>%1</filename> on device <filename>%2</"
+#~ "filename> to set partition flags."
+#~ msgstr ""
+#~ "Tidak bisa menemukan partisi <filename>%1</filename> pada perangkat "
+#~ "<filename>%2</filename> untuk setel bendera partisi."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "The flag \"%1\" is not available on the partition's partition table."
+#~ msgctxt "@info:progress"
+#~ msgid "The flag \"%1\" is not available on the partition's partition table."
+#~ msgstr "Bendera \"%1\" tidak tersedia pada partisi-partisi tabel partisi."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "(Command timeout while starting \"%1\")"
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while starting)"
+#~ msgstr "(Perintah timeout selagi memulai \"%1\")"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "(Command timeout while running \"%1\")"
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while running)"
+#~ msgstr "(Perintah timeout selagi menjalankan \"%1\")"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> for writing when trying "
+#~| "to update the NTFS boot sector."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Tidak bisa membuka partisi <filename>%1</filename> untuk menulis ketika "
+#~ "mencoba perbarui sektor boot  NTFS."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not seek to position 0x1c on partition <filename>%1</filename> "
+#~| "when trying to update the NTFS boot sector."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not seek to position 0x1c on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Tidak bisa mencari posisi 0x1c pada partisi <filename>%1</filename> "
+#~ "ketika mencoba perbarui sektor boot  NTFS."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "The logical sector sizes in the source and target for copying are not "
+#~| "the same. This is currently unsupported."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "The logical sector sizes in the source and target for copying are not the "
+#~ "same. This is currently unsupported."
+#~ msgstr ""
+#~ "Ukuran sektor logikal di dalam sumber dan target untuk menyalin tidaklah "
+#~ "sama. Untuk saat ini tidak didukung."
+
+#~ msgid "1 sector"
+#~ msgid_plural "%1 sectors"
+#~ msgstr[0] "%1 sektor"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Columns"
+#~ msgstr "Kolom"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Warning: Maximizing file system on target partition <filename>%1</"
+#~| "filename> to the size of the partition failed."
+#~ msgctxt "@info:status"
+#~ msgid ""
+#~ "Warning: Maximizing file system on target partition <filename>%1</"
+#~ "filename> to the size of the partition failed."
+#~ msgstr ""
+#~ "Peringatan: Gagal memaksimalkan sistem berkas pada target partisi "
+#~ "<filename>%1</filename> dengan ukuran partisi."
+
+#~ msgctxt "@info/plain status (success, error, warning...) of operation"
+#~ msgid "%1: %2"
+#~ msgstr "%1: %2"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "Byte"
+#~ msgid_plural "Bytes"
+#~ msgstr[0] "Bytes"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "KiB"
+#~ msgstr "KiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "MiB"
+#~ msgstr "MiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "GiB"
+#~ msgstr "GiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "TiB"
+#~ msgstr "TiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "PiB"
+#~ msgstr "PiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "EiB"
+#~ msgstr "EiB"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Check file system on partition <filename>%1</filename>"
+#~ msgctxt "@info/plain"
+#~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
+#~ msgstr "Periksa sistem berkas pada partisi <filename>%1</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Decrypt LUKS partition on <filename>%1</filename>"
+#~ msgstr "Dekripsi partisi LUKS pada <filename>%1</filename>"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Decrypt"
+#~ msgstr "&Dekripsi"
+
+#~ msgid "&Name:"
+#~ msgstr "&Nama:"
+
+#~ msgid "&Passphrase:"
+#~ msgstr "&Kalimat Sandi:"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> for writing when trying "
+#~| "to update the NTFS boot sector."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS serial number."
+#~ msgstr ""
+#~ "Tidak bisa membuka partisi <filename>%1</filename> untuk menulis ketika "
+#~ "mencoba perbarui sektor boot  NTFS."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not seek to position 0x1c on partition <filename>%1</filename> "
+#~| "when trying to update the NTFS boot sector."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not seek to position 0x48 on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS serial number."
+#~ msgstr ""
+#~ "Tidak bisa mencari posisi 0x1c pada partisi <filename>%1</filename> "
+#~ "ketika mencoba perbarui sektor boot  NTFS."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not write new NTFS serial number to partition <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Tidak bisa ubah-ukuran sistem berkas pada partisi <filename>%1</filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#~| "successfully."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Updated NTFS serial number for partition <filename>%1</filename> "
+#~ "successfully."
+#~ msgstr ""
+#~ "Sektor boot NTFS untuk partisi <filename>%1</filename> diperbarui dengan "
+#~ "sukses."
+
+#~ msgctxt "@label"
+#~ msgid "Is this the first time KDE Partition Manager is being run?"
+#~ msgstr "Ini adalah pertama kali Manajer Partisi KDE dijalankan?"
+
+#~ msgctxt "@label"
+#~ msgid "Hide log messages below"
+#~ msgstr "Sembunyikan pesan log bawah"
+
+#~ msgctxt "@label"
+#~ msgid "Partition sector alignment"
+#~ msgstr "Kesejajaran sektor partisi"
+
+#~ msgctxt "@label"
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr "Gunakan kesejajaran berdasarkan silinder (kompatibel Windows XP)"
+
+#~ msgctxt "@label"
+#~ msgid "Align partitions per default"
+#~ msgstr "Jajarkan partisi tiap bawaan"
+
+#~ msgctxt "@label"
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr "Biarkan menerapkan operasi tanpa hak administrator"
+
+#~ msgctxt "@label"
+#~ msgid "File system colors"
+#~ msgstr "Warna sistem berkas"
+
+#~ msgctxt "@label"
+#~ msgid "Show the application's menu bar"
+#~ msgstr "Tampilkan batang menu suatu aplikasi "
+
+#~ msgctxt "@label"
+#~ msgid "Backend plugin"
+#~ msgstr "Plugin backend"
+
+#~ msgctxt "@label"
+#~ msgid "Preferred unit:"
+#~ msgstr "Unit yang lebih disukai:"
+
+#~ msgctxt "@title:tab general application settings"
+#~ msgid "General"
+#~ msgstr "Umum"
+
+#~ msgid "General Settings"
+#~ msgstr "Pengaturan Umum"
+
+#~ msgctxt "@title:tab"
+#~ msgid "File System Colors"
+#~ msgstr "Warna Sistem Berkas"
+
+#~ msgid "File System Color Settings"
+#~ msgstr "Pengaturan Warna Sistem Berkas"
+
+#~ msgctxt "@title:tab advanced application settings"
+#~ msgid "Advanced"
+#~ msgstr "Lanjutan"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Pengaturan Lanjutan"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to change the backend?</para><para><warning>This "
+#~ "will also rescan devices and thus clear the list of pending operations.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "<para>Apakah anda benar-benar akan mengubah backend?</"
+#~ "para><para><warning>Ini juga akan memindai ulang perangkat dan dengan "
+#~ "demikian membersihkan daftar operasi tertunda.</warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Change Backend?"
+#~ msgstr "Benar-benar Ubah Backend?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the Backend"
+#~ msgstr "Ubah Backend"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the Backend"
+#~ msgstr "Jangan Ubah Backend"
+
+#~ msgid "Permissions"
+#~ msgstr "Perizinan"
+
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr "Biarkan menerapkan operasi tanpa hak administrator"
+
+#~ msgid "Backend"
+#~ msgstr "Backend"
+
+#~ msgid "Active backend:"
+#~ msgstr "Backend aktif:"
+
+#~ msgid "Units"
+#~ msgstr "Unit"
+
+#~ msgid "Preferred unit:"
+#~ msgstr "Unit yang lebih disukai:"
+
+#~ msgid "File Systems"
+#~ msgstr "Sistem Berkas"
+
+#~ msgid "luks:"
+#~ msgstr "luks:"
+
+#~ msgid "ntfs:"
+#~ msgstr "ntfs:"
+
+#~ msgid "ext2:"
+#~ msgstr "ext2:"
+
+#~ msgid "ext3:"
+#~ msgstr "ext3:"
+
+#~ msgid "ext4:"
+#~ msgstr "ext4:"
+
+#~ msgid "btrfs:"
+#~ msgstr "btrfs:"
+
+#~ msgid "linuxswap:"
+#~ msgstr "linuxswap:"
+
+#~ msgid "fat16:"
+#~ msgstr "fat16:"
+
+#~ msgid "fat32:"
+#~ msgstr "fat32:"
+
+#~ msgid "zfs:"
+#~ msgstr "zfs:"
+
+#~ msgid "reiserfs:"
+#~ msgstr "reiserfs:"
+
+#~ msgid "reiser4:"
+#~ msgstr "reiser4:"
+
+#~ msgid "hpfs:"
+#~ msgstr "hpfs:"
+
+#~ msgid "jfs"
+#~ msgstr "jfs"
+
+#~ msgid "hfs:"
+#~ msgstr "hfs:"
+
+#~ msgid "hfsplus:"
+#~ msgstr "hfsplus:"
+
+#~ msgid "ufs:"
+#~ msgstr "ufs:"
+
+#~ msgid "xfs:"
+#~ msgstr "xfs:"
+
+#~ msgid "ocfs2:"
+#~ msgstr "ocfs2:"
+
+#~ msgid "extended:"
+#~ msgstr "extended:"
+
+#~ msgid "unformatted:"
+#~ msgstr "tidak terformat:"
+
+#~ msgid "unknown:"
+#~ msgstr "tidak diketahui:"
+
+#~ msgid "exfat:"
+#~ msgstr "exfat:"
+
+#~ msgid "nilfs2:"
+#~ msgstr "nilfs2:"
+
+#~ msgid "lvm2 pv:"
+#~ msgstr "lvm2 pv:"
+
+#~ msgid "Partition Alignment"
+#~ msgstr "Kesejajaran Partisi"
+
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr "Gunakan kesejajaran berbasis silinder (kompatibel Windows XP)"
+
+#~ msgid "Sector alignment:"
+#~ msgstr "Kesejajaran sektor:"
+
+#~ msgid " sectors"
+#~ msgstr " sektor"
+
+#~ msgid "Align partitions per default"
+#~ msgstr "Jajarkan partisi per baku"
+
+#~ msgid "Logging"
+#~ msgstr "Membukukan"
+
+#~ msgid "Hide messages below:"
+#~ msgstr "Sembunyikan pesan bawah:"
+
+#~ msgid "Debug"
+#~ msgstr "Kekutu"
+
+#~ msgid "Information"
+#~ msgstr "Informasi"
+
+#~ msgid "Warning"
+#~ msgstr "Peringatan"
+
+#~ msgid "Error"
+#~ msgstr "Galat"
+
+#~ msgid "Default file system:"
+#~ msgstr "Sistem berkas Default"
+
+#~ msgid "Shredding"
+#~ msgstr "Mengiris"
+
+#~ msgid "Overwrite with:"
+#~ msgstr "Timpa dengan:"
+
+#~ msgid "Random data"
+#~ msgstr "Data acak"
+
+#~ msgid "Zeros"
+#~ msgstr "Nol"
+
+#~ msgid "Save"
+#~ msgstr "Simpan"
+
+#~ msgid "Open in External Browser"
+#~ msgstr "Buka di Peramban Eksternal"
+
+#~ msgid "&Details"
+#~ msgstr "&Rincian"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Setting up..."
+#~ msgstr "Persiapan..."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Waiting for operation to finish..."
+#~ msgstr "Menunggu operasi selesai..."
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to cancel?"
+#~ msgstr "Apakah anda benar-benar ingin membatalkan?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cancel Running Operations"
+#~ msgstr "Batalkan Operasi Berjalan"
+
+#~ msgctxt "@action:button"
+#~ msgid "Yes, Cancel Operations"
+#~ msgstr "Ya, Batalkan Operasi"
+
+#~ msgctxt "@info:progress"
+#~ msgid "All operations successfully finished."
+#~ msgstr "Semua operasi dengan sukses selesai."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Operations cancelled."
+#~ msgstr "Operasi diatalkan."
+
+#~ msgctxt "@info:progress"
+#~ msgid "There were errors while applying operations. Aborted."
+#~ msgstr "Ada galat selagi menerapkan operasi. Digugurkan."
+
+#~ msgctxt "@info:progress"
+#~ msgid "[%1/%2] - %3: %4"
+#~ msgstr "[%1/%2] - %3: %4"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Total Time: %1"
+#~ msgstr "Total Waktu: %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary file when trying to save to <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Tidak bisa menciptakan berkas sementara ketika mencoba simpan ke "
+#~ "<filename>%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save Report."
+#~ msgstr "Tidak Bisa Simpan Laporan."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The configured external browser could not be run. Please check your "
+#~ "settings."
+#~ msgstr ""
+#~ "Peramban eksternal yang diatur tidak bisa jalan. Silakan periksa "
+#~ "pengaturan anda."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Launch Browser."
+#~ msgstr "Tidak Bisa Luncurkan Peramban."
+
+#~ msgctxt "@info"
+#~ msgid "Could not create temporary file <filename>%1</filename> for writing."
+#~ msgstr ""
+#~ "Tidak bisa menciptakan berkas sementara <filename>%1</filename> untuk "
+#~ "menulis."
+
+#~ msgid "Operations and Jobs"
+#~ msgstr "Operasi dan Tugas"
+
+#~ msgid "Time Elapsed"
+#~ msgstr "Waktu Berlalu"
+
+#~ msgid "Total Time: 00:00:00"
+#~ msgstr "Total Waktu: 00:00:00"
+
+#~ msgid "Operation: %p%"
+#~ msgstr "Operasi: %p%"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Total: %p%"
+#~ msgstr "Total: %p%"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a New Partition Table on <filename>%1</filename>"
+#~ msgstr "Ciptakan sebuah &Tabel Partisi Baru pada <filename>%1</filename>"
+
+#~ msgid "Create &New Partition Table"
+#~ msgstr "Ciptakan &Tabel Partisi Baru"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to create an MS-Dos partition table on <filename>"
+#~ "%1</filename>?</para><para>This device has more than 2^32 sectors. That "
+#~ "is the most the MS-Dos partition table type supports, so you will not be "
+#~ "able to use the whole device.</para>"
+#~ msgstr ""
+#~ "<para>Apakah anda benar-benar ingin menciptakan sebuah tabel partisi MS-"
+#~ "Dos pada <filename>%1</filename>?</para><para>Perangkat ini memiliki "
+#~ "lebih dari 2^32 sektor. Yaitu paling mendukung tipe tabel partisi MS-Dos, "
+#~ "sehingga anda tidak akan bisamenggunakan perangkat sepenuhnya."
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Create MS-Dos Partition Table Type?"
+#~ msgstr "Benar-benar Ciptakan Tipe Tabel Partisi MS-Dos?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Create MS-Dos Type"
+#~ msgstr "Ciptakan Tipe MS-Dos"
+
+#~ msgid "Choose the type of partition table you want to create:"
+#~ msgstr "Memilih tipe tabel partisi yang ingin anda ciptakan:"
+
+#~ msgid "GPT"
+#~ msgstr "GPT"
+
+#~ msgid "MS-Dos"
+#~ msgstr "MS-Dos"
+
+#~ msgid "(icon)"
+#~ msgstr "(ikon)"
+
+#~ msgid "<b>Warning:</b> This will destroy all data on the device!"
+#~ msgstr "<b>Peringatan:</b> Ini akan melenyapkan semua data pada perangkat!"
+
+#~ msgctxt "@label device"
+#~ msgid "%1 (read only)"
+#~ msgstr "%1 (hanya baca)"
+
+#~ msgctxt "@label"
+#~ msgid "1 Sector"
+#~ msgid_plural "%1 Sectors"
+#~ msgstr[0] "%1 Sektor"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "good"
+#~ msgstr "bagus"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "BAD"
+#~ msgstr "BURUK"
+
+#~ msgctxt "@label"
+#~ msgid "(unknown)"
+#~ msgstr "(tidak diketahui)"
+
+#~ msgid "Partition table:"
+#~ msgstr "Tabel partisi:"
+
+#~ msgid "Cylinder alignment"
+#~ msgstr "Kesejajaran silinder"
+
+#~ msgid "Sector based alignment"
+#~ msgstr "Kesejajaran berdasarkan sektor"
+
+#~ msgid "Capacity:"
+#~ msgstr "Kapasitas:"
+
+#~ msgid "Total sectors:"
+#~ msgstr "Total sektor:"
+
+#~ msgid "Cylinders/Heads/Sectors:"
+#~ msgstr "Silinder/Kepala/Sektor:"
+
+#~ msgid "Logical sector size:"
+#~ msgstr "Ukuran sektor logikal:"
+
+#~ msgid "Physical sector size:"
+#~ msgstr "Ukuran sektor fisik:"
+
+#~ msgid "Cylinder size:"
+#~ msgstr "Ukuran silinder:"
+
+#~ msgid "Primaries/Max:"
+#~ msgstr "Primer/Maks:"
+
+#~ msgid "SMART status:"
+#~ msgstr "Status SMART:"
+
+#~ msgid "More..."
+#~ msgstr "Lebih..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit additional mount options"
+#~ msgstr "Sunting tambahan opsi kait"
+
+#~ msgid "Edit Mount Options"
+#~ msgstr "Sunting Opsi Kait"
+
+#~ msgid "Edit the mount options for this file system:"
+#~ msgstr "Sunting opsi kait untuk berkas sistem ini:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit mount point for <filename>%1</filename>"
+#~ msgstr "Sunting titik kait untuk <filename>%1</filename>"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Are you sure you want to save the changes you made to the system "
+#~ "table file <filename>/etc/fstab</filename>?</para><para><warning>This "
+#~ "will overwrite the existing file on your hard drive now. This <strong>can "
+#~ "not be undone</strong>.</warning></para>"
+#~ msgstr ""
+#~ "<para>Apakah anda yakin ingin menyimpan perubahan yang anda buat ke "
+#~ "berkas tabel sistem <filename>/etc/fstab</filename>?</"
+#~ "para><para><warning> Ini akan menimpa berkas yang ada pada hard drive "
+#~ "anda sekarang. Ini <strong>tidak dapat dibatalkan</strong>.</warning></"
+#~ "para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really save changes?"
+#~ msgstr "Benar-benar simpan perubahan?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Save changes"
+#~ msgstr "Simpan perubahan"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open mount point file <filename>%1</filename>."
+#~ msgstr "Tidak bisa membuka titik kait berkas <filename>%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error while reading mount points"
+#~ msgstr "Galat selagi membaca titik kait"
+
+#~ msgctxt "@info"
+#~ msgid "Could not save mount points to file <filename>%1</filename>."
+#~ msgstr "Tidak bisa menyimpan titik kait ke berkas <filename>%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Saving Mount Points"
+#~ msgstr "Galat Selagi Menyimpan Titik Kait"
+
+#~ msgid "Path:"
+#~ msgstr "Alur:"
+
+#~ msgid "Select..."
+#~ msgstr "Pilih..."
+
+#~ msgid "Type:"
+#~ msgstr "Tipe:"
+
+#~ msgid "Options:"
+#~ msgstr "Opsi:"
+
+#~ msgid "Read-only"
+#~ msgstr "Hanya Baca"
+
+#~ msgid "Users can mount and unmount"
+#~ msgstr "Pengguna bisa kait dan lepas kait"
+
+#~ msgid "No automatic mount"
+#~ msgstr "Tidak ada kait otomatis"
+
+#~ msgid "No update of file access times"
+#~ msgstr "Tidak ada pembaruan waktu mengakses berkas"
+
+#~ msgid "Synchronous access"
+#~ msgstr "Akses synchronous"
+
+#~ msgid "No update of directory access times"
+#~ msgstr "Tidak ada pembaruan waktu mengakses direktori"
+
+#~ msgid "No binary execution"
+#~ msgstr "Tidak ada eksekusi biner"
+
+#~ msgid "Update access times relative to modification"
+#~ msgstr "Perbarui waktu mengakses relatif untuk pengubahsuaian"
+
+#~ msgid "Dump Frequency:"
+#~ msgstr "Frekwensi Kotor:"
+
+#~ msgid "Pass Number:"
+#~ msgstr "Jumlah Lampau:"
+
+#~ msgid "Device Node"
+#~ msgstr "Simpul Perangkat"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Label"
+#~ msgstr "Label"
+
+#~ msgid "Identify by:"
+#~ msgstr "Mengenali melalui:"
+
+#~ msgctxt "@title:window"
+#~ msgid "File System Support"
+#~ msgstr "Dukungan Sistem Berkas"
+
+#~ msgid ""
+#~ "This table shows which file systems are supported and which specific "
+#~ "operations can be performed on them.\n"
+#~ "Some file systems need external tools to be installed for them to be "
+#~ "supported. But not all operations can be performed on all file systems, "
+#~ "even if all required tools are installed. Please see the documentation "
+#~ "for details. "
+#~ msgstr ""
+#~ "Tabel ini menunjukkan sistem berkas yang didukung dan operasi spesifik "
+#~ "yang bisa dilakukan pada mereka.\n"
+#~ "Beberapa sistem berkas membutuhkan alat eksternal yang harus dipasang "
+#~ "kepada mereka untuk dukungan. Tapi tidak semua operasi bisa dilakukan "
+#~ "pada semua sistem berkas, bahkan jika semua alat yang diperlukan "
+#~ "dipasang. Silakan lihat dokumentasi untuk rincian."
+
+#~ msgid "File System"
+#~ msgstr "Sistem Berkas"
+
+#~ msgid "Create"
+#~ msgstr "Ciptakan"
+
+#~ msgid "Grow"
+#~ msgstr "Tambah"
+
+#~ msgid "Shrink"
+#~ msgstr "Susut"
+
+#~ msgid "Move"
+#~ msgstr "Pindah"
+
+#~ msgid "Copy"
+#~ msgstr "Salin"
+
+#~ msgid "Check"
+#~ msgstr "Periksa"
+
+#~ msgid "Read Label"
+#~ msgstr "Baca Label"
+
+#~ msgid "Write Label"
+#~ msgstr "Tulis Label"
+
+#~ msgid "Read Usage"
+#~ msgstr "Baca Penggunaan"
+
+#~ msgid "Backup"
+#~ msgstr "Cadangkan"
+
+#~ msgid "Restore"
+#~ msgstr "Pulihkan"
+
+#~ msgid "Support Tools"
+#~ msgstr "Perkakas Dukungan"
+
+#~ msgctxt "@action:button"
+#~ msgid "Rescan Support"
+#~ msgstr "Dukungan Pindai Ulang"
+
+#~ msgctxt "@title:window"
+#~ msgid "Information"
+#~ msgstr "Informasi"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition Information"
+#~ msgstr "Informasi Partisi"
+
+#~ msgctxt "@label partition"
+#~ msgid "File system:"
+#~ msgstr "Sistem Berkas:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Capacity:"
+#~ msgstr "Kapasitas:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher name:"
+#~ msgstr "Nama rahasia:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher mode:"
+#~ msgstr "Mode rahasia:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Hash:"
+#~ msgstr "Mencincang:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Key size:"
+#~ msgstr "Ukuran kunci:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Payload offset:"
+#~ msgstr "Payload offset:"
+
+#~ msgctxt "@label partition"
+#~ msgid "First sector:"
+#~ msgstr "Sektor pertama:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Last sector:"
+#~ msgstr "Sektor terakhir:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Number of sectors:"
+#~ msgstr "Jumlah sektor:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Available:"
+#~ msgstr "Tersedia:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Used:"
+#~ msgstr "Digunakan:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Device Information"
+#~ msgstr "Informasi Perangkat"
+
+#~ msgctxt "@label device"
+#~ msgid "Path:"
+#~ msgstr "Alur:"
+
+#~ msgctxt "@label device"
+#~ msgid "Type:"
+#~ msgstr "Tipe:"
+
+#~ msgctxt "@label device"
+#~ msgid "Capacity:"
+#~ msgstr "Kapasitas:"
+
+#~ msgctxt "@label device"
+#~ msgid "Total sectors:"
+#~ msgstr "Total sektor:"
+
+#~ msgctxt "@label device"
+#~ msgid "Heads:"
+#~ msgstr "Kepala:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinders:"
+#~ msgstr "Silinder:"
+
+#~ msgctxt "@label device"
+#~ msgid "Sectors:"
+#~ msgstr "Sektor:"
+
+#~ msgctxt "@label device"
+#~ msgid "Logical sector size:"
+#~ msgstr "Ukuran sektor logikal:"
+
+#~ msgctxt "@label device"
+#~ msgid "Physical sector size:"
+#~ msgstr "Ukuran sektor fisik:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinder size:"
+#~ msgstr "Ukuran silinder:"
+
+#~ msgctxt "@label device"
+#~ msgid "Primaries/Max:"
+#~ msgstr "Primer/Maks:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Insert a partition"
+#~ msgstr "Sisipkan sebuah partisi"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to quit the application?</para><para>There is "
+#~ "still an operation pending.</para>"
+#~ msgid_plural ""
+#~ "<para>Do you really want to quit the application?</para><para>There are "
+#~ "still %1 operations pending.</para>"
+#~ msgstr[0] ""
+#~ "<para>Apakah anda benar-benar ingin mengeluarkan aplikasi?</"
+#~ "para><para>Masih ada %1 operasi tertunda.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Discard Pending Operations and Quit?"
+#~ msgstr "Buang Operasi Tertunda dan Keluar?"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Undo"
+#~ msgstr "Tak Jadi"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Undo the last operation"
+#~ msgstr "Tak jadi operasi terakhir"
+
+#~ msgctxt "@info:status"
+#~ msgid "Remove the last operation from the list."
+#~ msgstr "Buang operasi terakhir dari daftar."
+
+#~ msgctxt "@action:inmenu clear the list of operations"
+#~ msgid "Clear"
+#~ msgstr "Bersihkan"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear all operations"
+#~ msgstr "Bersihkan semua operasi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Empty the list of pending operations."
+#~ msgstr "Kosongkan daftar dari operasi tertunda."
+
+#~ msgctxt "@action:inmenu apply all operations"
+#~ msgid "Apply"
+#~ msgstr "Terapkan"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Apply all operations"
+#~ msgstr "Terapkan semua operasi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Apply the pending operations in the list."
+#~ msgstr "Terapkan operasi tertunda di dalam daftar."
+
+#~ msgctxt "@action:inmenu refresh list of devices"
+#~ msgid "Refresh Devices"
+#~ msgstr "Segarkan Perangkat"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Refresh all devices"
+#~ msgstr "Segarkan semua perangkat"
+
+#~ msgctxt "@info:status"
+#~ msgid "Renew the devices list."
+#~ msgstr "Membarui daftar perangkat."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Partition Table"
+#~ msgstr "Tabel Partisi Baru"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Create a new partition table"
+#~ msgstr "Ciptakan sebuah tabel partisi baru"
+
+#~ msgctxt "@info:status"
+#~ msgid "Create a new and empty partition table on a device."
+#~ msgstr "Ciptakan sebuah tabel partisi baru dan kosong dalam perangkat."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Export Partition Table"
+#~ msgstr "Ekspor Tabel Partisi"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Export a partition table"
+#~ msgstr "Ekspor sebuah tabel partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Export the device's partition table to a text file."
+#~ msgstr "Ekspor tabel partisi suatu perangkat ke sebuah berkas teks."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Import Partition Table"
+#~ msgstr "Impor Tabel Partisi"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Import a partition table"
+#~ msgstr "Impor sebuah tabel partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Import a partition table from a text file."
+#~ msgstr "Impor sebuah tabel partisi dari sebuah berkas teks."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "SMART Status"
+#~ msgstr "Status SMART"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show SMART status"
+#~ msgstr "Tampilkan status SMART"
+
+#~ msgctxt "@info:status"
+#~ msgid "Show the device's SMART status if supported"
+#~ msgstr "Tampilkan status perangkat SMART jika didukung"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Properties"
+#~ msgstr "Properti"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show device properties dialog"
+#~ msgstr "Tampilkan dialog properti perangkat"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify device properties"
+#~ msgstr "Tilik dan ubahsuai properti perangkat"
+
+#~ msgctxt "@action:inmenu create a new partition"
+#~ msgid "New"
+#~ msgstr "Baru"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "New partition"
+#~ msgstr "Partisi baru"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Resize/Move"
+#~ msgstr "Ubah-ukuran/Pindah"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Resize or move partition"
+#~ msgstr "Ubah-ukuran atau pindah partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Shrink, grow or move an existing partition."
+#~ msgstr "Susut, tambah atau pindah sebuah partisi yang ada."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Delete"
+#~ msgstr "Hapus"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Delete partition"
+#~ msgstr "Hapus partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Delete a partition."
+#~ msgstr "Hapus sebuah partisi."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Shred"
+#~ msgstr "Iris"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Shred partition"
+#~ msgstr "Iris partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Shred a partition so that its contents cannot be restored."
+#~ msgstr ""
+#~ "Iris sebuah partisi oleh karena itu isi-isinya tidak dapat dikembalikan."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Copy"
+#~ msgstr "Salin"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Copy partition"
+#~ msgstr "Salin partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Copy an existing partition."
+#~ msgstr "Salin sebuah partisi yang ada."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Paste"
+#~ msgstr "Tempel"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Paste partition"
+#~ msgstr "Tempel partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Paste a copied partition."
+#~ msgstr "Tempel sebuah partisi yang disalin."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Edit Mount Point"
+#~ msgstr "Sunting Titik Kait"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit mount point"
+#~ msgstr "Sunting titik kait"
+
+#~ msgctxt "@info:status"
+#~ msgid "Edit a partition's mount point and options."
+#~ msgstr "Sunting sebuah titik kait partisi dan opsi."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Mount"
+#~ msgstr "Kait"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Mount or unmount partition"
+#~ msgstr "Kait atau lepas kait partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Mount or unmount a partition."
+#~ msgstr "Kait atau lepas kait sebuah partisi."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Check"
+#~ msgstr "Periksa"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Check partition"
+#~ msgstr "Periksa partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Check a filesystem on a partition for errors."
+#~ msgstr "Periksa sistem berkas pada sebuah partisi atas galat."
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show partition properties dialog"
+#~ msgstr "Tampilkan dialog properti partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify partition properties (label, partition flags, etc.)"
+#~ msgstr "Tilik dan ubahsuai properti partisi (label, bendera partisi, dll.)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Backup"
+#~ msgstr "Cadangkan"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Backup partition"
+#~ msgstr "Cadangkan partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Backup a partition to an image file."
+#~ msgstr "Cadangkan partisi ke sebuah berkas citra."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Restore"
+#~ msgstr "Pulihkan"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Restore partition"
+#~ msgstr "Pulihkan partisi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Restore a partition from an image file."
+#~ msgstr "Pulihkan partisi dari sebuah berkas citra."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "File System Support"
+#~ msgstr "Dukungan Sistem Berkas"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "View file system support information"
+#~ msgstr "Tilik informasi dukungan sistem berkas"
+
+#~ msgctxt "@info:status"
+#~ msgid "Show information about supported file systems."
+#~ msgstr "Tampilkan informasi tentang sistem berkas yang didukung."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Clear Log"
+#~ msgstr "Bersihkan Log"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear the log output"
+#~ msgstr "Bersihkan keluaran log"
+
+#~ msgctxt "@info:status"
+#~ msgid "Clear the log output panel."
+#~ msgstr "Bersihkan panel keluaran log."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Save Log"
+#~ msgstr "Simpan Log"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Save the log output"
+#~ msgstr "Simpan keluaran log"
+
+#~ msgctxt "@info:status"
+#~ msgid "Save the log output to a file."
+#~ msgstr "Simpan keluaran log ke berkas."
+
+#~ msgctxt "@info:status"
+#~ msgid "One pending operation"
+#~ msgid_plural "%1 pending operations"
+#~ msgstr[0] "%1 operasi tertunda"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Backend plugin"
+#~ msgctxt "@info/plain"
+#~ msgid "Using backend plugin: %1 (%2)"
+#~ msgstr "Plugin backend"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scanning devices..."
+#~ msgstr "Memindai perangkat..."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scan finished."
+#~ msgstr "Pindai selesai."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to rescan the devices?</para><para><warning>This "
+#~ "will also clear the list of pending operations.</warning></para>"
+#~ msgstr ""
+#~ "<para>Apakah anda benar-benar ingin memindai ulang perangkat?</"
+#~ "para><para><warning>Ini akan membersihkan daftar operasi tertunda.</"
+#~ "warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Rescan the Devices?"
+#~ msgstr "Benar-benar Pindai Ulang Perangkat?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Rescan Devices"
+#~ msgstr "Pindai Ulang Perangkat"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to apply the pending operations listed below?</"
+#~ "para><para><warning>This will permanently modify your disks.</warning></"
+#~ "para>"
+#~ msgstr ""
+#~ "<para>Apakah anda benar-benar ingin menerapkan operasi tertunda yang "
+#~ "terdaftar di bawah?</para><para><warning>Ini akan secara permanen "
+#~ "ubahsuai disk anda.</warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Apply Pending Operations?"
+#~ msgstr "Terapkan Operasi Tertunda?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Apply Pending Operations"
+#~ msgstr "Terapkan Operasi Tertunda"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Applying operations..."
+#~ msgstr "Menerapkan operasi..."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Undoing operation: %1"
+#~ msgstr "Membatalkan operasi: %1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to clear the list of pending operations?"
+#~ msgstr "Apakah anda benar-benar akan membersihkan daftar operasi tertunda?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Clear Pending Operations?"
+#~ msgstr "Bersihkan Operasi Tertunda?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Clear Pending Operations"
+#~ msgstr "Bersihkan Operasi Tertunda"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Clearing the list of pending operations."
+#~ msgstr "Membersihkan daftar operasi tertunda."
+
+#~ msgctxt "@info"
+#~ msgid "Could not open input file <filename>%1</filename> for import: %2"
+#~ msgstr ""
+#~ "Tidak bisa membuka berkas input <filename>%1</filename> untuk impor: %2"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Importing Partition Table"
+#~ msgstr "Galat Mengimpor Tabel Partisi"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not open temporary file <filename>%1</filename> while trying to "
+#~ "import from <filename>%2</filename>."
+#~ msgstr ""
+#~ "Tidak bisa membuka berkas sementara <filename>%1</filename> ketika "
+#~ "mencoba impor dari <filename>%2</filename>."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The import file <filename>%1</filename> does not contain a valid "
+#~ "partition table."
+#~ msgstr ""
+#~ "Berkas impor  <filename>%1</filename> tidak mengandung sebuah tabel "
+#~ "partisi valid."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Importing Partition Table"
+#~ msgstr "Galat Selagi Mengimpor Tabel Partisi"
+
+#~ msgctxt "@info"
+#~ msgid "Found more than one partition table type in import file (line %1)."
+#~ msgstr ""
+#~ "Ditemukan lagi sebuah tipe tabel partisi di dalam berkas impor (baris %1)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is unknown (line %2)."
+#~ msgstr "Tipe tabel partisi \"%1\" tidak diketahui (baris %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is not supported for import (line %2)."
+#~ msgstr "Tipe tabel partisi \"%1\" tidak didukung untuk impor (baris %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Found partition but no partition table type (line %1)."
+#~ msgstr "Ditemukan partisi tetapi bukan tipe tabel partisi (baris %1)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Partition %1 would be outside the device's boundaries (line %2)."
+#~ msgstr "Partisi %1 akan berada di luar batas-batas perangkat (baris %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition %1 has end before start sector (line %2)."
+#~ msgstr "Partisi %1 memiliki akhir sebelum sektor mulai (baris %2)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Unrecognized partition role \"%1\" for partition %2 (line %3)."
+#~ msgstr "Tidak mengenali peran partisi \"%1\" untuk partisi %2 (baris %3)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid ""
+#~ "No parent partition or partition table found for partition %1 (line %2)."
+#~ msgstr ""
+#~ "Tidak ada partisi parent atau ditemukan tabel partisi untuk partisi %1 "
+#~ "(baris %2)."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The partition table type \"%1\" does not support extended partitions, but "
+#~ "one was found (line %2)."
+#~ msgstr ""
+#~ "Tipe tabel partisi \"%1\" tidak mendukung partisi extended, tetapi "
+#~ "diemukan sebuah (baris %2)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Could not create file system \"%1\" for partition %2 (line %3)."
+#~ msgstr ""
+#~ "Tidak bisa ciptakan sistem berkas \"%1\" dari partisi %2 (baris %3)."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Could not parse line %1 from import file. Ignoring it."
+#~ msgstr "Tidak bisa mengurai baris %1 dari berkas impor. Mengabaikannya."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Exporting Partition Table"
+#~ msgstr "Galat Mengekspor Tabel Partisi"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>No support tools were found for file systems currently present on "
+#~ "hard disks in this computer:</para><table style='margin-top:12px'><tr><td "
+#~ "style='font-weight:bold;padding-right:12px;white-space:"
+#~ "nowrap;'>Partition</td><td style='font-weight:bold;padding-right:12px;"
+#~ "white-space:nowrap;'>File System</td><td style='font-weight:bold;padding-"
+#~ "right:12px;white-space:nowrap;'>Support Tools</td><td style='font-weight:"
+#~ "bold;padding-right:12px;white-space:nowrap;'>URL</td></tr>%1</"
+#~ "table><para>As long as the support tools for these file systems are not "
+#~ "installed you will not be able to modify them.</para><para>You should "
+#~ "find packages with these support tools in your distribution's package "
+#~ "manager.</para>"
+#~ msgstr ""
+#~ "<para>Tidak ada alat pendukung yang ditemukan untuk sistem berkas saat "
+#~ "ini yang ada pada hard disk di komputer ini:</para><table style='margin-"
+#~ "top:12px'><tr><td style='font-weight:bold;padding-right:12px;white-space:"
+#~ "nowrap;'>Partisi</td><td style='font-weight:bold;padding-right:12px;white-"
+#~ "space:nowrap;'>Sistem Berkas</td><td style='font-weight:bold;padding-"
+#~ "right:12px;white-space:nowrap;'>Alat Pendukung</td><td style='font-weight:"
+#~ "bold;padding-right:12px;white-space:nowrap;'>URL</td></tr>%1</"
+#~ "table><para>Selama alat pendukung untuk sistem berkas ini tidak "
+#~ "terpasang, anda tidak akan bisa mengubahsuai mereka.</para><para> Anda "
+#~ "harus menemukan paket dengan alat pendukung ini dalam manajer paket "
+#~ "distribusi anda.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Missing File System Support Packages"
+#~ msgstr "Dukungan Paket-paket Sistem Berkas Hilang"
+
+#~ msgctxt "@title:window"
+#~ msgid "KDE Partition Manager"
+#~ msgstr "Manajer Partisi KDE"
+
+#~ msgctxt "@title:window"
+#~ msgid "Devices"
+#~ msgstr "Perangkat"
+
+#~ msgctxt "@title:window"
+#~ msgid "Pending Operations"
+#~ msgstr "Operasi Tertunda"
+
+#~ msgctxt "@title:window"
+#~ msgid "Log Output"
+#~ msgstr "Keluaran Log"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a new partition"
+#~ msgstr "Ciptakan sebuah partisi baru"
+
+#~ msgctxt "@title:menu turn on and off edit toolbar"
+#~ msgid "Edit Toolbar"
+#~ msgstr "Batang Alat Sunting"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition Toolbar"
+#~ msgstr "Batang Alat Partisi"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device Toolbar"
+#~ msgstr "Batang Alat Perangkat"
+
+#~ msgctxt "@title:menu"
+#~ msgid "View"
+#~ msgstr "Tilik"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device"
+#~ msgstr "Perangkat"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Select Current Device"
+#~ msgstr "Pilih perangkat Saat Ini"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition"
+#~ msgstr "Partisi"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be mounted."
+#~ msgstr ""
+#~ "Sistem berkas pada partisi <filename>%1</filename>  tidak bisa dikaitkan."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Mount File System."
+#~ msgstr "Tidak Bisa Kait Sistem Berkas."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be "
+#~ "unmounted."
+#~ msgstr ""
+#~ "Sistem berkas pada partisi <filename>%1</filename>  tidak bisa "
+#~ "dilepaskait."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Unmount File System."
+#~ msgstr "Tidak Bisa Lepas Kait Sistem Berkas."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>There is already one primary partition on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgid_plural ""
+#~ "<para>There are already %1 primary partitions on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgstr[0] ""
+#~ "<para>Sudah ada %1 partisi primer pada perangkat ini. Ini adalah jumlah "
+#~ "maksimum tipe tabel partisi yang dapat ditangani.</para><para>Anda tidak "
+#~ "dapat ciptakan, tempel atau memulihkan partisi primer sebelum anda "
+#~ "menghapus salah satu yang ada.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Too Many Primary Partitions."
+#~ msgstr "Terlalu Banyak Partisi Primer."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The partition <filename>%1</filename> cannot currently be deleted "
+#~ "because one or more partitions with higher logical numbers are still "
+#~ "mounted.</para><para>Please unmount all partitions with higher logical "
+#~ "numbers than %2 first.</para>"
+#~ msgstr ""
+#~ "<para>Partisi <filename>%1</filename> saat ini tidak dapat dihapuskarena "
+#~ "satu atau lebih partisi dengan jumlah logikal yang lebih tinggi masih "
+#~ "terkait.</para><para>Silakan lepaskait semua partisi dengan jumlah "
+#~ "logical lebih tinggi dari%2 dulu.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Delete Partition."
+#~ msgstr "Tidak Dapat Menghapus Partisi."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you really want to delete the partition that is currently in the "
+#~ "clipboard? It will no longer be available for pasting after it has been "
+#~ "deleted."
+#~ msgstr ""
+#~ "Apakah anda benar-benar ingin menghapus partisi itu yang saat ini di "
+#~ "papan klip? Itu tidak akan lebih lama tersedia menempel setelah dia "
+#~ "dihapus."
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Delete Partition in the Clipboard?"
+#~ msgstr "Benar-benar Hapus Partisi di Papan Klip?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete It"
+#~ msgstr "Menghapusnya"
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Partition <filename>%1</filename> has the same position and size after "
+#~ "resize/move. Ignoring operation."
+#~ msgstr ""
+#~ "Partisi <filename>%1</filename> memiliki partisi sama dan ukuran setelah "
+#~ "ubah-ukuran/pindah. Mengabaikan operasi."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Partition <filename>%1</filename> has been copied to the clipboard."
+#~ msgstr "Partisi <filename>%1</filename> telah disalin ke papan klip."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Overwriting one partition with another "
+#~ "(or with an image file) will destroy all data on this target partition.</"
+#~ "para><para>If you continue now and apply the resulting operation in the "
+#~ "main window, all data currently stored on <filename>%1</filename> will "
+#~ "unrecoverably be overwritten.</para>"
+#~ msgstr ""
+#~ "<para><warning>Anda akan kehilangan semua data pada partisi <filename>%1</"
+#~ "filename>.</warning></para><para>Menimpa satu partisi dengan yang lain "
+#~ "(atau dengan berkas citra) akan menghapus semua data pada partisi target "
+#~ "ini.</para><para>Jika anda melanjutkan dan terapkan operasi menghasilkan "
+#~ "di dalam jendela utama, semua data yang tersimpan di dalam <filename>%1</"
+#~ "filename> akan ditimpa tidak bisa dipulihkan."
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Overwrite Existing Partition?"
+#~ msgstr "Benar-benar Menimpa Partisi Yang Ada?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite Partition"
+#~ msgstr "Timpa Partisi"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The selected partition is not large enough to hold the source "
+#~ "partition or the backup file.</para><para>Pick another target or resize "
+#~ "this partition so it is as large as the source.</para>"
+#~ msgstr ""
+#~ "<para>Partisi yang dipilih tidak cukup besar untuk menampung "
+#~ "sumberpartisi atau berkas cadangan.</para><para>Cuplik target lain atau "
+#~ "mengubah-ukuran partisi ini sehingga sama besar sebagai sumber.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Target Not Large Enough"
+#~ msgstr "Target Tidak Cukup Besar"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>It is not possible to create the target partition large enough to "
+#~ "hold the source.</para><para>This may happen if not all partitions on a "
+#~ "device are correctly aligned or when copying a primary partition into an "
+#~ "extended partition.</para>"
+#~ msgstr ""
+#~ "<para>Itu tidak mungkin untuk ciptakan partisi target lebih besar untuk "
+#~ "menampung sumber.</para><para>Hal ini mungkin terjadi meskipun tidak "
+#~ "semua partisi pada perangkatsejajar dengan benar atau ketika menyalin "
+#~ "partisi primer ke dalam partisi extended."
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Create Target Partition."
+#~ msgstr "Tidak Dapat Ciptakan Partisi Target."
+
+#~ msgctxt "@info"
+#~ msgid "Do you want to overwrite the existing file <filename>%1</filename>?"
+#~ msgstr "Apakah anda ingin menimpa berkas <filename>%1</filename> yang ada?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Overwrite Existing File?"
+#~ msgstr "Timpa Berkas Yang Ada?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite File"
+#~ msgstr "Timpa Berkas"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system in the image file <filename>%1</filename> is too large to "
+#~ "be restored to the selected partition."
+#~ msgstr ""
+#~ "Sistem berkas dalam berkas citra <filename>%1</filename> terlalu besar "
+#~ "untuk dipulihkan ke partisi terpilih."
+
+#~ msgctxt "@title:window"
+#~ msgid "Not Enough Space to Restore File System."
+#~ msgstr "Tidak Cukup Ruang untuk Pulihkan Sistem Berkas."
+
+#~ msgid "Partition"
+#~ msgstr "Partisi"
+
+#~ msgid "Type"
+#~ msgstr "Tipe"
+
+#~ msgid "Mount Point"
+#~ msgstr "Titik Kait"
+
+#~ msgid "Size"
+#~ msgstr "Ukuran"
+
+#~ msgid "Used"
+#~ msgstr "Digunakan"
+
+#~ msgid "Available"
+#~ msgstr "Tersedia"
+
+#~ msgid "First Sector"
+#~ msgstr "Sektor Pertama"
+
+#~ msgid "Last Sector"
+#~ msgstr "Sektor Terakhir"
+
+#~ msgid "Number of Sectors"
+#~ msgstr "Jumlah Sektor"
+
+#~ msgid "Flags"
+#~ msgstr "Bendera"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition properties: <filename>%1</filename>"
+#~ msgstr "Properti partisi: <filename>%1</filename>"
+
+#~ msgctxt "@item mountpoint"
+#~ msgid "(none found)"
+#~ msgstr "(tidak satu pun ditemukan)"
+
+#~ msgctxt "@label partition state"
+#~ msgid "idle"
+#~ msgstr "nganggur"
+
+#~ msgctxt "@label partition state"
+#~ msgid "At least one logical partition is mounted."
+#~ msgstr "Setidaknya satu partisi logikal dikaitkan."
+
+#~ msgctxt "@label partition state"
+#~ msgid "mounted"
+#~ msgstr "terkait"
+
+#~ msgctxt "@item uuid"
+#~ msgid "(none)"
+#~ msgstr "(tidak ada)"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Changing the file system on a partition "
+#~ "already on disk will erase all its contents. If you continue now and "
+#~ "apply the resulting operation in the main window, all data on <filename>"
+#~ "%1</filename> will unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>Anda akan kehilangan semua data pada partisi <filename>%1</"
+#~ "filename>.</warning></para><para>Mengubah sistem berkas pada partisi "
+#~ "sebelumnya pada disk akan menghapus semua isinya. Jika anda lanjutkan "
+#~ "sekarang dan menerapkan operasi yang dihasilkan di jendela utama, semua "
+#~ "data pada <filename>%1</filename> akan hilang tidak bisa dipulihkan.</"
+#~ "para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate <filename>%1</filename> with File System %2?"
+#~ msgstr ""
+#~ "Benar-benar Ciptakan Ulang <filename>%1</filename> dengan Sistem Berkas "
+#~ "%2?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the File System"
+#~ msgstr "Ubah Sistem Berkas"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the File System"
+#~ msgstr "Jangan Ubah Sistem Berkas"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Recreating a file system will erase all "
+#~ "its contents. If you continue now and apply the resulting operation in "
+#~ "the main window, all data on <filesystem>%1</filesystem> will "
+#~ "unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>Anda akan kehilangan semua data pada partisi <filename>%1</"
+#~ "filename>.</warning></para><para>Menciptakan ulang sistem berkas akan "
+#~ "menhapus semua isinya. Jika anda lanjutkan sekarang dan menerapkan "
+#~ "operasi yang dihasilkan di jendela utama, semua data pada <filename>%1</"
+#~ "filename> akan hilang tidak bisa dipulihkan.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate File System on <filename>%1</filename>?"
+#~ msgstr ""
+#~ "Benar-benar Ciptakan Ulang Sistem Berkas pada <filename>%1</filename>?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate the File System"
+#~ msgstr "Ciptakan Ulang Sistem Berkas"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Recreate the File System"
+#~ msgstr "Jangan Ciptakan Ulang Sistem Berkas"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "File system:"
+#~ msgstr "Sistem berkas:"
+
+#~ msgctxt "@label"
+#~ msgid "Label:"
+#~ msgstr "Label:"
+
+#~ msgctxt "@label"
+#~ msgid "This file system does not support setting a label."
+#~ msgstr "Sistem berkas ini tidak didukung pengaturan label."
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate existing file system"
+#~ msgstr "Ciptakan ulang sistem berkas yang ada"
+
+#~ msgctxt "@label"
+#~ msgid "Mount point:"
+#~ msgstr "Titik kait:"
+
+#~ msgctxt "@label"
+#~ msgid "Partition type:"
+#~ msgstr "Tipe partisi:"
+
+#~ msgctxt "@label"
+#~ msgid "Status:"
+#~ msgstr "Status:"
+
+#~ msgctxt "@label"
+#~ msgid "UUID:"
+#~ msgstr "UUID:"
+
+#~ msgctxt "@label"
+#~ msgid "Size:"
+#~ msgstr "Ukuran:"
+
+#~ msgctxt "@label partition capacity available"
+#~ msgid "Available:"
+#~ msgstr "Tersedia:"
+
+#~ msgctxt "@label partition capacity used"
+#~ msgid "Used:"
+#~ msgstr "Digunakan:"
+
+#~ msgctxt "@label"
+#~ msgid "First sector:"
+#~ msgstr "Sektor pertama:"
+
+#~ msgctxt "@label"
+#~ msgid "Last sector:"
+#~ msgstr "Sektor terakhir:"
+
+#~ msgctxt "@label"
+#~ msgid "Number of sectors:"
+#~ msgstr "Jumlah sektor:"
+
+#~ msgctxt "@label"
+#~ msgid "Flags:"
+#~ msgstr "Bendera:"
+
+#~ msgctxt "@info"
+#~ msgid "Please select a device."
+#~ msgstr "Silakan pilih sebuah perangkat"
+
+#~ msgctxt "@info"
+#~ msgid "No valid partition table was found on this device."
+#~ msgstr "Tidak ada tabel partisi valid yang ditemukan pada perangkat ini."
+
+#~ msgctxt "@title:window"
+#~ msgid "Resize/move partition: <filename>%1</filename>"
+#~ msgstr "Ubah-ukuran/pindah partisi: <filename>%1</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Scanning devices..."
+#~ msgstr "Memindai perangkat..."
+
+#~ msgctxt "@label"
+#~ msgid "Scanning..."
+#~ msgstr "Memindai..."
+
+#~ msgctxt "@label"
+#~ msgid "Scanning device: <filename>%1</filename>"
+#~ msgstr "Memindai perangkat: <filename>%1</filename>"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "First sector:"
+#~ msgstr "Sektor pertama:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Last sector:"
+#~ msgstr "Sektor terakhir:"
+
+#~ msgid "Align partition"
+#~ msgstr "Jajarkan partisi"
+
+#~ msgctxt "@item:button advanced settings button"
+#~ msgid "Advanced"
+#~ msgstr "Lanjutan"
+
+#~ msgid "&Advanced"
+#~ msgstr "&Lanjutan"
+
+#, fuzzy
+#~| msgctxt "@label:listbox"
+#~| msgid "Partition type:"
+#~ msgctxt "@label:listbox"
+#~ msgid "Partition &type:"
+#~ msgstr "Tipe partisi:"
+
+#, fuzzy
+#~| msgid "Primary"
+#~ msgid "Primar&y"
+#~ msgstr "Primer"
+
+#, fuzzy
+#~| msgid "Extended"
+#~ msgid "E&xtended"
+#~ msgstr "Extended"
+
+#, fuzzy
+#~| msgid "Logical"
+#~ msgid "&Logical"
+#~ msgstr "logikal"
+
+#~ msgctxt "@label"
+#~ msgid "Minimum size:"
+#~ msgstr "Ukuran minimum:"
+
+#~ msgctxt "@label"
+#~ msgid "Maximum size:"
+#~ msgstr "Ukuran maksimum:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space before:"
+#~ msgstr "Ruang bebas sebelum:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space after:"
+#~ msgstr "Ruang bebas sesudah:"
+
+#~ msgctxt "@title:window"
+#~ msgid "SMART Properties: <filename>%1</filename>"
+#~ msgstr "Properti SMART: <filename>%1</filename>"
+
+#~ msgctxt "@label SMART number of bad sectors"
+#~ msgid "none"
+#~ msgstr "tidak ada"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Pre-Failure"
+#~ msgstr "Sebelum Kegagalan"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Old-Age"
+#~ msgstr "Umur Tua"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Online"
+#~ msgstr "Online"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Offline"
+#~ msgstr "Offline"
+
+#~ msgid "Model:"
+#~ msgstr "Model:"
+
+#~ msgid "Serial number:"
+#~ msgstr "Nomor serial:"
+
+#~ msgid "Firmware revision:"
+#~ msgstr "Revisi firmware:"
+
+#~ msgid "Temperature:"
+#~ msgstr "Temperatur:"
+
+#~ msgid "Bad sectors:"
+#~ msgstr "Sektor buruk:"
+
+#~ msgid "Powered on for:"
+#~ msgstr "Berdaya nyala sebagai:"
+
+#~ msgid "Power cycles:"
+#~ msgstr "Siklus daya:"
+
+#~ msgid "Self tests:"
+#~ msgstr "Uji sendiri:"
+
+#~ msgid "Overall assessment:"
+#~ msgstr "Penilaian keseluruhan:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save SMART Report."
+#~ msgstr "Tidak Bisa Simpan Laporan SMART."
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Attribute"
+#~ msgstr "Atribut"
+
+#~ msgid "Failure Type"
+#~ msgstr "Tipe Kegagalan"
+
+#~ msgid "Update Type"
+#~ msgstr "Tipe Pembaruan"
+
+#~ msgid "Worst"
+#~ msgstr "Terburuk"
+
+#~ msgid "Current"
+#~ msgstr "Saat Ini"
+
+#~ msgid "Threshold"
+#~ msgstr "Ambang Batas"
+
+#~ msgid "Raw"
+#~ msgstr "Raw"
+
+#~ msgid "Assessment"
+#~ msgstr "Penilaian"
+
+#~ msgid "Value"
+#~ msgstr "Nilai"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary output file to save <filename>%1</filename>."
+#~ msgstr ""
+#~ "Tidak bisa menciptakan berkas keluaran sementara untuk simpan <filename>"
+#~ "%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Saving Log File"
+#~ msgstr "Galat Menyimpan Berkas Log"
+
+#~ msgctxt ""
+#~ "@title:column Severity of a log entry / log level. Text must be very "
+#~ "short."
+#~ msgid "Sev."
+#~ msgstr "Keb."
+
+#~ msgid "Severity"
+#~ msgstr "Kebengisan"
+
+#~ msgctxt "@title:column a time stamp of a log entry"
+#~ msgid "Time"
+#~ msgstr "Waktu"
+
+#~ msgctxt "@title:column the text message of a log entry"
+#~ msgid "Message"
+#~ msgstr "Pesan"
+
+#~ msgctxt "@title"
+#~ msgid "<application>KDE Partition Manager</application>"
+#~ msgstr "<application>Manajer Partisi KDE</application>"
+
+#~ msgctxt "@title"
+#~ msgid "Manage your disks, partitions and file systems"
+#~ msgstr "Kelola disk anda, partisi dan sistem berkas"
+
+#, fuzzy
+#~| msgctxt "@info:credit"
+#~| msgid "© 2008-2013 Volker Lanz"
+#~ msgctxt "@info:credit"
+#~ msgid ""
+#~ "© 2008-2013 Volker Lanz\n"
+#~ "© 2012-2015 Andrius Štikonas"
+#~ msgstr "© 2008-2013 Volker Lanz"
+
+#~ msgid "Hugo Pereira Da Costa"
+#~ msgstr "Hugo Pereira Da Costa"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Partition Widget Design"
+#~ msgstr "Disain Widget Partisi"
+
+#~ msgctxt "@info:shell"
+#~ msgid "Do not try to gain super user privileges"
+#~ msgstr "Jangan mencoba untuk mencapai hak pengguna hebat (super user)"
+
+#~ msgctxt "@info:shell"
+#~ msgid "Show advanced tab in configuration dialog"
+#~ msgstr "Tampilkan tab lanjutan di dialog konfigurasi"
+
+#~ msgctxt "@info:shell"
+#~ msgid "Device(s) to manage"
+#~ msgstr "Mengelola perangkat(2)"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You do not have administrative privileges.</warning></"
+#~ "para><para>It is possible to run <application>%1</application> without "
+#~ "these privileges. You will, however, <emphasis>not</emphasis> be allowed "
+#~ "to apply operations.</para><para>Do you want to continue running "
+#~ "<application>%1</application>?</para>"
+#~ msgstr ""
+#~ "<para><warning>Anda tidak memiliki hak administratif.</warning></"
+#~ "para><para>Hal ini mungkin untuk menjalankan <application>%1</"
+#~ "application> tanpa hak ini. Anda menghendaki, bagaimanapun, "
+#~ "<emphasis>tidak</emphasis> diizinkan untuk menerapkanoperasi.</"
+#~ "para><para>Apakah anda ingin terus menjalankan <application>%1</"
+#~ "application>?</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "No administrative privileges"
+#~ msgstr "Tidak ada hak administratif"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The configured backend plugin \"%1\" could not be loaded.</"
+#~ "para><para>Loading the default backend plugin \"%2\" instead.</para>"
+#~ msgstr ""
+#~ "<para>Plugin backend \"%1\" terkonfigurasi tidak bisa dimuat.</"
+#~ "para><para>Memuat plugin backend \"%2\" standar sebagai gantinya.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error: Could Not Load Backend Plugin"
+#~ msgstr "Galat: Tidak Bisa Muat Plugin Backend"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Neither the configured (\"%1\") nor the default (\"%2\") backend "
+#~ "plugin could be loaded.</para><para>Please check your installation.</para>"
+#~ msgstr ""
+#~ "<para>Kedua-duanya tidak dikonfigurasi (\"%1\") juga tidak standar "
+#~ "(\"%2\") plugin backend bisa dimuat.</para><para>Silakan periksa "
+#~ "pemasangan anda.</para>"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Size:"
+#~ msgstr "Ukuran:"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Developer"
+#~ msgstr "Pengembang"
+
+#~ msgctxt "@title"
+#~ msgid "Dummy Backend Plugin"
+#~ msgstr "Plugin Backend Tiruan"
+
+#~ msgid "KDE Partition Manager dummy backend."
+#~ msgstr "Backend Tiruan Manajer Partisi KDE."
+
+#~ msgid "Copyright 2010 Volker Lanz"
+#~ msgstr "Hak Cipta 2010 Volker Lanz"
+
+#~ msgctxt "@title"
+#~ msgid "LibParted Backend Plugin"
+#~ msgstr "Plugin Backend LibParted"
+
+#~ msgid "KDE Partition Manager backend for libparted."
+#~ msgstr "Backend Tiruan Manajer Partisi KDE untuk libparted."
+
+#~ msgid "Copyright 2008,2009,2010 Volker Lanz"
+#~ msgstr "Hak Cipta 2008,2009,2010 Volker Lanz"

@@ -1,0 +1,5853 @@
+# translation of partitionmanager.po to galician
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# mvillarino <mvillarino@users.sourceforge.net>, 2008, 2009.
+# Marce Villarino <mvillarino@users.sourceforge.net>, 2008.
+# Xabier Villar <xabier.villar@gmail.com>, 2010.
+# Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013.
+# Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2012, 2013, 2015, 2016, 2017.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: partitionmanager\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-27 00:47+0000\n"
+"PO-Revision-Date: 2020-01-05 18:42+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 19.08.3\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Xabier Villar, mvillarino"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "xabier.villar@gmail.com, mvillarino@users.sourceforge.net"
+
+#: core/device.cpp:33
+#, kde-format
+msgid "Unknown Device"
+msgstr "Dispositivo descoñecido"
+
+#: core/device.cpp:82
+#, kde-kuit-format
+msgctxt "@item:inlistbox Device name – Capacity (device node)"
+msgid "%1 – %2 (%3)"
+msgstr "%1 – %2 (%3)"
+
+#: core/lvmdevice.cpp:362
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "An error occurred while running lvdisplay."
+msgstr "Produciuse un erro ao executar lvdisplay."
+
+#: core/operationstack.cpp:101
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just created: Undoing the operation to create the "
+"partition."
+msgstr ""
+"Eliminado dunha partición que acaba de crear: desfacendo a operación para "
+"crear a partición."
+
+#: core/operationstack.cpp:119
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resizing a partition just created: Updating start and end in existing "
+"operation."
+msgstr ""
+"Cambio de tamaño dunha partición que acaba de crear: actualizando o comezo e "
+"a fin na operación existente."
+
+#: core/operationstack.cpp:139
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying a new partition: Creating a new partition instead."
+msgstr "Copia dunha nova partición: crearase no canto unha partición nova."
+
+#: core/operationstack.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label for a new partition: No new operation required."
+msgstr ""
+"Cambio da etiqueta dunha nova partición: non se require ningunha operación "
+"nova."
+
+#: core/operationstack.cpp:169
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing file system for a new partition: No new operation required."
+msgstr ""
+"Cambio do sistema de ficheiros dunha nova partición: non se require ningunha "
+"operación nova."
+
+#: core/operationstack.cpp:186
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking file systems is automatically done when creating them: No new "
+"operation required."
+msgstr ""
+"Os sistemas de ficheiros compróbanse automaticamente ao crearse; non é "
+"necesaria unha operación nova."
+
+#: core/operationstack.cpp:233
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just copied: Removing the copy."
+msgstr "Eliminando unha partición que se acaba de copiar: retirando a copia."
+
+#: core/operationstack.cpp:238
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just copied over an existing partition: Removing the "
+"copy and deleting the existing partition."
+msgstr ""
+"Eliminado dunha partición que acaba de copiar sobre outra partición xa "
+"existente: retirando a copia e eliminando a partición xa existente."
+
+#: core/operationstack.cpp:251
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copying a partition that is itself a copy: Copying the original source "
+"partition instead."
+msgstr ""
+"Copiado dunha partición que en si xa é unha copia: copiando no seu lugar a "
+"partición orixinal."
+
+#: core/operationstack.cpp:280
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just restored: Removing the restore operation."
+msgstr ""
+"Eliminado dunha partición que acaba de restaurar: retirando a operación de "
+"restauración."
+
+#: core/operationstack.cpp:285
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just restored to an existing partition: Removing the "
+"restore operation and deleting the existing partition."
+msgstr ""
+"Eliminado dunha partición que acaba de restaur nunha partición xa existente: "
+"retirando a operación de restauración e eliminando a partición existente."
+
+#: core/operationstack.cpp:318
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing flags again for the same partition: Removing old operation."
+msgstr ""
+"Cambio de novo as bandeiras da mesma partición: retirando a operación antiga."
+
+#: core/operationstack.cpp:349
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label again for the same partition: Removing old operation."
+msgstr ""
+"Cambio de novo a etiqueta da mesma partición: retirando a operación antiga."
+
+#: core/operationstack.cpp:375
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating new partition table, discarding previous operation on device."
+msgstr ""
+"Creando unha nova táboa de particións, descartando as operacións anteriores "
+"no dispositivo."
+
+#: core/operationstack.cpp:395
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing Volume Group, nothing to do."
+msgstr "Cambiando o tamaño do grupo de volumes, non hai nada para facer."
+
+#: core/operationstack.cpp:440
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Add operation: %1"
+msgstr "Engadir unha operación: %1"
+
+#: core/partition.cpp:159
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "unallocated"
+msgstr "sen asignar"
+
+#: core/partition.cpp:162
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "New Partition"
+msgstr "Partición nova"
+
+#: core/partition.cpp:165
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Restored Partition"
+msgstr "Partición restaurada"
+
+#: core/partition.cpp:168
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Copy of %1"
+msgstr "Copia de %1"
+
+#: core/partitionalignment.cpp:80
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
+"modulo: %3)."
+msgstr ""
+"A partición <filename>%1</filename> non está aliñada correctamente (primeiro "
+"sector: %2, módulo: %3)."
+
+#: core/partitionalignment.cpp:83
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
+"modulo: %3)."
+msgstr ""
+"A partición <filename>%1</filename> non está aliñada correctamente (último "
+"sector: %2, módulo: %3)."
+
+#: core/partitionrole.cpp:17
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "unallocated"
+msgstr "sen asignar"
+
+#: core/partitionrole.cpp:20
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "logical"
+msgstr "lóxica"
+
+#: core/partitionrole.cpp:23
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "extended"
+msgstr "estendida"
+
+#: core/partitionrole.cpp:26
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "primary"
+msgstr "primaria"
+
+#: core/partitionrole.cpp:29
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LUKS"
+msgstr "LUKS"
+
+#: core/partitionrole.cpp:32
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LVM logical volume"
+msgstr "Volume lóxico de LVM"
+
+#: core/partitionrole.cpp:34
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "none"
+msgstr "ningún"
+
+#: core/partitiontable.cpp:180
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "boot"
+msgstr "arranque"
+
+#: core/partitiontable.cpp:182
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "root"
+msgstr "raíz"
+
+#: core/partitiontable.cpp:184
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "swap"
+msgstr "swap"
+
+#: core/partitiontable.cpp:186
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hidden"
+msgstr "agochada"
+
+#: core/partitiontable.cpp:188
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "raid"
+msgstr "raid"
+
+#: core/partitiontable.cpp:190
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lvm"
+msgstr "lvm"
+
+#: core/partitiontable.cpp:192
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lba"
+msgstr "lba"
+
+#: core/partitiontable.cpp:194
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hpservice"
+msgstr "hpservice"
+
+#: core/partitiontable.cpp:196
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "palo"
+msgstr "palo"
+
+#: core/partitiontable.cpp:198
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "prep"
+msgstr "prep"
+
+#: core/partitiontable.cpp:200
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-reserved"
+msgstr "msft-reservada"
+
+#: core/partitiontable.cpp:202
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "bios-grub"
+msgstr "bios-grub"
+
+#: core/partitiontable.cpp:204
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "apple-tv-recovery"
+msgstr "apple-tv-recovery"
+
+#: core/partitiontable.cpp:206
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "diag"
+msgstr "diag"
+
+#: core/partitiontable.cpp:208
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "legacy-boot"
+msgstr "legacy-boot"
+
+#: core/partitiontable.cpp:210
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-data"
+msgstr "msft-data"
+
+#: core/partitiontable.cpp:212
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "irst"
+msgstr "irst"
+
+#: core/partitiontable.cpp:499
+#, kde-kuit-format
+msgctxt "@item partition table name"
+msgid "unknown"
+msgstr "descoñecido"
+
+#: core/raid/softwareraid.cpp:93
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level]"
+msgid " [RAID %1]"
+msgstr " [RAID %1]"
+
+#: core/raid/softwareraid.cpp:95
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Recovering]"
+msgid " [RAID %1 - Recovering]"
+msgstr " [RAID %1 — Recuperando]"
+
+#: core/raid/softwareraid.cpp:97
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Resyncing]"
+msgid " [RAID %1 - Resyncing]"
+msgstr " [RAID %1 — Sincronizando de novo]"
+
+#: core/smartattribute.cpp:45
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "failing"
+msgstr "fallando"
+
+#: core/smartattribute.cpp:48
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "has failed"
+msgstr "fallou"
+
+#: core/smartattribute.cpp:51
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "warning"
+msgstr "aviso"
+
+#: core/smartattribute.cpp:54
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "good"
+msgstr "ben"
+
+#: core/smartattribute.cpp:58 core/smartattribute.cpp:85
+#, kde-kuit-format
+msgctxt "@item:intable not applicable"
+msgid "N/A"
+msgstr "descoñecido"
+
+#: core/smartattribute.cpp:72
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 sector"
+msgid_plural "%1 sectors"
+msgstr[0] "%1 sector"
+msgstr[1] "%1 sectores"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Rate"
+msgstr "Frecuencia dos erros de lectura"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Rate of hardware read errors while reading data from the disk surface."
+msgstr ""
+"Frecuencia dos erros de lectura do soporte físico ao ler datos da superficie "
+"do disco."
+
+# https://en.wikipedia.org/wiki/Hard_disk_drive_performance_characteristics#Data_transfer_rate
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Throughput Performance"
+msgstr "Taxa de transferencia de datos"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Overall (general) throughput performance of a hard disk drive. If the value "
+"of this attribute is decreasing there is a high probability that there is a "
+"problem with the disk."
+msgstr ""
+"O rendemento xeral de transferencia dunha unidade de disco duro. Se o valor "
+"deste atributo está a diminuír, existe unha alta probabilidade de que exista "
+"un problema co disco."
+
+# https://en.wikipedia.org/wiki/Spin-up
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin-Up Time"
+msgstr "Tempo de inicio de xiro"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Average time of spindle spin up from zero RPM to fully operational."
+msgstr ""
+"Tempo medio para que o eixo pase de estar parado a xirar a unha velocidade "
+"completamente funcional."
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Start/Stop Count"
+msgstr "Conta de inicio e parada"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr description"
+msgid "A tally of spindle start/stop cycles."
+msgstr "Número de ciclos de inicio e parada do eixo."
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocated Sectors Count"
+msgstr "Número de sectores reasignados"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of reallocated sectors. When the hard drive finds a read/write/"
+"verification error, it marks this sector as &quot;reallocated&quot; and "
+"transfers data to a special reserved area (spare area)."
+msgstr ""
+"Número de sectores reasignados. Cando se atopa un erro de lectura, escritura "
+"ou verificación no disco, o sector en cuestión márcase como «reasignado», e "
+"os datos transfírense a unha zona especial, a zona libre, reservada para "
+"este fin."
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Channel Margin"
+msgstr "Marxe da canle de lectura"
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Margin of a channel while reading data. The function of this attribute is "
+"not specified."
+msgstr ""
+"Marxe dunha canle mentres está a ler datos. Non se indica a función deste "
+"atributo."
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Error Rate"
+msgstr "Frecuencia dos erros de salto"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Rate of seek errors of the magnetic heads. If there is a partial failure in "
+"the mechanical positioning system, then seek errors will arise."
+msgstr ""
+"Frecuencia dos erros de salto das cabezas magnéticas. Se hai un fallo "
+"parcial no sistema de posicionamento dinámico, aparecerán os erros de salto."
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Time Performance"
+msgstr "Rendemento do tempo de salto"
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Average performance of seek operations of the magnetic heads. If this "
+"attribute is decreasing, it is a sign of problems in the mechanical "
+"subsystem."
+msgstr ""
+"Rendemento medio das operacións de salto nas cabezas magnéticas. A "
+"diminución deste atributo é sinal de problemas no subsistema mecánico."
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Hours"
+msgstr "Horas acendido"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of hours in power-on state."
+msgstr "Número de horas que leva acendido."
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Retry Count"
+msgstr "Número de segundos intentos de xiro"
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of retry of spin start attempts if the first attempt was unsuccessful. "
+"An increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"Número de veces que se produciu un segundo intento de iniciar o xiro porque "
+"o primeiro intento non deu froito. O aumento deste atributo é sinal de "
+"problemas no subsistema mecánico do disco duro."
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Recalibration Retries"
+msgstr "Segundos intentos de recalibración"
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of recalibrations requested if the first attempt was unsuccessful. An "
+"increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"Número de veces que se produciu unha segunda solicitude de recalibración "
+"porque a primeira non deu froito. O aumento deste atributo é sinal de "
+"problemas no subsistema mecánico do disco duro."
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Cycle Count"
+msgstr "Número de ciclos de enerxía"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of full hard disk power on/off cycles."
+msgstr "Número de ciclos completos de acendido e apagado do disco duro."
+
+#: core/smartattribute.cpp:113 core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft Read Error Rate"
+msgstr "Frecuencia de erros de lectura do software"
+
+#: core/smartattribute.cpp:113
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Uncorrected read errors reported to the operating system."
+msgstr ""
+"Erros de lectura non corrixidos e dos que se informou ao sistema operativo."
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Available Reserved Space"
+msgstr "Espazo reservado dispoñíbel de SSD"
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of available reserved space as a percentage of reserved space."
+msgstr "Porcentaxe do espazo reservado que está dispoñíbel."
+
+#: core/smartattribute.cpp:115
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count"
+msgstr "Número de fallos de programación de SSD"
+
+#: core/smartattribute.cpp:115 core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of flash program operation failures since the drive was deployed."
+msgstr ""
+"Número de fallos de operación de programación flash desde que se instalou a "
+"unidade."
+
+#: core/smartattribute.cpp:116 core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count"
+msgstr "Número de fallos de borrado de SSD"
+
+#: core/smartattribute.cpp:116
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase operation failures since the drive was deployed."
+msgstr ""
+"Número de fallos de operación de borrado flash desde que se instalou a "
+"unidade."
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Leveling Count"
+msgstr "Número de uniformacións de uso de SSD"
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Counts the maximum worst erase count on any block."
+msgstr "Suma do máximo peor número de borrados en calquera bloque."
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unexpected power loss count"
+msgstr "Número de perdas de enerxía inesperadas de SSD"
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of shutdowns without STANDBY IMMEDIATE as the last command "
+"(regardless of PLI activity using capacitor power). Normalized value is "
+"always 100."
+msgstr ""
+"Número de apagados sen «STANDBY IMMEDIATE» como última orde (sen importar a "
+"actividade PLI usando a enerxía do condensador). O valor normalizado sempre "
+"é 100."
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Power Loss Protection Failure"
+msgstr "Fallo da protección contra a perda de enerxía de SSD"
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Last test result, saturated at its maximum value. Bytes 0-1: last test "
+"result as microseconds to discharge cap in range [25, 5000000], lower "
+"indicates specific error code. Bytes 2-3: minutes since last test. Bytes "
+"4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
+"or 11 if the capacitor has been tested in an excessive temperature "
+"condition, otherwise 100."
+msgstr ""
+"Último resultado das probas, saturado no seu valor máximo. Bytes 0-1: último "
+"resultado das probas en microsegundos ata o límite de descarga no intervalo "
+"[25, 5000000], un valor inferior indica o código dun erro concreto. Bytes "
+"2-3: minutos desde a última proba. Bytes 4-5: número total de probas. O "
+"valor normalizado é 1 en caso de fallo nunha proba, 11 se o condensador se "
+"probou a unha temperatura excesiva, ou 100 no resto de casos."
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count (chip)"
+msgstr "Número de fallos de borrado de SSD (chip)"
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase command failures."
+msgstr "Número de fallos de orde de borrado flash."
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Range Delta"
+msgstr "Diferenza de niveis de uso de SSD"
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Delta between most-worn and least-worn flash blocks."
+msgstr "Diferenza entre os bloques flash máis usados e os menos usados."
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Used Reserved Block Count Total"
+msgstr "Número total de bloques reservados usados de SSD"
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#: core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" Samsung attribute."
+msgstr "Atributo «Pre-Fail» (pre-erro) de Samsung."
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unused Reserved Block Count Total"
+msgstr "Número total de bloques reservados sen usar de SSD"
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" HP attribute."
+msgstr "Atributo «Pre-Fail» (pre-erro) de HP."
+
+#: core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+msgstr ""
+"Número total de fallos de programa de SSD ou número de accesos aliñados non "
+"4K de SSD"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SATA Downshift Error Count"
+msgstr "Número de erros de redución da velocidade do SATA"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital and Samsung attribute."
+msgstr "Atributo de Western Digital e Samsung."
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr name"
+msgid "End-to-End Error"
+msgstr "Erro de punto a punto"
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Part of HP's SMART IV technology: After transferring through the cache RAM "
+"data buffer the parity data between the host and the hard drive did not "
+"match."
+msgstr ""
+"Parte da tecnoloxía SMART IV de HP. Despois dunha transferencia a través do "
+"búfer de datos da RAM de caché, os datos de paridade do anfitrión non se "
+"corresponderon cos do disco duro."
+
+#: core/smartattribute.cpp:129
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Stability"
+msgstr "Estabilidade da cabeza"
+
+#: core/smartattribute.cpp:129 core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital attribute."
+msgstr "Atributo de Western Digital."
+
+#: core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Induced Op-Vibration Detection"
+msgstr "Detección de vibración por operacións inducida"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reported Uncorrectable Errors"
+msgstr "Erros incorrixíbeis coñecidos"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could not be recovered using hardware ECC."
+msgstr ""
+"Número de erros dos que non se puido recuperar empregando ECC de soporte "
+"físico."
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Command Timeout"
+msgstr "Ordes caducadas"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of aborted operations due to HDD timeout."
+msgstr ""
+"Número de operacións interrompidas por esgotarse o tempo límite do disco "
+"duro."
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr name"
+msgid "High Fly Writes"
+msgstr "Escrituras de voo alto"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of fly height errors detected."
+msgstr ""
+"Número de erros de «voo alto» detectados. Estes erros consisten naquelas "
+"situacións nas que unha cabeza “voa” fóra da súa zona normal de operación."
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature Difference From 100"
+msgstr "Diferenza de temperatura de 100"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
+"minimum threshold which corresponds to a maximum temperature."
+msgstr ""
+"O valor é equivalente a 100 °C, de xeito que os fabricantes poden definir un "
+"límite inferior, que se corresponda cunha temperatura máxima."
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-sense Error Rate"
+msgstr "Frecuencia de erros G"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors resulting from externally-induced shock and vibration."
+msgstr ""
+"Número de erros producidos por golpes e vibracións inducidos de maneira "
+"externa."
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Off Retract Count"
+msgstr "Número de apagados"
+
+# http://www.ariolic.com/activesmart/smart-attributes/power-off-retract-count.html
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of power-off or emergency retract cycles"
+msgstr "Número de veces que se apagou o disco."
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Cycle Count"
+msgstr "Número de ciclos de carga"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of load/unload cycles into head landing zone position."
+msgstr ""
+"Número de ciclos de carga e descarga na posición da área de aterraxe da "
+"cabeza."
+
+#: core/smartattribute.cpp:138 core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: core/smartattribute.cpp:138
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Current internal temperature."
+msgstr "Temperatura interna actual."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Hardware ECC Recovered"
+msgstr "Recuperacións con ECC de soporte físico"
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could be recovered using hardware ECC."
+msgstr ""
+"Número de erros dos que foi posíbel recuperarse empregando ECC de soporte "
+"físico."
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocation Event Count"
+msgstr "Número de eventos de reasignación"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of remap operations. The raw value of this attribute shows the total "
+"number of attempts to transfer data from reallocated sectors to a spare area."
+msgstr ""
+"Número de operacións de reasignación. O valor en cru deste atributo mostra o "
+"número de intentos de transferir datos de sectores reasignados a unha zona "
+"libre."
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Current Pending Sector Count"
+msgstr "Número de sectores pendentes actuais"
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
+"read errors)."
+msgstr ""
+"Número de sectores “inestábeis”, é dicir, sectores á espera de reasignarse "
+"por mor de erros de lectura."
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Uncorrectable Sector Count"
+msgstr "Número de sectores incorrixíbeis"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of uncorrectable errors when reading/writing a sector."
+msgstr "Número de erros incorrixíbeis ao ler ou escribir nun sector."
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr name"
+msgid "UltraDMA CRC Error Count"
+msgstr "Número de erros CRC de UltraDMA"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of errors in data transfer via the interface cable as determined by "
+"ICRC."
+msgstr ""
+"Número de erros en transferencias de datos mediante a fío da interface, tal "
+"e como o determina o ICRC."
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Multi-Zone Error Rate<br/>Write Error Rate"
+msgstr ""
+"Frecuencia de erros en varias zonas<br/>Frecuencia de erros de escritura"
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr description"
+msgid "The total number of errors when writing a sector."
+msgstr "O número total de erros ao escribir un sector."
+
+#: core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of off-track errors."
+msgstr "Número de erros de saída de pista."
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Data Address Mark Errors"
+msgstr "Erros de marcas do enderezo de datos"
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of Data Address Mark errors (or vendor-specific)."
+msgstr ""
+"Número de erros de marcas do enderezo de datos (ou outro tipo de dato, "
+"dependendo do fabricante)."
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Run Out Cancel"
+msgstr "Execución e cancelación"
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of ECC errors"
+msgstr "Número de erros ECC."
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft ECC Correction"
+msgstr "Correccións de ECC de software"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors corrected by software ECC"
+msgstr "Número de erros corrixidos por ECC de software."
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Thermal Asperity Rate"
+msgstr "Taxa de aspereza térmica"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors due to high temperature."
+msgstr "Número de erros debidos a altas temperaturas."
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Flying Height"
+msgstr "Altura de voo"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Height of heads above the disk surface. A flying height that is too low "
+"increases the chances of a head crash while a flying height that is too high "
+"increases the chances of a read/write error."
+msgstr ""
+"Altura das cabezas sobre a superficie do disco. Se a altura é pouca, aumenta "
+"a probabilidade de que quebre algunha cabeza, mentres que se é moita, "
+"aumenta a probabilidade de que se produzan erros de lectura ou escritura."
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin High Current"
+msgstr "Corrente de inicio do xiro"
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Amount of surge current used to spin up the drive."
+msgstr "Cantidade de corrente empregada para iniciar o xiro da unidade."
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Buzz"
+msgstr "Axitación para o xiro"
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of buzz routines needed to spin up the drive due to insufficient "
+"power."
+msgstr ""
+"Número de rutinas de axitación necesarias para iniciar o xiro da unidade, a "
+"causa da falta de enerxía."
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Offline Seek Performance"
+msgstr "Rendemento de salto desconectado"
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive's seek performance during its internal tests."
+msgstr "Rendemento de salto da unidade durante as probas internas."
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Vibration During Write"
+msgstr "Vibración durante a escritura"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Vibration During Write"
+msgstr "Vibración producida durante as operacións de escritura."
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Shock During Write"
+msgstr "Golpes durante a escritura"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Shock During Write"
+msgstr "Golpes producidos durante as operacións de escritura."
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Disk Shift"
+msgstr "Desprazamento do disco"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Distance the disk has shifted relative to the spindle (usually due to shock "
+"or temperature)."
+msgstr ""
+"Distancia de desprazamento do disco en relación ao gonzo, xeralmente a causa "
+"de golpes ou por mor da temperatura."
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-Sense Error Rate"
+msgstr "Frecuencia de erros G"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of errors resulting from externally-induced shock and vibration."
+msgstr ""
+"Número de erros producidos por golpes e vibracións inducidos de maneira "
+"externa."
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Loaded Hours"
+msgstr "Horas de carga"
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time spent operating under data load."
+msgstr "Tempo empregado operando baixo carga de datos."
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Retry Count"
+msgstr "Número de segundos intentos de carga ou descarga"
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of times head changes position."
+msgstr "Veces que cambia a posición da cabeza."
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Friction"
+msgstr "Fricción de carga"
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Resistance caused by friction in mechanical parts while operating."
+msgstr ""
+"Resistencia causada pola fricción en partes mecánicas mentres se opera."
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Cycle Count"
+msgstr "Número de ciclos de carga e descarga"
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total number of load cycles."
+msgstr "Número total de ciclos de carga."
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load-In Time"
+msgstr "Tempo de carga"
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Total time of loading on the magnetic heads actuator (time not spent in "
+"parking area)."
+msgstr ""
+"Tempo total de carga no mecanismo de activación das cabezas magnéticas, é "
+"dicir, tempo non empregado na zona de aparcadoiro."
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Torque Amplification Count"
+msgstr "Número de amplificacións das forzas de torsión"
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of attempts to compensate for platter speed variations."
+msgstr "Número de intentos de compensar as variacións da velocidade do prato."
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-Off Retract Cycle"
+msgstr "Ciclos de apagado"
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of times the magnetic armature was retracted automatically as a "
+"result of cutting power."
+msgstr ""
+"Veces que se retirou o armazón magnético automaticamente como consecuencia "
+"dun corte de enerxía."
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr name"
+msgid "GMR Head Amplitude"
+msgstr "Amplitude GMR das cabezas"
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
+"head motion)"
+msgstr ""
+"Amplitude da «malleira», é dicir, a distancia de movemento repetitivo cada "
+"adiante e cara atrás das cabezas."
+
+#: core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive Temperature"
+msgstr "Temperatura da unidade"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Endurance Remaining"
+msgstr "Vida restante"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of physical erase cycles completed on the drive as a percentage of the "
+"maximum physical erase cycles the drive supports"
+msgstr ""
+"Número de ciclos físicos de borrado completados na unidade, en forma de "
+"porcentaxe con respecto ao número máximo de ciclos de borrado que permite a "
+"unidade."
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Seconds"
+msgstr "Segundos acendido"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time elapsed in the power-on state"
+msgstr "Tempo que leva acendido."
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Unrecoverable ECC Count"
+msgstr "Número de ECC irrecuperábeis"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of unrecoverable ECC errors"
+msgstr "Número de erros ECC irrecuperábeis."
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Good Block Rate"
+msgstr "Taxa de bloques bos"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of available reserved blocks as percentage of the total number of "
+"reserved blocks"
+msgstr ""
+"Número de bloques inversos dispoñíbeis, en forma de porcentaxe con respecto "
+"ao número total de bloques reservados."
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+msgstr ""
+"Horas de voo das cabezas<br/>ou Frecuencia dos erros de transferencia "
+"(Fujitsu)"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Time while head is positioning<br/>or counts the number of times the link is "
+"reset during a data transfer."
+msgstr ""
+"Tempo durante o que a cabeza se pon en posición ou<br/>veces que se "
+"restablece a ligazón durante unha transferencia de datos."
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Written"
+msgstr "LBAs totais escritas"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Written"
+msgstr "LBAs totais escritas."
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Read"
+msgstr "LBAs totais lidas"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Read"
+msgstr "LBAs totais lidas."
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD NAND_Writes_1GiB"
+msgstr "Número de escrituras NAND por 1 GiB"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of writes to NAND in 1 GB increments"
+msgstr "Número de escrituras en NAND en aumentos de 1 GB."
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Retry Rate"
+msgstr "Frecuencia dos erros de lectura"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors while reading from a disk"
+msgstr "Número de erros ao ler dun disco."
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Free Fall Protection"
+msgstr "Protección contra caídas"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of &quot;Free Fall Events&quot; detected"
+msgstr "Número de eventos de caída detectados."
+
+#: core/smartstatus.cpp:78
+#, kde-kuit-format
+msgctxt "@item:intable degrees in Celsius and Fahrenheit"
+msgid "%1° C / %2° F"
+msgstr "%1°C / %2 °F"
+
+#: core/smartstatus.cpp:86
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Aborted"
+msgstr "Interrompido"
+
+#: core/smartstatus.cpp:89
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Interrupted"
+msgstr "Interrompido"
+
+#: core/smartstatus.cpp:92
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Fatal error"
+msgstr "Erro moi grave"
+
+#: core/smartstatus.cpp:95
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Unknown error"
+msgstr "Erro descoñecido"
+
+#: core/smartstatus.cpp:98
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Electrical error"
+msgstr "Erro eléctrico"
+
+#: core/smartstatus.cpp:101
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Servo error"
+msgstr "Erro de servo"
+
+#: core/smartstatus.cpp:104
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Read error"
+msgstr "Erro de lectura"
+
+#: core/smartstatus.cpp:107
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Handling error"
+msgstr "Erro de manipulación"
+
+#: core/smartstatus.cpp:110
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Self test in progress"
+msgstr "Proba en marcha"
+
+#: core/smartstatus.cpp:114
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Success"
+msgstr "Éxito"
+
+#: core/smartstatus.cpp:123
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Healthy"
+msgstr "Bo estado"
+
+#: core/smartstatus.cpp:126
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has been used outside of its design parameters in the past."
+msgstr "Outrora usouse fóra dos parámetros cos que se deseñou."
+
+#: core/smartstatus.cpp:129
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has some bad sectors."
+msgstr "Ten algúns sectores malos."
+
+#: core/smartstatus.cpp:132
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Is being used outside of its design parameters right now."
+msgstr "Está a usarse fóra dos parámetros cos que se deseñou."
+
+#: core/smartstatus.cpp:135
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has many bad sectors."
+msgstr "Ten moitos sectores malos."
+
+#: core/smartstatus.cpp:139
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Disk failure is imminent. Backup all data!"
+msgstr ""
+"Un fallo de disco é inminente. Faga unha copia de seguranza dos seus datos!"
+
+#: fs/btrfs.cpp:166
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"O cambio de tamaño do sistema de ficheiros Btrfs na particións <filename>%1</"
+"filename> fallou: non se puido crear o directorio temporal."
+
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"btrfs file system resize failed."
+msgstr ""
+"O cambio de tamaño do sistema de ficheiros Btrfs na particións <filename>%1</"
+"filename> fallou: non foi posíbel realizar a operación de cambio de tamaño "
+"do sistema de ficheiros Btrfs."
+
+#: fs/btrfs.cpp:187
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Ao intentar cambiar o tamaño do sistema de ficheiros Btrfs na "
+"particións <filename>%1</filename>, a desmontaxe fallou.</warning>"
+
+#: fs/btrfs.cpp:189
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"O cambio de tamaño do sistema de ficheiros Btrfs na particións <filename>%1</"
+"filename> fallou: a montaxe inicial fallou."
+
+#: fs/fat12.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Setting label for partition <filename>%1</filename> to %2"
+msgstr "Pon a etiqueta da partición <filename>%1</filename> como %2"
+
+#: fs/filesystem.cpp:503
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unknown"
+msgstr "descoñecido"
+
+#: fs/filesystem.cpp:504
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "extended"
+msgstr "estendida"
+
+#: fs/filesystem.cpp:506
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext2"
+msgstr "ext2"
+
+#: fs/filesystem.cpp:507
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext3"
+msgstr "ext3"
+
+#: fs/filesystem.cpp:508
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext4"
+msgstr "ext4"
+
+#: fs/filesystem.cpp:509
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linuxswap"
+msgstr "linuxswap"
+
+#: fs/filesystem.cpp:510
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat16"
+msgstr "fat16"
+
+#: fs/filesystem.cpp:511
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat32"
+msgstr "fat32"
+
+#: fs/filesystem.cpp:512
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ntfs"
+msgstr "ntfs"
+
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser"
+msgstr "reiser"
+
+#: fs/filesystem.cpp:514
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser4"
+msgstr "reiser4"
+
+#: fs/filesystem.cpp:515
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "xfs"
+msgstr "xfs"
+
+#: fs/filesystem.cpp:516
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "jfs"
+msgstr "jfs"
+
+#: fs/filesystem.cpp:517
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfs"
+msgstr "hfs"
+
+#: fs/filesystem.cpp:518
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfsplus"
+msgstr "hfsplus"
+
+#: fs/filesystem.cpp:519
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ufs"
+msgstr "ufs"
+
+#: fs/filesystem.cpp:520
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unformatted"
+msgstr "sen formato"
+
+#: fs/filesystem.cpp:521
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "btrfs"
+msgstr "btrfs"
+
+#: fs/filesystem.cpp:522
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hpfs"
+msgstr "hpfs"
+
+#: fs/filesystem.cpp:523
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks"
+msgstr "luks"
+
+#: fs/filesystem.cpp:524
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ocfs2"
+msgstr "ocfs2"
+
+#: fs/filesystem.cpp:525
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "zfs"
+msgstr "zfs"
+
+#: fs/filesystem.cpp:526
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "exfat"
+msgstr "exfat"
+
+#: fs/filesystem.cpp:527
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "nilfs2"
+msgstr "nilfs2"
+
+#: fs/filesystem.cpp:528
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "lvm2 pv"
+msgstr "lvm2 pv"
+
+#: fs/filesystem.cpp:529
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "f2fs"
+msgstr "f2fs"
+
+#: fs/filesystem.cpp:530
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "udf"
+msgstr "udf"
+
+#: fs/filesystem.cpp:531
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "iso9660"
+msgstr "iso9660"
+
+#: fs/filesystem.cpp:532
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks2"
+msgstr "luks2"
+
+#: fs/filesystem.cpp:533
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat12"
+msgstr "fat12"
+
+#: fs/filesystem.cpp:534
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linux_raid_member"
+msgstr "membro_de_raid_de_linux"
+
+#: fs/filesystem.cpp:535
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "BitLocker"
+msgstr "BitLocker"
+
+#: fs/filesystem.cpp:536
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "apfs"
+msgstr "apfs"
+
+#: fs/filesystem.cpp:537
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "minix"
+msgstr "minix"
+
+#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Mount"
+msgstr "Montar"
+
+#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unmount"
+msgstr "Desmontar"
+
+#: fs/jfs.cpp:155
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Fallou o cambio de tamaño do sistema de ficheiros JFS da partición <filename>"
+"%1</filename>: non se puido crear o directorio temporal."
+
+#: fs/jfs.cpp:169 fs/jfs.cpp:188
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Remount failed."
+msgstr ""
+"Fallou o cambio de tamaño do sistema de ficheiros JFS da partición <filename>"
+"%1</filename>: fallou o volver montar."
+
+#: fs/jfs.cpp:174
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing JFS file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Fallou o cambio de tamaño do sistema de ficheiros JFS da partición "
+"<filename>%1</filename>: fallou a desmontaxe.</warning>"
+
+#: fs/jfs.cpp:176
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Fallou o cambio de tamaño do sistema de ficheiros JFS da partición <filename>"
+"%1</filename>: fallou a montaxe inicial."
+
+#: fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Activar a swap"
+
+#: fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Desactivar a swap"
+
+#: fs/luks.cpp:166
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unlock"
+msgstr "Desbloquear"
+
+#: fs/luks.cpp:171
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Lock"
+msgstr "Bloquear"
+
+#: fs/luks.cpp:252
+#, kde-format
+msgid "Enter passphrase for %1:"
+msgstr "Insira a frase de paso de %1:"
+
+#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+msgstr ""
+"Cambiando o tamaño do cifrado LUKS na partición <filename>%1</filename>."
+
+#: fs/luks.cpp:509 fs/luks2.cpp:116
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing encrypted file system on partition <filename>%1</filename> failed."
+msgstr ""
+"O cambio de tamaño do sistema de ficheiros cifrado na partición <filename>"
+"%1</filename> fallou."
+
+#: fs/nilfs2.cpp:137
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"O cambio de tamaño do sistema de ficheiros NILFS2 na particións <filename>"
+"%1</filename> fallou: non se puido crear o directorio temporal."
+
+#: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"NILFS2 file system resize failed."
+msgstr ""
+"O cambio de tamaño do sistema de ficheiros NILFS2 na particións <filename>"
+"%1</filename> fallou: non foi posíbel realizar a operación de cambio de "
+"tamaño do sistema de ficheiros NILFS2."
+
+#: fs/nilfs2.cpp:156
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Ao intentar cambiar o tamaño do sistema de ficheiros NILFS2 na "
+"particións <filename>%1</filename>, a desmontaxe fallou.</warning>"
+
+#: fs/nilfs2.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"O cambio de tamaño do sistema de ficheiros NILFS2 na particións <filename>"
+"%1</filename> fallou: non foi posíbel montar o dispositivo."
+
+#: fs/ntfs.cpp:182
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updating boot sector for NTFS file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Actualizando o sector de arranque do sistema de ficheiros NTFS na partición "
+"<filename>%1</filename>."
+
+#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not write new start sector to partition <filename>%1</filename> when "
+"trying to update the NTFS boot sector."
+msgstr ""
+"Non se puido escribir o novo sector de inicio da partición <filename>%1</"
+"filename> mentres se intentaba actualizar o sector de arranque de NTFS."
+
+#: fs/ntfs.cpp:206
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updated NTFS boot sector for partition <filename>%1</filename> successfully."
+msgstr ""
+"Actualizouse o sector de arranque da partición NTFS <filename>%1</filename>."
+
+#: fs/xfs.cpp:159
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Fallou o cambio de tamaño do sistema de ficheiros XFS da partición <filename>"
+"%1</filename>: non se puido crear o directorio temporal."
+
+#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"xfs_growfs failed."
+msgstr ""
+"Fallou o cambio de tamaño do sistema de ficheiros XFS da partición <filename>"
+"%1</filename>: fallou xfs_growfs."
+
+#: fs/xfs.cpp:178
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing XFS file system on partition <filename>%1</filename> "
+"failed: Unmount failed.</warning>"
+msgstr ""
+"<warning>Cambio de tamaño do sistema de ficheiros XFS da partición <filename>"
+"%1</filename>: fallou a desmontaxe.</warning>"
+
+#: fs/xfs.cpp:180
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Fallou o cambio de tamaño do sistema de ficheiros XFS da partición <filename>"
+"%1</filename>: fallou a montaxe inicial."
+
+#: jobs/backupfilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"backup."
+msgstr ""
+"Non se puido abrir o sistema de ficheiros na partición de orixe <filename>"
+"%1</filename> para facer unha copia de seguranza."
+
+#: jobs/backupfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not create backup file <filename>%1</filename>."
+msgstr ""
+"Non se puido crear o ficheiro de copia de seguranza <filename>%1</filename>."
+
+#: jobs/backupfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Back up file system on partition <filename>%1</filename> to <filename>%2</"
+"filename>"
+msgstr ""
+"Copiado de seguranza do sistema de ficheiros da partición <filename>%1</"
+"filename> en <filename>%2</filename>"
+
+#: jobs/changepermissionsjob.cpp:43
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info/plain"
+msgid "Change the permissions of: <filename>%1</filename> to %2"
+msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+
+#: jobs/checkfilesystemjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Check file system on partition <filename>%1</filename>"
+msgstr "Comproba o sistema de ficheiros na partición <filename>%1</filename>"
+
+#: jobs/copyfilesystemjob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Cannot copy file system: File system on target partition <filename>%1</"
+"filename> is smaller than the file system on source partition <filename>%2</"
+"filename>."
+msgstr ""
+"Non se pode copiar o sistema de ficheiros: O sistema de ficheiros da "
+"partición de destino <filename>%1</filename> é menor do que o sistema de "
+"ficheiros na partición de orixe <filename>%2</filename>."
+
+#: jobs/copyfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Non se puido abrir o sistema de ficheiros na partición de orixe <filename>"
+"%1</filename> para copiar."
+
+#: jobs/copyfilesystemjob.cpp:58
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on target partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Non se puido abrir o sistema de ficheiros na partición de destino <filename>"
+"%1</filename> para copiar."
+
+#: jobs/copyfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Closing device. This may take a while, especially on slow devices like "
+"Memory Sticks."
+msgstr ""
+"Pechando o dispositivo. Isto levará un tempo, especialmente en dispositivos "
+"lentos, como son as memorias portátiles."
+
+#: jobs/copyfilesystemjob.cpp:88
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
+msgstr ""
+"Copia o sistema de ficheiros da partición <filename>%1</filename> na "
+"partición <filename>%2</filename>"
+
+#: jobs/createfilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to set the system type for the file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Non se puido estabelecer o tipo de sistema do sistema de ficheiros na "
+"partición <filename>%1</filename>."
+
+#: jobs/createfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"system type for partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
+"filename>."
+
+#: jobs/createfilesystemjob.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the system type for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
+"tipo de sistema para a partición <filename>%2</filename>."
+
+#: jobs/createfilesystemjob.cpp:84
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Create file system <filename>%1</filename> on partition <filename>%2</"
+"filename>"
+msgstr ""
+"Crea o sistema de ficheiros <filename>%1</filename> na partición <filename>"
+"%2</filename>"
+
+#: jobs/createpartitionjob.cpp:72
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Non se puido engadir a partición <filename>%1</filename> no dispositivo "
+"<filename>%2</filename>."
+
+#: jobs/createpartitionjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to create "
+"new partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para crear a nova partición <filename>%2</filename>."
+
+#: jobs/createpartitionjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to create new partition "
+"<filename>%2</filename>."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para crear a nova "
+"partición <filename>%2</filename>."
+
+#: jobs/createpartitionjob.cpp:94
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition <filename>%1</filename>"
+msgstr "Crea a nova partición <filename>%1</filename>"
+
+#: jobs/createpartitionjob.cpp:96
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition on device <filename>%1</filename>"
+msgstr "Crea unha partición nova no dispositivo <filename>%1</filename>"
+
+#: jobs/createpartitiontablejob.cpp:49
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Creating partition table failed: Could not open device <filename>%1</"
+"filename>."
+msgstr ""
+"Fallou a creación da táboa de particións: non se puido abrir o dispositivo "
+"<filename>%1</filename>."
+
+#: jobs/createpartitiontablejob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition table on device <filename>%1</filename>"
+msgstr "Crea a táboa de particións no dispositivo <filename>%1</filename>"
+
+#: jobs/createvolumegroupjob.cpp:49
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
+msgstr "Crear un novo grupo de volumes: <filename>%1</filename> con PV: %2"
+
+#: jobs/deactivatelogicalvolumejob.cpp:50
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Logical Volumes: <filename>%1</filename>"
+msgstr "Desactivar os volumes lóxicos: <filename>%1</filename>"
+
+#: jobs/deactivatevolumegroupjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Volume Group: <filename>%1</filename>"
+msgstr "Desactivar o grupo de volumes: <filename>%1</filename>"
+
+#: jobs/deletefilesystemjob.cpp:51
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system: file system on <filename>%1</filename> is "
+"mounted."
+msgstr ""
+"Non se puido eliminar o sistema de ficheiros: o sistema de ficheiros de "
+"<filename>%1</filename> está montado."
+
+#: jobs/deletefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete file system on <filename>%1</filename>."
+msgstr ""
+"Non se puido eliminar o sistema de ficheiros de <filename>%1</filename>."
+
+#: jobs/deletefilesystemjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"file system on <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para eliminar o sistema de ficheiros <filename>%2</filename>."
+
+#: jobs/deletefilesystemjob.cpp:83
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system signature for partition <filename>%1</"
+"filename>: Failed to open device <filename>%2</filename>."
+msgstr ""
+"Non se puido eliminar a sinatura do sistema de ficheiros da partición "
+"<filename>%1</filename>: fallou a apertura do dispositivo <filename>%2</"
+"filename>."
+
+#: jobs/deletefilesystemjob.cpp:93
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete file system on <filename>%1</filename>"
+msgstr "Elimina o sistema de ficheiros de <filename>%1</filename>"
+
+#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete partition <filename>%1</filename>."
+msgstr "Non se puido eliminar a partición <filename>%1</filename>."
+
+#: jobs/deletepartitionjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para eliminar a partición <filename>%2</filename>."
+
+#: jobs/deletepartitionjob.cpp:67
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Deleting partition failed: Could not open device <filename>%1</filename>."
+msgstr ""
+"Fallou o eliminado da partición: Non se puido abrir o dispositivo <filename>"
+"%1</filename>."
+
+#: jobs/deletepartitionjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete the partition <filename>%1</filename>"
+msgstr "Elimina a partición <filename>%1</filename>"
+
+#: jobs/job.cpp:45
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Source and target for copying do not overlap: Rollback is not required."
+msgstr ""
+"A orixe e o destino da copia non se sobrepoñen: non se require regresar."
+
+#: jobs/job.cpp:69
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback from: First byte: %1, last byte: %2."
+msgstr "Regresar desde: primeiro byte: %1, último byte: %2."
+
+#: jobs/job.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback to: First byte: %1, last byte: %2."
+msgstr "Regresar ata: primeiro byte: %1, último byte: %2."
+
+#: jobs/job.cpp:74 jobs/job.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open device <filename>%1</filename> to rollback copying."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para regresar a "
+"antes de copiar."
+
+#: jobs/job.cpp:86
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback failed: Source or target are not devices."
+msgstr "A regresión fallou: ou a orixe ou o destino non son dispositivos."
+
+#: jobs/job.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Job: %1"
+msgstr "Tarefa: %1"
+
+#: jobs/job.cpp:115
+#, kde-kuit-format
+msgctxt "@info:progress job status (error, warning, ...)"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: jobs/job.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Pending"
+msgstr "Pendente"
+
+#: jobs/job.cpp:135
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Success"
+msgstr "Éxito"
+
+#: jobs/job.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Error"
+msgstr "Erro"
+
+#: jobs/movefilesystemjob.cpp:52
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"Non se puido abrir o sistema de ficheiros na partición <filename>%1</"
+"filename> para movelo."
+
+#: jobs/movefilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not create target for moving file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Non se puido crear o destino para mover o sistema de ficheiros da partición "
+"<filename>%1</filename>."
+
+#: jobs/movefilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback for file system on partition <filename>%1</filename> failed."
+msgstr ""
+"A regresión do sistema de ficheiros na partición <filename>%1</filename> "
+"fallou."
+
+#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/shredfilesystemjob.cpp:66
+#, kde-format, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Closing device. This may take a few seconds."
+msgstr "Pechando o dispositivo (pode tardar uns segundos)."
+
+#: jobs/movefilesystemjob.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Move the file system on partition <filename>%1</filename> to sector %2"
+msgstr ""
+"Mover o sistema de ficheiros na partición <filename>%1</filename> ao sector "
+"%2."
+
+#: jobs/movephysicalvolumejob.cpp:57
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Move used PE in %1 on %2 to other available Physical Volumes"
+msgstr ""
+"Mover a extensión física (PE) usada de %1 de %2 a outros volumes físicos "
+"dispoñíbeis."
+
+#: jobs/removevolumegroupjob.cpp:41
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove Volume Group: <filename>%1</filename>"
+msgstr "Retirar o grupo de volumes: <filename>%1</filename>"
+
+#: jobs/resizefilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of 1 sector."
+msgid_plural ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of %1 sectors."
+msgstr[0] ""
+"O sistema de ficheiros na partición <filename>%2</filename> xa ten a "
+"lonxitude pedida dun sector."
+msgstr[1] ""
+"O sistema de ficheiros na partición <filename>%2</filename> xa ten a "
+"lonxitude pedida de %1 sectores."
+
+#: jobs/resizefilesystemjob.cpp:69
+#, kde-format
+msgctxt "@info:progress"
+msgid "Resizing file system from %1 to %2 sectors."
+msgstr "Cambiando o tamaño do sistema de ficheiros de %1 a %2 sectores."
+
+#: jobs/resizefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing a %1 file system using internal backend functions."
+msgstr ""
+"Cambiando o tamaño dun sistema de ficheiros %1 mediante funcións internas da "
+"infraestrutura."
+
+#: jobs/resizefilesystemjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%1</filename> cannot be resized "
+"because there is no support for it."
+msgstr ""
+"Non se pode cambiar o tamaño do sistema de ficheiros da partición <filename>"
+"%1</filename> porque non hai compatibilidade con el."
+
+#: jobs/resizefilesystemjob.cpp:119
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Successfully resized file system using internal backend functions."
+msgstr ""
+"Cambiouse o tamaño do sistema de ficheiros mediante funcións internas da "
+"infraestrutura."
+
+#: jobs/resizefilesystemjob.cpp:123
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition <filename>%1</filename> while trying to resize the "
+"file system."
+msgstr ""
+"Non se puido abrir a partición <filename>%1</filename> mentres se intentaba "
+"cambiar o tamaño do sistema de ficheiros."
+
+#: jobs/resizefilesystemjob.cpp:126
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not read geometry for partition <filename>%1</filename> while trying "
+"to resize the file system."
+msgstr ""
+"Non se puido ler a xeometría da partición <filename>%1</filename> mentres se "
+"intentaba cambiar o tamaño do sistema de ficheiros."
+
+#: jobs/resizefilesystemjob.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Maximize file system on <filename>%1</filename> to fill the partition"
+msgstr ""
+"Maximiza o sistema de ficheiros en <filename>%1</filename> para encher a "
+"partición"
+
+#: jobs/resizefilesystemjob.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+msgid_plural ""
+"Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgstr[0] ""
+"Cambiar o tamaño do sistema de ficheiros na partición <filename>%2</"
+"filename> para un sector"
+msgstr[1] ""
+"Cambiar o tamaño di sistema de ficheiros na partición <filename>%1</"
+"filename> para %2 sectores"
+
+#: jobs/resizevolumegroupjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Adding LVM Physical Volume %2 to %3."
+msgid_plural "Adding LVM Physical Volumes %2 to %3."
+msgstr[0] "Engadindo o volume físico de LVM %2 a %3."
+msgstr[1] "Engadindo os volumes físicos de LVM %2 a %3."
+
+#: jobs/resizevolumegroupjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Removing LVM Physical Volume %2 from %3."
+msgid_plural "Removing LVM Physical Volumes %2 from %3."
+msgstr[0] "Retirando o volume físico de LVM %2 de %3."
+msgstr[1] "Retirando os volumes físicos de LVM %2 de %3."
+
+#: jobs/resizevolumegroupjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resizing Volume Group %1 to %2."
+msgstr "Cambiando o tamaño do grupo de volumes %1 a %2."
+
+#: jobs/restorefilesystemjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgstr ""
+"Non se puido abrir o ficheiro de copia de seguranza <filename>%1</filename> "
+"para restaurar a partir del."
+
+#: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open target partition <filename>%1</filename> to restore to."
+msgstr ""
+"Non se puido abrir a partición de destino <filename>%1</filename> para "
+"restaurar nela."
+
+#: jobs/restorefilesystemjob.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Restore the file system from file <filename>%1</filename> to partition "
+"<filename>%2</filename>"
+msgstr ""
+"Restaura o sistema de ficheiros a partir do ficheiro <filename>%1</filename> "
+"na partición <filename>%2</filename>"
+
+#: jobs/setfilesystemlabeljob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"File system on partition <filename>%1</filename> does not support setting "
+"labels. Job ignored."
+msgstr ""
+"O sistema de ficheiros na partición <filename>%1</filename> non permite "
+"indicar etiquetas. Ignórase a tarefa."
+
+#: jobs/setfilesystemlabeljob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgstr ""
+"Axusta a etiqueta do sistema de ficheiros da partición <filename>%1</"
+"filename> para «%2»"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned on, active"
+msgid "on"
+msgstr "en"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned off, inactive"
+msgid "off"
+msgstr "desactivado"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"There was an error setting flag %1 for partition <filename>%2</filename> to "
+"state %3."
+msgstr ""
+"Produciuse un erro ao trocar a bandeira %1 da partición <filename>%2</"
+"filename> para o estado %3."
+
+#: jobs/setpartflagsjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set "
+"partition flags for partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para axustar as bandeiras da partición <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set partition flags for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para axustar as "
+"bandeiras da partición <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Limpa as bandeiras da partición <filename>%1</filename>"
+
+#: jobs/setpartflagsjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Axusta os indicadores da partición <filename>%1</filename> a «%2»"
+
+#: jobs/setpartgeometryjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> while trying to resize/move "
+"partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> mentres se "
+"intentaba cambiar de tamaño ou mover a partición <filename>%2</filename>."
+
+#: jobs/setpartgeometryjob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
+"%3"
+msgstr ""
+"Axuste da xeometría da partición <filename>%1</filename>: sector de inicio: "
+"%2, lonxitude: %3"
+
+#: jobs/setpartitionattributesjob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting attributes. Job ignored."
+msgstr ""
+"O sistema de ficheiros na partición <filename>%1</filename> non permite "
+"indicar etiquetas. Ignórase a tarefa."
+
+#: jobs/setpartitionattributesjob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Failed to create new partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the attributes for the partition <filename>%1</filename>."
+msgstr "Non se puido crear a nova partición <filename>%1</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to set "
+#| "the system type for partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"attributes for the partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
+"filename>."
+
+#: jobs/setpartitionattributesjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open device <filename>%1</filename> to set the system type for "
+#| "partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the attributes for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
+"tipo de sistema para a partición <filename>%2</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
+msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+
+#: jobs/setpartitionlabeljob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting names. Job ignored."
+msgstr ""
+"O sistema de ficheiros na partición <filename>%1</filename> non permite "
+"indicar etiquetas. Ignórase a tarefa."
+
+#: jobs/setpartitionlabeljob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Failed to create new partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the name for the partition <filename>%1</filename>."
+msgstr "Non se puido crear a nova partición <filename>%1</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to set "
+#| "the system type for partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"name for the partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
+"filename>."
+
+#: jobs/setpartitionlabeljob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open device <filename>%1</filename> to set the system type for "
+#| "partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the name for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
+"tipo de sistema para a partición <filename>%2</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the label on partition <filename>%1</filename> to \"%2\""
+msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+
+#: jobs/setpartitionuuidjob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting UUIDs. Job ignored."
+msgstr ""
+"O sistema de ficheiros na partición <filename>%1</filename> non permite "
+"indicar etiquetas. Ignórase a tarefa."
+
+#: jobs/setpartitionuuidjob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Failed to create new partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the UUID for the partition <filename>%1</filename>."
+msgstr "Non se puido crear a nova partición <filename>%1</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to set "
+#| "the system type for partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"UUID for the partition <filename>%2</filename>."
+msgstr ""
+"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
+"filename>."
+
+#: jobs/setpartitionuuidjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open device <filename>%1</filename> to set the system type for "
+#| "partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the UUID for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
+"tipo de sistema para a partición <filename>%2</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+
+#: jobs/shredfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open random data source to overwrite file system."
+msgstr ""
+"Non se puido abrir a fonte de datos aleatorios para sobrescribir o sistema "
+"de ficheiros."
+
+#: jobs/shredfilesystemjob.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Shred the file system on <filename>%1</filename>"
+msgstr "Borra completamente o sistema de ficheiros de <filename>%1</filename>"
+
+#: ops/backupoperation.cpp:39
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
+msgstr ""
+"Fai unha copia de seguranza da partición <filename>%1</filename> (%2, %3) en "
+"<filename>%4</filename>"
+
+#: ops/checkoperation.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
+msgstr "Comproba e repara a partición <filename>%1</filename> (%2, %3)"
+
+#: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<warning>Maximizing file system on target partition <filename>%1</filename> "
+"to the size of the partition failed.</warning>"
+msgstr ""
+"<warning>Fallou a maximización do sistema de ficheiros na partición "
+"obxectivo <filename>%1</filename> ao tamaño da partición.</warning>"
+
+#: ops/copyoperation.cpp:151
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking target partition <filename>%1</filename> after copy failed."
+msgstr ""
+"Fallou a comprobación da partición de destino <filename>%1</filename> "
+"despois da copia."
+
+#: ops/copyoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying source to target partition failed."
+msgstr "Fallou a copia da partición orixe na de destino."
+
+#: ops/copyoperation.cpp:161
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating target partition for copying failed."
+msgstr "Fallou a creación da partición de destino onde copiar."
+
+#: ops/copyoperation.cpp:163
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking source partition <filename>%1</filename> failed."
+msgstr "Fallou a comprobación da partición de orixe <filename>%1</filename>."
+
+#: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
+#: ops/restoreoperation.cpp:148
+#, kde-kuit-format
+msgctxt "@info:status (success, error, warning...) of operation"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/copyoperation.cpp:179
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6)"
+msgstr ""
+"Copia partición <filename>%1</filename> (%2, %3) en <filename>%4</filename> "
+"(%5, %6)"
+
+#: ops/copyoperation.cpp:188
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6) and grow it to %7"
+msgstr ""
+"Copia a partición <filename>%1</filename> (%2, %3) en <filename>%4</"
+"filename> (%5, %6) e amécea ata %7"
+
+#: ops/copyoperation.cpp:200
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename>"
+msgstr ""
+"Copia a partición <filename>%1</filename> (%2, %3) en espazo non asignado "
+"(comezando en %4) de <filename>%5</filename>"
+
+#: ops/copyoperation.cpp:208
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename> and grow it to %6"
+msgstr ""
+"Copia a partición <filename>%1</filename> (%2, %3) en espazo non asignado "
+"(comezando en %4) de <filename>%5</filename> e amécea ata %6"
+
+#: ops/createfilesystemoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create filesystem %1 on partition <filename>%2</filename>"
+msgstr "Crear o sistema de ficheiros %1 na partición <filename>%2</filename>"
+
+#: ops/createpartitiontableoperation.cpp:104
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
+msgstr ""
+"Crea unha táboa de particións nova (tipo: %1) en <filename>%2</filename>"
+
+#: ops/createvolumegroupoperation.cpp:36
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new LVM volume group named '%1'."
+msgstr "Crear un novo grupo de volumes de LVM chamado «%1»."
+
+#: ops/deactivatevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate volume group."
+msgstr "Desactivar o grupo de volumes."
+
+#: ops/deleteoperation.cpp:87
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Shred partition <filename>%1</filename> (%2, %3)"
+msgstr "Borra completamente a partición <filename>%1</filename> (%2, %3)"
+
+#: ops/deleteoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Delete partition <filename>%1</filename> (%2, %3)"
+msgstr "Elimina a partición <filename>%1</filename> (%2, %3)"
+
+#: ops/newoperation.cpp:205
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
+msgstr "Crea unha partición nova (%1, %2) en <filename>%3</filename>"
+
+#: ops/operation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "None"
+msgstr "Ningunha"
+
+#: ops/operation.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Pending"
+msgstr "Pendente"
+
+#: ops/operation.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Running"
+msgstr "En execución"
+
+#: ops/operation.cpp:78
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Success"
+msgstr "Éxito"
+
+#: ops/operation.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Warning"
+msgstr "Aviso"
+
+#: ops/operation.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Error"
+msgstr "Erro"
+
+#: ops/removevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove a LVM volume group."
+msgstr "Retirar un grupo de volumes de LVM."
+
+#: ops/resizeoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving extended partition <filename>%1</filename> failed."
+msgstr "Fallou o mover a partición estendida <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:165
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgstr ""
+"Fallou a comprobación da partición <filename>%1</filename> despois de movela "
+"ou cambiarlle o tamaño."
+
+#: ops/resizeoperation.cpp:168
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgstr ""
+"Fallou o cambio de tamaño ou movemento da partición <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:171
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> before resize/move failed."
+msgstr ""
+"Fallou a comprobación da partición <filename>%1</filename> despois demovela "
+"ou cambiala de tamaño."
+
+#: ops/resizeoperation.cpp:201
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the left by %2"
+msgstr "Mover a partición <filename>%1</filename> á esquerda %2"
+
+#: ops/resizeoperation.cpp:204
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the right by %2"
+msgstr "Mover a partición <filename>%1</filename> á dereita %2"
+
+#: ops/resizeoperation.cpp:207
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgstr "Amecer á partición <filename>%1</filename> de %2 a %3"
+
+#: ops/resizeoperation.cpp:210
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Shrink partition <filename>%1</filename> from %2 to %3"
+msgstr "Reducir a partición <filename>%1</filename> de %2 a %3"
+
+#: ops/resizeoperation.cpp:213
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
+"to %4"
+msgstr ""
+"Mover a partición <filename>%1</filename> %2 á esquerda e amecela de %3 a %4"
+
+#: ops/resizeoperation.cpp:216
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and grow it from "
+"%3 to %4"
+msgstr ""
+"Mover a partición <filename>%1</filename> %2 á dereita e amecela de %3 a %4"
+
+#: ops/resizeoperation.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Mover a partición <filename>%1</filename> %2 á esquerda e reducila de %3 a %4"
+
+#: ops/resizeoperation.cpp:222
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Mover a partición <filename>%1</filename> %2 á dereita e reducila de %3 a %4"
+
+#: ops/resizeoperation.cpp:229
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Unknown resize/move action."
+msgstr "Acción descoñecida de cambio de tamaño ou de movemento."
+
+#: ops/resizeoperation.cpp:258
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize file system to shrink partition "
+"<filename>%1</filename>."
+msgstr ""
+"Fallou o cambio de tamaño ou o movemento: Non se puido cambiar o tamaño do "
+"sistema de ficheiros para reducir a partición <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:263
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
+msgstr ""
+"Fallou o cambio de tamaño ou o movemento: Non se puido reducir a partición "
+"<filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:282
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving partition <filename>%1</filename> failed."
+msgstr "Fallou o movemento da partición <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:287
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
+"back."
+msgstr "Fallou o movemento da partición <filename>%1</filename>. Regresando."
+
+#: ops/resizeoperation.cpp:291
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving back partition <filename>%1</filename> to its original position "
+"failed."
+msgstr ""
+"Fallou o retorno ao estado anterior da partición <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:304
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
+msgstr ""
+"Fallou o cambio de tamaño ou o movemento: Non se puido amecer a partición "
+"<filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:309
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
+msgstr ""
+"Fallou o cambio de tamaño ou o movemento: Non se puido cambiar o tamaño do "
+"sistema de ficheiros na partición <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:312
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Could not restore old partition size for partition <filename>%1</filename>."
+msgstr ""
+"Non se puido restaurar o tamaño previo da partición <filename>%1</filename>."
+
+#: ops/resizevolumegroupoperation.cpp:108
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resize volume %1 from %2 to %3"
+msgstr "Cambiar o tamaño do volume %1 de %2 a %3."
+
+#: ops/restoreoperation.cpp:133
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking target file system on partition <filename>%1</filename> after the "
+"restore failed."
+msgstr ""
+"Fallou a comprobación do sistema de ficheiros de destino na partición "
+"<filename>%1</filename>."
+
+#: ops/restoreoperation.cpp:138
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Restoring file system failed."
+msgstr "Fallou a restauración do sistema de ficheiros."
+
+#: ops/restoreoperation.cpp:141
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating the destination partition to restore to failed."
+msgstr "Fallou a creación da partición de destino da restauración."
+
+#: ops/restoreoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition from <filename>%1</filename> to <filename>%2</filename>"
+msgstr ""
+"Restaura a partición de <filename>%1</filename> en <filename>%2</filename>"
+
+#: ops/restoreoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
+"filename>"
+msgstr ""
+"Restaura a partición de <filename>%1</filename> en %2 desde <filename>%3</"
+"filename>"
+
+#: ops/setfilesystemlabeloperation.cpp:58
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+
+#: ops/setfilesystemlabeloperation.cpp:60
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
+msgstr ""
+"Troca a etiqueta da partición <filename>%1</filename> de «%2» para «%3»"
+
+#: ops/setpartflagsoperation.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Limpa as bandeiras da partición <filename>%1</filename>"
+
+#: ops/setpartflagsoperation.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr ""
+"Estabelece os indicadores da partición <filename>%1</filename> como «%2»"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Software RAID Device found: %1"
+msgstr "Atopouse un dispositivo de RAID de software: %1"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:249
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Device found: %1"
+msgstr "Atopouse un dispositivo: %1"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr ""
+"Non se coñece o rol da nova partición <filename>%1</filename> (roles: %2)"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Non se puido engadir a partición <filename>%1</filename> no dispositivo "
+"<filename>%2</filename>."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:114
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not set geometry for partition <filename>%1</filename> while trying to "
+"resize/move it."
+msgstr ""
+"Non se puido axustar a xeometría da partición <filename>%1</filename> "
+"mentres se intentaba cambiala de tamaño ou movela."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:124
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to erase filesystem signature on partition <filename>%1</filename>."
+msgstr ""
+"Non se puido borrar a sinatura do sistema de ficheiros na partición "
+"<filename>%1</filename>."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:157
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not determine file system of partition at sector %1 on device "
+"<filename>%2</filename>."
+msgstr ""
+"Non se puido determinar o sistema de ficheiros da partición no sector %1 do "
+"dispositivo <filename>%2</filename>."
+
+#: util/capacity.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "Byte"
+msgstr[1] "Byte"
+
+#: util/capacity.cpp:101
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "KiB"
+msgstr "kiB"
+
+#: util/capacity.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "MiB"
+msgstr "MiB"
+
+#: util/capacity.cpp:103
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "GiB"
+msgstr "GiB"
+
+#: util/capacity.cpp:104
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "TiB"
+msgstr "TiB"
+
+#: util/capacity.cpp:105
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "PiB"
+msgstr "PiB"
+
+#: util/capacity.cpp:106
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "EiB"
+msgstr "EiB"
+
+#: util/capacity.cpp:107
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "ZiB"
+msgstr "ZiB"
+
+#: util/capacity.cpp:108
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "YiB"
+msgstr "YiB"
+
+#: util/capacity.cpp:112
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "(unknown unit)"
+msgstr "(unidade descoñecida)"
+
+#: util/externalcommand.cpp:111 util/externalcommand.cpp:114
+#: util/externalcommand.cpp:226
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Command: %1 %2"
+msgstr "Orde: %1 %2"
+
+#: util/externalcommandhelper.cpp:82
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for reading."
+msgstr "Non se puido abrir o dispositivo <filename>%1</filename> para lectura."
+
+#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#, kde-kuit-format
+msgid "Could not seek position %1 on device <filename>%2</filename>."
+msgstr ""
+"Non se puido acceder á posición %1 no dispositivo <filename>%2</filename>."
+
+#: util/externalcommandhelper.cpp:96
+#, kde-kuit-format
+msgid "Could not read from device <filename>%1</filename>."
+msgstr "Non se puido ler do dispositivo <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:114
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for writing."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para escritura."
+
+#: util/externalcommandhelper.cpp:125
+#, kde-kuit-format
+msgid "Could not write to device <filename>%1</filename>."
+msgstr "Non se puido escribir no dispositivo <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:151
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for writing."
+msgid "Could not open file <filename>%1</filename> for writing."
+msgstr ""
+"Non se puido abrir o dispositivo <filename>%1</filename> para escritura."
+
+#: util/externalcommandhelper.cpp:156
+#, fuzzy, kde-kuit-format
+#| msgid "Could not write to device <filename>%1</filename>."
+msgid "Could not write to file <filename>%1</filename>."
+msgstr "Non se puido escribir no dispositivo <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:237
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+msgctxt "@info:progress"
+msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
+msgstr "Copiando %1 bloques (%2 bytes) de %3 en %4, dirección: %5."
+
+#: util/externalcommandhelper.cpp:238
+#, kde-format
+msgctxt "direction: left"
+msgid "left"
+msgstr "esquerda"
+
+#: util/externalcommandhelper.cpp:239
+#, kde-format
+msgctxt "direction: right"
+msgid "right"
+msgstr "dereita"
+
+#: util/externalcommandhelper.cpp:261
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 MiB/second, estimated time left: %2"
+msgstr "Copiando a %1 MiB/segundo, tempo restante estimado: %2"
+
+#: util/externalcommandhelper.cpp:274
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Copying remainder of block size %1 from %2 to %3."
+msgctxt "@info:progress"
+msgid "Copying remainder of chunk size %1 from %2 to %3."
+msgstr "Copiando o restante do tamaño do bloque %1 de %2 en %3."
+
+#: util/externalcommandhelper.cpp:288
+#, kde-format
+msgid "1 byte"
+msgid_plural "%1 bytes"
+msgstr[0] "1 byte"
+msgstr[1] "%1 bytes"
+
+#: util/externalcommandhelper.cpp:288
+#, fuzzy, kde-kuit-format
+#| msgctxt ""
+#| "@info:progress argument 2 is a string such as 7 bytes (localized "
+#| "accordingly)"
+#| msgid "Copying 1 block (%2) finished."
+#| msgid_plural "Copying %1 blocks (%2) finished."
+msgctxt ""
+"@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
+msgid "Copying 1 chunk (%2) finished."
+msgid_plural "Copying %1 chunks (%2) finished."
+msgstr[0] "Rematou a copia de un bloque (%2)."
+msgstr[1] "Rematou a copia de %1 bloques (%2 sectores)."
+
+#: util/helpers.cpp:49
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<application>KPMcore</application>"
+msgstr "<application>KPMcore</application>"
+
+#: util/helpers.cpp:50
+#, kde-kuit-format
+msgctxt "@title"
+msgid "Library for managing partitions"
+msgstr "Biblioteca de xestión de particións"
+
+#: util/helpers.cpp:51
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:credit"
+#| msgid "&copy; 2008-2019 KPMcore developers"
+msgctxt "@info:credit"
+msgid "&copy; 2008-2022 KPMcore developers"
+msgstr "&copy; 2008-2019 Desenvolvedores de KPMcore"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Volker Lanz"
+msgstr "Volker Lanz"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Former maintainer"
+msgstr "Mantedor orixinal"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Andrius Štikonas"
+msgstr "Andrius Štikonas"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Maintainer"
+msgstr "Mantedor"
+
+#: util/helpers.cpp:58
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Teo Mrnjavac"
+msgstr "Teo Mrnjavac"
+
+#: util/helpers.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Former Calamares maintainer"
+msgstr "Antigo mantedor de Calamares."
+
+#: util/helpers.cpp:59
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Chantara Tith"
+msgstr "Chantara Tith"
+
+#: util/helpers.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "LVM support"
+msgstr "Compatibilidade con LVM."
+
+#: util/helpers.cpp:60
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Pali Rohár"
+msgstr "Pali Rohár"
+
+#: util/helpers.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "UDF support"
+msgstr "Compatibilidade con UDF."
+
+#: util/helpers.cpp:61
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Adriaan de Groot"
+msgstr "Adriaan de Groot"
+
+#: util/helpers.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Calamares maintainer"
+msgstr "Mantedor de Calamares."
+
+#: util/helpers.cpp:62
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Caio Jordão Carvalho"
+msgstr "Caio Jordão Carvalho"
+
+#: util/helpers.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Improved SMART support"
+msgstr "Mellora da compatibilidade con SMART."
+
+#: util/helpers.cpp:63
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "David Edmundson"
+msgstr ""
+
+#: util/helpers.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Port from KAuth to Polkit"
+msgstr ""
+
+#: util/htmlreport.cpp:51 util/htmlreport.cpp:58
+#, kde-format
+msgid "%1: SMART Status Report"
+msgstr "%1: informe de estado SMART."
+
+#: util/htmlreport.cpp:66
+#, kde-format
+msgid "Date:"
+msgstr "Data:"
+
+#: util/htmlreport.cpp:67
+#, kde-format
+msgid "Program version:"
+msgstr "Versión do programa:"
+
+#: util/htmlreport.cpp:68
+#, kde-format
+msgid "Backend:"
+msgstr "Infraestrutura:"
+
+#: util/htmlreport.cpp:69
+#, kde-format
+msgid "KDE Frameworks version:"
+msgstr "Versión da infraestrutura de KDE:"
+
+#: util/htmlreport.cpp:70
+#, kde-format
+msgid "Machine:"
+msgstr "Máquina:"
+
+#~ msgctxt "@info:status"
+#~ msgid "Could not obtain administrator privileges."
+#~ msgstr "Non se puideron obter privilexios de administrador."
+
+#~ msgid "QCA does not support RSA."
+#~ msgstr "QCA non é compatíbel con RSA."
+
+#~ msgid "Failed to make private RSA key."
+#~ msgstr "Non se puido facer unha chave RSA privada."
+
+#~ msgid "Generated key cannot be used for signatures."
+#~ msgstr "A chave xerada non se pode usar para sinaturas."
+
+#~ msgid "Invalid cryptographic signature"
+#~ msgstr "Sinatura criptográfica incorrecta."
+
+#~ msgctxt "@item partition flag"
+#~ msgid "esp"
+#~ msgstr "esp"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Decrypt"
+#~ msgstr "Descifrar"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Deactivate"
+#~ msgstr "Desactivar"
+
+#~ msgctxt "@info:status"
+#~ msgid "LibParted Exception: %1"
+#~ msgstr "Excepción de LibParted: %1"
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not retrieve partition table type "
+#~ "\"%1\" for <filename>%2</filename>."
+#~ msgstr ""
+#~ "Fallou a creación da táboa de particións: non se puido obter o tipo da "
+#~ "táboa de particións \"%1\" de <filename>%2</filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not open backend device <filename>"
+#~ "%1</filename>."
+#~ msgstr ""
+#~ "Fallou a creación da táboa de particións: non se puido abrir o "
+#~ "dispositivo de infraestrutura <filename>%1</filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not create a new partition table "
+#~ "in the backend for device <filename>%1</filename>."
+#~ msgstr ""
+#~ "Fallou a creación da táboa de particións: non se puido crear unha nova "
+#~ "táboa de particións no dispositivo de infraestrutura <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Failed to create a new partition: could not get geometry for constraint."
+#~ msgstr ""
+#~ "Fallou a creación da nova partición: non se puido obter a xeometría para "
+#~ "a restrición."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
+#~ "not found on disk."
+#~ msgstr ""
+#~ "Fallou o eliminado da partición: non se atopou no disco a partición a "
+#~ "eliminar (<filename>%1</filename>)."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get constraint for partition <filename>%1</filename> while "
+#~ "trying to resize/move it."
+#~ msgstr ""
+#~ "Non se puido obter a restrición da partición <filename>%1</filename> "
+#~ "mentres se intentaba cambiala de tamaño ou movela."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for partition <filename>%1</filename> while trying "
+#~ "to resize/move it."
+#~ msgstr ""
+#~ "Non se puido obter a xeometría da partición <filename>%1</filename> "
+#~ "mentres se intentaba cambiala de tamaño ou movela."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> while trying to resize/"
+#~ "move it."
+#~ msgstr ""
+#~ "Non se puido abrir a partición <filename>%1</filename> mentres se "
+#~ "intentaba cambiala de tamaño ou movela."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not delete file system on partition <filename>%1</filename>: Failed "
+#~ "to get partition."
+#~ msgstr ""
+#~ "Non se puido eliminar o sistema de ficheiros na partición <filename>%1</"
+#~ "filename>: non se puido obter a partición."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Non se puido cambiar o tamaño do sistema de ficheiros da partición "
+#~ "<filename>%1</filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for resized partition <filename>%1</filename> "
+#~ "while trying to resize the file system."
+#~ msgstr ""
+#~ "Non se puido obter a xeometría da partición co tamaño cambiado <filename>"
+#~ "%1</filename> mentres se intentaba cambiar o tamaño do sistema de "
+#~ "ficheiros."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not update the system type for partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Non se puido actualizar o tipo de sistema para a partición <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid "No file system defined."
+#~ msgstr "Non se definiu ningún sistema de ficheiros."
+
+#~ msgctxt "@info:progress"
+#~ msgid "No partition found at sector %1."
+#~ msgstr "Non se atopou ningunha partición no sector %1."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not find partition <filename>%1</filename> on device <filename>%2</"
+#~ "filename> to set partition flags."
+#~ msgstr ""
+#~ "Non se puido atopar a partición <filename>%1</filename> no dispositivo "
+#~ "<filename>%2</filename> para trocar as bandeiras da partición."
+
+#~ msgctxt "@info:progress"
+#~ msgid "The flag \"%1\" is not available on the partition's partition table."
+#~ msgstr ""
+#~ "A bandeira \"%1\" non está dispoñíbel na táboa de particións da partición."
+
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while starting)"
+#~ msgstr "(A orde esgotou o tempo límite ao iniciar)"
+
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while running)"
+#~ msgstr "(A orde esgotou o tempo límite durante a súa execución)"
+
+#~ msgctxt "@info:status"
+#~ msgid "(Command is printing too much output)"
+#~ msgstr "(a orde está imprimindo demasiada saída)"
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Non foi posíbel abrir a partición <filename>%1</filename> para escritura "
+#~ "mentres se intentaba actualizar o sector de arranque de NTFS."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not seek to position 0x1c on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Non foi posíbel saltar á posición 0x1c da partición <filename>%1</"
+#~ "filename> mentres se intentaba actualizar o sector de arranque de NTFS."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "The logical sector sizes in the source and target for copying are not the "
+#~ "same. This is currently unsupported."
+#~ msgstr ""
+#~ "O tamaño lóxico dos sectores da orixe e o destino da copia non son "
+#~ "idénticos. A copia nestas circunstancias aínda non se permite."
+
+#~ msgid "1 sector"
+#~ msgid_plural "%1 sectors"
+#~ msgstr[0] "1 sector"
+#~ msgstr[1] "%1 sectores"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Columns"
+#~ msgstr "Columnas "
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Warning: Maximizing file system on target partition <filename>%1</"
+#~| "filename> to the size of the partition failed."
+#~ msgctxt "@info:status"
+#~ msgid ""
+#~ "Warning: Maximizing file system on target partition <filename>%1</"
+#~ "filename> to the size of the partition failed."
+#~ msgstr ""
+#~ "Aviso: fallou a maximización do sistema de ficheiros na partición "
+#~ "obxectivo <filename>%1</filename> ao tamaño da partición."
+
+#~ msgctxt "@info/plain status (success, error, warning...) of operation"
+#~ msgid "%1: %2"
+#~ msgstr "%1: %2"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "Byte"
+#~ msgid_plural "Bytes"
+#~ msgstr[0] "Byte"
+#~ msgstr[1] "Byte"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "KiB"
+#~ msgstr "KiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "MiB"
+#~ msgstr "MiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "GiB"
+#~ msgstr "GiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "TiB"
+#~ msgstr "TiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "PiB"
+#~ msgstr "PiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "EiB"
+#~ msgstr "EiB"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Resize encrypted file system on partition <filename>%1</filename>."
+#~ msgctxt "@info/plain"
+#~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Cambiar o tamaño do sistema de ficheiros cifrado na partición <filename>"
+#~ "%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Decrypt LUKS partition on <filename>%1</filename>"
+#~ msgstr "Descifrar a partición LUKS en <filename>%1</filename>"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Decrypt"
+#~ msgstr "&Descifrar"
+
+#~ msgid "&Name:"
+#~ msgstr "&Nome:"
+
+#~ msgid "&Passphrase:"
+#~ msgstr "&Frase de paso:"
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS serial number."
+#~ msgstr ""
+#~ "Non foi posíbel abrir a partición <filename>%1</filename> para escritura "
+#~ "mentres se tentaba actualizar o número de serie de NTFS."
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not seek to position 0x48 on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS serial number."
+#~ msgstr ""
+#~ "Non foi posíbel saltar á posición 0x48 da partición <filename>%1</"
+#~ "filename> mentres se tentaba actualizar o número de serie de NTFS."
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not write new NTFS serial number to partition <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Non foi posíbel escribir o novo número de serie de NTFS na partición "
+#~ "<filename>%1</filename>."
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Updated NTFS serial number for partition <filename>%1</filename> "
+#~ "successfully."
+#~ msgstr ""
+#~ "Actualizouse o número de serie de NTFS para a partición <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@label"
+#~ msgid "Is this the first time KDE Partition Manager is being run?"
+#~ msgstr "¿É a primeira vez que executa o Xestor de particións de KDE?"
+
+#~ msgctxt "@label"
+#~ msgid "Hide log messages below"
+#~ msgstr "Agochar as mensaxes do historial"
+
+#~ msgctxt "@label"
+#~ msgid "Partition sector alignment"
+#~ msgstr "Aliñamento dos sectores da partición"
+
+#~ msgctxt "@label"
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr ""
+#~ "Empregar o aliñamento baseado en cilindros (compatíbel con Windows XP)"
+
+#~ msgctxt "@label"
+#~ msgid "Align partitions per default"
+#~ msgstr "Aliñar as particións de maneira predeterminada."
+
+#~ msgctxt "@label"
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr "Permitir aplicar as operacións sen privilexios de administrador."
+
+#~ msgctxt "@label"
+#~ msgid "File system colors"
+#~ msgstr "Cores dos sistemas de ficheiros"
+
+#~ msgctxt "@label"
+#~ msgid "Show the application's menu bar"
+#~ msgstr "Mostrar a barra de menú do aplicativo."
+
+#~ msgctxt "@label"
+#~ msgid "Backend plugin"
+#~ msgstr "Complemento de infraestrutura"
+
+#~ msgctxt "@label"
+#~ msgid "Preferred unit:"
+#~ msgstr "Unidade preferida:"
+
+#~ msgctxt "@title:tab general application settings"
+#~ msgid "General"
+#~ msgstr "Xeral"
+
+#~ msgid "General Settings"
+#~ msgstr "Opcións xerais"
+
+#~ msgctxt "@title:tab"
+#~ msgid "File System Colors"
+#~ msgstr "Cores dos sistemas de ficheiros"
+
+#~ msgid "File System Color Settings"
+#~ msgstr "Preferencias de cores dos sistemas de ficheiros"
+
+#~ msgctxt "@title:tab advanced application settings"
+#~ msgid "Advanced"
+#~ msgstr "Avanzado"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Configuración avanzada"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to change the backend?</para><para><warning>This "
+#~ "will also rescan devices and thus clear the list of pending operations.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "<para>Está seguro de que quere cambiar a infraestrutura?</para> "
+#~ "<para><warning>Isto tamén volverá analizar os dispositivos, e por tanto "
+#~ "borrará a lista de operacións pendentes.</warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Change Backend?"
+#~ msgstr "Quere cambiar a infraestrutura?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the Backend"
+#~ msgstr "Cambiar a infraestrutura"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the Backend"
+#~ msgstr "Non cambiar a infraestrutura"
+
+#~ msgid "Permissions"
+#~ msgstr "Permisos "
+
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr "Permitir aplicar as operacións sen privilexios de administrador."
+
+#~ msgid "Backend"
+#~ msgstr "Infraestrutura"
+
+#~ msgid "Active backend:"
+#~ msgstr "Infraestrutura activa:"
+
+#~ msgid "Units"
+#~ msgstr "Units"
+
+#~ msgid "Preferred unit:"
+#~ msgstr "Unidade preferida:"
+
+#~ msgid "File Systems"
+#~ msgstr "Sistema de ficheiros"
+
+#~ msgid "luks:"
+#~ msgstr "luks:"
+
+#~ msgid "ntfs:"
+#~ msgstr "ntfs:"
+
+#~ msgid "ext2:"
+#~ msgstr "ext2:"
+
+#~ msgid "ext3:"
+#~ msgstr "ext3:"
+
+#~ msgid "ext4:"
+#~ msgstr "ext4:"
+
+#~ msgid "btrfs:"
+#~ msgstr "btrfs:"
+
+#~ msgid "linuxswap:"
+#~ msgstr "linuxswap:"
+
+#~ msgid "fat16:"
+#~ msgstr "fat16:"
+
+#~ msgid "fat32:"
+#~ msgstr "fat32:"
+
+#~ msgid "zfs:"
+#~ msgstr "zfs:"
+
+#~ msgid "reiserfs:"
+#~ msgstr "reiser:"
+
+#~ msgid "reiser4:"
+#~ msgstr "reiser4:"
+
+#~ msgid "hpfs:"
+#~ msgstr "hpfs:"
+
+#~ msgid "jfs"
+#~ msgstr "jfs:"
+
+#~ msgid "hfs:"
+#~ msgstr "hfs:"
+
+#~ msgid "hfsplus:"
+#~ msgstr "hfsplus:"
+
+#~ msgid "ufs:"
+#~ msgstr "ufs:"
+
+#~ msgid "xfs:"
+#~ msgstr "xfs:"
+
+#~ msgid "ocfs2:"
+#~ msgstr "ocfs2:"
+
+#~ msgid "extended:"
+#~ msgstr "estendido:"
+
+#~ msgid "unformatted:"
+#~ msgstr "sen formato:"
+
+#~ msgid "unknown:"
+#~ msgstr "descoñecido:"
+
+#~ msgid "exfat:"
+#~ msgstr "exfat:"
+
+#~ msgid "nilfs2:"
+#~ msgstr "nilfs2:"
+
+#~ msgid "lvm2 pv:"
+#~ msgstr "lvm2 pv:"
+
+#~ msgid "Partition Alignment"
+#~ msgstr "Aliñamento das particións"
+
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr ""
+#~ "Empregar o aliñamento baseado en cilindros (compatíbel con Windows XP)"
+
+#~ msgid "Sector alignment:"
+#~ msgstr "Aliñamento dos sectores:"
+
+#~ msgid " sectors"
+#~ msgstr " sectores"
+
+#~ msgid "Align partitions per default"
+#~ msgstr "Aliñar as particións de maneira predeterminada."
+
+#~ msgid "Logging"
+#~ msgstr "Rexistrándose"
+
+#~ msgid "Hide messages below:"
+#~ msgstr "Agochar as seguintes mensaxes:"
+
+#~ msgid "Debug"
+#~ msgstr "Depurar"
+
+#~ msgid "Information"
+#~ msgstr "Información"
+
+#~ msgid "Warning"
+#~ msgstr "Aviso"
+
+#~ msgid "Error"
+#~ msgstr "Erro"
+
+#~ msgid "Default file system:"
+#~ msgstr "Sistema de ficheiros predeterminado:"
+
+#~ msgid "Shredding"
+#~ msgstr "Eliminación irreversíbel"
+
+#~ msgid "Overwrite with:"
+#~ msgstr "Sobrescribir con:"
+
+#~ msgid "Random data"
+#~ msgstr "Datos aleatorios"
+
+#~ msgid "Zeros"
+#~ msgstr "Ceros"
+
+#~ msgid "Save"
+#~ msgstr "Gardar"
+
+#~ msgid "Open in External Browser"
+#~ msgstr "Abrir nun navegador externo"
+
+#~ msgid "&Details"
+#~ msgstr "&Detalles"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Setting up..."
+#~ msgstr "A configurar..."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Waiting for operation to finish..."
+#~ msgstr "A agardar que remate a operación..."
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to cancel?"
+#~ msgstr "Desexa realmente cancelar?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cancel Running Operations"
+#~ msgstr "Cancelar as operacións en execución"
+
+#~ msgctxt "@action:button"
+#~ msgid "Yes, Cancel Operations"
+#~ msgstr "Si, cancelar as operacións"
+
+#~ msgctxt "@info:progress"
+#~ msgid "All operations successfully finished."
+#~ msgstr "Todas as operacións remataron con éxito."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Operations cancelled."
+#~ msgstr "Canceláronse as operacións."
+
+#~ msgctxt "@info:progress"
+#~ msgid "There were errors while applying operations. Aborted."
+#~ msgstr "Xurdiron erros ao aplicar as operacións. Abortouse."
+
+#~ msgctxt "@info:progress"
+#~ msgid "[%1/%2] - %3: %4"
+#~ msgstr "[%1/%2] - %3: %4"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Total Time: %1"
+#~ msgstr "Duración total: %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary file when trying to save to <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Non foi posíbel crear o ficheiro temporal <filename>%1</filename> para "
+#~ "escribir nel."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save Report."
+#~ msgstr "Non foi posíbel gardar o informe."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The configured external browser could not be run. Please check your "
+#~ "settings."
+#~ msgstr ""
+#~ "Non foi posíbel executar o navegador externo indicado. Verifique a "
+#~ "configuración."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Launch Browser."
+#~ msgstr "Non foi posíbel iniciar o navegador."
+
+#~ msgctxt "@info"
+#~ msgid "Could not create temporary file <filename>%1</filename> for writing."
+#~ msgstr ""
+#~ "Non foi posíbel crear o ficheiro temporal <filename>%1</filename> para "
+#~ "escribir nel."
+
+#~ msgid "Operations and Jobs"
+#~ msgstr "Operacións e tarefas"
+
+#~ msgid "Time Elapsed"
+#~ msgstr "Tempo transcorrido"
+
+#~ msgid "Total Time: 00:00:00"
+#~ msgstr "Duración total: 00:00:00"
+
+#~ msgid "Operation: %p%"
+#~ msgstr "Operación: %p%"
+
+#~ msgid "Status"
+#~ msgstr "Estado"
+
+#~ msgid "Total: %p%"
+#~ msgstr "Total: %p%"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a New Partition Table on <filename>%1</filename>"
+#~ msgstr "Crea unha táboa de particións nova en <filename>%1</filename>"
+
+#~ msgid "Create &New Partition Table"
+#~ msgstr "Crear unha &nova táboa de particións"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to create an MS-Dos partition table on <filename>"
+#~ "%1</filename>?</para><para>This device has more than 2^32 sectors. That "
+#~ "is the most the MS-Dos partition table type supports, so you will not be "
+#~ "able to use the whole device.</para>"
+#~ msgstr ""
+#~ "<para>Está seguro de que quere crear unha táboa de particións de MS-Dos "
+#~ "en <filename>%1</filename>?</para><para>O tipo de táboa de particións de "
+#~ "MS-Dos só permite ata 2³² sectores, pero o seu dispositivo ten un número "
+#~ "superior de sectores, polo que non poderá empregar a totalidade do "
+#~ "dispositivo.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Create MS-Dos Partition Table Type?"
+#~ msgstr ""
+#~ "Está seguro de que quere crear unha táboa de particións de tipo MS-Dos?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Create MS-Dos Type"
+#~ msgstr "Crear do tipo MS-Dos"
+
+#~ msgid "Choose the type of partition table you want to create:"
+#~ msgstr "Escolla o tipo de táboa de particións que queira crear:"
+
+#~ msgid "GPT"
+#~ msgstr "GPT"
+
+#~ msgid "MS-Dos"
+#~ msgstr "MS-DOS"
+
+#~ msgid "(icon)"
+#~ msgstr "(Icona)"
+
+#~ msgid "<b>Warning:</b> This will destroy all data on the device!"
+#~ msgstr "<b>Aviso:</b> ¡Destruirase toda a información no dispositivo!"
+
+#~ msgctxt "@label device"
+#~ msgid "%1 (read only)"
+#~ msgstr "%1 (só lectura)"
+
+#~ msgctxt "@label"
+#~ msgid "1 Sector"
+#~ msgid_plural "%1 Sectors"
+#~ msgstr[0] "1 sector"
+#~ msgstr[1] "%1 sectores"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "good"
+#~ msgstr "bo"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "BAD"
+#~ msgstr "MALO"
+
+#~ msgctxt "@label"
+#~ msgid "(unknown)"
+#~ msgstr "(descoñecido)"
+
+#~ msgid "Partition table:"
+#~ msgstr "Táboa de particións:"
+
+#~ msgid "Cylinder alignment"
+#~ msgstr "Aliñamento de cilindros"
+
+#~ msgid "Sector based alignment"
+#~ msgstr "Aliñamento baseado en sectores"
+
+#~ msgid "Capacity:"
+#~ msgstr "Capacidade:"
+
+#~ msgid "Total sectors:"
+#~ msgstr "Cantidade total de sectores:"
+
+#~ msgid "Cylinders/Heads/Sectors:"
+#~ msgstr "Cilindros/cabezas/sectores:"
+
+#~ msgid "Logical sector size:"
+#~ msgstr "Tamaño lóxico dos sectores:"
+
+#~ msgid "Physical sector size:"
+#~ msgstr "Tamaño físico dos sectores:"
+
+#~ msgid "Cylinder size:"
+#~ msgstr "Tamaño dos cilindros:"
+
+#~ msgid "Primaries/Max:"
+#~ msgstr "Primarios/Máx:"
+
+#~ msgid "SMART status:"
+#~ msgstr "Estado SMART:"
+
+#~ msgid "More..."
+#~ msgstr "Máis..."
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit additional mount options"
+#~ msgstr "Editar as opcións de montaxe adicionais"
+
+#~ msgid "Edit Mount Options"
+#~ msgstr "Editar as opcións de montaxe"
+
+#~ msgid "Edit the mount options for this file system:"
+#~ msgstr "Editar as opcións de montaxe para este sistema de ficheiros:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit mount point for <filename>%1</filename>"
+#~ msgstr "Editar o punto de montaxe para <filename>%1</filename>"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Are you sure you want to save the changes you made to the system "
+#~ "table file <filename>/etc/fstab</filename>?</para><para><warning>This "
+#~ "will overwrite the existing file on your hard drive now. This <strong>can "
+#~ "not be undone</strong>.</warning></para>"
+#~ msgstr ""
+#~ "<para>¿Está seguro de que quere gardar os cambios feitos no ficheiro de "
+#~ "táboa do sistema <filename>/etc/fstab</filename>?</"
+#~ "para><para><warning>Sobrescribirase o ficheiro actual.Esta acción "
+#~ "<strong>non pode ser desfeita</strong>.</warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really save changes?"
+#~ msgstr "Desexa realmente gardar as modificacións?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Save changes"
+#~ msgstr "Gardar modificacións"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open mount point file <filename>%1</filename>."
+#~ msgstr ""
+#~ "Non foi posíbel abrir o ficheiro de punto de montaxe <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error while reading mount points"
+#~ msgstr "Aconteceu un erro ao ler os puntos de montaxe"
+
+#~ msgctxt "@info"
+#~ msgid "Could not save mount points to file <filename>%1</filename>."
+#~ msgstr ""
+#~ "Non foi posíbel gardar os puntos de montaxe no ficheiro <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Saving Mount Points"
+#~ msgstr "Aconteceu un erro ao gardar os puntos de montaxe"
+
+#~ msgid "Path:"
+#~ msgstr "Rota:"
+
+#~ msgid "Select..."
+#~ msgstr "Escoller..."
+
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
+
+#~ msgid "Options:"
+#~ msgstr "Opcións:"
+
+#~ msgid "Read-only"
+#~ msgstr "Só lectura"
+
+#~ msgid "Users can mount and unmount"
+#~ msgstr "Os usuarios poden montar ou desmontar"
+
+#~ msgid "No automatic mount"
+#~ msgstr "Non montar automaticamente"
+
+#~ msgid "No update of file access times"
+#~ msgstr "Non actualizar a hora de acceso ós ficheiros"
+
+#~ msgid "Synchronous access"
+#~ msgstr "Acceso síncrono"
+
+#~ msgid "No update of directory access times"
+#~ msgstr "Non actualizar a hora de acceso ós directorios"
+
+#~ msgid "No binary execution"
+#~ msgstr "Sen execución de binarios"
+
+#~ msgid "Update access times relative to modification"
+#~ msgstr "Actualizar as datas de acceso con respecto á modificación"
+
+#~ msgid "Dump Frequency:"
+#~ msgstr "Frecuencia de volcado:"
+
+#~ msgid "Pass Number:"
+#~ msgstr "Paso número:"
+
+#~ msgid "Device Node"
+#~ msgstr "Nodo do dispositivo"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Label"
+#~ msgstr "Etiqueta"
+
+#~ msgid "Identify by:"
+#~ msgstr "Identificar por:"
+
+#~ msgctxt "@title:window"
+#~ msgid "File System Support"
+#~ msgstr "Soporte de sistema de ficheiros"
+
+#~ msgid ""
+#~ "This table shows which file systems are supported and which specific "
+#~ "operations can be performed on them.\n"
+#~ "Some file systems need external tools to be installed for them to be "
+#~ "supported. But not all operations can be performed on all file systems, "
+#~ "even if all required tools are installed. Please see the documentation "
+#~ "for details. "
+#~ msgstr ""
+#~ "Esta táboa mostra os sistemas de ficheiro que están soportados e as "
+#~ "operacións específicas que pode realizar nelas.\n"
+#~ "Algúns sistemas de ficheiro precisan que teña instaladas utilidades "
+#~ "externar para ter soporte para eles. Pero non todas as operacións poden "
+#~ "realizarse en todos os sistemas de ficheiro, mesmo se ten todas as "
+#~ "utilidades instaladas. Consulte a documentación para máis detalles."
+
+#~ msgid "File System"
+#~ msgstr "Sistema de ficheiros"
+
+#~ msgid "Create"
+#~ msgstr "Crear"
+
+#~ msgid "Grow"
+#~ msgstr "Amecer"
+
+#~ msgid "Shrink"
+#~ msgstr "Reducir"
+
+#~ msgid "Move"
+#~ msgstr "Mover"
+
+#~ msgid "Copy"
+#~ msgstr "Copiar"
+
+#~ msgid "Check"
+#~ msgstr "Comprobar"
+
+#~ msgid "Read Label"
+#~ msgstr "Ler a etiqueta"
+
+#~ msgid "Write Label"
+#~ msgstr "Escribir a etiqueta"
+
+#~ msgid "Read Usage"
+#~ msgstr "Ler a utilización"
+
+#~ msgid "Backup"
+#~ msgstr "Copia de respaldo"
+
+#~ msgid "Restore"
+#~ msgstr "Restaurar"
+
+#~ msgid "Support Tools"
+#~ msgstr "Ferramentas de soporte"
+
+#~ msgctxt "@action:button"
+#~ msgid "Rescan Support"
+#~ msgstr "Analizar de novo o soporte"
+
+#~ msgctxt "@title:window"
+#~ msgid "Information"
+#~ msgstr "Información"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition Information"
+#~ msgstr "Información da partición"
+
+#~ msgctxt "@label partition"
+#~ msgid "File system:"
+#~ msgstr "Sistema de ficheiros:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Capacity:"
+#~ msgstr "Capacidade:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher name:"
+#~ msgstr "Nome do cifrado:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher mode:"
+#~ msgstr "Modo de cifrado:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Hash:"
+#~ msgstr "Hash:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Key size:"
+#~ msgstr "Tamaño da chave:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Payload offset:"
+#~ msgstr "Desprazamento de carga:"
+
+#~ msgctxt "@label partition"
+#~ msgid "First sector:"
+#~ msgstr "Primeiro sector:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Last sector:"
+#~ msgstr "Último sector:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Number of sectors:"
+#~ msgstr "Número de sectores:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Available:"
+#~ msgstr "Dispoñíbel:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Used:"
+#~ msgstr "Empregado:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Device Information"
+#~ msgstr "Información do dispositivo"
+
+#~ msgctxt "@label device"
+#~ msgid "Path:"
+#~ msgstr "Rota:"
+
+#~ msgctxt "@label device"
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
+
+#~ msgctxt "@label device"
+#~ msgid "Capacity:"
+#~ msgstr "Capacidade:"
+
+#~ msgctxt "@label device"
+#~ msgid "Total sectors:"
+#~ msgstr "Cantidade total de sectores:"
+
+#~ msgctxt "@label device"
+#~ msgid "Heads:"
+#~ msgstr "Cabezas:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinders:"
+#~ msgstr "Cilindros:"
+
+#~ msgctxt "@label device"
+#~ msgid "Sectors:"
+#~ msgstr "Sectores:"
+
+#~ msgctxt "@label device"
+#~ msgid "Logical sector size:"
+#~ msgstr "Tamaño lóxico dos sectores:"
+
+#~ msgctxt "@label device"
+#~ msgid "Physical sector size:"
+#~ msgstr "Tamaño físico dos sectores:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinder size:"
+#~ msgstr "Tamaño do cilindro:"
+
+#~ msgctxt "@label device"
+#~ msgid "Primaries/Max:"
+#~ msgstr "Primarios/Máx:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Insert a partition"
+#~ msgstr "Inserir unha partición"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to quit the application?</para><para>There is "
+#~ "still an operation pending.</para>"
+#~ msgid_plural ""
+#~ "<para>Do you really want to quit the application?</para><para>There are "
+#~ "still %1 operations pending.</para>"
+#~ msgstr[0] ""
+#~ "<para>Desexa realmente saír do programa?</para><para>Aínda hai unha "
+#~ "operación pendente.</para>"
+#~ msgstr[1] ""
+#~ "<para>Desexa realmente saír do programa?</para><para>Aínda hai %1 "
+#~ "operacións pendentes.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Discard Pending Operations and Quit?"
+#~ msgstr "Desexa esquecer as operacións pendentes e saír?"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Undo"
+#~ msgstr "Desfacer"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Undo the last operation"
+#~ msgstr "Anula a última operación"
+
+#~ msgctxt "@info:status"
+#~ msgid "Remove the last operation from the list."
+#~ msgstr "Elimina da lista a última operación."
+
+#~ msgctxt "@action:inmenu clear the list of operations"
+#~ msgid "Clear"
+#~ msgstr "Limpar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear all operations"
+#~ msgstr "Limpa todas as operacións"
+
+#~ msgctxt "@info:status"
+#~ msgid "Empty the list of pending operations."
+#~ msgstr "Baleira a listaxe de operacións pendentes."
+
+#~ msgctxt "@action:inmenu apply all operations"
+#~ msgid "Apply"
+#~ msgstr "Aplicar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Apply all operations"
+#~ msgstr "Aplica todas as operacións"
+
+#~ msgctxt "@info:status"
+#~ msgid "Apply the pending operations in the list."
+#~ msgstr "Aplica as operacións pendentes na lista."
+
+#~ msgctxt "@action:inmenu refresh list of devices"
+#~ msgid "Refresh Devices"
+#~ msgstr "Refrescar os dispositivos"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Refresh all devices"
+#~ msgstr "Refresca a información de todos os dispositivos"
+
+#~ msgctxt "@info:status"
+#~ msgid "Renew the devices list."
+#~ msgstr "Renova a lista de dispositivos."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Partition Table"
+#~ msgstr "Nova táboa de particións"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Create a new partition table"
+#~ msgstr "Crear unha nova táboa de particións"
+
+#~ msgctxt "@info:status"
+#~ msgid "Create a new and empty partition table on a device."
+#~ msgstr "Crea unha táboa de particións nova e baleira no dispositivo."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Export Partition Table"
+#~ msgstr "Exportar a táboa de particións"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Export a partition table"
+#~ msgstr "Exportar unha táboa de particións"
+
+#~ msgctxt "@info:status"
+#~ msgid "Export the device's partition table to a text file."
+#~ msgstr ""
+#~ "Exportar a táboa de particións do dispositivo a un ficheiro de texto."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Import Partition Table"
+#~ msgstr "Importar a táboa de particións"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Import a partition table"
+#~ msgstr "Importar unha táboa de particións"
+
+#~ msgctxt "@info:status"
+#~ msgid "Import a partition table from a text file."
+#~ msgstr "Importar unha táboa de particións dun ficheiro de texto."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "SMART Status"
+#~ msgstr "Estado SMART"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show SMART status"
+#~ msgstr "Mostrar o estado SMART"
+
+#~ msgctxt "@info:status"
+#~ msgid "Show the device's SMART status if supported"
+#~ msgstr "Mostrar o estado SMART do dispositivo, de ser posíbel."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Properties"
+#~ msgstr "Propiedades"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show device properties dialog"
+#~ msgstr "Mostra o diálogo de propiedades do dispositivo"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify device properties"
+#~ msgstr "Ver e modificar as propiedades do dispositivo"
+
+#~ msgctxt "@action:inmenu create a new partition"
+#~ msgid "New"
+#~ msgstr "Nova"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "New partition"
+#~ msgstr "Partición nova"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Resize/Move"
+#~ msgstr "Mudar o tamaño/Mover"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Resize or move partition"
+#~ msgstr "Muda o tamaño ou move unha partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Shrink, grow or move an existing partition."
+#~ msgstr "Reduce, amece ou move unha partición existente."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Delete"
+#~ msgstr "Borrar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Delete partition"
+#~ msgstr "Borra a partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Delete a partition."
+#~ msgstr "Borra unha partición."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Shred"
+#~ msgstr "Borrar totalmente"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Shred partition"
+#~ msgstr "Borrar totalmente a partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Shred a partition so that its contents cannot be restored."
+#~ msgstr ""
+#~ "Borrar totalmente unha partición de xeito que os seus contidos non se "
+#~ "poidan recuperar."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Copy"
+#~ msgstr "Copiar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Copy partition"
+#~ msgstr "Copia a partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Copy an existing partition."
+#~ msgstr "Copia unha partición xa existente."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Paste"
+#~ msgstr "Apegar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Paste partition"
+#~ msgstr "Apega a partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Paste a copied partition."
+#~ msgstr "Apega a partición copiada."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Edit Mount Point"
+#~ msgstr "Editar punto de montaxe"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit mount point"
+#~ msgstr "Editar punto de montaxe"
+
+#~ msgctxt "@info:status"
+#~ msgid "Edit a partition's mount point and options."
+#~ msgstr "Editar o punto de montaxe e as opcións dunha partición."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Mount"
+#~ msgstr "Montar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Mount or unmount partition"
+#~ msgstr "Monta ou desmonta unha partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Mount or unmount a partition."
+#~ msgstr "Monta ou desmonta unha partición."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Check"
+#~ msgstr "Comprobar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Check partition"
+#~ msgstr "Comproba a partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Check a filesystem on a partition for errors."
+#~ msgstr ""
+#~ "Comproba a presenza de erros no sistema de ficheiros dunha partición."
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show partition properties dialog"
+#~ msgstr "Mostra o diálogo de propiedades da partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify partition properties (label, partition flags, etc.)"
+#~ msgstr ""
+#~ "Mostra e modifica as propiedades da partición (lenda, bandeiras etc.)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Backup"
+#~ msgstr "Copia de respaldo"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Backup partition"
+#~ msgstr "Fai unha copia de seguranza da partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Backup a partition to an image file."
+#~ msgstr "Fai unha copia de seguranza a un ficheiro de imaxe."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Restore"
+#~ msgstr "Restaurar"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Restore partition"
+#~ msgstr "Restaura unha partición"
+
+#~ msgctxt "@info:status"
+#~ msgid "Restore a partition from an image file."
+#~ msgstr "Restaura unha partición a partir dun ficheiro de imaxe."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "File System Support"
+#~ msgstr "Soporte de sistema de ficheiros"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "View file system support information"
+#~ msgstr "Mostra a información de soporte do sistema de ficheiros"
+
+#~ msgctxt "@info:status"
+#~ msgid "Show information about supported file systems."
+#~ msgstr "Mostra información acerca dos sistemas de ficheiros admitidos."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Clear Log"
+#~ msgstr "Limpar o rexistro"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear the log output"
+#~ msgstr "Limpar o rexistro da saída"
+
+#~ msgctxt "@info:status"
+#~ msgid "Clear the log output panel."
+#~ msgstr "Limpar o panel do rexistro da saída."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Save Log"
+#~ msgstr "Gardar o rexistro"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Save the log output"
+#~ msgstr "Gardar o rexistro da saída"
+
+#~ msgctxt "@info:status"
+#~ msgid "Save the log output to a file."
+#~ msgstr "Gardar o rexistro da saída nun ficheiro."
+
+#~ msgctxt "@info:status"
+#~ msgid "One pending operation"
+#~ msgid_plural "%1 pending operations"
+#~ msgstr[0] "Unha operación pendente"
+#~ msgstr[1] "%1 operacións pendentes"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Using backend plugin: %1 (%2)"
+#~ msgstr "Complemento de infraestrutura empregado: %1 (%2)"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scanning devices..."
+#~ msgstr "Analizando os dispositivos…"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scan finished."
+#~ msgstr "Rematou a análise."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to rescan the devices?</para><para><warning>This "
+#~ "will also clear the list of pending operations.</warning></para>"
+#~ msgstr ""
+#~ "<para>Desexa realmente analizar de novo os dispositivo?</para> "
+#~ "<para><warning>Isto borrará a lista de operacións pendentes.</warning></"
+#~ "para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Rescan the Devices?"
+#~ msgstr "Desexa realmente analizar de novo os dispositivos?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Rescan Devices"
+#~ msgstr "Analizar de novo"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to apply the pending operations listed below?</"
+#~ "para><para><warning>This will permanently modify your disks.</warning></"
+#~ "para>"
+#~ msgstr ""
+#~ "<para>Desexa realmente aplicar as operacións pendentes da lista de baixo?"
+#~ "</para><para><warning>Isto ha modificar de xeito irreversíbel os discos.</"
+#~ "warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Apply Pending Operations?"
+#~ msgstr "Desexa aplicar as operacións pendentes?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Apply Pending Operations"
+#~ msgstr "Aplicar as operacións pendentes"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Applying operations..."
+#~ msgstr "A aplicar as operacións..."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Undoing operation: %1"
+#~ msgstr "A desfacer a operación: %1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to clear the list of pending operations?"
+#~ msgstr "Desexa realmente borrar a lista de operacións pendentes?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Clear Pending Operations?"
+#~ msgstr "Desexa borrar a lista de operacións pendentes?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Clear Pending Operations"
+#~ msgstr "Borrar as operacións pendentes"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Clearing the list of pending operations."
+#~ msgstr "A borrar a lista de operacións pendentes."
+
+#~ msgctxt "@info"
+#~ msgid "Could not open input file <filename>%1</filename> for import: %2"
+#~ msgstr "Non foi posíbel importar o ficheiro <filename>%1</filename>: %2"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Importing Partition Table"
+#~ msgstr "Atopouse un erro importando a táboa de particións"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not open temporary file <filename>%1</filename> while trying to "
+#~ "import from <filename>%2</filename>."
+#~ msgstr ""
+#~ "Non foi posíbel abrir o ficheiro temporal <filename>%1</filename> ao "
+#~ "intentar importalo desde <filename>%2</filename>."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The import file <filename>%1</filename> does not contain a valid "
+#~ "partition table."
+#~ msgstr ""
+#~ "O ficheiro a importar <filename>%1</filename> non contén unha táboa de "
+#~ "particións válida."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Importing Partition Table"
+#~ msgstr "Atopouse un erro importando a táboa de particións"
+
+#~ msgctxt "@info"
+#~ msgid "Found more than one partition table type in import file (line %1)."
+#~ msgstr ""
+#~ "Atopouse mais dunha táboa de particións no ficheiro a importar (liña %1)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is unknown (line %2)."
+#~ msgstr "Descoñécese o tipo da táboa de particións \"%1\" (liña %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is not supported for import (line %2)."
+#~ msgstr ""
+#~ "O tipo da táboa de particións \"%1\" non se admite para importación (liña "
+#~ "%2)."
+
+#~ msgctxt "@info"
+#~ msgid "Found partition but no partition table type (line %1)."
+#~ msgstr "Atopouse a partición, pero non o seu tipo (liña %1)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Partition %1 would be outside the device's boundaries (line %2)."
+#~ msgstr "A partición %1 excederá os límites do dispositivo (liña %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition %1 has end before start sector (line %2)."
+#~ msgstr "A partición %1 remata antes do sector de inicio (liña %2)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Unrecognized partition role \"%1\" for partition %2 (line %3)."
+#~ msgstr "Non se coñece o rol \"%1\" da partición %2 (liña: %3)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid ""
+#~ "No parent partition or partition table found for partition %1 (line %2)."
+#~ msgstr "Non se atopou partición pai ou táboa para a partición %1 (liña %2)."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The partition table type \"%1\" does not support extended partitions, but "
+#~ "one was found (line %2)."
+#~ msgstr ""
+#~ "O tipo de partición \"%1\" non soporta particións estendidas, pero "
+#~ "atopouse unha (liña %2)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Could not create file system \"%1\" for partition %2 (line %3)."
+#~ msgstr ""
+#~ "Non foi posíbel crear o sistema de ficheiros «%1» da partición %2 (liña "
+#~ "%3)."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Could not parse line %1 from import file. Ignoring it."
+#~ msgstr ""
+#~ "Non foi posíbel analizar a liña %1 do ficheiro a importar. Ignorarase."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Exporting Partition Table"
+#~ msgstr "Atopouse un erro exportando a táboa de particións"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>No support tools were found for file systems currently present on "
+#~ "hard disks in this computer:</para><table style='margin-top:12px'><tr><td "
+#~ "style='font-weight:bold;padding-right:12px;white-space:"
+#~ "nowrap;'>Partition</td><td style='font-weight:bold;padding-right:12px;"
+#~ "white-space:nowrap;'>File System</td><td style='font-weight:bold;padding-"
+#~ "right:12px;white-space:nowrap;'>Support Tools</td><td style='font-weight:"
+#~ "bold;padding-right:12px;white-space:nowrap;'>URL</td></tr>%1</"
+#~ "table><para>As long as the support tools for these file systems are not "
+#~ "installed you will not be able to modify them.</para><para>You should "
+#~ "find packages with these support tools in your distribution's package "
+#~ "manager.</para>"
+#~ msgstr ""
+#~ "<para>Non se atoparon ferramentas de soporte para os sistemas de "
+#~ "ficheiros presentes nos discos deste computador:</para> <table "
+#~ "style='margin-top:12px'>   <tr>    <td style='font-weight:bold;padding-"
+#~ "right:12px;white-space:nowrap;'>Partición</td>    <td style='font-weight:"
+#~ "bold;padding-right:12px;white-space:nowrap;'>Sistema de ficheiros</td>    "
+#~ "<td style='font-weight:bold;padding-right:12px;white-space:"
+#~ "nowrap;'>Ferramentas de soporte</td>    <td style='font-weight:bold;"
+#~ "padding-right:12px;white-space:nowrap;'>URL</td>  </tr>  %1</"
+#~ "table><para>Non poderá modificar os sistemas de ficheiros ata que non "
+#~ "instale as ferramentas de soporte para eles.</para><para>Debería poder "
+#~ "atopar as ferramentas de soporte desde o xestor de paquetes da súa "
+#~ "distribución.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Missing File System Support Packages"
+#~ msgstr "Faltan os paquetes para traballar co sistema de ficheiros"
+
+#~ msgctxt "@title:window"
+#~ msgid "KDE Partition Manager"
+#~ msgstr "Xestor de particións de KDE"
+
+#~ msgctxt "@title:window"
+#~ msgid "Devices"
+#~ msgstr "Dispositivos"
+
+#~ msgctxt "@title:window"
+#~ msgid "Pending Operations"
+#~ msgstr "Operacións pendentes"
+
+#~ msgctxt "@title:window"
+#~ msgid "Log Output"
+#~ msgstr "Rexistro da saída"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a new partition"
+#~ msgstr "Crear unha partición nova"
+
+#~ msgctxt "@title:menu turn on and off edit toolbar"
+#~ msgid "Edit Toolbar"
+#~ msgstr "Barra de ferramentas de Edición"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition Toolbar"
+#~ msgstr "Barra de ferramentas de Partición"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device Toolbar"
+#~ msgstr "Barra de ferramentas de Dispositivo"
+
+#~ msgctxt "@title:menu"
+#~ msgid "View"
+#~ msgstr "Vista"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device"
+#~ msgstr "Dispositivo"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Select Current Device"
+#~ msgstr "Seleccionar o dispositivo actual"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition"
+#~ msgstr "Partición"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be mounted."
+#~ msgstr ""
+#~ "Non foi posíbel montar o sistema de ficheiros na partición <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Mount File System."
+#~ msgstr "Non foi posíbel montar o sistema de ficheiros."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be "
+#~ "unmounted."
+#~ msgstr ""
+#~ "Non foi posíbel desmontar o sistema de ficheiros na partición <filename>"
+#~ "%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Unmount File System."
+#~ msgstr "Non foi posíbel desmontar o sistema de ficheiros."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>There is already one primary partition on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgid_plural ""
+#~ "<para>There are already %1 primary partitions on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgstr[0] ""
+#~ "<para>Xa hai unha partición primaria neste dispositivo. Este é o máximo "
+#~ "que pode conter este tipo de táboa de particións.</para><para>Non poderá "
+#~ "crear, apegar nin restaurar unha partición primaria no dispositivo antes "
+#~ "de que borre unha das que contén.</para>"
+#~ msgstr[1] ""
+#~ "<para>Xa hai %1 particións primarias neste dispositivo. Este é o máximo "
+#~ "que pode conter a táboa de particións.</para><para>Non poderá crear, "
+#~ "apegar nin restaurar unha partición primaria no dispositivo antes de que "
+#~ "borre unha das que contén.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Too Many Primary Partitions."
+#~ msgstr "Exceso de particións primarias."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The partition <filename>%1</filename> cannot currently be deleted "
+#~ "because one or more partitions with higher logical numbers are still "
+#~ "mounted.</para><para>Please unmount all partitions with higher logical "
+#~ "numbers than %2 first.</para>"
+#~ msgstr ""
+#~ "<para>A partición <filename>%1</filename> non pode ser borrada neste "
+#~ "momento porque aínda están montadas unha ou máis particións como números "
+#~ "lóxicos maiores.</para><para>Desmonte antes todas as particións con "
+#~ "números lóxicos maiores que %2.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Delete Partition."
+#~ msgstr "Non é posíbel borrar a partición."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you really want to delete the partition that is currently in the "
+#~ "clipboard? It will no longer be available for pasting after it has been "
+#~ "deleted."
+#~ msgstr ""
+#~ "Desexa realmente borrar a partición que está no portarretallos? Deixará "
+#~ "de estar dispoñíbel para apegala despois que sexa borrada."
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Delete Partition in the Clipboard?"
+#~ msgstr "Desexa realmente borrar a partición no portarretallos?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete It"
+#~ msgstr "Borrala"
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Partition <filename>%1</filename> has the same position and size after "
+#~ "resize/move. Ignoring operation."
+#~ msgstr ""
+#~ "A partición <filename>%1</filename> terá a mesma posición e tamaño tras "
+#~ "mudarlle o tamaño/movela. Ignorarase a operación."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Partition <filename>%1</filename> has been copied to the clipboard."
+#~ msgstr ""
+#~ "A partición <filename>%1</filename> foi copiada para o portarretallos."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Overwriting one partition with another "
+#~ "(or with an image file) will destroy all data on this target partition.</"
+#~ "para><para>If you continue now and apply the resulting operation in the "
+#~ "main window, all data currently stored on <filename>%1</filename> will "
+#~ "unrecoverably be overwritten.</para>"
+#~ msgstr ""
+#~ "<para><warning>Está a piques de perder todos os datos na partición "
+#~ "<filename>%1</filename>.</warning></para> <para>Ao substituír unha "
+#~ "partición por outra —ou por un ficheiro de imaxe— destruiranse os datos "
+#~ "na partición de destino.</para><para>Se continúa e aplica a operación "
+#~ "resultante na xanela principal, todos os datos que teña en <filename>%1</"
+#~ "filename> serán substituídos, e non será posíbel recuperalos.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Overwrite Existing Partition?"
+#~ msgstr "Está seguro de que quere substituír a partición existente?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite Partition"
+#~ msgstr "Substituíla"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The selected partition is not large enough to hold the source "
+#~ "partition or the backup file.</para><para>Pick another target or resize "
+#~ "this partition so it is as large as the source.</para>"
+#~ msgstr ""
+#~ "<para>A partición escollida non é grande de abondo para conter a "
+#~ "partición de orixe ou o ficheiro de copia de respaldo.</"
+#~ "para><para>Escolla outro destino ou mude o tamaño desta partición de "
+#~ "xeito que sexa tan grande como a orixe.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Target Not Large Enough"
+#~ msgstr "O destino non é grande de abondo"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>It is not possible to create the target partition large enough to "
+#~ "hold the source.</para><para>This may happen if not all partitions on a "
+#~ "device are correctly aligned or when copying a primary partition into an "
+#~ "extended partition.</para>"
+#~ msgstr ""
+#~ "<para>Non é posíbel crear a partición de destino de tamaño suficiente "
+#~ "para conter a orixe.</para><para>Isto pode acontecer se non todas as "
+#~ "particións nun dispositivo comezan e rematan en limiares de cilindro ou "
+#~ "cando se copia unha partición primaria nunha estendida.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Create Target Partition."
+#~ msgstr "Non é posíbel crear a partición de destino."
+
+#~ msgctxt "@info"
+#~ msgid "Do you want to overwrite the existing file <filename>%1</filename>?"
+#~ msgstr ""
+#~ "Desexa sobrescribir o ficheiro <filename>%1</filename> xa existente?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Overwrite Existing File?"
+#~ msgstr "Desexa sobrescribir o ficheiro xa existente?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite File"
+#~ msgstr "Sobrescribir o ficheiro"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system in the image file <filename>%1</filename> is too large to "
+#~ "be restored to the selected partition."
+#~ msgstr ""
+#~ "O sistema de ficheiros no ficheiro de imaxe <filename>%1</filename> é "
+#~ "grande de máis para restauralo na partición escollida."
+
+#~ msgctxt "@title:window"
+#~ msgid "Not Enough Space to Restore File System."
+#~ msgstr "Non hai espazo de abondo para restaurar o sistema de ficheiros."
+
+#~ msgid "Partition"
+#~ msgstr "Partición"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Mount Point"
+#~ msgstr "Punto de montaxe"
+
+#~ msgid "Size"
+#~ msgstr "Tamaño"
+
+#~ msgid "Used"
+#~ msgstr "Empregado"
+
+#~ msgid "Available"
+#~ msgstr "Dispoñíbel"
+
+#~ msgid "First Sector"
+#~ msgstr "Primeiro sector"
+
+#~ msgid "Last Sector"
+#~ msgstr "Último sector"
+
+#~ msgid "Number of Sectors"
+#~ msgstr "Número de sectores"
+
+#~ msgid "Flags"
+#~ msgstr "Bandeiras"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition properties: <filename>%1</filename>"
+#~ msgstr "Propiedades da partición: <filename>%1</filename>"
+
+#~ msgctxt "@item mountpoint"
+#~ msgid "(none found)"
+#~ msgstr "(non se achou ningún)"
+
+#~ msgctxt "@label partition state"
+#~ msgid "idle"
+#~ msgstr "ociosa"
+
+#~ msgctxt "@label partition state"
+#~ msgid "At least one logical partition is mounted."
+#~ msgstr "Hai montada a-lo menos unha partición lóxica"
+
+#~ msgctxt "@label partition state"
+#~ msgid "mounted"
+#~ msgstr "montada"
+
+#~ msgctxt "@item uuid"
+#~ msgid "(none)"
+#~ msgstr "(ningún)"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Changing the file system on a partition "
+#~ "already on disk will erase all its contents. If you continue now and "
+#~ "apply the resulting operation in the main window, all data on <filename>"
+#~ "%1</filename> will unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>Está a piques de perder todos os datos na partición "
+#~ "<filename>%1</filename>.</warning></para><para>Se troca o sistema de "
+#~ "ficheiros nunha partición xa existente no disco borraralle todo o "
+#~ "contido. Se continúa agora e aplica na fiestra principal a operación "
+#~ "resultante, todos os datos que haxa en <filename>%1</filename> serán "
+#~ "perdidos indefectibelmente.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate <filename>%1</filename> with File System %2?"
+#~ msgstr ""
+#~ "Desexa realmente crear de novo <filename>%1</filename> co sistema de "
+#~ "ficheiros %2?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the File System"
+#~ msgstr "Trocar o sistema de ficheiros"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the File System"
+#~ msgstr "Non trocar o sistema de ficheiros"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Recreating a file system will erase all "
+#~ "its contents. If you continue now and apply the resulting operation in "
+#~ "the main window, all data on <filesystem>%1</filesystem> will "
+#~ "unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>Está a piques de perder todos os datos na partición "
+#~ "<filename>%1</filename>.</warning></para><para>Se volta a criar un "
+#~ "sistema de ficheiros borraralle todo o contido. Se continúa agora e "
+#~ "aplica na fiestra principal a operación resultante, todos os datos que "
+#~ "haxa en <filesystem>%1</filesystem> serán perdidos indefectibelmente.</"
+#~ "para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate File System on <filename>%1</filename>?"
+#~ msgstr ""
+#~ "Desexa realmente crear de novo o sistema de ficheiros en <filename>%1</"
+#~ "filename>?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate the File System"
+#~ msgstr "Crear de novo o sistema de ficheiros"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Recreate the File System"
+#~ msgstr "Non crear de novo o sistema de ficheiros"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "File system:"
+#~ msgstr "Sistema de ficheiros:"
+
+#~ msgctxt "@label"
+#~ msgid "Label:"
+#~ msgstr "Etiqueta:"
+
+#~ msgctxt "@label"
+#~ msgid "This file system does not support setting a label."
+#~ msgstr "Este sistema de ficheiro non soporta o estabelecer unha etiqueta."
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate existing file system"
+#~ msgstr "Crear de novo o sistema de ficheiro existente"
+
+#~ msgctxt "@label"
+#~ msgid "Mount point:"
+#~ msgstr "Punto de montaxe:"
+
+#~ msgctxt "@label"
+#~ msgid "Partition type:"
+#~ msgstr "Tipo de partición:"
+
+#~ msgctxt "@label"
+#~ msgid "Status:"
+#~ msgstr "Estado:"
+
+#~ msgctxt "@label"
+#~ msgid "UUID:"
+#~ msgstr "UUID:"
+
+#~ msgctxt "@label"
+#~ msgid "Size:"
+#~ msgstr "Tamaño:"
+
+#~ msgctxt "@label partition capacity available"
+#~ msgid "Available:"
+#~ msgstr "Dispoñíbel:"
+
+#~ msgctxt "@label partition capacity used"
+#~ msgid "Used:"
+#~ msgstr "Empregada:"
+
+#~ msgctxt "@label"
+#~ msgid "First sector:"
+#~ msgstr "Primeiro sector:"
+
+#~ msgctxt "@label"
+#~ msgid "Last sector:"
+#~ msgstr "Último sector:"
+
+#~ msgctxt "@label"
+#~ msgid "Number of sectors:"
+#~ msgstr "Número de sectores:"
+
+#~ msgctxt "@label"
+#~ msgid "Flags:"
+#~ msgstr "Bandeiras:"
+
+#~ msgctxt "@info"
+#~ msgid "Please select a device."
+#~ msgstr "Escolla un dispositivo."
+
+#~ msgctxt "@info"
+#~ msgid "No valid partition table was found on this device."
+#~ msgstr "Non se atopou unha táboa de particións válido neste dispositivo."
+
+#~ msgctxt "@title:window"
+#~ msgid "Resize/move partition: <filename>%1</filename>"
+#~ msgstr "Mudar o tamaño/Mover a partición: <filename>%1</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Scanning devices..."
+#~ msgstr "Analizando os dispositivos..."
+
+#~ msgctxt "@label"
+#~ msgid "Scanning..."
+#~ msgstr "Analizando..."
+
+#~ msgctxt "@label"
+#~ msgid "Scanning device: <filename>%1</filename>"
+#~ msgstr "Analizando o dispositivo: <filename>%1</filename>"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "First sector:"
+#~ msgstr "Primeiro sector:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Last sector:"
+#~ msgstr "Último sector:"
+
+#~ msgid "Align partition"
+#~ msgstr "Aliñar a partición"
+
+#~ msgctxt "@item:button advanced settings button"
+#~ msgid "Advanced"
+#~ msgstr "Avanzado"
+
+#~ msgid "&Advanced"
+#~ msgstr "&Avanzado"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Partition &type:"
+#~ msgstr "&Tipo de partición:"
+
+#~ msgid "Primar&y"
+#~ msgstr "&Primaria"
+
+#~ msgid "E&xtended"
+#~ msgstr "E&stendida"
+
+#~ msgid "&Logical"
+#~ msgstr "&Lóxica"
+
+#~ msgctxt "@label"
+#~ msgid "Minimum size:"
+#~ msgstr "Tamaño mínimo:"
+
+#~ msgctxt "@label"
+#~ msgid "Maximum size:"
+#~ msgstr "Tamaño máximo:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space before:"
+#~ msgstr "Espazo libre anterior:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Si&ze:"
+#~ msgstr "&Tamaño:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space after:"
+#~ msgstr "Espazo libre posterior:"
+
+#~ msgctxt "@title:window"
+#~ msgid "SMART Properties: <filename>%1</filename>"
+#~ msgstr "Propiedades SMART: <filename>%1</filename>"
+
+#~ msgctxt "@label SMART number of bad sectors"
+#~ msgid "none"
+#~ msgstr "ningún"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Pre-Failure"
+#~ msgstr "Antes dun fallo"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Old-Age"
+#~ msgstr "Antigüidade"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Online"
+#~ msgstr "Conectado"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Offline"
+#~ msgstr "Desconectado"
+
+#~ msgid "Model:"
+#~ msgstr "Modelo:"
+
+#~ msgid "Serial number:"
+#~ msgstr "Número de serie:"
+
+#~ msgid "Firmware revision:"
+#~ msgstr "Revisión do firmware:"
+
+#~ msgid "Temperature:"
+#~ msgstr "Temperatura:"
+
+#~ msgid "Bad sectors:"
+#~ msgstr "Sectores malos:"
+
+#~ msgid "Powered on for:"
+#~ msgstr "Tempo acendido:"
+
+#~ msgid "Power cycles:"
+#~ msgstr "Ciclos de acendido:"
+
+#~ msgid "Self tests:"
+#~ msgstr "Probas:"
+
+#~ msgid "Overall assessment:"
+#~ msgstr "Avaliación xeral:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save SMART Report."
+#~ msgstr "Non puido gardarse o informe SMART."
+
+#~ msgid "Id"
+#~ msgstr "Identificador"
+
+#~ msgid "Attribute"
+#~ msgstr "Atributo"
+
+#~ msgid "Failure Type"
+#~ msgstr "Tipo de fallo"
+
+#~ msgid "Update Type"
+#~ msgstr "Tipo de actualización"
+
+#~ msgid "Worst"
+#~ msgstr "Peor"
+
+#~ msgid "Current"
+#~ msgstr "Actual"
+
+#~ msgid "Threshold"
+#~ msgstr "Límite"
+
+#~ msgid "Raw"
+#~ msgstr "Cru"
+
+#~ msgid "Assessment"
+#~ msgstr "Avaliación"
+
+#~ msgid "Value"
+#~ msgstr "Valor"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary output file to save <filename>%1</filename>."
+#~ msgstr ""
+#~ "Non foi posíbel crear un ficheiro tempora de saída para gardar <filename>"
+#~ "%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Saving Log File"
+#~ msgstr "Aconteceu un erro ao gardar o ficheiro de rexistro..."
+
+#~ msgctxt ""
+#~ "@title:column Severity of a log entry / log level. Text must be very "
+#~ "short."
+#~ msgid "Sev."
+#~ msgstr "Sev."
+
+#~ msgid "Severity"
+#~ msgstr "Severidade"
+
+#~ msgctxt "@title:column a time stamp of a log entry"
+#~ msgid "Time"
+#~ msgstr "Tempo"
+
+#~ msgctxt "@title:column the text message of a log entry"
+#~ msgid "Message"
+#~ msgstr "Mensaxe"
+
+#~ msgctxt "@title"
+#~ msgid "<application>KDE Partition Manager</application>"
+#~ msgstr "<application>Xestor de particións de KDE</application>"
+
+#~ msgctxt "@title"
+#~ msgid "Manage your disks, partitions and file systems"
+#~ msgstr "Xestione os discos, particións e sistemas de ficheiro"
+
+#~ msgctxt "@info:credit"
+#~ msgid ""
+#~ "© 2008-2013 Volker Lanz\n"
+#~ "© 2012-2015 Andrius Štikonas"
+#~ msgstr ""
+#~ "© 2008-2013 Volker Lanz\n"
+#~ "© 2012-2015 Andrius Štikonas"
+
+#~ msgid "Hugo Pereira Da Costa"
+#~ msgstr "Hugo Pereira da Costa"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Partition Widget Design"
+#~ msgstr "Deseño do trebello de particións."
+
+#~ msgctxt "@info:shell"
+#~ msgid "Do not try to gain super user privileges"
+#~ msgstr "Non tentar de obter privilexios de administrador"
+
+#~ msgctxt "@info:shell"
+#~ msgid "Show advanced tab in configuration dialog"
+#~ msgstr ""
+#~ "Amosar a lapela de configuración avanzada no diálogo de configuración."
+
+#~ msgctxt "@info:shell"
+#~ msgid "Device(s) to manage"
+#~ msgstr "Dispositivos para xestionar"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You do not have administrative privileges.</warning></"
+#~ "para><para>It is possible to run <application>%1</application> without "
+#~ "these privileges. You will, however, <emphasis>not</emphasis> be allowed "
+#~ "to apply operations.</para><para>Do you want to continue running "
+#~ "<application>%1</application>?</para>"
+#~ msgstr ""
+#~ "<para><warning>Non ten privilexios de administrador.</warning></para> "
+#~ "<para>É posíbel executar <application>%1</application> sen estes "
+#~ "privilexios, pero <emphasis>non</emphasis> se lle permitirá aplicar as "
+#~ "operacións.</para> <para>Desexa continuar a executar <application>%1</"
+#~ "application>?</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "No administrative privileges"
+#~ msgstr "Non ten privilexios de administrador"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The configured backend plugin \"%1\" could not be loaded.</"
+#~ "para><para>Loading the default backend plugin \"%2\" instead.</para>"
+#~ msgstr ""
+#~ "<para>Non se puido cargar o complemento de infraestrutura configurado, "
+#~ "«%1».</para> <para>No seu lugar cargarase o complemento de infraestrutura "
+#~ "predeterminado, «%2».</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error: Could Not Load Backend Plugin"
+#~ msgstr "Erro: non puido cargarse o complemento de infraestrutura."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Neither the configured (\"%1\") nor the default (\"%2\") backend "
+#~ "plugin could be loaded.</para><para>Please check your installation.</para>"
+#~ msgstr ""
+#~ "<para>Non se puideron cargar nun o complemento de infraestrutura "
+#~ "configurado, «%1», nin o predeterminado, «%2».</para> <para>Asegúrese de "
+#~ "que a instalación está ben.</para>"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Size:"
+#~ msgstr "Tamaño:"
+
+#~ msgctxt "@title"
+#~ msgid "Dummy Backend Plugin"
+#~ msgstr "Extensión de infraestrutura de proba."
+
+#~ msgid "KDE Partition Manager dummy backend."
+#~ msgstr "Infraestrutura de proba do xestor de particións de KDE"
+
+#~ msgid "Copyright 2010 Volker Lanz"
+#~ msgstr "Copyright 2010 Volker Lanz"
+
+#~ msgctxt "@title"
+#~ msgid "LibParted Backend Plugin"
+#~ msgstr "Extensión de infraestrutura LibParted:"
+
+#~ msgid "KDE Partition Manager backend for libparted."
+#~ msgstr "Infraestrutura do xestor de particións de KDE para libparted."
+
+#~ msgid "Copyright 2008,2009,2010 Volker Lanz"
+#~ msgstr "Copyright 2008,2009,2010 Volker Lanz"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error: No Usable Devices Found"
+#~ msgstr "Erro: non se atoparon dispositivos cos que traballar."
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "unknown"
+#~ msgstr "descoñecido"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "extended"
+#~ msgstr "estendido"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "jfs"
+#~ msgstr "jfs"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Create file system %1 on partition <filename>%2</filename>"
+#~ msgstr "Crea o sistema de ficheiros %1 na partición <filename>%2</filename>"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>No usable devices could be found.</para><para>Make sure you have "
+#~ "sufficient privileges to access block devices on your system.</para>"
+#~ msgstr ""
+#~ "<para>Non se atoparon dispositivos cos que traballar.</para> "
+#~ "<para>Asegúrese de que ten privilexios dabondo para acceder aos "
+#~ "dispositivos de bloques do seu sistema.</para>"
+
+#~ msgctxt "@info:credit"
+#~ msgid "(c) 2008, 2009, 2010, 2011 Volker Lanz"
+#~ msgstr "(c) 2008, 2009, 2010, 2011 Volker Lanz"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Failed to clobber file system on partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Non foi posíbel estragar o sistema de ficheiros na partición <filename>"
+#~ "%1</filename>."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "This will hide the menu bar completely. You can show it again by typing "
+#~ "%1."
+#~ msgstr ""
+#~ "Isto acochará completamente a barra de menú. Pódea mostrar de novo "
+#~ "presionando %1."
+
+#~ msgctxt "@title:window"
+#~ msgid "Hide Menu Bar"
+#~ msgstr "Acocha a barra de menú"

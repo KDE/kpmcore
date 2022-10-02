@@ -1,0 +1,5604 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Kristóf Kiszel <ulysses@kubuntu.org>, 2010, 2011, 2012, 2014.
+# Balázs Úr <urbalazs@gmail.com>, 2013, 2014.
+# Kristof Kiszel <kiszel.kristof@gmail.com>, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-27 00:47+0000\n"
+"PO-Revision-Date: 2022-01-27 13:50+0100\n"
+"Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 21.07.70\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Kiszel Kristóf,Úr Balázs"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "ulysses@fsf.hu,urbalazs@gmail.com"
+
+#: core/device.cpp:33
+#, kde-format
+msgid "Unknown Device"
+msgstr "Ismeretlen eszköz"
+
+#: core/device.cpp:82
+#, kde-kuit-format
+msgctxt "@item:inlistbox Device name – Capacity (device node)"
+msgid "%1 – %2 (%3)"
+msgstr "%1 – %2 (%3)"
+
+#: core/lvmdevice.cpp:362
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "An error occurred while running lvdisplay."
+msgstr "Hiba történt az lvdisplay futása során."
+
+#: core/operationstack.cpp:101
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just created: Undoing the operation to create the "
+"partition."
+msgstr ""
+"Az újonnan létrehozott partíció törlése: a partíció létrehozása művelet "
+"visszavonása."
+
+#: core/operationstack.cpp:119
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resizing a partition just created: Updating start and end in existing "
+"operation."
+msgstr ""
+"Az újonnan létrehozott partíció átméretezése: a kezdőpont és a végpont "
+"frissítése a meglévő műveletben."
+
+#: core/operationstack.cpp:139
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying a new partition: Creating a new partition instead."
+msgstr "Az új partíció másolása: új partíció létrehozása."
+
+#: core/operationstack.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label for a new partition: No new operation required."
+msgstr "Az új partíció címkéinek módosítása: nem volt szükség műveletre."
+
+#: core/operationstack.cpp:169
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing file system for a new partition: No new operation required."
+msgstr ""
+"Az új partíció fájlrendszerének módosítása: nem volt szükség műveletre."
+
+#: core/operationstack.cpp:186
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking file systems is automatically done when creating them: No new "
+"operation required."
+msgstr ""
+"A fájlrendszerek automatikus ellenőrzése létrehozáskor: nem volt szükség új "
+"műveletre."
+
+#: core/operationstack.cpp:233
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just copied: Removing the copy."
+msgstr "Az újonnan másolt partíció törlése: a másolat eltávolítása."
+
+#: core/operationstack.cpp:238
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just copied over an existing partition: Removing the "
+"copy and deleting the existing partition."
+msgstr ""
+"A meglévő partícióra másolt partíció törlése: a másolat eltávolítása, és a "
+"meglévő partíció törlése."
+
+#: core/operationstack.cpp:251
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copying a partition that is itself a copy: Copying the original source "
+"partition instead."
+msgstr "A másolt partíció másolása: az eredeti forrás másolása."
+
+#: core/operationstack.cpp:280
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just restored: Removing the restore operation."
+msgstr ""
+"A frissen visszaállított partíció törlése: a visszaállítás művelet "
+"eltávolítása."
+
+#: core/operationstack.cpp:285
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just restored to an existing partition: Removing the "
+"restore operation and deleting the existing partition."
+msgstr ""
+"A meglévő partícióra visszaállított partíció törlése: a visszaállítás "
+"művelet eltávolítása és a meglévő partíció törlése."
+
+#: core/operationstack.cpp:318
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing flags again for the same partition: Removing old operation."
+msgstr ""
+"A partíció jelzőinek ismételt módosítása: a korábbi művelet eltávolítása."
+
+#: core/operationstack.cpp:349
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label again for the same partition: Removing old operation."
+msgstr ""
+"A partíció címkéinek ismételt módosítása: a korábbi művelet eltávolítása."
+
+#: core/operationstack.cpp:375
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating new partition table, discarding previous operation on device."
+msgstr ""
+"Új partíciós tábla létrehozása, a korábbi művelet eldobása az eszközön."
+
+#: core/operationstack.cpp:395
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing Volume Group, nothing to do."
+msgstr "Kötetcsoport átméretezése, nincs tennivaló."
+
+#: core/operationstack.cpp:440
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Add operation: %1"
+msgstr "Művelet hozzáadása: %1"
+
+#: core/partition.cpp:159
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "unallocated"
+msgstr "nem lefoglalt"
+
+#: core/partition.cpp:162
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "New Partition"
+msgstr "Új partíció"
+
+#: core/partition.cpp:165
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Restored Partition"
+msgstr "Visszaállított partíció"
+
+#: core/partition.cpp:168
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Copy of %1"
+msgstr "%1 másolata"
+
+#: core/partitionalignment.cpp:80
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
+"modulo: %3)."
+msgstr ""
+"A(z) <filename>%1</filename> partíció nem megfelelően igazított (első "
+"szektor: %2, modulo: %3)."
+
+#: core/partitionalignment.cpp:83
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
+"modulo: %3)."
+msgstr ""
+"A(z) <filename>%1</filename> partíció nem megfelelően igazított (utolsó "
+"szektor: %2, modulo: %3)."
+
+#: core/partitionrole.cpp:17
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "unallocated"
+msgstr "nem lefoglalt"
+
+#: core/partitionrole.cpp:20
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "logical"
+msgstr "logikai"
+
+#: core/partitionrole.cpp:23
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "extended"
+msgstr "kiterjesztett"
+
+#: core/partitionrole.cpp:26
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "primary"
+msgstr "elsődleges"
+
+#: core/partitionrole.cpp:29
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LUKS"
+msgstr "LUKS"
+
+#: core/partitionrole.cpp:32
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LVM logical volume"
+msgstr "LVM logikai kötet"
+
+#: core/partitionrole.cpp:34
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "none"
+msgstr "nincs"
+
+#: core/partitiontable.cpp:180
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "boot"
+msgstr "boot"
+
+#: core/partitiontable.cpp:182
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "root"
+msgstr "root"
+
+#: core/partitiontable.cpp:184
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "swap"
+msgstr "swap"
+
+#: core/partitiontable.cpp:186
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hidden"
+msgstr "hidden"
+
+#: core/partitiontable.cpp:188
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "raid"
+msgstr "raid"
+
+#: core/partitiontable.cpp:190
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lvm"
+msgstr "lvm"
+
+#: core/partitiontable.cpp:192
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lba"
+msgstr "lba"
+
+#: core/partitiontable.cpp:194
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hpservice"
+msgstr "hpservice"
+
+#: core/partitiontable.cpp:196
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "palo"
+msgstr "palo"
+
+#: core/partitiontable.cpp:198
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "prep"
+msgstr "prep"
+
+#: core/partitiontable.cpp:200
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-reserved"
+msgstr "msft-reserved"
+
+#: core/partitiontable.cpp:202
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "bios-grub"
+msgstr "bios-grub"
+
+#: core/partitiontable.cpp:204
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "apple-tv-recovery"
+msgstr "apple-tv-recovery"
+
+#: core/partitiontable.cpp:206
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "diag"
+msgstr "diag"
+
+#: core/partitiontable.cpp:208
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "legacy-boot"
+msgstr "legacy-boot"
+
+#: core/partitiontable.cpp:210
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-data"
+msgstr "msft-data"
+
+#: core/partitiontable.cpp:212
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "irst"
+msgstr "irst"
+
+#: core/partitiontable.cpp:499
+#, kde-kuit-format
+msgctxt "@item partition table name"
+msgid "unknown"
+msgstr "ismeretlen"
+
+#: core/raid/softwareraid.cpp:93
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level]"
+msgid " [RAID %1]"
+msgstr " [RAID %1]"
+
+#: core/raid/softwareraid.cpp:95
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Recovering]"
+msgid " [RAID %1 - Recovering]"
+msgstr " [RAID %1 - Helyreállítás alatt]"
+
+#: core/raid/softwareraid.cpp:97
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Resyncing]"
+msgid " [RAID %1 - Resyncing]"
+msgstr " [RAID %1 - Újraszinkronizálás alatt]"
+
+#: core/smartattribute.cpp:45
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "failing"
+msgstr "hibákat produkál"
+
+#: core/smartattribute.cpp:48
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "has failed"
+msgstr "meghibásodott"
+
+#: core/smartattribute.cpp:51
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "warning"
+msgstr "figyelmeztetés"
+
+#: core/smartattribute.cpp:54
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "good"
+msgstr "jó"
+
+#: core/smartattribute.cpp:58 core/smartattribute.cpp:85
+#, kde-kuit-format
+msgctxt "@item:intable not applicable"
+msgid "N/A"
+msgstr "N/A"
+
+#: core/smartattribute.cpp:72
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 sector"
+msgid_plural "%1 sectors"
+msgstr[0] "%1 szektor"
+msgstr[1] "%1 szektor"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Rate"
+msgstr "Olvasási hiba arány"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Rate of hardware read errors while reading data from the disk surface."
+msgstr ""
+"A hardveres olvasási hibák aránya a lemezfelületről történő adatolvasás "
+"során."
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Throughput Performance"
+msgstr "Átviteli teljesítmény"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Overall (general) throughput performance of a hard disk drive. If the value "
+"of this attribute is decreasing there is a high probability that there is a "
+"problem with the disk."
+msgstr ""
+"A merevlemez-meghajtó teljes (általános) átviteli teljesítménye. Ha az "
+"attribútum értéke csökken, az nagy valószínűséggel azt jelenti, hogy "
+"probléma van a lemezzel."
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin-Up Time"
+msgstr "Felpörgési idő"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Average time of spindle spin up from zero RPM to fully operational."
+msgstr ""
+"A lemezmeghajtó felpörgésének átlagos ideje nulla fordulatszámtól a teljes "
+"üzemkész állapotig."
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Start/Stop Count"
+msgstr "Start/stop szám"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr description"
+msgid "A tally of spindle start/stop cycles."
+msgstr "A lemezmeghajtó start/stop ciklusainak összege."
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocated Sectors Count"
+msgstr "Újraosztott szektorok száma"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of reallocated sectors. When the hard drive finds a read/write/"
+"verification error, it marks this sector as &quot;reallocated&quot; and "
+"transfers data to a special reserved area (spare area)."
+msgstr ""
+"Az újraosztott szektorok száma. Amikor a merevlemez egy olvasási/írási/"
+"ellenőrzési hibát talál, akkor ezt a szektort &quot;újraosztottnak&quot; "
+"jelöli, és az adatokat egy speciálisan fenntartott területre (tartalék "
+"terület) helyezi át."
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Channel Margin"
+msgstr "Olvasási csatorna időtartaléka"
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Margin of a channel while reading data. The function of this attribute is "
+"not specified."
+msgstr ""
+"A csatorna időtartaléka adatok olvasásokor. Az attribútum funckiója nincs "
+"meghatározva."
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Error Rate"
+msgstr "Keresési hibaarány"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Rate of seek errors of the magnetic heads. If there is a partial failure in "
+"the mechanical positioning system, then seek errors will arise."
+msgstr ""
+"A mágneses fejek keresési hibáinak aránya. Ha részleges hiba van a a "
+"mechanikus pozicionáló rendszerben, akkor keresési hibák keletkeznek."
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Time Performance"
+msgstr "Keresési teljesítmény"
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Average performance of seek operations of the magnetic heads. If this "
+"attribute is decreasing, it is a sign of problems in the mechanical "
+"subsystem."
+msgstr ""
+"A mágneses fejek keresési műveleteinek átlagos teljesítménye. Ha ez az "
+"attribútum csökken, az a mechanikus alrendszer problémáinak jele."
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Hours"
+msgstr "Üzemidő"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of hours in power-on state."
+msgstr "A bekapcsolt állapotban töltött órák száma."
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Retry Count"
+msgstr "Pörgetési kísérletek száma"
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of retry of spin start attempts if the first attempt was unsuccessful. "
+"An increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"A pörgésindítási próbálkozások újbóli megkísérléseinek száma, ha az első "
+"kísérlet sikertelen volt. Az attribútum értékének növekedése a merevlemez "
+"problémáira utal."
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Recalibration Retries"
+msgstr "Újrakalibrálási kísérletek"
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of recalibrations requested if the first attempt was unsuccessful. An "
+"increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"Az újrakalibrálási kérések száma, ha az első kísérlet sikertelen volt. Az "
+"attribútum értékének növekedése a merevlemez problémáira utal."
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Cycle Count"
+msgstr "Be- és kikapcsolások száma"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of full hard disk power on/off cycles."
+msgstr "A teljes merevlemez be- és kikapcsolási ciklusainak száma."
+
+#: core/smartattribute.cpp:113 core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft Read Error Rate"
+msgstr "Szoftveres olvasási hibák aránya"
+
+#: core/smartattribute.cpp:113
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Uncorrected read errors reported to the operating system."
+msgstr "Az operációs rendszer által jelzett, javítatlan olvasási hibák."
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Available Reserved Space"
+msgstr "SSD elérhető lefoglalt terület"
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of available reserved space as a percentage of reserved space."
+msgstr ""
+"A rendelkezésre álló lefoglalt helyek száma a lefoglalt helyek százalékában "
+"kifejezve."
+
+#: core/smartattribute.cpp:115
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count"
+msgstr "SSD programhibák száma"
+
+#: core/smartattribute.cpp:115 core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of flash program operation failures since the drive was deployed."
+msgstr "A flashprogram-műveleti hibák száma a meghajtó telepítése óta."
+
+#: core/smartattribute.cpp:116 core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count"
+msgstr "SSD törlési hibák száma"
+
+#: core/smartattribute.cpp:116
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase operation failures since the drive was deployed."
+msgstr "A flash törlési művelet hibáinak száma a meghajtó telepítése óta."
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Leveling Count"
+msgstr "SSD kopáskiegyenlítő szám"
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Counts the maximum worst erase count on any block."
+msgstr "Megszámolja a legrosszabb törlési számot bármely blokkban."
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unexpected power loss count"
+msgstr "SSD váratlan áramkimaradások száma"
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of shutdowns without STANDBY IMMEDIATE as the last command "
+"(regardless of PLI activity using capacitor power). Normalized value is "
+"always 100."
+msgstr ""
+"A STANDBY IMMEDIATE utolsó parancs nélküli leállások száma (függetlenül a "
+"kondenzátorteljesítményt használó PLI-aktivitástól). A normalizált érték "
+"mindig 100."
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Power Loss Protection Failure"
+msgstr "SSD áramkimaradás elleni védelem meghibásodása"
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Last test result, saturated at its maximum value. Bytes 0-1: last test "
+"result as microseconds to discharge cap in range [25, 5000000], lower "
+"indicates specific error code. Bytes 2-3: minutes since last test. Bytes "
+"4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
+"or 11 if the capacitor has been tested in an excessive temperature "
+"condition, otherwise 100."
+msgstr ""
+"Utolsó vizsgálati eredmény, telített maximális értéken. 0-1. bájt: a "
+"kondenzátor utolsó kisütési tesztjének eredménye a [25, 5000000] "
+"tartományban ezredmásodpercekben, az alacsonyabb a konkrét hibakód. 2-3. "
+"bájt: az utolsó teszt óta eltelt percek száma. 4-5. bájt: az élettartam "
+"során elvégzett tesztek száma. A normalizált érték a vizsgálat "
+"sikertelensége esetén 1-re van állítva, vagy 11, ha a kondenzátort túlzott "
+"hőmérsékleten tesztelték, egyébként 100."
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count (chip)"
+msgstr "SSD törlési hibák száma (chip)"
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase command failures."
+msgstr "A flash törlési parancs hibáinak száma."
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Range Delta"
+msgstr "SSD kopási tartomány delta"
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Delta between most-worn and least-worn flash blocks."
+msgstr "A leginkább és legkevésbé kopott blokkok közötti különbség."
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Used Reserved Block Count Total"
+msgstr "SSD használt foglalt blokkok teljes száma"
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#: core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" Samsung attribute."
+msgstr "„Pre-Fail” Samsung attribútum."
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unused Reserved Block Count Total"
+msgstr "SSD nem használt foglalt blokkok teljes száma"
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" HP attribute."
+msgstr "„Pre-Fail” HP attribútum."
+
+#: core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+msgstr "SSD programhibák teljes száma vagy nem-4K igazított hozzáférések száma"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SATA Downshift Error Count"
+msgstr "SATA visszakapcsolási hibák száma"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital and Samsung attribute."
+msgstr "Western Digital és Samsung attribútum."
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr name"
+msgid "End-to-End Error"
+msgstr "Végponttól-végpontih hiba"
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Part of HP's SMART IV technology: After transferring through the cache RAM "
+"data buffer the parity data between the host and the hard drive did not "
+"match."
+msgstr ""
+"A HP SMART IV technológiájának része: A gyorsítótár RAM-adatpufferen "
+"keresztül történő átvitel után a paritási adatok a hoszt és a merevlemez "
+"között nem nem egyeztek meg."
+
+#: core/smartattribute.cpp:129
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Stability"
+msgstr "Fejstabilitás"
+
+#: core/smartattribute.cpp:129 core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital attribute."
+msgstr "Western Digital attribútum."
+
+#: core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Induced Op-Vibration Detection"
+msgstr "Indukált működési rezgés érzékelés"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reported Uncorrectable Errors"
+msgstr "Jelentett nem javítható hibák"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could not be recovered using hardware ECC."
+msgstr ""
+"Azon hibák száma, amelyeket nem lehetett helyreállítani a hardveres ECC "
+"használatával."
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Command Timeout"
+msgstr "Parancs időtúllépés"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of aborted operations due to HDD timeout."
+msgstr "A HDD időtúllépése miatt megszakított műveletek száma."
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr name"
+msgid "High Fly Writes"
+msgstr "Magassági írások"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of fly height errors detected."
+msgstr "Az észlelt magassági hibák száma."
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature Difference From 100"
+msgstr "Hőmérséklet-különbség 100-tól"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
+"minimum threshold which corresponds to a maximum temperature."
+msgstr ""
+"Az érték egyenlő (100 &ndash; hőm. °C), lehetővé téve a gyártó számára, hogy "
+"beállítson egy minimális küszöbértéket, amely megfelel a maximális "
+"hőmérsékletnek."
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-sense Error Rate"
+msgstr "G-szenzor hibaarány"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors resulting from externally-induced shock and vibration."
+msgstr "A külső eredetű ütésekből és rezgésekből eredő hibák száma."
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Off Retract Count"
+msgstr "Kikapcsolási visszahúzások száma"
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of power-off or emergency retract cycles"
+msgstr "A kikapcsolási vagy vészhelyzeti visszahúzási ciklusok száma"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Cycle Count"
+msgstr "Betöltési ciklusok száma"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of load/unload cycles into head landing zone position."
+msgstr "A fej leszállóhelyzetbe történő be- és kitöltési ciklusainak száma."
+
+#: core/smartattribute.cpp:138 core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature"
+msgstr "Hőmérséklet"
+
+#: core/smartattribute.cpp:138
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Current internal temperature."
+msgstr "Aktuális belső hőmérséklet."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Hardware ECC Recovered"
+msgstr "Hardveres ECC-vel helyreállítva"
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could be recovered using hardware ECC."
+msgstr ""
+"Azon hibák száma, amelyeket helyre lehetett állítani a hardveres ECC "
+"használatával."
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocation Event Count"
+msgstr "Áthelyezési események száma"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of remap operations. The raw value of this attribute shows the total "
+"number of attempts to transfer data from reallocated sectors to a spare area."
+msgstr ""
+"Az újraleképezési műveletek száma. Ennek az attribútumnak a nyers értéke az "
+"újraosztott szektorokból a tartalék területre történő adatátvitelre tett "
+"kísérletek teljes száma."
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Current Pending Sector Count"
+msgstr "Jelenleg várakozó szektorok száma"
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
+"read errors)."
+msgstr ""
+"Az &quot;instabil&quot; szektorok száma (újraleképezésre várva, olvasási "
+"hiba miatt)."
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Uncorrectable Sector Count"
+msgstr "Nem javítható szektorok száma"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of uncorrectable errors when reading/writing a sector."
+msgstr "Nem javítható hibák száma szektorok olvasásakor/írásakor."
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr name"
+msgid "UltraDMA CRC Error Count"
+msgstr "UltraDMA CRC hibaszám"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of errors in data transfer via the interface cable as determined by "
+"ICRC."
+msgstr ""
+"Az interfészkábelen keresztül történő adatátvitel hibák száma az ICRC "
+"szerint."
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Multi-Zone Error Rate<br/>Write Error Rate"
+msgstr "Többzónás hibaarány<br/>Írási hibaarány"
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr description"
+msgid "The total number of errors when writing a sector."
+msgstr "A hibák teljes száma egy szektor írásakor."
+
+#: core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of off-track errors."
+msgstr "Sávon kívüli hibák száma."
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Data Address Mark Errors"
+msgstr "Adatcím-jelölési hibák"
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of Data Address Mark errors (or vendor-specific)."
+msgstr "Az adatcím-jelölési (vagy gyártóspecifikus) hibák száma."
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Run Out Cancel"
+msgstr "Kifutási megszakítás"
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of ECC errors"
+msgstr "ECC-hibák száma"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft ECC Correction"
+msgstr "Szoftveres ECC javítás"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors corrected by software ECC"
+msgstr "A szoftveres ECC által javított hibák száma"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Thermal Asperity Rate"
+msgstr "Termális asperitási ráta"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors due to high temperature."
+msgstr "Magas hőmérséklet miatti hibák száma."
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Flying Height"
+msgstr "Repülési magasság"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Height of heads above the disk surface. A flying height that is too low "
+"increases the chances of a head crash while a flying height that is too high "
+"increases the chances of a read/write error."
+msgstr ""
+"A fejek magassága a lemezfelület felett. Túl alacsony repülési magasság "
+"növeli a fej ütközésének esélyét, míg a túl magas repülési magasság növeli "
+"az írási/olvasási hiba esélyét."
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin High Current"
+msgstr "Pörgési magasáram"
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Amount of surge current used to spin up the drive."
+msgstr "A meghajtó felpörgetéséhez felhasznált lökésáram mennyisége."
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Buzz"
+msgstr "Pörgési zaj"
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of buzz routines needed to spin up the drive due to insufficient "
+"power."
+msgstr ""
+"A meghajtó felpörgetéséhez szükséges buzz rutinok száma az elégtelen "
+"energiaellátás miatt."
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Offline Seek Performance"
+msgstr "Offline keresési teljesítmény"
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive's seek performance during its internal tests."
+msgstr "A meghajtó keresési teljesítménye a belső tesztjei közben."
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Vibration During Write"
+msgstr "Rezgés írás közben"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Vibration During Write"
+msgstr "Rezgés írás közben"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Shock During Write"
+msgstr "Ütés írás közben"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Shock During Write"
+msgstr "Ütés írás közben"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Disk Shift"
+msgstr "Lemezcsúszás"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Distance the disk has shifted relative to the spindle (usually due to shock "
+"or temperature)."
+msgstr ""
+"A lemez eltolódása az orsóhoz képest (általában ütés vagy hőmérséklet miatt)."
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-Sense Error Rate"
+msgstr "G-szenzor hibaarány"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of errors resulting from externally-induced shock and vibration."
+msgstr "A külső eredetű ütésekből és rezgésekből eredő hibák száma."
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Loaded Hours"
+msgstr "Terhelt órák"
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time spent operating under data load."
+msgstr "Adatterhelés alatt eltöltött idő."
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Retry Count"
+msgstr "Betöltési/eltávolítási kísérletek száma"
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of times head changes position."
+msgstr "A fej pozícióváltásainak száma."
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Friction"
+msgstr "Terhelési súrlódás"
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Resistance caused by friction in mechanical parts while operating."
+msgstr ""
+"A mechanikus alkatrészek működés közbeni súrlódása által okozott ellenállás."
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Cycle Count"
+msgstr "Betöltési/eltávolítási ciklusok száma"
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total number of load cycles."
+msgstr "Betöltési ciklusok teljes száma."
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load-In Time"
+msgstr "Betöltési idő"
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Total time of loading on the magnetic heads actuator (time not spent in "
+"parking area)."
+msgstr ""
+"A mágneses fejek működtetőjének teljes terhelési ideje (nem a parkolási "
+"területen töltött idő)."
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Torque Amplification Count"
+msgstr "Nyomaték-erősítési szám"
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of attempts to compensate for platter speed variations."
+msgstr "A tányérsebesség-ingadozások kompenzálására tett kísérletek száma."
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-Off Retract Cycle"
+msgstr "Kikapcsolási visszavonási ciklusok"
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of times the magnetic armature was retracted automatically as a "
+"result of cutting power."
+msgstr ""
+"A mágneses armatúra automatikus visszahúzásainak száma a táp elvágása "
+"következtében."
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr name"
+msgid "GMR Head Amplitude"
+msgstr "GMR fej amplitúdó"
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
+"head motion)"
+msgstr ""
+"A &quot;szemetelés&quot; amplitúdója (az ismétlődő előre/vissza fejmozgások "
+"távolsága)"
+
+#: core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive Temperature"
+msgstr "Lemezhőmérséklet"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Endurance Remaining"
+msgstr "Hátralévő élettartam"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of physical erase cycles completed on the drive as a percentage of the "
+"maximum physical erase cycles the drive supports"
+msgstr ""
+"A meghajtón befejezett fizikai törlési ciklusok száma a meghajtó által "
+"támogatott maximális fizikai törlési ciklusok százalékában kifejezve."
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Seconds"
+msgstr "Bekapcsolva másodpercekben"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time elapsed in the power-on state"
+msgstr "A bekapcsolt állapotban eltelt idő"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Unrecoverable ECC Count"
+msgstr "Nem helyrehozható ECC szám"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of unrecoverable ECC errors"
+msgstr "A nem helyrehozható ECC hibák száma"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Good Block Rate"
+msgstr "Jó blokkok aránya"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of available reserved blocks as percentage of the total number of "
+"reserved blocks"
+msgstr ""
+"A rendelkezésre álló lefoglalt blokkok száma a lefoglalt blokkok teljes "
+"számának százalékában kifejezve"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+msgstr "Fejmozgási órák<br/>vagy átviteli hibaarány (Fujitsu)"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Time while head is positioning<br/>or counts the number of times the link is "
+"reset during a data transfer."
+msgstr ""
+"A fej pozícionálásával töltött idő<br/>vagy annak száma, hányszor lett "
+"visszaállítva a link adatátvitel közben."
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Written"
+msgstr "Írt LBA-k összesen"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Written"
+msgstr "Írt LBA-k összesen"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Read"
+msgstr "Olvasott LBA-k összesen"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Read"
+msgstr "Olvasott LBA-k összesen"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD NAND_Writes_1GiB"
+msgstr "SSD NAND_Writes_1GiB"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of writes to NAND in 1 GB increments"
+msgstr "A NAND-ra történő írások száma 1 GB-os lépésekben"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Retry Rate"
+msgstr "Olvasási hiba megismétlési aránya"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors while reading from a disk"
+msgstr "A lemezről történő olvasás közbeni hibák száma"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Free Fall Protection"
+msgstr "Szabadesés elleni védelem"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of &quot;Free Fall Events&quot; detected"
+msgstr "Az észlelt &quot;szabadesések&quot; száma"
+
+#: core/smartstatus.cpp:78
+#, kde-kuit-format
+msgctxt "@item:intable degrees in Celsius and Fahrenheit"
+msgid "%1° C / %2° F"
+msgstr "%1° C / %2° F"
+
+#: core/smartstatus.cpp:86
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Aborted"
+msgstr "Megszakítva"
+
+#: core/smartstatus.cpp:89
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Interrupted"
+msgstr "Megszakadt"
+
+#: core/smartstatus.cpp:92
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Fatal error"
+msgstr "Végzetes hiba"
+
+#: core/smartstatus.cpp:95
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Unknown error"
+msgstr "Ismeretlen hiba"
+
+#: core/smartstatus.cpp:98
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Electrical error"
+msgstr "Elektronikai hiba"
+
+#: core/smartstatus.cpp:101
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Servo error"
+msgstr "Szervóhiba"
+
+#: core/smartstatus.cpp:104
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Read error"
+msgstr "Olvasási hiba"
+
+#: core/smartstatus.cpp:107
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Handling error"
+msgstr "Hiba kezelése"
+
+#: core/smartstatus.cpp:110
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Self test in progress"
+msgstr "Önellenőrzés folyamatban"
+
+#: core/smartstatus.cpp:114
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Success"
+msgstr "Sikeres"
+
+#: core/smartstatus.cpp:123
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Healthy"
+msgstr "Egészséges"
+
+#: core/smartstatus.cpp:126
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has been used outside of its design parameters in the past."
+msgstr "A múltban a tervezési paramétereken kívül használták."
+
+#: core/smartstatus.cpp:129
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has some bad sectors."
+msgstr "Van néhány hibás szektora."
+
+#: core/smartstatus.cpp:132
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Is being used outside of its design parameters right now."
+msgstr "Jelenleg a tervezési paraméterein kívül használják."
+
+#: core/smartstatus.cpp:135
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has many bad sectors."
+msgstr "Sok rossz szektora van."
+
+#: core/smartstatus.cpp:139
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Disk failure is imminent. Backup all data!"
+msgstr ""
+"A lemez meghibásodása hamarosan bekövetkezik. Készítsen biztonsági másolatot "
+"minden adatáról!"
+
+#: fs/btrfs.cpp:166
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"A Btrfs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: nem lehetett létrehozni átmeneti mappát."
+
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"btrfs file system resize failed."
+msgstr ""
+"A Btrfs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: a btrfs fájlrendszer átméretezése sikertelen."
+
+#: fs/btrfs.cpp:187
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Btrfs fájlrendszer átmérezetése a(z) <filename>%1</filename> "
+"partíción: leválasztás sikertelen.</warning>"
+
+#: fs/btrfs.cpp:189
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"A Btrfs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: a kezdeti csatolás sikertelen."
+
+#: fs/fat12.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Setting label for partition <filename>%1</filename> to %2"
+msgstr "A(z) <filename>%1</filename> partíció címkéjének beállítása erre: %2"
+
+#: fs/filesystem.cpp:503
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unknown"
+msgstr "ismeretlen"
+
+#: fs/filesystem.cpp:504
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "extended"
+msgstr "kiterjesztett"
+
+#: fs/filesystem.cpp:506
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext2"
+msgstr "ext2"
+
+#: fs/filesystem.cpp:507
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext3"
+msgstr "ext3"
+
+#: fs/filesystem.cpp:508
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext4"
+msgstr "ext4"
+
+#: fs/filesystem.cpp:509
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linuxswap"
+msgstr "linuxswap"
+
+#: fs/filesystem.cpp:510
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat16"
+msgstr "fat16"
+
+#: fs/filesystem.cpp:511
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat32"
+msgstr "fat32"
+
+#: fs/filesystem.cpp:512
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ntfs"
+msgstr "ntfs"
+
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser"
+msgstr "reiser"
+
+#: fs/filesystem.cpp:514
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser4"
+msgstr "reiser4"
+
+#: fs/filesystem.cpp:515
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "xfs"
+msgstr "xfs"
+
+#: fs/filesystem.cpp:516
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "jfs"
+msgstr "jfs"
+
+#: fs/filesystem.cpp:517
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfs"
+msgstr "hfs"
+
+#: fs/filesystem.cpp:518
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfsplus"
+msgstr "hfsplus"
+
+#: fs/filesystem.cpp:519
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ufs"
+msgstr "ufs"
+
+#: fs/filesystem.cpp:520
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unformatted"
+msgstr "formázatlan"
+
+#: fs/filesystem.cpp:521
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "btrfs"
+msgstr "btrfs"
+
+#: fs/filesystem.cpp:522
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hpfs"
+msgstr "hpfs"
+
+#: fs/filesystem.cpp:523
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks"
+msgstr "luks"
+
+#: fs/filesystem.cpp:524
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ocfs2"
+msgstr "ocfs2"
+
+#: fs/filesystem.cpp:525
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "zfs"
+msgstr "zfs"
+
+#: fs/filesystem.cpp:526
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "exfat"
+msgstr "exfat"
+
+#: fs/filesystem.cpp:527
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "nilfs2"
+msgstr "nilfs2"
+
+#: fs/filesystem.cpp:528
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "lvm2 pv"
+msgstr "lvm2 pv"
+
+#: fs/filesystem.cpp:529
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "f2fs"
+msgstr "f2fs"
+
+#: fs/filesystem.cpp:530
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "udf"
+msgstr "udf"
+
+#: fs/filesystem.cpp:531
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "iso9660"
+msgstr "iso9660"
+
+#: fs/filesystem.cpp:532
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks2"
+msgstr "luks2"
+
+#: fs/filesystem.cpp:533
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat12"
+msgstr "fat12"
+
+#: fs/filesystem.cpp:534
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linux_raid_member"
+msgstr "linux_raid_member"
+
+#: fs/filesystem.cpp:535
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "BitLocker"
+msgstr "BitLocker"
+
+#: fs/filesystem.cpp:536
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "apfs"
+msgstr "apfs"
+
+#: fs/filesystem.cpp:537
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "minix"
+msgstr "minix"
+
+#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Mount"
+msgstr "Csatolás"
+
+#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unmount"
+msgstr "Leválasztás"
+
+#: fs/jfs.cpp:155
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"A JFS fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: nem lehetett létrehozni átmeneti mappát."
+
+#: fs/jfs.cpp:169 fs/jfs.cpp:188
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Remount failed."
+msgstr ""
+"A JFS fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: az újracsatolás sikertelen."
+
+#: fs/jfs.cpp:174
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing JFS file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>JFS fájlrendszer átmérezetése a(z) <filename>%1</filename> "
+"partíción: leválasztás sikertelen.</warning>"
+
+#: fs/jfs.cpp:176
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"A JFS fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: a kezdeti csatolás sikertelen."
+
+#: fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Swap bekapcsolása"
+
+#: fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Swap kikapcsolása"
+
+#: fs/luks.cpp:166
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unlock"
+msgstr "Feloldás"
+
+#: fs/luks.cpp:171
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Lock"
+msgstr "Zárolás"
+
+#: fs/luks.cpp:252
+#, kde-format
+msgid "Enter passphrase for %1:"
+msgstr "Adja meg a(z) %1 jelszavát:"
+
+#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+msgstr "LUKS titkosítás átméretezése a(z) <filename>%1</filename> partíción."
+
+#: fs/luks.cpp:509 fs/luks2.cpp:116
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing encrypted file system on partition <filename>%1</filename> failed."
+msgstr ""
+"A titkosított fájlrendszer átméretezése a(z) <filename>%1</filename> "
+"partíción meghiúsult."
+
+#: fs/nilfs2.cpp:137
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"A NILFS2 fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: nem lehetett létrehozni átmeneti mappát."
+
+#: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"NILFS2 file system resize failed."
+msgstr ""
+"A NILFS2 fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: a NILFS2 fájlrendszer átméretezése sikertelen."
+
+#: fs/nilfs2.cpp:156
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>NILFS2 fájlrendszer átmérezetése a(z) <filename>%1</filename> "
+"partíción: leválasztás sikertelen.</warning>"
+
+#: fs/nilfs2.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"A NILFS2 fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: a kezdeti csatolás sikertelen."
+
+#: fs/ntfs.cpp:182
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updating boot sector for NTFS file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"A(z) <filename>%1</filename> partíció NTFS fájlrendszere rendszerindító "
+"szektorának frissítése."
+
+#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not write new start sector to partition <filename>%1</filename> when "
+"trying to update the NTFS boot sector."
+msgstr ""
+"Nem sikerült új kezdőszektort írni a(z) <filename>%1</filename> partícióra "
+"az NTFS rendszerindító szektora frissítésének megkísérlésekor."
+
+#: fs/ntfs.cpp:206
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updated NTFS boot sector for partition <filename>%1</filename> successfully."
+msgstr ""
+"A(z) <filename>%1</filename> partíció NTFS rendszerindító szektora sikeresen "
+"frissítve."
+
+#: fs/xfs.cpp:159
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Az XFS fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: nem lehetett létrehozni átmeneti mappát."
+
+#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"xfs_growfs failed."
+msgstr ""
+"Az XFS fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: az xfs_grows sikertelen."
+
+#: fs/xfs.cpp:178
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing XFS file system on partition <filename>%1</filename> "
+"failed: Unmount failed.</warning>"
+msgstr ""
+"<warning>Az XFS fájlrendszer átmérezetése a(z) <filename>%1</filename> "
+"partíción meghiúsult: leválasztás sikertelen.</warning>"
+
+#: fs/xfs.cpp:180
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Az XFS fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: a kezdeti csatolás sikertelen."
+
+#: jobs/backupfilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"backup."
+msgstr ""
+"Nem sikerült megnyitni a fájlrendszert a(z) <filename>%1</filename> "
+"partíción biztonsági mentéshez."
+
+#: jobs/backupfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not create backup file <filename>%1</filename>."
+msgstr ""
+"Nem sikerült létrehozni a(z) <filename>%1</filename> biztonsági mentést."
+
+#: jobs/backupfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Back up file system on partition <filename>%1</filename> to <filename>%2</"
+"filename>"
+msgstr ""
+"A(z) <filename>%1</filename> partíció fájlrendszerének mentése a(z) "
+"<filename>%2 </filename> fájlba"
+
+#: jobs/changepermissionsjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Change the permissions of: <filename>%1</filename> to %2"
+msgstr "Jogosultságok módosítása: <filename>%1</filename> erre: %2"
+
+#: jobs/checkfilesystemjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Check file system on partition <filename>%1</filename>"
+msgstr "Fájlrendszer ellenőrzése a(z) <filename>%1</filename> partíción"
+
+#: jobs/copyfilesystemjob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Cannot copy file system: File system on target partition <filename>%1</"
+"filename> is smaller than the file system on source partition <filename>%2</"
+"filename>."
+msgstr ""
+"A fájlrendszer nem másolható: a(z) <filename>%1</filename> célpartíción lévő "
+"fájlrendszer kisebb mint a(z) <filename>%2</filename> forráspartíción lévő."
+
+#: jobs/copyfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"A(z) <filename>%1</filename> forráspartíción lévő fájlrendszer nem nyitható "
+"meg másolásra."
+
+#: jobs/copyfilesystemjob.cpp:58
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on target partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"A(z) <filename>%1</filename> célpartíción lévő fájlrendszer nem nyitható meg "
+"másolásra."
+
+#: jobs/copyfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Closing device. This may take a while, especially on slow devices like "
+"Memory Sticks."
+msgstr ""
+"Eszköz lezárása. Ez eltarthat egy ideig, különösen lassú eszközökön, például "
+"memóriakártyákon."
+
+#: jobs/copyfilesystemjob.cpp:88
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
+msgstr ""
+"Fájlrendszer másolása a(z) <filename>%1</filename> partícióról a(z) "
+"<filename> %2</filename> partícióra"
+
+#: jobs/createfilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to set the system type for the file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Nem sikerült beállítani a fájlrendszertípust a(z) <filename>%1</filename> "
+"partíción."
+
+#: jobs/createfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"system type for partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a(z) "
+"<filename>%2</filename> partíció fájlrendszerének beállításához."
+
+#: jobs/createfilesystemjob.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the system type for "
+"partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz nem nyitható meg a(z) <filename>%2</"
+"filename> partíció fájlrendszerének beállításához."
+
+#: jobs/createfilesystemjob.cpp:84
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Create file system <filename>%1</filename> on partition <filename>%2</"
+"filename>"
+msgstr ""
+"<filename>%1</filename> fájlrendszer létrehozása a(z) <filename>%2</"
+"filename> partíción"
+
+#: jobs/createpartitionjob.cpp:72
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Nem sikerült hozzáadni a(z) <filename>%1</filename> partíciót a(z) <filename>"
+"%2</filename> eszközhöz."
+
+#: jobs/createpartitionjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to create "
+"new partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a(z) "
+"<filename>%2</filename> új partíció létrehozásához."
+
+#: jobs/createpartitionjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to create new partition "
+"<filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz nem nyitható meg az új <filename>%2</"
+"filename> partíció létrehozásához."
+
+#: jobs/createpartitionjob.cpp:94
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition <filename>%1</filename>"
+msgstr "<filename>%1</filename> új partíció létrehozása"
+
+#: jobs/createpartitionjob.cpp:96
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition on device <filename>%1</filename>"
+msgstr "Új partíció létrehozása a(z) <filename>%1</filename> eszközön"
+
+#: jobs/createpartitiontablejob.cpp:49
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Creating partition table failed: Could not open device <filename>%1</"
+"filename>."
+msgstr ""
+"A partíciós tábla létrehozása meghiúsult: a(z) <filename>%1</filename> "
+"eszköz nem nyitható meg."
+
+#: jobs/createpartitiontablejob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition table on device <filename>%1</filename>"
+msgstr "Új partíciós tábla létrehozása a(z) <filename>%1</filename> eszközön"
+
+#: jobs/createvolumegroupjob.cpp:49
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
+msgstr "Új kötetcsoport létrehozása: <filename>%1</filename> PV-vel: %2"
+
+#: jobs/deactivatelogicalvolumejob.cpp:50
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Logical Volumes: <filename>%1</filename>"
+msgstr "Logikai kötetek deaktiválása: <filename>%1</filename>"
+
+#: jobs/deactivatevolumegroupjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Volume Group: <filename>%1</filename>"
+msgstr "Kötetcsoport deaktiválása: <filename>%1</filename>"
+
+#: jobs/deletefilesystemjob.cpp:51
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system: file system on <filename>%1</filename> is "
+"mounted."
+msgstr ""
+"Nem sikerült törölni a fájlrendszert: a(z) <filename>%1</filename> "
+"fájlrendszere fel van csatolva."
+
+#: jobs/deletefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete file system on <filename>%1</filename>."
+msgstr "Nem sikerült törölni a fájlrendszert itt: <filename>%1</filename>."
+
+#: jobs/deletefilesystemjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"file system on <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a "
+"fájlrendszer törléséhez a(z) <filename>%2</filename> partíción."
+
+#: jobs/deletefilesystemjob.cpp:83
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system signature for partition <filename>%1</"
+"filename>: Failed to open device <filename>%2</filename>."
+msgstr ""
+"Nem sikerült törölni a(z) <filename>%1</filename> partíció fájlrendszerének "
+"aláírását: nem sikerült megnyitni a(z) <filename>%2</filename> eszközt."
+
+#: jobs/deletefilesystemjob.cpp:93
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete file system on <filename>%1</filename>"
+msgstr "Fájlrendszer törlése itt: <filename>%1</filename>"
+
+#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete partition <filename>%1</filename>."
+msgstr "Nem sikerült törölni a(z) <filename>%1</filename> partíciót."
+
+#: jobs/deletepartitionjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a(z) "
+"<filename>%2</filename> partíció törléséhez."
+
+#: jobs/deletepartitionjob.cpp:67
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Deleting partition failed: Could not open device <filename>%1</filename>."
+msgstr ""
+"A partíció törlése meghiúsult: a(z) <filename>%1</filename> eszköz nem "
+"nyitható meg."
+
+#: jobs/deletepartitionjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete the partition <filename>%1</filename>"
+msgstr "A(z) <filename>%1</filename> partíció törlése"
+
+#: jobs/job.cpp:45
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Source and target for copying do not overlap: Rollback is not required."
+msgstr ""
+"A másolás forrása és célja nem fedik egymást: nincs szükség visszaállításra."
+
+#: jobs/job.cpp:69
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback from: First byte: %1, last byte: %2."
+msgstr "Visszaállítás innen: első bájt: %1, utolsó bájt: %2."
+
+#: jobs/job.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback to: First byte: %1, last byte: %2."
+msgstr "Visszaállítás ide: első bájt: %1, utolsó bájt: %2."
+
+#: jobs/job.cpp:74 jobs/job.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open device <filename>%1</filename> to rollback copying."
+msgstr ""
+"Nem sikerült megnyitni a(z) <filename>%1</filename> eszközt a másolás "
+"visszaállításához."
+
+#: jobs/job.cpp:86
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback failed: Source or target are not devices."
+msgstr "Sikertelen visszaállítás: a forrás vagy a cél nem eszköz."
+
+#: jobs/job.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Job: %1"
+msgstr "Feladat: %1"
+
+#: jobs/job.cpp:115
+#, kde-kuit-format
+msgctxt "@info:progress job status (error, warning, ...)"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: jobs/job.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Pending"
+msgstr "Folyamatban"
+
+#: jobs/job.cpp:135
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Success"
+msgstr "Sikeres"
+
+#: jobs/job.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Error"
+msgstr "Hiba"
+
+#: jobs/movefilesystemjob.cpp:52
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"Nem sikerült megnyitni a fájlrendszert a(z) <filename>%1</filename> "
+"partíción mozgatáshoz."
+
+#: jobs/movefilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not create target for moving file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Nem sikerült létrehozni a célt a fájlrendszer mozgatásához a(z) <filename>"
+"%1</filename> partíción."
+
+#: jobs/movefilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback for file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Nem sikerült visszaállítani a fájlrendszert a(z) <filename>%1</filename> "
+"partíción."
+
+#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/shredfilesystemjob.cpp:66
+#, kde-format, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Closing device. This may take a few seconds."
+msgstr "Eszköz lezárása. Ez eltarthat néhány másodpercig."
+
+#: jobs/movefilesystemjob.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Move the file system on partition <filename>%1</filename> to sector %2"
+msgstr ""
+"Fájlrendszer átméretezése a(z) <filename>%1</filename> partíción a(z) %2 "
+"szektorra"
+
+#: jobs/movephysicalvolumejob.cpp:57
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Move used PE in %1 on %2 to other available Physical Volumes"
+msgstr ""
+"A(z) %2 eszközön lévő %1 partíciók foglalt fizikai tárolási egysgeinek "
+"áthelyezése más elérhető fizikai kötetekre"
+
+#: jobs/removevolumegroupjob.cpp:41
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove Volume Group: <filename>%1</filename>"
+msgstr "Kötetcsoport eltávolítása: <filename>%1</filename>"
+
+#: jobs/resizefilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of 1 sector."
+msgid_plural ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of %1 sectors."
+msgstr[0] ""
+"A fájlrendszer hossza a(z) <filename>%2</filename> partíción már a kért 1 "
+"szektor"
+msgstr[1] ""
+"A fájlrendszer hossza a(z) <filename>%2</filename> partíción már a kért %1 "
+"szektor"
+
+#: jobs/resizefilesystemjob.cpp:69
+#, kde-format
+msgctxt "@info:progress"
+msgid "Resizing file system from %1 to %2 sectors."
+msgstr "Fájlrendszer átméretezése %1 szektorról %2 szektorra."
+
+#: jobs/resizefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing a %1 file system using internal backend functions."
+msgstr "%1 fájlrendszer átméretezése a belső modul függvényeivel."
+
+#: jobs/resizefilesystemjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%1</filename> cannot be resized "
+"because there is no support for it."
+msgstr ""
+"A(z) <filename>%1</filename> partíció fájlrendszere nem támogatja az "
+"átméretezést."
+
+#: jobs/resizefilesystemjob.cpp:119
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Successfully resized file system using internal backend functions."
+msgstr ""
+"Fájlrendszer sikeresen átméretezve a belsó modul függvényeinek használatával."
+
+#: jobs/resizefilesystemjob.cpp:123
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition <filename>%1</filename> while trying to resize the "
+"file system."
+msgstr ""
+"Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a fájlrendszer "
+"átmérezetése közben."
+
+#: jobs/resizefilesystemjob.cpp:126
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not read geometry for partition <filename>%1</filename> while trying "
+"to resize the file system."
+msgstr ""
+"Nem sikerült olvasni a(z) <filename>%1</filename> partíció geometriáját a "
+"fájlrendszer átméretezése közben."
+
+#: jobs/resizefilesystemjob.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Maximize file system on <filename>%1</filename> to fill the partition"
+msgstr ""
+"Fájlrendszer maximalizálása a(z) <filename>%1</filename> eszközön a partíció "
+"kitöltéséhez"
+
+#: jobs/resizefilesystemjob.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+msgid_plural ""
+"Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgstr[0] ""
+"Fájlrendszer átméretezése a(z) <filename>%2</filename> partíción 1 szektorra"
+msgstr[1] ""
+"Fájlrendszer átméretezése a(z) <filename>%2</filename> partíción %1 szektorra"
+
+#: jobs/resizevolumegroupjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Adding LVM Physical Volume %2 to %3."
+msgid_plural "Adding LVM Physical Volumes %2 to %3."
+msgstr[0] "%2 LVM fizikai kötet hozzáadása ehhez: %3."
+msgstr[1] "%2 LVM fizikai kötetek hozzáadása ehhez: %3."
+
+#: jobs/resizevolumegroupjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Removing LVM Physical Volume %2 from %3."
+msgid_plural "Removing LVM Physical Volumes %2 from %3."
+msgstr[0] "%2 LVM fizikai kötet eltávolítása innen: %3."
+msgstr[1] "%2 LVM fizikai kötetek eltávolítása innen: %3."
+
+#: jobs/resizevolumegroupjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resizing Volume Group %1 to %2."
+msgstr "%1 kötetcsoport átméretezése erre: %2."
+
+#: jobs/restorefilesystemjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgstr ""
+"Nem sikerült megnyitni a(z) <filename>%1</filename> biztonsági másolatot "
+"visszaállításhoz."
+
+#: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open target partition <filename>%1</filename> to restore to."
+msgstr ""
+"Nem sikerült megnyitni a(z) <filename>%1</filename> célpartíciót "
+"visszaállításhoz."
+
+#: jobs/restorefilesystemjob.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Restore the file system from file <filename>%1</filename> to partition "
+"<filename>%2</filename>"
+msgstr ""
+"Fájlrendszer visszaállítása a(z) <filename>%1</filename> fájlból a(z) "
+"<filename>%2</filename> partícióra"
+
+#: jobs/setfilesystemlabeljob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"File system on partition <filename>%1</filename> does not support setting "
+"labels. Job ignored."
+msgstr ""
+"A fájlrendszer a(z) <filename>%1</filename> partíción nem támogatja címkék "
+"beállítását. Feladat mellőzve."
+
+#: jobs/setfilesystemlabeljob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgstr ""
+"Fájlrendszercímke beállítása a(z) <filename>%1</filename> partíción erre: "
+"„%2”"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned on, active"
+msgid "on"
+msgstr "be"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned off, inactive"
+msgid "off"
+msgstr "ki"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"There was an error setting flag %1 for partition <filename>%2</filename> to "
+"state %3."
+msgstr ""
+"Hiba történt a(z) %1 jelző beállításakor a(z) <filename>%2</filename> "
+"partíción a %3 állapotra."
+
+#: jobs/setpartflagsjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set "
+"partition flags for partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a(z) "
+"<filename>%2</filename> partíció partíciójelzőinek beállításához."
+
+#: jobs/setpartflagsjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set partition flags for "
+"partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz nem nyitható meg a(z) <filename>%2</"
+"filename> partíció partíciójelzőinek beállításához."
+
+#: jobs/setpartflagsjob.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "A(z) <filename>%1</filename> partíció jelzőinek törlése"
+
+#: jobs/setpartflagsjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+msgstr "A(z) <filename>%1</filename> partíció jelzőinek beállítása erre: „%2”"
+
+#: jobs/setpartgeometryjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> while trying to resize/move "
+"partition <filename>%2</filename>."
+msgstr ""
+"Nem sikerült megnyitni a(z) <filename>%1</filename> eszközt a(z) <filename>"
+"%2</filename> partíció átméretezése/mozgatása közben."
+
+#: jobs/setpartgeometryjob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
+"%3"
+msgstr ""
+"A(z) <filename>%1</filename> partíció geometriájának beállítása: "
+"kezdőszektor: %2, hossz: %3"
+
+#: jobs/setpartitionattributesjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting attributes. Job ignored."
+msgstr ""
+"A(z) <filename>%1</filename> partíció partíciós táblája nem támogatja "
+"attribútumok beállítását. Feladat mellőzve."
+
+#: jobs/setpartitionattributesjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the attributes for the partition <filename>%1</filename>."
+msgstr ""
+"Nem sikerült beállítani a(z) <filename>%1</filename> partíció attribútumait."
+
+#: jobs/setpartitionattributesjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"attributes for the partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a(z) "
+"<filename>%2</filename> partíció attribútumainak beállításához."
+
+#: jobs/setpartitionattributesjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the attributes for "
+"partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz nem nyitható meg a(z) <filename>%2</"
+"filename> partíció attribútumainak beállításához."
+
+#: jobs/setpartitionattributesjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
+msgstr ""
+"Attribútumok beállítása a(z) <filename>%1</filename> partíción erre: „%2”"
+
+#: jobs/setpartitionlabeljob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting names. Job ignored."
+msgstr ""
+"A(z) <filename>%1</filename> partíció partíciós táblája nem támogatja nevek "
+"beállítását. Feladat mellőzve."
+
+#: jobs/setpartitionlabeljob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the name for the partition <filename>%1</filename>."
+msgstr "Nem sikerült beállítani a(z) <filename>%1</filename> partíció nevét."
+
+#: jobs/setpartitionlabeljob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"name for the partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a(z) "
+"<filename>%2</filename> partíció nevének beállításához."
+
+#: jobs/setpartitionlabeljob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the name for partition "
+"<filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz nem nyitható meg a(z) <filename>%2</"
+"filename> partíció nevének beállításához."
+
+#: jobs/setpartitionlabeljob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the label on partition <filename>%1</filename> to \"%2\""
+msgstr "Címke beállítása a(z) <filename>%1</filename> partíción erre: „%2”"
+
+#: jobs/setpartitionuuidjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting UUIDs. Job ignored."
+msgstr ""
+"A(z) <filename>%1</filename> partíció partíciós táblája nem támogatja UUID-k "
+"beállítását. Feladat mellőzve."
+
+#: jobs/setpartitionuuidjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the UUID for the partition <filename>%1</filename>."
+msgstr ""
+"Nem sikerült beállítani a(z) <filename>%1</filename> partíció UUID-jét."
+
+#: jobs/setpartitionuuidjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"UUID for the partition <filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg a(z) "
+"<filename>%2</filename> partíció UUID-jének beállításához."
+
+#: jobs/setpartitionuuidjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the UUID for partition "
+"<filename>%2</filename>."
+msgstr ""
+"A(z) <filename>%1</filename> eszköz nem nyitható meg a(z) <filename>%2</"
+"filename> partíció UUID-jének beállításához."
+
+#: jobs/setpartitionuuidjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+msgstr "UUID beállítása a(z) <filename>%1</filename> partíción erre: „%2”"
+
+#: jobs/shredfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open random data source to overwrite file system."
+msgstr ""
+"Nem sikerült megnyitni a véletlenszerű adatforrást a fájlrendszer "
+"felülírásához."
+
+#: jobs/shredfilesystemjob.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Shred the file system on <filename>%1</filename>"
+msgstr "Fájlrendszer megsemmisítése a következőn: <filename>%1</filename>"
+
+#: ops/backupoperation.cpp:39
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
+msgstr ""
+"A(z) <filename>%1</filename> partíció (%2, %3) biztonsági mentése ide: "
+"<filename>%4</filename>"
+
+#: ops/checkoperation.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
+msgstr "A(z) <filename>%1</filename> partíció (%2, %3) ellenőrzése és javítása"
+
+#: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<warning>Maximizing file system on target partition <filename>%1</filename> "
+"to the size of the partition failed.</warning>"
+msgstr ""
+"<warning>A fájlrendszer maximalizálása a partíció méretére a(z) <filename>"
+"%1</filename> célpartíción meghiúsult.</warning>"
+
+#: ops/copyoperation.cpp:151
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking target partition <filename>%1</filename> after copy failed."
+msgstr ""
+"A(z) <filename>%1</filename> célpartíció ellenőrzése a másolás után "
+"meghiúsult."
+
+#: ops/copyoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying source to target partition failed."
+msgstr "A forrás másolása a célpartícióra meghiúsult."
+
+#: ops/copyoperation.cpp:161
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating target partition for copying failed."
+msgstr "Nem sikerült létrehozni a célpartíciót a másoláshoz."
+
+#: ops/copyoperation.cpp:163
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking source partition <filename>%1</filename> failed."
+msgstr "A(z) <filename>%1</filename> forráspartíció ellenőrzése sikertelen."
+
+#: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
+#: ops/restoreoperation.cpp:148
+#, kde-kuit-format
+msgctxt "@info:status (success, error, warning...) of operation"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/copyoperation.cpp:179
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6)"
+msgstr ""
+"A(z) <filename>%1</filename> partíció (%2, %3) másolása ide: <filename>%4</"
+"filename> (%5, %6)"
+
+#: ops/copyoperation.cpp:188
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6) and grow it to %7"
+msgstr ""
+"A(z) <filename>%1</filename> partíció (%2, %3) másolása ide: <filename>%4</"
+"filename> (%5, %6) és növelése %7 méretre"
+
+#: ops/copyoperation.cpp:200
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename>"
+msgstr ""
+"A(z) <filename>%1</filename> partíció (%2, %3) másolása a nem lefoglalt "
+"helyre (kezdés: %4) a(z) <filename>%5</filename> eszközön"
+
+#: ops/copyoperation.cpp:208
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename> and grow it to %6"
+msgstr ""
+"A(z) <filename>%1</filename> partíció (%2, %3) másolása a nem lefoglalt "
+"helyre (kezdés: %4) a(z) <filename>%5</filename> eszközön és növelése %6 "
+"méretre"
+
+#: ops/createfilesystemoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create filesystem %1 on partition <filename>%2</filename>"
+msgstr "%1 fájlrendszer létrehozása a(z) <filename>%2</filename> partíción"
+
+#: ops/createpartitiontableoperation.cpp:104
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
+msgstr ""
+"Új partíciós tábla (típus: %1) létrehozása a következőn: <filename>%2</"
+"filename>"
+
+#: ops/createvolumegroupoperation.cpp:36
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new LVM volume group named '%1'."
+msgstr "Új LVM kötetcsoport létrehozása „%1” néven."
+
+#: ops/deactivatevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate volume group."
+msgstr "Kötetcsoport deaktiválása."
+
+#: ops/deleteoperation.cpp:87
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Shred partition <filename>%1</filename> (%2, %3)"
+msgstr "A(z) <filename>%1</filename> partíció (%2, %3) megsemmisítése"
+
+#: ops/deleteoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Delete partition <filename>%1</filename> (%2, %3)"
+msgstr "A(z) <filename>%1</filename> partíció (%2, %3) törlése"
+
+#: ops/newoperation.cpp:205
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
+msgstr "Új partíció (%1, %2) létrehozása a következőn: <filename>%3</filename>"
+
+#: ops/operation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "None"
+msgstr "Nincs"
+
+#: ops/operation.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Pending"
+msgstr "Függőben"
+
+#: ops/operation.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Running"
+msgstr "Futó"
+
+#: ops/operation.cpp:78
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Success"
+msgstr "Sikeres"
+
+#: ops/operation.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+#: ops/operation.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Error"
+msgstr "Hiba"
+
+#: ops/removevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove a LVM volume group."
+msgstr "LVM kötetcsoport eltávolítása."
+
+#: ops/resizeoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving extended partition <filename>%1</filename> failed."
+msgstr ""
+"Nem sikerült mozgatni a(z) <filename>%1</filename> kiterjesztett partíciót."
+
+#: ops/resizeoperation.cpp:165
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgstr ""
+"Nem sikerült ellenőrizni a(z) <filename>%1</filename> partíciót átméretezés/"
+"mozgatás után."
+
+#: ops/resizeoperation.cpp:168
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgstr ""
+"A(z) <filename>%1</filename> partíció átméretezése/mozgatása meghiúsult."
+
+#: ops/resizeoperation.cpp:171
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> before resize/move failed."
+msgstr ""
+"Nem sikerült ellenőrizni a(z) <filename>%1</filename> partíciót átméretezés/"
+"mozgatás előtt."
+
+#: ops/resizeoperation.cpp:201
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the left by %2"
+msgstr "A(z) <filename>%1</filename> partíció mozgatása balra ennyivel: %2"
+
+#: ops/resizeoperation.cpp:204
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the right by %2"
+msgstr "A(z) <filename>%1</filename> partíció mozgatása jobbra ennyivel: %2"
+
+#: ops/resizeoperation.cpp:207
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgstr "A(z) <filename>%1</filename> partíció növelése: %2 → %3"
+
+#: ops/resizeoperation.cpp:210
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Shrink partition <filename>%1</filename> from %2 to %3"
+msgstr "A(z) <filename>%1</filename> partíció zsugorítása %2 → %3"
+
+#: ops/resizeoperation.cpp:213
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
+"to %4"
+msgstr ""
+"A(z) <filename>%1</filename> partíció mozgatása balra ennyivel: %2, és "
+"növelése: %3 → %4"
+
+#: ops/resizeoperation.cpp:216
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and grow it from "
+"%3 to %4"
+msgstr ""
+"A(z) <filename>%1</filename> partíció mozgatása jobbra ennyivel: %2, és "
+"növelése: %3 → %4"
+
+#: ops/resizeoperation.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"A(z) <filename>%1</filename> partíció mozgatása balra ennyivel: %2, és "
+"csökkentése: %3 → %4"
+
+#: ops/resizeoperation.cpp:222
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"A(z) <filename>%1</filename> partíció mozgatása jobbra ennyivel: %2, és "
+"csökkentése: %3 → %4"
+
+#: ops/resizeoperation.cpp:229
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Unknown resize/move action."
+msgstr "Ismeretlen átméretezés/mozgatás művelet."
+
+#: ops/resizeoperation.cpp:258
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize file system to shrink partition "
+"<filename>%1</filename>."
+msgstr ""
+"Sikertelen átméretezés/mozgatás: nem sikerült átméretezni a fájlrendszert "
+"a(z) <filename>%1</filename> partíció zsugorításához."
+
+#: ops/resizeoperation.cpp:263
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
+msgstr ""
+"Sikertelen átméretezés/mozgatás: nem sikerült zsugorítani a(z) <filename>%1</"
+"filename> partíciót."
+
+#: ops/resizeoperation.cpp:282
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving partition <filename>%1</filename> failed."
+msgstr "A(z) <filename>%1</filename> partíció mozgatása sikertelen."
+
+#: ops/resizeoperation.cpp:287
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
+"back."
+msgstr ""
+"Nem sikerült mozgatni a(z) <filename>%1</filename> partíció fájlrendszerét. "
+"Visszaállítás."
+
+#: ops/resizeoperation.cpp:291
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving back partition <filename>%1</filename> to its original position "
+"failed."
+msgstr ""
+"Nem sikerült visszamozgatni a(z) <filename>%1</filename> partíciót az "
+"eredeti pozíciójára."
+
+#: ops/resizeoperation.cpp:304
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
+msgstr ""
+"Sikertelen átméretezés/mozgatás: nem sikerült növelni a(z) <filename>%1</"
+"filename> partíciót."
+
+#: ops/resizeoperation.cpp:309
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
+msgstr ""
+"Sikertelen átméretezés/mozgatás: nem sikerült átméretezni a fájlrendszert "
+"a(z) <filename>%1</filename> partíción"
+
+#: ops/resizeoperation.cpp:312
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Could not restore old partition size for partition <filename>%1</filename>."
+msgstr ""
+"Nem sikerült visszaállítani a(z) <filename>%1</filename> partíció korábbi "
+"méretét"
+
+#: ops/resizevolumegroupoperation.cpp:108
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resize volume %1 from %2 to %3"
+msgstr "A(z) %1 kötet átméretezése: %2 → %3"
+
+#: ops/restoreoperation.cpp:133
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking target file system on partition <filename>%1</filename> after the "
+"restore failed."
+msgstr ""
+"Nem sikerült ellenőrizni a célfájlrendszert a(z) <filename>%1</filename> "
+"partíción a visszaállítás után."
+
+#: ops/restoreoperation.cpp:138
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Restoring file system failed."
+msgstr "A fájlrendszer visszaállítása meghiúsult."
+
+#: ops/restoreoperation.cpp:141
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating the destination partition to restore to failed."
+msgstr "Nem sikerült létrehozni a célpartíciót a visszaállításhoz."
+
+#: ops/restoreoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition from <filename>%1</filename> to <filename>%2</filename>"
+msgstr ""
+"Partíció visszaállítása innen: <filename>%1</filename> ide: <filename>%2</"
+"filename>"
+
+#: ops/restoreoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
+"filename>"
+msgstr ""
+"Partíció visszaállítása a(z) <filename>%1</filename> eszközön itt: %2 innen: "
+"<filename>%3</filename>"
+
+#: ops/setfilesystemlabeloperation.cpp:58
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgstr "Címke beállítása a(z) <filename>%1</filename> partíción erre: „%2”"
+
+#: ops/setfilesystemlabeloperation.cpp:60
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
+msgstr ""
+"Címke beállítása a(z) <filename>%1</filename> partíción erről: „%2”: erre "
+"„%3”"
+
+#: ops/setpartflagsoperation.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "A(z) <filename>%1</filename> partíció törlése"
+
+#: ops/setpartflagsoperation.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr "A(z) <filename>%1</filename> partíció jelzőinek beállítása erre: „%2”"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Software RAID Device found: %1"
+msgstr "Talált szoftveres RAID eszköz: %1"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:249
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Device found: %1"
+msgstr "Talált eszköz: %1"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr ""
+"A(z) <filename>%1</filename> új partíció szerepköre ismeretlen (szerepkörök: "
+"%2)"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Nem sikerült hozzáadni a(z) <filename>%1</filename> partíciót a(z) <filename>"
+"%2</filename> eszközhöz."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:114
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not set geometry for partition <filename>%1</filename> while trying to "
+"resize/move it."
+msgstr ""
+"Nem sikerült beállítani a(z) <filename>%1</filename> partíció geometriáját a "
+"fájlrendszer átméretezése/mozgatása közben."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:124
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to erase filesystem signature on partition <filename>%1</filename>."
+msgstr ""
+"Nem sikerült törölni a fájlrendszer aláírását a(z) <filename>%1</filename> "
+"partíción."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:157
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not determine file system of partition at sector %1 on device "
+"<filename>%2</filename>."
+msgstr ""
+"Nem sikerült meghatározni a(z) %1 szektoron lévő partíció fájlrendszerét "
+"a(z) <filename>%2</filename> eszközön."
+
+#: util/capacity.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "bájt"
+msgstr[1] "bájt"
+
+#: util/capacity.cpp:101
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "KiB"
+msgstr "KiB"
+
+#: util/capacity.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "MiB"
+msgstr "MiB"
+
+#: util/capacity.cpp:103
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "GiB"
+msgstr "GiB"
+
+#: util/capacity.cpp:104
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "TiB"
+msgstr "TiB"
+
+#: util/capacity.cpp:105
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "PiB"
+msgstr "PiB"
+
+#: util/capacity.cpp:106
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "EiB"
+msgstr "EiB"
+
+#: util/capacity.cpp:107
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "ZiB"
+msgstr "ZiB"
+
+#: util/capacity.cpp:108
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "YiB"
+msgstr "YiB"
+
+#: util/capacity.cpp:112
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "(unknown unit)"
+msgstr "(ismeretlen egység)"
+
+#: util/externalcommand.cpp:111 util/externalcommand.cpp:114
+#: util/externalcommand.cpp:226
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Command: %1 %2"
+msgstr "Parancs: %1 %2"
+
+#: util/externalcommandhelper.cpp:82
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for reading."
+msgstr "Nem sikerült megnyitni a(z) <filename>%1</filename> eszközt olvasásra."
+
+#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#, kde-kuit-format
+msgid "Could not seek position %1 on device <filename>%2</filename>."
+msgstr ""
+"Nem sikerült keresni a(z) %1 pozíciót a(z) <filename>%2</filename> eszközön."
+
+#: util/externalcommandhelper.cpp:96
+#, kde-kuit-format
+msgid "Could not read from device <filename>%1</filename>."
+msgstr "Nem sikerült olvasni a(z) <filename>%1</filename> eszközre."
+
+#: util/externalcommandhelper.cpp:114
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for writing."
+msgstr "Nem sikerült megnyitni a(z) <filename>%1</filename> eszközt írásra."
+
+#: util/externalcommandhelper.cpp:125
+#, kde-kuit-format
+msgid "Could not write to device <filename>%1</filename>."
+msgstr "Nem sikerült írni a(z) <filename>%1</filename> eszközre."
+
+#: util/externalcommandhelper.cpp:151
+#, kde-kuit-format
+msgid "Could not open file <filename>%1</filename> for writing."
+msgstr "Nem sikerült megnyitni a(z) <filename>%1</filename> fájlt írásra."
+
+#: util/externalcommandhelper.cpp:156
+#, kde-kuit-format
+msgid "Could not write to file <filename>%1</filename>."
+msgstr "Nem sikerült írni a(z) <filename>%1</filename> fájlba."
+
+#: util/externalcommandhelper.cpp:237
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+msgctxt "@info:progress"
+msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
+msgstr "%1 blokk (%2 bájt) másolása innen: %3 ide: %4, irány: %5."
+
+#: util/externalcommandhelper.cpp:238
+#, kde-format
+msgctxt "direction: left"
+msgid "left"
+msgstr "balra"
+
+#: util/externalcommandhelper.cpp:239
+#, kde-format
+msgctxt "direction: right"
+msgid "right"
+msgstr "jobbra"
+
+#: util/externalcommandhelper.cpp:261
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 MiB/second, estimated time left: %2"
+msgstr "Másolás %1 MiB/s sebességgel, becsült hátralévő idő: %2"
+
+#: util/externalcommandhelper.cpp:274
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Copying remainder of block size %1 from %2 to %3."
+msgctxt "@info:progress"
+msgid "Copying remainder of chunk size %1 from %2 to %3."
+msgstr "A(z) %1 blokkméret maradékának másolása innen: %2, ide: %3."
+
+#: util/externalcommandhelper.cpp:288
+#, kde-format
+msgid "1 byte"
+msgid_plural "%1 bytes"
+msgstr[0] "1 bájt"
+msgstr[1] "%1 bájt"
+
+#: util/externalcommandhelper.cpp:288
+#, fuzzy, kde-kuit-format
+#| msgctxt ""
+#| "@info:progress argument 2 is a string such as 7 bytes (localized "
+#| "accordingly)"
+#| msgid "Copying 1 block (%2) finished."
+#| msgid_plural "Copying %1 blocks (%2) finished."
+msgctxt ""
+"@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
+msgid "Copying 1 chunk (%2) finished."
+msgid_plural "Copying %1 chunks (%2) finished."
+msgstr[0] "1 blokk (%2) másolása befejeződött."
+msgstr[1] "%1 blokk (%2) másolása befejeződött."
+
+#: util/helpers.cpp:49
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<application>KPMcore</application>"
+msgstr "<application>KPMcore</application>"
+
+#: util/helpers.cpp:50
+#, kde-kuit-format
+msgctxt "@title"
+msgid "Library for managing partitions"
+msgstr "Függvénykönyvtár partíciók kezeléséhez"
+
+#: util/helpers.cpp:51
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "&copy; 2008-2022 KPMcore developers"
+msgstr "&copy; A KPMcore fejlesztői, 2008-2022."
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Volker Lanz"
+msgstr "Volker Lanz"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Former maintainer"
+msgstr "Korábbi karbantartó"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Andrius Štikonas"
+msgstr "Andrius Štikonas"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Maintainer"
+msgstr "Karbantartó"
+
+#: util/helpers.cpp:58
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Teo Mrnjavac"
+msgstr "Teo Mrnjavac"
+
+#: util/helpers.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Former Calamares maintainer"
+msgstr "Korábbi Calamares karbantartó"
+
+#: util/helpers.cpp:59
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Chantara Tith"
+msgstr "Chantara Tith"
+
+#: util/helpers.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "LVM support"
+msgstr "LVM támogatás"
+
+#: util/helpers.cpp:60
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Pali Rohár"
+msgstr "Pali Rohár"
+
+#: util/helpers.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "UDF support"
+msgstr "UDF támogatás"
+
+#: util/helpers.cpp:61
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Adriaan de Groot"
+msgstr "Adriaan de Groot"
+
+#: util/helpers.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Calamares maintainer"
+msgstr "Calamares karbantartó"
+
+#: util/helpers.cpp:62
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Caio Jordão Carvalho"
+msgstr "Caio Jordão Carvalho"
+
+#: util/helpers.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Improved SMART support"
+msgstr "Fejlettebb SMART támogatás"
+
+#: util/helpers.cpp:63
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "David Edmundson"
+msgstr "David Edmundson"
+
+#: util/helpers.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Port from KAuth to Polkit"
+msgstr "Portolás KAuthról Polkitre"
+
+#: util/htmlreport.cpp:51 util/htmlreport.cpp:58
+#, kde-format
+msgid "%1: SMART Status Report"
+msgstr "%1: SMART állapotjelentés"
+
+#: util/htmlreport.cpp:66
+#, kde-format
+msgid "Date:"
+msgstr "Dátum:"
+
+#: util/htmlreport.cpp:67
+#, kde-format
+msgid "Program version:"
+msgstr "Programverzió:"
+
+#: util/htmlreport.cpp:68
+#, kde-format
+msgid "Backend:"
+msgstr "Modul:"
+
+#: util/htmlreport.cpp:69
+#, kde-format
+msgid "KDE Frameworks version:"
+msgstr "KDE Frameworks verzió:"
+
+#: util/htmlreport.cpp:70
+#, kde-format
+msgid "Machine:"
+msgstr "Gép:"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Run without administrative privileges"
+#~ msgctxt "@info:status"
+#~ msgid "Could not obtain administrator privileges."
+#~ msgstr "Futtatás rendszergazdai jogosultságok nélkül"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Decrypt"
+#~ msgstr "Visszafejtés"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Deactivate"
+#~ msgstr "Deaktiválás"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not open device <filename>%1</"
+#~| "filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not retrieve partition table type "
+#~ "\"%1\" for <filename>%2</filename>."
+#~ msgstr ""
+#~ "A partíciós tábla létrehozása meghiúsult: a(z) <filename>%1</filename> "
+#~ "eszköz nem nyitható meg."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not open device <filename>%1</"
+#~| "filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not open backend device <filename>"
+#~ "%1</filename>."
+#~ msgstr ""
+#~ "A partíciós tábla létrehozása meghiúsult: a(z) <filename>%1</filename> "
+#~ "eszköz nem nyitható meg."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not open device <filename>%1</"
+#~| "filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not create a new partition table "
+#~ "in the backend for device <filename>%1</filename>."
+#~ msgstr ""
+#~ "A partíciós tábla létrehozása meghiúsult: a(z) <filename>%1</filename> "
+#~ "eszköz nem nyitható meg."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Could not delete partition <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Failed to create a new partition: could not get geometry for constraint."
+#~ msgstr "A(z) <filename>%1</filename> partíció nem törölhető."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Deleting partition failed: Could not open device <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
+#~ "not found on disk."
+#~ msgstr ""
+#~ "A partíció törlése meghiúsult: a(z) <filename>%1</filename> eszköz nem "
+#~ "nyitható meg."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get constraint for partition <filename>%1</filename> while "
+#~ "trying to resize/move it."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for partition <filename>%1</filename> while trying "
+#~ "to resize/move it."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> while trying to resize/"
+#~ "move it."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open file system on partition <filename>%1</filename> for "
+#~| "moving."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not delete file system on partition <filename>%1</filename>: Failed "
+#~ "to get partition."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a fájlrendszert a(z) <filename>%1</filename> "
+#~ "partíción mozgatáshoz."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open file system on partition <filename>%1</filename> for "
+#~| "moving."
+#~ msgctxt "@info:progress"
+#~ msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a fájlrendszert a(z) <filename>%1</filename> "
+#~ "partíción mozgatáshoz."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for resized partition <filename>%1</filename> "
+#~ "while trying to resize the file system."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Could not delete partition <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not update the system type for partition <filename>%1</filename>."
+#~ msgstr "A(z) <filename>%1</filename> partíció nem törölhető."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Restoring file system failed."
+#~ msgctxt "@info:progress"
+#~ msgid "No file system defined."
+#~ msgstr "A fájlrendszer visszaállítása meghiúsult."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition table on device <filename>%1</filename> to "
+#~| "delete partition <filename>%2</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not find partition <filename>%1</filename> on device <filename>%2</"
+#~ "filename> to set partition flags."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg "
+#~ "a(z) <filename>%2</filename> partíció törléséhez."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "(Command timeout while starting \"%1\")"
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while starting)"
+#~ msgstr "(A parancs túllépte az időlimitet a(z) „%1” indításakor)"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "(Command timeout while running \"%1\")"
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while running)"
+#~ msgstr "(A parancs túllépte az időlimitet a(z) „%1” futtatásakor)"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not seek to position 0x1c on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#~ msgid "1 sector"
+#~ msgid_plural "%1 sectors"
+#~ msgstr[0] "1 szektor"
+#~ msgstr[1] "%1 szektor"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Columns"
+#~ msgstr "Oszlopok"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Warning: Resizing JFS file system on partition <filename>%1</filename>: "
+#~| "Unmount failed."
+#~ msgctxt "@info:status"
+#~ msgid ""
+#~ "Warning: Maximizing file system on target partition <filename>%1</"
+#~ "filename> to the size of the partition failed."
+#~ msgstr ""
+#~ "Figyelmeztetés: JFS fájlrendszer átméretezése a(z) <filename>%1</"
+#~ "filename> partíción: nem sikerült leválasztani."
+
+#~ msgctxt "@info/plain status (success, error, warning...) of operation"
+#~ msgid "%1: %2"
+#~ msgstr "%1: %2"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "Byte"
+#~ msgid_plural "Bytes"
+#~ msgstr[0] "bájt"
+#~ msgstr[1] "bájt"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "KiB"
+#~ msgstr "KiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "MiB"
+#~ msgstr "MiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "GiB"
+#~ msgstr "GiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "TiB"
+#~ msgstr "TiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "PiB"
+#~ msgstr "PiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "EiB"
+#~ msgstr "EiB"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Create file system %1 on partition <filename>%2</filename>"
+#~ msgctxt "@info/plain"
+#~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
+#~ msgstr "%1 fájlrendszer létrehozása a(z) <filename>%2</filename> partíción"
+
+#~ msgctxt "@title:window"
+#~ msgid "Decrypt LUKS partition on <filename>%1</filename>"
+#~ msgstr "LUKS partíció visszafejtése ezen: <filename>%1</filename>"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Decrypt"
+#~ msgstr "&Visszafejtés"
+
+#~ msgid "&Name:"
+#~ msgstr "&Név:"
+
+#~ msgid "&Passphrase:"
+#~ msgstr "&Jelmondat:"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS serial number."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize "
+#~| "the file system."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not seek to position 0x48 on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS serial number."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> partíciót a "
+#~ "fájlrendszer átmérezetése közben."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open file system on partition <filename>%1</filename> for "
+#~| "moving."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not write new NTFS serial number to partition <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a fájlrendszert a(z) <filename>%1</filename> "
+#~ "partíción mozgatáshoz."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Could not delete partition <filename>%1</filename>."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Updated NTFS serial number for partition <filename>%1</filename> "
+#~ "successfully."
+#~ msgstr "A(z) <filename>%1</filename> partíció nem törölhető."
+
+#~ msgctxt "@label"
+#~ msgid "Is this the first time KDE Partition Manager is being run?"
+#~ msgstr "Első alkalommal használja a KDE partíciókezelőt?"
+
+#~ msgctxt "@label"
+#~ msgid "Hide log messages below"
+#~ msgstr "A lenti naplóüzenetek elrejtése"
+
+#~ msgctxt "@label"
+#~ msgid "Partition sector alignment"
+#~ msgstr "Partíciószektor igazítás"
+
+#~ msgctxt "@label"
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr "Cilinderalapú igazítás használata (Windows XP kompatibilis)"
+
+#~ msgctxt "@label"
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr ""
+#~ "Műveletetek rendszergazdai jogosultság nélküli végrehajthatóságának "
+#~ "engedélyezése"
+
+#~ msgctxt "@label"
+#~ msgid "File system colors"
+#~ msgstr "Fájlrendszerszínek"
+
+#~ msgctxt "@label"
+#~ msgid "Show the application's menu bar"
+#~ msgstr "Menüsáv megjelenítése"
+
+#~ msgctxt "@label"
+#~ msgid "Backend plugin"
+#~ msgstr "Háttérprogram-bővítmény"
+
+#~ msgctxt "@label"
+#~ msgid "Preferred unit:"
+#~ msgstr "Elsődleges egység:"
+
+#~ msgctxt "@title:tab general application settings"
+#~ msgid "General"
+#~ msgstr "Általános"
+
+#~ msgid "General Settings"
+#~ msgstr "Általános beállítások"
+
+#~ msgctxt "@title:tab"
+#~ msgid "File System Colors"
+#~ msgstr "Fájlrendszerszínek"
+
+#~ msgid "File System Color Settings"
+#~ msgstr "Fájlrendszerszín-beállítások"
+
+#~ msgctxt "@title:tab advanced application settings"
+#~ msgid "Advanced"
+#~ msgstr "Speciális"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Speciális beállítások"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to change the backend?</para><para><warning>This "
+#~ "will also rescan devices and thus clear the list of pending operations.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "<para>Biztosan cseréli a háttérprogramot?</para><para><warning>Az "
+#~ "eszközök újra lesznek olvasva, és a függőben lévő műveletek listája "
+#~ "törlődik.</warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Change Backend?"
+#~ msgstr "Biztosan cseréli a háttérprogramot?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the Backend"
+#~ msgstr "Háttérprogram cseréje"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the Backend"
+#~ msgstr "Ne cserélje a háttérprogramot"
+
+#~ msgid "Permissions"
+#~ msgstr "Jogosultságok"
+
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr ""
+#~ "Műveletetek rendszergazdai jogosultság nélküli végrehajthatóságának "
+#~ "engedélyezése"
+
+#~ msgid "Backend"
+#~ msgstr "Modul"
+
+#~ msgid "Active backend:"
+#~ msgstr "Aktív modul:"
+
+#~ msgid "Units"
+#~ msgstr "Egységek:"
+
+#~ msgid "Preferred unit:"
+#~ msgstr "Elsődleges egység:"
+
+#~ msgid "File Systems"
+#~ msgstr "Fájlrendszerek"
+
+#~ msgid "luks:"
+#~ msgstr "luks:"
+
+#~ msgid "ntfs:"
+#~ msgstr "ntfs:"
+
+#~ msgid "ext2:"
+#~ msgstr "ext2:"
+
+#~ msgid "ext3:"
+#~ msgstr "ext3:"
+
+#~ msgid "ext4:"
+#~ msgstr "ext4:"
+
+#~ msgid "btrfs:"
+#~ msgstr "btrfs:"
+
+#~ msgid "linuxswap:"
+#~ msgstr "linuxswap:"
+
+#~ msgid "fat16:"
+#~ msgstr "fat16:"
+
+#~ msgid "fat32:"
+#~ msgstr "fat32:"
+
+#~ msgid "zfs:"
+#~ msgstr "zfs:"
+
+#~ msgid "reiserfs:"
+#~ msgstr "reiserfs:"
+
+#~ msgid "reiser4:"
+#~ msgstr "reiser4:"
+
+#~ msgid "hpfs:"
+#~ msgstr "hpfs:"
+
+#~ msgid "jfs"
+#~ msgstr "jfs"
+
+#~ msgid "hfs:"
+#~ msgstr "hfs:"
+
+#~ msgid "hfsplus:"
+#~ msgstr "hfsplus:"
+
+#~ msgid "ufs:"
+#~ msgstr "ufs:"
+
+#~ msgid "xfs:"
+#~ msgstr "xfs:"
+
+#~ msgid "ocfs2:"
+#~ msgstr "ocfs2:"
+
+#~ msgid "extended:"
+#~ msgstr "kiterjesztett:"
+
+#~ msgid "unformatted:"
+#~ msgstr "formázatlan:"
+
+#~ msgid "unknown:"
+#~ msgstr "ismeretlen:"
+
+#~ msgid "exfat:"
+#~ msgstr "exfat:"
+
+#~ msgid "nilfs2:"
+#~ msgstr "nilfs2:"
+
+#~ msgid "lvm2 pv:"
+#~ msgstr "lvm2 pv:"
+
+#~ msgid "Partition Alignment"
+#~ msgstr "Partícióigazítás"
+
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr "Cilinderalapú igazítás használata (Windows XP kompatibilis)"
+
+#~ msgid "Sector alignment:"
+#~ msgstr "Szektorigazítás:"
+
+#~ msgid " sectors"
+#~ msgstr " szektor"
+
+#~ msgid "Logging"
+#~ msgstr "Naplózás"
+
+#~ msgid "Hide messages below:"
+#~ msgstr "Az alábbi üzenetek elrejtése:"
+
+#~ msgid "Debug"
+#~ msgstr "Hibakeresés"
+
+#~ msgid "Information"
+#~ msgstr "Információk"
+
+#~ msgid "Warning"
+#~ msgstr "Figyelmeztetések"
+
+#~ msgid "Error"
+#~ msgstr "Hibák"
+
+#~ msgid "Default file system:"
+#~ msgstr "Alapértelmezett fájlrendszer:"
+
+#~ msgid "Shredding"
+#~ msgstr "Adatmegsemmisítés"
+
+#~ msgid "Overwrite with:"
+#~ msgstr "Felülírás:"
+
+#~ msgid "Random data"
+#~ msgstr "Véletlenszerű adatokkal"
+
+#~ msgid "Zeros"
+#~ msgstr "Nullákkal"
+
+#~ msgid "Save"
+#~ msgstr "Mentés"
+
+#~ msgid "Open in External Browser"
+#~ msgstr "Megnyitás külső böngészőben"
+
+#~ msgid "&Details"
+#~ msgstr "&Részletek"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Setting up..."
+#~ msgstr "Beállítás…"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Waiting for operation to finish..."
+#~ msgstr "Várakozás a művelet befejezésére…"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to cancel?"
+#~ msgstr "Biztosan megszakítja?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cancel Running Operations"
+#~ msgstr "Futó műveletek megszakítása"
+
+#~ msgctxt "@action:button"
+#~ msgid "Yes, Cancel Operations"
+#~ msgstr "Műveletek megszakítása"
+
+#~ msgctxt "@info:progress"
+#~ msgid "All operations successfully finished."
+#~ msgstr "Az összes művelet sikeresen befejeződött."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Operations cancelled."
+#~ msgstr "Műveletek megszakítva."
+
+#~ msgctxt "@info:progress"
+#~ msgid "There were errors while applying operations. Aborted."
+#~ msgstr "Hibák történtek a műveletek alkalmazása során. Megszakítás."
+
+#~ msgctxt "@info:progress"
+#~ msgid "[%1/%2] - %3: %4"
+#~ msgstr "[%1/%2] - %3: %4"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Total Time: %1"
+#~ msgstr "Teljes idő: %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary file when trying to save to <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Nem sikerült létrehozni az átmeneti fájlt a(z) <filename>%1</filename> "
+#~ "mentésére tett kísérlet során."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save Report."
+#~ msgstr "A jelentés nem menthető."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The configured external browser could not be run. Please check your "
+#~ "settings."
+#~ msgstr ""
+#~ "A beállított külső böngésző nem indítható el. Ellenőrizze beállításait."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Launch Browser."
+#~ msgstr "A böngésző nem indítható el."
+
+#~ msgctxt "@info"
+#~ msgid "Could not create temporary file <filename>%1</filename> for writing."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> átmeneti fájl nem hozható létre írásra."
+
+#~ msgid "Operations and Jobs"
+#~ msgstr "Műveletek és feladatok"
+
+#~ msgid "Time Elapsed"
+#~ msgstr "Eltelt idő"
+
+#~ msgid "Total Time: 00:00:00"
+#~ msgstr "Teljes idő: 00:00:00"
+
+#~ msgid "Operation: %p%"
+#~ msgstr "Művelet: %p%"
+
+#~ msgid "Status"
+#~ msgstr "Állapot"
+
+#~ msgid "Total: %p%"
+#~ msgstr "Összesen: %p%"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a New Partition Table on <filename>%1</filename>"
+#~ msgstr ""
+#~ "Új partíciós tábla létrehozása a következőn: <filename>%1</filename>"
+
+#~ msgid "Create &New Partition Table"
+#~ msgstr "Új partí&ciós tábla létrehozása"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to create an MS-Dos partition table on <filename>"
+#~ "%1</filename>?</para><para>This device has more than 2^32 sectors. That "
+#~ "is the most the MS-Dos partition table type supports, so you will not be "
+#~ "able to use the whole device.</para>"
+#~ msgstr ""
+#~ "<para>Biztosan MS-DOS partícióstáblát akar létrehozni a következőn: "
+#~ "<filename> %1</filename>?</para><para>Az eszköznek több mint 2^32 "
+#~ "szektora van, de a legtöbb MS-DOS partícióstábla-típus csak ennyit "
+#~ "támogat, így nem tudja használni a teljes eszközt.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Create MS-Dos Partition Table Type?"
+#~ msgstr "Biztosan MS-DOS partícióstábla-típust hoz létre?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Create MS-Dos Type"
+#~ msgstr "MS-DOS típus létrehozása"
+
+#~ msgid "Choose the type of partition table you want to create:"
+#~ msgstr "A létrehozandó partíciós tábla típusa:"
+
+#~ msgid "GPT"
+#~ msgstr "GPT"
+
+#~ msgid "MS-Dos"
+#~ msgstr "MS-Dos"
+
+#~ msgid "(icon)"
+#~ msgstr "(ikon)"
+
+#~ msgid "<b>Warning:</b> This will destroy all data on the device!"
+#~ msgstr ""
+#~ "<b>Figyelmeztetés:</b> Ez minden adatot meg fog semmisíteni az eszközön!"
+
+#~ msgctxt "@label device"
+#~ msgid "%1 (read only)"
+#~ msgstr "%1 (csak olvasható)"
+
+#~ msgctxt "@label"
+#~ msgid "1 Sector"
+#~ msgid_plural "%1 Sectors"
+#~ msgstr[0] "1 szektor"
+#~ msgstr[1] "%1 szektor"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "good"
+#~ msgstr "jó"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "BAD"
+#~ msgstr "ROSSZ"
+
+#~ msgctxt "@label"
+#~ msgid "(unknown)"
+#~ msgstr "(ismeretlen)"
+
+#~ msgid "Partition table:"
+#~ msgstr "Partíciós tábla:"
+
+#~ msgid "Cylinder alignment"
+#~ msgstr "Cilinderigazítás"
+
+#~ msgid "Sector based alignment"
+#~ msgstr "Szektoralapú igazítás"
+
+#~ msgid "Capacity:"
+#~ msgstr "Kapacitás:"
+
+#~ msgid "Total sectors:"
+#~ msgstr "Összes szektor:"
+
+#~ msgid "Cylinders/Heads/Sectors:"
+#~ msgstr "Cilinderek/fejek/szektorok:"
+
+#~ msgid "Logical sector size:"
+#~ msgstr "Logikai szektorméret:"
+
+#~ msgid "Physical sector size:"
+#~ msgstr "Fizikai szektorméret:"
+
+#~ msgid "Cylinder size:"
+#~ msgstr "Cilinderméret:"
+
+#~ msgid "Primaries/Max:"
+#~ msgstr "Elsődleges/max.:"
+
+#~ msgid "SMART status:"
+#~ msgstr "SMART-állapot:"
+
+#~ msgid "More..."
+#~ msgstr "Több…"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit additional mount options"
+#~ msgstr "További csatolási beállítások szerkesztése"
+
+#~ msgid "Edit Mount Options"
+#~ msgstr "Csatolási beállítások szerkesztése"
+
+#~ msgid "Edit the mount options for this file system:"
+#~ msgstr "Fájlrendszer csatolási beállításainak szerkesztése:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit mount point for <filename>%1</filename>"
+#~ msgstr "<filename>%1</filename> csatolási pontjának szerkesztése"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Are you sure you want to save the changes you made to the system "
+#~ "table file <filename>/etc/fstab</filename>?</para><para><warning>This "
+#~ "will overwrite the existing file on your hard drive now. This <strong>can "
+#~ "not be undone</strong>.</warning></para>"
+#~ msgstr ""
+#~ "<para>Biztosan menti az <filename>/etc/fstab</filename> módosításait?</"
+#~ "para> <para><warning>Ez felülírja a már létező fájlt a merevlemezen."
+#~ "<strong>A művelet visszavonhatatlan.</strong></warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really save changes?"
+#~ msgstr "Biztosan menti a változtatásokat?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Save changes"
+#~ msgstr "Változtatások mentése"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open mount point file <filename>%1</filename>."
+#~ msgstr ""
+#~ "Nem sikerült megnyitni a(z) <filename>%1</filename> csatolásipont-fájlt"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error while reading mount points"
+#~ msgstr "Hiba a csatolási pontok olvasása közben"
+
+#~ msgctxt "@info"
+#~ msgid "Could not save mount points to file <filename>%1</filename>."
+#~ msgstr ""
+#~ "Nem sikerült menteni a csatolási pontokat a(z) <filename>%1</filename> "
+#~ "fájlba."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Saving Mount Points"
+#~ msgstr "Hiba a csatolási pontok mentése közben"
+
+#~ msgid "Path:"
+#~ msgstr "Elérési út:"
+
+#~ msgid "Select..."
+#~ msgstr "Kiválasztás…"
+
+#~ msgid "Type:"
+#~ msgstr "Típus:"
+
+#~ msgid "Options:"
+#~ msgstr "Beállítások:"
+
+#~ msgid "Read-only"
+#~ msgstr "Csak olvasható"
+
+#~ msgid "Users can mount and unmount"
+#~ msgstr "A felhasználók csatolhatnak és leválaszthatnak"
+
+#~ msgid "No automatic mount"
+#~ msgstr "Nincs automatikus csatolás"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Label"
+#~ msgstr "Címke"
+
+#~ msgctxt "@title:window"
+#~ msgid "File System Support"
+#~ msgstr "Fájlrendszer-támogatás"
+
+#~ msgid "File System"
+#~ msgstr "Fájlrendszer"
+
+#~ msgid "Create"
+#~ msgstr "Létrehozás"
+
+#~ msgid "Grow"
+#~ msgstr "Növelés"
+
+#~ msgid "Shrink"
+#~ msgstr "Csökkentés"
+
+#~ msgid "Move"
+#~ msgstr "Mozgatás"
+
+#~ msgid "Copy"
+#~ msgstr "Másolás"
+
+#~ msgid "Check"
+#~ msgstr "Ellenőrzés"
+
+#~ msgid "Read Label"
+#~ msgstr "Címke olvasása"
+
+#~ msgid "Write Label"
+#~ msgstr "Címke írása"
+
+#~ msgid "Backup"
+#~ msgstr "Biztonsági mentés"
+
+#~ msgid "Restore"
+#~ msgstr "Visszaállítás"
+
+#~ msgctxt "@title:window"
+#~ msgid "Information"
+#~ msgstr "Információk"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition Information"
+#~ msgstr "Partícióinformációk"
+
+#~ msgctxt "@label partition"
+#~ msgid "File system:"
+#~ msgstr "Fájlrendszer:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Capacity:"
+#~ msgstr "Kapacitás:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher name:"
+#~ msgstr "Titkosító neve:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher mode:"
+#~ msgstr "Titkosító módja:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Hash:"
+#~ msgstr "Ellenőrzőösszeg:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Key size:"
+#~ msgstr "Kulcsméret:"
+
+#~ msgctxt "@label partition"
+#~ msgid "First sector:"
+#~ msgstr "Első szektor:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Last sector:"
+#~ msgstr "Utolsó szektor:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Number of sectors:"
+#~ msgstr "Szektorok száma:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Available:"
+#~ msgstr "Elérhető:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Used:"
+#~ msgstr "Használt:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Device Information"
+#~ msgstr "Eszközinformációk"
+
+#~ msgctxt "@label device"
+#~ msgid "Path:"
+#~ msgstr "Elérési út:"
+
+#~ msgctxt "@label device"
+#~ msgid "Type:"
+#~ msgstr "Típus:"
+
+#~ msgctxt "@label device"
+#~ msgid "Capacity:"
+#~ msgstr "Kapacitás:"
+
+#~ msgctxt "@label device"
+#~ msgid "Total sectors:"
+#~ msgstr "Összes szektor:"
+
+#~ msgctxt "@label device"
+#~ msgid "Heads:"
+#~ msgstr "Fejek:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinders:"
+#~ msgstr "Cilinderek:"
+
+#~ msgctxt "@label device"
+#~ msgid "Sectors:"
+#~ msgstr "Szektorok:"
+
+#~ msgctxt "@label device"
+#~ msgid "Logical sector size:"
+#~ msgstr "Logikai szektorméret:"
+
+#~ msgctxt "@label device"
+#~ msgid "Physical sector size:"
+#~ msgstr "Fizikai szektorméret:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinder size:"
+#~ msgstr "Cilinderméret:"
+
+#~ msgctxt "@label device"
+#~ msgid "Primaries/Max:"
+#~ msgstr "Elsődleges/max.:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Insert a partition"
+#~ msgstr "Partíció beszúrása"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to quit the application?</para><para>There is "
+#~ "still an operation pending.</para>"
+#~ msgid_plural ""
+#~ "<para>Do you really want to quit the application?</para><para>There are "
+#~ "still %1 operations pending.</para>"
+#~ msgstr[0] ""
+#~ "<para>Biztosan kilép az alkalmazásból?</para><para>Még egy függőben lévő "
+#~ "művelet van.</para>"
+#~ msgstr[1] ""
+#~ "<para>Biztosan kilép az alkalmazásból?</para><para>Még %1 függőben lévő "
+#~ "művelet van.</para>"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Undo"
+#~ msgstr "Visszavonás"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Undo the last operation"
+#~ msgstr "Legutóbbi művelet visszavonása"
+
+#~ msgctxt "@info:status"
+#~ msgid "Remove the last operation from the list."
+#~ msgstr "Legutóbbi művelet eltávolítása a listából."
+
+#~ msgctxt "@action:inmenu clear the list of operations"
+#~ msgid "Clear"
+#~ msgstr "Törlés"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear all operations"
+#~ msgstr "Összes művelet törlése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Empty the list of pending operations."
+#~ msgstr "A függőben lévő műveletek listájának ürítése."
+
+#~ msgctxt "@action:inmenu apply all operations"
+#~ msgid "Apply"
+#~ msgstr "Alkalmazás"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Apply all operations"
+#~ msgstr "Összes művelet alkalmazása"
+
+#~ msgctxt "@info:status"
+#~ msgid "Apply the pending operations in the list."
+#~ msgstr "A listán lévő függő műveletek alkalmazása."
+
+#~ msgctxt "@action:inmenu refresh list of devices"
+#~ msgid "Refresh Devices"
+#~ msgstr "Eszközök frissítése"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Refresh all devices"
+#~ msgstr "Összes eszköz frissítése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Renew the devices list."
+#~ msgstr "Eszközlista megújítása."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Partition Table"
+#~ msgstr "Új partíciós tábla"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Create a new partition table"
+#~ msgstr "Új partíciós tábla létrehozása"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Export Partition Table"
+#~ msgstr "Partíciós tábla exportálása"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Import Partition Table"
+#~ msgstr "Partíciós tábla importálása"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Import a partition table"
+#~ msgstr "Partíciós tábla importálása"
+
+#~ msgctxt "@info:status"
+#~ msgid "Import a partition table from a text file."
+#~ msgstr "Partíciós tábla importálása szövegfájlból."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "SMART Status"
+#~ msgstr "SMART-állapot"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show SMART status"
+#~ msgstr "SMART-állapot megjelenítése"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Properties"
+#~ msgstr "Tulajdonságok"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show device properties dialog"
+#~ msgstr "Az eszköztulajdonságok párbeszédablakának megnyitása"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify device properties"
+#~ msgstr "Eszköztulajdonságok megjelenítése és módosítása"
+
+#~ msgctxt "@action:inmenu create a new partition"
+#~ msgid "New"
+#~ msgstr "Új"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "New partition"
+#~ msgstr "Új partíció"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Resize/Move"
+#~ msgstr "Átméretezés/mozgatás"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Resize or move partition"
+#~ msgstr "Partíció átméretezése vagy mozgatása"
+
+#~ msgctxt "@info:status"
+#~ msgid "Shrink, grow or move an existing partition."
+#~ msgstr "Létező partíció zsugorítása, növelése vagy mozgatása."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Delete"
+#~ msgstr "Törlés"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Delete partition"
+#~ msgstr "Partíció törlése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Delete a partition."
+#~ msgstr "Partíció törlése."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Shred"
+#~ msgstr "Megsemmisítés"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Shred partition"
+#~ msgstr "Partíció megsemmisítése"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Copy"
+#~ msgstr "Másolás"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Copy partition"
+#~ msgstr "Partíció másolása"
+
+#~ msgctxt "@info:status"
+#~ msgid "Copy an existing partition."
+#~ msgstr "Létetező partíció másolása."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Paste"
+#~ msgstr "Beillesztés"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Paste partition"
+#~ msgstr "Partíció beillesztése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Paste a copied partition."
+#~ msgstr "Másolt partíció beillesztése."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Edit Mount Point"
+#~ msgstr "Csatolási pont szerkesztése"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit mount point"
+#~ msgstr "Csatolási pont szerkesztése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Edit a partition's mount point and options."
+#~ msgstr "Egy partíció csatolási pontjának és beállításainak szerkesztése."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Mount"
+#~ msgstr "Csatolás"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Mount or unmount partition"
+#~ msgstr "Partíció csatolása vagy leválasztása"
+
+#~ msgctxt "@info:status"
+#~ msgid "Mount or unmount a partition."
+#~ msgstr "Partíció csatolása vagy leválasztása."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Check"
+#~ msgstr "Ellenőrzés"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Check partition"
+#~ msgstr "Partíció ellenőrzése"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify partition properties (label, partition flags, etc.)"
+#~ msgstr ""
+#~ "Partíciótulajdonságok megjelenítése és módosítása (címke, partíciójelzők, "
+#~ "stb.)"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Backup"
+#~ msgstr "Biztonsági mentés"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Backup partition"
+#~ msgstr "Partíció biztonsági mentése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Backup a partition to an image file."
+#~ msgstr "Biztonsági mentés készítese egy partícióról képfájlba."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Restore"
+#~ msgstr "Visszaállítás"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Restore partition"
+#~ msgstr "Partíció visszaállítása"
+
+#~ msgctxt "@info:status"
+#~ msgid "Restore a partition from an image file."
+#~ msgstr "Partíció visszaállítása képfájlból."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "File System Support"
+#~ msgstr "Fájlrendszer-támogatás"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "View file system support information"
+#~ msgstr "Fájlrendszer-támogatási információk megtekintése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Show information about supported file systems."
+#~ msgstr "Információk megjelenítése a támogatott fájlrendszerekről."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Clear Log"
+#~ msgstr "Napló törlése"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear the log output"
+#~ msgstr "Kimeneti napló törlése"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Save Log"
+#~ msgstr "Napló mentése"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Save the log output"
+#~ msgstr "Kimeneti napló mentése"
+
+#~ msgctxt "@info:status"
+#~ msgid "Save the log output to a file."
+#~ msgstr "Kimeneti napló mentése fájlba."
+
+#~ msgctxt "@info:status"
+#~ msgid "One pending operation"
+#~ msgid_plural "%1 pending operations"
+#~ msgstr[0] "1 függő művelet"
+#~ msgstr[1] "%1 függő művelet"
+
+#, fuzzy
+#~| msgctxt "@label"
+#~| msgid "Backend plugin"
+#~ msgctxt "@info/plain"
+#~ msgid "Using backend plugin: %1 (%2)"
+#~ msgstr "Háttérprogram-bővítmény"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scanning devices..."
+#~ msgstr "Eszközök keresése…"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scan finished."
+#~ msgstr "A keresés befejeződött."
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "<para>Do you really want to change the backend?</"
+#~| "para><para><warning>This will also rescan devices and thus clear the "
+#~| "list of pending operations.</warning></para>"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to rescan the devices?</para><para><warning>This "
+#~ "will also clear the list of pending operations.</warning></para>"
+#~ msgstr ""
+#~ "<para>Biztosan cseréli a háttérprogramot?</para><para><warning>Az "
+#~ "eszközök újra lesznek olvasva, és a függőben lévő műveletek listája "
+#~ "törlődik.</warning></para>"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to apply the pending operations listed below?</"
+#~ "para><para><warning>This will permanently modify your disks.</warning></"
+#~ "para>"
+#~ msgstr ""
+#~ "<para>Biztosan végrehajtja az alábbi függőben lévő műveleteket?</para> "
+#~ "<para><warning>A módosítások véglegesek lesznek.</warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Apply Pending Operations?"
+#~ msgstr "Végrehajtja a függőben lévő műveleteket?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Apply Pending Operations"
+#~ msgstr "Függőben lévő műveletek végrehajtása"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Applying operations..."
+#~ msgstr "Műveletek végrehajtása…"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Undoing operation: %1"
+#~ msgstr "Művelet visszavonása: %1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to clear the list of pending operations?"
+#~ msgstr "Biztosan törli a függőben lévő műveletek listáját?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Clear Pending Operations?"
+#~ msgstr "Törli a függőben lévő műveleteket?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Clear Pending Operations"
+#~ msgstr "Függőben lévő műveletek törlése"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Clearing the list of pending operations."
+#~ msgstr "A függőben lévő műveletek listájának törlése."
+
+#~ msgctxt "@info"
+#~ msgid "Could not open input file <filename>%1</filename> for import: %2"
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> bemeneti fájl nem nyitható meg "
+#~ "importáláshoz: %2"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Importing Partition Table"
+#~ msgstr "Hiba a partíciós tábla importálásakor"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open device <filename>%1</filename> to set the system type for "
+#~| "partition <filename>%2</filename>."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not open temporary file <filename>%1</filename> while trying to "
+#~ "import from <filename>%2</filename>."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> eszköz partíciós táblája nem nyitható meg "
+#~ "a(z) <filename>%2</filename> partíció fájlrendszerének beállításához."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The import file <filename>%1</filename> does not contain a valid "
+#~ "partition table."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> fájl nem tartalmaz érvényes partíciós táblát."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Importing Partition Table"
+#~ msgstr "Hiba a partíciós tábla importálása közben"
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is unknown (line %2)."
+#~ msgstr "A(z) „%1” partícióstábla-típus ismeretlen (%2. sor)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is not supported for import (line %2)."
+#~ msgstr ""
+#~ "A(z) „%1” partícióstábla-típus importálása nem támogatott (%2. sor)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition %1 has end before start sector (line %2)."
+#~ msgstr "A(z) %1 partíció a kezdőszektor előtt ér véget (%2. sor)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Could not create file system \"%1\" for partition %2 (line %3)."
+#~ msgstr "Nem hozható létre „%1” fájlrendszer a(z) %2 partíción (%3. sor)."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Exporting Partition Table"
+#~ msgstr "Hiba a partíciós tábla exportálásakor"
+
+#~ msgctxt "@title:window"
+#~ msgid "KDE Partition Manager"
+#~ msgstr "KDE partíciókezelő"
+
+#~ msgctxt "@title:window"
+#~ msgid "Devices"
+#~ msgstr "Eszközök"
+
+#~ msgctxt "@title:window"
+#~ msgid "Pending Operations"
+#~ msgstr "Függőben lévő műveletek"
+
+#~ msgctxt "@title:window"
+#~ msgid "Log Output"
+#~ msgstr "Kimeneti napló"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a new partition"
+#~ msgstr "Új partíció létrehozása"
+
+#~ msgctxt "@title:menu turn on and off edit toolbar"
+#~ msgid "Edit Toolbar"
+#~ msgstr "Eszköztár szerkesztése"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition Toolbar"
+#~ msgstr "Partíció eszköztár"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device Toolbar"
+#~ msgstr "Eszköz eszköztár"
+
+#~ msgctxt "@title:menu"
+#~ msgid "View"
+#~ msgstr "Nézet"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device"
+#~ msgstr "Eszköz"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Select Current Device"
+#~ msgstr "Jelenlegi eszköz kiválasztása"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition"
+#~ msgstr "Partíció"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be mounted."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> partíción lévő fájlrendszer nem csatolható."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Mount File System."
+#~ msgstr "A fájlrendszer nem csatolható."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be "
+#~ "unmounted."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> partíción lévő fájlrendszer nem csatolható "
+#~ "le."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Unmount File System."
+#~ msgstr "A fájlrendszer nem csatolható le."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>There is already one primary partition on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgid_plural ""
+#~ "<para>There are already %1 primary partitions on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgstr[0] ""
+#~ "<para>Már van egy elsődleges partíció ezen az eszközön, de ez a "
+#~ "partíciótábla-típus nem tud többet kezelni.</para><para>Nem hozhat létre, "
+#~ "illeszthet be vagy állíthat vissza elsődleges partíciót amíg nem töröl "
+#~ "egy meglévőt.</para>"
+#~ msgstr[1] ""
+#~ "<para>Már van %1 elsődleges partíció ezen az eszközön, de ez a "
+#~ "partíciótábla-típus nem tud többet kezelni.</para><para>Nem hozhat létre, "
+#~ "illeszthet be vagy állíthat vissza elsődleges partíciót amíg nem töröl "
+#~ "egy meglévőt.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Too Many Primary Partitions."
+#~ msgstr "Túl sok elsődleges partíció."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The partition <filename>%1</filename> cannot currently be deleted "
+#~ "because one or more partitions with higher logical numbers are still "
+#~ "mounted.</para><para>Please unmount all partitions with higher logical "
+#~ "numbers than %2 first.</para>"
+#~ msgstr ""
+#~ "<para>A(z) <filename>%1</filename> partíció jelenleg nem törölhető, mivel "
+#~ "egy vagy több partíció nagyobb logikai számmal még csatolva van.</"
+#~ "para><para> Válassza le ezen partíciókat a(z) %2 előtt.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Delete Partition."
+#~ msgstr "A partíció nem törölhető."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you really want to delete the partition that is currently in the "
+#~ "clipboard? It will no longer be available for pasting after it has been "
+#~ "deleted."
+#~ msgstr ""
+#~ "Biztosan törli a vágólapon lévő partíciót? Törlés után nem lesz többé "
+#~ "beilleszthető."
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Delete Partition in the Clipboard?"
+#~ msgstr "Biztosan törli a vágólapon lévő partíciót?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete It"
+#~ msgstr "Törlés"
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Partition <filename>%1</filename> has the same position and size after "
+#~ "resize/move. Ignoring operation."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> partíció mérete és elhelyezkedése nem "
+#~ "változik az átméretezés/mozgatás után. Művelet kihagyása."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Partition <filename>%1</filename> has been copied to the clipboard."
+#~ msgstr "A(z) <filename>%1</filename> partíció a vágólapra került."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Overwriting one partition with another "
+#~ "(or with an image file) will destroy all data on this target partition.</"
+#~ "para><para>If you continue now and apply the resulting operation in the "
+#~ "main window, all data currently stored on <filename>%1</filename> will "
+#~ "unrecoverably be overwritten.</para>"
+#~ msgstr ""
+#~ "<para><warning>A(z) <filename>%1</filename> partíción lévő összes adat "
+#~ "elvesztésére készül.</warning></para><para>Egyik partíció felülírása egy "
+#~ "másikkal vagy egy képfájllal minden adatot megsemmisít a célpartíción.</"
+#~ "para><para>Ha folytatja és végrehajtja az eredményül kapott műveletet a "
+#~ "főablakban, a(z) <filename>%1</filename> partíción tárolt összes adat "
+#~ "helyreállíthatatlanul felül lesz írva.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Overwrite Existing Partition?"
+#~ msgstr "Biztosan felülírja a létező partíciót?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite Partition"
+#~ msgstr "Partíció felülírása"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The selected partition is not large enough to hold the source "
+#~ "partition or the backup file.</para><para>Pick another target or resize "
+#~ "this partition so it is as large as the source.</para>"
+#~ msgstr ""
+#~ "<para>A kijelölt partíció nem elég nagy a forráspartíció vagy biztonsági "
+#~ "mentés tárolásához.</para><para>Válasszon másik célt, vagy méretezze át "
+#~ "ezt a partíciót, hogy olyan nagy legyen min a forrás.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Target Not Large Enough"
+#~ msgstr "A cél mérete nem elég nagy"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>It is not possible to create the target partition large enough to "
+#~ "hold the source.</para><para>This may happen if not all partitions on a "
+#~ "device are correctly aligned or when copying a primary partition into an "
+#~ "extended partition.</para>"
+#~ msgstr ""
+#~ "<para>Nem lehet létrehozni elég nagy célpartíciót a forrás tárolásához. </"
+#~ "para><para>Ez nem megfelelően igazított partíciók esetén vagy elsődleges "
+#~ "partíció kiterjesztett partícióra másolásakor történhet.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Create Target Partition."
+#~ msgstr "A célpartíció nem hizható létre."
+
+#~ msgctxt "@info"
+#~ msgid "Do you want to overwrite the existing file <filename>%1</filename>?"
+#~ msgstr "Biztosan felülírja a(z) <filename>%1</filename> fájlt?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Overwrite Existing File?"
+#~ msgstr "Felülírja a létező fájlt?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite File"
+#~ msgstr "Fájl felülírása"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system in the image file <filename>%1</filename> is too large to "
+#~ "be restored to the selected partition."
+#~ msgstr ""
+#~ "A(z) <filename>%1</filename> képfájlban lévő fájlrendszer túl nagy, nem "
+#~ "állítható vissza a kijelölt partícióra."
+
+#~ msgctxt "@title:window"
+#~ msgid "Not Enough Space to Restore File System."
+#~ msgstr "Nincs elég hely a fájlrendszer visszaállításához."
+
+#~ msgid "Partition"
+#~ msgstr "Partíció"
+
+#~ msgid "Type"
+#~ msgstr "Típus"
+
+#~ msgid "Mount Point"
+#~ msgstr "Csatolási pont"
+
+#~ msgid "Size"
+#~ msgstr "Méret"
+
+#~ msgid "Used"
+#~ msgstr "Használt"
+
+#~ msgid "Available"
+#~ msgstr "Elérhető"
+
+#~ msgid "First Sector"
+#~ msgstr "Első szektor"
+
+#~ msgid "Last Sector"
+#~ msgstr "Utolsó szektor"
+
+#~ msgid "Number of Sectors"
+#~ msgstr "Szektorok száma"
+
+#~ msgid "Flags"
+#~ msgstr "Jelzők"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition properties: <filename>%1</filename>"
+#~ msgstr "Partíciótulajdonságok: <filename>%1</filename>"
+
+#~ msgctxt "@item mountpoint"
+#~ msgid "(none found)"
+#~ msgstr "(egy sem található)"
+
+#~ msgctxt "@label partition state"
+#~ msgid "idle"
+#~ msgstr "inaktív"
+
+#~ msgctxt "@label partition state"
+#~ msgid "At least one logical partition is mounted."
+#~ msgstr "Legalább egy logikai partíció csatolt."
+
+#~ msgctxt "@label partition state"
+#~ msgid "mounted"
+#~ msgstr "csatolva"
+
+#~ msgctxt "@item uuid"
+#~ msgid "(none)"
+#~ msgstr "(nincs)"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~| "filename>.</warning></para><para>Overwriting one partition with another "
+#~| "(or with an image file) will destroy all data on this target partition.</"
+#~| "para><para>If you continue now and apply the resulting operation in the "
+#~| "main window, all data currently stored on <filename>%1</filename> will "
+#~| "unrecoverably be overwritten.</para>"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Changing the file system on a partition "
+#~ "already on disk will erase all its contents. If you continue now and "
+#~ "apply the resulting operation in the main window, all data on <filename>"
+#~ "%1</filename> will unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>A(z) <filename>%1</filename> partíción lévő összes adat "
+#~ "elvesztésére készül.</warning></para><para>Egyik partíció felülírása egy "
+#~ "másikkal vagy egy képfájllal minden adatot megsemmisít a célpartíción.</"
+#~ "para><para>Ha folytatja és végrehajtja az eredményül kapott műveletet a "
+#~ "főablakban, a(z) <filename>%1</filename> partíción tárolt összes adat "
+#~ "helyreállíthatatlanul felül lesz írva.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate <filename>%1</filename> with File System %2?"
+#~ msgstr ""
+#~ "Biztosan újralétrehozza a(z) <filename>%1</filename> partíciót %2 "
+#~ "fájlrendszerrel?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the File System"
+#~ msgstr "Fájlrendszer megváltoztatása"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the File System"
+#~ msgstr "Ne változtassa meg a fájlrendszert"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~| "filename>.</warning></para><para>Overwriting one partition with another "
+#~| "(or with an image file) will destroy all data on this target partition.</"
+#~| "para><para>If you continue now and apply the resulting operation in the "
+#~| "main window, all data currently stored on <filename>%1</filename> will "
+#~| "unrecoverably be overwritten.</para>"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Recreating a file system will erase all "
+#~ "its contents. If you continue now and apply the resulting operation in "
+#~ "the main window, all data on <filesystem>%1</filesystem> will "
+#~ "unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>A(z) <filename>%1</filename> partíción lévő összes adat "
+#~ "elvesztésére készül.</warning></para><para>Egyik partíció felülírása egy "
+#~ "másikkal vagy egy képfájllal minden adatot megsemmisít a célpartíción.</"
+#~ "para><para>Ha folytatja és végrehajtja az eredményül kapott műveletet a "
+#~ "főablakban, a(z) <filename>%1</filename> partíción tárolt összes adat "
+#~ "helyreállíthatatlanul felül lesz írva.</para>"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Shred the file system on <filename>%1</filename>"
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate File System on <filename>%1</filename>?"
+#~ msgstr "Fájlrendszer megsemmisítése a következőn: <filename>%1</filename>"
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate the File System"
+#~ msgstr "Fájlrendszer újralétrehozása"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Recreate the File System"
+#~ msgstr "Ne hozza létre újra a fájlrendszert"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "File system:"
+#~ msgstr "Fájlrendszer:"
+
+#~ msgctxt "@label"
+#~ msgid "Label:"
+#~ msgstr "Címke:"
+
+#~ msgctxt "@label"
+#~ msgid "This file system does not support setting a label."
+#~ msgstr "Ez a fájlrendszer nem támogatja címke beállítását."
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate existing file system"
+#~ msgstr "Létező fájlrendszer újralétrehozása"
+
+#~ msgctxt "@label"
+#~ msgid "Mount point:"
+#~ msgstr "Csatolási pont:"
+
+#~ msgctxt "@label"
+#~ msgid "Partition type:"
+#~ msgstr "Partíciótípus:"
+
+#~ msgctxt "@label"
+#~ msgid "Status:"
+#~ msgstr "Állapot:"
+
+#~ msgctxt "@label"
+#~ msgid "UUID:"
+#~ msgstr "UUID:"
+
+#~ msgctxt "@label"
+#~ msgid "Size:"
+#~ msgstr "Méret:"
+
+#~ msgctxt "@label partition capacity available"
+#~ msgid "Available:"
+#~ msgstr "Elérhető:"
+
+#~ msgctxt "@label partition capacity used"
+#~ msgid "Used:"
+#~ msgstr "Használt:"
+
+#~ msgctxt "@label"
+#~ msgid "First sector:"
+#~ msgstr "Első szektor:"
+
+#~ msgctxt "@label"
+#~ msgid "Last sector:"
+#~ msgstr "Utolsó szektor:"
+
+#~ msgctxt "@label"
+#~ msgid "Number of sectors:"
+#~ msgstr "Szektorok száma:"
+
+#~ msgctxt "@label"
+#~ msgid "Flags:"
+#~ msgstr "Jelzők:"
+
+#~ msgctxt "@info"
+#~ msgid "Please select a device."
+#~ msgstr "Válasszon ki egy eszközt."
+
+#~ msgctxt "@info"
+#~ msgid "No valid partition table was found on this device."
+#~ msgstr "Nem található érvényes partíciós tábla az eszközön."
+
+#~ msgctxt "@title:window"
+#~ msgid "Resize/move partition: <filename>%1</filename>"
+#~ msgstr "Partíció átméretezése/mozgatása: <filename>%1</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Scanning devices..."
+#~ msgstr "Eszközök keresése…"
+
+#~ msgctxt "@label"
+#~ msgid "Scanning..."
+#~ msgstr "Keresés…"
+
+#~ msgctxt "@label"
+#~ msgid "Scanning device: <filename>%1</filename>"
+#~ msgstr "Eszköz keresése: <filename>%1</filename>"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "First sector:"
+#~ msgstr "Első szektor:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Last sector:"
+#~ msgstr "Utolsó szektor:"
+
+#~ msgid "Align partition"
+#~ msgstr "Partícióigazítás"
+
+#~ msgctxt "@item:button advanced settings button"
+#~ msgid "Advanced"
+#~ msgstr "Speciális"
+
+#~ msgid "&Advanced"
+#~ msgstr "&Speciális"
+
+#, fuzzy
+#~| msgctxt "@label:listbox"
+#~| msgid "Partition type:"
+#~ msgctxt "@label:listbox"
+#~ msgid "Partition &type:"
+#~ msgstr "Partíciótípus:"
+
+#, fuzzy
+#~| msgid "Primary"
+#~ msgid "Primar&y"
+#~ msgstr "Elsődleges"
+
+#, fuzzy
+#~| msgid "Extended"
+#~ msgid "E&xtended"
+#~ msgstr "Kiterjesztett"
+
+#, fuzzy
+#~| msgid "Logical"
+#~ msgid "&Logical"
+#~ msgstr "Logikai"
+
+#~ msgctxt "@label"
+#~ msgid "Minimum size:"
+#~ msgstr "Minimális méret:"
+
+#~ msgctxt "@label"
+#~ msgid "Maximum size:"
+#~ msgstr "Maximális méret:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space before:"
+#~ msgstr "Szabad hely előtte:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space after:"
+#~ msgstr "Szabad hely utána:"
+
+#~ msgctxt "@title:window"
+#~ msgid "SMART Properties: <filename>%1</filename>"
+#~ msgstr "SMART-tulajdonságok: <filename>%1</filename>"
+
+#~ msgctxt "@label SMART number of bad sectors"
+#~ msgid "none"
+#~ msgstr "nincs"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Pre-Failure"
+#~ msgstr "Meghibásodás előtti"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Old-Age"
+#~ msgstr "Hajlott korú"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Online"
+#~ msgstr "Online"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Offline"
+#~ msgstr "Offline"
+
+#~ msgid "Model:"
+#~ msgstr "Modell:"
+
+#~ msgid "Serial number:"
+#~ msgstr "Sorozatszám:"
+
+#~ msgid "Firmware revision:"
+#~ msgstr "Belső vezérlőprogram verziója:"
+
+#~ msgid "Temperature:"
+#~ msgstr "Hőmérséklet:"
+
+#~ msgid "Bad sectors:"
+#~ msgstr "Hibás szektorok:"
+
+#~ msgid "Powered on for:"
+#~ msgstr "Bekapcsolt:"
+
+#~ msgid "Power cycles:"
+#~ msgstr "Ki/be kapcsolások:"
+
+#~ msgid "Self tests:"
+#~ msgstr "Önellenőrzések:"
+
+#~ msgid "Overall assessment:"
+#~ msgstr "Összesített értékelés:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save SMART Report."
+#~ msgstr "A SMART-jelentés nem menthető."
+
+#~ msgid "Id"
+#~ msgstr "Azonosító"
+
+#~ msgid "Attribute"
+#~ msgstr "Attribútum"
+
+#~ msgid "Failure Type"
+#~ msgstr "Hiba típusa"
+
+#~ msgid "Update Type"
+#~ msgstr "Frissítés típusa"
+
+#~ msgid "Worst"
+#~ msgstr "Legrosszabb"
+
+#~ msgid "Current"
+#~ msgstr "Jelenlegi"
+
+#~ msgid "Threshold"
+#~ msgstr "Küszöbérték"
+
+#~ msgid "Raw"
+#~ msgstr "Nyers"
+
+#~ msgid "Assessment"
+#~ msgstr "Értékelés"
+
+#~ msgid "Value"
+#~ msgstr "Érték"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "Could not create temporary file when trying to save to <filename>%1</"
+#~| "filename>."
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary output file to save <filename>%1</filename>."
+#~ msgstr ""
+#~ "Nem sikerült létrehozni az átmeneti fájlt a(z) <filename>%1</filename> "
+#~ "mentésére tett kísérlet során."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Saving Log File"
+#~ msgstr "Hiba történt a naplófájl mentése közben"
+
+#~ msgctxt ""
+#~ "@title:column Severity of a log entry / log level. Text must be very "
+#~ "short."
+#~ msgid "Sev."
+#~ msgstr "Súly."
+
+#~ msgid "Severity"
+#~ msgstr "Súlyosság"
+
+#~ msgctxt "@title:column a time stamp of a log entry"
+#~ msgid "Time"
+#~ msgstr "Idő"
+
+#~ msgctxt "@title:column the text message of a log entry"
+#~ msgid "Message"
+#~ msgstr "Üzenet"
+
+#~ msgctxt "@title"
+#~ msgid "<application>KDE Partition Manager</application>"
+#~ msgstr "<application>KDE partíciókezelő</application>"
+
+#~ msgctxt "@title"
+#~ msgid "Manage your disks, partitions and file systems"
+#~ msgstr "Lemez-, partíció és fájlrendszerkezelő"
+
+#, fuzzy
+#~| msgctxt "@info:credit"
+#~| msgid "© 2008-2013 Volker Lanz"
+#~ msgctxt "@info:credit"
+#~ msgid ""
+#~ "© 2008-2013 Volker Lanz\n"
+#~ "© 2012-2015 Andrius Štikonas"
+#~ msgstr "(C) Volker Lanz, 2008-2013."
+
+#~ msgid "Hugo Pereira Da Costa"
+#~ msgstr "Hugo Pereira Da Costa"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Partition Widget Design"
+#~ msgstr "Partíciós elem tervezése"
+
+#~ msgctxt "@title:window"
+#~ msgid "No administrative privileges"
+#~ msgstr "Nincsenek adminisztratív jogosultságok"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error: Could Not Load Backend Plugin"
+#~ msgstr "Hiba: nem sikerült betölteni a háttérprogram bővítményt"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Size:"
+#~ msgstr "Méret:"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Developer"
+#~ msgstr "Fejlesztő"
+
+#~ msgctxt "@title"
+#~ msgid "Dummy Backend Plugin"
+#~ msgstr "Hamis háttérprogram-bővítmény"
+
+#~ msgid "KDE Partition Manager dummy backend."
+#~ msgstr "KDE partíciószerkesztő hamis háttérprogram."
+
+#~ msgid "Copyright 2010 Volker Lanz"
+#~ msgstr "(C) Volker Lanz, 2010."
+
+#~ msgctxt "@title"
+#~ msgid "LibParted Backend Plugin"
+#~ msgstr "LibParted háttérprogram bővítmény"
+
+#~ msgid "KDE Partition Manager backend for libparted."
+#~ msgstr "KDE partíciókezelő modul a libpartedhez."
+
+#~ msgid "Copyright 2008,2009,2010 Volker Lanz"
+#~ msgstr "(C) Volker Lanz, 2008-2010."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error: No Usable Devices Found"
+#~ msgstr "Hiba: nem található használható eszköz"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "unknown"
+#~ msgstr "ismeretlen"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "extended"
+#~ msgstr "extended"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "jfs"
+#~ msgstr "jfs"
+
+#~ msgctxt "@info:credit"
+#~ msgid "(c) 2008, 2009, 2010, 2011 Volker Lanz"
+#~ msgstr "(C) Volker Lanz, 2008, 2009, 2010, 2011."
+
+#~ msgctxt "@title:window"
+#~ msgid "Hide Menu Bar"
+#~ msgstr "Menüsor elrejtése"
