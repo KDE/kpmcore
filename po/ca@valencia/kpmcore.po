@@ -1890,7 +1890,7 @@ msgctxt "@info:progress"
 msgid ""
 "Resizing encrypted file system on partition <filename>%1</filename> failed."
 msgstr ""
-"Ha fallat la redimensió del sistema de fitxers encriptat a la partició "
+"Ha fallat la redimensió del sistema de fitxers encriptat en la partició "
 "<filename>%1</filename>."
 
 #: fs/nilfs2.cpp:137
@@ -2009,7 +2009,7 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "backup."
 msgstr ""
-"No s'ha pogut obrir el sistema de fitxers a la partició d'origen <filename>"
+"No s'ha pogut obrir el sistema de fitxers en la partició d'origen <filename>"
 "%1</filename> per a fer una còpia de seguretat."
 
 #: jobs/backupfilesystemjob.cpp:56
@@ -2039,7 +2039,7 @@ msgstr "Canvieu els permisos de: <filename>%1</filename> a %2"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Check file system on partition <filename>%1</filename>"
-msgstr "Comprova el sistema de fitxers a la partició <filename>%1</filename>"
+msgstr "Comprova el sistema de fitxers en la partició <filename>%1</filename>"
 
 #: jobs/copyfilesystemjob.cpp:48
 #, kde-kuit-format
@@ -2049,9 +2049,9 @@ msgid ""
 "filename> is smaller than the file system on source partition <filename>%2</"
 "filename>."
 msgstr ""
-"No s'ha pogut copiar el sistema de fitxers: el sistema de fitxers a la "
+"No s'ha pogut copiar el sistema de fitxers: el sistema de fitxers en la "
 "partició de destinació <filename>%1</filename> és més xicotet que el sistema "
-"de fitxers a la partició d'origen <filename>%2</filename>."
+"de fitxers en la partició d'origen <filename>%2</filename>."
 
 #: jobs/copyfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -2060,7 +2060,7 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "copying."
 msgstr ""
-"No s'ha pogut obrir el sistema de fitxers a la partició d'origen <filename>"
+"No s'ha pogut obrir el sistema de fitxers en la partició d'origen <filename>"
 "%1</filename> per a copiar."
 
 #: jobs/copyfilesystemjob.cpp:58
@@ -2070,7 +2070,7 @@ msgid ""
 "Could not open file system on target partition <filename>%1</filename> for "
 "copying."
 msgstr ""
-"No s'ha pogut obrir el sistema de fitxers a la partició de destinació "
+"No s'ha pogut obrir el sistema de fitxers en la partició de destinació "
 "<filename>%1</filename> per a copiar."
 
 #: jobs/copyfilesystemjob.cpp:61
@@ -2131,7 +2131,7 @@ msgid ""
 "Create file system <filename>%1</filename> on partition <filename>%2</"
 "filename>"
 msgstr ""
-"Crea el sistema de fitxers <filename>%1</filename> a la partició <filename>"
+"Crea el sistema de fitxers <filename>%1</filename> en la partició <filename>"
 "%2</filename>"
 
 #: jobs/createpartitionjob.cpp:72
@@ -2356,7 +2356,7 @@ msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
 msgstr ""
-"No s'ha pogut obrir el sistema de fitxers a la partició <filename>%1</"
+"No s'ha pogut obrir el sistema de fitxers en la partició <filename>%1</"
 "filename> per a desplaçar-lo."
 
 #: jobs/movefilesystemjob.cpp:54
@@ -2366,15 +2366,15 @@ msgid ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
 msgstr ""
-"No s'ha pogut crear la destinació per a desplaçar el sistema de fitxers a la "
-"partició <filename>%1</filename>."
+"No s'ha pogut crear la destinació per a desplaçar el sistema de fitxers en "
+"la partició <filename>%1</filename>."
 
 #: jobs/movefilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr ""
-"Ha fallat la restauració del sistema de fitxers a la partició <filename>%1</"
+"Ha fallat la restauració del sistema de fitxers en la partició <filename>%1</"
 "filename>."
 
 #: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
@@ -2389,7 +2389,7 @@ msgstr "S'està tancant el dispositiu. Açò pot tardar alguns segons."
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"
 msgstr ""
-"Desplaça el sistema de fitxers a la partició <filename>%1</filename> al "
+"Desplaça el sistema de fitxers en la partició <filename>%1</filename> al "
 "sector %2"
 
 #: jobs/movephysicalvolumejob.cpp:57
@@ -2441,7 +2441,7 @@ msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
 msgstr ""
-"El sistema de fitxers a la partició <filename>%1</filename> no es pot "
+"El sistema de fitxers en la partició <filename>%1</filename> no es pot "
 "redimensionar perquè no admet esta funció."
 
 #: jobs/resizefilesystemjob.cpp:119
@@ -2676,7 +2676,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Establix els atributs «%2» a la partició <filename>%1</filename>"
+msgstr "Establix els atributs «%2» en la partició <filename>%1</filename>"
 
 #: jobs/setpartitionlabeljob.cpp:47
 #, kde-kuit-format
@@ -2718,7 +2718,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "Establix l'etiqueta «%2» a la partició <filename>%1</filename>"
+msgstr "Establix l'etiqueta «%2» en la partició <filename>%1</filename>"
 
 #: jobs/setpartitionuuidjob.cpp:47
 #, kde-kuit-format
@@ -2760,7 +2760,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Establix l'UUID «%2» a la partició <filename>%1</filename>"
+msgstr "Establix l'UUID «%2» en la partició <filename>%1</filename>"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2879,7 +2879,8 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create filesystem %1 on partition <filename>%2</filename>"
-msgstr "Es crea el sistema de fitxers %1 a la partició <filename>%2</filename>"
+msgstr ""
+"Es crea el sistema de fitxers %1 en la partició <filename>%2</filename>"
 
 #: ops/createpartitiontableoperation.cpp:104
 #, kde-kuit-format
@@ -3119,7 +3120,7 @@ msgid ""
 "%1</filename>"
 msgstr ""
 "Ha fallat la redimensió/desplaçament. no s'ha pogut redimensionar el sistema "
-"de fitxers a la partició <filename>%1</filename>"
+"de fitxers en la partició <filename>%1</filename>"
 
 #: ops/resizeoperation.cpp:312
 #, kde-kuit-format
@@ -3142,7 +3143,7 @@ msgid ""
 "Checking target file system on partition <filename>%1</filename> after the "
 "restore failed."
 msgstr ""
-"Ha fallat la comprovació del sistema de fitxers a la partició <filename>%1</"
+"Ha fallat la comprovació del sistema de fitxers en la partició <filename>%1</"
 "filename> després de restaurar."
 
 #: ops/restoreoperation.cpp:138
@@ -3249,7 +3250,7 @@ msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
 msgstr ""
-"No s'ha pogut fer l'esborrat de la signatura del sistema de fitxers a la "
+"No s'ha pogut fer l'esborrat de la signatura del sistema de fitxers en la "
 "partició <filename>%1</filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
@@ -3259,8 +3260,8 @@ msgid ""
 "Could not determine file system of partition at sector %1 on device "
 "<filename>%2</filename>."
 msgstr ""
-"No s'ha pogut determinar el sistema de fitxers a la partició del sector %1 "
-"al dispositiu <filename>%2</filename>."
+"No s'ha pogut determinar el sistema de fitxers en la partició del sector %1 "
+"en el dispositiu <filename>%2</filename>."
 
 #: util/capacity.cpp:100
 #, kde-kuit-format

@@ -1,24 +1,24 @@
-# Translation of kpmcore.po to Euskara/Basque (eu).
-# Copyright (C) 2020 This file is copyright:
+# Translation for kpmcore.po to Euskara/Basque (eu).
+# Copyright (C) 2020-2022 This file is copyright:
 # This file is distributed under the same license as the kpmcore package.
-# KDE euskaratzeko proiektuaren arduraduna <xalba@euskalnet.net>.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2020.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2020-02-07 00:07+0100\n"
-"Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
+"PO-Revision-Date: 2022-10-02 08:33+0200\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.12.2\n"
+"X-Generator: Lokalize 22.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -28,7 +28,7 @@ msgstr "Iñigo Salvador Azurmendi"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "xalba@euskalnet.net"
+msgstr "xalba@ni.eus"
 
 #: core/device.cpp:33
 #, kde-format
@@ -109,6 +109,8 @@ msgid ""
 "Deleting a partition just copied over an existing partition: Removing the "
 "copy and deleting the existing partition."
 msgstr ""
+"Lehendik dagoen partizio baten gainean kopiatutako partizio bat ezabatzea: "
+"kopia kentzea eta dagoen partizioa ezabatzea."
 
 #: core/operationstack.cpp:251
 #, kde-kuit-format
@@ -117,12 +119,14 @@ msgid ""
 "Copying a partition that is itself a copy: Copying the original source "
 "partition instead."
 msgstr ""
+"Bera ere kopia den partizio bat kopiatzea: Horren ordez, jatorrizko sorburu "
+"partizioa kopiatzea."
 
 #: core/operationstack.cpp:280
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Deleting a partition just restored: Removing the restore operation."
-msgstr ""
+msgstr "Leheneratutako partizio bat ezabatzea: Leheneratze-eragiketa kentzea."
 
 #: core/operationstack.cpp:285
 #, kde-kuit-format
@@ -131,30 +135,34 @@ msgid ""
 "Deleting a partition just restored to an existing partition: Removing the "
 "restore operation and deleting the existing partition."
 msgstr ""
+"Lehendik dagoen partizio batean leheneratutako partizio bat ezabatzea: "
+"Leheneratze-eragiketa kentzea eta lehendik dagoen partizioa ezabatzea."
 
 #: core/operationstack.cpp:318
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing flags again for the same partition: Removing old operation."
 msgstr ""
+"Partizio berdinaren banderak berriz aldatzea: Eragiketa zaharra kentzea."
 
 #: core/operationstack.cpp:349
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing label again for the same partition: Removing old operation."
 msgstr ""
+"Partizio berdinaren etiketa berriz aldatzea: Eragiketa zaharra kentzea."
 
 #: core/operationstack.cpp:375
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating new partition table, discarding previous operation on device."
-msgstr ""
+msgstr "Partizio-taula berria sortzea, gailuaren aurreko eragiketak baztertuz."
 
 #: core/operationstack.cpp:395
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing Volume Group, nothing to do."
-msgstr ""
+msgstr "Bolumen-taldearen neurria aldatzea, egitekorik ez."
 
 #: core/operationstack.cpp:440
 #, kde-kuit-format
@@ -184,7 +192,7 @@ msgstr "Lehengoratutako partizioa"
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "Copy of %1"
-msgstr ""
+msgstr "%1(r)en kopia"
 
 #: core/partitionalignment.cpp:80
 #, kde-kuit-format
@@ -193,6 +201,8 @@ msgid ""
 "Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
 "modulo: %3)."
 msgstr ""
+"<filename>%1</filename> partizioa ez dago era egokian lerrokatuta (lehenengo "
+"sektorea: %2, modulua: %3)."
 
 #: core/partitionalignment.cpp:83
 #, kde-kuit-format
@@ -201,6 +211,8 @@ msgid ""
 "Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
 "modulo: %3)."
 msgstr ""
+"<filename>%1</filename> partizioa ez dago era egokian lerrokatuta (azken "
+"sektorea: %2, modulua: %3)."
 
 #: core/partitionrole.cpp:17
 #, kde-kuit-format
@@ -326,19 +338,19 @@ msgstr "apple-tv-recovery"
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "diag"
-msgstr ""
+msgstr "diag"
 
 #: core/partitiontable.cpp:208
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "legacy-boot"
-msgstr ""
+msgstr "legacy-boot"
 
 #: core/partitiontable.cpp:210
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "msft-data"
-msgstr ""
+msgstr "msft-data"
 
 #: core/partitiontable.cpp:212
 #, kde-kuit-format
@@ -362,25 +374,25 @@ msgstr " [RAID %1]"
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr ""
+msgstr " [RAID %1 - Berreskuratzen]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr ""
+msgstr " [RAID %1 - Birsinkronizatzen]"
 
 #: core/smartattribute.cpp:45
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "failing"
-msgstr ""
+msgstr "huts egiten"
 
 #: core/smartattribute.cpp:48
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "has failed"
-msgstr ""
+msgstr "huts egin du"
 
 #: core/smartattribute.cpp:51
 #, kde-kuit-format
@@ -392,7 +404,7 @@ msgstr "abisua"
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "good"
-msgstr ""
+msgstr "ondo"
 
 #: core/smartattribute.cpp:58 core/smartattribute.cpp:85
 #, kde-kuit-format
@@ -412,19 +424,21 @@ msgstr[1] "%1 sektore"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Rate"
-msgstr ""
+msgstr "Irakurketa errore emaria"
 
 #: core/smartattribute.cpp:101
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Rate of hardware read errors while reading data from the disk surface."
 msgstr ""
+"Diskoaren gainazaletik irakurri bitartean, hardwarearen irakurketa errore "
+"emaria."
 
 #: core/smartattribute.cpp:102
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Throughput Performance"
-msgstr ""
+msgstr "Transferentziaren errendimendua"
 
 #: core/smartattribute.cpp:102
 #, kde-format
@@ -439,19 +453,20 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin-Up Time"
-msgstr ""
+msgstr "Biratze eraginkorrerako denbora"
 
 #: core/smartattribute.cpp:103
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Average time of spindle spin up from zero RPM to fully operational."
 msgstr ""
+"Ardatza zero bira minututik guztiz operatibo egoteko batezbesteko denbora."
 
 #: core/smartattribute.cpp:104
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Start/Stop Count"
-msgstr ""
+msgstr "Hasi/gelditu zenbatzea"
 
 #: core/smartattribute.cpp:104
 #, kde-format
