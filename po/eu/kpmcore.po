@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-02 08:33+0200\n"
+"PO-Revision-Date: 2022-10-03 08:15+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -448,6 +448,9 @@ msgid ""
 "of this attribute is decreasing there is a high probability that there is a "
 "problem with the disk."
 msgstr ""
+"Disko zurrun unitate baten transferentziaren errendimendu orokorra. Atributu "
+"honen balioa gutxitzen ari bada, diskoarekin arazo bat egoteko probabilitate "
+"handia dago."
 
 #: core/smartattribute.cpp:103
 #, kde-format
@@ -466,19 +469,19 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Start/Stop Count"
-msgstr "Hasi/gelditu zenbatzea"
+msgstr "Abiatze/gelditze zenbatzea"
 
 #: core/smartattribute.cpp:104
 #, kde-format
 msgctxt "SMART attr description"
 msgid "A tally of spindle start/stop cycles."
-msgstr ""
+msgstr "Ardatzaren abiatze/gelditze zikloen zenbaketa."
 
 #: core/smartattribute.cpp:105
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocated Sectors Count"
-msgstr ""
+msgstr "Birkokatutako sektore kopurua"
 
 #: core/smartattribute.cpp:105
 #, kde-format
@@ -488,12 +491,16 @@ msgid ""
 "verification error, it marks this sector as &quot;reallocated&quot; and "
 "transfers data to a special reserved area (spare area)."
 msgstr ""
+"Birkokatutako sektore kopurua. Disko zurrun unitateak irakurtzeko/ idazteko/"
+"egiaztatzeko errore bat aurkitzen duenean, sektore hori &quot;"
+"birkokatu&quot; gisa markatu eta datuak erreserbatutako eremu berezi batera "
+"(ordezko eremua) transferitzen ditu."
 
 #: core/smartattribute.cpp:106
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Channel Margin"
-msgstr ""
+msgstr "Irakurketa kanalaren marjina"
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -502,6 +509,8 @@ msgid ""
 "Margin of a channel while reading data. The function of this attribute is "
 "not specified."
 msgstr ""
+"Datuak irakurri bitartean kanal baten marjina. Atributu honen funtzioa ez "
+"dago zehaztuta."
 
 #: core/smartattribute.cpp:107
 #, kde-format
@@ -516,12 +525,14 @@ msgid ""
 "Rate of seek errors of the magnetic heads. If there is a partial failure in "
 "the mechanical positioning system, then seek errors will arise."
 msgstr ""
+"Buru magnetikoaren bilaketa-erroreen emaria. Posizionamendu mekanikoko "
+"sisteman akats partzialik bada, bilaketa-erroreak gertatuko dira."
 
 #: core/smartattribute.cpp:108
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Seek Time Performance"
-msgstr ""
+msgstr "Bilaketa-denboraren errendimendua"
 
 #: core/smartattribute.cpp:108
 #, kde-format
@@ -531,18 +542,20 @@ msgid ""
 "attribute is decreasing, it is a sign of problems in the mechanical "
 "subsystem."
 msgstr ""
+"Buru magnetikoaren bilaketa eragiketen batezbesteko errendimendua. Atributu "
+"hori gutxitzen ari bada, azpisistema mekanikoko arazoen seinale da."
 
 #: core/smartattribute.cpp:109
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-On Hours"
-msgstr ""
+msgstr "Pizte-orduak"
 
 #: core/smartattribute.cpp:109
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of hours in power-on state."
-msgstr ""
+msgstr "Piztuta emandako ordu kopurua."
 
 #: core/smartattribute.cpp:110
 #, kde-format
@@ -903,6 +916,9 @@ msgid ""
 "Count of remap operations. The raw value of this attribute shows the total "
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
+"birmapatzeko eragiketa kopurua. Atributu horren balio gordinak birkokatutako "
+"sektoreetako datuak ordezko eremu batera transferitzeko saiakera kopurua "
+"erakusten du."
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -2022,13 +2038,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition table on device <filename>%1</filename>"
-msgstr ""
+msgstr "Sortu partizio-taula berria <filename>%1</filename> gailuan"
 
 #: jobs/createvolumegroupjob.cpp:49
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
-msgstr ""
+msgstr "Sortu bolumen-talde berri bat: <filename>%1</filename> PV: %2 duena"
 
 #: jobs/deactivatelogicalvolumejob.cpp:50
 #, kde-kuit-format
@@ -2040,7 +2056,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Volume Group: <filename>%1</filename>"
-msgstr ""
+msgstr "Desaktibatu bolumen-taldea: <filename>%1</filename>"
 
 #: jobs/deletefilesystemjob.cpp:51
 #, kde-kuit-format
@@ -2209,7 +2225,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
-msgstr ""
+msgstr "Kendu bolumen taldea: <filename>%1</filename>"
 
 #: jobs/resizefilesystemjob.cpp:66
 #, kde-kuit-format
@@ -2300,7 +2316,7 @@ msgstr[1] ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resizing Volume Group %1 to %2."
-msgstr ""
+msgstr "Bolumen-taldea %1(e)tik %2(e)ra neurri-aldatzen."
 
 #: jobs/restorefilesystemjob.cpp:62
 #, kde-kuit-format
@@ -2645,73 +2661,73 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr ""
+msgstr "Sortu '%1' izeneko LVM bolumen-talde berri bat."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate volume group."
-msgstr ""
+msgstr "Desaktibatu bolumen-taldea."
 
 #: ops/deleteoperation.cpp:87
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Shred partition <filename>%1</filename> (%2, %3)"
-msgstr ""
+msgstr "Birrindu <filename>%1</filename> partizioa (%2, %3)"
 
 #: ops/deleteoperation.cpp:89
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Delete partition <filename>%1</filename> (%2, %3)"
-msgstr ""
+msgstr "Ezabatu <filename>%1</filename> partizioa (%2, %3)"
 
 #: ops/newoperation.cpp:205
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
-msgstr ""
+msgstr "Sortu partizio berri bat (%1, %2) <filename>%3</filename>(e)an"
 
 #: ops/operation.cpp:75
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "None"
-msgstr ""
+msgstr "Bat ere ez"
 
 #: ops/operation.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Pending"
-msgstr ""
+msgstr "Egiteke"
 
 #: ops/operation.cpp:77
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Running"
-msgstr ""
+msgstr "Exekutatzen"
 
 #: ops/operation.cpp:78
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Success"
-msgstr ""
+msgstr "Arrakasta"
 
 #: ops/operation.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Warning"
-msgstr ""
+msgstr "Ohartarazpena"
 
 #: ops/operation.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Error"
-msgstr ""
+msgstr "Errorea"
 
 #: ops/removevolumegroupoperation.cpp:35
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove a LVM volume group."
-msgstr ""
+msgstr "Kendu LVM bolumen talde bat."
 
 #: ops/resizeoperation.cpp:156
 #, kde-kuit-format
@@ -3087,13 +3103,13 @@ msgstr ""
 #, kde-format
 msgctxt "direction: left"
 msgid "left"
-msgstr ""
+msgstr "ezkerra"
 
 #: util/externalcommandhelper.cpp:239
 #, kde-format
 msgctxt "direction: right"
 msgid "right"
-msgstr ""
+msgstr "eskuina"
 
 #: util/externalcommandhelper.cpp:261
 #, kde-kuit-format
@@ -3120,8 +3136,8 @@ msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Pusketa 1 kopiatzen (%2) amaitu du."
+msgstr[1] "%1 pusketa kopiatzen (%2) amaitu du."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
@@ -3136,12 +3152,10 @@ msgid "Library for managing partitions"
 msgstr "Partizioak mantentzeko liburutegia"
 
 #: util/helpers.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "&copy; 2008-2019 KPMcore developers"
+#, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2019 KPMcore garatzaileak"
+msgstr "&copy; 2008-2022 KPMcore garatzaileak"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3231,13 +3245,13 @@ msgstr "SMART euskarri hobetua"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "David Edmundson"
-msgstr ""
+msgstr "David Edmundson"
 
 #: util/helpers.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "«KAuth»etik «Polkit»erako eratorpena"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format
