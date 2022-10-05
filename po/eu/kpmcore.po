@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-03 08:15+0200\n"
+"PO-Revision-Date: 2022-10-04 07:00+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -516,7 +516,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Seek Error Rate"
-msgstr ""
+msgstr "Bilaketa-errore emaria"
 
 #: core/smartattribute.cpp:107
 #, kde-format
@@ -561,7 +561,7 @@ msgstr "Piztuta emandako ordu kopurua."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Retry Count"
-msgstr ""
+msgstr "Biratzeko ahalegin kopurua"
 
 #: core/smartattribute.cpp:110
 #, kde-format
@@ -571,12 +571,15 @@ msgid ""
 "An increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"Aurreneko biraketa ahaleginak arrakastarik izan ez badu, biraketa hasteko "
+"ahalegin kopurua. Atributu honen balioa handiagotzea, disko zurrunaren "
+"azpisistema mekanikoko arazoen seinale da."
 
 #: core/smartattribute.cpp:111
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Recalibration Retries"
-msgstr ""
+msgstr "Birkalibratzeko ahaleginak"
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -586,30 +589,33 @@ msgid ""
 "increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"Aurreneko ahaleginak arrakastarik ez badu, kalibratzeko ahalegin kopurua. "
+"Atributu honen balioa handiagotzea, disko zurrunaren azpisistema mekanikoko "
+"arazoen seinale da."
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Cycle Count"
-msgstr ""
+msgstr "Pizte-ziklo kopurua"
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr ""
+msgstr "Disko zurrunaren pizte/itzaltze ziklo oso kopurua."
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft Read Error Rate"
-msgstr ""
+msgstr "Irakur-errore arin kopurua"
 
 #: core/smartattribute.cpp:113
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Uncorrected read errors reported to the operating system."
-msgstr ""
+msgstr "Sistema eragileari jakinarazitako, zuzendu gabeko irakur-erroreak."
 
 #: core/smartattribute.cpp:114
 #, kde-format
@@ -3059,45 +3065,43 @@ msgstr "Komandoa: %1 %2"
 #: util/externalcommandhelper.cpp:82
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr "Ezin izan du <filename>%1</filename> gailua irakurtzeko ireki."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
-msgstr ""
+msgstr "Ezin izan du <filename>%2</filename> gailuan %1 kokalekua bilatu."
 
 #: util/externalcommandhelper.cpp:96
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
-msgstr ""
+msgstr "Ezin izan du <filename>%1</filename> gailutik irakurri."
 
 #: util/externalcommandhelper.cpp:114
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
-msgstr ""
+msgstr "Ezin izan du <filename>%1</filename> gailua idazteko ireki."
 
 #: util/externalcommandhelper.cpp:125
 #, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
-msgstr ""
+msgstr "Ezin du <filename>%1</filename> gailuan idatzi."
 
 #: util/externalcommandhelper.cpp:151
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr "Ezin izan du <filename>%1</filename> irakurtzeko ireki."
 
 #: util/externalcommandhelper.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr "Ezin izan du <filename>%1</filename> fitxategian idatzi."
 
 #: util/externalcommandhelper.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr ""
+msgstr "%1 pusketa (%2 byte) %3(e)tik %4(e)ra kopiatzen, helbidea: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3115,13 +3119,13 @@ msgstr "eskuina"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
-msgstr ""
+msgstr "%1 MiB/segundo kopiatzen, amaitzeko denbora: %2"
 
 #: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr ""
+msgstr "%1 neurriko pusketaren gainerakoa %2(e)tik %3(e)ra kopiatzen."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
