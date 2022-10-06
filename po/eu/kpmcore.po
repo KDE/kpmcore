@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-04 07:00+0200\n"
+"PO-Revision-Date: 2022-10-05 06:55+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -469,7 +469,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Start/Stop Count"
-msgstr "Abiatze/gelditze zenbatzea"
+msgstr "Abiatze/gelditze zenbaketa"
 
 #: core/smartattribute.cpp:104
 #, kde-format
@@ -481,7 +481,7 @@ msgstr "Ardatzaren abiatze/gelditze zikloen zenbaketa."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocated Sectors Count"
-msgstr "Birkokatutako sektore kopurua"
+msgstr "Birkokatutako sektore zenbaketa"
 
 #: core/smartattribute.cpp:105
 #, kde-format
@@ -491,8 +491,8 @@ msgid ""
 "verification error, it marks this sector as &quot;reallocated&quot; and "
 "transfers data to a special reserved area (spare area)."
 msgstr ""
-"Birkokatutako sektore kopurua. Disko zurrun unitateak irakurtzeko/ idazteko/"
-"egiaztatzeko errore bat aurkitzen duenean, sektore hori &quot;"
+"Birkokatutako sektoreen zenbaketa. Disko zurrun unitateak irakurtzeko/ "
+"idazteko/egiaztatzeko errore bat aurkitzen duenean, sektore hori &quot;"
 "birkokatu&quot; gisa markatu eta datuak erreserbatutako eremu berezi batera "
 "(ordezko eremua) transferitzen ditu."
 
@@ -555,13 +555,13 @@ msgstr "Pizte-orduak"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of hours in power-on state."
-msgstr "Piztuta emandako ordu kopurua."
+msgstr "Piztuta emandako ordu zenbaketa."
 
 #: core/smartattribute.cpp:110
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Retry Count"
-msgstr "Biratzeko ahalegin kopurua"
+msgstr "Biratzeko ahalegin zenbaketa"
 
 #: core/smartattribute.cpp:110
 #, kde-format
@@ -572,7 +572,7 @@ msgid ""
 "mechanical subsystem."
 msgstr ""
 "Aurreneko biraketa ahaleginak arrakastarik izan ez badu, biraketa hasteko "
-"ahalegin kopurua. Atributu honen balioa handiagotzea, disko zurrunaren "
+"ahaleginen zenbaketa. Atributu honen balioa handiagotzea, disko zurrunaren "
 "azpisistema mekanikoko arazoen seinale da."
 
 #: core/smartattribute.cpp:111
@@ -589,21 +589,21 @@ msgid ""
 "increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
-"Aurreneko ahaleginak arrakastarik ez badu, kalibratzeko ahalegin kopurua. "
-"Atributu honen balioa handiagotzea, disko zurrunaren azpisistema mekanikoko "
-"arazoen seinale da."
+"Aurreneko ahaleginak arrakastarik ez badu, kalibratzeko ahaleginen "
+"zenbaketa. Atributu honen balioa handiagotzea, disko zurrunaren azpisistema "
+"mekanikoko arazoen seinale da."
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Cycle Count"
-msgstr "Pizte-ziklo kopurua"
+msgstr "Pizte-zikloen zenbaketa"
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr "Disko zurrunaren pizte/itzaltze ziklo oso kopurua."
+msgstr "Disko zurrunaren pizte/itzaltze ziklo osoen zenbaketa."
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
@@ -621,19 +621,21 @@ msgstr "Sistema eragileari jakinarazitako, zuzendu gabeko irakur-erroreak."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr ""
+msgstr "SSD erreserbatutako espazio erabilgarria"
 
 #: core/smartattribute.cpp:114
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of available reserved space as a percentage of reserved space."
 msgstr ""
+"Erreserbatutako espazio erabilgarriaren kopurua, erreserbatutako espazioaren "
+"ehuneko gisa."
 
 #: core/smartattribute.cpp:115
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count"
-msgstr ""
+msgstr "SSD programaren hutsegiteen zenbaketa"
 
 #: core/smartattribute.cpp:115 core/smartattribute.cpp:125
 #, kde-format
@@ -641,36 +643,39 @@ msgctxt "SMART attr description"
 msgid ""
 "Number of flash program operation failures since the drive was deployed."
 msgstr ""
+"Unitatea erabiltzen denetik flash programaren eragiketen hutsegite kopurua."
 
 #: core/smartattribute.cpp:116 core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count"
-msgstr ""
+msgstr "SSD ezabatzeko hutsegiteen zenbaketa"
 
 #: core/smartattribute.cpp:116
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
 msgstr ""
+"Unitatea erabiltzen denetik flash ezabatzeko eragiketen hutsegite kopurua."
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Leveling Count"
-msgstr ""
+msgstr "SSD higadura-mailaren zenbaketa"
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
 msgstr ""
+"Edozein bloketan, ezabatze okerrenen zenbaketa maximoak zenbatzen ditu."
 
 #: core/smartattribute.cpp:118
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unexpected power loss count"
-msgstr ""
+msgstr "SSD ustekabeko energia galera zenbaketa"
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -680,15 +685,18 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
+"Azken komando gisa BEREHALAKO ITXARONALDIA gabeko itzaltze kopurua "
+"(kondentsadoreen potentzia erabiltzen duen PLI jarduera edozein dela ere). "
+"Normalizatutako balioa beti da 100."
 
 #: core/smartattribute.cpp:119
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Power Loss Protection Failure"
-msgstr ""
+msgstr "SSD energia galera babesaren hutsegitea"
 
 #: core/smartattribute.cpp:119
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "Last test result, saturated at its maximum value. Bytes 0-1: last test "
@@ -697,56 +705,56 @@ msgid ""
 "4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
-msgstr ""
+msgstr "Azken probaren emaitza, bere balio maximoan asetuta. 0-1 byteak:"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr ""
+msgstr "SSD ezabatzeko hutsegite zenbaketa (txipa)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase command failures."
-msgstr ""
+msgstr "Flash ezabatze komandoaren hutsegite kopurua."
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Range Delta"
-msgstr ""
+msgstr "SSD higadura-mailaren delta"
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
-msgstr ""
+msgstr "higadura handiena eta txikiena duten flash blokeen arteko delta."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Used Reserved Block Count Total"
-msgstr ""
+msgstr "SSD erabilitako erreserbatutako blokeen kopuru osoa"
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #: core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" Samsung attribute."
-msgstr ""
+msgstr "Samsung \"Pre-Fail\" (hutsegite-aurreko) atributua."
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unused Reserved Block Count Total"
-msgstr ""
+msgstr "SSD erabili gabeko erreserbatutako blokeen kopuru osoa"
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" HP attribute."
-msgstr ""
+msgstr "HP \"Pre-Fail\" (hutsegite-aurreko) atributua."
 
 #: core/smartattribute.cpp:125
 #, kde-format
@@ -764,13 +772,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Western Digital and Samsung attribute."
-msgstr ""
+msgstr "Western Digital eta Samsung atributua."
 
 #: core/smartattribute.cpp:128
 #, kde-format
 msgctxt "SMART attr name"
 msgid "End-to-End Error"
-msgstr ""
+msgstr "Muturretik muturrerako errorea"
 
 #: core/smartattribute.cpp:128
 #, kde-format
