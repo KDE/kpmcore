@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-05 06:55+0200\n"
+"PO-Revision-Date: 2022-10-06 07:17+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -788,48 +788,52 @@ msgid ""
 "data buffer the parity data between the host and the hard drive did not "
 "match."
 msgstr ""
+"HP-ren SMART IV teknologiaren atala: cache RAM datu tarteko-memoriatik "
+"transferitu ondoren, ostalariaren eta disko zurrunaren arteko paritate-"
+"datuak ez datoz bat."
 
 #: core/smartattribute.cpp:129
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Stability"
-msgstr ""
+msgstr "Buruaren egonkortasuna"
 
 #: core/smartattribute.cpp:129 core/smartattribute.cpp:130
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Western Digital attribute."
-msgstr ""
+msgstr "Western Digital atributua."
 
 #: core/smartattribute.cpp:130
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Induced Op-Vibration Detection"
-msgstr ""
+msgstr "Eragindako eragiketa-bibrazioa detektatzea"
 
 #: core/smartattribute.cpp:131
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reported Uncorrectable Errors"
-msgstr ""
+msgstr "Zuzendu ezin diren erroreak jakinarazi dira"
 
 #: core/smartattribute.cpp:131
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could not be recovered using hardware ECC."
 msgstr ""
+"Hardwarearen ECC erabiliz berreskuratu ezin izan ziren erroreen kopurua."
 
 #: core/smartattribute.cpp:132
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Command Timeout"
-msgstr ""
+msgstr "Komandoaren denbora-muga"
 
 #: core/smartattribute.cpp:132
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of aborted operations due to HDD timeout."
-msgstr ""
+msgstr "HDD denbora-mugagatik galarazi diren eragiketen kopurua."
 
 #: core/smartattribute.cpp:133
 #, kde-format
@@ -847,7 +851,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature Difference From 100"
-msgstr ""
+msgstr "100dik aurrerako tenperatura aldea"
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -856,18 +860,21 @@ msgid ""
 "Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
 "minimum threshold which corresponds to a maximum temperature."
 msgstr ""
+"Balioa (100 &ndash; tenp. ºC)ren berdina da, fabrikatzaileari gehienezko "
+"tenperatura bati dagokion gutxieneko atalase bat ezartzeko aukera emanaz."
 
 #: core/smartattribute.cpp:135
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-sense Error Rate"
-msgstr ""
+msgstr "G-sentsorearen errore emaria"
 
 #: core/smartattribute.cpp:135
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors resulting from externally-induced shock and vibration."
 msgstr ""
+"Kanpotik eragindako astinaldi eta bibrazioen ondoriozko erroreen kopurua."
 
 #: core/smartattribute.cpp:136
 #, kde-format
