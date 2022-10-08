@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-06 07:17+0200\n"
+"PO-Revision-Date: 2022-10-07 06:34+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -880,55 +880,56 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Off Retract Count"
-msgstr ""
+msgstr "Itzaltzeagatik barruratze kopurua"
 
 #: core/smartattribute.cpp:136
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of power-off or emergency retract cycles"
-msgstr ""
+msgstr "Itzaltze edo larrialdiagatik barruratze ziklo kopurua"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Cycle Count"
-msgstr ""
+msgstr "Zama-ziklo kopurua"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
 msgstr ""
+"Buruaren lurreratze guneko kokalekuan zama hartze/kentze ziklo kopurua."
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature"
-msgstr ""
+msgstr "Tenperatura"
 
 #: core/smartattribute.cpp:138
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Current internal temperature."
-msgstr ""
+msgstr "Uneko barne-tenperatura."
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Hardware ECC Recovered"
-msgstr ""
+msgstr "Hardware ECC berreskuratua"
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could be recovered using hardware ECC."
-msgstr ""
+msgstr "Hardware ECC erabiliz berreskura litezkeen erroreen kopurua."
 
 #: core/smartattribute.cpp:140
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocation Event Count"
-msgstr ""
+msgstr "Birkokatze gertaera kopurua"
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -937,7 +938,7 @@ msgid ""
 "Count of remap operations. The raw value of this attribute shows the total "
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
-"birmapatzeko eragiketa kopurua. Atributu horren balio gordinak birkokatutako "
+"Birmapatzeko eragiketa kopurua. Atributu horren balio gordinak birkokatutako "
 "sektoreetako datuak ordezko eremu batera transferitzeko saiakera kopurua "
 "erakusten du."
 
@@ -945,7 +946,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Current Pending Sector Count"
-msgstr ""
+msgstr "Egiteke dauden sektoreen uneko kopurua"
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -954,6 +955,8 @@ msgid ""
 "Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
 "read errors)."
 msgstr ""
+"Sektore &quot;ezegonkorren&quot; kopurua (irakurketa erroreengatik "
+"birmapatuak izateko zain daudenak)."
 
 #: core/smartattribute.cpp:142
 #, kde-format
@@ -966,12 +969,13 @@ msgstr ""
 msgctxt "SMART attr description"
 msgid "Count of uncorrectable errors when reading/writing a sector."
 msgstr ""
+"Sektore bat irakurtean/idaztean zuzendu ezin daitezkeen erroreen kopurua."
 
 #: core/smartattribute.cpp:143
 #, kde-format
 msgctxt "SMART attr name"
 msgid "UltraDMA CRC Error Count"
-msgstr ""
+msgstr "UltraDMA CRC errore kopurua"
 
 #: core/smartattribute.cpp:143
 #, kde-format
@@ -980,6 +984,8 @@ msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
 msgstr ""
+"ICRCk zehaztutako moduan, interfaze kable bidez datuak transferitzean errore "
+"kopurua."
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -2625,14 +2631,14 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking source partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "<filename>%1</filename> sorburu partizioa egiaztatzea huts egin du."
 
 #: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
 #: ops/restoreoperation.cpp:148
 #, kde-kuit-format
 msgctxt "@info:status (success, error, warning...) of operation"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: ops/copyoperation.cpp:179
 #, kde-kuit-format
@@ -2641,6 +2647,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6)"
 msgstr ""
+"Kopiatu <filename>%1</filename> (%2, %3) partizioa <filename>%4</"
+"filename>(e)ra (%5, %6)"
 
 #: ops/copyoperation.cpp:188
 #, kde-kuit-format
@@ -2649,6 +2657,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6) and grow it to %7"
 msgstr ""
+"Kopiatu <filename>%1</filename> (%2, %3) partizioa <filename>%4</"
+"filename>(e)ra (%5, %6) eta hazi %7 arte."
 
 #: ops/copyoperation.cpp:200
 #, kde-kuit-format
@@ -2657,6 +2667,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename>"
 msgstr ""
+"Kopiatu <filename>%1</filename> (%2, %3) partizioa, <filename>%5</"
+"filename>(a)ren (%4(e)an hasten den) alokatu gabeko espazioan"
 
 #: ops/copyoperation.cpp:208
 #, kde-kuit-format
@@ -2665,18 +2677,21 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename> and grow it to %6"
 msgstr ""
+"Kopiatu <filename>%1</filename> (%2, %3) partizioa, <filename>%5</"
+"filename>(a)ren (%4(e)an hasten den) alokatu gabeko espazioan eta hazi %6 "
+"arte."
 
 #: ops/createfilesystemoperation.cpp:89
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create filesystem %1 on partition <filename>%2</filename>"
-msgstr ""
+msgstr "Sortu %1 fitxategi-sistema <filename>%2</filename> partizioan"
 
 #: ops/createpartitiontableoperation.cpp:104
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
-msgstr ""
+msgstr "Sortu partizio taula berri bat (mota: %1) <filename>%2</filename>(e)an"
 
 #: ops/createvolumegroupoperation.cpp:36
 #, kde-kuit-format
@@ -2754,49 +2769,53 @@ msgstr "Kendu LVM bolumen talde bat."
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Moving extended partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "<filename>%1</filename> partizio hedatua lekuz aldatzea huts egin du."
 
 #: ops/resizeoperation.cpp:165
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> after resize/move failed."
 msgstr ""
+"Neurria/lekuz aldatu ondoren <filename>%1</filename> partizioa egiaztatzea "
+"huts egin du."
 
 #: ops/resizeoperation.cpp:168
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing/moving partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "<filename>%1</filename> partizioa neurriz/lekuz aldatzea huts egin du."
 
 #: ops/resizeoperation.cpp:171
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> before resize/move failed."
 msgstr ""
+"Neurriz/lekuz aldatu aurretik <filename>%1</filename> partizioa egiaztatzea "
+"huts egin du."
 
 #: ops/resizeoperation.cpp:201
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the left by %2"
-msgstr ""
+msgstr "Mugitu <filename>%1</filename> partizioa ezkerrera %2"
 
 #: ops/resizeoperation.cpp:204
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the right by %2"
-msgstr ""
+msgstr "Mugitu <filename>%1</filename> partizioa eskuinera %2"
 
 #: ops/resizeoperation.cpp:207
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Grow partition <filename>%1</filename> from %2 to %3"
-msgstr ""
+msgstr "Hai <filename>%1</filename> partizioa %2(e)tik %3(e)ra"
 
 #: ops/resizeoperation.cpp:210
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Shrink partition <filename>%1</filename> from %2 to %3"
-msgstr ""
+msgstr "Txikiagotu <filename>%1</filename> partizioa %2(e)tik %3(e)ra"
 
 #: ops/resizeoperation.cpp:213
 #, kde-kuit-format
@@ -2938,37 +2957,38 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "Ezarri <filename>%1</filename> partizioaren etiketa \"%2\""
 
 #: ops/setfilesystemlabeloperation.cpp:60
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
 msgstr ""
+"Ezarri <filename>%1</filename> partizioaren etiketa \"%2\"(e)tik \"%3\"(e)ra"
 
 #: ops/setpartflagsoperation.cpp:62
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Clear flags for partition <filename>%1</filename>"
-msgstr ""
+msgstr "Garbitu <filename>%1</filename> partizioaren banderak"
 
 #: ops/setpartflagsoperation.cpp:64
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "<filename>%1</filename> partizioaren banderak \"%2\"(e)ra ezarri"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:219
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
-msgstr ""
+msgstr "Aurkitutako software bidezko RAID gailua: %1"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:249
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Device found: %1"
-msgstr ""
+msgstr "Aurkitutako gailua: %1"
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
 #, kde-kuit-format
@@ -2976,6 +2996,8 @@ msgctxt "@info:progress"
 msgid ""
 "Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
 msgstr ""
+"<filename>%1</filename> partizio berrirako eginkizun ezezaguna (eginkizunak: "
+"%2)"
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:89
 #, kde-kuit-format
@@ -2984,6 +3006,8 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
+"<filename>%2</filename> gailuari <filename>%1</filename> partizioa gehitzea "
+"huts egin du."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:114
 #, kde-kuit-format
@@ -2992,6 +3016,8 @@ msgid ""
 "Could not set geometry for partition <filename>%1</filename> while trying to "
 "resize/move it."
 msgstr ""
+"Neurria/Lekuz aldatzen saiatzean ezin izan du <filename>%1</filename> "
+"partizioaren geometria ezarri."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:124
 #, kde-kuit-format
@@ -2999,6 +3025,8 @@ msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
 msgstr ""
+"<filename>%1</filename> partizioan fitxategi-sistemako sinadura ezabatzea "
+"huts egin du."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
 #, kde-kuit-format
@@ -3007,6 +3035,8 @@ msgid ""
 "Could not determine file system of partition at sector %1 on device "
 "<filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%2</filename> gailuan, %1 sektorean dagoen partizioko "
+"fitxategi-sistema zehaztu."
 
 #: util/capacity.cpp:100
 #, kde-kuit-format
