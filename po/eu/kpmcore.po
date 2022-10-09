@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-07 06:34+0200\n"
+"PO-Revision-Date: 2022-10-09 00:57+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -962,14 +962,14 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Uncorrectable Sector Count"
-msgstr ""
+msgstr "Sektore zuzengaitzen kopurua"
 
 #: core/smartattribute.cpp:142
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of uncorrectable errors when reading/writing a sector."
 msgstr ""
-"Sektore bat irakurtean/idaztean zuzendu ezin daitezkeen erroreen kopurua."
+"Sektore bat irakurtzean/idaztean zuzendu ezin daitezkeen erroreen kopurua."
 
 #: core/smartattribute.cpp:143
 #, kde-format
@@ -997,7 +997,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "The total number of errors when writing a sector."
-msgstr ""
+msgstr "Sektore bat idaztean izandako erroreen kopuru osoa."
 
 #: core/smartattribute.cpp:145
 #, kde-format
@@ -1027,19 +1027,19 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of ECC errors"
-msgstr ""
+msgstr "ECC errore kopurua"
 
 #: core/smartattribute.cpp:148
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft ECC Correction"
-msgstr ""
+msgstr "ECC software bidezko zuzenketa"
 
 #: core/smartattribute.cpp:148
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors corrected by software ECC"
-msgstr ""
+msgstr "ECC softwarearen bidezko errore zuzenketa kopurua"
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -1051,7 +1051,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors due to high temperature."
-msgstr ""
+msgstr "Tenperatura altuek eragindako errore kopurua."
 
 #: core/smartattribute.cpp:150
 #, kde-format
@@ -1110,25 +1110,25 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Vibration During Write"
-msgstr ""
+msgstr "Idazketa garaiko bibrazioa"
 
 #: core/smartattribute.cpp:154
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Vibration During Write"
-msgstr ""
+msgstr "Idazketa garaik bibrazioa"
 
 #: core/smartattribute.cpp:155
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Shock During Write"
-msgstr ""
+msgstr "Idazketa garaiko astinaldia"
 
 #: core/smartattribute.cpp:155
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Shock During Write"
-msgstr ""
+msgstr "Idazketa garaiko astinaldia"
 
 #: core/smartattribute.cpp:156
 #, kde-format
@@ -1931,12 +1931,10 @@ msgid ""
 msgstr ""
 
 #: jobs/changepermissionsjob.cpp:43
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr "Aldatu <filename>%1</filename>(e)ren baimenak «%2»(e)ra"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, kde-kuit-format
@@ -2234,7 +2232,7 @@ msgstr ""
 #, kde-format, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
-msgstr ""
+msgstr "Gailua ixten. Segundo batzuk beharko ditu."
 
 #: jobs/movefilesystemjob.cpp:79
 #, kde-kuit-format
@@ -2350,6 +2348,7 @@ msgstr "Bolumen-taldea %1(e)tik %2(e)ra neurri-aldatzen."
 msgctxt "@info:progress"
 msgid "Could not open backup file <filename>%1</filename> to restore from."
 msgstr ""
+"Ezin du <filename>%1</filename> babes-kopia fitxategia leheneratzeko ireki."
 
 #: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
 #, kde-kuit-format
@@ -2569,12 +2568,10 @@ msgid ""
 msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
 
 #: jobs/setpartitionuuidjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr "Ezarri <filename>%1</filename> partizioko UUID «%2»(e)ra"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2824,6 +2821,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
 "to %4"
 msgstr ""
+"Mugitu <filename>%1</filename> partizioa ezkerrera %2 eta hazi %3(e)tik "
+"%4(e)ra"
 
 #: ops/resizeoperation.cpp:216
 #, kde-kuit-format
@@ -2832,6 +2831,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and grow it from "
 "%3 to %4"
 msgstr ""
+"Mugitu <filename>%1</filename> partizioa eskuinera %2 eta hazi %3(e)tik "
+"%4(e)ra"
 
 #: ops/resizeoperation.cpp:219
 #, kde-kuit-format
@@ -2840,6 +2841,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
+"Mugitu <filename>%1</filename> partizioa ezkerrera %2 eta txikiagotu "
+"%3(e)tik %4(e)ra"
 
 #: ops/resizeoperation.cpp:222
 #, kde-kuit-format
@@ -2848,12 +2851,14 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
+"Mugitu <filename>%1</filename> partizioa eskuinera %2 eta txikiagotu "
+"%3(e)tik %4(e)ra"
 
 #: ops/resizeoperation.cpp:229
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Unknown resize/move action."
-msgstr ""
+msgstr "Neurria/lekuz aldatzeko ekintza ezezaguna."
 
 #: ops/resizeoperation.cpp:258
 #, kde-kuit-format
@@ -2862,18 +2867,22 @@ msgid ""
 "Resize/move failed: Could not resize file system to shrink partition "
 "<filename>%1</filename>."
 msgstr ""
+"Neurria/lekuz aldatzea huts egin du: Fitxategi-sistemaren neurria ezin izan "
+"du aldatu <filename>%1</filename> partizioa txikitzeko."
 
 #: ops/resizeoperation.cpp:263
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
 msgstr ""
+"Neurria/lekuz aldatzea huts egin du: <filename>%1</filename> partizioa ezin "
+"izan du txikiagotu."
 
 #: ops/resizeoperation.cpp:282
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Moving partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "<filename>%1</filename> partizioa lekuz aldatzea huts egin du."
 
 #: ops/resizeoperation.cpp:287
 #, kde-kuit-format
@@ -2882,6 +2891,8 @@ msgid ""
 "Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
 "back."
 msgstr ""
+"<filename>%1</filename> partiziorako fitxategi-sistema lekuz aldatzea huts "
+"egin du. Aurreko egoerara itzultzen."
 
 #: ops/resizeoperation.cpp:291
 #, kde-kuit-format
@@ -2890,12 +2901,16 @@ msgid ""
 "Moving back partition <filename>%1</filename> to its original position "
 "failed."
 msgstr ""
+"<filename>%1</filename> partizioa bere jatorrizko kokapenera eramatea huts "
+"egin du."
 
 #: ops/resizeoperation.cpp:304
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
 msgstr ""
+"Neurria/lekuz aldatzea huts egin du: Ezin izan du <filename>%1</filename> "
+"partizioa hazi."
 
 #: ops/resizeoperation.cpp:309
 #, kde-kuit-format
@@ -2904,6 +2919,8 @@ msgid ""
 "Resize/move failed: Could not resize the file system on partition <filename>"
 "%1</filename>"
 msgstr ""
+"Neurria/lekuz aldatzea huts egin du: Ezin izan du <filename>%1</filename> "
+"partizioko fitxategi-sistemaren neurria aldatu."
 
 #: ops/resizeoperation.cpp:312
 #, kde-kuit-format
@@ -2911,12 +2928,13 @@ msgctxt "@info:status"
 msgid ""
 "Could not restore old partition size for partition <filename>%1</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> partizioaren neurri zaharra leheneratu."
 
 #: ops/resizevolumegroupoperation.cpp:108
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resize volume %1 from %2 to %3"
-msgstr ""
+msgstr "Neurria aldatu %1 bolumenari, %2(e)tik %3(e)ra"
 
 #: ops/restoreoperation.cpp:133
 #, kde-kuit-format
@@ -2930,13 +2948,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Restoring file system failed."
-msgstr ""
+msgstr "Fitxategi-sistema lehengoratzea huts egin du."
 
 #: ops/restoreoperation.cpp:141
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating the destination partition to restore to failed."
-msgstr ""
+msgstr "Lehengoratzeko jomugako partizioa sortzea huts egin du."
 
 #: ops/restoreoperation.cpp:156
 #, kde-kuit-format
@@ -2944,6 +2962,8 @@ msgctxt "@info:status"
 msgid ""
 "Restore partition from <filename>%1</filename> to <filename>%2</filename>"
 msgstr ""
+"Lehengoratu <filename>%1</filename>(e)ko partizioa <filename>%2</"
+"filename>(e)ra"
 
 #: ops/restoreoperation.cpp:158
 #, kde-kuit-format
