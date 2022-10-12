@@ -4,21 +4,22 @@
 # Artem Sereda <overmind88@gmail.com>, 2008, 2009, 2010, 2011.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2011, 2016, 2017, 2019.
 # Yuri Efremov <yur.arh@gmail.com>, 2010, 2013.
+# Olesya Gerasimenko <translation-team@basealt.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2019-08-19 02:40+0300\n"
-"Last-Translator: Alexander Potashev <aspotashev@gmail.com>\n"
-"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"PO-Revision-Date: 2022-10-11 16:10+0300\n"
+"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 19.07.70\n"
+"X-Generator: Lokalize 22.04.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -26,12 +27,14 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Артём Середа,Антон Безкапустин,Виктор Рыжих"
+msgstr "Артём Середа,Антон Безкапустин,Виктор Рыжих,Олеся Герасименко"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "overmind88@gmail.com,CJIECAPb-nsk@yandex.ru,victorr2007@yandex.ru"
+msgstr ""
+"overmind88@gmail.com,CJIECAPb-nsk@yandex.ru,victorr2007@yandex.ru,"
+"translation-team@basealt.ru"
 
 #: core/device.cpp:33
 #, kde-format
@@ -48,7 +51,7 @@ msgstr "%1 – %2 (%3)"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "An error occurred while running lvdisplay."
-msgstr ""
+msgstr "При запуске lvdisplay произошла ошибка."
 
 #: core/operationstack.cpp:101
 #, kde-kuit-format
@@ -372,19 +375,19 @@ msgstr "неизвестная"
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level]"
 msgid " [RAID %1]"
-msgstr ""
+msgstr " [RAID %1]"
 
 #: core/raid/softwareraid.cpp:95
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr ""
+msgstr " [RAID %1 — восстановление]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr ""
+msgstr " [RAID %1 — повторная синхронизация]"
 
 #: core/smartattribute.cpp:45
 #, kde-kuit-format
@@ -674,19 +677,19 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Leveling Count"
-msgstr ""
+msgstr "Выравниваний износа SSD"
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr ""
+msgstr "Подсчитывает максимальное наихудшее количество стираний на блоке."
 
 #: core/smartattribute.cpp:118
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unexpected power loss count"
-msgstr ""
+msgstr "Неожиданных потерь питания SSD"
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -696,6 +699,9 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
+"Количество отключений питания без STANDBY IMMEDIATE как последней команды "
+"(без учёта работы PLI за счёт питания от конденсаторов). Нормализованное "
+"значение всегда равняется 100."
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -714,36 +720,43 @@ msgid ""
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
 msgstr ""
+"Последний результат проверки до граничного максимального значения. Байты "
+"0-1: последний результат для времени разрядки ячейки в диапазоне [25, "
+"5000000] в микросекундах, меньшие значения являются кодом ошибки. Байты 2-3: "
+"время в минутах с момента последней проверки. Байты 4-5: общее количество "
+"проверок. Нормализованное значение — 1, если проверка не пройдена, или 11, "
+"если конденсатор проходил проверку при чрезмерных температурах, иначе — 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr ""
+msgstr "Сбоев стирания SSD (чип)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase command failures."
-msgstr ""
+msgstr "Количество сбоев при выполнении команды стирания флеш-памяти."
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Range Delta"
-msgstr ""
+msgstr "Разница диапазона износа SSD"
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
 msgstr ""
+"Разница между наиболее изношенным и наименее изношенным блоками флеш-памяти."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Used Reserved Block Count Total"
-msgstr ""
+msgstr "Всего используемых резервных блоков SSD"
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #: core/smartattribute.cpp:126
@@ -756,7 +769,7 @@ msgstr "Атрибут Samsung «близок к отказу»."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unused Reserved Block Count Total"
-msgstr ""
+msgstr "Всего неиспользуемых резервных блоков SSD"
 
 #: core/smartattribute.cpp:124
 #, kde-format
@@ -768,7 +781,7 @@ msgstr "Атрибут HP «близок к отказу»."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
-msgstr ""
+msgstr "Всего программных отказов SSD или количество доступов не по 4 кБ"
 
 #: core/smartattribute.cpp:127
 #, kde-format
@@ -1366,7 +1379,7 @@ msgid ""
 "Time while head is positioning<br/>or counts the number of times the link is "
 "reset during a data transfer."
 msgstr ""
-"Время, затраченной на позиционирования головок<br/>\n"
+"Время, затраченное на позиционирование головок,<br/>\n"
 "или число событий прерывания связи при передаче данных."
 
 #: core/smartattribute.cpp:172
@@ -1397,13 +1410,13 @@ msgstr "Общее число операций чтения логических
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD NAND_Writes_1GiB"
-msgstr ""
+msgstr "NAND_Writes_1GiB SSD"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr ""
+msgstr "Количество записей в NAND в блоках по 1 ГБ"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1734,58 +1747,52 @@ msgid "f2fs"
 msgstr "F2FS"
 
 #: fs/filesystem.cpp:530
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "ufs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "udf"
-msgstr "UFS"
+msgstr "UDF"
 
 #: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
-msgstr ""
+msgstr "ISO 9660"
 
 #: fs/filesystem.cpp:532
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "luks"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks2"
-msgstr "LUKS"
+msgstr "LUKS2"
 
 #: fs/filesystem.cpp:533
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "fat16"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat12"
-msgstr "FAT16"
+msgstr "FAT12"
 
 #: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
-msgstr ""
+msgstr "linux_raid_member"
 
 #: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
-msgstr ""
+msgstr "BitLocker"
 
 #: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
-msgstr ""
+msgstr "APFS"
 
 #: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
-msgstr ""
+msgstr "MINIX"
 
 #: fs/filesystem.cpp:580 fs/luks.cpp:156
 #, kde-kuit-format
@@ -1855,13 +1862,13 @@ msgstr "Деактивировать файл подкачки"
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
-msgstr ""
+msgstr "Разблокировать"
 
 #: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
-msgstr ""
+msgstr "Заблокировать"
 
 #: fs/luks.cpp:252
 #, kde-format
@@ -2019,12 +2026,10 @@ msgstr ""
 "<filename>%2</filename>"
 
 #: jobs/changepermissionsjob.cpp:43
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Установить метку раздела <filename>%1</filename> в «%2»"
+msgstr "Смена прав доступа: <filename>%1</filename> на %2"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, kde-kuit-format
@@ -2091,7 +2096,7 @@ msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
 msgstr ""
-"Не удалось задать тип файловой системы для раздела <filename>%1</filename>."
+"Не удалось задать тип файловой системы раздела <filename>%1</filename>."
 
 #: jobs/createfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2101,7 +2106,7 @@ msgid ""
 "system type for partition <filename>%2</filename>."
 msgstr ""
 "Не удалось открыть таблицу раздела на устройстве <filename>%1</filename> для "
-"задания типа файловой системы для раздела <filename>%2</filename>."
+"задания типа файловой системы раздела <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:70
 #, kde-kuit-format
@@ -2111,7 +2116,7 @@ msgid ""
 "partition <filename>%2</filename>."
 msgstr ""
 "Не удалось открыть устройство <filename>%1</filename> для задания типа "
-"файловой системы для раздела <filename>%2</filename>."
+"файловой системы раздела <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:84
 #, kde-kuit-format
@@ -2223,8 +2228,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "file system on <filename>%2</filename>."
 msgstr ""
-"Не удалось открыть таблицу раздела на устройстве <filename>%1</filename> для "
-"удаления файловой системы на <filename>%2</filename>."
+"Не удалось открыть таблицу разделов на устройстве <filename>%1</filename> "
+"для удаления файловой системы на <filename>%2</filename>."
 
 #: jobs/deletefilesystemjob.cpp:83
 #, kde-kuit-format
@@ -2255,8 +2260,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "partition <filename>%2</filename>."
 msgstr ""
-"Не удалось открыть таблицу раздела на устройстве <filename>%1</filename> для "
-"удаления раздела <filename>%2</filename>."
+"Не удалось открыть таблицу разделов на устройстве <filename>%1</filename> "
+"для удаления раздела <filename>%2</filename>."
 
 #: jobs/deletepartitionjob.cpp:67
 #, kde-kuit-format
@@ -2631,178 +2636,130 @@ msgstr ""
 "длина: %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
-"Файловая система на разделе <filename>%1</filename> не поддерживает "
-"назначение меток. Задание пропущено."
+"Таблица разделов раздела <filename>%1</filename> не поддерживает назначение "
+"атрибутов. Задание пропущено."
 
 #: jobs/setpartitionattributesjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
-msgstr "Ошибка создания нового раздела <filename>%1</filename>."
+msgstr "Ошибка назначения атрибутов раздела <filename>%1</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
-"Не удалось открыть таблицу раздела на устройстве <filename>%1</filename> для "
-"задания типа файловой системы для раздела <filename>%2</filename>."
+"Не удалось открыть таблицу разделов на устройстве <filename>%1</filename> "
+"для задания атрибутов раздела <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
 msgstr ""
-"Не удалось открыть устройство <filename>%1</filename> для задания типа "
-"файловой системы для раздела <filename>%2</filename>."
+"Не удалось открыть устройство <filename>%1</filename> для задания атрибутов "
+"раздела <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Установить метку раздела <filename>%1</filename> в «%2»"
+msgstr "Установка атрибутов раздела <filename>%1</filename> в «%2»"
 
 #: jobs/setpartitionlabeljob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
-"Файловая система на разделе <filename>%1</filename> не поддерживает "
-"назначение меток. Задание пропущено."
+"Таблица разделов раздела <filename>%1</filename> не поддерживает назначение "
+"имён. Задание пропущено."
 
 #: jobs/setpartitionlabeljob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr "Ошибка создания нового раздела <filename>%1</filename>."
+msgstr "Ошибка назначения имени раздела <filename>%1</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
-"Не удалось открыть таблицу раздела на устройстве <filename>%1</filename> для "
-"задания типа файловой системы для раздела <filename>%2</filename>."
+"Не удалось открыть таблицу разделов на устройстве <filename>%1</filename> "
+"для задания имени раздела <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Не удалось открыть устройство <filename>%1</filename> для задания типа "
-"файловой системы для раздела <filename>%2</filename>."
+"Не удалось открыть устройство <filename>%1</filename> для задания имени "
+"раздела <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "Установить метку раздела <filename>%1</filename> в «%2»"
+msgstr "Установка метки раздела <filename>%1</filename> в «%2»"
 
 #: jobs/setpartitionuuidjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
-"Файловая система на разделе <filename>%1</filename> не поддерживает "
-"назначение меток. Задание пропущено."
+"Таблица разделов раздела <filename>%1</filename> не поддерживает назначение "
+"UUID. Задание пропущено."
 
 #: jobs/setpartitionuuidjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr "Ошибка создания нового раздела <filename>%1</filename>."
+msgstr "Ошибка назначения UUID раздела <filename>%1</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
-"Не удалось открыть таблицу раздела на устройстве <filename>%1</filename> для "
-"задания типа файловой системы для раздела <filename>%2</filename>."
+"Не удалось открыть таблицу разделов на устройстве <filename>%1</filename> "
+"для задания UUID раздела <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Не удалось открыть устройство <filename>%1</filename> для задания типа "
-"файловой системы для раздела <filename>%2</filename>."
+"Не удалось открыть устройство <filename>%1</filename> для задания UUID "
+"раздела <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Установить метку раздела <filename>%1</filename> в «%2»"
+msgstr "Установка UUID раздела <filename>%1</filename> в «%2»"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2928,12 +2885,10 @@ msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
 msgstr "Создать новую таблицу разделов (тип: %1) на <filename>%2</filename>"
 
 #: ops/createvolumegroupoperation.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Create a new LVM volume group."
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "Создание новой группы томов LVM."
+msgstr "Создание новой группы томов LVM с именем «%1»."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
@@ -3046,7 +3001,7 @@ msgstr "Переместить раздел <filename>%1</filename> вправо
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Grow partition <filename>%1</filename> from %2 to %3"
-msgstr "Увеличить раздел <filename>%1</filename> с %2 до %3"
+msgstr "Увеличение раздела <filename>%1</filename> с %2 до %3"
 
 #: ops/resizeoperation.cpp:210
 #, kde-kuit-format
@@ -3240,12 +3195,10 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Установить флаги для раздела <filename>%1</filename> на «%2»"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:219
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Device found: %1"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
-msgstr "Найдено устройство: %1"
+msgstr "Найдено программное устройство RAID: %1"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:249
 #, kde-kuit-format
@@ -3372,73 +3325,57 @@ msgid "Command: %1 %2"
 msgstr "Команда: %1 %2"
 
 #: util/externalcommandhelper.cpp:82
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Could not open file <filename>%1</filename> for writing."
+#, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr "Невозможно открыть файл <filename>%1</filename> для записи."
+msgstr "Не удалось открыть устройство <filename>%1</filename> для чтения."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
-msgstr "Не удалось получить доступ к устройству <filename>%1</filename>"
+msgstr "Не удалось перейти к позиции %1 на устройстве <filename>%2</filename>."
 
 #: util/externalcommandhelper.cpp:96
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
-msgstr "Не удалось получить доступ к устройству <filename>%1</filename>"
+msgstr "Не удалось выполнить чтение с устройства <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:114
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Could not open file <filename>%1</filename> for writing."
+#, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
-msgstr "Невозможно открыть файл <filename>%1</filename> для записи."
+msgstr "Не удалось открыть устройство <filename>%1</filename> для записи."
 
 #: util/externalcommandhelper.cpp:125
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
-msgstr "Не удалось получить доступ к устройству <filename>%1</filename>"
+msgstr "Не удалось выполнить запись на устройство <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:151
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "Could not open file <filename>%1</filename> for writing."
+#, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
 msgstr "Невозможно открыть файл <filename>%1</filename> для записи."
 
 #: util/externalcommandhelper.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr "Не удалось получить доступ к устройству <filename>%1</filename>"
+msgstr "Не удалось выполнить запись в файл <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying %1 blocks (%2 sectors) from %3 to %4, direction: %5."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr "Копирование %1 блоков (%2 секторов) с %3 по %4, направление: %5."
+msgstr "Копирование %1 блоков (%2 байт) из %3 в %4, направление: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
 msgctxt "direction: left"
 msgid "left"
-msgstr ""
+msgstr "влево"
 
 #: util/externalcommandhelper.cpp:239
 #, kde-format
 msgctxt "direction: right"
 msgid "right"
-msgstr ""
+msgstr "вправо"
 
 #: util/externalcommandhelper.cpp:261
 #, kde-kuit-format
@@ -3447,29 +3384,22 @@ msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Копирование: %1 МиБ/с, оставшееся время: %2"
 
 #: util/externalcommandhelper.cpp:274
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying remainder of block size %1 from %2 to %3."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr "Копирование оставшихся блоков размером %1 с %2 по %3."
+msgstr "Копирование остатка блоков размером %1 с %2 до %3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
 msgid "1 byte"
 msgid_plural "%1 bytes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%1 байт"
+msgstr[1] "%1 байт"
+msgstr[2] "%1 байт"
+msgstr[3] "1 байт"
 
 #: util/externalcommandhelper.cpp:288
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:progress argument 2 is a string such as 7 bytes (localized "
-#| "accordingly)"
-#| msgid "Copying 1 block (%2) finished."
-#| msgid_plural "Copying %1 blocks (%2) finished."
+#, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
@@ -3477,7 +3407,7 @@ msgid_plural "Copying %1 chunks (%2) finished."
 msgstr[0] "Копирование %1 блока (%2) завершено."
 msgstr[1] "Копирование %1 блоков (%2) завершено."
 msgstr[2] "Копирование %1 блоков (%2) завершено."
-msgstr[3] "Копирование %1 блока (%2) завершено."
+msgstr[3] "Копирование 1 блока (%2) завершено."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
@@ -3492,12 +3422,10 @@ msgid "Library for managing partitions"
 msgstr "Библиотека для управления разделами"
 
 #: util/helpers.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "&copy; 2008-2016 KPMcore developers"
+#, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; Разработчики KPMcore, 2008-2016"
+msgstr "&copy; Разработчики KPMcore, 2008-2022"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3530,12 +3458,10 @@ msgid "Teo Mrnjavac"
 msgstr "Teo Mrnjavac"
 
 #: util/helpers.cpp:58
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "Calamares maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Calamares maintainer"
-msgstr "Сопровождающий Calamares"
+msgstr "Бывший сопровождающий Calamares"
 
 #: util/helpers.cpp:59
 #, kde-kuit-format
@@ -3553,21 +3479,19 @@ msgstr "Поддержка LVM"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Pali Rohár"
-msgstr ""
+msgstr "Pali Rohár"
 
 #: util/helpers.cpp:60
-#, fuzzy, kde-format
-#| msgctxt "@info:credit"
-#| msgid "LVM support"
+#, kde-format
 msgctxt "@info:credit"
 msgid "UDF support"
-msgstr "Поддержка LVM"
+msgstr "Поддержка UDF"
 
 #: util/helpers.cpp:61
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Adriaan de Groot"
-msgstr ""
+msgstr "Adriaan de Groot"
 
 #: util/helpers.cpp:61
 #, kde-format
@@ -3579,27 +3503,25 @@ msgstr "Сопровождающий Calamares"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Caio Jordão Carvalho"
-msgstr ""
+msgstr "Caio Jordão Carvalho"
 
 #: util/helpers.cpp:62
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Save SMART Report"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Improved SMART support"
-msgstr "Сохранить отчёт SMART"
+msgstr "Улучшение поддержки SMART"
 
 #: util/helpers.cpp:63
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "David Edmundson"
-msgstr ""
+msgstr "David Edmundson"
 
 #: util/helpers.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "Перенос с KAuth на Polkit"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format
@@ -3632,8 +3554,6 @@ msgid "Machine:"
 msgstr "Система:"
 
 #, fuzzy
-#~| msgctxt "@action:button"
-#~| msgid "Run without administrative privileges"
 #~ msgctxt "@info:status"
 #~ msgid "Could not obtain administrator privileges."
 #~ msgstr "Запустить без привилегий суперпользователя"
@@ -3647,8 +3567,6 @@ msgstr "Система:"
 #~ msgstr "Деактивировать"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "LibParted Exception: %1"
 #~ msgctxt "@info:status"
 #~ msgid "LibParted Exception: %1"
 #~ msgstr "Ошибка LibParted: %1"
@@ -3662,10 +3580,6 @@ msgstr "Система:"
 #~ "разделов «%1» для <filename>%2</filename>."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Creating partition table failed: Could not open device <filename>%1</"
-#~| "filename>."
 #~ msgctxt "@info:progress"
 #~ msgid ""
 #~ "Creating partition table failed: Could not open backend device <filename>"
@@ -3675,10 +3589,6 @@ msgstr "Система:"
 #~ "%1</filename>."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Creating partition table failed: Could not retrieve partition table type "
-#~| "\"%1\" for <filename>%2</filename>."
 #~ msgctxt "@info:progress"
 #~ msgid ""
 #~ "Creating partition table failed: Could not create a new partition table "
@@ -3756,8 +3666,6 @@ msgstr "Система:"
 #~ "filename>."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "Restoring file system failed."
 #~ msgctxt "@info:progress"
 #~ msgid "No file system defined."
 #~ msgstr "Ошибка восстановления файловой системы."
@@ -3775,15 +3683,11 @@ msgstr "Система:"
 #~ msgstr "Флаг «%1» недоступен на разделах данной таблицы разделов."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "(Command timeout while starting)"
 #~ msgctxt "@info:status"
 #~ msgid "(Command timeout while starting)"
 #~ msgstr "(Время ожидания команды при запуске)"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "(Command timeout while running)"
 #~ msgctxt "@info:status"
 #~ msgid "(Command timeout while running)"
 #~ msgstr "(Время ожидания команды при выполнении)"
@@ -3805,10 +3709,6 @@ msgstr "Система:"
 #~ "попытке обновления загрузочного сектора NTFS."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "The sector size in the source and target for copying are not the same. "
-#~| "This is currently unsupported."
 #~ msgctxt "@info:progress"
 #~ msgid ""
 #~ "The logical sector sizes in the source and target for copying are not the "
@@ -3829,10 +3729,6 @@ msgstr "Система:"
 #~ msgstr "Столбцы"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Warning: Maximizing file system on target partition <filename>%1</"
-#~| "filename> to the size of the partition failed."
 #~ msgctxt "@info:status"
 #~ msgid ""
 #~ "Warning: Maximizing file system on target partition <filename>%1</"
@@ -3878,29 +3774,20 @@ msgstr "Система:"
 #~ msgstr "ЭиБ"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "Check file system on partition <filename>%1</filename>"
 #~ msgctxt "@info/plain"
 #~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
 #~ msgstr "Проверить файловую систему раздела <filename>%1</filename>"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "Delete the partition <filename>%1</filename>"
 #~ msgctxt "@title:window"
 #~ msgid "Decrypt LUKS partition on <filename>%1</filename>"
 #~ msgstr "Удалить раздел <filename>%1</filename>"
 
 #, fuzzy
-#~| msgid "Date:"
 #~ msgid "&Name:"
 #~ msgstr "Дата:"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Could not open partition <filename>%1</filename> while trying to resize "
-#~| "the file system."
 #~ msgctxt "@info/plain"
 #~ msgid ""
 #~ "Could not open partition <filename>%1</filename> for writing when trying "
@@ -3910,10 +3797,6 @@ msgstr "Система:"
 #~ "раздел <filename>%1</filename>."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Could not get constraint for partition <filename>%1</filename> while "
-#~| "trying to resize/move it."
 #~ msgctxt "@info/plain"
 #~ msgid ""
 #~ "Could not seek to position 0x48 on partition <filename>%1</filename> when "
@@ -3923,8 +3806,6 @@ msgstr "Система:"
 #~ "не завершено изменение его размера или перемещение."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "Could not resize file system on partition <filename>%1</filename>."
 #~ msgctxt "@info/plain"
 #~ msgid ""
 #~ "Could not write new NTFS serial number to partition <filename>%1</"
@@ -3934,8 +3815,6 @@ msgstr "Система:"
 #~ "filename>."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "Failed to create new partition <filename>%1</filename>."
 #~ msgctxt "@info/plain"
 #~ msgid ""
 #~ "Updated NTFS serial number for partition <filename>%1</filename> "
@@ -4158,7 +4037,6 @@ msgstr "Система:"
 #~ msgstr "Файловая система по умолчанию:"
 
 #, fuzzy
-#~| msgid "Shrink"
 #~ msgid "Shredding"
 #~ msgstr "Уменьшить"
 
@@ -4267,8 +4145,6 @@ msgstr "Система:"
 #~ msgstr "Создание новой таблицы разделов на <filename>%1</filename>"
 
 #, fuzzy
-#~| msgctxt "@action:button"
-#~| msgid "&Create New Partition Table"
 #~ msgid "Create &New Partition Table"
 #~ msgstr "&Создать таблицу разделов"
 
@@ -4440,8 +4316,6 @@ msgstr "Система:"
 #~ msgstr "Без автоматического подключения"
 
 #, fuzzy
-#~| msgctxt "@title:menu"
-#~| msgid "Device"
 #~ msgid "Device Node"
 #~ msgstr "Устройство"
 
@@ -4510,8 +4384,6 @@ msgstr "Система:"
 #~ msgstr "Вспомогательные инструменты"
 
 #, fuzzy
-#~| msgctxt "@action:button"
-#~| msgid "&Rescan Support"
 #~ msgctxt "@action:button"
 #~ msgid "Rescan Support"
 #~ msgstr "&Обновить"
@@ -5277,12 +5149,6 @@ msgstr "Система:"
 #~ msgstr "Недостаточно места"
 
 #, fuzzy
-#~| msgctxt "@info"
-#~| msgid ""
-#~| "<para>It is not possible to create the target partition large enough to "
-#~| "hold the source.</para><para>This may happen if not all partitions on a "
-#~| "device start and end on cylinder boundaries or when copying a primary "
-#~| "partition into an extended partition.</para>"
 #~ msgctxt "@info"
 #~ msgid ""
 #~ "<para>It is not possible to create the target partition large enough to "
@@ -5379,13 +5245,6 @@ msgstr "Система:"
 #~ msgstr "(нет)"
 
 #, fuzzy
-#~| msgctxt "@info"
-#~| msgid ""
-#~| "<para><warning>You are about to lose all data on partition <filename>%1</"
-#~| "filename>.</warning></para><para>Changing the file system on a partition "
-#~| "already on disk will erase all its contents. If you continue now and "
-#~| "apply the resulting operation in the main window, all data on <filename>"
-#~| "%1</filename> will unrecoverably be lost.</para>"
 #~ msgctxt "@info"
 #~ msgid ""
 #~ "<para><warning>You are about to lose all data on partition <filename>%1</"
@@ -5414,13 +5273,6 @@ msgstr "Система:"
 #~ msgstr "Не изменять файловую систему"
 
 #, fuzzy
-#~| msgctxt "@info"
-#~| msgid ""
-#~| "<para><warning>You are about to lose all data on partition <filename>%1</"
-#~| "filename>.</warning></para><para>Recreating a file system will erase all "
-#~| "its contents. If you continue now and apply the resulting operation in "
-#~| "the main window, all data on <filename>%1</filename> will unrecoverably "
-#~| "be lost.</para>"
 #~ msgctxt "@info"
 #~ msgid ""
 #~ "<para><warning>You are about to lose all data on partition <filename>%1</"
@@ -5541,8 +5393,6 @@ msgstr "Система:"
 #~ msgstr "Последний сектор:"
 
 #, fuzzy
-#~| msgctxt "@info:tooltip"
-#~| msgid "New partition"
 #~ msgid "Align partition"
 #~ msgstr "Новый раздел"
 
@@ -5551,8 +5401,6 @@ msgstr "Система:"
 #~ msgstr "Дополнительно"
 
 #, fuzzy
-#~| msgctxt "@title:tab advanced application settings"
-#~| msgid "Advanced"
 #~ msgid "&Advanced"
 #~ msgstr "Дополнительно"
 
@@ -5561,17 +5409,14 @@ msgstr "Система:"
 #~ msgstr "&Тип раздела:"
 
 #, fuzzy
-#~| msgid "Primary"
 #~ msgid "Primar&y"
 #~ msgstr "Основной"
 
 #, fuzzy
-#~| msgid "Extended"
 #~ msgid "E&xtended"
 #~ msgstr "Расширенный"
 
 #, fuzzy
-#~| msgid "Logical"
 #~ msgid "&Logical"
 #~ msgstr "Логический"
 
@@ -5643,7 +5488,6 @@ msgstr "Система:"
 #~ msgstr "Тип обновления"
 
 #, fuzzy
-#~| msgid "Create"
 #~ msgid "Current"
 #~ msgstr "Создать"
 
@@ -5681,7 +5525,6 @@ msgstr "Система:"
 #~ msgstr "Управляет вашими дисками, разделами и файловыми системами"
 
 #, fuzzy
-#~| msgid "Copyright 2008,2009,2010 Volker Lanz"
 #~ msgctxt "@info:credit"
 #~ msgid ""
 #~ "© 2008-2013 Volker Lanz\n"
@@ -5696,8 +5539,6 @@ msgstr "Система:"
 #~ msgstr "Разработка виджета разделов"
 
 #, fuzzy
-#~| msgctxt "@title:menu"
-#~| msgid "Device"
 #~ msgctxt "@info:shell"
 #~ msgid "Device(s) to manage"
 #~ msgstr "Устройство"
@@ -5720,10 +5561,6 @@ msgstr "Система:"
 #~ msgstr "Запуск без прав системного администратора"
 
 #, fuzzy
-#~| msgctxt "@info"
-#~| msgid ""
-#~| "The configured external browser could not be run. Please check your "
-#~| "settings."
 #~ msgctxt "@info"
 #~ msgid ""
 #~ "<para>The configured backend plugin \"%1\" could not be loaded.</"
@@ -5735,10 +5572,6 @@ msgstr "Система:"
 #~ msgstr "Ошибка: не удалось загрузить внутренний модуль"
 
 #, fuzzy
-#~| msgctxt "@info"
-#~| msgid ""
-#~| "The configured external browser could not be run. Please check your "
-#~| "settings."
 #~ msgctxt "@info"
 #~ msgid ""
 #~ "<para>Neither the configured (\"%1\") nor the default (\"%2\") backend "
@@ -5754,8 +5587,6 @@ msgstr "Система:"
 #~ msgstr "Размер:"
 
 #, fuzzy
-#~| msgctxt "@title:window"
-#~| msgid "KDE Partition Manager"
 #~ msgid "KDE Partition Manager dummy backend."
 #~ msgstr "Управление разделами KDE"
 
@@ -5763,13 +5594,11 @@ msgstr "Система:"
 #~ msgstr "© Volker Lanz, 2010"
 
 #, fuzzy
-#~| msgid "LibParted version:"
 #~ msgctxt "@title"
 #~ msgid "LibParted Backend Plugin"
 #~ msgstr "Версия LibParted:"
 
 #, fuzzy
-#~| msgid "KDE Partition Manager KPart"
 #~ msgid "KDE Partition Manager backend for libparted."
 #~ msgstr "Управление разделами KDE"
 
@@ -5813,8 +5642,6 @@ msgstr "Система:"
 #~ msgstr "Скрыть панель меню"
 
 #, fuzzy
-#~| msgctxt "@label partition"
-#~| msgid "Available:"
 #~ msgid "Available:"
 #~ msgstr "Доступно:"
 
@@ -5822,8 +5649,6 @@ msgstr "Система:"
 #~ msgstr "Использовано:"
 
 #, fuzzy
-#~| msgctxt "@title:menu"
-#~| msgid "Partition Toolbar"
 #~ msgctxt "@title:window"
 #~ msgid "Target Partition Too Big"
 #~ msgstr "Панель разделов"
@@ -5835,34 +5660,24 @@ msgstr "Система:"
 #~ msgstr "Идентификатор пользователя:"
 
 #, fuzzy
-#~| msgctxt "@action:button"
-#~| msgid "Run without administrative privileges"
 #~ msgctxt "@label"
 #~ msgid "Allow Applying Operations Without Administrator Privileges"
 #~ msgstr "Запустить без привилегий суперпользователя"
 
 #, fuzzy
-#~| msgctxt "@label device"
-#~| msgid "Cylinder size:"
 #~ msgid "Alignment"
 #~ msgstr "Размер цилиндра:"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "Could not create backup file <filename>%1</filename>."
 #~ msgctxt "@info"
 #~ msgid "Could not create output file <filename>%1</filename> for export."
 #~ msgstr "Не удалось создать резервную копию <filename>%1</filename>."
 
 #, fuzzy
-#~| msgctxt "@label device"
-#~| msgid "Total sectors:"
 #~ msgid "Total Sectors:"
 #~ msgstr "Всего секторов:"
 
 #, fuzzy
-#~| msgctxt "@label device"
-#~| msgid "Cylinder size:"
 #~ msgid "Cylinder Size:"
 #~ msgstr "Размер цилиндра:"
 
@@ -5880,10 +5695,6 @@ msgstr "Система:"
 #~ msgstr "Изменить"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "The partition cannot be created with the requested length of %1 sectors "
-#~| "and will instead only be %2 sectors long."
 #~ msgctxt "@info/plain"
 #~ msgid ""
 #~ "The partition cannot be created with the requested length of one sector, "
@@ -5903,9 +5714,6 @@ msgstr "Система:"
 #~ "будет установлен размер %2 секторов."
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "and will instead only be 1 sector long."
-#~| msgid_plural "and will instead only be %2 sectors long."
 #~ msgctxt "@info/plain"
 #~ msgid "and will instead only be one sector long."
 #~ msgid_plural "and will instead only be %1 sectors long."
@@ -5919,8 +5727,6 @@ msgstr "Система:"
 #~ msgstr " МиБ"
 
 #, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Mount point:"
 #~ msgctxt "@title:window"
 #~ msgid "Edit mount point for %1"
 #~ msgstr "Точка монтирования:"
@@ -5942,8 +5748,6 @@ msgstr "Система:"
 #~ "удалось открыть устройство <filename>%2</filename>."
 
 #, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "unknown"
 #~ msgctxt "@item/plain disk label name"
 #~ msgid "unknown"
 #~ msgstr "неизвестно"
@@ -5965,14 +5769,10 @@ msgstr "Система:"
 #~ msgstr "Уничтожить все данные на устройстве?"
 
 #, fuzzy
-#~| msgctxt "@item partition flag"
-#~| msgid "swap"
 #~ msgid "swap"
 #~ msgstr "swap"
 
 #, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "fat16"
 #~ msgid "vfat"
 #~ msgstr "fat16"
 
