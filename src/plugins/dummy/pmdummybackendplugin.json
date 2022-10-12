@@ -29,6 +29,7 @@
         "Name[pl]": "Fikcyjny silnik zarządzania partycjami",
         "Name[pt]": "Infra-Estrutura de Testes para o Gestor de Partições do KDE",
         "Name[pt_BR]": "Gerenciador de Partição do KDE Simulado Back-end",
+        "Name[ru]": "Проверочный механизм для диспетчера разделов KDE",
         "Name[sk]": "Testovací program v pozadí KDE Správcu partícií",
         "Name[sl]": "KDE Partition Manager prazen zaledni program",
         "Name[sv]": "KDE:s partitionshanterare bakgrundsprogram för test",
