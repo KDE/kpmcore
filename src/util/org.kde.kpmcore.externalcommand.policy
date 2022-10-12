@@ -23,6 +23,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="pl">Uruchom uprzywilejowane zarządzanie partycjami</description>
       <description xml:lang="pt">Executar o utilitário privilegiado do gestor de partições</description>
       <description xml:lang="pt_BR">Executa o auxiliar do gerenciador de partições com privilégios</description>
+      <description xml:lang="ru">Запуск привилегированной программы для управления разделами</description>
       <description xml:lang="sl">Zaženi pooblaščenega pomočnika skrbnika particij</description>
       <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
       <description xml:lang="tr">Yetkilendirilmiş bölümlendirme yöneticisi yardımcısını çalıştır</description>
@@ -48,6 +49,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="pl">Do zarządzania dyskami wymagane są uprawnienia administratora</message>
       <message xml:lang="pt">São necessários privilégios de administração para gerir os discos</message>
       <message xml:lang="pt_BR">São necessários privilégios administrativos para gerenciar discos</message>
+      <message xml:lang="ru">Для управления дисками требуются права администратора</message>
       <message xml:lang="sk">Na správu diskov sa vyžadujú oprávnenia správcu</message>
       <message xml:lang="sl">Za upravljanje diskov so potrebne pravice upravljavca računalnika</message>
       <message xml:lang="sv">Administratörsprivilegier krävs för att hantera diskar</message>
