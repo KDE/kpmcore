@@ -31,7 +31,6 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
       <description xml:lang="zh_CN">使用管理员权限运行分区管理器辅助程序</description>
       <message>Administrative privileges are required to manage disks</message>
-      <message xml:lang="ast">Ríquense los privilexos alministrativos pa xestionar discos</message>
       <message xml:lang="ca">Es requereixen privilegis d'administrador per a gestionar els discs</message>
       <message xml:lang="ca@valencia">Es requerixen privilegis d'administrador per a gestionar els discs</message>
       <message xml:lang="cs">Pro správu disků jsou potřeba práva administrátora</message>
