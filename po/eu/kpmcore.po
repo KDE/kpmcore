@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-09 00:57+0200\n"
+"PO-Revision-Date: 2022-10-20 07:01+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -1072,19 +1072,20 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin High Current"
-msgstr ""
+msgstr "Biraketarako korronte altua"
 
 #: core/smartattribute.cpp:151
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Amount of surge current used to spin up the drive."
 msgstr ""
+"Unitatea bira arazteko erabilitako tentsio tentsio igoeraren zenbatekoa."
 
 #: core/smartattribute.cpp:152
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Buzz"
-msgstr ""
+msgstr "Biraketaren burrunba"
 
 #: core/smartattribute.cpp:152
 #, kde-format
@@ -1093,6 +1094,8 @@ msgid ""
 "Number of buzz routines needed to spin up the drive due to insufficient "
 "power."
 msgstr ""
+"Unitatearen biraketa abiadura azkartzeko beharrezko burrunba-errutinak, "
+"potentzia nahikoa ez delako."
 
 #: core/smartattribute.cpp:153
 #, kde-format
