@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2022-10-20 07:01+0200\n"
+"PO-Revision-Date: 2022-10-22 05:40+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -761,12 +761,13 @@ msgstr "HP \"Pre-Fail\" (hutsegite-aurreko) atributua."
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
 msgstr ""
+"SSD programaren hutsegiteen guztizkoa edo ez-4K lerrotutako atzipen kopurua"
 
 #: core/smartattribute.cpp:127
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SATA Downshift Error Count"
-msgstr ""
+msgstr "SATA moteltze errore kopurua"
 
 #: core/smartattribute.cpp:127
 #, kde-format
@@ -839,13 +840,13 @@ msgstr "HDD denbora-mugagatik galarazi diren eragiketen kopurua."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "High Fly Writes"
-msgstr ""
+msgstr "Hegaldatze altuko idazketa"
 
 #: core/smartattribute.cpp:133
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of fly height errors detected."
-msgstr ""
+msgstr "Hautemandako hegaldatze altuko erroreen kopurua."
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -991,7 +992,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Multi-Zone Error Rate<br/>Write Error Rate"
-msgstr ""
+msgstr "Multi-zona errore-tasa<br/>Idazketa-errorearen tasa"
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -2518,57 +2519,56 @@ msgid ""
 msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
 
 #: jobs/setpartitionlabeljob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr ""
+"Ezin izan du <filename>%1</filename> gailua, <filename>%2</filename> "
+"partizioaren izena ezartzeko ireki."
 
 #: jobs/setpartitionlabeljob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr "Ezarri <filename>%1</filename> partizioko etiketa \"%2\" gisa"
 
 #: jobs/setpartitionuuidjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr ""
+"<filename>%1</filename> partizioaren partizio-taulak ez du onartzen UUID "
+"ezartzea. Lana ezikusi da."
 
 #: jobs/setpartitionuuidjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr "<filename>%1</filename> partizioaren UUID ezartzea huts egin du."
 
 #: jobs/setpartitionuuidjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename> partizioko UUID ezartzeko, ireki."
 
 #: jobs/setpartitionuuidjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr ""
+"Ezin izan du <filename>%1</filename> gailua, <filename>%2</filename> "
+"partizioko UUID ezartzeko, ireki."
 
 #: jobs/setpartitionuuidjob.cpp:74
 #, kde-kuit-format
@@ -2581,12 +2581,13 @@ msgstr "Ezarri <filename>%1</filename> partizioko UUID «%2»(e)ra"
 msgctxt "@info:progress"
 msgid "Could not open random data source to overwrite file system."
 msgstr ""
+"Ezin izan du, Fitxategi-sistema gainidazteko, datuen ausazko sorburua ireki."
 
 #: jobs/shredfilesystemjob.cpp:77
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
-msgstr ""
+msgstr "Birriundu <filename>%1</filename>(e)ko fitxategi-sistema"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -2594,12 +2595,14 @@ msgctxt "@info:status"
 msgid ""
 "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
 msgstr ""
+"Egin <filename>%1</filename> (%2, %3) partizioaren babes-kopia, <filename>"
+"%4</filename>(e)an"
 
 #: ops/checkoperation.cpp:50
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
-msgstr ""
+msgstr "Partizioa, <filename>%1</filename> (%2, %3), ikuskatu eta konpondu"
 
 #: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
 #, kde-kuit-format
@@ -2608,24 +2611,28 @@ msgid ""
 "<warning>Maximizing file system on target partition <filename>%1</filename> "
 "to the size of the partition failed.</warning>"
 msgstr ""
+"<warning>helburuko <filename>%1</filename> partizioan, fitxategi-sistema "
+"partizioaren neurrira maximizatzea huts egin du.</warning>"
 
 #: ops/copyoperation.cpp:151
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking target partition <filename>%1</filename> after copy failed."
 msgstr ""
+"Helburuko <filename>%1</filename> partizioa ikuskatzea, kopiatzea huts egin "
+"ondoren."
 
 #: ops/copyoperation.cpp:158
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying source to target partition failed."
-msgstr ""
+msgstr "Sorburua helburuko partiziora kopiatzea huts egin du."
 
 #: ops/copyoperation.cpp:161
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating target partition for copying failed."
-msgstr ""
+msgstr "Kopiatzeko, helburuko partizioa sortzea huts egin du."
 
 #: ops/copyoperation.cpp:163
 #, kde-kuit-format
@@ -2946,6 +2953,8 @@ msgid ""
 "Checking target file system on partition <filename>%1</filename> after the "
 "restore failed."
 msgstr ""
+"<filename>%1</filename> partizioko helburuko fitxategi-sistema ikuskatzea, "
+"lehengoratzeak huts egin ondoren."
 
 #: ops/restoreoperation.cpp:138
 #, kde-kuit-format
@@ -2975,6 +2984,8 @@ msgid ""
 "Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
 "filename>"
 msgstr ""
+"Leheneratu <filename>%1</filename>(e)an, <filename>%3</filename>(e)tik "
+"%2(e)ra dagoen partizioa"
 
 #: ops/setfilesystemlabeloperation.cpp:58
 #, kde-kuit-format
