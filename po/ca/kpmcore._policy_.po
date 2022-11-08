@@ -29,7 +29,3 @@ msgstr "Executa l'ajudant del gestor de particions amb privilegis"
 msgctxt "message"
 msgid "Administrative privileges are required to manage disks"
 msgstr "Es requereixen privilegis d'administrador per a gestionar els discs"
-
-#~ msgctxt "description"
-#~ msgid "Start external command daemon"
-#~ msgstr "Inicia el dimoni d'ordres externes"
