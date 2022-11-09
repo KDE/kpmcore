@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-27 00:47+0000\n"
+"POT-Creation-Date: 2022-11-09 00:51+0000\n"
 "PO-Revision-Date: 2014-03-12 23:25+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -3697,7 +3697,7 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Marken för Partitschoon <filename>%1</filename> op \"%2\" setten"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:219
+#: plugins/sfdisk/sfdiskbackend.cpp:248
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"
@@ -3705,7 +3705,7 @@ msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "Reedschap funnen: %1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:249
+#: plugins/sfdisk/sfdiskbackend.cpp:278
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"

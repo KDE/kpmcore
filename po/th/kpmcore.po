@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-27 00:47+0000\n"
+"POT-Creation-Date: 2022-11-09 00:51+0000\n"
 "PO-Revision-Date: 2010-03-06 19:47+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -3605,7 +3605,7 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "ตั้งค่าแฟล็กต่าง ๆ ให้กับพาร์ทิชัน <filename>%1</filename> ไปเป็น \"%2\""
 
-#: plugins/sfdisk/sfdiskbackend.cpp:219
+#: plugins/sfdisk/sfdiskbackend.cpp:248
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"
@@ -3613,7 +3613,7 @@ msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "อุปกรณ์ที่พบ: %1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:249
+#: plugins/sfdisk/sfdiskbackend.cpp:278
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"
