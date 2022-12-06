@@ -26,7 +26,7 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 
 # Dependencies
 set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.90")
+set(KF5_MIN_VERSION "5.92")
 set(BLKID_MIN_VERSION "2.33.2")
 # PolkitQt5-1
 
@@ -45,6 +45,7 @@ include(FeatureSummary)
 include(GenerateExportHeader)
 include(ECMSetupVersion)
 include(ECMConfiguredInstall)
+include(ECMDeprecationSettings)
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
@@ -71,7 +72,10 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
 
 find_package(PolkitQt${QT_MAJOR_VERSION}-1 REQUIRED)
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+    KF 5.101
+)
+
 kde_enable_exceptions()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
