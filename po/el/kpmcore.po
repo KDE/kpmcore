@@ -4,14 +4,14 @@
 # Toussis Manolis <manolis@koppermind.homelinux.org>, 2008, 2009.
 # Petros Vidalis <p_vidalis@hotmail.com>, 2009.
 # Petros <pvidalis@gmail.com>, 2009.
-# Stelios <sstavra@gmail.com>, 2011, 2012, 2017, 2018, 2019, 2020.
+# Stelios <sstavra@gmail.com>, 2011, 2012, 2017, 2018, 2019, 2020, 2023.
 # Dimitris Kardarakos <dimkard@gmail.com>, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2020-10-14 08:29+0300\n"
+"PO-Revision-Date: 2023-01-07 16:04+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
 "Language: el\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -715,11 +715,11 @@ msgid ""
 "condition, otherwise 100."
 msgstr ""
 "Αποτέλεσμα τελευταίας δοκιμής, κορεσμένο στη μέγιστη τιμή. Bytes 0-1: "
-"aαποτέλεσμα τελευταίας δοκιμής ως μικροδευτερόλεπτα αποφόρτισης πυκνωτή σε "
+"αποτέλεσμα τελευταίας δοκιμής ως μικροδευτερόλεπτα αποφόρτισης πυκνωτή σε "
 "εύρος [25, 5000000], χαμηλότερα από αυτό δείχνει κωδικό σφάλματος. Bytes "
 "2-3: λεπτά πριν την τελευταία δοκιμή. Bytes 4-5: πλήθος δοκιμών στη διάρκεια "
-"ζωής. Η κανονικοποιημένη τιμή ορίζεται σε 1 σε απτυχία της δοκιμής ή 11 αν ο "
-"πυκνωτής έχει δοκιμαστεί σε ακραίες συνθήκες θερμοκρασίας, διαφορετικά 100."
+"ζωής. Η κανονικοποιημένη τιμή ορίζεται σε 1 σε αποτυχία της δοκιμής ή 11 αν "
+"ο πυκνωτής έχει δοκιμαστεί σε ακραίες συνθήκες θερμοκρασίας, διαφορετικά 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
@@ -1179,7 +1179,7 @@ msgstr "Ποσοστό σφάλματος G-Sense"
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr "Ο αριθμός σφαλμάτων που προέρχονται από εξωτερικό χτύπημα και δόνηση."
+msgstr "αριθμός σφαλμάτων που προέρχονται από εξωτερικό χτύπημα και δόνηση."
 
 #: core/smartattribute.cpp:158
 #, kde-format
@@ -2017,12 +2017,10 @@ msgstr ""
 "filename> στο <filename>%2</filename>"
 
 #: jobs/changepermissionsjob.cpp:43
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Να ορισθεί το UUID στην κατάτμηση <filename>%1</filename> σε «%2»"
+msgstr "Αλλαγή των δικαιωμάτων του: <filename>%1</filename> σε %2"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, kde-kuit-format
@@ -3233,7 +3231,7 @@ msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
 msgstr ""
-"Αποτυχία διαγραφής της υπογραφής του συστήματος αρχέιων στην κατάτμηση "
+"Αποτυχία διαγραφής της υπογραφής του συστήματος αρχείων στην κατάτμηση "
 "<filename>%1</filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
@@ -3351,9 +3349,7 @@ msgid "Could not write to file <filename>%1</filename>."
 msgstr "Αδυναμία εγγραφής στο αρχείο <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
 msgstr "Αντιγραφή %1 τμημάτων (%2 bytes) από %3 στο %4, κατεύθυνση: %5."
@@ -3377,9 +3373,7 @@ msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Αντιγραφή %1 MiB/δευτερόλεπτο, εκτιμώμενος απομένοντας χρόνος: %2"
 
 #: util/externalcommandhelper.cpp:274
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying remainder of block size %1 from %2 to %3."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
 msgstr "Αντιγραφή του υπολοίπου του τμήματος μεγέθους %1 από %2 στο %3."
@@ -3392,12 +3386,7 @@ msgstr[0] "1 byte"
 msgstr[1] "%1 bytes"
 
 #: util/externalcommandhelper.cpp:288
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:progress argument 2 is a string such as 7 bytes (localized "
-#| "accordingly)"
-#| msgid "Copying 1 block (%2) finished."
-#| msgid_plural "Copying %1 blocks (%2) finished."
+#, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
@@ -3418,12 +3407,10 @@ msgid "Library for managing partitions"
 msgstr "Βιβλιοθήκη για διαχείριση κατατμήσεων"
 
 #: util/helpers.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "&copy; 2008-2020 KPMcore developers"
+#, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2020 οι προγραμματιστές του KPMcore"
+msgstr "&copy; 2008-2022 οι προγραμματιστές του KPMcore"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
