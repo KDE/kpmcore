@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-01-12 06:57+0100\n"
+"PO-Revision-Date: 2023-01-14 11:56+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2882,7 +2882,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Clear flags for partition <filename>%1</filename>"
-msgstr ""
+msgstr "ალმების გასუფთავება დანაყოფისთვის <filename>%1</filename>"
 
 #: ops/setpartflagsoperation.cpp:64
 #, kde-kuit-format
