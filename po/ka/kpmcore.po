@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2023-01-12 08:21+0100\n"
+"PO-Revision-Date: 2023-01-15 04:25+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2334,7 +2334,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress flag turned on, active"
 msgid "on"
-msgstr ""
+msgstr "ჩართული"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2545,13 +2545,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying source to target partition failed."
-msgstr ""
+msgstr "წყაროს სამიზნე დანაყოფზე კოპირების შეცდომა."
 
 #: ops/copyoperation.cpp:161
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating target partition for copying failed."
-msgstr ""
+msgstr "კოპირებისთვის სამიზნე დანაყოფის შექმნის შეცდომა."
 
 #: ops/copyoperation.cpp:163
 #, kde-kuit-format
@@ -2710,13 +2710,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the left by %2"
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> მარცხნივ, %2-ით გაწევა"
 
 #: ops/resizeoperation.cpp:204
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the right by %2"
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> მარჯვნივ, %2-ით გაწევა"
 
 #: ops/resizeoperation.cpp:207
 #, kde-kuit-format
