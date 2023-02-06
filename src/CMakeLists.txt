@@ -38,9 +38,9 @@ target_link_libraries( kpmcore PUBLIC
     ${BLKID_LIBRARIES}
     Qt::DBus
     Qt::Gui
-    KF5::I18n
-    KF5::CoreAddons
-    KF5::WidgetsAddons
+    KF${KF_MAJOR_VERSION}::I18n
+    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF${KF_MAJOR_VERSION}::WidgetsAddons
 )
 generate_export_header(kpmcore
     BASE_NAME LIBKPMCORE

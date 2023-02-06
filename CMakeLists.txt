@@ -46,6 +46,13 @@ include(GenerateExportHeader)
 include(ECMSetupVersion)
 include(ECMConfiguredInstall)
 include(ECMDeprecationSettings)
+if (QT_MAJOR_VERSION STREQUAL "6")
+    set(QT_REQUIRED_VERSION "6.4.0")
+    set(KF_MIN_VERSION "5.240.0")
+    set(KF_MAJOR_VERSION "6")
+else()
+    set(KF_MAJOR_VERSION "5")
+endif()
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
@@ -64,7 +71,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} COMPONENTS REQUIRED
 )
 
 # Load the frameworks we need
-find_package(KF5 ${KF5_MIN_VERSION} REQUIRED
+find_package(KF${KF_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED
   CoreAddons
   I18n
   WidgetsAddons

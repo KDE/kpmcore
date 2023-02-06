@@ -61,7 +61,7 @@ add_executable(kpmcore_externalcommand
 target_link_libraries(kpmcore_externalcommand
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::DBus
-    KF5::I18n
+    KF${KF_MAJOR_VERSION}::I18n
     PolkitQt${QT_MAJOR_VERSION}-1::Core
 )
 

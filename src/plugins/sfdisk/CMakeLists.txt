@@ -16,4 +16,4 @@ target_sources(pmsfdiskbackendplugin PRIVATE
     ${CMAKE_SOURCE_DIR}/src/core/copytargetbytearray.cpp
 )
 
-target_link_libraries(pmsfdiskbackendplugin kpmcore KF5::I18n KF5::CoreAddons)
+target_link_libraries(pmsfdiskbackendplugin kpmcore KF${KF_MAJOR_VERSION}::I18n KF${KF_MAJOR_VERSION}::CoreAddons)

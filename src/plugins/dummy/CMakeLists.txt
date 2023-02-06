@@ -12,4 +12,4 @@ target_sources(pmdummybackendplugin PRIVATE
     ${CMAKE_SOURCE_DIR}/src/backend/corebackenddevice.cpp
 )
 
-target_link_libraries(pmdummybackendplugin kpmcore KF5::I18n KF5::CoreAddons)
+target_link_libraries(pmdummybackendplugin kpmcore KF${KF_MAJOR_VERSION}::I18n KF${KF_MAJOR_VERSION}::CoreAddons)
