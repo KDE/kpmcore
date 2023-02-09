@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-27 00:47+0000\n"
-"PO-Revision-Date: 2023-01-15 04:25+0100\n"
+"PO-Revision-Date: 2023-02-08 11:55+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3170,7 +3170,7 @@ msgstr "Pali Rohár"
 #, kde-format
 msgctxt "@info:credit"
 msgid "UDF support"
-msgstr "UDF_ის მხარდაჭერა"
+msgstr "UDF-ის მხარდაჭერა"
 
 #: util/helpers.cpp:61
 #, kde-kuit-format
