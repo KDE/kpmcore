@@ -1,47 +1,50 @@
-# Translation of partitionmanager into esperanto.
+# Translation of kpmcore.pot into esperanto.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the kpmcore package.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2009-11-15 12:06+0100\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-02-11 18:51+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: pology\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Axel Rousseau"
+msgstr "Axel Rousseau,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "axel@esperanto-jeunes.org"
+msgstr "axel@esperanto-jeunes.org,okellogg@users.sourceforge.net"
 
 #: core/device.cpp:33
 #, kde-format
 msgid "Unknown Device"
-msgstr ""
+msgstr "Nekonata Aparato"
 
 #: core/device.cpp:82
 #, kde-kuit-format
 msgctxt "@item:inlistbox Device name – Capacity (device node)"
 msgid "%1 – %2 (%3)"
-msgstr ""
+msgstr "%1 – %2 (%3)"
 
 #: core/lvmdevice.cpp:362
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "An error occurred while running lvdisplay."
-msgstr ""
+msgstr "Okazis eraro dum rulado de lvdisplay."
 
 #: core/operationstack.cpp:101
 #, kde-kuit-format
@@ -50,6 +53,8 @@ msgid ""
 "Deleting a partition just created: Undoing the operation to create the "
 "partition."
 msgstr ""
+"Forigante ĵus kreitan dispartigon: Malfarante la operacion por krei la "
+"subdiskon."
 
 #: core/operationstack.cpp:119
 #, kde-kuit-format
@@ -58,24 +63,26 @@ msgid ""
 "Resizing a partition just created: Updating start and end in existing "
 "operation."
 msgstr ""
+"Regrandigo de diskparto ĵus kreita: Ĝisdatiganta komencon kaj finon en "
+"ekzistanta operacio."
 
 #: core/operationstack.cpp:139
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying a new partition: Creating a new partition instead."
-msgstr ""
+msgstr "Kopiante novan dispartigon: Kreante novan subdiskon anstataŭe."
 
 #: core/operationstack.cpp:156
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing label for a new partition: No new operation required."
-msgstr ""
+msgstr "Ŝanĝante etikedon por nova subdisko: Ne necesas nova operacio."
 
 #: core/operationstack.cpp:169
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing file system for a new partition: No new operation required."
-msgstr ""
+msgstr "Ŝanĝi dosiersistemon por nova subdisko: Neniu nova operacio bezonata."
 
 #: core/operationstack.cpp:186
 #, kde-kuit-format
@@ -84,12 +91,14 @@ msgid ""
 "Checking file systems is automatically done when creating them: No new "
 "operation required."
 msgstr ""
+"Kontrolado de dosiersistemoj estas aŭtomate farita dum kreado de ili: Ne "
+"necesas nova operacio."
 
 #: core/operationstack.cpp:233
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Deleting a partition just copied: Removing the copy."
-msgstr ""
+msgstr "Forigo de ĵus kopiita diskpartigo: Forigo de la kopio."
 
 #: core/operationstack.cpp:238
 #, kde-kuit-format
@@ -98,6 +107,8 @@ msgid ""
 "Deleting a partition just copied over an existing partition: Removing the "
 "copy and deleting the existing partition."
 msgstr ""
+"Forigo de diskparto ĵus kopiita super ekzistanta subdisko: Forigo de la "
+"kopio kaj forigo de la ekzistanta subdisko."
 
 #: core/operationstack.cpp:251
 #, kde-kuit-format
@@ -106,12 +117,14 @@ msgid ""
 "Copying a partition that is itself a copy: Copying the original source "
 "partition instead."
 msgstr ""
+"Kopiante subdiskon kiu estas mem kopio: Kopiante la originan fontdiskon "
+"anstataŭe."
 
 #: core/operationstack.cpp:280
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Deleting a partition just restored: Removing the restore operation."
-msgstr ""
+msgstr "Forigi subdiskon ĵus restarigitan: Forigante la restarigi operacion."
 
 #: core/operationstack.cpp:285
 #, kde-kuit-format
@@ -120,144 +133,151 @@ msgid ""
 "Deleting a partition just restored to an existing partition: Removing the "
 "restore operation and deleting the existing partition."
 msgstr ""
+"Forigante subdiskon ĵus restarigita al ekzistanta subdisko: Forigo de la "
+"restariga operacio kaj forigo de la ekzistanta subdisko."
 
 #: core/operationstack.cpp:318
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing flags again for the same partition: Removing old operation."
 msgstr ""
+"Ŝanĝante flagojn denove por la sama subdisko: Forigante malnovan operacion."
 
 #: core/operationstack.cpp:349
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing label again for the same partition: Removing old operation."
 msgstr ""
+"Ŝanĝante etikedon denove por la sama subdisko: Forigante malnovan operacion."
 
 #: core/operationstack.cpp:375
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating new partition table, discarding previous operation on device."
 msgstr ""
+"Kreante novan subdiskotabelon, forĵetante antaŭan operacion sur aparato."
 
 #: core/operationstack.cpp:395
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing Volume Group, nothing to do."
-msgstr ""
+msgstr "Regrandigante Volumogrupon, nenio farenda."
 
 #: core/operationstack.cpp:440
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Add operation: %1"
-msgstr ""
+msgstr "Aldoni operacion: %1"
 
 #: core/partition.cpp:159
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "unallocated"
-msgstr ""
+msgstr "neasignita"
 
 #: core/partition.cpp:162
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "New Partition"
-msgstr ""
+msgstr "Nova Dispartigo"
 
 #: core/partition.cpp:165
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "Restored Partition"
-msgstr ""
+msgstr "Restaŭrita Dispartigo"
 
 #: core/partition.cpp:168
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "Copy of %1"
-msgstr ""
+msgstr "Kopio de %1"
 
 #: core/partitionalignment.cpp:80
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
 "modulo: %3)."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Subdisko <filename>%1</filename> ne estas ĝuste vicigita (unua sektoro: %2, "
+"modulo: %3)."
 
 #: core/partitionalignment.cpp:83
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
 "modulo: %3)."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Subdisko <filename>%1</filename> ne estas ĝuste vicigita (lasta sektoro: %2, "
+"modulo: %3)."
 
 #: core/partitionrole.cpp:17
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "unallocated"
-msgstr ""
+msgstr "neasignita"
 
 #: core/partitionrole.cpp:20
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "logical"
-msgstr ""
+msgstr "logika"
 
 #: core/partitionrole.cpp:23
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "extended"
-msgstr ""
+msgstr "etendita"
 
 #: core/partitionrole.cpp:26
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "primary"
-msgstr ""
+msgstr "primara"
 
 #: core/partitionrole.cpp:29
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "LUKS"
-msgstr ""
+msgstr "LUKS"
 
 #: core/partitionrole.cpp:32
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "LVM logical volume"
-msgstr ""
+msgstr "LVM logika volumo"
 
 #: core/partitionrole.cpp:34
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "none"
-msgstr ""
+msgstr "neniu"
 
 #: core/partitiontable.cpp:180
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "boot"
-msgstr ""
+msgstr "praŝarga"
 
 #: core/partitiontable.cpp:182
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "root"
-msgstr ""
+msgstr "radika"
 
 #: core/partitiontable.cpp:184
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "swap"
-msgstr ""
+msgstr "permuta"
 
 #: core/partitiontable.cpp:186
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "hidden"
-msgstr ""
+msgstr "kaŝita"
 
 #: core/partitiontable.cpp:188
 #, kde-kuit-format
@@ -281,7 +301,7 @@ msgstr "lba"
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "hpservice"
-msgstr ""
+msgstr "hpservice"
 
 #: core/partitiontable.cpp:196
 #, kde-kuit-format
@@ -299,123 +319,124 @@ msgstr "prep"
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "msft-reserved"
-msgstr ""
+msgstr "msft-rezervita"
 
 #: core/partitiontable.cpp:202
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "bios-grub"
-msgstr ""
+msgstr "bios-grub"
 
 #: core/partitiontable.cpp:204
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "apple-tv-recovery"
-msgstr ""
+msgstr "apple-tv-restaŭro"
 
 #: core/partitiontable.cpp:206
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "diag"
-msgstr ""
+msgstr "diag"
 
 #: core/partitiontable.cpp:208
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "legacy-boot"
-msgstr ""
+msgstr "heredaĵ-praŝarga"
 
 #: core/partitiontable.cpp:210
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "msft-data"
-msgstr ""
+msgstr "msft-datumoj"
 
 #: core/partitiontable.cpp:212
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "irst"
-msgstr ""
+msgstr "irst"
 
 #: core/partitiontable.cpp:499
 #, kde-kuit-format
 msgctxt "@item partition table name"
 msgid "unknown"
-msgstr ""
+msgstr "nekonata"
 
 #: core/raid/softwareraid.cpp:93
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level]"
 msgid " [RAID %1]"
-msgstr ""
+msgstr "[RAID %1]"
 
 #: core/raid/softwareraid.cpp:95
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr ""
+msgstr "[RAID %1 - Restaŭrado]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr ""
+msgstr "[RAID %1 - Resinkronigado]"
 
 #: core/smartattribute.cpp:45
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "failing"
-msgstr ""
+msgstr "malsukcesante"
 
 #: core/smartattribute.cpp:48
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "has failed"
-msgstr ""
+msgstr "malsukcesis"
 
 #: core/smartattribute.cpp:51
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "warning"
-msgstr ""
+msgstr "averto"
 
 #: core/smartattribute.cpp:54
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "good"
-msgstr ""
+msgstr "bona"
 
 #: core/smartattribute.cpp:58 core/smartattribute.cpp:85
 #, kde-kuit-format
 msgctxt "@item:intable not applicable"
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: core/smartattribute.cpp:72
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "%1 sector"
 msgid_plural "%1 sectors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 sektoro"
+msgstr[1] "%1 sektoroj"
 
 #: core/smartattribute.cpp:101
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Rate"
-msgstr ""
+msgstr "Leg-Erara Ofteco"
 
 #: core/smartattribute.cpp:101
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Rate of hardware read errors while reading data from the disk surface."
 msgstr ""
+"Ofteco de aparataraj legeraroj dum legado de datumoj de la disksurfaco."
 
 #: core/smartattribute.cpp:102
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Throughput Performance"
-msgstr ""
+msgstr "Rendimento de Traigivo"
 
 #: core/smartattribute.cpp:102
 #, kde-format
@@ -425,36 +446,38 @@ msgid ""
 "of this attribute is decreasing there is a high probability that there is a "
 "problem with the disk."
 msgstr ""
+"Entuta (ĝenerala) traigiva rendimento de malmola disko. Se la valoro de ĉi "
+"atributo malpliiĝas, estas alta probablo, ke estas problemo kun la disko."
 
 #: core/smartattribute.cpp:103
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin-Up Time"
-msgstr ""
+msgstr "Ŝpina Tempo"
 
 #: core/smartattribute.cpp:103
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Average time of spindle spin up from zero RPM to fully operational."
-msgstr ""
+msgstr "Averaĝa tempo de spindela akcelo de nul RPM ĝis plene funkcianta."
 
 #: core/smartattribute.cpp:104
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Start/Stop Count"
-msgstr ""
+msgstr "Komenci/haltigi kalkulon"
 
 #: core/smartattribute.cpp:104
 #, kde-format
 msgctxt "SMART attr description"
 msgid "A tally of spindle start/stop cycles."
-msgstr ""
+msgstr "Kalkulo de spindelaj start/haltcikloj."
 
 #: core/smartattribute.cpp:105
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocated Sectors Count"
-msgstr ""
+msgstr "Nombro de Reasignitaj Sektoroj"
 
 #: core/smartattribute.cpp:105
 #, kde-format
@@ -464,12 +487,15 @@ msgid ""
 "verification error, it marks this sector as &quot;reallocated&quot; and "
 "transfers data to a special reserved area (spare area)."
 msgstr ""
+"Nombro de reasignitaj sektoroj. Kiam la malmola disko trovas eraron pri "
+"legado/skribado/kontrolo, ĝi markas ĉi tiun sektoron kiel \"reasignitan\" "
+"kaj transdonas datumojn al speciala rezervita areo (rezerva areo)."
 
 #: core/smartattribute.cpp:106
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Channel Margin"
-msgstr ""
+msgstr "Legokanala Marĝeno"
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -478,12 +504,14 @@ msgid ""
 "Margin of a channel while reading data. The function of this attribute is "
 "not specified."
 msgstr ""
+"Marĝeno de kanalo dum legado de datumoj. La funkcio de ĉi tiu atributo ne "
+"estas specifita."
 
 #: core/smartattribute.cpp:107
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Seek Error Rate"
-msgstr ""
+msgstr "Ofteco de Serĉeraro"
 
 #: core/smartattribute.cpp:107
 #, kde-format
@@ -492,12 +520,14 @@ msgid ""
 "Rate of seek errors of the magnetic heads. If there is a partial failure in "
 "the mechanical positioning system, then seek errors will arise."
 msgstr ""
+"Ofteco de eraroj dum serĉoperacioj de la magnetaj kapoj. Se estas parta "
+"fiasko en la mekanika poziciiga sistemo, tiam serĉeraroj aperos."
 
 #: core/smartattribute.cpp:108
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Seek Time Performance"
-msgstr ""
+msgstr "Serĉtempa Rendimento"
 
 #: core/smartattribute.cpp:108
 #, kde-format
@@ -507,24 +537,26 @@ msgid ""
 "attribute is decreasing, it is a sign of problems in the mechanical "
 "subsystem."
 msgstr ""
+"Averaĝa rendimento de serĉaj operacioj de la magnetaj kapoj. Se ĉi tiu "
+"atributo malpliiĝas, ĝi estas signo de problemoj en la mekanika subsistemo."
 
 #: core/smartattribute.cpp:109
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-On Hours"
-msgstr ""
+msgstr "Horoj Enŝaltite"
 
 #: core/smartattribute.cpp:109
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of hours in power-on state."
-msgstr ""
+msgstr "Nombro de horoj en ŝaltita stato."
 
 #: core/smartattribute.cpp:110
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Retry Count"
-msgstr ""
+msgstr "Nombro de Ŝpinreprovoj"
 
 #: core/smartattribute.cpp:110
 #, kde-format
@@ -534,12 +566,15 @@ msgid ""
 "An increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"Kalkulo de reprovo de ŝpinkomencprovoj se la unua provo estis malsukcesa. "
+"Pliiĝo de ĉi tiu atributvaloro estas signo de problemoj en la mekanika "
+"subsistemo de malmola disko."
 
 #: core/smartattribute.cpp:111
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Recalibration Retries"
-msgstr ""
+msgstr "Provoj de Rekalibro"
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -549,48 +584,51 @@ msgid ""
 "increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"Nombro de rekalibradoj petitaj se la unua provo estis malsukcesa. Pliiĝo de "
+"ĉi tiu atributvaloro estas signo de problemoj en la mekanika subsistemo de "
+"malmola disko."
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Cycle Count"
-msgstr ""
+msgstr "Nombro de Energiŝaltocikloj"
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr ""
+msgstr "Nombro de plenaj malmolidiskaj ŝalt-/malŝalt-cikloj."
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft Read Error Rate"
-msgstr ""
+msgstr "Ofteco de Mola Legeraro"
 
 #: core/smartattribute.cpp:113
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Uncorrected read errors reported to the operating system."
-msgstr ""
+msgstr "Nekorektitaj legeraroj raportitaj al la operacia sistemo."
 
 #: core/smartattribute.cpp:114
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr ""
+msgstr "Disponebla Rezervospaco de SSD"
 
 #: core/smartattribute.cpp:114
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of available reserved space as a percentage of reserved space."
-msgstr ""
+msgstr "Nombro de disponebla rezervospaco kiel procento de rezervita spaco."
 
 #: core/smartattribute.cpp:115
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count"
-msgstr ""
+msgstr "Nombro de SSD-Programfiaskoj"
 
 #: core/smartattribute.cpp:115 core/smartattribute.cpp:125
 #, kde-format
@@ -598,36 +636,39 @@ msgctxt "SMART attr description"
 msgid ""
 "Number of flash program operation failures since the drive was deployed."
 msgstr ""
+"Nombro da malsukcesoj de operacio de fulmprogramo ekde kiam la disko estis "
+"disponigita."
 
 #: core/smartattribute.cpp:116 core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count"
-msgstr ""
+msgstr "Nombro de SSD-Viŝeraroj"
 
 #: core/smartattribute.cpp:116
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
 msgstr ""
+"Nombro da misfunkciadoj de fulmviŝado de kiam la disko estis disponigita."
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Leveling Count"
-msgstr ""
+msgstr "Nivelo de SSD-Eluziteco"
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr ""
+msgstr "Nombras la maksimume plej malfavoran viŝ-oftecon de iu ajn bloko."
 
 #: core/smartattribute.cpp:118
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unexpected power loss count"
-msgstr ""
+msgstr "Nombro de neatenditaj SSD-energioperdoj"
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -637,12 +678,14 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
+"Nombro da haltoj sen STANDBY TUJA kiel la lasta komando (sendepende de PLI-"
+"agado uzante kondensilpotencon). Normaligita valoro ĉiam estas 100."
 
 #: core/smartattribute.cpp:119
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Power Loss Protection Failure"
-msgstr ""
+msgstr "Malsukceso de SSD-Energioperda Protekto"
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -655,79 +698,85 @@ msgid ""
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
 msgstr ""
+"Lasta testrezulto, saturita je ĝia maksimuma valoro. Bajtoj 0-1: lasta "
+"testrezulto kiel mikrosekundoj por eligi ĉapon en intervalo [25, 5000000], "
+"pli malalta indikas specifan erarkodon. Bajtoj 2-3: minutoj ekde la lasta "
+"testo. Bajtoj 4-5: dumviva nombro da testoj. Normaligita valoro estas "
+"agordita al 1 ĉe testfiasko aŭ 11 se la kondensilo estis testita en troa "
+"temperaturkondiĉo, alie 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr ""
+msgstr "Nombro de SSD-Viŝfiaskoj (ico)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase command failures."
-msgstr ""
+msgstr "Nombro da misfunkciadoj de fulmviŝa komando."
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Range Delta"
-msgstr ""
+msgstr "SSD-Eluzitecgama Delto"
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
-msgstr ""
+msgstr "Diferenco inter plej eluzitaj kaj malplej eluzitaj fulmblokoj."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Used Reserved Block Count Total"
-msgstr ""
+msgstr "SSD Uzita Rezervita Bloko Nombro Tuta"
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #: core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" Samsung attribute."
-msgstr ""
+msgstr "Samsung atributo \"Antaŭ-Malsukceso\"."
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unused Reserved Block Count Total"
-msgstr ""
+msgstr "SSD Neuzata Rezervita Bloko-kalkulo Sumo"
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" HP attribute."
-msgstr ""
+msgstr "HP-atributo \"Antaŭ-malsukceso\"."
 
 #: core/smartattribute.cpp:125
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
-msgstr ""
+msgstr "SSD Programo Malsukcesa Nombro Totala aŭ Ne-4K Vicigita Alirkalkulo"
 
 #: core/smartattribute.cpp:127
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SATA Downshift Error Count"
-msgstr ""
+msgstr "SATA Downshift Erarkalkulo"
 
 #: core/smartattribute.cpp:127
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Western Digital and Samsung attribute."
-msgstr ""
+msgstr "Western Digital kaj Samsung-atributo."
 
 #: core/smartattribute.cpp:128
 #, kde-format
 msgctxt "SMART attr name"
 msgid "End-to-End Error"
-msgstr ""
+msgstr "Fina-al-Fina Eraro"
 
 #: core/smartattribute.cpp:128
 #, kde-format
@@ -737,66 +786,69 @@ msgid ""
 "data buffer the parity data between the host and the hard drive did not "
 "match."
 msgstr ""
+"Parto de la SMART IV-teknologio de HP: Post transdono tra la kaŝmemoro RAM-"
+"datumbufro la egaleco-datumoj inter la gastiganto kaj la malmola disko ne "
+"kongruis."
 
 #: core/smartattribute.cpp:129
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Stability"
-msgstr ""
+msgstr "Kapa Stabileco"
 
 #: core/smartattribute.cpp:129 core/smartattribute.cpp:130
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Western Digital attribute."
-msgstr ""
+msgstr "Okcidenta Cifereca atributo."
 
 #: core/smartattribute.cpp:130
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Induced Op-Vibration Detection"
-msgstr ""
+msgstr "Induktita Op-Vibrado-Detekto"
 
 #: core/smartattribute.cpp:131
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reported Uncorrectable Errors"
-msgstr ""
+msgstr "Raportitaj Nekorekteblaj Eraroj"
 
 #: core/smartattribute.cpp:131
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could not be recovered using hardware ECC."
-msgstr ""
+msgstr "Nombro de eraroj ne reakireblaj per aparataro ECC."
 
 #: core/smartattribute.cpp:132
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Command Timeout"
-msgstr ""
+msgstr "Command Timeout"
 
 #: core/smartattribute.cpp:132
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of aborted operations due to HDD timeout."
-msgstr ""
+msgstr "Nombro de interrompitaj operacioj pro malfunkcio de HDD."
 
 #: core/smartattribute.cpp:133
 #, kde-format
 msgctxt "SMART attr name"
 msgid "High Fly Writes"
-msgstr ""
+msgstr "Alta Muŝo Skribas"
 
 #: core/smartattribute.cpp:133
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of fly height errors detected."
-msgstr ""
+msgstr "Nombro de eraroj de muŝo alteco detektita."
 
 #: core/smartattribute.cpp:134
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature Difference From 100"
-msgstr ""
+msgstr "Temperaturdiferenco de 100"
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -805,72 +857,74 @@ msgid ""
 "Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
 "minimum threshold which corresponds to a maximum temperature."
 msgstr ""
+"Valoro estas egala al (100 - temp. °C), permesante al fabrikanto fiksi "
+"minimuman sojlon kiu egalrilatas al maksimumtemperaturo."
 
 #: core/smartattribute.cpp:135
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-sense Error Rate"
-msgstr ""
+msgstr "G-sense Eraro-Indico"
 
 #: core/smartattribute.cpp:135
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "Nombro de eraroj rezultantaj de ekstere induktita ŝoko kaj vibro."
 
 #: core/smartattribute.cpp:136
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Off Retract Count"
-msgstr ""
+msgstr "Power Off Retract Count"
 
 #: core/smartattribute.cpp:136
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of power-off or emergency retract cycles"
-msgstr ""
+msgstr "Nombro de malŝalti aŭ kriz-retiriĝajn ciklojn"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Cycle Count"
-msgstr ""
+msgstr "Ŝarĝo-Cikla Nombro"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
-msgstr ""
+msgstr "Nombro de ŝarĝo/malŝarĝo cikloj en kapo surteriĝo zono pozicio."
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature"
-msgstr ""
+msgstr "Temperaturo"
 
 #: core/smartattribute.cpp:138
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Current internal temperature."
-msgstr ""
+msgstr "Nuna interna temperaturo."
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Hardware ECC Recovered"
-msgstr ""
+msgstr "Aparataro ECC Reakiris"
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could be recovered using hardware ECC."
-msgstr ""
+msgstr "Nombro de eraroj kiuj povus esti reakiritaj uzante aparataron ECC."
 
 #: core/smartattribute.cpp:140
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocation Event Count"
-msgstr ""
+msgstr "Reasigna Eventa Nombro"
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -879,12 +933,15 @@ msgid ""
 "Count of remap operations. The raw value of this attribute shows the total "
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
+"Nombro de remap operacioj. La kruda valoro de ĉi tiu atributo montras la "
+"tutsumon de provoj transdoni datumojn de reasignitaj sektoroj al rezerva "
+"areo."
 
 #: core/smartattribute.cpp:141
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Current Pending Sector Count"
-msgstr ""
+msgstr "Nuna Pritraktata Sektora Nombro"
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -893,24 +950,26 @@ msgid ""
 "Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
 "read errors)."
 msgstr ""
+"Nombro de \"malstabilaj\" sektoroj (atendantaj esti remapitaj, pro legado-"
+"eraroj)."
 
 #: core/smartattribute.cpp:142
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Uncorrectable Sector Count"
-msgstr ""
+msgstr "Nekorektebla Sektoro-kalkulo"
 
 #: core/smartattribute.cpp:142
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of uncorrectable errors when reading/writing a sector."
-msgstr ""
+msgstr "Nombro de nekorekteblaj eraroj dum legado/skribado de sektoro."
 
 #: core/smartattribute.cpp:143
 #, kde-format
 msgctxt "SMART attr name"
 msgid "UltraDMA CRC Error Count"
-msgstr ""
+msgstr "Nombro de Eraroj de UltraDMA CRC"
 
 #: core/smartattribute.cpp:143
 #, kde-format
@@ -919,78 +978,80 @@ msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
 msgstr ""
+"Kalkulo de eraroj en transdono de datumoj per la interfaca kablo kiel "
+"determinite de ICRC."
 
 #: core/smartattribute.cpp:144
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Multi-Zone Error Rate<br/>Write Error Rate"
-msgstr ""
+msgstr "Mult-Zona Eraro-Indico<br/>Skriberaro-Indico"
 
 #: core/smartattribute.cpp:144
 #, kde-format
 msgctxt "SMART attr description"
 msgid "The total number of errors when writing a sector."
-msgstr ""
+msgstr "La totala nombro da eraroj dum skribado de sektoro."
 
 #: core/smartattribute.cpp:145
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of off-track errors."
-msgstr ""
+msgstr "Nombro de ekstervojaj eraroj."
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Data Address Mark Errors"
-msgstr ""
+msgstr "Datuma Adreso Mark Eraroj"
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of Data Address Mark errors (or vendor-specific)."
-msgstr ""
+msgstr "Nombro de eraroj de Datuma Adresmarko (aŭ specifaj de vendisto)."
 
 #: core/smartattribute.cpp:147
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Run Out Cancel"
-msgstr ""
+msgstr "Elĉerpi Nuligi"
 
 #: core/smartattribute.cpp:147
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of ECC errors"
-msgstr ""
+msgstr "Nombro da ECC-eraroj"
 
 #: core/smartattribute.cpp:148
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft ECC Correction"
-msgstr ""
+msgstr "Mola ECC-Korekto"
 
 #: core/smartattribute.cpp:148
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors corrected by software ECC"
-msgstr ""
+msgstr "Nombro da eraroj korektitaj per programaro ECC"
 
 #: core/smartattribute.cpp:149
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Thermal Asperity Rate"
-msgstr ""
+msgstr "Termika Aspereco-Indico"
 
 #: core/smartattribute.cpp:149
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors due to high temperature."
-msgstr ""
+msgstr "Nombro da eraroj pro alta temperaturo."
 
 #: core/smartattribute.cpp:150
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Flying Height"
-msgstr ""
+msgstr "Fluga Alteco"
 
 #: core/smartattribute.cpp:150
 #, kde-format
@@ -1000,24 +1061,27 @@ msgid ""
 "increases the chances of a head crash while a flying height that is too high "
 "increases the chances of a read/write error."
 msgstr ""
+"Alteco de kapoj super la disksurfaco. Fluga alteco kiu estas tro malalta "
+"pliigas la ŝancojn de kapkraŝo dum fluga alteco kiu estas tro alta pliigas "
+"la ŝancojn de legado/skriba eraro."
 
 #: core/smartattribute.cpp:151
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin High Current"
-msgstr ""
+msgstr "Spin Alta Fluo"
 
 #: core/smartattribute.cpp:151
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Amount of surge current used to spin up the drive."
-msgstr ""
+msgstr "Kvanto de ŝprucfluo uzata por ŝpini la stiradon."
 
 #: core/smartattribute.cpp:152
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Buzz"
-msgstr ""
+msgstr "Spin Buzz"
 
 #: core/smartattribute.cpp:152
 #, kde-format
@@ -1026,48 +1090,49 @@ msgid ""
 "Number of buzz routines needed to spin up the drive due to insufficient "
 "power."
 msgstr ""
+"Nombro da zumaj rutinoj necesaj por ŝpini la stiradon pro nesufiĉa potenco."
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Offline Seek Performance"
-msgstr ""
+msgstr "Senreta Serĉ-efikeco"
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive's seek performance during its internal tests."
-msgstr ""
+msgstr "La serĉrendimento de la disko dum ĝiaj internaj testoj."
 
 #: core/smartattribute.cpp:154
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Vibration During Write"
-msgstr ""
+msgstr "Vibro Dum Skribo"
 
 #: core/smartattribute.cpp:154
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Vibration During Write"
-msgstr ""
+msgstr "Vibro Dum Skribo"
 
 #: core/smartattribute.cpp:155
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Shock During Write"
-msgstr ""
+msgstr "Ŝoko Dum Skribo"
 
 #: core/smartattribute.cpp:155
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Shock During Write"
-msgstr ""
+msgstr "Ŝoko Dum Skribo"
 
 #: core/smartattribute.cpp:156
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Disk Shift"
-msgstr ""
+msgstr "Diskoŝanĝo"
 
 #: core/smartattribute.cpp:156
 #, kde-format
@@ -1076,73 +1141,75 @@ msgid ""
 "Distance the disk has shifted relative to the spindle (usually due to shock "
 "or temperature)."
 msgstr ""
+"Distanco la disko ŝanĝiĝis relative al la spindelo (kutime pro ŝoko aŭ "
+"temperaturo)."
 
 #: core/smartattribute.cpp:157
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-Sense Error Rate"
-msgstr ""
+msgstr "G-Sense Eraro-Indico"
 
 #: core/smartattribute.cpp:157
 #, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "La nombro da eraroj rezultantaj de ekstere induktita ŝoko kaj vibrado."
 
 #: core/smartattribute.cpp:158
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Loaded Hours"
-msgstr ""
+msgstr "Ŝarĝitaj Horoj"
 
 #: core/smartattribute.cpp:158
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time spent operating under data load."
-msgstr ""
+msgstr "Tempo pasigita funkcianta sub datumŝarĝo."
 
 #: core/smartattribute.cpp:159
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Retry Count"
-msgstr ""
+msgstr "Ŝargo/Malŝarĝo Reprovkalkulo"
 
 #: core/smartattribute.cpp:159
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr ""
+msgstr "Nombro da fojoj ke la kapo ŝanĝas pozicion."
 
 #: core/smartattribute.cpp:160
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Friction"
-msgstr ""
+msgstr "Ŝarĝa Frikcio"
 
 #: core/smartattribute.cpp:160
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Resistance caused by friction in mechanical parts while operating."
-msgstr ""
+msgstr "Rezisto kaŭzita de frotado en mekanikaj partoj dum funkciado."
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Cycle Count"
-msgstr ""
+msgstr "Ŝarĝo/Malŝarĝo Ciklokalkulo"
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total number of load cycles."
-msgstr ""
+msgstr "Tuta nombro da ŝarĝcikloj."
 
 #: core/smartattribute.cpp:162
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load-In Time"
-msgstr ""
+msgstr "Ŝarĝo-En Tempo"
 
 #: core/smartattribute.cpp:162
 #, kde-format
@@ -1151,24 +1218,26 @@ msgid ""
 "Total time of loading on the magnetic heads actuator (time not spent in "
 "parking area)."
 msgstr ""
+"Tuta tempo de ŝarĝo sur la magnetaj kapoj aktuario (tempo ne pasigita en "
+"parkejo)."
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Torque Amplification Count"
-msgstr ""
+msgstr "Tord-Amplifiga Nombro"
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of attempts to compensate for platter speed variations."
-msgstr ""
+msgstr "Nombro da provoj kompensi por plado-rapidecvarioj."
 
 #: core/smartattribute.cpp:164
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-Off Retract Cycle"
-msgstr ""
+msgstr "Power-Off Retract Ciklo"
 
 #: core/smartattribute.cpp:164
 #, kde-format
@@ -1177,12 +1246,14 @@ msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
 msgstr ""
+"La nombro da fojoj la magneta armaturo estis retirita aŭtomate kiel rezulto "
+"de tranĉa potenco."
 
 #: core/smartattribute.cpp:165
 #, kde-format
 msgctxt "SMART attr name"
 msgid "GMR Head Amplitude"
-msgstr ""
+msgstr "GMR Kapa Amplekso"
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1190,19 +1261,19 @@ msgctxt "SMART attr description"
 msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
-msgstr ""
+msgstr "Amplekso de \"draŝo\" (distanco de ripetema antaŭen/inversa kapmovo)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive Temperature"
-msgstr ""
+msgstr "Veturada Temperaturo"
 
 #: core/smartattribute.cpp:167
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Endurance Remaining"
-msgstr ""
+msgstr "Endurance Restante"
 
 #: core/smartattribute.cpp:167
 #, kde-format
@@ -1211,36 +1282,38 @@ msgid ""
 "Count of physical erase cycles completed on the drive as a percentage of the "
 "maximum physical erase cycles the drive supports"
 msgstr ""
+"Nombro de fizikaj forviŝcikloj kompletigitaj sur la disko kiel procento de "
+"la maksimumaj fizikaj forigocikloj kiujn la stirado subtenas"
 
 #: core/smartattribute.cpp:168
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-On Seconds"
-msgstr ""
+msgstr "Potenco-Sur Sekundoj"
 
 #: core/smartattribute.cpp:168
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time elapsed in the power-on state"
-msgstr ""
+msgstr "Tempo pasis en la ŝaltita stato"
 
 #: core/smartattribute.cpp:169
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Unrecoverable ECC Count"
-msgstr ""
+msgstr "Nereakirebla ECC-kalkulo"
 
 #: core/smartattribute.cpp:169
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of unrecoverable ECC errors"
-msgstr ""
+msgstr "Nombro de nereakireblaj ECC-eraroj"
 
 #: core/smartattribute.cpp:170
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Good Block Rate"
-msgstr ""
+msgstr "Bona Bloko-Indico"
 
 #: core/smartattribute.cpp:170
 #, kde-format
@@ -1249,12 +1322,14 @@ msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
 msgstr ""
+"Nombro de disponeblaj rezervitaj blokoj kiel procento de la totala nombro de "
+"rezervitaj blokoj"
 
 #: core/smartattribute.cpp:171
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
-msgstr ""
+msgstr "Kapaj Flugaj Horoj<br/>aŭ Transiga Eraro-Indico (Fujitsu)"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1263,675 +1338,694 @@ msgid ""
 "Time while head is positioning<br/>or counts the number of times the link is "
 "reset during a data transfer."
 msgstr ""
+"Tempo dum kapo poziciiĝas<br/>aŭ kalkulas la nombron da fojoj kiam la ligilo "
+"estas rekomencigita dum transdono de datumoj."
 
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "Tutaj LBAoj Skribitaj"
 
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "Tutaj LBAoj Skribitaj"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "Tutaj LBA-oj Legita"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "Tutaj LBA-oj Legita"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD NAND_Writes_1GiB"
-msgstr ""
+msgstr "SSD NAND_Skribas_1GiB"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr ""
+msgstr "Nombro da skriboj al NAND en 1 GB-pliigoj"
 
 #: core/smartattribute.cpp:175
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Retry Rate"
-msgstr ""
+msgstr "Ofteco de Legeraro-Reprovo"
 
 #: core/smartattribute.cpp:175
-#, fuzzy, kde-format
-#| msgid "Mount Point"
+#, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors while reading from a disk"
-msgstr "Kroĉpunkto"
+msgstr "Nombro da eraroj dum legado de disko"
 
 #: core/smartattribute.cpp:176
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Free Fall Protection"
-msgstr ""
+msgstr "Protekto kontraŭ Libera Falo"
 
 #: core/smartattribute.cpp:176
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
-msgstr ""
+msgstr "Nombro da \"Liberfalaj Eventoj\" detektitaj"
 
 #: core/smartstatus.cpp:78
 #, kde-kuit-format
 msgctxt "@item:intable degrees in Celsius and Fahrenheit"
 msgid "%1° C / %2° F"
-msgstr ""
+msgstr "%1° C / %2° F"
 
 #: core/smartstatus.cpp:86
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Aborted"
-msgstr ""
+msgstr "Ĉesigita"
 
 #: core/smartstatus.cpp:89
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Interrupted"
-msgstr ""
+msgstr "Interrompita"
 
 #: core/smartstatus.cpp:92
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Fatal error"
-msgstr ""
+msgstr "Fatala eraro"
 
 #: core/smartstatus.cpp:95
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Unknown error"
-msgstr ""
+msgstr "Nekonata eraro"
 
 #: core/smartstatus.cpp:98
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Electrical error"
-msgstr ""
+msgstr "Elektra eraro"
 
 #: core/smartstatus.cpp:101
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Servo error"
-msgstr ""
+msgstr "Servoeraro"
 
 #: core/smartstatus.cpp:104
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Read error"
-msgstr ""
+msgstr "Legeraro"
 
 #: core/smartstatus.cpp:107
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Handling error"
-msgstr ""
+msgstr "Pritrakta eraro"
 
 #: core/smartstatus.cpp:110
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Self test in progress"
-msgstr ""
+msgstr "Memtesto en progreso"
 
 #: core/smartstatus.cpp:114
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Success"
-msgstr ""
+msgstr "Sukceso"
 
 #: core/smartstatus.cpp:123
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Healthy"
-msgstr ""
+msgstr "Sana"
 
 #: core/smartstatus.cpp:126
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has been used outside of its design parameters in the past."
-msgstr ""
+msgstr "Estis uzita ekster ĝiaj dezajnaj parametroj en la pasinteco."
 
 #: core/smartstatus.cpp:129
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has some bad sectors."
-msgstr ""
+msgstr "Havas kelkajn malbonajn sektorojn."
 
 #: core/smartstatus.cpp:132
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Is being used outside of its design parameters right now."
-msgstr ""
+msgstr "Estas uzata ekster ĝiaj dezajnaj parametroj nun."
 
 #: core/smartstatus.cpp:135
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has many bad sectors."
-msgstr ""
+msgstr "Havas multajn malbonajn sektorojn."
 
 #: core/smartstatus.cpp:139
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Disk failure is imminent. Backup all data!"
-msgstr ""
+msgstr "Diskomalfunkcio estas baldaŭa. Savkopiu ĉiujn datumojn!"
 
 #: fs/btrfs.cpp:166
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Ne eblis krei dumtempan dosierujon."
 
 #: fs/btrfs.cpp:182 fs/btrfs.cpp:202
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "btrfs file system resize failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: regrandigo de btrfs-dosiersistemo malsukcesis."
 
 #: fs/btrfs.cpp:187
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"<warning>Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</"
+"filename>: Malmuntado malsukcesis.</warning>"
 
 #: fs/btrfs.cpp:189
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Komenca muntado malsukcesis."
 
 #: fs/fat12.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
-msgstr "Kroĉpunkto"
+msgstr "Agordante etikedon por diskparto <filename>%1</filename> al %2"
 
 #: fs/filesystem.cpp:503
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unknown"
-msgstr ""
+msgstr "nekonata"
 
 #: fs/filesystem.cpp:504
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
-msgstr "Etendata"
+msgstr "etendata"
 
 #: fs/filesystem.cpp:506
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext2"
-msgstr ""
+msgstr "ext2"
 
 #: fs/filesystem.cpp:507
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext3"
-msgstr ""
+msgstr "ext3"
 
 #: fs/filesystem.cpp:508
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext4"
-msgstr ""
+msgstr "ext4"
 
 #: fs/filesystem.cpp:509
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linuxswap"
-msgstr ""
+msgstr "linuxswap"
 
 #: fs/filesystem.cpp:510
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat16"
-msgstr ""
+msgstr "fat16"
 
 #: fs/filesystem.cpp:511
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat32"
-msgstr ""
+msgstr "fat32"
 
 #: fs/filesystem.cpp:512
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ntfs"
-msgstr ""
+msgstr "ntfs"
 
 #: fs/filesystem.cpp:513
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser"
-msgstr ""
+msgstr "reiser"
 
 #: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser4"
-msgstr ""
+msgstr "reiser4"
 
 #: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "xfs"
-msgstr ""
+msgstr "xfs"
 
 #: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "jfs"
-msgstr ""
+msgstr "jfs"
 
 #: fs/filesystem.cpp:517
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfs"
-msgstr ""
+msgstr "hfs"
 
 #: fs/filesystem.cpp:518
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfsplus"
-msgstr ""
+msgstr "hfsplus"
 
 #: fs/filesystem.cpp:519
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ufs"
-msgstr ""
+msgstr "ufs"
 
 #: fs/filesystem.cpp:520
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:window"
-#| msgid "Information"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
-msgstr "Informoj"
+msgstr "neformatita"
 
 #: fs/filesystem.cpp:521
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "btrfs"
-msgstr ""
+msgstr "btrfs"
 
 #: fs/filesystem.cpp:522
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hpfs"
-msgstr ""
+msgstr "hpfs"
 
 #: fs/filesystem.cpp:523
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks"
-msgstr ""
+msgstr "luks"
 
 #: fs/filesystem.cpp:524
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ocfs2"
-msgstr ""
+msgstr "ocfs2"
 
 #: fs/filesystem.cpp:525
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "zfs"
-msgstr ""
+msgstr "zfs"
 
 #: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exfat"
-msgstr ""
+msgstr "exfat"
 
 #: fs/filesystem.cpp:527
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "nilfs2"
-msgstr ""
+msgstr "nilfs2"
 
 #: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "lvm2 pv"
-msgstr ""
+msgstr "lvm2 pv"
 
 #: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
-msgstr ""
+msgstr "f2fs"
 
 #: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "udf"
-msgstr ""
+msgstr "udf"
 
 #: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
-msgstr ""
+msgstr "iso9660"
 
 #: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks2"
-msgstr ""
+msgstr "luks2"
 
 #: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat12"
-msgstr ""
+msgstr "fat12"
 
 #: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
-msgstr ""
+msgstr "linux_raid_member"
 
 #: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
-msgstr ""
+msgstr "BitLocker"
 
 #: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
-msgstr ""
+msgstr "apfs"
 
 #: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
-msgstr ""
+msgstr "minix"
 
 #: fs/filesystem.cpp:580 fs/luks.cpp:156
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
-msgstr ""
+msgstr "Munti"
 
 #: fs/filesystem.cpp:586 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
-msgstr ""
+msgstr "Malmunti"
 
 #: fs/jfs.cpp:155
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: Could "
 "not create temp dir."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de JFS-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Ne eblis krei dumtempan dosierujon."
 
 #: fs/jfs.cpp:169 fs/jfs.cpp:188
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Remount failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de JFS-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Remuntado malsukcesis."
 
 #: fs/jfs.cpp:174
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing JFS file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"<warning>Regrandigo de JFS-dosiersistemo sur diskparto <filename>%1</"
+"filename>: Malmuntado malsukcesis.</warning>"
 
 #: fs/jfs.cpp:176
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de JFS-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Komenca muntado malsukcesis."
 
 #: fs/linuxswap.cpp:127
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Activate swap"
-msgstr ""
+msgstr "Aktivigi permutodosieron"
 
 #: fs/linuxswap.cpp:132
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Deactivate swap"
-msgstr ""
+msgstr "Malaktivigi permutodosieron"
 
 #: fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
-msgstr ""
+msgstr "Malŝlosi"
 
 #: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
-msgstr ""
+msgstr "Ŝlosi"
 
 #: fs/luks.cpp:252
 #, kde-format
 msgid "Enter passphrase for %1:"
-msgstr ""
+msgstr "Enigi pasfrazon por %1:"
 
 #: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Regrandigi LUKS-kripton sur diskparto <filename>%1</filename>."
 
 #: fs/luks.cpp:509 fs/luks2.cpp:116
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing encrypted file system on partition <filename>%1</filename> failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de ĉifrita dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis."
 
 #: fs/nilfs2.cpp:137
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de NILFS2-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Ne eblis krei dumtempan dosierujon."
 
 #: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "NILFS2 file system resize failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de NILFS2 dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: NILFS2-dosiersistemo malsukcesis."
 
 #: fs/nilfs2.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"<warning>Regrandigo de NILFS2-dosiersistemo sur diskparto <filename>%1</"
+"filename>: Malmuntado malsukcesis.</warning>"
 
 #: fs/nilfs2.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de NILFS2 dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Komenca muntado malsukcesis."
 
 #: fs/ntfs.cpp:182
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Updating boot sector for NTFS file system on partition <filename>%1</"
 "filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ĝisdatigante lanĉsektoron por NTFS-dosiersistemo sur diskparto <filename>%1</"
+"filename>."
 
 #: fs/ntfs.cpp:194 fs/ntfs.cpp:202
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not write new start sector to partition <filename>%1</filename> when "
 "trying to update the NTFS boot sector."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis skribi novan startsektoron al dispartigo <filename>%1</filename> "
+"kiam oni provas ĝisdatigi la NTFS-ŝargsektoron."
 
 #: fs/ntfs.cpp:206
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Updated NTFS boot sector for partition <filename>%1</filename> successfully."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ĝisdatigis NTFS-ŝargsektoron por diskparto <filename>%1</filename> sukcese."
 
 #: fs/xfs.cpp:159
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: Could "
 "not create temp dir."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de XFS-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Ne eblis krei dumtempan dosierujon."
 
 #: fs/xfs.cpp:173 fs/xfs.cpp:192
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "xfs_growfs failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de XFS-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: xfs_growfs malsukcesis."
 
 #: fs/xfs.cpp:178
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing XFS file system on partition <filename>%1</filename> "
 "failed: Unmount failed.</warning>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"<warning>Regrandigo de XFS-dosiersistemo sur diskparto <filename>%1</"
+"filename> malsukcesis: Malmuntado malsukcesis.</warning>"
 
 #: fs/xfs.cpp:180
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo de XFS-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: Komenca muntado malsukcesis."
 
 #: jobs/backupfilesystemjob.cpp:54
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "backup."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi dosiersistemon sur fontdisko <filename>%1</filename> por "
+"sekurkopio."
 
 #: jobs/backupfilesystemjob.cpp:56
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis krei rezervan dosieron <filename>%1</filename>."
 
 #: jobs/backupfilesystemjob.cpp:68
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Back up file system on partition <filename>%1</filename> to <filename>%2</"
 "filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Sekurkopii dosiersistemon sur diskparto <filename>%1</filename> al <filename>"
+"%2</filename>"
 
 #: jobs/changepermissionsjob.cpp:43
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Kroĉpunkto"
+msgstr "Ŝanĝi la permesojn de: <filename>%1</filename> al %2"
 
 #: jobs/checkfilesystemjob.cpp:43
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Check file system on partition <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Kontroli dosiersistemon sur diskparto <filename>%1</filename>"
 
 #: jobs/copyfilesystemjob.cpp:48
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Cannot copy file system: File system on target partition <filename>%1</"
 "filename> is smaller than the file system on source partition <filename>%2</"
 "filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne povas kopii dosiersistemon: Dosiersistemo sur cela diskparto <filename>"
+"%1</filename> estas pli malgranda ol la dosiersistemo sur fontdisko "
+"<filename>%2</filename>."
 
 #: jobs/copyfilesystemjob.cpp:56
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "copying."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi dosiersistemon sur fontdisko <filename>%1</filename> por "
+"kopiado."
 
 #: jobs/copyfilesystemjob.cpp:58
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open file system on target partition <filename>%1</filename> for "
 "copying."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi dosiersistemon sur cela diskparto <filename>%1</filename> "
+"por kopiado."
 
 #: jobs/copyfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -1940,243 +2034,247 @@ msgid ""
 "Closing device. This may take a while, especially on slow devices like "
 "Memory Sticks."
 msgstr ""
+"Ferma aparato. Ĉi tio povas daŭri iom da tempo, precipe ĉe malrapidaj "
+"aparatoj kiel Memory Sticks."
 
 #: jobs/copyfilesystemjob.cpp:88
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Copy file system on partition <filename>%1</filename> to partition <filename>"
 "%2</filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kopii dosiersistemon sur diskparto <filename>%1</filename> al diskparto "
+"<filename>%2</filename>"
 
 #: jobs/createfilesystemjob.cpp:66
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Malsukcesis agordi la sistemtipon por la dosiersistemo sur diskparto "
+"<filename>%1</filename>."
 
 #: jobs/createfilesystemjob.cpp:68
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "system type for partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi diskpartigan tabelon sur aparato <filename>%1</filename> "
+"por agordi la sistemtipon por diskparto <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:70
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> por agordi la sisteman "
+"tipon por diskparto <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:84
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Create file system <filename>%1</filename> on partition <filename>%2</"
 "filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Krei dosiersistemon <filename>%1</filename> sur diskparto <filename>%2</"
+"filename>"
 
 #: jobs/createpartitionjob.cpp:72
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Malsukcesis aldoni diskpartigon <filename>%1</filename> al aparato <filename>"
+"%2</filename>."
 
 #: jobs/createpartitionjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to create "
 "new partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi subdiskotabelon sur aparato <filename>%1</filename> por "
+"krei novan diskpartigon <filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:76
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to create new partition "
 "<filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> por krei novan partigon "
+"<filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:94
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Krei novan diskpartigon <filename>%1</filename>"
 
 #: jobs/createpartitionjob.cpp:96
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition on device <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Krei novan subdiskon sur aparato <filename>%1</filename>"
 
 #: jobs/createpartitiontablejob.cpp:49
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Creating partition table failed: Could not open device <filename>%1</"
 "filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kreado de diskpartiga tabelo malsukcesis: Ne eblis malfermi aparaton "
+"<filename>%1</filename>."
 
 #: jobs/createpartitiontablejob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition table on device <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Krei novan diskpartigan tabelon sur aparato <filename>%1</filename>"
 
 #: jobs/createvolumegroupjob.cpp:49
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
-msgstr "Kroĉpunkto"
+msgstr "Krei novan Volumgrupon: <filename>%1</filename> kun PV: %2"
 
 #: jobs/deactivatelogicalvolumejob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Malaktivigi Logikajn Volumojn: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Volume Group: <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Malaktivigi Voluman Grupon: <filename>%1</filename>"
 
 #: jobs/deletefilesystemjob.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not delete file system: file system on <filename>%1</filename> is "
 "mounted."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis forigi dosiersistemon: dosiersistemo sur <filename>%1</filename> "
+"estas muntita."
 
 #: jobs/deletefilesystemjob.cpp:76
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete file system on <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis forigi dosiersistemon sur <filename>%1</filename>."
 
 #: jobs/deletefilesystemjob.cpp:80
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "file system on <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi subdisktabelon sur aparato <filename>%1</filename> por "
+"forigi dosiersistemon sur <filename>%2</filename>."
 
 #: jobs/deletefilesystemjob.cpp:83
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not delete file system signature for partition <filename>%1</"
 "filename>: Failed to open device <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis forigi dosiersisteman subskribon por subdisko <filename>%1</"
+"filename>: Malsukcesis malfermi aparaton <filename>%2</filename>."
 
 #: jobs/deletefilesystemjob.cpp:93
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Forigi dosiersistemon ĉe <filename>%1</filename>"
 
 #: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis forigi subdiskon <filename>%1</filename>."
 
 #: jobs/deletepartitionjob.cpp:65
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi subdiskotabelon sur aparato <filename>%1</filename> por "
+"forigi subdiskon <filename>%2</filename>."
 
 #: jobs/deletepartitionjob.cpp:67
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Deleting partition failed: Could not open device <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Forigo de diskparto malsukcesis: Ne eblis malfermi aparaton <filename>%1</"
+"filename>."
 
 #: jobs/deletepartitionjob.cpp:80
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Delete the partition <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Forigi la diskpartigon <filename>%1</filename>"
 
 #: jobs/job.cpp:45
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Source and target for copying do not overlap: Rollback is not required."
-msgstr ""
+msgstr "Fonto kaj celo por kopiado ne interkovras: Rollback ne estas bezonata."
 
 #: jobs/job.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback from: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "Rollback de: Unua bajto: %1, lasta bajto: %2."
 
 #: jobs/job.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback to: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "Reveni al: Unua bajto: %1, lasta bajto: %2."
 
 #: jobs/job.cpp:74 jobs/job.cpp:80
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open device <filename>%1</filename> to rollback copying."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> por retroigi kopiadon."
 
 #: jobs/job.cpp:86
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback failed: Source or target are not devices."
-msgstr ""
+msgstr "Rollback malsukcesis: Fonto aŭ celo ne estas aparatoj."
 
 #: jobs/job.cpp:106
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Job: %1"
-msgstr ""
+msgstr "Tasko: %1"
 
 #: jobs/job.cpp:115
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:progress job status (error, warning, ...)"
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -2185,74 +2283,75 @@ msgstr "%1: %2"
 #, kde-kuit-format
 msgctxt "@info:progress job"
 msgid "Pending"
-msgstr ""
+msgstr "Traktota"
 
 #: jobs/job.cpp:135
 #, kde-kuit-format
 msgctxt "@info:progress job"
 msgid "Success"
-msgstr ""
+msgstr "Sukceso"
 
 #: jobs/job.cpp:136
 #, kde-kuit-format
 msgctxt "@info:progress job"
 msgid "Error"
-msgstr ""
+msgstr "Eraro"
 
 #: jobs/movefilesystemjob.cpp:52
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi dosiersistemon sur diskparto <filename>%1</filename> por "
+"movi."
 
 #: jobs/movefilesystemjob.cpp:54
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis krei celon por movi dosiersistemon sur diskparto <filename>%1</"
+"filename>."
 
 #: jobs/movefilesystemjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Malsukcesis la restarigo por dosiersistemo sur diskparto <filename>%1</"
+"filename>."
 
 #: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, kde-format, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
-msgstr ""
+msgstr "Fermante aparaton. Ĉi tio povas daŭri kelkajn sekundojn."
 
 #: jobs/movefilesystemjob.cpp:79
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Movi la dosiersistemon sur diskparto <filename>%1</filename> al sektoro %2"
 
 #: jobs/movephysicalvolumejob.cpp:57
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Move used PE in %1 on %2 to other available Physical Volumes"
-msgstr ""
+msgstr "Movi uzitan PE en %1 sur %2 al aliaj disponeblaj Fizikaj Volumoj"
 
 #: jobs/removevolumegroupjob.cpp:41
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Forigi Voluman Grupon: <filename>%1</filename>"
 
 #: jobs/resizefilesystemjob.cpp:66
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "The file system on partition <filename>%2</filename> already has the "
@@ -2260,70 +2359,74 @@ msgid ""
 msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
-msgstr[0] "Kroĉpunkto"
-msgstr[1] "Kroĉpunkto"
+msgstr[0] ""
+msgstr[1] ""
 
 #: jobs/resizefilesystemjob.cpp:69
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
-msgstr ""
+msgstr "Regrandigi dosiersistemon de %1 al %2 sektoroj."
 
 #: jobs/resizefilesystemjob.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
-msgstr ""
+msgstr "Regrandigi %1 dosiersistemon uzante internajn malantaŭajn funkciojn."
 
 #: jobs/resizefilesystemjob.cpp:91
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
-msgstr "Kroĉpunkto"
+msgstr ""
+"La dosiersistemo sur subdisko <filename>%1</filename> ne povas esti "
+"regrandigita ĉar ne ekzistas subteno por ĝi."
 
 #: jobs/resizefilesystemjob.cpp:119
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
+"Sukcese regrandigi dosiersistemon uzante internajn malantaŭajn funkciojn."
 
 #: jobs/resizefilesystemjob.cpp:123
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition <filename>%1</filename> while trying to resize the "
 "file system."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi diskparton <filename>%1</filename> dum provo regrandigi la "
+"dosiersistemon."
 
 #: jobs/resizefilesystemjob.cpp:126
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not read geometry for partition <filename>%1</filename> while trying "
 "to resize the file system."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis legi geometrion por subdisko <filename>%1</filename> provante "
+"aligrandigi la dosiersistemon."
 
 #: jobs/resizefilesystemjob.cpp:134
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Maksimumigi dosiersistemon sur <filename>%1</filename> por plenigi la "
+"subdiskon"
 
 #: jobs/resizefilesystemjob.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
 msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
-msgstr[0] "Kroĉpunkto"
-msgstr[1] "Kroĉpunkto"
+msgstr[0] ""
+msgstr[1] ""
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
@@ -2345,735 +2448,743 @@ msgstr[1] ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resizing Volume Group %1 to %2."
-msgstr ""
+msgstr "Regrandigi Voluman Grupon %1 al %2."
 
 #: jobs/restorefilesystemjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open backup file <filename>%1</filename> to restore from."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi rezervan dosieron <filename>%1</filename> por restarigi."
 
 #: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open target partition <filename>%1</filename> to restore to."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis malfermi celdiskon <filename>%1</filename> por restarigi."
 
 #: jobs/restorefilesystemjob.cpp:100
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Restore the file system from file <filename>%1</filename> to partition "
 "<filename>%2</filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Restarigi la dosiersistemon de dosiero <filename>%1</filename> al dispartigo "
+"<filename>%2</filename>"
 
 #: jobs/setfilesystemlabeljob.cpp:48
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "File system on partition <filename>%1</filename> does not support setting "
 "labels. Job ignored."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Dosiersistemo sur diskparto <filename>%1</filename> ne subtenas agordon de "
+"etikedoj. Tasko ignorita."
 
 #: jobs/setfilesystemlabeljob.cpp:81
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
-msgstr "Kroĉpunkto"
+msgstr ""
+"Meti la dosiersisteman etikedon sur diskparto <filename>%1</filename> al "
+"\"%2\""
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress flag turned on, active"
 msgid "on"
-msgstr ""
+msgstr "enŝaltita"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress flag turned off, inactive"
 msgid "off"
-msgstr ""
+msgstr "malŝaltita"
 
 #: jobs/setpartflagsjob.cpp:65
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "There was an error setting flag %1 for partition <filename>%2</filename> to "
 "state %3."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Okazis eraro agordante flagon %1 por diskparto <filename>%2</filename> al "
+"stato %3."
 
 #: jobs/setpartflagsjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set "
 "partition flags for partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi diskpartigan tabelon sur aparato <filename>%1</filename> "
+"por agordi diskpartigajn flagojn por diskparto <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:76
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set partition flags for "
 "partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> por agordi diskmarkojn "
+"por diskparto <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:89
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Clear flags for partition <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Forigi flagojn por diskparto <filename>%1</filename>"
 
 #: jobs/setpartflagsjob.cpp:91
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
-msgstr "Kroĉpunkto"
+msgstr "Agordi la flagojn por diskparto <filename>%1</filename> al \"%2\""
 
 #: jobs/setpartgeometryjob.cpp:65
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> while trying to resize/move "
 "partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> dum provo aligrandigi/"
+"movi diskparton <filename>%2</filename>."
 
 #: jobs/setpartgeometryjob.cpp:81
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
 "%3"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Agordi geometrion de subdisko <filename>%1</filename>: Komenca sektoro: %2, "
+"longeco: %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Dispartiga tabelo de subdisko <filename>%1</filename> ne subtenas agordon de "
+"atributoj. Tasko ignorita."
 
 #: jobs/setpartitionattributesjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Malsukcesis agordi la atributojn por la diskparto <filename>%1</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi diskpartigan tabelon sur aparato <filename>%1</filename> "
+"por agordi la atributojn por la diskparto <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> por agordi la atributojn "
+"por diskparto <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Kroĉpunkto"
+msgstr "Agordi la atributojn sur diskparto <filename>%1</filename> al \"%2\""
 
 #: jobs/setpartitionlabeljob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Dispartiga tabelo de subdisko <filename>%1</filename> ne subtenas agordi "
+"nomojn. Tasko ignorita."
 
 #: jobs/setpartitionlabeljob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Malsukcesis agordi la nomon por la diskparto <filename>%1</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi diskpartigan tabelon sur aparato <filename>%1</filename> "
+"por agordi la nomon por la diskparto <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> por agordi la nomon por "
+"diskparto <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "Kroĉpunkto"
+msgstr "Agordi la etikedon sur diskparto <filename>%1</filename> al \"%2\""
 
 #: jobs/setpartitionuuidjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Dispartiga tabelo de subdisko <filename>%1</filename> ne subtenas agordon de "
+"UUID-oj. Tasko ignorita."
 
 #: jobs/setpartitionuuidjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Malsukcesis agordi la UUID por la diskparto <filename>%1</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi diskpartigan tabelon sur aparato <filename>%1</filename> "
+"por agordi la UUID por la diskparto <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis malfermi aparaton <filename>%1</filename> por agordi la UUID por "
+"diskparto <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Kroĉpunkto"
+msgstr "Meti la UUID sur diskparto <filename>%1</filename> al \"%2\""
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open random data source to overwrite file system."
-msgstr ""
+msgstr "Ne eblis malfermi hazardan datumfonton por anstataŭigi dosiersistemon."
 
 #: jobs/shredfilesystemjob.cpp:77
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Disŝiri la dosiersistemon ĉe <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Sekurkopio <filename>%1</filename> (%2, %3) al <filename>%4</filename>"
 
 #: ops/checkoperation.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
-msgstr "Kroĉpunkto"
+msgstr "Kontroli kaj ripari subdiskon <filename>%1</filename> (%2, %3)"
 
 #: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<warning>Maximizing file system on target partition <filename>%1</filename> "
 "to the size of the partition failed.</warning>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"<warning>Maksimumigi dosiersistemon sur celata subdisko <filename>%1</"
+"filename> al la grandeco de la diskparto malsukcesis.</warning>"
 
 #: ops/copyoperation.cpp:151
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking target partition <filename>%1</filename> after copy failed."
-msgstr "Kroĉpunkto"
+msgstr "Kontrolanta celdiskon <filename>%1</filename> post kopio malsukcesis."
 
 #: ops/copyoperation.cpp:158
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying source to target partition failed."
-msgstr ""
+msgstr "Kopiado de fonto al celdisko malsukcesis."
 
 #: ops/copyoperation.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating target partition for copying failed."
-msgstr "Kroĉpunkto"
+msgstr "Krei celdiskon por kopiado malsukcesis."
 
 #: ops/copyoperation.cpp:163
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking source partition <filename>%1</filename> failed."
-msgstr "Kroĉpunkto"
+msgstr "Kontrolanta fontan diskparton <filename>%1</filename> malsukcesis."
 
 #: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
 #: ops/restoreoperation.cpp:148
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status (success, error, warning...) of operation"
 msgid "%1: %2"
 msgstr "%1: %2"
 
 #: ops/copyoperation.cpp:179
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6)"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kopii subdiskon <filename>%1</filename> (%2, %3) al <filename>%4</filename> "
+"(%5, %6)"
 
 #: ops/copyoperation.cpp:188
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6) and grow it to %7"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kopii subdiskon <filename>%1</filename> (%2, %3) al <filename>%4</filename> "
+"(%5, %6) kaj kreskigi ĝin al %7"
 
 #: ops/copyoperation.cpp:200
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kopii subdiskon <filename>%1</filename> (%2, %3) al neasignita spaco "
+"(komencante je %4) sur <filename>%5</filename>"
 
 #: ops/copyoperation.cpp:208
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename> and grow it to %6"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kopii subdiskon <filename>%1</filename> (%2, %3) al neasignita spaco "
+"(komencante je %4) sur <filename>%5</filename> kaj kreskigi ĝin al %6"
 
 #: ops/createfilesystemoperation.cpp:89
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create filesystem %1 on partition <filename>%2</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Krei dosiersistemon %1 sur diskparto <filename>%2</filename>"
 
 #: ops/createpartitiontableoperation.cpp:104
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Krei novan diskpartigan tabelon (tipo: %1) ĉe <filename>%2</filename>"
 
 #: ops/createvolumegroupoperation.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "Kroĉpunkto"
+msgstr "Krei novan LVM-volumgrupon nomitan '%1'."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate volume group."
-msgstr ""
+msgstr "Malaktivigi volumgrupon."
 
 #: ops/deleteoperation.cpp:87
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Shred partition <filename>%1</filename> (%2, %3)"
-msgstr "Kroĉpunkto"
+msgstr "Disŝiri subdiskon <filename>%1</filename> (%2, %3)"
 
 #: ops/deleteoperation.cpp:89
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Delete partition <filename>%1</filename> (%2, %3)"
-msgstr "Kroĉpunkto"
+msgstr "Forigi subdiskon <filename>%1</filename> (%2, %3)"
 
 #: ops/newoperation.cpp:205
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Krei novan subdiskon (%1, %2) sur <filename>%3</filename>"
 
 #: ops/operation.cpp:75
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "None"
-msgstr ""
+msgstr "Neniu"
 
 #: ops/operation.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Pending"
-msgstr ""
+msgstr "Okazonta"
 
 #: ops/operation.cpp:77
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Running"
-msgstr ""
+msgstr "Kurante"
 
 #: ops/operation.cpp:78
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Success"
-msgstr ""
+msgstr "Sukceso"
 
 #: ops/operation.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Warning"
-msgstr ""
+msgstr "Averto"
 
 #: ops/operation.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Error"
-msgstr ""
+msgstr "Eraro"
 
 #: ops/removevolumegroupoperation.cpp:35
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove a LVM volume group."
-msgstr ""
+msgstr "Forigi LVM-voluman grupon."
 
 #: ops/resizeoperation.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Moving extended partition <filename>%1</filename> failed."
-msgstr "Kroĉpunkto"
+msgstr "Movi plilongigitan diskparton <filename>%1</filename> malsukcesis."
 
 #: ops/resizeoperation.cpp:165
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> after resize/move failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kontrolado de diskparto <filename>%1</filename> post regrandigo/movo "
+"malsukcesis."
 
 #: ops/resizeoperation.cpp:168
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing/moving partition <filename>%1</filename> failed."
-msgstr "Kroĉpunkto"
+msgstr "Regrandigo/movi diskparton <filename>%1</filename> malsukcesis."
 
 #: ops/resizeoperation.cpp:171
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> before resize/move failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kontrolado de subdisko <filename>%1</filename> antaŭ regrandigo/movo "
+"malsukcesis."
 
 #: ops/resizeoperation.cpp:201
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the left by %2"
-msgstr "Kroĉpunkto"
+msgstr "Movi sekcion <filename>%1</filename> maldekstren per %2"
 
 #: ops/resizeoperation.cpp:204
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the right by %2"
-msgstr "Kroĉpunkto"
+msgstr "Movi sekcion <filename>%1</filename> dekstren per %2"
 
 #: ops/resizeoperation.cpp:207
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Grow partition <filename>%1</filename> from %2 to %3"
-msgstr "Kroĉpunkto"
+msgstr "Kreskigi la subdiskon <filename>%1</filename> de %2 al %3"
 
 #: ops/resizeoperation.cpp:210
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Shrink partition <filename>%1</filename> from %2 to %3"
-msgstr "Kroĉpunkto"
+msgstr "Ŝrumpi subdiskon <filename>%1</filename> de %2 al %3"
 
 #: ops/resizeoperation.cpp:213
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
 "to %4"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Movi subdiskon <filename>%1</filename> maldekstren per %2 kaj kreskigi ĝin "
+"de %3 al %4"
 
 #: ops/resizeoperation.cpp:216
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and grow it from "
 "%3 to %4"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Movi subdiskon <filename>%1</filename> dekstren je %2 kaj kreskigi ĝin de %3 "
+"al %4"
 
 #: ops/resizeoperation.cpp:219
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and shrink it from "
 "%3 to %4"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Movi subdiskon <filename>%1</filename> maldekstren per %2 kaj ŝrumpi ĝin de "
+"%3 al %4"
 
 #: ops/resizeoperation.cpp:222
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and shrink it from "
 "%3 to %4"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Movi subdiskon <filename>%1</filename> dekstren je %2 kaj ŝrumpi ĝin de %3 "
+"al %4"
 
 #: ops/resizeoperation.cpp:229
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Unknown resize/move action."
-msgstr ""
+msgstr "Nekonata ago de regrandigo/movo."
 
 #: ops/resizeoperation.cpp:258
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Resize/move failed: Could not resize file system to shrink partition "
 "<filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigi/movo malsukcesis: Ne eblis regrandigi dosiersistemon por "
+"malgrandigi subdiskon <filename>%1</filename>."
 
 #: ops/resizeoperation.cpp:263
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigi/movo malsukcesis: Ne eblis malgrandigi subdiskon <filename>%1</"
+"filename>."
 
 #: ops/resizeoperation.cpp:282
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Moving partition <filename>%1</filename> failed."
-msgstr "Kroĉpunkto"
+msgstr "Movi diskparton <filename>%1</filename> malsukcesis."
 
 #: ops/resizeoperation.cpp:287
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
 "back."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Movo de la dosiersistemo por diskparto <filename>%1</filename> malsukcesis. "
+"Reruliĝado."
 
 #: ops/resizeoperation.cpp:291
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Moving back partition <filename>%1</filename> to its original position "
 "failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Malsukcesis removi la subdiskon <filename>%1</filename> al sia originala "
+"pozicio."
 
 #: ops/resizeoperation.cpp:304
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigi/movo malsukcesis: Ne eblis kreskigi la subdiskon <filename>%1</"
+"filename>."
 
 #: ops/resizeoperation.cpp:309
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Resize/move failed: Could not resize the file system on partition <filename>"
 "%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Regrandigo/movo malsukcesis: Ne eblis regrandigi la dosiersistemon sur "
+"diskparto <filename>%1</filename>"
 
 #: ops/resizeoperation.cpp:312
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Could not restore old partition size for partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis restarigi malnovan diskgrandecon por diskparto <filename>%1</"
+"filename>."
 
 #: ops/resizevolumegroupoperation.cpp:108
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resize volume %1 from %2 to %3"
-msgstr ""
+msgstr "Regrandigi volumon %1 de %2 al %3"
 
 #: ops/restoreoperation.cpp:133
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Checking target file system on partition <filename>%1</filename> after the "
 "restore failed."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Kontrolado de cela dosiersistemo sur diskparto <filename>%1</filename> post "
+"la restarigo malsukcesis."
 
 #: ops/restoreoperation.cpp:138
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Restoring file system failed."
-msgstr ""
+msgstr "Restarigo de dosiersistemo malsukcesis."
 
 #: ops/restoreoperation.cpp:141
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating the destination partition to restore to failed."
-msgstr ""
+msgstr "Kreado de la celsubdisko por restarigo malsukcesis."
 
 #: ops/restoreoperation.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Restore partition from <filename>%1</filename> to <filename>%2</filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Restarigi subdiskon de <filename>%1</filename> al <filename>%2</filename>"
 
 #: ops/restoreoperation.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
 "filename>"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Restarigi subdiskon sur <filename>%1</filename> ĉe %2 el <filename>%3</"
+"filename>"
 
 #: ops/setfilesystemlabeloperation.cpp:58
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr "Kroĉpunkto"
+msgstr "Meti etikedon por subdisko <filename>%1</filename> al \"%2\""
 
 #: ops/setfilesystemlabeloperation.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
-msgstr "Kroĉpunkto"
+msgstr ""
+"Agordi etikedon por subdisko <filename>%1</filename> de \"%2\" al \"%3\""
 
 #: ops/setpartflagsoperation.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Clear flags for partition <filename>%1</filename>"
-msgstr "Kroĉpunkto"
+msgstr "Forigi flagojn por diskparto <filename>%1</filename>"
 
 #: ops/setpartflagsoperation.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
-msgstr "Kroĉpunkto"
+msgstr "Meti flagojn por diskparto <filename>%1</filename> al \"%2\""
 
 #: plugins/sfdisk/sfdiskbackend.cpp:248
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
-msgstr ""
+msgstr "Programaro RAID-Aparato trovita: %1"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:278
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Device found: %1"
-msgstr ""
+msgstr "Aparato trovita: %1"
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
-msgstr "Kroĉpunkto"
+msgstr ""
+"Nekonata dispartigorolo por nova diskparto <filename>%1</filename> (roloj: "
+"%2)"
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:89
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Malsukcesis aldoni subdiskon <filename>%1</filename> al aparato <filename>"
+"%2</filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:114
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not set geometry for partition <filename>%1</filename> while trying to "
 "resize/move it."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis agordi geometrion por subdisko <filename>%1</filename> dum provo "
+"regrandigi/movi ĝin."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:124
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Malsukcesis forigi dosiersistemon subskribon sur diskparto <filename>%1</"
+"filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not determine file system of partition at sector %1 on device "
 "<filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr ""
+"Ne eblis determini dosiersistemon de subdisko ĉe sektoro %1 sur aparato "
+"<filename>%2</filename>."
 
 #: util/capacity.cpp:100
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "Byte"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "Byte"
 msgid_plural "Bytes"
@@ -3081,65 +3192,49 @@ msgstr[0] "Byte"
 msgstr[1] "Byte"
 
 #: util/capacity.cpp:101
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "KiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "KiB"
 msgstr "KiB"
 
 #: util/capacity.cpp:102
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "MiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "MiB"
 msgstr "MiB"
 
 #: util/capacity.cpp:103
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "GiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "GiB"
 msgstr "GiB"
 
 #: util/capacity.cpp:104
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "TiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "TiB"
 msgstr "TiB"
 
 #: util/capacity.cpp:105
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "PiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "PiB"
 msgstr "PiB"
 
 #: util/capacity.cpp:106
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "EiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "EiB"
 msgstr "EiB"
 
 #: util/capacity.cpp:107
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "ZiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "ZiB"
 msgstr "ZiB"
 
 #: util/capacity.cpp:108
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain unit"
-#| msgid "YiB"
+#, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "YiB"
 msgstr "YiB"
@@ -3148,86 +3243,79 @@ msgstr "YiB"
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "(unknown unit)"
-msgstr ""
+msgstr "(nekonata unuo)"
 
 #: util/externalcommand.cpp:111 util/externalcommand.cpp:114
 #: util/externalcommand.cpp:226
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Command: %1 %2"
-msgstr ""
+msgstr "Komando: %1 %2"
 
 #: util/externalcommandhelper.cpp:82
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis malfermi aparaton <filename>%1</filename> por legado."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis serĉi la pozicion %1 sur aparato <filename>%2</filename>."
 
 #: util/externalcommandhelper.cpp:96
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis legi de aparato <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:114
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis malfermi aparaton <filename>%1</filename> por skribado."
 
 #: util/externalcommandhelper.cpp:125
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis skribi al aparato <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:151
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis malfermi dosieron <filename>%1</filename> por skribado."
 
 #: util/externalcommandhelper.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgid "Mount Point"
+#, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr "Kroĉpunkto"
+msgstr "Ne eblis skribi al dosiero <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr ""
+msgstr "Kopiante %1 pecetojn (%2 bajtoj) de %3 ĝis %4, direkto: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
 msgctxt "direction: left"
 msgid "left"
-msgstr ""
+msgstr "foriris"
 
 #: util/externalcommandhelper.cpp:239
 #, kde-format
 msgctxt "direction: right"
 msgid "right"
-msgstr ""
+msgstr "ĝuste"
 
 #: util/externalcommandhelper.cpp:261
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
-msgstr ""
+msgstr "Kopiante %1 MiB/sekundo, restanta estimata tempo: %2"
 
 #: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr ""
+msgstr "Kopiante la reston de la grandeco %1 de %2 ĝis %3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3249,19 +3337,19 @@ msgstr[1] ""
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<application>KPMcore</application>"
-msgstr ""
+msgstr "<application>KPMcore</application>"
 
 #: util/helpers.cpp:50
 #, kde-kuit-format
 msgctxt "@title"
 msgid "Library for managing partitions"
-msgstr ""
+msgstr "Biblioteko por administri subdiskojn"
 
 #: util/helpers.cpp:51
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr ""
+msgstr "© 2008-2022 KPMcore-programistoj"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3273,97 +3361,96 @@ msgstr "Volker Lanz"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Former maintainer"
-msgstr ""
+msgstr "Iama prizorganto"
 
 #: util/helpers.cpp:57
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Andrius Štikonas"
-msgstr ""
+msgstr "Andrius Ŝtikonas"
 
 #: util/helpers.cpp:57
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Maintainer"
-msgstr ""
+msgstr "Prizorganto"
 
 #: util/helpers.cpp:58
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Teo Mrnjavac"
-msgstr ""
+msgstr "Teo Mrnjavac"
 
 #: util/helpers.cpp:58
 #, kde-format
 msgctxt "@info:credit"
 msgid "Former Calamares maintainer"
-msgstr ""
+msgstr "Iama prizorganto de Calamares"
 
 #: util/helpers.cpp:59
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Chantara Tith"
-msgstr ""
+msgstr "Chantara Tith"
 
 #: util/helpers.cpp:59
 #, kde-format
 msgctxt "@info:credit"
 msgid "LVM support"
-msgstr ""
+msgstr "LVM-subteno"
 
 #: util/helpers.cpp:60
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Pali Rohár"
-msgstr ""
+msgstr "Pali Rohár"
 
 #: util/helpers.cpp:60
 #, kde-format
 msgctxt "@info:credit"
 msgid "UDF support"
-msgstr ""
+msgstr "UDF-subteno"
 
 #: util/helpers.cpp:61
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Adriaan de Groot"
-msgstr ""
+msgstr "Adrian de Groot"
 
 #: util/helpers.cpp:61
 #, kde-format
 msgctxt "@info:credit"
 msgid "Calamares maintainer"
-msgstr ""
+msgstr "Prizorganto de Calamares"
 
 #: util/helpers.cpp:62
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Caio Jordão Carvalho"
-msgstr ""
+msgstr "Caio Jordão Carvalho"
 
 #: util/helpers.cpp:62
 #, kde-format
 msgctxt "@info:credit"
 msgid "Improved SMART support"
-msgstr ""
+msgstr "Plibonigita SMART-subteno"
 
 #: util/helpers.cpp:63
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "David Edmundson"
-msgstr ""
+msgstr "David Edmundson"
 
 #: util/helpers.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "Portado de KAuth al Polkit"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
-#, fuzzy, kde-format
-#| msgid "Status"
+#, kde-format
 msgid "%1: SMART Status Report"
-msgstr "Stato"
+msgstr "%1: SMART-Statusa Raporto"
 
 #: util/htmlreport.cpp:66
 #, kde-format
@@ -3373,742 +3460,19 @@ msgstr "Dato:"
 #: util/htmlreport.cpp:67
 #, kde-format
 msgid "Program version:"
-msgstr ""
+msgstr "Programversio:"
 
 #: util/htmlreport.cpp:68
-#, fuzzy, kde-format
-#| msgid "Backup"
+#, kde-format
 msgid "Backend:"
-msgstr "Sekurkopio"
+msgstr "Backend:"
 
 #: util/htmlreport.cpp:69
-#, fuzzy, kde-format
-#| msgid "KDE version:"
+#, kde-format
 msgid "KDE Frameworks version:"
-msgstr "KDE versio:"
+msgstr "Versio de KDE Frameworks:"
 
 #: util/htmlreport.cpp:70
 #, kde-format
 msgid "Machine:"
 msgstr "Maŝino:"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Creating partition table failed: Could not retrieve partition table type "
-#~ "\"%1\" for <filename>%2</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Creating partition table failed: Could not open backend device <filename>"
-#~ "%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Creating partition table failed: Could not create a new partition table "
-#~ "in the backend for device <filename>%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Failed to create a new partition: could not get geometry for constraint."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
-#~ "not found on disk."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not get constraint for partition <filename>%1</filename> while "
-#~ "trying to resize/move it."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not get geometry for partition <filename>%1</filename> while trying "
-#~ "to resize/move it."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not open partition <filename>%1</filename> while trying to resize/"
-#~ "move it."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not delete file system on partition <filename>%1</filename>: Failed "
-#~ "to get partition."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid "Could not resize file system on partition <filename>%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not get geometry for resized partition <filename>%1</filename> "
-#~ "while trying to resize the file system."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not update the system type for partition <filename>%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not find partition <filename>%1</filename> on device <filename>%2</"
-#~ "filename> to set partition flags."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not open partition <filename>%1</filename> for writing when trying "
-#~ "to update the NTFS boot sector."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not seek to position 0x1c on partition <filename>%1</filename> when "
-#~ "trying to update the NTFS boot sector."
-#~ msgstr "Kroĉpunkto"
-
-#~ msgctxt "@title:menu"
-#~ msgid "Columns"
-#~ msgstr "Kolumnoj"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:status"
-#~ msgid ""
-#~ "Warning: Maximizing file system on target partition <filename>%1</"
-#~ "filename> to the size of the partition failed."
-#~ msgstr "Kroĉpunkto"
-
-#~ msgctxt "@info/plain status (success, error, warning...) of operation"
-#~ msgid "%1: %2"
-#~ msgstr "%1: %2"
-
-#~ msgctxt "@info/plain unit"
-#~ msgid "Byte"
-#~ msgid_plural "Bytes"
-#~ msgstr[0] "Bajto"
-#~ msgstr[1] "Bajtoj"
-
-#~ msgctxt "@info/plain unit"
-#~ msgid "KiB"
-#~ msgstr "KiB"
-
-#~ msgctxt "@info/plain unit"
-#~ msgid "MiB"
-#~ msgstr "MiB"
-
-#~ msgctxt "@info/plain unit"
-#~ msgid "GiB"
-#~ msgstr "GiB"
-
-#~ msgctxt "@info/plain unit"
-#~ msgid "TiB"
-#~ msgstr "TiB"
-
-#~ msgctxt "@info/plain unit"
-#~ msgid "PiB"
-#~ msgstr "PiB"
-
-#~ msgctxt "@info/plain unit"
-#~ msgid "EiB"
-#~ msgstr "EiB"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info/plain"
-#~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Decrypt LUKS partition on <filename>%1</filename>"
-#~ msgstr "Kroĉpunkto"
-
-#~ msgid "&Name:"
-#~ msgstr "&Nomo:"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info/plain"
-#~ msgid ""
-#~ "Could not open partition <filename>%1</filename> for writing when trying "
-#~ "to update the NTFS serial number."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info/plain"
-#~ msgid ""
-#~ "Could not write new NTFS serial number to partition <filename>%1</"
-#~ "filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info/plain"
-#~ msgid ""
-#~ "Updated NTFS serial number for partition <filename>%1</filename> "
-#~ "successfully."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgctxt "@label"
-#~ msgid "File system colors"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~| msgid "Backup"
-#~ msgctxt "@label"
-#~ msgid "Backend plugin"
-#~ msgstr "Sekurkopio"
-
-#~ msgid "General Settings"
-#~ msgstr "Ĝeneralaj Agordoj"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgctxt "@title:tab"
-#~ msgid "File System Colors"
-#~ msgstr "Dosiersistemo"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "Plia agordo"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgctxt "@action:button"
-#~ msgid "Change the Backend"
-#~ msgstr "Dosiersistemo"
-
-#~ msgid "Permissions"
-#~ msgstr "Permesoj"
-
-#, fuzzy
-#~| msgid "Backup"
-#~ msgid "Backend"
-#~ msgstr "Sekurkopio"
-
-#~ msgid "Units"
-#~ msgstr "Unuoj"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgid "File Systems"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~| msgctxt "@title:window"
-#~| msgid "Information"
-#~ msgid "unformatted:"
-#~ msgstr "Informoj"
-
-#~ msgid "Logging"
-#~ msgstr "Protokolado"
-
-#~ msgid "Debug"
-#~ msgstr "Sencimigu"
-
-#, fuzzy
-#~| msgctxt "@title:window"
-#~| msgid "Information"
-#~ msgid "Information"
-#~ msgstr "Informoj"
-
-#~ msgid "Warning"
-#~ msgstr "Averto"
-
-#~ msgid "Error"
-#~ msgstr "Eraro"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgid "Default file system:"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~ msgid "Shredding"
-#~ msgstr "Akuteco:"
-
-#, fuzzy
-#~| msgid "&Save"
-#~ msgid "Save"
-#~ msgstr "&Konservi"
-
-#~ msgid "Open in External Browser"
-#~ msgstr "Malfermu en ekstera retumilo"
-
-#~ msgctxt "@info:progress"
-#~ msgid "[%1/%2] - %3: %4"
-#~ msgstr "[%1/%2] - %3: %4"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Could not create temporary file when trying to save to <filename>%1</"
-#~ "filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid "Could not create temporary file <filename>%1</filename> for writing."
-#~ msgstr "Kroĉpunkto"
-
-#~ msgid "Status"
-#~ msgstr "Stato"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Create a New Partition Table on <filename>%1</filename>"
-#~ msgstr "Kroĉpunkto"
-
-#~ msgid "Capacity:"
-#~ msgstr "Enhaveco:"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "SMART status:"
-#~ msgstr "Stato"
-
-#~ msgid "More..."
-#~ msgstr "Plia..."
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Edit additional mount options"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Edit mount point for <filename>%1</filename>"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid "Could not open mount point file <filename>%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Error while reading mount points"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid "Could not save mount points to file <filename>%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Error While Saving Mount Points"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Date:"
-#~ msgid "Path:"
-#~ msgstr "Dato:"
-
-#~ msgid "Select..."
-#~ msgstr "Elektu..."
-
-#, fuzzy
-#~| msgid "Type"
-#~ msgid "Type:"
-#~ msgstr "Tipo"
-
-#, fuzzy
-#~ msgid "Options:"
-#~ msgstr "Bildoperacioj"
-
-#~ msgid "Read-only"
-#~ msgstr "Nurlege"
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "UUID:"
-#~ msgid "UUID"
-#~ msgstr "UUID:"
-
-#~ msgid "Label"
-#~ msgstr "Etikedo"
-
-#~ msgid "File System"
-#~ msgstr "Dosiersistemo"
-
-#~ msgid "Create"
-#~ msgstr "Krei"
-
-#~ msgid "Grow"
-#~ msgstr "Kreskigi"
-
-#, fuzzy
-#~ msgid "Shrink"
-#~ msgstr "Akuteco:"
-
-#~ msgid "Move"
-#~ msgstr "Movi"
-
-#~ msgid "Copy"
-#~ msgstr "Kopii"
-
-#~ msgid "Check"
-#~ msgstr "Ŝalti"
-
-#~ msgid "Backup"
-#~ msgstr "Sekurkopio"
-
-#~ msgid "Restore"
-#~ msgstr "Restarigi"
-
-#~ msgctxt "@title:window"
-#~ msgid "Information"
-#~ msgstr "Informoj"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgctxt "@action:inmenu"
-#~ msgid "SMART Status"
-#~ msgstr "Stato"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgctxt "@info:tooltip"
-#~ msgid "Show SMART status"
-#~ msgstr "Stato"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Properties"
-#~ msgstr "Ecoj"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Delete"
-#~ msgstr "Forigi"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Copy"
-#~ msgstr "Kopii"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Paste"
-#~ msgstr "Alglui"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Edit Mount Point"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info:tooltip"
-#~ msgid "Edit mount point"
-#~ msgstr "Kroĉpunkto"
-
-#~ msgctxt "@action:inmenu"
-#~ msgid "Restore"
-#~ msgstr "Restarigi"
-
-#, fuzzy
-#~| msgid "&Save"
-#~ msgctxt "@action:inmenu"
-#~ msgid "Save Log"
-#~ msgstr "&Konservi"
-
-#, fuzzy
-#~| msgid "Backup"
-#~ msgctxt "@info/plain"
-#~ msgid "Using backend plugin: %1 (%2)"
-#~ msgstr "Sekurkopio"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid "Could not open input file <filename>%1</filename> for import: %2"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Could not open temporary file <filename>%1</filename> while trying to "
-#~ "import from <filename>%2</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "&View"
-#~ msgctxt "@title:menu"
-#~ msgid "View"
-#~ msgstr "&Rigardi"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The file system on partition <filename>%1</filename> could not be mounted."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "The file system on partition <filename>%1</filename> could not be "
-#~ "unmounted."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgctxt "@action:inmenu"
-#~| msgid "Delete"
-#~ msgctxt "@action:button"
-#~ msgid "Delete It"
-#~ msgstr "Forigi"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid "Do you want to overwrite the existing file <filename>%1</filename>?"
-#~ msgstr "Kroĉpunkto"
-
-#~ msgid "Type"
-#~ msgstr "Tipo"
-
-#~ msgid "Mount Point"
-#~ msgstr "Kroĉpunkto"
-
-#~ msgid "Size"
-#~ msgstr "Grandeco"
-
-#, fuzzy
-#~| msgctxt "Preview available"
-#~| msgid "Available"
-#~ msgid "Available"
-#~ msgstr "Disponebla"
-
-#~ msgid "Flags"
-#~ msgstr "Flagoj"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Partition properties: <filename>%1</filename>"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgctxt "@action:button"
-#~ msgid "Change the File System"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Really Recreate File System on <filename>%1</filename>?"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgctxt "@action:button"
-#~ msgid "Recreate the File System"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgctxt "@label:listbox"
-#~ msgid "File system:"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~| msgid "Label"
-#~ msgctxt "@label"
-#~ msgid "Label:"
-#~ msgstr "Etikedo"
-
-#~ msgctxt "@label"
-#~ msgid "UUID:"
-#~ msgstr "UUID:"
-
-#~ msgctxt "@label"
-#~ msgid "Size:"
-#~ msgstr "Grando:"
-
-#, fuzzy
-#~| msgid "Flags"
-#~ msgctxt "@label"
-#~ msgid "Flags:"
-#~ msgstr "Flagoj"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "Resize/move partition: <filename>%1</filename>"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@label"
-#~ msgid "Scanning device: <filename>%1</filename>"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Advanced Settings"
-#~ msgid "&Advanced"
-#~ msgstr "Plia agordo"
-
-#, fuzzy
-#~| msgid "Extended"
-#~ msgid "E&xtended"
-#~ msgstr "Etendata"
-
-#, fuzzy
-#~| msgid "Logical"
-#~ msgid "&Logical"
-#~ msgstr "Logika"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@title:window"
-#~ msgid "SMART Properties: <filename>%1</filename>"
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Move"
-#~ msgid "Model:"
-#~ msgstr "Movi"
-
-#, fuzzy
-#~| msgid "Serial Number:"
-#~ msgid "Serial number:"
-#~ msgstr "Seria numero:"
-
-#~ msgid "Temperature:"
-#~ msgstr "Temperaturo:"
-
-#~ msgid "Attribute"
-#~ msgstr "Atributo"
-
-#, fuzzy
-#~| msgid "File System"
-#~ msgid "Failure Type"
-#~ msgstr "Dosiersistemo"
-
-#, fuzzy
-#~| msgid "Create"
-#~ msgid "Current"
-#~ msgstr "Krei"
-
-#, fuzzy
-#~| msgid "Threshold:"
-#~ msgid "Threshold"
-#~ msgstr "Pentrosojlo:"
-
-#~ msgid "Raw"
-#~ msgstr "Kruda"
-
-#~ msgid "Value"
-#~ msgstr "Valoro"
-
-#, fuzzy
-#~| msgid "Mount Point"
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Could not create temporary output file to save <filename>%1</filename>."
-#~ msgstr "Kroĉpunkto"
-
-#, fuzzy
-#~| msgid "Time"
-#~ msgctxt "@title:column a time stamp of a log entry"
-#~ msgid "Time"
-#~ msgstr "Tempo"
-
-#, fuzzy
-#~| msgid "Message"
-#~ msgctxt "@title:column the text message of a log entry"
-#~ msgid "Message"
-#~ msgstr "Mesaĝo"
-
-#, fuzzy
-#~| msgctxt "@info:credit"
-#~| msgid "Volker Lanz"
-#~ msgctxt "@info:credit"
-#~ msgid ""
-#~ "© 2008-2013 Volker Lanz\n"
-#~ "© 2012-2015 Andrius Štikonas"
-#~ msgstr "Volker Lanz"
-
-#, fuzzy
-#~| msgctxt "@label"
-#~| msgid "Size:"
-#~ msgctxt "@label:listbox"
-#~ msgid "Size:"
-#~ msgstr "Grando:"
-
-#~ msgid "Form"
-#~ msgstr "Formo"
-
-#, fuzzy
-#~| msgid "User ID:"
-#~ msgid "Used:"
-#~ msgstr "Identigilo de uzanto:"
-
-#~ msgid "User ID:"
-#~ msgstr "Identigilo de uzanto:"
-
-#, fuzzy
-#~| msgid "Edit"
-#~ msgctxt "@title:menu"
-#~ msgid "Edit"
-#~ msgstr "Redakti"
-
-#~ msgctxt "@label:spinbox"
-#~ msgid " MiB"
-#~ msgstr " MiB"
