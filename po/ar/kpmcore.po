@@ -3974,7 +3974,7 @@ msgstr "التتبّع الخلفي:"
 #, fuzzy, kde-format
 #| msgid "KDE version:"
 msgid "KDE Frameworks version:"
-msgstr "إصدار كدي:"
+msgstr "إصدار كِيدِي:"
 
 #: util/htmlreport.cpp:70
 #, kde-format
@@ -4320,7 +4320,7 @@ msgstr "الآلة:"
 
 #~ msgctxt "@label"
 #~ msgid "Is this the first time KDE Partition Manager is being run?"
-#~ msgstr "هل هذا أول تشغيل لمدير كدي للأقسام؟"
+#~ msgstr "هل هذا أول تشغيل لمدير كِيدِي للأقسام؟"
 
 #~ msgctxt "@label"
 #~ msgid "Hide log messages below"
@@ -5359,7 +5359,7 @@ msgstr "الآلة:"
 
 #~ msgctxt "@title:window"
 #~ msgid "KDE Partition Manager"
-#~ msgstr "مدير كدي للأقسام"
+#~ msgstr "مدير كِيدِي للأقسام"
 
 #~ msgctxt "@title:window"
 #~ msgid "Devices"
@@ -5898,7 +5898,7 @@ msgstr "الآلة:"
 
 #~ msgctxt "@title"
 #~ msgid "<application>KDE Partition Manager</application>"
-#~ msgstr "<application>مدير كدي للأقسام</application>"
+#~ msgstr "<application>مدير كِيدِي للأقسام</application>"
 
 #~ msgctxt "@title"
 #~ msgid "Manage your disks, partitions and file systems"
