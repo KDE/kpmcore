@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-01-12 18:54+0100\n"
+"PO-Revision-Date: 2023-03-08 12:58+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -1023,7 +1023,7 @@ msgid ""
 "ICRC."
 msgstr ""
 "Nombre total d'erreurs au cours du transfert des données via le câble "
-"d'interface comme déterminé par l'ICRC."
+"d'interface comme déterminé par ICRC."
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -1271,7 +1271,7 @@ msgid ""
 "Total time of loading on the magnetic heads actuator (time not spent in "
 "parking area)."
 msgstr ""
-"Temps total de chargement de l'actuateur des têtes magnétiques (temps non "
+"Temps total de chargement de l'actuateur des têtes magnétiques (Temps non "
 "passé en zone de positionnement fixe)."
 
 #: core/smartattribute.cpp:163
@@ -1359,7 +1359,7 @@ msgstr "Temps écoulé en état de fonctionnement"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Unrecoverable ECC Count"
-msgstr "Nombre d'ECC irrécupérables"
+msgstr "Nombre d'erreur « ECC » irrécupérables"
 
 #: core/smartattribute.cpp:169
 #, kde-format
