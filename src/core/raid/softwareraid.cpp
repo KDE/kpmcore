@@ -435,7 +435,7 @@ bool SoftwareRAID::deleteSoftwareRAID(Report &report,
 
     QString contentUpdated = QStringLiteral("\"");
 
-    for (const QString line : lines)
+    for (const QString &line : lines)
         if (!line.isEmpty() && !line.contains(raidDevice.uuid()))
             contentUpdated += line + QLatin1Char('\n');
 
