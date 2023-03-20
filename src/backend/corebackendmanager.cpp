@@ -1,6 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2010 Volker Lanz <vl@fidra.de>
-    SPDX-FileCopyrightText: 2014-2018 Andrius Štikonas <andrius@stikonas.eu>
+    SPDX-FileCopyrightText: 2014-2021 Andrius Štikonas <andrius@stikonas.eu>
     SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
     SPDX-FileCopyrightText: 2018 Caio Jordão Carvalho <caiojcarvalho@gmail.com>
 
@@ -17,7 +17,6 @@
 
 #include <KLocalizedString>
 #include <KPluginFactory>
-#include <KPluginLoader>
 #include <KPluginMetaData>
 
 struct CoreBackendManagerPrivate
@@ -51,13 +50,7 @@ CoreBackend* CoreBackendManager::backend()
 
 QVector<KPluginMetaData> CoreBackendManager::list() const
 {
-    auto filter = [&](const KPluginMetaData &metaData) {
-        return metaData.serviceTypes().contains(QStringLiteral("PartitionManager/Plugin")) &&
-               metaData.category().contains(QStringLiteral("BackendPlugin"));
-    };
-
-    // find backend plugins in standard path (e.g. /usr/lib64/qt5/plugins) using filter from above
-    return KPluginLoader::findPlugins(QString(), filter);
+    return KPluginMetaData::findPlugins(QStringLiteral("kpmcore"));
 }
 
 bool CoreBackendManager::load(const QString& name)
@@ -65,29 +58,25 @@ bool CoreBackendManager::load(const QString& name)
     if (backend())
         unload();
 
-    KPluginLoader loader(name);
+    QString path = QStringLiteral("kpmcore/") + name;
 
-    KPluginFactory* factory = loader.factory();
+    KPluginMetaData metadata(path);
+    d->m_Backend = KPluginFactory::instantiatePlugin<CoreBackend>(metadata).plugin;
 
-    if (factory != nullptr) {
-        d->m_Backend = factory->create<CoreBackend>(nullptr);
-
-        QString id = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
-                     .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Id")).toString();
-        QString version = loader.metaData().toVariantMap().value(QStringLiteral("MetaData"))
-                          .toMap().value(QStringLiteral("KPlugin")).toMap().value(QStringLiteral("Version")).toString();
-        if (id.isEmpty())
-            return false;
-
-        backend()->setId(id);
-        backend()->setVersion(version);
-        qDebug() << "Loaded backend plugin: " << backend()->id();
-
-        return true;
+    if (!backend()) {
+        qWarning() << "Could not create instance of plugin  " << name;
+        return false;
     }
 
-    qWarning() << "Could not load plugin for core backend " << name << ": " << loader.errorString();
-    return false;
+    QString id = metadata.pluginId();
+    QString version = metadata.version();
+    if (id.isEmpty())
+        return false;
+
+    backend()->setId(id);
+    backend()->setVersion(version);
+    qDebug() << "Loaded backend plugin: " << backend()->id();
+    return true;
 }
 
 void CoreBackendManager::unload()

@@ -1,0 +1,35 @@
+# Translation of kpmcore._policy_.po to Ukrainian
+# Copyright (C) 2018-2020 This_file_is_part_of_KDE
+# This file is distributed under the license LGPL version 2.1 or
+# version 3 or later versions approved by the membership of KDE e.V.
+#
+# Yuri Chornoivan <yurchor@ukr.net>, 2018, 2020, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: kpmcore._policy_\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"PO-Revision-Date: 2022-02-09 09:16+0200\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
+msgctxt "description"
+msgid "Run privileged partition manager helper"
+msgstr "Запуск привілейованої допоміжної програми з керування розділами"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
+msgctxt "message"
+msgid "Administrative privileges are required to manage disks"
+msgstr "Для керування дисками потрібні права доступу адміністратора (root)"
+
+#~ msgctxt "description"
+#~ msgid "Start external command daemon"
+#~ msgstr "Запуск фонової служби зовнішньої команди"

@@ -1,0 +1,29 @@
+# Shinjo Park <kde@peremen.name>, 2018, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: desktop files\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"PO-Revision-Date: 2022-02-20 21:33+0100\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 21.08.1\n"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
+msgctxt "description"
+msgid "Run privileged partition manager helper"
+msgstr "상위 권한으로 파티션 관리자 도우미 실행"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
+msgctxt "message"
+msgid "Administrative privileges are required to manage disks"
+msgstr "디스크를 관리하려면 권한이 필요함"
+
+#~ msgctxt "description"
+#~ msgid "Start external command daemon"
+#~ msgstr "외부 명령 데몬 시작"

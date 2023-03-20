@@ -42,6 +42,9 @@ public:
     CommandSupportType supportGrowOnline() const override {
         return m_Grow;
     }
+
+    QString posixPermissions() const override { return implPosixPermissions();  };
+    void setPosixPermissions(const QString& permissions) override { implSetPosixPermissions(permissions); };
 };
 }
 

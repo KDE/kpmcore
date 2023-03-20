@@ -1,0 +1,31 @@
+# pan93412 <pan93412@gmail.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: desktop files\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"PO-Revision-Date: 2019-02-23 21:23+0800\n"
+"Last-Translator: pan93412 <pan93412@gmail.com>\n"
+"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 18.12.2\n"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
+msgctxt "description"
+msgid "Run privileged partition manager helper"
+msgstr ""
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
+#, fuzzy
+msgctxt "message"
+msgid "Administrative privileges are required to manage disks"
+msgstr "管理硬碟需要管理員權限"
+
+#, fuzzy
+#~ msgctxt "description"
+#~ msgid "Start external command daemon"
+#~ msgstr "啟動外部指令守護程式"

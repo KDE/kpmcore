@@ -8,7 +8,10 @@
 #ifndef KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 #define KPMCORE_EXTERNALCOMMAND_WHITELIST_H
 
-QString allowedCommands[] = {
+#include <unordered_set>
+#include "util/externalcommand_trustedprefixes.h"
+
+const std::unordered_set<QString> allowedCommands {
 // TODO no root needed
 QStringLiteral("lsblk"),
 QStringLiteral("udevadm"),
@@ -16,6 +19,7 @@ QStringLiteral("udevadm"),
 //Core programs
 QStringLiteral("blockdev"),
 QStringLiteral("blkid"),
+QStringLiteral("chmod"),
 QStringLiteral("partx"),
 QStringLiteral("sfdisk"),
 QStringLiteral("wipefs"),
@@ -29,9 +33,11 @@ QStringLiteral("smartctl"),
 QStringLiteral("btrfs"),
 QStringLiteral("mkfs.btrfs"),
 QStringLiteral("btrfstune"),
-QStringLiteral("exfatfsck"),
+QStringLiteral("fsck.exfat"),
+QStringLiteral("mkexfatfs"),
 QStringLiteral("mkfs.exfat"),
 QStringLiteral("exfatlabel"),
+QStringLiteral("tune.exfat"),
 QStringLiteral("dumpe2fs"),
 QStringLiteral("e2fsck"),
 QStringLiteral("mkfs.ext2"),
@@ -40,6 +46,7 @@ QStringLiteral("e2label"),
 QStringLiteral("tune2fs"),
 QStringLiteral("mkfs.ext3"),
 QStringLiteral("mkfs.ext4"),
+QStringLiteral("f2fslabel"),
 QStringLiteral("mkfs.f2fs"),
 QStringLiteral("fsck.f2fs"),
 QStringLiteral("resize.f2fs"),
@@ -70,6 +77,7 @@ QStringLiteral("nilfs-resize"),
 QStringLiteral("ntfsresize"),
 QStringLiteral("mkfs.ntfs"),
 QStringLiteral("ntfsclone"),
+QStringLiteral("ntfsinfo"),
 QStringLiteral("ntfslabel"),
 QStringLiteral("fsck.ocfs2"),
 QStringLiteral("mkfs.ocfs2"),

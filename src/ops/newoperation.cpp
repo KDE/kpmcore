@@ -21,6 +21,7 @@
 #include "jobs/setfilesystemlabeljob.h"
 #include "jobs/setpartflagsjob.h"
 #include "jobs/checkfilesystemjob.h"
+#include "jobs/changepermissionsjob.h"
 
 #include "fs/filesystem.h"
 #include "fs/filesystemfactory.h"
@@ -106,6 +107,10 @@ NewOperation::NewOperation(Device& d, Partition* p) :
 
         d_ptr->m_CheckFileSystemJob = new CheckFileSystemJob(newPartition());
         addJob(checkJob());
+
+        // if the user never configured a new permission, nothing will run, if he did,
+        // then we change the permissions on the newly created partition.
+        addJob(new ChangePermissionJob(newPartition()));
     }
 }
 
@@ -221,6 +226,7 @@ Partition* NewOperation::createNew(const Partition& cloneFrom,
                      p->sectorSize()));
     p->setState(Partition::State::New);
     p->setPartitionPath(QString());
+    p->setAttributes(0);
 
     return p;
 }

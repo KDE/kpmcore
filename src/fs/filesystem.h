@@ -113,6 +113,9 @@ protected:
     FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, FileSystem::Type type);
     FileSystem(qint64 firstsector, qint64 lastsector, qint64 sectorsused, const QString& label, const QVariantMap& features, FileSystem::Type type);
 
+    QString implPosixPermissions() const;
+    void implSetPosixPermissions(const QString& permissions);
+
 public:
     virtual ~FileSystem();
 
@@ -198,6 +201,14 @@ public:
 
     virtual SupportTool supportToolName() const;
     virtual bool supportToolFound() const;
+
+    virtual QString posixPermissions() const { return QString{}; };
+    virtual void setPosixPermissions(const QString& permissions) { Q_UNUSED(permissions); };
+
+    // Tries to change the posix permission on the filesystem, if the
+    // filesystem supports it. by supports I mean reimplements `posixPermissions()`
+    // and setPosixPermissions.
+    bool execChangePosixPermission(Report& report, const QString& deviceNode);
 
     /**
      * Returns the (possibly translated) name of the type of this filesystem.

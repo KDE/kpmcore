@@ -14,6 +14,8 @@
 #include "util/globallog.h"
 
 #include <QDebug>
+#include <QFileInfo>
+#include <KLocalizedString>
 
 struct CoreBackendPrivate
 {
@@ -27,6 +29,20 @@ CoreBackend::CoreBackend() :
 
 CoreBackend::~CoreBackend()
 {
+}
+
+bool CoreBackend::isPolkitInstalledCorrectly() {
+    // Assume PACKAGE_DATA_DIR is /usr/share, this is defined on polkit on buildtime so this might be wrong.
+    // This is a warning, not a hard failure, so it does not matter much.
+    QFileInfo fInfo(QStringLiteral("/usr/share/polkit-1/actions/org.kde.kpmcore.externalcommand.policy"));
+
+    // TODO: Port kpm to qCDebug, currently everything is debug.
+    if (!fInfo.exists()) {
+        qDebug() << "Installation might be wrong, we can't locate `org.kde.kpmcore.externalcommand.policy` on the polkit actions folder.";
+        qDebug() << "Please check if your Installation is on a different prefix and copy it to /usr/share/polkit-1/actions";
+        qDebug() << "That's specified for your distro. Since this is distro specific, you need to look at your distribution documentation.";
+    }
+    return fInfo.exists();
 }
 
 void CoreBackend::emitProgress(int i)

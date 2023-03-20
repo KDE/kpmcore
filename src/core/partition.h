@@ -264,25 +264,25 @@ private:
         m_Number = n;
     }
 
-    qint32 m_Number;
+    qint32 m_Number = 0;
     Partitions m_Children;
-    QPointer< PartitionNode > m_Parent;
-    FileSystem* m_FileSystem;
+    QPointer< PartitionNode > m_Parent = nullptr;
+    FileSystem* m_FileSystem = nullptr;
     PartitionRole m_Roles;
-    qint64 m_FirstSector;
-    qint64 m_LastSector;
+    qint64 m_FirstSector = 0;
+    qint64 m_LastSector = 0;
     QString m_DevicePath;
     QString m_Label;
     QString m_Type;
     QString m_UUID;
-    quint64 m_Attributes;
+    quint64 m_Attributes = 0;
     QString m_PartitionPath;
     QString m_MountPoint;
     PartitionTable::Flags m_AvailableFlags;
     PartitionTable::Flags m_ActiveFlags;
-    bool m_IsMounted;
-    qint64 m_SectorSize;
-    State m_State;
+    bool m_IsMounted = false;
+    qint64 m_SectorSize = 0;
+    State m_State = None;
 };
 
 QTextStream& operator<<(QTextStream& stream, const Partition& p);

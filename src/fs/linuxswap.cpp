@@ -122,12 +122,6 @@ bool linuxswap::writeLabel(Report& report, const QString& deviceNode, const QStr
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
-bool linuxswap::writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel)
-{
-    Q_UNUSED(mountPoint)
-    return writeLabel(report, deviceNode, newLabel);
-}
-
 QString linuxswap::mountTitle() const
 {
     return xi18nc("@title:menu", "Activate swap");

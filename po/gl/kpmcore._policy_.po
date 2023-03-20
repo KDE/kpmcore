@@ -1,0 +1,30 @@
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: desktop files\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"PO-Revision-Date: 2018-10-20 11:04+0100\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
+msgctxt "description"
+msgid "Run privileged partition manager helper"
+msgstr ""
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
+#, fuzzy
+msgctxt "message"
+msgid "Administrative privileges are required to manage disks"
+msgstr "Requírense privilexios de administración para xestionar discos."
+
+#, fuzzy
+#~ msgctxt "description"
+#~ msgid "Start external command daemon"
+#~ msgstr "Iniciar o servizo de orde externa"

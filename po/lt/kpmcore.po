@@ -1,0 +1,3687 @@
+# Lithuanian translations for partitionamanager package.
+#
+# Andrius Štikonas <andrius@stikonas.eu>, 2008.
+# Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>, 2011.
+# Liudas Alisauskas <liudas@akmc.lt>, 2011-2015.
+# Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: partitionmanager\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-11-09 00:51+0000\n"
+"PO-Revision-Date: 2018-07-30 18:58+0100\n"
+"Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
+"Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Andrius Štikonas, Liudas Ališauskas"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "andrius@stikonas.eu, liudas@akmc.lt"
+
+#: core/device.cpp:33
+#, kde-format
+msgid "Unknown Device"
+msgstr "Nežinomas įrenginys"
+
+#: core/device.cpp:82
+#, kde-kuit-format
+msgctxt "@item:inlistbox Device name – Capacity (device node)"
+msgid "%1 – %2 (%3)"
+msgstr "%1 – %2 (%3)"
+
+#: core/lvmdevice.cpp:362
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "An error occurred while running lvdisplay."
+msgstr ""
+
+#: core/operationstack.cpp:101
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just created: Undoing the operation to create the "
+"partition."
+msgstr "Trinamas tik ką sukurtas skaidinys: kūrimo operacija atšaukiama."
+
+#: core/operationstack.cpp:119
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resizing a partition just created: Updating start and end in existing "
+"operation."
+msgstr ""
+"Keičiamas ką tik sukurto skaidinio dydis: atnaujinama pradžia ir pabaiga "
+"egzistuojančioje operacijoje."
+
+#: core/operationstack.cpp:139
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying a new partition: Creating a new partition instead."
+msgstr "Kopijuojamas naujas skaidinys: vietoj to kuriamas naujas skaidinys."
+
+#: core/operationstack.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label for a new partition: No new operation required."
+msgstr "Keičiama naujo skaidinio žymė: nauja operacija nereikalinga."
+
+#: core/operationstack.cpp:169
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing file system for a new partition: No new operation required."
+msgstr "Keičiama naujo skaidinio failų sistema: naujos operacijos nereikia."
+
+#: core/operationstack.cpp:186
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking file systems is automatically done when creating them: No new "
+"operation required."
+msgstr ""
+"Failų sistemos tikrinamos automatiškai jas kuriant: naujos operacijos "
+"nereikia."
+
+#: core/operationstack.cpp:233
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just copied: Removing the copy."
+msgstr "Trinamas ką tik nukopijuotas skaidinys: kopija pašalinama."
+
+#: core/operationstack.cpp:238
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Deleting a partition just restored: Removing the restore operation."
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just copied over an existing partition: Removing the "
+"copy and deleting the existing partition."
+msgstr "Trinamas tik ką atstatytas skaidinys: atstatymo operacija pašalinama."
+
+#: core/operationstack.cpp:251
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copying a partition that is itself a copy: Copying the original source "
+"partition instead."
+msgstr ""
+"Kopijuojamas skaidinys, kuris pats yra kopija: kopijuojama iš pradinio "
+"skaidinio."
+
+#: core/operationstack.cpp:280
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just restored: Removing the restore operation."
+msgstr "Trinamas tik ką atstatytas skaidinys: atstatymo operacija pašalinama."
+
+#: core/operationstack.cpp:285
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Deleting a partition just restored: Removing the restore operation."
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just restored to an existing partition: Removing the "
+"restore operation and deleting the existing partition."
+msgstr "Trinamas tik ką atstatytas skaidinys: atstatymo operacija pašalinama."
+
+#: core/operationstack.cpp:318
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Changing label for a new partition: No new operation required."
+msgctxt "@info:status"
+msgid "Changing flags again for the same partition: Removing old operation."
+msgstr "Keičiama skaidinio žymė: nauja operacija nereikalinga."
+
+#: core/operationstack.cpp:349
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Changing label for a new partition: No new operation required."
+msgctxt "@info:status"
+msgid "Changing label again for the same partition: Removing old operation."
+msgstr "Keičiama skaidinio žymė: nauja operacija nereikalinga."
+
+#: core/operationstack.cpp:375
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating new partition table, discarding previous operation on device."
+msgstr ""
+
+#: core/operationstack.cpp:395
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Resizing Volume Group %1 to %2."
+msgctxt "@info:status"
+msgid "Resizing Volume Group, nothing to do."
+msgstr "Keičiama tomų grupė nuo %1 iki %2."
+
+#: core/operationstack.cpp:440
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Add operation: %1"
+msgstr "Pridėti operaciją: %1"
+
+#: core/partition.cpp:159
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "unallocated"
+msgstr "nepriskirta"
+
+#: core/partition.cpp:162
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "New Partition"
+msgstr "Naujas skaidinys"
+
+#: core/partition.cpp:165
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Restored Partition"
+msgstr "Atkurtas skaidinys"
+
+#: core/partition.cpp:168
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Copy of %1"
+msgstr "%1 kopija"
+
+#: core/partitionalignment.cpp:80
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Set geometry of partition <filename>%1</filename>: Start sector: %2, "
+#| "length: %3"
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Nustatyti skaidinio <filename>%1</filename> geometriją: pradinis sektorius: "
+"%2, ilgis: %3"
+
+#: core/partitionalignment.cpp:83
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Set geometry of partition <filename>%1</filename>: Start sector: %2, "
+#| "length: %3"
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Nustatyti skaidinio <filename>%1</filename> geometriją: pradinis sektorius: "
+"%2, ilgis: %3"
+
+#: core/partitionrole.cpp:17
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "unallocated"
+msgstr "nepriskirta"
+
+#: core/partitionrole.cpp:20
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "logical"
+msgstr "loginis"
+
+#: core/partitionrole.cpp:23
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "extended"
+msgstr "išplėstinis"
+
+#: core/partitionrole.cpp:26
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "primary"
+msgstr "pirminis"
+
+#: core/partitionrole.cpp:29
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LUKS"
+msgstr "LUKS"
+
+#: core/partitionrole.cpp:32
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LVM logical volume"
+msgstr "LVM loginis tomas"
+
+#: core/partitionrole.cpp:34
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "none"
+msgstr "joks"
+
+#: core/partitiontable.cpp:180
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "boot"
+msgstr "boot"
+
+#: core/partitiontable.cpp:182
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "root"
+msgstr "root"
+
+#: core/partitiontable.cpp:184
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "swap"
+msgstr "swap"
+
+#: core/partitiontable.cpp:186
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hidden"
+msgstr "paslėpta"
+
+#: core/partitiontable.cpp:188
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "raid"
+msgstr "raid"
+
+#: core/partitiontable.cpp:190
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lvm"
+msgstr "lvm"
+
+#: core/partitiontable.cpp:192
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lba"
+msgstr "lba"
+
+#: core/partitiontable.cpp:194
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hpservice"
+msgstr "hpservice"
+
+#: core/partitiontable.cpp:196
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "palo"
+msgstr "palo"
+
+#: core/partitiontable.cpp:198
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "prep"
+msgstr "prep"
+
+#: core/partitiontable.cpp:200
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-reserved"
+msgstr "msft-rezervuota"
+
+#: core/partitiontable.cpp:202
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "bios-grub"
+msgstr "bios-grub"
+
+#: core/partitiontable.cpp:204
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "apple-tv-recovery"
+msgstr "apple-tv-recovery"
+
+#: core/partitiontable.cpp:206
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "diag"
+msgstr "diag"
+
+#: core/partitiontable.cpp:208
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "legacy-boot"
+msgstr "legacy-boot"
+
+#: core/partitiontable.cpp:210
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-data"
+msgstr "msft-data"
+
+#: core/partitiontable.cpp:212
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "irst"
+msgstr "irst"
+
+#: core/partitiontable.cpp:499
+#, kde-kuit-format
+msgctxt "@item partition table name"
+msgid "unknown"
+msgstr "nežinoma"
+
+#: core/raid/softwareraid.cpp:93
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level]"
+msgid " [RAID %1]"
+msgstr ""
+
+#: core/raid/softwareraid.cpp:95
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Recovering]"
+msgid " [RAID %1 - Recovering]"
+msgstr ""
+
+#: core/raid/softwareraid.cpp:97
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Resyncing]"
+msgid " [RAID %1 - Resyncing]"
+msgstr ""
+
+#: core/smartattribute.cpp:45
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "failing"
+msgstr "genda"
+
+#: core/smartattribute.cpp:48
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "has failed"
+msgstr "nepavyko"
+
+#: core/smartattribute.cpp:51
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "warning"
+msgstr "dėmesio"
+
+#: core/smartattribute.cpp:54
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "good"
+msgstr "gera"
+
+#: core/smartattribute.cpp:58 core/smartattribute.cpp:85
+#, kde-kuit-format
+msgctxt "@item:intable not applicable"
+msgid "N/A"
+msgstr "Nežinoma"
+
+#: core/smartattribute.cpp:72
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 sector"
+msgid_plural "%1 sectors"
+msgstr[0] "%1 sektorius"
+msgstr[1] "%1 sektoriai"
+msgstr[2] "%1 sektorių"
+msgstr[3] "%1 sektorius"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Rate"
+msgstr "Skaitymo klaidų santykis"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Rate of hardware read errors while reading data from the disk surface."
+msgstr ""
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Throughput Performance"
+msgstr "Bendras disko našumas"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Overall (general) throughput performance of a hard disk drive. If the value "
+"of this attribute is decreasing there is a high probability that there is a "
+"problem with the disk."
+msgstr ""
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin-Up Time"
+msgstr "Įsisukimo laikas"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Average time of spindle spin up from zero RPM to fully operational."
+msgstr ""
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Start/Stop Count"
+msgstr "Paleisti/stabdyti skaičiavimą"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr description"
+msgid "A tally of spindle start/stop cycles."
+msgstr ""
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocated Sectors Count"
+msgstr "Perkeltų sektorių skaičius"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of reallocated sectors. When the hard drive finds a read/write/"
+"verification error, it marks this sector as &quot;reallocated&quot; and "
+"transfers data to a special reserved area (spare area)."
+msgstr ""
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Channel Margin"
+msgstr "Skaitymo kanalo atsarga (Read Channel Margin)"
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Margin of a channel while reading data. The function of this attribute is "
+"not specified."
+msgstr ""
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Error Rate"
+msgstr "Ieškos pozicionavimo klaidų skaičius"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Rate of seek errors of the magnetic heads. If there is a partial failure in "
+"the mechanical positioning system, then seek errors will arise."
+msgstr ""
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Time Performance"
+msgstr ""
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Average performance of seek operations of the magnetic heads. If this "
+"attribute is decreasing, it is a sign of problems in the mechanical "
+"subsystem."
+msgstr ""
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Hours"
+msgstr "Kiek valandų įjungtas"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of hours in power-on state."
+msgstr "Valandos įjungtoje būsenoje."
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Retry Count"
+msgstr ""
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of retry of spin start attempts if the first attempt was unsuccessful. "
+"An increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Recalibration Retries"
+msgstr ""
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of recalibrations requested if the first attempt was unsuccessful. An "
+"increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Cycle Count"
+msgstr "Įjungimo/išjungimo ciklų kiekis"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of full hard disk power on/off cycles."
+msgstr ""
+
+#: core/smartattribute.cpp:113 core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft Read Error Rate"
+msgstr ""
+"Neištaisytos skaitymo klaidos, apie kurias informuota operacinė sistema"
+
+#: core/smartattribute.cpp:113
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Uncorrected read errors reported to the operating system."
+msgstr "Neištaisytos skaitymo klaidos praneštos operacinei sistemai."
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Available Reserved Space"
+msgstr ""
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of available reserved space as a percentage of reserved space."
+msgstr ""
+
+#: core/smartattribute.cpp:115
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count"
+msgstr ""
+
+#: core/smartattribute.cpp:115 core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of flash program operation failures since the drive was deployed."
+msgstr ""
+
+#: core/smartattribute.cpp:116 core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count"
+msgstr ""
+
+#: core/smartattribute.cpp:116
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase operation failures since the drive was deployed."
+msgstr ""
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Leveling Count"
+msgstr ""
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Counts the maximum worst erase count on any block."
+msgstr ""
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unexpected power loss count"
+msgstr ""
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of shutdowns without STANDBY IMMEDIATE as the last command "
+"(regardless of PLI activity using capacitor power). Normalized value is "
+"always 100."
+msgstr ""
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Power Loss Protection Failure"
+msgstr ""
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Last test result, saturated at its maximum value. Bytes 0-1: last test "
+"result as microseconds to discharge cap in range [25, 5000000], lower "
+"indicates specific error code. Bytes 2-3: minutes since last test. Bytes "
+"4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
+"or 11 if the capacitor has been tested in an excessive temperature "
+"condition, otherwise 100."
+msgstr ""
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count (chip)"
+msgstr ""
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase command failures."
+msgstr ""
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Range Delta"
+msgstr ""
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Delta between most-worn and least-worn flash blocks."
+msgstr ""
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Used Reserved Block Count Total"
+msgstr ""
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#: core/smartattribute.cpp:126
+#, fuzzy, kde-format
+#| msgctxt "SMART attr description"
+#| msgid "Western Digital and Samsung attribute."
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" Samsung attribute."
+msgstr "Western Digital ir Samsung atributas."
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unused Reserved Block Count Total"
+msgstr ""
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" HP attribute."
+msgstr ""
+
+#: core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+msgstr ""
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SATA Downshift Error Count"
+msgstr ""
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital and Samsung attribute."
+msgstr "Western Digital ir Samsung atributas."
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr name"
+msgid "End-to-End Error"
+msgstr ""
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Part of HP's SMART IV technology: After transferring through the cache RAM "
+"data buffer the parity data between the host and the hard drive did not "
+"match."
+msgstr ""
+
+#: core/smartattribute.cpp:129
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Stability"
+msgstr "Galvutės stabilumas"
+
+#: core/smartattribute.cpp:129 core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital attribute."
+msgstr "Western Digital atributas."
+
+#: core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Induced Op-Vibration Detection"
+msgstr ""
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reported Uncorrectable Errors"
+msgstr "Nepataisomų klaidų skaičius"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could not be recovered using hardware ECC."
+msgstr ""
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Command Timeout"
+msgstr ""
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of aborted operations due to HDD timeout."
+msgstr ""
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr name"
+msgid "High Fly Writes"
+msgstr "„High Fly“ rašymai"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of fly height errors detected."
+msgstr ""
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature Difference From 100"
+msgstr "Temperatūros skirtumas nuo 100"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
+"minimum threshold which corresponds to a maximum temperature."
+msgstr ""
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-sense Error Rate"
+msgstr "Klaidų atsirandančių dėl smūginio poveikio skaičius"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors resulting from externally-induced shock and vibration."
+msgstr ""
+
+#: core/smartattribute.cpp:136
+#, fuzzy, kde-format
+msgctxt "SMART attr name"
+msgid "Power Off Retract Count"
+msgstr ""
+"Galvučių grįžimų į pradinę padėtį skaičius išjungiant (Power-off Retract "
+"Count)."
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of power-off or emergency retract cycles"
+msgstr ""
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Cycle Count"
+msgstr ""
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of load/unload cycles into head landing zone position."
+msgstr ""
+
+#: core/smartattribute.cpp:138 core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature"
+msgstr "Temperatūra"
+
+#: core/smartattribute.cpp:138
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Current internal temperature."
+msgstr "Dabartinė vidinė temperatūra."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Hardware ECC Recovered"
+msgstr "Aparatiškai ištaisytų ECC klaidų sk."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could be recovered using hardware ECC."
+msgstr ""
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocation Event Count"
+msgstr ""
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of remap operations. The raw value of this attribute shows the total "
+"number of attempts to transfer data from reallocated sectors to a spare area."
+msgstr ""
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Current Pending Sector Count"
+msgstr "Dabartinis laukiančių sektorių skaičius"
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
+"read errors)."
+msgstr ""
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Uncorrectable Sector Count"
+msgstr "Nepataisomų sektorių skaičius"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of uncorrectable errors when reading/writing a sector."
+msgstr ""
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr name"
+msgid "UltraDMA CRC Error Count"
+msgstr "UltraDMA CRC klaidų skaičius"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of errors in data transfer via the interface cable as determined by "
+"ICRC."
+msgstr ""
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Multi-Zone Error Rate<br/>Write Error Rate"
+msgstr ""
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr description"
+msgid "The total number of errors when writing a sector."
+msgstr ""
+
+#: core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of off-track errors."
+msgstr "Sekamų klaidų skaičius."
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Data Address Mark Errors"
+msgstr "Data Address Mark klaidos"
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of Data Address Mark errors (or vendor-specific)."
+msgstr ""
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Run Out Cancel"
+msgstr "ECC klaidų skaičius"
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of ECC errors"
+msgstr "ECC klaidų skaičius"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft ECC Correction"
+msgstr "Programinė ECC korekcija"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors corrected by software ECC"
+msgstr "Programiškai pataisytų ECC  klaidų skaičius"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Thermal Asperity Rate"
+msgstr "Terminio atšiaurumo klaidų skaičius (Thermal Asperity Rate)"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors due to high temperature."
+msgstr "Klaidų skaičius dėl aukštos temperatūros."
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Flying Height"
+msgstr "Atstumas tarp skaitomo disko ir galvutės"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Height of heads above the disk surface. A flying height that is too low "
+"increases the chances of a head crash while a flying height that is too high "
+"increases the chances of a read/write error."
+msgstr ""
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin High Current"
+msgstr "Srovės, reikalingos įrenginiui įsukti, stiprumas"
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Amount of surge current used to spin up the drive."
+msgstr ""
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Buzz"
+msgstr "Bandymų įsukti diską skaičius"
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of buzz routines needed to spin up the drive due to insufficient "
+"power."
+msgstr ""
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Offline Seek Performance"
+msgstr "Offline Seek našumas"
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive's seek performance during its internal tests."
+msgstr ""
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Vibration During Write"
+msgstr "Vibracija rašant"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Vibration During Write"
+msgstr "Vibracija rašant"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Shock During Write"
+msgstr "Smūgiai rašant"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Shock During Write"
+msgstr "Smūgiai rašant"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Disk Shift"
+msgstr "Disko veleno poslinkis"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Distance the disk has shifted relative to the spindle (usually due to shock "
+"or temperature)."
+msgstr ""
+
+#: core/smartattribute.cpp:157
+#, fuzzy, kde-format
+msgctxt "SMART attr name"
+msgid "G-Sense Error Rate"
+msgstr "Klaidų atsirandančių dėl smūginio poveikio skaičius"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of errors resulting from externally-induced shock and vibration."
+msgstr ""
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Loaded Hours"
+msgstr "Magnetinių galvučių darbo laikas"
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time spent operating under data load."
+msgstr ""
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Retry Count"
+msgstr "Bandymų parkuotis arba išėjimų iš parkavimo būsenos, skaičius"
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of times head changes position."
+msgstr ""
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Friction"
+msgstr "Išėjimo iš parkavimo srities trintis"
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Resistance caused by friction in mechanical parts while operating."
+msgstr ""
+
+#: core/smartattribute.cpp:161
+#, fuzzy, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Cycle Count"
+msgstr ""
+"Disko galvučių parkavimo ir pozicionavimo į darbinę padėtį ciklų kiekis "
+
+#: core/smartattribute.cpp:161
+#, fuzzy, kde-format
+msgctxt "SMART attr description"
+msgid "Total number of load cycles."
+msgstr "Galvučių įkėlimų į darbinę zoną  (load cycles) skaičius"
+
+#: core/smartattribute.cpp:162
+#, fuzzy, kde-format
+msgctxt "SMART attr name"
+msgid "Load-In Time"
+msgstr ""
+"Laikas, per kurį disko galvutės pereina iš parkavimo į darbinę poziciją"
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Total time of loading on the magnetic heads actuator (time not spent in "
+"parking area)."
+msgstr ""
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Torque Amplification Count"
+msgstr "Bandymų kompensuoti sukimo momentą skaičius"
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of attempts to compensate for platter speed variations."
+msgstr ""
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-Off Retract Cycle"
+msgstr ""
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of times the magnetic armature was retracted automatically as a "
+"result of cutting power."
+msgstr ""
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr name"
+msgid "GMR Head Amplitude"
+msgstr "Galvučių vibracijos amplitudė"
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
+"head motion)"
+msgstr ""
+
+#: core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive Temperature"
+msgstr "Disko temperatūra"
+
+#: core/smartattribute.cpp:167
+#, fuzzy, kde-format
+msgctxt "SMART attr name"
+msgid "Endurance Remaining"
+msgstr "Likusių galimų trynimų skaičius lyginant su teoriniu 100 000 maksimumu"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of physical erase cycles completed on the drive as a percentage of the "
+"maximum physical erase cycles the drive supports"
+msgstr ""
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Seconds"
+msgstr ""
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time elapsed in the power-on state"
+msgstr ""
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Unrecoverable ECC Count"
+msgstr ""
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of unrecoverable ECC errors"
+msgstr ""
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Good Block Rate"
+msgstr "Good Block Rate"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of available reserved blocks as percentage of the total number of "
+"reserved blocks"
+msgstr ""
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+msgstr ""
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Time while head is positioning<br/>or counts the number of times the link is "
+"reset during a data transfer."
+msgstr ""
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Written"
+msgstr "Įrašytų LBA kiekis"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Written"
+msgstr "Įrašytų LBA kiekis"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Read"
+msgstr "Nuskaitytų LBA kiekis"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Read"
+msgstr "Nuskaitytų LBA kiekis"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD NAND_Writes_1GiB"
+msgstr ""
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of writes to NAND in 1 GB increments"
+msgstr ""
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Retry Rate"
+msgstr "Skaitymo klaidų kartojimosi dažnis"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors while reading from a disk"
+msgstr "Klaidų skaitant diską skaičius"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Free Fall Protection"
+msgstr "Apsauga nuo laisvojo kritimo"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of &quot;Free Fall Events&quot; detected"
+msgstr ""
+
+#: core/smartstatus.cpp:78
+#, kde-kuit-format
+msgctxt "@item:intable degrees in Celsius and Fahrenheit"
+msgid "%1° C / %2° F"
+msgstr "%1° C / %2° F"
+
+#: core/smartstatus.cpp:86
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Aborted"
+msgstr "Nutraukta"
+
+#: core/smartstatus.cpp:89
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Interrupted"
+msgstr "Pertraukta"
+
+#: core/smartstatus.cpp:92
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Fatal error"
+msgstr "Kritinė klaida"
+
+#: core/smartstatus.cpp:95
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Unknown error"
+msgstr "Nežinoma klaida"
+
+#: core/smartstatus.cpp:98
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Electrical error"
+msgstr "Elektrinė klaida"
+
+#: core/smartstatus.cpp:101
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Servo error"
+msgstr "Stiprintuvo klaida"
+
+#: core/smartstatus.cpp:104
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Read error"
+msgstr "Skaitymo klaida"
+
+#: core/smartstatus.cpp:107
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Handling error"
+msgstr "Apdorojimo klaida"
+
+#: core/smartstatus.cpp:110
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Self test in progress"
+msgstr "Savi testas vykdomas"
+
+#: core/smartstatus.cpp:114
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Success"
+msgstr "Sėkmingai"
+
+#: core/smartstatus.cpp:123
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Healthy"
+msgstr "Sveikas"
+
+#: core/smartstatus.cpp:126
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has been used outside of its design parameters in the past."
+msgstr ""
+
+#: core/smartstatus.cpp:129
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has some bad sectors."
+msgstr "Turi keletą blogų sektorių."
+
+#: core/smartstatus.cpp:132
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Is being used outside of its design parameters right now."
+msgstr ""
+
+#: core/smartstatus.cpp:135
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has many bad sectors."
+msgstr "Turi daug blogų sektorių."
+
+#: core/smartstatus.cpp:139
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Disk failure is imminent. Backup all data!"
+msgstr "DIskas tuoj suges. Padarykite visų duomenų kopiją!"
+
+#: fs/btrfs.cpp:166
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Nepavyko pakeisti Btrfs failų sistemos dydžio įrenginyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"btrfs file system resize failed."
+msgstr ""
+"Nepavyko pakeisti Btrfs failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: Btrfs failų sistemos dydžio keitimas nepavyko."
+
+#: fs/btrfs.cpp:187
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>keičiamas Btrfs failų sistemos dydis skaidinyje <filename>%1</"
+"filename>: nepavyko išmontuoti.</warning>"
+
+#: fs/btrfs.cpp:189
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Nepavyko pakeisti Btrfs failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko prijungti laikino aplanko."
+
+#: fs/fat12.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Setting label for partition <filename>%1</filename> to %2"
+msgstr "Nustatoma skaidinio <filename>%1</filename> žymė į %2"
+
+#: fs/filesystem.cpp:503
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unknown"
+msgstr "nežinoma"
+
+#: fs/filesystem.cpp:504
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "extended"
+msgstr "išplėstinis"
+
+#: fs/filesystem.cpp:506
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext2"
+msgstr "ext2"
+
+#: fs/filesystem.cpp:507
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext3"
+msgstr "ext3"
+
+#: fs/filesystem.cpp:508
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext4"
+msgstr "ext4"
+
+#: fs/filesystem.cpp:509
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linuxswap"
+msgstr "linuxswap"
+
+#: fs/filesystem.cpp:510
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat16"
+msgstr "fat16"
+
+#: fs/filesystem.cpp:511
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat32"
+msgstr "fat32"
+
+#: fs/filesystem.cpp:512
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ntfs"
+msgstr "ntfs"
+
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser"
+msgstr "reiser"
+
+#: fs/filesystem.cpp:514
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser4"
+msgstr "reiser4"
+
+#: fs/filesystem.cpp:515
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "xfs"
+msgstr "xfs"
+
+#: fs/filesystem.cpp:516
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "jfs"
+msgstr "jfs"
+
+#: fs/filesystem.cpp:517
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfs"
+msgstr "hfs"
+
+#: fs/filesystem.cpp:518
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfsplus"
+msgstr "hfsplus"
+
+#: fs/filesystem.cpp:519
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ufs"
+msgstr "ufs"
+
+#: fs/filesystem.cpp:520
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unformatted"
+msgstr "neformatuotas"
+
+#: fs/filesystem.cpp:521
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "btrfs"
+msgstr "btrfs"
+
+#: fs/filesystem.cpp:522
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hpfs"
+msgstr "hpfs"
+
+#: fs/filesystem.cpp:523
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks"
+msgstr "luks"
+
+#: fs/filesystem.cpp:524
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ocfs2"
+msgstr "ocfs2"
+
+#: fs/filesystem.cpp:525
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "zfs"
+msgstr "zfs"
+
+#: fs/filesystem.cpp:526
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "exfat"
+msgstr "exfat"
+
+#: fs/filesystem.cpp:527
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "nilfs2"
+msgstr "nilfs2"
+
+#: fs/filesystem.cpp:528
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "lvm2 pv"
+msgstr "lvm2 pv"
+
+#: fs/filesystem.cpp:529
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "f2fs"
+msgstr "f2fs"
+
+#: fs/filesystem.cpp:530
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "udf"
+msgstr "udf"
+
+#: fs/filesystem.cpp:531
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "iso9660"
+msgstr "iso9660"
+
+#: fs/filesystem.cpp:532
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks2"
+msgstr "luks2"
+
+#: fs/filesystem.cpp:533
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat12"
+msgstr "fat12"
+
+#: fs/filesystem.cpp:534
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linux_raid_member"
+msgstr ""
+
+#: fs/filesystem.cpp:535
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:menu"
+#| msgid "Lock"
+msgctxt "@item filesystem name"
+msgid "BitLocker"
+msgstr "Užrakinti"
+
+#: fs/filesystem.cpp:536
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "apfs"
+msgstr ""
+
+#: fs/filesystem.cpp:537
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "minix"
+msgstr ""
+
+#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Mount"
+msgstr "Prijungti"
+
+#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unmount"
+msgstr "Atjungti"
+
+#: fs/jfs.cpp:155
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Nepavyko pakeisti JFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: fs/jfs.cpp:169 fs/jfs.cpp:188
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Remount failed."
+msgstr ""
+"Nepavyko pakeisti JFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko iš naujo prijungti laikino aplanko."
+
+#: fs/jfs.cpp:174
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing JFS file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>keičiamas JFS failų sistemos dydis skaidinyje <filename>%1</"
+"filename>: nepavyko išmontuoti.</warning>"
+
+#: fs/jfs.cpp:176
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Nepavyko pakeisti JFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko prijungti laikino aplanko."
+
+#: fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Aktyvuoti swap"
+
+#: fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Deaktyvuoti swap"
+
+#: fs/luks.cpp:166
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unlock"
+msgstr "Atrakinti"
+
+#: fs/luks.cpp:171
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Lock"
+msgstr "Užrakinti"
+
+#: fs/luks.cpp:252
+#, kde-format
+msgid "Enter passphrase for %1:"
+msgstr "Įveskite %1 slaptažodį:"
+
+#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+msgstr ""
+"Keičiamas LUKS šifruoto konteinerio dydis skaidinyje <filename>%1</filename>."
+
+#: fs/luks.cpp:509 fs/luks2.cpp:116
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing encrypted file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Nepavyko pakeisti šifruotos failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>."
+
+#: fs/nilfs2.cpp:137
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Nepavyko pakeisti NILFS2 failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"NILFS2 file system resize failed."
+msgstr ""
+"Nepavyko pakeisti NILFS2 failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: NILFS2 dydžio keitimas nepavyko."
+
+#: fs/nilfs2.cpp:156
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>keičiamas NILFS2 failų sistemos dydis skaidinyje <filename>%1</"
+"filename>: nepavyko išmontuoti.</warning>"
+
+#: fs/nilfs2.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Nepavyko pakeisti NILFS2 failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko prijungti laikino aplanko."
+
+#: fs/ntfs.cpp:182
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updating boot sector for NTFS file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Atnaujinamas NTFS failų sistemos įkrovos sektorius skaidinyje <filename>%1</"
+"filename>."
+
+#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not write new start sector to partition <filename>%1</filename> when "
+"trying to update the NTFS boot sector."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: fs/ntfs.cpp:206
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updated NTFS boot sector for partition <filename>%1</filename> successfully."
+msgstr ""
+"Sėkmingai atnaujintas NTFS failų sistemos įkrovos sektorius skaidinyje "
+"<filename>%1</filename>."
+
+#: fs/xfs.cpp:159
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Nepavyko pakeisti XFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"xfs_growfs failed."
+msgstr ""
+"Nepavyko pakeisti XFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: xfs_growfs programa grąžino klaidą."
+
+#: fs/xfs.cpp:178
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing XFS file system on partition <filename>%1</filename> "
+"failed: Unmount failed.</warning>"
+msgstr ""
+"<warning>keičiamas XFS failų sistemos dydis skaidinyje <filename>%1</"
+"filename>: nepavyko išmontuoti.</warning>"
+
+#: fs/xfs.cpp:180
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Nepavyko pakeisti XFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko prijungti laikino aplanko."
+
+#: jobs/backupfilesystemjob.cpp:54
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"backup."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/backupfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not create backup file <filename>%1</filename>."
+msgstr "Nepavyko sukurti atsarginės kopijos failo <filename>%1</filename>."
+
+#: jobs/backupfilesystemjob.cpp:68
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info:progress"
+msgid ""
+"Back up file system on partition <filename>%1</filename> to <filename>%2</"
+"filename>"
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: jobs/changepermissionsjob.cpp:43
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info/plain"
+msgid "Change the permissions of: <filename>%1</filename> to %2"
+msgstr "Nustatyti skaidinio <filename>%1</filename> žymę į „%2“"
+
+#: jobs/checkfilesystemjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Check file system on partition <filename>%1</filename>"
+msgstr "Tikrinama failų sistema skaidinyje <filename>%1</filename>"
+
+#: jobs/copyfilesystemjob.cpp:48
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete file system on <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Cannot copy file system: File system on target partition <filename>%1</"
+"filename> is smaller than the file system on source partition <filename>%2</"
+"filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti failų sistemą įrenginyje <filename>%2</filename>."
+
+#: jobs/copyfilesystemjob.cpp:56
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/copyfilesystemjob.cpp:58
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on target partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/copyfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Closing device. This may take a while, especially on slow devices like "
+"Memory Sticks."
+msgstr ""
+"Įrenginys uždaromas. Tai gali užtrukti, ypač lėtuose įrenginiuose, "
+"pavyzdžiui USB atmintukuose."
+
+#: jobs/copyfilesystemjob.cpp:88
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
+msgstr ""
+"Failų sistema skaidinyje <filename>%1</filename> kopijuojama į skaidinį "
+"<filename>%2</filename>"
+
+#: jobs/createfilesystemjob.cpp:66
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Failed to set the system type for the file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/createfilesystemjob.cpp:68
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"system type for partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinių lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/createfilesystemjob.cpp:70
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the system type for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/createfilesystemjob.cpp:84
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Create file system <filename>%1</filename> on partition <filename>%2</"
+"filename>"
+msgstr "Kuriama failų sistema %1 skaidinyje <filename>%2</filename>"
+
+#: jobs/createpartitionjob.cpp:72
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info/plain"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: jobs/createpartitionjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to create "
+"new partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinių lentelės įrenginyje <filename>%1</filename>,  "
+"kuriant naują skaitinį <filename>%2</filename>."
+
+#: jobs/createpartitionjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to create new partition "
+"<filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti įrenginio <filename>%1</filename>,  kuriant naują skaidinį "
+"<filename>%2</filename>."
+
+#: jobs/createpartitionjob.cpp:94
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition <filename>%1</filename>"
+msgstr "Kurti naują skaidinį <filename>%1</filename>"
+
+#: jobs/createpartitionjob.cpp:96
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition on device <filename>%1</filename>"
+msgstr "Kurti naują skaidinį įrenginyje <filename>%1</filename>"
+
+#: jobs/createpartitiontablejob.cpp:49
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Creating partition table failed: Could not open device <filename>%1</"
+"filename>."
+msgstr ""
+"Nepavyko sukurti skaidinių lentelės: nepavyko atverti įrenginio <filename>"
+"%1</filename>."
+
+#: jobs/createpartitiontablejob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition table on device <filename>%1</filename>"
+msgstr "Kurti naują skaidinių lentelę įrenginyje <filename>%1</filename>"
+
+#: jobs/createvolumegroupjob.cpp:49
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Create new partition <filename>%1</filename>"
+msgctxt "@info/plain"
+msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
+msgstr "Kurti naują skaidinį <filename>%1</filename>"
+
+#: jobs/deactivatelogicalvolumejob.cpp:50
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Logical Volumes: <filename>%1</filename>"
+msgstr "Atjungti loginį tomą: <filename>%1</filename>"
+
+#: jobs/deactivatevolumegroupjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Volume Group: <filename>%1</filename>"
+msgstr "Atjungti tomų grupę: <filename>%1</filename>"
+
+#: jobs/deletefilesystemjob.cpp:51
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system: file system on <filename>%1</filename> is "
+"mounted."
+msgstr ""
+"Nepavyko pašalinti failų sistemos: failų sistema įrenginyje <filename>%1</"
+"filename> primontuota."
+
+#: jobs/deletefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete file system on <filename>%1</filename>."
+msgstr "Nepavyko pašalinti failų sistemos įrenginyje <filename>%1</filename>."
+
+#: jobs/deletefilesystemjob.cpp:80
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete file system on <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"file system on <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti failų sistemą įrenginyje <filename>%2</filename>."
+
+#: jobs/deletefilesystemjob.cpp:83
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete file system on <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system signature for partition <filename>%1</"
+"filename>: Failed to open device <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti failų sistemą įrenginyje <filename>%2</filename>."
+
+#: jobs/deletefilesystemjob.cpp:93
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete file system on <filename>%1</filename>"
+msgstr "Trinti failų sistemą įrenginyje <filename>%1</filename>"
+
+#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete partition <filename>%1</filename>."
+msgstr "Nepavyko ištrinti skaidinio <filename>%1</filename>."
+
+#: jobs/deletepartitionjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinių lentelės įrenginyje <filename>%1</filename>,  kad "
+"būtų pašalintas skaidinys <filename>%2</filename>."
+
+#: jobs/deletepartitionjob.cpp:67
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Deleting partition failed: Could not open device <filename>%1</filename>."
+msgstr ""
+"Nepavyko ištrinti skaidinio: nepavyko atverti įrenginio <filename>%1</"
+"filename>."
+
+#: jobs/deletepartitionjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete the partition <filename>%1</filename>"
+msgstr "Trinti skaidinį <filename>%1</filename>"
+
+#: jobs/job.cpp:45
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Source and target for copying do not overlap: Rollback is not required."
+msgstr ""
+
+#: jobs/job.cpp:69
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback from: First byte: %1, last byte: %2."
+msgstr ""
+
+#: jobs/job.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback to: First byte: %1, last byte: %2."
+msgstr ""
+
+#: jobs/job.cpp:74 jobs/job.cpp:80
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgctxt "@info:progress"
+msgid "Could not open device <filename>%1</filename> to rollback copying."
+msgstr "Nepavyko atverti įrenginio <filename>%1</filename> atstatymui."
+
+#: jobs/job.cpp:86
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback failed: Source or target are not devices."
+msgstr ""
+
+#: jobs/job.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Job: %1"
+msgstr "Užduotis: %1"
+
+#: jobs/job.cpp:115
+#, kde-kuit-format
+msgctxt "@info:progress job status (error, warning, ...)"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: jobs/job.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Pending"
+msgstr "Laukia"
+
+#: jobs/job.cpp:135
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Success"
+msgstr "Sėkmingai"
+
+#: jobs/job.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Error"
+msgstr "Klaida"
+
+#: jobs/movefilesystemjob.cpp:52
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"Nepavyko atverti failų sistemos skaidinyje <filename>%1</filename>, kad jis "
+"būtų perkeliamas."
+
+#: jobs/movefilesystemjob.cpp:54
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not create target for moving file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/movefilesystemjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Resizing encrypted file system on partition <filename>%1</filename> "
+#| "failed."
+msgctxt "@info:progress"
+msgid "Rollback for file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Nepavyko pakeisti šifruotos failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>."
+
+#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/shredfilesystemjob.cpp:66
+#, kde-format, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Closing device. This may take a few seconds."
+msgstr "Įrenginys užveriamas. Tai gali užtrukti kelias sekundes."
+
+#: jobs/movefilesystemjob.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Move the file system on partition <filename>%1</filename> to sector %2"
+msgstr ""
+"Perkelti failų sistemą skaidinyje <filename>%1</filename> į %2 sektorių"
+
+#: jobs/movephysicalvolumejob.cpp:57
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Move used PE in %1 on %2 to other available Physical Volumes"
+msgstr ""
+
+#: jobs/removevolumegroupjob.cpp:41
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove Volume Group: <filename>%1</filename>"
+msgstr "Pašalinti tomų grupę: <filename>%1</filename>"
+
+#: jobs/resizefilesystemjob.cpp:66
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+#| msgid_plural ""
+#| "Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of 1 sector."
+msgid_plural ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of %1 sectors."
+msgstr[0] ""
+"Pakeisti failų sistemą skaidinyje <filename>%2</filename> į %1 sektorių"
+msgstr[1] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
+msgstr[2] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
+msgstr[3] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
+
+#: jobs/resizefilesystemjob.cpp:69
+#, kde-format
+msgctxt "@info:progress"
+msgid "Resizing file system from %1 to %2 sectors."
+msgstr "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
+
+#: jobs/resizefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing a %1 file system using internal backend functions."
+msgstr ""
+"Keičiamas %1 failų sistemos dydis naudojant vidines galinės sąsajos "
+"funkcijas."
+
+#: jobs/resizefilesystemjob.cpp:91
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+#| msgid_plural ""
+#| "Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%1</filename> cannot be resized "
+"because there is no support for it."
+msgstr ""
+"Pakeisti failų sistemą skaidinyje <filename>%2</filename> į %1 sektorių"
+
+#: jobs/resizefilesystemjob.cpp:119
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Successfully resized file system using internal backend functions."
+msgstr ""
+"Sėkmingai pakeistas failų sistemos dydis naudojant vidines galinės sąsajos "
+"funkcijas."
+
+#: jobs/resizefilesystemjob.cpp:123
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition <filename>%1</filename> while trying to resize the "
+"file system."
+msgstr ""
+"Nepavyko atverti skaidinio <filename>%1</filename>, bandant keisti failų "
+"sistemos dydį."
+
+#: jobs/resizefilesystemjob.cpp:126
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not delete partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not read geometry for partition <filename>%1</filename> while trying "
+"to resize the file system."
+msgstr "Nepavyko ištrinti skaidinio <filename>%1</filename>."
+
+#: jobs/resizefilesystemjob.cpp:134
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+#| msgid_plural ""
+#| "Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgctxt "@info:progress"
+msgid "Maximize file system on <filename>%1</filename> to fill the partition"
+msgstr ""
+"Pakeisti failų sistemą skaidinyje <filename>%2</filename> į %1 sektorių"
+
+#: jobs/resizefilesystemjob.cpp:136
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+#| msgid_plural ""
+#| "Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgctxt "@info:progress"
+msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+msgid_plural ""
+"Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgstr[0] ""
+"Pakeisti failų sistemą skaidinyje <filename>%2</filename> į %1 sektorių"
+msgstr[1] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
+msgstr[2] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
+msgstr[3] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
+
+#: jobs/resizevolumegroupjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Adding LVM Physical Volume %2 to %3."
+msgid_plural "Adding LVM Physical Volumes %2 to %3."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: jobs/resizevolumegroupjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Removing LVM Physical Volume %2 from %3."
+msgid_plural "Removing LVM Physical Volumes %2 from %3."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: jobs/resizevolumegroupjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resizing Volume Group %1 to %2."
+msgstr "Keičiama tomų grupė nuo %1 iki %2."
+
+#: jobs/restorefilesystemjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgstr "Nepavyko atverti atsarginės kopijos failo <filename>%1</filename>."
+
+#: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgctxt "@info:progress"
+msgid "Could not open target partition <filename>%1</filename> to restore to."
+msgstr ""
+"Nepavyko atverti atsarginės kopijos failo <filename>%1</filename> atstatymui."
+
+#: jobs/restorefilesystemjob.cpp:100
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Restore the file system from file <filename>%1</filename> to partition "
+"<filename>%2</filename>"
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setfilesystemlabeljob.cpp:48
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Resizing JFS file system on partition <filename>%1</filename> failed: "
+#| "Could not create temp dir."
+msgctxt "@info:progress"
+msgid ""
+"File system on partition <filename>%1</filename> does not support setting "
+"labels. Job ignored."
+msgstr ""
+"Nepavyko pakeisti JFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: jobs/setfilesystemlabeljob.cpp:81
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid ""
+"Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgstr ""
+"Nustatyti failų sistemos žymę skaidinyje <filename>%1</filename> į „%2“"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned on, active"
+msgid "on"
+msgstr "įjungta"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned off, inactive"
+msgid "off"
+msgstr "išjungta"
+
+#: jobs/setpartflagsjob.cpp:65
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Setting label for partition <filename>%1</filename> to %2"
+msgctxt "@info:progress"
+msgid ""
+"There was an error setting flag %1 for partition <filename>%2</filename> to "
+"state %3."
+msgstr "Nustatoma skaidinio <filename>%1</filename> žymė į %2"
+
+#: jobs/setpartflagsjob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set "
+"partition flags for partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:76
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set partition flags for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:89
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Create new partition <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Kurti naują skirsnį <filename>%1</filename>"
+
+#: jobs/setpartflagsjob.cpp:91
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Nustatyti skaidinio <filename>%1</filename> žymę į „%2“"
+
+#: jobs/setpartgeometryjob.cpp:65
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> while trying to resize/move "
+"partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartgeometryjob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
+"%3"
+msgstr ""
+"Nustatoma skaidinio <filename>%1</filename> geometrija: pradinis sektorius: "
+"%2, ilgis: %3"
+
+#: jobs/setpartitionattributesjob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Resizing JFS file system on partition <filename>%1</filename> failed: "
+#| "Could not create temp dir."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting attributes. Job ignored."
+msgstr ""
+"Nepavyko pakeisti JFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: jobs/setpartitionattributesjob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the attributes for the partition <filename>%1</filename>."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"attributes for the partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinių lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the attributes for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
+msgstr "Nustatyti skaidinio <filename>%1</filename> žymę į „%2“"
+
+#: jobs/setpartitionlabeljob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Resizing JFS file system on partition <filename>%1</filename> failed: "
+#| "Could not create temp dir."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting names. Job ignored."
+msgstr ""
+"Nepavyko pakeisti JFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: jobs/setpartitionlabeljob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the name for the partition <filename>%1</filename>."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"name for the partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinių lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the name for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the label on partition <filename>%1</filename> to \"%2\""
+msgstr "Nustatyti skaidinio <filename>%1</filename> žymę į „%2“"
+
+#: jobs/setpartitionuuidjob.cpp:47
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Resizing JFS file system on partition <filename>%1</filename> failed: "
+#| "Could not create temp dir."
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting UUIDs. Job ignored."
+msgstr ""
+"Nepavyko pakeisti JFS failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>: nepavyko sukurti laikino aplanko."
+
+#: jobs/setpartitionuuidjob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the UUID for the partition <filename>%1</filename>."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"UUID for the partition <filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinių lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to "
+#| "delete partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the UUID for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Nepavyko atverti skaidinio lentelės įrenginyje <filename>%1</filename>,  kad "
+"panaikinti skaidinį <filename>%2</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:74
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:progress"
+msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+msgstr "Nustatyti skaidinio <filename>%1</filename> žymę į „%2“"
+
+#: jobs/shredfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open random data source to overwrite file system."
+msgstr ""
+
+#: jobs/shredfilesystemjob.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Shred the file system on <filename>%1</filename>"
+msgstr "Išvaloma failų sistema įrenginyje <filename>%1</filename>"
+
+#: ops/backupoperation.cpp:39
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: ops/checkoperation.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
+msgstr "Tikrinti ir pataisyti skaidinį <filename>%1</filename> (%2, %3)"
+
+#: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<warning>Maximizing file system on target partition <filename>%1</filename> "
+"to the size of the partition failed.</warning>"
+msgstr ""
+"<warning>įvyko klaida didinant failų sistemą iki skaidinio <filename>%1</"
+"filename> dydžio.</warning>"
+
+#: ops/copyoperation.cpp:151
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgctxt "@info:status"
+msgid "Checking target partition <filename>%1</filename> after copy failed."
+msgstr ""
+"Nepavyko patikrinti skaidinio <filename>%1</filename> po dydžio keitimo/"
+"perkėlimo."
+
+#: ops/copyoperation.cpp:158
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Copying a new partition: Creating a new partition instead."
+msgctxt "@info:status"
+msgid "Copying source to target partition failed."
+msgstr "Kopijuojamas naujas skaidinys: vietoj to kuriamas naujas skaidinys."
+
+#: ops/copyoperation.cpp:161
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating target partition for copying failed."
+msgstr ""
+
+#: ops/copyoperation.cpp:163
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Moving partition <filename>%1</filename> failed."
+msgctxt "@info:status"
+msgid "Checking source partition <filename>%1</filename> failed."
+msgstr "Nepavyko perkelti skaidinio <filename>%1</filename>."
+
+#: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
+#: ops/restoreoperation.cpp:148
+#, kde-kuit-format
+msgctxt "@info:status (success, error, warning...) of operation"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/copyoperation.cpp:179
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6)"
+msgstr ""
+"Kopijuoti skaidinį <filename>%1</filename> (%2, %3) į <filename>%4</"
+"filename> (%5, %6)"
+
+#: ops/copyoperation.cpp:188
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6) and grow it to %7"
+msgstr ""
+"Kopijuoti skaidinį <filename>%1</filename> (%2, %3) į <filename>%4</"
+"filename> (%5, %6) ir padidinti jį iki %7"
+
+#: ops/copyoperation.cpp:200
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename>"
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: ops/copyoperation.cpp:208
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename> and grow it to %6"
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: ops/createfilesystemoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create filesystem %1 on partition <filename>%2</filename>"
+msgstr "Kurti failų sistemą %1 skaidinyje <filename>%2</filename>"
+
+#: ops/createpartitiontableoperation.cpp:104
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
+msgstr ""
+"Sukurti naują skaidinių lentelę (tipas: %1) įrenginyje <filename>%2</"
+"filename>"
+
+#: ops/createvolumegroupoperation.cpp:36
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new LVM volume group named '%1'."
+msgstr "Sukurti naują LVM tomų grupę pavadintą „%1“."
+
+#: ops/deactivatevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate volume group."
+msgstr "Deaktyvuoti tomų grupę."
+
+#: ops/deleteoperation.cpp:87
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Shred partition <filename>%1</filename> (%2, %3)"
+msgstr "Išvalyti skaidinį <filename>%1</filename> (%2, %3)"
+
+#: ops/deleteoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Delete partition <filename>%1</filename> (%2, %3)"
+msgstr "Naikinti skaidinį <filename>%1</filename> (%2, %3)"
+
+#: ops/newoperation.cpp:205
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
+msgstr "Sukurti naują skaidinį (%1, %2) įrenginyje <filename>%3</filename>"
+
+#: ops/operation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "None"
+msgstr "Joks"
+
+#: ops/operation.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Pending"
+msgstr "Laukia"
+
+#: ops/operation.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Running"
+msgstr "Vykdoma"
+
+#: ops/operation.cpp:78
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Success"
+msgstr "Sėkmingai"
+
+#: ops/operation.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Warning"
+msgstr "Dėmesio"
+
+#: ops/operation.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Error"
+msgstr "Klaida"
+
+#: ops/removevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove a LVM volume group."
+msgstr "Pašalinti LVM tomų grupę."
+
+#: ops/resizeoperation.cpp:156
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Moving extended partition <filename>%1</filename> failed."
+msgctxt "@info:status"
+msgid "Moving extended partition <filename>%1</filename> failed."
+msgstr "Nepavyko perkelti išplėstinio skaidinio <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:165
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgstr ""
+"Nepavyko patikrinti skaidinio <filename>%1</filename> po dydžio keitimo/"
+"perkėlimo."
+
+#: ops/resizeoperation.cpp:168
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgctxt "@info:status"
+msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgstr "Nepavyko skaidinio <filename>%1</filename> dydžio keitimas/perkėlimas."
+
+#: ops/resizeoperation.cpp:171
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> before resize/move failed."
+msgstr ""
+"Nepavyko patikrinti skaidinio <filename>%1</filename> po dydžio keitimo/"
+"perkėlimo."
+
+#: ops/resizeoperation.cpp:201
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain describe resize/move action"
+#| msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the left by %2"
+msgstr "Plėsti skirsnį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:204
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain describe resize/move action"
+#| msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the right by %2"
+msgstr "Plėsti skirsnį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:207
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgstr "Plėsti skaidinį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:210
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Shrink partition <filename>%1</filename> from %2 to %3"
+msgstr "Mažinti skaidinį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:213
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain describe resize/move action"
+#| msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
+"to %4"
+msgstr "Plėsti skirsnį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:216
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain describe resize/move action"
+#| msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and grow it from "
+"%3 to %4"
+msgstr "Plėsti skirsnį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:219
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain describe resize/move action"
+#| msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and shrink it from "
+"%3 to %4"
+msgstr "Plėsti skirsnį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:222
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain describe resize/move action"
+#| msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and shrink it from "
+"%3 to %4"
+msgstr "Plėsti skirsnį <filename>%1</filename> nuo %2 iki %3"
+
+#: ops/resizeoperation.cpp:229
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Unknown resize/move action."
+msgstr "Nežinomas dydžio keitimo/perkėlimo veiksmas."
+
+#: ops/resizeoperation.cpp:258
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize file system to shrink partition "
+"<filename>%1</filename>."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:263
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not delete partition <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
+msgstr "Nepavyko ištrinti skaidinio <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:282
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving partition <filename>%1</filename> failed."
+msgstr "Nepavyko perkelti skaidinio <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:287
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Resizing encrypted file system on partition <filename>%1</filename> "
+#| "failed."
+msgctxt "@info:status"
+msgid ""
+"Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
+"back."
+msgstr ""
+"Nepavuko pakeisti šifruotos failų sistemos dydžio skaidinyje <filename>%1</"
+"filename>."
+
+#: ops/resizeoperation.cpp:291
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Moving partition <filename>%1</filename> failed."
+msgctxt "@info:status"
+msgid ""
+"Moving back partition <filename>%1</filename> to its original position "
+"failed."
+msgstr "Nepavyko perkelti skaidinio <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:304
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not delete partition <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
+msgstr "Nepavyko ištrinti skaidinio <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:309
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:312
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Could not restore old partition size for partition <filename>%1</"
+#| "filename>."
+msgctxt "@info:status"
+msgid ""
+"Could not restore old partition size for partition <filename>%1</filename>."
+msgstr ""
+"Nepavyko atkurti seno skaidinio dydžio skaidiniui <filename>%1</filename>."
+
+#: ops/resizevolumegroupoperation.cpp:108
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resize volume %1 from %2 to %3"
+msgstr ""
+
+#: ops/restoreoperation.cpp:133
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgctxt "@info:status"
+msgid ""
+"Checking target file system on partition <filename>%1</filename> after the "
+"restore failed."
+msgstr ""
+"Nepavyko patikrinti skaidinio <filename>%1</filename> po dydžio keitimo/"
+"perkėlimo."
+
+#: ops/restoreoperation.cpp:138
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Restoring file system failed."
+msgstr "Nepavyko atstatyti failų sistemos."
+
+#: ops/restoreoperation.cpp:141
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating the destination partition to restore to failed."
+msgstr ""
+
+#: ops/restoreoperation.cpp:156
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"Restore partition from <filename>%1</filename> to <filename>%2</filename>"
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: ops/restoreoperation.cpp:158
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
+"filename>"
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: ops/setfilesystemlabeloperation.cpp:58
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgstr "Nustatyti skaidinio <filename>%1</filename> žymę į „%2“"
+
+#: ops/setfilesystemlabeloperation.cpp:60
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
+msgstr "Pakeisti skaidinio <filename>%1</filename> žymę iš „%2“ į „%3“"
+
+#: ops/setpartflagsoperation.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Create new partition <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Kurti naują skirsnį <filename>%1</filename>"
+
+#: ops/setpartflagsoperation.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:status"
+msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Nustatyti skaidinio <filename>%1</filename> žymę į „%2“"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:248
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Device found: %1"
+msgctxt "@info:status"
+msgid "Software RAID Device found: %1"
+msgstr "Rastas įrenginys: %1"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:278
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Disk Device found: %1"
+msgctxt "@info:status"
+msgid "Device found: %1"
+msgstr "Rastas diskinis įrenginys: %1"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Setting label for partition <filename>%1</filename> to %2"
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr "Nustatoma skaidinio <filename>%1</filename> žymė į %2"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</"
+#| "filename>"
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Daryti atsarginę kopiją skaidinio <filename>%1</filename> (%2, %3) į "
+"<filename>%4</filename>>"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:114
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgctxt "@info:progress"
+msgid ""
+"Could not set geometry for partition <filename>%1</filename> while trying to "
+"resize/move it."
+msgstr ""
+"Nepavyko patikrinti skaidinio <filename>%1</filename> po dydžio keitimo/"
+"perkėlimo."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:124
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to erase filesystem signature on partition <filename>%1</filename>."
+msgstr ""
+"Nepavyko ištrinti failų sistemos pėdsako skaidinyje <filename>%1</filename>."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:157
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not determine file system of partition at sector %1 on device "
+"<filename>%2</filename>."
+msgstr ""
+"Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
+
+#: util/capacity.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "Baitas"
+msgstr[1] "Baitų"
+msgstr[2] "Baitų"
+msgstr[3] "Baitas"
+
+#: util/capacity.cpp:101
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "KiB"
+msgstr "KiB"
+
+#: util/capacity.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "MiB"
+msgstr "MiB"
+
+#: util/capacity.cpp:103
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "GiB"
+msgstr "GiB"
+
+#: util/capacity.cpp:104
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "TiB"
+msgstr "TiB"
+
+#: util/capacity.cpp:105
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "PiB"
+msgstr "PiB"
+
+#: util/capacity.cpp:106
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "EiB"
+msgstr "EiB"
+
+#: util/capacity.cpp:107
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "ZiB"
+msgstr "ZiB"
+
+#: util/capacity.cpp:108
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "YiB"
+msgstr "YiB"
+
+#: util/capacity.cpp:112
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "(unknown unit)"
+msgstr "(nežinomas vienetas)"
+
+#: util/externalcommand.cpp:111 util/externalcommand.cpp:114
+#: util/externalcommand.cpp:226
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Command: %1 %2"
+msgstr "Komanda: %1 %2"
+
+#: util/externalcommandhelper.cpp:82
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for reading."
+msgstr "Nepavyko atverti įrenginio <filename>%1</filename> skaitymui."
+
+#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#, fuzzy, kde-kuit-format
+#| msgid "Could not seek position %1 on device <filename>%1</filename>."
+msgid "Could not seek position %1 on device <filename>%2</filename>."
+msgstr "Nepavyko surasti vietos %1 įrenginyje <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:96
+#, kde-kuit-format
+msgid "Could not read from device <filename>%1</filename>."
+msgstr "Nepavyko skaityti iš įrenginio <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:114
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for writing."
+msgstr "Nepavyko atverti įrenginio <filename>%1</filename> rašymui."
+
+#: util/externalcommandhelper.cpp:125
+#, kde-kuit-format
+msgid "Could not write to device <filename>%1</filename>."
+msgstr "Nepavyko rašyti į įrenginį <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:151
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for writing."
+msgid "Could not open file <filename>%1</filename> for writing."
+msgstr "Nepavyko atverti įrenginio <filename>%1</filename> rašymui."
+
+#: util/externalcommandhelper.cpp:156
+#, fuzzy, kde-kuit-format
+#| msgid "Could not write to device <filename>%1</filename>."
+msgid "Could not write to file <filename>%1</filename>."
+msgstr "Nepavyko rašyti į įrenginį <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:237
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
+msgstr ""
+
+#: util/externalcommandhelper.cpp:238
+#, kde-format
+msgctxt "direction: left"
+msgid "left"
+msgstr "į kairę"
+
+#: util/externalcommandhelper.cpp:239
+#, kde-format
+msgctxt "direction: right"
+msgid "right"
+msgstr "į dešinę"
+
+#: util/externalcommandhelper.cpp:261
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 MiB/second, estimated time left: %2"
+msgstr "Kopijuojama %1 MiB/sekundę, prognozuojamas likęs laikas: %2"
+
+#: util/externalcommandhelper.cpp:274
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying remainder of chunk size %1 from %2 to %3."
+msgstr ""
+
+#: util/externalcommandhelper.cpp:288
+#, kde-format
+msgid "1 byte"
+msgid_plural "%1 bytes"
+msgstr[0] "1 baitas"
+msgstr[1] "%1 baitai"
+msgstr[2] "%1 baitų"
+msgstr[3] "%1 baitas"
+
+#: util/externalcommandhelper.cpp:288
+#, kde-kuit-format
+msgctxt ""
+"@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
+msgid "Copying 1 chunk (%2) finished."
+msgid_plural "Copying %1 chunks (%2) finished."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: util/helpers.cpp:49
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<application>KPMcore</application>"
+msgstr "<application>KPMcore</application>"
+
+#: util/helpers.cpp:50
+#, kde-kuit-format
+msgctxt "@title"
+msgid "Library for managing partitions"
+msgstr "Biblioteka skaidinių tvarkymui"
+
+#: util/helpers.cpp:51
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:credit"
+#| msgid "&copy; 2008-2018 KPMcore developers"
+msgctxt "@info:credit"
+msgid "&copy; 2008-2022 KPMcore developers"
+msgstr "&copy; 2008-2018 KPMcore programuotojai"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Volker Lanz"
+msgstr "Volker Lanz"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Former maintainer"
+msgstr "Ankstesnis prižiūrėtojas"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Andrius Štikonas"
+msgstr "Andrius Štikonas"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Maintainer"
+msgstr "Prižiūrėtojas"
+
+#: util/helpers.cpp:58
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Teo Mrnjavac"
+msgstr "Teo Mrnjavac"
+
+#: util/helpers.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Former Calamares maintainer"
+msgstr "Ankstesnis Calamares prižiūrėtojas"
+
+#: util/helpers.cpp:59
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Chantara Tith"
+msgstr "Chantara Tith"
+
+#: util/helpers.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "LVM support"
+msgstr "LVM palaikymas"
+
+#: util/helpers.cpp:60
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Pali Rohár"
+msgstr "Pali Rohár"
+
+#: util/helpers.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "UDF support"
+msgstr "UDF palaikymas"
+
+#: util/helpers.cpp:61
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Adriaan de Groot"
+msgstr "Adriaan de Groot"
+
+#: util/helpers.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Calamares maintainer"
+msgstr "Calamares prižiūrėtojas"
+
+#: util/helpers.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:credit"
+#| msgid "Caio Carvalho"
+msgctxt "@info:credit"
+msgid "Caio Jordão Carvalho"
+msgstr "Caio Carvalho"
+
+#: util/helpers.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Improved SMART support"
+msgstr "Pagerintas SMART palaikymas"
+
+#: util/helpers.cpp:63
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "David Edmundson"
+msgstr ""
+
+#: util/helpers.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Port from KAuth to Polkit"
+msgstr ""
+
+#: util/htmlreport.cpp:51 util/htmlreport.cpp:58
+#, kde-format
+msgid "%1: SMART Status Report"
+msgstr "%1: SMART būsenos ataskaita"
+
+#: util/htmlreport.cpp:66
+#, kde-format
+msgid "Date:"
+msgstr "Data:"
+
+#: util/htmlreport.cpp:67
+#, kde-format
+msgid "Program version:"
+msgstr "Programos versija:"
+
+#: util/htmlreport.cpp:68
+#, kde-format
+msgid "Backend:"
+msgstr "Galinė sąsaja:"
+
+#: util/htmlreport.cpp:69
+#, kde-format
+msgid "KDE Frameworks version:"
+msgstr "KDE sistemų versija:"
+
+#: util/htmlreport.cpp:70
+#, kde-format
+msgid "Machine:"
+msgstr "Kompiuteris:"
+
+#~ msgctxt "@info:status"
+#~ msgid "Could not obtain administrator privileges."
+#~ msgstr "Nepavyko gauti administratoriaus teisių."
+
+#~ msgid "QCA does not support RSA."
+#~ msgstr "QCA nepalaiko RSA."
+
+#~ msgid "Failed to make private RSA key."
+#~ msgstr "Nepavyko sukurti RSA rakto."
+
+#~ msgid "Generated key cannot be used for signatures."
+#~ msgstr "Sugeneruotas raktas negali būti naudojamas parašams."
+
+#~ msgid "Invalid cryptographic signature"
+#~ msgstr "Negaliojantis kriptografinis parašas"

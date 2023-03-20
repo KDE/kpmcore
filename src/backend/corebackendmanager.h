@@ -14,10 +14,10 @@
 
 #include <memory>
 
+#include <QStringList>
 #include <QVector>
 
 class QString;
-class QStringList;
 class KPluginMetaData;
 class CoreBackend;
 struct CoreBackendManagerPrivate;

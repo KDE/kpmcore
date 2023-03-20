@@ -1,0 +1,30 @@
+# Eloy Cuadra <ecuadra@eloihr.net>, 2018, 2020, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: desktop_extragear-sysadmin_kpmcore\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"PO-Revision-Date: 2022-02-10 01:06+0100\n"
+"Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
+"Language-Team: Spanish <kde-l10n-es@kde.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.2\n"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
+msgctxt "description"
+msgid "Run privileged partition manager helper"
+msgstr ""
+"Ejecutar la aplicación auxiliar de gestión de particiones con privilegios"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
+msgctxt "message"
+msgid "Administrative privileges are required to manage disks"
+msgstr "Se necesitan permisos de administrador para gestionar discos"
+
+#~ msgctxt "description"
+#~ msgid "Start external command daemon"
+#~ msgstr "Iniciar el demonio de órdenes externas"

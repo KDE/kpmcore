@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: CC0-1.0
+
+maintainer: stikonas
+description: KPMcore, the KDE Partition Manager core, is a library for examining and modifying partitions, disk devices, and filesystems.
+platforms:
+  - name: Linux
+release: true
+public_lib: true
+public_source_dirs:
+  - src
+libraries:
+ - cmake: kpmcore
+cmakename: KPMcore
+irc: kde-devel
+mailinglist: kde-devel
+

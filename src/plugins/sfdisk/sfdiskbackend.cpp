@@ -47,7 +47,7 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-K_PLUGIN_FACTORY_WITH_JSON(SfdiskBackendFactory, "pmsfdiskbackendplugin.json", registerPlugin<SfdiskBackend>();)
+K_PLUGIN_CLASS_WITH_JSON(SfdiskBackend, "pmsfdiskbackendplugin.json")
 
 SfdiskBackend::SfdiskBackend(QObject*, const QList<QVariant>&) :
     CoreBackend()
@@ -153,10 +153,39 @@ QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
  * and then a }. If there is, replace the ,.
  *
  * This is also fixed in util-linux 2.37.
+ *
+ * For some partition tables sfdisk prints an error message before the actual json
+ * starts (seen with sfdisk 2.37.4). It looks like this:
+ *
+ * omitting empty partition (5)
+ *  {
+ *  "partitiontable": {
+ *     "label": "dos",
+ *     "id": "0x91769176",
+ *     "device": "/dev/sdb",
+ *     "unit": "sectors",
+ *     "sectorsize": 512,
+ *     "partitions": [
+ *        {
+ *           "node": "/dev/sdb1",
+ *           "start": 63,
+ *           "size": 84630357,
+ *           "type": "7",
+ *           "bootable": true
+ *        },{
+ * etc.
  */
 static void
 fixInvalidJsonFromSFDisk( QByteArray& s )
 {
+    int jsonStart = s.indexOf('{');
+    if (jsonStart != 0) {
+        const QByteArray invalidStart = s.left(jsonStart);
+        qDebug() << "removed \"" << invalidStart.data() << "\" from beginning of sfdisk json output";
+        const QByteArray copy = s.mid(jsonStart);
+        s = copy;
+    }
+
     // -1 if there is no comma (but then there's no useful JSON either),
     //    not is 0 a valid place (the start) for a , in a JSON document.
     int lastComma = s.lastIndexOf(',');
@@ -264,6 +293,10 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
             const QJsonObject jsonObject = QJsonDocument::fromJson(s).object();
             const QJsonObject partitionTable = jsonObject[QLatin1String("partitiontable")].toObject();
+
+            if (jsonObject.isEmpty()) {
+                qDebug() << "json object created from sfdisk output is empty !\nOutput is \"" << s.data() << "\"";
+            }
 
             if (!updateDevicePartitionTable(*d, partitionTable))
                 return nullptr;
@@ -451,11 +484,12 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
         // Read the maximum number of GPT partitions
         qint32 maxEntries;
         QByteArray gptHeader;
-        CopySourceDevice source(d, 512, 1023);
-        CopyTargetByteArray target(gptHeader);
+        qint64 sectorSize = d.logicalSize();
+        CopySourceDevice source(d, sectorSize, sectorSize * 2 - 1);
 
-        ExternalCommand copyCmd;
-        if (copyCmd.copyBlocks(source, target)) {
+        ExternalCommand readCmd;
+        gptHeader = readCmd.readData(source);
+        if (gptHeader != QByteArray()) {
             QByteArray gptMaxEntries = gptHeader.mid(80, 4);
             QDataStream stream(&gptMaxEntries, QIODevice::ReadOnly);
             stream.setByteOrder(QDataStream::LittleEndian);

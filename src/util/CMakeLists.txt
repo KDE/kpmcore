@@ -11,19 +11,29 @@
 
 set(helper_interface_xml org.kde.kpmcore.helperinterface.xml)
 
-qt5_generate_dbus_interface(
+file(READ "util/trustedprefixes" TRUSTED_PREFIXES)
+string(REGEX REPLACE ";" "\\\\;" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
+string(REGEX REPLACE "\n" ";" TRUSTED_PREFIXES "${TRUSTED_PREFIXES}")
+foreach(TRUSTED_PREFIX ${TRUSTED_PREFIXES})
+    list(APPEND TRUSTED_PREFIXES_LIST "    QStringLiteral(\"${TRUSTED_PREFIX}\")")
+endforeach()
+string(REPLACE ";    QStringLiteral(" ",\n    QStringLiteral(" TRUSTED_PREFIXES_LIST "${TRUSTED_PREFIXES_LIST}")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS util/trustedprefixes)
+configure_file(util/externalcommand_trustedprefixes.h.in util/externalcommand_trustedprefixes.h)
+
+qt_generate_dbus_interface(
     util/externalcommand.h
     ${application_interface_xml}
     OPTIONS -a
 )
 
-qt5_generate_dbus_interface(
+qt_generate_dbus_interface(
     util/externalcommandhelper.h
     ${helper_interface_xml}
     OPTIONS -a
 )
 
-qt5_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_interface_xml} externalcommandhelper_interface)
+qt_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_interface_xml} externalcommandhelper_interface)
 
 set(UTIL_SRC
     ${HelperInterface_SRCS}
@@ -36,7 +46,6 @@ set(UTIL_SRC
 )
 
 set(UTIL_LIB_HDRS
-    util/libpartitionmanagerexport.h
     util/capacity.h
     util/externalcommand.h
     util/globallog.h
@@ -58,10 +67,10 @@ add_definitions(
 )
 
 target_link_libraries(kpmcore_externalcommand
-    Qt5::Core
-    Qt5::DBus
-    KF5::I18n
-    PolkitQt5-1::Core
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::DBus
+    KF${KF_MAJOR_VERSION}::I18n
+    PolkitQt${QT_MAJOR_VERSION}-1::Core
 )
 
 install(TARGETS kpmcore_mdadmupdateconf DESTINATION ${LIBEXEC_INSTALL_DIR})

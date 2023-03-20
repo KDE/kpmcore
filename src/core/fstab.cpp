@@ -82,10 +82,17 @@ FstabEntryList readFstabEntries( const QString& fstabPath )
             // (4) dump frequency (optional, defaults to 0), no comment is allowed if omitted,
             // (5) pass number (optional, defaults to 0), no comment is allowed if omitted,
             // (#) comment (optional).
+
+            // Handle deprecated subtypes, e.g. sshfs#example. They are not relevant for partitioning, ignore them.
+            if (splitLine.size() < 3) {
+                continue;
+            }
+
             auto fsSpec = splitLine.at(0);
             auto mountPoint = unescapeSpaces(splitLine.at(1));
             auto fsType = splitLine.at(2);
-            auto options = splitLine.at(3);
+            // Options may be omitted in some rare cases like NixOS generated fstab.
+            auto options = splitLine.length() >= 4 ? splitLine.at(3) : QStringLiteral("defaults");
 
             switch (splitLine.length()) {
                 case 4:
@@ -233,7 +240,8 @@ static QString findBlkIdDevice(const char *token, const QString& value)
 
 static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode)
 {
-    m_entryType = FstabEntry::Type::comment;
+    m_entryType = FstabEntry::Type::other;
+    m_deviceNode = m_fsSpec;
     if (m_fsSpec.startsWith(QStringLiteral("UUID="))) {
         m_entryType = FstabEntry::Type::uuid;
         m_deviceNode = findBlkIdDevice("UUID", QString(m_fsSpec).remove(QStringLiteral("UUID=")));
@@ -248,7 +256,8 @@ static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, 
         m_deviceNode = findBlkIdDevice("PARTLABEL", QString(m_fsSpec).remove(QStringLiteral("PARTLABEL=")));
     } else if (m_fsSpec.startsWith(QStringLiteral("/"))) {
         m_entryType = FstabEntry::Type::deviceNode;
-        m_deviceNode = m_fsSpec;
+    } else if (m_fsSpec.isEmpty()) {
+        m_entryType = FstabEntry::Type::comment;
     }
 }
 
@@ -258,7 +267,7 @@ std::array<unsigned int, 4> fstabColumnWidth(const FstabEntryList& fstabEntries)
 {
     std::array<unsigned int, 4> columnWidth;
 
-#define FIELD_WIDTH(x) 3 + std::max_element(fstabEntries.begin(), fstabEntries.end(), [](const FstabEntry& a, const FstabEntry& b) {return a.x().length() < b.x().length(); })->x().length();
+#define FIELD_WIDTH(x) 3 + escapeSpaces(std::max_element(fstabEntries.begin(), fstabEntries.end(), [](const FstabEntry& a, const FstabEntry& b) {return escapeSpaces(a.x()).length() < escapeSpaces(b.x()).length(); })->x()).length();
 
     columnWidth[0] = FIELD_WIDTH(fsSpec);
     columnWidth[1] = FIELD_WIDTH(mountPoint);
@@ -286,7 +295,7 @@ static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsig
       << entry.comment() << "\n";
 }
 
-bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filename)
+bool writeMountpoints(const FstabEntryList& fstabEntries)
 {
     QString fstabContents;
     QTextStream out(&fstabContents);
@@ -297,5 +306,5 @@ bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filenam
         writeEntry(out, e, columnWidth);
 
     ExternalCommand cmd;
-    return cmd.createFile(fstabContents.toLocal8Bit(), filename);
+    return cmd.writeFstab(fstabContents.toLocal8Bit());
 }

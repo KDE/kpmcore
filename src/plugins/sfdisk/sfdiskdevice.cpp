@@ -60,7 +60,7 @@ bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& pt
     else
         tableType = ptable.typeName().toLocal8Bit();
 
-    ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { m_device->deviceNode() } );
+    ExternalCommand createCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--wipe=always"), m_device->deviceNode() } );
     if ( createCommand.write(QByteArrayLiteral("label: ") + tableType +
                                     QByteArrayLiteral("\nwrite\n")) && createCommand.start(-1) ) {
         return createCommand.output().contains(QStringLiteral("Script header accepted."));

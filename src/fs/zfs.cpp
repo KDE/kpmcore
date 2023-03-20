@@ -77,13 +77,6 @@ qint64 zfs::maxCapacity() const
     return Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::EiB);
 }
 
-bool zfs::remove(Report& report, const QString& deviceNode) const
-{
-    Q_UNUSED(deviceNode)
-    ExternalCommand cmd(report, QStringLiteral("zpool"), { QStringLiteral("destroy"), QStringLiteral("-f"), label() });
-    return cmd.run(-1) && cmd.exitCode() == 0;
-}
-
 bool zfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
     Q_UNUSED(deviceNode)

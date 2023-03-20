@@ -13,6 +13,7 @@
 #include "jobs/deletefilesystemjob.h"
 #include "jobs/createfilesystemjob.h"
 #include "jobs/checkfilesystemjob.h"
+#include "jobs/changepermissionsjob.h"
 
 #include "fs/filesystem.h"
 #include "fs/filesystemfactory.h"
@@ -42,6 +43,10 @@ CreateFileSystemOperation::CreateFileSystemOperation(Device& d, Partition& p, Fi
     addJob(deleteJob());
     addJob(createJob());
     addJob(checkJob());
+
+    // if the user never configured a new permission, nothing will run, if he did,
+    // then we change the permissions on the newly created partition.
+    addJob(new ChangePermissionJob(p));
 }
 
 CreateFileSystemOperation::~CreateFileSystemOperation()

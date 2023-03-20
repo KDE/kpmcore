@@ -1,9 +1,11 @@
 # SPDX-FileCopyrightText: 2015 Teo Mrnjavac <teo@kde.org>
-# SPDX-FileCopyrightText: 2016 Andrius Štikonas <andrius@stikonas.eu>
+# SPDX-FileCopyrightText: 2016-2022 Andrius Štikonas <andrius@stikonas.eu>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 @PACKAGE_INIT@
 
-set_and_check(KPMCORE_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
+include(CMakeFindDependencyMacro)
+find_dependency(Qt@QT_MAJOR_VERSION@ @QT_MIN_VERSION@ COMPONENTS Core)
+
 include("${CMAKE_CURRENT_LIST_DIR}/KPMcoreTargets.cmake")

@@ -26,7 +26,7 @@ struct FstabEntryPrivate;
 class LIBKPMCORE_EXPORT FstabEntry
 {
 public:
-    enum class Type { deviceNode, uuid, label, partlabel, partuuid, comment };
+    enum class Type { deviceNode, uuid, label, partlabel, partuuid, comment, other };
 
     FstabEntry(const QString& fsSpec, const QString& mountPoint, const QString& type, const QString& options, int dumpFreq = 0, int passNumber = 0, const QString& comment = QString());
 
@@ -116,6 +116,6 @@ QString unescapeSpaces(const QString& mountPoint);
 
 LIBKPMCORE_EXPORT FstabEntryList readFstabEntries(const QString& fstabPath = QStringLiteral("/etc/fstab"));
 LIBKPMCORE_EXPORT QStringList possibleMountPoints(const QString& deviceNode, const QString& fstabPath = QStringLiteral("/etc/fstab"));
-LIBKPMCORE_EXPORT bool writeMountpoints(const FstabEntryList& fstabEntries, const QString& filename = QStringLiteral("/etc/fstab"));
+LIBKPMCORE_EXPORT bool writeMountpoints(const FstabEntryList& fstabEntries);
 
 #endif

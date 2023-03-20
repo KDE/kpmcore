@@ -1,0 +1,3798 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-11-09 00:51+0000\n"
+"PO-Revision-Date: 2022-02-21 17:36+0100\n"
+"Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
+"Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.08.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Stefan Asserhäll"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "stefan.asserhall@bredband.net"
+
+#: core/device.cpp:33
+#, kde-format
+msgid "Unknown Device"
+msgstr "Okänd enhet"
+
+#: core/device.cpp:82
+#, kde-kuit-format
+msgctxt "@item:inlistbox Device name – Capacity (device node)"
+msgid "%1 – %2 (%3)"
+msgstr "%1 – %2 (%3)"
+
+#: core/lvmdevice.cpp:362
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "An error occurred while running lvdisplay."
+msgstr "Ett fel uppstod vid körning av lvdisplay."
+
+#: core/operationstack.cpp:101
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just created: Undoing the operation to create the "
+"partition."
+msgstr ""
+"Borttagning av en partition som just skapats: Ångrar åtgärden att skapa "
+"partitionen."
+
+#: core/operationstack.cpp:119
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resizing a partition just created: Updating start and end in existing "
+"operation."
+msgstr ""
+"Storleksändring av en partition som just skapats: Uppdaterar start och slut "
+"i befintlig åtgärd."
+
+#: core/operationstack.cpp:139
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying a new partition: Creating a new partition instead."
+msgstr "Kopiera en ny partition: Skapar en ny partition istället."
+
+#: core/operationstack.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label for a new partition: No new operation required."
+msgstr "Ändrar etikett för en ny partition: Ingen ny åtgärd krävs."
+
+#: core/operationstack.cpp:169
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing file system for a new partition: No new operation required."
+msgstr "Ändrar filsystem för en ny partition: Ingen ny åtgärd krävs."
+
+#: core/operationstack.cpp:186
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking file systems is automatically done when creating them: No new "
+"operation required."
+msgstr ""
+"Kontroll av filsystem utförs automatiskt när de skapas: Ingen ny åtgärd "
+"krävs."
+
+#: core/operationstack.cpp:233
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just copied: Removing the copy."
+msgstr "Tar bort en partition som just kopierades. Tar bort kopian."
+
+#: core/operationstack.cpp:238
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just copied over an existing partition: Removing the "
+"copy and deleting the existing partition."
+msgstr ""
+"Borttagning av en partition som just kopierades över en befintlig partition: "
+"Utför inte kopieringen och tar bort den befintliga partitionen."
+
+#: core/operationstack.cpp:251
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copying a partition that is itself a copy: Copying the original source "
+"partition instead."
+msgstr ""
+"Kopiering av en partition som själv är en kopia: Kopierar den ursprungliga "
+"källpartitionen istället."
+
+#: core/operationstack.cpp:280
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just restored: Removing the restore operation."
+msgstr ""
+"Tar bort en partition som just återställdes: Tar bort återställningsåtgärden."
+
+#: core/operationstack.cpp:285
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just restored to an existing partition: Removing the "
+"restore operation and deleting the existing partition."
+msgstr ""
+"Borttagning av en partition som just återställdes till en befintlig "
+"partition: Utför inte återställningsåtgärden och tar bort den befintliga "
+"partitionen."
+
+#: core/operationstack.cpp:318
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing flags again for the same partition: Removing old operation."
+msgstr "Ändrar flaggor igen för samma partition. Tar bort gammal åtgärd."
+
+#: core/operationstack.cpp:349
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label again for the same partition: Removing old operation."
+msgstr "Ändrar etikett igen för samma partition: Tar bort gammal åtgärd."
+
+#: core/operationstack.cpp:375
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating new partition table, discarding previous operation on device."
+msgstr ""
+"Skapar en ny partitionstabell,  och överger föregående åtgärd för enheten."
+
+#: core/operationstack.cpp:395
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing Volume Group, nothing to do."
+msgstr "Ändrar storlek på volymgrupp, ingenting behöver göras."
+
+#: core/operationstack.cpp:440
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Add operation: %1"
+msgstr "Lägg till åtgärd: %1"
+
+#: core/partition.cpp:159
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "unallocated"
+msgstr "inte tilldelad"
+
+#: core/partition.cpp:162
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "New Partition"
+msgstr "Ny partition"
+
+#: core/partition.cpp:165
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Restored Partition"
+msgstr "Återställde partition"
+
+#: core/partition.cpp:168
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Copy of %1"
+msgstr "Kopia av %1"
+
+#: core/partitionalignment.cpp:80
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Partition <filename>%1</filename> är inte korrekt justerad (första sektor: "
+"%2, modulo: %3)."
+
+#: core/partitionalignment.cpp:83
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Partition <filename>%1</filename> är inte korrekt justerad (sista sektor: "
+"%2, modulo: %3)."
+
+#: core/partitionrole.cpp:17
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "unallocated"
+msgstr "inte tilldelad"
+
+#: core/partitionrole.cpp:20
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "logical"
+msgstr "logisk"
+
+#: core/partitionrole.cpp:23
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "extended"
+msgstr "utökad"
+
+#: core/partitionrole.cpp:26
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "primary"
+msgstr "primär"
+
+#: core/partitionrole.cpp:29
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LUKS"
+msgstr "LUKS"
+
+#: core/partitionrole.cpp:32
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LVM logical volume"
+msgstr "LVM logisk volym"
+
+#: core/partitionrole.cpp:34
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "none"
+msgstr "ingen"
+
+#: core/partitiontable.cpp:180
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "boot"
+msgstr "start"
+
+#: core/partitiontable.cpp:182
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "root"
+msgstr "rot"
+
+#: core/partitiontable.cpp:184
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "swap"
+msgstr "växlingsminne"
+
+#: core/partitiontable.cpp:186
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hidden"
+msgstr "dold"
+
+#: core/partitiontable.cpp:188
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "raid"
+msgstr "raid"
+
+#: core/partitiontable.cpp:190
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lvm"
+msgstr "lvm"
+
+#: core/partitiontable.cpp:192
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lba"
+msgstr "LBA"
+
+#: core/partitiontable.cpp:194
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hpservice"
+msgstr "hp-tjänst"
+
+#: core/partitiontable.cpp:196
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "palo"
+msgstr "palo"
+
+#: core/partitiontable.cpp:198
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "prep"
+msgstr "prep"
+
+#: core/partitiontable.cpp:200
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-reserved"
+msgstr "msft-reserverad"
+
+#: core/partitiontable.cpp:202
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "bios-grub"
+msgstr "bios-grub"
+
+#: core/partitiontable.cpp:204
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "apple-tv-recovery"
+msgstr "apple-tv-återställning"
+
+#: core/partitiontable.cpp:206
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "diag"
+msgstr "diag"
+
+#: core/partitiontable.cpp:208
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "legacy-boot"
+msgstr "föråldrad-start"
+
+#: core/partitiontable.cpp:210
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-data"
+msgstr "msft-data"
+
+#: core/partitiontable.cpp:212
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "irst"
+msgstr "irst"
+
+#: core/partitiontable.cpp:499
+#, kde-kuit-format
+msgctxt "@item partition table name"
+msgid "unknown"
+msgstr "okänt"
+
+#: core/raid/softwareraid.cpp:93
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level]"
+msgid " [RAID %1]"
+msgstr " [RAID %1]"
+
+#: core/raid/softwareraid.cpp:95
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Recovering]"
+msgid " [RAID %1 - Recovering]"
+msgstr " [RAID %1 - Återhämtar]"
+
+#: core/raid/softwareraid.cpp:97
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Resyncing]"
+msgid " [RAID %1 - Resyncing]"
+msgstr " [RAID %1 - Synkroniserar om]"
+
+#: core/smartattribute.cpp:45
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "failing"
+msgstr "håller på att gå sönder"
+
+#: core/smartattribute.cpp:48
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "has failed"
+msgstr "har gått sönder"
+
+#: core/smartattribute.cpp:51
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "warning"
+msgstr "varning"
+
+#: core/smartattribute.cpp:54
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "good"
+msgstr "bra"
+
+#: core/smartattribute.cpp:58 core/smartattribute.cpp:85
+#, kde-kuit-format
+msgctxt "@item:intable not applicable"
+msgid "N/A"
+msgstr "Gäller ej"
+
+#: core/smartattribute.cpp:72
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 sector"
+msgid_plural "%1 sectors"
+msgstr[0] "%1 sektor"
+msgstr[1] "%1 sektorer"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Rate"
+msgstr "Läsfelfrekvens"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Rate of hardware read errors while reading data from the disk surface."
+msgstr "Frekvens av läsfel i hårdvara när data läses från diskytan."
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Throughput Performance"
+msgstr "Genomströmningsprestanda"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Overall (general) throughput performance of a hard disk drive. If the value "
+"of this attribute is decreasing there is a high probability that there is a "
+"problem with the disk."
+msgstr ""
+"Övergripande (generell) genomströmningsprestanda för en hårddiskenhet. Om "
+"värdet av egenskapen minskar är det stor sannolikhet att det finns ett fel "
+"med disken."
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin-Up Time"
+msgstr "Igångspinntid"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Average time of spindle spin up from zero RPM to fully operational."
+msgstr ""
+"Medeltid för axelns igångspinntid från noll varv/min till fullständigt "
+"operationell"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Start/Stop Count"
+msgstr "Antal start och stopp"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr description"
+msgid "A tally of spindle start/stop cycles."
+msgstr "En sammanräkning av axelns start- och stoppcykler."
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocated Sectors Count"
+msgstr "Antal omfördelade sektorer"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of reallocated sectors. When the hard drive finds a read/write/"
+"verification error, it marks this sector as &quot;reallocated&quot; and "
+"transfers data to a special reserved area (spare area)."
+msgstr ""
+"Antal  omfördelade sektorer. När hårddisken hittar ett fel vid läs/skriv "
+"verifikation, markeras sektorn som &quot;omfördelad&quot; och data överförs "
+"till ett särskilt reserverat område (reservområde)."
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Channel Margin"
+msgstr "Marginal för läskanal"
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Margin of a channel while reading data. The function of this attribute is "
+"not specified."
+msgstr ""
+"Marginal för en kanal medan data läses. Funktionen av egenskapen är inte "
+"specificerad."
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Error Rate"
+msgstr "Sökfelfrekvens"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Rate of seek errors of the magnetic heads. If there is a partial failure in "
+"the mechanical positioning system, then seek errors will arise."
+msgstr ""
+"Frekvens av sökfel för de magnetiska huvudena. Om det finns ett partiellt "
+"fel i det mekaniska positioneringssystemet, kommer sökfel att uppstå."
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Time Performance"
+msgstr "Söktidsprestanda"
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Average performance of seek operations of the magnetic heads. If this "
+"attribute is decreasing, it is a sign of problems in the mechanical "
+"subsystem."
+msgstr ""
+"Sökoperationernas medelprestanda för de magnetiska huvudena. Om egenskapen "
+"minskar, är det ett tecken på problem med det mekaniska delsystemet."
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Hours"
+msgstr "Antal timmar igång"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of hours in power-on state."
+msgstr "Antal timmar i påslaget tillstånd."
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Retry Count"
+msgstr "Antal upprepade spinnförsök"
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of retry of spin start attempts if the first attempt was unsuccessful. "
+"An increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"Antal upprepade spinnstartförsök om det första försöket misslyckades. En "
+"ökning av egenskapens värde är ett tecken på problem i hårddiskens mekaniska "
+"delsystem."
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Recalibration Retries"
+msgstr "Antal omkalibreringsförsök"
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of recalibrations requested if the first attempt was unsuccessful. An "
+"increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"Antal begärda omkalibreringsförsök om det första försöket misslyckades. En "
+"ökning av egenskapens värde är ett tecken på problem i hårddiskens mekaniska "
+"delsystem."
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Cycle Count"
+msgstr "Antal kraftcykler"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of full hard disk power on/off cycles."
+msgstr "Antal fullständiga cykler hårddiskens kraft satts på och stängts av."
+
+#: core/smartattribute.cpp:113 core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft Read Error Rate"
+msgstr "Mjuk läsfelsfrekvens"
+
+#: core/smartattribute.cpp:113
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Uncorrected read errors reported to the operating system."
+msgstr "Ej korrigerade läsfel rapporterade till operativsystemet."
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Available Reserved Space"
+msgstr "SSD-minne tillgängligt reserverat utrymme"
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of available reserved space as a percentage of reserved space."
+msgstr "Tillgängligt reserverat utrymme, som procent av reserverat utrymme."
+
+#: core/smartattribute.cpp:115
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count"
+msgstr "SSD-minne antal programmeringsfel"
+
+#: core/smartattribute.cpp:115 core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of flash program operation failures since the drive was deployed."
+msgstr ""
+"Antal misslyckade försök att programmera flash sedan enheten togs i bruk."
+
+#: core/smartattribute.cpp:116 core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count"
+msgstr "SSD-minne antal raderingsfel"
+
+#: core/smartattribute.cpp:116
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase operation failures since the drive was deployed."
+msgstr "Antal misslyckade försök att radera flash sedan enheten togs i bruk."
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Leveling Count"
+msgstr "SSD-minne nötningsutjämningsantal"
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Counts the maximum worst erase count on any block."
+msgstr "Räknar det maximala värsta antalet raderingar för något block."
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unexpected power loss count"
+msgstr "SSD-minne antal oväntade kraftförluster"
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of shutdowns without STANDBY IMMEDIATE as the last command "
+"(regardless of PLI activity using capacitor power). Normalized value is "
+"always 100."
+msgstr ""
+"Antal avstängningar utan STANDBY IMMEDIATE som sista kommando (oberoende av "
+"PLI-aktivitet med användning av kondensatorkraft). Normaliserade värdet är "
+"alltid 100."
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Power Loss Protection Failure"
+msgstr "SSD-minne antal skyddsfel vid kraftförlust"
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Last test result, saturated at its maximum value. Bytes 0-1: last test "
+"result as microseconds to discharge cap in range [25, 5000000], lower "
+"indicates specific error code. Bytes 2-3: minutes since last test. Bytes "
+"4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
+"or 11 if the capacitor has been tested in an excessive temperature "
+"condition, otherwise 100."
+msgstr ""
+"Senaste provresultatet, mättat vid maximalt värde. Byte 0-1: senaste "
+"provresultatet som mikrosekunder för att ladda ur kondensatorn i intervallet "
+"[25, 5000000], lägre värde anger en specifik felkod. Byte 2-3: minuter sedan "
+"senaste prov. Byte 4-5: totalt antal prov under livstiden. Normaliserat "
+"värde sätts till 1 vid provfel eller 11 om kondensatorn har provats vid "
+"extrem temperatur, annars 100."
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count (chip)"
+msgstr "SSD-minne antal raderingsfel (krets)"
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase command failures."
+msgstr "Antal misslyckade flash-raderingskommandon."
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Range Delta"
+msgstr "SSD-minne nötningsdeltaintervall"
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Delta between most-worn and least-worn flash blocks."
+msgstr "Delta mellan mest och minst nötta flash-block."
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Used Reserved Block Count Total"
+msgstr "SSD-minne totalt antal använda reserverade block"
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#: core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" Samsung attribute."
+msgstr "Samsung-egenskap \"Innan fel\" (Pre-Fail)."
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unused Reserved Block Count Total"
+msgstr "SSD-minne totalt antal oanvända reserverade block"
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" HP attribute."
+msgstr "HP-egenskap \"Innan fel\" (Pre-Fail)."
+
+#: core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+msgstr ""
+"SSD-minne totalt antal programmeringsfel eller antal ej 4K-justerade "
+"åtkomster"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SATA Downshift Error Count"
+msgstr "Antal SATA-nerskiftningsfel"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital and Samsung attribute."
+msgstr "Egenskap för Western Digital och Samsung."
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr name"
+msgid "End-to-End Error"
+msgstr "Genomgående fel"
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Part of HP's SMART IV technology: After transferring through the cache RAM "
+"data buffer the parity data between the host and the hard drive did not "
+"match."
+msgstr ""
+"Del av HP:s SMART IV-teknologi. Efter överföring genom cacheminnets "
+"databuffert stämde inte paritetsdata mellan värddatorn och hårddisken."
+
+#: core/smartattribute.cpp:129
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Stability"
+msgstr "Huvudstabilitet"
+
+#: core/smartattribute.cpp:129 core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital attribute."
+msgstr "Egenskap för Western Digital."
+
+#: core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Induced Op-Vibration Detection"
+msgstr "Detektering av vibrationer inducerade under användning"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reported Uncorrectable Errors"
+msgstr "Rapporterade ej korrigerbara fel"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could not be recovered using hardware ECC."
+msgstr "Antal fel som inte kunde återställas med felrättande kod i hårdvara"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Command Timeout"
+msgstr "Tidsgräns för kommando överskreds"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of aborted operations due to HDD timeout."
+msgstr ""
+"Antal avbrutna operationer på grund av överskriden tidsgräns i hårddisken."
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr name"
+msgid "High Fly Writes"
+msgstr "Skrivningar med hög flygning"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of fly height errors detected."
+msgstr "Antal detekterade flyghöjdsfel."
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature Difference From 100"
+msgstr "Temperaturskillnad från 100"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
+"minimum threshold which corresponds to a maximum temperature."
+msgstr ""
+"Värdet är lika med (100 &ndash; temperatur i °C), vilket låter tillverkare "
+"ställa in en minimal tröskel, som motsvarar maximal temperatur."
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-sense Error Rate"
+msgstr "Felfrekvens för G-avkänning"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors resulting from externally-induced shock and vibration."
+msgstr "Antal fel orsakade av externt inducerad shock och vibration."
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Off Retract Count"
+msgstr "Antal avstängningsåtergångscykler"
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of power-off or emergency retract cycles"
+msgstr "Antal avstängnings- eller nödåtergångscykler"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Cycle Count"
+msgstr "Antal belastningscykler"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of load/unload cycles into head landing zone position."
+msgstr ""
+"Antal lastnings- och lossningscykler till huvudlandningszonens position"
+
+#: core/smartattribute.cpp:138 core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: core/smartattribute.cpp:138
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Current internal temperature."
+msgstr "Nuvarande interna temperatur."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Hardware ECC Recovered"
+msgstr "Återställda av felrättande kod i hårdvara"
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could be recovered using hardware ECC."
+msgstr ""
+"Antal fel som kunde återställas genom att använda felrättande kod i hårdvara"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocation Event Count"
+msgstr "Antal omfördelningshändelser"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of remap operations. The raw value of this attribute shows the total "
+"number of attempts to transfer data from reallocated sectors to a spare area."
+msgstr ""
+"Antal avbildningsändringar. Egenskapens obehandlade värde visar det totala "
+"antalet försök att överföra data från omfördelade sektorer till ett ledigt "
+"område."
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Current Pending Sector Count"
+msgstr "Aktuellt antal väntande sektorer"
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
+"read errors)."
+msgstr ""
+"Antal &quot;instabila&quot; sektorer (som väntar på avbildningsändring på "
+"grund av läsfel)"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Uncorrectable Sector Count"
+msgstr "Antal ej korrigerade sektorer"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of uncorrectable errors when reading/writing a sector."
+msgstr ""
+"Antal ej korrigerade sektorer vid läsning eller skrivning av en sektor."
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr name"
+msgid "UltraDMA CRC Error Count"
+msgstr "Antal CRC-fel för UltraDMA"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of errors in data transfer via the interface cable as determined by "
+"ICRC."
+msgstr "Antal fel i dataöverföring via gränssnittskabeln som avgörs av ICRC."
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Multi-Zone Error Rate<br/>Write Error Rate"
+msgstr "Felfrekvens för multizon<br/>Skrivfelfrekvens"
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr description"
+msgid "The total number of errors when writing a sector."
+msgstr "Totalt antal fel när en sektor skrivs."
+
+#: core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of off-track errors."
+msgstr "Antal fel utanför spår."
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Data Address Mark Errors"
+msgstr "Markeringsfel för dataadress"
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of Data Address Mark errors (or vendor-specific)."
+msgstr "Antal markeringsfel för dataadress (eller tillverkarspecifik)."
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Run Out Cancel"
+msgstr "Ogiltig felkorrigering"
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of ECC errors"
+msgstr "Antal fel upptäckta av felrättande kod"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft ECC Correction"
+msgstr "Mjuk korrigering med felrättande kod"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors corrected by software ECC"
+msgstr "Antal fel som korrigerades av felrättande kod i programvara"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Thermal Asperity Rate"
+msgstr "Termisk svårighetsfrekvens"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors due to high temperature."
+msgstr "Antal fel orsakade av hög temperatur."
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Flying Height"
+msgstr "Flyghöjd"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Height of heads above the disk surface. A flying height that is too low "
+"increases the chances of a head crash while a flying height that is too high "
+"increases the chances of a read/write error."
+msgstr ""
+"Huvudenas höjd över skivytan. En flyghöjd som är för låg ökar risken för en "
+"huvudkrasch, medan en flyghöjd som är för hög ökar risken för läs- eller "
+"skrivfel."
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin High Current"
+msgstr "Högsta spinnström"
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Amount of surge current used to spin up the drive."
+msgstr "Storleken på stötström använd för att spinna igång enheten."
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Buzz"
+msgstr "Spinnsurr"
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of buzz routines needed to spin up the drive due to insufficient "
+"power."
+msgstr ""
+"Antal startrutiner som behövdes för att spinna igång enheten på grund av "
+"otillräcklig kraft."
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Offline Seek Performance"
+msgstr "Nerkopplad sökprestanda "
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive's seek performance during its internal tests."
+msgstr "Enhetens sökprestanda under dess interna tester."
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Vibration During Write"
+msgstr "Vibration under skrivning"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Vibration During Write"
+msgstr "Vibration under skrivning"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Shock During Write"
+msgstr "Chock under skrivning"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Shock During Write"
+msgstr "Chock under skrivning"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Disk Shift"
+msgstr "Skivförflyttning"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Distance the disk has shifted relative to the spindle (usually due to shock "
+"or temperature)."
+msgstr ""
+"Avståndet skivan har flyttats i förhållande till axeln (oftast på grund av "
+"chock eller temperatur)."
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-Sense Error Rate"
+msgstr "Felfrekvens för G-avkänning"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of errors resulting from externally-induced shock and vibration."
+msgstr "Antalet fel orsakade av externt inducerad shock och vibration."
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Loaded Hours"
+msgstr "Timmar belastad"
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time spent operating under data load."
+msgstr "Förfluten tid med databelastning under gång."
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Retry Count"
+msgstr "Antal upprepade lastnings- och lossningsförsök"
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of times head changes position."
+msgstr "Antal gånger huvudet ändrar position."
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Friction"
+msgstr "Belastningsfriktion"
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Resistance caused by friction in mechanical parts while operating."
+msgstr "Motstånd orsakad av friktion i mekaniska delar under gång."
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Cycle Count"
+msgstr "Antal lastnings- och lossningscykler"
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total number of load cycles."
+msgstr "Totalt antal belastningscykler."
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load-In Time"
+msgstr "Belastningstid"
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Total time of loading on the magnetic heads actuator (time not spent in "
+"parking area)."
+msgstr ""
+"Total belastningstid för magnethuvudenas drivenhet (tid som inte tillbringas "
+"i parkeringsområdet)."
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Torque Amplification Count"
+msgstr "Antal förstärkningar av vridmoment"
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of attempts to compensate for platter speed variations."
+msgstr "Antal försök att kompensera för skillnader i skivhastighet."
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-Off Retract Cycle"
+msgstr "Avstängningsåtergångscykler"
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of times the magnetic armature was retracted automatically as a "
+"result of cutting power."
+msgstr ""
+"Antal gånger som magnetarmaturen återgick automatiskt som resultat av att "
+"kraften stängdes av."
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr name"
+msgid "GMR Head Amplitude"
+msgstr "GMR huvudamplitud"
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
+"head motion)"
+msgstr ""
+"Amplitud för &quot;värdelösa rörelser&quot; (avstånd för repetitiva "
+"huvudrörelser fram och tillbaka)"
+
+#: core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive Temperature"
+msgstr "Enhetstemperatur"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Endurance Remaining"
+msgstr "Återstående tålighet"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of physical erase cycles completed on the drive as a percentage of the "
+"maximum physical erase cycles the drive supports"
+msgstr ""
+"Antal fysiska raderingscykler färdiggjorda för enheten som procent av det "
+"totala antalet fysiska raderingscykler som enheten stöder"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Seconds"
+msgstr "Antal sekunder igång"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time elapsed in the power-on state"
+msgstr "Förfluten tid i påslaget tillstånd"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Unrecoverable ECC Count"
+msgstr "Antal fel som inte kunde återställas av felrättande kod"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of unrecoverable ECC errors"
+msgstr "Antal fel som inte kunde återställas av felrättande kod"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Good Block Rate"
+msgstr "Frekvens av användbara block"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of available reserved blocks as percentage of the total number of "
+"reserved blocks"
+msgstr ""
+"Antal tillgängliga reserverade block, som procent av totalt antal "
+"reserverande block"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+msgstr "Antal timmar huvud används<br/>eller överföringsfelfrekvens (Fujitsu)"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Time while head is positioning<br/>or counts the number of times the link is "
+"reset during a data transfer."
+msgstr ""
+"Tid medan huvudet flyttas<br/>eller räknar antal gånger länken återställs "
+"under en dataöverföring."
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Written"
+msgstr "Totalt antal LBA:er skrivna"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Written"
+msgstr "Totalt antal LBA:er skrivna"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Read"
+msgstr "Totalt antal LBA:er lästa"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Read"
+msgstr "Totalt antal LBA:er lästa"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD NAND_Writes_1GiB"
+msgstr "SSD-minne NAND-skrivningar 1GiB"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of writes to NAND in 1 GB increments"
+msgstr "Antal skrivningar till NAND räknade per 1 GB"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Retry Rate"
+msgstr "Felfrekvens för omläsning"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors while reading from a disk"
+msgstr "Antal fel vid läsning från en disk"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Free Fall Protection"
+msgstr "Skydd mot fritt fall"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of &quot;Free Fall Events&quot; detected"
+msgstr "Antal detekterade &quot;fritt fall&quot; händelser"
+
+#: core/smartstatus.cpp:78
+#, kde-kuit-format
+msgctxt "@item:intable degrees in Celsius and Fahrenheit"
+msgid "%1° C / %2° F"
+msgstr "%1° C / %2° F"
+
+#: core/smartstatus.cpp:86
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Aborted"
+msgstr "Avbruten"
+
+#: core/smartstatus.cpp:89
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Interrupted"
+msgstr "Avbruten"
+
+#: core/smartstatus.cpp:92
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Fatal error"
+msgstr "Allvarligt fel"
+
+#: core/smartstatus.cpp:95
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Unknown error"
+msgstr "Okänt fel"
+
+#: core/smartstatus.cpp:98
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Electrical error"
+msgstr "Elektriskt fel"
+
+#: core/smartstatus.cpp:101
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Servo error"
+msgstr "Servofel"
+
+#: core/smartstatus.cpp:104
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Read error"
+msgstr "Läsfel"
+
+#: core/smartstatus.cpp:107
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Handling error"
+msgstr "Hanteringsfel"
+
+#: core/smartstatus.cpp:110
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Self test in progress"
+msgstr "Självtest pågår"
+
+#: core/smartstatus.cpp:114
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Success"
+msgstr "Lyckades"
+
+#: core/smartstatus.cpp:123
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Healthy"
+msgstr "Felfri"
+
+#: core/smartstatus.cpp:126
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has been used outside of its design parameters in the past."
+msgstr "Har tidigare används utanför sina designparametrar."
+
+#: core/smartstatus.cpp:129
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has some bad sectors."
+msgstr "Har några dåliga sektorer."
+
+#: core/smartstatus.cpp:132
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Is being used outside of its design parameters right now."
+msgstr "Används utanför sina designparametrar just nu."
+
+#: core/smartstatus.cpp:135
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has many bad sectors."
+msgstr "Har många dåliga sektorer:"
+
+#: core/smartstatus.cpp:139
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Disk failure is imminent. Backup all data!"
+msgstr "Diskfel inträffar snart. Säkerhetskopiera all data!"
+
+#: fs/btrfs.cpp:166
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Misslyckades ändra storlek på Btrfs-filsystem på partition <filename>%1</"
+"filename>: Kunde inte skapa tillfällig katalog."
+
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"btrfs file system resize failed."
+msgstr ""
+"Misslyckades ändra storlek på Btrfs-filsystem på partition <filename>%1</"
+"filename>: Storleksändring av Btrfs-filsystem misslyckades."
+
+#: fs/btrfs.cpp:187
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Misslyckades ändra storlek på Btrfs-filsystem på partition "
+"<filename>%1</filename>: Avmontering misslyckades.</warning>"
+
+#: fs/btrfs.cpp:189
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Misslyckades ändra storlek på Btrfs-filsystem på partition <filename>%1</"
+"filename>: Inledande montering misslyckades."
+
+#: fs/fat12.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Setting label for partition <filename>%1</filename> to %2"
+msgstr "Ställer in etikett för partition <filename>%1</filename> till %2"
+
+#: fs/filesystem.cpp:503
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unknown"
+msgstr "okänt"
+
+#: fs/filesystem.cpp:504
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "extended"
+msgstr "utökat"
+
+#: fs/filesystem.cpp:506
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext2"
+msgstr "ext2"
+
+#: fs/filesystem.cpp:507
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext3"
+msgstr "ext3"
+
+#: fs/filesystem.cpp:508
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext4"
+msgstr "ext4"
+
+#: fs/filesystem.cpp:509
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linuxswap"
+msgstr "linux växlingsminne"
+
+#: fs/filesystem.cpp:510
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat16"
+msgstr "fat16"
+
+#: fs/filesystem.cpp:511
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat32"
+msgstr "fat32"
+
+#: fs/filesystem.cpp:512
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ntfs"
+msgstr "ntfs"
+
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser"
+msgstr "reiser"
+
+#: fs/filesystem.cpp:514
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser4"
+msgstr "reiser4"
+
+#: fs/filesystem.cpp:515
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "xfs"
+msgstr "XFS"
+
+#: fs/filesystem.cpp:516
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "jfs"
+msgstr "jfs"
+
+#: fs/filesystem.cpp:517
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfs"
+msgstr "hfs"
+
+#: fs/filesystem.cpp:518
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfsplus"
+msgstr "hfsplus"
+
+#: fs/filesystem.cpp:519
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ufs"
+msgstr "ufs"
+
+#: fs/filesystem.cpp:520
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unformatted"
+msgstr "oformatterat"
+
+#: fs/filesystem.cpp:521
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "btrfs"
+msgstr "btrfs"
+
+#: fs/filesystem.cpp:522
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hpfs"
+msgstr "hpfs"
+
+#: fs/filesystem.cpp:523
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks"
+msgstr "luks"
+
+#: fs/filesystem.cpp:524
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ocfs2"
+msgstr "ocfs2"
+
+#: fs/filesystem.cpp:525
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "zfs"
+msgstr "zfs"
+
+#: fs/filesystem.cpp:526
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "exfat"
+msgstr "exfat"
+
+#: fs/filesystem.cpp:527
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "nilfs2"
+msgstr "nilfs2"
+
+#: fs/filesystem.cpp:528
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "lvm2 pv"
+msgstr "lvm2 pv"
+
+#: fs/filesystem.cpp:529
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "f2fs"
+msgstr "f2fs"
+
+#: fs/filesystem.cpp:530
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "udf"
+msgstr "udf"
+
+#: fs/filesystem.cpp:531
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "iso9660"
+msgstr "iso9660"
+
+#: fs/filesystem.cpp:532
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks2"
+msgstr "luks2"
+
+#: fs/filesystem.cpp:533
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat12"
+msgstr "fat12"
+
+#: fs/filesystem.cpp:534
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linux_raid_member"
+msgstr "linux_raid_medlem"
+
+#: fs/filesystem.cpp:535
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "BitLocker"
+msgstr "BitLocker"
+
+#: fs/filesystem.cpp:536
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "apfs"
+msgstr "apfs"
+
+#: fs/filesystem.cpp:537
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "minix"
+msgstr "minix"
+
+#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Mount"
+msgstr "Montera"
+
+#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unmount"
+msgstr "Avmontera"
+
+#: fs/jfs.cpp:155
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Misslyckades ändra storlek på JFS-filsystem på partition <filename>%1</"
+"filename>: Kunde inte skapa tillfällig katalog."
+
+#: fs/jfs.cpp:169 fs/jfs.cpp:188
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Remount failed."
+msgstr ""
+"Misslyckades ändra storlek på JFS-filsystem på partition <filename>%1</"
+"filename>: Återmontering misslyckades."
+
+#: fs/jfs.cpp:174
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing JFS file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Misslyckades ändra storlek på JFS-filsystem på partition <filename>"
+"%1</filename>: Avmontering misslyckades.</warning>"
+
+#: fs/jfs.cpp:176
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Misslyckades ändra storlek på JFS-filsystem på partition <filename>%1</"
+"filename>: Inledande montering misslyckades."
+
+#: fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Aktivera växlingsminne"
+
+#: fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Inaktivera växlingsminne"
+
+#: fs/luks.cpp:166
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unlock"
+msgstr "Lås upp"
+
+#: fs/luks.cpp:171
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Lock"
+msgstr "Lås"
+
+#: fs/luks.cpp:252
+#, kde-format
+msgid "Enter passphrase for %1:"
+msgstr "Ange lösenordsfras för %1:"
+
+#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+msgstr ""
+"Ändrar storlek på LUKS-kryptering på partition <filename>%1</filename>."
+
+#: fs/luks.cpp:509 fs/luks2.cpp:116
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing encrypted file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Misslyckades ändra storlek på krypterat filsystem på partition <filename>%1</"
+"filename>."
+
+#: fs/nilfs2.cpp:137
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Misslyckades ändra storlek på NILFS2-filsystem på partition <filename>%1</"
+"filename>: Kunde inte skapa tillfällig katalog."
+
+#: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"NILFS2 file system resize failed."
+msgstr ""
+"Misslyckades ändra storlek på NILFS2-filsystem på partition <filename>%1</"
+"filename>: Storleksändring av NILFS2-filsystem misslyckades."
+
+#: fs/nilfs2.cpp:156
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Misslyckades ändra storlek på NILFS2-filsystem på partition "
+"<filename>%1</filename>: Avmontering misslyckades.</warning>"
+
+#: fs/nilfs2.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Misslyckades ändra storlek på NILFS2-filsystem på partition <filename>%1</"
+"filename>: Inledande montering misslyckades."
+
+#: fs/ntfs.cpp:182
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updating boot sector for NTFS file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Uppdaterar startsektor för NTFS-filsystem på partition <filename>%1</"
+"filename>."
+
+#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not write new start sector to partition <filename>%1</filename> when "
+"trying to update the NTFS boot sector."
+msgstr ""
+"Kunde inte skriva ny startsektor på partition <filename>%1</filename> vid "
+"försök att uppdatera NTFS-startsektor."
+
+#: fs/ntfs.cpp:206
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updated NTFS boot sector for partition <filename>%1</filename> successfully."
+msgstr ""
+"Uppdaterade NTFS-startsektor för partition <filename>%1</filename> med "
+"lyckat resultat."
+
+#: fs/xfs.cpp:159
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Misslyckades ändra storlek på XFS-filsystem på partition <filename>%1</"
+"filename>: Kunde inte skapa tillfällig katalog."
+
+#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"xfs_growfs failed."
+msgstr ""
+"Misslyckades ändra storlek på XFS-filsystem på partition <filename>%1</"
+"filename>: xfs_growfs misslyckades."
+
+#: fs/xfs.cpp:178
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing XFS file system on partition <filename>%1</filename> "
+"failed: Unmount failed.</warning>"
+msgstr ""
+"<warning>Misslyckades ändra storlek på XFS-filsystem på partition <filename>"
+"%1</filename>: Avmontering misslyckades.</warning>"
+
+#: fs/xfs.cpp:180
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Misslyckades ändra storlek på XFS-filsystem på partition <filename>%1</"
+"filename>: Inledande montering misslyckades."
+
+#: jobs/backupfilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"backup."
+msgstr ""
+"Kunde inte öppna filsystem på källpartition <filename>%1</filename> för "
+"säkerhetskopiering."
+
+#: jobs/backupfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not create backup file <filename>%1</filename>."
+msgstr "Kunde inte skapa fil för säkerhetskopiering <filename>%1</filename>."
+
+#: jobs/backupfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Back up file system on partition <filename>%1</filename> to <filename>%2</"
+"filename>"
+msgstr ""
+"Säkerhetskopiera filsystem på partition <filename>%1</filename> till "
+"<filename>%2</filename>"
+
+#: jobs/changepermissionsjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Change the permissions of: <filename>%1</filename> to %2"
+msgstr "Ändra behörighet för: <filename>%1</filename> till %2"
+
+#: jobs/checkfilesystemjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Check file system on partition <filename>%1</filename>"
+msgstr "Kontrollera filsystem på partition <filename>%1</filename>"
+
+#: jobs/copyfilesystemjob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Cannot copy file system: File system on target partition <filename>%1</"
+"filename> is smaller than the file system on source partition <filename>%2</"
+"filename>."
+msgstr ""
+"Kan inte kopiera filsystem. Filsystem på målpartition <filename>%1</"
+"filename> är mindre än filsystemet på källpartition <filename>%2</filename>."
+
+#: jobs/copyfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Kunde inte öppna filsystem på källpartition <filename>%1</filename> för "
+"kopiering."
+
+#: jobs/copyfilesystemjob.cpp:58
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on target partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Kunde inte öppna filsystem på målpartition <filename>%1</filename> för "
+"kopiering."
+
+#: jobs/copyfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Closing device. This may take a while, especially on slow devices like "
+"Memory Sticks."
+msgstr ""
+"Stänger enhet. Det kan ta en stund, särskilt på långsamma enheter som "
+"minnesstickor."
+
+#: jobs/copyfilesystemjob.cpp:88
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
+msgstr ""
+"Kopiera filsystem på partition <filename>%1</filename> till partition "
+"<filename>%2</filename>"
+
+#: jobs/createfilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to set the system type for the file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Misslyckades ställa in systemtyp för filsystemet på partition <filename>%1</"
+"filename>."
+
+#: jobs/createfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"system type for partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"ställa in systemtyp för partition <filename>%2</filename>."
+
+#: jobs/createfilesystemjob.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the system type for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna enhet <filename>%1</filename> för att ställa in systemtyp "
+"för partition <filename>%2</filename>."
+
+#: jobs/createfilesystemjob.cpp:84
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Create file system <filename>%1</filename> on partition <filename>%2</"
+"filename>"
+msgstr ""
+"Skapa filsystem <filename>%1</filename> på partition <filename>%2</filename>"
+
+#: jobs/createpartitionjob.cpp:72
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Misslyckades lägga till partition <filename>%1</filename> på enhet <filename>"
+"%2</filename>."
+
+#: jobs/createpartitionjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to create "
+"new partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"skapa ny partition <filename>%2</filename>."
+
+#: jobs/createpartitionjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to create new partition "
+"<filename>%2</filename>."
+msgstr ""
+"Kunde inte enhet <filename>%1</filename> för att skapa ny partition "
+"<filename>%2</filename>."
+
+#: jobs/createpartitionjob.cpp:94
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition <filename>%1</filename>"
+msgstr "Skapa ny partition <filename>%1</filename>"
+
+#: jobs/createpartitionjob.cpp:96
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition on device <filename>%1</filename>"
+msgstr "Skapa ny partition på enhet <filename>%1</filename>"
+
+#: jobs/createpartitiontablejob.cpp:49
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Creating partition table failed: Could not open device <filename>%1</"
+"filename>."
+msgstr ""
+"Misslyckades skapa partitionstabell: Kunde inte öppna enhet <filename>%1</"
+"filename>."
+
+#: jobs/createpartitiontablejob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition table on device <filename>%1</filename>"
+msgstr "Skapa ny partitionstabell på enhet <filename>%1</filename>"
+
+#: jobs/createvolumegroupjob.cpp:49
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
+msgstr "Skapa en ny volymgrupp: <filename>%1</filename> med FV: %2"
+
+#: jobs/deactivatelogicalvolumejob.cpp:50
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Logical Volumes: <filename>%1</filename>"
+msgstr "Inaktivera logiska volymer: <filename>%1</filename>"
+
+#: jobs/deactivatevolumegroupjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Volume Group: <filename>%1</filename>"
+msgstr "Inaktivera volymgrupp: <filename>%1</filename>"
+
+#: jobs/deletefilesystemjob.cpp:51
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system: file system on <filename>%1</filename> is "
+"mounted."
+msgstr ""
+"Kunde inte ta bort filsystem: Filsystem på <filename>%1</filename> är "
+"monterat."
+
+#: jobs/deletefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete file system on <filename>%1</filename>."
+msgstr "Kunde inte ta bort filsystem på <filename>%1</filename>."
+
+#: jobs/deletefilesystemjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"file system on <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"ta bort filsystem på <filename>%2</filename>."
+
+#: jobs/deletefilesystemjob.cpp:83
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system signature for partition <filename>%1</"
+"filename>: Failed to open device <filename>%2</filename>."
+msgstr ""
+"Kunde inte ta bort filsystemsignatur för partition <filename>%1</filename>: "
+"Misslyckades öppna enhet <filename>%2</filename>."
+
+#: jobs/deletefilesystemjob.cpp:93
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete file system on <filename>%1</filename>"
+msgstr "Ta bort filsystem på <filename>%1</filename>"
+
+#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete partition <filename>%1</filename>."
+msgstr "Kunde inte ta bort partition <filename>%1</filename>."
+
+#: jobs/deletepartitionjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"ta bort partition <filename>%2</filename>."
+
+#: jobs/deletepartitionjob.cpp:67
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Deleting partition failed: Could not open device <filename>%1</filename>."
+msgstr ""
+"Misslyckades ta bort partition: Kunde inte öppna enhet <filename>%1</"
+"filename>."
+
+#: jobs/deletepartitionjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete the partition <filename>%1</filename>"
+msgstr "Ta bort partition <filename>%1</filename>"
+
+#: jobs/job.cpp:45
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Source and target for copying do not overlap: Rollback is not required."
+msgstr "Källa och mål för kopiering överlappar inte: Återgång behövs inte."
+
+#: jobs/job.cpp:69
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback from: First byte: %1, last byte: %2."
+msgstr "Återgång från: första byte: %1, sista byte: %2."
+
+#: jobs/job.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback to: First byte: %1, last byte: %2."
+msgstr "Återgång till: första byte: %1, sista byte: %2."
+
+#: jobs/job.cpp:74 jobs/job.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open device <filename>%1</filename> to rollback copying."
+msgstr "Kunde inte öppna enhet <filename>%1</filename> för återgångskopiering."
+
+#: jobs/job.cpp:86
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback failed: Source or target are not devices."
+msgstr "Återgång misslyckades: Källan eller målet är inte enheter."
+
+#: jobs/job.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Job: %1"
+msgstr "Jobb: %1"
+
+#: jobs/job.cpp:115
+#, kde-kuit-format
+msgctxt "@info:progress job status (error, warning, ...)"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: jobs/job.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Pending"
+msgstr "Väntande"
+
+#: jobs/job.cpp:135
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Success"
+msgstr "Lyckades"
+
+#: jobs/job.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Error"
+msgstr "Fel"
+
+#: jobs/movefilesystemjob.cpp:52
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"Kunde inte öppna filsystem på partition <filename>%1</filename> för "
+"flyttning."
+
+#: jobs/movefilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not create target for moving file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Kunde inte skapa mål för att flytta filsystem på partition <filename>%1</"
+"filename>."
+
+#: jobs/movefilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback for file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Återgång för filsystem på partition <filename>%1</filename> misslyckades."
+
+#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/shredfilesystemjob.cpp:66
+#, kde-format, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Closing device. This may take a few seconds."
+msgstr "Stänger enhet. Det kan ta några sekunder."
+
+#: jobs/movefilesystemjob.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Move the file system on partition <filename>%1</filename> to sector %2"
+msgstr "Flytta filsystemet på partition <filename>%1</filename> till sektor %2"
+
+#: jobs/movephysicalvolumejob.cpp:57
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Move used PE in %1 on %2 to other available Physical Volumes"
+msgstr ""
+"Flytta använt fysiskt område (PE) i %1 på %2 till andra tillgängliga fysiska "
+"volymer"
+
+#: jobs/removevolumegroupjob.cpp:41
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove Volume Group: <filename>%1</filename>"
+msgstr "Ta bort volymgrupp: <filename>%1</filename>"
+
+#: jobs/resizefilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of 1 sector."
+msgid_plural ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of %1 sectors."
+msgstr[0] ""
+"Filsystemet på partition <filename>%2</filename> har redan begärd längd 1 "
+"sektor."
+msgstr[1] ""
+"Filsystemet på partition <filename>%2</filename> har redan begärd längd %1 "
+"sektorer."
+
+#: jobs/resizefilesystemjob.cpp:69
+#, kde-format
+msgctxt "@info:progress"
+msgid "Resizing file system from %1 to %2 sectors."
+msgstr "Ändrar filsystemets storlek från %1 till %2 sektorer."
+
+#: jobs/resizefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing a %1 file system using internal backend functions."
+msgstr ""
+"Ändrar storlek på ett %1 filsystem genom att använda interna funktioner i "
+"bakgrundsprogrammet."
+
+#: jobs/resizefilesystemjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%1</filename> cannot be resized "
+"because there is no support for it."
+msgstr ""
+"Storleken hos filsystemet på partition <filename>%1</filename> kan inte "
+"ändras eftersom det inte stöds."
+
+#: jobs/resizefilesystemjob.cpp:119
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Successfully resized file system using internal backend functions."
+msgstr ""
+"Ändrade storlek på filsystem med lyckat resultat genom att använda "
+"funktioner i bakgrundsprogrammet."
+
+#: jobs/resizefilesystemjob.cpp:123
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition <filename>%1</filename> while trying to resize the "
+"file system."
+msgstr ""
+"Kunde inte öppna partition <filename>%1</filename> vid försök att ändra "
+"storlek på filsystemet."
+
+#: jobs/resizefilesystemjob.cpp:126
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not read geometry for partition <filename>%1</filename> while trying "
+"to resize the file system."
+msgstr ""
+"Kunde inte läsa geometri för partition <filename>%1</filename> vid försök "
+"att ändra storlek på filsystemet."
+
+#: jobs/resizefilesystemjob.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Maximize file system on <filename>%1</filename> to fill the partition"
+msgstr ""
+"Maximera filsystemet på <filename>%1</filename> för att fylla partitionen"
+
+#: jobs/resizefilesystemjob.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+msgid_plural ""
+"Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgstr[0] ""
+"Ändra filsystemets storlek på partition <filename>%2</filename> till 1 "
+"sektor."
+msgstr[1] ""
+"Ändra filsystemets storlek på partition <filename>%2</filename> till %1 "
+"sektorer"
+
+#: jobs/resizevolumegroupjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Adding LVM Physical Volume %2 to %3."
+msgid_plural "Adding LVM Physical Volumes %2 to %3."
+msgstr[0] "Lägger till LVM fysisk volym %2 till %3."
+msgstr[1] "Lägger till LVM fysiska volymer %2 till %3."
+
+#: jobs/resizevolumegroupjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Removing LVM Physical Volume %2 from %3."
+msgid_plural "Removing LVM Physical Volumes %2 from %3."
+msgstr[0] "Tar bort LVM fysisk volym %2 från %3."
+msgstr[1] "Tar bort LVM fysiska volymer %2 från %3."
+
+#: jobs/resizevolumegroupjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resizing Volume Group %1 to %2."
+msgstr "Ändrar storlek på volymgrupp %1 till %2."
+
+#: jobs/restorefilesystemjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgstr ""
+"Kunde inte öppna säkerhetskopia <filename>%1</filename> att återställa från."
+
+#: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open target partition <filename>%1</filename> to restore to."
+msgstr ""
+"Kunde inte öppna målpartition <filename>%1</filename> att återställa till."
+
+#: jobs/restorefilesystemjob.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Restore the file system from file <filename>%1</filename> to partition "
+"<filename>%2</filename>"
+msgstr ""
+"Återställ filsystemet från filen <filename>%1</filename> till partition "
+"<filename>%2</filename>"
+
+#: jobs/setfilesystemlabeljob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"File system on partition <filename>%1</filename> does not support setting "
+"labels. Job ignored."
+msgstr ""
+"Filsystem på partition <filename>%1</filename> stöder inte inställning av "
+"etiketter. Jobb ignorerat."
+
+#: jobs/setfilesystemlabeljob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgstr ""
+"Ställ in etikett för filsystem på partition <filename>%1</filename> till "
+"\"%2\""
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned on, active"
+msgid "on"
+msgstr "på"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned off, inactive"
+msgid "off"
+msgstr "av"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"There was an error setting flag %1 for partition <filename>%2</filename> to "
+"state %3."
+msgstr ""
+"Ett fel uppstod vid försök att ställa in flaggan %1 för partition <filename>"
+"%2</filename> till tillstånd %3."
+
+#: jobs/setpartflagsjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set "
+"partition flags for partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"ställa in partitionsflaggor för partition <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set partition flags for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna enhet <filename>%1</filename> för att ställa in "
+"partitionsflaggor för partition <filename>%2</filename>."
+
+#: jobs/setpartflagsjob.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Nollställ flaggor för partition <filename>%1</filename>"
+
+#: jobs/setpartflagsjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Ställ in flaggor för partition <filename>%1</filename> till \"%2\""
+
+#: jobs/setpartgeometryjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> while trying to resize/move "
+"partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna enhet <filename>%1</filename> vid försök att ändra storlek "
+"eller flytta partition <filename>%2</filename>."
+
+#: jobs/setpartgeometryjob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
+"%3"
+msgstr ""
+"Ställ in geometri för partition <filename>%1</filename>: Startsektor: %2, "
+"längd: %3"
+
+#: jobs/setpartitionattributesjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting attributes. Job ignored."
+msgstr ""
+"Partitionstabellen för partition <filename>%1</filename> stöder inte "
+"inställning av egenskaper. Jobb ignorerat."
+
+#: jobs/setpartitionattributesjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the attributes for the partition <filename>%1</filename>."
+msgstr ""
+"Misslyckades ange egenskaperna för partitionen <filename>%1</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"attributes for the partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"ange egenskaper för partitionen <filename>%2</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the attributes for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna enhet <filename>%1</filename> för att ange egenskaper för "
+"partitionen <filename>%2</filename>."
+
+#: jobs/setpartitionattributesjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
+msgstr ""
+"Ställ in egenskaperna för partition <filename>%1</filename> till \"%2\""
+
+#: jobs/setpartitionlabeljob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting names. Job ignored."
+msgstr ""
+"Partitionstabellen för partition <filename>%1</filename> stöder inte "
+"inställning av namn. Jobb ignorerat."
+
+#: jobs/setpartitionlabeljob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the name for the partition <filename>%1</filename>."
+msgstr "Misslyckades ange namn på partitionen <filename>%1</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"name for the partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"ange namn på partitionen <filename>%2</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the name for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna enhet <filename>%1</filename> för att ange namn på "
+"partitionen <filename>%2</filename>."
+
+#: jobs/setpartitionlabeljob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the label on partition <filename>%1</filename> to \"%2\""
+msgstr "Ställ in etikett för partition <filename>%1</filename> till \"%2\""
+
+#: jobs/setpartitionuuidjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting UUIDs. Job ignored."
+msgstr ""
+"Partitionstabellen för partition <filename>%1</filename> stöder inte "
+"inställning av UUID. Jobb ignorerat."
+
+#: jobs/setpartitionuuidjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the UUID for the partition <filename>%1</filename>."
+msgstr "Misslyckades ställa in UUID för partitionen <filename>%1</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"UUID for the partition <filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna partitionstabell på enhet <filename>%1</filename> för att "
+"ställa in UUID för partitionen <filename>%2</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the UUID for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Kunde inte öppna enhet <filename>%1</filename> för att ställa in UUID för "
+"partition <filename>%2</filename>."
+
+#: jobs/setpartitionuuidjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+msgstr "Ställ in UUID för partition <filename>%1</filename> till \"%2\""
+
+#: jobs/shredfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open random data source to overwrite file system."
+msgstr "Kunde inte öppna slumpmässig datakälla för att skriva över filsystem."
+
+#: jobs/shredfilesystemjob.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Shred the file system on <filename>%1</filename>"
+msgstr "Förstör filsystemet på <filename>%1</filename>"
+
+#: ops/backupoperation.cpp:39
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
+msgstr ""
+"Säkerhetskopiera partition <filename>%1</filename> (%2, %3) till <filename>"
+"%4</filename>"
+
+#: ops/checkoperation.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
+msgstr "Kontrollera och reparera partition <filename>%1</filename> (%2, %3)"
+
+#: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<warning>Maximizing file system on target partition <filename>%1</filename> "
+"to the size of the partition failed.</warning>"
+msgstr ""
+"<warning>Misslyckades maximera filsystemet på målpartition <filename>%1</"
+"filename> till partitionens storlek.</warning>"
+
+#: ops/copyoperation.cpp:151
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking target partition <filename>%1</filename> after copy failed."
+msgstr ""
+"Kontrollerar målpartition <filename>%1</filename> efter kopiering "
+"misslyckats."
+
+#: ops/copyoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying source to target partition failed."
+msgstr "Misslyckades kopiera källpartition till målpartition."
+
+#: ops/copyoperation.cpp:161
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating target partition for copying failed."
+msgstr "Misslyckades skapa målpartition för kopiering."
+
+#: ops/copyoperation.cpp:163
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking source partition <filename>%1</filename> failed."
+msgstr "Misslyckades kontrollera källpartition <filename>%1</filename>."
+
+#: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
+#: ops/restoreoperation.cpp:148
+#, kde-kuit-format
+msgctxt "@info:status (success, error, warning...) of operation"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/copyoperation.cpp:179
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6)"
+msgstr ""
+"Kopiera partition <filename>%1</filename> (%2, %3) till <filename>%4</"
+"filename> (%5, %6)"
+
+#: ops/copyoperation.cpp:188
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6) and grow it to %7"
+msgstr ""
+"Kopiera partition <filename>%1</filename> (%2, %3) till <filename>%4</"
+"filename> (%5, %6) och låt den växa till %7"
+
+#: ops/copyoperation.cpp:200
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename>"
+msgstr ""
+"Kopiera partition <filename>%1</filename> (%2, %3) till oanvänt utrymme (med "
+"början på %4) på <filename>%5</filename>"
+
+#: ops/copyoperation.cpp:208
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename> and grow it to %6"
+msgstr ""
+"Kopiera partition <filename>%1</filename> (%2, %3) till oanvänt utrymme (med "
+"början på %4) på <filename>%5</filename> och låt den växa till %6"
+
+#: ops/createfilesystemoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create filesystem %1 on partition <filename>%2</filename>"
+msgstr "Skapa filsystem %1 på partition <filename>%2</filename>"
+
+#: ops/createpartitiontableoperation.cpp:104
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
+msgstr "Skapa en ny partitionstabell (typ: %1) på <filename>%2</filename>"
+
+#: ops/createvolumegroupoperation.cpp:36
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new LVM volume group named '%1'."
+msgstr "Skapa en ny LVM-volymgrupp vid namn '%1'."
+
+#: ops/deactivatevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate volume group."
+msgstr "Inaktivera volymgrupp."
+
+#: ops/deleteoperation.cpp:87
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Shred partition <filename>%1</filename> (%2, %3)"
+msgstr "Förstör partition <filename>%1</filename> (%2, %3)"
+
+#: ops/deleteoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Delete partition <filename>%1</filename> (%2, %3)"
+msgstr "Ta bort partition <filename>%1</filename> (%2, %3)"
+
+#: ops/newoperation.cpp:205
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
+msgstr "Skapa en ny partition (%1, %2) på <filename>%3</filename>"
+
+#: ops/operation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "None"
+msgstr "Ingen"
+
+#: ops/operation.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Pending"
+msgstr "Väntande"
+
+#: ops/operation.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Running"
+msgstr "Kör"
+
+#: ops/operation.cpp:78
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Success"
+msgstr "Lyckades"
+
+#: ops/operation.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Warning"
+msgstr "Varning"
+
+#: ops/operation.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Error"
+msgstr "Fel"
+
+#: ops/removevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove a LVM volume group."
+msgstr "Ta bort en LVM-volymgrupp."
+
+#: ops/resizeoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving extended partition <filename>%1</filename> failed."
+msgstr "Misslyckades flytta utökad partition <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:165
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgstr ""
+"Misslyckades kontrollera partition <filename>%1</filename> efter "
+"storleksändring eller flyttning."
+
+#: ops/resizeoperation.cpp:168
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgstr ""
+"Misslyckades ändra storlek eller flytta partition <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:171
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> before resize/move failed."
+msgstr ""
+"Misslyckades kontrollera partition <filename>%1</filename> innan "
+"storleksändring eller flyttning."
+
+#: ops/resizeoperation.cpp:201
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the left by %2"
+msgstr "Flytta partition <filename>%1</filename> åt vänster med %2"
+
+#: ops/resizeoperation.cpp:204
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the right by %2"
+msgstr "Flytta partition <filename>%1</filename> åt höger med %2"
+
+#: ops/resizeoperation.cpp:207
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgstr "Låt partition <filename>%1</filename> växa från %2 till %3"
+
+#: ops/resizeoperation.cpp:210
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Shrink partition <filename>%1</filename> from %2 to %3"
+msgstr "Krymp partition <filename>%1</filename> från %2 till %3"
+
+#: ops/resizeoperation.cpp:213
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
+"to %4"
+msgstr ""
+"Flytta partition <filename>%1</filename> åt vänster med %2 och låt den växa "
+"från %3 till %4"
+
+#: ops/resizeoperation.cpp:216
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and grow it from "
+"%3 to %4"
+msgstr ""
+"Flytta partition <filename>%1</filename> åt höger med %2 och låt den växa "
+"från %3 till %4"
+
+#: ops/resizeoperation.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Flytta partition <filename>%1</filename> åt vänster med %2 och krymp den "
+"från %3 till %4"
+
+#: ops/resizeoperation.cpp:222
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Flytta partition <filename>%1</filename> åt höger med %2 och krymp den från "
+"%3 till %4"
+
+#: ops/resizeoperation.cpp:229
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Unknown resize/move action."
+msgstr "Okänd åtgärd för storleksändring eller förflyttning"
+
+#: ops/resizeoperation.cpp:258
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize file system to shrink partition "
+"<filename>%1</filename>."
+msgstr ""
+"Storleksändring eller flyttning misslyckades: Kunde inte ändra storlek på "
+"filsystem för att krympa partition <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:263
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
+msgstr ""
+"Storleksändring eller flyttning misslyckades: Kunde inte krympa partition "
+"<filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:282
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving partition <filename>%1</filename> failed."
+msgstr "Misslyckades flytta partition <filename>%1</filename>."
+
+#: ops/resizeoperation.cpp:287
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
+"back."
+msgstr ""
+"Misslyckades flytta filsystem för partition <filename>%1</filename>. Återgår."
+
+#: ops/resizeoperation.cpp:291
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving back partition <filename>%1</filename> to its original position "
+"failed."
+msgstr ""
+"Misslyckades flytta tillbaka partition <filename>%1</filename> till dess "
+"ursprungliga position."
+
+#: ops/resizeoperation.cpp:304
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
+msgstr ""
+"Storleksändring eller flyttning misslyckades: Kunde inte låta partition "
+"<filename>%1</filename> växa."
+
+#: ops/resizeoperation.cpp:309
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
+msgstr ""
+"Storleksändring eller flyttning misslyckades: Kunde inte ändra storlek på "
+"filsystem på partition <filename>%1</filename>"
+
+#: ops/resizeoperation.cpp:312
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Could not restore old partition size for partition <filename>%1</filename>."
+msgstr ""
+"Kunde inte återställa gammal partitionsstorlek för partition <filename>%1</"
+"filename>."
+
+#: ops/resizevolumegroupoperation.cpp:108
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resize volume %1 from %2 to %3"
+msgstr "Ändra storlek på volym %1 från %2 till %3"
+
+#: ops/restoreoperation.cpp:133
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking target file system on partition <filename>%1</filename> after the "
+"restore failed."
+msgstr ""
+"Misslyckades kontrollera filsystem på partition <filename>%1</filename> "
+"efter att återställning misslyckats."
+
+#: ops/restoreoperation.cpp:138
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Restoring file system failed."
+msgstr "Återställning av filsystemet misslyckades."
+
+#: ops/restoreoperation.cpp:141
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating the destination partition to restore to failed."
+msgstr "Misslyckades skapa målpartitionen att återställa till."
+
+#: ops/restoreoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition from <filename>%1</filename> to <filename>%2</filename>"
+msgstr ""
+"Återställ partition från <filename>%1</filename> till <filename>%2</filename>"
+
+#: ops/restoreoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
+"filename>"
+msgstr ""
+"Återställ partition på <filename>%1</filename> vid %2 från <filename>%3</"
+"filename>"
+
+#: ops/setfilesystemlabeloperation.cpp:58
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgstr "Ställ in etikett för partition <filename>%1</filename> till \"%2\""
+
+#: ops/setfilesystemlabeloperation.cpp:60
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
+msgstr ""
+"Ändra etikett för partition <filename>%1</filename> från \"%2\" till \"%3\""
+
+#: ops/setpartflagsoperation.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Nollställ flaggor för partition <filename>%1</filename>"
+
+#: ops/setpartflagsoperation.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Ställ in flaggor för partition <filename>%1</filename> till \"%2\""
+
+#: plugins/sfdisk/sfdiskbackend.cpp:248
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Software RAID Device found: %1"
+msgstr "RAID-programvaruenhet hittades: %1"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:278
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Device found: %1"
+msgstr "Enhet hittades: %1"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr ""
+"Okänd partitionsroll för ny partition <filename>%1</filename> (roller: %2)"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Misslyckades lägga till partition <filename>%1</filename> på enhet <filename>"
+"%2</filename>."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:114
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not set geometry for partition <filename>%1</filename> while trying to "
+"resize/move it."
+msgstr ""
+"Kunde inte ställa in geometri för partition <filename>%1</filename> vid "
+"försök att ändra storlek eller flytta den."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:124
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to erase filesystem signature on partition <filename>%1</filename>."
+msgstr ""
+"Misslyckades sudda filsystemsignatur på partition <filename>%1</filename>."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:157
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not determine file system of partition at sector %1 on device "
+"<filename>%2</filename>."
+msgstr ""
+"Kunde inte avgöra filsystem för partition vid sektor %1 på enhet <filename>"
+"%2</filename>."
+
+#: util/capacity.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "Byte"
+msgstr[1] "Byte"
+
+#: util/capacity.cpp:101
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "KiB"
+msgstr "Kibyte"
+
+#: util/capacity.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "MiB"
+msgstr "Mibyte"
+
+#: util/capacity.cpp:103
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "GiB"
+msgstr "Gibyte"
+
+#: util/capacity.cpp:104
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "TiB"
+msgstr "Tibyte"
+
+#: util/capacity.cpp:105
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "PiB"
+msgstr "Pibyte"
+
+#: util/capacity.cpp:106
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "EiB"
+msgstr "Eibyte"
+
+#: util/capacity.cpp:107
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "ZiB"
+msgstr "Zibyte"
+
+#: util/capacity.cpp:108
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "YiB"
+msgstr "Yibyte"
+
+#: util/capacity.cpp:112
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "(unknown unit)"
+msgstr "(okänd enhet)"
+
+#: util/externalcommand.cpp:111 util/externalcommand.cpp:114
+#: util/externalcommand.cpp:226
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Command: %1 %2"
+msgstr "Kommando: %1 %2"
+
+#: util/externalcommandhelper.cpp:82
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for reading."
+msgstr "Kunde inte öppna enhet <filename>%1</filename> för läsning."
+
+#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#, kde-kuit-format
+msgid "Could not seek position %1 on device <filename>%2</filename>."
+msgstr "Kunde inte söka till position %1 på enhet <filename>%2</filename>."
+
+#: util/externalcommandhelper.cpp:96
+#, kde-kuit-format
+msgid "Could not read from device <filename>%1</filename>."
+msgstr "Kunde inte läsa från enhet <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:114
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for writing."
+msgstr "Kunde inte öppna enhet <filename>%1</filename> för skrivning."
+
+#: util/externalcommandhelper.cpp:125
+#, kde-kuit-format
+msgid "Could not write to device <filename>%1</filename>."
+msgstr "Kunde inte skriva till enhet <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:151
+#, kde-kuit-format
+msgid "Could not open file <filename>%1</filename> for writing."
+msgstr "Kunde inte öppna filen <filename>%1</filename> för skrivning."
+
+#: util/externalcommandhelper.cpp:156
+#, kde-kuit-format
+msgid "Could not write to file <filename>%1</filename>."
+msgstr "Kunde inte skriva till filen <filename>%1</filename>."
+
+#: util/externalcommandhelper.cpp:237
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
+msgstr "Kopierar %1 delar (%2 byte) från %3 till %4, riktning: %5."
+
+#: util/externalcommandhelper.cpp:238
+#, kde-format
+msgctxt "direction: left"
+msgid "left"
+msgstr "vänster"
+
+#: util/externalcommandhelper.cpp:239
+#, kde-format
+msgctxt "direction: right"
+msgid "right"
+msgstr "höger"
+
+#: util/externalcommandhelper.cpp:261
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 MiB/second, estimated time left: %2"
+msgstr "Kopierar %1 Mibyte/sekund, uppskattad återstående tid: %2"
+
+#: util/externalcommandhelper.cpp:274
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying remainder of chunk size %1 from %2 to %3."
+msgstr "Kopierar återstoden av delstorlek %1 från %2 till %3."
+
+#: util/externalcommandhelper.cpp:288
+#, kde-format
+msgid "1 byte"
+msgid_plural "%1 bytes"
+msgstr[0] "1 byte"
+msgstr[1] "%1 byte"
+
+#: util/externalcommandhelper.cpp:288
+#, kde-kuit-format
+msgctxt ""
+"@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
+msgid "Copying 1 chunk (%2) finished."
+msgid_plural "Copying %1 chunks (%2) finished."
+msgstr[0] "Kopiering av 1 del (%2) klar."
+msgstr[1] "Kopiering av %1 delar (%2) klar."
+
+#: util/helpers.cpp:49
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<application>KPMcore</application>"
+msgstr "<application>KPMcore</application>"
+
+#: util/helpers.cpp:50
+#, kde-kuit-format
+msgctxt "@title"
+msgid "Library for managing partitions"
+msgstr "Bibliotek för att hantera partitioner"
+
+#: util/helpers.cpp:51
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "&copy; 2008-2022 KPMcore developers"
+msgstr "&copy; 2008-2022 Utvecklarna av KPMcore"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Volker Lanz"
+msgstr "Volker Lanz"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Former maintainer"
+msgstr "Tidigare underhåll"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Andrius Štikonas"
+msgstr "Andrius Štikonas"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Maintainer"
+msgstr "Underhåll"
+
+#: util/helpers.cpp:58
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Teo Mrnjavac"
+msgstr "Teo Mrnjavac"
+
+#: util/helpers.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Former Calamares maintainer"
+msgstr "Tidigare underhåll av Calamares"
+
+#: util/helpers.cpp:59
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Chantara Tith"
+msgstr "Chantara Tith"
+
+#: util/helpers.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "LVM support"
+msgstr "Stöd för LVM"
+
+#: util/helpers.cpp:60
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Pali Rohár"
+msgstr "Pali Rohár"
+
+#: util/helpers.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "UDF support"
+msgstr "Stöd för UDF"
+
+#: util/helpers.cpp:61
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Adriaan de Groot"
+msgstr "Adriaan de Groot"
+
+#: util/helpers.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Calamares maintainer"
+msgstr "Underhåll av Calamares"
+
+#: util/helpers.cpp:62
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Caio Jordão Carvalho"
+msgstr "Caio Jordão Carvalho"
+
+#: util/helpers.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Improved SMART support"
+msgstr "Förbättrat stöd för SMART"
+
+#: util/helpers.cpp:63
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "David Edmundson"
+msgstr "David Edmundson"
+
+#: util/helpers.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Port from KAuth to Polkit"
+msgstr "Konvertering från KAuth till Polkit"
+
+#: util/htmlreport.cpp:51 util/htmlreport.cpp:58
+#, kde-format
+msgid "%1: SMART Status Report"
+msgstr "%1: SMART-statusrapport"
+
+#: util/htmlreport.cpp:66
+#, kde-format
+msgid "Date:"
+msgstr "Datum:"
+
+#: util/htmlreport.cpp:67
+#, kde-format
+msgid "Program version:"
+msgstr "Programversion:"
+
+#: util/htmlreport.cpp:68
+#, kde-format
+msgid "Backend:"
+msgstr "Bakgrundsprogram: "
+
+#: util/htmlreport.cpp:69
+#, kde-format
+msgid "KDE Frameworks version:"
+msgstr "KDE-ramverksversion:"
+
+#: util/htmlreport.cpp:70
+#, kde-format
+msgid "Machine:"
+msgstr "Dator:"
+
+#~ msgctxt "@info:status"
+#~ msgid "Could not obtain administrator privileges."
+#~ msgstr "Kunde inte erhålla administratörsrättigheter."
+
+#~ msgid "QCA does not support RSA."
+#~ msgstr "QCA stöder inte RSA."
+
+#~ msgid "Failed to make private RSA key."
+#~ msgstr "Misslyckades skapa privat RSA-nyckel."
+
+#~ msgid "Generated key cannot be used for signatures."
+#~ msgstr "Skapad nyckel kan inte användas för signaturer."
+
+#~ msgid "Invalid cryptographic signature"
+#~ msgstr "Ogiltig kryptografisk signatur"
+
+#~ msgctxt "@item partition flag"
+#~ msgid "esp"
+#~ msgstr "esp"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Decrypt"
+#~ msgstr "Avkoda"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Deactivate"
+#~ msgstr "Inaktivera"
+
+#~ msgctxt "@info:status"
+#~ msgid "LibParted Exception: %1"
+#~ msgstr "Undantag i Libparted: %1"
+
+#~ msgctxt "@info:status"
+#~ msgid "Checking if this device is LVM VG"
+#~ msgstr "Kontrollerar om enheten är LVM VG"
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not retrieve partition table type "
+#~ "\"%1\" for <filename>%2</filename>."
+#~ msgstr ""
+#~ "Misslyckades skapa partitionstabell: Kunde inte hämta partitionstabellens "
+#~ "typ \"%1\" för <filename>%2</filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not open backend device <filename>"
+#~ "%1</filename>."
+#~ msgstr ""
+#~ "Misslyckades skapa partitionstabell: Kunde inte öppna bakgrundsenhet "
+#~ "<filename>%1</filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not create a new partition table "
+#~ "in the backend for device <filename>%1</filename>."
+#~ msgstr ""
+#~ "Misslyckades skapa partitionstabell: Kunde inte skapa en ny "
+#~ "partitionstabell i bakgrunden för enhet <filename>%1</filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Failed to create a new partition: could not get geometry for constraint."
+#~ msgstr ""
+#~ "Misslyckades skapa ny partition: kunde inte hämta geometri för "
+#~ "begränsning."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
+#~ "not found on disk."
+#~ msgstr ""
+#~ "Misslyckades ta bort partition: Partition att ta bort (<filename>%1</"
+#~ "filename>) hittades inte på disk."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get constraint for partition <filename>%1</filename> while "
+#~ "trying to resize/move it."
+#~ msgstr ""
+#~ "Kunde inte hämta begränsning för partition <filename>%1</filename> vid "
+#~ "försök att ändra storlek eller flytta den."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for partition <filename>%1</filename> while trying "
+#~ "to resize/move it."
+#~ msgstr ""
+#~ "Kunde inte hämta geometri för partition <filename>%1</filename> vid "
+#~ "försök att ändra storlek eller flytta den."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> while trying to resize/"
+#~ "move it."
+#~ msgstr ""
+#~ "Kunde inte öppna partition <filename>%1</filename> vid försök att ändra "
+#~ "storlek eller flytta den."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not delete file system on partition <filename>%1</filename>: Failed "
+#~ "to get partition."
+#~ msgstr ""
+#~ "Kunde inte ta bort filsystem på partition <filename>%1</filename>: "
+#~ "Misslyckades hämta partition."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Kunde inte ändra storlek på filsystem på partition <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for resized partition <filename>%1</filename> "
+#~ "while trying to resize the file system."
+#~ msgstr ""
+#~ "Kunde inte hämta geometri för storleksändrad partition <filename>%1</"
+#~ "filename> vid försök att ändra storlek på filsystemet."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not update the system type for partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Kunde inte uppdatera systemtyp för partition <filename>%1</filename>."
+
+#~ msgctxt "@info:progress"
+#~ msgid "No file system defined."
+#~ msgstr "Inget filsystem definierat."
+
+#~ msgctxt "@info:progress"
+#~ msgid "No partition found at sector %1."
+#~ msgstr "Ingen partition hittades på sektor %1."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not find partition <filename>%1</filename> on device <filename>%2</"
+#~ "filename> to set partition flags."
+#~ msgstr ""
+#~ "Kunde inte hitta partition <filename>%1</filename> på enhet <filename>%2</"
+#~ "filename> för att ställa in partitionsflaggor."
+
+#~ msgctxt "@info:progress"
+#~ msgid "The flag \"%1\" is not available on the partition's partition table."
+#~ msgstr "Flaggan \"%1\" är inte tillgänglig i partitionens partitionstabell."
+
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while starting)"
+#~ msgstr "(Överskriden tidsgräns för kommando vid start)"
+
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while running)"
+#~ msgstr "(Överskriden tidsgräns för kommando under körning)"
+
+#~ msgctxt "@info:status"
+#~ msgid "(Command is printing too much output)"
+#~ msgstr "(kommandon skriver ut för mycket utmatning)"
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Kunde inte öppna partition <filename>%1</filename> för skrivning vid "
+#~ "försök att uppdatera NTFS-startsektor."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not seek to position 0x1c on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Kunde inte söka till position 0x1c på partition <filename>%1</filename> "
+#~ "vid försök att uppdatera NTFS-startsektor."
+
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "The logical sector sizes in the source and target for copying are not the "
+#~ "same. This is currently unsupported."
+#~ msgstr ""
+#~ "Den logiska sektorstorleken på källan och målet för kopiering är inte "
+#~ "samma. Det stöds för närvarande inte."
+
+#~ msgid "1 sector"
+#~ msgid_plural "%1 sectors"
+#~ msgstr[0] "1 sektor"
+#~ msgstr[1] "%1 sektorer"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Columns"
+#~ msgstr "Kolumner"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Inserting Volume: %1 to %2."
+#~ msgstr "Infogar volym: %1 till %2."
+
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Warning: Maximizing file system on target partition <filename>%1</"
+#~| "filename> to the size of the partition failed."
+#~ msgctxt "@info:status"
+#~ msgid ""
+#~ "Warning: Maximizing file system on target partition <filename>%1</"
+#~ "filename> to the size of the partition failed."
+#~ msgstr ""
+#~ "Varning: Misslyckades maximera filsystemet på målpartition <filename>%1</"
+#~ "filename> till partitionens storlek."
+
+#~ msgctxt "@info/plain status (success, error, warning...) of operation"
+#~ msgid "%1: %2"
+#~ msgstr "%1: %2"
+
+#~| msgctxt "@info/plain"
+#~| msgid "Resize encrypted file system on partition <filename>%1</filename>."
+#~ msgctxt "@info/plain"
+#~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Ändrar storlek på krypterat filsystem på partition <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Decrypt LUKS partition on <filename>%1</filename>"
+#~ msgstr "Avkoda LUKS-partition på <filename>%1</filename>"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Decrypt"
+#~ msgstr "Avko&da"
+
+#~ msgid "&Name:"
+#~ msgstr "&Namn:"
+
+#~ msgid "&Passphrase:"
+#~ msgstr "&Lösenordsfras:"
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS serial number."
+#~ msgstr ""
+#~ "Kunde inte öppna partition <filename>%1</filename> för skrivning vid "
+#~ "försök att uppdatera NTFS-serienummer."
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not seek to position 0x48 on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS serial number."
+#~ msgstr ""
+#~ "Kunde inte söka till position 0x1c på partition <filename>%1</filename> "
+#~ "vid försök att uppdatera NTFS-serienummer."
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not write new NTFS serial number to partition <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Kunde inte skriva nytt NTFS-serienummer på partition <filename>%1</"
+#~ "filename>."
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Updated NTFS serial number for partition <filename>%1</filename> "
+#~ "successfully."
+#~ msgstr ""
+#~ "Uppdaterade NTFS-serienummer för partition <filename>%1</filename> med "
+#~ "lyckat resultat."
+
+#~ msgctxt "@label"
+#~ msgid "Is this the first time KDE Partition Manager is being run?"
+#~ msgstr "Är det här första gången som KDE:s partitionshanterare körs?"
+
+#~ msgctxt "@label"
+#~ msgid "Hide log messages below"
+#~ msgstr "Dölj loggmeddelanden nedan"
+
+#~ msgctxt "@label"
+#~ msgid "Partition sector alignment"
+#~ msgstr "Justering av partitionssektor:"
+
+#~ msgctxt "@label"
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr "Använd cylinderbaserad justering (kompatibelt med Windows XP)"
+
+#~ msgctxt "@label"
+#~ msgid "Align partitions per default"
+#~ msgstr "Justera partition enligt förval"
+
+#~ msgctxt "@label"
+#~ msgid "File system colors"
+#~ msgstr "Filsystemfärger"
+
+#~ msgctxt "@label"
+#~ msgid "Show the application's menu bar"
+#~ msgstr "Visa programmets menyrad"
+
+#~ msgctxt "@label"
+#~ msgid "Backend plugin"
+#~ msgstr "Bakgrundsprogram"
+
+#~ msgctxt "@label"
+#~ msgid "Preferred unit:"
+#~ msgstr "Föredragen enhet:"

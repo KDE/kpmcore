@@ -1,0 +1,5850 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Tommi Nieminen <translator@legisign.org>, 2010, 2014, 2016, 2018, 2022.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2012, 2013, 2014, 2015, 2016.
+#
+# KDE Finnish translation sprint participants:
+# Author: Artnay
+# Author: Lliehu
+msgid ""
+msgstr ""
+"Project-Id-Version: partitionmanager\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-11-09 00:51+0000\n"
+"PO-Revision-Date: 2022-07-27 19:20+0300\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-POT-Import-Date: 2013-01-13 20:43:19+0000\n"
+"X-Generator: Lokalize 20.12.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Tommi Nieminen"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "translator@legisign.org"
+
+#: core/device.cpp:33
+#, kde-format
+msgid "Unknown Device"
+msgstr "Tuntematon laite"
+
+#: core/device.cpp:82
+#, kde-kuit-format
+msgctxt "@item:inlistbox Device name – Capacity (device node)"
+msgid "%1 – %2 (%3)"
+msgstr "%1 – %2 (%3)"
+
+#: core/lvmdevice.cpp:362
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "An error occurred while running lvdisplay."
+msgstr "lvdisplaytä suoritettaessa tapahtui virhe."
+
+#: core/operationstack.cpp:101
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just created: Undoing the operation to create the "
+"partition."
+msgstr "Poistetaan juuri luotua osiota: perutaan osion luonut toimenpide."
+
+#: core/operationstack.cpp:119
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resizing a partition just created: Updating start and end in existing "
+"operation."
+msgstr ""
+"Muutetaan juuri luodun osion kokoa: päivitetään toimenpiteen alku ja loppu."
+
+#: core/operationstack.cpp:139
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying a new partition: Creating a new partition instead."
+msgstr "Kopioidaan uutta osiota: luodaan sen sijaan uusi osio."
+
+#: core/operationstack.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label for a new partition: No new operation required."
+msgstr "Muutetaan uuden osion nimiötä: uusi toimenpide ei tarpeen."
+
+#: core/operationstack.cpp:169
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing file system for a new partition: No new operation required."
+msgstr ""
+"Muutetaan uuden osion tiedostojärjestelmää: uusi toimenpide ei tarpeen."
+
+#: core/operationstack.cpp:186
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking file systems is automatically done when creating them: No new "
+"operation required."
+msgstr ""
+"Tiedostojärjestelmät tarkistetaan automaattisesti luonnin jälkeen: uusi "
+"toimenpide ei tarpeen."
+
+#: core/operationstack.cpp:233
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just copied: Removing the copy."
+msgstr "Poistetaan juuri kopioitua osiota: poistetaan kopio."
+
+#: core/operationstack.cpp:238
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just copied over an existing partition: Removing the "
+"copy and deleting the existing partition."
+msgstr ""
+"Poistetaan olemassa olevan osion päälle juuri kopioitua osiota: poistetaan "
+"kopio ja olemassa oleva osio."
+
+#: core/operationstack.cpp:251
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copying a partition that is itself a copy: Copying the original source "
+"partition instead."
+msgstr ""
+"Kopioidaan osiota, joka on itsessään kopio: kopioidaan sen sijaan "
+"alkuperäinen lähdeosio."
+
+#: core/operationstack.cpp:280
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just restored: Removing the restore operation."
+msgstr "Poistetaan juuri palautettua osiota: poistetaan palautustoimenpide."
+
+#: core/operationstack.cpp:285
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just restored to an existing partition: Removing the "
+"restore operation and deleting the existing partition."
+msgstr ""
+"Poistetaan olemassa olevaan osioon vasta palautettua osiota: poistetaan "
+"palautustoimenpide ja olemassa oleva osio."
+
+#: core/operationstack.cpp:318
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing flags again for the same partition: Removing old operation."
+msgstr ""
+"Lippuja muutettiin uudelleen samalla osiolla: poistetaan edeltävä toimenpide."
+
+#: core/operationstack.cpp:349
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label again for the same partition: Removing old operation."
+msgstr ""
+"Nimiö vaihdettiin uudelleen samalla osiolla: poistetaan edeltävä toimenpide."
+
+#: core/operationstack.cpp:375
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating new partition table, discarding previous operation on device."
+msgstr "Luodaan uusi osiotaulukko ja hylätään aiempi laitetoimenpide."
+
+#: core/operationstack.cpp:395
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing Volume Group, nothing to do."
+msgstr "Muutetaan taltioryhmän kokoa: ei mitään tehtävää."
+
+#: core/operationstack.cpp:440
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Add operation: %1"
+msgstr "Lisää toimenpide: %1"
+
+#: core/partition.cpp:159
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "unallocated"
+msgstr "varaamaton"
+
+#: core/partition.cpp:162
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "New Partition"
+msgstr "Uusi osio"
+
+#: core/partition.cpp:165
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Restored Partition"
+msgstr "Palautettu osio"
+
+#: core/partition.cpp:168
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Copy of %1"
+msgstr "Kopio kohteesta %1"
+
+#: core/partitionalignment.cpp:80
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Osiota <filename>%1</filename> ei ole tasattu oikein (ensimmäinen sektori: "
+"%2, jäännös: %3)."
+
+#: core/partitionalignment.cpp:83
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
+"modulo: %3)."
+msgstr ""
+"Osiota <filename>%1</filename> ei ole tasattu oikein (viimeinen sektori: %2, "
+"jäännös: %3)."
+
+#: core/partitionrole.cpp:17
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "unallocated"
+msgstr "varaamaton"
+
+#: core/partitionrole.cpp:20
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "logical"
+msgstr "looginen"
+
+#: core/partitionrole.cpp:23
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "extended"
+msgstr "laajennettu"
+
+#: core/partitionrole.cpp:26
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "primary"
+msgstr "ensiö"
+
+#: core/partitionrole.cpp:29
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LUKS"
+msgstr "LUKS"
+
+#: core/partitionrole.cpp:32
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LVM logical volume"
+msgstr "Looginen LVM-taltio"
+
+#: core/partitionrole.cpp:34
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "none"
+msgstr "ei mitään"
+
+#: core/partitiontable.cpp:180
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "boot"
+msgstr "käynnistys"
+
+#: core/partitiontable.cpp:182
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "root"
+msgstr "juuri"
+
+#: core/partitiontable.cpp:184
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "swap"
+msgstr "sivutus"
+
+#: core/partitiontable.cpp:186
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hidden"
+msgstr "piilotettu"
+
+#: core/partitiontable.cpp:188
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "raid"
+msgstr "RAID"
+
+#: core/partitiontable.cpp:190
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lvm"
+msgstr "LVM"
+
+#: core/partitiontable.cpp:192
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lba"
+msgstr "LBA"
+
+#: core/partitiontable.cpp:194
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hpservice"
+msgstr "hpservice"
+
+#: core/partitiontable.cpp:196
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "palo"
+msgstr "palo"
+
+#: core/partitiontable.cpp:198
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "prep"
+msgstr "prep"
+
+#: core/partitiontable.cpp:200
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-reserved"
+msgstr "msft-reserved"
+
+#: core/partitiontable.cpp:202
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "bios-grub"
+msgstr "bios-grub"
+
+#: core/partitiontable.cpp:204
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "apple-tv-recovery"
+msgstr "apple-tv-recovery"
+
+#: core/partitiontable.cpp:206
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "diag"
+msgstr "diag"
+
+#: core/partitiontable.cpp:208
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "legacy-boot"
+msgstr "legacy-boot"
+
+#: core/partitiontable.cpp:210
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-data"
+msgstr "msft-data"
+
+#: core/partitiontable.cpp:212
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "irst"
+msgstr "irst"
+
+#: core/partitiontable.cpp:499
+#, kde-kuit-format
+msgctxt "@item partition table name"
+msgid "unknown"
+msgstr "tuntematon"
+
+#: core/raid/softwareraid.cpp:93
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level]"
+msgid " [RAID %1]"
+msgstr " [RAID %1]"
+
+#: core/raid/softwareraid.cpp:95
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Recovering]"
+msgid " [RAID %1 - Recovering]"
+msgstr " [RAID %1 – palautetaan]"
+
+#: core/raid/softwareraid.cpp:97
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Resyncing]"
+msgid " [RAID %1 - Resyncing]"
+msgstr " [RAID %1 – uudelleensynkronoidaan]"
+
+#: core/smartattribute.cpp:45
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "failing"
+msgstr "vikaantumassa"
+
+#: core/smartattribute.cpp:48
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "has failed"
+msgstr "vikaantunut"
+
+#: core/smartattribute.cpp:51
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "warning"
+msgstr "varoitus"
+
+#: core/smartattribute.cpp:54
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "good"
+msgstr "hyvä"
+
+#: core/smartattribute.cpp:58 core/smartattribute.cpp:85
+#, kde-kuit-format
+msgctxt "@item:intable not applicable"
+msgid "N/A"
+msgstr "Ei käyt."
+
+#: core/smartattribute.cpp:72
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 sector"
+msgid_plural "%1 sectors"
+msgstr[0] "1 sektori"
+msgstr[1] "%1 sektoria"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Rate"
+msgstr "Lukuvirhenopeus"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Rate of hardware read errors while reading data from the disk surface."
+msgstr "Laitteiston lukuvirheiden nopeus luettaessa tietoja levyn pinnasta."
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Throughput Performance"
+msgstr "Suorituskyky"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Overall (general) throughput performance of a hard disk drive. If the value "
+"of this attribute is decreasing there is a high probability that there is a "
+"problem with the disk."
+msgstr ""
+"Kiintolevyaseman (yleinen) kokonaissuorituskyky. Jos tämä arvo laskee, "
+"levyllä on varsin todennäköisesti ongelmia."
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin-Up Time"
+msgstr "Käynnistysnopeus"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Average time of spindle spin up from zero RPM to fully operational."
+msgstr "Levyn käynnistysnopeus pysähtyneestä täysin toimintakykyiseksi."
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Start/Stop Count"
+msgstr "Käyttöjaksoja"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr description"
+msgid "A tally of spindle start/stop cycles."
+msgstr "Levyn pyörittämisjaksojen määrä."
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocated Sectors Count"
+msgstr "Uudelleen sijoitettuja sektoreita"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of reallocated sectors. When the hard drive finds a read/write/"
+"verification error, it marks this sector as &quot;reallocated&quot; and "
+"transfers data to a special reserved area (spare area)."
+msgstr ""
+"Uudelleen sijoitettujen sektorien määrä. Kun kiintolevy havaitsee luku-/"
+"kirjoitus-/tarkistusvirheen sektorissa, sektori merkitään uudelleen "
+"sijoitetuksi ja sektorin tiedot siirretään tarkoitukseen varatulle alueelle."
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Channel Margin"
+msgstr ""
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Margin of a channel while reading data. The function of this attribute is "
+"not specified."
+msgstr ""
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Error Rate"
+msgstr "Hakuvirhetaajuus"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Rate of seek errors of the magnetic heads. If there is a partial failure in "
+"the mechanical positioning system, then seek errors will arise."
+msgstr ""
+"Magneettilukupäiden hakuvirheiden taajuus. Jos mekaanisessa "
+"paikannusjärjestelmässä on osittainen vika, hakuvirheiden määrä nousee."
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Time Performance"
+msgstr "Hakusuorituskyky"
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Average performance of seek operations of the magnetic heads. If this "
+"attribute is decreasing, it is a sign of problems in the mechanical "
+"subsystem."
+msgstr ""
+"Magneettisten lukupäiden hakutoimenpiteiden keskinopeus. Tämän arvon lasku "
+"on merkki ongelmista mekaanisessa alijärjestelmässä."
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Hours"
+msgstr "Käynnissäoloaika tunteina"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of hours in power-on state."
+msgstr "Käynnissäoloajan kesto tunteina."
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Retry Count"
+msgstr ""
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of retry of spin start attempts if the first attempt was unsuccessful. "
+"An increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Recalibration Retries"
+msgstr "Uudelleenkalibroinnin yrityskertoja"
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of recalibrations requested if the first attempt was unsuccessful. An "
+"increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Cycle Count"
+msgstr "Kiintolevyaseman käynnistyskerrat"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of full hard disk power on/off cycles."
+msgstr "Kiintolevyaseman käynnistyskertojen määrä."
+
+#: core/smartattribute.cpp:113 core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft Read Error Rate"
+msgstr ""
+
+#: core/smartattribute.cpp:113
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Uncorrected read errors reported to the operating system."
+msgstr "Käyttöjärjestelmälle ilmoitetut korjaamattomat lukuvirheet."
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Available Reserved Space"
+msgstr "SSD:n käytettävissä oleva varattu tila"
+
+#: core/smartattribute.cpp:114
+#, fuzzy, kde-format
+#| msgctxt "SMART attr description"
+#| msgid ""
+#| "Count of available reserved blocks as percentage of the total number of "
+#| "reserved blocks"
+msgctxt "SMART attr description"
+msgid "Number of available reserved space as a percentage of reserved space."
+msgstr ""
+"Käytettävissä olevien varattujen lohkojen määrä suhteessa varattujen "
+"lohkojen kokonaismäärään"
+
+#: core/smartattribute.cpp:115
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count"
+msgstr "SSD-ohjelmavirheiden määrä"
+
+#: core/smartattribute.cpp:115 core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of flash program operation failures since the drive was deployed."
+msgstr ""
+
+#: core/smartattribute.cpp:116 core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count"
+msgstr "SSD:n poistovirheiden määrä"
+
+#: core/smartattribute.cpp:116
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase operation failures since the drive was deployed."
+msgstr ""
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Leveling Count"
+msgstr ""
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Counts the maximum worst erase count on any block."
+msgstr "Laskee minkä tahansa lohkon poistojen enimmäisarvon."
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unexpected power loss count"
+msgstr "SSD:n odottamattomien virtakatkosten määrä"
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of shutdowns without STANDBY IMMEDIATE as the last command "
+"(regardless of PLI activity using capacitor power). Normalized value is "
+"always 100."
+msgstr ""
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Power Loss Protection Failure"
+msgstr "SSD:n virtakatkossuojan virhe"
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Last test result, saturated at its maximum value. Bytes 0-1: last test "
+"result as microseconds to discharge cap in range [25, 5000000], lower "
+"indicates specific error code. Bytes 2-3: minutes since last test. Bytes "
+"4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
+"or 11 if the capacitor has been tested in an excessive temperature "
+"condition, otherwise 100."
+msgstr ""
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count (chip)"
+msgstr ""
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase command failures."
+msgstr ""
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Range Delta"
+msgstr ""
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Delta between most-worn and least-worn flash blocks."
+msgstr "Kuluneimpien ja vähiten kuluneiden flash-lohkojen erotus."
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Used Reserved Block Count Total"
+msgstr "SSD:n käytössä olevia varattuja lohkoja kaikkiaan"
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#: core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" Samsung attribute."
+msgstr ""
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unused Reserved Block Count Total"
+msgstr "SSD:n käyttämättömiä varattujen lohkoja kaikkiaan"
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" HP attribute."
+msgstr ""
+
+#: core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+msgstr ""
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SATA Downshift Error Count"
+msgstr ""
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital and Samsung attribute."
+msgstr "Western Digital- ja Samsung-määrite."
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr name"
+msgid "End-to-End Error"
+msgstr ""
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Part of HP's SMART IV technology: After transferring through the cache RAM "
+"data buffer the parity data between the host and the hard drive did not "
+"match."
+msgstr ""
+"Osa HP:n Smart IV -tekniikkaa: koneen ja kiintolevyn välinen pariteettitieto "
+"ei täsmää RAM-välimuistipuskurin läpi siirtämisen jälkeen."
+
+#: core/smartattribute.cpp:129
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Stability"
+msgstr "Lukupään vakaus"
+
+#: core/smartattribute.cpp:129 core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital attribute."
+msgstr "Western Digital -määrite."
+
+#: core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Induced Op-Vibration Detection"
+msgstr ""
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reported Uncorrectable Errors"
+msgstr "Raportoidut korjaamattomissa olevat virheet"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could not be recovered using hardware ECC."
+msgstr "Niiden virheiden määrä, joita laite-ECC ei voinut korjata."
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Command Timeout"
+msgstr "Komennon aikakatkaisu"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of aborted operations due to HDD timeout."
+msgstr "Kiintolevyn aikatkaisun takia keskeytyneiden toimintojen määrä."
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr name"
+msgid "High Fly Writes"
+msgstr "Kirjoitukset kirjoituspään epänormaalilla sijainnilla"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of fly height errors detected."
+msgstr ""
+"Havaittujen kirjoitusten määrä, kun kirjoituspää on epänormaalissa "
+"sijainnissa."
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature Difference From 100"
+msgstr "Lämpötila vähennettynä sadasta"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
+"minimum threshold which corresponds to a maximum temperature."
+msgstr ""
+"Arvo on yhtäkuin 100 – lämpötila °C, minkä ansiosta valmistaja voi asettaa "
+"enimmäislämpötilaa vastaavan vähimmäisarvon."
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-sense Error Rate"
+msgstr "G-sense-virhetaajuus"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors resulting from externally-induced shock and vibration."
+msgstr "Ulkoisten iskujen ja tärinän aiheuttamien virheiden määrä."
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Off Retract Count"
+msgstr ""
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of power-off or emergency retract cycles"
+msgstr ""
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Cycle Count"
+msgstr ""
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of load/unload cycles into head landing zone position."
+msgstr ""
+
+#: core/smartattribute.cpp:138 core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature"
+msgstr "Lämpötila"
+
+#: core/smartattribute.cpp:138
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Current internal temperature."
+msgstr "Nykyinen sisäinen lämpötila."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Hardware ECC Recovered"
+msgstr "Laite-ECC:n korjaukset"
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could be recovered using hardware ECC."
+msgstr "Niiden virheiden määrä, jotka laite-ECC pystyi korjaamaan."
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocation Event Count"
+msgstr "Uudelleensijoitustapahtumien määrä"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of remap operations. The raw value of this attribute shows the total "
+"number of attempts to transfer data from reallocated sectors to a spare area."
+msgstr ""
+"Uudelleensijoitustapahtumien määrä. Määritteen raaka arvo näyttää, monestiko "
+"tietoa yritettiin siirtää uudelleenosoitetuilta sektoreilta vara-alueelle."
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Current Pending Sector Count"
+msgstr ""
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
+"read errors)."
+msgstr ""
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Uncorrectable Sector Count"
+msgstr "Korjaamattomissa olevien sektorien määrä"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of uncorrectable errors when reading/writing a sector."
+msgstr ""
+"Sektoria luettaessa tai kirjoitettaessa tapahtuneiden korjaamattomissa "
+"olleiden virheiden määrä."
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr name"
+msgid "UltraDMA CRC Error Count"
+msgstr "UltraDMA:n CRC-virheiden määrä"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of errors in data transfer via the interface cable as determined by "
+"ICRC."
+msgstr ""
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Multi-Zone Error Rate<br/>Write Error Rate"
+msgstr "Useamman vyöhykkeen virhenopeus<br/>Kirjoitusvirhenopeus"
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr description"
+msgid "The total number of errors when writing a sector."
+msgstr "Sektoria kirjoitettaessa tapahtuneiden virheiden kokonaismäärä."
+
+#: core/smartattribute.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@label partition"
+#| msgid "Number of sectors:"
+msgctxt "SMART attr description"
+msgid "Number of off-track errors."
+msgstr "Sektorien määrä:"
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Data Address Mark Errors"
+msgstr ""
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of Data Address Mark errors (or vendor-specific)."
+msgstr ""
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Run Out Cancel"
+msgstr ""
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of ECC errors"
+msgstr "ECC-virheiden määrä"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft ECC Correction"
+msgstr "Pehmeä ECC-korjaus"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors corrected by software ECC"
+msgstr "Ohjelmisto-ECC:n korjaamien virheiden määrä"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Thermal Asperity Rate"
+msgstr ""
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors due to high temperature."
+msgstr "Korkeasta lämpötilasta aiheutuneiden virheiden määrä."
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Flying Height"
+msgstr "Päiden etäisyys levystä"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Height of heads above the disk surface. A flying height that is too low "
+"increases the chances of a head crash while a flying height that is too high "
+"increases the chances of a read/write error."
+msgstr ""
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin High Current"
+msgstr ""
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Amount of surge current used to spin up the drive."
+msgstr ""
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Buzz"
+msgstr ""
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of buzz routines needed to spin up the drive due to insufficient "
+"power."
+msgstr ""
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Offline Seek Performance"
+msgstr ""
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive's seek performance during its internal tests."
+msgstr "Levyn hakuteho sisäisissä testeissään."
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Vibration During Write"
+msgstr "Tärinää kirjoitettaessa"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Vibration During Write"
+msgstr "Tärinää kirjoitettaessa"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Shock During Write"
+msgstr "Isku kirjoitettaessa"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Shock During Write"
+msgstr "Isku kirjoitettaessa"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Disk Shift"
+msgstr ""
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Distance the disk has shifted relative to the spindle (usually due to shock "
+"or temperature)."
+msgstr ""
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-Sense Error Rate"
+msgstr "G-sense-virhetaajuus"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of errors resulting from externally-induced shock and vibration."
+msgstr "Ulkoisten iskujen ja tärinän aiheuttamien virheiden määrä."
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Loaded Hours"
+msgstr ""
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time spent operating under data load."
+msgstr ""
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Retry Count"
+msgstr ""
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of times head changes position."
+msgstr "Lukupään sijainninmuutosten määrä."
+
+#: core/smartattribute.cpp:160
+#, fuzzy, kde-format
+#| msgid "Partition"
+msgctxt "SMART attr name"
+msgid "Load Friction"
+msgstr "Osio"
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Resistance caused by friction in mechanical parts while operating."
+msgstr ""
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Cycle Count"
+msgstr ""
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total number of load cycles."
+msgstr "Latausjaksojen kokonaismäärä."
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load-In Time"
+msgstr ""
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Total time of loading on the magnetic heads actuator (time not spent in "
+"parking area)."
+msgstr ""
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Torque Amplification Count"
+msgstr ""
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of attempts to compensate for platter speed variations."
+msgstr ""
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-Off Retract Cycle"
+msgstr ""
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of times the magnetic armature was retracted automatically as a "
+"result of cutting power."
+msgstr ""
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr name"
+msgid "GMR Head Amplitude"
+msgstr ""
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
+"head motion)"
+msgstr ""
+
+#: core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive Temperature"
+msgstr "Aseman lämpötila"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Endurance Remaining"
+msgstr ""
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of physical erase cycles completed on the drive as a percentage of the "
+"maximum physical erase cycles the drive supports"
+msgstr ""
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Seconds"
+msgstr "Käynnissäoloaika sekunteina"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time elapsed in the power-on state"
+msgstr "Käynnissä ollessa kulunut aika"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Unrecoverable ECC Count"
+msgstr ""
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of unrecoverable ECC errors"
+msgstr ""
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Good Block Rate"
+msgstr "Hyvä lohkonopeus"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of available reserved blocks as percentage of the total number of "
+"reserved blocks"
+msgstr ""
+"Käytettävissä olevien varattujen lohkojen määrä suhteessa varattujen "
+"lohkojen kokonaismäärään"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+msgstr "Lukupäänsiirtotunnit<br/>tai siirtovirhenopeus (Fujitsu)"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Time while head is positioning<br/>or counts the number of times the link is "
+"reset during a data transfer."
+msgstr ""
+"Aika, jolloin lukupäätä asemoidaan<br />tai kertojen määrä, jolloin linkki "
+"alustettiin tiedonsiirrossa."
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Written"
+msgstr "Kirjoitettuja LBA:ita kaikkiaan"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Written"
+msgstr "Kirjoitettuja LBA:ita kaikkiaan"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Read"
+msgstr "Luettuja LBA:ita kaikkiaan"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Read"
+msgstr "Luettuja LBA:ita kaikkiaan"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD NAND_Writes_1GiB"
+msgstr "SSD NAND_Writes_1GiB"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of writes to NAND in 1 GB increments"
+msgstr "NANDiin kirjoitusten määrä 1 GB:n välein"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Retry Rate"
+msgstr "Uudelleenyritysnopeus lukuvirheissä"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors while reading from a disk"
+msgstr "Levyä luettaessa tapahtuneita virheitä"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Free Fall Protection"
+msgstr "Vapaan pudotuksen suoja"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of &quot;Free Fall Events&quot; detected"
+msgstr "Havaittuja ”vapaan pudotuksen tapahtumia”"
+
+#: core/smartstatus.cpp:78
+#, kde-kuit-format
+msgctxt "@item:intable degrees in Celsius and Fahrenheit"
+msgid "%1° C / %2° F"
+msgstr "%1 °C / %2 °F"
+
+#: core/smartstatus.cpp:86
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Aborted"
+msgstr "Pysäytetty"
+
+#: core/smartstatus.cpp:89
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Interrupted"
+msgstr "Keskeytetty"
+
+#: core/smartstatus.cpp:92
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Fatal error"
+msgstr "Vakava virhe"
+
+#: core/smartstatus.cpp:95
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Unknown error"
+msgstr "Tuntematon virhe"
+
+# Sähköinen?
+#: core/smartstatus.cpp:98
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Electrical error"
+msgstr "Sähköinen virhe"
+
+#: core/smartstatus.cpp:101
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Servo error"
+msgstr ""
+
+#: core/smartstatus.cpp:104
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Read error"
+msgstr "Lukuvirhe"
+
+#: core/smartstatus.cpp:107
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Handling error"
+msgstr "Käsittelyvirhe"
+
+#: core/smartstatus.cpp:110
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Self test in progress"
+msgstr "Itsetestaus käynnissä"
+
+#: core/smartstatus.cpp:114
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Success"
+msgstr "Onnistui"
+
+#: core/smartstatus.cpp:123
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Healthy"
+msgstr "Terve"
+
+#: core/smartstatus.cpp:126
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has been used outside of its design parameters in the past."
+msgstr "On ylittänyt ohjearvonsa jossakin vaiheessa."
+
+#: core/smartstatus.cpp:129
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has some bad sectors."
+msgstr "Sisältää huonoja sektoreja."
+
+#: core/smartstatus.cpp:132
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Is being used outside of its design parameters right now."
+msgstr "On paraikaa yli ohjearvojensa."
+
+#: core/smartstatus.cpp:135
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has many bad sectors."
+msgstr "Sisältää lukuisia huonoja sektoreja."
+
+#: core/smartstatus.cpp:139
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Disk failure is imminent. Backup all data!"
+msgstr "Levyn rikkoutuminen odotettavissa. Varmuuskopioi kaikki tiedot!"
+
+#: fs/btrfs.cpp:166
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Osion <filename>%1</filename> btrfs-tiedostojärjestelmän koon muuttaminen "
+"epäonnistui: väliaikaiskansiota ei voitu luoda."
+
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"btrfs file system resize failed."
+msgstr ""
+"Osio <filename>%1</filename> btrfs-tiedostojärjestelmän koon muuttaminen "
+"epäonnistui: btrfs-tiedostojärjestelmän koon muuttaminen epäonnistui."
+
+#: fs/btrfs.cpp:187
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Osion <filename>%1</filename> btrfs-tiedostojärjestelmän koon "
+"muuttaminen epäonnistui: irrottaminen epäonnistui.</warning>"
+
+#: fs/btrfs.cpp:189
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Osion <filename>%1</filename> btrfs-tiedostojärjestelmän koon muuttaminen "
+"epäonnistui: alustava liittäminen epäonnistui."
+
+#: fs/fat12.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Setting label for partition <filename>%1</filename> to %2"
+msgstr "Asetetaan osion <filename>%1</filename> nimiöksi %2"
+
+#: fs/filesystem.cpp:503
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unknown"
+msgstr "tuntematon"
+
+#: fs/filesystem.cpp:504
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "extended"
+msgstr "laajennettu"
+
+#: fs/filesystem.cpp:506
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext2"
+msgstr "ext2"
+
+#: fs/filesystem.cpp:507
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext3"
+msgstr "ext3"
+
+#: fs/filesystem.cpp:508
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext4"
+msgstr "ext4"
+
+#: fs/filesystem.cpp:509
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linuxswap"
+msgstr "linuxswap"
+
+#: fs/filesystem.cpp:510
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat16"
+msgstr "fat16"
+
+#: fs/filesystem.cpp:511
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat32"
+msgstr "fat32"
+
+#: fs/filesystem.cpp:512
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ntfs"
+msgstr "ntfs"
+
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser"
+msgstr "reiser"
+
+#: fs/filesystem.cpp:514
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser4"
+msgstr "reiser4"
+
+#: fs/filesystem.cpp:515
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "xfs"
+msgstr "xfs"
+
+#: fs/filesystem.cpp:516
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "jfs"
+msgstr "jfs"
+
+#: fs/filesystem.cpp:517
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfs"
+msgstr "hfs"
+
+#: fs/filesystem.cpp:518
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfsplus"
+msgstr "hfsplus"
+
+#: fs/filesystem.cpp:519
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ufs"
+msgstr "ufs"
+
+#: fs/filesystem.cpp:520
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unformatted"
+msgstr "alustamaton"
+
+#: fs/filesystem.cpp:521
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "btrfs"
+msgstr "btrfs"
+
+#: fs/filesystem.cpp:522
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hpfs"
+msgstr "hpfs"
+
+#: fs/filesystem.cpp:523
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks"
+msgstr "luks"
+
+#: fs/filesystem.cpp:524
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ocfs2"
+msgstr "ocfs2"
+
+#: fs/filesystem.cpp:525
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "zfs"
+msgstr "zfs"
+
+#: fs/filesystem.cpp:526
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "exfat"
+msgstr "exfat"
+
+#: fs/filesystem.cpp:527
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "nilfs2"
+msgstr "nilfs2"
+
+#: fs/filesystem.cpp:528
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "lvm2 pv"
+msgstr "lvm2 pv"
+
+#: fs/filesystem.cpp:529
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "f2fs"
+msgstr "f2fs"
+
+#: fs/filesystem.cpp:530
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "udf"
+msgstr "udf"
+
+#: fs/filesystem.cpp:531
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "iso9660"
+msgstr "iso9660"
+
+#: fs/filesystem.cpp:532
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks2"
+msgstr "luks2"
+
+#: fs/filesystem.cpp:533
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat12"
+msgstr "fat12"
+
+#: fs/filesystem.cpp:534
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linux_raid_member"
+msgstr "linux_raid_member"
+
+#: fs/filesystem.cpp:535
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "BitLocker"
+msgstr "BitLocker"
+
+#: fs/filesystem.cpp:536
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "apfs"
+msgstr "apfs"
+
+#: fs/filesystem.cpp:537
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "minix"
+msgstr "minix"
+
+#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Mount"
+msgstr "Liitä"
+
+#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unmount"
+msgstr "Irrota"
+
+#: fs/jfs.cpp:155
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"JFS-tiedostojärjestelmän koon muuttaminen osiolla <filename>%1</filename> "
+"epäonnistui: väliaikaiskansiota ei voitu luoda."
+
+#: fs/jfs.cpp:169 fs/jfs.cpp:188
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Remount failed."
+msgstr ""
+"JFS-tiedostojärjestelmän koon muuttaminen osiolla <filename>%1</filename> "
+"epäonnistui: uudelleenliittäminen epäonnistui."
+
+#: fs/jfs.cpp:174
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing JFS file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>JFS-tiedostojärjestelmän koon muuttaminen osiolla <filename>%1</"
+"filename> epäonnistui: irrottaminen epäonnistui.</warning>"
+
+#: fs/jfs.cpp:176
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"JFS-tiedostojärjestelmän koon muuttaminen osiolla <filename>%1</filename> "
+"epäonnistui: alustava liittäminen epäonnistui."
+
+#: fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Aktivoi sivutus"
+
+#: fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Passivoi sivutus"
+
+#: fs/luks.cpp:166
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unlock"
+msgstr "Avaa lukitus"
+
+#: fs/luks.cpp:171
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Lock"
+msgstr "Lukitse"
+
+#: fs/luks.cpp:252
+#, kde-format
+msgid "Enter passphrase for %1:"
+msgstr "Anna salasana kohteelle %1:"
+
+#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+msgstr "Muutetaan osion <filename>%1</filename> LUKS-salauksen kokoa."
+
+#: fs/luks.cpp:509 fs/luks2.cpp:116
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing encrypted file system on partition <filename>%1</filename> failed."
+msgstr ""
+"Osion <filename>%1</filename> salatun tiedostojärjestelmän koon muuttaminen "
+"epäonnistui."
+
+#: fs/nilfs2.cpp:137
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"Osion <filename>%1</filename> NILFS2-tiedostojärjestelmän koon muuttaminen "
+"epäonnistui: väliaikaiskansiota ei voitu luoda."
+
+#: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"NILFS2 file system resize failed."
+msgstr ""
+"Osion <filename>%1</filename> NILFS2-tiedostojärjestelmän koon muuttaminen "
+"epäonnistui: NILFS2-tiedostojärjestelmän koon muuttaminen epäonnistui."
+
+#: fs/nilfs2.cpp:156
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<warning>Osion <filename>%1</filename> NILFS2-tiedostojärjestelmän koon "
+"muuttaminen epäonnistui: irrottaminen epäonnistui.</warning>"
+
+#: fs/nilfs2.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Osion <filename>%1</filename> NILFS2-tiedostojärjestelmän koon muuttaminen "
+"epäonnistui: alustava liittäminen epäonnistui."
+
+#: fs/ntfs.cpp:182
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updating boot sector for NTFS file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Päivitetään osion <filename>%1</filename> käynnistyssektori NTFS-"
+"tiedostojärjestelmää varten."
+
+#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not write new start sector to partition <filename>%1</filename> when "
+"trying to update the NTFS boot sector."
+msgstr ""
+"Osiolle <filename>%1</filename> ei voitu kirjoittaa uutta aloitussektoria "
+"yritettäessä päivittää NTFS-käynnistyssektoria."
+
+#: fs/ntfs.cpp:206
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updated NTFS boot sector for partition <filename>%1</filename> successfully."
+msgstr ""
+"Osion <filename>%1</filename> NTFS-käynnistyssektorin päivitys onnistui."
+
+#: fs/xfs.cpp:159
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"Osion <filename>%1</filename> XFS-tiedostojärjestelmän koon muuttaminen "
+"epäonnistui: väliaikaiskansiota ei voitu luoda."
+
+#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"xfs_growfs failed."
+msgstr ""
+"Osion <filename>%1</filename> XFS-tiedostojärjestelmän koon "
+"muuttaminenepäonnistui: xfs_growfs epäonnistui."
+
+#: fs/xfs.cpp:178
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing XFS file system on partition <filename>%1</filename> "
+"failed: Unmount failed.</warning>"
+msgstr ""
+"<warning>Osion <filename>%1</filename> XFS-tiedostojärjestelmän koon "
+"muuttaminen: irrotus epäonnistui.</warning>"
+
+#: fs/xfs.cpp:180
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"Osion <filename>%1</filename> XFS-tiedostojärjestelmän koon "
+"muuttaminenepäonnistui: alustava liittäminen epäonnistui."
+
+#: jobs/backupfilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"backup."
+msgstr ""
+"Lähdeosion <filename>%1</filename> tiedostojärjestelmää ei voitu avata "
+"varmuuskopioitavaksi."
+
+#: jobs/backupfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not create backup file <filename>%1</filename>."
+msgstr "Varmuuskopiotiedostoa <filename>%1</filename> ei voitu avata."
+
+#: jobs/backupfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Back up file system on partition <filename>%1</filename> to <filename>%2</"
+"filename>"
+msgstr ""
+"Varmuuskopioi osion <filename>%1</filename> tiedostojärjestelmä tiedostoon "
+"<filename>%2</filename>."
+
+#: jobs/changepermissionsjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Change the permissions of: <filename>%1</filename> to %2"
+msgstr "Muuta kohteen <filename>%1</filename> käyttöoikeuksiksi %2"
+
+#: jobs/checkfilesystemjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Check file system on partition <filename>%1</filename>"
+msgstr "Tarkista osion <filename>%1</filename> tiedostojärjestelmä"
+
+#: jobs/copyfilesystemjob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Cannot copy file system: File system on target partition <filename>%1</"
+"filename> is smaller than the file system on source partition <filename>%2</"
+"filename>."
+msgstr ""
+"Tiedostojärjestelmää ei voida kopioida: kohdeosion <filename>%1</"
+"filename>tiedostojärjestelmä on lähdeosiota <filename>%2</filename> pienempi."
+
+#: jobs/copyfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Lähdeosion <filename>%1</filename> tiedostojärjestelmää ei voitu avata "
+"kopioitavaksi."
+
+#: jobs/copyfilesystemjob.cpp:58
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on target partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"Kohdeosion <filename>%1</filename> tiedostojärjestelmää ei voitu avata "
+"kopioitavaksi."
+
+#: jobs/copyfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Closing device. This may take a while, especially on slow devices like "
+"Memory Sticks."
+msgstr ""
+"Suljetaan laitetta. Tämä voi etenkin hitailla laitteilla kuten "
+"muistitikuilla kestää."
+
+#: jobs/copyfilesystemjob.cpp:88
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
+msgstr ""
+"Kopioi osion <filename>%1</filename> tiedostojärjestelmä osiolle <filename>"
+"%2</filename>"
+
+#: jobs/createfilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to set the system type for the file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Osion <filename>%1</filename> tiedostojärjestelmän järjestelmätyypin asetus "
+"epäonnistui."
+
+#: jobs/createfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"system type for partition <filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> osiotaulukkoa ei voitu avataosion <filename>"
+"%2</filename> järjestelmätyypin asettamiseksi."
+
+#: jobs/createfilesystemjob.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the system type for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Laitetta <filename>%1</filename> ei voitu avata osion <filename>%2</"
+"filename> järjestelmätyypin asettamiseksi ."
+
+#: jobs/createfilesystemjob.cpp:84
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Create file system <filename>%1</filename> on partition <filename>%2</"
+"filename>"
+msgstr ""
+"Luo osiolle <filename>%2</filename> <filename>%1</filename>-"
+"tiedostojärjestelmä"
+
+#: jobs/createpartitionjob.cpp:72
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Osion <filename>%1</filename> lisääminen laitteelle <filename>%2</filename> "
+"epäonnistui."
+
+#: jobs/createpartitionjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to create "
+"new partition <filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> osiotaulukkoa ei voitu avata uuden osion "
+"<filename>%2</filename> luomiseksi."
+
+#: jobs/createpartitionjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to create new partition "
+"<filename>%2</filename>."
+msgstr ""
+"Laitetta <filename>%1</filename> ei voitu avata uuden osion <filename>%2</"
+"filename> luomiseksi."
+
+#: jobs/createpartitionjob.cpp:94
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition <filename>%1</filename>"
+msgstr "Luo uusi osio <filename>%1</filename>"
+
+#: jobs/createpartitionjob.cpp:96
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition on device <filename>%1</filename>"
+msgstr "Luo laitteelle <filename>%1</filename> uusi osio"
+
+#: jobs/createpartitiontablejob.cpp:49
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Creating partition table failed: Could not open device <filename>%1</"
+"filename>."
+msgstr ""
+"Osiotaulukon luonti epäonnistui: ei voitu avata laitetta <filename>%1</"
+"filename>."
+
+#: jobs/createpartitiontablejob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition table on device <filename>%1</filename>"
+msgstr "Luo laitteelle <filename>%1</filename> uusi osiotaulukko"
+
+#: jobs/createvolumegroupjob.cpp:49
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
+msgstr "Luo uusi taltioryhmä: <filename>%1</filename> PV:llä: %2"
+
+#: jobs/deactivatelogicalvolumejob.cpp:50
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Logical Volumes: <filename>%1</filename>"
+msgstr "Passivoi loogiset taltio: <filename>%1</filename>"
+
+#: jobs/deactivatevolumegroupjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Volume Group: <filename>%1</filename>"
+msgstr "Passivoi taltioryhmä: <filename>%1</filename>"
+
+#: jobs/deletefilesystemjob.cpp:51
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system: file system on <filename>%1</filename> is "
+"mounted."
+msgstr ""
+"Tiedostojärjestelmää ei voitu poistaa: laitteen <filename>%1</filename> "
+"tiedostojärjestelmä on liitetty."
+
+#: jobs/deletefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete file system on <filename>%1</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> tiedostojärjestelmää ei voitu poistaa."
+
+#: jobs/deletefilesystemjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"file system on <filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> osiotaulukkoa ei voitu avata laitteen "
+"<filename>%2</filename> tiedostojärjestelmän poistamiseksi."
+
+#: jobs/deletefilesystemjob.cpp:83
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system signature for partition <filename>%1</"
+"filename>: Failed to open device <filename>%2</filename>."
+msgstr ""
+"Osiolta <filename>%1</filename> ei voitu poistaa tiedostojärjestelmätietoa: "
+"laitteen <filename>%2</filename> avaaminen epäonnistui."
+
+#: jobs/deletefilesystemjob.cpp:93
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete file system on <filename>%1</filename>"
+msgstr "Poista laitteelta <filename>%1</filename> tiedostojärjestelmä"
+
+#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete partition <filename>%1</filename>."
+msgstr "Ei voitu poistaa osiota <filename>%1</filename>."
+
+#: jobs/deletepartitionjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"partition <filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> osiotaulukkoa ei voitu avata osion "
+"<filename>%2</filename> poistamiseksi."
+
+#: jobs/deletepartitionjob.cpp:67
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Deleting partition failed: Could not open device <filename>%1</filename>."
+msgstr ""
+"Osion poisto epäonnistui: laitetta <filename>%1</filename> ei voitu avata."
+
+#: jobs/deletepartitionjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete the partition <filename>%1</filename>"
+msgstr "Poista osio <filename>%1</filename>"
+
+#: jobs/job.cpp:45
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Source and target for copying do not overlap: Rollback is not required."
+msgstr ""
+
+#: jobs/job.cpp:69
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback from: First byte: %1, last byte: %2."
+msgstr ""
+
+#: jobs/job.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback to: First byte: %1, last byte: %2."
+msgstr ""
+
+#: jobs/job.cpp:74 jobs/job.cpp:80
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Could not open file <filename>%1</filename> for writing."
+msgctxt "@info:progress"
+msgid "Could not open device <filename>%1</filename> to rollback copying."
+msgstr "Tiedostoa <filename>%1</filename> ei voitu avata kirjoitettavaksi."
+
+#: jobs/job.cpp:86
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback failed: Source or target are not devices."
+msgstr ""
+
+#: jobs/job.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Job: %1"
+msgstr "Työ: %1"
+
+#: jobs/job.cpp:115
+#, kde-kuit-format
+msgctxt "@info:progress job status (error, warning, ...)"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: jobs/job.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Pending"
+msgstr "Jonossa"
+
+#: jobs/job.cpp:135
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Success"
+msgstr "Onnistui"
+
+#: jobs/job.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Error"
+msgstr "Virhe"
+
+#: jobs/movefilesystemjob.cpp:52
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"Osion <filename>%1</filename> tiedostojärjestelmää ei voitu avata "
+"siirtämistä varten."
+
+#: jobs/movefilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not create target for moving file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"Kohdetta tiedostojärjestelmän siirtämiseksi osiolla <filename>%1</filename> "
+"ei voitu luoda."
+
+#: jobs/movefilesystemjob.cpp:63
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Moving partition <filename>%1</filename> failed."
+msgctxt "@info:progress"
+msgid "Rollback for file system on partition <filename>%1</filename> failed."
+msgstr "Osion <filename>%1</filename> siirto epäonnistui."
+
+#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/shredfilesystemjob.cpp:66
+#, kde-format, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Closing device. This may take a few seconds."
+msgstr "Suljetaan laitetta. Tämä voi kestää hetken."
+
+#: jobs/movefilesystemjob.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Move the file system on partition <filename>%1</filename> to sector %2"
+msgstr "Siirrä osion <filename>%1</filename> tiedostojärjestelmä sektoriin %2"
+
+#: jobs/movephysicalvolumejob.cpp:57
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Move used PE in %1 on %2 to other available Physical Volumes"
+msgstr ""
+
+#: jobs/removevolumegroupjob.cpp:41
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove Volume Group: <filename>%1</filename>"
+msgstr "Poista taltioryhmä: <filename>%1</filename>"
+
+#: jobs/resizefilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of 1 sector."
+msgid_plural ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of %1 sectors."
+msgstr[0] ""
+"Osion <filename>%2</filename> tiedostojärjestelmän koko on jo pyydetty 1 "
+"sektori."
+msgstr[1] ""
+"Osion <filename>%2</filename> tiedostojärjestelmän koko on jo pyydetyt %1 "
+"sektoria."
+
+#: jobs/resizefilesystemjob.cpp:69
+#, kde-format
+msgctxt "@info:progress"
+msgid "Resizing file system from %1 to %2 sectors."
+msgstr "Muutetaan tiedostojärjestelmän kokoa %1 sektorista %2 sektoriin."
+
+#: jobs/resizefilesystemjob.cpp:76
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Resizing a %1 file system using internal backend functions."
+msgctxt "@info:progress"
+msgid "Resizing a %1 file system using internal backend functions."
+msgstr ""
+"Muutetaan %1-tiedostojärjestelmän kokoa sisäisen taustaosan toiminnoin."
+
+#: jobs/resizefilesystemjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%1</filename> cannot be resized "
+"because there is no support for it."
+msgstr ""
+"Osion <filename>%1</filename> tiedostojärjestelmän kokoa ei voi muuttaa, "
+"koska toimenpidettä ei tueta."
+
+#: jobs/resizefilesystemjob.cpp:119
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Successfully resized file system using internal backend functions."
+msgstr ""
+"Tiedostojärjestelmän koon muuttaminen onnistui sisäisen taustaosan "
+"toiminnoin."
+
+#: jobs/resizefilesystemjob.cpp:123
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition <filename>%1</filename> while trying to resize the "
+"file system."
+msgstr ""
+"Osiota <filename>%1</filename> ei voitu avata tiedostojärjestelmän koon "
+"muuttamiseksi."
+
+#: jobs/resizefilesystemjob.cpp:126
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not read geometry for partition <filename>%1</filename> while trying "
+"to resize the file system."
+msgstr ""
+"Osion <filename>%1</filename> geometriaa ei voitu lukea tiedostojärjestelmän "
+"koon muuttamiseksi."
+
+#: jobs/resizefilesystemjob.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Maximize file system on <filename>%1</filename> to fill the partition"
+msgstr ""
+"Kasvata laitteen <filename>%1</filename> tiedostojärjestelmä osion kokoon"
+
+#: jobs/resizefilesystemjob.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+msgid_plural ""
+"Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgstr[0] ""
+"Muuta osion <filename>%2</filename> tiedostojärjestelmän kooksi 1 sektori"
+msgstr[1] ""
+"Muuta osion <filename>%2</filename> tiedostojärjestelmän kooksi %1 sektoria"
+
+#: jobs/resizevolumegroupjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Adding LVM Physical Volume %2 to %3."
+msgid_plural "Adding LVM Physical Volumes %2 to %3."
+msgstr[0] "Lisätään fyysinen LVM-taltio %2 kohteeseen %3."
+msgstr[1] "Lisätään fyysiset LVM-taltiot %2 kohteeseen %3."
+
+#: jobs/resizevolumegroupjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Removing LVM Physical Volume %2 from %3."
+msgid_plural "Removing LVM Physical Volumes %2 from %3."
+msgstr[0] "Poistetaan fyysinen LVM-taltio %2 kohteelta %3."
+msgstr[1] "Poistetaan fyysiset LVM-taltiot %2 kohteelta %3."
+
+#: jobs/resizevolumegroupjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resizing Volume Group %1 to %2."
+msgstr "Muutetaan taltioryhmän %1 kooksi %2."
+
+#: jobs/restorefilesystemjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgstr ""
+"Palautettavaa varmuuskopiotiedostoa <filename>%1</filename> ei voitu avata."
+
+#: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open target partition <filename>%1</filename> to restore to."
+msgstr "Palautuksen kohdeosiota <filename>%1</filename> ei voitu avata."
+
+#: jobs/restorefilesystemjob.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Restore the file system from file <filename>%1</filename> to partition "
+"<filename>%2</filename>"
+msgstr ""
+"Palauta tiedostojärjestelmä tiedostosta <filename>%1</filename> osiolle "
+"<filename>%2</filename>"
+
+#: jobs/setfilesystemlabeljob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"File system on partition <filename>%1</filename> does not support setting "
+"labels. Job ignored."
+msgstr ""
+"Osion <filename>%1</filename> tiedostojärjestelmä ei tue nimiöiden "
+"asettamista. Työ sivuutetaan."
+
+#: jobs/setfilesystemlabeljob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgstr "Aseta osion <filename>%1</filename> tiedostojärjestelmän nimiöksi ”%2”"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned on, active"
+msgid "on"
+msgstr "käytössä"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned off, inactive"
+msgid "off"
+msgstr "ei käytössä"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"There was an error setting flag %1 for partition <filename>%2</filename> to "
+"state %3."
+msgstr ""
+"Asetettaessa osion <filename>%2</filename> lippua %1 tilaan %3 sattui virhe."
+
+#: jobs/setpartflagsjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set "
+"partition flags for partition <filename>%2</filename>."
+msgstr ""
+"Ei voitu avata laitteen <filename>%1</filename> osiotaulukkoa osion "
+"<filename>%2</filename> lippujen asettamiseksi."
+
+#: jobs/setpartflagsjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set partition flags for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Ei voitu avata laitetta <filename>%1</filename> osion <filename>%2</"
+"filename> lippujen asettamiseksi."
+
+#: jobs/setpartflagsjob.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Tyhjennä osion <filename>%1</filename> liput"
+
+#: jobs/setpartflagsjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Aseta osion <filename>%1</filename> lipuiksi ”%2”"
+
+#: jobs/setpartgeometryjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> while trying to resize/move "
+"partition <filename>%2</filename>."
+msgstr ""
+"Yritettäessä siirtää osiota <filename>%2</filename> (tai muuttaa sen kokoa) "
+"laitetta <filename>%1</filename> ei voitu avata."
+
+#: jobs/setpartgeometryjob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
+"%3"
+msgstr ""
+"Aseta osion <filename>%1</filename> geometria: aloitussektori: %2, pituus: %3"
+
+#: jobs/setpartitionattributesjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting attributes. Job ignored."
+msgstr ""
+"Osion <filename>%1</filename> osiotaulukko ei tue määritteiden asettamista. "
+"Työ sivuutetaan."
+
+#: jobs/setpartitionattributesjob.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Failed to create new partition <filename>%1</filename>."
+msgctxt "@info:progress"
+msgid "Failed to set the attributes for the partition <filename>%1</filename>."
+msgstr "Uuden osion <filename>%1</filename> luominen epäonnistui."
+
+#: jobs/setpartitionattributesjob.cpp:61
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not open partition table on device <filename>%1</filename> to set "
+#| "the system type for partition <filename>%2</filename>."
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"attributes for the partition <filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> osiotaulukkoa ei voitu avataosion <filename>"
+"%2</filename> järjestelmätyypin asettamiseksi."
+
+#: jobs/setpartitionattributesjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the attributes for "
+"partition <filename>%2</filename>."
+msgstr ""
+"Laitetta <filename>%1</filename> ei voitu avata osion <filename>%2</"
+"filename> määritteiden asettamiseksi ."
+
+#: jobs/setpartitionattributesjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
+msgstr "Aseta osion <filename>%1</filename> määritteiksi ”%2”"
+
+#: jobs/setpartitionlabeljob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting names. Job ignored."
+msgstr ""
+"Osion <filename>%1</filename> osiotaulukko ei tue nimien asettamista. Työ "
+"sivuutetaan."
+
+#: jobs/setpartitionlabeljob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the name for the partition <filename>%1</filename>."
+msgstr "Osion <filename>%1</filename> nimeä ei voitu asettaa."
+
+#: jobs/setpartitionlabeljob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"name for the partition <filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> osiotaulukkoa ei voitu avata osion "
+"<filename>%2</filename> nimen asettamiseksi."
+
+#: jobs/setpartitionlabeljob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the name for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Laitetta <filename>%1</filename> ei voitu avata osion <filename>%2</"
+"filename> nimen asettamiseksi."
+
+#: jobs/setpartitionlabeljob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the label on partition <filename>%1</filename> to \"%2\""
+msgstr "Aseta osion <filename>%1</filename> nimiöksi ”%2”"
+
+#: jobs/setpartitionuuidjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting UUIDs. Job ignored."
+msgstr ""
+"Osion <filename>%1</filename> osiotaulukko ei tue UUID:n asettamista. Työ "
+"sivuutetaan."
+
+#: jobs/setpartitionuuidjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the UUID for the partition <filename>%1</filename>."
+msgstr "Osion <filename>%1</filename> UUID:n asettaminen epäonnistui."
+
+#: jobs/setpartitionuuidjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"UUID for the partition <filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%1</filename> osiotaulukkoa ei voitu avata osion "
+"<filename>%2</filename> UUID:n asettamiseksi."
+
+#: jobs/setpartitionuuidjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the UUID for partition "
+"<filename>%2</filename>."
+msgstr ""
+"Laitetta <filename>%1</filename> ei voitu avata osion <filename>%2</"
+"filename> UUID:n asettamiseksi."
+
+#: jobs/setpartitionuuidjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+msgstr "Aseta osion <filename>%1</filename> UUID:ksi ”%2”"
+
+#: jobs/shredfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open random data source to overwrite file system."
+msgstr ""
+"Satunnaistietolähdettä ei voitu avata tiedostojärjestelmän korvaamiseksi."
+
+#: jobs/shredfilesystemjob.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Shred the file system on <filename>%1</filename>"
+msgstr "Hävitä tiedostojärjestelmä laitteelta <filename>%1</filename>"
+
+#: ops/backupoperation.cpp:39
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
+msgstr ""
+"Varmuuskopioi osio <filename>%1</filename> (%2, %3) tiedostoon <filename>%4</"
+"filename>"
+
+#: ops/checkoperation.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
+msgstr "Tarkista ja korjaa osio <filename>%1</filename> (%2, %3)"
+
+#: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<warning>Maximizing file system on target partition <filename>%1</filename> "
+"to the size of the partition failed.</warning>"
+msgstr ""
+"<warning>Kohdeosion <filename>%1</filename> tiedostojärjestelmän "
+"suurentaminen osion kokoon epäonnistui.</warning>"
+
+#: ops/copyoperation.cpp:151
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking target partition <filename>%1</filename> after copy failed."
+msgstr ""
+"Osion <filename>%1</filename> kopioinninjälkeinen tarkistus epäonnistui."
+
+#: ops/copyoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying source to target partition failed."
+msgstr "Lähteen kopioiminen kohdeosiolle epäonnistui."
+
+#: ops/copyoperation.cpp:161
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating target partition for copying failed."
+msgstr "Kohdeosion luonti kopiointia varten epäonnistui."
+
+#: ops/copyoperation.cpp:163
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking source partition <filename>%1</filename> failed."
+msgstr "Lähdeosion <filename>%1</filename> tarkistus epäonnistui."
+
+#: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
+#: ops/restoreoperation.cpp:148
+#, kde-kuit-format
+msgctxt "@info:status (success, error, warning...) of operation"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/copyoperation.cpp:179
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6)"
+msgstr ""
+"Kopioi osio <filename>%1</filename> (%2, %3) kohteeseen <filename>%4</"
+"filename> (%5, %6)"
+
+#: ops/copyoperation.cpp:188
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6) and grow it to %7"
+msgstr ""
+"Kopioi osio <filename>%1</filename> (%2, %3) kohteeseen <filename>%4</"
+"filename> (%5, %6) ja kasvata se kokoon %7"
+
+#: ops/copyoperation.cpp:200
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename>"
+msgstr ""
+"Kopioi osio <filename>%1</filename> (%2, %3) varaamattomaan tilaan (joka "
+"alkaa kohdasta %4) laitteella <filename>%5</filename>"
+
+#: ops/copyoperation.cpp:208
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename> and grow it to %6"
+msgstr ""
+"Kopioi osio <filename>%1</filename> (%2, %3) varaamattomaan tilaan (joka "
+"alkaa kohdasta %4) laitteella <filename>%5</filename> ja kasvata se kokoon %6"
+
+#: ops/createfilesystemoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create filesystem %1 on partition <filename>%2</filename>"
+msgstr "Luo tiedostojärjestelmä %1 osiolle <filename>%2</filename>"
+
+#: ops/createpartitiontableoperation.cpp:104
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
+msgstr "Luo uusi osiotaulukko (tyyppiä %1) laitteelle <filename>%2</filename>"
+
+#: ops/createvolumegroupoperation.cpp:36
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new LVM volume group named '%1'."
+msgstr "Luo uusi LVM-taltioryhmä nimeltä “%1”."
+
+#: ops/deactivatevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate volume group."
+msgstr "Passivoi taltioryhmä."
+
+#: ops/deleteoperation.cpp:87
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Shred partition <filename>%1</filename> (%2, %3)"
+msgstr "Hävitä osio <filename>%1</filename> (%2, %3)"
+
+#: ops/deleteoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Delete partition <filename>%1</filename> (%2, %3)"
+msgstr "Poista osio <filename>%1</filename> (%2, %3)"
+
+#: ops/newoperation.cpp:205
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
+msgstr "Luo uusi osio (%1, %2) laitteelle <filename>%3</filename>"
+
+#: ops/operation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "None"
+msgstr "Ei mitään"
+
+#: ops/operation.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Pending"
+msgstr "Jonossa"
+
+#: ops/operation.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Running"
+msgstr "Käynnissä"
+
+#: ops/operation.cpp:78
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Success"
+msgstr "Onnistui"
+
+#: ops/operation.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Warning"
+msgstr "Varoitus"
+
+#: ops/operation.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Error"
+msgstr "Virhe"
+
+#: ops/removevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove a LVM volume group."
+msgstr "Poista LVM-taltioryhmä."
+
+#: ops/resizeoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving extended partition <filename>%1</filename> failed."
+msgstr "Laajennetun osion <filename>%1</filename> siirto epäonnistui."
+
+#: ops/resizeoperation.cpp:165
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgstr ""
+"Osion <filename>%1</filename> tarkistus koon muuttamisen/siirron jälkeen "
+"epäonnistui."
+
+#: ops/resizeoperation.cpp:168
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgstr "Osion <filename>%1</filename> koon muuttaminen/siirto epäonnistui."
+
+#: ops/resizeoperation.cpp:171
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> before resize/move failed."
+msgstr ""
+"Osion <filename>%1</filename> tarkistus ennen koon muuttamista/siirtoa "
+"epäonnistui."
+
+#: ops/resizeoperation.cpp:201
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the left by %2"
+msgstr "Siirrä osiota <filename>%1</filename> vasemmalle %2"
+
+#: ops/resizeoperation.cpp:204
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the right by %2"
+msgstr "Siirrä osiota <filename>%1</filename> oikealle %2"
+
+#: ops/resizeoperation.cpp:207
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgstr "Suurenna osiota <filename>%1</filename> %2 → %3"
+
+#: ops/resizeoperation.cpp:210
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Shrink partition <filename>%1</filename> from %2 to %3"
+msgstr "Pienennä osiota <filename>%1</filename> %2 → %3"
+
+#: ops/resizeoperation.cpp:213
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
+"to %4"
+msgstr ""
+"Siirrä osiota <filename>%1</filename> vasemmalle %2 ja suurenna sitä %3 → %4"
+
+#: ops/resizeoperation.cpp:216
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and grow it from "
+"%3 to %4"
+msgstr ""
+"Siirrä osiota <filename>%1</filename> oikealle %2 ja suurenna sitä %3 → %4"
+
+#: ops/resizeoperation.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Siirrä osiota <filename>%1</filename> vasemmalle %2 ja pienennä sitä %3 → %4"
+
+#: ops/resizeoperation.cpp:222
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"Siirrä osiota <filename>%1</filename> oikealle %2 ja pienennä sitä %3 → %4"
+
+#: ops/resizeoperation.cpp:229
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Unknown resize/move action."
+msgstr "Tuntematon koon muutto- tai siirtotoiminto."
+
+#: ops/resizeoperation.cpp:258
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize file system to shrink partition "
+"<filename>%1</filename>."
+msgstr ""
+"Koon muuttaminen/siirto epäonnistui: osion <filename>%1</filename> "
+"tiedostojärjestelmää ei voitu pienentää."
+
+#: ops/resizeoperation.cpp:263
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
+msgstr ""
+"Koon muuttaminen/siirto epäonnistui: osiota <filename>%1</filename> ei voitu "
+"pienentää."
+
+#: ops/resizeoperation.cpp:282
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving partition <filename>%1</filename> failed."
+msgstr "Osion <filename>%1</filename> siirto epäonnistui."
+
+#: ops/resizeoperation.cpp:287
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
+"back."
+msgstr ""
+"Tiedostojärjestelmän siirto osiolla <filename>%1</filename> epäonnistui. "
+"Palautetaan lähtötilanne."
+
+#: ops/resizeoperation.cpp:291
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving back partition <filename>%1</filename> to its original position "
+"failed."
+msgstr ""
+"Osion <filename>%1</filename> siirto takaisin alkuperäissijaintiinsa "
+"epäonnistui."
+
+#: ops/resizeoperation.cpp:304
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
+msgstr ""
+"Koon muuttaminen/siirto epäonnistui: osiota <filename>%1</filename> ei voitu "
+"kasvattaa."
+
+#: ops/resizeoperation.cpp:309
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
+msgstr ""
+"Koon muuttaminen/siirto epäonnistui: osion <filename>%1</filename> "
+"tiedostojärjestelmän kokoa ei voitu muuttaa."
+
+#: ops/resizeoperation.cpp:312
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Could not restore old partition size for partition <filename>%1</filename>."
+msgstr "Osion <filename>%1</filename> edellistä kokoa ei voitu palauttaa."
+
+#: ops/resizevolumegroupoperation.cpp:108
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resize volume %1 from %2 to %3"
+msgstr "Muuta taltion %1 kokoa: %2 → %3"
+
+#: ops/restoreoperation.cpp:133
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking target file system on partition <filename>%1</filename> after the "
+"restore failed."
+msgstr ""
+"Osion <filename>%1</filename> palautuksenjälkeinen tiedostojärjestelmän "
+"tarkistus epäonnistui."
+
+#: ops/restoreoperation.cpp:138
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Restoring file system failed."
+msgstr "Tiedostojärjestelmän palautus epäonnistui."
+
+#: ops/restoreoperation.cpp:141
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating the destination partition to restore to failed."
+msgstr "Palautettavan kohdeosion luonti epäonnistui."
+
+#: ops/restoreoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition from <filename>%1</filename> to <filename>%2</filename>"
+msgstr ""
+"Palauta osio <filename>%2</filename> tiedostosta <filename>%1</filename>"
+
+#: ops/restoreoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
+"filename>"
+msgstr ""
+"Palauta osio <filename>%1</filename> kohtaan %2 tiedostosta <filename>%3</"
+"filename>"
+
+#: ops/setfilesystemlabeloperation.cpp:58
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgstr "Muutetaan osion <filename>%1</filename> nimiöksi ”%2”"
+
+#: ops/setfilesystemlabeloperation.cpp:60
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
+msgstr "Muutetaan osion <filename>%1</filename> nimiöksi ”%3” (ennen ”%2”)"
+
+#: ops/setpartflagsoperation.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "Aseta osion <filename>%1</filename> valitsimet"
+
+#: ops/setpartflagsoperation.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Asetetaan osion <filename>%1</filename> valitsimiksi ”%2”"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:248
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Software RAID Device found: %1"
+msgstr "Löytyi laite: %1"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:278
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Device found: %1"
+msgstr "Löytyi laite: %1"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr ""
+"Tuntematon osiorooli uudelle osiolle <filename>%1</filename> (roolit: %2)"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Osion <filename>%1</filename> lisäys laitteelle <filename>%2</filename> "
+"epäonnistui."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:114
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not set geometry for partition <filename>%1</filename> while trying to "
+"resize/move it."
+msgstr ""
+"Yritettäessä siirtää tai muuttaa kokoa osion <filename>%1</filename> "
+"geometriaa ei saatu asetettua."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:124
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to erase filesystem signature on partition <filename>%1</filename>."
+msgstr ""
+"Tiedostojärjestelmätiedon poisto osiolta <filename>%1</filename> epäonnistui."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:157
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not determine file system of partition at sector %1 on device "
+"<filename>%2</filename>."
+msgstr ""
+"Laitteen <filename>%2</filename> sektorissa %1 olevan osion "
+"tiedostojärjestelmää ei saatu määritettyä."
+
+#: util/capacity.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "tavu"
+msgstr[1] "tavua"
+
+#: util/capacity.cpp:101
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "KiB"
+msgstr "KiB"
+
+#: util/capacity.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "MiB"
+msgstr "MiB"
+
+#: util/capacity.cpp:103
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "GiB"
+msgstr "GiB"
+
+#: util/capacity.cpp:104
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "TiB"
+msgstr "TiB"
+
+#: util/capacity.cpp:105
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "PiB"
+msgstr "PiB"
+
+#: util/capacity.cpp:106
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "EiB"
+msgstr "EiB"
+
+#: util/capacity.cpp:107
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "ZiB"
+msgstr "ZiB"
+
+#: util/capacity.cpp:108
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "YiB"
+msgstr "YiB"
+
+#: util/capacity.cpp:112
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "(unknown unit)"
+msgstr "(tuntematon yksikkö)"
+
+#: util/externalcommand.cpp:111 util/externalcommand.cpp:114
+#: util/externalcommand.cpp:226
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Command: %1 %2"
+msgstr "Komento: %1 %2"
+
+#: util/externalcommandhelper.cpp:82
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for reading."
+msgstr ""
+"Ei voitu avata varmuuskopiotiedostoa <filename>%1</filename>, jolta "
+"palauttaa."
+
+#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#, kde-kuit-format
+msgid "Could not seek position %1 on device <filename>%2</filename>."
+msgstr "Sijaintiin %1 laitteella <filename>%2</filename> ei voitu siirtyä."
+
+#: util/externalcommandhelper.cpp:96
+#, kde-kuit-format
+msgid "Could not read from device <filename>%1</filename>."
+msgstr "Laitteelta <filename>%1</filename> ei voida lukea."
+
+#: util/externalcommandhelper.cpp:114
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for writing."
+msgstr "Laitetta <filename>%1</filename> ei voitu avata kirjoitettavaksi."
+
+#: util/externalcommandhelper.cpp:125
+#, kde-kuit-format
+msgid "Could not write to device <filename>%1</filename>."
+msgstr "Laitteelle <filename>%1</filename> ei voida kirjoittaa."
+
+#: util/externalcommandhelper.cpp:151
+#, kde-kuit-format
+msgid "Could not open file <filename>%1</filename> for writing."
+msgstr "Tiedostoa <filename>%1</filename> ei voitu avata kirjoitettavaksi."
+
+#: util/externalcommandhelper.cpp:156
+#, kde-kuit-format
+msgid "Could not write to file <filename>%1</filename>."
+msgstr "Tiedostoon <filename>%1</filename> ei voi kirjoittaa."
+
+#: util/externalcommandhelper.cpp:237
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
+msgstr ""
+"Kopioidaan %1 lohkoa (%2 tavua) lähteestä %3 kohteeseen %4, suunta: %5."
+
+#: util/externalcommandhelper.cpp:238
+#, kde-format
+msgctxt "direction: left"
+msgid "left"
+msgstr "vasen"
+
+#: util/externalcommandhelper.cpp:239
+#, kde-format
+msgctxt "direction: right"
+msgid "right"
+msgstr "oikea"
+
+#: util/externalcommandhelper.cpp:261
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 MiB/second, estimated time left: %2"
+msgstr "Kopioidaan %1 MiB/s, aikaa jäljellä arviolta: %2"
+
+#: util/externalcommandhelper.cpp:274
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying remainder of chunk size %1 from %2 to %3."
+msgstr "Kopioidaan loput lohkon koosta %1 lähteestä %2 kohteeseen %3."
+
+#: util/externalcommandhelper.cpp:288
+#, kde-format
+msgid "1 byte"
+msgid_plural "%1 bytes"
+msgstr[0] "1 tavu"
+msgstr[1] "%1 tavua"
+
+#: util/externalcommandhelper.cpp:288
+#, kde-kuit-format
+msgctxt ""
+"@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
+msgid "Copying 1 chunk (%2) finished."
+msgid_plural "Copying %1 chunks (%2) finished."
+msgstr[0] "1 lohkon (%2) kopiointi valmis."
+msgstr[1] "%1 lohkon (%2) kopiointi valmis."
+
+#: util/helpers.cpp:49
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<application>KPMcore</application>"
+msgstr "<application>KPMcore</application>"
+
+#: util/helpers.cpp:50
+#, kde-kuit-format
+msgctxt "@title"
+msgid "Library for managing partitions"
+msgstr "Osionhallintakirjasto"
+
+#: util/helpers.cpp:51
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "&copy; 2008-2022 KPMcore developers"
+msgstr "&copy; 2008–2022 KPMcoren kehittäjät"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Volker Lanz"
+msgstr "Volker Lanz"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Former maintainer"
+msgstr "Aiempi ylläpitäjä"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Andrius Štikonas"
+msgstr "Andrius Štikonas"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Maintainer"
+msgstr "Ylläpitäjä"
+
+#: util/helpers.cpp:58
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Teo Mrnjavac"
+msgstr "Teo Mrnjavac"
+
+#: util/helpers.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Former Calamares maintainer"
+msgstr "Aiempi Calamares-ylläpitäjä"
+
+#: util/helpers.cpp:59
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Chantara Tith"
+msgstr "Chantara Tith"
+
+#: util/helpers.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "LVM support"
+msgstr "LVM-tuki"
+
+#: util/helpers.cpp:60
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Pali Rohár"
+msgstr "Pali Rohár"
+
+#: util/helpers.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "UDF support"
+msgstr "UDF-tuki"
+
+#: util/helpers.cpp:61
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Adriaan de Groot"
+msgstr "Adriaan de Groot"
+
+#: util/helpers.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Calamares maintainer"
+msgstr "Calamares-ylläpitäjä"
+
+#: util/helpers.cpp:62
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Caio Jordão Carvalho"
+msgstr "Caio Jordão Carvalho"
+
+#: util/helpers.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Improved SMART support"
+msgstr "Parannettu SMART-tuki"
+
+#: util/helpers.cpp:63
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "David Edmundson"
+msgstr "David Edmundson"
+
+#: util/helpers.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Port from KAuth to Polkit"
+msgstr "Siirros KAuthista Polkitiin"
+
+#: util/htmlreport.cpp:51 util/htmlreport.cpp:58
+#, kde-format
+msgid "%1: SMART Status Report"
+msgstr "%1: SMART-tilaraportti"
+
+#: util/htmlreport.cpp:66
+#, kde-format
+msgid "Date:"
+msgstr "Päiväys:"
+
+#: util/htmlreport.cpp:67
+#, kde-format
+msgid "Program version:"
+msgstr "Ohjelmaversio:"
+
+#: util/htmlreport.cpp:68
+#, kde-format
+msgid "Backend:"
+msgstr "Taustaosa:"
+
+#: util/htmlreport.cpp:69
+#, kde-format
+msgid "KDE Frameworks version:"
+msgstr "KDE Frameworks -versio:"
+
+#: util/htmlreport.cpp:70
+#, kde-format
+msgid "Machine:"
+msgstr "Kone:"
+
+#~ msgctxt "@info:status"
+#~ msgid "Could not obtain administrator privileges."
+#~ msgstr "Salli toimenpiteiden suorittaminen ilman ylläpito-oikeuksia"
+
+#~ msgid "QCA does not support RSA."
+#~ msgstr "QCA ei tue RSA:ta."
+
+#~ msgid "Failed to make private RSA key."
+#~ msgstr "Yksityisen RSA-avaimen luonti epäonnistui."
+
+#~ msgid "Generated key cannot be used for signatures."
+#~ msgstr "Luotua avainta ei voi käyttää allekirjoituksissa."
+
+#~ msgid "Invalid cryptographic signature"
+#~ msgstr "(Komento lähettää liikaa tulostetta)"
+
+#~ msgctxt "@item partition flag"
+#~ msgid "esp"
+#~ msgstr "esp"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Decrypt"
+#~ msgstr "Pura salaus"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Deactivate"
+#~ msgstr "Passivoi"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "LibParted Exception: %1"
+#~ msgctxt "@info:status"
+#~ msgid "LibParted Exception: %1"
+#~ msgstr "LibParted-poikkeus: %1"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not retrieve partition table type "
+#~| "\"%1\" for <filename>%2</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not retrieve partition table type "
+#~ "\"%1\" for <filename>%2</filename>."
+#~ msgstr ""
+#~ "Osiotaulukon luonti epäonnistui: ei saatu osiotaulukon tyyppiä ”%1” "
+#~ "laitteelle <filename>%2</filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not open backend device <filename>"
+#~| "%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not open backend device <filename>"
+#~ "%1</filename>."
+#~ msgstr ""
+#~ "Osiotaulukon luonti epäonnistui: ei voitu avata taustaosalaitetta "
+#~ "<filename>%1</filename>."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Creating partition table failed: Could not create a new partition table "
+#~| "in the backend for device <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Creating partition table failed: Could not create a new partition table "
+#~ "in the backend for device <filename>%1</filename>."
+#~ msgstr ""
+#~ "Osiotaulukon luonti epäonnistui: ei voitu luoda uutta osiotaulukkoa "
+#~ "laitteen <filename>%1</filename> taustaosaan."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Failed to create a new partition: could not get geometry for constraint."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Failed to create a new partition: could not get geometry for constraint."
+#~ msgstr "Uuden osion luonti epäonnistui: ei saatu rajoitusten geometriaa."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
+#~| "not found on disk."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Deleting partition failed: Partition to delete (<filename>%1</filename>) "
+#~ "not found on disk."
+#~ msgstr ""
+#~ "Osion poistaminen epäonnistui: Poistettavaa osiota (<filename>%1</"
+#~ "filename>) ei löytynyt levyltä."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not get constraint for partition <filename>%1</filename> while "
+#~| "trying to resize/move it."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get constraint for partition <filename>%1</filename> while "
+#~ "trying to resize/move it."
+#~ msgstr ""
+#~ "Osion <filename>%1</filename> rajoituksia ei saatu yritettäessä siirtää "
+#~ "sitä tai muuttaa sen kokoa."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not get geometry for partition <filename>%1</filename> while "
+#~| "trying to resize/move it."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for partition <filename>%1</filename> while trying "
+#~ "to resize/move it."
+#~ msgstr ""
+#~ "Osion <filename>%1</filename> geometriaa ei saatu, kun yritettiin siirtää/"
+#~ "muuttaa kokoa."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> while trying to resize/"
+#~| "move it."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> while trying to resize/"
+#~ "move it."
+#~ msgstr ""
+#~ "Osiota <filename>%1</filename> ei saatu avattua, kun yritettiin siirtää/"
+#~ "muuttaa kokoa."
+
+# saatu?
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not delete file system on partition <filename>%1</filename>: "
+#~| "Failed to get partition."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not delete file system on partition <filename>%1</filename>: Failed "
+#~ "to get partition."
+#~ msgstr ""
+#~ "Osion <filename>%1</filename> tiedostojärjestelmää ei voitu poistaa: "
+#~ "Osiota ei saatu."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgstr "Osion <filename>%1</filename> kokoa ei saatu muutettua."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not get geometry for resized partition <filename>%1</filename> "
+#~| "while trying to resize the file system."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not get geometry for resized partition <filename>%1</filename> "
+#~ "while trying to resize the file system."
+#~ msgstr ""
+#~ "Ei voitu lukea osion <filename>%1</filename> geometriaa yritettäessä "
+#~ "muuttaa tiedostojärjestelmän kokoa."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not update the system type for partition <filename>%1</filename>."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not update the system type for partition <filename>%1</filename>."
+#~ msgstr ""
+#~ "Osion <filename>%1</filename> järjestelmätyypin päivitys epäonnistui."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "No file system defined."
+#~ msgctxt "@info:progress"
+#~ msgid "No file system defined."
+#~ msgstr "Tiedostojärjestelmää ei ole määritetty."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "No partition found at sector %1."
+#~ msgctxt "@info:progress"
+#~ msgid "No partition found at sector %1."
+#~ msgstr "Osiota ei löydetty sektorissa %1."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not find partition <filename>%1</filename> on device <filename>%2</"
+#~| "filename> to set partition flags."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not find partition <filename>%1</filename> on device <filename>%2</"
+#~ "filename> to set partition flags."
+#~ msgstr ""
+#~ "Osiota <filename>%1</filename> ei löytynyt laitteesta <filename>%2</"
+#~ "filename> osion valitsimien asettamiseksi."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "The flag \"%1\" is not available on the partition's partition table."
+#~ msgctxt "@info:progress"
+#~ msgid "The flag \"%1\" is not available on the partition's partition table."
+#~ msgstr "Valitsinta ”%1” ei ole saatavilla osion osiotaulukossa."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "(Command timeout while starting \"%1\")"
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while starting)"
+#~ msgstr "(Komennon aikakatkaisu käynnistettäessä ”%1”)"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "(Command timeout while running \"%1\")"
+#~ msgctxt "@info:status"
+#~ msgid "(Command timeout while running)"
+#~ msgstr "(Komennon aikakatkaisu suoritettaessa ”%1”)"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> for writing when trying "
+#~| "to update the NTFS boot sector."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Osiota <filename>%1</filename> ei saatu avatuksi kirjoitusta varten "
+#~ "yritettäessä päivittää NTFS-käynnistyssektoria."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not seek to position 0x1c on partition <filename>%1</filename> "
+#~| "when trying to update the NTFS boot sector."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "Could not seek to position 0x1c on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS boot sector."
+#~ msgstr ""
+#~ "Sijaintiin 0x1c ei päästy osiolla <filename>%1</filename> yritettäessä "
+#~ "päivittää NTFS-käynnistyssektoria."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "The logical sector sizes in the source and target for copying are not "
+#~| "the same. This is currently unsupported."
+#~ msgctxt "@info:progress"
+#~ msgid ""
+#~ "The logical sector sizes in the source and target for copying are not the "
+#~ "same. This is currently unsupported."
+#~ msgstr ""
+#~ "Kopiointilähteen ja -kohteen loogiset sektorikoot eroavat. Tätä ei "
+#~ "toistaiseksi tueta."
+
+#~ msgid "1 sector"
+#~ msgid_plural "%1 sectors"
+#~ msgstr[0] "1 sektori"
+#~ msgstr[1] "%1 sektoria"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Columns"
+#~ msgstr "Sarakkeet"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Warning: Maximizing file system on target partition <filename>%1</"
+#~| "filename> to the size of the partition failed."
+#~ msgctxt "@info:status"
+#~ msgid ""
+#~ "Warning: Maximizing file system on target partition <filename>%1</"
+#~ "filename> to the size of the partition failed."
+#~ msgstr ""
+#~ "Varoitus: Tiedostojärjestelmän asettaminen enimmäiskokoon kohdeosiolla "
+#~ "<filename>%1</filename> epäonnistui"
+
+#~ msgctxt "@info/plain status (success, error, warning...) of operation"
+#~ msgid "%1: %2"
+#~ msgstr "%1: %2"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "Byte"
+#~ msgid_plural "Bytes"
+#~ msgstr[0] "tavu"
+#~ msgstr[1] "tavua"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "KiB"
+#~ msgstr "KiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "MiB"
+#~ msgstr "MiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "GiB"
+#~ msgstr "GiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "TiB"
+#~ msgstr "TiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "PiB"
+#~ msgstr "PiB"
+
+#~ msgctxt "@info/plain unit"
+#~ msgid "EiB"
+#~ msgstr "EiB"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Check file system on partition <filename>%1</filename>"
+#~ msgctxt "@info/plain"
+#~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
+#~ msgstr "Tarkista osion <filename>%1</filename> tiedostojärjestelmä."
+
+#~ msgctxt "@title:window"
+#~ msgid "Decrypt LUKS partition on <filename>%1</filename>"
+#~ msgstr "Pura LUKS-salaus osiolta <filename>%1</filename>"
+
+#~ msgctxt "@action:button"
+#~ msgid "&Decrypt"
+#~ msgstr "&Pura salaus"
+
+#~ msgid "&Name:"
+#~ msgstr "&Nimi:"
+
+#~ msgid "&Passphrase:"
+#~ msgstr "&Salasana:"
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not open partition <filename>%1</filename> for writing when trying "
+#~| "to update the NTFS boot sector."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not open partition <filename>%1</filename> for writing when trying "
+#~ "to update the NTFS serial number."
+#~ msgstr ""
+#~ "Osiota <filename>%1</filename> ei saatu avatuksi kirjoitusta varten "
+#~ "yritettäessä päivittää NTFS-käynnistyssektoria."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Could not seek to position 0x1c on partition <filename>%1</filename> "
+#~| "when trying to update the NTFS boot sector."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not seek to position 0x48 on partition <filename>%1</filename> when "
+#~ "trying to update the NTFS serial number."
+#~ msgstr ""
+#~ "Sijaintiin 0x1c ei päästy osiolla <filename>%1</filename> yritettäessä "
+#~ "päivittää NTFS-käynnistyssektoria."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid "Could not resize file system on partition <filename>%1</filename>."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Could not write new NTFS serial number to partition <filename>%1</"
+#~ "filename>."
+#~ msgstr "Osion <filename>%1</filename> kokoa ei saatu muutettua."
+
+#, fuzzy
+#~| msgctxt "@info/plain"
+#~| msgid ""
+#~| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#~| "successfully."
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Updated NTFS serial number for partition <filename>%1</filename> "
+#~ "successfully."
+#~ msgstr ""
+#~ "NTFS-käynnistyssektori osiolla <filename>%1</filename> päivitetty "
+#~ "onnistuneesti."
+
+#~ msgctxt "@label"
+#~ msgid "Is this the first time KDE Partition Manager is being run?"
+#~ msgstr "Onko tämä KDE:n osionhallinnan ensimmäinen käyttökerta?"
+
+#~ msgctxt "@label"
+#~ msgid "Hide log messages below"
+#~ msgstr "Piilota lokiviestit alta"
+
+#~ msgctxt "@label"
+#~ msgid "Partition sector alignment"
+#~ msgstr "Osioiden sektorikohdistus"
+
+#~ msgctxt "@label"
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr "Kohdista sylinteriperustaisesti (Windows XP -yhteensopiva)"
+
+#~ msgctxt "@label"
+#~ msgid "Align partitions per default"
+#~ msgstr "Kohdista osiot oletusarvoisesti"
+
+#~ msgctxt "@label"
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr "Salli toimenpiteiden suorittaminen ilman ylläpito-oikeuksia"
+
+#~ msgctxt "@label"
+#~ msgid "File system colors"
+#~ msgstr "Tiedostojärjestelmävärit"
+
+#~ msgctxt "@label"
+#~ msgid "Show the application's menu bar"
+#~ msgstr "Näytä sovelluksen valikkorivi"
+
+#~ msgctxt "@label"
+#~ msgid "Backend plugin"
+#~ msgstr "Taustaosaliitännäinen"
+
+#~ msgctxt "@label"
+#~ msgid "Preferred unit:"
+#~ msgstr "Suosittu yksikkö:"
+
+#~ msgctxt "@title:tab general application settings"
+#~ msgid "General"
+#~ msgstr "Yleistä"
+
+#~ msgid "General Settings"
+#~ msgstr "Yleisasetukset"
+
+#~ msgctxt "@title:tab"
+#~ msgid "File System Colors"
+#~ msgstr "Tiedostojärjestelmävärit"
+
+#~ msgid "File System Color Settings"
+#~ msgstr "Tiedostojärjestelmäväriasetukset"
+
+#~ msgctxt "@title:tab advanced application settings"
+#~ msgid "Advanced"
+#~ msgstr "Lisäasetukset"
+
+#~ msgid "Advanced Settings"
+#~ msgstr "Lisäasetukset"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to change the backend?</para><para><warning>This "
+#~ "will also rescan devices and thus clear the list of pending operations.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "<para>Haluatko varmasti vaihtaa taustaosaa?</para><para><warning>Myös "
+#~ "laitteet tarkistetaan uudelleen ja odottavien toimien jono tyhjennetään.</"
+#~ "warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Change Backend?"
+#~ msgstr "Vaihdetaanko taustaosaa varmasti?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the Backend"
+#~ msgstr "Vaihda taustaosaa"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the Backend"
+#~ msgstr "Älä vaihda taustaosaa"
+
+#~ msgid "Permissions"
+#~ msgstr "Oikeudet"
+
+#~ msgid "Allow applying operations without administrator privileges"
+#~ msgstr "Salli toimenpiteiden suorittaminen ilman ylläpito-oikeuksia"
+
+#~ msgid "Backend"
+#~ msgstr "Taustaosa"
+
+#~ msgid "Active backend:"
+#~ msgstr "Aktiivinen taustaosa:"
+
+#~ msgid "Units"
+#~ msgstr "Yksiköt"
+
+#~ msgid "Preferred unit:"
+#~ msgstr "Suosittu yksikkö:"
+
+#~ msgid "File Systems"
+#~ msgstr "Tiedostojärjestelmät"
+
+#~ msgid "luks:"
+#~ msgstr "luks:"
+
+#~ msgid "ntfs:"
+#~ msgstr "ntfs:"
+
+#~ msgid "ext2:"
+#~ msgstr "ext2:"
+
+#~ msgid "ext3:"
+#~ msgstr "ext3:"
+
+#~ msgid "ext4:"
+#~ msgstr "ext4:"
+
+#~ msgid "btrfs:"
+#~ msgstr "btrfs:"
+
+#~ msgid "linuxswap:"
+#~ msgstr "linuxswap:"
+
+#~ msgid "fat16:"
+#~ msgstr "fat16:"
+
+#~ msgid "fat32:"
+#~ msgstr "fat32:"
+
+#~ msgid "zfs:"
+#~ msgstr "zfs:"
+
+#~ msgid "reiserfs:"
+#~ msgstr "reiserfs:"
+
+#~ msgid "reiser4:"
+#~ msgstr "reiser4:"
+
+#~ msgid "hpfs:"
+#~ msgstr "hpfs:"
+
+#~ msgid "jfs"
+#~ msgstr "jfs"
+
+#~ msgid "hfs:"
+#~ msgstr "hfs:"
+
+#~ msgid "hfsplus:"
+#~ msgstr "hfsplus:"
+
+#~ msgid "ufs:"
+#~ msgstr "ufs:"
+
+#~ msgid "xfs:"
+#~ msgstr "xfs:"
+
+#~ msgid "ocfs2:"
+#~ msgstr "ocfs2:"
+
+#~ msgid "extended:"
+#~ msgstr "laajennettu:"
+
+#~ msgid "unformatted:"
+#~ msgstr "alustamaton:"
+
+#~ msgid "unknown:"
+#~ msgstr "tuntematon:"
+
+#~ msgid "exfat:"
+#~ msgstr "exfat:"
+
+#~ msgid "nilfs2:"
+#~ msgstr "nilfs2:"
+
+#~ msgid "lvm2 pv:"
+#~ msgstr "lvm2 pv:"
+
+#~ msgid "Partition Alignment"
+#~ msgstr "Osioiden kohdistus"
+
+#~ msgid "Use cylinder based alignment (Windows XP compatible)"
+#~ msgstr "Kohdista sylinteriperustaisesti (Windows XP -yhteensopiva)"
+
+#~ msgid "Sector alignment:"
+#~ msgstr "Sektorikohdistus:"
+
+#~ msgid " sectors"
+#~ msgstr " sektoria"
+
+#~ msgid "Align partitions per default"
+#~ msgstr "Kohdista osiot oletusarvoisesti"
+
+#~ msgid "Logging"
+#~ msgstr "Loki"
+
+# Tämän perässä on pudotusvalikko, josta käyttäjä voi valita lokitason nimen perusteella.
+#~ msgid "Hide messages below:"
+#~ msgstr "Piilota lokiviestit tätä alemmilta tasoilta:"
+
+#~ msgid "Debug"
+#~ msgstr "Vianjäljitys"
+
+#~ msgid "Information"
+#~ msgstr "Ilmoitus"
+
+#~ msgid "Warning"
+#~ msgstr "Varoitus"
+
+#~ msgid "Error"
+#~ msgstr "Virhe"
+
+#~ msgid "Default file system:"
+#~ msgstr "Oletustiedostojärjestelmä:"
+
+#~ msgid "Shredding"
+#~ msgstr "Päällekirjoitus"
+
+#~ msgid "Overwrite with:"
+#~ msgstr "Korvaa:"
+
+#~ msgid "Random data"
+#~ msgstr "Satunnaisdatalla"
+
+#~ msgid "Zeros"
+#~ msgstr "Nollilla"
+
+#~ msgid "Save"
+#~ msgstr "Tallenna"
+
+#~ msgid "Open in External Browser"
+#~ msgstr "Avaa ulkoisessa selaimessa"
+
+#~ msgid "&Details"
+#~ msgstr "&Yksityiskohdat"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Setting up..."
+#~ msgstr "Valmistellaan…"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Waiting for operation to finish..."
+#~ msgstr "Odotetaan toimien valmistumista…"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to cancel?"
+#~ msgstr "Haluatko varmasti perua?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cancel Running Operations"
+#~ msgstr "Peru käynnissä olevat toimenpiteet"
+
+#~ msgctxt "@action:button"
+#~ msgid "Yes, Cancel Operations"
+#~ msgstr "Kyllä, peru toimenpiteet"
+
+#~ msgctxt "@info:progress"
+#~ msgid "All operations successfully finished."
+#~ msgstr "Kaikki toimenpiteet suoritettu onnistuneesti."
+
+#~ msgctxt "@info:progress"
+#~ msgid "Operations cancelled."
+#~ msgstr "Toimenpiteet peruttu."
+
+#~ msgctxt "@info:progress"
+#~ msgid "There were errors while applying operations. Aborted."
+#~ msgstr "Toimia suoritettaessa sattui virheitä. Keskeytetty."
+
+#~ msgctxt "@info:progress"
+#~ msgid "[%1/%2] - %3: %4"
+#~ msgstr "[%1/%2] – %3: %4"
+
+#~ msgctxt "@info:progress"
+#~ msgid "Total Time: %1"
+#~ msgstr "Kokonaisaika: %1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary file when trying to save to <filename>%1</"
+#~ "filename>."
+#~ msgstr ""
+#~ "Väliaikaistiedostoa ei voitu luoda yritettäessä tallentaa tiedostoon "
+#~ "<filename>%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save Report."
+#~ msgstr "Raporttia ei voitu tallentaa."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The configured external browser could not be run. Please check your "
+#~ "settings."
+#~ msgstr ""
+#~ "Haluttua ulkoista selainta ei voitu käynnistää: tarkista asetuksesi."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Launch Browser."
+#~ msgstr "Selainta ei voitu käynnistää."
+
+#~ msgctxt "@info"
+#~ msgid "Could not create temporary file <filename>%1</filename> for writing."
+#~ msgstr ""
+#~ "Väliaikaistiedostoa <filename>%1</filename> ei voitu luoda "
+#~ "kirjoitettavaksi."
+
+#~ msgid "Operations and Jobs"
+#~ msgstr "Toimenpiteet ja työt"
+
+#~ msgid "Time Elapsed"
+#~ msgstr "Kulunut aika"
+
+#~ msgid "Total Time: 00:00:00"
+#~ msgstr "Kokonaisaika: 00:00:00"
+
+#~ msgid "Operation: %p%"
+#~ msgstr "Toimenpide: %p %"
+
+#~ msgid "Status"
+#~ msgstr "Tila"
+
+#~ msgid "Total: %p%"
+#~ msgstr "Kaikkiaan: %p %"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a New Partition Table on <filename>%1</filename>"
+#~ msgstr "Luo uusi osiotaulukko laitteelle <filename>%1</filename>"
+
+#~ msgid "Create &New Partition Table"
+#~ msgstr "Luo uusi &osiotaulukko"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to create an MS-Dos partition table on <filename>"
+#~ "%1</filename>?</para><para>This device has more than 2^32 sectors. That "
+#~ "is the most the MS-Dos partition table type supports, so you will not be "
+#~ "able to use the whole device.</para>"
+#~ msgstr ""
+#~ "<para>Haluatko varmasti luoda MS-DOS-osiotaulukon laitteelle <filename>"
+#~ "%1</filename>?</para><para>Laitteella on yli 2^32 sektoria, mikä on "
+#~ "enemmän kuin mitä MS-DOS-osiojärjestelmä tukee, joten et saa koko "
+#~ "laitteen tilaa käyttöön.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Create MS-Dos Partition Table Type?"
+#~ msgstr "Luodaanko varmasti MS-DOS-tyyppinen osiotaulukko?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Create MS-Dos Type"
+#~ msgstr "Luo MS-DOS-osiotaulukko"
+
+#~ msgid "Choose the type of partition table you want to create:"
+#~ msgstr "Valitse luotavan osiotaulukon tyyppi:"
+
+#~ msgid "GPT"
+#~ msgstr "GPT"
+
+#~ msgid "MS-Dos"
+#~ msgstr "MS-DOS"
+
+#~ msgid "(icon)"
+#~ msgstr "(kuvake)"
+
+#~ msgid "<b>Warning:</b> This will destroy all data on the device!"
+#~ msgstr "<b>Varoitus:</b> Tämä tuhoaa kaiken tiedon laitteelta!"
+
+#~ msgctxt "@label device"
+#~ msgid "%1 (read only)"
+#~ msgstr "%1 (vain luku)"
+
+#~ msgctxt "@label"
+#~ msgid "1 Sector"
+#~ msgid_plural "%1 Sectors"
+#~ msgstr[0] "1 sektori"
+#~ msgstr[1] "%1 sektoria"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "good"
+#~ msgstr "hyvä"
+
+#~ msgctxt "@label SMART disk status"
+#~ msgid "BAD"
+#~ msgstr "HUONO"
+
+#~ msgctxt "@label"
+#~ msgid "(unknown)"
+#~ msgstr "(tuntematon)"
+
+#~ msgid "Partition table:"
+#~ msgstr "Osiotaulu:"
+
+#~ msgid "Cylinder alignment"
+#~ msgstr "Sylinterikohdistus"
+
+#~ msgid "Sector based alignment"
+#~ msgstr "Sektoriperustainen kohdistus"
+
+#~ msgid "Capacity:"
+#~ msgstr "Kapasiteetti:"
+
+#~ msgid "Total sectors:"
+#~ msgstr "Sektoreja kaikkiaan:"
+
+#~ msgid "Cylinders/Heads/Sectors:"
+#~ msgstr "Sylinterejä/päitä/sektoreja:"
+
+#~ msgid "Logical sector size:"
+#~ msgstr "Looginen sektorikoko:"
+
+#~ msgid "Physical sector size:"
+#~ msgstr "Fyysinen sektorikoko:"
+
+#~ msgid "Cylinder size:"
+#~ msgstr "Sylinterikoko:"
+
+#~ msgid "Primaries/Max:"
+#~ msgstr "Ensiöosioita/enintään:"
+
+#~ msgid "SMART status:"
+#~ msgstr "SMART-tila:"
+
+#~ msgid "More..."
+#~ msgstr "Lisää…"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit additional mount options"
+#~ msgstr "Muokkaa lisäliitospisteitä"
+
+#~ msgid "Edit Mount Options"
+#~ msgstr "Muokkaa liitosvalitsimia"
+
+#~ msgid "Edit the mount options for this file system:"
+#~ msgstr "Muokkaa tämän tiedostojärjestelmän liitosvalitsimia:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit mount point for <filename>%1</filename>"
+#~ msgstr "Muokkaa laitteen <filename>%1</filename> liitospistettä"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Are you sure you want to save the changes you made to the system "
+#~ "table file <filename>/etc/fstab</filename>?</para><para><warning>This "
+#~ "will overwrite the existing file on your hard drive now. This <strong>can "
+#~ "not be undone</strong>.</warning></para>"
+#~ msgstr ""
+#~ "<para>Haluatko varmasti tallentaa järjestelmän taltiotiedostoon "
+#~ "<filename>/etc/fstab</filename> tekemäsi muutokset?</"
+#~ "para><para><warning>Tämä korvaa levyllä jo olemassa olevan tiedoston, "
+#~ "mitä <strong>ei voi kumota</strong>. </warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really save changes?"
+#~ msgstr "Tallennetaanko muutokset varmasti?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Save changes"
+#~ msgstr "Tallenna muutokset"
+
+#~ msgctxt "@info"
+#~ msgid "Could not open mount point file <filename>%1</filename>."
+#~ msgstr "Liitospistetiedostoa <filename>%1</filename> ei voitu avata."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error while reading mount points"
+#~ msgstr "Virhe luettaessa liitospisteitä"
+
+#~ msgctxt "@info"
+#~ msgid "Could not save mount points to file <filename>%1</filename>."
+#~ msgstr ""
+#~ "Liitospisteitä ei voitu tallentaa tiedostoon <filename>%1</filename>."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Saving Mount Points"
+#~ msgstr "Virhe tallennettaessa liitospisteitä"
+
+#~ msgid "Path:"
+#~ msgstr "Polku:"
+
+#~ msgid "Select..."
+#~ msgstr "Valitse…"
+
+#~ msgid "Type:"
+#~ msgstr "Tyyppi:"
+
+#~ msgid "Options:"
+#~ msgstr "Valinnat:"
+
+#~ msgid "Read-only"
+#~ msgstr "Vain luku"
+
+#~ msgid "Users can mount and unmount"
+#~ msgstr "Käyttäjä voi liittää ja irrottaa"
+
+#~ msgid "No automatic mount"
+#~ msgstr "Älä liitä automaattisesti"
+
+#~ msgid "No update of file access times"
+#~ msgstr "Älä verestä tiedostojen saantiaikoja"
+
+#~ msgid "Synchronous access"
+#~ msgstr "Synkroninen saanti"
+
+#~ msgid "No update of directory access times"
+#~ msgstr "Älä verestä kansioiden saantiaikoja"
+
+#~ msgid "No binary execution"
+#~ msgstr "Älä suorita binaareja"
+
+#~ msgid "Update access times relative to modification"
+#~ msgstr "Verestä saantiajat suhteessa muutoksiin"
+
+#~ msgid "Dump Frequency:"
+#~ msgstr "Vedostaajuus:"
+
+#~ msgid "Device Node"
+#~ msgstr "Laitenimi"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Label"
+#~ msgstr "Nimiö"
+
+#~ msgid "Identify by:"
+#~ msgstr "Tunnistustapa:"
+
+#~ msgctxt "@title:window"
+#~ msgid "File System Support"
+#~ msgstr "Tiedostojärjestelmätuki"
+
+#~ msgid ""
+#~ "This table shows which file systems are supported and which specific "
+#~ "operations can be performed on them.\n"
+#~ "Some file systems need external tools to be installed for them to be "
+#~ "supported. But not all operations can be performed on all file systems, "
+#~ "even if all required tools are installed. Please see the documentation "
+#~ "for details. "
+#~ msgstr ""
+#~ "Tästä taulukosta näkyy, mitä tiedostojärjestelmiä tuetaan ja mitä "
+#~ "nimenomaisia toimenpiteitä niille voi tehdä.\n"
+#~ "Joidenkin tiedostojärjestelmien tuki vaatii ulkoisten työkalujen "
+#~ "asentamista. Kaikkia toimenpiteitä ei kuitenkaan voi toteuttaa kaikille "
+#~ "tiedostojärjestelmille, vaikka kaikki vaadittavat työkalut "
+#~ "asennettaisiinkin. Katso ohjeista lisätietoja."
+
+#~ msgid "File System"
+#~ msgstr "Tiedostojärjestelmä"
+
+# Tämä viesti ja seuraavat viestit ovat tiedostojärjestelmille tehtävien toimenpiteiden nimiä.
+#~ msgid "Create"
+#~ msgstr "Luo"
+
+#~ msgid "Grow"
+#~ msgstr "Suurenna"
+
+#~ msgid "Shrink"
+#~ msgstr "Pienennä"
+
+#~ msgid "Move"
+#~ msgstr "Siirrä"
+
+#~ msgid "Copy"
+#~ msgstr "Kopioi"
+
+#~ msgid "Check"
+#~ msgstr "Tarkista"
+
+# Tämä on toimenpiteen nimi.
+#~ msgid "Read Label"
+#~ msgstr "Lue nimiö"
+
+# Tämä on toimenpiteen nimi.
+#~ msgid "Write Label"
+#~ msgstr "Kirjoita nimiö"
+
+#~ msgid "Backup"
+#~ msgstr "Varmuuskopioi"
+
+#~ msgid "Restore"
+#~ msgstr "Palauta"
+
+#~ msgid "Support Tools"
+#~ msgstr "Tukityökalut"
+
+#~ msgctxt "@action:button"
+#~ msgid "Rescan Support"
+#~ msgstr "Etsi tuki uudelleen"
+
+#~ msgctxt "@title:window"
+#~ msgid "Information"
+#~ msgstr "Tietoa"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition Information"
+#~ msgstr "Osion tiedot"
+
+#~ msgctxt "@label partition"
+#~ msgid "File system:"
+#~ msgstr "Tiedostojärjestelmä:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Capacity:"
+#~ msgstr "Kapasiteetti:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher name:"
+#~ msgstr "Salauksen nimi:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Cipher mode:"
+#~ msgstr "Salaustila:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Hash:"
+#~ msgstr "Tiiviste:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Key size:"
+#~ msgstr "Avaimen koko:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Payload offset:"
+#~ msgstr "Sisällön alku:"
+
+#~ msgctxt "@label partition"
+#~ msgid "First sector:"
+#~ msgstr "Ensimmäinen sektori:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Last sector:"
+#~ msgstr "Viimeinen sektori:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Number of sectors:"
+#~ msgstr "Sektorien määrä:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Available:"
+#~ msgstr "Vapaana:"
+
+#~ msgctxt "@label partition"
+#~ msgid "Used:"
+#~ msgstr "Käytössä:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Device Information"
+#~ msgstr "Laitteen tiedot"
+
+#~ msgctxt "@label device"
+#~ msgid "Path:"
+#~ msgstr "Polku:"
+
+#~ msgctxt "@label device"
+#~ msgid "Type:"
+#~ msgstr "Tyyppi:"
+
+#~ msgctxt "@label device"
+#~ msgid "Capacity:"
+#~ msgstr "Kapasiteetti:"
+
+#~ msgctxt "@label device"
+#~ msgid "Total sectors:"
+#~ msgstr "Sektoreja kaikkiaan:"
+
+#~ msgctxt "@label device"
+#~ msgid "Heads:"
+#~ msgstr "Päitä:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinders:"
+#~ msgstr "Sylinterejä:"
+
+#~ msgctxt "@label device"
+#~ msgid "Sectors:"
+#~ msgstr "Sektoreja:"
+
+#~ msgctxt "@label device"
+#~ msgid "Logical sector size:"
+#~ msgstr "Looginen sektorikoko:"
+
+#~ msgctxt "@label device"
+#~ msgid "Physical sector size:"
+#~ msgstr "Fyysinen sektorikoko:"
+
+#~ msgctxt "@label device"
+#~ msgid "Cylinder size:"
+#~ msgstr "Sylinterikoko:"
+
+#~ msgctxt "@label device"
+#~ msgid "Primaries/Max:"
+#~ msgstr "Ensiöosioita/enintään:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Insert a partition"
+#~ msgstr "Lisää osio"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to quit the application?</para><para>There is "
+#~ "still an operation pending.</para>"
+#~ msgid_plural ""
+#~ "<para>Do you really want to quit the application?</para><para>There are "
+#~ "still %1 operations pending.</para>"
+#~ msgstr[0] ""
+#~ "<para>Haluatko varmasti lopettaa sovelluksen?</para><para>Toimenpide on "
+#~ "yhä jonossa odottamassa.</para>"
+#~ msgstr[1] ""
+#~ "<para>Haluatko varmasti lopettaa sovelluksen?</para><para>%1 "
+#~ "toimenpidettä on yhä jonossa odottamassa.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Discard Pending Operations and Quit?"
+#~ msgstr "Hylätäänkö odottavat toimenpiteet ja lopetetaan?"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Undo"
+#~ msgstr "Kumoa"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Undo the last operation"
+#~ msgstr "Kumoa viimeisin toimi"
+
+#~ msgctxt "@info:status"
+#~ msgid "Remove the last operation from the list."
+#~ msgstr "Poistaa jonon viimeisimmän toimenpiteen."
+
+#~ msgctxt "@action:inmenu clear the list of operations"
+#~ msgid "Clear"
+#~ msgstr "Peru"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear all operations"
+#~ msgstr "Peru kaikki toimenpiteet"
+
+#~ msgctxt "@info:status"
+#~ msgid "Empty the list of pending operations."
+#~ msgstr "Tyhjentää suoritettavien toimien jonon."
+
+#~ msgctxt "@action:inmenu apply all operations"
+#~ msgid "Apply"
+#~ msgstr "Suorita"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Apply all operations"
+#~ msgstr "Suorita kaikki toimenpiteet"
+
+#~ msgctxt "@info:status"
+#~ msgid "Apply the pending operations in the list."
+#~ msgstr "Suorittaa jonoon asetetut toimenpiteet."
+
+#~ msgctxt "@action:inmenu refresh list of devices"
+#~ msgid "Refresh Devices"
+#~ msgstr "Päivitä laitteet"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Refresh all devices"
+#~ msgstr "Päivitä kaikki laitteet"
+
+#~ msgctxt "@info:status"
+#~ msgid "Renew the devices list."
+#~ msgstr "Päivitä laiteluettelo."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "New Partition Table"
+#~ msgstr "Uusi osiotaulukko"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Create a new partition table"
+#~ msgstr "Luo uusi osiotaulukko"
+
+#~ msgctxt "@info:status"
+#~ msgid "Create a new and empty partition table on a device."
+#~ msgstr "Luo laitteelle uuden, tyhjän osiotaulukon."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Export Partition Table"
+#~ msgstr "Vie osiotaulukko"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Export a partition table"
+#~ msgstr "Vie osiotaulukko"
+
+#~ msgctxt "@info:status"
+#~ msgid "Export the device's partition table to a text file."
+#~ msgstr "Vie laitteen osiotaulukko tekstitiedostoon."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Import Partition Table"
+#~ msgstr "Tuo osiotaulukko"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Import a partition table"
+#~ msgstr "Tuo osiotaulukko"
+
+#~ msgctxt "@info:status"
+#~ msgid "Import a partition table from a text file."
+#~ msgstr "Tuo osiotaulukko tekstitiedostosta."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "SMART Status"
+#~ msgstr "SMART-tila"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show SMART status"
+#~ msgstr "Näytä SMART-tila"
+
+#~ msgctxt "@info:status"
+#~ msgid "Show the device's SMART status if supported"
+#~ msgstr "Näytä laitteen SMART-tila, jos tuettu"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Properties"
+#~ msgstr "Ominaisuudet"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show device properties dialog"
+#~ msgstr "Näytä laitteen ominaisuusikkuna"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify device properties"
+#~ msgstr "Tarkastele ja muokkaa laitteen ominaisuuksia"
+
+#~ msgctxt "@action:inmenu create a new partition"
+#~ msgid "New"
+#~ msgstr "Uusi"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "New partition"
+#~ msgstr "Uusi osio"
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Resize/Move"
+#~ msgstr "Muuta kokoa tai siirrä"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Resize or move partition"
+#~ msgstr "Muuta osion kokoa tai siirrä sitä"
+
+#~ msgctxt "@info:status"
+#~ msgid "Shrink, grow or move an existing partition."
+#~ msgstr "Pienennä, suurenna tai siirrä olemassa olevaa osiota."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Delete"
+#~ msgstr "Poista"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Delete partition"
+#~ msgstr "Poista osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Delete a partition."
+#~ msgstr "Poistaa osion."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Shred"
+#~ msgstr "Hävitä"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Shred partition"
+#~ msgstr "Hävitä osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Shred a partition so that its contents cannot be restored."
+#~ msgstr "Hävittää osion niin, ettei sen sisältöä voi palauttaa."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Copy"
+#~ msgstr "Kopioi"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Copy partition"
+#~ msgstr "Kopioi osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Copy an existing partition."
+#~ msgstr "Kopioi olemassa olevan osion."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Paste"
+#~ msgstr "Liitä"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Paste partition"
+#~ msgstr "Liitä osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Paste a copied partition."
+#~ msgstr "Liittää kopioidun osion."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Edit Mount Point"
+#~ msgstr "Muokkaa liitospistettä"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Edit mount point"
+#~ msgstr "Muokkaa liitospistettä"
+
+#~ msgctxt "@info:status"
+#~ msgid "Edit a partition's mount point and options."
+#~ msgstr "Muokkaa osion liitospisteitä ja valitsimia."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Mount"
+#~ msgstr "Liitä"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Mount or unmount partition"
+#~ msgstr "Liitä tai irrota osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Mount or unmount a partition."
+#~ msgstr "Liittää tai irrottaa osion."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Check"
+#~ msgstr "Tarkista"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Check partition"
+#~ msgstr "Tarkista osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Check a filesystem on a partition for errors."
+#~ msgstr "Tarkistaa osion tiedostojärjestelmän virheiden varalta."
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Show partition properties dialog"
+#~ msgstr "Näytä osion ominaisuusikkuna"
+
+#~ msgctxt "@info:status"
+#~ msgid "View and modify partition properties (label, partition flags, etc.)"
+#~ msgstr ""
+#~ "Näyttää ja antaa muuttaa osion ominaisuuksia (nimiö, valitsimet jne.)."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Backup"
+#~ msgstr "Varmuuskopioi"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Backup partition"
+#~ msgstr "Varmuuskopioi osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Backup a partition to an image file."
+#~ msgstr "Varmuuskopioi osion levykuvatiedostoon."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Restore"
+#~ msgstr "Palauta"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Restore partition"
+#~ msgstr "Palauta osio"
+
+#~ msgctxt "@info:status"
+#~ msgid "Restore a partition from an image file."
+#~ msgstr "Palauttaa osion levykuvatiedostosta."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "File System Support"
+#~ msgstr "Tiedostojärjestelmätuki"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "View file system support information"
+#~ msgstr "Näytä tietoa tiedostojärjestelmätuesta"
+
+#~ msgctxt "@info:status"
+#~ msgid "Show information about supported file systems."
+#~ msgstr "Näyttää tietoa tuetuista tiedostojärjestelmistä."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Clear Log"
+#~ msgstr "Tyhjennä loki"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Clear the log output"
+#~ msgstr "Tyhjennä lokituloste"
+
+#~ msgctxt "@info:status"
+#~ msgid "Clear the log output panel."
+#~ msgstr "Tyhjentää lokitulosteen paneelin."
+
+#~ msgctxt "@action:inmenu"
+#~ msgid "Save Log"
+#~ msgstr "Tallenna loki"
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Save the log output"
+#~ msgstr "Tallenna lokituloste"
+
+#~ msgctxt "@info:status"
+#~ msgid "Save the log output to a file."
+#~ msgstr "Tallentaa lokitulosteen tiedostoon."
+
+#~ msgctxt "@info:status"
+#~ msgid "One pending operation"
+#~ msgid_plural "%1 pending operations"
+#~ msgstr[0] "Yksi odottava toimenpide"
+#~ msgstr[1] "%1 odottavaa toimenpidettä"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Using backend plugin: %1 (%2)"
+#~ msgstr "Käytetään taustaosaliitännäistä: %1 (%2)"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scanning devices..."
+#~ msgstr "Etsitään laitteita…"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Scan finished."
+#~ msgstr "Etsintä valmis."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to rescan the devices?</para><para><warning>This "
+#~ "will also clear the list of pending operations.</warning></para>"
+#~ msgstr ""
+#~ "<para>Haluatko varmasti etsiä laitteet uudelleen?</"
+#~ "para><para><warning>Tämä poistaa myös jonoon asetetut toimenpiteet.</"
+#~ "warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Rescan the Devices?"
+#~ msgstr "Etsitäänkö laitteet uudelleen?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Rescan Devices"
+#~ msgstr "&Etsi laitteet uudelleen"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to apply the pending operations listed below?</"
+#~ "para><para><warning>This will permanently modify your disks.</warning></"
+#~ "para>"
+#~ msgstr ""
+#~ "<para>Haluatko varmasti suorittaa jonoon asetetut toimenpiteet?</para> "
+#~ "<para><warning>Tämä muuttaa levyjen sisältöä.</warning></para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Apply Pending Operations?"
+#~ msgstr "Suoritetaanko odottavat toimenpiteet?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Apply Pending Operations"
+#~ msgstr "Suorita odottavat toimenpiteet"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Applying operations..."
+#~ msgstr "Suoritetaan toimenpiteitä…"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Undoing operation: %1"
+#~ msgstr "Kumotaan toimenpide: %1"
+
+#~ msgctxt "@info"
+#~ msgid "Do you really want to clear the list of pending operations?"
+#~ msgstr ""
+#~ "Haluatko varmasti poistaa suoritustaan odottavat toimenpiteet jonosta?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Clear Pending Operations?"
+#~ msgstr "Poistetaanko odottavat toimenpiteet?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Clear Pending Operations"
+#~ msgstr "Poista odottavat toimenpiteet"
+
+#~ msgctxt "@info/plain"
+#~ msgid "Clearing the list of pending operations."
+#~ msgstr "Tyhjennetään odottavien toimenpiteiden jonoa."
+
+#~ msgctxt "@info"
+#~ msgid "Could not open input file <filename>%1</filename> for import: %2"
+#~ msgstr ""
+#~ "Syötetiedostoa <filename>%1</filename> ei voitu avata tuontia varten: %2"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Importing Partition Table"
+#~ msgstr "Virhe tuotaessa osiotaulukkoa"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not open temporary file <filename>%1</filename> while trying to "
+#~ "import from <filename>%2</filename>."
+#~ msgstr ""
+#~ "Väliaikaistiedostoa <filename>%1</filename> ei voitu avata yritettäessä "
+#~ "tuoda osiotaulukkoa tiedostosta <filename>%2</filename>."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The import file <filename>%1</filename> does not contain a valid "
+#~ "partition table."
+#~ msgstr ""
+#~ "Tuotavassa tiedostossa <filename>%1</filename> ei ole kelvollista "
+#~ "osiotaulukkoa."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error While Importing Partition Table"
+#~ msgstr "Virhe tuotaessa osiotaulukkoa"
+
+#~ msgctxt "@info"
+#~ msgid "Found more than one partition table type in import file (line %1)."
+#~ msgstr ""
+#~ "Tuontitiedostossa (riviltä %1) löytyi useampia osiotaulukon tyyppejä."
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is unknown (line %2)."
+#~ msgstr "Osiotaulukon tyyppi ”%1” on tuntematon (rivillä %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition table type \"%1\" is not supported for import (line %2)."
+#~ msgstr "Osiotaulukon tyyppiä ”%1” ei tueta tuonnissa (rivillä %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Found partition but no partition table type (line %1)."
+#~ msgstr "Löytyi osio muttei osiotaulukon tyyppiä (rivillä %1)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Partition %1 would be outside the device's boundaries (line %2)."
+#~ msgstr "Osio %1 olisi laitteen rajojen ulkopuolella (rivillä %2)."
+
+#~ msgctxt "@info"
+#~ msgid "Partition %1 has end before start sector (line %2)."
+#~ msgstr "Osio %1 päättyy ennen alkusektoria (rivillä %2)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Unrecognized partition role \"%1\" for partition %2 (line %3)."
+#~ msgstr "Tuntematon osion rooli ”%1” osiolle %2 (rivillä %3)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid ""
+#~ "No parent partition or partition table found for partition %1 (line %2)."
+#~ msgstr "Osiolle %1 ei löydy emo-osiota tai osiotaulukkoa (rivillä %2)."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The partition table type \"%1\" does not support extended partitions, but "
+#~ "one was found (line %2)."
+#~ msgstr ""
+#~ "Osiotaulukon tyyppi ”%1” ei tue laajennettuja osioita, vaikka sellainen "
+#~ "löytyi (rivillä %2)."
+
+#~ msgctxt "@info the partition is NOT a device path, just a number"
+#~ msgid "Could not create file system \"%1\" for partition %2 (line %3)."
+#~ msgstr "Ei voitu luoda tiedostojärjestelmää ”%1” osiolle %2 (rivillä %3)."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Could not parse line %1 from import file. Ignoring it."
+#~ msgstr "Ei voitu jäsentää tuontitiedoston riviä %1: ohitetaan se."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Exporting Partition Table"
+#~ msgstr "Osiotaulukon vienti epäonnistui"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>No support tools were found for file systems currently present on "
+#~ "hard disks in this computer:</para><table style='margin-top:12px'><tr><td "
+#~ "style='font-weight:bold;padding-right:12px;white-space:"
+#~ "nowrap;'>Partition</td><td style='font-weight:bold;padding-right:12px;"
+#~ "white-space:nowrap;'>File System</td><td style='font-weight:bold;padding-"
+#~ "right:12px;white-space:nowrap;'>Support Tools</td><td style='font-weight:"
+#~ "bold;padding-right:12px;white-space:nowrap;'>URL</td></tr>%1</"
+#~ "table><para>As long as the support tools for these file systems are not "
+#~ "installed you will not be able to modify them.</para><para>You should "
+#~ "find packages with these support tools in your distribution's package "
+#~ "manager.</para>"
+#~ msgstr ""
+#~ "<para>Tietokoneen kiintolevyiltä löytyneiden tiedostojärjestelmien "
+#~ "tukityökaluja ei löytynyt:</para><table style='margin-top:12px'><tr><td "
+#~ "style='font-weight:bold;padding-right:12px;white-space:nowrap;'>Osio</"
+#~ "td><td style='font-weight:bold;padding-right:12px;white-space:"
+#~ "nowrap;'>Tiedostojärjestelmä</td><td style='font-weight:bold;padding-"
+#~ "right:12px;white-space:nowrap;'>Tukityökalut</td><td style='font-weight:"
+#~ "bold;padding-right:12px;white-space:nowrap;'>Osoite</td></tr>%1</"
+#~ "table><para>Ellei näiden tiedostojärjestelmien tukityökaluja ole "
+#~ "asennettu, et voi tehdä niihin muutoksia.</para><para>Tukityökalut "
+#~ "löytynevät jakelusi paketinhallinnasta.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Missing File System Support Packages"
+#~ msgstr "Puuttuvia tiedostojärjestelmätukipaketteja"
+
+#~ msgctxt "@title:window"
+#~ msgid "KDE Partition Manager"
+#~ msgstr "KDE:n osionhallinta"
+
+#~ msgctxt "@title:window"
+#~ msgid "Devices"
+#~ msgstr "Laitteet"
+
+#~ msgctxt "@title:window"
+#~ msgid "Pending Operations"
+#~ msgstr "Odottavat toimenpiteet"
+
+#~ msgctxt "@title:window"
+#~ msgid "Log Output"
+#~ msgstr "Lokitulos"
+
+#~ msgctxt "@title:window"
+#~ msgid "Create a new partition"
+#~ msgstr "Luo uusi osio"
+
+#~ msgctxt "@title:menu turn on and off edit toolbar"
+#~ msgid "Edit Toolbar"
+#~ msgstr "Muokkaustyökalurivi"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition Toolbar"
+#~ msgstr "Osiotyökalurivi"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device Toolbar"
+#~ msgstr "Laitetyökalurivi"
+
+#~ msgctxt "@title:menu"
+#~ msgid "View"
+#~ msgstr "Näytä"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Device"
+#~ msgstr "Laite"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Select Current Device"
+#~ msgstr "Valitse nykyinen laite"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Partition"
+#~ msgstr "Osio"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be mounted."
+#~ msgstr ""
+#~ "Osion <filename>%1</filename> tiedostojärjestelmää ei voitu liittää."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Mount File System."
+#~ msgstr "Tiedostojärjestelmää ei voitu liittää."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system on partition <filename>%1</filename> could not be "
+#~ "unmounted."
+#~ msgstr ""
+#~ "Osion <filename>%1</filename> tiedostojärjestelmää ei voitu irrottaa."
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Unmount File System."
+#~ msgstr "Tiedostojärjestelmää ei voitu irrottaa."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>There is already one primary partition on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgid_plural ""
+#~ "<para>There are already %1 primary partitions on this device. This is the "
+#~ "maximum number its partition table type can handle.</para><para>You "
+#~ "cannot create, paste or restore a primary partition on it before you "
+#~ "delete an existing one.</para>"
+#~ msgstr[0] ""
+#~ "<para>Laitteella on jo yksi ensiöosio. Tämä on enimmäismäärä, jota sen "
+#~ "osiotaulukkotyyppi voi hallita.</para><para>Et voi luoda, liittää tai "
+#~ "palauttaa sille ensiöosiota, ennen kuin poistat olemassaolevan.</para>"
+#~ msgstr[1] ""
+#~ "<para>Laitteella on jo %1 ensiöosiota. Tämä on enimmäismäärä, jota sen "
+#~ "osiotaulukkotyyppi voi hallita.</para><para>Et voi luoda, liittää tai "
+#~ "palauttaa sille ensiöosiota, ennen kuin poistat olemassaolevan.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Too Many Primary Partitions."
+#~ msgstr "Liikaa ensiöosioita"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The partition <filename>%1</filename> cannot currently be deleted "
+#~ "because one or more partitions with higher logical numbers are still "
+#~ "mounted.</para><para>Please unmount all partitions with higher logical "
+#~ "numbers than %2 first.</para>"
+#~ msgstr ""
+#~ "<para>Osiota <filename>%1</filename> ei voi juuri nyt poistaa, koska yksi "
+#~ "tai useampi loogisesti suurempinumeroinen osio on yhä liitetty.</"
+#~ "para><para>Irrota ensin kaikki osiot, joilla on suurempi looginen numero "
+#~ "kuin %2.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Delete Partition."
+#~ msgstr "Osiota ei voi poistaa."
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you really want to delete the partition that is currently in the "
+#~ "clipboard? It will no longer be available for pasting after it has been "
+#~ "deleted."
+#~ msgstr ""
+#~ "Haluatko varmasti poistaa nyt leikepöydällä olevan osion? Sitä ei tämän "
+#~ "jälkeen voi enää liittää."
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Delete Partition in the Clipboard?"
+#~ msgstr "Haluatko varmasti poistaa leikepöydällä olevan osion?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Delete It"
+#~ msgstr "Poista"
+
+#~ msgctxt "@info/plain"
+#~ msgid ""
+#~ "Partition <filename>%1</filename> has the same position and size after "
+#~ "resize/move. Ignoring operation."
+#~ msgstr ""
+#~ "Osiolla <filename>%1</filename> olisi sama sijainti ja koko koon "
+#~ "muuttamisen tai siirron jälkeen: ohitetaan toimi."
+
+#~ msgctxt "@info/plain"
+#~ msgid "Partition <filename>%1</filename> has been copied to the clipboard."
+#~ msgstr "Osio <filename>%1</filename> on kopioitu leikepöydälle."
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~| "filename>.</warning></para><para>Recreating a file system will erase all "
+#~| "its contents. If you continue now and apply the resulting operation in "
+#~| "the main window, all data on <filename>%1</filename> will unrecoverably "
+#~| "be lost.</para>"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Overwriting one partition with another "
+#~ "(or with an image file) will destroy all data on this target partition.</"
+#~ "para><para>If you continue now and apply the resulting operation in the "
+#~ "main window, all data currently stored on <filename>%1</filename> will "
+#~ "unrecoverably be overwritten.</para>"
+#~ msgstr ""
+#~ "<para><warning>Ollaan poistamassa kaikkea dataa osiolta <filename>%1 </"
+#~ "filename>.</warning></para><para>Tiedostojärjestelmän luominen uudelleen "
+#~ "poistaa sen koko sisällön. Jos jatkat pääikkunassa odottavaa "
+#~ "toimenpidettä, kaikki osion <filename>%1</filename> data poistetaan "
+#~ "peruuttamattomasti.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Overwrite Existing Partition?"
+#~ msgstr "Korvataanko olemassa oleva osio varmasti?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite Partition"
+#~ msgstr "Korvaa osio"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The selected partition is not large enough to hold the source "
+#~ "partition or the backup file.</para><para>Pick another target or resize "
+#~ "this partition so it is as large as the source.</para>"
+#~ msgstr ""
+#~ "<para>Valittu osio ei ole tarpeeksi suuri lähdeosiolle tai "
+#~ "varmuuskopiotiedostolle.</para><para>Valitse toinen kohde tai kasvata "
+#~ "tämä osio lähteen kokoiseksi.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Target Not Large Enough"
+#~ msgstr "Kohde ei riittävän suuri"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "<para>It is not possible to create the target partition large enough to "
+#~| "hold the source.</para><para>This may happen if not all partitions on a "
+#~| "device start and end on cylinder boundaries or when copying a primary "
+#~| "partition into an extended partition.</para>"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>It is not possible to create the target partition large enough to "
+#~ "hold the source.</para><para>This may happen if not all partitions on a "
+#~ "device are correctly aligned or when copying a primary partition into an "
+#~ "extended partition.</para>"
+#~ msgstr ""
+#~ "<para>Ei ole mahdollista luoda lähteen kokoista kohdeosiota.</"
+#~ "para><para>Näin voi käydä, elleivät kaikki laitteen osiot ala ja pääty "
+#~ "sylinterirajoilla tai kopioitaessa ensiöosiota laajennetulle osiolle.</"
+#~ "para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cannot Create Target Partition."
+#~ msgstr "Kohdeosiota ei voi luoda."
+
+#~ msgctxt "@info"
+#~ msgid "Do you want to overwrite the existing file <filename>%1</filename>?"
+#~ msgstr "Haluatko korvata olemassa olevan tiedoston <filename>%1</filename>?"
+
+#~ msgctxt "@title:window"
+#~ msgid "Overwrite Existing File?"
+#~ msgstr "Korvataanko olemassa oleva tiedosto?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Overwrite File"
+#~ msgstr "Korvaa tiedosto"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "The file system in the image file <filename>%1</filename> is too large to "
+#~ "be restored to the selected partition."
+#~ msgstr ""
+#~ "Levykuvan <filename>%1</filename> tiedostojärjestelmä on liian suuri "
+#~ "mahtuakseen palautettavaksi valitulle osiolle."
+
+#~ msgctxt "@title:window"
+#~ msgid "Not Enough Space to Restore File System."
+#~ msgstr "Tiedostojärjestelmän palauttamiseen ei ole tarpeeksi tilaa."
+
+#~ msgid "Partition"
+#~ msgstr "Osio"
+
+#~ msgid "Type"
+#~ msgstr "Tyyppi"
+
+#~ msgid "Mount Point"
+#~ msgstr "Liitospiste"
+
+#~ msgid "Size"
+#~ msgstr "Koko"
+
+#~ msgid "Used"
+#~ msgstr "Käytössä"
+
+#~ msgid "Available"
+#~ msgstr "Vapaana"
+
+#~ msgid "First Sector"
+#~ msgstr "Ensimmäinen sektori"
+
+#~ msgid "Last Sector"
+#~ msgstr "Viimeinen sektori"
+
+#~ msgid "Number of Sectors"
+#~ msgstr "Sektorien määrä"
+
+#~ msgid "Flags"
+#~ msgstr "Valitsimet"
+
+#~ msgctxt "@title:window"
+#~ msgid "Partition properties: <filename>%1</filename>"
+#~ msgstr "Osion ominaisuudet: <filename>%1</filename>"
+
+#~ msgctxt "@item mountpoint"
+#~ msgid "(none found)"
+#~ msgstr "(mitään ei löytynyt)"
+
+#~ msgctxt "@label partition state"
+#~ msgid "idle"
+#~ msgstr "jouten"
+
+#~ msgctxt "@label partition state"
+#~ msgid "At least one logical partition is mounted."
+#~ msgstr "Ainakin yksi looginen osio on liitetty."
+
+#~ msgctxt "@label partition state"
+#~ msgid "mounted"
+#~ msgstr "liitetty"
+
+#~ msgctxt "@item uuid"
+#~ msgid "(none)"
+#~ msgstr "(ei mitään)"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Changing the file system on a partition "
+#~ "already on disk will erase all its contents. If you continue now and "
+#~ "apply the resulting operation in the main window, all data on <filename>"
+#~ "%1</filename> will unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>Ollaan poistamassa kaikkea dataa osiolta <filename>%1 </"
+#~ "filename>.</warning></para><para>Jo levylle kirjoitetun osion "
+#~ "tiedostojärjestelmän muuttaminen poistaa sen koko sisällön. Jos jatkat "
+#~ "pääikkunassa odottavaa toimenpidettä, kaikki data osiolta <filename>%1 </"
+#~ "filename> poistetaan pysyvästi.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate <filename>%1</filename> with File System %2?"
+#~ msgstr ""
+#~ "Luodaanko osiolle <filename>%1</filename> todella uusi "
+#~ "tiedostojärjestelmä %2?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Change the File System"
+#~ msgstr "Muuta tiedostojärjestelmää"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Change the File System"
+#~ msgstr "Älä muuta tiedostojärjestelmää"
+
+#, fuzzy
+#~| msgctxt "@info"
+#~| msgid ""
+#~| "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~| "filename>.</warning></para><para>Recreating a file system will erase all "
+#~| "its contents. If you continue now and apply the resulting operation in "
+#~| "the main window, all data on <filename>%1</filename> will unrecoverably "
+#~| "be lost.</para>"
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You are about to lose all data on partition <filename>%1</"
+#~ "filename>.</warning></para><para>Recreating a file system will erase all "
+#~ "its contents. If you continue now and apply the resulting operation in "
+#~ "the main window, all data on <filesystem>%1</filesystem> will "
+#~ "unrecoverably be lost.</para>"
+#~ msgstr ""
+#~ "<para><warning>Ollaan poistamassa kaikkea dataa osiolta <filename>%1 </"
+#~ "filename>.</warning></para><para>Tiedostojärjestelmän luominen uudelleen "
+#~ "poistaa sen koko sisällön. Jos jatkat pääikkunassa odottavaa "
+#~ "toimenpidettä, kaikki osion <filename>%1</filename> data poistetaan "
+#~ "pysyvästi.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Really Recreate File System on <filename>%1</filename>?"
+#~ msgstr ""
+#~ "Luodaanko varmasti osion <filename>%1</filename> tiedostojärjestelmä "
+#~ "uudelleen?"
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate the File System"
+#~ msgstr "Luo tiedostojärjestelmä uudelleen"
+
+#~ msgctxt "@action:button"
+#~ msgid "Do Not Recreate the File System"
+#~ msgstr "Älä luo tiedostojärjestelmää uudelleen"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "File system:"
+#~ msgstr "Tiedostojärjestelmä:"
+
+#~ msgctxt "@label"
+#~ msgid "Label:"
+#~ msgstr "Nimike:"
+
+#~ msgctxt "@label"
+#~ msgid "This file system does not support setting a label."
+#~ msgstr "Tälle tiedostojärjestelmälle ei voi asettaa nimiötä."
+
+#~ msgctxt "@action:button"
+#~ msgid "Recreate existing file system"
+#~ msgstr "Luo olemassa oleva tiedostojärjestelmä uudelleen"
+
+#~ msgctxt "@label"
+#~ msgid "Mount point:"
+#~ msgstr "Liitospiste:"
+
+#~ msgctxt "@label"
+#~ msgid "Partition type:"
+#~ msgstr "Osiotyyppi:"
+
+#~ msgctxt "@label"
+#~ msgid "Status:"
+#~ msgstr "Tila:"
+
+#~ msgctxt "@label"
+#~ msgid "UUID:"
+#~ msgstr "UUID:"
+
+#~ msgctxt "@label"
+#~ msgid "Size:"
+#~ msgstr "Koko:"
+
+#~ msgctxt "@label partition capacity available"
+#~ msgid "Available:"
+#~ msgstr "Vapaana:"
+
+#~ msgctxt "@label partition capacity used"
+#~ msgid "Used:"
+#~ msgstr "Käytössä:"
+
+#~ msgctxt "@label"
+#~ msgid "First sector:"
+#~ msgstr "Ensimmäinen sektori:"
+
+#~ msgctxt "@label"
+#~ msgid "Last sector:"
+#~ msgstr "Viimeinen sektori:"
+
+#~ msgctxt "@label"
+#~ msgid "Number of sectors:"
+#~ msgstr "Sektorien määrä:"
+
+#~ msgctxt "@label"
+#~ msgid "Flags:"
+#~ msgstr "Valitsimet:"
+
+#~ msgctxt "@info"
+#~ msgid "Please select a device."
+#~ msgstr "Valitse laite."
+
+#~ msgctxt "@info"
+#~ msgid "No valid partition table was found on this device."
+#~ msgstr "Laitteelta ei löytynyt kelvollista osiotaulukkoa."
+
+#~ msgctxt "@title:window"
+#~ msgid "Resize/move partition: <filename>%1</filename>"
+#~ msgstr "Muuta osion kokoa tai siirrä: <filename>%1</filename>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Scanning devices..."
+#~ msgstr "Etsitään laitteita…"
+
+#~ msgctxt "@label"
+#~ msgid "Scanning..."
+#~ msgstr "Etsitään…"
+
+#~ msgctxt "@label"
+#~ msgid "Scanning device: <filename>%1</filename>"
+#~ msgstr "Etsitään laitetta: <filename>%1</filename>"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "First sector:"
+#~ msgstr "Ensimmäinen sektori:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Last sector:"
+#~ msgstr "Viimeinen sektori:"
+
+#~ msgid "Align partition"
+#~ msgstr "Kohdista osio"
+
+#~ msgctxt "@item:button advanced settings button"
+#~ msgid "Advanced"
+#~ msgstr "Lisäasetukset"
+
+#~ msgid "&Advanced"
+#~ msgstr "&Lisäasetukset"
+
+#, fuzzy
+#~ msgctxt "@label:listbox"
+#~ msgid "Partition &type:"
+#~ msgstr "Osiot&yyppi:"
+
+#, fuzzy
+#~| msgid "Primary"
+#~ msgid "Primar&y"
+#~ msgstr "Ensiö"
+
+#, fuzzy
+#~| msgid "Extended"
+#~ msgid "E&xtended"
+#~ msgstr "Laajennettu"
+
+#, fuzzy
+#~| msgid "Logical"
+#~ msgid "&Logical"
+#~ msgstr "Looginen"
+
+#~ msgctxt "@label"
+#~ msgid "Minimum size:"
+#~ msgstr "Vähimmäiskoko:"
+
+#~ msgctxt "@label"
+#~ msgid "Maximum size:"
+#~ msgstr "Enimmäiskoko:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space before:"
+#~ msgstr "Vapaa tila ennen:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Si&ze:"
+#~ msgstr "&Koko:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Free space after:"
+#~ msgstr "Vapaa tila jälkeen:"
+
+#~ msgctxt "@title:window"
+#~ msgid "SMART Properties: <filename>%1</filename>"
+#~ msgstr "SMART-ominaisuudet: <filename>%1</filename>"
+
+#~ msgctxt "@label SMART number of bad sectors"
+#~ msgid "none"
+#~ msgstr "ei yhtään"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Online"
+#~ msgstr "Verkossa"
+
+#~ msgctxt "@item:intable"
+#~ msgid "Offline"
+#~ msgstr "Ei verkossa"
+
+#~ msgid "Model:"
+#~ msgstr "Malli:"
+
+#~ msgid "Serial number:"
+#~ msgstr "Sarjanumero:"
+
+#~ msgid "Firmware revision:"
+#~ msgstr "Laiteohjelmiston versio:"
+
+#~ msgid "Temperature:"
+#~ msgstr "Lämpötila:"
+
+#~ msgid "Bad sectors:"
+#~ msgstr "Huonoja sektoreja:"
+
+#~ msgid "Powered on for:"
+#~ msgstr "Käynnissä:"
+
+#~ msgid "Self tests:"
+#~ msgstr "Itsetestaus:"
+
+#~ msgid "Overall assessment:"
+#~ msgstr "Yleisarvio:"
+
+#~ msgctxt "@title:window"
+#~ msgid "Could Not Save SMART Report."
+#~ msgstr "SMART-raportin tallennus epäonnistui."
+
+#~ msgid "Id"
+#~ msgstr "Tunniste"
+
+#~ msgid "Attribute"
+#~ msgstr "Määrite"
+
+#~ msgid "Failure Type"
+#~ msgstr "Vian tyyppi"
+
+#~ msgid "Update Type"
+#~ msgstr "Päivityksen tyyppi"
+
+#~ msgid "Worst"
+#~ msgstr "Huonoin"
+
+#~ msgid "Current"
+#~ msgstr "Nykyinen"
+
+#~ msgid "Threshold"
+#~ msgstr "Kynnys"
+
+#~ msgid "Raw"
+#~ msgstr "Raaka"
+
+#~ msgid "Assessment"
+#~ msgstr "Arvio"
+
+#~ msgid "Value"
+#~ msgstr "Arvo"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Could not create temporary output file to save <filename>%1</filename>."
+#~ msgstr ""
+#~ "Ei voitu luoda väliaikaista tulostiedostoa tiedoston <filename>%1</"
+#~ "filename> tallentamiseksi."
+
+#~ msgctxt "@title:window"
+#~ msgid "Error Saving Log File"
+#~ msgstr "Virhe tallennettaessa lokitiedostoa"
+
+#~ msgctxt ""
+#~ "@title:column Severity of a log entry / log level. Text must be very "
+#~ "short."
+#~ msgid "Sev."
+#~ msgstr "Vak."
+
+#~ msgid "Severity"
+#~ msgstr "Vakavuus"
+
+#~ msgctxt "@title:column a time stamp of a log entry"
+#~ msgid "Time"
+#~ msgstr "Aika"
+
+#~ msgctxt "@title:column the text message of a log entry"
+#~ msgid "Message"
+#~ msgstr "Viesti"
+
+#~ msgctxt "@title"
+#~ msgid "<application>KDE Partition Manager</application>"
+#~ msgstr "<application>KDE:n osionhallinta</application>"
+
+#~ msgctxt "@title"
+#~ msgid "Manage your disks, partitions and file systems"
+#~ msgstr "Levyjen, osioiden ja tiedostojärjestelmien asetukset"
+
+#~ msgctxt "@info:credit"
+#~ msgid ""
+#~ "© 2008-2013 Volker Lanz\n"
+#~ "© 2012-2015 Andrius Štikonas"
+#~ msgstr ""
+#~ "© 2008–2013 Volker Lanz\n"
+#~ "© 2012–2015 Andrius Štikonas"
+
+#~ msgid "Hugo Pereira Da Costa"
+#~ msgstr "Hugo Pereira Da Costa"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Partition Widget Design"
+#~ msgstr "Osiosovelman suunnittelu"
+
+#~ msgctxt "@info:shell"
+#~ msgid "Do not try to gain super user privileges"
+#~ msgstr "Älä yritä saada ylläpitäjäoikeuksia"
+
+#, fuzzy
+#~| msgid "Device Node"
+#~ msgctxt "@info:shell"
+#~ msgid "Device(s) to manage"
+#~ msgstr "Laitenimi"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para><warning>You do not have administrative privileges.</warning></"
+#~ "para><para>It is possible to run <application>%1</application> without "
+#~ "these privileges. You will, however, <emphasis>not</emphasis> be allowed "
+#~ "to apply operations.</para><para>Do you want to continue running "
+#~ "<application>%1</application>?</para>"
+#~ msgstr ""
+#~ "<para><warning>Sinulla ei ole ylläpitäjäoikeuksia.</warning></para><para> "
+#~ "Ohjelman <application>%1</application> voi ajaa ilman näitä oikeuksia, "
+#~ "mutta tällöin toimenpiteitä <emphasis>ei</emphasis> voi toteuttaa.</"
+#~ "para><para> Haluatko jatkaa ohjelman <application>%1</application> "
+#~ "käyttöä?</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "No administrative privileges"
+#~ msgstr "Ei ylläpitäjäoikeuksia"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>The configured backend plugin \"%1\" could not be loaded.</"
+#~ "para><para>Loading the default backend plugin \"%2\" instead.</para>"
+#~ msgstr ""
+#~ "<para>Asetettua taustaosaliitännäistä ”%1” ei voida ladata.</"
+#~ "para><para>Ladataan sen sijaan oletustaustaosaliitännäinen ”%2”.</para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Error: Could Not Load Backend Plugin"
+#~ msgstr "Virhe: Ei voida ladata taustaosaliitännäistä"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Neither the configured (\"%1\") nor the default (\"%2\") backend "
+#~ "plugin could be loaded.</para><para>Please check your installation.</para>"
+#~ msgstr ""
+#~ "<para>Sen paremmin asetettua (”%1”) kuin oletustaustaosaliitännäistäkään "
+#~ "(”%2”) ei voida ladata.</para><para>Tarkista asennuksesi.</para>"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Partition type:"
+#~ msgstr "Osiotyyppi:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "Size:"
+#~ msgstr "Koko:"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Developer"
+#~ msgstr "Kehittäjä"
+
+#~ msgctxt "@title"
+#~ msgid "Dummy Backend Plugin"
+#~ msgstr "Valetaustaosaliitännäinen"
+
+#~ msgid "KDE Partition Manager dummy backend."
+#~ msgstr "KDE:n osionhallinnan valetaustaosa"
+
+#~ msgid "Copyright 2010 Volker Lanz"
+#~ msgstr "Tekijänoikeus © 2010 Volker Lanz"
+
+#~ msgctxt "@title"
+#~ msgid "LibParted Backend Plugin"
+#~ msgstr "LibParted-taustaosaliitännäinen"
+
+#~ msgid "KDE Partition Manager backend for libparted."
+#~ msgstr "KDE:n osionhallinnan taustaosa libpartediin."
+
+#~ msgid "Copyright 2008,2009,2010 Volker Lanz"
+#~ msgstr "Tekijänoikeudet © 2008, 2009, 2010 Volker Lanz"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "unknown"
+#~ msgstr "tuntematon"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "extended"
+#~ msgstr "extended"
+
+#~ msgctxt "@item/plain filesystem name"
+#~ msgid "jfs"
+#~ msgstr "jfs"
+
+#~ msgctxt "@info:credit"
+#~ msgid "(c) 2008, 2009, 2010, 2011 Volker Lanz"
+#~ msgstr "© 2008, 2009, 2010, 2011 Volker Lanz"
+
+#, fuzzy
+#~| msgctxt "@label partition"
+#~| msgid "Available:"
+#~ msgid "Available:"
+#~ msgstr "Vapaana:"
+
+#, fuzzy
+#~| msgctxt "@label partition"
+#~| msgid "Used:"
+#~ msgid "Used:"
+#~ msgstr "Käytössä:"
+
+#, fuzzy
+#~| msgctxt "@title:menu"
+#~| msgid "Partition Toolbar"
+#~ msgctxt "@title:window"
+#~ msgid "Target Partition Too Big"
+#~ msgstr "Osiotyökalurivi"
+
+#~ msgid "%1: Operation Report"
+#~ msgstr "%1: toimiraportti"
+
+#~ msgid "User ID:"
+#~ msgstr "Käyttäjätunniste:"
+
+#, fuzzy
+#~| msgctxt "@action:button"
+#~| msgid "Run without administrative privileges"
+#~ msgctxt "@label"
+#~ msgid "Allow Applying Operations Without Administrator Privileges"
+#~ msgstr "Aja ilman ylläpitäjäoikeuksia"
+
+#, fuzzy
+#~| msgctxt "@label device"
+#~| msgid "Cylinder size:"
+#~ msgid "Alignment"
+#~ msgstr "Sylinterikoko:"
+
+#, fuzzy
+#~| msgctxt "@label device"
+#~| msgid "Total sectors:"
+#~ msgid "Total Sectors:"
+#~ msgstr "Sektoreja kaikkiaan:"
+
+#, fuzzy
+#~| msgctxt "@label device"
+#~| msgid "Cylinder size:"
+#~ msgid "Cylinder Size:"
+#~ msgstr "Sylinterikoko:"
+
+#~ msgid "KDE Partition Manager KPart"
+#~ msgstr "KDE:n osionhallinta KPart"
+
+#~ msgid "A test application for KDE Partition Manager's KPart."
+#~ msgstr "Testisovellus KDE:n KPart-osionhallinnalle."
+
+#~ msgid "Copyright (c) 2008 Volker Lanz"
+#~ msgstr "Copyright (c) 2008 Volker Lanz"
+
+#~ msgctxt "@title:menu"
+#~ msgid "Edit"
+#~ msgstr "Muokkaa"
+
+#~ msgctxt "@label:spinbox"
+#~ msgid " MiB"
+#~ msgstr " MiB"
+
+#~ msgctxt "@title:window"
+#~ msgid "Edit mount point for %1"
+#~ msgstr "Muokkaa kohteen %1 liitospistettä"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "File &system:"
+#~ msgstr "Tiedosto&järjestelmä:"
+
+#~ msgctxt "@label:listbox"
+#~ msgid "S&ize:"
+#~ msgstr "&Koko:"
+
+#, fuzzy
+#~| msgctxt "@item/plain filesystem name"
+#~| msgid "unknown"
+#~ msgctxt "@item/plain disk label name"
+#~ msgid "unknown"
+#~ msgstr "tuntematon"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "<para>Do you really want to create a new partition table on the following "
+#~ "device?</para><para><list><item><filename>%1</filename> (%2)</item></"
+#~ "list></para><para><warning>This will destroy all data on the device.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "<para>Haluatko varmasti luoda uuden osiotaulukon seuraavalle laitteelle? "
+#~ "</para><para><list><item><filename>%1</filename> (%2)</item></list></"
+#~ "para> <para><warning>Tämä poistaa kaiken datan laitteelta.</warning></"
+#~ "para>"
+
+#~ msgctxt "@title:window"
+#~ msgid "Destroy All Data on Device?"
+#~ msgstr "Tuhotaanko laitteelta kaikki data?"

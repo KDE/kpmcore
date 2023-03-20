@@ -24,11 +24,9 @@ class QString;
 */
 class DummyBackend : public CoreBackend
 {
-    friend class KPluginFactory;
-
     Q_DISABLE_COPY(DummyBackend)
 
-private:
+public:
     DummyBackend(QObject* parent, const QList<QVariant>& args);
 
 public:

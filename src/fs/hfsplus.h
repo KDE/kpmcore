@@ -37,6 +37,8 @@ public:
 
     bool check(Report& report, const QString& deviceNode) const override;
     bool create(Report& report, const QString& deviceNode) override;
+    QString posixPermissions() const override { return implPosixPermissions();  };
+    void setPosixPermissions(const QString& permissions) override { implSetPosixPermissions(permissions); };
 
     CommandSupportType supportGetLabel() const override {
         return m_GetLabel;

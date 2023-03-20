@@ -35,7 +35,7 @@ SmartAttribute::SmartAttribute(const SmartAttributeParsedData& a) :
     m_Assessment(getAssessment(a)),
     m_Value(getPrettyValue(a.prettyValue(), a.prettyUnit()))
 {
-    
+
 }
 
 QString SmartAttribute::assessmentToString(Assessment a)
@@ -65,7 +65,7 @@ static QString getPrettyValue(quint64 value, SmartAttributeUnit unit)
 
     switch (unit) {
     case SmartAttributeUnit::Miliseconds:
-        rval = KFormat().formatDuration(value);
+        rval = KFormat().formatSpelloutDuration(value);
         break;
 
     case SmartAttributeUnit::Sectors:

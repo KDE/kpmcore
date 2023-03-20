@@ -117,7 +117,11 @@ void SmartParser::loadSmartOutput()
     if (m_SmartOutput.isEmpty()) {
         ExternalCommand smartctl(QStringLiteral("smartctl"), { QStringLiteral("--all"), QStringLiteral("--json"), devicePath() });
 
-        if (smartctl.run() && smartctl.exitCode() == 0) {
+        // Exit status of smartctl is a bitfield, check that bits 0 and 1 are not set:
+        //  - bit 0: command line did not parse;
+        //  - bit 1: device open failed.
+        // See `man 8 smartctl` for more details.
+        if (smartctl.run() && (smartctl.exitCode() & 1) == 0 && (smartctl.exitCode() & 2) == 0) {
             QByteArray output = smartctl.rawOutput();
 
             m_SmartOutput = QJsonDocument::fromJson(output);

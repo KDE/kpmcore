@@ -3,6 +3,11 @@
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+function(kpmcore_add_plugin name)
+    kcoreaddons_add_plugin(${name} INSTALL_NAMESPACE "kpmcore")
+endfunction()
+
+
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     option(PARTMAN_SFDISKBACKEND "Build the sfdisk backend plugin." ON)
 

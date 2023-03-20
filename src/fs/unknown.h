@@ -37,7 +37,12 @@ public:
         return m_Move;
     }
 
+    CommandSupportType supportCopy() const override {
+        return m_Copy;
+    }
+
     static CommandSupportType m_Move;
+    static CommandSupportType m_Copy;
 };
 }
 

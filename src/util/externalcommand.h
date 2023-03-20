@@ -27,6 +27,7 @@
 class KJob;
 class Report;
 class CopySource;
+class CopySourceDevice;
 class CopyTarget;
 class QDBusInterface;
 class QDBusPendingCall;
@@ -54,8 +55,9 @@ public:
 
 public:
     bool copyBlocks(const CopySource& source, CopyTarget& target);
+    QByteArray readData(const CopySourceDevice& source);
     bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
-    bool createFile(const QByteArray& filePath, const QString& fileContents); // similar to writeData but creates a new file
+    bool writeFstab(const QByteArray& fileContents);
 
     /**< @param cmd the command to run */
     void setCommand(const QString& cmd);
@@ -72,7 +74,6 @@ public:
 
     bool write(const QByteArray& input); /**< @param input the input for the program */
 
-    bool startCopyBlocks();
     bool start(int timeout = 30000);
     bool run(int timeout = 30000);
 

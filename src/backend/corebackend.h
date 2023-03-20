@@ -170,6 +170,8 @@ public:
       */
     virtual void emitScanProgress(const QString& deviceNode, int i);
 
+    static bool isPolkitInstalledCorrectly();
+
 protected:
     static void setPartitionTableForDevice(Device& d, PartitionTable* p);
     static void setPartitionTableMaxPrimaries(PartitionTable& p, qint32 max_primaries);
