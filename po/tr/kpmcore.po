@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-01-19 22:39+0300\n"
+"PO-Revision-Date: 2023-03-21 15:17+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -172,7 +172,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing Volume Group, nothing to do."
-msgstr "Mantıksal grup yeniden boyutlandırılıyor, yapılacak bir şey yok."
+msgstr "Disk bölümü grubu yeniden boyutlandırılıyor, yapılacak bir şey yok."
 
 #: core/operationstack.cpp:440
 #, kde-kuit-format
@@ -1542,8 +1542,8 @@ msgid ""
 "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning><filename>%1</filename> üzerindeki Btrfs dosya sisteminin yeniden "
-"boyutlandırılması: Bölüm bağlantısı kesme işlemi başarısız oldu.</warning>"
+"<warning><filename>%1</filename> bölüntüsü üzerindeki Btrfs dosya sisteminin "
+"yeniden boyutlandırılması: Bağlantıyı kesme işlemi başarısız oldu.</warning>"
 
 #: fs/btrfs.cpp:189
 #, kde-kuit-format
@@ -1804,8 +1804,8 @@ msgid ""
 "<warning>Resizing JFS file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning><filename>%1</filename> üzerindeki JFS dosya sisteminin yeniden "
-"boyutlandırılması: Bölüm bağlantısı kesme işlemi başarısız oldu.</warning>"
+"<warning><filename>%1</filename> bölüntüsü üzerindeki JFS dosya sisteminin "
+"yeniden boyutlandırılması: Bağlantıyı kesme işlemi başarısız oldu.</warning>"
 
 #: fs/jfs.cpp:176
 #, kde-kuit-format
@@ -2164,19 +2164,19 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
-msgstr "Yeni hacim grubu oluştur: <filename>%1</filename> FH:%2 ile"
+msgstr "Yeni disk bölümü grubu oluştur: <filename>%1</filename>, FH:%2 ile"
 
 #: jobs/deactivatelogicalvolumejob.cpp:50
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr "Mantıksal Hacimleri devre dışı bırak: <filename>%1</filename>"
+msgstr "Mantıksal Disk Bölümleri'ni devre dışı bırak: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Volume Group: <filename>%1</filename>"
-msgstr "Hacim Grubunu devre dışı bırak: <filename>%1</filename>"
+msgstr "Disk Bölümü Grubu'nu devre dışı bırak: <filename>%1</filename>"
 
 #: jobs/deletefilesystemjob.cpp:51
 #, kde-kuit-format
@@ -2355,14 +2355,14 @@ msgstr ""
 msgctxt "@info/plain"
 msgid "Move used PE in %1 on %2 to other available Physical Volumes"
 msgstr ""
-"%2 üzerinde %1 içinde Kullanılmış FU'nun başka kullanılabilir Fiziksel "
-"Hacimlere kaydır"
+"%2 üzerinde %1 içinde Kullanılmış FU'nun başka kullanılabilir Fiziksel Disk "
+"Bölümleri'ne kaydır"
 
 #: jobs/removevolumegroupjob.cpp:41
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
-msgstr "Hacim grubunu kaldır: <filename>%1</filename> "
+msgstr "Disk bölümü grubunu kaldır: <filename>%1</filename> "
 
 #: jobs/resizefilesystemjob.cpp:66
 #, kde-kuit-format
@@ -2458,22 +2458,22 @@ msgstr[1] ""
 msgctxt "@info/plain"
 msgid "Adding LVM Physical Volume %2 to %3."
 msgid_plural "Adding LVM Physical Volumes %2 to %3."
-msgstr[0] "%2 LVM Fiziksel Hacim %3 üzerine ekleniyor."
-msgstr[1] "%2 LVM Fiziksel Hacimleri %3 üzerine ekleniyor."
+msgstr[0] "%2 LVM Fiziksel Disk Bölümü, %3 üzerine ekleniyor."
+msgstr[1] "%2 LVM Fiziksel Disk Bölümleri, %3 üzerine ekleniyor."
 
 #: jobs/resizevolumegroupjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Removing LVM Physical Volume %2 from %3."
 msgid_plural "Removing LVM Physical Volumes %2 from %3."
-msgstr[0] "%2 LVM Fiziksel Hacim %3 üzerinden çıkarılıyor."
-msgstr[1] "%2 LVM Fiziksel Hacimleri %3 üzerinden çıkarılıyor."
+msgstr[0] "%2 LVM Fiziksel Disk Bölümü, %3 üzerinden çıkarılıyor."
+msgstr[1] "%2 LVM Fiziksel Disk Bölümleri, %3 üzerinden çıkarılıyor."
 
 #: jobs/resizevolumegroupjob.cpp:64
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resizing Volume Group %1 to %2."
-msgstr "%1 Hacim Grubu %2 olarak yeniden boyutlandırılıyor."
+msgstr "%1 Disk Bölümü Grubu, %2 olarak yeniden boyutlandırılıyor."
 
 #: jobs/restorefilesystemjob.cpp:62
 #, kde-kuit-format
@@ -2847,13 +2847,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "'%1' adlı yeni bir LVM hacim grubu oluştur."
+msgstr "'%1' adlı yeni bir LVM disk bölümü grubu oluşturun."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate volume group."
-msgstr "Hacim grubunu devre dışı bırak."
+msgstr "Disk bölümü grubunu devre dışı bırakın."
 
 #: ops/deleteoperation.cpp:87
 #, kde-kuit-format
@@ -2913,7 +2913,7 @@ msgstr "Hata"
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove a LVM volume group."
-msgstr "Bir LVM hacim grubunu kaldır."
+msgstr "Bir LVM disk bölümü grubunu kaldırın."
 
 #: ops/resizeoperation.cpp:156
 #, kde-kuit-format
