@@ -3,7 +3,7 @@
 # Volker Lanz <vl@fidra.de>, 2009.
 # Johannes Obermayr <johannesobermayr@gmx.de>, 2009.
 # Panagiotis Papadopoulos <pano_90@gmx.net>, 2010.
-# Frederik Schwarzer <schwarzer@kde.org>, 2010, 2011, 2012, 2013, 2016.
+# Frederik Schwarzer <schwarzer@kde.org>, 2010, 2011, 2012, 2013, 2016, 2023.
 # Jonathan Raphael Joachim Kolberg <bulldog98@freenet.de>, 2010.
 # Benjamin Weis <benjamin.weis@gmx.com>, 2013.
 msgid ""
@@ -11,14 +11,15 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2021-05-10 16:49+0200\n"
-"Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
+"PO-Revision-Date: 2023-04-15 01:57+0200\n"
+"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3510,12 +3511,10 @@ msgid "Library for managing partitions"
 msgstr "Bibliothek zur Verwaltung von Partitionen"
 
 #: util/helpers.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "&copy; 2008-2020 KPMcore developers"
+#, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2020 KPMcore-Entwickler"
+msgstr "Copyright &copy; 2008-2022 KPMcore-Entwickler"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
