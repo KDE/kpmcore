@@ -6,14 +6,14 @@
 # Xabier Villar <xabier.villar@gmail.com>, 2010.
 # Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013.
 # Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2012, 2013, 2015, 2016, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2020, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2020-01-05 18:42+0100\n"
+"PO-Revision-Date: 2023-05-02 20:25+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -143,8 +143,9 @@ msgid ""
 "Deleting a partition just restored to an existing partition: Removing the "
 "restore operation and deleting the existing partition."
 msgstr ""
-"Eliminado dunha partición que acaba de restaur nunha partición xa existente: "
-"retirando a operación de restauración e eliminando a partición existente."
+"Eliminado dunha partición que acaba de restaurar nunha partición xa "
+"existente: retirando a operación de restauración e eliminando a partición "
+"existente."
 
 #: core/operationstack.cpp:318
 #, kde-kuit-format
@@ -2037,12 +2038,10 @@ msgstr ""
 "filename> en <filename>%2</filename>"
 
 #: jobs/changepermissionsjob.cpp:43
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+msgstr "Cambiar os permisos de <filename>%1</filename> a %2"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, kde-kuit-format
@@ -2557,8 +2556,8 @@ msgid ""
 "File system on partition <filename>%1</filename> does not support setting "
 "labels. Job ignored."
 msgstr ""
-"O sistema de ficheiros na partición <filename>%1</filename> non permite "
-"indicar etiquetas. Ignórase a tarefa."
+"O sistema de ficheiros da partición <filename>%1</filename> non permite "
+"definir etiquetas. Ignorouse a tarefa."
 
 #: jobs/setfilesystemlabeljob.cpp:81
 #, kde-kuit-format
@@ -2644,181 +2643,131 @@ msgstr ""
 "%2, lonxitude: %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
-"O sistema de ficheiros na partición <filename>%1</filename> non permite "
-"indicar etiquetas. Ignórase a tarefa."
+"A táboa de particións da partición <filename>%1</filename> non permite "
+"definir atributos. Ignorouse a tarefa."
 
 #: jobs/setpartitionattributesjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
-msgstr "Non se puido crear a nova partición <filename>%1</filename>."
+msgstr ""
+"Non se puideron definir os atributos da partición <filename>%1</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
 "Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
-"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
-"filename>."
+"filename> para definir os atributos da partición <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
-"tipo de sistema para a partición <filename>%2</filename>."
+"Non se puido abrir o dispositivo <filename>%1</filename> para definir os "
+"atributos da partición <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+msgstr "Definir os atributos da partición <filename>%1</filename> como «%2»"
 
 #: jobs/setpartitionlabeljob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
-"O sistema de ficheiros na partición <filename>%1</filename> non permite "
-"indicar etiquetas. Ignórase a tarefa."
+"A táboa de particións da partición <filename>%1</filename> non permite "
+"definir nomes. Ignorouse a tarefa."
 
 #: jobs/setpartitionlabeljob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr "Non se puido crear a nova partición <filename>%1</filename>."
+msgstr "Non se puido definir o nome da partición <filename>%1</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
 "Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
-"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
-"filename>."
+"filename> para definir o nome da partición <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
-"tipo de sistema para a partición <filename>%2</filename>."
+"Non se puido abrir o dispositivo <filename>%1</filename> para definir o nome "
+"da partición <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+msgstr "Definir a etiqueta da partición <filename>%1</filename> como «%2»"
 
 #: jobs/setpartitionuuidjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
-"O sistema de ficheiros na partición <filename>%1</filename> non permite "
-"indicar etiquetas. Ignórase a tarefa."
+"A táboa de particións da partición <filename>%1</filename> non permite "
+"definir UUID. Ignorouse a tarefa."
 
 #: jobs/setpartitionuuidjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr "Non se puido crear a nova partición <filename>%1</filename>."
+msgstr "Non se puido definir o UUID da partición <filename>%1</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
 "Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
-"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
-"filename>."
+"filename> para definir o UUID da partición <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
-"tipo de sistema para a partición <filename>%2</filename>."
+"Non se puido abrir o dispositivo <filename>%1</filename> para definir o UUID "
+"da partición <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
+msgstr "Definir o UUID da partición <filename>%1</filename> como «%2»"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -3043,7 +2992,7 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> before resize/move failed."
 msgstr ""
-"Fallou a comprobación da partición <filename>%1</filename> despois demovela "
+"Fallou a comprobación da partición <filename>%1</filename> despois de movela "
 "ou cambiala de tamaño."
 
 #: ops/resizeoperation.cpp:201
@@ -3407,25 +3356,20 @@ msgid "Could not write to device <filename>%1</filename>."
 msgstr "Non se puido escribir no dispositivo <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:151
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for writing."
+#, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
-msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para escritura."
+msgstr "Non se puido abrir o ficheiro <filename>%1</filename> para escritura."
 
 #: util/externalcommandhelper.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgid "Could not write to device <filename>%1</filename>."
+#, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr "Non se puido escribir no dispositivo <filename>%1</filename>."
+msgstr "Non se puido escribir no ficheiro <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr "Copiando %1 bloques (%2 bytes) de %3 en %4, dirección: %5."
+msgstr "Copiando %1 partes (%2 bytes) de %3 en %4, dirección: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3446,12 +3390,10 @@ msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Copiando a %1 MiB/segundo, tempo restante estimado: %2"
 
 #: util/externalcommandhelper.cpp:274
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying remainder of block size %1 from %2 to %3."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr "Copiando o restante do tamaño do bloque %1 de %2 en %3."
+msgstr "Copiando o restante do tamaño da parte %1 de %2 en %3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3461,18 +3403,13 @@ msgstr[0] "1 byte"
 msgstr[1] "%1 bytes"
 
 #: util/externalcommandhelper.cpp:288
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:progress argument 2 is a string such as 7 bytes (localized "
-#| "accordingly)"
-#| msgid "Copying 1 block (%2) finished."
-#| msgid_plural "Copying %1 blocks (%2) finished."
+#, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] "Rematou a copia de un bloque (%2)."
-msgstr[1] "Rematou a copia de %1 bloques (%2 sectores)."
+msgstr[0] "Rematou a copia dunha parte (%2)."
+msgstr[1] "Rematou a copia de %1 partes (%2)."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
@@ -3487,12 +3424,10 @@ msgid "Library for managing partitions"
 msgstr "Biblioteca de xestión de particións"
 
 #: util/helpers.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "&copy; 2008-2019 KPMcore developers"
+#, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2019 Desenvolvedores de KPMcore"
+msgstr "&copy; 2008-2022 Persoas desenvolvedoras de KPMcore"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3582,13 +3517,13 @@ msgstr "Mellora da compatibilidade con SMART."
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "David Edmundson"
-msgstr ""
+msgstr "David Edmundson"
 
 #: util/helpers.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "Migración de KAuth a Polkit"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format
