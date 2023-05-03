@@ -19,6 +19,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="eu">Ibili partizio-kudeatzaile pribilegiatuaren laguntzailea</description>
       <description xml:lang="fi">Suorita osionhallinta-avustaja pääkäyttäjäoikeuksin</description>
       <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
+      <description xml:lang="gl">Executar o asistente de xestión de particións con privilexios</description>
       <description xml:lang="it">Esegui l'helper per la gestione delle partizioni privilegiate</description>
       <description xml:lang="ka">დანაყოფების მმართველის პრივილეგირებული დამხმარის გაშვება</description>
       <description xml:lang="ko">상위 권한으로 파티션 관리자 도우미 실행</description>
@@ -44,6 +45,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="eu">Diskoak kudeatzeko pribilegio administratiboak behar dira</message>
       <message xml:lang="fi">Levyjen hallintaan vaaditaan pääkäyttäjäoikeuksia</message>
       <message xml:lang="fr">Vous devez disposer des privilèges d'administrateur pour gérer les disques.</message>
+      <message xml:lang="gl">Requírense privilexios de administración para xestionar discos.</message>
       <message xml:lang="hu">A lemzek kezeléséhez adminisztrátori jogosultságok szükségesek</message>
       <message xml:lang="it">Per gestire il disco sono richiesti privilegi amministrativi</message>
       <message xml:lang="ka">დისკების სამართავად ადმინისტრატორის უფლებები გჭირდებათ</message>
