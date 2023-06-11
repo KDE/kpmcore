@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-02-11 18:51+0100\n"
+"PO-Revision-Date: 2023-06-10 18:21+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -2360,7 +2360,11 @@ msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
 msgstr[0] ""
+"La dosiersistemo en subdisko <filename>%2</filename> jam havas la postulitan "
+"longecon de 1 sektoro."
 msgstr[1] ""
+"La dosiersistemo en subdisko <filename>%2</filename> jam havas la postulitan "
+"longecon de %1 sektoroj."
 
 #: jobs/resizefilesystemjob.cpp:69
 #, kde-format
@@ -2426,23 +2430,25 @@ msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
 msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
 msgstr[0] ""
+"Aligrandigi dosiersistemon en subdisko <filename>%2</filename> al 1 sektoro"
 msgstr[1] ""
+"Aligrandigi dosiersistemon en subdisko <filename>%2</filename> al %1 sektoroj"
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Adding LVM Physical Volume %2 to %3."
 msgid_plural "Adding LVM Physical Volumes %2 to %3."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aldonante LVM fizikan volumon %2 al %3."
+msgstr[1] "Aldonante LVM fizikajn volumojn %2 al %3."
 
 #: jobs/resizevolumegroupjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Removing LVM Physical Volume %2 from %3."
 msgid_plural "Removing LVM Physical Volumes %2 from %3."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Forigante LVM fizikan volumon %2 de %3."
+msgstr[1] "Forigante LVM fizikjn volumojn %2 de %3."
 
 #: jobs/resizevolumegroupjob.cpp:64
 #, kde-kuit-format
@@ -3321,8 +3327,8 @@ msgstr "Kopiante la reston de la grandeco %1 de %2 ĝis %3."
 #, kde-format
 msgid "1 byte"
 msgid_plural "%1 bytes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 bajto"
+msgstr[1] "%1 bajtoj"
 
 #: util/externalcommandhelper.cpp:288
 #, kde-kuit-format
@@ -3330,8 +3336,8 @@ msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kopiado de 1 peco (%2) finiĝis."
+msgstr[1] "Kopiado de %1 pecoj (%2) finiĝis."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
