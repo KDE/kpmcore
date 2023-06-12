@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-06-05 14:59+0200\n"
+"PO-Revision-Date: 2023-06-11 21:38+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -1390,24 +1390,28 @@ msgstr ""
 "Tempo durante o que a cabeza se pon en posición ou<br/>veces que se "
 "restablece a ligazón durante unha transferencia de datos."
 
+# well-spelled: LBA
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Written"
 msgstr "LBA totais escritas"
 
+# well-spelled: LBA
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Written"
 msgstr "LBA totais escritas."
 
+# well-spelled: LBA
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Read"
 msgstr "LBA totais lidas"
 
+# well-spelled: LBA
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr description"
