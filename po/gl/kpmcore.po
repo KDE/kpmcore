@@ -843,8 +843,7 @@ msgstr "Erros incorrixíbeis coñecidos"
 msgctxt "SMART attr description"
 msgid "Count of errors that could not be recovered using hardware ECC."
 msgstr ""
-"Número de erros dos que non se puido recuperar empregando ECC de soporte "
-"físico."
+"Número de erros dos que non se puido recuperar usando ECC de soporte físico."
 
 #: core/smartattribute.cpp:132
 #, kde-format
@@ -954,8 +953,7 @@ msgstr "Recuperacións con ECC de soporte físico"
 msgctxt "SMART attr description"
 msgid "Count of errors that could be recovered using hardware ECC."
 msgstr ""
-"Número de erros dos que foi posíbel recuperarse empregando ECC de soporte "
-"físico."
+"Número de erros dos que foi posíbel recuperarse usando ECC de soporte físico."
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -1555,7 +1553,7 @@ msgstr "Ten moitos sectores malos."
 msgctxt "@item"
 msgid "Disk failure is imminent. Backup all data!"
 msgstr ""
-"Un fallo de disco é inminente. Faga unha copia de seguranza dos seus datos!"
+"Un fallo de disco é inminente. Faga unha copia de seguridade dos seus datos!"
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -2022,14 +2020,14 @@ msgid ""
 "backup."
 msgstr ""
 "Non se puido abrir o sistema de ficheiros na partición de orixe <filename>"
-"%1</filename> para facer unha copia de seguranza."
+"%1</filename> para facer unha copia de seguridade."
 
 #: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr ""
-"Non se puido crear o ficheiro de copia de seguranza <filename>%1</filename>."
+"Non se puido crear o ficheiro de copia de seguridade <filename>%1</filename>."
 
 #: jobs/backupfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2038,7 +2036,7 @@ msgid ""
 "Back up file system on partition <filename>%1</filename> to <filename>%2</"
 "filename>"
 msgstr ""
-"Copiado de seguranza do sistema de ficheiros da partición <filename>%1</"
+"Copiado de seguridade do sistema de ficheiros da partición <filename>%1</"
 "filename> en <filename>%2</filename>"
 
 #: jobs/changepermissionsjob.cpp:43
@@ -2112,8 +2110,8 @@ msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
 msgstr ""
-"Non se puido estabelecer o tipo de sistema do sistema de ficheiros na "
-"partición <filename>%1</filename>."
+"Non se puido definir o tipo de sistema do sistema de ficheiros na partición "
+"<filename>%1</filename>."
 
 #: jobs/createfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2123,7 +2121,7 @@ msgid ""
 "system type for partition <filename>%2</filename>."
 msgstr ""
 "Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
-"filename> para estabelecer o tipo de sistema para a partición <filename>%2</"
+"filename> para definir o tipo de sistema para a partición <filename>%2</"
 "filename>."
 
 #: jobs/createfilesystemjob.cpp:70
@@ -2133,8 +2131,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para estabelecer o "
-"tipo de sistema para a partición <filename>%2</filename>."
+"Non se puido abrir o dispositivo <filename>%1</filename> para definir o tipo "
+"de sistema para a partición <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:84
 #, kde-kuit-format
@@ -2532,7 +2530,7 @@ msgstr "Cambiando o tamaño do grupo de volumes %1 a %2."
 msgctxt "@info:progress"
 msgid "Could not open backup file <filename>%1</filename> to restore from."
 msgstr ""
-"Non se puido abrir o ficheiro de copia de seguranza <filename>%1</filename> "
+"Non se puido abrir o ficheiro de copia de seguridade <filename>%1</filename> "
 "para restaurar a partir del."
 
 #: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
@@ -2793,8 +2791,8 @@ msgctxt "@info:status"
 msgid ""
 "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
 msgstr ""
-"Fai unha copia de seguranza da partición <filename>%1</filename> (%2, %3) en "
-"<filename>%4</filename>"
+"Fai unha copia de seguridade da partición <filename>%1</filename> (%2, %3) "
+"en <filename>%4</filename>"
 
 #: ops/checkoperation.cpp:50
 #, kde-kuit-format
