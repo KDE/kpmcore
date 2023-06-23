@@ -1,22 +1,22 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2015, 2016, 2017, 2018, 2019, 2020.
-# Vit Pelcak <vit@pelcak.org>, 2021, 2022.
+# Vit Pelcak <vit@pelcak.org>, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2022-01-17 14:42+0100\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"PO-Revision-Date: 2023-06-15 14:04+0200\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.04.1\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -481,7 +481,7 @@ msgid ""
 "verification error, it marks this sector as &quot;reallocated&quot; and "
 "transfers data to a special reserved area (spare area)."
 msgstr ""
-"Počet přealokovaných sektorů. Pokud disk při čtení/zápisu/ověření nalezne "
+"Počet realokovaných sektorů. Pokud disk při čtení/zápisu/ověření nalezne "
 "chybu, označí tento sektor jako &quot;realokovaný&quot; a přesune data do "
 "speciální rezervované oblasti (náhradní oblast)."
 
@@ -2446,7 +2446,7 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
-"Tabulka diskových oddílů na oddílu <filename>%1</filename> nepodpouje "
+"Tabulka diskových oddílů na oddílu <filename>%1</filename> nepodporuje "
 "nastavení atributů. Úloha byla ignorována."
 
 #: jobs/setpartitionattributesjob.cpp:59
@@ -2484,7 +2484,7 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
-"Tabulka diskových oddílů na oddílu <filename>%1</filename> nepodpouje "
+"Tabulka diskových oddílů na oddílu <filename>%1</filename> nepodporuje "
 "nastavení názvu. Úloha byla ignorována."
 
 #: jobs/setpartitionlabeljob.cpp:59
@@ -2522,7 +2522,7 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
-"Tabulka diskových oddílů na oddílu <filename>%1</filename> nepodpouje "
+"Tabulka diskových oddílů na oddílu <filename>%1</filename> nepodporuje "
 "nastavení UUID. Úloha byla ignorována."
 
 #: jobs/setpartitionuuidjob.cpp:59
