@@ -41,7 +41,7 @@ QStringList SfdiskGptAttributes::toStringList(quint64 attrs)
     if (attrs & 0x4)
         list += legacyBiosBootable;
     for (int bit = 48; bit < 64; bit++)
-        if (attrs & (1 << bit))
+        if (attrs & (1LL << bit))
             list += guid + QString::number(bit);
 
     return list;
