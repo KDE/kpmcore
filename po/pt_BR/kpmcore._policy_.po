@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop files\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"POT-Creation-Date: 2023-06-28 00:50+0000\n"
 "PO-Revision-Date: 2022-03-04 09:31-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -21,8 +21,12 @@ msgstr "Executa o auxiliar do gerenciador de partições com privilégios"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
-msgid "Administrative privileges are required to manage disks"
-msgstr "São necessários privilégios administrativos para gerenciar discos"
+msgid "Authenticate to manage disks."
+msgstr ""
+
+#~ msgctxt "message"
+#~ msgid "Administrative privileges are required to manage disks"
+#~ msgstr "São necessários privilégios administrativos para gerenciar discos"
 
 #~ msgctxt "description"
 #~ msgid "Start external command daemon"

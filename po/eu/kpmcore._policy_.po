@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"POT-Creation-Date: 2023-06-28 00:50+0000\n"
 "PO-Revision-Date: 2022-10-02 07:57+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -27,8 +27,12 @@ msgstr "Ibili partizio-kudeatzaile pribilegiatuaren laguntzailea"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
-msgid "Administrative privileges are required to manage disks"
-msgstr "Diskoak kudeatzeko pribilegio administratiboak behar dira"
+msgid "Authenticate to manage disks."
+msgstr ""
+
+#~ msgctxt "message"
+#~ msgid "Administrative privileges are required to manage disks"
+#~ msgstr "Diskoak kudeatzeko pribilegio administratiboak behar dira"
 
 #, fuzzy
 #~ msgctxt "description"

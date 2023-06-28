@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore._policy_\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"POT-Creation-Date: 2023-06-28 00:50+0000\n"
 "PO-Revision-Date: 2022-02-09 09:16+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -27,8 +27,12 @@ msgstr "Запуск привілейованої допоміжної прог�
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
-msgid "Administrative privileges are required to manage disks"
-msgstr "Для керування дисками потрібні права доступу адміністратора (root)"
+msgid "Authenticate to manage disks."
+msgstr ""
+
+#~ msgctxt "message"
+#~ msgid "Administrative privileges are required to manage disks"
+#~ msgstr "Для керування дисками потрібні права доступу адміністратора (root)"
 
 #~ msgctxt "description"
 #~ msgid "Start external command daemon"

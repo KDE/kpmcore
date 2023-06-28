@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk-kf 5\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"POT-Creation-Date: 2023-06-28 00:50+0000\n"
 "PO-Revision-Date: 2020-10-26 11:14+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: none\n"
@@ -26,8 +26,12 @@ msgstr ""
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
-msgid "Administrative privileges are required to manage disks"
-msgstr "Diskų tvarkymui reikalingos administratoriaus teisės"
+msgid "Authenticate to manage disks."
+msgstr ""
+
+#~ msgctxt "message"
+#~ msgid "Administrative privileges are required to manage disks"
+#~ msgstr "Diskų tvarkymui reikalingos administratoriaus teisės"
 
 #~ msgctxt "description"
 #~ msgid "Start external command daemon"

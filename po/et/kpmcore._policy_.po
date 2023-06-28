@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop files\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-02-09 00:50+0000\n"
+"POT-Creation-Date: 2023-06-28 00:50+0000\n"
 "PO-Revision-Date: 2019-12-07 14:18+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -20,10 +20,14 @@ msgid "Run privileged partition manager helper"
 msgstr ""
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
-#, fuzzy
 msgctxt "message"
-msgid "Administrative privileges are required to manage disks"
-msgstr "Ketaste haldamiseks on tarvis administraatori õigusi"
+msgid "Authenticate to manage disks."
+msgstr ""
+
+#, fuzzy
+#~ msgctxt "message"
+#~ msgid "Administrative privileges are required to manage disks"
+#~ msgstr "Ketaste haldamiseks on tarvis administraatori õigusi"
 
 #, fuzzy
 #~ msgctxt "description"
