@@ -34,34 +34,6 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
       <description xml:lang="zh_CN">使用管理员权限运行分区管理器辅助程序</description>
       <message>Authenticate to manage disks.</message>
-      <message xml:lang="ca">Es requereixen privilegis d'administrador per a gestionar els discs</message>
-      <message xml:lang="ca@valencia">Es requerixen privilegis d'administrador per a gestionar els discs</message>
-      <message xml:lang="cs">Pro správu disků jsou potřeba práva administrátora</message>
-      <message xml:lang="de">Systemverwalterrechte sind zur Verwaltung von Festplatten erforderlich</message>
-      <message xml:lang="el">Απαιτούνται δικαιώματα διαχειριστή για τη διαχείριση των δίσκων</message>
-      <message xml:lang="en_GB">Administrative privileges are required to manage disks</message>
-      <message xml:lang="eo">Administrantaj permesoj estas bezonataj por mastrumi diskojn</message>
-      <message xml:lang="es">Se necesitan permisos de administrador para gestionar discos</message>
-      <message xml:lang="eu">Diskoak kudeatzeko pribilegio administratiboak behar dira</message>
-      <message xml:lang="fi">Levyjen hallintaan vaaditaan pääkäyttäjäoikeuksia</message>
-      <message xml:lang="fr">Vous devez disposer des privilèges d'administrateur pour gérer les disques.</message>
-      <message xml:lang="gl">Requírense privilexios de administración para xestionar discos.</message>
-      <message xml:lang="hu">A lemzek kezeléséhez adminisztrátori jogosultságok szükségesek</message>
-      <message xml:lang="it">Per gestire il disco sono richiesti privilegi amministrativi</message>
-      <message xml:lang="ka">დისკების სამართავად ადმინისტრატორის უფლებები გჭირდებათ</message>
-      <message xml:lang="ko">디스크를 관리하려면 권한이 필요함</message>
-      <message xml:lang="lt">Diskų tvarkymui reikalingos administratoriaus teisės</message>
-      <message xml:lang="nl">Er zijn administratieve rechten vereist om schijven te beheren</message>
-      <message xml:lang="pl">Do zarządzania dyskami wymagane są uprawnienia administratora</message>
-      <message xml:lang="pt">São necessários privilégios de administração para gerir os discos</message>
-      <message xml:lang="pt_BR">São necessários privilégios administrativos para gerenciar discos</message>
-      <message xml:lang="ru">Для управления дисками требуются права администратора</message>
-      <message xml:lang="sk">Na správu diskov sa vyžadujú oprávnenia správcu</message>
-      <message xml:lang="sl">Za upravljanje diskov so potrebne pravice upravljavca računalnika</message>
-      <message xml:lang="sv">Administratörsprivilegier krävs för att hantera diskar</message>
-      <message xml:lang="tr">Diskleri yönetmek için yönetici ayrıcalıkları gerekir</message>
-      <message xml:lang="uk">Для керування дисками потрібні права доступу адміністратора (root)</message>
-      <message xml:lang="zh_CN">管理磁盘需要管理员权限</message>
       <defaults>
          <allow_inactive>no</allow_inactive>
          <allow_active>auth_admin_keep</allow_active>
