@@ -1,4 +1,4 @@
-# Vit Pelcak <vit@pelcak.org>, 2018, 2021.
+# Vit Pelcak <vit@pelcak.org>, 2018, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop files\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
 msgctxt "description"
