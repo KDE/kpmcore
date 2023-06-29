@@ -1,18 +1,18 @@
-# Vit Pelcak <vit@pelcak.org>, 2018, 2021.
+# Vit Pelcak <vit@pelcak.org>, 2018, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop files\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-28 00:50+0000\n"
-"PO-Revision-Date: 2021-03-23 09:47+0100\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"PO-Revision-Date: 2023-06-28 14:16+0200\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.3\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
 msgctxt "description"
@@ -22,8 +22,4 @@ msgstr ""
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
 msgid "Authenticate to manage disks."
-msgstr ""
-
-#~ msgctxt "message"
-#~ msgid "Administrative privileges are required to manage disks"
-#~ msgstr "Pro správu disků jsou potřeba práva administrátora"
+msgstr "Pro správu disků ověřte svou totožnost."
