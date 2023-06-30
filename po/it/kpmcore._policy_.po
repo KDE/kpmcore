@@ -1,11 +1,11 @@
 # Paolo Zamponi <feus73@gmail.com>, 2018.
-# Vincenzo Reale <smart2128vr@gmail.com>, 2020, 2022.
+# Vincenzo Reale <smart2128vr@gmail.com>, 2020, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop files\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-28 00:50+0000\n"
-"PO-Revision-Date: 2022-02-09 22:09+0100\n"
+"PO-Revision-Date: 2023-06-28 17:08+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.2\n"
+"X-Generator: Lokalize 23.04.2\n"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
 msgctxt "description"
@@ -23,7 +23,7 @@ msgstr "Esegui l'helper per la gestione delle partizioni privilegiate"
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
 msgid "Authenticate to manage disks."
-msgstr ""
+msgstr "Autenticati per gestire i dischi."
 
 #~ msgctxt "message"
 #~ msgid "Administrative privileges are required to manage disks"
