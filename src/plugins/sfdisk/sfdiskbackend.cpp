@@ -626,6 +626,36 @@ FileSystem::Type SfdiskBackend::fileSystemNameToType(const QString& name, const 
     return rval;
 }
 
+// udev encodes the labels with ID_LABEL_FS_ENC which is done with
+// blkid_encode_string(). Within this function some 1-byte utf-8
+// characters not considered safe (e.g. '\' or ' ') are encoded as hex
+// TODO: Qt6: get a more efficient implementation from Qt
+static QString decodeFsEncString(const QString &str)
+{
+    QString decoded;
+    decoded.reserve(str.size());
+    int i = 0;
+    while (i < str.size()) {
+        if (i <= str.size() - 4) {    // we need at least four characters \xAB
+            if (str.at(i) == QLatin1Char('\\') &&
+                str.at(i+1) == QLatin1Char('x')) {
+                bool bOk;
+                const int code = str.midRef(i+2, 2).toInt(&bOk, 16);
+                // only decode characters between 0x20 and 0x7f but not
+                // the backslash to prevent collisions
+                if (bOk && code >= 0x20 && code < 0x80) {
+                    decoded += QChar(code);
+                    i += 4;
+                    continue;
+                }
+            }
+        }
+        decoded += str.at(i);
+        ++i;
+    }
+    return decoded;
+}
+
 QString SfdiskBackend::readLabel(const QString& deviceNode) const
 {
     ExternalCommand udevCommand(QStringLiteral("udevadm"), {
@@ -633,10 +663,12 @@ QString SfdiskBackend::readLabel(const QString& deviceNode) const
                                  QStringLiteral("--query=property"),
                                  deviceNode });
     udevCommand.run();
-    QRegularExpression re(QStringLiteral("ID_FS_LABEL=(.*)"));
+    QRegularExpression re(QStringLiteral("ID_FS_LABEL_ENC=(.*)"));
     QRegularExpressionMatch reFileSystemLabel = re.match(udevCommand.output());
-    if (reFileSystemLabel.hasMatch())
-        return reFileSystemLabel.captured(1);
+    if (reFileSystemLabel.hasMatch()) {
+        QString escapedLabel = reFileSystemLabel.captured(1);
+        return decodeFsEncString(escapedLabel);
+    }
 
     return QString();
 }

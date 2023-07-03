@@ -41,7 +41,7 @@ void OperationRunner::run()
     QDBusConnection bus = QDBusConnection::connectToBus(QDBusConnection::SessionBus, QStringLiteral("sessionBus"));
     const QString plasmaVersionMajor = QString::fromLocal8Bit(qgetenv("KDE_SESSION_VERSION"));
     QDBusInterface kdedInterface( QStringLiteral("org.kde.kded") + plasmaVersionMajor, QStringLiteral("/kded"), QStringLiteral("org.kde.kded") + plasmaVersionMajor, bus );
-    QDBusReply<QStringList> reply = kdedInterface.call( QStringLiteral("loadedModules")  );
+    QDBusReply<QStringList> reply = kdedInterface.call( QStringLiteral("loadedModules") );
     if ( reply.isValid() )
         modules = reply.value();
     QString automounterService = QStringLiteral("device_automounter");
