@@ -31,3 +31,5 @@ Log::~Log()
     if (--ref == 0)
         GlobalLog::instance()->flush(level);
 }
+
+#include "moc_globallog.cpp"

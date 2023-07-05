@@ -110,3 +110,5 @@ QString OperationRunner::description(qint32 op) const
 
     return operationStack().operations()[op]->description();
 }
+
+#include "moc_operationrunner.cpp"

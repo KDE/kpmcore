@@ -482,3 +482,5 @@ int main(int argc, char ** argv)
     ExternalCommandHelper helper;
     app.exec();
 }
+
+#include "moc_externalcommandhelper.cpp"

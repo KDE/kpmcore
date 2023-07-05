@@ -361,3 +361,5 @@ void ExternalCommand::setExitCode(int i)
 {
     d->m_ExitCode = i;
 }
+
+#include "moc_externalcommand.cpp"

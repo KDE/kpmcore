@@ -138,3 +138,5 @@ QString Job::statusText() const
 
     return s[static_cast<int>(status())];
 }
+
+#include "moc_job.cpp"

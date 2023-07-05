@@ -61,3 +61,5 @@ void DeviceScanner::scan()
     operationStack().sortDevices();
 }
 
+
+#include "moc_devicescanner.cpp"

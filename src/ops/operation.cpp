@@ -205,3 +205,5 @@ qint32 Operation::progressBase() const
 {
     return d->m_ProgressBase;
 }
+
+#include "moc_operation.cpp"

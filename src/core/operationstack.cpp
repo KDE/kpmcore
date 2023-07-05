@@ -560,3 +560,5 @@ void OperationStack::sortDevices()
 
     Q_EMIT devicesChanged();
 }
+
+#include "moc_operationstack.cpp"

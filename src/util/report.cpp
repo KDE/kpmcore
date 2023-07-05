@@ -151,3 +151,5 @@ ReportLine Report::line()
 {
     return ReportLine(*this);
 }
+
+#include "moc_report.cpp"

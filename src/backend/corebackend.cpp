@@ -84,3 +84,5 @@ void CoreBackend::setVersion(const QString& version)
 {
     d->m_version = version;
 }
+
+#include "moc_corebackend.cpp"

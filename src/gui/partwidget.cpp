@@ -144,3 +144,5 @@ void PartWidget::drawGradient(QPainter* painter, const QColor& color, const QRec
 
     style()->drawControl(QStyle::CE_PushButtonBevel, &option, painter, this);
 }
+
+#include "moc_partwidget.cpp"

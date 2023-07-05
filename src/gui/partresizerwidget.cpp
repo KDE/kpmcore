@@ -476,3 +476,5 @@ qint64 PartResizerWidget::maximumLastSector(bool aligned) const
            ? m_MaximumLastSector - PartitionAlignment::lastDelta(device(), partition(), m_MaximumLastSector)
            : m_MaximumLastSector;
 }
+
+#include "moc_partresizerwidget.cpp"
