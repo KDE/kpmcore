@@ -641,8 +641,6 @@ static QString decodeFsEncString(const QString &str)
                 str.at(i+1) == QLatin1Char('x')) {
                 bool bOk;
                 const int code = str.mid(i+2, 2).toInt(&bOk, 16);
-                // only decode characters between 0x20 and 0x7f but not
-                // the backslash to prevent collisions
                 if (bOk && code >= 0x20 && code < 0x80) {
                     decoded += QChar(code);
                     i += 4;
