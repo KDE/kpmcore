@@ -34,21 +34,6 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
       <description xml:lang="zh_CN">使用管理员权限运行分区管理器辅助程序</description>
       <message>Authenticate to manage disks.</message>
-      <message xml:lang="ca">Autenticació per a gestionar els discs.</message>
-      <message xml:lang="ca@valencia">Autenticació per a gestionar els discs.</message>
-      <message xml:lang="cs">Pro správu disků ověřte svou totožnost.</message>
-      <message xml:lang="de">Authentisieren Sie sich, um Datenträger zu verwalten.</message>
-      <message xml:lang="eo">Aŭtentiĝu por administri diskojn.</message>
-      <message xml:lang="es">Debe autenticarse para administrar discos.</message>
-      <message xml:lang="gl">Autentíquese para xestionar os discos.</message>
-      <message xml:lang="it">Autenticati per gestire i dischi.</message>
-      <message xml:lang="nl">Authenticeren om schijven te beheren.</message>
-      <message xml:lang="pt">Autentique-se para gerir os discos.</message>
-      <message xml:lang="pt_BR">Autenticar para gerenciar discos.</message>
-      <message xml:lang="sl">Avtenticirajte se za upravljanje z diski.</message>
-      <message xml:lang="tr">Diskleri yönetmek için yetkilendirin.</message>
-      <message xml:lang="uk">Розпізнавання для керування дисками.</message>
-      <message xml:lang="zh_CN">请进行身份验证以管理磁盘。</message>
       <defaults>
          <allow_inactive>no</allow_inactive>
          <allow_active>auth_admin_keep</allow_active>
