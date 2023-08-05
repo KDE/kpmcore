@@ -12,8 +12,6 @@ Building and installing KDE Partition Manager Core Library from source
 
 * [Qt](https://www.qt.io/) 5.10
 
-* QCA
-
 * Tier 2 [KDE Frameworks](https://www.kde.org/products/frameworks/) 5.56
 
 ## Configure
