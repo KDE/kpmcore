@@ -41,6 +41,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="eo">Aŭtentiĝu por administri diskojn.</message>
       <message xml:lang="es">Debe autenticarse para administrar discos.</message>
       <message xml:lang="fi">Tunnistaudu hallinnoidaksesi levyjä.</message>
+      <message xml:lang="fr">S'authentifier pour gérer les disques.</message>
       <message xml:lang="gl">Autentíquese para xestionar os discos.</message>
       <message xml:lang="it">Autenticati per gestire i dischi.</message>
       <message xml:lang="ko">디스크를 관리하려면 인증하십시오.</message>
