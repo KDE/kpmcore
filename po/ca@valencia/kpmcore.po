@@ -3555,7 +3555,7 @@ msgstr "Dorsal:"
 #: util/htmlreport.cpp:69
 #, kde-format
 msgid "KDE Frameworks version:"
-msgstr "Versió de Frameworks de KDE:"
+msgstr "Versió dels Frameworks de KDE:"
 
 #: util/htmlreport.cpp:70
 #, kde-format
