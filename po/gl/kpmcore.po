@@ -1552,8 +1552,7 @@ msgstr "Ten moitos sectores malos."
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Disk failure is imminent. Backup all data!"
-msgstr ""
-"Un fallo de disco é inminente. Faga unha copia de seguridade dos seus datos!"
+msgstr "Un fallo de disco é inminente. Faga unha salvagarda dos seus datos!"
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1961,7 +1960,7 @@ msgid ""
 "Could not write new start sector to partition <filename>%1</filename> when "
 "trying to update the NTFS boot sector."
 msgstr ""
-"Non se puido escribir o novo sector de inicio da partición <filename>%1</"
+"Non foi posíbel escribir o novo sector de inicio da partición <filename>%1</"
 "filename> mentres se intentaba actualizar o sector de arranque de NTFS."
 
 #: fs/ntfs.cpp:206
@@ -2019,15 +2018,15 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "backup."
 msgstr ""
-"Non se puido abrir o sistema de ficheiros na partición de orixe <filename>"
-"%1</filename> para facer unha copia de seguridade."
+"Non foi posíbel abrir o sistema de ficheiros na partición de orixe <filename>"
+"%1</filename> para facer unha salvagarda."
 
 #: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr ""
-"Non se puido crear o ficheiro de copia de seguridade <filename>%1</filename>."
+"Non foi posíbel crear o ficheiro de salvagarda <filename>%1</filename>."
 
 #: jobs/backupfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2059,7 +2058,7 @@ msgid ""
 "filename> is smaller than the file system on source partition <filename>%2</"
 "filename>."
 msgstr ""
-"Non se pode copiar o sistema de ficheiros: O sistema de ficheiros da "
+"Non é posíbel copiar o sistema de ficheiros: O sistema de ficheiros da "
 "partición de destino <filename>%1</filename> é menor do que o sistema de "
 "ficheiros na partición de orixe <filename>%2</filename>."
 
@@ -2070,7 +2069,7 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "copying."
 msgstr ""
-"Non se puido abrir o sistema de ficheiros na partición de orixe <filename>"
+"Non foi posíbel abrir o sistema de ficheiros na partición de orixe <filename>"
 "%1</filename> para copiar."
 
 #: jobs/copyfilesystemjob.cpp:58
@@ -2080,8 +2079,8 @@ msgid ""
 "Could not open file system on target partition <filename>%1</filename> for "
 "copying."
 msgstr ""
-"Non se puido abrir o sistema de ficheiros na partición de destino <filename>"
-"%1</filename> para copiar."
+"Non foi posíbel abrir o sistema de ficheiros na partición de destino "
+"<filename>%1</filename> para copiar."
 
 #: jobs/copyfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2110,8 +2109,8 @@ msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
 msgstr ""
-"Non se puido definir o tipo de sistema do sistema de ficheiros na partición "
-"<filename>%1</filename>."
+"Non foi posíbel definir o tipo de sistema do sistema de ficheiros na "
+"partición <filename>%1</filename>."
 
 #: jobs/createfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2120,7 +2119,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "system type for partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para definir o tipo de sistema para a partición <filename>%2</"
 "filename>."
 
@@ -2131,8 +2130,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para definir o tipo "
-"de sistema para a partición <filename>%2</filename>."
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para definir o "
+"tipo de sistema para a partición <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:84
 #, kde-kuit-format
@@ -2151,7 +2150,7 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
-"Non se puido engadir a partición <filename>%1</filename> no dispositivo "
+"Non foi posíbel engadir a partición <filename>%1</filename> no dispositivo "
 "<filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:74
@@ -2161,7 +2160,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to create "
 "new partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para crear a nova partición <filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:76
@@ -2171,8 +2170,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to create new partition "
 "<filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para crear a nova "
-"partición <filename>%2</filename>."
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para crear a "
+"nova partición <filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:94
 #, kde-kuit-format
@@ -2227,7 +2226,7 @@ msgid ""
 "Could not delete file system: file system on <filename>%1</filename> is "
 "mounted."
 msgstr ""
-"Non se puido eliminar o sistema de ficheiros: o sistema de ficheiros de "
+"Non foi posíbel eliminar o sistema de ficheiros: o sistema de ficheiros de "
 "<filename>%1</filename> está montado."
 
 #: jobs/deletefilesystemjob.cpp:76
@@ -2235,7 +2234,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid "Could not delete file system on <filename>%1</filename>."
 msgstr ""
-"Non se puido eliminar o sistema de ficheiros de <filename>%1</filename>."
+"Non foi posíbel eliminar o sistema de ficheiros de <filename>%1</filename>."
 
 #: jobs/deletefilesystemjob.cpp:80
 #, kde-kuit-format
@@ -2244,7 +2243,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "file system on <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para eliminar o sistema de ficheiros <filename>%2</filename>."
 
 #: jobs/deletefilesystemjob.cpp:83
@@ -2254,7 +2253,7 @@ msgid ""
 "Could not delete file system signature for partition <filename>%1</"
 "filename>: Failed to open device <filename>%2</filename>."
 msgstr ""
-"Non se puido eliminar a sinatura do sistema de ficheiros da partición "
+"Non foi posíbel eliminar a sinatura do sistema de ficheiros da partición "
 "<filename>%1</filename>: fallou a apertura do dispositivo <filename>%2</"
 "filename>."
 
@@ -2268,7 +2267,7 @@ msgstr "Elimina o sistema de ficheiros de <filename>%1</filename>"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
-msgstr "Non se puido eliminar a partición <filename>%1</filename>."
+msgstr "Non foi posíbel eliminar a partición <filename>%1</filename>."
 
 #: jobs/deletepartitionjob.cpp:65
 #, kde-kuit-format
@@ -2277,7 +2276,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para eliminar a partición <filename>%2</filename>."
 
 #: jobs/deletepartitionjob.cpp:67
@@ -2319,7 +2318,7 @@ msgstr "Regresar ata: primeiro byte: %1, último byte: %2."
 msgctxt "@info:progress"
 msgid "Could not open device <filename>%1</filename> to rollback copying."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para regresar a "
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para regresar a "
 "antes de copiar."
 
 #: jobs/job.cpp:86
@@ -2364,7 +2363,7 @@ msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
 msgstr ""
-"Non se puido abrir o sistema de ficheiros na partición <filename>%1</"
+"Non foi posíbel abrir o sistema de ficheiros na partición <filename>%1</"
 "filename> para movelo."
 
 #: jobs/movefilesystemjob.cpp:54
@@ -2374,8 +2373,8 @@ msgid ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
 msgstr ""
-"Non se puido crear o destino para mover o sistema de ficheiros da partición "
-"<filename>%1</filename>."
+"Non foi posíbel crear o destino para mover o sistema de ficheiros da "
+"partición <filename>%1</filename>."
 
 #: jobs/movefilesystemjob.cpp:63
 #, kde-kuit-format
@@ -2451,8 +2450,8 @@ msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
 msgstr ""
-"Non se pode cambiar o tamaño do sistema de ficheiros da partición <filename>"
-"%1</filename> porque non hai compatibilidade con el."
+"Non é posíbel cambiar o tamaño do sistema de ficheiros da partición "
+"<filename>%1</filename> porque non hai compatibilidade con el."
 
 #: jobs/resizefilesystemjob.cpp:119
 #, kde-kuit-format
@@ -2469,8 +2468,8 @@ msgid ""
 "Could not open partition <filename>%1</filename> while trying to resize the "
 "file system."
 msgstr ""
-"Non se puido abrir a partición <filename>%1</filename> mentres se intentaba "
-"cambiar o tamaño do sistema de ficheiros."
+"Non foi posíbel abrir a partición <filename>%1</filename> mentres se "
+"intentaba cambiar o tamaño do sistema de ficheiros."
 
 #: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
@@ -2479,8 +2478,8 @@ msgid ""
 "Could not read geometry for partition <filename>%1</filename> while trying "
 "to resize the file system."
 msgstr ""
-"Non se puido ler a xeometría da partición <filename>%1</filename> mentres se "
-"intentaba cambiar o tamaño do sistema de ficheiros."
+"Non foi posíbel ler a xeometría da partición <filename>%1</filename> mentres "
+"se intentaba cambiar o tamaño do sistema de ficheiros."
 
 #: jobs/resizefilesystemjob.cpp:134
 #, kde-kuit-format
@@ -2530,15 +2529,15 @@ msgstr "Cambiando o tamaño do grupo de volumes %1 a %2."
 msgctxt "@info:progress"
 msgid "Could not open backup file <filename>%1</filename> to restore from."
 msgstr ""
-"Non se puido abrir o ficheiro de copia de seguridade <filename>%1</filename> "
-"para restaurar a partir del."
+"Non foi posíbel abrir o ficheiro de salvagarda <filename>%1</filename> para "
+"restaurar a partir del."
 
 #: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open target partition <filename>%1</filename> to restore to."
 msgstr ""
-"Non se puido abrir a partición de destino <filename>%1</filename> para "
+"Non foi posíbel abrir a partición de destino <filename>%1</filename> para "
 "restaurar nela."
 
 #: jobs/restorefilesystemjob.cpp:100
@@ -2599,7 +2598,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set "
 "partition flags for partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para axustar as bandeiras da partición <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:76
@@ -2609,7 +2608,7 @@ msgid ""
 "Could not open device <filename>%1</filename> to set partition flags for "
 "partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para axustar as "
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para axustar as "
 "bandeiras da partición <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:89
@@ -2631,7 +2630,7 @@ msgid ""
 "Could not open device <filename>%1</filename> while trying to resize/move "
 "partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> mentres se "
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> mentres se "
 "intentaba cambiar de tamaño ou mover a partición <filename>%2</filename>."
 
 #: jobs/setpartgeometryjob.cpp:81
@@ -2659,7 +2658,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
 msgstr ""
-"Non se puideron definir os atributos da partición <filename>%1</filename>."
+"Non foi posíbel definir os atributos da partición <filename>%1</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
 #, kde-kuit-format
@@ -2668,7 +2667,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para definir os atributos da partición <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
@@ -2678,7 +2677,7 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para definir os "
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para definir os "
 "atributos da partición <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:74
@@ -2701,7 +2700,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr "Non se puido definir o nome da partición <filename>%1</filename>."
+msgstr "Non foi posíbel definir o nome da partición <filename>%1</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:61
 #, kde-kuit-format
@@ -2710,7 +2709,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para definir o nome da partición <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:63
@@ -2720,8 +2719,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para definir o nome "
-"da partición <filename>%2</filename>."
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para definir o "
+"nome da partición <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:74
 #, kde-kuit-format
@@ -2743,7 +2742,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr "Non se puido definir o UUID da partición <filename>%1</filename>."
+msgstr "Non foi posíbel definir o UUID da partición <filename>%1</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:61
 #, kde-kuit-format
@@ -2752,7 +2751,7 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
-"Non se puido abrir a táboa de particións do dispositivo <filename>%1</"
+"Non foi posíbel abrir a táboa de particións do dispositivo <filename>%1</"
 "filename> para definir o UUID da partición <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:63
@@ -2762,8 +2761,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para definir o UUID "
-"da partición <filename>%2</filename>."
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para definir o "
+"UUID da partición <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:74
 #, kde-kuit-format
@@ -2776,8 +2775,8 @@ msgstr "Definir o UUID da partición <filename>%1</filename> como «%2»"
 msgctxt "@info:progress"
 msgid "Could not open random data source to overwrite file system."
 msgstr ""
-"Non se puido abrir a fonte de datos aleatorios para sobrescribir o sistema "
-"de ficheiros."
+"Non foi posíbel abrir a fonte de datos aleatorios para sobrescribir o "
+"sistema de ficheiros."
 
 #: jobs/shredfilesystemjob.cpp:77
 #, kde-kuit-format
@@ -2791,8 +2790,8 @@ msgctxt "@info:status"
 msgid ""
 "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
 msgstr ""
-"Fai unha copia de seguridade da partición <filename>%1</filename> (%2, %3) "
-"en <filename>%4</filename>"
+"Fai unha salvagarda da partición <filename>%1</filename> (%2, %3) en "
+"<filename>%4</filename>"
 
 #: ops/checkoperation.cpp:50
 #, kde-kuit-format
@@ -3128,7 +3127,8 @@ msgctxt "@info:status"
 msgid ""
 "Could not restore old partition size for partition <filename>%1</filename>."
 msgstr ""
-"Non se puido restaurar o tamaño previo da partición <filename>%1</filename>."
+"Non foi posíbel restaurar o tamaño previo da partición <filename>%1</"
+"filename>."
 
 #: ops/resizevolumegroupoperation.cpp:108
 #, kde-kuit-format
@@ -3229,7 +3229,7 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
-"Non se puido engadir a partición <filename>%1</filename> no dispositivo "
+"Non foi posíbel engadir a partición <filename>%1</filename> no dispositivo "
 "<filename>%2</filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:114
@@ -3239,7 +3239,7 @@ msgid ""
 "Could not set geometry for partition <filename>%1</filename> while trying to "
 "resize/move it."
 msgstr ""
-"Non se puido axustar a xeometría da partición <filename>%1</filename> "
+"Non foi posíbel axustar a xeometría da partición <filename>%1</filename> "
 "mentres se intentaba cambiala de tamaño ou movela."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:124
@@ -3248,7 +3248,7 @@ msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
 msgstr ""
-"Non se puido borrar a sinatura do sistema de ficheiros na partición "
+"Non foi posíbel borrar a sinatura do sistema de ficheiros na partición "
 "<filename>%1</filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
@@ -3258,8 +3258,8 @@ msgid ""
 "Could not determine file system of partition at sector %1 on device "
 "<filename>%2</filename>."
 msgstr ""
-"Non se puido determinar o sistema de ficheiros da partición no sector %1 do "
-"dispositivo <filename>%2</filename>."
+"Non foi posíbel determinar o sistema de ficheiros da partición no sector %1 "
+"do dispositivo <filename>%2</filename>."
 
 #: util/capacity.cpp:100
 #, kde-kuit-format
@@ -3333,39 +3333,41 @@ msgstr "Orde: %1 %2"
 #: util/externalcommandhelper.cpp:82
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr "Non se puido abrir o dispositivo <filename>%1</filename> para lectura."
+msgstr ""
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para lectura."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr ""
-"Non se puido acceder á posición %1 no dispositivo <filename>%2</filename>."
+"Non foi posíbel acceder á posición %1 no dispositivo <filename>%2</filename>."
 
 #: util/externalcommandhelper.cpp:96
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
-msgstr "Non se puido ler do dispositivo <filename>%1</filename>."
+msgstr "Non foi posíbel ler do dispositivo <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:114
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
 msgstr ""
-"Non se puido abrir o dispositivo <filename>%1</filename> para escritura."
+"Non foi posíbel abrir o dispositivo <filename>%1</filename> para escritura."
 
 #: util/externalcommandhelper.cpp:125
 #, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
-msgstr "Non se puido escribir no dispositivo <filename>%1</filename>."
+msgstr "Non foi posíbel escribir no dispositivo <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:151
 #, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
-msgstr "Non se puido abrir o ficheiro <filename>%1</filename> para escritura."
+msgstr ""
+"Non foi posíbel abrir o ficheiro <filename>%1</filename> para escritura."
 
 #: util/externalcommandhelper.cpp:156
 #, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr "Non se puido escribir no ficheiro <filename>%1</filename>."
+msgstr "Non foi posíbel escribir no ficheiro <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
 #, kde-kuit-format
