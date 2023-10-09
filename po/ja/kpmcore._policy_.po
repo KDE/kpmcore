@@ -25,8 +25,3 @@ msgstr ""
 msgctxt "message"
 msgid "Authenticate to manage disks."
 msgstr ""
-
-#, fuzzy
-#~ msgctxt "message"
-#~ msgid "Administrative privileges are required to manage disks"
-#~ msgstr "ディスクを管理するには管理者権限が必要です"
