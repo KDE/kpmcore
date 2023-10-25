@@ -501,7 +501,7 @@ msgid ""
 msgstr ""
 "Comptador de sectors reassignats. Quan la unitat de disc dur troba un error "
 "de lectura/escriptura/verificació, marca este sector com a «reassignat» i "
-"transferix les dades a una àrea reservada especial (àrea de reserva)."
+"transferix les dades cap a una àrea reservada especial (àrea de reserva)."
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -961,8 +961,8 @@ msgid ""
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
 "Comptador d'operacions de remapatge. El valor d'este atribut mostra el "
-"nombre total d'intents de transferir dades des de sectors reassignats a una "
-"àrea de reserva."
+"nombre total d'intents de transferir dades des de sectors reassignats cap a "
+"una àrea de reserva."
 
 #: core/smartattribute.cpp:141
 #, kde-format
