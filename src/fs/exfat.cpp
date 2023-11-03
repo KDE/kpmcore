@@ -95,7 +95,7 @@ int exfat::maxLabelLength() const
 
 bool exfat::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("fsck.exfat"), { deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("fsck.exfat"), { QStringLiteral("--repair-yes"), QStringLiteral("--verbose"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
