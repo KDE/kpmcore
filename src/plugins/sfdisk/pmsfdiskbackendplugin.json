@@ -35,7 +35,6 @@
         "Name[sv]": "KDE:s partitionshanterare sfdisk bakgrundsprogram",
         "Name[tr]": "KDE Bölüntü Yöneticisi sfdisk Arka Ucu",
         "Name[uk]": "Додаток sfdisk сервера Керування розділами KDE",
-        "Name[x-test]": "xxKDE Partition Manager sfdisk Backendxx",
         "Name[zh_CN]": "KDE 分区管理器 sfdisk 后端程序",
         "Name[zh_TW]": "KDE 磁碟分割區管理員 (sfdisk 後端)",
         "Version": "1"
