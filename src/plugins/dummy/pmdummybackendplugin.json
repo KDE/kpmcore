@@ -36,6 +36,7 @@
         "Name[sv]": "KDE:s partitionshanterare bakgrundsprogram för test",
         "Name[tr]": "KDE Bölüntü Yöneticisi Boş Arka Uç",
         "Name[uk]": "Тестовий додаток сервера Керування розділами KDE",
+        "Name[x-test]": "xxKDE Partition Manager Dummy Backendxx",
         "Name[zh_CN]": "KDE 分区管理器虚拟后端程序",
         "Name[zh_TW]": "KDE 磁碟分割區管理員 (虛設後端)",
         "Version": "1"
