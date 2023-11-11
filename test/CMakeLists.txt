@@ -26,7 +26,7 @@ target_link_libraries(testhelpers PRIVATE kpmcore)
 
 macro (kpm_test name)
     add_executable(${name} ${ARGN})
-    target_link_libraries(${name} testhelpers kpmcore Qt${QT_MAJOR_VERSION}::Core)
+    target_link_libraries(${name} testhelpers kpmcore Qt6::Core)
 endmacro()
 
 ###

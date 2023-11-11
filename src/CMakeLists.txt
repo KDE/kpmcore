@@ -33,14 +33,14 @@ ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore PUBLIC
-    Qt::Core
+    Qt6::Core
     PRIVATE
     ${BLKID_LIBRARIES}
-    Qt::DBus
-    Qt::Gui
-    KF${KF_MAJOR_VERSION}::I18n
-    KF${KF_MAJOR_VERSION}::CoreAddons
-    KF${KF_MAJOR_VERSION}::WidgetsAddons
+    Qt6::DBus
+    Qt6::Gui
+    KF6::I18n
+    KF6::CoreAddons
+    KF6::WidgetsAddons
 )
 generate_export_header(kpmcore
     BASE_NAME LIBKPMCORE

@@ -25,8 +25,8 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 # By default this is set to / and /usr which is good for majority of distros
 
 # Dependencies
-set(QT_MIN_VERSION "5.15.2")
-set(KF5_MIN_VERSION "5.92")
+set(QT_MIN_VERSION "6.5.0")
+set(KF_MIN_VERSION "5.240.0")
 set(BLKID_MIN_VERSION "2.33.2")
 # PolkitQt5-1
 
@@ -35,7 +35,7 @@ set(BLKID_MIN_VERSION "2.33.2")
 
 set(KDE_COMPILERSETTINGS_LEVEL "5.85")
 
-find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
 
 include(KDEInstallDirs)
@@ -46,24 +46,13 @@ include(GenerateExportHeader)
 include(ECMSetupVersion)
 include(ECMConfiguredInstall)
 include(ECMDeprecationSettings)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(QT_REQUIRED_VERSION "6.4.0")
-    set(KF_MIN_VERSION "5.240.0")
-    set(KF_MAJOR_VERSION "6")
-else()
-    set(KF_MAJOR_VERSION "5")
-endif()
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KPMCORE
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kpmcore_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPMcoreConfigVersion.cmake"
                         SOVERSION ${SOVERSION})
 
-if (NOT QT_MAJOR_VERSION)
-    set(QT_MAJOR_VERSION "5")
-endif()
-
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} COMPONENTS REQUIRED
+find_package(Qt6 ${QT_MIN_VERSION} COMPONENTS REQUIRED
   Core
   DBus
   Gui
@@ -71,13 +60,13 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} COMPONENTS REQUIRED
 )
 
 # Load the frameworks we need
-find_package(KF${KF_MAJOR_VERSION} ${KF5_MIN_VERSION} REQUIRED
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED
   CoreAddons
   I18n
   WidgetsAddons
 )
 
-find_package(PolkitQt${QT_MAJOR_VERSION}-1 REQUIRED)
+find_package(PolkitQt6-1 REQUIRED)
 
 ecm_set_disabled_deprecation_versions(QT 5.15.2
     KF 5.101

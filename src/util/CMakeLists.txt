@@ -59,10 +59,10 @@ add_executable(kpmcore_externalcommand
 )
 
 target_link_libraries(kpmcore_externalcommand
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::DBus
-    KF${KF_MAJOR_VERSION}::I18n
-    PolkitQt${QT_MAJOR_VERSION}-1::Core
+    Qt6::Core
+    Qt6::DBus
+    KF6::I18n
+    PolkitQt6-1::Core
 )
 
 install(TARGETS kpmcore_externalcommand DESTINATION ${KDE_INSTALL_LIBEXECDIR})

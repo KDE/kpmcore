@@ -9,11 +9,3 @@ Dependencies:
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kwidgetsaddons': '@latest-kf6'
     'libraries/polkit-qt-1': '@latest'
-
-- 'on': ['Linux/Qt5', 'FreeBSD/Qt5']
-  'require':
-    'frameworks/extra-cmake-modules': '@latest'
-    'frameworks/kcoreaddons': '@latest'
-    'frameworks/ki18n': '@latest'
-    'frameworks/kwidgetsaddons': '@latest'
-    'libraries/polkit-qt-1': '@latest'
