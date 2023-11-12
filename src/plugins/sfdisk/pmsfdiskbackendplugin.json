@@ -1,7 +1,6 @@
 {
     "KPlugin": {
         "Icon": "preferences-plugin",
-        "Id": "pmsfdiskbackendplugin",
         "License": "GPL",
         "Name": "KDE Partition Manager sfdisk Backend",
         "Name[ca@valencia]": "Dorsal «sfdisk» del gestor de particions de KDE",

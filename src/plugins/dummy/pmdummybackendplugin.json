@@ -1,7 +1,6 @@
 {
     "KPlugin": {
         "Icon": "preferences-plugin",
-        "Id": "pmdummybackendplugin",
         "License": "GPL",
         "Name": "KDE Partition Manager Dummy Backend",
         "Name[ca@valencia]": "Dorsal fals del gestor de particions de KDE",
