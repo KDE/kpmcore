@@ -1961,8 +1961,8 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
-"Copy file system on partition <filename>%1</filename> to partition "
-"<filename>%2</filename>"
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
 msgstr ""
 
 #: jobs/createfilesystemjob.cpp:66
@@ -2846,8 +2846,8 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
-"Resize/move failed: Could not resize the file system on partition "
-"<filename>%1</filename>"
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
 msgstr ""
 
 #: ops/resizeoperation.cpp:312
