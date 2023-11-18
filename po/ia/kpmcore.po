@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:39+0000\n"
-"PO-Revision-Date: 2023-11-16 11:50+0100\n"
+"PO-Revision-Date: 2023-11-17 10:56+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -42,7 +42,7 @@ msgstr "%1 – %2 (%3)"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "An error occurred while running lvdisplay."
-msgstr ""
+msgstr "Un error occurreva durante que il executava lvdisplay."
 
 #: core/operationstack.cpp:101
 #, kde-kuit-format
@@ -64,19 +64,22 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying a new partition: Creating a new partition instead."
-msgstr ""
+msgstr "Copiar un nove partition: Crear in loco un nove partition."
 
 #: core/operationstack.cpp:156
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing label for a new partition: No new operation required."
 msgstr ""
+"Cambiar etiquetta per un nove partition. Nulle nove operation requirite."
 
 #: core/operationstack.cpp:169
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing file system for a new partition: No new operation required."
 msgstr ""
+"Cambiar systema de file per un nove partition. Nulle nove operation "
+"requirite."
 
 #: core/operationstack.cpp:186
 #, kde-kuit-format
@@ -156,7 +159,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "unallocated"
-msgstr ""
+msgstr "non allocate"
 
 #: core/partition.cpp:162
 #, kde-kuit-format
@@ -496,7 +499,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Seek Time Performance"
-msgstr ""
+msgstr "Prestation de tempore de perquirer (seek)"
 
 #: core/smartattribute.cpp:108
 #, kde-format
@@ -511,13 +514,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-On Hours"
-msgstr ""
+msgstr "Horas de Activitate (Power-On)"
 
 #: core/smartattribute.cpp:109
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of hours in power-on state."
-msgstr ""
+msgstr "Computo de horas de stato de  in activitate (Power-On)"
 
 #: core/smartattribute.cpp:110
 #, kde-format
@@ -553,7 +556,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Cycle Count"
-msgstr ""
+msgstr "Computo de cyclo de potentia"
 
 #: core/smartattribute.cpp:112
 #, kde-format
@@ -565,7 +568,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft Read Error Rate"
-msgstr ""
+msgstr "Frequentia de error de lectura Soft (Lisie)"
 
 #: core/smartattribute.cpp:113
 #, kde-format
@@ -577,7 +580,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr ""
+msgstr "Spatio reservate Disponibile de SSD"
 
 #: core/smartattribute.cpp:114
 #, kde-format
@@ -747,7 +750,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Western Digital attribute."
-msgstr ""
+msgstr "Attributo de Western Digital."
 
 #: core/smartattribute.cpp:130
 #, kde-format
@@ -771,13 +774,14 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Command Timeout"
-msgstr ""
+msgstr "Commanda tempore expirate"
 
 #: core/smartattribute.cpp:132
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of aborted operations due to HDD timeout."
 msgstr ""
+"Computo de operationes abortate debite a  expiration de tempore de HDD."
 
 #: core/smartattribute.cpp:133
 #, kde-format
@@ -795,7 +799,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature Difference From 100"
-msgstr ""
+msgstr "Differentia de temperatura ab 100"
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -809,7 +813,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-sense Error Rate"
-msgstr ""
+msgstr "Frequentia de error de G-Sense"
 
 #: core/smartattribute.cpp:135
 #, kde-format
@@ -833,13 +837,15 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Cycle Count"
-msgstr ""
+msgstr "Computo de Cyclo de Carga"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
 msgstr ""
+"Computo de cyclos de carga/discarga in position dezona de atterrage de "
+"capite (head)."
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
@@ -851,7 +857,7 @@ msgstr "Temperatura"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Current internal temperature."
-msgstr ""
+msgstr "Termperatura interne currente."
 
 #: core/smartattribute.cpp:139
 #, kde-format
@@ -1080,7 +1086,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-Sense Error Rate"
-msgstr ""
+msgstr "Frequentia de error de G-Sense"
 
 #: core/smartattribute.cpp:157
 #, kde-format
@@ -2919,6 +2925,8 @@ msgid ""
 "Could not determine file system of partition at sector %1 on device "
 "<filename>%2</filename>."
 msgstr ""
+"Non poteva determninar le systema de file de partition a sector %1 sur "
+"dispositivo <filename>%2</filename>."
 
 #: util/capacity.cpp:100
 #, kde-kuit-format
@@ -2992,27 +3000,29 @@ msgstr "Commando: %1 %2"
 #: util/externalcommandhelper.cpp:82
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr ""
+msgstr "Nonpoteva aperir dispositivo <filename>%1</filename> per leger."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr ""
+"Non poteva perquirer (seek) position %1 sur dispositivo <filename>%2</"
+"filename>."
 
 #: util/externalcommandhelper.cpp:96
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
-msgstr ""
+msgstr "Nonpoteva leger ex dispositivo <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:114
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
-msgstr ""
+msgstr "Non poteva aperir dispositivo <filename>%1</filename> per scriber."
 
 #: util/externalcommandhelper.cpp:125
 #, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
-msgstr ""
+msgstr "Non poteva scriber a dispositivo <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:151
 #, kde-kuit-format
@@ -3028,7 +3038,7 @@ msgstr "On non pote scriber a file <filename>%1</filename>."
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr ""
+msgstr "Copiar %1 pecias (%2 bytes) ex %3 a %4, direction: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3046,13 +3056,13 @@ msgstr "dextera"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
-msgstr ""
+msgstr "Copiar %1 MiB/secunda, tempore estimate lassate: %2"
 
 #: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr ""
+msgstr "Copiar memento de grandor de pecia %1 ex %2 a %3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3067,26 +3077,26 @@ msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Copiar 1 pecia (%2) terminate."
+msgstr[1] "Copiar %1 pecias (%2) terminate."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<application>KPMcore</application>"
-msgstr ""
+msgstr "<application>KPMcore</application>"
 
 #: util/helpers.cpp:50
 #, kde-kuit-format
 msgctxt "@title"
 msgid "Library for managing partitions"
-msgstr ""
+msgstr "Bibliotheca per gerer partitiones"
 
 #: util/helpers.cpp:51
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr ""
+msgstr "&copy; 2008-2022 disveloppeatores de KPMcore"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3158,7 +3168,7 @@ msgstr "Adriaan de Groot"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Calamares maintainer"
-msgstr ""
+msgstr "Mantenitor  de Calamares"
 
 #: util/helpers.cpp:62
 #, kde-kuit-format
@@ -3170,7 +3180,7 @@ msgstr "Caio Jordão Carvalho"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Improved SMART support"
-msgstr ""
+msgstr "Meliorate supporto de SMART"
 
 #: util/helpers.cpp:63
 #, kde-kuit-format
@@ -3182,12 +3192,12 @@ msgstr "David Edmundson"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "Portar ex Kauth a Polkit"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format
 msgid "%1: SMART Status Report"
-msgstr ""
+msgstr "%1: Reporto de stato de SMART"
 
 #: util/htmlreport.cpp:66
 #, kde-format
