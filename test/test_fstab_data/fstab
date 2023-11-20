@@ -1,0 +1,13 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+/dev/sda                                    /       ext4    rw,relatime,discard   0 1 
+
+UUID=0491f5bc-487c-4797-b118-78add1e9cfb0   /test   btrfs   defaults              0 2 
+
+127.0.0.1:/nfs/export                       /nfs    nfs     defaults              0 2 
+
+none                                        /tmp    tmpfs   defaults              0 0 
+
+/dev/mapper/swap                            none    swap    defaults              0 0 

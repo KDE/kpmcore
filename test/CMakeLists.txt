@@ -64,3 +64,9 @@ add_test(NAME testexternalcommand COMMAND testexternalcommand ${BACKEND})
 # Test Device
 kpm_test(testdevice testdevice.cpp)
 add_test(NAME testdevice COMMAND testdevice ${BACKEND})
+
+find_package(Qt6Test REQUIRED)
+
+kpm_test(test_fstab test_fstab.cpp)
+add_test(NAME test_fstab COMMAND test_fstab)
+target_link_libraries(test_fstab Qt6::Test)
