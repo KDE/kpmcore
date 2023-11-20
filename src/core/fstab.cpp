@@ -302,7 +302,7 @@ static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsig
       << entry.comment() << "\n";
 }
 
-bool writeMountpoints(const FstabEntryList& fstabEntries)
+QString generateFstab(const FstabEntryList& fstabEntries)
 {
     QString fstabContents;
     QTextStream out(&fstabContents);
@@ -312,6 +312,14 @@ bool writeMountpoints(const FstabEntryList& fstabEntries)
     for (const auto &e : fstabEntries)
         writeEntry(out, e, columnWidth);
 
+    out.flush();
+    return fstabContents;
+}
+
+bool writeMountpoints(const FstabEntryList& fstabEntries)
+{
+    auto fstab = generateFstab(fstabEntries);
+
     ExternalCommand cmd;
-    return cmd.writeFstab(fstabContents.toLocal8Bit());
+    return cmd.writeFstab(fstab.toLocal8Bit());
 }
