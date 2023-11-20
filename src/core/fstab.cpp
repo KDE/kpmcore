@@ -23,6 +23,8 @@
 #include <QTemporaryFile>
 #include <QTextStream>
 
+using namespace Qt::StringLiterals;
+
 static void parseFsSpec(const QString& m_fsSpec, FstabEntry::Type& m_entryType, QString& m_deviceNode);
 static QString findBlkIdDevice(const char *token, const QString& value);
 static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsigned int, 4> columnWidth);
@@ -281,6 +283,11 @@ static void writeEntry(QTextStream& s, const FstabEntry& entry, std::array<unsig
 {
     if (entry.entryType() == FstabEntry::Type::comment) {
         s << entry.comment() << "\n";
+        return;
+    }
+
+    // "none" is only valid as mount point for swap partitions
+    if ((entry.mountPoint().isEmpty() || entry.mountPoint() == u"none"_s) && entry.type() != QStringLiteral("swap")) {
         return;
     }
 
