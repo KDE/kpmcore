@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:39+0000\n"
-"PO-Revision-Date: 2023-11-17 10:56+0100\n"
+"PO-Revision-Date: 2023-11-21 11:08+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -51,6 +51,8 @@ msgid ""
 "Deleting a partition just created: Undoing the operation to create the "
 "partition."
 msgstr ""
+"Deler un partition a pena create: Annullar le operation per crear le "
+"partition."
 
 #: core/operationstack.cpp:119
 #, kde-kuit-format
@@ -93,7 +95,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Deleting a partition just copied: Removing the copy."
-msgstr ""
+msgstr "Deler un partition a pena copiate: Remer le copia."
 
 #: core/operationstack.cpp:238
 #, kde-kuit-format
@@ -147,13 +149,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing Volume Group, nothing to do."
-msgstr ""
+msgstr "Redimensionar Gruppo de Volumine, nulle cosa a facer."
 
 #: core/operationstack.cpp:440
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Add operation: %1"
-msgstr ""
+msgstr "Adde operation: %1"
 
 #: core/partition.cpp:159
 #, kde-kuit-format
@@ -165,13 +167,13 @@ msgstr "non allocate"
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "New Partition"
-msgstr ""
+msgstr "Nove Partition"
 
 #: core/partition.cpp:165
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "Restored Partition"
-msgstr ""
+msgstr "Restabili Partition"
 
 #: core/partition.cpp:168
 #, kde-kuit-format
@@ -186,6 +188,8 @@ msgid ""
 "Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
 "modulo: %3)."
 msgstr ""
+"Partition <filename>%1</filename> non es propriemente alineate  (prime "
+"sector: %2, modulo: %3)."
 
 #: core/partitionalignment.cpp:83
 #, kde-kuit-format
@@ -194,6 +198,8 @@ msgid ""
 "Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
 "modulo: %3)."
 msgstr ""
+"Partition <filename>%1</filename> non es propriemente alineate (ultime "
+"sector: %2, modulo: %3)."
 
 #: core/partitionrole.cpp:17
 #, kde-kuit-format
@@ -229,7 +235,7 @@ msgstr "LUKS"
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "LVM logical volume"
-msgstr ""
+msgstr "LVM Volumine logic"
 
 #: core/partitionrole.cpp:34
 #, kde-kuit-format
@@ -313,7 +319,7 @@ msgstr "bios-grub"
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "apple-tv-recovery"
-msgstr ""
+msgstr "apple-tv-recovery"
 
 #: core/partitiontable.cpp:206
 #, kde-kuit-format
@@ -367,7 +373,7 @@ msgstr " [RAID %1 - Resyncing]"
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "failing"
-msgstr ""
+msgstr "fallente"
 
 #: core/smartattribute.cpp:48
 #, kde-kuit-format
@@ -405,7 +411,7 @@ msgstr[1] "%1 sectores"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Rate"
-msgstr ""
+msgstr "Frequentia de error de lectura "
 
 #: core/smartattribute.cpp:101
 #, kde-format
@@ -915,7 +921,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "UltraDMA CRC Error Count"
-msgstr ""
+msgstr "Computo de error  CRC de UltraDMA"
 
 #: core/smartattribute.cpp:143
 #, kde-format
@@ -924,30 +930,33 @@ msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
 msgstr ""
+"Computo de errores in transferentia de datos via le cablode interfacie como "
+"determinate per ICRC."
 
 #: core/smartattribute.cpp:144
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Multi-Zone Error Rate<br/>Write Error Rate"
 msgstr ""
+"Frequentia de error de Multi-Zona <br/>Frequentia de error de scriptura"
 
 #: core/smartattribute.cpp:144
 #, kde-format
 msgctxt "SMART attr description"
 msgid "The total number of errors when writing a sector."
-msgstr ""
+msgstr "Le numero totalde errores quando on scribe un sector."
 
 #: core/smartattribute.cpp:145
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of off-track errors."
-msgstr ""
+msgstr "Numero de erores foras de tracia."
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Data Address Mark Errors"
-msgstr ""
+msgstr "Errore de Marca de adresse de datos (Data Address Mark Errors)"
 
 #: core/smartattribute.cpp:146
 #, kde-format
