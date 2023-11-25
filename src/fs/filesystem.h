@@ -65,6 +65,7 @@ public:
         Ext3,
         Ext4,
         LinuxSwap,
+        FreeBSDSwap,
         Fat16,
         Fat32,
         Ntfs,

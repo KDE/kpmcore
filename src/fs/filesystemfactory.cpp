@@ -28,6 +28,7 @@
 #include "fs/fat12.h"
 #include "fs/fat16.h"
 #include "fs/fat32.h"
+#include "fs/freebsdswap.h"
 #include "fs/hfs.h"
 #include "fs/hfsplus.h"
 #include "fs/hpfs.h"
@@ -80,6 +81,7 @@ void FileSystemFactory::init()
     fileSystems.insert(FileSystem::Type::Jfs, new FS::jfs(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::LinuxRaidMember, new FS::linuxraidmember(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::LinuxSwap, new FS::linuxswap(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::FreeBSDSwap, new FS::freebsdswap(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::Luks, new FS::luks(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::Luks2, new FS::luks2(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::Lvm2_PV, new FS::lvm2_pv(-1, -1, -1, QString()));
@@ -139,6 +141,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     case FileSystem::Type::Jfs:             fs = new FS::jfs            (firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::LinuxRaidMember: fs = new FS::linuxraidmember(firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::LinuxSwap:       fs = new FS::linuxswap      (firstsector, lastsector, sectorsused, label, features); break;
+    case FileSystem::Type::FreeBSDSwap:     fs = new FS::freebsdswap    (firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::Luks:            fs = new FS::luks           (firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::Luks2:           fs = new FS::luks2          (firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::Lvm2_PV:         fs = new FS::lvm2_pv        (firstsector, lastsector, sectorsused, label, features); break;

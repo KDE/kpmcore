@@ -42,7 +42,8 @@ const std::vector<QColor> FileSystem::defaultColorCode =
     QColor( 102,121,150 ), // ext2
     QColor( 122,145,180 ), // ext3
     QColor( 143,170,210 ), // ext4
-    QColor( 155,155,130 ), // swap
+    QColor( 155,155,130 ), // linuxswap
+    QColor( 155,155,130 ), // freebsdswap
     QColor( 204,179,215 ), // fat16
     QColor( 229,201,240 ), // fat32
     QColor( 244,214,255 ), // ntfs
@@ -509,6 +510,7 @@ static const KLocalizedString* typeNames()
         kxi18nc("@item filesystem name", "ext3"),
         kxi18nc("@item filesystem name", "ext4"),
         kxi18nc("@item filesystem name", "linuxswap"),
+        kxi18nc("@item filesystem name", "freebsdswap"),
         kxi18nc("@item filesystem name", "fat16"),
         kxi18nc("@item filesystem name", "fat32"),
         kxi18nc("@item filesystem name", "ntfs"),
