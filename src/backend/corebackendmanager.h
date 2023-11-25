@@ -44,7 +44,11 @@ public:
       * @return the name of the default backend plugin
       */
     static QString defaultBackendName() {
+#ifdef Q_OS_FREEBSD
+        return QStringLiteral("pmgpartbackendplugin");
+#else
         return QStringLiteral("pmsfdiskbackendplugin");
+#endif
     }
 
     /**

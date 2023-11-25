@@ -7,6 +7,7 @@
 # SPDX-FileCopyrightText: 2019 Shubham Jangra <aryan100jangid@gmail.com>
 # SPDX-FileCopyrightText: 2020 Arnaud Ferraris <arnaud.ferraris@collabora.com>
 # SPDX-FileCopyrightText: 2020 Gaël PORTAY <gael.portay@collabora.com>
+# SPDX-FileCopyrightText: 2023 Er2 <er2@dismail.de>
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -26,6 +27,7 @@ set(FS_SRC
     fs/fat32.cpp
     fs/filesystem.cpp
     fs/filesystemfactory.cpp
+    fs/freebsdswap.cpp
     fs/hfs.cpp
     fs/hfsplus.cpp
     fs/hpfs.cpp
@@ -66,6 +68,7 @@ set(FS_LIB_HDRS
     fs/fat32.h
     fs/filesystem.h
     fs/filesystemfactory.h
+    fs/freebsdswap.h
     fs/hfs.h
     fs/hfsplus.h
     fs/hpfs.h

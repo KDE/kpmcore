@@ -40,12 +40,15 @@ if(TARGET pmdummybackendplugin)
     add_test(NAME testinit-dummy COMMAND testinit $<TARGET_FILE_NAME:pmdummybackendplugin>)
 endif()
 if(TARGET pmsfdiskbackendplugin)
-    add_test(NAME testinit-sfdisk COMMAND testinit $<TARGET_FILE_NAME:pmsfdiskbackendplugin>)
+    set(BACKEND $<TARGET_FILE_NAME:pmsfdiskbackendplugin>)
+    add_test(NAME testinit-sfdisk COMMAND testinit ${BACKEND})
+elseif(TARGET pmgpartbackendplugin)
+    set(BACKEND $<TARGET_FILE_NAME:pmgpartbackendplugin>)
+    add_test(NAME testinit-gpart COMMAND testinit ${BACKEND})
 else()
     return()  # All the rest really needs a working backend
 endif()
 
-set(BACKEND $<TARGET_FILE_NAME:pmsfdiskbackendplugin>)
 
 ###
 #
