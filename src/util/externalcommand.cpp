@@ -12,6 +12,8 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
+#include <unordered_set>
+
 #include "util/externalcommand.h"
 #include "backend/corebackendmanager.h"
 #include "core/device.h"
@@ -20,6 +22,7 @@
 #include "core/copytargetbytearray.h"
 #include "core/copysourcedevice.h"
 #include "core/copytargetdevice.h"
+#include "util/externalcommand_trustedprefixes.h"
 #include "util/globallog.h"
 #include "util/report.h"
 
@@ -113,9 +116,13 @@ bool ExternalCommand::start(int timeout)
     if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" ))
         qDebug() << xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" ")));
 
-    QString cmd = QStandardPaths::findExecutable(command());
-    if (cmd.isEmpty())
-        cmd = QStandardPaths::findExecutable(command(), { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+    QString cmd;
+    for(const QString& prefix : trustedPrefixes) {
+        cmd = QStandardPaths::findExecutable(command(), { prefix + QStringLiteral("bin/"), prefix + QStringLiteral("sbin/") });
+        if (!cmd.isEmpty()) {
+            break;
+        }
+    }
 
     auto interface = helperInterface();
     if (!interface)
