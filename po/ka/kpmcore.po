@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-05 12:39+0000\n"
+"POT-Creation-Date: 2023-11-26 02:01+0000\n"
 "PO-Revision-Date: 2023-11-15 06:28+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -3282,8 +3282,8 @@ msgctxt "@item:intext unit"
 msgid "(unknown unit)"
 msgstr "(უცნობი ერთეული)"
 
-#: util/externalcommand.cpp:111 util/externalcommand.cpp:114
-#: util/externalcommand.cpp:226
+#: util/externalcommand.cpp:114 util/externalcommand.cpp:117
+#: util/externalcommand.cpp:233
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Command: %1 %2"
