@@ -151,6 +151,11 @@ bool luks::create(Report& report, const QString& deviceNode)
     return true;
 }
 
+bool luks::execChangePosixPermission(Report& report, const QString&)
+{
+    return FileSystem::execChangePosixPermission(report, mapperName());
+}
+
 QString luks::mountTitle() const
 {
     return xi18nc("@title:menu", "Mount");

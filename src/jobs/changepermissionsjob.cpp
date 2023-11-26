@@ -8,6 +8,7 @@
 
 #include "core/lvmdevice.h"
 #include "core/partition.h"
+#include "fs/luks.h"
 
 #include "util/report.h"
 
@@ -31,7 +32,12 @@ bool ChangePermissionJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    rval = fs.execChangePosixPermission(*report, m_Partition.deviceNode());
+    if (m_Partition.roles().has(PartitionRole::Luks)) {
+        auto &luksFs = static_cast<FS::luks&>(fs);
+        rval = luksFs.execChangePosixPermission(*report, m_Partition.deviceNode());
+    }
+    else
+        rval = fs.execChangePosixPermission(*report, m_Partition.deviceNode());
 
     jobFinished(*report, rval);
 

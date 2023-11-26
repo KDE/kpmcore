@@ -138,6 +138,10 @@ public:
     QString cryptOpenTitle() const;
     QString cryptCloseTitle() const;
 
+    QString posixPermissions() const override { return implPosixPermissions();  };
+    void setPosixPermissions(const QString& permissions) override { implSetPosixPermissions(permissions); };
+    bool execChangePosixPermission(Report& report, const QString& deviceNode);
+
     void setPassphrase(const QString&);
     QString passphrase() const;
 
