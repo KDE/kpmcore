@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 02:01+0000\n"
+"POT-Creation-Date: 2023-11-29 01:38+0000\n"
 "PO-Revision-Date: 2023-08-14 21:58+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -1793,13 +1793,13 @@ msgctxt "@item filesystem name"
 msgid "minix"
 msgstr "Minix"
 
-#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#: fs/filesystem.cpp:580 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Einhängen"
 
-#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#: fs/filesystem.cpp:586 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1858,24 +1858,24 @@ msgctxt "@title:menu"
 msgid "Deactivate swap"
 msgstr "Auslagerungspartition deaktivieren"
 
-#: fs/luks.cpp:166
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "Entsperren"
 
-#: fs/luks.cpp:171
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "Sperren"
 
-#: fs/luks.cpp:252
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "Geben Sie eine Passphrase für %1 ein:"
 
-#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
@@ -1883,7 +1883,7 @@ msgstr ""
 "Die Größe des verschlüsselten LUKS-Containers auf der Partition <filename>"
 "%1</filename> wird geändert."
 
-#: fs/luks.cpp:509 fs/luks2.cpp:116
+#: fs/luks.cpp:514 fs/luks2.cpp:116
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2030,7 +2030,7 @@ msgstr ""
 "Sichern des Dateisystems auf der Partition <filename>%1</filename> nach "
 "<filename>%2</filename>"
 
-#: jobs/changepermissionsjob.cpp:43
+#: jobs/changepermissionsjob.cpp:49
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info:status"
 #| msgid "Set label for partition <filename>%1</filename> to \"%2\""

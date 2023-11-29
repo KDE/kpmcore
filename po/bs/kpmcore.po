@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 02:01+0000\n"
+"POT-Creation-Date: 2023-11-29 01:38+0000\n"
 "PO-Revision-Date: 2015-01-10 12:07+0100\n"
 "Last-Translator: Samir Ribic <samir.ribic@etf.unsa.ba>\n"
 "Language-Team: Bosnian <kde-i18n-bs@kde.org>\n"
@@ -1823,13 +1823,13 @@ msgctxt "@item filesystem name"
 msgid "minix"
 msgstr ""
 
-#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#: fs/filesystem.cpp:580 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Montiraj"
 
-#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#: fs/filesystem.cpp:586 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1903,24 +1903,24 @@ msgctxt "@title:menu"
 msgid "Deactivate swap"
 msgstr "Deaktiviraj zamjenu"
 
-#: fs/luks.cpp:166
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr ""
 
-#: fs/luks.cpp:171
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr ""
 
-#: fs/luks.cpp:252
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr ""
 
-#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing/moving partition <filename>%1</filename> failed."
@@ -1928,7 +1928,7 @@ msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "Promjena ili pomeranje particije <filename>%1</filename> nije uspelo."
 
-#: fs/luks.cpp:509 fs/luks2.cpp:116
+#: fs/luks.cpp:514 fs/luks2.cpp:116
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2131,7 +2131,7 @@ msgstr ""
 "<filename>%2</filename>"
 
 # >> Operation description, used as tooltip and in operation lists.
-#: jobs/changepermissionsjob.cpp:43
+#: jobs/changepermissionsjob.cpp:49
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Set label for partition <filename>%1</filename> to \"%2\""

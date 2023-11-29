@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 02:01+0000\n"
+"POT-Creation-Date: 2023-11-29 01:38+0000\n"
 "PO-Revision-Date: 2023-11-21 11:08+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -1682,13 +1682,13 @@ msgctxt "@item filesystem name"
 msgid "minix"
 msgstr "minix"
 
-#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#: fs/filesystem.cpp:580 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Monta"
 
-#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#: fs/filesystem.cpp:586 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1738,30 +1738,30 @@ msgctxt "@title:menu"
 msgid "Deactivate swap"
 msgstr ""
 
-#: fs/luks.cpp:166
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "Disbloca"
 
-#: fs/luks.cpp:171
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "Bloca"
 
-#: fs/luks.cpp:252
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "Inserta phrase de contrasigno per %1:"
 
-#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr ""
 
-#: fs/luks.cpp:509 fs/luks2.cpp:116
+#: fs/luks.cpp:514 fs/luks2.cpp:116
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1877,7 +1877,7 @@ msgid ""
 "filename>"
 msgstr ""
 
-#: jobs/changepermissionsjob.cpp:43
+#: jobs/changepermissionsjob.cpp:49
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"

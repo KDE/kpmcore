@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-26 02:01+0000\n"
+"POT-Creation-Date: 2023-11-29 01:38+0000\n"
 "PO-Revision-Date: 2023-11-25 02:26\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1698,13 +1698,13 @@ msgctxt "@item filesystem name"
 msgid "minix"
 msgstr "minix"
 
-#: fs/filesystem.cpp:580 fs/luks.cpp:156
+#: fs/filesystem.cpp:580 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "挂载"
 
-#: fs/filesystem.cpp:586 fs/luks.cpp:161
+#: fs/filesystem.cpp:586 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1759,30 +1759,30 @@ msgctxt "@title:menu"
 msgid "Deactivate swap"
 msgstr "停用交换分区"
 
-#: fs/luks.cpp:166
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "解除锁定"
 
-#: fs/luks.cpp:171
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "锁定"
 
-#: fs/luks.cpp:252
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "请输入 %1 的密码："
 
-#: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "正在调整分区 <filename>%1</filename> 的 LUKS 加密区域大小。"
 
-#: fs/luks.cpp:509 fs/luks2.cpp:116
+#: fs/luks.cpp:514 fs/luks2.cpp:116
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1911,7 +1911,7 @@ msgid ""
 "filename>"
 msgstr "备份分区 <filename>%1</filename> 的文件系统到 <filename>%2</filename>"
 
-#: jobs/changepermissionsjob.cpp:43
+#: jobs/changepermissionsjob.cpp:49
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
