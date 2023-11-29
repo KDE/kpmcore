@@ -4,20 +4,21 @@
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2008, 2009.
 # Franklin Weng <franklin@goodhorse.idv.tw>, 2010, 2011, 2013.
 # pan93412 <pan93412@gmail.com>, 2019.
+# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-29 01:38+0000\n"
-"PO-Revision-Date: 2019-06-19 14:45+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2023-11-29 17:38+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 19.04.2\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3228,13 +3229,13 @@ msgstr "EiB"
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "ZiB"
-msgstr "ZB"
+msgstr "ZiB"
 
 #: util/capacity.cpp:108
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "YiB"
-msgstr "YB"
+msgstr "YiB"
 
 #: util/capacity.cpp:112
 #, kde-kuit-format
@@ -3322,7 +3323,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
-msgstr "複製速度 %1 MB/秒，估計剩餘時間：%2"
+msgstr "複製速度 %1 MiB/秒，估計剩餘時間：%2"
 
 #: util/externalcommandhelper.cpp:274
 #, fuzzy, kde-kuit-format
