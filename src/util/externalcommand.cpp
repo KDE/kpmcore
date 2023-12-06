@@ -116,13 +116,7 @@ bool ExternalCommand::start(int timeout)
     if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" ))
         qDebug() << xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" ")));
 
-    QString cmd;
-    for(const QString& prefix : trustedPrefixes) {
-        cmd = QStandardPaths::findExecutable(command(), { prefix + QStringLiteral("bin/"), prefix + QStringLiteral("sbin/") });
-        if (!cmd.isEmpty()) {
-            break;
-        }
-    }
+    QString cmd = findTrustedCommand(command());
 
     auto interface = helperInterface();
     if (!interface)

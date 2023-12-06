@@ -21,6 +21,7 @@
 #include "backend/corebackendmanager.h"
 
 #include "util/externalcommand.h"
+#include "util/externalcommand_trustedprefixes.h"
 #include "util/capacity.h"
 #include "util/helpers.h"
 
@@ -650,9 +651,8 @@ qint64 FileSystem::lastSector() const
 
 bool FileSystem::findExternal(const QString& cmdName, const QStringList& args, int expectedCode)
 {
-    QString cmdFullPath = QStandardPaths::findExecutable(cmdName);
-    if (cmdFullPath.isEmpty())
-        cmdFullPath = QStandardPaths::findExecutable(cmdName, { QStringLiteral("/sbin/"), QStringLiteral("/usr/sbin/"), QStringLiteral("/usr/local/sbin/") });
+    QString cmdFullPath = findTrustedCommand(cmdName);
+
     if (cmdFullPath.isEmpty())
         return false;
 
