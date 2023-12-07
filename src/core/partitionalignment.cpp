@@ -95,7 +95,8 @@ qint64 PartitionAlignment::sectorAlignment(const Device& d)
 
 void PartitionAlignment::setSectorAlignment(int sectorAlignment)
 {
-    s_sectorAlignment = sectorAlignment;
+    if (sectorAlignment > 0)
+        s_sectorAlignment = sectorAlignment;
 }
 
 qint64 PartitionAlignment::alignedFirstSector(const Device& d, const Partition& p, qint64 s, qint64 min_first, qint64 max_first, qint64 min_length, qint64 max_length)
