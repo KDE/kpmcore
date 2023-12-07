@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:38+0000\n"
+"POT-Creation-Date: 2023-12-07 01:42+0000\n"
 "PO-Revision-Date: 2013-05-12 14:35+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -1465,217 +1465,217 @@ msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr ""
 
-#: fs/filesystem.cpp:503
+#: fs/filesystem.cpp:504
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr ""
 
-#: fs/filesystem.cpp:504
+#: fs/filesystem.cpp:505
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
 msgstr ""
 
-#: fs/filesystem.cpp:506
+#: fs/filesystem.cpp:507
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr ""
 
-#: fs/filesystem.cpp:507
+#: fs/filesystem.cpp:508
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr ""
 
-#: fs/filesystem.cpp:508
+#: fs/filesystem.cpp:509
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr ""
 
-#: fs/filesystem.cpp:509
+#: fs/filesystem.cpp:510
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linuxswap"
 msgstr ""
 
-#: fs/filesystem.cpp:510
+#: fs/filesystem.cpp:511
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat16"
 msgstr ""
 
-#: fs/filesystem.cpp:511
+#: fs/filesystem.cpp:512
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat32"
 msgstr ""
 
-#: fs/filesystem.cpp:512
+#: fs/filesystem.cpp:513
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ntfs"
 msgstr ""
 
-#: fs/filesystem.cpp:513
+#: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser"
 msgstr ""
 
-#: fs/filesystem.cpp:514
+#: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser4"
 msgstr ""
 
-#: fs/filesystem.cpp:515
+#: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "xfs"
 msgstr ""
 
-#: fs/filesystem.cpp:516
+#: fs/filesystem.cpp:517
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "jfs"
 msgstr ""
 
-#: fs/filesystem.cpp:517
+#: fs/filesystem.cpp:518
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfs"
 msgstr ""
 
-#: fs/filesystem.cpp:518
+#: fs/filesystem.cpp:519
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfsplus"
 msgstr ""
 
-#: fs/filesystem.cpp:519
+#: fs/filesystem.cpp:520
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ufs"
 msgstr ""
 
-#: fs/filesystem.cpp:520
+#: fs/filesystem.cpp:521
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr ""
 
-#: fs/filesystem.cpp:521
+#: fs/filesystem.cpp:522
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "btrfs"
 msgstr ""
 
-#: fs/filesystem.cpp:522
+#: fs/filesystem.cpp:523
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hpfs"
 msgstr ""
 
-#: fs/filesystem.cpp:523
+#: fs/filesystem.cpp:524
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks"
 msgstr ""
 
-#: fs/filesystem.cpp:524
+#: fs/filesystem.cpp:525
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ocfs2"
 msgstr ""
 
-#: fs/filesystem.cpp:525
+#: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "zfs"
 msgstr ""
 
-#: fs/filesystem.cpp:526
+#: fs/filesystem.cpp:527
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exfat"
 msgstr ""
 
-#: fs/filesystem.cpp:527
+#: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "nilfs2"
 msgstr ""
 
-#: fs/filesystem.cpp:528
+#: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "lvm2 pv"
 msgstr ""
 
-#: fs/filesystem.cpp:529
+#: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
 msgstr ""
 
-#: fs/filesystem.cpp:530
+#: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "udf"
 msgstr ""
 
-#: fs/filesystem.cpp:531
+#: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
 msgstr ""
 
-#: fs/filesystem.cpp:532
+#: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks2"
 msgstr ""
 
-#: fs/filesystem.cpp:533
+#: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat12"
 msgstr ""
 
-#: fs/filesystem.cpp:534
+#: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr ""
 
-#: fs/filesystem.cpp:535
+#: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr ""
 
-#: fs/filesystem.cpp:536
+#: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
 msgstr ""
 
-#: fs/filesystem.cpp:537
+#: fs/filesystem.cpp:538
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
 msgstr ""
 
-#: fs/filesystem.cpp:580 fs/luks.cpp:161
+#: fs/filesystem.cpp:581 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr ""
 
-#: fs/filesystem.cpp:586 fs/luks.cpp:166
+#: fs/filesystem.cpp:587 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -2985,7 +2985,7 @@ msgid "(unknown unit)"
 msgstr ""
 
 #: util/externalcommand.cpp:114 util/externalcommand.cpp:117
-#: util/externalcommand.cpp:233
+#: util/externalcommand.cpp:227
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Command: %1 %2"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-29 01:38+0000\n"
+"POT-Creation-Date: 2023-12-07 01:42+0000\n"
 "PO-Revision-Date: 2013-01-05 09:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -1520,7 +1520,7 @@ msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "<filename>%1</filename> ਪਾਰਟੀਸ਼ਨ ਲਈ ਲੇਬਲ \"%2\" ਸੈੱਟ ਕਰੋ"
 
-#: fs/filesystem.cpp:503
+#: fs/filesystem.cpp:504
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain partition table name"
 #| msgid "unknown"
@@ -1528,7 +1528,7 @@ msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "ਅਣਜਾਣ"
 
-#: fs/filesystem.cpp:504
+#: fs/filesystem.cpp:505
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition role"
 #| msgid "extended"
@@ -1536,7 +1536,7 @@ msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "ਐਕਸਟੈੱਡ"
 
-#: fs/filesystem.cpp:506
+#: fs/filesystem.cpp:507
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext2"
@@ -1544,7 +1544,7 @@ msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "ext2"
 
-#: fs/filesystem.cpp:507
+#: fs/filesystem.cpp:508
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext3"
@@ -1552,7 +1552,7 @@ msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:508
+#: fs/filesystem.cpp:509
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext4"
@@ -1560,7 +1560,7 @@ msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:509
+#: fs/filesystem.cpp:510
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "linuxswap"
@@ -1568,7 +1568,7 @@ msgctxt "@item filesystem name"
 msgid "linuxswap"
 msgstr "linuxswap"
 
-#: fs/filesystem.cpp:510
+#: fs/filesystem.cpp:511
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat16"
@@ -1576,7 +1576,7 @@ msgctxt "@item filesystem name"
 msgid "fat16"
 msgstr "fat16"
 
-#: fs/filesystem.cpp:511
+#: fs/filesystem.cpp:512
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat32"
@@ -1584,7 +1584,7 @@ msgctxt "@item filesystem name"
 msgid "fat32"
 msgstr "fat32"
 
-#: fs/filesystem.cpp:512
+#: fs/filesystem.cpp:513
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ntfs"
@@ -1592,7 +1592,7 @@ msgctxt "@item filesystem name"
 msgid "ntfs"
 msgstr "ntfs"
 
-#: fs/filesystem.cpp:513
+#: fs/filesystem.cpp:514
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "reiser"
@@ -1600,7 +1600,7 @@ msgctxt "@item filesystem name"
 msgid "reiser"
 msgstr "reiser"
 
-#: fs/filesystem.cpp:514
+#: fs/filesystem.cpp:515
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "reiser4"
@@ -1608,7 +1608,7 @@ msgctxt "@item filesystem name"
 msgid "reiser4"
 msgstr "reiser4"
 
-#: fs/filesystem.cpp:515
+#: fs/filesystem.cpp:516
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "xfs"
@@ -1616,14 +1616,14 @@ msgctxt "@item filesystem name"
 msgid "xfs"
 msgstr "xfs"
 
-#: fs/filesystem.cpp:516
+#: fs/filesystem.cpp:517
 #, fuzzy, kde-kuit-format
 #| msgid "jfs"
 msgctxt "@item filesystem name"
 msgid "jfs"
 msgstr "jfs"
 
-#: fs/filesystem.cpp:517
+#: fs/filesystem.cpp:518
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "hfs"
@@ -1631,7 +1631,7 @@ msgctxt "@item filesystem name"
 msgid "hfs"
 msgstr "hfs"
 
-#: fs/filesystem.cpp:518
+#: fs/filesystem.cpp:519
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "hfsplus"
@@ -1639,7 +1639,7 @@ msgctxt "@item filesystem name"
 msgid "hfsplus"
 msgstr "hfsplus"
 
-#: fs/filesystem.cpp:519
+#: fs/filesystem.cpp:520
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ufs"
@@ -1647,7 +1647,7 @@ msgctxt "@item filesystem name"
 msgid "ufs"
 msgstr "ufs"
 
-#: fs/filesystem.cpp:520
+#: fs/filesystem.cpp:521
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "unformatted"
@@ -1655,7 +1655,7 @@ msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "ਅਣ-ਫਾਰਮੈਟ"
 
-#: fs/filesystem.cpp:521
+#: fs/filesystem.cpp:522
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "btrfs"
@@ -1663,7 +1663,7 @@ msgctxt "@item filesystem name"
 msgid "btrfs"
 msgstr "btrfs"
 
-#: fs/filesystem.cpp:522
+#: fs/filesystem.cpp:523
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "hpfs"
@@ -1671,7 +1671,7 @@ msgctxt "@item filesystem name"
 msgid "hpfs"
 msgstr "hpfs"
 
-#: fs/filesystem.cpp:523
+#: fs/filesystem.cpp:524
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "luks"
@@ -1679,7 +1679,7 @@ msgctxt "@item filesystem name"
 msgid "luks"
 msgstr "luks"
 
-#: fs/filesystem.cpp:524
+#: fs/filesystem.cpp:525
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ocfs2"
@@ -1687,7 +1687,7 @@ msgctxt "@item filesystem name"
 msgid "ocfs2"
 msgstr "ocfs2"
 
-#: fs/filesystem.cpp:525
+#: fs/filesystem.cpp:526
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "zfs"
@@ -1695,7 +1695,7 @@ msgctxt "@item filesystem name"
 msgid "zfs"
 msgstr "zfs"
 
-#: fs/filesystem.cpp:526
+#: fs/filesystem.cpp:527
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "exfat"
@@ -1703,7 +1703,7 @@ msgctxt "@item filesystem name"
 msgid "exfat"
 msgstr "exfat"
 
-#: fs/filesystem.cpp:527
+#: fs/filesystem.cpp:528
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "nilfs2"
@@ -1711,7 +1711,7 @@ msgctxt "@item filesystem name"
 msgid "nilfs2"
 msgstr "nilfs2"
 
-#: fs/filesystem.cpp:528
+#: fs/filesystem.cpp:529
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "lvm2 pv"
@@ -1719,13 +1719,13 @@ msgctxt "@item filesystem name"
 msgid "lvm2 pv"
 msgstr "lvm2 pv"
 
-#: fs/filesystem.cpp:529
+#: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
 msgstr ""
 
-#: fs/filesystem.cpp:530
+#: fs/filesystem.cpp:531
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ufs"
@@ -1733,13 +1733,13 @@ msgctxt "@item filesystem name"
 msgid "udf"
 msgstr "ufs"
 
-#: fs/filesystem.cpp:531
+#: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
 msgstr ""
 
-#: fs/filesystem.cpp:532
+#: fs/filesystem.cpp:533
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "luks"
@@ -1747,7 +1747,7 @@ msgctxt "@item filesystem name"
 msgid "luks2"
 msgstr "luks"
 
-#: fs/filesystem.cpp:533
+#: fs/filesystem.cpp:534
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat16"
@@ -1755,37 +1755,37 @@ msgctxt "@item filesystem name"
 msgid "fat12"
 msgstr "fat16"
 
-#: fs/filesystem.cpp:534
+#: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr ""
 
-#: fs/filesystem.cpp:535
+#: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr ""
 
-#: fs/filesystem.cpp:536
+#: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
 msgstr ""
 
-#: fs/filesystem.cpp:537
+#: fs/filesystem.cpp:538
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
 msgstr ""
 
-#: fs/filesystem.cpp:580 fs/luks.cpp:161
+#: fs/filesystem.cpp:581 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "ਮਾਊਂਟ"
 
-#: fs/filesystem.cpp:586 fs/luks.cpp:166
+#: fs/filesystem.cpp:587 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -3683,7 +3683,7 @@ msgid "(unknown unit)"
 msgstr "(ਅਣਜਾਣ ਯੂਨਿਟ)"
 
 #: util/externalcommand.cpp:114 util/externalcommand.cpp:117
-#: util/externalcommand.cpp:233
+#: util/externalcommand.cpp:227
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Command: %1 %2"
