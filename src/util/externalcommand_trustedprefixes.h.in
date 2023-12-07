@@ -10,7 +10,7 @@ const std::unordered_set<QString> trustedPrefixes {
 @TRUSTED_PREFIXES_LIST@
 };
 
-static const QString findTrustedCommand(QString name) {
+[[maybe_unused]] static const QString findTrustedCommand(QString name) {
     for (const QString& prefix : trustedPrefixes) {
         QDir prefixDir = QDir(prefix);
         QString cmd = QStandardPaths::findExecutable(name, { prefixDir.absoluteFilePath(QStringLiteral("bin/")), prefixDir.absoluteFilePath(QStringLiteral("sbin/")) });
