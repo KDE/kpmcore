@@ -1,5 +1,5 @@
 # translation of desktop_extragear-sysadmin_kpmcore.po to Slovak
-# Roman Paholík <wizzardsk@gmail.com>, 2018.
+# SPDX-FileCopyrightText: 2018, 2023 Roman Paholík <wizzardsk@gmail.com>
 # Roman Paholik <wizzardsk@gmail.om>, 2018.
 # Matej Mrenica <matejm98mthw@gmail.com>, 2019.
 # Dusan Kazik <prescott66@gmail.com>, 2020.
@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: desktop_extragear-sysadmin_kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:39+0000\n"
-"PO-Revision-Date: 2021-11-19 10:09+0100\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
-"Language-Team: sk\n"
+"PO-Revision-Date: 2023-12-09 09:11+0100\n"
+"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
@@ -26,7 +26,7 @@ msgstr ""
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
 msgid "Authenticate to manage disks."
-msgstr ""
+msgstr "Overiť na správu diskov."
 
 #~ msgctxt "message"
 #~ msgid "Administrative privileges are required to manage disks"
