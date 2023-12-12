@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-02-03 16:45+0100\n"
+"PO-Revision-Date: 2023-12-11 23:38+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -116,6 +116,7 @@ msgid ""
 "Copying a partition that is itself a copy: Copying the original source "
 "partition instead."
 msgstr ""
+"კოპირდება დანაყოფი, რომელიც უკვე ასლია: დაკოპირდება ორიგინალი დანაყოფი."
 
 #: core/operationstack.cpp:280
 #, kde-kuit-format
@@ -130,6 +131,8 @@ msgid ""
 "Deleting a partition just restored to an existing partition: Removing the "
 "restore operation and deleting the existing partition."
 msgstr ""
+"ვშლი დანაყოფს, რომელიც ახლა აღდგა არსებულ დანაყოფამდე: ვშლი აღდგენის "
+"ოპერაციას და არსებულ დანაყოფს."
 
 #: core/operationstack.cpp:318
 #, kde-kuit-format
@@ -193,6 +196,8 @@ msgid ""
 "Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
 "modulo: %3)."
 msgstr ""
+"დანაყოფი <filename>%1</filename> გასწორებული არაა (პირველი სექტორი: %2, "
+"modulo: %3)."
 
 #: core/partitionalignment.cpp:83
 #, kde-kuit-format
@@ -201,6 +206,8 @@ msgid ""
 "Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
 "modulo: %3)."
 msgstr ""
+"დანაყოფი <filename>%1</filename> გასწორებული არაა (ბოლო სექტორი: %2, modulo: "
+"%3)."
 
 #: core/partitionrole.cpp:17
 #, kde-kuit-format
@@ -436,6 +443,8 @@ msgid ""
 "of this attribute is decreasing there is a high probability that there is a "
 "problem with the disk."
 msgstr ""
+"დისკის საერთო (ზოგადი) გამტარობა. თუ ამ ატრიბუტის მნიშვნელობა მცირდება, ეს "
+"ნიშნავს, რომ დიდი ალბათობით დისკს პრობლემები აქვს."
 
 #: core/smartattribute.cpp:103
 #, kde-format
@@ -447,7 +456,7 @@ msgstr "ჩართვისას, ნომინალურ წარმა
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Average time of spindle spin up from zero RPM to fully operational."
-msgstr ""
+msgstr "შპინდელის დატრიალების დრო 0 ბრუნი/წთ-დან სრულ დატვირთვამდე."
 
 #: core/smartattribute.cpp:104
 #, kde-format
@@ -475,6 +484,10 @@ msgid ""
 "verification error, it marks this sector as &quot;reallocated&quot; and "
 "transfers data to a special reserved area (spare area)."
 msgstr ""
+"თავიდან ასახული სექტორების რაოდენობა. როცა მყარი დისკი ჩაწერის/წაკითხვის/"
+"გადამოწმების შეცდომას აღმოაჩენს, ის ამ სექტორებს, როგორც &quot;"
+"გადამისამართებულს&quot;, მონიშნავს და მონაცემებს სპეციალურ დაცულ ადგილას "
+"გადაიტანს."
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -488,7 +501,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Margin of a channel while reading data. The function of this attribute is "
 "not specified."
-msgstr ""
+msgstr "არხის საზღვარი მონაცემების კითხვისას. ამ ატრიბუტის ფუნქცია უცნობია."
 
 #: core/smartattribute.cpp:107
 #, kde-format
@@ -503,6 +516,8 @@ msgid ""
 "Rate of seek errors of the magnetic heads. If there is a partial failure in "
 "the mechanical positioning system, then seek errors will arise."
 msgstr ""
+"მაგნიტური თავაკების გადახვევის შეცდომების სიხშირე. თუ მექანიკური მოთავსების "
+"სისტემაში ნაწილობრივი ჩავარდნაა, გადახვევის შეცდომებიც მოხდება."
 
 #: core/smartattribute.cpp:108
 #, kde-format
@@ -518,6 +533,8 @@ msgid ""
 "attribute is decreasing, it is a sign of problems in the mechanical "
 "subsystem."
 msgstr ""
+"მაგნიტური თავაკების ძებნის ოპერაციის საშუალო წარმადობა. თუ ეს ატრიბუტი "
+"მცირდება, ეს ნიშნავს, რომ მექანიკურ ქვესისტემას პრობლემები აქვს."
 
 #: core/smartattribute.cpp:109
 #, kde-format
@@ -545,6 +562,8 @@ msgid ""
 "An increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"პირველად ბზრიალის დაწყების ჩავარდნის რაოდენობები. ამ ატრიბუტის ზრდა მყარი "
+"დისკის მექანიკურ ქვესისტემაში არსებულ პრობლემებზე მიუთითებს."
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -560,6 +579,8 @@ msgid ""
 "increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"პირველად რეკალიბრაციის დაწყების ჩავარდნის რაოდენობები. ამ ატრიბუტის ზრდა "
+"მყარი დისკის მექანიკურ ქვესისტემაში არსებულ პრობლემებზე მიუთითებს."
 
 #: core/smartattribute.cpp:112
 #, kde-format
@@ -571,7 +592,7 @@ msgstr "ჩართვების რაოდენობა"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr ""
+msgstr "მყარი დისკის კვების სრული ჩართვა/გამორთვის ციკლების რაოდენობა."
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
@@ -584,6 +605,7 @@ msgstr "რბილი წაკითხვის შეცდომები�
 msgctxt "SMART attr description"
 msgid "Uncorrected read errors reported to the operating system."
 msgstr ""
+"გამოუსწორებელი წაკითხვის შეცდომები გადაცემულია ოპერაციული სისტემისთვის."
 
 #: core/smartattribute.cpp:114
 #, kde-format
@@ -596,6 +618,8 @@ msgstr "SSD-ის ხელმისაწვდომი რეზერვი
 msgctxt "SMART attr description"
 msgid "Number of available reserved space as a percentage of reserved space."
 msgstr ""
+"ხელმისაწვდომი დარეზერვებულია ადგილი, პროცენტულად, სრულ დარეზერვებულ "
+"სივრცესთან შედარებით."
 
 #: core/smartattribute.cpp:115
 #, kde-format
@@ -609,6 +633,8 @@ msgctxt "SMART attr description"
 msgid ""
 "Number of flash program operation failures since the drive was deployed."
 msgstr ""
+"დისკით სარგებლობით დაწყების შემდეგ ფლეშ-მეხსიერებაში ჩაწერის ოპერაციების "
+"ჩავარდნების რაოდენობა."
 
 #: core/smartattribute.cpp:116 core/smartattribute.cpp:126
 #, kde-format
@@ -621,6 +647,8 @@ msgstr "SSD-ის წაშლის შეცდომების რაო�
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
 msgstr ""
+"დისკით სარგებლობით დაწყების შემდეგ ფლეშ-მეხსიერებიდან წაშლის ოპერაციების "
+"ჩავარდნების რაოდენობა."
 
 #: core/smartattribute.cpp:117
 #, kde-format
@@ -632,7 +660,7 @@ msgstr "SSD-ის ცვეთის სწორება"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr ""
+msgstr "ითვლის ნებისმიერი ბლოკის მაქსიმალურად ცუდი წაშლების რაოდენობას."
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -648,6 +676,9 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
+"გამორთვების რაოდენობა STANDBY IMMEDIATE-ის, როგორც ბოლო ბრძანების გარეშე "
+"(PLI-ის, კონდენსატორების მუხტზე მუშაობის გაუთვალისწინებლად). ნორმალიზებული "
+"მნიშვნელობა ყოველთვის 100-ა."
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -666,6 +697,13 @@ msgid ""
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
 msgstr ""
+"ბოლო ტესტის შედეგი, შევსებული მის მაქსიმალურ მნიშვნელობამდე. ბაიტები 0-1: "
+"ბოლო ტესტის შედეგი მიკროწამებში კონდენსატორის განმუხტვისთვის [25, 5000000]. "
+"დაბალი მნიშვნელობები სპეციფიკურ შეცდომის კოდებზე მიუთითებს. ბაიტები 2-3: დრო "
+"წუთებში, ბოლო ტესტის შემდეგ. ბაიტები 4-5: სულ გაშვებული ტესტების რაოდენობა. "
+"ნორმალიზებული მნიშვნელობა დაყენებულია 1-ზე ტესტის ჩავარდნისას ან 11-ზე, თუ "
+"კონდენსატორის ტესტირება გადამეტებული ტემპერატურის პირობებში მიმდინარეობდა. "
+"წინააღმდეგ შემთხვევაში - 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
@@ -690,6 +728,7 @@ msgstr "SSD-ის ცვეთის დიაპაზონის სხვ�
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
 msgstr ""
+"სხვაობა ყველაზე ნაკლებად და მეტად გაცვეთილ ფლეშ-მეხსიერების ბლოკებს შორის."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
@@ -721,6 +760,8 @@ msgstr "HP-ის ატრიბუტი \"მალე-გაფუჭდე�
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
 msgstr ""
+"SSD-ის პროგრამის ჩავარდნების ჯამური რაოდენობა ან არა-4K-ზე გასწორებული "
+"წვდომების რაოდენობა"
 
 #: core/smartattribute.cpp:127
 #, kde-format
@@ -748,6 +789,9 @@ msgid ""
 "data buffer the parity data between the host and the hard drive did not "
 "match."
 msgstr ""
+"HP-ის SMART IV ტექნოლოგიის ნაწილი: კეშის მეხსიერების მონაცემების ბუფერიდან "
+"გადაცემისას მონაცემების პარიტეტი ჰოსტსა და მყარ დისკს შორის ერთმანეთს არ "
+"ემთხვევა."
 
 #: core/smartattribute.cpp:129
 #, kde-format
@@ -777,7 +821,7 @@ msgstr "გამოუსწორებელი შეცდომები"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could not be recovered using hardware ECC."
-msgstr ""
+msgstr "შეცდომების რაოდენობა, რომლებიც აპარატურულმა ECC-მა ვერ აღადგინა."
 
 #: core/smartattribute.cpp:132
 #, kde-format
@@ -790,6 +834,7 @@ msgstr "ბრძანების მოლოდინის ვადა"
 msgctxt "SMART attr description"
 msgid "Count of aborted operations due to HDD timeout."
 msgstr ""
+"მყარი დისკს მოლოდინის ვადის ამოწურვის გამო გაუქმებული ოპერაციების რაოდენობა."
 
 #: core/smartattribute.cpp:133
 #, kde-format
@@ -802,6 +847,7 @@ msgstr "ჩაწერისას თავაკის აცდენებ�
 msgctxt "SMART attr description"
 msgid "Count of fly height errors detected."
 msgstr ""
+"ჩაწერისას თავაკის მეტისმეტად მაღლა ყოფნის შეცდომების აღმოჩენის რაოდენობა."
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -816,6 +862,8 @@ msgid ""
 "Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
 "minimum threshold which corresponds to a maximum temperature."
 msgstr ""
+"მნიშვნელობაა (100 &ndash; ტემპ. °C), რაც მწარმოებელს საშუალებას აძლევს, "
+"დააყენოს მინიმალური ზღვარი, რომელიც მაქსიმალურ ტემპერატურას შეესაბამება."
 
 #: core/smartattribute.cpp:135
 #, kde-format
@@ -828,6 +876,7 @@ msgstr "G-sense -ის შეცდომების სიხშირე"
 msgctxt "SMART attr description"
 msgid "Count of errors resulting from externally-induced shock and vibration."
 msgstr ""
+"გარედან მიღებული შოკისა და ვიბრაციისგან გამოწვეული შეცდომების რაოდენობა."
 
 #: core/smartattribute.cpp:136
 #, kde-format
@@ -840,6 +889,8 @@ msgstr "გამორთვის ციკლები"
 msgctxt "SMART attr description"
 msgid "Count of power-off or emergency retract cycles"
 msgstr ""
+"კვების გამორთვის გამო თავაკების უსაფრთხო პოზიციაში ავარიულად დაბრუნებების ან "
+"დისკის გამორთვების რაოდენობა"
 
 #: core/smartattribute.cpp:137
 #, kde-format
@@ -852,6 +903,7 @@ msgstr "ჩატვირთვის ციკლების რაოდე�
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
 msgstr ""
+"ჩამწერი თავაკების პარკინგის მდებარეობაზე შეტვირთვა/გამოტვირთვების რაოდენობა."
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
@@ -875,7 +927,7 @@ msgstr "აპარატურული ECC აღდგენა"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could be recovered using hardware ECC."
-msgstr ""
+msgstr "შეცდომების რაოდენობა, რომლებიც აპარატურულმა ECC-მა აღადგინა."
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -890,6 +942,9 @@ msgid ""
 "Count of remap operations. The raw value of this attribute shows the total "
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
+"თავიდან ასახვის ოპერაციების რაოდენობა. ამ ატრიბუტის მნიშვნელობა შეიცავს სრულ "
+"მცდელობების რაოდენობას, მონაცემები გადამისამართებული სექტორებიდან დაცულ "
+"ადგილას გადაეტანა."
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -904,6 +959,8 @@ msgid ""
 "Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
 "read errors)."
 msgstr ""
+"&quot;არასტაბილური&quot; სექტორების რაოდენობა (ელოდება გადამისამართებას, "
+"წაკითხვის შეცდომების გამო)."
 
 #: core/smartattribute.cpp:142
 #, kde-format
@@ -915,7 +972,7 @@ msgstr "შეუკეთებადი სექტორების რი�
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of uncorrectable errors when reading/writing a sector."
-msgstr ""
+msgstr "გამოუსწორებელი შეცდომების რაოდენობა სექტორის ჩაწერა/წაკითხვისას."
 
 #: core/smartattribute.cpp:143
 #, kde-format
@@ -930,6 +987,8 @@ msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
 msgstr ""
+"ICRC-ის მიერ დადგენილი ინტერფეისის კაბელით მონაცემების გადაცემისას "
+"აღმოჩენილი შეცდომების რაოდენობა."
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -960,6 +1019,8 @@ msgstr "მონაცემების მისამართის ნი�
 msgctxt "SMART attr description"
 msgid "Number of Data Address Mark errors (or vendor-specific)."
 msgstr ""
+"მონაცემის მისამართის ნიშნულის (DAM) შეცდომები (ან მომწოდებლის მიერ "
+"დაყენებული პარამეტრი)."
 
 #: core/smartattribute.cpp:147
 #, kde-format
@@ -1011,6 +1072,9 @@ msgid ""
 "increases the chances of a head crash while a flying height that is too high "
 "increases the chances of a read/write error."
 msgstr ""
+"თავაკების სიმაღლე დისკის ზედაპირიდან. ფრენის სიმაღლე, რომელიც ძალიან "
+"დაბალია, ზრდი თავაკის ავარიის შანსს, მაშინ, როცა თავაკი, რომელიც მეტისმეტად "
+"მაღლა დაფრინავს, ჩაწერა/წაკითხვის შეცდომების შანსს ზრდის."
 
 #: core/smartattribute.cpp:151
 #, kde-format
@@ -1022,7 +1086,7 @@ msgstr "დატრიალების მაღალი ძაბვა"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Amount of surge current used to spin up the drive."
-msgstr ""
+msgstr "დისკის ტრიალის დასაწყებად საჭირო იმპულსის სიდიდე."
 
 #: core/smartattribute.cpp:152
 #, kde-format
@@ -1037,6 +1101,8 @@ msgid ""
 "Number of buzz routines needed to spin up the drive due to insufficient "
 "power."
 msgstr ""
+"დისკის დაბზრიალების მცდელობების რაოდენობა, რომელიც არასაკმარისი კვების გამო "
+"გახდა საჭირო."
 
 #: core/smartattribute.cpp:153
 #, kde-format
@@ -1048,7 +1114,7 @@ msgstr "ავტონომური პოზიცირება"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive's seek performance during its internal tests."
-msgstr ""
+msgstr "დისკის გადახვევის წარმადობა მისი შიდა ტესტების მიმდინარეობისას."
 
 #: core/smartattribute.cpp:154
 #, kde-format
@@ -1087,6 +1153,8 @@ msgid ""
 "Distance the disk has shifted relative to the spindle (usually due to shock "
 "or temperature)."
 msgstr ""
+"დაშორება, რომლითაც დისკი წაიწია შპინდელთან შედარებით (ჩვეულებრივ, დარტყმის "
+"ან ტემპერატურის გამო)."
 
 #: core/smartattribute.cpp:157
 #, kde-format
@@ -1100,6 +1168,7 @@ msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
 msgstr ""
+"გარედან მიღებული შოკისა და ვიბრაციისგან გამოწვეული შეცდომების რაოდენობა."
 
 #: core/smartattribute.cpp:158
 #, kde-format
@@ -1111,7 +1180,7 @@ msgstr "თავაკების მუშაობის რაოდენ�
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time spent operating under data load."
-msgstr ""
+msgstr "მონაცემების დატვირთვის ქვეშ გატარებული დრო."
 
 #: core/smartattribute.cpp:159
 #, kde-format
@@ -1123,7 +1192,7 @@ msgstr "ჩატვირთვა/გამოტვირთვის ცდ�
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr ""
+msgstr "რაოდენობა, რამდენჯერ შეიცვლის თავაკი მდებარეობას."
 
 #: core/smartattribute.cpp:160
 #, kde-format
@@ -1135,7 +1204,7 @@ msgstr "ჩატვირთვა ხახუნით"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Resistance caused by friction in mechanical parts while operating."
-msgstr ""
+msgstr "ოპერაციების განხორციელებისას ხახუნისგან გამოწვეული წინააღმდეგობა."
 
 #: core/smartattribute.cpp:161
 #, kde-format
@@ -1162,6 +1231,8 @@ msgid ""
 "Total time of loading on the magnetic heads actuator (time not spent in "
 "parking area)."
 msgstr ""
+"მაგნიტური თავაკების ამძრავის ჩატვირთვის სრული დრო (დრო, რომელიც პარკინგზე არ "
+"დახარჯულა)."
 
 #: core/smartattribute.cpp:163
 #, kde-format
@@ -1174,6 +1245,7 @@ msgstr "მომენტის კომპენსირების მც�
 msgctxt "SMART attr description"
 msgid "Number of attempts to compensate for platter speed variations."
 msgstr ""
+"მცდელობების რაოდენობა, ფირფიტის ბზრიალის სიჩქარის ცვალებადობა გასწორებულიყო ."
 
 #: core/smartattribute.cpp:164
 #, kde-format
@@ -1188,6 +1260,8 @@ msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
 msgstr ""
+"მაგნიტური თავაკების კვების დაკარგვის გამო უსაფრთხო ადგილას გადატანების "
+"რაოდენობა."
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1202,6 +1276,8 @@ msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
 msgstr ""
+"&quot;ქანქარის&quot; ამპლიტუდა (დაშორება მოძრაობის გამმეორებელ თავაკებს "
+"შორის)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
@@ -1222,6 +1298,8 @@ msgid ""
 "Count of physical erase cycles completed on the drive as a percentage of the "
 "maximum physical erase cycles the drive supports"
 msgstr ""
+"დისკის დასრულებული ფიზიკური წაშლის რაოდენობები წაშლების იმ მაქსიმალურ "
+"რაოდენობასთან შედარებით, რომლის მხარდაჭერაც დისკს გააჩნია"
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -1233,7 +1311,7 @@ msgstr "ჩართულობა, წამებში"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time elapsed in the power-on state"
-msgstr ""
+msgstr "ჩართული მდგომარეობის ხანგრძლივობა"
 
 #: core/smartattribute.cpp:169
 #, kde-format
@@ -1260,12 +1338,16 @@ msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
 msgstr ""
+"ხელმისაწვდომი დაცული ბლოკების რაოდენობა, პროცენტულად, დაცული ბლოკების სრულ "
+"რაოდენობასთან შედარებით"
 
 #: core/smartattribute.cpp:171
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
 msgstr ""
+"თავაკების გადაადგილებს დრო, საათებში<br/>ან გადაცემის შეცდომების სიხშირე "
+"(Fujitsu)"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1333,7 +1415,7 @@ msgstr "ვარდნისგან დაცვა"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
-msgstr ""
+msgstr "აღმოჩენილი &quot;თავისუფალი ვარდნის მოვლენების&quot; რაოდენობა"
 
 #: core/smartstatus.cpp:78
 #, kde-kuit-format
@@ -1448,6 +1530,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
+"Btrfs ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: დროებითი საქაღალდის შექმნა შეუძლებელია."
 
 #: fs/btrfs.cpp:182 fs/btrfs.cpp:202
 #, kde-kuit-format
@@ -1456,6 +1540,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "btrfs file system resize failed."
 msgstr ""
+"Btrfs ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: btrfs ფაილური სისტემის ზომის შეცვლა ჩავარდა."
 
 #: fs/btrfs.cpp:187
 #, kde-kuit-format
@@ -1464,6 +1550,8 @@ msgid ""
 "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>Btrfs ფაილური სისტემის ზომის შეცვლა დანაყოფზე <filename>%1</"
+"filename>: მოხსნა ჩავარდა.</warning>"
 
 #: fs/btrfs.cpp:189
 #, kde-kuit-format
@@ -1472,12 +1560,14 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> Btrfs ფაილური სისტემის ზომის შეცვლა "
+"ჩავარდა: საწყისი მიმაგრება ჩავარდა."
 
 #: fs/fat12.cpp:141
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> ჭდის დაყენება %2-ზე"
 
 #: fs/filesystem.cpp:503
 #, kde-kuit-format
@@ -1702,6 +1792,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: Could "
 "not create temp dir."
 msgstr ""
+"JFS ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: დროებითი საქაღალდის შექმნა შეუძლებელია."
 
 #: fs/jfs.cpp:169 fs/jfs.cpp:188
 #, kde-kuit-format
@@ -1710,6 +1802,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Remount failed."
 msgstr ""
+"JFS ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: თავიდან მიმაგრება ჩავარდა."
 
 #: fs/jfs.cpp:174
 #, kde-kuit-format
@@ -1718,6 +1812,8 @@ msgid ""
 "<warning>Resizing JFS file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>დანაყოფზე <filename>%1</filename> მდებარე JFS ფაილური სისტემის "
+"ზომის შეცვლა ჩავარდა: მოხსნის შეცდომა.</warning>"
 
 #: fs/jfs.cpp:176
 #, kde-kuit-format
@@ -1726,6 +1822,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> JFS ფაილური სისტემის ზომის შეცვლა ჩავარდა: "
+"საწყისი მიმაგრება ჩავარდა."
 
 #: fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -1760,7 +1858,7 @@ msgstr "შეიყვანეთ %1-ის კოდური ფრაზა
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
-msgstr ""
+msgstr "LUKS crypt-ის ზომის შეცვლა დანაყოფზე <filename>%1</filename>."
 
 #: fs/luks.cpp:509 fs/luks2.cpp:116
 #, kde-kuit-format
@@ -1768,6 +1866,8 @@ msgctxt "@info:progress"
 msgid ""
 "Resizing encrypted file system on partition <filename>%1</filename> failed."
 msgstr ""
+"დაშიფრული ფაილური სისტემის ზომის შეცვლა დანაყოფზე <filename>%1</filename> "
+"ჩავარდა."
 
 #: fs/nilfs2.cpp:137
 #, kde-kuit-format
@@ -1776,6 +1876,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
+"NILFS2 ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: დროებითი საქაღალდის შექმნა შეუძლებელია."
 
 #: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
 #, kde-kuit-format
@@ -1784,6 +1886,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "NILFS2 file system resize failed."
 msgstr ""
+"NILFS2 ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: NILFS2 ფაილური სისტემის ზომის შეცვლა ჩავარდა."
 
 #: fs/nilfs2.cpp:156
 #, kde-kuit-format
@@ -1792,6 +1896,8 @@ msgid ""
 "<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>დანაყოფზე <filename>%1</filename> მდებარე NILFS2 ფაილური სისტემის "
+"ზომის შეცვლა ჩავარდა: მოხსნის შეცდომა.</warning>"
 
 #: fs/nilfs2.cpp:158
 #, kde-kuit-format
@@ -1800,6 +1906,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> NILFS2 ფაილური სისტემის ზომის შეცვლა "
+"ჩავარდა: საწყისი მიმაგრება ჩავარდა."
 
 #: fs/ntfs.cpp:182
 #, kde-kuit-format
@@ -1808,6 +1916,8 @@ msgid ""
 "Updating boot sector for NTFS file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"ჩამტვირთავი სექტორის განახლება NTFS ფაილური სისტემისთვის დანაყოფზე <filename>"
+"%1</filename>."
 
 #: fs/ntfs.cpp:194 fs/ntfs.cpp:202
 #, kde-kuit-format
@@ -1816,6 +1926,8 @@ msgid ""
 "Could not write new start sector to partition <filename>%1</filename> when "
 "trying to update the NTFS boot sector."
 msgstr ""
+"ვერ ჩავწერე ახალი საწყისი სექტორი დანაყოფზე <filename>%1</filename>, NTFS-ის "
+"ჩამტვირთავი სექტორის განახლების მცდელობისას."
 
 #: fs/ntfs.cpp:206
 #, kde-kuit-format
@@ -1823,6 +1935,8 @@ msgctxt "@info:progress"
 msgid ""
 "Updated NTFS boot sector for partition <filename>%1</filename> successfully."
 msgstr ""
+"ჩამტვირთავი სექტორის განახლება NTFS ფაილური სისტემისთვის დანაყოფზე <filename>"
+"%1</filename> წარმატებით დასრულდა."
 
 #: fs/xfs.cpp:159
 #, kde-kuit-format
@@ -1831,6 +1945,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: Could "
 "not create temp dir."
 msgstr ""
+"XFS ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: დროებითი საქაღალდის შექმნა შეუძლებელია."
 
 #: fs/xfs.cpp:173 fs/xfs.cpp:192
 #, kde-kuit-format
@@ -1839,6 +1955,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "xfs_growfs failed."
 msgstr ""
+"XFS ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: xfs_growfs ჩავარდა."
 
 #: fs/xfs.cpp:178
 #, kde-kuit-format
@@ -1847,6 +1965,8 @@ msgid ""
 "<warning>Resizing XFS file system on partition <filename>%1</filename> "
 "failed: Unmount failed.</warning>"
 msgstr ""
+"<warning>დანაყოფზე <filename>%1</filename> მდებარე XFS ფაილური სისტემის "
+"ზომის შეცვლა ჩავარდა: მოხსნის შეცდომა.</warning>"
 
 #: fs/xfs.cpp:180
 #, kde-kuit-format
@@ -1855,6 +1975,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> XFS ფაილური სისტემის ზომის შეცვლა ჩავარდა: "
+"საწყისი მიმაგრება ჩავარდა."
 
 #: jobs/backupfilesystemjob.cpp:54
 #, kde-kuit-format
@@ -1863,6 +1985,8 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "backup."
 msgstr ""
+"საწყის დანაყოფზე <filename>%1</filename> არსებული ფაილური სისტემის "
+"მარქაფისთვის გახსნა შეუძლებელია."
 
 #: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -1877,6 +2001,8 @@ msgid ""
 "Back up file system on partition <filename>%1</filename> to <filename>%2</"
 "filename>"
 msgstr ""
+"<filename>%1</filename>-ზე მდებარე ფაილური სისტემის მარქაფი <filename>%2</"
+"filename>-ზე"
 
 #: jobs/changepermissionsjob.cpp:43
 #, kde-kuit-format
@@ -1898,6 +2024,9 @@ msgid ""
 "filename> is smaller than the file system on source partition <filename>%2</"
 "filename>."
 msgstr ""
+"ფაილური სისტემის კოპირება შეუძლებელია: ფაილური სისტემა სამიზნე დანაყოფზე "
+"<filename>%1</filename> უფრო პატარაა, ვიდრე ფაილური სისტემა საწყის დანაყოფზე "
+"<filename>%2</filename>."
 
 #: jobs/copyfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -1906,6 +2035,8 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"საწყის დანაყოფზე <filename>%1</filename> არსებული ფაილური სისტემის "
+"კოპირებისთვის გახსნა შეუძლებელია."
 
 #: jobs/copyfilesystemjob.cpp:58
 #, kde-kuit-format
@@ -1914,6 +2045,8 @@ msgid ""
 "Could not open file system on target partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"სამიზნე დანაყოფზე <filename>%1</filename> არსებული ფაილური სისტემის "
+"კოპირებისთვის გახსნა შეუძლებელია."
 
 #: jobs/copyfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -1922,6 +2055,8 @@ msgid ""
 "Closing device. This may take a while, especially on slow devices like "
 "Memory Sticks."
 msgstr ""
+"მოწყობილობის დახურვა. ამას, კარგა ხანი შეიძლება, დასჭირდეს, განსაკუთრებით "
+"ნელ მოწყობილობებზე."
 
 #: jobs/copyfilesystemjob.cpp:88
 #, kde-kuit-format
@@ -1930,6 +2065,8 @@ msgid ""
 "Copy file system on partition <filename>%1</filename> to partition <filename>"
 "%2</filename>"
 msgstr ""
+"<filename>%1</filename>-ზე მდებარე ფაილური სისტემის კოპირება დანაყოფზე "
+"<filename>%2</filename>"
 
 #: jobs/createfilesystemjob.cpp:66
 #, kde-kuit-format
@@ -1938,6 +2075,8 @@ msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> მდებარე ფაილური სისტემისთვის სისტემის "
+"ტიპის დაყენება ჩავარდა."
 
 #: jobs/createfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -1946,6 +2085,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "system type for partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი დანაყოფების ცხრილი მოწყობილობაზე <filename>%1</filename> "
+"დანაყოფისთვის <filename>%2</filename> სისტემის ტიპის დასაყენებლად."
 
 #: jobs/createfilesystemjob.cpp:70
 #, kde-kuit-format
@@ -1954,6 +2095,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი მოწყობილობა <filename>%1</filename> სისტემის ტიპის დასაყენებლად "
+"დანაყოფისთვის <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:84
 #, kde-kuit-format
@@ -1962,6 +2105,8 @@ msgid ""
 "Create file system <filename>%1</filename> on partition <filename>%2</"
 "filename>"
 msgstr ""
+"<filename>%1</filename> ფაილური სისტემის შექმნა დანაყოფზე <filename>%2</"
+"filename>"
 
 #: jobs/createpartitionjob.cpp:72
 #, kde-kuit-format
@@ -1980,6 +2125,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to create "
 "new partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი დანაყოფების ცხრილი მოწყობილობაზე <filename>%1</filename> ახალი "
+"დანაყოფის, <filename>%2</filename>, შესაქმნელად."
 
 #: jobs/createpartitionjob.cpp:76
 #, kde-kuit-format
@@ -1988,6 +2135,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to create new partition "
 "<filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი მოწყობილობა <filename>%1</filename> ახალი დანაყოფის, <filename>"
+"%2</filename>, შესაქმნელად."
 
 #: jobs/createpartitionjob.cpp:94
 #, kde-kuit-format
@@ -2008,12 +2157,14 @@ msgid ""
 "Creating partition table failed: Could not open device <filename>%1</"
 "filename>."
 msgstr ""
+"დანაყოფების ცხრილის შექნა ჩავარდა. მოწყობილობა <filename>%1</filename> ვერ "
+"გავხსენი."
 
 #: jobs/createpartitiontablejob.cpp:61
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition table on device <filename>%1</filename>"
-msgstr ""
+msgstr "ახალი დანაყოფების ცხრილის შექმნა მოწყობილობაზე <filename>%1</filename>"
 
 #: jobs/createvolumegroupjob.cpp:49
 #, kde-kuit-format
@@ -2056,6 +2207,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "file system on <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი დანაყოფების ცხრილი მოწყობილობაზე <filename>%1</filename> "
+"დანაყოფის <filename>%2</filename> წასაშლელად."
 
 #: jobs/deletefilesystemjob.cpp:83
 #, kde-kuit-format
@@ -2064,6 +2217,8 @@ msgid ""
 "Could not delete file system signature for partition <filename>%1</"
 "filename>: Failed to open device <filename>%2</filename>."
 msgstr ""
+"ვერ წავშალე სისტემის ხელმოწერა დანაყოფისთვის <filename>%1</filename>: "
+"მოწყობილობა <filename>%2</filename> ვერ გავხსენი."
 
 #: jobs/deletefilesystemjob.cpp:93
 #, kde-kuit-format
@@ -2084,6 +2239,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი დანაყოფების ცხრილი მოწყობილობაზე <filename>%1</filename> "
+"დანაყოფის, <filename>%2</filename>, წასაშლელად."
 
 #: jobs/deletepartitionjob.cpp:67
 #, kde-kuit-format
@@ -2091,6 +2248,7 @@ msgctxt "@info:progress"
 msgid ""
 "Deleting partition failed: Could not open device <filename>%1</filename>."
 msgstr ""
+"დანაყოფის წაშლა ჩავარდა: მოწყობილობა <filename>%1</filename> ვერ გავხსენი."
 
 #: jobs/deletepartitionjob.cpp:80
 #, kde-kuit-format
@@ -2103,30 +2261,32 @@ msgstr "დანაყოფის წაშლა: <filename>%1</filename>"
 msgctxt "@info:progress"
 msgid "Source and target for copying do not overlap: Rollback is not required."
 msgstr ""
+"წყარო და სამიზნე კოპირებისთვის ერთმანეთს არ ფარავენ. დაბრუნება საჭირო არაა."
 
 #: jobs/job.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback from: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "დაბრუნება საიდან: პირველი ბაიტი %1, ბოლო ბაიტი: %2."
 
 #: jobs/job.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback to: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "დაბრუნება სადამდე: პირველი ბაიტი %1, ბოლო ბაიტი: %2."
 
 #: jobs/job.cpp:74 jobs/job.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open device <filename>%1</filename> to rollback copying."
 msgstr ""
+"ვერ გავხსენი მოწყობილობა <filename>%1</filename> კოპირების გასაუქმებლად."
 
 #: jobs/job.cpp:86
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback failed: Source or target are not devices."
-msgstr ""
+msgstr "დაბრუნების შეცდომა: წყარო ან სამიზნე მოწყობილობა არაა."
 
 #: jobs/job.cpp:106
 #, kde-kuit-format
@@ -2164,6 +2324,8 @@ msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> არსებული ფაილური სისტემის გადასატანად "
+"გახსნა შეუძლებელია."
 
 #: jobs/movefilesystemjob.cpp:54
 #, kde-kuit-format
@@ -2172,12 +2334,16 @@ msgid ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> ფაილური სისტემის გადასატანად სამიზნის "
+"შექმნა შეუძლებელია."
 
 #: jobs/movefilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr ""
+"დაბრუნების ოპერაცია ფაილური სისტემისთვის დანაყოფზე <filename>%1</filename> "
+"ჩავარდა."
 
 #: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
@@ -2191,12 +2357,16 @@ msgstr "მოწყობილობის დახურვა. შეიძ
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"
 msgstr ""
+"დანაყოფზე <filename>%1</filename> მდებარე ფაილური სისტემის გადატანა სექტორზე "
+"%2"
 
 #: jobs/movephysicalvolumejob.cpp:57
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Move used PE in %1 on %2 to other available Physical Volumes"
 msgstr ""
+"%1-ში არსებული დაკავებული PE-ების %2-ზე სხვა ხელმისაწვდომ ფიზიკურ ტომებზე "
+"გადატანა"
 
 #: jobs/removevolumegroupjob.cpp:41
 #, kde-kuit-format
@@ -2214,19 +2384,23 @@ msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
 msgstr[0] ""
+"ფაილური სისტემას დანაყოფზე <filename>%2</filename> უკვე აქვს მოთხოვნილი "
+"სიგრძე, 1 სექტორი."
 msgstr[1] ""
+"ფაილური სისტემას დანაყოფზე <filename>%2</filename> უკვე აქვს მოთხოვნილი "
+"სიგრძე, %1 სექტორი."
 
 #: jobs/resizefilesystemjob.cpp:69
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
-msgstr ""
+msgstr "ფაილური სისტემის ზომის შეცვლა %1-დან %2 სექტორამდე."
 
 #: jobs/resizefilesystemjob.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
-msgstr ""
+msgstr "%1 ფაილური სისტემის ზომის შეცვლა შიდა უკანაბოლოს ფუნქციებით."
 
 #: jobs/resizefilesystemjob.cpp:91
 #, kde-kuit-format
@@ -2235,12 +2409,16 @@ msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> მდებარე ფაილური სისტემის ზომის შეცვლა "
+"შეუძლებელია, რადგან ამის მხარდაჭერა არ არსებობს."
 
 #: jobs/resizefilesystemjob.cpp:119
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
+"ფაილური სისტემის ზომა წარმატებით შეიცვალა, შიდა უკანაბოლოს ფუნქციების "
+"გამოყენებით."
 
 #: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
@@ -2249,6 +2427,8 @@ msgid ""
 "Could not open partition <filename>%1</filename> while trying to resize the "
 "file system."
 msgstr ""
+"დანაყოფის, <filename>%1</filename>, გახსნის შეცდომა ფაილური სისტემის ზომის "
+"შეცვლის მცდელობისას."
 
 #: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
@@ -2257,12 +2437,16 @@ msgid ""
 "Could not read geometry for partition <filename>%1</filename> while trying "
 "to resize the file system."
 msgstr ""
+"დანაყოფის, <filename>%1</filename>, გეომეტრიის წაკითხვის შეცდომა ფაილური "
+"სისტემის ზომის შეცვლის მცდელობისას."
 
 #: jobs/resizefilesystemjob.cpp:134
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
+"<filename>%1</filename>-ზე მდებარე ფაილური სისტემის ზომის დანაყოფის ბოლომდე "
+"შევსებამდე შეცვლა"
 
 #: jobs/resizefilesystemjob.cpp:136
 #, kde-kuit-format
@@ -2271,7 +2455,11 @@ msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
 msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
 msgstr[0] ""
+"დანაყოფზე <filename>%2</filename> მდებარე ფაილური სისტემის ზომის შეცვლა 1 "
+"სექტორამდე"
 msgstr[1] ""
+"დანაყოფზე <filename>%2</filename> მდებარე ფაილური სისტემის ზომის შეცვლა %1 "
+"სექტორამდე"
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
@@ -2300,12 +2488,14 @@ msgstr "ტომების ჯგუფის ზომის შეცვლ
 msgctxt "@info:progress"
 msgid "Could not open backup file <filename>%1</filename> to restore from."
 msgstr ""
+"მარქაფის ფაილის <filename>%1</filename> აღდგენისთვის გახსნა შეუძლებელია."
 
 #: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open target partition <filename>%1</filename> to restore to."
 msgstr ""
+"სამიზნე დანაყოფის <filename>%1</filename> აღსადგენად გახსნა შეუძლებელია."
 
 #: jobs/restorefilesystemjob.cpp:100
 #, kde-kuit-format
@@ -2314,6 +2504,8 @@ msgid ""
 "Restore the file system from file <filename>%1</filename> to partition "
 "<filename>%2</filename>"
 msgstr ""
+"ფაილური სისტემის აღდგენა ფაილიდან <filename>%1</filename> დანაყოფზე "
+"<filename>%2</filename>"
 
 #: jobs/setfilesystemlabeljob.cpp:48
 #, kde-kuit-format
@@ -2322,6 +2514,8 @@ msgid ""
 "File system on partition <filename>%1</filename> does not support setting "
 "labels. Job ignored."
 msgstr ""
+"ფაილურ სისტემას დანაყოფზე <filename>%1</filename> ჭდის დაყენების მხარდაჭერა "
+"არ გააჩნია. დავალება გამოტოვებულია."
 
 #: jobs/setfilesystemlabeljob.cpp:81
 #, kde-kuit-format
@@ -2329,6 +2523,8 @@ msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
 msgstr ""
+"დანაყოფზე <filename>%1</filename> მდებარე ფაილური სისტემის ჭდის დაყენება "
+"\"%2\"-ზე"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2349,6 +2545,8 @@ msgid ""
 "There was an error setting flag %1 for partition <filename>%2</filename> to "
 "state %3."
 msgstr ""
+"შეცდომა ალმის %1 დანაყოფისთვის <filename>%2</filename> მდგომარეობაზე %3 "
+"დაყენებისას."
 
 #: jobs/setpartflagsjob.cpp:74
 #, kde-kuit-format
@@ -2357,6 +2555,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set "
 "partition flags for partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი დანაყოფების ცხრილი მოწყობილობაზე <filename>%1</filename> "
+"დანაყოფისთვის <filename>%2</filename> ალმების დასაყენებლად."
 
 #: jobs/setpartflagsjob.cpp:76
 #, kde-kuit-format
@@ -2365,6 +2565,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set partition flags for "
 "partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი მოწყობილობა <filename>%1</filename> დანაყოფზე <filename>%2</"
+"filename> ალმების დასაყენებლად."
 
 #: jobs/setpartflagsjob.cpp:89
 #, kde-kuit-format
@@ -2385,6 +2587,8 @@ msgid ""
 "Could not open device <filename>%1</filename> while trying to resize/move "
 "partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი მოწყობილობა <filename>%1</filename> დანაყოფის <filename>%2</"
+"filename> ზომის შეცვლის/გადაადგილების მცდელობისას."
 
 #: jobs/setpartgeometryjob.cpp:81
 #, kde-kuit-format
@@ -2393,6 +2597,8 @@ msgid ""
 "Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
 "%3"
 msgstr ""
+"დანაყოფის <filename>%1</filename> გეომეტრიის დაყენება: საწყისი სექტორი: %2, "
+"სიგრძე %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
 #, kde-kuit-format
@@ -2401,12 +2607,14 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
+"ფაილურ სისტემას დანაყოფზე <filename>%1</filename> ატრიბუტების დაყენების "
+"მხარდაჭერა არ გააჩნია. დავალება გამოტოვებულია."
 
 #: jobs/setpartitionattributesjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
-msgstr ""
+msgstr "ატრიბუტების დაყენება ჩავარდა დანაყოფისთვის <filename>%1</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
 #, kde-kuit-format
@@ -2415,6 +2623,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი დანაყოფების ცხრილი მოწყობილობაზე <filename>%1</filename> "
+"დანაყოფისთვის <filename>%2</filename> ატრიბუტების დასაყენებლად."
 
 #: jobs/setpartitionattributesjob.cpp:63
 #, kde-kuit-format
@@ -2423,12 +2633,14 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
 msgstr ""
+"ვერ გავხსენი მოწყობილობა <filename>%1</filename> დანაყოფზე <filename>%2</"
+"filename> ატრიბუტების დასაყენებლად."
 
 #: jobs/setpartitionattributesjob.cpp:74
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "დანაყოფზე <filename>%1</filename> ატრიბუტების დაყენება \"%2\"-ზე"
 
 #: jobs/setpartitionlabeljob.cpp:47
 #, kde-kuit-format
@@ -2437,12 +2649,14 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
+"დანაყოფის <filename>%1</filename> დანაყოფების ცხრილს სახელების დაყენების "
+"მხარდაჭერა არ გააჩნია. დავალება გამოტოვებულია."
 
 #: jobs/setpartitionlabeljob.cpp:59
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr ""
+msgstr "სახელის დაყენება ჩავარდა დანაყოფისთვის <filename>%1</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:61
 #, kde-kuit-format
@@ -2451,6 +2665,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
+"მოწყობილობაზე <filename>%1</filename> შეუძლებელია დანაყოფების ცხრილის გახსნა "
+"დანაყოფისთვის <filename>%2</filename> სახელის დასაყენებლად."
 
 #: jobs/setpartitionlabeljob.cpp:63
 #, kde-kuit-format
@@ -2459,12 +2675,15 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
+"დანაყოფისთვის <filename>%2</filename> სახელის დასაყენებლად მოწყობილობა "
+"<filename>%1</filename> ვერ გავხსენი."
 
 #: jobs/setpartitionlabeljob.cpp:74
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
 msgstr ""
+"დანაყოფისთვის <filename>%1</filename> ჭდის დაყენება მნიშვნელობაზე \"%2\""
 
 #: jobs/setpartitionuuidjob.cpp:47
 #, kde-kuit-format
@@ -2473,12 +2692,14 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
+"დანაყოფის <filename>%1</filename> დანაყოფების ცხრილს UUID-ებსი დაყენების "
+"მხარდაჭერა არ გააჩნია. დავალება გამოტოვებულია."
 
 #: jobs/setpartitionuuidjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr ""
+msgstr "დანაყოფისთვის <filename>%1</filename> UUID-ის დაყენება ჩავარდა."
 
 #: jobs/setpartitionuuidjob.cpp:61
 #, kde-kuit-format
@@ -2487,6 +2708,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
+"მოწყობილობაზე <filename>%1</filename> შეუძლებელია დანაყოფების ცხრილის გახსნა "
+"დანაყოფისთვის <filename>%2</filename> UUID-ის დასაყენებლად."
 
 #: jobs/setpartitionuuidjob.cpp:63
 #, kde-kuit-format
@@ -2495,24 +2718,28 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
+"მოწყობილობაზე <filename>%1</filename> შეუძლებელია დანაყოფების ცხრილის გახსნა "
+"დანაყოფისთვის <filename>%2</filename> UUID-ის დასაყენებლად."
 
 #: jobs/setpartitionuuidjob.cpp:74
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "დანაყოფზე <filename>%1</filename> UUID-ის \"%2\"-ზე დაყენება"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open random data source to overwrite file system."
 msgstr ""
+"ფაილური სისტემის თავზე გადასაწერად შემთხვევითი რიცხვების წყაროს გახსნა "
+"შეუძლებელია."
 
 #: jobs/shredfilesystemjob.cpp:77
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
-msgstr ""
+msgstr "ფაილური სისტემის სამუდამოდ წაშლა მოწყობილობაზე <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -2520,12 +2747,13 @@ msgctxt "@info:status"
 msgid ""
 "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
 msgstr ""
+"დანაყოფის <filename>%1</filename> (%2, %3) მარქაფი <filename>%4</filename>-ზე"
 
 #: ops/checkoperation.cpp:50
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
-msgstr ""
+msgstr "შემოწმდება და შეკეთდება დანაყოფი <filename>%1</filename> (%2, %3)"
 
 #: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
 #, kde-kuit-format
@@ -2534,12 +2762,16 @@ msgid ""
 "<warning>Maximizing file system on target partition <filename>%1</filename> "
 "to the size of the partition failed.</warning>"
 msgstr ""
+"<warning>სამიზნე დანაყოფზე <filename>%1</filename> ფაილური სისტემის ზომის "
+"დანაყოფის ზომამდე გახსნა ჩავარდა.</warning>"
 
 #: ops/copyoperation.cpp:151
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking target partition <filename>%1</filename> after copy failed."
 msgstr ""
+"სამიზნე დანაყოფის <filename>%1</filename> შემოწმება კოპირების შემდეგ, "
+"ჩავარდა."
 
 #: ops/copyoperation.cpp:158
 #, kde-kuit-format
@@ -2557,7 +2789,7 @@ msgstr "კოპირებისთვის სამიზნე დან�
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking source partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "საწყისი დანაყოფის <filename>%1</filename> შემოწმება ჩავარდა."
 
 #: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
 #: ops/restoreoperation.cpp:148
@@ -2573,6 +2805,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6)"
 msgstr ""
+"დანაყოფის <filename>%1</filename> (%2, %3) კოპირება <filename>%4</filename>-"
+"ზე (%5, %6)"
 
 #: ops/copyoperation.cpp:188
 #, kde-kuit-format
@@ -2581,6 +2815,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6) and grow it to %7"
 msgstr ""
+"დანაყოფის <filename>%1</filename> (%2, %3) კოპირება <filename>%4</filename>-"
+"ზე (%5, %6) და გაზრდა %7-მდე"
 
 #: ops/copyoperation.cpp:200
 #, kde-kuit-format
@@ -2589,6 +2825,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename>"
 msgstr ""
+"დანაყოფის <filename>%1</filename> (%2, %3) კოპირება გამოუყოფ ადგილას "
+"(დასაწყისი %4) <filename>%5</filename>-ზე"
 
 #: ops/copyoperation.cpp:208
 #, kde-kuit-format
@@ -2597,24 +2835,27 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename> and grow it to %6"
 msgstr ""
+"დანაყოფის <filename>%1</filename> (%2, %3) კოპირება გამოუყოფ ადგილას "
+"(დასაწყისი %4) <filename>%5</filename>-ზე და მისი გაზრდა %6-მდე"
 
 #: ops/createfilesystemoperation.cpp:89
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create filesystem %1 on partition <filename>%2</filename>"
-msgstr ""
+msgstr "შეიქმნება ფაილური სისტემა %1 დანაყოფზე <filename>%2</filename>"
 
 #: ops/createpartitiontableoperation.cpp:104
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
 msgstr ""
+"შეიქმნება ახალი დანაყოფების ცხრილი (ტიპი: %1) <filename>%2</filename>-ზე"
 
 #: ops/createvolumegroupoperation.cpp:36
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr ""
+msgstr "ახალი LVM ტომების ჯგუფის შექმნა, სახელით '%1'."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
@@ -2638,7 +2879,7 @@ msgstr "წაიშლება დანაყოფი <filename>%1</filename
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
-msgstr ""
+msgstr "ახალი დანაყოფის (%1, %2) შექმნა <filename>%3</filename>-ზე"
 
 #: ops/operation.cpp:75
 #, kde-kuit-format
@@ -2686,25 +2927,29 @@ msgstr "LVM ტომების ჯგუფის წაშლა."
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Moving extended partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "გაფართოებული დანაყოფის <filename>%1</filename> გადატანა ჩავარდა."
 
 #: ops/resizeoperation.cpp:165
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> after resize/move failed."
 msgstr ""
+"დანაყოფის <filename>%1</filename> შემოწმება, ზომის შეცვლის/გადატანის შემდეგ, "
+"ჩავარდა."
 
 #: ops/resizeoperation.cpp:168
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing/moving partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> ზომის შეცვლა/გადაადგილება ჩავარდა."
 
 #: ops/resizeoperation.cpp:171
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> before resize/move failed."
 msgstr ""
+"დანაყოფის <filename>%1</filename> შემოწმება, ზომის შეცვლამდე/გადატანამდე, "
+"ჩავარდა."
 
 #: ops/resizeoperation.cpp:201
 #, kde-kuit-format
@@ -2722,13 +2967,13 @@ msgstr "დანაყოფის <filename>%1</filename> მარჯვნ�
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Grow partition <filename>%1</filename> from %2 to %3"
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> გაზრდა %2-დან %3-მდე"
 
 #: ops/resizeoperation.cpp:210
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Shrink partition <filename>%1</filename> from %2 to %3"
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> შემცირება %2-დან %3-მდე"
 
 #: ops/resizeoperation.cpp:213
 #, kde-kuit-format
@@ -2737,6 +2982,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
 "to %4"
 msgstr ""
+"დანაყოფის <filename>%1</filename> გადატანა მარცხნივ %2-ით და მისი გაზრდა %3-"
+"დან %4-მდე"
 
 #: ops/resizeoperation.cpp:216
 #, kde-kuit-format
@@ -2745,6 +2992,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and grow it from "
 "%3 to %4"
 msgstr ""
+"დანაყოფის <filename>%1</filename> გადატანა მარჯვნივ %2-ით და მისი გაზრდა %3-"
+"დან %4-მდე"
 
 #: ops/resizeoperation.cpp:219
 #, kde-kuit-format
@@ -2753,6 +3002,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
+"დანაყოფის <filename>%1</filename> გადატანა მარცხნივ %2-ით და მისი შემცირება "
+"%3-დან %4-მდე"
 
 #: ops/resizeoperation.cpp:222
 #, kde-kuit-format
@@ -2761,6 +3012,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
+"დანაყოფის <filename>%1</filename> გადატანა მარჯვნივ %2-ით და მისი შემცირება "
+"%3-დან %4-მდე"
 
 #: ops/resizeoperation.cpp:229
 #, kde-kuit-format
@@ -2775,18 +3028,22 @@ msgid ""
 "Resize/move failed: Could not resize file system to shrink partition "
 "<filename>%1</filename>."
 msgstr ""
+"ზომის შეცვლა/გადატანა ჩავარდა: დანაყოფზე <filename>%1</filename> არსებული "
+"ფაილური სისტემის ზომის შემცირება შეუძლებელია."
 
 #: ops/resizeoperation.cpp:263
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
 msgstr ""
+"ზომის შეცვლა/გადატანა ჩავარდა: დანაყოფი <filename>%1</filename> ვერ "
+"დავაპატარავე."
 
 #: ops/resizeoperation.cpp:282
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Moving partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> ზომის გადაადგილება ჩავარდა."
 
 #: ops/resizeoperation.cpp:287
 #, kde-kuit-format
@@ -2795,6 +3052,8 @@ msgid ""
 "Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
 "back."
 msgstr ""
+"ფაილური სისტემის გადატანა დანაყოფისთვის <filename>%1</filename> ჩავარდა. "
+"მოსწრებული ქმედებების გაუქმება."
 
 #: ops/resizeoperation.cpp:291
 #, kde-kuit-format
@@ -2803,12 +3062,14 @@ msgid ""
 "Moving back partition <filename>%1</filename> to its original position "
 "failed."
 msgstr ""
+"დანაყოფის <filename>%1</filename> საწყის მდებარეობაზე დაბრუნება ჩავარდა."
 
 #: ops/resizeoperation.cpp:304
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
 msgstr ""
+"ზომის შეცვლა/გადატანა ჩავარდა: დანაყოფი <filename>%1</filename> ვერ გავზარდე."
 
 #: ops/resizeoperation.cpp:309
 #, kde-kuit-format
@@ -2817,13 +3078,15 @@ msgid ""
 "Resize/move failed: Could not resize the file system on partition <filename>"
 "%1</filename>"
 msgstr ""
+"ზომის შეცვლა/გადატანა ჩავარდა: დანაყოფზე <filename>%1</filename> არსებული "
+"ფაილური სისტემის ზომის შეცვლა შეუძლებელია"
 
 #: ops/resizeoperation.cpp:312
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Could not restore old partition size for partition <filename>%1</filename>."
-msgstr ""
+msgstr "ვერ აღვადგინე ძველი ზომა დანაყოფისთვის <filename>%1</filename>."
 
 #: ops/resizevolumegroupoperation.cpp:108
 #, kde-kuit-format
@@ -2838,6 +3101,8 @@ msgid ""
 "Checking target file system on partition <filename>%1</filename> after the "
 "restore failed."
 msgstr ""
+"აღდგენის შემდეგ დანაყოფზე <filename>%1</filename> სამიზნე ფაილური სისტემის "
+"შემოწმება ჩავარდა."
 
 #: ops/restoreoperation.cpp:138
 #, kde-kuit-format
@@ -2849,7 +3114,7 @@ msgstr "ფაილური სისტემის აღდგენის 
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating the destination partition to restore to failed."
-msgstr ""
+msgstr "აღსადგენად სამიზნე დანაყოფის შექმნა ჩავარდა."
 
 #: ops/restoreoperation.cpp:156
 #, kde-kuit-format
@@ -2857,6 +3122,7 @@ msgctxt "@info:status"
 msgid ""
 "Restore partition from <filename>%1</filename> to <filename>%2</filename>"
 msgstr ""
+"დანაყოფის აღდგენა <filename>%1</filename>-დან <filename>%2</filename>-მდე"
 
 #: ops/restoreoperation.cpp:158
 #, kde-kuit-format
@@ -2865,18 +3131,21 @@ msgid ""
 "Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
 "filename>"
 msgstr ""
+"დანაყოფის აღდგენა <filename>%1</filename>-ზე %2-ზე <filename>%3</filename>-"
+"დან"
 
 #: ops/setfilesystemlabeloperation.cpp:58
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "დანაყოფის <filename>%1</filename> ჭდის დაყენება \"%2\"-ზე"
 
 #: ops/setfilesystemlabeloperation.cpp:60
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
 msgstr ""
+"დანაყოფისთვის <filename>%1</filename> ჭდის დაყენება \"%2\"-დან \"%3\"-ზე"
 
 #: ops/setpartflagsoperation.cpp:62
 #, kde-kuit-format
@@ -2888,7 +3157,7 @@ msgstr "ალმების გასუფთავება დანაყ�
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "ალმების დაყენება დანაყოფისთვის <filename>%1</filename> \"%2\"-ზე"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:248
 #, kde-kuit-format
@@ -2928,6 +3197,8 @@ msgid ""
 "Could not set geometry for partition <filename>%1</filename> while trying to "
 "resize/move it."
 msgstr ""
+"დანაყოფის, <filename>%1</filename>, გეომეტრიის დაყენების შეცდომა მისი ზომის "
+"შეცვლის მცდელობისას."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:124
 #, kde-kuit-format
@@ -2935,6 +3206,7 @@ msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
 msgstr ""
+"დანაყოფზე <filename>%1</filename> ფაილური სისტემის ნიშნების წაშლა ჩავარდა."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
 #, kde-kuit-format
@@ -2943,6 +3215,8 @@ msgid ""
 "Could not determine file system of partition at sector %1 on device "
 "<filename>%2</filename>."
 msgstr ""
+"ფაილური სისტემის ამოცნობა შეუძლებელია დანაყოფზე, რომელიც არის სექტორზე %1 "
+"მოწყობილობაზე <filename>%2</filename>."
 
 #: util/capacity.cpp:100
 #, kde-kuit-format
@@ -3016,43 +3290,45 @@ msgstr "ბრძანება: %1 %2"
 #: util/externalcommandhelper.cpp:82
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr ""
+msgstr "მოწყობილობის <filename>%1</filename> წასაკითხად გახსნა შეუძლებელია."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr ""
+"მოწყობილობაზე <filename>%2</filename> მდებარეობაზე %1 გადახვევა შეუძლებელია."
 
 #: util/externalcommandhelper.cpp:96
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
 msgstr ""
+"ინფორმაციის წაკითხვა შეუძლებელია მოწყობილობიდან <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:114
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
-msgstr ""
+msgstr "მოწყობილობის <filename>%1</filename> ჩასაწერად გახსნა შეუძლებელია."
 
 #: util/externalcommandhelper.cpp:125
 #, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
-msgstr ""
+msgstr "მოწყობილობაზე <filename>%1</filename> ჩაწერა შეუძლებელია."
 
 #: util/externalcommandhelper.cpp:151
 #, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
-msgstr ""
+msgstr "ფაილის <filename>%1</filename> ჩასაწერად გახსნა შეუძლებელია."
 
 #: util/externalcommandhelper.cpp:156
 #, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr ""
+msgstr "ჩაწერის შეცდომა ფაილში <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr ""
+msgstr "%1 ნაგლეჯის (%2 ბაიტი) კოპირება %3-დან %4-ზე, მიმართულება: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3070,13 +3346,13 @@ msgstr "მარჯვენა"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
-msgstr ""
+msgstr "კოპირდება %1 მიბ/წმ. დაახლ. დარჩენილი დრო: %2"
 
 #: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr ""
+msgstr "კოპირდება ნაგლეჯის დანარჩენი ზომით %1 %2-დან %3-ზე."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3091,8 +3367,8 @@ msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 ნაგლეჯის კოპირება (%2) დასრულდა."
+msgstr[1] "%1 ნაგლეჯის კოპირება (%2) დასრულდა."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
