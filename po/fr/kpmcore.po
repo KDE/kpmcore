@@ -9,8 +9,8 @@
 # Thomas Vergnaud <thomas.vergnaud@gmx.fr>, 2014, 2015.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019.
 # William Oprandi <william.oprandi@gmail.com>, 2020.
-# Xavier Besnard <xavier.besnard@neuf.fr>, 2020, 2021, 2022.
-# Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
+# Xavier Besnard <xavier.besnard@kde.org>, 2020, 2021, 2022.
+# Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
 msgid ""
 msgstr ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-07 01:42+0000\n"
 "PO-Revision-Date: 2023-03-08 12:58+0100\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Joëlle Cornavin, Simon Depiets, Xavier Besnard"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "jcorn@free.fr, sdepiets@gmail.com, xavier.besnard@neuf.fr"
+msgstr "jcorn@free.fr, sdepiets@gmail.com, xavier.besnard@kde.org"
 
 #: core/device.cpp:33
 #, kde-format
