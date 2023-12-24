@@ -58,6 +58,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="tr">Diskleri yönetmek için yetkilendirin.</message>
       <message xml:lang="uk">Розпізнавання для керування дисками.</message>
       <message xml:lang="zh_CN">请进行身份验证以管理磁盘。</message>
+      <message xml:lang="zh_TW">認證以管理磁碟。</message>
       <defaults>
          <allow_inactive>no</allow_inactive>
          <allow_active>auth_admin_keep</allow_active>
