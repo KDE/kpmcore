@@ -16,7 +16,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="en_GB">Run privileged partition manager helper</description>
       <description xml:lang="eo">Lanĉi privilegiitan helpilon de diskpartiga mastrumilo</description>
       <description xml:lang="es">Ejecutar la aplicación auxiliar de gestión de particiones con privilegios</description>
-      <description xml:lang="eu">Ibili partizio-kudeatzaile pribilegiatuaren laguntzailea</description>
+      <description xml:lang="eu">Ibili partizio-kudeatzaile laguntzailea pribilegioekin</description>
       <description xml:lang="fi">Suorita osionhallinta-avustaja pääkäyttäjäoikeuksin</description>
       <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
       <description xml:lang="gl">Executar o asistente de xestión de particións con privilexios</description>
@@ -41,6 +41,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="de">Authentisieren Sie sich, um Datenträger zu verwalten.</message>
       <message xml:lang="eo">Aŭtentiĝu por administri diskojn.</message>
       <message xml:lang="es">Debe autenticarse para administrar discos.</message>
+      <message xml:lang="eu">Diskoak kudeatzeko egiaztatu.</message>
       <message xml:lang="fi">Tunnistaudu hallinnoidaksesi levyjä.</message>
       <message xml:lang="fr">S'authentifier pour gérer les disques.</message>
       <message xml:lang="gl">Autentíquese para xestionar os discos.</message>
