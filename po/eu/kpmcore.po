@@ -1,7 +1,7 @@
 # Translation for kpmcore.po to Euskara/Basque (eu).
 # Copyright (C) 2020-2022 This file is copyright:
 # This file is distributed under the same license as the kpmcore package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2022.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2022-10-22 05:40+0200\n"
+"PO-Revision-Date: 2023-12-29 22:16+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1004,19 +1004,19 @@ msgstr "Sektore bat idaztean izandako erroreen kopuru osoa."
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of off-track errors."
-msgstr ""
+msgstr "Pistaz-kanpo errore kopurua."
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Data Address Mark Errors"
-msgstr ""
+msgstr "Datuen helbide-marka errorea"
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of Data Address Mark errors (or vendor-specific)."
-msgstr ""
+msgstr "Datuen helbide-marka errore kopurua (edo saltzailearena berariazkoa)."
 
 #: core/smartattribute.cpp:147
 #, kde-format
@@ -1058,7 +1058,7 @@ msgstr "Tenperatura altuek eragindako errore kopurua."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Flying Height"
-msgstr ""
+msgstr "Hegaldi-altuera"
 
 #: core/smartattribute.cpp:150
 #, kde-format
@@ -1068,6 +1068,9 @@ msgid ""
 "increases the chances of a head crash while a flying height that is too high "
 "increases the chances of a read/write error."
 msgstr ""
+"Buruen, disko gainazalaren gainetiko altuera. Baxuegia den hegaldi-altuerak "
+"buruaren talka baten aukerak handitzen ditu, altuegia den hegaldi-altuerak "
+"aldiz irakurtzeko/idazteko erroreen aukera handitzen du."
 
 #: core/smartattribute.cpp:151
 #, kde-format
@@ -1102,13 +1105,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Offline Seek Performance"
-msgstr ""
+msgstr "Lerroz kanpo kokatzeko errendimendua"
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive's seek performance during its internal tests."
-msgstr ""
+msgstr "Unitatearen kokatzeko errendimendua barneko probak egin bitartean."
 
 #: core/smartattribute.cpp:154
 #, kde-format
@@ -1152,26 +1155,26 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-Sense Error Rate"
-msgstr ""
+msgstr "G-Sentsorearen errore emaria"
 
 #: core/smartattribute.cpp:157
 #, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "Kanpotik eragindako astindu eta bibrazioengatiko errore-kopurua."
 
 #: core/smartattribute.cpp:158
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Loaded Hours"
-msgstr ""
+msgstr "Zamatutako orduak"
 
 #: core/smartattribute.cpp:158
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time spent operating under data load."
-msgstr ""
+msgstr "Datu-zamapean lanean emandako denbora."
 
 #: core/smartattribute.cpp:159
 #, kde-format
@@ -1183,7 +1186,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr ""
+msgstr "Buruak kokapena zenbat aldiz aldatzen duen."
 
 #: core/smartattribute.cpp:160
 #, kde-format
@@ -1267,7 +1270,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive Temperature"
-msgstr ""
+msgstr "Unitatearen tenperatura"
 
 #: core/smartattribute.cpp:167
 #, kde-format
@@ -1287,25 +1290,25 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-On Seconds"
-msgstr ""
+msgstr "Pizta emandako segundoak"
 
 #: core/smartattribute.cpp:168
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time elapsed in the power-on state"
-msgstr ""
+msgstr "Piztutako egoeran emandako denbora"
 
 #: core/smartattribute.cpp:169
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Unrecoverable ECC Count"
-msgstr ""
+msgstr "ECC berreskuraezin kopurua"
 
 #: core/smartattribute.cpp:169
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of unrecoverable ECC errors"
-msgstr ""
+msgstr "ECC errore berreskuraezinen kopurua"
 
 #: core/smartattribute.cpp:170
 #, kde-format
@@ -1339,37 +1342,37 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "Idatzitako LBAk guztira"
 
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "Idatzitako LBAk guztira"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "Irakurritako LBAk guztira"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "Irakurritako LBAk guztira"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD NAND_Writes_1GiB"
-msgstr ""
+msgstr "SSD NAND_Writes_1GiB"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr ""
+msgstr "NANDean idazketa kopurua 1 GBeko gehikuntzetan"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1399,13 +1402,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@item:intable degrees in Celsius and Fahrenheit"
 msgid "%1° C / %2° F"
-msgstr ""
+msgstr "%1° C / %2° F"
 
 #: core/smartstatus.cpp:86
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Aborted"
-msgstr ""
+msgstr "Abortatuta"
 
 #: core/smartstatus.cpp:89
 #, kde-kuit-format
@@ -1435,13 +1438,13 @@ msgstr "Errore elektrikoa"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Servo error"
-msgstr ""
+msgstr "Serbo-errorea"
 
 #: core/smartstatus.cpp:104
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Read error"
-msgstr "Irakur errorea"
+msgstr "Irakur-errorea"
 
 #: core/smartstatus.cpp:107
 #, kde-kuit-format
@@ -1453,7 +1456,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Self test in progress"
-msgstr ""
+msgstr "Auto-proba martxan"
 
 #: core/smartstatus.cpp:114
 #, kde-kuit-format
@@ -1471,7 +1474,7 @@ msgstr "Osasuntsu"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has been used outside of its design parameters in the past."
-msgstr ""
+msgstr "Iraganean bere diseinuko parametroetatik at erabili da."
 
 #: core/smartstatus.cpp:129
 #, kde-kuit-format
@@ -1483,7 +1486,7 @@ msgstr "Sektore txar batzuk ditu."
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Is being used outside of its design parameters right now."
-msgstr ""
+msgstr "Oraintxe bertan bere diseinuko parametroetatik at erabiltzen ari da."
 
 #: core/smartstatus.cpp:135
 #, kde-kuit-format
@@ -1810,7 +1813,7 @@ msgstr "Giltzatu"
 #: fs/luks.cpp:252
 #, kde-format
 msgid "Enter passphrase for %1:"
-msgstr ""
+msgstr "Sartu %1(e)rako pasaesaldia:"
 
 #: fs/luks.cpp:495 fs/luks.cpp:505 fs/luks2.cpp:88 fs/luks2.cpp:105
 #, kde-kuit-format
@@ -1924,7 +1927,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
-msgstr ""
+msgstr "Ezin izan du <filename>%1</filename> babeskopia fitxategia sortu."
 
 #: jobs/backupfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2484,12 +2487,10 @@ msgid ""
 msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
 
 #: jobs/setpartitionattributesjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr "Ezarri <filename>%1</filename> partizioaren atributuak \"%2\"(e)ra"
 
 #: jobs/setpartitionlabeljob.cpp:47
 #, fuzzy, kde-kuit-format
@@ -2574,7 +2575,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Ezarri <filename>%1</filename> partizioko UUID «%2»(e)ra"
+msgstr "Ezarri <filename>%1</filename> partizioaren UUID \"%2\"(e)ra"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
