@@ -1,16 +1,16 @@
 # Translation for kpmcore.po to Euskara/Basque (eu).
-# Copyright (C) 2020-2022 This file is copyright:
+# Copyright (C) 2020-2024 This file is copyright:
 # This file is distributed under the same license as the kpmcore package.
-# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2022.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2020, 2022, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-12-29 22:16+0100\n"
+"PO-Revision-Date: 2024-01-02 23:30+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -1046,7 +1046,7 @@ msgstr "ECC softwarearen bidezko errore zuzenketa kopurua"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Thermal Asperity Rate"
-msgstr ""
+msgstr "Laztura-termikoaren tasa"
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -1141,7 +1141,7 @@ msgstr "Idazketa garaiko astinaldia"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Disk Shift"
-msgstr ""
+msgstr "Diskoaren desplazamendua"
 
 #: core/smartattribute.cpp:156
 #, kde-format
@@ -1150,6 +1150,8 @@ msgid ""
 "Distance the disk has shifted relative to the spindle (usually due to shock "
 "or temperature)."
 msgstr ""
+"Diskoa ardatzarekiko desplazatu den distantzia (normalean astinaldi baten "
+"edo tenperaturaren ondorioz)."
 
 #: core/smartattribute.cpp:157
 #, kde-format
@@ -1180,13 +1182,13 @@ msgstr "Datu-zamapean lanean emandako denbora."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Retry Count"
-msgstr ""
+msgstr "Zamatze/Zama-gabetze saiakera kopurua"
 
 #: core/smartattribute.cpp:159
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr "Buruak kokapena zenbat aldiz aldatzen duen."
+msgstr "Buruak kokapena aldatzen duen aldi kopurua."
 
 #: core/smartattribute.cpp:160
 #, kde-format
@@ -2449,42 +2451,44 @@ msgid ""
 "Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
 "%3"
 msgstr ""
+"Ezarri <filename>%1</filename> partizioaren geometria: Hasierako sektorea: "
+"%2, luzera: %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr ""
+"<filename>%1</filename> partizioaren partizio-taulak ez du atributuak "
+"ezartzea onartzen. Lanari ezikusi egin zaio."
 
 #: jobs/setpartitionattributesjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr "<filename>%1</filename> partizioaren atributuak ezartzea huts egin du."
 
 #: jobs/setpartitionattributesjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename> partizioko atributuak ezartzeko, ireki."
 
 #: jobs/setpartitionattributesjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr ""
+"Ezin izan du <filename>%1</filename> gailua, <filename>%2</filename> "
+"partizioaren atributuak ezartzeko, ireki."
 
 #: jobs/setpartitionattributesjob.cpp:74
 #, kde-kuit-format
@@ -2493,31 +2497,30 @@ msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
 msgstr "Ezarri <filename>%1</filename> partizioaren atributuak \"%2\"(e)ra"
 
 #: jobs/setpartitionlabeljob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr ""
+"<filename>%1</filename> partizioaren partizio-taulak ez du izenak ezartzea "
+"onartzen. Lanari ezikusi egin zaio."
 
 #: jobs/setpartitionlabeljob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Setting label for partition <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr "<filename>%1</filename> partizioaren etiketa «%2»ra aldatu"
+msgstr "<filename>%1</filename> partizioaren izena ezartzea huts egin du."
 
 #: jobs/setpartitionlabeljob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
-msgstr "Ezin izan da <filename>%1</filename> gailua irakurtzeko ireki."
+msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename> partizioaren izena ezartzeko, ireki."
 
 #: jobs/setpartitionlabeljob.cpp:63
 #, kde-kuit-format
