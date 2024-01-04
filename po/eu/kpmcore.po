@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2024-01-02 23:30+0100\n"
+"PO-Revision-Date: 2024-01-03 20:37+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -693,7 +693,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Power Loss Protection Failure"
-msgstr "SSD energia galera babesaren hutsegitea"
+msgstr "SSD energia-galeraren babesaren hutsegitea"
 
 #: core/smartattribute.cpp:119
 #, fuzzy, kde-format
@@ -1330,7 +1330,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
-msgstr ""
+msgstr "Buruaren hegaldi orduak<br/>edo transferentzia errore tasa (Fujitsu)"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1386,7 +1386,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors while reading from a disk"
-msgstr ""
+msgstr "Diskotik irakurri bitartean gertatutako errore kopurua"
 
 #: core/smartattribute.cpp:176
 #, kde-format
@@ -1416,7 +1416,7 @@ msgstr "Abortatuta"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Interrupted"
-msgstr ""
+msgstr "Etenda"
 
 #: core/smartstatus.cpp:92
 #, kde-kuit-format
@@ -1452,7 +1452,7 @@ msgstr "Irakur-errorea"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Handling error"
-msgstr ""
+msgstr "Erabilera errorea"
 
 #: core/smartstatus.cpp:110
 #, kde-kuit-format
@@ -1482,7 +1482,7 @@ msgstr "Iraganean bere diseinuko parametroetatik at erabili da."
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has some bad sectors."
-msgstr "Sektore txar batzuk ditu."
+msgstr "Sektore akastun batzuk ditu."
 
 #: core/smartstatus.cpp:132
 #, kde-kuit-format
@@ -1494,13 +1494,13 @@ msgstr "Oraintxe bertan bere diseinuko parametroetatik at erabiltzen ari da."
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has many bad sectors."
-msgstr "Errore ugari ditu."
+msgstr "Sektore akastun asko ditu."
 
 #: core/smartstatus.cpp:139
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Disk failure is imminent. Backup all data!"
-msgstr "Diskoak aurki huts egingo du. Egin datuen babesa!"
+msgstr "Diskoak aurki huts egingo du. Egin datu guztien babeskopia!"
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1509,6 +1509,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
+"<filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz aldatzea "
+"huts egin du: Ezin izan du aldi baterako direktorioa sortu."
 
 #: fs/btrfs.cpp:182 fs/btrfs.cpp:202
 #, kde-kuit-format
@@ -1517,6 +1519,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "btrfs file system resize failed."
 msgstr ""
+"<filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz aldatzea "
+"huts egin du: NILFS fitxategi-sistema neurriz aldatzea huts egin du."
 
 #: fs/btrfs.cpp:187
 #, kde-kuit-format
@@ -1525,6 +1529,8 @@ msgid ""
 "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning><filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz "
+"aldatzea huts egin du: Desmuntatzea huts egin du.</warning>"
 
 #: fs/btrfs.cpp:189
 #, kde-kuit-format
@@ -1533,6 +1539,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"<filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz aldatzea "
+"huts egin du: Hasierako muntaiak huts egin du."
 
 #: fs/fat12.cpp:141
 #, kde-kuit-format
@@ -1724,13 +1732,13 @@ msgstr "fat12"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
-msgstr ""
+msgstr "linux_raid_member"
 
 #: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
-msgstr ""
+msgstr "BitLocker"
 
 #: fs/filesystem.cpp:536
 #, kde-kuit-format
@@ -1763,6 +1771,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: Could "
 "not create temp dir."
 msgstr ""
+"<filename>%1</filename> partizioko JFS fitxategi-sistema neurriz aldatzea "
+"huts egin du: Ezin izan du aldi baterako direktorioa sortu."
 
 #: fs/jfs.cpp:169 fs/jfs.cpp:188
 #, kde-kuit-format
@@ -1771,6 +1781,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Remount failed."
 msgstr ""
+"<filename>%1</filename> partizioko JFS fitxategi-sistema neurriz aldatzea "
+"huts egin du: Birmuntzea huts egin du."
 
 #: fs/jfs.cpp:174
 #, kde-kuit-format
@@ -1779,6 +1791,8 @@ msgid ""
 "<warning>Resizing JFS file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning><filename>%1</filename> partizioko JFS fitxategi-sistema neurriz "
+"aldatzea huts egin du: Desmuntatzea huts egin du.</warning>"
 
 #: fs/jfs.cpp:176
 #, kde-kuit-format
@@ -1787,6 +1801,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"<filename>%1</filename> partizioko JFS fitxategi-sistema neurriz aldatzea "
+"huts egin du: Hasierako muntaiak huts egin du."
 
 #: fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -1822,6 +1838,8 @@ msgstr "Sartu %1(e)rako pasaesaldia:"
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr ""
+"<filename>%1</filename> partizioko «LUKS crypt» neurriz aldatzea huts egin "
+"du."
 
 #: fs/luks.cpp:509 fs/luks2.cpp:116
 #, kde-kuit-format
@@ -1829,6 +1847,8 @@ msgctxt "@info:progress"
 msgid ""
 "Resizing encrypted file system on partition <filename>%1</filename> failed."
 msgstr ""
+"<filename>%1</filename> partizioko zifratutako fitxategi-sistema neurriz "
+"aldatze huts egin du."
 
 #: fs/nilfs2.cpp:137
 #, kde-kuit-format
@@ -1837,6 +1857,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
+"<filename>%1</filename> partizioko NILFS2 fitxategi-sistema neurriz aldatzea "
+"huts egin du: Ezin izan du aldi baterako direktorioa sortu."
 
 #: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
 #, kde-kuit-format
@@ -1845,6 +1867,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "NILFS2 file system resize failed."
 msgstr ""
+"<filename>%1</filename> partizioko NILFS2 fitxategi-sistema neurriz aldatzea "
+"huts egin du: NILFS2 fitxategi-sistema neurriz aldatzea huts egin du."
 
 #: fs/nilfs2.cpp:156
 #, kde-kuit-format
@@ -1853,6 +1877,8 @@ msgid ""
 "<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning><filename>%1</filename> partizioko NILFS2 fitxategi-sistema neurriz "
+"aldatzea huts egin du: Desmuntatzea huts egin du.</warning>"
 
 #: fs/nilfs2.cpp:158
 #, kde-kuit-format
@@ -1861,6 +1887,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"<filename>%1</filename> partizioko NILFS2 fitxategi-sistema neurriz aldatzea "
+"huts egin du: Hasierako muntaiak huts egin du."
 
 #: fs/ntfs.cpp:182
 #, kde-kuit-format
@@ -1869,6 +1897,8 @@ msgid ""
 "Updating boot sector for NTFS file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"<filename>%1</filename> partizioko NTFS fitxategi-sistemako abio-sektorea "
+"eguneratzen."
 
 #: fs/ntfs.cpp:194 fs/ntfs.cpp:202
 #, kde-kuit-format
@@ -1884,6 +1914,7 @@ msgctxt "@info:progress"
 msgid ""
 "Updated NTFS boot sector for partition <filename>%1</filename> successfully."
 msgstr ""
+"<filename>%1</filename> partiziorako NTFS abio-sektorea ondo eguneratu da."
 
 #: fs/xfs.cpp:159
 #, kde-kuit-format
@@ -1892,6 +1923,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: Could "
 "not create temp dir."
 msgstr ""
+"<filename>%1</filename> partizioko XFS fitxategi-sistema neurriz aldatzea "
+"huts egin du: Ezin izan du aldi baterako direktorioa sortu."
 
 #: fs/xfs.cpp:173 fs/xfs.cpp:192
 #, kde-kuit-format
@@ -1900,6 +1933,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "xfs_growfs failed."
 msgstr ""
+"<filename>%1</filename> partizioko XFS fitxategi-sistema neurriz aldatzea "
+"huts egin du: «xfs_growfs»ek huts egin du."
 
 #: fs/xfs.cpp:178
 #, kde-kuit-format
@@ -1908,6 +1943,8 @@ msgid ""
 "<warning>Resizing XFS file system on partition <filename>%1</filename> "
 "failed: Unmount failed.</warning>"
 msgstr ""
+"<warning><filename>%1</filename> partizioko XFS fitxategi-sistema neurriz "
+"aldatzea huts egin du: Desmuntatzea huts egin du.</warning>"
 
 #: fs/xfs.cpp:180
 #, kde-kuit-format
@@ -1916,6 +1953,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"<filename>%1</filename> partizioko XFS fitxategi-sistema neurriz aldatzea "
+"huts egin du: Hasierako muntaiak huts egin du."
 
 #: jobs/backupfilesystemjob.cpp:54
 #, kde-kuit-format
@@ -1924,6 +1963,8 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "backup."
 msgstr ""
+"Ezin izan du <filename>%1</filename> sorburu-partizioko fitxategi-sistema "
+"babeskopia egiteko ireki."
 
 #: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -1938,18 +1979,20 @@ msgid ""
 "Back up file system on partition <filename>%1</filename> to <filename>%2</"
 "filename>"
 msgstr ""
+"Egin <filename>%1</filename> partizioko fitxategi-sistemaren babeskopia "
+"<filename>%2</filename>(e)an"
 
 #: jobs/changepermissionsjob.cpp:43
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Aldatu <filename>%1</filename>(e)ren baimenak «%2»(e)ra"
+msgstr "Aldatu honen baimenak: <filename>%1</filename> %2(e)ra"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Check file system on partition <filename>%1</filename>"
-msgstr ""
+msgstr "Ikuskatu <filename>%1</filename> partizioko fitxategi-sistema"
 
 #: jobs/copyfilesystemjob.cpp:48
 #, kde-kuit-format
@@ -1983,6 +2026,8 @@ msgid ""
 "Closing device. This may take a while, especially on slow devices like "
 "Memory Sticks."
 msgstr ""
+"Gailua ixten. Denbora har dezake, bereziki memoria-makilen antzeko gailu "
+"mantsoetan."
 
 #: jobs/copyfilesystemjob.cpp:88
 #, kde-kuit-format
@@ -2023,6 +2068,8 @@ msgid ""
 "Create file system <filename>%1</filename> on partition <filename>%2</"
 "filename>"
 msgstr ""
+"Sortu <filename>%1</filename> fitxategi-sistema <filename>%2</filename> "
+"partizioan"
 
 #: jobs/createpartitionjob.cpp:72
 #, kde-kuit-format
@@ -2039,6 +2086,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to create "
 "new partition <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename> partizio berria sortzeko, ireki."
 
 #: jobs/createpartitionjob.cpp:76
 #, kde-kuit-format
@@ -2047,18 +2096,20 @@ msgid ""
 "Could not open device <filename>%1</filename> to create new partition "
 "<filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailua, <filename>%2</filename> "
+"partizio berria sortzeko, ireki."
 
 #: jobs/createpartitionjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition <filename>%1</filename>"
-msgstr ""
+msgstr "Sortu partizio berria <filename>%1</filename>"
 
 #: jobs/createpartitionjob.cpp:96
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition on device <filename>%1</filename>"
-msgstr ""
+msgstr "Sortu partizio berria <filename>%1</filename> gailuan"
 
 #: jobs/createpartitiontablejob.cpp:49
 #, kde-kuit-format
@@ -2067,6 +2118,8 @@ msgid ""
 "Creating partition table failed: Could not open device <filename>%1</"
 "filename>."
 msgstr ""
+"Partizio-taula sortzea huts egin du: Ezin izan du <filename>%1</filename> "
+"gailua ireki."
 
 #: jobs/createpartitiontablejob.cpp:61
 #, kde-kuit-format
@@ -2084,7 +2137,7 @@ msgstr "Sortu bolumen-talde berri bat: <filename>%1</filename> PV: %2 duena"
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr ""
+msgstr "Desaktibatu bolumen-logikoak: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
 #, kde-kuit-format
@@ -2099,12 +2152,14 @@ msgid ""
 "Could not delete file system: file system on <filename>%1</filename> is "
 "mounted."
 msgstr ""
+"Ezin izan du fitxategi-sistema ezabatu: <filename>%1</filename>(e)ko "
+"fitxategi-sistema muntatuta dago."
 
 #: jobs/deletefilesystemjob.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete file system on <filename>%1</filename>."
-msgstr ""
+msgstr "Ezin izan du <filename>%1</filename>(e)ko fitxategi-sistema ezabatu."
 
 #: jobs/deletefilesystemjob.cpp:80
 #, kde-kuit-format
@@ -2113,6 +2168,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "file system on <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename>(e)ko fitxategi-sistema ezabatzeko, ireki."
 
 #: jobs/deletefilesystemjob.cpp:83
 #, kde-kuit-format
@@ -2121,18 +2178,20 @@ msgid ""
 "Could not delete file system signature for partition <filename>%1</"
 "filename>: Failed to open device <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> partizioaren fitxategi-sistemaren "
+"sinadura ezabatu: <filename>%2</filename> gailua irekitzea huts egin du."
 
 #: jobs/deletefilesystemjob.cpp:93
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
-msgstr ""
+msgstr "Ezabatu <filename>%1</filename>(e)ko fitxategi-sistema"
 
 #: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
-msgstr ""
+msgstr "Ezin izan du <filename>%1</filename> partizioa ezabatu."
 
 #: jobs/deletepartitionjob.cpp:65
 #, kde-kuit-format
@@ -2141,6 +2200,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "partition <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename> partizioa ezabatzeko, ireki."
 
 #: jobs/deletepartitionjob.cpp:67
 #, kde-kuit-format
@@ -2148,66 +2209,71 @@ msgctxt "@info:progress"
 msgid ""
 "Deleting partition failed: Could not open device <filename>%1</filename>."
 msgstr ""
+"Partizioa ezabatzea huts egin du: Ezin izan du <filename>%1</filename> "
+"gailua ireki."
 
 #: jobs/deletepartitionjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Delete the partition <filename>%1</filename>"
-msgstr ""
+msgstr "Ezabatu <filename>%1</filename> partizioa"
 
 #: jobs/job.cpp:45
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Source and target for copying do not overlap: Rollback is not required."
 msgstr ""
+"Kopiatu beharreko sorburua eta helburua ez dira gainjartzen: Ez dago atzera "
+"egin beharrik."
 
 #: jobs/job.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback from: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "Honetatik atzera egitea: Lehenengo bytea: %1, azken bytea: %2."
 
 #: jobs/job.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback to: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "Honetara atzeraka egin: Lehenengo bytea: %1, azken bytea: %2."
 
 #: jobs/job.cpp:74 jobs/job.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open device <filename>%1</filename> to rollback copying."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailua atzera egiteko kopiatzeko ireki."
 
 #: jobs/job.cpp:86
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback failed: Source or target are not devices."
-msgstr ""
+msgstr "Atzeraka egitea huts egin du: Sorburua edo helburua ez dira gailuak."
 
 #: jobs/job.cpp:106
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Job: %1"
-msgstr ""
+msgstr "Lana: %1"
 
 #: jobs/job.cpp:115
 #, kde-kuit-format
 msgctxt "@info:progress job status (error, warning, ...)"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: jobs/job.cpp:134
 #, kde-kuit-format
 msgctxt "@info:progress job"
 msgid "Pending"
-msgstr ""
+msgstr "Egiteko"
 
 #: jobs/job.cpp:135
 #, kde-kuit-format
 msgctxt "@info:progress job"
 msgid "Success"
-msgstr ""
+msgstr "Arrakasta"
 
 #: jobs/job.cpp:136
 #, kde-kuit-format
@@ -2221,6 +2287,8 @@ msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
 msgstr ""
+"Ezin izan du <filename>%1</filename> partizioko fitxategi-sistema mugitzeko "
+"ireki."
 
 #: jobs/movefilesystemjob.cpp:54
 #, kde-kuit-format
@@ -2229,12 +2297,16 @@ msgid ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> partizioko fitxategi-sistema mugitzeko "
+"helburua sortu."
 
 #: jobs/movefilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr ""
+"<filename>%1</filename> partizioko fitxategi-sisteman atzeraka egitea huts "
+"egin du."
 
 #: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
@@ -2248,12 +2320,15 @@ msgstr "Gailua ixten. Segundo batzuk beharko ditu."
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"
 msgstr ""
+"Mugitu <filename>%1</filename> partizioko fitxategi-sistema %2 sektorera"
 
 #: jobs/movephysicalvolumejob.cpp:57
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Move used PE in %1 on %2 to other available Physical Volumes"
 msgstr ""
+"Mugitu %1(e)ko %2(e)an erabilita dagoen PE erabilgarri dauden beste bolumen "
+"fisiko batzuetara"
 
 #: jobs/removevolumegroupjob.cpp:41
 #, kde-kuit-format
@@ -2271,19 +2346,25 @@ msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
 msgstr[0] ""
+"<filename>%2</filename> partizioko fitxategi-sistemak, jada, eskatutako "
+"sektore 1eko luzera du."
 msgstr[1] ""
+"<filename>%2</filename> partizioko fitxategi-sistemak, jada, eskatutako %1 "
+"sektoreko luzera du."
 
 #: jobs/resizefilesystemjob.cpp:69
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
-msgstr ""
+msgstr "Fitxategi-sistema %1(e)tik %2 sektorera neurriz aldatzen."
 
 #: jobs/resizefilesystemjob.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
+"Barneko bizkarraldeko funtzioak erabiliz %1 fitxategi-sistema bat neurriz "
+"aldatzen."
 
 #: jobs/resizefilesystemjob.cpp:91
 #, kde-kuit-format
@@ -2292,12 +2373,16 @@ msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
 msgstr ""
+"<filename>%1</filename> partizioko fitxategi-sistema ezin da neurriz aldatu, "
+"horretarako euskarririk ez dagoelako."
 
 #: jobs/resizefilesystemjob.cpp:119
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
+"Fitxategi-sistema neurriz ondo aldatu du, barneko bizkarraldeko funtzioak "
+"erabiliz."
 
 #: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
@@ -2306,6 +2391,8 @@ msgid ""
 "Could not open partition <filename>%1</filename> while trying to resize the "
 "file system."
 msgstr ""
+"Ezin izan du <filename>%1</filename> partizioa, fitxategi-sistema neurriz "
+"aldatzen saiatu bitartean, ireki."
 
 #: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
@@ -2314,12 +2401,15 @@ msgid ""
 "Could not read geometry for partition <filename>%1</filename> while trying "
 "to resize the file system."
 msgstr ""
+"Ezin izan du <filename>%1</filename> partizioko geometria, fitxategi-sistema "
+"neurriz aldatzen saiatu bitartean, irakurri."
 
 #: jobs/resizefilesystemjob.cpp:134
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
+"Maximizatu <filename>%1</filename>(e)ko fitxategi-sistema partizioa betetzeko"
 
 #: jobs/resizefilesystemjob.cpp:136
 #, kde-kuit-format
@@ -2328,23 +2418,27 @@ msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
 msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
 msgstr[0] ""
+"<filename>%2</filename> partizioko fitxategi-sistema sektore 1ean neurri-"
+"aldatu"
 msgstr[1] ""
+"<filename>%2</filename> partizioko fitxategi-sistema %1 sektoretan neurri-"
+"aldatu"
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Adding LVM Physical Volume %2 to %3."
 msgid_plural "Adding LVM Physical Volumes %2 to %3."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 LVM bolumen fisikoa %3(e)ra gehitzen."
+msgstr[1] "%2 LVM bolumen fisikoak %3(e)ra gehitzen."
 
 #: jobs/resizevolumegroupjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Removing LVM Physical Volume %2 from %3."
 msgid_plural "Removing LVM Physical Volumes %2 from %3."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%2 LVM bolumen fisikoa %3(e)tik kentzen."
+msgstr[1] "%2 LVM bolumen fisikoak %3(e)tik kentzen."
 
 #: jobs/resizevolumegroupjob.cpp:64
 #, kde-kuit-format
@@ -2364,6 +2458,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid "Could not open target partition <filename>%1</filename> to restore to."
 msgstr ""
+"Ezin izan du <filename>%1</filename> helburu partizioa berrezartzeko ireki."
 
 #: jobs/restorefilesystemjob.cpp:100
 #, kde-kuit-format
@@ -2372,6 +2467,8 @@ msgid ""
 "Restore the file system from file <filename>%1</filename> to partition "
 "<filename>%2</filename>"
 msgstr ""
+"Berrezarri <filename>%1</filename> fitxategiko fitxategi-sistema <filename>"
+"%2</filename> partizioan"
 
 #: jobs/setfilesystemlabeljob.cpp:48
 #, kde-kuit-format
@@ -2380,25 +2477,27 @@ msgid ""
 "File system on partition <filename>%1</filename> does not support setting "
 "labels. Job ignored."
 msgstr ""
+"<filename>%1</filename> partizioko fitxategi-sistemak ez du etiketak "
+"ezartzea onartzen. Lanari ezikusi egin zaio."
 
 #: jobs/setfilesystemlabeljob.cpp:81
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "Ezarri <filename>%1</filename> partizioko sistema balioa \"%2\" gisa"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress flag turned on, active"
 msgid "on"
-msgstr ""
+msgstr "piztuta"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress flag turned off, inactive"
 msgid "off"
-msgstr ""
+msgstr "itzalita"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2407,6 +2506,8 @@ msgid ""
 "There was an error setting flag %1 for partition <filename>%2</filename> to "
 "state %3."
 msgstr ""
+"<filename>%2</filename> partizioaren %1 bandera %3 egoeran ipintzeko errore "
+"bat gertatu da."
 
 #: jobs/setpartflagsjob.cpp:74
 #, kde-kuit-format
@@ -2415,6 +2516,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set "
 "partition flags for partition <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename> partizioaren banderak ezartzeko, ireki."
 
 #: jobs/setpartflagsjob.cpp:76
 #, kde-kuit-format
@@ -2423,18 +2526,20 @@ msgid ""
 "Could not open device <filename>%1</filename> to set partition flags for "
 "partition <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailua, <filename>%2</filename> "
+"partizioaren banderak ezartzeko, ireki."
 
 #: jobs/setpartflagsjob.cpp:89
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Clear flags for partition <filename>%1</filename>"
-msgstr ""
+msgstr "<filename>%1</filename> partizioaren banderak garbitu"
 
 #: jobs/setpartflagsjob.cpp:91
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "Ezarri <filename>%1</filename> partizioaren banderak \"%2\" gisa"
 
 #: jobs/setpartgeometryjob.cpp:65
 #, kde-kuit-format
@@ -2443,6 +2548,8 @@ msgid ""
 "Could not open device <filename>%1</filename> while trying to resize/move "
 "partition <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailua ireki <filename>%2</filename> "
+"partizioaren neurria aldatu/partizioa mugitu bitartean."
 
 #: jobs/setpartgeometryjob.cpp:81
 #, kde-kuit-format
