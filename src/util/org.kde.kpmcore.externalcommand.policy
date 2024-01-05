@@ -34,6 +34,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="tr">Ayrıcalıklı bölüntü yöneticisi yardımcısını çalıştır</description>
       <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
       <description xml:lang="zh_CN">使用管理员权限运行分区管理器辅助程序</description>
+      <description xml:lang="zh_TW">執行需要管理員權限的磁碟分割區管理員協助程式</description>
       <message>Authenticate to manage disks.</message>
       <message xml:lang="ca">Autenticació per a gestionar els discs.</message>
       <message xml:lang="ca@valencia">Autenticació per a gestionar els discs.</message>
