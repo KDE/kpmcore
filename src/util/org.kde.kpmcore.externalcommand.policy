@@ -10,7 +10,58 @@ SPDX-License-Identifier: CC0-1.0
 <icon_name>partitionmanager</icon_name>
    <action id="org.kde.kpmcore.externalcommand.init" >
       <description>Run privileged partition manager helper</description>
+      <description xml:lang="ca">Executa l'ajudant del gestor de particions amb privilegis</description>
+      <description xml:lang="ca@valencia">Executa l'ajudant del gestor de particions amb privilegis</description>
+      <description xml:lang="el">Εκτέλεση του προνομιούχου βοηθού του διαχειριστή κατατμήσεων</description>
+      <description xml:lang="en_GB">Run privileged partition manager helper</description>
+      <description xml:lang="eo">Lanĉi privilegiitan helpilon de diskpartiga mastrumilo</description>
+      <description xml:lang="es">Ejecutar la aplicación auxiliar de gestión de particiones con privilegios</description>
+      <description xml:lang="eu">Ibili partizio-kudeatzaile laguntzailea pribilegioekin</description>
+      <description xml:lang="fi">Suorita osionhallinta-avustaja pääkäyttäjäoikeuksin</description>
+      <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
+      <description xml:lang="gl">Executar o asistente de xestión de particións con privilexios</description>
+      <description xml:lang="ia">Executa adjutante de administrator de partition privilegiate</description>
+      <description xml:lang="it">Esegui l'helper per la gestione delle partizioni privilegiate</description>
+      <description xml:lang="ka">დანაყოფების მმართველის პრივილეგირებული დამხმარის გაშვება</description>
+      <description xml:lang="ko">상위 권한으로 파티션 관리자 도우미 실행</description>
+      <description xml:lang="nl">Hulpprogramma voor partitiebeheerder met extra rechten uitvoeren</description>
+      <description xml:lang="pl">Uruchom uprzywilejowane zarządzanie partycjami</description>
+      <description xml:lang="pt">Executar o utilitário privilegiado do gestor de partições</description>
+      <description xml:lang="pt_BR">Executa o auxiliar do gerenciador de partições com privilégios</description>
+      <description xml:lang="ru">Запуск привилегированной программы для управления разделами</description>
+      <description xml:lang="sl">Zaženi pooblaščenega pomočnika skrbnika particij</description>
+      <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
+      <description xml:lang="tr">Ayrıcalıklı bölüntü yöneticisi yardımcısını çalıştır</description>
+      <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
+      <description xml:lang="zh_CN">使用管理员权限运行分区管理器辅助程序</description>
+      <description xml:lang="zh_TW">執行需要管理員權限的磁碟分割區管理員協助程式</description>
       <message>Authenticate to manage disks.</message>
+      <message xml:lang="ca">Autenticació per a gestionar els discs.</message>
+      <message xml:lang="ca@valencia">Autenticació per a gestionar els discs.</message>
+      <message xml:lang="cs">Pro správu disků ověřte svou totožnost.</message>
+      <message xml:lang="de">Authentisieren Sie sich, um Datenträger zu verwalten.</message>
+      <message xml:lang="eo">Aŭtentiĝu por administri diskojn.</message>
+      <message xml:lang="es">Debe autenticarse para administrar discos.</message>
+      <message xml:lang="eu">Diskoak kudeatzeko egiaztatu.</message>
+      <message xml:lang="fi">Tunnistaudu hallinnoidaksesi levyjä.</message>
+      <message xml:lang="fr">S'authentifier pour gérer les disques.</message>
+      <message xml:lang="gl">Autentíquese para xestionar os discos.</message>
+      <message xml:lang="ia">Authentica per gere discos.</message>
+      <message xml:lang="it">Autenticati per gestire i dischi.</message>
+      <message xml:lang="ka">დისკების სამართავად გაიარეთ ავთენტიკაცია.</message>
+      <message xml:lang="ko">디스크를 관리하려면 인증하십시오.</message>
+      <message xml:lang="nl">Authenticeren om schijven te beheren.</message>
+      <message xml:lang="pl">Uwierzytelnij, aby zarządzać dyskami.</message>
+      <message xml:lang="pt">Autentique-se para gerir os discos.</message>
+      <message xml:lang="pt_BR">Autenticar para gerenciar discos.</message>
+      <message xml:lang="ru">Чтобы управлять дисками, выполните аутентификацию.</message>
+      <message xml:lang="sk">Overiť na správu diskov.</message>
+      <message xml:lang="sl">Avtenticirajte se za upravljanje z diski.</message>
+      <message xml:lang="sv">Logga in för att hantera diskar.</message>
+      <message xml:lang="tr">Diskleri yönetmek için yetkilendirin.</message>
+      <message xml:lang="uk">Розпізнавання для керування дисками.</message>
+      <message xml:lang="zh_CN">请进行身份验证以管理磁盘。</message>
+      <message xml:lang="zh_TW">認證以管理磁碟。</message>
       <defaults>
          <allow_inactive>no</allow_inactive>
          <allow_active>auth_admin_keep</allow_active>
