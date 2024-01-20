@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2024-01-03 20:37+0100\n"
+"PO-Revision-Date: 2024-01-19 23:19+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -696,7 +696,7 @@ msgid "SSD Power Loss Protection Failure"
 msgstr "SSD energia-galeraren babesaren hutsegitea"
 
 #: core/smartattribute.cpp:119
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "Last test result, saturated at its maximum value. Bytes 0-1: last test "
@@ -705,7 +705,13 @@ msgid ""
 "4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
-msgstr "Azken probaren emaitza, bere balio maximoan asetuta. 0-1 byteak:"
+msgstr ""
+"Azken probaren emaitza, bere balio maximoan ase. 0-1 byteak: kondentsadorea "
+"[25, 5000000] tartean deskargatzeko azken probaren emaitza mikrosegundotan, "
+"txikiagoa bada berariazko errore-kode bat adierazten du. 2-3 byteak: azken "
+"probatik igarotako minutuak. 4-5 byteak: gailuaren bizitzako proba kopurua. "
+"Balio normalizatua 1 ezarriko da probak huts eginez gero, 11 kondentsadorea "
+"gehiegizko tenperatura baldintzan probatu bada, bestela 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
@@ -1022,7 +1028,7 @@ msgstr "Datuen helbide-marka errore kopurua (edo saltzailearena berariazkoa)."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Run Out Cancel"
-msgstr ""
+msgstr "«Run Out Cancel»"
 
 #: core/smartattribute.cpp:147
 #, kde-format
@@ -1194,31 +1200,32 @@ msgstr "Buruak kokapena aldatzen duen aldi kopurua."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Friction"
-msgstr ""
+msgstr "Zamaren marruskadura"
 
 #: core/smartattribute.cpp:160
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Resistance caused by friction in mechanical parts while operating."
 msgstr ""
+"Funtzionamenduan atal mekanikoetan marruskadurak eragindako erresistentzia."
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Cycle Count"
-msgstr ""
+msgstr "Zamalanetako zikloen zenbaketa"
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total number of load cycles."
-msgstr ""
+msgstr "Zama zikloen kopuru osoa."
 
 #: core/smartattribute.cpp:162
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load-In Time"
-msgstr ""
+msgstr "Zama-denbora"
 
 #: core/smartattribute.cpp:162
 #, kde-format
@@ -1227,24 +1234,26 @@ msgid ""
 "Total time of loading on the magnetic heads actuator (time not spent in "
 "parking area)."
 msgstr ""
+"Buru magnetikoaren eragingailua zamatzen emandako denbora osoa "
+"((aparkalekutik kanpo edo burua mugitzen eman ez den denbora)."
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Torque Amplification Count"
-msgstr ""
+msgstr "Momentuaren anplifikazio zenbaketa"
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of attempts to compensate for platter speed variations."
-msgstr ""
+msgstr "Plateren abiadura-aldaketak konpentsatzeko saiakera kopurua."
 
 #: core/smartattribute.cpp:164
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-Off Retract Cycle"
-msgstr ""
+msgstr "Itzaltze barrura-sartze zikloak"
 
 #: core/smartattribute.cpp:164
 #, kde-format
@@ -1253,12 +1262,14 @@ msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
 msgstr ""
+"Armadura magnetikoa energia eten izanagatik automatikoki barrura sartu den "
+"aldi kopurua."
 
 #: core/smartattribute.cpp:165
 #, kde-format
 msgctxt "SMART attr name"
 msgid "GMR Head Amplitude"
-msgstr ""
+msgstr "Buruaren GMR anplitudea"
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1267,6 +1278,8 @@ msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
 msgstr ""
+"&quot;Astinduen&quot; anplitudea (buruaren aurreranzko/alderantzizko "
+"higidura)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
@@ -1278,7 +1291,7 @@ msgstr "Unitatearen tenperatura"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Endurance Remaining"
-msgstr ""
+msgstr "Iraupen hondarra"
 
 #: core/smartattribute.cpp:167
 #, kde-format
@@ -1287,6 +1300,8 @@ msgid ""
 "Count of physical erase cycles completed on the drive as a percentage of the "
 "maximum physical erase cycles the drive supports"
 msgstr ""
+"Unitatean burututako ezabatze-ziklo fisikoen kopurua, unitateak onartzen "
+"dituen gehienezko ezabatze-zikloen ehuneko gisa"
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -1316,7 +1331,7 @@ msgstr "ECC errore berreskuraezinen kopurua"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Good Block Rate"
-msgstr ""
+msgstr "Bloke onen tasa"
 
 #: core/smartattribute.cpp:170
 #, kde-format
@@ -1325,6 +1340,8 @@ msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
 msgstr ""
+"Erreserbatutako bloke erabilgarrien kopurua, erreserbatutako bloke kopuru "
+"osoaren ehuneko gisa"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1339,6 +1356,8 @@ msgid ""
 "Time while head is positioning<br/>or counts the number of times the link is "
 "reset during a data transfer."
 msgstr ""
+"Burua kokatzeko denbora<br/>edo datu-transferentzia bat egin bitartean "
+"lotura berrezarri den aldi kopurua."
 
 #: core/smartattribute.cpp:172
 #, kde-format
@@ -1380,7 +1399,7 @@ msgstr "NANDean idazketa kopurua 1 GBeko gehikuntzetan"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Retry Rate"
-msgstr ""
+msgstr "irakurketa errorea berrirakurtzeko tasa"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1392,13 +1411,13 @@ msgstr "Diskotik irakurri bitartean gertatutako errore kopurua"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Free Fall Protection"
-msgstr ""
+msgstr "Erorketa askearen babesa"
 
 #: core/smartattribute.cpp:176
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
-msgstr ""
+msgstr "Antzemandako &quot;Erorketa askeko gertaera&quot; kopurua"
 
 #: core/smartstatus.cpp:78
 #, kde-kuit-format
@@ -1907,6 +1926,8 @@ msgid ""
 "Could not write new start sector to partition <filename>%1</filename> when "
 "trying to update the NTFS boot sector."
 msgstr ""
+"NTFS abio-sektorea eguneratzen saiatzean, ezin izan du <filename>%1</"
+"filename> partizioan hasierako sektore berria idatzi."
 
 #: fs/ntfs.cpp:206
 #, kde-kuit-format
@@ -2002,6 +2023,9 @@ msgid ""
 "filename> is smaller than the file system on source partition <filename>%2</"
 "filename>."
 msgstr ""
+"Ezin du fitxategi sistema kopiatu: <filename>%1</filename> helburu-"
+"partizioko fitxategi-sistema, <filename>%2</filename> sorburu-partizioko "
+"fitxategi-sistema baino txikiagoa da."
 
 #: jobs/copyfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -2010,6 +2034,8 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"Ezin izan du <filename>%1</filename> sorburu-partizioko fitxategi-sistema "
+"kopiatzeko ireki."
 
 #: jobs/copyfilesystemjob.cpp:58
 #, kde-kuit-format
@@ -2018,6 +2044,8 @@ msgid ""
 "Could not open file system on target partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"Ezin izan du <filename>%1</filename> helburu-partizioko fitxategi-sistema "
+"kopiatzeko ireki."
 
 #: jobs/copyfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2036,6 +2064,8 @@ msgid ""
 "Copy file system on partition <filename>%1</filename> to partition <filename>"
 "%2</filename>"
 msgstr ""
+"Kopiatu <filename>%1</filename> partizioko fitxategi-sistema <filename>%2</"
+"filename> partiziora"
 
 #: jobs/createfilesystemjob.cpp:66
 #, kde-kuit-format
@@ -2044,6 +2074,8 @@ msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"<filename>%1</filename> partizioko fitxategi-sistemaren sistema-mota "
+"ezartzea huts egin du."
 
 #: jobs/createfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2052,6 +2084,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "system type for partition <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailuko partizio-taula, <filename>%2</"
+"filename> partizioaren sistema mota ezartzeko, ireki."
 
 #: jobs/createfilesystemjob.cpp:70
 #, kde-kuit-format
@@ -2060,6 +2094,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
 msgstr ""
+"Ezin izan du <filename>%1</filename> gailua, <filename>%2</filename> "
+"partiziorako sistema mota ezartzeko, ireki."
 
 #: jobs/createfilesystemjob.cpp:84
 #, kde-kuit-format
@@ -2078,6 +2114,8 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
+"<filename>%1</filename> partizioa <filename>%2</filename> gailura gehitzea "
+"huts egin du."
 
 #: jobs/createpartitionjob.cpp:74
 #, kde-kuit-format
@@ -2458,7 +2496,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid "Could not open target partition <filename>%1</filename> to restore to."
 msgstr ""
-"Ezin izan du <filename>%1</filename> helburu partizioa berrezartzeko ireki."
+"Ezin izan du <filename>%1</filename> helburu-partizioa berrezartzeko ireki."
 
 #: jobs/restorefilesystemjob.cpp:100
 #, kde-kuit-format
@@ -2737,13 +2775,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying source to target partition failed."
-msgstr "Sorburua helburuko partiziora kopiatzea huts egin du."
+msgstr "Sorburua helburu-partiziora kopiatzea huts egin du."
 
 #: ops/copyoperation.cpp:161
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating target partition for copying failed."
-msgstr "Kopiatzeko, helburuko partizioa sortzea huts egin du."
+msgstr "Kopiatzeko, helburu-partizioa sortzea huts egin du."
 
 #: ops/copyoperation.cpp:163
 #, kde-kuit-format
