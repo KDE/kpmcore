@@ -3,13 +3,13 @@
 #
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2010, 2011, 2012, 2014.
 # Balázs Úr <urbalazs@gmail.com>, 2013, 2014.
-# Kristof Kiszel <kiszel.kristof@gmail.com>, 2021, 2022.
+# SPDX-FileCopyrightText: 2021, 2022, 2024 Kristof Kiszel <kiszel.kristof@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-07 01:42+0000\n"
-"PO-Revision-Date: 2022-01-27 13:50+0100\n"
+"PO-Revision-Date: 2024-01-19 13:21+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 24.01.90\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -27,7 +27,7 @@ msgstr "Kiszel Kristóf,Úr Balázs"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "ulysses@fsf.hu,urbalazs@gmail.com"
+msgstr "ulysses@fsf.hu,urbalazs@fsf.hu"
 
 #: core/device.cpp:33
 #, kde-format
@@ -3335,12 +3335,10 @@ msgid "Could not write to file <filename>%1</filename>."
 msgstr "Nem sikerült írni a(z) <filename>%1</filename> fájlba."
 
 #: util/externalcommandhelper.cpp:237
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr "%1 blokk (%2 bájt) másolása innen: %3 ide: %4, irány: %5."
+msgstr "%1 adarészlet (%2 bájt) másolása innen: %3 ide: %4, irány: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3361,12 +3359,10 @@ msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Másolás %1 MiB/s sebességgel, becsült hátralévő idő: %2"
 
 #: util/externalcommandhelper.cpp:274
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying remainder of block size %1 from %2 to %3."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr "A(z) %1 blokkméret maradékának másolása innen: %2, ide: %3."
+msgstr "A(z) %1 adatrészlet méret maradékának másolása innen: %2, ide: %3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3376,18 +3372,13 @@ msgstr[0] "1 bájt"
 msgstr[1] "%1 bájt"
 
 #: util/externalcommandhelper.cpp:288
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:progress argument 2 is a string such as 7 bytes (localized "
-#| "accordingly)"
-#| msgid "Copying 1 block (%2) finished."
-#| msgid_plural "Copying %1 blocks (%2) finished."
+#, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] "1 blokk (%2) másolása befejeződött."
-msgstr[1] "%1 blokk (%2) másolása befejeződött."
+msgstr[0] "1 adatrészlet (%2) másolása befejeződött."
+msgstr[1] "%1 adatrészlet (%2) másolása befejeződött."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
