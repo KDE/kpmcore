@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-07 01:42+0000\n"
-"PO-Revision-Date: 2024-01-05 05:02+0900\n"
+"PO-Revision-Date: 2024-01-22 17:11+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -23,12 +23,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Frank Weng (a.k.a. Franklin), pan93412"
+msgstr "Frank Weng (a.k.a. Franklin), pan93412, Kisaragi Hiu"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "franklin@goodhorse.idv.tw, pan93412@gmail.com"
+msgstr "franklin@goodhorse.idv.tw, pan93412@gmail.com, mail@kisaragi-hiu.com"
 
 #: core/device.cpp:33
 #, kde-format
@@ -147,7 +147,7 @@ msgstr "在裝置上建立新的磁碟分割表，丟棄先前的操作。"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing Volume Group, nothing to do."
-msgstr "調整磁區群組，無事可做。"
+msgstr "正在調整卷冊群組大小，無事可做。"
 
 #: core/operationstack.cpp:440
 #, kde-kuit-format
@@ -233,7 +233,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "LVM logical volume"
-msgstr ""
+msgstr "LVM 邏輯卷冊"
 
 #: core/partitionrole.cpp:34
 #, kde-kuit-format
@@ -1969,14 +1969,12 @@ msgid ""
 msgstr "無法開啟目標分割區 <filename>%1</filename> 的檔案系統以複製。"
 
 #: jobs/copyfilesystemjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Closing device. This may take a few seconds."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Closing device. This may take a while, especially on slow devices like "
 "Memory Sticks."
-msgstr "關閉裝置。這可能會花一點時間。"
+msgstr "正在關閉裝置。這可能會花一點時間，尤其是在裝置是隨身碟等較慢的裝置時。"
 
 #: jobs/copyfilesystemjob.cpp:88
 #, kde-kuit-format
@@ -1988,41 +1986,32 @@ msgstr ""
 "複製分割區 <filename>%1</filename> 上檔案系統到分割區 <filename>%2</filename>"
 
 #: jobs/createfilesystemjob.cpp:66
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Failed to clobber file system on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
-msgstr "刪除分割區 <filename>%1</filename> 上的 clobber 檔案系統失敗。"
+msgstr "設定分割區 <filename>%1</filename> 上的檔案系統的系統類型時失敗。"
 
 #: jobs/createfilesystemjob.cpp:68
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to create new partition "
-#| "<filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "system type for partition <filename>%2</filename>."
 msgstr ""
-"無法開啟裝置 <filename>%1</filename> 以建立新分割區 <filename>%2</filename>。"
+"無法開啟裝置 <filename>%1</filename> 以上的分割表以設定分割區 <filename>%2</"
+"filename> 的系統類型。"
 
 #: jobs/createfilesystemjob.cpp:70
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set partition flags for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
 msgstr ""
 "無法開啟裝置 <filename>%1</filename> 以設定分割區 <filename>%2</filename> 的"
-"旗標。"
+"系統類型。"
 
 #: jobs/createfilesystemjob.cpp:84
 #, fuzzy, kde-kuit-format
@@ -2120,22 +2109,18 @@ msgid "Deactivate Volume Group: <filename>%1</filename>"
 msgstr "裝置屬性：<filename>%1</filename>"
 
 #: jobs/deletefilesystemjob.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Delete file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not delete file system: file system on <filename>%1</filename> is "
 "mounted."
-msgstr "刪除 <filename>%1</filename> 上的檔案系統"
+msgstr "無法刪除檔案系統：<filename>%1</filename> 上的檔案系統已被掛載。"
 
 #: jobs/deletefilesystemjob.cpp:76
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Delete file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete file system on <filename>%1</filename>."
-msgstr "刪除 <filename>%1</filename> 上的檔案系統"
+msgstr "無法刪除 <filename>%1</filename> 上的檔案系統。"
 
 #: jobs/deletefilesystemjob.cpp:80
 #, fuzzy, kde-kuit-format
@@ -2394,12 +2379,10 @@ msgid_plural "Removing LVM Physical Volumes %2 from %3."
 msgstr[0] ""
 
 #: jobs/resizevolumegroupjob.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Resizing file system from %1 to %2 sectors."
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resizing Volume Group %1 to %2."
-msgstr "調整檔案系統大小，從 %1 個磁區調整為 %2 個磁區。"
+msgstr "正在調整卷冊群組大小，從 %1 到 %2。"
 
 #: jobs/restorefilesystemjob.cpp:62
 #, kde-kuit-format
@@ -2801,20 +2784,16 @@ msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
 msgstr "在 <filename>%2</filename> 上建立新的磁碟分割表（型態：%1）"
 
 #: ops/createvolumegroupoperation.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Create a new partition."
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "建立新的分割區。"
+msgstr "建立名為「%1」的新 LVM 卷冊群組。"
 
 #: ops/deactivatevolumegroupoperation.cpp:35
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:menu"
-#| msgid "Deactivate swap"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate volume group."
-msgstr "停止交換分割區"
+msgstr "停用卷冊群組。"
 
 #: ops/deleteoperation.cpp:87
 #, kde-kuit-format
@@ -2871,12 +2850,10 @@ msgid "Error"
 msgstr "錯誤"
 
 #: ops/removevolumegroupoperation.cpp:35
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Create a new partition."
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove a LVM volume group."
-msgstr "建立新的分割區。"
+msgstr "移除一個 LVM 卷冊群組。"
 
 #: ops/resizeoperation.cpp:156
 #, kde-kuit-format
@@ -3025,12 +3002,10 @@ msgid ""
 msgstr "無法復原分割區 <filename>%1</filename> 原來的大小。"
 
 #: ops/resizevolumegroupoperation.cpp:108
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Copying remainder of block size %1 from  %2 to %3."
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resize volume %1 from %2 to %3"
-msgstr "將剩下的區塊大小 %1 從 %2 複製到 %3 中。"
+msgstr "調整卷冊 %1 的大小，從 %2 到 %3"
 
 #: ops/restoreoperation.cpp:133
 #, kde-kuit-format
@@ -3093,12 +3068,10 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "設定分割區 <filename>%1</filename> 的旗標為 %2"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:248
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Device found: %1"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
-msgstr "找到裝置：%1"
+msgstr "找到軟體 RAID 裝置：%1"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:278
 #, kde-kuit-format
