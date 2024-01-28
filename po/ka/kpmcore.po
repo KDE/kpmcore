@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-09 00:51+0000\n"
-"PO-Revision-Date: 2023-12-11 23:38+0100\n"
+"PO-Revision-Date: 2024-01-27 05:43+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1356,6 +1356,8 @@ msgid ""
 "Time while head is positioning<br/>or counts the number of times the link is "
 "reset during a data transfer."
 msgstr ""
+"დრო, სანამ თავაკი მდებარეობას ეძებს<br/>ან ითვლის, რამდენჯერ მოხდა კავშირის "
+"ჩამოყრა მონაცემების გადაცემის დროს."
 
 #: core/smartattribute.cpp:172
 #, kde-format
