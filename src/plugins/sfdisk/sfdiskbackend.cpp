@@ -284,7 +284,6 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
         {
             if (sfdiskJsonCommand.exitCode() != 0) {
                 scanWholeDevicePartition(*d);
-
                 return d;
             }
 
@@ -296,6 +295,13 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
             if (jsonObject.isEmpty()) {
                 qDebug() << "json object created from sfdisk output is empty !\nOutput is \"" << s.data() << "\"";
+            }
+
+            /* Workaround for whole device FAT partitions */
+            if(partitionTable[QLatin1String("label")].toString() == QStringLiteral("dos") &&
+               partitionTable[QLatin1String("id")].toInt() == 0) {
+                scanWholeDevicePartition(*d);
+                return d;
             }
 
             if (!updateDevicePartitionTable(*d, partitionTable))
