@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-07 01:42+0000\n"
-"PO-Revision-Date: 2024-02-29 17:01+0300\n"
+"PO-Revision-Date: 2024-03-01 14:55+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2434,7 +2434,7 @@ msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
 "Bölüntüyü doldurmak için <filename>%1</filename> üzerindeki dosya sistemini "
-"maksimum yap"
+"en büyük yap"
 
 #: jobs/resizefilesystemjob.cpp:136
 #, kde-kuit-format
