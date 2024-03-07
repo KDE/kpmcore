@@ -34,13 +34,13 @@ bool ext3::create(Report& report, const QString& deviceNode)
         QStringList feature_list = QStringList();
         for (const auto& k : this->features().keys()) {
             const auto& v = this->features().value(k);
-            if (v.type() == QVariant::Type::Bool) {
+            if (v.typeId() == QMetaType::Type::Bool) {
                 if (v.toBool())
                     feature_list << k;
-		else
+                else
                     feature_list << (QStringLiteral("^") +  k);
             } else {
-                qWarning() << "Ignoring feature" << k << "of type" << v.type() << "; requires type QVariant::bool.";
+                qWarning() << "Ignoring feature" << k << "of type" << v.typeId() << "; requires type QMetaType::Type::Bool.";
             }
         }
         args << QStringLiteral("-O") << feature_list.join(QStringLiteral(","));
