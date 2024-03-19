@@ -1,16 +1,17 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the kpmcore package.
 #
 #
 # Andrej Mernik <andrejm@ubuntu.si>, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
 # Matjaž Jeran <matjaz.jeran@amis.net>, 2019, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2024 Jure Repinc <jlp@holodeck1.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-07 01:42+0000\n"
-"PO-Revision-Date: 2022-11-15 10:03+0100\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"PO-Revision-Date: 2024-03-16 02:45+0100\n"
+"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -19,17 +20,19 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Lokalize 24.04.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andrej Mernik,Andrej Žnidaršič,Matjaž Jeran"
+msgstr "Jure Repinc,Andrej Mernik,Andrej Žnidaršič,Matjaž Jeran"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "andrejm@ubuntu.si,andrej.znidarsic@gmail.com,matjaz.jeran@amis.net"
+msgstr ""
+"jlp@holodeck1.com,andrejm@ubuntu.si,andrej.znidarsic@gmail.com,matjaz."
+"jeran@amis.net"
 
 #: core/device.cpp:33
 #, kde-format
@@ -237,13 +240,13 @@ msgstr "logični"
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "extended"
-msgstr "razširjen"
+msgstr "razširjeni"
 
 #: core/partitionrole.cpp:26
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "primary"
-msgstr "primarni"
+msgstr "glavni"
 
 #: core/partitionrole.cpp:29
 #, kde-kuit-format
@@ -381,13 +384,13 @@ msgstr " [RAID %1]"
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr " [RAID %1 - V obnavljanju]"
+msgstr " [RAID %1 – Obnavljanje]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr " [RAID %1 - V ponovnem usklajevanju]"
+msgstr " [RAID %1 – Ponovno usklajevanje]"
 
 #: core/smartattribute.cpp:45
 #, kde-kuit-format
@@ -411,23 +414,23 @@ msgstr "opozorilo"
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "good"
-msgstr "dober"
+msgstr "dobro"
 
 #: core/smartattribute.cpp:58 core/smartattribute.cpp:85
 #, kde-kuit-format
 msgctxt "@item:intable not applicable"
 msgid "N/A"
-msgstr "Ni na voljo"
+msgstr "ni na voljo"
 
 #: core/smartattribute.cpp:72
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "%1 sector"
 msgid_plural "%1 sectors"
-msgstr[0] "%1 sektor"
-msgstr[1] "%1 sektorja"
-msgstr[2] "%1 sektorji"
-msgstr[3] "%1 sektorjev"
+msgstr[0] "%1 sektorjev"
+msgstr[1] "%1 sektor"
+msgstr[2] "%1 sektorja"
+msgstr[3] "%1 sektorji"
 
 #: core/smartattribute.cpp:101
 #, kde-format
@@ -499,8 +502,8 @@ msgid ""
 "transfers data to a special reserved area (spare area)."
 msgstr ""
 "Števec prerazvrščenih sektorjev. Kadar trdi disk najde napako med branjem/"
-"pisanjem/potrditvijo, označi sektor kot \"prerazvrščen\" in prenese podatke "
-"v posebno pridržano območje (nadomestno območje)."
+"pisanjem/potrditvijo, označi sektor kot »prerazvrščen« in prenese podatke v "
+"posebno pridržano območje (nadomestno območje)."
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -870,8 +873,8 @@ msgid ""
 "Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
 "minimum threshold which corresponds to a maximum temperature."
 msgstr ""
-"Vrednost je enaka (100 &ndash; °C), kar dovoljuje proizvajalcu, da nastavi "
-"najmanjši prag, ki ustreza najvišji temperaturi."
+"Vrednost je enaka (100 &ndash; temp. °C), kar dovoljuje proizvajalcu, da "
+"nastavi najmanjši prag, ki ustreza najvišji temperaturi."
 
 #: core/smartattribute.cpp:135
 #, kde-format
@@ -1424,7 +1427,7 @@ msgstr "%1 °C / %2 °F"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Aborted"
-msgstr "Prekinjeno"
+msgstr "Preklicano"
 
 #: core/smartstatus.cpp:89
 #, kde-kuit-format
@@ -1575,7 +1578,7 @@ msgstr "neznan"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
-msgstr "razširjen"
+msgstr "razširjeni"
 
 #: fs/filesystem.cpp:507
 #, kde-kuit-format
@@ -2008,7 +2011,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Spremeni dovoljenja za: <filename>%1</filename> v \"%2\""
+msgstr "Spremeni dovoljenja za <filename>%1</filename> na »%2«"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, kde-kuit-format
@@ -2386,16 +2389,16 @@ msgid_plural ""
 "requested length of %1 sectors."
 msgstr[0] ""
 "Datotečni sistem na razdelku <filename>%2</filename> ima že zahtevano "
-"velikost %1 sektor."
+"velikost %1 sektorjev."
 msgstr[1] ""
 "Datotečni sistem na razdelku <filename>%2</filename> ima že zahtevano "
-"velikost %1 sektorja."
+"velikost %1 sektor."
 msgstr[2] ""
 "Datotečni sistem na razdelku <filename>%2</filename> ima že zahtevano "
-"velikost %1 sektorje."
+"velikost %1 sektorja."
 msgstr[3] ""
 "Datotečni sistem na razdelku <filename>%2</filename> ima že zahtevano "
-"velikost %1 sektorjev."
+"velikost %1 sektorje."
 
 #: jobs/resizefilesystemjob.cpp:69
 #, kde-format
@@ -2465,34 +2468,34 @@ msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
 msgstr[0] ""
 "Spremeni velikost datotečnega sistema na razdelku <filename>%2</filename> na "
-"%1 sektor"
+"%1 sektorjev"
 msgstr[1] ""
 "Spremeni velikost datotečnega sistema na razdelku <filename>%2</filename> na "
-"%1 sektorja"
+"%1 sektor"
 msgstr[2] ""
 "Spremeni velikost datotečnega sistema na razdelku <filename>%2</filename> na "
-"%1 sektorje"
+"%1 sektorja"
 msgstr[3] ""
 "Spremeni velikost datotečnega sistema na razdelku <filename>%2</filename> na "
-"%1 sektorjev"
+"%1 sektorje"
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Adding LVM Physical Volume %2 to %3."
 msgid_plural "Adding LVM Physical Volumes %2 to %3."
-msgstr[0] "Dodajanje fizičnega nosilca LVM %2 na %3."
-msgstr[1] "Dodajanje fizičnih nosilcev LVM %2 na %3."
-msgstr[2] "Dodajanje fizičnih nosilcev LVM %2 na %3."
-msgstr[3] "Dodajanje fizičnih nosilcev LVM %2 na %3."
+msgstr[0] "Dodajanje fizičnih nosilcev LVM %2 v %3."
+msgstr[1] "Dodajanje fizičnega nosilca LVM %2 v %3."
+msgstr[2] "Dodajanje fizičnih nosilcev LVM %2 v %3."
+msgstr[3] "Dodajanje fizičnih nosilcev LVM %2 v %3."
 
 #: jobs/resizevolumegroupjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Removing LVM Physical Volume %2 from %3."
 msgid_plural "Removing LVM Physical Volumes %2 from %3."
-msgstr[0] "Odstranjevanje fizičnega nosilca LVM %2 iz %3."
-msgstr[1] "Odstranjevanje fizičnih nosilcev LVM %2 iz %3."
+msgstr[0] "Odstranjevanje fizičnih nosilcev LVM %2 iz %3."
+msgstr[1] "Odstranjevanje fizičnega nosilca LVM %2 iz %3."
 msgstr[2] "Odstranjevanje fizičnih nosilcev LVM %2 iz %3."
 msgstr[3] "Odstranjevanje fizičnih nosilcev LVM %2 iz %3."
 
@@ -2544,8 +2547,8 @@ msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
 msgstr ""
-"Nastavi oznako datotečnega sistema na razdelku <filename>%1</filename> v "
-"\"%2\""
+"Nastavi oznako datotečnega sistema na razdelku <filename>%1</filename> na "
+"»%2«"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2599,7 +2602,7 @@ msgstr "Počisti zastavice za razdelek <filename>%1</filename>"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
-msgstr "Nastavi zastavice za razdelek <filename>%1</filename> v \"%2\""
+msgstr "Nastavi zastavice za razdelek <filename>%1</filename> na »%2«"
 
 #: jobs/setpartgeometryjob.cpp:65
 #, kde-kuit-format
@@ -2661,7 +2664,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Nastavi lastnosti razdelka <filename>%1</filename> v \"%2\""
+msgstr "Nastavi lastnosti razdelka <filename>%1</filename> na »%2«"
 
 #: jobs/setpartitionlabeljob.cpp:47
 #, kde-kuit-format
@@ -2703,7 +2706,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "Nastavi oznako za razdelek <filename>%1</filename> v \"%2\""
+msgstr "Nastavi oznako za razdelek <filename>%1</filename> na »%2«"
 
 #: jobs/setpartitionuuidjob.cpp:47
 #, kde-kuit-format
@@ -2745,7 +2748,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Nastavi UUID za razdelek <filename>%1</filename> v \"%2\""
+msgstr "Nastavi UUID za razdelek <filename>%1</filename> na »%2«"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2876,7 +2879,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "Ustvari novo skupino nosilcev LVM imenovano '%1'."
+msgstr "Ustvari novo skupino nosilcev LVM imenovano »%1«."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
@@ -3163,13 +3166,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr "Nastavi oznako za razdelek <filename>%1</filename> v \"%2\""
+msgstr "Nastavi oznako za razdelek <filename>%1</filename> na »%2«"
 
 #: ops/setfilesystemlabeloperation.cpp:60
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
-msgstr "Nastavi oznako za razdelek <filename>%1</filename> iz \"%2\" v \"%3\""
+msgstr "Spremeni oznako za razdelek <filename>%1</filename> iz »%2« na »%3«"
 
 #: ops/setpartflagsoperation.cpp:62
 #, kde-kuit-format
@@ -3181,7 +3184,7 @@ msgstr "Počisti zastavice za razdelek <filename>%1</filename>"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
-msgstr "Nastavi zastavice za razdelek <filename>%1</filename> v \"%2\""
+msgstr "Nastavi zastavice za razdelek <filename>%1</filename> na »%2«"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:248
 #, kde-kuit-format
@@ -3247,10 +3250,10 @@ msgstr ""
 msgctxt "@item:intext unit"
 msgid "Byte"
 msgid_plural "Bytes"
-msgstr[0] "Bajt"
-msgstr[1] "Bajta"
-msgstr[2] "Bajti"
-msgstr[3] "Bajtov"
+msgstr[0] "Bajtov"
+msgstr[1] "Bajt"
+msgstr[2] "Bajta"
+msgstr[3] "Bajti"
 
 #: util/capacity.cpp:101
 #, kde-kuit-format
@@ -3382,10 +3385,10 @@ msgstr "Kopiranje preostanka delčka velikosti %1 iz %2 v %3."
 #, kde-format
 msgid "1 byte"
 msgid_plural "%1 bytes"
-msgstr[0] "%1 bajt"
-msgstr[1] "%1 bajta"
-msgstr[2] "%1 bajti"
-msgstr[3] "%1 bajtov"
+msgstr[0] "%1 bajtov"
+msgstr[1] "%1 bajt"
+msgstr[2] "%1 bajta"
+msgstr[3] "%1 bajti"
 
 #: util/externalcommandhelper.cpp:288
 #, kde-kuit-format
@@ -3393,10 +3396,10 @@ msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] "Kopiranje %1 delčka (%2) je končano."
-msgstr[1] "Kopiranje %1 delčkov (%2) je končano."
-msgstr[2] "Kopiranje %1 delčkov (%2) je končano."
-msgstr[3] "Kopiranje %1 delčkov (%2) je končano."
+msgstr[0] "Kopiranje %1 delčkov (%2) je zaključeno."
+msgstr[1] "Kopiranje %1 delčka (%2) je zaključeno."
+msgstr[2] "Kopiranje %1 delčkov (%2) je zaključeno."
+msgstr[3] "Kopiranje %1 delčkov (%2) je zaključeno."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
@@ -3414,7 +3417,7 @@ msgstr "Knjižnica za upravljanje z razdelki"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2022 razvijalci KPMcore"
+msgstr "&copy; 2008–2022 razvijalci KPMcore"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3535,7 +3538,7 @@ msgstr "Zaledje:"
 #: util/htmlreport.cpp:69
 #, kde-format
 msgid "KDE Frameworks version:"
-msgstr "Različica ogrodja KDE:"
+msgstr "Različica KDE Frameworks:"
 
 #: util/htmlreport.cpp:70
 #, kde-format
