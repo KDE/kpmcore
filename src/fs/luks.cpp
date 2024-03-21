@@ -648,6 +648,7 @@ bool luks::canEncryptType(FileSystem::Type type)
 {
     switch (type)
     {
+        case Type::Bcachefs:
         case Type::Btrfs:
         case Type::F2fs:
         case Type::Ext2:

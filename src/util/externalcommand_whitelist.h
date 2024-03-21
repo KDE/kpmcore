@@ -30,6 +30,7 @@ QStringLiteral("umount"),
 QStringLiteral("smartctl"),
 
 // FileSystem utilties
+QStringLiteral("bcachefs"),
 QStringLiteral("btrfs"),
 QStringLiteral("mkfs.btrfs"),
 QStringLiteral("btrfstune"),

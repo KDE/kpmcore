@@ -16,6 +16,7 @@
 #include "fs/filesystem.h"
 
 #include "fs/apfs.h"
+#include "fs/bcachefs.h"
 #include "fs/bitlocker.h"
 #include "fs/btrfs.h"
 #include "fs/exfat.h"
@@ -60,6 +61,7 @@ void FileSystemFactory::init()
 {
     FileSystems fileSystems;
     fileSystems.insert(FileSystem::Type::Apfs, new FS::apfs(-1, -1, -1, QString()));
+    fileSystems.insert(FileSystem::Type::Bcachefs, new FS::bcachefs(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::BitLocker, new FS::bitlocker(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::Btrfs, new FS::btrfs(-1, -1, -1, QString()));
     fileSystems.insert(FileSystem::Type::Exfat, new FS::exfat(-1, -1, -1, QString()));
@@ -118,6 +120,7 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
 
     switch (t) {
     case FileSystem::Type::Apfs:            fs = new FS::apfs           (firstsector, lastsector, sectorsused, label, features); break;
+    case FileSystem::Type::Bcachefs:        fs = new FS::bcachefs       (firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::BitLocker:       fs = new FS::bitlocker      (firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::Btrfs:           fs = new FS::btrfs          (firstsector, lastsector, sectorsused, label, features); break;
     case FileSystem::Type::Exfat:           fs = new FS::exfat          (firstsector, lastsector, sectorsused, label, features); break;

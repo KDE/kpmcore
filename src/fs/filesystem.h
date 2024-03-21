@@ -93,6 +93,7 @@ public:
         BitLocker,
         Apfs,
         Minix,
+        Bcachefs,
 
         __lastType
     };

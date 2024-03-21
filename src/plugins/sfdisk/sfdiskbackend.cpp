@@ -628,6 +628,7 @@ FileSystem::Type SfdiskBackend::fileSystemNameToType(const QString& name, const 
     else if (name == QStringLiteral("BitLocker")) rval = FileSystem::Type::BitLocker;
     else if (name == QStringLiteral("apfs")) rval = FileSystem::Type::Apfs;
     else if (name == QStringLiteral("minix")) rval = FileSystem::Type::Minix;
+    else if (name == QStringLiteral("bcachefs")) rval = FileSystem::Type::Bcachefs;
 
     return rval;
 }
