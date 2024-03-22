@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-07 01:42+0000\n"
+"POT-Creation-Date: 2024-03-22 00:39+0000\n"
 "PO-Revision-Date: 2013-09-08 07:04+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1426,6 +1426,46 @@ msgctxt "@item"
 msgid "Disk failure is imminent. Backup all data!"
 msgstr ""
 
+#: fs/bcachefs.cpp:120
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:window"
+#| msgid "Create a new partition"
+msgctxt "@info:progress"
+msgid ""
+"Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr "يېڭى رايون قۇرىدۇ"
+
+#: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:window"
+#| msgid "Create a new partition"
+msgctxt "@info:progress"
+msgid ""
+"Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
+"bcachefs device resize command failed."
+msgstr "يېڭى رايون قۇرىدۇ"
+
+#: fs/bcachefs.cpp:141
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:window"
+#| msgid "Create a new partition"
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr "يېڭى رايون قۇرىدۇ"
+
+#: fs/bcachefs.cpp:144
+#, fuzzy, kde-kuit-format
+#| msgctxt "@title:window"
+#| msgid "Create a new partition"
+msgctxt "@info:progress"
+msgid ""
+"Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr "يېڭى رايون قۇرىدۇ"
+
 #: fs/btrfs.cpp:166
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
@@ -1436,7 +1476,7 @@ msgid ""
 "Could not create temp dir."
 msgstr "يېڭى رايون قۇرىدۇ"
 
-#: fs/btrfs.cpp:182 fs/btrfs.cpp:202
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:203
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Create a new partition"
@@ -1456,7 +1496,7 @@ msgid ""
 "Unmount failed.</warning>"
 msgstr "يېڭى رايون قۇرىدۇ"
 
-#: fs/btrfs.cpp:189
+#: fs/btrfs.cpp:190
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Create a new partition"
@@ -1474,7 +1514,7 @@ msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "يېڭى رايون قۇرىدۇ"
 
-#: fs/filesystem.cpp:504
+#: fs/filesystem.cpp:505
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain partition table name"
 #| msgid "unknown"
@@ -1482,7 +1522,7 @@ msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "نامەلۇم"
 
-#: fs/filesystem.cpp:505
+#: fs/filesystem.cpp:506
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition role"
 #| msgid "extended"
@@ -1490,7 +1530,7 @@ msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "كېڭەيتىلگەن"
 
-#: fs/filesystem.cpp:507
+#: fs/filesystem.cpp:508
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext2"
@@ -1498,7 +1538,7 @@ msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "ext2"
 
-#: fs/filesystem.cpp:508
+#: fs/filesystem.cpp:509
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext3"
@@ -1506,7 +1546,7 @@ msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:509
+#: fs/filesystem.cpp:510
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext4"
@@ -1514,7 +1554,7 @@ msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:510
+#: fs/filesystem.cpp:511
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition flag"
 #| msgid "swap"
@@ -1522,7 +1562,7 @@ msgctxt "@item filesystem name"
 msgid "linuxswap"
 msgstr "swap"
 
-#: fs/filesystem.cpp:511
+#: fs/filesystem.cpp:512
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat16"
@@ -1530,7 +1570,7 @@ msgctxt "@item filesystem name"
 msgid "fat16"
 msgstr "fat16"
 
-#: fs/filesystem.cpp:512
+#: fs/filesystem.cpp:513
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat32"
@@ -1538,25 +1578,25 @@ msgctxt "@item filesystem name"
 msgid "fat32"
 msgstr "fat32"
 
-#: fs/filesystem.cpp:513
+#: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ntfs"
 msgstr ""
 
-#: fs/filesystem.cpp:514
+#: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser"
 msgstr ""
 
-#: fs/filesystem.cpp:515
+#: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser4"
 msgstr ""
 
-#: fs/filesystem.cpp:516
+#: fs/filesystem.cpp:517
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "xfs"
@@ -1564,14 +1604,14 @@ msgctxt "@item filesystem name"
 msgid "xfs"
 msgstr "xfs"
 
-#: fs/filesystem.cpp:517
+#: fs/filesystem.cpp:518
 #, fuzzy, kde-kuit-format
 #| msgid "jfs"
 msgctxt "@item filesystem name"
 msgid "jfs"
 msgstr "jfs"
 
-#: fs/filesystem.cpp:518
+#: fs/filesystem.cpp:519
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "hfs"
@@ -1579,13 +1619,13 @@ msgctxt "@item filesystem name"
 msgid "hfs"
 msgstr "hfs"
 
-#: fs/filesystem.cpp:519
+#: fs/filesystem.cpp:520
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfsplus"
 msgstr ""
 
-#: fs/filesystem.cpp:520
+#: fs/filesystem.cpp:521
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ufs"
@@ -1593,7 +1633,7 @@ msgctxt "@item filesystem name"
 msgid "ufs"
 msgstr "ufs"
 
-#: fs/filesystem.cpp:521
+#: fs/filesystem.cpp:522
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "unformatted"
@@ -1601,7 +1641,7 @@ msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "پىچىلمىغان"
 
-#: fs/filesystem.cpp:522
+#: fs/filesystem.cpp:523
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "btrfs"
@@ -1609,25 +1649,25 @@ msgctxt "@item filesystem name"
 msgid "btrfs"
 msgstr "btrfs"
 
-#: fs/filesystem.cpp:523
+#: fs/filesystem.cpp:524
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hpfs"
 msgstr ""
 
-#: fs/filesystem.cpp:524
+#: fs/filesystem.cpp:525
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks"
 msgstr ""
 
-#: fs/filesystem.cpp:525
+#: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ocfs2"
 msgstr ""
 
-#: fs/filesystem.cpp:526
+#: fs/filesystem.cpp:527
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "zfs"
@@ -1635,31 +1675,31 @@ msgctxt "@item filesystem name"
 msgid "zfs"
 msgstr "zfs"
 
-#: fs/filesystem.cpp:527
+#: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exfat"
 msgstr ""
 
-#: fs/filesystem.cpp:528
+#: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "nilfs2"
 msgstr ""
 
-#: fs/filesystem.cpp:529
+#: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "lvm2 pv"
 msgstr ""
 
-#: fs/filesystem.cpp:530
+#: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
 msgstr ""
 
-#: fs/filesystem.cpp:531
+#: fs/filesystem.cpp:532
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ufs"
@@ -1667,19 +1707,19 @@ msgctxt "@item filesystem name"
 msgid "udf"
 msgstr "ufs"
 
-#: fs/filesystem.cpp:532
+#: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
 msgstr ""
 
-#: fs/filesystem.cpp:533
+#: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks2"
 msgstr ""
 
-#: fs/filesystem.cpp:534
+#: fs/filesystem.cpp:535
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat16"
@@ -1687,37 +1727,43 @@ msgctxt "@item filesystem name"
 msgid "fat12"
 msgstr "fat16"
 
-#: fs/filesystem.cpp:535
+#: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr ""
 
-#: fs/filesystem.cpp:536
+#: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr ""
 
-#: fs/filesystem.cpp:537
+#: fs/filesystem.cpp:538
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
 msgstr ""
 
-#: fs/filesystem.cpp:538
+#: fs/filesystem.cpp:539
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
 msgstr ""
 
-#: fs/filesystem.cpp:581 fs/luks.cpp:161
+#: fs/filesystem.cpp:540
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "bcachefs"
+msgstr ""
+
+#: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "ئېگەرلەش"
 
-#: fs/filesystem.cpp:587 fs/luks.cpp:166
+#: fs/filesystem.cpp:589 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
