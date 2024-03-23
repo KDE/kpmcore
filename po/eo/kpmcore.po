@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2023-06-10 18:21+0100\n"
+"PO-Revision-Date: 2024-03-22 22:15+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -1504,59 +1504,43 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "Diskomalfunkcio estas baldaŭa. Savkopiu ĉiujn datumojn!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</filename> "
+"Regrandigo de Bcachefs-dosiersistemo sur diskparto <filename>%1</filename> "
 "malsukcesis: Ne eblis krei dumtempan dosierujon."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</filename> "
-"malsukcesis: regrandigo de btrfs-dosiersistemo malsukcesis."
+"Aligrandigo de Bcachefs-dosiersistemo sur diskparto <filename>%1</filename> "
+"malsukcesis: resize-komando de bcachefs-aparato malsukcesis."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</"
+"<warning>Aligrandigo de Bcachefs-dosiersistemo sur diskparto <filename>%1</"
 "filename>: Malmuntado malsukcesis.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"Regrandigo de Btrfs-dosiersistemo sur diskparto <filename>%1</filename> "
+"Aligrandigo de Bcachefs-dosiersistemo sur diskparto <filename>%1</filename> "
 "malsukcesis: Komenca muntado malsukcesis."
 
 #: fs/btrfs.cpp:166
@@ -1813,7 +1797,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format

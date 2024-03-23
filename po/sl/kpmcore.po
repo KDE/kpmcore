@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-03-16 02:45+0100\n"
-"Last-Translator: Jure Repinc <jlp@holodeck1.com>\n"
+"PO-Revision-Date: 2024-03-22 07:28+0100\n"
+"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1522,61 +1522,45 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "Napaka diska je neizogibna. Ustvarite varnostno kopijo vseh podatkov!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"Spreminjanje velikosti datotečnega sistema btrfs na razdelku <filename>%1</"
-"filename> je spodletelo: ni bilo mogoče ustvariti začasne mape."
+"Spreminjanje velikosti datotečnega sistema Bcachefs na particiji <filename>"
+"%1</filename> ni uspelo: Ni bilo mogoče ustvariti začasne mape."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"Spreminjanje velikosti datotečnega sistema btrfs na razdelku <filename>%1</"
-"filename> je spodletelo: spreminjanje velikosti datotečnega sistema btrfs je "
-"spodletelo."
+"Spreminjanje velikosti datotečnega sistema Bcachefs na particiji <filename>"
+"%1</filename> ni uspelo: ukaz za spreminjanje velikosti naprave bcachefs ni "
+"uspel."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Spreminjanje velikosti datotečnega sistema btrfs na razdelku "
-"<filename>%1</filename>: odklop je spodletel.</warning>"
+"<warning>Spreminjanje velikosti datotečnega sistema Bcachefs na particiji "
+"<filename>%1</filename>: Odklop je spodletel.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"Spreminjanje velikosti datotečnega sistema btrfs na razdelku <filename>%1</"
-"filename> je spodletelo: začetni priklop je spodletel."
+"Spreminjanje velikosti datotečnega sistema Bcachefs na razdelku <filename>"
+"%1</filename> je spodletelo: začetni priklop je spodletel."
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1833,7 +1817,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2023-11-15 06:28+0100\n"
+"PO-Revision-Date: 2024-03-22 02:16+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1526,59 +1526,43 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "დისკის შეცდომა გარდაუვალია. შეინახეთ მონაცემები!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"Btrfs ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"Bcachefs ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
 "ჩავარდა: დროებითი საქაღალდის შექმნა შეუძლებელია."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"Btrfs ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
-"ჩავარდა: btrfs ფაილური სისტემის ზომის შეცვლა ჩავარდა."
+"Bcachefs ფაილური სისტემის ზომის შეცვლა მოწყობილობაზე <filename>%1</filename> "
+"ჩავარდა: Bcachefs ფაილური სისტემის ზომის შეცვლა ჩავარდა."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Btrfs ფაილური სისტემის ზომის შეცვლა დანაყოფზე <filename>%1</"
+"<warning>Bcachefs ფაილური სისტემის ზომის შეცვლა დანაყოფზე <filename>%1</"
 "filename>: მოხსნა ჩავარდა.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"დანაყოფზე <filename>%1</filename> Btrfs ფაილური სისტემის ზომის შეცვლა "
+"დანაყოფზე <filename>%1</filename> Bcachefs ფაილური სისტემის ზომის შეცვლა "
 "ჩავარდა: საწყისი მიმაგრება ჩავარდა."
 
 #: fs/btrfs.cpp:166
@@ -1835,7 +1819,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format

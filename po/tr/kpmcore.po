@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-03-01 14:55+0300\n"
+"PO-Revision-Date: 2024-03-22 15:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -41,7 +41,7 @@ msgstr "Bilinmeyen Aygıt"
 #, kde-kuit-format
 msgctxt "@item:inlistbox Device name – Capacity (device node)"
 msgid "%1 – %2 (%3)"
-msgstr "%1 – %2 (%3)"
+msgstr "%1 — %2 (%3)"
 
 #: core/lvmdevice.cpp:362
 #, kde-kuit-format
@@ -381,13 +381,13 @@ msgstr " [RAID %1]"
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr " [RAID %1 - Kurtarılıyor]"
+msgstr " [RAID %1 — Kurtarılıyor]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr " [RAID %1 - Yeniden Eşzamanlanıyor]"
+msgstr " [RAID %1 — Yeniden Eşzamanlanıyor]"
 
 #: core/smartattribute.cpp:45
 #, kde-kuit-format
@@ -684,7 +684,7 @@ msgid ""
 msgstr ""
 "Son komut olarak STANDBY IMMEDIATE olmadan kapatma sayısı (kapasitör gücünü "
 "kullanan PLI etkinliğinden bağımsız olarak). Olağanlaştırılmış değer her "
-"zaman 100'dür."
+"zaman 100’dür."
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -703,12 +703,12 @@ msgid ""
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
 msgstr ""
-"Son sınama sonucu, en büyük değerinde doymuş. Bayt 0-1: [25, 5000000] "
+"Son sınama sonucu, en büyük değerinde doymuş. Bayt 0–1: [25, 5000000] "
 "aralığında kapağı boşaltmak için mikrosaniye olarak son sınama sonucu, daha "
-"düşük, belirli hata kodunu gösterir. Bayt 2-3: Son sınamadan bu yana "
-"dakikalar. Bayt 4-5: Ömür boyu test sayısı. Olağanlaştırılmış değer, sınama "
-"hatasında 1'e veya kapasitör aşırı sıcaklık koşulunda sınanmışsa 11'e, aksi "
-"takdirde 100'e ayarlanır."
+"düşük, belirli hata kodunu gösterir. Bayt 2–3: Son sınamadan bu yana "
+"dakikalar. Bayt 4–5: Ömür boyu test sayısı. Olağanlaştırılmış değer, sınama "
+"hatasında 1’e veya kapasitör aşırı sıcaklık koşulunda sınanmışsa 11’e, aksi "
+"takdirde 100’e ayarlanır."
 
 #: core/smartattribute.cpp:120
 #, kde-format
@@ -747,7 +747,7 @@ msgstr "SSD Kullanılmış ayrılmış blokların tamamının toplamı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" Samsung attribute."
-msgstr "\"Hata-öncesi\" Samsung özniteliği."
+msgstr "Samsung “Hata Öncesi” özniteliği."
 
 #: core/smartattribute.cpp:124
 #, kde-format
@@ -759,7 +759,7 @@ msgstr "SSD kullanılmamış ayrılmış blokların tamamının toplamı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" HP attribute."
-msgstr "HP \"Hata-Öncesi\" özniteliği."
+msgstr "HP “Hata Öncesi” özniteliği."
 
 #: core/smartattribute.cpp:125
 #, kde-format
@@ -795,7 +795,7 @@ msgid ""
 "data buffer the parity data between the host and the hard drive did not "
 "match."
 msgstr ""
-"HP'nin SMART IV teknolojisinin parçası: Önbellek RAM veri yoluyla "
+"HP’nin SMART IV teknolojisinin parçası: Önbellek RAM veri yoluyla "
 "aktarıldıktan sonra eşlik verisi istemci ve sabit disk arasında "
 "uyuşmadığında oluşur."
 
@@ -857,7 +857,7 @@ msgstr "Algılanan yüksek uçuş yazmaları sayısı."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature Difference From 100"
-msgstr "Sıcaklığın 100'den Farkı"
+msgstr "Sıcaklığın 100’den Farkı"
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -1414,7 +1414,7 @@ msgstr "Algılanan &quot;Serbest Düşme Olayları&quot; sayısı"
 #, kde-kuit-format
 msgctxt "@item:intable degrees in Celsius and Fahrenheit"
 msgid "%1° C / %2° F"
-msgstr "%1° C / %2° F"
+msgstr "%1°C / %2°F"
 
 #: core/smartstatus.cpp:86
 #, kde-kuit-format
@@ -1513,59 +1513,44 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "Disk arızalanmak üzere. Tüm verilerinizi yedekleyin!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"<filename>%1</filename> üzerindeki Btrfs dosya sistemi yeniden "
+"<filename>%1</filename> üzerindeki Bcachefs dosya sistemi yeniden "
 "boyutlandırılamadı: Geçici dizin oluşturulamadı."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"<filename>%1</filename> bölüntüsü üzerindeki Btrfs dosya sistemi yeniden "
-"boyutlandırılamadı: btrfs dosya sistemi boyutlandırılamadı."
+"<filename>%1</filename> bölüntüsü üzerindeki Bcachefs dosya sistemi yeniden "
+"boyutlandırılamadı: Bcachefs aygıtını boyutlandırma komutu başarısız oldu."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning><filename>%1</filename> bölüntüsü üzerindeki Btrfs dosya sisteminin "
-"yeniden boyutlandırılması: Bağlantıyı kesme işlemi başarısız oldu.</warning>"
+"<warning><filename>%1</filename> bölüntüsü üzerindeki Bcachefs dosya "
+"sisteminin yeniden boyutlandırılması: Bağlantıyı kesme işlemi başarısız oldu."
+"</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"<filename>%1</filename> bölüntüsü üzerindeki Btrfs dosya sistemi yeniden "
+"<filename>%1</filename> bölüntüsü üzerindeki Bcachefs dosya sistemi yeniden "
 "boyutlandırılamadı: İlk bağlama işlemi başarısız oldu."
 
 #: fs/btrfs.cpp:166
@@ -1822,7 +1807,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format
@@ -1903,7 +1888,7 @@ msgstr "Kilitle"
 #: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
-msgstr "%1 için parolayı girin:"
+msgstr "%1 için parolayı gir:"
 
 #: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
 #, kde-kuit-format
@@ -2229,13 +2214,13 @@ msgstr "Yeni disk bölümü grubu oluştur: <filename>%1</filename>, FH:%2 ile"
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr "Mantıksal Disk Bölümleri'ni devre dışı bırak: <filename>%1</filename>"
+msgstr "Mantıksal Disk Bölümleri’ni devre dışı bırak: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Volume Group: <filename>%1</filename>"
-msgstr "Disk Bölümü Grubu'nu devre dışı bırak: <filename>%1</filename>"
+msgstr "Disk Bölümü Grubu’nu devre dışı bırak: <filename>%1</filename>"
 
 #: jobs/deletefilesystemjob.cpp:51
 #, kde-kuit-format
@@ -2414,8 +2399,8 @@ msgstr ""
 msgctxt "@info/plain"
 msgid "Move used PE in %1 on %2 to other available Physical Volumes"
 msgstr ""
-"%2 üzerinde %1 içinde Kullanılmış FU'nun başka kullanılabilir Fiziksel Disk "
-"Bölümleri'ne kaydır"
+"%2 üzerinde %1 içinde Kullanılmış FU’nun başka kullanılabilir Fiziksel Disk "
+"Bölümleri’ne kaydır"
 
 #: jobs/removevolumegroupjob.cpp:41
 #, kde-kuit-format
@@ -2570,7 +2555,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> bölüntüsünün etiketini \"%2\" olarak ayarla"
+msgstr "<filename>%1</filename> bölüntüsünün etiketini “%2” olarak ayarla"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2624,7 +2609,7 @@ msgstr "<filename>%1</filename> bölüntüsünün bayraklarını temizle"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> bölüntüsünün bayraklarını \"%2\" olarak ayarla"
+msgstr "<filename>%1</filename> bölüntüsünün bayraklarını “%2” olarak ayarla"
 
 #: jobs/setpartgeometryjob.cpp:65
 #, kde-kuit-format
@@ -2687,7 +2672,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
 msgstr ""
-"<filename>%1</filename> bölüntüsündeki öznitelikleri \"%2\" olarak ayarla"
+"<filename>%1</filename> bölüntüsündeki öznitelikleri “%2” olarak ayarla"
 
 #: jobs/setpartitionlabeljob.cpp:47
 #, kde-kuit-format
@@ -2729,7 +2714,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> bölüntüsünün etiketi \"%2\" olarak ayarla"
+msgstr "<filename>%1</filename> bölüntüsünün etiketi “%2” olarak ayarla"
 
 #: jobs/setpartitionuuidjob.cpp:47
 #, kde-kuit-format
@@ -2745,7 +2730,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr "<filename>%1</filename> bölüntüsünün UUID'si ayarlanamadı."
+msgstr "<filename>%1</filename> bölüntüsünün UUID’si ayarlanamadı."
 
 #: jobs/setpartitionuuidjob.cpp:61
 #, kde-kuit-format
@@ -2755,7 +2740,7 @@ msgid ""
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
 "<filename>%1</filename> aygıtı üzerindeki bölüntü tablosu, <filename>%2</"
-"filename> bölüntünün UUID'sini ayarlamak için açılamadı."
+"filename> bölüntünün UUID’sini ayarlamak için açılamadı."
 
 #: jobs/setpartitionuuidjob.cpp:63
 #, kde-kuit-format
@@ -2764,14 +2749,14 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
-"<filename>%1</filename> aygıtı, <filename>%2</filename> bölüntünün UUID'sini "
+"<filename>%1</filename> aygıtı, <filename>%2</filename> bölüntünün UUID’sini "
 "ayarlamak için açılamadı."
 
 #: jobs/setpartitionuuidjob.cpp:74
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> bölüntüsündeki UUID'yi \"%2\" olarak ayarla"
+msgstr "<filename>%1</filename> bölüntüsündeki UUID’yi “%2” olarak ayarla"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2902,7 +2887,7 @@ msgstr "<filename>%2</filename> üzerinde yeni bir bölüntü (tür: %1) oluştu
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "'%1' adlı yeni bir LVM disk bölümü grubu oluşturun."
+msgstr "“%1” adlı yeni bir LVM disk bölümü grubu oluşturun."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
@@ -3190,15 +3175,14 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> bölüntüsünün etiketini \"%2\" olarak ayarla"
+msgstr "<filename>%1</filename> bölüntüsünün etiketini “%2” olarak ayarla"
 
 #: ops/setfilesystemlabeloperation.cpp:60
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
 msgstr ""
-"<filename>%1</filename> bölüntüsünün \"%2\" olan etiketini \"%3\" olarak "
-"ayarla"
+"<filename>%1</filename> bölüntüsünün “%2” olan etiketini “%3” olarak ayarla"
 
 #: ops/setpartflagsoperation.cpp:62
 #, kde-kuit-format
@@ -3210,7 +3194,7 @@ msgstr "<filename>%1</filename> bölüntüsünün bayraklarını temizle"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
-msgstr "<filename>%1</filename> bölüntüsünün bayraklarını \"%2\" olarak ayarla"
+msgstr "<filename>%1</filename> bölüntüsünün bayraklarını “%2” olarak ayarla"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:248
 #, kde-kuit-format
@@ -3437,7 +3421,7 @@ msgstr "Bölüntüleri yönetmek için kitaplık"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2022 KPMcore geliştiricileri"
+msgstr "&copy; 2008–2022 KPMcore geliştiricileri"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3533,7 +3517,7 @@ msgstr "David Edmundson"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr "KAuth'tan Polkit'e geçiş"
+msgstr "KAuth’tan Polkit'e geçiş"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format
