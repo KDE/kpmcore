@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-01-19 23:19+0100\n"
+"PO-Revision-Date: 2024-03-24 20:13+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -1522,60 +1522,45 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "Diskoak aurki huts egingo du. Egin datu guztien babeskopia!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"<filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz aldatzea "
-"huts egin du: Ezin izan du aldi baterako direktorioa sortu."
+"<filename>%1</filename> partizioko Bcachefs fitxategi-sistema neurriz "
+"aldatzea huts egin du: Ezin izan du aldi baterako direktorioa sortu."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"<filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz aldatzea "
-"huts egin du: NILFS fitxategi-sistema neurriz aldatzea huts egin du."
+"<filename>%1</filename> partizioko Bcachefs fitxategi-sistema neurriz "
+"aldatzea huts egin du: bcachefs gailua neurriz aldatzeko komandoak huts egin "
+"du."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning><filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz "
-"aldatzea huts egin du: Desmuntatzea huts egin du.</warning>"
+"<warning><filename>%1</filename> partizioko Bcachefs fitxategi-sistema "
+"neurriz aldatzea huts egin du: Desmuntatzea huts egin du.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"<filename>%1</filename> partizioko Btrfs fitxategi-sistema neurriz aldatzea "
-"huts egin du: Hasierako muntaiak huts egin du."
+"<filename>%1</filename> partizioko Bcachefs fitxategi-sistema neurriz "
+"aldatzea huts egin du: Hasierako muntaiak huts egin du."
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1831,7 +1816,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format

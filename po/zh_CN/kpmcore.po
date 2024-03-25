@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-03-17 20:43\n"
+"PO-Revision-Date: 2024-03-24 18:59\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -1450,59 +1450,43 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "磁盘即将发生故障。请及时备份所有数据！"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"调整分区 <filename>%1</filename> 的 Btrfs 文件系统大小失败：无法创建临时目"
-"录。"
+"调整分区 <filename>%1</filename> 上的 Bcachefs 文件系统大小失败：无法创建临时"
+"目录。"
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"调整分区 <filename>%1</filename> 的 Btrfs 文件系统大小失败：Btrfs 文件系统大"
-"小调整失败。"
+"调整分区 <filename>%1</filename> 上的 Bcachefs 文件系统大小失败：bcachefs 设"
+"备的 resize 命令失败。"
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>调整分区 <filename>%1</filename> Btrfs 文件系统大小：卸载失败。</"
+"<warning>调整分区 <filename>%1</filename> Bcachefs 文件系统大小：卸载失败。</"
 "warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"调整分区 <filename>%1</filename> 的 Btrfs 文件系统大小失败：初始挂载失败。"
+"调整分区 <filename>%1</filename> 的 Bcachefs 文件系统大小失败：初始挂载失败。"
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1757,7 +1741,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format
