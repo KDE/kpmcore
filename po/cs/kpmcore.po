@@ -1448,60 +1448,36 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "Hrozí selhání disku. Zálohujte všechna data."
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"Nezdařila se změna velikosti souborového systému Btrfs na oddílu <filename>"
-"%1</filename>: Nelze vytvořit dočasný adresář."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"Varování: Změna velikosti souborového systému Btrfs na oddílu <filename>%1</"
-"filename>: Nelze připojit oddíl."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Změna velikosti souborového systému Btrfs na oddílu <filename>%1</"
-"filename>: Odpojení selhalo.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"Varování: Změna velikosti souborového systému Btrfs na oddílu <filename>%1</"
-"filename>: Nelze připojit oddíl."
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
