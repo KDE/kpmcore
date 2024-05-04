@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-03-23 09:24+0100\n"
+"PO-Revision-Date: 2024-05-02 13:14+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -3513,7 +3513,7 @@ msgstr[1] "La copie de %1 blocs (%2) est terminée."
 #, kde-kuit-format
 msgctxt "@title"
 msgid "<application>KPMcore</application>"
-msgstr "<application>KPMcore</application>"
+msgstr "<application>KPMCore</application>"
 
 #: util/helpers.cpp:50
 #, kde-kuit-format
@@ -3525,7 +3525,7 @@ msgstr "Bibliothèque de gestion des partitions"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2022, les développeurs de « KPMcore »"
+msgstr "&copy; 2008 - 2022, l'équipe de développement de KPMCore"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
