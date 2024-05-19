@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-01-19 13:21+0100\n"
+"PO-Revision-Date: 2024-05-18 14:29+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.01.90\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1520,59 +1520,43 @@ msgstr ""
 "minden adatáról!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"A Btrfs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"A Bcachefs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
 "meghiúsult: nem lehetett létrehozni átmeneti mappát."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"A Btrfs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
-"meghiúsult: a btrfs fájlrendszer átméretezése sikertelen."
+"A Bcachefs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"meghiúsult: a bcachefs eszköz átméretezés parancsa sikertelen."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Btrfs fájlrendszer átmérezetése a(z) <filename>%1</filename> "
+"<warning>Bcachefs fájlrendszer átmérezetése a(z) <filename>%1</filename> "
 "partíción: leválasztás sikertelen.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"A Btrfs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
+"A Bcachefs fájlrendszer átméretezése a(z) <filename>%1</filename> partíción "
 "meghiúsult: a kezdeti csatolás sikertelen."
 
 #: fs/btrfs.cpp:166
@@ -1829,7 +1813,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format
