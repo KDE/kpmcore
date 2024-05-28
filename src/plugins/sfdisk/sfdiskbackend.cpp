@@ -298,10 +298,11 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
             }
 
             /* Workaround for whole device FAT partitions */
-            if(partitionTable[QLatin1String("label")].toString() == QStringLiteral("dos") &&
-               partitionTable[QLatin1String("id")].toInt() == 0) {
+            if(partitionTable[QLatin1String("label")].toString() == QStringLiteral("dos")) {
                 scanWholeDevicePartition(*d);
-                return d;
+                if(d->partitionTable()) {
+                    return d;
+                }
             }
 
             if (!updateDevicePartitionTable(*d, partitionTable))
