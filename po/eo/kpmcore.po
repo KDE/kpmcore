@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-03-22 22:15+0100\n"
+"PO-Revision-Date: 2024-05-30 07:49+0200\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -229,7 +229,7 @@ msgstr "logika"
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "extended"
-msgstr "etendita"
+msgstr "etendata"
 
 #: core/partitionrole.cpp:26
 #, kde-kuit-format
@@ -1399,7 +1399,7 @@ msgstr "Protekto kontraŭ Libera Falo"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
-msgstr "Nombro da \"Liberfalaj Eventoj\" detektitaj"
+msgstr "Nombro da &quot;Liberfalaj Eventoj&quot; detektitaj"
 
 #: core/smartstatus.cpp:78
 #, kde-kuit-format
@@ -2140,7 +2140,7 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
-"Malsukcesis aldoni diskpartigon <filename>%1</filename> al aparato <filename>"
+"Malsukcesis aldoni subdiskon <filename>%1</filename> al aparato <filename>"
 "%2</filename>."
 
 #: jobs/createpartitionjob.cpp:74
@@ -2329,7 +2329,7 @@ msgstr "%1: %2"
 #, kde-kuit-format
 msgctxt "@info:progress job"
 msgid "Pending"
-msgstr "Traktota"
+msgstr "Okazonta"
 
 #: jobs/job.cpp:135
 #, kde-kuit-format
@@ -3401,7 +3401,7 @@ msgstr "Biblioteko por administri subdiskojn"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "© 2008-2022 KPMcore-programistoj"
+msgstr "&copy; 2008-2022 KPMcore-programistoj"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
