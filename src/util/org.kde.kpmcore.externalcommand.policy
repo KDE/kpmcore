@@ -20,6 +20,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="fi">Suorita osionhallinta-avustaja pääkäyttäjäoikeuksin</description>
       <description xml:lang="fr">Lancer l'assistant de gestionnaire de partition en mode administrateur</description>
       <description xml:lang="gl">Executar o asistente de xestión de particións con privilexios</description>
+      <description xml:lang="he">הרצת מסייע מנהל מחיצות עם הרשאות עליונות</description>
       <description xml:lang="hu">Emelt jogosultságú partíciókezelő segédprogram futtatása</description>
       <description xml:lang="ia">Executa adjutante de administrator de partition privilegiate</description>
       <description xml:lang="it">Esegui l'helper per la gestione delle partizioni privilegiate</description>
@@ -48,6 +49,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="fi">Tunnistaudu hallinnoidaksesi levyjä.</message>
       <message xml:lang="fr">S'authentifier pour gérer les disques.</message>
       <message xml:lang="gl">Autentíquese para xestionar os discos.</message>
+      <message xml:lang="he">יש להתאמת כדי לנהל כוננים.</message>
       <message xml:lang="hu">Hitelesítés szükséges a lemezek kezeléséhez.</message>
       <message xml:lang="ia">Authentica per gere discos.</message>
       <message xml:lang="it">Autenticati per gestire i dischi.</message>
