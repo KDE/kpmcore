@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-16 09:27+0300\n"
+"PO-Revision-Date: 2024-06-17 09:15+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -975,13 +975,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft ECC Correction"
-msgstr ""
+msgstr "תיקון ECC רך"
 
 #: core/smartattribute.cpp:148
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors corrected by software ECC"
-msgstr ""
+msgstr "מספר השגיאות שתוקנו על ידי מתקן ECC (קוד תיקון שגיאה)"
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -1990,6 +1990,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את ההתקן <filename>%1</filename> כדי להגדיר סוג מערכת קבצים "
+"למחיצה <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:84
 #, kde-kuit-format
@@ -1998,6 +2000,7 @@ msgid ""
 "Create file system <filename>%1</filename> on partition <filename>%2</"
 "filename>"
 msgstr ""
+"יצירת מערכת הקבצים <filename>%1</filename> על המחיצה <filename>%2</filename>"
 
 #: jobs/createpartitionjob.cpp:72
 #, kde-kuit-format
@@ -2006,6 +2009,7 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
+"הוספת המחיצה <filename>%1</filename> להתקן <filename>%2</filename> נכשלה."
 
 #: jobs/createpartitionjob.cpp:74
 #, kde-kuit-format
@@ -2014,6 +2018,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to create "
 "new partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח טבלת מחיצות בהתקן <filename>%1</filename> כדי ליצור מחיצה חדשה "
+"<filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:76
 #, kde-kuit-format
@@ -2022,18 +2028,20 @@ msgid ""
 "Could not open device <filename>%1</filename> to create new partition "
 "<filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את ההתקן <filename>%1</filename> כדי ליצור מחיצה חדשה "
+"<filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition <filename>%1</filename>"
-msgstr ""
+msgstr "יצירת מחיצה חדשה <filename>%1</filename>"
 
 #: jobs/createpartitionjob.cpp:96
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition on device <filename>%1</filename>"
-msgstr ""
+msgstr "יצירת מחיצה חדשה על ההתקן <filename>%1</filename>"
 
 #: jobs/createpartitiontablejob.cpp:49
 #, kde-kuit-format
@@ -2042,30 +2050,31 @@ msgid ""
 "Creating partition table failed: Could not open device <filename>%1</"
 "filename>."
 msgstr ""
+"יצירת טבלת מחיצות נכשלה: לא ניתן לפתוח את ההתקן <filename>%1</filename>."
 
 #: jobs/createpartitiontablejob.cpp:61
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition table on device <filename>%1</filename>"
-msgstr ""
+msgstr "יצירת טבלת מחיצות חדשה בהתקן <filename>%1</filename>"
 
 #: jobs/createvolumegroupjob.cpp:49
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
-msgstr ""
+msgstr "יצירת קבוצת כרכים חדשה: <filename>%1</filename> עם הכרך הפיזי (PV): %2"
 
 #: jobs/deactivatelogicalvolumejob.cpp:50
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr ""
+msgstr "השבתת כרכים לוגיים: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Volume Group: <filename>%1</filename>"
-msgstr ""
+msgstr "השבתת קבוצת כרכים: <filename>%1</filename>"
 
 #: jobs/deletefilesystemjob.cpp:51
 #, kde-kuit-format
@@ -2074,12 +2083,14 @@ msgid ""
 "Could not delete file system: file system on <filename>%1</filename> is "
 "mounted."
 msgstr ""
+"לא ניתן למחוק את מערכת הקבצים: מערכת הקבצים שעל <filename>%1</filename> "
+"מעוגנת."
 
 #: jobs/deletefilesystemjob.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete file system on <filename>%1</filename>."
-msgstr ""
+msgstr "לא ניתן למחוק את מערכת הקבצים מעל <filename>%1</filename>."
 
 #: jobs/deletefilesystemjob.cpp:80
 #, kde-kuit-format
@@ -2088,6 +2099,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "file system on <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את טבלת המחיצות בהתקן <filename>%1</filename> כדי למחוק את "
+"מערכת הקבצים מעל <filename>%2</filename>."
 
 #: jobs/deletefilesystemjob.cpp:83
 #, kde-kuit-format
@@ -2096,18 +2109,20 @@ msgid ""
 "Could not delete file system signature for partition <filename>%1</"
 "filename>: Failed to open device <filename>%2</filename>."
 msgstr ""
+"לא ניתן למחוק את חותמת מערכת הקבצים למחיצה <filename>%1</filename>: פתיחת "
+"ההתקן <filename>%2</filename> נכשלה."
 
 #: jobs/deletefilesystemjob.cpp:93
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
-msgstr ""
+msgstr "מחיקת מערכת הקבצים מעל <filename>%1</filename>"
 
 #: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
-msgstr ""
+msgstr "לא ניתן למחוק את המחיצה <filename>%1</filename>."
 
 #: jobs/deletepartitionjob.cpp:65
 #, kde-kuit-format
@@ -2116,13 +2131,15 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את טבלת המחיצות בהתקן <filename>%1</filename> כדי למחוקאת "
+"המחיצה <filename>%2</filename>."
 
 #: jobs/deletepartitionjob.cpp:67
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Deleting partition failed: Could not open device <filename>%1</filename>."
-msgstr ""
+msgstr "מחיקת המחיצה נכשלה: לא ניתן לפתוח את ההתקן <filename>%1</filename>."
 
 #: jobs/deletepartitionjob.cpp:80
 #, kde-kuit-format
@@ -2274,7 +2291,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
-msgstr ""
+msgstr "גודל מערכת הקבצים השתנה בהצלחה באמצעות פונקציות מנגנון פנימיות."
 
 #: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
@@ -2283,6 +2300,8 @@ msgid ""
 "Could not open partition <filename>%1</filename> while trying to resize the "
 "file system."
 msgstr ""
+"לא ניתן לפתוח את המחיצה <filename>%1</filename> במהלך הניסיון לשנות את גודל "
+"מערכת הקבצים."
 
 #: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
@@ -2296,7 +2315,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
-msgstr ""
+msgstr "הגדלת מערכת הקבצים עד למילוי המחיצה <filename>%1</filename>"
 
 #: jobs/resizefilesystemjob.cpp:136
 #, kde-kuit-format
@@ -2333,19 +2352,19 @@ msgstr[3] ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resizing Volume Group %1 to %2."
-msgstr ""
+msgstr "גודל קבוצת הכרכים משתנה מ־%1 ל־%2."
 
 #: jobs/restorefilesystemjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open backup file <filename>%1</filename> to restore from."
-msgstr ""
+msgstr "לא ניתן לפתוח את קובץ הגיבוי <filename>%1</filename> לשחזר אליו."
 
 #: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open target partition <filename>%1</filename> to restore to."
-msgstr ""
+msgstr "לא ניתן לפתוח את משימת היעד <filename>%1</filename> לשחזר אליה."
 
 #: jobs/restorefilesystemjob.cpp:100
 #, kde-kuit-format
@@ -2354,6 +2373,7 @@ msgid ""
 "Restore the file system from file <filename>%1</filename> to partition "
 "<filename>%2</filename>"
 msgstr ""
+"שחזור מערכת הקבצים <filename>%1</filename> למחיצה <filename>%2</filename>"
 
 #: jobs/setfilesystemlabeljob.cpp:48
 #, kde-kuit-format
@@ -2362,13 +2382,15 @@ msgid ""
 "File system on partition <filename>%1</filename> does not support setting "
 "labels. Job ignored."
 msgstr ""
+"מערכת הקבצים על המחיצה <filename>%1</filename> לא תומכת בהגדרת תוויות. "
+"המשימה לא התרחשה."
 
 #: jobs/setfilesystemlabeljob.cpp:81
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "הגדרת תווית מערכת הקבצים „%2” על המחיצה <filename>%1</filename> "
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
