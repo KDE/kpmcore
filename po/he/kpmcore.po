@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-17 09:15+0300\n"
+"PO-Revision-Date: 2024-06-19 22:26+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
-"n % 10 == 0) ? 2 : 3));\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
 "X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
@@ -85,7 +85,7 @@ msgctxt "@info:status"
 msgid ""
 "Checking file systems is automatically done when creating them: No new "
 "operation required."
-msgstr ""
+msgstr "בדיקת מערכתו הקבצים מבוצעת אוטומטית בעת יצירתן: לא נדרשת פעולה חדשה."
 
 #: core/operationstack.cpp:233
 #, kde-kuit-format
@@ -100,6 +100,8 @@ msgid ""
 "Deleting a partition just copied over an existing partition: Removing the "
 "copy and deleting the existing partition."
 msgstr ""
+"מחיקת מחיצה שכרגע הועתקה על גבי מחיצה קיימת: הסרת פעולת העתקה ומחיקת המחיצה "
+"הקיימת."
 
 #: core/operationstack.cpp:251
 #, kde-kuit-format
@@ -107,13 +109,13 @@ msgctxt "@info:status"
 msgid ""
 "Copying a partition that is itself a copy: Copying the original source "
 "partition instead."
-msgstr ""
+msgstr "העתקת מחיצה שהיא עצמה עותק: העתקת מחיצת המקור במקום."
 
 #: core/operationstack.cpp:280
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Deleting a partition just restored: Removing the restore operation."
-msgstr ""
+msgstr "מחיקת מחיצה שהרגע שוחזרה: הסרת פעולת השחזור."
 
 #: core/operationstack.cpp:285
 #, kde-kuit-format
@@ -1452,6 +1454,8 @@ msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
+"שינוי גודל מערכת קבצים מסוג Bcachefs במחיצה <filename>%1</filename> נכשל: "
+"פקודת שינוי גודל של התקן bcachefs נכשלה."
 
 #: fs/bcachefs.cpp:141
 #, kde-kuit-format
@@ -1460,6 +1464,8 @@ msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>שינוי גודל מערכת קבצים Bcachefs במחיצה <filename>%1</filename>: "
+"הניתוק נכשל.</warning>"
 
 #: fs/bcachefs.cpp:144
 #, kde-kuit-format
@@ -1476,6 +1482,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
+"שינוי גודל מערכת קבצים מסוג Btrfs במחיצה <filename>%1</filename> נכשל: לא "
+"ניתן ליצור תיקייה זמנית."
 
 #: fs/btrfs.cpp:182 fs/btrfs.cpp:203
 #, kde-kuit-format
@@ -1492,6 +1500,8 @@ msgid ""
 "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>שינוי גודל מערכת קבצים Btrfs במחיצה <filename>%1</filename>: הניתוק "
+"נכשל.</warning>"
 
 #: fs/btrfs.cpp:190
 #, kde-kuit-format
@@ -1883,6 +1893,8 @@ msgid ""
 "<warning>Resizing XFS file system on partition <filename>%1</filename> "
 "failed: Unmount failed.</warning>"
 msgstr ""
+"<warning>שינוי גודל מערכת קבצים XFS במחיצה <filename>%1</filename>: הניתוק "
+"נכשל.</warning>"
 
 #: fs/xfs.cpp:180
 #, kde-kuit-format
@@ -1891,6 +1903,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"שינוי גודל מערכת קבצים XFS במחיצה <filename>%1</filename> נכשלה: העיגון "
+"הראשוני נכשל."
 
 #: jobs/backupfilesystemjob.cpp:54
 #, kde-kuit-format
@@ -1899,6 +1913,7 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "backup."
 msgstr ""
+"לא ניתן לפתוח את מערכת הקבצים במחיצת המקור <filename>%1</filename> לגיבוי."
 
 #: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -1913,18 +1928,19 @@ msgid ""
 "Back up file system on partition <filename>%1</filename> to <filename>%2</"
 "filename>"
 msgstr ""
+"גיבוי מערכת הקבצים במחיצה <filename>%1</filename> אל <filename>%2</filename>"
 
 #: jobs/changepermissionsjob.cpp:49
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr ""
+msgstr "החלפת ההרשאות של: <filename>%1</filename> ל־%2"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Check file system on partition <filename>%1</filename>"
-msgstr ""
+msgstr "בדיקת מערכת קבצים במחיצה <filename>%1</filename>"
 
 #: jobs/copyfilesystemjob.cpp:48
 #, kde-kuit-format
@@ -1934,6 +1950,8 @@ msgid ""
 "filename> is smaller than the file system on source partition <filename>%2</"
 "filename>."
 msgstr ""
+"לא ניתן להעתיק את מערכת הקבצים: מערכת הקבצים במחיצת היעד <filename>%1</"
+"filename> קטנה ממערכת הקבצים במחיצת המקור <filename>%2</filename>."
 
 #: jobs/copyfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -1942,6 +1960,7 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"לא ניתן לפתוח את מערכת הקבצים במחיצת המקור <filename>%1</filename> להעתקה."
 
 #: jobs/copyfilesystemjob.cpp:58
 #, kde-kuit-format
@@ -1950,6 +1969,7 @@ msgid ""
 "Could not open file system on target partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"לא ניתן לפתוח את מערכת הקבצים במחיצת היעד <filename>%1</filename> להעתקה."
 
 #: jobs/copyfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -1958,6 +1978,7 @@ msgid ""
 "Closing device. This may take a while, especially on slow devices like "
 "Memory Sticks."
 msgstr ""
+"ההתקן נסגר. זה עלול לארוך זמן מה, במיוחד בהתקנים איטיים כמו כרטיסי זיכרון."
 
 #: jobs/copyfilesystemjob.cpp:88
 #, kde-kuit-format
@@ -1966,6 +1987,8 @@ msgid ""
 "Copy file system on partition <filename>%1</filename> to partition <filename>"
 "%2</filename>"
 msgstr ""
+"העתקת מערכת הקבצים מהמחיצה <filename>%1</filename> למחיצה <filename>%2</"
+"filename>"
 
 #: jobs/createfilesystemjob.cpp:66
 #, kde-kuit-format
@@ -1973,7 +1996,7 @@ msgctxt "@info:progress"
 msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
-msgstr ""
+msgstr "הגדרת סוג המערכת למערכת הקבצים במחיצה <filename>%1</filename> נכשלה."
 
 #: jobs/createfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -1982,6 +2005,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "system type for partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את טבלת המחיצות של ההתקן <filename>%1</filename> כדי להגדיר "
+"סוג מערכת קבצים למחיצה <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:70
 #, kde-kuit-format
