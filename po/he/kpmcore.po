@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-19 22:26+0300\n"
+"PO-Revision-Date: 2024-06-20 09:33+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -437,13 +437,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin-Up Time"
-msgstr ""
+msgstr "זמן התחלת סיבוב"
 
 #: core/smartattribute.cpp:103
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Average time of spindle spin up from zero RPM to fully operational."
-msgstr ""
+msgstr "הזמן הממוצע להאצת הכוש/spindle מאפס סל״ד לפעילות מלאה."
 
 #: core/smartattribute.cpp:104
 #, kde-format
@@ -1087,6 +1087,7 @@ msgid ""
 "Distance the disk has shifted relative to the spindle (usually due to shock "
 "or temperature)."
 msgstr ""
+"המרחק שהכונן גלש אליו ביחס לכוש/spindle (בדרך כלל עקב פגיעה או טמפרטורה)."
 
 #: core/smartattribute.cpp:157
 #, kde-format
@@ -1492,6 +1493,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "btrfs file system resize failed."
 msgstr ""
+"שינוי מערכת קבצים Btrfs במחיצה <filename>%1</filename> נכשלה: שינוי גודל "
+"מערכת קבצים מסוג btrfs נכשלה."
 
 #: fs/btrfs.cpp:187
 #, kde-kuit-format
@@ -1510,12 +1513,14 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"שינוי גודל מערכת קבצים Btrfs במחיצה <filename>%1</filename> נכשלה: העיגון "
+"הראשוני נכשל."
 
 #: fs/fat12.cpp:141
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
-msgstr ""
+msgstr "הגדרת התווית %2 למחיצה <filename>%1</filename>"
 
 #: fs/filesystem.cpp:505
 #, kde-kuit-format
@@ -1806,7 +1811,7 @@ msgstr "נא למלא מילת צופן עבור %1:"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
-msgstr ""
+msgstr "שינוי גודל הצפנת LUKS במחיצה <filename>%1</filename>."
 
 #: fs/luks.cpp:514 fs/luks2.cpp:116
 #, kde-kuit-format
@@ -1919,7 +1924,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
-msgstr ""
+msgstr "לא ניתן ליצור קובץ גיבוי <filename>%1</filename>."
 
 #: jobs/backupfilesystemjob.cpp:68
 #, kde-kuit-format
@@ -2959,13 +2964,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr "הגדרת תווית למחיצה <filename>%1</filename> ל־„%2”"
+msgstr "הגדרת תווית „%2” למחיצה <filename>%1</filename>"
 
 #: ops/setfilesystemlabeloperation.cpp:60
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
-msgstr "הגדרת תווית למחיצה <filename>%1</filename> מ־„%2” ל־„%3”"
+msgstr "הגדרת התווית „%3” למחיצה <filename>%1</filename> מ־„%2”"
 
 #: ops/setpartflagsoperation.cpp:62
 #, kde-kuit-format
