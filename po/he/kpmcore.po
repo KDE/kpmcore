@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-20 09:33+0300\n"
+"PO-Revision-Date: 2024-06-21 10:36+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -550,7 +550,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Recalibration Retries"
-msgstr ""
+msgstr "ניסיונות כיול מחדש"
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -560,6 +560,8 @@ msgid ""
 "increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"כמות בקשות הכיולים מחדש אם הניסיון הראשון לא הצליח. עלייה בערך המאפיין הזה "
+"הוא סימן לבעיות בתת־המערכת המכנית של הכונן הקשיח."
 
 #: core/smartattribute.cpp:112
 #, kde-format
@@ -577,25 +579,25 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft Read Error Rate"
-msgstr ""
+msgstr "קצב שגיאות קריאה תוכנתיות"
 
 #: core/smartattribute.cpp:113
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Uncorrected read errors reported to the operating system."
-msgstr ""
+msgstr "שגיאות קריאה שלא תוקנו כפי שדווח למערכת ההפעלה."
 
 #: core/smartattribute.cpp:114
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr ""
+msgstr "מקום שמור זמין ב־SSD"
 
 #: core/smartattribute.cpp:114
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of available reserved space as a percentage of reserved space."
-msgstr ""
+msgstr "כמות הנפח השמור הזמין כאחוז מתוך השטח השמור."
 
 #: core/smartattribute.cpp:115
 #, kde-format
@@ -632,7 +634,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr ""
+msgstr "ספירת כמות המחיקות המרבית על כל גוש שהוא."
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -689,32 +691,32 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
-msgstr ""
+msgstr "הפרש בין הגושים הכי שחוקים להכי פחות שחוקים באחסון ההבזק/flash."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Used Reserved Block Count Total"
-msgstr ""
+msgstr "ספירה כללית של גושים שמורים בשימוש ב־SSD"
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #: core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" Samsung attribute."
-msgstr ""
+msgstr "מאפיין „טרום־כשל/Pre-Fail” של Samsung."
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unused Reserved Block Count Total"
-msgstr ""
+msgstr "ספירה כללית של גושים שמורים שאינם בשימוש ב־SSD"
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" HP attribute."
-msgstr ""
+msgstr "מאפיין „טרום־כשל/Pre-Fail” של HP."
 
 #: core/smartattribute.cpp:125
 #, kde-format
@@ -738,7 +740,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "End-to-End Error"
-msgstr ""
+msgstr "שגיאת קצה לקצה"
 
 #: core/smartattribute.cpp:128
 #, kde-format
@@ -748,18 +750,20 @@ msgid ""
 "data buffer the parity data between the host and the hard drive did not "
 "match."
 msgstr ""
+"חלק מטכנולוגיית SMART IV של HP: לאחר העברה דרך חוצץ נתוני זיכרון (RAM) "
+"המטמון זוגיות הנתונים בין המארח והכונן הקשיח לא תואמים."
 
 #: core/smartattribute.cpp:129
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Stability"
-msgstr ""
+msgstr "יציבות ראש"
 
 #: core/smartattribute.cpp:129 core/smartattribute.cpp:130
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Western Digital attribute."
-msgstr ""
+msgstr "מאפיין של Western Digital."
 
 #: core/smartattribute.cpp:130
 #, kde-format
@@ -777,7 +781,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could not be recovered using hardware ECC."
-msgstr ""
+msgstr "כמות השגיאות שלא ניתן לשקם באמצעות ECC (קוד תיקון שגיאה) חומרתי."
 
 #: core/smartattribute.cpp:132
 #, kde-format
@@ -795,19 +799,19 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "High Fly Writes"
-msgstr ""
+msgstr "כתיבות ממעוף גבוה"
 
 #: core/smartattribute.cpp:133
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of fly height errors detected."
-msgstr ""
+msgstr "כמות שגיאות המעוף הגבוה שזוהו."
 
 #: core/smartattribute.cpp:134
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature Difference From 100"
-msgstr ""
+msgstr "הבדל טמפרטורה מ־100"
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -821,13 +825,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-sense Error Rate"
-msgstr ""
+msgstr "קצב שגיאות חיישן כבידה"
 
 #: core/smartattribute.cpp:135
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "כמות השגיאות שנובעות מזעזוע ורטט שמקורם מחוץ לכונן."
 
 #: core/smartattribute.cpp:136
 #, kde-format
@@ -857,25 +861,25 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature"
-msgstr ""
+msgstr "טמפרטורה"
 
 #: core/smartattribute.cpp:138
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Current internal temperature."
-msgstr ""
+msgstr "הטמפרטורה הפנימית הנוכחית."
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Hardware ECC Recovered"
-msgstr ""
+msgstr "שוקמו על ידי ECC חומרתי"
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could be recovered using hardware ECC."
-msgstr ""
+msgstr "כמות השגיאות שניתן לשקם באמצעות ECC (קוד תיקון שגיאה) חומרתי."
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -909,19 +913,19 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Uncorrectable Sector Count"
-msgstr ""
+msgstr "ספירת מקטעים בלתי ניתנת לתיקון"
 
 #: core/smartattribute.cpp:142
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of uncorrectable errors when reading/writing a sector."
-msgstr ""
+msgstr "ספירת השגיאות שלא ניתן לתקן תוך קריאת/כתיבת מקטע."
 
 #: core/smartattribute.cpp:143
 #, kde-format
 msgctxt "SMART attr name"
 msgid "UltraDMA CRC Error Count"
-msgstr ""
+msgstr "מניין כמות שגיאות CRC ב־UltraDMA"
 
 #: core/smartattribute.cpp:143
 #, kde-format
@@ -929,7 +933,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
-msgstr ""
+msgstr "כמות השגיאות בהעברת הנתונים דרך כבל הממשק כפי שאותרו על ידי ICRC."
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -971,7 +975,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of ECC errors"
-msgstr ""
+msgstr "מספר שגיאות ECC"
 
 #: core/smartattribute.cpp:148
 #, kde-format
@@ -989,19 +993,19 @@ msgstr "מספר השגיאות שתוקנו על ידי מתקן ECC (קוד ת
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Thermal Asperity Rate"
-msgstr ""
+msgstr "קצב חסינות תרמית"
 
 #: core/smartattribute.cpp:149
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors due to high temperature."
-msgstr ""
+msgstr "מספר השגיאות שנובעות מטמפרטורה גבוהה."
 
 #: core/smartattribute.cpp:150
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Flying Height"
-msgstr ""
+msgstr "גובה מעוף"
 
 #: core/smartattribute.cpp:150
 #, kde-format
@@ -1011,24 +1015,26 @@ msgid ""
 "increases the chances of a head crash while a flying height that is too high "
 "increases the chances of a read/write error."
 msgstr ""
+"גובה הראשים מעל פני הכונן. גובה מעוף נמוך מדי מגדיל את הסיכוי לקריסת ראש "
+"בעוד גובה מעוף גבוה מדי מגדיל את הסיכוי לשגיאות קריאה/כתיבה."
 
 #: core/smartattribute.cpp:151
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin High Current"
-msgstr ""
+msgstr "מתח גבוה לסיבוב"
 
 #: core/smartattribute.cpp:151
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Amount of surge current used to spin up the drive."
-msgstr ""
+msgstr "כמות נחשול המתח להנעת הכונן."
 
 #: core/smartattribute.cpp:152
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Buzz"
-msgstr ""
+msgstr "שגרות דחיפה"
 
 #: core/smartattribute.cpp:152
 #, kde-format
@@ -1036,49 +1042,49 @@ msgctxt "SMART attr description"
 msgid ""
 "Number of buzz routines needed to spin up the drive due to insufficient "
 "power."
-msgstr ""
+msgstr "מספר שגרות הדחיפה שנדרשות כדי להניע את הכונן עקב אספקת חשמל דלה."
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Offline Seek Performance"
-msgstr ""
+msgstr "ביצועי חתירה מנותקים"
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive's seek performance during its internal tests."
-msgstr ""
+msgstr "ביצועי החתירה של הכונן בבדיקות הפנימיות שלו."
 
 #: core/smartattribute.cpp:154
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Vibration During Write"
-msgstr ""
+msgstr "רטט במהלך כתיבה"
 
 #: core/smartattribute.cpp:154
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Vibration During Write"
-msgstr ""
+msgstr "רטט במהלך כתיבה"
 
 #: core/smartattribute.cpp:155
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Shock During Write"
-msgstr ""
+msgstr "זעזוע במהלך כתיבה"
 
 #: core/smartattribute.cpp:155
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Shock During Write"
-msgstr ""
+msgstr "זעזוע במהלך כתיבה"
 
 #: core/smartattribute.cpp:156
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Disk Shift"
-msgstr ""
+msgstr "גלישה בכונן"
 
 #: core/smartattribute.cpp:156
 #, kde-format
@@ -1130,13 +1136,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Friction"
-msgstr ""
+msgstr "חיכוך עומס"
 
 #: core/smartattribute.cpp:160
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Resistance caused by friction in mechanical parts while operating."
-msgstr ""
+msgstr "ההתנגדות שנגרמת על ידי חיכוך החלקים המכניים בזמן הפעולה."
 
 #: core/smartattribute.cpp:161
 #, kde-format
@@ -1208,13 +1214,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive Temperature"
-msgstr ""
+msgstr "טמפרטורת כונן"
 
 #: core/smartattribute.cpp:167
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Endurance Remaining"
-msgstr ""
+msgstr "עמידות שנותרה"
 
 #: core/smartattribute.cpp:167
 #, kde-format
@@ -1223,36 +1229,38 @@ msgid ""
 "Count of physical erase cycles completed on the drive as a percentage of the "
 "maximum physical erase cycles the drive supports"
 msgstr ""
+"כמות מחזורי המחיקה הפיזית שהושלמו בכונן כאחוז ממחזורי המחיקה הפיזית המרביים "
+"שבהם תומך הכונן"
 
 #: core/smartattribute.cpp:168
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-On Seconds"
-msgstr ""
+msgstr "זמן מאז ההפעלה בשניות"
 
 #: core/smartattribute.cpp:168
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time elapsed in the power-on state"
-msgstr ""
+msgstr "הזמן שעבר מאז ההפעלה"
 
 #: core/smartattribute.cpp:169
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Unrecoverable ECC Count"
-msgstr ""
+msgstr "כמות ECC שלא ניתן לתקן"
 
 #: core/smartattribute.cpp:169
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of unrecoverable ECC errors"
-msgstr ""
+msgstr "כמות שגיאות ה־ECC (קוד תיקון שגיאה) שלא ניתן לתקן"
 
 #: core/smartattribute.cpp:170
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Good Block Rate"
-msgstr ""
+msgstr "קצב גושים טוב"
 
 #: core/smartattribute.cpp:170
 #, kde-format
@@ -1260,13 +1268,13 @@ msgctxt "SMART attr description"
 msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
-msgstr ""
+msgstr "כמות הגושים השמורים הזמינים כאחוז מכמות הגושים השמורים הכללית"
 
 #: core/smartattribute.cpp:171
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
-msgstr ""
+msgstr "שעות מעוף ראש<br/>או קצב שגיאות העברה (Fujitsu)"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1275,54 +1283,55 @@ msgid ""
 "Time while head is positioning<br/>or counts the number of times the link is "
 "reset during a data transfer."
 msgstr ""
+"זמן התמקמות הראש<br/>או ספירת כמות הפעמים שהקישור מתאפס במהלך תעבורת נתונים."
 
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "סך כל ה־LBAים שנכתבו"
 
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "סך כל ה־LBAים (מיעון קטע לוגי) שנכתבו"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "סך כל ה־LBAים שנקראו"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "סך כל ה־LBAים (מיעון קטע לוגי) שנקראו"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD NAND_Writes_1GiB"
-msgstr ""
+msgstr "‏SSD כתיבות NAND 1 ג״ב"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr ""
+msgstr "מספר הכתיבות ל־NAND במרווחים של 1 ג״ב"
 
 #: core/smartattribute.cpp:175
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Retry Rate"
-msgstr ""
+msgstr "קצב ניסיון חוזר עקב שגיאת קריאה"
 
 #: core/smartattribute.cpp:175
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors while reading from a disk"
-msgstr ""
+msgstr "מספר השגיאות במהלך קריאה מהכונן"
 
 #: core/smartattribute.cpp:176
 #, kde-format
@@ -1475,6 +1484,8 @@ msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"שינוי גודל מערכת קבצים Bcachefs במחיצה <filename>%1</filename> נכשלה: העיגון "
+"הראשוני נכשל."
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1761,6 +1772,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Remount failed."
 msgstr ""
+"שינוי גודל מערכת הקבצים מסוג JFS במחיצה <filename>%1</filename> נכשלה: עיגון "
+"מחדש נכשל."
 
 #: fs/jfs.cpp:174
 #, kde-kuit-format
@@ -1769,6 +1782,8 @@ msgid ""
 "<warning>Resizing JFS file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>שינוי גודל מערכת קבצים JFS במחיצה <filename>%1</filename>: הניתוק "
+"נכשל.</warning>"
 
 #: fs/jfs.cpp:176
 #, kde-kuit-format
@@ -1777,6 +1792,8 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"שינוי גודל מערכת קבצים JFS במחיצה <filename>%1</filename> נכשלה: העיגון "
+"הראשוני נכשל."
 
 #: fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -1818,7 +1835,7 @@ msgstr "שינוי גודל הצפנת LUKS במחיצה <filename>%1</filename>
 msgctxt "@info:progress"
 msgid ""
 "Resizing encrypted file system on partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "שינוי גודל מערכת הקבצים המוצפנת במחיצה <filename>%1</filename> נכשלה."
 
 #: fs/nilfs2.cpp:137
 #, kde-kuit-format
@@ -1827,6 +1844,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
+"שינוי גודל מערכת קבצים מסוג NILFS2 במחיצה <filename>%1</filename> נכשל: לא "
+"ניתן ליצור תיקייה זמנית."
 
 #: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
 #, kde-kuit-format
@@ -1835,6 +1854,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "NILFS2 file system resize failed."
 msgstr ""
+"שינוי מערכת קבצים NILFS2 במחיצה <filename>%1</filename> נכשלה: שינוי גודל "
+"מערכת קבצים מסוג NILFS2 נכשלה."
 
 #: fs/nilfs2.cpp:156
 #, kde-kuit-format
@@ -1843,6 +1864,8 @@ msgid ""
 "<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>שינוי גודל מערכת קבצים NILFS2 במחיצה <filename>%1</filename>: "
+"הניתוק נכשל.</warning>"
 
 #: fs/nilfs2.cpp:158
 #, kde-kuit-format
@@ -1851,6 +1874,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
+"שינוי גודל מערכת קבצים NILFS2 במחיצה <filename>%1</filename> נכשלה: העיגון "
+"הראשוני נכשל."
 
 #: fs/ntfs.cpp:182
 #, kde-kuit-format
@@ -1867,6 +1892,8 @@ msgid ""
 "Could not write new start sector to partition <filename>%1</filename> when "
 "trying to update the NTFS boot sector."
 msgstr ""
+"לא ניתן לכתוב מקטע התחלה חדש למחיצה <filename>%1</filename> כחלק מניסיון "
+"לעדכן את מקטע הטעינה (boot sector) של ה־NTFS."
 
 #: fs/ntfs.cpp:206
 #, kde-kuit-format
@@ -1882,6 +1909,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: Could "
 "not create temp dir."
 msgstr ""
+"שינוי גודל מערכת קבצים מסוג XFS במחיצה <filename>%1</filename> נכשל: לא ניתן "
+"ליצור תיקייה זמנית."
 
 #: fs/xfs.cpp:173 fs/xfs.cpp:192
 #, kde-kuit-format
@@ -1890,6 +1919,8 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "xfs_growfs failed."
 msgstr ""
+"שינוי גודל מערכת קבצים מסוג XFS במחיצה <filename>%1</filename> נכשלה: "
+"xfs_growfs נכשל."
 
 #: fs/xfs.cpp:178
 #, kde-kuit-format
@@ -2175,37 +2206,37 @@ msgstr "מחיקת המחיצה נכשלה: לא ניתן לפתוח את ההת
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Delete the partition <filename>%1</filename>"
-msgstr ""
+msgstr "מחיקת המחיצה <filename>%1</filename>"
 
 #: jobs/job.cpp:45
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Source and target for copying do not overlap: Rollback is not required."
-msgstr ""
+msgstr "המקור ויעד ההעתקה אינם חופפים: לא צריך החזרה לאחור."
 
 #: jobs/job.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback from: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "החזרה לאחור מתוך: בית ראשון: %1, בית אחרון: %2."
 
 #: jobs/job.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback to: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "החזרה לאחור אל: בית ראשון: %1, בית אחרון: %2."
 
 #: jobs/job.cpp:74 jobs/job.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open device <filename>%1</filename> to rollback copying."
-msgstr ""
+msgstr "לא ניתן לפתוח את ההתקן <filename>%1</filename> להעתקת החזרה לאחור."
 
 #: jobs/job.cpp:86
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback failed: Source or target are not devices."
-msgstr ""
+msgstr "החזרה לאחור נכשלה: המקור או היעד אינם התקנים."
 
 #: jobs/job.cpp:106
 #, kde-kuit-format
@@ -2256,7 +2287,7 @@ msgstr "לא ניתן ליצור יעד להעברת מערכת הקבצים ב�
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "החזרה לאחור למערכת הקבצים שבמחיצה <filename>%1</filename> נכשלה."
 
 #: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
@@ -2281,7 +2312,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
-msgstr ""
+msgstr "הסרת קבוצת כרכים: <filename>%1</filename>"
 
 #: jobs/resizefilesystemjob.cpp:66
 #, kde-kuit-format
@@ -2301,13 +2332,13 @@ msgstr[3] ""
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
-msgstr ""
+msgstr "שינוי גודל מערכת קבצים מ־%1 ל־%2 מקטעים."
 
 #: jobs/resizefilesystemjob.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
-msgstr ""
+msgstr "שינוי גודל מערכת קבצים מסוג %1 באמצעות פקודות מנגנון פנימיות."
 
 #: jobs/resizefilesystemjob.cpp:91
 #, kde-kuit-format
@@ -2316,6 +2347,8 @@ msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
 msgstr ""
+"אי אפשר לשנות את גודל מערכת הקבצים במחיצה <filename>%1</filename> כיוון שאין "
+"בזה תמיכה."
 
 #: jobs/resizefilesystemjob.cpp:119
 #, kde-kuit-format
@@ -2413,14 +2446,14 @@ msgid ""
 "labels. Job ignored."
 msgstr ""
 "מערכת הקבצים על המחיצה <filename>%1</filename> לא תומכת בהגדרת תוויות. "
-"המשימה לא התרחשה."
+"המשימה לא בוצעה."
 
 #: jobs/setfilesystemlabeljob.cpp:81
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
-msgstr "הגדרת תווית מערכת הקבצים „%2” על המחיצה <filename>%1</filename> "
+msgstr "הגדרת תווית מערכת הקבצים „%2” על המחיצה <filename>%1</filename>"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2459,18 +2492,20 @@ msgid ""
 "Could not open device <filename>%1</filename> to set partition flags for "
 "partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את ההתקן <filename>%1</filename> כדי להגדיר דגלוני מחיצה "
+"למחיצה <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:89
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Clear flags for partition <filename>%1</filename>"
-msgstr ""
+msgstr "סילוק הדגלונים מהמחיצה <filename>%1</filename>"
 
 #: jobs/setpartflagsjob.cpp:91
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "הגדרת הדגלונים למחיצה <filename>%1</filename> לדגלונים „%2”"
 
 #: jobs/setpartgeometryjob.cpp:65
 #, kde-kuit-format
@@ -2479,6 +2514,8 @@ msgid ""
 "Could not open device <filename>%1</filename> while trying to resize/move "
 "partition <filename>%2</filename>."
 msgstr ""
+"פתיחת ההתקן <filename>%1</filename> לא הצליחה במהלך הניסיון לשנות את "
+"הגודל/להעביר את המחיצה <filename>%2</filename>."
 
 #: jobs/setpartgeometryjob.cpp:81
 #, kde-kuit-format
@@ -2495,12 +2532,14 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
+"טבלת המחיצות של המחיצה <filename>%1</filename> לא תומכת בהגדרת מאפיינים. "
+"המשימה לא בוצעה."
 
 #: jobs/setpartitionattributesjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
-msgstr ""
+msgstr "הגדרת המאפיינים למחיצה <filename>%1</filename> נכשלה."
 
 #: jobs/setpartitionattributesjob.cpp:61
 #, kde-kuit-format
@@ -2509,6 +2548,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את טבלת המחיצות של ההתקן <filename>%1</filename> כדי להגדיר "
+"מאפיינים למחיצה <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
 #, kde-kuit-format
@@ -2517,12 +2558,14 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את ההתקן <filename>%1</filename> כדי להגדיר את המאפיינים "
+"למחיצה <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:74
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "הגדרת המאפיינים „%2” על המחיצה <filename>%1</filename>"
 
 #: jobs/setpartitionlabeljob.cpp:47
 #, kde-kuit-format
@@ -2531,12 +2574,14 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
+"טבלת המחיצות של המחיצה <filename>%1</filename> לא תומכת בהגדרת שמות. המשימה "
+"לא בוצעה."
 
 #: jobs/setpartitionlabeljob.cpp:59
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr ""
+msgstr "הגדרת שם למחיצה <filename>%1</filename> נכשלה."
 
 #: jobs/setpartitionlabeljob.cpp:61
 #, kde-kuit-format
@@ -2545,6 +2590,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את טבלת המחיצות של ההתקן <filename>%1</filename> כדי להגדיר "
+"השם למחיצה <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:63
 #, kde-kuit-format
@@ -2553,12 +2600,14 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את ההתקן <filename>%1</filename> כדי להגדיר את השם למחיצה "
+"<filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:74
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "הגדרת התווית „%2” על המחיצה <filename>%1</filename>"
 
 #: jobs/setpartitionuuidjob.cpp:47
 #, kde-kuit-format
@@ -2567,12 +2616,15 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
+"טבלת המחיצות של המחיצה <filename>%1</filename> לא תומכת בהגדרת UUIDs (מזהים "
+"אוניברסליים ייחודיים). המשימה לא בוצעה."
 
 #: jobs/setpartitionuuidjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
 msgstr ""
+"הגדרת UUID (מזהה ייחודי אוניברסלי) למחיצה <filename>%1</filename> נכשלה."
 
 #: jobs/setpartitionuuidjob.cpp:61
 #, kde-kuit-format
@@ -2581,6 +2633,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את טבלת המחיצות של ההתקן <filename>%1</filename> כדי להגדיר ה־"
+"UUID (מזהה ייחודי אוניברסלי) למחיצה <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:63
 #, kde-kuit-format
@@ -2589,6 +2643,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
+"לא ניתן לפתוח את ההתקן <filename>%1</filename> כדי להגדיר את ה־UUID (מזהה "
+"ייחודי אוניברסלי) למחיצה <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:74
 #, kde-kuit-format
@@ -2600,13 +2656,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open random data source to overwrite file system."
-msgstr ""
+msgstr "לא ניתן לפתוח מקור נתונים אקראי כדי לדרוס מערכת קבצים."
 
 #: jobs/shredfilesystemjob.cpp:77
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
-msgstr ""
+msgstr "גריטת מערכת הקבצים שעל <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -2614,12 +2670,13 @@ msgctxt "@info:status"
 msgid ""
 "Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
 msgstr ""
+"גיבוי המחיצה <filename>%1</filename> (%2, %3) אל <filename>%4</filename>"
 
 #: ops/checkoperation.cpp:50
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
-msgstr ""
+msgstr "בדיקת ותיקון המחיצה <filename>%1</filename> (%2, %3)"
 
 #: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
 #, kde-kuit-format
@@ -2628,37 +2685,39 @@ msgid ""
 "<warning>Maximizing file system on target partition <filename>%1</filename> "
 "to the size of the partition failed.</warning>"
 msgstr ""
+"<warning>הגדלת מערכת הקבצים במחיצת היעד <filename>%1</filename> לגודל המרבי "
+"של המחיצה נכשלה.</warning>"
 
 #: ops/copyoperation.cpp:151
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking target partition <filename>%1</filename> after copy failed."
-msgstr ""
+msgstr "בדיקת מחיצת היעד <filename>%1</filename> לאחר ההעתקה נכשלה."
 
 #: ops/copyoperation.cpp:158
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying source to target partition failed."
-msgstr ""
+msgstr "העתקת מחיצת המקור ליעד נכשלה."
 
 #: ops/copyoperation.cpp:161
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating target partition for copying failed."
-msgstr ""
+msgstr "יצירת מחיצת יעד להעתקה נכשלה."
 
 #: ops/copyoperation.cpp:163
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking source partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "בדיקת מחיצת המקור<filename>%1</filename> נכשלה."
 
 #: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
 #: ops/restoreoperation.cpp:148
 #, kde-kuit-format
 msgctxt "@info:status (success, error, warning...) of operation"
 msgid "%1: %2"
-msgstr ""
+msgstr "%1: %2"
 
 #: ops/copyoperation.cpp:179
 #, kde-kuit-format
@@ -2667,6 +2726,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6)"
 msgstr ""
+"העתקת המחיצה <filename>%1</filename> (%2, %3) אל <filename>%4</filename> "
+"(%5, %6)"
 
 #: ops/copyoperation.cpp:188
 #, kde-kuit-format
@@ -2675,6 +2736,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6) and grow it to %7"
 msgstr ""
+"העתקת המחיצה <filename>%1</filename> (%2, %3) אל <filename>%4</filename> "
+"(%5, %6) והגדלתה לכדי %7"
 
 #: ops/copyoperation.cpp:200
 #, kde-kuit-format
@@ -2683,6 +2746,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename>"
 msgstr ""
+"העתקת המחיצה <filename>%1</filename> (%2, %3) למקום לא מוקצה (החל מ־%4) ב־"
+"<filename>%5</filename>"
 
 #: ops/copyoperation.cpp:208
 #, kde-kuit-format
@@ -2691,6 +2756,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename> and grow it to %6"
 msgstr ""
+"העתקת המחיצה <filename>%1</filename> (%2, %3) למקום לא מוקצה (החל מ־%4) ב־"
+"<filename>%5</filename> ולהגדיל אותה ל־%6"
 
 #: ops/createfilesystemoperation.cpp:89
 #, kde-kuit-format
@@ -2738,7 +2805,7 @@ msgstr "יצירת מחיצה חדשה (%1, %2) על <filename>%3</filename>"
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "None"
-msgstr ""
+msgstr "ללא"
 
 #: ops/operation.cpp:76
 #, kde-kuit-format
@@ -2917,13 +2984,13 @@ msgstr ""
 msgctxt "@info:status"
 msgid ""
 "Could not restore old partition size for partition <filename>%1</filename>."
-msgstr ""
+msgstr "לא ניתן לשחזר את גודל המחיצה הישן למחיצה <filename>%1</filename>."
 
 #: ops/resizevolumegroupoperation.cpp:108
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resize volume %1 from %2 to %3"
-msgstr ""
+msgstr "שינוי גודל הכרך %1 מ־%2 ל־%3"
 
 #: ops/restoreoperation.cpp:133
 #, kde-kuit-format
@@ -2932,6 +2999,7 @@ msgid ""
 "Checking target file system on partition <filename>%1</filename> after the "
 "restore failed."
 msgstr ""
+"בדיקת מערכת הקבצים במחיצת היעד <filename>%1</filename> לאחר השחזור נכשלה."
 
 #: ops/restoreoperation.cpp:138
 #, kde-kuit-format
@@ -2943,14 +3011,14 @@ msgstr "שחזור מערכת הקבצים נכשלה."
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating the destination partition to restore to failed."
-msgstr ""
+msgstr "יצירת מחיצת היעד לשחזור נכשלה."
 
 #: ops/restoreoperation.cpp:156
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Restore partition from <filename>%1</filename> to <filename>%2</filename>"
-msgstr ""
+msgstr "שחזור מחיצה מ־<filename>%1</filename> אל <filename>%2</filename>"
 
 #: ops/restoreoperation.cpp:158
 #, kde-kuit-format
@@ -2958,7 +3026,7 @@ msgctxt "@info:status"
 msgid ""
 "Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
 "filename>"
-msgstr ""
+msgstr "שחזור המחיצה שב־<filename>%1</filename> ב־%2 מ־<filename>%3</filename>"
 
 #: ops/setfilesystemlabeloperation.cpp:58
 #, kde-kuit-format
@@ -3025,7 +3093,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
-msgstr ""
+msgstr "מחיקת חתימת מערכת הקבצים במחיצה <filename>%1</filename> נכשלה."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
 #, kde-kuit-format
@@ -3134,18 +3202,18 @@ msgstr "לא ניתן לכתוב להתקן <filename>%1</filename>."
 #: util/externalcommandhelper.cpp:151
 #, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
-msgstr ""
+msgstr "לא ניתן לפתוח את הקובץ <filename>%1</filename> לכתיבה."
 
 #: util/externalcommandhelper.cpp:156
 #, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr ""
+msgstr "לא ניתן לכתוב לקובץ <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr ""
+msgstr "מועתקים %1 חלקים (%2 bytes) מ־%3 ל־%4, כיוון: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3169,7 +3237,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr ""
+msgstr "מועתק שאר גודל החלק %1 מ־%2 ל־%3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3186,10 +3254,10 @@ msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "העתקה של חלק (%2) הסתיימה."
+msgstr[1] "העתקה של שני חלקים (%2) הסתיימה."
+msgstr[2] "העתקה של %1 חלקים (%2) הסתיימה."
+msgstr[3] "העתקה של %1 חלקים (%2) הסתיימה."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
