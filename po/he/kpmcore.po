@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-21 14:31+0300\n"
+"PO-Revision-Date: 2024-06-24 15:32+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
-"n % 10 == 0) ? 2 : 3));\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
 "X-Generator: Poedit 3.4.2\n"
 
 #, kde-format
@@ -432,6 +432,8 @@ msgid ""
 "of this attribute is decreasing there is a high probability that there is a "
 "problem with the disk."
 msgstr ""
+"ביצועי תעבורה (כלליים) מסכמים של הכונן הקשיח. אם ערך המאפיין הזה יורד עולה "
+"הסבירות שיש בעיה בכונן."
 
 #: core/smartattribute.cpp:103
 #, kde-format
@@ -471,12 +473,14 @@ msgid ""
 "verification error, it marks this sector as &quot;reallocated&quot; and "
 "transfers data to a special reserved area (spare area)."
 msgstr ""
+"כמות המקטעים שהוקצו מחדש. כאשר הכונן מוצא שגיאת קריאה/כתיבה/אימות, הוא מסמן "
+"את המקטע הזה כ„מוקצה מחדש” ומעביר נתונים לאזור שמור מיוחד (אזור עודף)."
 
 #: core/smartattribute.cpp:106
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Channel Margin"
-msgstr ""
+msgstr "גבול ערוץ קריאה"
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -484,7 +488,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Margin of a channel while reading data. The function of this attribute is "
 "not specified."
-msgstr ""
+msgstr "גבול הערוץ בזמן קריאת נתונים. הפונקציה של המאפיין הזה לא הוגדרה."
 
 #: core/smartattribute.cpp:107
 #, kde-format
@@ -535,7 +539,7 @@ msgstr "כמות השעות שבהן הופעל חשמלית."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Retry Count"
-msgstr ""
+msgstr "כמות ניסיונות סיבוב חוזרים"
 
 #: core/smartattribute.cpp:110
 #, kde-format
@@ -545,6 +549,8 @@ msgid ""
 "An increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"כמות ניסיונות התחלת הסיבוב אם הניסיון הראשון לא הצליח. עלייה בערך הזה היא "
+"סימן לבעיה בתת־המערכת המכנית של הכונן הקשיח."
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -567,13 +573,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Cycle Count"
-msgstr ""
+msgstr "כמות סבבי הפעלה/כיבוי"
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr ""
+msgstr "כמות סבבי הכיבויים/הדלקות המלאים לכונן הקשיח."
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
@@ -603,32 +609,32 @@ msgstr "כמות הנפח השמור הזמין כאחוז מתוך השטח ה�
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count"
-msgstr ""
+msgstr "כמות כשלי תוכניות ב־SSD"
 
 #: core/smartattribute.cpp:115 core/smartattribute.cpp:125
 #, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "Number of flash program operation failures since the drive was deployed."
-msgstr ""
+msgstr "מספר כשלי פעולות תוכניות הבזק/flash מאז שהכונן הותקן."
 
 #: core/smartattribute.cpp:116 core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count"
-msgstr ""
+msgstr "כמות כשלי מחיקות ב־SSD"
 
 #: core/smartattribute.cpp:116
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
-msgstr ""
+msgstr "מספר כשלי פעולות מחיקה מההבזק/flash מאז שהכונן הותקן."
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Leveling Count"
-msgstr ""
+msgstr "רמת שחיקת ה־SSD"
 
 #: core/smartattribute.cpp:117
 #, kde-format
@@ -640,7 +646,7 @@ msgstr "ספירת כמות המחיקות המרבית על כל גוש שהו�
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unexpected power loss count"
-msgstr ""
+msgstr "כמות איבודי חשמל פתאומיים ב־SSD"
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -650,12 +656,15 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
+"מספר הפעמים שהכונן נכבה בלי שהפקודה האחרונה הייתה המתנה מיידית/STANDBY "
+"IMMEDIATE (ללא תלות בפעילות PLI - החשמל ייקטע בקרוב - שמשתמשת בחשמל מקבל)."
+"הערך המנורמל הוא תמיד 100."
 
 #: core/smartattribute.cpp:119
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Power Loss Protection Failure"
-msgstr ""
+msgstr "כשלים בהגנת אובדן חשמל ב־SSD"
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -673,19 +682,19 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr ""
+msgstr "כמות כשלי מחיקה ב־SSD (שבב)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase command failures."
-msgstr ""
+msgstr "מספר כשלי פקודת מחיקה מהבזק/flash."
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Range Delta"
-msgstr ""
+msgstr "הבדל טווח שחיקה ב־SSD"
 
 #: core/smartattribute.cpp:121
 #, kde-format
@@ -722,7 +731,7 @@ msgstr "מאפיין „טרום־כשל/Pre-Fail” של HP."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
-msgstr ""
+msgstr "כמות כשלי תוכניות בסך הכול או כמות גישות מיושרות שאינן 4 ק׳ ב־SSD"
 
 #: core/smartattribute.cpp:127
 #, kde-format
@@ -734,7 +743,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Western Digital and Samsung attribute."
-msgstr ""
+msgstr "מאפיין של Western Digital ושל Samsung."
 
 #: core/smartattribute.cpp:128
 #, kde-format
@@ -775,7 +784,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reported Uncorrectable Errors"
-msgstr ""
+msgstr "שגיאות שלא ניתן לתקן שדווחו"
 
 #: core/smartattribute.cpp:131
 #, kde-format
@@ -787,13 +796,13 @@ msgstr "כמות השגיאות שלא ניתן לשקם באמצעות ECC (ק�
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Command Timeout"
-msgstr ""
+msgstr "תום זמן המתנה לפקודה"
 
 #: core/smartattribute.cpp:132
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of aborted operations due to HDD timeout."
-msgstr ""
+msgstr "כמות הפעולות שבוטלו עקב תום זמן המתנה לכונן קשיח מגנטי (HDD)."
 
 #: core/smartattribute.cpp:133
 #, kde-format
@@ -820,6 +829,8 @@ msgid ""
 "Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
 "minimum threshold which corresponds to a maximum temperature."
 msgstr ""
+"הערך שווה ל‏־(100 &ndash; מעלות. ‎°C), מה שמאפשר לייצרן להגדיר סף מזערי שתואם "
+"לטמפרטורה המרבית."
 
 #: core/smartattribute.cpp:135
 #, kde-format
@@ -849,13 +860,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Cycle Count"
-msgstr ""
+msgstr "כמות סבבי טעינה"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
-msgstr ""
+msgstr "כמות טעינות/פריקות לנקודת אזור הנחיתה של הראש."
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
@@ -885,7 +896,7 @@ msgstr "כמות השגיאות שניתן לשקם באמצעות ECC (קוד �
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocation Event Count"
-msgstr ""
+msgstr "כמות אירועי הקצאה מחדש"
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -894,12 +905,14 @@ msgid ""
 "Count of remap operations. The raw value of this attribute shows the total "
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
+"כמות פעולות המיפוי מחדש. הערך הגולמי של המאפיין הזה מציג את מספר הניסיונות "
+"הכולל להעביר נתונים ממקטעים שהוקצו מחדש לאזור עודף."
 
 #: core/smartattribute.cpp:141
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Current Pending Sector Count"
-msgstr ""
+msgstr "כמות מקטעים שממתינים כרגע"
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -907,7 +920,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
 "read errors)."
-msgstr ""
+msgstr "מספר המקטעים ה„לא יציבים” (ממתינים למיפוי מחדש עקב תקלות קריאה)."
 
 #: core/smartattribute.cpp:142
 #, kde-format
@@ -939,31 +952,31 @@ msgstr "כמות השגיאות בהעברת הנתונים דרך כבל הממ
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Multi-Zone Error Rate<br/>Write Error Rate"
-msgstr ""
+msgstr "קצב שגיאות רב־אזוריות<br/>קצב שגיאות כתיבה"
 
 #: core/smartattribute.cpp:144
 #, kde-format
 msgctxt "SMART attr description"
 msgid "The total number of errors when writing a sector."
-msgstr ""
+msgstr "מספר השגיאות הכולל בעת כתיבה למקטע."
 
 #: core/smartattribute.cpp:145
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of off-track errors."
-msgstr ""
+msgstr "מספר שגיאות מחוץ לרצועה."
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Data Address Mark Errors"
-msgstr ""
+msgstr "שגיאת סימוני כתובות נתונים"
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of Data Address Mark errors (or vendor-specific)."
-msgstr ""
+msgstr "מספר שגיאות סימוני כתובות הנתונים (או לפי יצרן)."
 
 #: core/smartattribute.cpp:147
 #, kde-format
@@ -1099,7 +1112,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-Sense Error Rate"
-msgstr ""
+msgstr "קצב שגיאות חיישן כבידה"
 
 #: core/smartattribute.cpp:157
 #, kde-format
@@ -1112,25 +1125,25 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Loaded Hours"
-msgstr ""
+msgstr "שעות עומס"
 
 #: core/smartattribute.cpp:158
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time spent operating under data load."
-msgstr ""
+msgstr "זמן פעולה תחת עומס נתונים."
 
 #: core/smartattribute.cpp:159
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Retry Count"
-msgstr ""
+msgstr "כמות ניסיונות טעינה/פריקה חוזרים"
 
 #: core/smartattribute.cpp:159
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr ""
+msgstr "מספר הפעמים שהראש עבר ממקום למקום."
 
 #: core/smartattribute.cpp:160
 #, kde-format
@@ -1148,19 +1161,19 @@ msgstr "ההתנגדות שנגרמת על ידי חיכוך החלקים המכ
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Cycle Count"
-msgstr ""
+msgstr "כמות סבבי טעינה/פריקה"
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total number of load cycles."
-msgstr ""
+msgstr "הכמות הכוללת של סבבי הטעינה."
 
 #: core/smartattribute.cpp:162
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load-In Time"
-msgstr ""
+msgstr "זמן בפעולת טעינה"
 
 #: core/smartattribute.cpp:162
 #, kde-format
@@ -1168,25 +1181,25 @@ msgctxt "SMART attr description"
 msgid ""
 "Total time of loading on the magnetic heads actuator (time not spent in "
 "parking area)."
-msgstr ""
+msgstr "זמן הטעינה הכולל של מניעי הראשים המגנטיים (הזמן שלא היה באזור חנייה)."
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Torque Amplification Count"
-msgstr ""
+msgstr "כמות הגברת מומנט כוח"
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of attempts to compensate for platter speed variations."
-msgstr ""
+msgstr "מספר הניסיונות לפצות על שינויי מהירות פלטה."
 
 #: core/smartattribute.cpp:164
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-Off Retract Cycle"
-msgstr ""
+msgstr "סבבי כינוס עקב כיבוי"
 
 #: core/smartattribute.cpp:164
 #, kde-format
@@ -1194,13 +1207,13 @@ msgctxt "SMART attr description"
 msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
-msgstr ""
+msgstr "מספר הפעמים שהזרוע המגנטית כונסה בחזרה אוטומטית כתוצאה מאיבוד החשמל."
 
 #: core/smartattribute.cpp:165
 #, kde-format
 msgctxt "SMART attr name"
 msgid "GMR Head Amplitude"
-msgstr ""
+msgstr "משרעת ראש GMR (מתנגד מגנטיות ענק)"
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1208,7 +1221,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
-msgstr ""
+msgstr "משרעת „הלקאה” (מרחק תנועת ראש מחזורית קדימה/אחורה)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
@@ -1313,7 +1326,7 @@ msgstr "סך כל ה־LBAים (מיעון קטע לוגי) שנקראו"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD NAND_Writes_1GiB"
-msgstr "‏SSD כתיבות NAND 1 ג״ב"
+msgstr "כתיבות NAND 1 ג״ב ב־SSD"
 
 #: core/smartattribute.cpp:174
 #, kde-format
@@ -2386,30 +2399,30 @@ msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
 msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "שינוי מערכת הקבצים במחיצה <filename>%2</filename> למקטע אחד"
+msgstr[1] "שינוי מערכת הקבצים במחיצה <filename>%2</filename> לשני מקטעים"
+msgstr[2] "שינוי מערכת הקבצים במחיצה <filename>%2</filename> ל־%1 מקטעים"
+msgstr[3] "שינוי מערכת הקבצים במחיצה <filename>%2</filename> ל־%1 מקטעים"
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Adding LVM Physical Volume %2 to %3."
 msgid_plural "Adding LVM Physical Volumes %2 to %3."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "הכרך הפיזי %2 נוסף ל־LVM‏ %3."
+msgstr[1] "הכרכים הפיזיים %2 נוסף ל־LVM‏ %3."
+msgstr[2] "הכרכים הפיזיים %2 נוסף ל־LVM‏ %3."
+msgstr[3] "הכרכים הפיזיים %2 נוסף ל־LVM‏ %3."
 
 #: jobs/resizevolumegroupjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Removing LVM Physical Volume %2 from %3."
 msgid_plural "Removing LVM Physical Volumes %2 from %3."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "הכרך הפיזי %2 מוסר מה־LVM‏ %3."
+msgstr[1] "הכרכים הפיזיים %2 מוסרים מה־LVM‏ %3."
+msgstr[2] "הכרכים הפיזיים %2 מוסרים מה־LVM‏ %3."
+msgstr[3] "הכרכים הפיזיים %2 מוסרים מה־LVM‏ %3."
 
 #: jobs/resizevolumegroupjob.cpp:64
 #, kde-kuit-format
@@ -2459,13 +2472,13 @@ msgstr "הגדרת תווית מערכת הקבצים „%2” על המחיצה
 #, kde-kuit-format
 msgctxt "@info:progress flag turned on, active"
 msgid "on"
-msgstr ""
+msgstr "פעיל"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress flag turned off, inactive"
 msgid "off"
-msgstr ""
+msgstr "כבוי"
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2959,6 +2972,7 @@ msgid ""
 "Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
 "back."
 msgstr ""
+"העברת מערכת הקבצים של המחיצה <filename>%1</filename> נכשלה. מחזירים בחזרה."
 
 #: ops/resizeoperation.cpp:291
 #, kde-kuit-format
@@ -2966,7 +2980,7 @@ msgctxt "@info:status"
 msgid ""
 "Moving back partition <filename>%1</filename> to its original position "
 "failed."
-msgstr ""
+msgstr "העברת המחיצה <filename>%1</filename> בחזרה למקומה המקורי נכשלה."
 
 #: ops/resizeoperation.cpp:304
 #, kde-kuit-format
@@ -2982,6 +2996,8 @@ msgid ""
 "Resize/move failed: Could not resize the file system on partition <filename>"
 "%1</filename>"
 msgstr ""
+"שינוי גודל/העברה נכשלו: לא ניתן לשנות את גודל מערכת הקבצים במחיצה <filename>"
+"%1</filename>"
 
 #: ops/resizeoperation.cpp:312
 #, kde-kuit-format
@@ -3236,7 +3252,7 @@ msgstr "ימין"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
-msgstr ""
+msgstr "מועתקים %1 MiB לשנייה, הזמן המשוערך שנותר: %2"
 
 #: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
