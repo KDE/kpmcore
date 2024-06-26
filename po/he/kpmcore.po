@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-24 15:32+0300\n"
+"PO-Revision-Date: 2024-06-25 15:39+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Lokalize 24.05.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -677,6 +677,11 @@ msgid ""
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
 msgstr ""
+"תוצאת הבדיקה האחרונה, הגיעה לרוויה בערך המרבי שלה. בתים 0-‏1: תוצאת הבדיקה "
+"האחרונה במיקרושניות לתקורת פריקת הקבל בטווח [25, 5000000], מספרים נמוכים "
+"יותר מציינים קוד שגיאה מסוים. בתים 2-‏3: דקות מאז הבדיקה האחרונה. בתים 4-‏5: "
+"מספר הבדיקות לכל אורך חיי הכונן. הערך המנורמל מוגדר ל־1 בעת כשל בבדיקה או 11 "
+"אם הקבל נבדק בתנאי טמפרטורה קיצונית, אם לא אז 100. "
 
 #: core/smartattribute.cpp:120
 #, kde-format
@@ -737,7 +742,7 @@ msgstr "כמות כשלי תוכניות בסך הכול או כמות גישו�
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SATA Downshift Error Count"
-msgstr ""
+msgstr "כמות שגיאות החלפת מהירות ב־SATA"
 
 #: core/smartattribute.cpp:127
 #, kde-format
