@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-22 00:39+0000\n"
-"PO-Revision-Date: 2024-06-25 15:39+0300\n"
+"PO-Revision-Date: 2024-06-27 10:03+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -783,7 +783,7 @@ msgstr "מאפיין של Western Digital."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Induced Op-Vibration Detection"
-msgstr ""
+msgstr "זיהוי רטט פעולה משפיע"
 
 #: core/smartattribute.cpp:131
 #, kde-format
@@ -853,13 +853,13 @@ msgstr "כמות השגיאות שנובעות מזעזוע ורטט שמקור�
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Off Retract Count"
-msgstr ""
+msgstr "כמות כינוסים עקב כיבוי"
 
 #: core/smartattribute.cpp:136
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of power-off or emergency retract cycles"
-msgstr ""
+msgstr "כמות סבבי כינוס חירום או כיבוי"
 
 #: core/smartattribute.cpp:137
 #, kde-format
@@ -987,7 +987,7 @@ msgstr "מספר שגיאות סימוני כתובות הנתונים (או ל�
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Run Out Cancel"
-msgstr ""
+msgstr "ביטול חיסול (סיכום ביקורת שגיאות שגוי)"
 
 #: core/smartattribute.cpp:147
 #, kde-format
@@ -1124,7 +1124,7 @@ msgstr "קצב שגיאות חיישן כבידה"
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "מספר השגיאות שנבעו מזעזוע ורטט שמקורם מחוץ לכונן."
 
 #: core/smartattribute.cpp:158
 #, kde-format
@@ -1218,7 +1218,7 @@ msgstr "מספר הפעמים שהזרוע המגנטית כונסה בחזרה 
 #, kde-format
 msgctxt "SMART attr name"
 msgid "GMR Head Amplitude"
-msgstr "משרעת ראש GMR (מתנגד מגנטיות ענק)"
+msgstr "משרעת ראש GMR (התנגדות מגנטית אדירה)"
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1902,6 +1902,8 @@ msgid ""
 "Updating boot sector for NTFS file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"מתבצע עדכון למקטע הטעינה (boot sector) למערכת קבצים מסוג NTFS במחיצה "
+"<filename>%1</filename>."
 
 #: fs/ntfs.cpp:194 fs/ntfs.cpp:202
 #, kde-kuit-format
@@ -1919,6 +1921,7 @@ msgctxt "@info:progress"
 msgid ""
 "Updated NTFS boot sector for partition <filename>%1</filename> successfully."
 msgstr ""
+"עדכון מקטע הטעינה (boot sector) של NTFS למחיצה <filename>%1</filename>."
 
 #: fs/xfs.cpp:159
 #, kde-kuit-format
@@ -2324,7 +2327,7 @@ msgstr "העברת מערכת הקבצים במחיצה <filename>%1</filename> 
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Move used PE in %1 on %2 to other available Physical Volumes"
-msgstr ""
+msgstr "העברת ממד פיזי (PE) ב־%1 על %2 לכרכים פיזיים זמינים אחרים"
 
 #: jobs/removevolumegroupjob.cpp:41
 #, kde-kuit-format
@@ -2342,9 +2345,16 @@ msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
 msgstr[0] ""
+"למערכת הקבצים במחיצה <filename>%2</filename> כבר באורך המבוקש על סך מקטע אחד."
 msgstr[1] ""
+"למערכת הקבצים במחיצה <filename>%2</filename> כבר באורך המבוקש על סך שני "
+"מקטעים."
 msgstr[2] ""
+"למערכת הקבצים במחיצה <filename>%2</filename> כבר באורך המבוקש על סך %1 "
+"מקטעים."
 msgstr[3] ""
+"למערכת הקבצים במחיצה <filename>%2</filename> כבר באורך המבוקש על סך %1 "
+"מקטעים."
 
 #: jobs/resizefilesystemjob.cpp:69
 #, kde-format
@@ -2391,6 +2401,8 @@ msgid ""
 "Could not read geometry for partition <filename>%1</filename> while trying "
 "to resize the file system."
 msgstr ""
+"לא ניתן לקרוא את האפיון הפנימי (geometry) של המחיצה <filename>%1</filename> "
+"במהלך הניסיון לשנות את גודל מערכת הקבצים."
 
 #: jobs/resizefilesystemjob.cpp:134
 #, kde-kuit-format
@@ -2542,6 +2554,7 @@ msgid ""
 "Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
 "%3"
 msgstr ""
+"הגדרת אפיון פנימי למחיצה <filename>%1</filename>: מקטע פתיחה: %2, אורך: %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
 #, kde-kuit-format
@@ -2669,6 +2682,7 @@ msgstr ""
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
 msgstr ""
+"הגדרת ה־UUID (מזהה ייחודי אוניברסלי) ‏„%2” על המחיצה <filename>%1</filename> "
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -3112,6 +3126,8 @@ msgid ""
 "Could not set geometry for partition <filename>%1</filename> while trying to "
 "resize/move it."
 msgstr ""
+"לא ניתן להגדיר אפיון פנימי (geometry) למחיצה <filename>%1</filename> במהלך "
+"הניסיון לשנות את גודלה/להעביר אותה."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:124
 #, kde-kuit-format
