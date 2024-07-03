@@ -130,7 +130,7 @@ qint64 btrfs::readUsedCapacity(const QString& deviceNode) const
 
 bool btrfs::check(Report& report, const QString& deviceNode) const
 {
-    ExternalCommand cmd(report, QStringLiteral("btrfs"), { QStringLiteral("check"), QStringLiteral("--repair"), deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("btrfs"), { QStringLiteral("check"), deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
