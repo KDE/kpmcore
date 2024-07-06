@@ -42,26 +42,9 @@ class LIBKPMCORE_EXPORT DiskDevice : public Device
     friend class CoreBackend;
 
 public:
-    DiskDevice(const QString& name, const QString& deviceNode, qint32 heads, qint32 numSectors, qint32 cylinders, qint64 sectorSize, const QString& iconName = QString());
+    DiskDevice(const QString& name, const QString& deviceNode, qint64 sectorSize, qint64 sectors, const QString& iconName = QString());
 
 public:
-    /**
-     * @return the number of heads on the Device in CHS notation
-     */
-    [[deprecated]]
-    qint32 heads() const;
-
-    /**
-     * @return the number of cylinders on the Device in CHS notation
-     */
-    [[deprecated]]
-    qint32 cylinders() const;
-
-    /**
-     * @return the number of sectors on the Device in CHS notation
-     */
-    qint32 sectorsPerTrack() const;
-
     /**
      * @return the physical sector size the Device uses or -1 if unknown
      */
@@ -76,11 +59,6 @@ public:
      * @return the total number of sectors on the device
      */
     qint64 totalSectors() const;
-
-    /**
-     * @return the size of a cylinder on this Device in sectors
-     */
-    qint64 cylinderSize() const;
 };
 
 #endif

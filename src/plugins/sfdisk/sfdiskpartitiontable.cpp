@@ -192,7 +192,6 @@ static QLatin1String getPartitionType(FileSystem::Type t, PartitionTable::TableT
         type = 0;
         break;
     case PartitionTable::TableType::msdos:
-    case PartitionTable::TableType::msdos_sectorbased:
         type = 1;
         break;
     default:;
@@ -262,8 +261,7 @@ bool SfdiskPartitionTable::setPartitionSystemType(Report& report, const Partitio
 
 bool SfdiskPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag flag, bool state)
 {
-    if (m_device->partitionTable()->type() == PartitionTable::TableType::msdos ||
-         m_device->partitionTable()->type() == PartitionTable::TableType::msdos_sectorbased) {
+    if (m_device->partitionTable()->type() == PartitionTable::TableType::msdos) {
         // We only allow setting one active partition per device
         if (flag == PartitionTable::Flag::Boot && state == true) {
             ExternalCommand sfdiskCommand(report, QStringLiteral("sfdisk"), { QStringLiteral("--activate"), m_device->deviceNode(), QString::number(partition.number()) } );

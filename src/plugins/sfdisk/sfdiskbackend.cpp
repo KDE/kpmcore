@@ -277,7 +277,7 @@ Device* SfdiskBackend::scanDevice(const QString& deviceNode)
 
             Log(Log::Level::information) << xi18nc("@info:status", "Device found: %1", name);
 
-            d = new DiskDevice(name, deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize, icon);
+            d = new DiskDevice(name, deviceNode, logicalSectorSize, deviceSize / logicalSectorSize, icon);
         }
 
         if ( d )
@@ -378,9 +378,7 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
     }
 
     d.partitionTable()->updateUnallocated(d);
-
-    if (d.partitionTable()->isSectorBased(d))
-        d.partitionTable()->setType(d, PartitionTable::msdos_sectorbased);
+    d.partitionTable()->setType(d, d.partitionTable()->type());
 
     for (const Partition *part : std::as_const(partitions))
         PartitionAlignment::isAligned(d, *part);
@@ -397,7 +395,7 @@ Partition* SfdiskBackend::scanPartition(Device& d, const QString& partitionNode,
     FileSystem::Type type = detectFileSystem(partitionNode);
     PartitionRole::Roles r = PartitionRole::Primary;
 
-    if ( (d.partitionTable()->type() == PartitionTable::msdos || d.partitionTable()->type() == PartitionTable::msdos_sectorbased) &&
+    if ( (d.partitionTable()->type() == PartitionTable::msdos) &&
         ( partitionType == QStringLiteral("5") || partitionType == QStringLiteral("f") ) ) {
         r = PartitionRole::Extended;
         type = FileSystem::Type::Extended;
@@ -703,7 +701,7 @@ PartitionTable::Flags SfdiskBackend::availableFlags(PartitionTable::TableType ty
         flags = PartitionTable::Flag::BiosGrub |
                 PartitionTable::Flag::Boot;
     }
-    else if (type == PartitionTable::msdos || type == PartitionTable::msdos_sectorbased)
+    else if (type == PartitionTable::msdos)
         flags = PartitionTable::Flag::Boot;
 
     return flags;

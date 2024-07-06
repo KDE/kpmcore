@@ -289,14 +289,13 @@ bool PartitionTable::getUnallocatedRange(const Device& d, PartitionNode& parent,
                 return false;
             }
 
-            // Leave a track (cylinder aligned) or sector alignment sectors (sector based) free at the
-            // start for a new partition's metadata
-            start += device.partitionTable()->type() == PartitionTable::msdos ? device.sectorsPerTrack() : PartitionAlignment::sectorAlignment(device);
+            // Leave alignment sectors free at the start for a new partition's metadata
+            start += PartitionAlignment::sectorAlignment(device);
 
             // .. and also at the end for the metadata for a partition to follow us, if we're not
             // at the end of the extended partition
             if (end < extended->lastSector())
-                end -= device.partitionTable()->type() == PartitionTable::msdos ? device.sectorsPerTrack() : PartitionAlignment::sectorAlignment(device);
+                end -= PartitionAlignment::sectorAlignment(device);
         }
 
         return end - start + 1 >= PartitionAlignment::sectorAlignment(device);
@@ -468,6 +467,7 @@ static struct {
     { QLatin1String("bsd"), 8, false, true, PartitionTable::TableType::bsd },
     { QLatin1String("dasd"), 1, false, true, PartitionTable::TableType::dasd },
     { QLatin1String("msdos"), 4, true, false, PartitionTable::TableType::msdos },
+    { QLatin1String("dos"), 4, true, false, PartitionTable::TableType::msdos },
     { QLatin1String("msdos"), 4, true, false, PartitionTable::TableType::msdos_sectorbased },
     { QLatin1String("dos"), 4, true, false, PartitionTable::TableType::msdos_sectorbased },
     { QLatin1String("dvh"), 16, true, true, PartitionTable::TableType::dvh },
@@ -526,40 +526,6 @@ bool PartitionTable::tableTypeIsReadOnly(TableType l)
     return false;
 }
 
-/** Simple heuristic to determine if the PartitionTable is sector aligned (i.e.
-    if its Partitions begin at sectors evenly divisable by PartitionAlignment::sectorAlignment().
-    @return true if is sector aligned, otherwise false
-*/
-bool PartitionTable::isSectorBased(const Device& d) const
-{
-    if (d.type() == Device::Type::Disk_Device) {
-        const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
-
-        if (type() == PartitionTable::msdos) {
-            // the default for empty partition tables is sector based
-            if (numPrimaries() == 0)
-                return true;
-
-            quint32 numCylinderAligned = 0;
-            quint32 numSectorAligned = 0;
-
-            // see if we have more cylinder aligned partitions than sector
-            // aligned ones.
-            for (const auto &p : children()) {
-                if (p->firstSector() % PartitionAlignment::sectorAlignment(diskDevice) == 0)
-                    numSectorAligned++;
-                else if (p->firstSector() % diskDevice.cylinderSize() == 0)
-                    numCylinderAligned++;
-            }
-
-            return numSectorAligned >= numCylinderAligned;
-        }
-        return type() == PartitionTable::msdos_sectorbased;
-    }
-
-    return false;
-}
-
 void PartitionTable::setType(const Device& d, TableType t)
 {
     setFirstUsableSector(defaultFirstUsable(d, t));
@@ -573,7 +539,7 @@ void PartitionTable::setType(const Device& d, TableType t)
 QTextStream& operator<<(QTextStream& stream, const PartitionTable& ptable)
 {
     stream << "type: \"" << ptable.typeName() << "\"\n"
-           << "align: \"" << (ptable.type() == PartitionTable::msdos ? "cylinder" : "sector") << "\"\n"
+           << "align: \"" << "sector" << "\"\n"
            << "\n# number start end type roles label flags\n";
 
     QList<const Partition*> partitions;

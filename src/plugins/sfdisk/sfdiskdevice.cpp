@@ -55,7 +55,7 @@ std::unique_ptr<CoreBackendPartitionTable> SfdiskDevice::openPartitionTable()
 bool SfdiskDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
     QByteArray tableType;
-    if (ptable.type() == PartitionTable::msdos || ptable.type() == PartitionTable::msdos_sectorbased)
+    if (ptable.type() == PartitionTable::msdos)
         tableType = QByteArrayLiteral("dos");
     else
         tableType = ptable.typeName().toLocal8Bit();

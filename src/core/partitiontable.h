@@ -49,7 +49,7 @@ public:
         bsd,
         dasd,
         msdos,
-        msdos_sectorbased,
+        msdos_sectorbased [[deprecated]],
         dvh,
         gpt,
         loop,
@@ -172,8 +172,6 @@ public:
 
     void updateUnallocated(const Device& d);
     void insertUnallocated(const Device& d, PartitionNode* p, qint64 start);
-
-    bool isSectorBased(const Device& d) const;
 
     static const QList<Flag> flagList();
     static QString flagName(Flag f);

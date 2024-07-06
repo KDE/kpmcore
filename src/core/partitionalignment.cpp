@@ -23,17 +23,8 @@
 
 int PartitionAlignment::s_sectorAlignment = 2048;
 
-qint64 PartitionAlignment::firstDelta(const Device& d, const Partition& p, qint64 s)
+qint64 PartitionAlignment::firstDelta(const Device& d, const Partition&, qint64 s)
 {
-    if (d.partitionTable()->type() == PartitionTable::msdos) {
-        const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
-        if (p.roles().has(PartitionRole::Logical) && s == 2 * diskDevice.sectorsPerTrack())
-            return (s - (2 * diskDevice.sectorsPerTrack())) % sectorAlignment(d);
-
-        if (p.roles().has(PartitionRole::Logical) || s == diskDevice.sectorsPerTrack())
-            return (s - diskDevice.sectorsPerTrack()) % sectorAlignment(d);
-    }
-
     return s % sectorAlignment(d);
 }
 
@@ -44,15 +35,6 @@ qint64 PartitionAlignment::lastDelta(const Device& d, const Partition&, qint64 s
 
 bool PartitionAlignment::isLengthAligned(const Device& d, const Partition& p)
 {
-    if (d.partitionTable()->type() == PartitionTable::msdos) {
-        const DiskDevice& diskDevice = dynamic_cast<const DiskDevice&>(d);
-        if (p.roles().has(PartitionRole::Logical) && p.firstSector() == 2 * diskDevice.sectorsPerTrack())
-            return (p.length() + (2 * diskDevice.sectorsPerTrack())) % sectorAlignment(d) == 0;
-
-        if (p.roles().has(PartitionRole::Logical) || p.firstSector() == diskDevice.sectorsPerTrack())
-            return (p.length() + diskDevice.sectorsPerTrack()) % sectorAlignment(d) == 0;
-    }
-
     return p.length() % sectorAlignment(d) == 0;
 }
 
