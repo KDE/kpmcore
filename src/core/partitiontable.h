@@ -81,25 +81,6 @@ public:
         LegacyBoot = 0x4000,
         MsftData = 0x8000,
         Irst = 0x100000,
-        FlagNone [[deprecated("Use PartitionTable::Flag::None")]] = None,
-        FlagBoot [[deprecated("Use PartitionTable::Flag::Boot")]] = Boot,
-        FlagRoot [[deprecated("Use PartitionTable::Flag::Root")]] = Root,
-        FlagSwap [[deprecated("Use PartitionTable::Flag::Swap")]] = Swap,
-        FlagHidden [[deprecated("Use PartitionTable::Flag::Hidden")]] = Hidden,
-        FlagRaid [[deprecated("Use PartitionTable::Flag::Raid")]] = Raid,
-        FlagLvm [[deprecated("Use PartitionTable::Flag::Lvm")]] = Lvm,
-        FlagLba [[deprecated("Use PartitionTable::Flag::Lba")]] = Lba,
-        FlagHpService [[deprecated("Use PartitionTable::Flag::HpService")]] = HpService,
-        FlagPalo [[deprecated("Use PartitionTable::Flag::Palo")]] = Palo,
-        FlagPrep [[deprecated("Use PartitionTable::Flag::Prep")]] = Prep,
-        FlagMsftReserved [[deprecated("Use PartitionTable::Flag::MsftReserved")]] = MsftReserved,
-        FlagBiosGrub [[deprecated("Use PartitionTable::Flag::BiosGrub")]] = BiosGrub,
-        FlagAppleTvRecovery [[deprecated("Use PartitionTable::Flag::AppleTvRecovery")]] = AppleTvRecovery,
-        FlagDiag [[deprecated("Use PartitionTable::Flag::Diag")]] = Diag,
-        FlagLegacyBoot [[deprecated("Use PartitionTable::Flag::LegacyBoot")]] = LegacyBoot,
-        FlagMsftData [[deprecated("Use PartitionTable::Flag::MsftData")]] = MsftData,
-        FlagIrst [[deprecated("Use PartitionTable::Flag::Irst")]] = Irst,
-        FlagEsp [[deprecated("Use PartitionTable::Flag::Boot")]] = Boot
     };
 
     Q_DECLARE_FLAGS(Flags, Flag)

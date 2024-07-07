@@ -58,11 +58,6 @@ void SfdiskBackend::initFSSupport()
 {
 }
 
-QList<Device*> SfdiskBackend::scanDevices(bool excludeReadOnly)
-{
-    return scanDevices(excludeReadOnly ? ScanFlags() : ScanFlag::includeReadOnly);
-}
-
 QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
 {
     const bool includeReadOnly = scanFlags.testFlag(ScanFlag::includeReadOnly);

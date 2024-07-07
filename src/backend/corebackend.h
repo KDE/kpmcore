@@ -83,18 +83,6 @@ public:
 
     /**
       * Scan for devices in the system.
-      * @param excludeReadOnly when true,  are left out of the list.
-      *         When false (the default) all devices, writable or
-      *         not, including CD ROM devices, are returned.
-      * @return a QList of pointers to Device instances. The caller is responsible
-      *         for deleting these objects.
-      * @note A Device object is a description of the device, not
-      *         an object to operate on. See openDevice().
-      */
-    [[deprecated("port to scanDevices(ScanFlags)")]] virtual QList<Device*> scanDevices(bool excludeReadOnly = false) = 0;
-
-    /**
-      * Scan for devices in the system.
       * @param scanFlags can be used to expand the list of scanned devices.
       * @return a QList of pointers to Device instances. The caller is responsible
       *         for deleting these objects.

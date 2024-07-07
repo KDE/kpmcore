@@ -37,12 +37,6 @@ void DummyBackend::initFSSupport()
 {
 }
 
-QList<Device*> DummyBackend::scanDevices(bool excludeReadOnly)
-{
-    Q_UNUSED(excludeReadOnly)
-    return scanDevices(ScanFlags());
-}
-
 QList<Device*> DummyBackend::scanDevices(const ScanFlags scanFlags)
 {
     Q_UNUSED(scanFlags)

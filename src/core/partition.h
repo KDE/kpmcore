@@ -73,10 +73,6 @@ public:
         New,       /**< from a NewOperation */
         Copy,      /**< from a CopyOperation */
         Restore,   /**< from a RestoreOperation */
-        StateNone [[deprecated("Use Partition::State::None")]] = None,
-        StateNew [[deprecated("Use Partition::State::New")]] = New,
-        StateCopy [[deprecated("Use Partition::State::Copy")]] = Copy,
-        StateRestore [[deprecated("Use Partition::State::Restore")]] = Restore
     };
 
     Partition(PartitionNode* parent, const Device& device, const PartitionRole& role, FileSystem* fs, qint64 sectorStart, qint64 sectorEnd, QString partitionPath, PartitionTable::Flags availableFlags = PartitionTable::Flag::None, const QString& mountPoint = QString(), bool mounted = false, PartitionTable::Flags activeFlags = PartitionTable::Flag::None, State state = State::None);
