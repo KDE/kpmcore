@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 00:39+0000\n"
+"POT-Creation-Date: 2024-07-08 00:40+0000\n"
 "PO-Revision-Date: 2022-06-28 09:53+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -194,7 +194,7 @@ msgctxt "@item partition name"
 msgid "Copy of %1"
 msgstr "Копие на %1"
 
-#: core/partitionalignment.cpp:80
+#: core/partitionalignment.cpp:62
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -204,7 +204,7 @@ msgstr ""
 "Дял <filename>%1</filename> не започва на границата на цилиндър (първи "
 "сектор: %2, модул %3)."
 
-#: core/partitionalignment.cpp:83
+#: core/partitionalignment.cpp:65
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -3128,13 +3128,13 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Задаване флаговете за дял <filename>%1</filename> на \"%2\""
 
-#: plugins/sfdisk/sfdiskbackend.cpp:248
+#: plugins/sfdisk/sfdiskbackend.cpp:243
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "Открито устройство: %1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:278
+#: plugins/sfdisk/sfdiskbackend.cpp:273
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid "Device found: %1"

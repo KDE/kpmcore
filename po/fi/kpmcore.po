@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 00:39+0000\n"
+"POT-Creation-Date: 2024-07-08 00:40+0000\n"
 "PO-Revision-Date: 2022-07-27 19:20+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -193,7 +193,7 @@ msgctxt "@item partition name"
 msgid "Copy of %1"
 msgstr "Kopio kohteesta %1"
 
-#: core/partitionalignment.cpp:80
+#: core/partitionalignment.cpp:62
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -203,7 +203,7 @@ msgstr ""
 "Osiota <filename>%1</filename> ei ole tasattu oikein (ensimmäinen sektori: "
 "%2, jäännös: %3)."
 
-#: core/partitionalignment.cpp:83
+#: core/partitionalignment.cpp:65
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -3167,13 +3167,13 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Asetetaan osion <filename>%1</filename> valitsimiksi ”%2”"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:248
+#: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "Löytyi laite: %1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:278
+#: plugins/sfdisk/sfdiskbackend.cpp:273
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Device found: %1"

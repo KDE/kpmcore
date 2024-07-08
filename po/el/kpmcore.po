@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 00:39+0000\n"
+"POT-Creation-Date: 2024-07-08 00:40+0000\n"
 "PO-Revision-Date: 2023-01-07 16:04+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -201,7 +201,7 @@ msgctxt "@item partition name"
 msgid "Copy of %1"
 msgstr "Αντίγραφο του %1"
 
-#: core/partitionalignment.cpp:80
+#: core/partitionalignment.cpp:62
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -209,7 +209,7 @@ msgid ""
 "modulo: %3)."
 msgstr "Η κατάτμηση <filename>%1</filename> δεν έχει τοποθετηθεί σωστά  (πρώτος τομέας: %2, modulo: %3)."
 
-#: core/partitionalignment.cpp:83
+#: core/partitionalignment.cpp:65
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -3247,13 +3247,13 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Ορισμός σημαιών για την κατάτμηση <filename>%1</filename> σε \"%2\""
 
-#: plugins/sfdisk/sfdiskbackend.cpp:248
+#: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "Βρέθηκε συσκευή Software RAID: %1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:278
+#: plugins/sfdisk/sfdiskbackend.cpp:273
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Device found: %1"

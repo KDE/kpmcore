@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 00:39+0000\n"
+"POT-Creation-Date: 2024-07-08 00:40+0000\n"
 "PO-Revision-Date: 2009-01-11 18:55+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -226,7 +226,7 @@ msgctxt "@item partition name"
 msgid "Copy of %1"
 msgstr "%1 kopija"
 
-#: core/partitionalignment.cpp:80
+#: core/partitionalignment.cpp:62
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -240,7 +240,7 @@ msgstr ""
 "Sadaļa <filename>%1</filename> nesākas uz cilindra robežas (pirmais sekotrs: "
 "%2, atlikums: %3)."
 
-#: core/partitionalignment.cpp:83
+#: core/partitionalignment.cpp:65
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -3677,7 +3677,7 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Izveidot jaunu sadaļu <filename>%1</filename>"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:248
+#: plugins/sfdisk/sfdiskbackend.cpp:243
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"
@@ -3685,7 +3685,7 @@ msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "Atrasta ierīce: %1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:278
+#: plugins/sfdisk/sfdiskbackend.cpp:273
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"

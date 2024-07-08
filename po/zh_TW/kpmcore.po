@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 00:39+0000\n"
+"POT-Creation-Date: 2024-07-08 00:40+0000\n"
 "PO-Revision-Date: 2024-02-11 22:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -179,7 +179,7 @@ msgctxt "@item partition name"
 msgid "Copy of %1"
 msgstr "%1 的副本"
 
-#: core/partitionalignment.cpp:80
+#: core/partitionalignment.cpp:62
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -189,7 +189,7 @@ msgstr ""
 "分割區 <filename>%1</filename> 的開始位置並未對齊磁柱分界（第一個磁區：%2，模"
 "數：%3）"
 
-#: core/partitionalignment.cpp:83
+#: core/partitionalignment.cpp:65
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
@@ -3034,13 +3034,13 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "設定分割區 <filename>%1</filename> 的旗標為 %2"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:248
+#: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "找到軟體 RAID 裝置：%1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:278
+#: plugins/sfdisk/sfdiskbackend.cpp:273
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Device found: %1"

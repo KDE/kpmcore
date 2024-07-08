@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-22 00:39+0000\n"
+"POT-Creation-Date: 2024-07-08 00:40+0000\n"
 "PO-Revision-Date: 2015-01-10 12:07+0100\n"
 "Last-Translator: Samir Ribic <samir.ribic@etf.unsa.ba>\n"
 "Language-Team: Bosnian <kde-i18n-bs@kde.org>\n"
@@ -240,7 +240,7 @@ msgctxt "@item partition name"
 msgid "Copy of %1"
 msgstr "Kopija od %1"
 
-#: core/partitionalignment.cpp:80
+#: core/partitionalignment.cpp:62
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -254,7 +254,7 @@ msgstr ""
 "Particija <filename>%1</filename> nije pravilno poravnata (prvi sektor: %2, "
 "modulo: %3)."
 
-#: core/partitionalignment.cpp:83
+#: core/partitionalignment.cpp:65
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -3808,7 +3808,7 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Promjena zastavica particije <filename>%1</filename> na „%2“"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:248
+#: plugins/sfdisk/sfdiskbackend.cpp:243
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"
@@ -3816,7 +3816,7 @@ msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
 msgstr "Nađen uređaj: %1"
 
-#: plugins/sfdisk/sfdiskbackend.cpp:278
+#: plugins/sfdisk/sfdiskbackend.cpp:273
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Device found: %1"
