@@ -83,7 +83,7 @@ QColor PartWidget::activeColor(const QColor& col) const
 
 void PartWidget::paintEvent(QPaintEvent*)
 {
-    if (partition() == nullptr)
+    if (partition() == nullptr || partition()->isFileSystemNullptr())
         return;
 
     auto partitionCapacity = partition()->capacity();
