@@ -177,6 +177,9 @@ public:
     bool isMounted() const {
         return m_IsMounted;    /**< @return true if Partition is mounted */
     }
+    bool isFileSystemNullptr() {
+        return m_FileSystem == nullptr;
+    }
     FileSystem& fileSystem() {
         return *m_FileSystem;    /**< @return the Partition's FileSystem */
     }
