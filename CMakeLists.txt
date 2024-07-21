@@ -68,8 +68,8 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED
 
 find_package(PolkitQt6-1 REQUIRED)
 
-ecm_set_disabled_deprecation_versions(QT 5.15.2
-    KF 5.240
+ecm_set_disabled_deprecation_versions(QT 6.7
+    KF 6.4
 )
 
 kde_enable_exceptions()
