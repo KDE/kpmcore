@@ -103,13 +103,13 @@ bool bcachefs::check(Report& report, const QString& deviceNode) const
 
 bool bcachefs::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("bcachefs"), { QStringLiteral("format"), deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("bcachefs"), { QStringLiteral("format"), QStringLiteral("--force"),  deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
 bool bcachefs::createWithLabel(Report& report, const QString& deviceNode, const QString& label)
 {
-    ExternalCommand cmd(report, QStringLiteral("bcachefs"), { QStringLiteral("format"), QStringLiteral("--fs_label="), label, deviceNode });
+    ExternalCommand cmd(report, QStringLiteral("bcachefs"), { QStringLiteral("format"), QStringLiteral("--force"),  QStringLiteral("--fs_label="), label, deviceNode });
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 
