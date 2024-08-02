@@ -3047,7 +3047,7 @@ msgstr "Commando: %1 %2"
 #: util/externalcommandhelper.cpp:82
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr "Nonpoteva aperir dispositivo <filename>%1</filename> per leger."
+msgstr "Non poteva aperir dispositivo <filename>%1</filename> per leger."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
 #, kde-kuit-format
@@ -3059,7 +3059,7 @@ msgstr ""
 #: util/externalcommandhelper.cpp:96
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
-msgstr "Nonpoteva leger ex dispositivo <filename>%1</filename>."
+msgstr "Non poteva leger ex dispositivo <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:114
 #, kde-kuit-format
