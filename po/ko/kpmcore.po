@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-08 00:40+0000\n"
-"PO-Revision-Date: 2022-05-15 22:36+0200\n"
+"PO-Revision-Date: 2024-08-19 23:55+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1473,60 +1473,44 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "디스크가 곧 고장날 수도 있습니다. 데이터를 백업하십시오!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"파티션 <filename>%1</filename>에 있는 Btrfs 파일 시스템의 크기를 조정할 수 없"
-"음: 임시 디렉터리를 만들 수 없습니다."
+"파티션 <filename>%1</filename>에 있는 Bcachefs 파일 시스템의 크기를 조정할 "
+"수 없음: 임시 디렉터리를 만들 수 없습니다."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"파티션 <filename>%1</filename>에 있는 Btrfs 파일 시스템의 크기를 조정할 수 없"
-"음: Btrfs 파일 시스템 크기 조정이 실패했습니다."
+"파티션 <filename>%1</filename>에 있는 Bcachefs 파일 시스템의 크기를 조정할 "
+"수 없음: bcachefs 장치 크기 조정이 실패했습니다."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>파티션 <filename>%1</filename>에 있는 Btrfs 파일 시스템의 크기를 조"
-"정할 수 없음: 마운트 해제할 수 없습니다.</warning>"
+"<warning>파티션 <filename>%1</filename>에 있는 Bcachefs 파일 시스템의 크기를 "
+"조정할 수 없음: 마운트 해제할 수 없습니다.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"파티션 <filename>%1</filename>에 있는 Btrfs 파일 시스템의 크기를 조정할 수 없"
-"음: 첫 마운트가 실패했습니다."
+"파티션 <filename>%1</filename>에 있는 Bcachefs 파일 시스템의 크기를 조정할 "
+"수 없음: 첫 마운트가 실패했습니다."
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1782,7 +1766,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format
