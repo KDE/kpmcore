@@ -1501,10 +1501,6 @@ msgstr ""
 
 #: fs/bcachefs.cpp:144
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Failed to add partition <filename>%1</filename> to device <filename>%2</"
-#| "filename>."
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
