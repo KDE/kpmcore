@@ -113,8 +113,10 @@ bool ExternalCommand::start(int timeout)
     if (report())
         report()->setCommand(xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" "))));
 
-    if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" ))
+    if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" )) {
+        qDebug() << "";
         qDebug() << xi18nc("@info:status", "Command: %1 %2", command(), args().join(QStringLiteral(" ")));
+    }
 
     QString cmd = findTrustedCommand(command());
 
@@ -137,7 +139,19 @@ bool ExternalCommand::start(int timeout)
         else {
             QDBusPendingReply<QVariantMap> reply = *watcher;
 
-            d->m_Output = reply.value()[QStringLiteral("output")].toByteArray();
+            QVariant output = reply.value()[QStringLiteral("output")];
+            d->m_Output = output.toByteArray();
+
+            if ( qEnvironmentVariableIsSet( "KPMCORE_DEBUG" )) {
+                QString cmdResult = output.toString();
+                if (!cmdResult.isEmpty()) {
+                    const QStringList lines = cmdResult.split(QChar::LineFeed);
+
+                    for (const QString &line : lines)
+                        qDebug() << line;
+                }
+            }
+
             setExitCode(reply.value()[QStringLiteral("exitCode")].toInt());
             rval = reply.value()[QStringLiteral("success")].toBool();
         }
