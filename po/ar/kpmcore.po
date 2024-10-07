@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-08 00:40+0000\n"
+"POT-Creation-Date: 2024-10-07 00:41+0000\n"
 "PO-Revision-Date: 2013-08-13 16:37+0300\n"
 "Last-Translator: Safa Alfulaij <safaalfulaij@hotmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -1919,7 +1919,7 @@ msgstr ""
 msgid "Enter passphrase for %1:"
 msgstr ""
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:89 fs/luks2.cpp:106
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing/moving partition <filename>%1</filename> failed."
@@ -1927,7 +1927,7 @@ msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "فشل تغيير حجم/نقل القسم <filename>%1</filename>."
 
-#: fs/luks.cpp:514 fs/luks2.cpp:116
+#: fs/luks.cpp:514 fs/luks2.cpp:117
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""

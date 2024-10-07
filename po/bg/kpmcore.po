@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-08 00:40+0000\n"
+"POT-Creation-Date: 2024-10-07 00:41+0000\n"
 "PO-Revision-Date: 2022-06-28 09:53+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1824,7 +1824,7 @@ msgstr ""
 msgid "Enter passphrase for %1:"
 msgstr ""
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:89 fs/luks2.cpp:106
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
@@ -1832,7 +1832,7 @@ msgstr ""
 "Грешка при преоразмеряването или преместването на дял <filename>%1</"
 "filename>."
 
-#: fs/luks.cpp:514 fs/luks2.cpp:116
+#: fs/luks.cpp:514 fs/luks2.cpp:117
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-08 00:40+0000\n"
+"POT-Creation-Date: 2024-10-07 00:41+0000\n"
 "PO-Revision-Date: 2018-07-30 18:58+0100\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -1860,14 +1860,14 @@ msgstr "Užrakinti"
 msgid "Enter passphrase for %1:"
 msgstr "Įveskite %1 slaptažodį:"
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:88 fs/luks2.cpp:105
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:89 fs/luks2.cpp:106
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr ""
 "Keičiamas LUKS šifruoto konteinerio dydis skaidinyje <filename>%1</filename>."
 
-#: fs/luks.cpp:514 fs/luks2.cpp:116
+#: fs/luks.cpp:514 fs/luks2.cpp:117
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
