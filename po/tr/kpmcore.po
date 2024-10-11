@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-07 00:41+0000\n"
+"POT-Creation-Date: 2024-10-11 00:42+0000\n"
 "PO-Revision-Date: 2024-10-04 01:13+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -3317,8 +3317,8 @@ msgctxt "@item:intext unit"
 msgid "(unknown unit)"
 msgstr "(bilinmeyen birim)"
 
-#: util/externalcommand.cpp:114 util/externalcommand.cpp:117
-#: util/externalcommand.cpp:227
+#: util/externalcommand.cpp:114 util/externalcommand.cpp:118
+#: util/externalcommand.cpp:241
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Command: %1 %2"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-07 00:41+0000\n"
+"POT-Creation-Date: 2024-10-11 00:42+0000\n"
 "PO-Revision-Date: 2013-01-05 09:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -3744,8 +3744,8 @@ msgctxt "@item:intext unit"
 msgid "(unknown unit)"
 msgstr "(ਅਣਜਾਣ ਯੂਨਿਟ)"
 
-#: util/externalcommand.cpp:114 util/externalcommand.cpp:117
-#: util/externalcommand.cpp:227
+#: util/externalcommand.cpp:114 util/externalcommand.cpp:118
+#: util/externalcommand.cpp:241
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Command: %1 %2"
