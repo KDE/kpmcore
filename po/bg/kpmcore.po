@@ -3,13 +3,13 @@
 #
 # Valeriy Voutov <valeriy.voutov@gmail.com>, 2009.
 # Yasen Pramatarov <yasen@lindeas.com>, 2009, 2010, 2011.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-08 00:40+0000\n"
-"PO-Revision-Date: 2022-06-28 09:53+0200\n"
+"PO-Revision-Date: 2024-11-06 23:59+0100\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 24.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1531,7 +1531,7 @@ msgstr ""
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
-msgstr "Именуване на дял <filename>%1</filename> като \"%2\""
+msgstr "Именуване на дял <filename>%1</filename> като „%2“"
 
 #: fs/filesystem.cpp:505
 #, fuzzy, kde-kuit-format
@@ -1978,7 +1978,7 @@ msgstr ""
 #, fuzzy, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Именуване на дял <filename>%1</filename> като \"%2\""
+msgstr "Именуване на дял <filename>%1</filename> като „%2“"
 
 #: jobs/checkfilesystemjob.cpp:43
 #, fuzzy, kde-kuit-format
@@ -2491,8 +2491,7 @@ msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
 msgstr ""
-"Задаване етикет на файловата система на дял <filename>%1</filename> като "
-"\"%2\""
+"Задаване етикет на файловата система на дял <filename>%1</filename> като „%2“"
 
 #: jobs/setpartflagsjob.cpp:65
 #, fuzzy, kde-kuit-format
@@ -2546,7 +2545,7 @@ msgstr "Изчистване флаговете на дял <filename>%1</filena
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
-msgstr "Поставяне флаговете за дял <filename>%1</filename> като \"%2\""
+msgstr "Поставяне флаговете за дял <filename>%1</filename> като „%2“"
 
 #: jobs/setpartgeometryjob.cpp:65
 #, fuzzy, kde-kuit-format
@@ -2608,7 +2607,7 @@ msgstr ""
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Именуване на дял <filename>%1</filename> като \"%2\""
+msgstr "Именуване на дял <filename>%1</filename> като „%2“"
 
 #: jobs/setpartitionlabeljob.cpp:47
 #, fuzzy, kde-kuit-format
@@ -2650,7 +2649,7 @@ msgstr ""
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "Именуване на дял <filename>%1</filename> като \"%2\""
+msgstr "Именуване на дял <filename>%1</filename> като „%2“"
 
 #: jobs/setpartitionuuidjob.cpp:47
 #, fuzzy, kde-kuit-format
@@ -2692,7 +2691,7 @@ msgstr ""
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Именуване на дял <filename>%1</filename> като \"%2\""
+msgstr "Именуване на дял <filename>%1</filename> като „%2“"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -3108,13 +3107,13 @@ msgstr ""
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr "Именуване на дял <filename>%1</filename> като \"%2\""
+msgstr "Именуване на дял <filename>%1</filename> като „%2“"
 
 #: ops/setfilesystemlabeloperation.cpp:60
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
-msgstr "Преименуване на дял <filename>%1</filename> от \"%2\" на \"%3\""
+msgstr "Преименуване на дял <filename>%1</filename> от „%2“ на „%3“"
 
 #: ops/setpartflagsoperation.cpp:62
 #, fuzzy, kde-kuit-format
@@ -3126,7 +3125,7 @@ msgstr "Изчистване флаговете на дял <filename>%1</filena
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
-msgstr "Задаване флаговете за дял <filename>%1</filename> на \"%2\""
+msgstr "Задаване флаговете за дял <filename>%1</filename> на „%2“"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, fuzzy, kde-kuit-format
