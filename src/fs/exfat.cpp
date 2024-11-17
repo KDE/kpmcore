@@ -90,7 +90,7 @@ qint64 exfat::maxCapacity() const
 
 int exfat::maxLabelLength() const
 {
-    return 15;
+    return 11;
 }
 
 bool exfat::check(Report& report, const QString& deviceNode) const
