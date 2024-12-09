@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2024-03-23 21:02+0100\n"
+"PO-Revision-Date: 2024-12-08 16:07+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -623,7 +623,7 @@ msgstr "Número de ciclos completos de acendido e apagado do disco duro."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft Read Error Rate"
-msgstr "Frecuencia de erros de lectura do software"
+msgstr "Frecuencia de erros de lectura lóxica"
 
 #: core/smartattribute.cpp:113
 #, kde-format
@@ -1065,13 +1065,13 @@ msgstr "Número de erros ECC."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft ECC Correction"
-msgstr "Correccións de ECC de software"
+msgstr "Correccións lóxica de ECC"
 
 #: core/smartattribute.cpp:148
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors corrected by software ECC"
-msgstr "Número de erros corrixidos por ECC de software."
+msgstr "Número de erros corrixidos por ECC lóxico."
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -3253,7 +3253,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
-msgstr "Atopouse un dispositivo de RAID de software: %1"
+msgstr "Atopouse un dispositivo lóxico de RAID: %1"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:273
 #, kde-kuit-format
