@@ -19,9 +19,9 @@ msgstr ""
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
 msgctxt "description"
 msgid "Run privileged partition manager helper"
-msgstr ""
+msgstr "विशेषाधिकारयुक्तं विभाजनप्रबन्धकसहायकं चालयन्तु"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
 msgid "Authenticate to manage disks."
-msgstr ""
+msgstr "डिस्कं प्रबन्धयितुं प्रमाणीकरणं कुर्वन्तु ।"
