@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2024-12-08 16:07+0100\n"
+"PO-Revision-Date: 2024-12-16 00:30+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1938,7 +1938,8 @@ msgstr "Insira a frase de paso de %1:"
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr ""
-"Cambiando o tamaño do cifrado LUKS na partición <filename>%1</filename>."
+"Cambiando o tamaño da criptografía de LUKS na partición <filename>%1</"
+"filename>."
 
 #: fs/luks.cpp:514 fs/luks2.cpp:117
 #, kde-kuit-format
@@ -2829,7 +2830,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
-msgstr "Borra completamente o sistema de ficheiros de <filename>%1</filename>"
+msgstr "Triturar o sistema de ficheiros de <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -2958,7 +2959,7 @@ msgstr "Desactivar o grupo de volumes."
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Shred partition <filename>%1</filename> (%2, %3)"
-msgstr "Borra completamente a partición <filename>%1</filename> (%2, %3)"
+msgstr "Triturar a partición <filename>%1</filename> (%2, %3)"
 
 #: ops/deleteoperation.cpp:89
 #, kde-kuit-format
