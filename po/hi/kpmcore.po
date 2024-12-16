@@ -1,0 +1,3477 @@
+# Hindi translations for kpmcore package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kpmcore package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kpmcore\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-10-11 00:42+0000\n"
+"PO-Revision-Date: 2024-12-15 17:36+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1)\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "तुम्हारे नाम"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "आपके ईमेल"
+
+#: core/device.cpp:33
+#, kde-format
+msgid "Unknown Device"
+msgstr "अज्ञात उपकरण"
+
+#: core/device.cpp:82
+#, kde-kuit-format
+msgctxt "@item:inlistbox Device name – Capacity (device node)"
+msgid "%1 – %2 (%3)"
+msgstr "%1 – %2 (%3)"
+
+#: core/lvmdevice.cpp:362
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "An error occurred while running lvdisplay."
+msgstr "lvdisplay चलाते समय एक त्रुटि घटित हुई."
+
+#: core/operationstack.cpp:101
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just created: Undoing the operation to create the "
+"partition."
+msgstr ""
+"अभी-अभी बनाए गए विभाजन को हटाना: विभाजन बनाने के लिए किए गए ऑपरेशन को पूर्ववत "
+"करना।"
+
+#: core/operationstack.cpp:119
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resizing a partition just created: Updating start and end in existing "
+"operation."
+msgstr ""
+"अभी बनाए गए विभाजन का आकार बदलना: मौजूदा ऑपरेशन में प्रारंभ और अंत को अद्यतन करना।"
+
+#: core/operationstack.cpp:139
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying a new partition: Creating a new partition instead."
+msgstr "नये विभाजन की प्रतिलिपि बनाना: इसके स्थान पर नया विभाजन बनाना।"
+
+#: core/operationstack.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label for a new partition: No new operation required."
+msgstr "नये विभाजन के लिए लेबल बदलना: किसी नये ऑपरेशन की आवश्यकता नहीं है।"
+
+#: core/operationstack.cpp:169
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing file system for a new partition: No new operation required."
+msgstr "नये विभाजन के लिए फ़ाइल सिस्टम बदलना: किसी नये ऑपरेशन की आवश्यकता नहीं है।"
+
+#: core/operationstack.cpp:186
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking file systems is automatically done when creating them: No new "
+"operation required."
+msgstr ""
+"फ़ाइल सिस्टम बनाते समय उनकी जाँच स्वचालित रूप से हो जाती है: किसी नए ऑपरेशन की "
+"आवश्यकता नहीं होती।"
+
+#: core/operationstack.cpp:233
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just copied: Removing the copy."
+msgstr "अभी-अभी कॉपी किए गए विभाजन को हटाना: कॉपी को हटाना।"
+
+#: core/operationstack.cpp:238
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just copied over an existing partition: Removing the "
+"copy and deleting the existing partition."
+msgstr ""
+"किसी मौजूदा विभाजन पर कॉपी किए गए विभाजन को हटाना: कॉपी को हटाना और मौजूदा "
+"विभाजन को हटाना।"
+
+#: core/operationstack.cpp:251
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copying a partition that is itself a copy: Copying the original source "
+"partition instead."
+msgstr ""
+"किसी ऐसे विभाजन की प्रतिलिपि बनाना जो स्वयं एक प्रतिलिपि है: इसके बजाय मूल स्रोत "
+"विभाजन की प्रतिलिपि बनाना।"
+
+#: core/operationstack.cpp:280
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Deleting a partition just restored: Removing the restore operation."
+msgstr "अभी-अभी पुनर्स्थापित किए गए विभाजन को हटाना: पुनर्स्थापना ऑपरेशन को हटाना।"
+
+#: core/operationstack.cpp:285
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Deleting a partition just restored to an existing partition: Removing the "
+"restore operation and deleting the existing partition."
+msgstr ""
+"किसी मौजूदा विभाजन को पुनर्स्थापित करने वाले विभाजन को हटाना: पुनर्स्थापना ऑपरेशन को "
+"हटाना और मौजूदा विभाजन को हटाना।"
+
+#: core/operationstack.cpp:318
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing flags again for the same partition: Removing old operation."
+msgstr "समान विभाजन के लिए पुनः ध्वज बदलना: पुराना ऑपरेशन हटाना।"
+
+#: core/operationstack.cpp:349
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Changing label again for the same partition: Removing old operation."
+msgstr "उसी विभाजन के लिए पुनः लेबल बदलना: पुराना ऑपरेशन हटाना।"
+
+#: core/operationstack.cpp:375
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating new partition table, discarding previous operation on device."
+msgstr "डिवाइस पर पिछले ऑपरेशन को छोड़ते हुए नई विभाजन तालिका बनाना।"
+
+#: core/operationstack.cpp:395
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing Volume Group, nothing to do."
+msgstr "वॉल्यूम समूह का आकार बदलना, कुछ नहीं करना।"
+
+#: core/operationstack.cpp:440
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Add operation: %1"
+msgstr "ऑपरेशन जोड़ें: %1"
+
+#: core/partition.cpp:159
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "unallocated"
+msgstr "आवंटित नहीं की गई"
+
+#: core/partition.cpp:162
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "New Partition"
+msgstr "नया विभाजन"
+
+#: core/partition.cpp:165
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Restored Partition"
+msgstr "पुनर्स्थापित विभाजन"
+
+#: core/partition.cpp:168
+#, kde-kuit-format
+msgctxt "@item partition name"
+msgid "Copy of %1"
+msgstr "%1 की प्रतिलिपि"
+
+#: core/partitionalignment.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (first sector: %2, "
+"modulo: %3)."
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> उचित रूप से संरेखित नहीं है (पहला सेक्टर: %2, मॉड्यूलो: "
+"%3)."
+
+#: core/partitionalignment.cpp:65
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Partition <filename>%1</filename> is not properly aligned (last sector: %2, "
+"modulo: %3)."
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> ठीक से संरेखित नहीं है (अंतिम सेक्टर: %2, मॉड्यूलो: %3)."
+
+#: core/partitionrole.cpp:17
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "unallocated"
+msgstr "आवंटित नहीं की गई"
+
+#: core/partitionrole.cpp:20
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "logical"
+msgstr "तार्किक"
+
+#: core/partitionrole.cpp:23
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "extended"
+msgstr "विस्तारित"
+
+#: core/partitionrole.cpp:26
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "primary"
+msgstr "प्राथमिक"
+
+#: core/partitionrole.cpp:29
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LUKS"
+msgstr "विलासिता"
+
+#: core/partitionrole.cpp:32
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "LVM logical volume"
+msgstr "LVM लॉजिकल वॉल्यूम"
+
+#: core/partitionrole.cpp:34
+#, kde-kuit-format
+msgctxt "@item partition role"
+msgid "none"
+msgstr "कोई नहीं"
+
+#: core/partitiontable.cpp:180
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "boot"
+msgstr "गाड़ी की डिक्की"
+
+#: core/partitiontable.cpp:182
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "root"
+msgstr "जड़"
+
+#: core/partitiontable.cpp:184
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "swap"
+msgstr "बदलना"
+
+#: core/partitiontable.cpp:186
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hidden"
+msgstr "छिपा हुआ"
+
+#: core/partitiontable.cpp:188
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "raid"
+msgstr "छापा"
+
+#: core/partitiontable.cpp:190
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lvm"
+msgstr "एलवीएम"
+
+#: core/partitiontable.cpp:192
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "lba"
+msgstr "एलबीए"
+
+#: core/partitiontable.cpp:194
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "hpservice"
+msgstr "एचपीसेवा"
+
+#: core/partitiontable.cpp:196
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "palo"
+msgstr "पालो"
+
+#: core/partitiontable.cpp:198
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "prep"
+msgstr "प्रस्तुत करने का"
+
+#: core/partitiontable.cpp:200
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-reserved"
+msgstr "msft-आरक्षित"
+
+#: core/partitiontable.cpp:202
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "bios-grub"
+msgstr "बायोस-ग्रब"
+
+#: core/partitiontable.cpp:204
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "apple-tv-recovery"
+msgstr "एप्पल टीवी रिकवरी"
+
+#: core/partitiontable.cpp:206
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "diag"
+msgstr "निदान"
+
+#: core/partitiontable.cpp:208
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "legacy-boot"
+msgstr "विरासत का बूट"
+
+#: core/partitiontable.cpp:210
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "msft-data"
+msgstr "msft-डेटा"
+
+#: core/partitiontable.cpp:212
+#, kde-kuit-format
+msgctxt "@item partition flag"
+msgid "irst"
+msgstr "प्रथम"
+
+#: core/partitiontable.cpp:499
+#, kde-kuit-format
+msgctxt "@item partition table name"
+msgid "unknown"
+msgstr "अज्ञात"
+
+#: core/raid/softwareraid.cpp:93
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level]"
+msgid " [RAID %1]"
+msgstr "[RAID %1]"
+
+#: core/raid/softwareraid.cpp:95
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Recovering]"
+msgid " [RAID %1 - Recovering]"
+msgstr "[RAID %1 - पुनर्प्राप्त]"
+
+#: core/raid/softwareraid.cpp:97
+#, kde-kuit-format
+msgctxt "@item:inlistbox [RAID level - Resyncing]"
+msgid " [RAID %1 - Resyncing]"
+msgstr "[RAID %1 - पुनः समन्वयन]"
+
+#: core/smartattribute.cpp:45
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "failing"
+msgstr "असफलता"
+
+#: core/smartattribute.cpp:48
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "has failed"
+msgstr "नाकाम रहा है"
+
+#: core/smartattribute.cpp:51
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "warning"
+msgstr "चेतावनी"
+
+#: core/smartattribute.cpp:54
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "good"
+msgstr "अच्छा"
+
+#: core/smartattribute.cpp:58 core/smartattribute.cpp:85
+#, kde-kuit-format
+msgctxt "@item:intable not applicable"
+msgid "N/A"
+msgstr "एन/ए"
+
+#: core/smartattribute.cpp:72
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 sector"
+msgid_plural "%1 sectors"
+msgstr[0] "%1 सेक्टर"
+msgstr[1] "%1 सेक्टर"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Rate"
+msgstr "त्रुटि दर पढ़ें"
+
+#: core/smartattribute.cpp:101
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Rate of hardware read errors while reading data from the disk surface."
+msgstr "डिस्क सतह से डेटा पढ़ते समय हार्डवेयर रीड त्रुटियों की दर।"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Throughput Performance"
+msgstr "थ्रूपुट प्रदर्शन"
+
+#: core/smartattribute.cpp:102
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Overall (general) throughput performance of a hard disk drive. If the value "
+"of this attribute is decreasing there is a high probability that there is a "
+"problem with the disk."
+msgstr ""
+"हार्ड डिस्क ड्राइव का समग्र (सामान्य) थ्रूपुट प्रदर्शन। यदि इस विशेषता का मान घट रहा है "
+"तो इस बात की बहुत अधिक संभावना है कि डिस्क में कोई समस्या है।"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin-Up Time"
+msgstr "समय को घुमाना"
+
+#: core/smartattribute.cpp:103
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Average time of spindle spin up from zero RPM to fully operational."
+msgstr "शून्य आरपीएम से पूर्णतः प्रचालन तक स्पिंडल स्पिन-अप का औसत समय।"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Start/Stop Count"
+msgstr "प्रारंभ/रोक गिनती"
+
+#: core/smartattribute.cpp:104
+#, kde-format
+msgctxt "SMART attr description"
+msgid "A tally of spindle start/stop cycles."
+msgstr "स्पिंडल स्टार्ट/स्टॉप चक्रों की गणना।"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocated Sectors Count"
+msgstr "पुनर्आबंटित क्षेत्रों की गणना"
+
+#: core/smartattribute.cpp:105
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of reallocated sectors. When the hard drive finds a read/write/"
+"verification error, it marks this sector as &quot;reallocated&quot; and "
+"transfers data to a special reserved area (spare area)."
+msgstr ""
+"पुनः आबंटित सेक्टरों की गिनती। जब हार्ड ड्राइव को पढ़ने/लिखने/सत्यापन में त्रुटि मिलती है, "
+"तो यह इस सेक्टर को &quot;पुनः आबंटित&quot; के रूप में चिह्नित करता है और डेटा को एक "
+"विशेष आरक्षित क्षेत्र (अतिरिक्त क्षेत्र) में स्थानांतरित करता है।"
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Channel Margin"
+msgstr "चैनल मार्जिन पढ़ें"
+
+#: core/smartattribute.cpp:106
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Margin of a channel while reading data. The function of this attribute is "
+"not specified."
+msgstr "डेटा पढ़ते समय चैनल का मार्जिन। इस विशेषता का कार्य निर्दिष्ट नहीं है।"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Error Rate"
+msgstr "खोज त्रुटि दर"
+
+#: core/smartattribute.cpp:107
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Rate of seek errors of the magnetic heads. If there is a partial failure in "
+"the mechanical positioning system, then seek errors will arise."
+msgstr ""
+"चुंबकीय हेड्स की सीक त्रुटियों की दर। यदि यांत्रिक पोजिशनिंग सिस्टम में आंशिक विफलता है, तो "
+"सीक त्रुटियाँ उत्पन्न होंगी।"
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Seek Time Performance"
+msgstr "समय प्रदर्शन की तलाश करें"
+
+#: core/smartattribute.cpp:108
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Average performance of seek operations of the magnetic heads. If this "
+"attribute is decreasing, it is a sign of problems in the mechanical "
+"subsystem."
+msgstr ""
+"चुंबकीय हेड के सीक ऑपरेशन का औसत प्रदर्शन। यदि यह विशेषता कम हो रही है, तो यह यांत्रिक "
+"उपप्रणाली में समस्याओं का संकेत है।"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Hours"
+msgstr "पावर-ऑन घंटे"
+
+#: core/smartattribute.cpp:109
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of hours in power-on state."
+msgstr "बिजली चालू अवस्था में घंटों की गिनती."
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Retry Count"
+msgstr "स्पिन पुन: प्रयास की गिनती"
+
+#: core/smartattribute.cpp:110
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of retry of spin start attempts if the first attempt was unsuccessful. "
+"An increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"यदि पहला प्रयास असफल रहा तो स्पिन स्टार्ट प्रयासों की पुनःप्रयास की गिनती। इस विशेषता "
+"मान में वृद्धि हार्ड डिस्क मैकेनिकल सबसिस्टम में समस्याओं का संकेत है।"
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Recalibration Retries"
+msgstr "पुनः अंशांकन पुनः प्रयास"
+
+#: core/smartattribute.cpp:111
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of recalibrations requested if the first attempt was unsuccessful. An "
+"increase of this attribute value is a sign of problems in the hard disk "
+"mechanical subsystem."
+msgstr ""
+"यदि पहला प्रयास असफल रहा तो अनुरोधित पुनर्गणना की संख्या। इस विशेषता मान में वृद्धि "
+"हार्ड डिस्क मैकेनिकल सबसिस्टम में समस्याओं का संकेत है।"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Cycle Count"
+msgstr "पावर साइकिल गणना"
+
+#: core/smartattribute.cpp:112
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of full hard disk power on/off cycles."
+msgstr "पूर्ण हार्ड डिस्क पावर चालू/बंद चक्रों की गिनती।"
+
+#: core/smartattribute.cpp:113 core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft Read Error Rate"
+msgstr "सॉफ्ट रीड त्रुटि दर"
+
+#: core/smartattribute.cpp:113
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Uncorrected read errors reported to the operating system."
+msgstr "ऑपरेटिंग सिस्टम को बिना सुधारे पठन त्रुटियाँ रिपोर्ट की गईं।"
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Available Reserved Space"
+msgstr "SSD उपलब्ध आरक्षित स्थान"
+
+#: core/smartattribute.cpp:114
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of available reserved space as a percentage of reserved space."
+msgstr "आरक्षित स्थान के प्रतिशत के रूप में उपलब्ध आरक्षित स्थान की संख्या।"
+
+#: core/smartattribute.cpp:115
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count"
+msgstr "SSD प्रोग्राम विफलता संख्या"
+
+#: core/smartattribute.cpp:115 core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of flash program operation failures since the drive was deployed."
+msgstr "ड्राइव तैनात किए जाने के बाद से फ़्लैश प्रोग्राम संचालन विफलताओं की संख्या."
+
+#: core/smartattribute.cpp:116 core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count"
+msgstr "SSD मिटाने में विफल संख्या"
+
+#: core/smartattribute.cpp:116
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase operation failures since the drive was deployed."
+msgstr "ड्राइव को तैनात किए जाने के बाद से फ्लैश मिटाने की प्रक्रिया में विफलताओं की संख्या।"
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Leveling Count"
+msgstr "एसएसडी वियर लेवलिंग काउंट"
+
+#: core/smartattribute.cpp:117
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Counts the maximum worst erase count on any block."
+msgstr "किसी भी ब्लॉक पर अधिकतम सबसे खराब मिटाए गए नंबर की गणना करता है।"
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unexpected power loss count"
+msgstr "SSD अप्रत्याशित बिजली हानि गिनती"
+
+#: core/smartattribute.cpp:118
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of shutdowns without STANDBY IMMEDIATE as the last command "
+"(regardless of PLI activity using capacitor power). Normalized value is "
+"always 100."
+msgstr ""
+"अंतिम आदेश के रूप में STANDBY IMMEDIATE के बिना शटडाउन की संख्या (कैपेसिटर पावर का "
+"उपयोग करके PLI गतिविधि की परवाह किए बिना)। सामान्यीकृत मान हमेशा 100 होता है।"
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Power Loss Protection Failure"
+msgstr "SSD पावर लॉस प्रोटेक्शन विफलता"
+
+#: core/smartattribute.cpp:119
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Last test result, saturated at its maximum value. Bytes 0-1: last test "
+"result as microseconds to discharge cap in range [25, 5000000], lower "
+"indicates specific error code. Bytes 2-3: minutes since last test. Bytes "
+"4-5: lifetime number of tests. Normalized value is set to 1 on test failure "
+"or 11 if the capacitor has been tested in an excessive temperature "
+"condition, otherwise 100."
+msgstr ""
+"अंतिम परीक्षण परिणाम, अपने अधिकतम मान पर संतृप्त। बाइट्स 0-1: [25, 5000000] रेंज में कैप "
+"डिस्चार्ज करने के लिए माइक्रोसेकंड के रूप में अंतिम परीक्षण परिणाम, कम विशिष्ट त्रुटि कोड को "
+"इंगित करता है। बाइट्स 2-3: अंतिम परीक्षण के बाद से मिनट। बाइट्स 4-5: परीक्षणों की "
+"आजीवन संख्या। सामान्यीकृत मान परीक्षण विफलता पर 1 पर सेट किया जाता है या यदि "
+"संधारित्र का परीक्षण अत्यधिक तापमान की स्थिति में किया गया है तो 11, अन्यथा 100।"
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Erase Fail Count (chip)"
+msgstr "SSD मिटाने में विफलता की संख्या (चिप)"
+
+#: core/smartattribute.cpp:120
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of flash erase command failures."
+msgstr "फ़्लैश मिटाने के आदेश की विफलताओं की संख्या."
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Wear Range Delta"
+msgstr "एसएसडी वियर रेंज डेल्टा"
+
+#: core/smartattribute.cpp:121
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Delta between most-worn and least-worn flash blocks."
+msgstr "सर्वाधिक घिसे और सबसे कम घिसे फ्लैश ब्लॉकों के बीच का डेल्टा।"
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Used Reserved Block Count Total"
+msgstr "एसएसडी प्रयुक्त आरक्षित ब्लॉक संख्या कुल"
+
+#: core/smartattribute.cpp:122 core/smartattribute.cpp:123
+#: core/smartattribute.cpp:126
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" Samsung attribute."
+msgstr "\"प्री-फेल\" सैमसंग विशेषता."
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Unused Reserved Block Count Total"
+msgstr "SSD अप्रयुक्त आरक्षित ब्लॉक गणना कुल"
+
+#: core/smartattribute.cpp:124
+#, kde-format
+msgctxt "SMART attr description"
+msgid "\"Pre-Fail\" HP attribute."
+msgstr "\"पूर्व-विफल\" HP विशेषता."
+
+#: core/smartattribute.cpp:125
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
+msgstr "SSD प्रोग्राम विफलता संख्या कुल या गैर-4K संरेखित एक्सेस संख्या"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SATA Downshift Error Count"
+msgstr "SATA डाउनशिफ्ट त्रुटि गणना"
+
+#: core/smartattribute.cpp:127
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital and Samsung attribute."
+msgstr "वेस्टर्न डिजिटल और सैमसंग विशेषता।"
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr name"
+msgid "End-to-End Error"
+msgstr "अंत-से-अंत त्रुटि"
+
+#: core/smartattribute.cpp:128
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Part of HP's SMART IV technology: After transferring through the cache RAM "
+"data buffer the parity data between the host and the hard drive did not "
+"match."
+msgstr ""
+"एचपी की स्मार्ट IV प्रौद्योगिकी का एक हिस्सा: कैश रैम डेटा बफर के माध्यम से स्थानांतरित "
+"करने के बाद होस्ट और हार्ड ड्राइव के बीच समता डेटा मेल नहीं खाता था।"
+
+#: core/smartattribute.cpp:129
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Stability"
+msgstr "सिर की स्थिरता"
+
+#: core/smartattribute.cpp:129 core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Western Digital attribute."
+msgstr "पश्चिमी डिजिटल विशेषता."
+
+#: core/smartattribute.cpp:130
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Induced Op-Vibration Detection"
+msgstr "प्रेरित ऑप-कंपन का पता लगाना"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reported Uncorrectable Errors"
+msgstr "रिपोर्ट की गई सुधार न की जा सकने वाली त्रुटियाँ"
+
+#: core/smartattribute.cpp:131
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could not be recovered using hardware ECC."
+msgstr ""
+"उन त्रुटियों की संख्या जिन्हें हार्डवेयर ECC का उपयोग करके पुनर्प्राप्त नहीं किया जा सका।"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Command Timeout"
+msgstr "कमांड टाइमआउट"
+
+#: core/smartattribute.cpp:132
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of aborted operations due to HDD timeout."
+msgstr "HDD समय समाप्ति के कारण निरस्त किए गए कार्यों की संख्या।"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr name"
+msgid "High Fly Writes"
+msgstr "हाई फ्लाई राइट्स"
+
+#: core/smartattribute.cpp:133
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of fly height errors detected."
+msgstr "उड़ान ऊंचाई संबंधी त्रुटियों की संख्या का पता चला।"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature Difference From 100"
+msgstr "100 से तापमान का अंतर"
+
+#: core/smartattribute.cpp:134
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
+"minimum threshold which corresponds to a maximum temperature."
+msgstr ""
+"मान (100 - तापमान °C) के बराबर है, जो निर्माता को एक न्यूनतम सीमा निर्धारित करने की "
+"अनुमति देता है जो अधिकतम तापमान से मेल खाती है।"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-sense Error Rate"
+msgstr "जी-सेंस त्रुटि दर"
+
+#: core/smartattribute.cpp:135
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors resulting from externally-induced shock and vibration."
+msgstr "बाह्य रूप से प्रेरित आघात और कंपन के कारण होने वाली त्रुटियों की संख्या।"
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power Off Retract Count"
+msgstr "पावर ऑफ रिट्रेक्ट काउंट"
+
+#: core/smartattribute.cpp:136
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of power-off or emergency retract cycles"
+msgstr "पावर-ऑफ या आपातकालीन वापसी चक्रों की गिनती"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Cycle Count"
+msgstr "लोड चक्र गणना"
+
+#: core/smartattribute.cpp:137
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of load/unload cycles into head landing zone position."
+msgstr "हेड लैंडिंग ज़ोन स्थिति में लोड/अनलोड चक्रों की गिनती।"
+
+#: core/smartattribute.cpp:138 core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Temperature"
+msgstr "तापमान"
+
+#: core/smartattribute.cpp:138
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Current internal temperature."
+msgstr "वर्तमान आंतरिक तापमान."
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Hardware ECC Recovered"
+msgstr "हार्डवेयर ECC बरामद"
+
+#: core/smartattribute.cpp:139
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of errors that could be recovered using hardware ECC."
+msgstr "हार्डवेयर ECC का उपयोग करके पुनर्प्राप्त की जा सकने वाली त्रुटियों की संख्या।"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Reallocation Event Count"
+msgstr "पुनःआवंटन घटना गणना"
+
+#: core/smartattribute.cpp:140
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of remap operations. The raw value of this attribute shows the total "
+"number of attempts to transfer data from reallocated sectors to a spare area."
+msgstr ""
+"रीमैप ऑपरेशन की संख्या। इस विशेषता का कच्चा मान पुनः आवंटित सेक्टरों से डेटा को एक "
+"अतिरिक्त क्षेत्र में स्थानांतरित करने के प्रयासों की कुल संख्या दर्शाता है।"
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Current Pending Sector Count"
+msgstr "वर्तमान लंबित क्षेत्र संख्या"
+
+#: core/smartattribute.cpp:141
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
+"read errors)."
+msgstr ""
+"&quot;अस्थिर&quot; सेक्टरों की संख्या (पठन त्रुटियों के कारण पुनः मैप किए जाने की प्रतीक्षा "
+"में)."
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Uncorrectable Sector Count"
+msgstr "असंशोधनीय सेक्टर गणना"
+
+#: core/smartattribute.cpp:142
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of uncorrectable errors when reading/writing a sector."
+msgstr "किसी सेक्टर को पढ़ते/लिखते समय अशोधित त्रुटियों की संख्या।"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr name"
+msgid "UltraDMA CRC Error Count"
+msgstr "अल्ट्राडीएमए सीआरसी त्रुटि गणना"
+
+#: core/smartattribute.cpp:143
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of errors in data transfer via the interface cable as determined by "
+"ICRC."
+msgstr ""
+"इंटरफ़ेस केबल के माध्यम से डेटा स्थानांतरण में त्रुटियों की संख्या, आई.सी.आर.सी. द्वारा "
+"निर्धारित की गई है।"
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Multi-Zone Error Rate<br/>Write Error Rate"
+msgstr "बहु-क्षेत्र त्रुटि दर<br/> लेखन त्रुटि दर"
+
+#: core/smartattribute.cpp:144
+#, kde-format
+msgctxt "SMART attr description"
+msgid "The total number of errors when writing a sector."
+msgstr "किसी सेक्टर को लिखते समय त्रुटियों की कुल संख्या."
+
+#: core/smartattribute.cpp:145
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of off-track errors."
+msgstr "ऑफ-ट्रैक त्रुटियों की संख्या."
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Data Address Mark Errors"
+msgstr "डेटा पता चिह्न त्रुटियाँ"
+
+#: core/smartattribute.cpp:146
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of Data Address Mark errors (or vendor-specific)."
+msgstr "डेटा एड्रेस मार्क त्रुटियों की संख्या (या विक्रेता-विशिष्ट)।"
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Run Out Cancel"
+msgstr "रन आउट रद्द करें"
+
+#: core/smartattribute.cpp:147
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of ECC errors"
+msgstr "ECC त्रुटियों की संख्या"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Soft ECC Correction"
+msgstr "सॉफ्ट ईसीसी सुधार"
+
+#: core/smartattribute.cpp:148
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors corrected by software ECC"
+msgstr "सॉफ्टवेयर ECC द्वारा सुधारी गई त्रुटियों की संख्या"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Thermal Asperity Rate"
+msgstr "थर्मल एस्परिटी दर"
+
+#: core/smartattribute.cpp:149
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors due to high temperature."
+msgstr "उच्च तापमान के कारण त्रुटियों की संख्या."
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Flying Height"
+msgstr "उड़ान की ऊंचाई"
+
+#: core/smartattribute.cpp:150
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Height of heads above the disk surface. A flying height that is too low "
+"increases the chances of a head crash while a flying height that is too high "
+"increases the chances of a read/write error."
+msgstr ""
+"डिस्क सतह से ऊपर हेड्स की ऊंचाई। बहुत कम उड़ान ऊंचाई हेड क्रैश की संभावना को बढ़ाती है, "
+"जबकि बहुत अधिक उड़ान ऊंचाई रीड/राइट त्रुटि की संभावना को बढ़ाती है।"
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin High Current"
+msgstr "स्पिन उच्च धारा"
+
+#: core/smartattribute.cpp:151
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Amount of surge current used to spin up the drive."
+msgstr "ड्राइव को चालू करने के लिए प्रयुक्त सर्ज धारा की मात्रा।"
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Spin Buzz"
+msgstr "स्पिन बज़"
+
+#: core/smartattribute.cpp:152
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Number of buzz routines needed to spin up the drive due to insufficient "
+"power."
+msgstr "अपर्याप्त बिजली के कारण ड्राइव को चालू करने के लिए आवश्यक बज़ रूटीन की संख्या।"
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Offline Seek Performance"
+msgstr "ऑफ़लाइन सीक प्रदर्शन"
+
+#: core/smartattribute.cpp:153
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive's seek performance during its internal tests."
+msgstr "आंतरिक परीक्षणों के दौरान ड्राइव का प्रदर्शन जांचा गया।"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Vibration During Write"
+msgstr "लिखते समय कंपन"
+
+#: core/smartattribute.cpp:154
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Vibration During Write"
+msgstr "लिखते समय कंपन"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Shock During Write"
+msgstr "लिखते समय झटका"
+
+#: core/smartattribute.cpp:155
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Shock During Write"
+msgstr "लिखते समय झटका"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Disk Shift"
+msgstr "डिस्क शिफ्ट"
+
+#: core/smartattribute.cpp:156
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Distance the disk has shifted relative to the spindle (usually due to shock "
+"or temperature)."
+msgstr ""
+"वह दूरी जिस पर डिस्क स्पिंडल के सापेक्ष स्थानांतरित हुई है (आमतौर पर झटके या तापमान के "
+"कारण)।"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr name"
+msgid "G-Sense Error Rate"
+msgstr "जी-सेंस त्रुटि दर"
+
+#: core/smartattribute.cpp:157
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of errors resulting from externally-induced shock and vibration."
+msgstr "बाह्य रूप से प्रेरित आघात और कंपन के परिणामस्वरूप होने वाली त्रुटियों की संख्या।"
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Loaded Hours"
+msgstr "लोड किए गए घंटे"
+
+#: core/smartattribute.cpp:158
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time spent operating under data load."
+msgstr "डेटा लोड के तहत परिचालन में बिताया गया समय."
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Retry Count"
+msgstr "लोड/अनलोड पुनःप्रयास गणना"
+
+#: core/smartattribute.cpp:159
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of times head changes position."
+msgstr "सिर की स्थिति बदलने की संख्या."
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load Friction"
+msgstr "भार घर्षण"
+
+#: core/smartattribute.cpp:160
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Resistance caused by friction in mechanical parts while operating."
+msgstr "संचालन के दौरान यांत्रिक भागों में घर्षण के कारण उत्पन्न प्रतिरोध।"
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load/Unload Cycle Count"
+msgstr "लोड/अनलोड चक्र गणना"
+
+#: core/smartattribute.cpp:161
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total number of load cycles."
+msgstr "लोड चक्रों की कुल संख्या."
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Load-In Time"
+msgstr "लोड-इन समय"
+
+#: core/smartattribute.cpp:162
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Total time of loading on the magnetic heads actuator (time not spent in "
+"parking area)."
+msgstr ""
+"चुंबकीय हेड एक्चुएटर पर लोडिंग का कुल समय (पार्किंग क्षेत्र में व्यतीत नहीं किया गया समय)।"
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Torque Amplification Count"
+msgstr "टॉर्क प्रवर्धन गणना"
+
+#: core/smartattribute.cpp:163
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of attempts to compensate for platter speed variations."
+msgstr "प्लैटर गति भिन्नताओं की क्षतिपूर्ति के लिए प्रयासों की संख्या।"
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-Off Retract Cycle"
+msgstr "पावर-ऑफ रिट्रेक्ट साइकिल"
+
+#: core/smartattribute.cpp:164
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"The number of times the magnetic armature was retracted automatically as a "
+"result of cutting power."
+msgstr ""
+"बिजली काटने के परिणामस्वरूप चुंबकीय आर्मेचर को स्वचालित रूप से वापस खींचे जाने की संख्या।"
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr name"
+msgid "GMR Head Amplitude"
+msgstr "जीएमआर हेड एम्पलीट्यूड"
+
+#: core/smartattribute.cpp:165
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
+"head motion)"
+msgstr "&quot;थ्रैशिंग&quot; का आयाम (दोहराए गए आगे/पीछे सिर की गति की दूरी)"
+
+#: core/smartattribute.cpp:166
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Drive Temperature"
+msgstr "ड्राइव तापमान"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Endurance Remaining"
+msgstr "धीरज शेष"
+
+#: core/smartattribute.cpp:167
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of physical erase cycles completed on the drive as a percentage of the "
+"maximum physical erase cycles the drive supports"
+msgstr ""
+"ड्राइव पर पूर्ण किए गए भौतिक मिटाने के चक्रों की संख्या, ड्राइव द्वारा समर्थित अधिकतम "
+"भौतिक मिटाने के चक्रों के प्रतिशत के रूप में"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Power-On Seconds"
+msgstr "पावर-ऑन सेकंड"
+
+#: core/smartattribute.cpp:168
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Time elapsed in the power-on state"
+msgstr "पावर-ऑन अवस्था में बीता समय"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Unrecoverable ECC Count"
+msgstr "अप्राप्य ECC गणना"
+
+#: core/smartattribute.cpp:169
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Count of unrecoverable ECC errors"
+msgstr "अप्राप्य ECC त्रुटियों की संख्या"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Good Block Rate"
+msgstr "अच्छा ब्लॉक दर"
+
+#: core/smartattribute.cpp:170
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Count of available reserved blocks as percentage of the total number of "
+"reserved blocks"
+msgstr "कुल आरक्षित ब्लॉकों की संख्या के प्रतिशत के रूप में उपलब्ध आरक्षित ब्लॉकों की संख्या"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
+msgstr "सिर पर उड़ान के घंटे<br/> या स्थानांतरण त्रुटि दर (फ़ुजित्सु)"
+
+#: core/smartattribute.cpp:171
+#, kde-format
+msgctxt "SMART attr description"
+msgid ""
+"Time while head is positioning<br/>or counts the number of times the link is "
+"reset during a data transfer."
+msgstr ""
+"सिर को स्थिति में रखने का समय<br/> या डेटा स्थानांतरण के दौरान लिंक को रीसेट किए जाने "
+"की संख्या की गणना करता है।"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Written"
+msgstr "कुल लिखित एलबीए"
+
+#: core/smartattribute.cpp:172
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Written"
+msgstr "कुल लिखित एलबीए"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Total LBAs Read"
+msgstr "कुल एलबीए पढ़ें"
+
+#: core/smartattribute.cpp:173
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Total LBAs Read"
+msgstr "कुल एलबीए पढ़ें"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr name"
+msgid "SSD NAND_Writes_1GiB"
+msgstr "एसएसडी NAND_Writes_1GiB"
+
+#: core/smartattribute.cpp:174
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of writes to NAND in 1 GB increments"
+msgstr "1 GB वृद्धि में NAND पर लिखे जाने वाले डेटा की संख्या"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Read Error Retry Rate"
+msgstr "पठन त्रुटि पुनः प्रयास दर"
+
+#: core/smartattribute.cpp:175
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of errors while reading from a disk"
+msgstr "डिस्क से पढ़ते समय त्रुटियों की संख्या"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr name"
+msgid "Free Fall Protection"
+msgstr "मुक्त पतन संरक्षण"
+
+#: core/smartattribute.cpp:176
+#, kde-format
+msgctxt "SMART attr description"
+msgid "Number of &quot;Free Fall Events&quot; detected"
+msgstr "पता लगाई गई \"फ्री फ़ॉल इवेंट्स\" की संख्या"
+
+#: core/smartstatus.cpp:78
+#, kde-kuit-format
+msgctxt "@item:intable degrees in Celsius and Fahrenheit"
+msgid "%1° C / %2° F"
+msgstr "%1° सेल्सियस / %2° फारेनहाइट"
+
+#: core/smartstatus.cpp:86
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Aborted"
+msgstr "गर्भपात"
+
+#: core/smartstatus.cpp:89
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Interrupted"
+msgstr "बाधित"
+
+#: core/smartstatus.cpp:92
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Fatal error"
+msgstr "घातक त्रुटि"
+
+#: core/smartstatus.cpp:95
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Unknown error"
+msgstr "अज्ञात त्रुटि"
+
+#: core/smartstatus.cpp:98
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Electrical error"
+msgstr "विद्युत त्रुटि"
+
+#: core/smartstatus.cpp:101
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Servo error"
+msgstr "सर्वो त्रुटि"
+
+#: core/smartstatus.cpp:104
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Read error"
+msgstr "पढ़ने में त्रुटि"
+
+#: core/smartstatus.cpp:107
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Handling error"
+msgstr "हैंडलिंग त्रुटि"
+
+#: core/smartstatus.cpp:110
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Self test in progress"
+msgstr "स्व परीक्षण प्रगति पर है"
+
+#: core/smartstatus.cpp:114
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Success"
+msgstr "सफलता"
+
+#: core/smartstatus.cpp:123
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Healthy"
+msgstr "स्वस्थ"
+
+#: core/smartstatus.cpp:126
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has been used outside of its design parameters in the past."
+msgstr "अतीत में इसका उपयोग इसके डिज़ाइन मापदंडों के बाहर भी किया गया है।"
+
+#: core/smartstatus.cpp:129
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has some bad sectors."
+msgstr "कुछ ख़राब सेक्टर हैं."
+
+#: core/smartstatus.cpp:132
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Is being used outside of its design parameters right now."
+msgstr "अभी इसका उपयोग इसके डिज़ाइन मापदंडों से बाहर किया जा रहा है।"
+
+#: core/smartstatus.cpp:135
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Has many bad sectors."
+msgstr "इसमें कई ख़राब सेक्टर हैं."
+
+#: core/smartstatus.cpp:139
+#, kde-kuit-format
+msgctxt "@item"
+msgid "Disk failure is imminent. Backup all data!"
+msgstr "डिस्क विफलता आसन्न है। सभी डेटा का बैकअप लें!"
+
+#: fs/bcachefs.cpp:120
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"विभाजन <filename>%1</filename> पर Bcachefs फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"अस्थायी निर्देशिका नहीं बनाई जा सकी।"
+
+#: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
+"bcachefs device resize command failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर Bcachefs फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"bcachefs डिवाइस आकार बदलने का आदेश विफल."
+
+#: fs/bcachefs.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<चेतावनी>विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर Bcachefs फ़ाइल सिस्टम का आकार बदलना: "
+"अनमाउंट विफल.</चेतावनी>"
+
+#: fs/bcachefs.cpp:144
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर Bcachefs फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"प्रारंभिक माउंट विफल."
+
+#: fs/btrfs.cpp:166
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"विभाजन <filename>%1</filename> पर Btrfs फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"अस्थायी निर्देशिका नहीं बनाई जा सकी।"
+
+#: fs/btrfs.cpp:182 fs/btrfs.cpp:203
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"btrfs file system resize failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर Btrfs फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"btrfs फ़ाइल सिस्टम का आकार बदलने में विफल."
+
+#: fs/btrfs.cpp:187
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<चेतावनी>विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर Btrfs फ़ाइल सिस्टम का आकार बदलना: "
+"अनमाउंट विफल.</चेतावनी>"
+
+#: fs/btrfs.cpp:190
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing Btrfs file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर Btrfs फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"प्रारंभिक माउंट विफल."
+
+#: fs/fat12.cpp:141
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Setting label for partition <filename>%1</filename> to %2"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए लेबल को %2 पर सेट करना"
+
+#: fs/filesystem.cpp:505
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unknown"
+msgstr "अज्ञात"
+
+#: fs/filesystem.cpp:506
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "extended"
+msgstr "विस्तारित"
+
+#: fs/filesystem.cpp:508
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext2"
+msgstr "एक्सटी2"
+
+#: fs/filesystem.cpp:509
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext3"
+msgstr "ext3"
+
+#: fs/filesystem.cpp:510
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ext4"
+msgstr "ext4"
+
+#: fs/filesystem.cpp:511
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linuxswap"
+msgstr "लिनक्सस्वैप"
+
+#: fs/filesystem.cpp:512
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat16"
+msgstr "मोटा16"
+
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat32"
+msgstr "वसा32"
+
+#: fs/filesystem.cpp:514
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ntfs"
+msgstr "एनटीएफएस"
+
+#: fs/filesystem.cpp:515
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser"
+msgstr "ट्रेवल्स"
+
+#: fs/filesystem.cpp:516
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "reiser4"
+msgstr "यात्रा4"
+
+#: fs/filesystem.cpp:517
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "xfs"
+msgstr "xfs"
+
+#: fs/filesystem.cpp:518
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "jfs"
+msgstr "जेएफएस"
+
+#: fs/filesystem.cpp:519
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfs"
+msgstr "एचएफएस"
+
+#: fs/filesystem.cpp:520
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hfsplus"
+msgstr "एचएफएसप्लस"
+
+#: fs/filesystem.cpp:521
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ufs"
+msgstr "यूएफएस"
+
+#: fs/filesystem.cpp:522
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "unformatted"
+msgstr "अस्वरूपित"
+
+#: fs/filesystem.cpp:523
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "btrfs"
+msgstr "btrfs"
+
+#: fs/filesystem.cpp:524
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "hpfs"
+msgstr "एचपीएफएस"
+
+#: fs/filesystem.cpp:525
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks"
+msgstr "विलासिता"
+
+#: fs/filesystem.cpp:526
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "ocfs2"
+msgstr "ओसीएफएस2"
+
+#: fs/filesystem.cpp:527
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "zfs"
+msgstr "ज़ेडएफएस"
+
+#: fs/filesystem.cpp:528
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "exfat"
+msgstr "exfat"
+
+#: fs/filesystem.cpp:529
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "nilfs2"
+msgstr "निल्फ़्स2"
+
+#: fs/filesystem.cpp:530
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "lvm2 pv"
+msgstr "एलवीएम2 पी.वी"
+
+#: fs/filesystem.cpp:531
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "f2fs"
+msgstr "f2fs"
+
+#: fs/filesystem.cpp:532
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "udf"
+msgstr "यूडीएफ"
+
+#: fs/filesystem.cpp:533
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "iso9660"
+msgstr "आईएसओ9660"
+
+#: fs/filesystem.cpp:534
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "luks2"
+msgstr "विलासिता2"
+
+#: fs/filesystem.cpp:535
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "fat12"
+msgstr "वसा12"
+
+#: fs/filesystem.cpp:536
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "linux_raid_member"
+msgstr "linux_raid_सदस्य"
+
+#: fs/filesystem.cpp:537
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "BitLocker"
+msgstr "BitLocker"
+
+#: fs/filesystem.cpp:538
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "apfs"
+msgstr "ए.पी.एफ.एस"
+
+#: fs/filesystem.cpp:539
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "minix"
+msgstr "मिनिक्स"
+
+#: fs/filesystem.cpp:540
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "bcachefs"
+msgstr "bcachefs"
+
+#: fs/filesystem.cpp:583 fs/luks.cpp:161
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Mount"
+msgstr "पर्वत"
+
+#: fs/filesystem.cpp:589 fs/luks.cpp:166
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unmount"
+msgstr "अनमाउंट"
+
+#: fs/jfs.cpp:155
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"विभाजन <filename>%1</filename> पर JFS फ़ाइल सिस्टम का आकार बदलने में विफल: अस्थायी "
+"निर्देशिका नहीं बनाई जा सकी।"
+
+#: fs/jfs.cpp:169 fs/jfs.cpp:188
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Remount failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर JFS फ़ाइल सिस्टम का आकार बदलने में विफलता: पुनः "
+"माउंट विफल."
+
+#: fs/jfs.cpp:174
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing JFS file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<चेतावनी>विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर JFS फ़ाइल सिस्टम का आकार बदलना: अनमाउंट "
+"विफल.</चेतावनी>"
+
+#: fs/jfs.cpp:176
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing JFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर JFS फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"प्रारंभिक माउंट विफल."
+
+#: fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "स्वैप सक्रिय करें"
+
+#: fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "स्वैप निष्क्रिय करें"
+
+#: fs/luks.cpp:171
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Unlock"
+msgstr "अनलॉक"
+
+#: fs/luks.cpp:176
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Lock"
+msgstr "ताला"
+
+#: fs/luks.cpp:257
+#, kde-format
+msgid "Enter passphrase for %1:"
+msgstr "%1 के लिए पासफ़्रेज़ दर्ज करें:"
+
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:89 fs/luks2.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+msgstr "विभाजन <filename>%1</filename> पर LUKS क्रिप्ट का आकार बदलना।"
+
+#: fs/luks.cpp:514 fs/luks2.cpp:117
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing encrypted file system on partition <filename>%1</filename> failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर एन्क्रिप्टेड फ़ाइल सिस्टम का आकार बदलने में विफलता।"
+
+#: fs/nilfs2.cpp:137
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Could not create temp dir."
+msgstr ""
+"विभाजन <filename>%1</filename> पर NILFS2 फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"अस्थायी निर्देशिका नहीं बनाई जा सकी।"
+
+#: fs/nilfs2.cpp:151 fs/nilfs2.cpp:170
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"NILFS2 file system resize failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर NILFS2 फ़ाइल सिस्टम का आकार बदलने में विफलता: "
+"NILFS2 फ़ाइल सिस्टम का आकार बदलने में विफलता।"
+
+#: fs/nilfs2.cpp:156
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
+"Unmount failed.</warning>"
+msgstr ""
+"<चेतावनी>विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर NILFS2 फ़ाइल सिस्टम का आकार बदलना: "
+"अनमाउंट विफल.</चेतावनी>"
+
+#: fs/nilfs2.cpp:158
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"विभाजन <filename>%1</filename> पर NILFS2 फ़ाइल सिस्टम का आकार बदलने में विफल: "
+"प्रारंभिक माउंट विफल."
+
+#: fs/ntfs.cpp:182
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updating boot sector for NTFS file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"<filename>%1</filename> विभाजन पर NTFS फ़ाइल सिस्टम के लिए बूट सेक्टर अद्यतन किया "
+"जा रहा है।"
+
+#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not write new start sector to partition <filename>%1</filename> when "
+"trying to update the NTFS boot sector."
+msgstr ""
+"NTFS बूट सेक्टर को अद्यतन करने का प्रयास करते समय <filename>%1</filename> विभाजन में "
+"नया प्रारंभ सेक्टर नहीं लिखा जा सका।"
+
+#: fs/ntfs.cpp:206
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Updated NTFS boot sector for partition <filename>%1</filename> successfully."
+msgstr ""
+"विभाजन <filename>%1</filename> के लिए NTFS बूट सेक्टर को सफलतापूर्वक अद्यतन किया "
+"गया।"
+
+#: fs/xfs.cpp:159
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: Could "
+"not create temp dir."
+msgstr ""
+"<filename>%1</filename> विभाजन पर XFS फ़ाइल सिस्टम का आकार बदलने में विफल: अस्थायी "
+"निर्देशिका नहीं बनाई जा सकी।"
+
+#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"xfs_growfs failed."
+msgstr ""
+"<filename>%1</filename> विभाजन पर XFS फ़ाइल सिस्टम का आकार बदलने में विफलता: "
+"xfs_growfs विफलता."
+
+#: fs/xfs.cpp:178
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"<warning>Resizing XFS file system on partition <filename>%1</filename> "
+"failed: Unmount failed.</warning>"
+msgstr ""
+"<चेतावनी>विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर XFS फ़ाइल सिस्टम का आकार बदलने में "
+"विफलता: अनमाउंट विफल.</चेतावनी>"
+
+#: fs/xfs.cpp:180
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Resizing XFS file system on partition <filename>%1</filename> failed: "
+"Initial mount failed."
+msgstr ""
+"<filename>%1</filename> विभाजन पर XFS फ़ाइल सिस्टम का आकार बदलने में विफलता: "
+"प्रारंभिक माउंट विफल."
+
+#: jobs/backupfilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"backup."
+msgstr ""
+"बैकअप के लिए स्रोत विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम नहीं खोला जा सका."
+
+#: jobs/backupfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not create backup file <filename>%1</filename>."
+msgstr "बैकअप फ़ाइल <फ़ाइलनाम>%1</फ़ाइलनाम> नहीं बनाई जा सकी."
+
+#: jobs/backupfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Back up file system on partition <filename>%1</filename> to <filename>%2</"
+"filename>"
+msgstr ""
+"<filename>%1</filename> पार्टीशन पर फ़ाइल सिस्टम का बैकअप <filename>%2</"
+"filename> पर बनाएँ"
+
+#: jobs/changepermissionsjob.cpp:49
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Change the permissions of: <filename>%1</filename> to %2"
+msgstr "<filename>%1</filename> की अनुमतियों को %2 में बदलें"
+
+#: jobs/checkfilesystemjob.cpp:43
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Check file system on partition <filename>%1</filename>"
+msgstr "विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम की जाँच करें"
+
+#: jobs/copyfilesystemjob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Cannot copy file system: File system on target partition <filename>%1</"
+"filename> is smaller than the file system on source partition <filename>%2</"
+"filename>."
+msgstr ""
+"फ़ाइल सिस्टम की प्रतिलिपि नहीं बनाई जा सकती: लक्ष्य विभाजन <filename>%1</filename> "
+"पर फ़ाइल सिस्टम, स्रोत विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम से छोटा है।"
+
+#: jobs/copyfilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on source partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"प्रतिलिपि बनाने के लिए स्रोत विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम नहीं "
+"खोला जा सका."
+
+#: jobs/copyfilesystemjob.cpp:58
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on target partition <filename>%1</filename> for "
+"copying."
+msgstr ""
+"लक्ष्य विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम को प्रतिलिपि बनाने के लिए नहीं "
+"खोला जा सका."
+
+#: jobs/copyfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Closing device. This may take a while, especially on slow devices like "
+"Memory Sticks."
+msgstr ""
+"डिवाइस बंद करना। इसमें कुछ समय लग सकता है, खासकर मेमोरी स्टिक जैसी धीमी डिवाइस पर।"
+
+#: jobs/copyfilesystemjob.cpp:88
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Copy file system on partition <filename>%1</filename> to partition <filename>"
+"%2</filename>"
+msgstr ""
+"विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम को विभाजन <filename>%2</"
+"filename> पर कॉपी करें"
+
+#: jobs/createfilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to set the system type for the file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम के लिए सिस्टम प्रकार सेट करने में विफल।"
+
+#: jobs/createfilesystemjob.cpp:68
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"system type for partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए सिस्टम प्रकार सेट करने हेतु डिवाइस <filename>"
+"%1</filename> पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/createfilesystemjob.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the system type for "
+"partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए सिस्टम प्रकार सेट करने हेतु डिवाइस <filename>"
+"%1</filename> को खोला नहीं जा सका।"
+
+#: jobs/createfilesystemjob.cpp:84
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Create file system <filename>%1</filename> on partition <filename>%2</"
+"filename>"
+msgstr ""
+"विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम <filename>%1</filename> बनाएँ"
+
+#: jobs/createpartitionjob.cpp:72
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"विभाजन <filename>%1</filename> को डिवाइस <filename>%2</filename> में जोड़ने में "
+"विफल."
+
+#: jobs/createpartitionjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to create "
+"new partition <filename>%2</filename>."
+msgstr ""
+"नया विभाजन <filename>%2</filename> बनाने के लिए डिवाइस <filename>%1</filename> "
+"पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/createpartitionjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to create new partition "
+"<filename>%2</filename>."
+msgstr ""
+"नया पार्टीशन <filename>%2</filename> बनाने के लिए डिवाइस <filename>%1</"
+"filename> को खोला नहीं जा सका."
+
+#: jobs/createpartitionjob.cpp:94
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition <filename>%1</filename>"
+msgstr "नया विभाजन बनाएँ <फ़ाइलनाम>%1</फ़ाइलनाम>"
+
+#: jobs/createpartitionjob.cpp:96
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition on device <filename>%1</filename>"
+msgstr "डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> पर नया विभाजन बनाएँ"
+
+#: jobs/createpartitiontablejob.cpp:49
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Creating partition table failed: Could not open device <filename>%1</"
+"filename>."
+msgstr ""
+"विभाजन तालिका बनाना विफल: डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> नहीं खोला जा सका."
+
+#: jobs/createpartitiontablejob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Create new partition table on device <filename>%1</filename>"
+msgstr "डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> पर नई विभाजन तालिका बनाएँ"
+
+#: jobs/createvolumegroupjob.cpp:49
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
+msgstr "एक नया वॉल्यूम समूह बनाएं: <filename>%1</filename> PV के साथ: %2"
+
+#: jobs/deactivatelogicalvolumejob.cpp:50
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Logical Volumes: <filename>%1</filename>"
+msgstr "लॉजिकल वॉल्यूम निष्क्रिय करें: <फ़ाइलनाम>%1</फ़ाइलनाम>"
+
+#: jobs/deactivatevolumegroupjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate Volume Group: <filename>%1</filename>"
+msgstr "वॉल्यूम समूह निष्क्रिय करें: <फ़ाइलनाम>%1</फ़ाइलनाम>"
+
+#: jobs/deletefilesystemjob.cpp:51
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system: file system on <filename>%1</filename> is "
+"mounted."
+msgstr ""
+"फ़ाइल सिस्टम हटाया नहीं जा सका: <filename>%1</filename> पर फ़ाइल सिस्टम माउंट किया "
+"गया है."
+
+#: jobs/deletefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete file system on <filename>%1</filename>."
+msgstr "<filename>%1</filename> पर फ़ाइल सिस्टम हटाया नहीं जा सका."
+
+#: jobs/deletefilesystemjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"file system on <filename>%2</filename>."
+msgstr ""
+"<filename>%2</filename> पर फ़ाइल सिस्टम को हटाने के लिए डिवाइस <filename>%1</"
+"filename> पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/deletefilesystemjob.cpp:83
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not delete file system signature for partition <filename>%1</"
+"filename>: Failed to open device <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%1</filename> के लिए फ़ाइल सिस्टम हस्ताक्षर हटाया नहीं जा सका: "
+"डिवाइस <filename>%2</filename> खोलने में विफल."
+
+#: jobs/deletefilesystemjob.cpp:93
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete file system on <filename>%1</filename>"
+msgstr "<filename>%1</filename> पर फ़ाइल सिस्टम हटाएँ"
+
+#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not delete partition <filename>%1</filename>."
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को हटाया नहीं जा सका."
+
+#: jobs/deletepartitionjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to delete "
+"partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> को हटाने के लिए डिवाइस <filename>%1</filename> "
+"पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/deletepartitionjob.cpp:67
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Deleting partition failed: Could not open device <filename>%1</filename>."
+msgstr "विभाजन हटाना विफल: डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> नहीं खोला जा सका."
+
+#: jobs/deletepartitionjob.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Delete the partition <filename>%1</filename>"
+msgstr "<फ़ाइलनाम>%1</फ़ाइलनाम> विभाजन मिटाएँ"
+
+#: jobs/job.cpp:45
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Source and target for copying do not overlap: Rollback is not required."
+msgstr ""
+"प्रतिलिपि बनाने के लिए स्रोत और लक्ष्य ओवरलैप नहीं होते हैं: रोलबैक की आवश्यकता नहीं है।"
+
+#: jobs/job.cpp:69
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback from: First byte: %1, last byte: %2."
+msgstr "रोलबैक से: प्रथम बाइट: %1, अंतिम बाइट: %2."
+
+#: jobs/job.cpp:70
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback to: First byte: %1, last byte: %2."
+msgstr "रोलबैक करें: प्रथम बाइट: %1, अंतिम बाइट: %2."
+
+#: jobs/job.cpp:74 jobs/job.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open device <filename>%1</filename> to rollback copying."
+msgstr ""
+"प्रतिलिपिकरण को वापस लाने के लिए डिवाइस <filename>%1</filename> को खोला नहीं जा "
+"सका."
+
+#: jobs/job.cpp:86
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback failed: Source or target are not devices."
+msgstr "रोलबैक विफल: स्रोत या लक्ष्य डिवाइस नहीं हैं."
+
+#: jobs/job.cpp:106
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Job: %1"
+msgstr "नौकरी: %1"
+
+#: jobs/job.cpp:115
+#, kde-kuit-format
+msgctxt "@info:progress job status (error, warning, ...)"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: jobs/job.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Pending"
+msgstr "लंबित"
+
+#: jobs/job.cpp:135
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Success"
+msgstr "सफलता"
+
+#: jobs/job.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress job"
+msgid "Error"
+msgstr "गलती"
+
+#: jobs/movefilesystemjob.cpp:52
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"स्थानांतरण के लिए विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम नहीं खोला जा सका."
+
+#: jobs/movefilesystemjob.cpp:54
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not create target for moving file system on partition <filename>%1</"
+"filename>."
+msgstr ""
+"विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम को स्थानांतरित करने के लिए लक्ष्य नहीं "
+"बनाया जा सका।"
+
+#: jobs/movefilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Rollback for file system on partition <filename>%1</filename> failed."
+msgstr "विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम के लिए रोलबैक विफल हुआ."
+
+#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/shredfilesystemjob.cpp:66
+#, kde-format, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Closing device. This may take a few seconds."
+msgstr "डिवाइस बंद हो रहा है। इसमें कुछ सेकंड लग सकते हैं।"
+
+#: jobs/movefilesystemjob.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Move the file system on partition <filename>%1</filename> to sector %2"
+msgstr "फ़ाइल सिस्टम को विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> से सेक्टर %2 में ले जाएँ"
+
+#: jobs/movephysicalvolumejob.cpp:57
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Move used PE in %1 on %2 to other available Physical Volumes"
+msgstr "%1 में %2 पर प्रयुक्त PE को अन्य उपलब्ध भौतिक वॉल्यूम पर ले जाएं"
+
+#: jobs/removevolumegroupjob.cpp:41
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove Volume Group: <filename>%1</filename>"
+msgstr "वॉल्यूम समूह हटाएँ: <फ़ाइलनाम>%1</फ़ाइलनाम>"
+
+#: jobs/resizefilesystemjob.cpp:66
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of 1 sector."
+msgid_plural ""
+"The file system on partition <filename>%2</filename> already has the "
+"requested length of %1 sectors."
+msgstr[0] ""
+"विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम में पहले से ही अनुरोधित लंबाई %1 सेक्टर "
+"है।"
+msgstr[1] ""
+"विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम में पहले से ही अनुरोधित लंबाई %1 सेक्टर "
+"है।"
+
+#: jobs/resizefilesystemjob.cpp:69
+#, kde-format
+msgctxt "@info:progress"
+msgid "Resizing file system from %1 to %2 sectors."
+msgstr "फ़ाइल सिस्टम का आकार %1 से %2 सेक्टर में बदला जा रहा है।"
+
+#: jobs/resizefilesystemjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resizing a %1 file system using internal backend functions."
+msgstr "आंतरिक बैकएंड फ़ंक्शन का उपयोग करके %1 फ़ाइल सिस्टम का आकार बदलना।"
+
+#: jobs/resizefilesystemjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"The file system on partition <filename>%1</filename> cannot be resized "
+"because there is no support for it."
+msgstr ""
+"विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम का आकार बदला नहीं जा सकता क्योंकि "
+"इसके लिए कोई समर्थन नहीं है।"
+
+#: jobs/resizefilesystemjob.cpp:119
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Successfully resized file system using internal backend functions."
+msgstr "आंतरिक बैकएंड फ़ंक्शन का उपयोग करके फ़ाइल सिस्टम का आकार सफलतापूर्वक बदला गया।"
+
+#: jobs/resizefilesystemjob.cpp:123
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition <filename>%1</filename> while trying to resize the "
+"file system."
+msgstr ""
+"फ़ाइल सिस्टम का आकार बदलने का प्रयास करते समय विभाजन <filename>%1</filename> को "
+"खोला नहीं जा सका."
+
+#: jobs/resizefilesystemjob.cpp:126
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not read geometry for partition <filename>%1</filename> while trying "
+"to resize the file system."
+msgstr ""
+"फ़ाइल सिस्टम का आकार बदलने का प्रयास करते समय विभाजन <filename>%1</filename> के "
+"लिए ज्यामिति नहीं पढ़ी जा सकी।"
+
+#: jobs/resizefilesystemjob.cpp:134
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Maximize file system on <filename>%1</filename> to fill the partition"
+msgstr "विभाजन को भरने के लिए <filename>%1</filename> पर फ़ाइल सिस्टम को अधिकतम करें"
+
+#: jobs/resizefilesystemjob.cpp:136
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
+msgid_plural ""
+"Resize file system on partition <filename>%2</filename> to %1 sectors"
+msgstr[0] "विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम का आकार %1 सेक्टर में बदलें"
+msgstr[1] "विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम का आकार %1 सेक्टर में बदलें"
+
+#: jobs/resizevolumegroupjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Adding LVM Physical Volume %2 to %3."
+msgid_plural "Adding LVM Physical Volumes %2 to %3."
+msgstr[0] "LVM भौतिक वॉल्यूम %2 से %3 में जोड़ा जा रहा है."
+msgstr[1] "LVM भौतिक वॉल्यूम %2 से %3 में जोड़ा जा रहा है."
+
+#: jobs/resizevolumegroupjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Removing LVM Physical Volume %2 from %3."
+msgid_plural "Removing LVM Physical Volumes %2 from %3."
+msgstr[0] "LVM भौतिक वॉल्यूम %2 को %3 से हटाया जा रहा है."
+msgstr[1] "LVM भौतिक वॉल्यूम %2 को %3 से हटाया जा रहा है."
+
+#: jobs/resizevolumegroupjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resizing Volume Group %1 to %2."
+msgstr "वॉल्यूम ग्रुप %1 का आकार बदलकर %2 किया जा रहा है।"
+
+#: jobs/restorefilesystemjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open backup file <filename>%1</filename> to restore from."
+msgstr ""
+"पुनर्स्थापित करने के लिए बैकअप फ़ाइल <filename>%1</filename> को खोला नहीं जा सका."
+
+#: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open target partition <filename>%1</filename> to restore to."
+msgstr ""
+"लक्ष्य विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को पुनर्स्थापित करने के लिए खोला नहीं जा सका."
+
+#: jobs/restorefilesystemjob.cpp:100
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Restore the file system from file <filename>%1</filename> to partition "
+"<filename>%2</filename>"
+msgstr ""
+"फ़ाइल सिस्टम को फ़ाइल <फ़ाइलनाम>%1</फ़ाइलनाम> से पार्टीशन <फ़ाइलनाम>%2</फ़ाइलनाम> पर "
+"पुनर्स्थापित करें"
+
+#: jobs/setfilesystemlabeljob.cpp:48
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"File system on partition <filename>%1</filename> does not support setting "
+"labels. Job ignored."
+msgstr ""
+"विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम लेबल सेट करने का समर्थन नहीं करता है। "
+"कार्य अनदेखा किया गया।"
+
+#: jobs/setfilesystemlabeljob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set the file system label on partition <filename>%1</filename> to \"%2\""
+msgstr "विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम लेबल को \"%2\" पर सेट करें"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned on, active"
+msgid "on"
+msgstr "पर"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress flag turned off, inactive"
+msgid "off"
+msgstr "बंद"
+
+#: jobs/setpartflagsjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"There was an error setting flag %1 for partition <filename>%2</filename> to "
+"state %3."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए ध्वज %1 को स्थिति %3 पर सेट करते समय एक "
+"त्रुटि हुई।"
+
+#: jobs/setpartflagsjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set "
+"partition flags for partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए विभाजन ध्वज सेट करने हेतु डिवाइस <filename>"
+"%1</filename> पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/setpartflagsjob.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set partition flags for "
+"partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए विभाजन ध्वज सेट करने हेतु डिवाइस <filename>"
+"%1</filename> को खोला नहीं जा सका।"
+
+#: jobs/setpartflagsjob.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए ध्वज साफ़ करें"
+
+#: jobs/setpartflagsjob.cpp:91
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए ध्वज को \"%2\" पर सेट करें"
+
+#: jobs/setpartgeometryjob.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> while trying to resize/move "
+"partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> का आकार बदलने/स्थानांतरित करने का प्रयास करते समय "
+"डिवाइस <filename>%1</filename> को खोला नहीं जा सका।"
+
+#: jobs/setpartgeometryjob.cpp:81
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
+"%3"
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> की ज्यामिति सेट करें: आरंभिक सेक्टर: %2, लंबाई: %3"
+
+#: jobs/setpartitionattributesjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting attributes. Job ignored."
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> की विभाजन तालिका सेटिंग विशेषताओं का समर्थन नहीं करती "
+"है। कार्य अनदेखा किया गया।"
+
+#: jobs/setpartitionattributesjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the attributes for the partition <filename>%1</filename>."
+msgstr "विभाजन <filename>%1</filename> के लिए विशेषताएँ सेट करने में विफल."
+
+#: jobs/setpartitionattributesjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"attributes for the partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए विशेषताएँ सेट करने के लिए डिवाइस <filename>"
+"%1</filename> पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/setpartitionattributesjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the attributes for "
+"partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए विशेषताएँ सेट करने हेतु डिवाइस <filename>%1</"
+"filename> को खोला नहीं जा सका।"
+
+#: jobs/setpartitionattributesjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर विशेषताओं को \"%2\" पर सेट करें"
+
+#: jobs/setpartitionlabeljob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting names. Job ignored."
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> की विभाजन तालिका नाम सेट करने का समर्थन नहीं करती "
+"है। कार्य अनदेखा किया गया।"
+
+#: jobs/setpartitionlabeljob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the name for the partition <filename>%1</filename>."
+msgstr "विभाजन <filename>%1</filename> के लिए नाम सेट करने में विफल."
+
+#: jobs/setpartitionlabeljob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"name for the partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए नाम सेट करने हेतु डिवाइस <filename>%1</"
+"filename> पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/setpartitionlabeljob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the name for partition "
+"<filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए नाम सेट करने हेतु डिवाइस <filename>%1</"
+"filename> को खोला नहीं जा सका।"
+
+#: jobs/setpartitionlabeljob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the label on partition <filename>%1</filename> to \"%2\""
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर लेबल को \"%2\" पर सेट करें"
+
+#: jobs/setpartitionuuidjob.cpp:47
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Partition table of partition <filename>%1</filename> does not support "
+"setting UUIDs. Job ignored."
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> की विभाजन तालिका UUID सेट करने का समर्थन नहीं करती "
+"है। कार्य अनदेखा किया गया।"
+
+#: jobs/setpartitionuuidjob.cpp:59
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Failed to set the UUID for the partition <filename>%1</filename>."
+msgstr "विभाजन <filename>%1</filename> के लिए UUID सेट करने में विफल."
+
+#: jobs/setpartitionuuidjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open partition table on device <filename>%1</filename> to set the "
+"UUID for the partition <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए UUID सेट करने हेतु डिवाइस <filename>%1</"
+"filename> पर विभाजन तालिका नहीं खोली जा सकी।"
+
+#: jobs/setpartitionuuidjob.cpp:63
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not open device <filename>%1</filename> to set the UUID for partition "
+"<filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> के लिए UUID सेट करने हेतु डिवाइस <filename>%1</"
+"filename> को खोला नहीं जा सका।"
+
+#: jobs/setpartitionuuidjob.cpp:74
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+msgstr "विभाजन <filename>%1</filename> पर UUID को \"%2\" पर सेट करें"
+
+#: jobs/shredfilesystemjob.cpp:61
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Could not open random data source to overwrite file system."
+msgstr "फ़ाइल सिस्टम को अधिलेखित करने के लिए यादृच्छिक डेटा स्रोत नहीं खोला जा सका."
+
+#: jobs/shredfilesystemjob.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Shred the file system on <filename>%1</filename>"
+msgstr "<filename>%1</filename> पर फ़ाइल सिस्टम को नष्ट करें"
+
+#: ops/backupoperation.cpp:39
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Backup partition <filename>%1</filename> (%2, %3) to <filename>%4</filename>"
+msgstr "बैकअप विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> (%2, %3) से <फ़ाइलनाम>%4</फ़ाइलनाम>"
+
+#: ops/checkoperation.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> (%2, %3) की जाँच करें और मरम्मत करें"
+
+#: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<warning>Maximizing file system on target partition <filename>%1</filename> "
+"to the size of the partition failed.</warning>"
+msgstr ""
+"<चेतावनी>लक्ष्य विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> पर फ़ाइल सिस्टम को विभाजन के आकार तक "
+"अधिकतम करने में विफलता.</चेतावनी>"
+
+#: ops/copyoperation.cpp:151
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking target partition <filename>%1</filename> after copy failed."
+msgstr ""
+"प्रतिलिपि विफल होने के बाद लक्ष्य विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> की जाँच की जा रही है।"
+
+#: ops/copyoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Copying source to target partition failed."
+msgstr "स्रोत को लक्ष्य विभाजन में प्रतिलिपि करना विफल हुआ."
+
+#: ops/copyoperation.cpp:161
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating target partition for copying failed."
+msgstr "प्रतिलिपिकरण हेतु लक्ष्य विभाजन बनाना विफल हुआ."
+
+#: ops/copyoperation.cpp:163
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking source partition <filename>%1</filename> failed."
+msgstr "स्रोत विभाजन <filename>%1</filename> की जाँच विफल रही."
+
+#: ops/copyoperation.cpp:170 ops/operation.cpp:174 ops/resizeoperation.cpp:175
+#: ops/restoreoperation.cpp:148
+#, kde-kuit-format
+msgctxt "@info:status (success, error, warning...) of operation"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/copyoperation.cpp:179
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6)"
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> (%2, %3) को <फ़ाइलनाम>%4</फ़ाइलनाम> (%5, %6) में "
+"कॉपी करें"
+
+#: ops/copyoperation.cpp:188
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
+"(%5, %6) and grow it to %7"
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> (%2, %3) को <फ़ाइलनाम>%4</फ़ाइलनाम> (%5, %6) में "
+"कॉपी करें और इसे %7 तक बढ़ाएँ"
+
+#: ops/copyoperation.cpp:200
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename>"
+msgstr ""
+"विभाजन <filename>%1</filename> (%2, %3) को <filename>%5</filename> पर असंबद्ध "
+"स्थान (%4 से शुरू) पर कॉपी करें"
+
+#: ops/copyoperation.cpp:208
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
+"(starting at %4) on <filename>%5</filename> and grow it to %6"
+msgstr ""
+"विभाजन <filename>%1</filename> (%2, %3) को <filename>%5</filename> पर असंबद्ध "
+"स्थान (%4 से शुरू) पर कॉपी करें और इसे %6 तक बढ़ाएँ"
+
+#: ops/createfilesystemoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create filesystem %1 on partition <filename>%2</filename>"
+msgstr "<filename>%2</filename> विभाजन पर फ़ाइल सिस्टम %1 बनाएँ"
+
+#: ops/createpartitiontableoperation.cpp:104
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
+msgstr "<filename>%2</filename> पर एक नई विभाजन तालिका (प्रकार: %1) बनाएँ"
+
+#: ops/createvolumegroupoperation.cpp:36
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Create a new LVM volume group named '%1'."
+msgstr "'%1' नाम से एक नया LVM वॉल्यूम समूह बनाएं."
+
+#: ops/deactivatevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Deactivate volume group."
+msgstr "वॉल्यूम समूह निष्क्रिय करें."
+
+#: ops/deleteoperation.cpp:87
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Shred partition <filename>%1</filename> (%2, %3)"
+msgstr "श्रेड विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> (%2, %3)"
+
+#: ops/deleteoperation.cpp:89
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Delete partition <filename>%1</filename> (%2, %3)"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> (%2, %3) मिटाएँ"
+
+#: ops/newoperation.cpp:205
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
+msgstr "<filename>%3</filename> पर एक नया विभाजन (%1, %2) बनाएँ"
+
+#: ops/operation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "None"
+msgstr "कोई नहीं"
+
+#: ops/operation.cpp:76
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Pending"
+msgstr "लंबित"
+
+#: ops/operation.cpp:77
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Running"
+msgstr "दौड़ना"
+
+#: ops/operation.cpp:78
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Success"
+msgstr "सफलता"
+
+#: ops/operation.cpp:79
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Warning"
+msgstr "चेतावनी"
+
+#: ops/operation.cpp:80
+#, kde-kuit-format
+msgctxt "@info:progress operation"
+msgid "Error"
+msgstr "गलती"
+
+#: ops/removevolumegroupoperation.cpp:35
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Remove a LVM volume group."
+msgstr "LVM वॉल्यूम समूह निकालें."
+
+#: ops/resizeoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving extended partition <filename>%1</filename> failed."
+msgstr "विस्तारित विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को स्थानांतरित करना विफल रहा."
+
+#: ops/resizeoperation.cpp:165
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> after resize/move failed."
+msgstr ""
+"आकार बदलने/स्थानांतरित करने के बाद विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> की जाँच विफल रही।"
+
+#: ops/resizeoperation.cpp:168
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resizing/moving partition <filename>%1</filename> failed."
+msgstr "विभाजन <filename>%1</filename> का आकार बदलना/स्थानांतरित करना विफल रहा."
+
+#: ops/resizeoperation.cpp:171
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Checking partition <filename>%1</filename> before resize/move failed."
+msgstr ""
+"आकार बदलने/स्थानांतरित करने से पहले विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> की जाँच विफल रही।"
+
+#: ops/resizeoperation.cpp:201
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the left by %2"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से बाईं ओर ले जाएँ"
+
+#: ops/resizeoperation.cpp:204
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Move partition <filename>%1</filename> to the right by %2"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से दाईं ओर ले जाएँ"
+
+#: ops/resizeoperation.cpp:207
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Grow partition <filename>%1</filename> from %2 to %3"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से %3 तक बढ़ाएँ"
+
+#: ops/resizeoperation.cpp:210
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Shrink partition <filename>%1</filename> from %2 to %3"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से %3 तक छोटा करें"
+
+#: ops/resizeoperation.cpp:213
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
+"to %4"
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से बाईं ओर ले जाएँ और इसे %3 से %4 तक बढ़ाएँ"
+
+#: ops/resizeoperation.cpp:216
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and grow it from "
+"%3 to %4"
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से दाईं ओर ले जाएं और इसे %3 से %4 तक बढ़ाएं"
+
+#: ops/resizeoperation.cpp:219
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the left by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से बाईं ओर ले जाएँ और इसे %3 से %4 तक छोटा करें"
+
+#: ops/resizeoperation.cpp:222
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid ""
+"Move partition <filename>%1</filename> to the right by %2 and shrink it from "
+"%3 to %4"
+msgstr ""
+"विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को %2 से दाईं ओर ले जाएं और इसे %3 से %4 तक छोटा करें"
+
+#: ops/resizeoperation.cpp:229
+#, kde-kuit-format
+msgctxt "@info:status describe resize/move action"
+msgid "Unknown resize/move action."
+msgstr "अज्ञात आकार परिवर्तन/स्थानांतरण क्रिया."
+
+#: ops/resizeoperation.cpp:258
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize file system to shrink partition "
+"<filename>%1</filename>."
+msgstr ""
+"आकार बदलना/स्थानांतरित करना विफल: विभाजन <filename>%1</filename> को छोटा करने के "
+"लिए फ़ाइल सिस्टम का आकार नहीं बदला जा सका।"
+
+#: ops/resizeoperation.cpp:263
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
+msgstr ""
+"आकार बदलना/स्थानांतरित करना विफल: विभाजन <filename>%1</filename> को छोटा नहीं "
+"किया जा सका."
+
+#: ops/resizeoperation.cpp:282
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Moving partition <filename>%1</filename> failed."
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को स्थानांतरित करना विफल रहा."
+
+#: ops/resizeoperation.cpp:287
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
+"back."
+msgstr ""
+"विभाजन <filename>%1</filename> के लिए फ़ाइल सिस्टम को स्थानांतरित करना विफल रहा। "
+"वापस रोल किया जा रहा है।"
+
+#: ops/resizeoperation.cpp:291
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Moving back partition <filename>%1</filename> to its original position "
+"failed."
+msgstr "विभाजन <filename>%1</filename> को उसके मूल स्थान पर वापस ले जाना असफल रहा।"
+
+#: ops/resizeoperation.cpp:304
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
+msgstr ""
+"आकार बदलना/स्थानांतरित करना विफल: विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> को बढ़ाया नहीं जा "
+"सका।"
+
+#: ops/resizeoperation.cpp:309
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Resize/move failed: Could not resize the file system on partition <filename>"
+"%1</filename>"
+msgstr ""
+"आकार बदलना/स्थानांतरित करना विफल: विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम "
+"का आकार नहीं बदला जा सका"
+
+#: ops/resizeoperation.cpp:312
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Could not restore old partition size for partition <filename>%1</filename>."
+msgstr ""
+"विभाजन <filename>%1</filename> के लिए पुराने विभाजन आकार को पुनर्स्थापित नहीं किया "
+"जा सका."
+
+#: ops/resizevolumegroupoperation.cpp:108
+#, kde-kuit-format
+msgctxt "@info/plain"
+msgid "Resize volume %1 from %2 to %3"
+msgstr "वॉल्यूम %1 का आकार %2 से %3 करें"
+
+#: ops/restoreoperation.cpp:133
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Checking target file system on partition <filename>%1</filename> after the "
+"restore failed."
+msgstr ""
+"पुनर्स्थापना विफल होने के बाद विभाजन <filename>%1</filename> पर लक्ष्य फ़ाइल सिस्टम "
+"की जाँच की जा रही है।"
+
+#: ops/restoreoperation.cpp:138
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Restoring file system failed."
+msgstr "फ़ाइल सिस्टम पुनर्स्थापित करना विफल रहा."
+
+#: ops/restoreoperation.cpp:141
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Creating the destination partition to restore to failed."
+msgstr "पुनर्स्थापित करने के लिए गंतव्य विभाजन बनाना विफल रहा."
+
+#: ops/restoreoperation.cpp:156
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition from <filename>%1</filename> to <filename>%2</filename>"
+msgstr ""
+"<filename>%1</filename> से <filename>%2</filename> तक विभाजन पुनर्स्थापित करें"
+
+#: ops/restoreoperation.cpp:158
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
+"filename>"
+msgstr ""
+"<filename>%1</filename> पर <filename>%3</filename> से %2 पर विभाजन पुनर्स्थापित "
+"करें"
+
+#: ops/setfilesystemlabeloperation.cpp:58
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए लेबल को \"%2\" पर सेट करें"
+
+#: ops/setfilesystemlabeloperation.cpp:60
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए लेबल को \"%2\" से \"%3\" पर सेट करें"
+
+#: ops/setpartflagsoperation.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Clear flags for partition <filename>%1</filename>"
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए ध्वज साफ़ करें"
+
+#: ops/setpartflagsoperation.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए ध्वज को \"%2\" पर सेट करें"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:243
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Software RAID Device found: %1"
+msgstr "सॉफ़्टवेयर RAID डिवाइस मिला: %1"
+
+#: plugins/sfdisk/sfdiskbackend.cpp:273
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Device found: %1"
+msgstr "डिवाइस मिला: %1"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr "नये विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए अज्ञात विभाजन भूमिका (भूमिकाएँ: %2)"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"विभाजन <filename>%1</filename> को डिवाइस <filename>%2</filename> में जोड़ने में "
+"विफल."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:114
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not set geometry for partition <filename>%1</filename> while trying to "
+"resize/move it."
+msgstr ""
+"विभाजन <filename>%1</filename> का आकार बदलने/स्थानांतरित करने का प्रयास करते समय "
+"इसके लिए ज्यामिति सेट नहीं की जा सकी।"
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:124
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to erase filesystem signature on partition <filename>%1</filename>."
+msgstr "विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम हस्ताक्षर मिटाने में विफल."
+
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:157
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Could not determine file system of partition at sector %1 on device "
+"<filename>%2</filename>."
+msgstr ""
+"डिवाइस <filename>%2</filename> पर सेक्टर %1 पर विभाजन का फ़ाइल सिस्टम निर्धारित "
+"नहीं किया जा सका।"
+
+#: util/capacity.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "Byte"
+msgid_plural "Bytes"
+msgstr[0] "बाइट्स"
+msgstr[1] "बाइट्स"
+
+#: util/capacity.cpp:101
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "KiB"
+msgstr "किबा"
+
+#: util/capacity.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "MiB"
+msgstr "एमआईबी"
+
+#: util/capacity.cpp:103
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "GiB"
+msgstr "कुंडा"
+
+#: util/capacity.cpp:104
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "TiB"
+msgstr "TiB"
+
+#: util/capacity.cpp:105
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "PiB"
+msgstr "PiB"
+
+#: util/capacity.cpp:106
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "EiB"
+msgstr "ईआईबी"
+
+#: util/capacity.cpp:107
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "ZiB"
+msgstr "ज़िब"
+
+#: util/capacity.cpp:108
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "YiB"
+msgstr "वाईबी"
+
+#: util/capacity.cpp:112
+#, kde-kuit-format
+msgctxt "@item:intext unit"
+msgid "(unknown unit)"
+msgstr "(अज्ञात इकाई)"
+
+#: util/externalcommand.cpp:114 util/externalcommand.cpp:118
+#: util/externalcommand.cpp:241
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Command: %1 %2"
+msgstr "आदेश: %1 %2"
+
+#: util/externalcommandhelper.cpp:82
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for reading."
+msgstr "डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> को पढ़ने के लिए नहीं खोला जा सका."
+
+#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#, kde-kuit-format
+msgid "Could not seek position %1 on device <filename>%2</filename>."
+msgstr "डिवाइस <filename>%2</filename> पर स्थिति %1 नहीं खोजी जा सकी."
+
+#: util/externalcommandhelper.cpp:96
+#, kde-kuit-format
+msgid "Could not read from device <filename>%1</filename>."
+msgstr "डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> से पढ़ा नहीं जा सका."
+
+#: util/externalcommandhelper.cpp:114
+#, kde-kuit-format
+msgid "Could not open device <filename>%1</filename> for writing."
+msgstr "डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> को लिखने के लिए नहीं खोला जा सका."
+
+#: util/externalcommandhelper.cpp:125
+#, kde-kuit-format
+msgid "Could not write to device <filename>%1</filename>."
+msgstr "डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> पर नहीं लिखा जा सका."
+
+#: util/externalcommandhelper.cpp:151
+#, kde-kuit-format
+msgid "Could not open file <filename>%1</filename> for writing."
+msgstr "फ़ाइल <filename>%1</filename> को लिखने के लिए नहीं खोला जा सका."
+
+#: util/externalcommandhelper.cpp:156
+#, kde-kuit-format
+msgid "Could not write to file <filename>%1</filename>."
+msgstr "फ़ाइल <फ़ाइलनाम>%1</फ़ाइलनाम> पर नहीं लिखा जा सका."
+
+#: util/externalcommandhelper.cpp:237
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
+msgstr "%1 खंड (%2 बाइट्स) को %3 से %4 तक कॉपी किया जा रहा है, दिशा: %5."
+
+#: util/externalcommandhelper.cpp:238
+#, kde-format
+msgctxt "direction: left"
+msgid "left"
+msgstr "बाएं"
+
+#: util/externalcommandhelper.cpp:239
+#, kde-format
+msgctxt "direction: right"
+msgid "right"
+msgstr "सही"
+
+#: util/externalcommandhelper.cpp:261
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying %1 MiB/second, estimated time left: %2"
+msgstr "%1 MiB/सेकंड कॉपी किया जा रहा है, अनुमानित समय बचा: %2"
+
+#: util/externalcommandhelper.cpp:274
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Copying remainder of chunk size %1 from %2 to %3."
+msgstr "खंड आकार %1 के शेष भाग को %2 से %3 तक कॉपी किया जा रहा है।"
+
+#: util/externalcommandhelper.cpp:288
+#, kde-format
+msgid "1 byte"
+msgid_plural "%1 bytes"
+msgstr[0] "%1 बाइट्स"
+msgstr[1] "%1 बाइट्स"
+
+#: util/externalcommandhelper.cpp:288
+#, kde-kuit-format
+msgctxt ""
+"@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
+msgid "Copying 1 chunk (%2) finished."
+msgid_plural "Copying %1 chunks (%2) finished."
+msgstr[0] "%1 खंड (%2) की प्रतिलिपिकरण समाप्त हुआ।"
+msgstr[1] "%1 खंड (%2) की प्रतिलिपिकरण समाप्त हुआ।"
+
+#: util/helpers.cpp:49
+#, kde-kuit-format
+msgctxt "@title"
+msgid "<application>KPMcore</application>"
+msgstr "<application>KPMcore</application>"
+
+#: util/helpers.cpp:50
+#, kde-kuit-format
+msgctxt "@title"
+msgid "Library for managing partitions"
+msgstr "विभाजनों के प्रबंधन के लिए लाइब्रेरी"
+
+#: util/helpers.cpp:51
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "&copy; 2008-2022 KPMcore developers"
+msgstr "&copy; 2008-2022 KPMcore डेवलपर्स"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Volker Lanz"
+msgstr "वोल्कर लैंज़"
+
+#: util/helpers.cpp:56
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Former maintainer"
+msgstr "पूर्व अनुरक्षक"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Andrius Štikonas"
+msgstr "एंड्रियस श्टिकोनास"
+
+#: util/helpers.cpp:57
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Maintainer"
+msgstr "मेंटेनर"
+
+#: util/helpers.cpp:58
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Teo Mrnjavac"
+msgstr "थियो मृन्जावैक"
+
+#: util/helpers.cpp:58
+#, kde-format
+msgctxt "@info:credit"
+msgid "Former Calamares maintainer"
+msgstr "पूर्व कैलामारेस अनुरक्षक"
+
+#: util/helpers.cpp:59
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Chantara Tith"
+msgstr "चनतारा तीथ"
+
+#: util/helpers.cpp:59
+#, kde-format
+msgctxt "@info:credit"
+msgid "LVM support"
+msgstr "एलवीएम समर्थन"
+
+#: util/helpers.cpp:60
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Pali Rohár"
+msgstr "पाली रोहड़"
+
+#: util/helpers.cpp:60
+#, kde-format
+msgctxt "@info:credit"
+msgid "UDF support"
+msgstr "यूडीएफ समर्थन"
+
+#: util/helpers.cpp:61
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Adriaan de Groot"
+msgstr "एड्रियन डी ग्रूट"
+
+#: util/helpers.cpp:61
+#, kde-format
+msgctxt "@info:credit"
+msgid "Calamares maintainer"
+msgstr "कैलामारेस अनुरक्षक"
+
+#: util/helpers.cpp:62
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "Caio Jordão Carvalho"
+msgstr "काइओ जोर्डाओ कार्वाल्हो"
+
+#: util/helpers.cpp:62
+#, kde-format
+msgctxt "@info:credit"
+msgid "Improved SMART support"
+msgstr "बेहतर SMART समर्थन"
+
+#: util/helpers.cpp:63
+#, kde-kuit-format
+msgctxt "@info:credit"
+msgid "David Edmundson"
+msgstr "डेविड एडमंडसन"
+
+#: util/helpers.cpp:63
+#, kde-format
+msgctxt "@info:credit"
+msgid "Port from KAuth to Polkit"
+msgstr "KAuth से Polkit में पोर्ट करें"
+
+#: util/htmlreport.cpp:51 util/htmlreport.cpp:58
+#, kde-format
+msgid "%1: SMART Status Report"
+msgstr "%1: स्मार्ट स्थिति रिपोर्ट"
+
+#: util/htmlreport.cpp:66
+#, kde-format
+msgid "Date:"
+msgstr "तारीख:"
+
+#: util/htmlreport.cpp:67
+#, kde-format
+msgid "Program version:"
+msgstr "कार्यक्रम संस्करण:"
+
+#: util/htmlreport.cpp:68
+#, kde-format
+msgid "Backend:"
+msgstr "बैकएंड:"
+
+#: util/htmlreport.cpp:69
+#, kde-format
+msgid "KDE Frameworks version:"
+msgstr "केडीई फ्रेमवर्क संस्करण:"
+
+#: util/htmlreport.cpp:70
+#, kde-format
+msgid "Machine:"
+msgstr "मशीन:"

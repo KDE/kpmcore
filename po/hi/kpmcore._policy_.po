@@ -1,28 +1,27 @@
-# Sanskrit translations for PACKAGE package.
+# Hindi translations for PACKAGE package.
 # Copyright (C) 2024 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Kali <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: kpmcore._policy_\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:39+0000\n"
-"PO-Revision-Date: 2024-12-13 19:10+0530\n"
+"PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
-"Language-Team: Sanskrit\n"
-"Language: sa\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>2);\n"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
 msgctxt "description"
 msgid "Run privileged partition manager helper"
-msgstr "विशेषाधिकारयुक्तं विभाजनप्रबन्धकसहायकं चालयन्तु"
+msgstr "विशेषाधिकार प्राप्त विभाजन प्रबंधक सहायक चलाएँ"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
 msgctxt "message"
 msgid "Authenticate to manage disks."
-msgstr "डिस्कं प्रबन्धयितुं प्रमाणीकरणं कुर्वन्तु ।"
+msgstr "डिस्क प्रबंधित करने के लिए प्रमाणीकरण करें."
