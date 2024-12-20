@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2024-12-16 23:11+0100\n"
+"PO-Revision-Date: 2024-12-19 22:46+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -1281,6 +1281,7 @@ msgctxt "SMART attr name"
 msgid "Power-Off Retract Cycle"
 msgstr "Ciclos de apagado"
 
+# skip-rule: trasno-remove_reverse
 #: core/smartattribute.cpp:164
 #, kde-format
 msgctxt "SMART attr description"
