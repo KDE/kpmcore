@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2024-12-14 13:25+0530\n"
+"PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -38,7 +38,7 @@ msgstr "अज्ञात यन्त्र"
 #, kde-kuit-format
 msgctxt "@item:inlistbox Device name – Capacity (device node)"
 msgid "%1 – %2 (%3)"
-msgstr "%1 – %2 (%3) ९."
+msgstr "%1 – %2 (%3)"
 
 #: core/lvmdevice.cpp:362
 #, kde-kuit-format
@@ -1232,7 +1232,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
-msgstr "&quot;थ्रेशिंग&quot; (पुनरावर्तनीयं अग्रे/विपर्ययशिरःगतिः दूरम्) २."
+msgstr "&quot;थ्रेशिंग&quot; (पुनरावर्तनीयं अग्रे/विपर्ययशिरःगतिः दूरम्)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
@@ -3226,7 +3226,7 @@ msgstr "यिब"
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "(unknown unit)"
-msgstr "(अज्ञात एकक) २."
+msgstr "(अज्ञात एकक)"
 
 #: util/externalcommand.cpp:114 util/externalcommand.cpp:118
 #: util/externalcommand.cpp:241
@@ -3443,17 +3443,17 @@ msgstr "दिनाङ्कः:"
 #: util/htmlreport.cpp:67
 #, kde-format
 msgid "Program version:"
-msgstr "कार्यक्रमसंस्करणम् : १."
+msgstr "कार्यक्रमसंस्करणम् :"
 
 #: util/htmlreport.cpp:68
 #, kde-format
 msgid "Backend:"
-msgstr "पृष्ठभागः : १."
+msgstr "पृष्ठभागः :"
 
 #: util/htmlreport.cpp:69
 #, kde-format
 msgid "KDE Frameworks version:"
-msgstr "KDE Frameworks संस्करणम् : १."
+msgstr "KDE Frameworks संस्करणम् :"
 
 #: util/htmlreport.cpp:70
 #, kde-format
