@@ -39,15 +39,21 @@ bool luks2::create(Report& report, const QString& deviceNode)
     Q_ASSERT(m_innerFs);
     Q_ASSERT(!m_passphrase.isEmpty());
 
-    ExternalCommand createCmd(report, QStringLiteral("cryptsetup"),
-                              { QStringLiteral("--use-random"),
-                                QStringLiteral("--key-size"), QStringLiteral("512"),
-                                QStringLiteral("--hash"), QStringLiteral("sha512"),
-                                QStringLiteral("--batch-mode"),
-                                QStringLiteral("--force-password"),
-                                QStringLiteral("--type"), QStringLiteral("luks2"),
-                                QStringLiteral("luksFormat"),
-                                deviceNode });
+    QStringList createCmdArgs = { QStringLiteral("--use-random"),
+                                  QStringLiteral("--key-size"), QStringLiteral("512"),
+                                  QStringLiteral("--hash"), QStringLiteral("sha512"),
+                                  QStringLiteral("--batch-mode"),
+                                  QStringLiteral("--force-password"),
+                                  QStringLiteral("--type"), QStringLiteral("luks2")};
+
+    if (!m_pbkdf.isEmpty()) {
+        createCmdArgs.append({ QStringLiteral("--pbkdf"), m_pbkdf });
+    }
+
+    createCmdArgs.append({ QStringLiteral("luksFormat"), deviceNode });
+
+    ExternalCommand createCmd(report, QStringLiteral("cryptsetup"), createCmdArgs);
+
     if (!( createCmd.write(m_passphrase.toLocal8Bit() + '\n') &&
                 createCmd.start(-1) && createCmd.exitCode() == 0))
     {
@@ -134,6 +140,16 @@ luks::KeyLocation luks2::keyLocation()
     }
 
     return m_KeyLocation;
+}
+
+void luks2::setPbkdf(const QString& pbkdf)
+{
+    m_pbkdf = pbkdf;
+}
+
+QString luks2::pbkdf() const
+{
+    return m_pbkdf;
 }
 
 }

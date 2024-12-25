@@ -34,6 +34,12 @@ public:
     FileSystem::Type type() const override;
 
     luks::KeyLocation keyLocation();
+
+    void setPbkdf(const QString&);
+    QString pbkdf() const;
+
+protected:
+    QString m_pbkdf;
 };
 }
 
