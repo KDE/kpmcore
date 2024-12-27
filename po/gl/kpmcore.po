@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:42+0000\n"
+"POT-Creation-Date: 2024-12-27 00:44+0000\n"
 "PO-Revision-Date: 2024-12-19 22:46+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -1934,7 +1934,7 @@ msgstr "Bloquear"
 msgid "Enter passphrase for %1:"
 msgstr "Insira a frase de paso de %1:"
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:89 fs/luks2.cpp:106
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:95 fs/luks2.cpp:112
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
@@ -1942,7 +1942,7 @@ msgstr ""
 "Cambiando o tamaño da criptografía de LUKS na partición <filename>%1</"
 "filename>."
 
-#: fs/luks.cpp:514 fs/luks2.cpp:117
+#: fs/luks.cpp:514 fs/luks2.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

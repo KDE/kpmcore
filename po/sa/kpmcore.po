@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:42+0000\n"
+"POT-Creation-Date: 2024-12-27 00:44+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1848,13 +1848,13 @@ msgstr "ताल"
 msgid "Enter passphrase for %1:"
 msgstr "%1 कृते गुप्तवाक्यं प्रविशन्तु:"
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:89 fs/luks2.cpp:106
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:95 fs/luks2.cpp:112
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "<filename>%1</filename> विभाजने LUKS क्रिप्ट् इत्यस्य आकारं परिवर्तयति ।"
 
-#: fs/luks.cpp:514 fs/luks2.cpp:117
+#: fs/luks.cpp:514 fs/luks2.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

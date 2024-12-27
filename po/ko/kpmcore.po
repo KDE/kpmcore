@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-11 00:42+0000\n"
+"POT-Creation-Date: 2024-12-27 00:44+0000\n"
 "PO-Revision-Date: 2024-08-19 23:55+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1849,7 +1849,7 @@ msgstr "잠금"
 msgid "Enter passphrase for %1:"
 msgstr "%1의 암호를 입력하십시오:"
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:89 fs/luks2.cpp:106
+#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:95 fs/luks2.cpp:112
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
@@ -1857,7 +1857,7 @@ msgstr ""
 "파티션 <filename>%1</filename>에 있는 LUKS 암호화 영역 크기를 조정하고 있습니"
 "다."
 
-#: fs/luks.cpp:514 fs/luks2.cpp:117
+#: fs/luks.cpp:514 fs/luks2.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
