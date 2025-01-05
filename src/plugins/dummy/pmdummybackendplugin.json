@@ -3,6 +3,7 @@
         "Icon": "preferences-plugin",
         "License": "GPL",
         "Name": "KDE Partition Manager Dummy Backend",
+        "Name[ar]": "خلفية وهمية لمدير أقسام كِيدِي",
         "Name[ca@valencia]": "Dorsal fals del gestor de particions de KDE",
         "Name[ca]": "Dorsal fals del gestor de particions del KDE",
         "Name[cs]": "Podpůrná vrstva pro správce diskových oddílů pro KDE",
