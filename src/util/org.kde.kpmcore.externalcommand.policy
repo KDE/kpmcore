@@ -10,6 +10,7 @@ SPDX-License-Identifier: CC0-1.0
 <icon_name>partitionmanager</icon_name>
    <action id="org.kde.kpmcore.externalcommand.init" >
       <description>Run privileged partition manager helper</description>
+      <description xml:lang="ar">شغّل مساعد مدير الأقسام ذو صلاحيات مدير نظام</description>
       <description xml:lang="ca">Executa l'ajudant del gestor de particions amb privilegis</description>
       <description xml:lang="ca@valencia">Executa l'ajudant del gestor de particions amb privilegis</description>
       <description xml:lang="el">Εκτέλεση του προνομιούχου βοηθού του διαχειριστή κατατμήσεων</description>
@@ -38,6 +39,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="zh_CN">使用管理员权限运行分区管理器辅助程序</description>
       <description xml:lang="zh_TW">執行需要管理員權限的磁碟分割區管理員協助程式</description>
       <message>Authenticate to manage disks.</message>
+      <message xml:lang="ar">المصادقة لإدارة الأقراص.</message>
       <message xml:lang="ca">Autenticació per a gestionar els discs.</message>
       <message xml:lang="ca@valencia">Autenticació per a gestionar els discs.</message>
       <message xml:lang="cs">Pro správu disků ověřte svou totožnost.</message>
