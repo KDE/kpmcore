@@ -3,6 +3,7 @@
         "Icon": "preferences-plugin",
         "License": "GPL",
         "Name": "KDE Partition Manager sfdisk Backend",
+        "Name[ar]": "خلفية sfdisk لمدير أقسام كِيدِي",
         "Name[ca@valencia]": "Dorsal «sfdisk» del gestor de particions de KDE",
         "Name[ca]": "Dorsal «sfdisk» del gestor de particions del KDE",
         "Name[cs]": "Podpůrná vrstva sfdisk pro správce diskových oddílů pro KDE",
