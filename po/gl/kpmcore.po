@@ -6,14 +6,14 @@
 # Xabier Villar <xabier.villar@gmail.com>, 2010.
 # Marce Villarino <mvillarino@kde-espana.es>, 2012, 2013.
 # Adrian Chaves Fernandez <adriyetichaves@gmail.com>, 2012, 2013, 2015, 2016, 2017.
-# SPDX-FileCopyrightText: 2024 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2024, 2025 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2024-12-19 22:46+0100\n"
+"PO-Revision-Date: 2025-01-06 21:00+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -3389,7 +3389,7 @@ msgstr ""
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr ""
-"Non foi posíbel acceder á posición %1 no dispositivo <filename>%2</filename>."
+"Non foi posíbel ir á posición %1 no dispositivo <filename>%2</filename>."
 
 #: util/externalcommandhelper.cpp:96
 #, kde-kuit-format
