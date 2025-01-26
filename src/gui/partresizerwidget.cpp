@@ -128,7 +128,7 @@ void PartResizerWidget::init(Device& d, Partition& p, qint64 minFirst, qint64 ma
 
 qint32 PartResizerWidget::handleWidth() const
 {
-    return style()->pixelMetric(QStyle::PM_SplitterWidth);
+    return style()->pixelMetric(QStyle::PM_SplitterWidth) + 1;
 }
 
 long double PartResizerWidget::sectorsPerPixel() const
