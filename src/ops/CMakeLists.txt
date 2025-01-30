@@ -18,6 +18,7 @@ set(OPS_SRC
     ops/resizevolumegroupoperation.cpp
     ops/setfilesystemlabeloperation.cpp
     ops/setpartflagsoperation.cpp
+    ops/setpartlabeloperation.cpp
     ops/checkoperation.cpp
     ops/backupoperation.cpp
     ops/copyoperation.cpp
@@ -40,4 +41,5 @@ set(OPS_LIB_HDRS
     ops/restoreoperation.h
     ops/setfilesystemlabeloperation.h
     ops/setpartflagsoperation.h
+    ops/setpartlabeloperation.h
 )
