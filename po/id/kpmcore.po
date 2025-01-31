@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:44+0000\n"
+"POT-Creation-Date: 2025-01-31 00:43+0000\n"
 "PO-Revision-Date: 2023-06-16 07:05+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -3252,6 +3252,14 @@ msgstr "Bersihkan bendera partisi <filename>%1</filename>"
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Set bendera untuk partisi <filename>%1</filename> ke \"%2\""
+
+#: ops/setpartlabeloperation.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:status"
+msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
+msgstr "Set label untuk partisi <filename>%1</filename> ke \"%2\""
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format

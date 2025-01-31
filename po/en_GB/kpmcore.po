@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:44+0000\n"
+"POT-Creation-Date: 2025-01-31 00:43+0000\n"
 "PO-Revision-Date: 2024-05-20 19:37+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -3154,6 +3154,14 @@ msgstr "Clear flags for partition <filename>%1</filename>"
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Set flags for partition <filename>%1</filename> to \"%2\""
+
+#: ops/setpartlabeloperation.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:status"
+msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
+msgstr "Set label for partition <filename>%1</filename> to \"%2\""
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format

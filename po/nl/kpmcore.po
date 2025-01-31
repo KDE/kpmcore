@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:44+0000\n"
+"POT-Creation-Date: 2025-01-31 00:43+0000\n"
 "PO-Revision-Date: 2024-03-23 22:48+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -3231,6 +3231,14 @@ msgstr "Wis vlaggen voor partitie <filename>%1</filename>"
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Stel vlaggen voor partitie <filename>%1</filename> in op \"%2\""
+
+#: ops/setpartlabeloperation.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:status"
+msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
+msgstr "Stel het label voor partitie <filename>%1</filename> in op \"%2\""
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format

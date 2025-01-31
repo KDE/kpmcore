@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:44+0000\n"
+"POT-Creation-Date: 2025-01-31 00:43+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -3109,6 +3109,14 @@ msgstr "<filename>%1</filename> विभाजनस्य कृते ध्�
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "<filename>%1</filename> इति विभाजनस्य ध्वजान् \"%2\" इति सेट् कुर्वन्तु ।"
+
+#: ops/setpartlabeloperation.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:status"
+msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
+msgstr "विभाजनस्य <filename>%1</filename> इत्यस्य लेबलं \"%2\" इति सेट् कुर्वन्तु ।"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format

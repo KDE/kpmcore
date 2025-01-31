@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:44+0000\n"
+"POT-Creation-Date: 2025-01-31 00:43+0000\n"
 "PO-Revision-Date: 2025-01-26 19:41+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -476,7 +476,7 @@ msgstr "Tempo de inicio de xiro"
 msgctxt "SMART attr description"
 msgid "Average time of spindle spin up from zero RPM to fully operational."
 msgstr ""
-"Tempo medio para que o eixo pase de estar parado a xirar a unha velocidade "
+"Tempo medio para que o eixe pase de estar parado a xirar a unha velocidade "
 "completamente funcional."
 
 #: core/smartattribute.cpp:104
@@ -489,7 +489,7 @@ msgstr "Conta de inicio e parada"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "A tally of spindle start/stop cycles."
-msgstr "Número de ciclos de inicio e parada do eixo."
+msgstr "Número de ciclos de inicio e parada do eixe."
 
 #: core/smartattribute.cpp:105
 #, kde-format
@@ -3250,6 +3250,14 @@ msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr ""
 "Estabelece os indicadores da partición <filename>%1</filename> como «%2»"
+
+#: ops/setpartlabeloperation.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+msgctxt "@info:status"
+msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
+msgstr "Pon a etiqueta da partición <filename>%1</filename> como «%2»"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format

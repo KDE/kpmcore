@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-12-27 00:44+0000\n"
+"POT-Creation-Date: 2025-01-31 00:43+0000\n"
 "PO-Revision-Date: 2009-01-11 18:55+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -3675,6 +3675,14 @@ msgstr "Izveidot jaunu sadaļu <filename>%1</filename>"
 #| msgid "Create new partition <filename>%1</filename>"
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
+msgstr "Izveidot jaunu sadaļu <filename>%1</filename>"
+
+#: ops/setpartlabeloperation.cpp:59
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Create new partition <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Izveidot jaunu sadaļu <filename>%1</filename>"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
