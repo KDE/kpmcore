@@ -476,7 +476,7 @@ msgstr "Tempo de inicio de xiro"
 msgctxt "SMART attr description"
 msgid "Average time of spindle spin up from zero RPM to fully operational."
 msgstr ""
-"Tempo medio para que o eixo pase de estar parado a xirar a unha velocidade "
+"Tempo medio para que o eixe pase de estar parado a xirar a unha velocidade "
 "completamente funcional."
 
 #: core/smartattribute.cpp:104
@@ -489,7 +489,7 @@ msgstr "Conta de inicio e parada"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "A tally of spindle start/stop cycles."
-msgstr "Número de ciclos de inicio e parada do eixo."
+msgstr "Número de ciclos de inicio e parada do eixe."
 
 #: core/smartattribute.cpp:105
 #, kde-format
