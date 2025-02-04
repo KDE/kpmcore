@@ -10,8 +10,7 @@ public_lib: true
 public_source_dirs:
   - src
 libraries:
- - cmake: kpmcore
+  - cmake: kpmcore
 cmakename: KPMcore
 irc: kde-devel
 mailinglist: kde-devel
-
