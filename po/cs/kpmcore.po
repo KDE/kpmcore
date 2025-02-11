@@ -2994,12 +2994,10 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr ""
 
 #: ops/setpartlabeloperation.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
-msgstr "Nastavit UUID oddílu <filename>%1</filename> na \"%2\""
+msgstr ""
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
