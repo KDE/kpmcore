@@ -3010,12 +3010,10 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "设置分区 <filename>%1</filename> 的标记为“%2”"
 
 #: ops/setpartlabeloperation.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
-msgstr "设置分区 <filename>%1</filename> 的卷标为“%2”"
+msgstr "设置 GPT 分区标签 <filename>%1</filename> 为“%2”"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
