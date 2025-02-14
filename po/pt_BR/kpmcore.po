@@ -7,20 +7,21 @@
 # André Marcelo Alvarenga <alvarenga@kde.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016.
 # Marcus Vinícius de Andrade Gama <marcus.gama@gmail.com>, 2010, 2012.
 # Antonio Henrique L. Rodrigues <ahlr_2000@yahoo.com>, 2019.
+# SPDX-FileCopyrightText: 2025 Guilherme Marçal Silva <guimarcalsilva@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2022-03-04 09:33-0300\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
-"Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
+"PO-Revision-Date: 2025-02-13 00:02-0300\n"
+"Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1555,60 +1556,44 @@ msgstr ""
 "Uma falha do disco é iminente. Faça uma cópia de segurança de todos os dados!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"Falha ao redimensionar o sistema de arquivos Btrfs da partição <filename>%1</"
-"filename>: Não foi possível criar a pasta temporária."
+"Falha ao redimensionar o sistema de arquivos Bcachefs da partição <filename>"
+"%1</filename>: Não foi possível criar a pasta temporária."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"Falha ao redimensionar o sistema de arquivos Btrfs da partição <filename>%1</"
-"filename>: O redimensionamento do sistema de arquivos btrfs falhou."
+"Falha ao redimensionar o sistema de arquivos Bcachefs da partição <filename>"
+"%1</filename>: O redimensionamento do sistema de arquivos Bcachefs falhou."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Redimensionamento do sistema de arquivos Btrfs da partição "
+"<warning>Redimensionamento do sistema de arquivos Bcachefs da partição "
 "<filename>%1</filename>: Falha ao desmontar.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"Falha ao redimensionar o sistema de arquivos Btrfs da partição <filename>%1</"
-"filename>: Montagem inicial falhou."
+"Falha ao redimensionar o sistema de arquivos Bcachefs da partição <filename>"
+"%1</filename>: Montagem inicial falhou."
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1864,7 +1849,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:583 fs/luks.cpp:161
 #, kde-kuit-format
