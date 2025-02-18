@@ -79,6 +79,8 @@ void ext2::init()
         addAvailableFeature(QStringLiteral("sparse_super"));
         addAvailableFeature(QStringLiteral("sparse_super2"));
         addAvailableFeature(QStringLiteral("uninit_bg"));
+        addAvailableFeature(QStringLiteral("lazy_itable_init=0"));
+        addAvailableFeature(QStringLiteral("lazy_journal_init=0"));
     }
 }
 
