@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:43+0000\n"
-"PO-Revision-Date: 2025-01-31 17:15+0300\n"
+"PO-Revision-Date: 2025-02-17 19:39+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1106,7 +1106,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Offline Seek Performance"
-msgstr "Çevrimdışı Arama Performansı"
+msgstr "Çevrimdışı Arama Başarımı"
 
 #: core/smartattribute.cpp:153
 #, kde-format
