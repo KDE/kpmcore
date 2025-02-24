@@ -108,7 +108,7 @@ QList<Device*> SfdiskBackend::scanDevices(const ScanFlags scanFlags)
                 result.append(device);
             }
         }
-        
+
     }
 
     VolumeManagerDevice::scanDevices(result); // scan all types of VolumeManagerDevices
@@ -337,8 +337,8 @@ void SfdiskBackend::scanWholeDevicePartition(Device& d) {
     Partition *partition = scanPartition(d, partitionNode, firstSector, lastSector, QString(), false);
 
     if (partition->fileSystem().type() == FileSystem::Type::Unknown) {
-        setPartitionTableForDevice(d, nullptr);
         delete d.partitionTable();
+        setPartitionTableForDevice(d, nullptr);
     }
 
     if (!partition->roles().has(PartitionRole::Luks))
