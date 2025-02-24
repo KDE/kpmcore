@@ -4,8 +4,8 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#include "plugins/gpart/gpartdevice.h"
-#include "plugins/gpart/gpartpartitiontable.h"
+#include "plugins/geom/geomdevice.h"
+#include "plugins/geom/geompartitiontable.h"
 
 #include "core/partitiontable.h"
 
@@ -14,25 +14,25 @@
 
 //#include <libgeom.h>
 
-GpartDevice::GpartDevice(const Device& d) :
+GeomDevice::GeomDevice(const Device& d) :
     CoreBackendDevice(d.deviceNode()),
     m_device(&d)
 {
 }
 
-bool GpartDevice::open()
+bool GeomDevice::open()
 {
     return true;
 }
 
-bool GpartDevice::openExclusive()
+bool GeomDevice::openExclusive()
 {
     setExclusive(true);
 
     return true;
 }
 
-bool GpartDevice::close()
+bool GeomDevice::close()
 {
     if (isExclusive())
         setExclusive(false);
@@ -42,12 +42,12 @@ bool GpartDevice::close()
     return true;
 }
 
-std::unique_ptr<CoreBackendPartitionTable> GpartDevice::openPartitionTable()
+std::unique_ptr<CoreBackendPartitionTable> GeomDevice::openPartitionTable()
 {
-    return std::make_unique<GpartPartitionTable>(m_device);
+    return std::make_unique<GeomPartitionTable>(m_device);
 }
 
-bool GpartDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
+bool GeomDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
     bool isMSDOSLike = PartitionTable::msdos || PartitionTable::msdos_sectorbased;
     QString tableType = isMSDOSLike ? QStringLiteral("mbr") : ptable.typeName();

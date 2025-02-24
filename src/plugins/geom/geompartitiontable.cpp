@@ -4,8 +4,8 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#include "plugins/gpart/gpartpartitiontable.h"
-#include "plugins/gpart/gpartbackend.h"
+#include "plugins/geom/geompartitiontable.h"
+#include "plugins/geom/geombackend.h"
 
 #include "core/partition.h"
 #include "core/device.h"
@@ -19,23 +19,23 @@
 
 // Not using libgeom here because commands are printed to user
 
-GpartPartitionTable::GpartPartitionTable(const Device *d) :
+GeomPartitionTable::GeomPartitionTable(const Device *d) :
     CoreBackendPartitionTable(),
     m_device(d)
 {
 }
 
-GpartPartitionTable::~GpartPartitionTable()
+GeomPartitionTable::~GeomPartitionTable()
 {
 }
 
-bool GpartPartitionTable::open()
+bool GeomPartitionTable::open()
 {
     return true;
 }
 
 
-bool GpartPartitionTable::commit(quint32)
+bool GeomPartitionTable::commit(quint32)
 {
     // Nothing to do?
 
@@ -85,7 +85,7 @@ static inline bool isCommandSuccessful(ExternalCommand& cmd)
     return cmd.start(-1) && cmd.exitCode() == 0;
 }
 
-QString GpartPartitionTable::createPartition(Report& report, const Partition& partition)
+QString GeomPartitionTable::createPartition(Report& report, const Partition& partition)
 {
     if ( !(partition.roles().has(PartitionRole::Extended) || partition.roles().has(PartitionRole::Logical) || partition.roles().has(PartitionRole::Primary) ) ) {
         report.line() << xi18nc("@info:progress", "Unknown partition role for new partition <filename>%1</filename> (roles: %2)", partition.deviceNode(), partition.roles().toString());
@@ -114,7 +114,7 @@ QString GpartPartitionTable::createPartition(Report& report, const Partition& pa
     return QStringLiteral("/dev/") + createCommand.output().split(QChar::SpecialCharacter::Space)[0];
 }
 
-bool GpartPartitionTable::deletePartition(Report& report, const Partition& partition)
+bool GeomPartitionTable::deletePartition(Report& report, const Partition& partition)
 {
     ExternalCommand deleteCommand(report, QStringLiteral("gpart"), {
         QStringLiteral("delete"),
@@ -131,7 +131,7 @@ bool GpartPartitionTable::deletePartition(Report& report, const Partition& parti
     return success;
 }
 
-bool GpartPartitionTable::updateGeometry(Report& report, const Partition& partition, qint64 sectorStart, qint64 sectorEnd)
+bool GeomPartitionTable::updateGeometry(Report& report, const Partition& partition, qint64 sectorStart, qint64 sectorEnd)
 {
     // update geometry is partition recreation
     QLatin1String type;
@@ -162,12 +162,12 @@ bool GpartPartitionTable::updateGeometry(Report& report, const Partition& partit
     return isCommandSuccessful(gpartCommand) && isCommandSuccessful(createCommand);
 }
 
-bool GpartPartitionTable::clobberFileSystem(Report&, const Partition&)
+bool GeomPartitionTable::clobberFileSystem(Report&, const Partition&)
 {
     return true;
 }
 
-bool GpartPartitionTable::resizeFileSystem(Report& report, const Partition& partition, qint64 newLength)
+bool GeomPartitionTable::resizeFileSystem(Report& report, const Partition& partition, qint64 newLength)
 {
     // Nobody calls this function?
 
@@ -190,7 +190,7 @@ bool GpartPartitionTable::resizeFileSystem(Report& report, const Partition& part
     */
 }
 
-FileSystem::Type GpartPartitionTable::detectFileSystemBySector(Report&, const Device&, qint64)
+FileSystem::Type GeomPartitionTable::detectFileSystemBySector(Report&, const Device&, qint64)
 {
     // Return unknown as for now, this should be detected at backend?
 
@@ -198,7 +198,7 @@ FileSystem::Type GpartPartitionTable::detectFileSystemBySector(Report&, const De
     return type;
 }
 
-bool GpartPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
+bool GeomPartitionTable::setPartitionSystemType(Report& report, const Partition& partition)
 {
     QString partitionType = partition.type();
     if (partitionType.isEmpty()) {
@@ -220,7 +220,7 @@ bool GpartPartitionTable::setPartitionSystemType(Report& report, const Partition
     return gpartCommand.run(-1) && gpartCommand.exitCode() == 0;
 }
 
-bool GpartPartitionTable::setPartitionLabel(Report& report, const Partition& partition, const QString& label)
+bool GeomPartitionTable::setPartitionLabel(Report& report, const Partition& partition, const QString& label)
 {
     if (label.isEmpty())
         return true;
@@ -235,19 +235,19 @@ bool GpartPartitionTable::setPartitionLabel(Report& report, const Partition& par
     return gpartCommand.run(-1) && gpartCommand.exitCode() == 0;
 }
 
-QString GpartPartitionTable::getPartitionUUID(Report&, const Partition&)
+QString GeomPartitionTable::getPartitionUUID(Report&, const Partition&)
 {
     // This should be in backend?
     return QString();
 }
 
-bool GpartPartitionTable::setPartitionUUID(Report&, const Partition&, const QString&)
+bool GeomPartitionTable::setPartitionUUID(Report&, const Partition&, const QString&)
 {
     // Currently we can't do it
     return true;
 }
 
-bool GpartPartitionTable::setPartitionAttributes(Report& report, const Partition& partition, quint64 attrs)
+bool GeomPartitionTable::setPartitionAttributes(Report& report, const Partition& partition, quint64 attrs)
 {
     Q_UNUSED(report)
     Q_UNUSED(partition)
@@ -256,7 +256,7 @@ bool GpartPartitionTable::setPartitionAttributes(Report& report, const Partition
     return true;
 }
 
-bool GpartPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
+bool GeomPartitionTable::setFlag(Report& report, const Partition& partition, PartitionTable::Flag partitionManagerFlag, bool state)
 {
     Q_UNUSED(report)
     Q_UNUSED(partition)

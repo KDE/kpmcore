@@ -17,14 +17,14 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
-    option(PARTMAN_GPARTBACKEND "Build the gpart backend plugin." ON)
+    option(PARTMAN_GEOMBACKEND "Build the geom backend plugin." ON)
 endif()
 
 option(PARTMAN_DUMMYBACKEND "Build the dummy backend plugin." ON)
 
-if (PARTMAN_GPARTBACKEND)
-    add_subdirectory(gpart)
-endif (PARTMAN_GPARTBACKEND)
+if (PARTMAN_GEOMBACKEND)
+    add_subdirectory(geom)
+endif (PARTMAN_GEOMBACKEND)
 
 if (PARTMAN_DUMMYBACKEND)
     add_subdirectory(dummy)

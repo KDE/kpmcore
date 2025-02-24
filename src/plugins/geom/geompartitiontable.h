@@ -4,8 +4,8 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef KPMCORE_GPARTPARTITIONTABLE_H
-#define KPMCORE_GPARTPARTITIONTABLE_H
+#ifndef KPMCORE_GEOMPARTITIONTABLE_H
+#define KPMCORE_GEOMPARTITIONTABLE_H
 
 #include "backend/corebackendpartitiontable.h"
 
@@ -17,11 +17,11 @@ class CoreBackendPartition;
 class Report;
 class Partition;
 
-class GpartPartitionTable : public CoreBackendPartitionTable
+class GeomPartitionTable : public CoreBackendPartitionTable
 {
 public:
-    explicit GpartPartitionTable(const Device *d);
-    ~GpartPartitionTable();
+    explicit GeomPartitionTable(const Device *d);
+    ~GeomPartitionTable();
 
 public:
     bool open() override;
