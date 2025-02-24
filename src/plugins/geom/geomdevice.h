@@ -4,8 +4,8 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef KPMCORE_GPARTDEVICE_H
-#define KPMCORE_GPARTDEVICE_H
+#ifndef KPMCORE_GEOMDEVICE_H
+#define KPMCORE_GEOMDEVICE_H
 
 #include "backend/corebackenddevice.h"
 #include "core/device.h"
@@ -17,13 +17,13 @@ class PartitionTable;
 class Report;
 class CoreBackendPartitionTable;
 
-class GpartDevice : public CoreBackendDevice
+class GeomDevice : public CoreBackendDevice
 {
-    Q_DISABLE_COPY(GpartDevice)
+    Q_DISABLE_COPY(GeomDevice)
 
 public:
-    explicit GpartDevice(const Device& d);
-    ~GpartDevice() = default;
+    explicit GeomDevice(const Device& d);
+    ~GeomDevice() = default;
 
 public:
     bool open() override;

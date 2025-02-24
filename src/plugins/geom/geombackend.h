@@ -4,8 +4,8 @@
     SPDX-License-Identifier: GPL-3.0-or-later
 */
 
-#ifndef KPMCORE_GPARTBACKEND_H
-#define KPMCORE_GPARTBACKEND_H
+#ifndef KPMCORE_GEOMBACKEND_H
+#define KPMCORE_GEOMBACKEND_H
 
 #include "backend/corebackend.h"
 #include "core/partition.h"
@@ -19,21 +19,21 @@ class Device;
 class KPluginFactory;
 class QString;
 
-/** Gpart backend plugin for FreeBSD.
+/** Geom backend plugin for FreeBSD.
 
     @author Er2 <er2@dismail.de>
 */
-class GpartBackend : public CoreBackend
+class GeomBackend : public CoreBackend
 {
-    Q_DISABLE_COPY(GpartBackend)
+    Q_DISABLE_COPY(GeomBackend)
 
 public:
-    GpartBackend(QObject* parent, const QList<QVariant>& args);
+    GeomBackend(QObject* parent, const QList<QVariant>& args);
 
 public:
     void initFSSupport() override;
 
-    QList<Device*> scanDevices(bool excludeReadOnly = false) override;
+    QList<Device*> scanDevices(bool excludeReadOnly = false);
     QList<Device*> scanDevices(const ScanFlags scanFlags) override;
     std::unique_ptr<CoreBackendDevice> openDevice(const Device& d) override;
     std::unique_ptr<CoreBackendDevice> openDeviceExclusive(const Device& d) override;

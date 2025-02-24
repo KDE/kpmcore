@@ -7,8 +7,8 @@
 /** @file
 */
 
-#include "plugins/gpart/gpartbackend.h"
-#include "plugins/gpart/gpartdevice.h"
+#include "plugins/geom/geombackend.h"
+#include "plugins/geom/geomdevice.h"
 
 #include "core/diskdevice.h"
 #include "core/partition.h"
@@ -27,24 +27,24 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-K_PLUGIN_CLASS_WITH_JSON(GpartBackend, "pmgpartbackendplugin.json")
+K_PLUGIN_CLASS_WITH_JSON(GeomBackend, "pmgeombackendplugin.json")
 
 
-GpartBackend::GpartBackend(QObject*, const QList<QVariant>&) :
+GeomBackend::GeomBackend(QObject*, const QList<QVariant>&) :
     CoreBackend()
 {
 }
 
-void GpartBackend::initFSSupport()
+void GeomBackend::initFSSupport()
 {
 }
 
-QList<Device*> GpartBackend::scanDevices(bool excludeReadOnly)
+QList<Device*> GeomBackend::scanDevices(bool excludeReadOnly)
 {
     return scanDevices(excludeReadOnly ? ScanFlags() : ScanFlag::includeReadOnly);
 }
 
-QList<Device*> GpartBackend::scanDevices(const ScanFlags scanFlags)
+QList<Device*> GeomBackend::scanDevices(const ScanFlags scanFlags)
 {
     //const bool includeReadOnly = scanFlags.testFlag(ScanFlag::includeReadOnly);
     const bool includeLoopback = scanFlags.testFlag(ScanFlag::includeLoopback);
@@ -56,7 +56,6 @@ QList<Device*> GpartBackend::scanDevices(const ScanFlags scanFlags)
     if (error)
         return result;
 
-    // Check https://foss.heptapod.net/bsdutils/bsdisks/-/blob/branch/default/geomprober.cpp
     gclass *c;
     ggeom *g;
     LIST_FOREACH(c, &m_mesh.lg_class, lg_class) {
@@ -91,7 +90,7 @@ QList<Device*> GpartBackend::scanDevices(const ScanFlags scanFlags)
     return result;
 }
 
-Device* GpartBackend::scanDevice(const QString &deviceNode)
+Device* GeomBackend::scanDevice(const QString &deviceNode)
 {
     if (!m_partClass)
         return nullptr;
@@ -138,7 +137,7 @@ Device* GpartBackend::scanDevice(const QString &deviceNode)
                 if (isMemoryDisk)
                     icon = QStringLiteral("memory");
                 else icon = QStringLiteral("drive-harddisk");
-                d = new DiskDevice(name, QStringLiteral("/dev/") + deviceNode, 255, 63, deviceSize / logicalSectorSize / 255 / 63, logicalSectorSize, icon);
+                d = new DiskDevice(name, QStringLiteral("/dev/") + deviceNode, logicalSectorSize, deviceSize / logicalSectorSize, icon);
 
 
                 setPartitionTableForDevice(*d, new PartitionTable(PartitionTable::TableType::none, firstSector, lastSector));
@@ -178,7 +177,7 @@ Device* GpartBackend::scanDevice(const QString &deviceNode)
     return d;
 }
 
-void GpartBackend::scanPartition(Device& d, const QString& partitionNode, gprovider *p)
+void GeomBackend::scanPartition(Device& d, const QString& partitionNode, gprovider *p)
 {
     qint64 firstSector, lastSector;
     QString partitionType, partitionUUID, partitionLabel;
@@ -283,7 +282,7 @@ void GpartBackend::scanPartition(Device& d, const QString& partitionNode, gprovi
     parent->append(partition);
 }
 
-FileSystem::Type GpartBackend::fileSystemNameToType(const QString &name)
+FileSystem::Type GeomBackend::fileSystemNameToType(const QString &name)
 {
     FileSystem::Type type = FileSystem::Type::Unknown;
 
@@ -302,7 +301,7 @@ FileSystem::Type GpartBackend::fileSystemNameToType(const QString &name)
     return type;
 }
 
-FileSystem::Type GpartBackend::detectFileSystem(const QString& deviceNode)
+FileSystem::Type GeomBackend::detectFileSystem(const QString& deviceNode)
 {
     FileSystem::Type type = FileSystem::Type::Unknown;
 
@@ -318,7 +317,7 @@ FileSystem::Type GpartBackend::detectFileSystem(const QString& deviceNode)
     return type;
 }
 
-QString GpartBackend::readLabel(const QString& deviceNode) const
+QString GeomBackend::readLabel(const QString& deviceNode) const
 {
     const std::string nodeStr = deviceNode.split(QStringLiteral("/dev/"))[1].toStdString();
 
@@ -340,7 +339,7 @@ QString GpartBackend::readLabel(const QString& deviceNode) const
     return QString();
 }
 
-QString GpartBackend::readUUID(const QString& deviceNode) const
+QString GeomBackend::readUUID(const QString& deviceNode) const
 {
     const std::string nodeStr = deviceNode.split(QStringLiteral("/dev/"))[1].toStdString();
 
@@ -362,7 +361,7 @@ QString GpartBackend::readUUID(const QString& deviceNode) const
     return QString();
 }
 
-PartitionTable::Flags GpartBackend::availableFlags(PartitionTable::TableType type)
+PartitionTable::Flags GeomBackend::availableFlags(PartitionTable::TableType type)
 {
     PartitionTable::Flags flags;
     if (type == PartitionTable::gpt) {
@@ -377,9 +376,9 @@ PartitionTable::Flags GpartBackend::availableFlags(PartitionTable::TableType typ
     return flags;
 }
 
-std::unique_ptr<CoreBackendDevice> GpartBackend::openDevice(const Device& d)
+std::unique_ptr<CoreBackendDevice> GeomBackend::openDevice(const Device& d)
 {
-    std::unique_ptr<GpartDevice> device = std::make_unique<GpartDevice>(d);
+    std::unique_ptr<GeomDevice> device = std::make_unique<GeomDevice>(d);
 
     if (!device->open())
         device = nullptr;
@@ -387,9 +386,9 @@ std::unique_ptr<CoreBackendDevice> GpartBackend::openDevice(const Device& d)
     return device;
 }
 
-std::unique_ptr<CoreBackendDevice> GpartBackend::openDeviceExclusive(const Device& d)
+std::unique_ptr<CoreBackendDevice> GeomBackend::openDeviceExclusive(const Device& d)
 {
-    std::unique_ptr<GpartDevice> device = std::make_unique<GpartDevice>(d);
+    std::unique_ptr<GeomDevice> device = std::make_unique<GeomDevice>(d);
 
     if (!device->openExclusive())
         device = nullptr;
@@ -397,9 +396,9 @@ std::unique_ptr<CoreBackendDevice> GpartBackend::openDeviceExclusive(const Devic
     return device;
 }
 
-bool GpartBackend::closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice)
+bool GeomBackend::closeDevice(std::unique_ptr<CoreBackendDevice> coreDevice)
 {
     return coreDevice->close();
 }
 
-#include "gpartbackend.moc"
+#include "geombackend.moc"
