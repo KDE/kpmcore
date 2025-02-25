@@ -49,8 +49,9 @@ std::unique_ptr<CoreBackendPartitionTable> GeomDevice::openPartitionTable()
 
 bool GeomDevice::createPartitionTable(Report& report, const PartitionTable& ptable)
 {
-    bool isMSDOSLike = PartitionTable::msdos || PartitionTable::msdos_sectorbased;
-    QString tableType = isMSDOSLike ? QStringLiteral("mbr") : ptable.typeName();
+    QString tableType = ptable.type() == PartitionTable::msdos
+                      ? QStringLiteral("mbr")
+                      : ptable.typeName();
 
     ExternalCommand destroyCommand(report, QStringLiteral("gpart"), {
         QStringLiteral("destroy"),
