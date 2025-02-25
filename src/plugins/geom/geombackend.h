@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2023 Er2 <er2@dismail.de>
+    SPDX-FileCopyrightText: 2025 Future Crew, LLC <license@futurecrew.ru>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -16,6 +17,7 @@
 #include <libgeom.h>
 
 class Device;
+class DiskDevice;
 class KPluginFactory;
 class QString;
 
@@ -44,11 +46,7 @@ public:
     QString readUUID(const QString& deviceNode) const override;
 
 private:
-    gmesh m_mesh;
-    gclass *m_diskClass;
-    gclass *m_partClass;
-    gclass *m_mdClass;
-
+    QList<DiskDevice*> geomScan(bool includeLoopback, const QString& deviceNode = QString());
     static PartitionTable::Flags availableFlags(PartitionTable::TableType type);
     void scanPartition(Device& d, const QString& partitionNode, gprovider *p);
     FileSystem::Type fileSystemNameToType(const QString &name);

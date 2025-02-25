@@ -1,5 +1,6 @@
 /*
     SPDX-FileCopyrightText: 2023 Er2 <er2@dismail.de>
+    SPDX-FileCopyrightText: 2025 Future Crew, LLC <license@futurecrew.ru>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -29,6 +30,280 @@
 
 K_PLUGIN_CLASS_WITH_JSON(GeomBackend, "pmgeombackendplugin.json")
 
+static void forEachGeom(gmesh* mesh, const char* klass, const std::function<bool(ggeom*)>& f)
+{
+    gclass* geomClass = nullptr;
+    ggeom* geom = nullptr;
+    LIST_FOREACH(geomClass, &mesh->lg_class, lg_class) {
+        if (::strcmp(geomClass->lg_name, klass))
+            continue;
+
+        bool cont;
+        LIST_FOREACH(geom, &geomClass->lg_geom, lg_geom) {
+            // No providers -> geom is being destroyed
+            if (LIST_EMPTY(&geom->lg_provider))
+                continue;
+
+            cont = f(geom);
+            if (!cont)
+                break;
+        }
+    }
+}
+
+QList<DiskDevice*> GeomBackend::geomScan(bool includeLoopback, const QString& deviceNode)
+{
+    QHash<QString, DiskDevice*> devs;
+
+    gmesh geomMesh;
+    if (::geom_gettree(&geomMesh))
+        return {};
+
+    auto deviceFileName = deviceNode;
+    deviceFileName.remove(QLatin1String("/dev/"));
+
+    gclass* geomClass = nullptr;
+    ggeom* geom = nullptr;
+    LIST_FOREACH(geomClass, &geomMesh.lg_class, lg_class) {
+        bool isMemory = ::strcmp(geomClass->lg_name, "MD") == 0;
+        if (::strcmp(geomClass->lg_name, "DISK") != 0 && !(includeLoopback && isMemory))
+            continue;
+        LIST_FOREACH(geom, &geomClass->lg_geom, lg_geom) {
+            QString geomName = QString::fromLocal8Bit(geom->lg_name);
+            if(!deviceFileName.isEmpty() && deviceFileName != geomName)
+                continue;
+
+            // No providers -> geom is being destroyed
+            if (LIST_EMPTY(&geom->lg_provider))
+                continue;
+
+            gprovider* geomProvider = geom->lg_provider.lh_first;
+            qint64 sectors = 0;
+            qint64 sectorSize = geomProvider->lg_sectorsize;
+            QString diskName;
+
+            gconfig* geomConfig = nullptr;
+            bool withering = false;
+            LIST_FOREACH(geomConfig, &geomProvider->lg_config, lg_config) {
+                if (::strcmp(geomConfig->lg_name, "wither") == 0) {
+                    withering = true;
+                    break;
+                }
+                else if (::strcmp(geomConfig->lg_name, "fwsectors") == 0)
+                    sectors = QString::fromLatin1(geomConfig->lg_val).toUInt();
+                else if (::strcmp(geomConfig->lg_name, "descr") == 0)
+                    diskName = QString::fromLocal8Bit(geomConfig->lg_val);
+            }
+
+            if (withering)
+                continue;
+
+            if (diskName.isEmpty())
+                diskName = geomName;
+
+            // TODO: ask CAM if we're using USB transport to display a fitting icon
+            QString icon;
+            if (isMemory)
+                icon = QStringLiteral("memory");
+            devs[geomName] = new DiskDevice(diskName, deviceNode, sectorSize, sectors, icon);
+
+            if(!deviceFileName.isEmpty())
+                goto loopEnd;
+        }
+    }
+loopEnd:
+
+    forEachGeom(&geomMesh, "PART", [&deviceFileName, &devs, this](auto* geom) {
+        QString geomName = QString::fromLocal8Bit(geom->lg_name);
+        if(!deviceFileName.isEmpty() && deviceFileName != geomName)
+            return true;
+
+        auto* d = devs.value(geomName, nullptr);
+        if (!d)
+            return true;
+
+        qint64 firstSector, lastSector;
+        QString scheme;
+        gconfig* geomConfig = nullptr;
+        bool withering = false;
+        LIST_FOREACH(geomConfig, &geom->lg_config, lg_config) {
+            if (::strcmp(geomConfig->lg_name, "wither") == 0) {
+                withering = true;
+                break;
+            }
+            else if (::strcmp(geomConfig->lg_name, "scheme") == 0)
+                scheme = QString::fromLatin1(geomConfig->lg_val);
+            else if (::strcmp(geomConfig->lg_name, "start") == 0)
+                firstSector = QString::fromLatin1(geomConfig->lg_val).toULongLong();
+            else if (::strcmp(geomConfig->lg_name, "last") == 0)
+                lastSector = QString::fromLatin1(geomConfig->lg_val).toULongLong();
+        }
+
+        if (withering)
+            return true;
+
+        PartitionTable::TableType tableType = PartitionTable::TableType::unknownTableType;
+        if (scheme == QStringLiteral("MBR"))
+            tableType = PartitionTable::TableType::msdos;
+        else if (scheme == QStringLiteral("GPT"))
+            tableType = PartitionTable::TableType::gpt;
+
+        setPartitionTableForDevice(*d, new PartitionTable(tableType, firstSector, lastSector));
+
+        if (tableType == PartitionTable::TableType::unknownTableType)
+            return deviceFileName.isEmpty(); // continue if we're scanning all devices
+
+        gprovider *geomProvider;
+        LIST_FOREACH(geomProvider, &geom->lg_provider, lg_provider) {
+            QString partitionType, partitionUUID, partitionLabel;
+            bool withering = false;
+            LIST_FOREACH(geomConfig, &geomProvider->lg_config, lg_config) {
+                if (::strcmp(geomConfig->lg_name, "wither") == 0) {
+                    withering = true;
+                    break;
+                }
+                else if (::strcmp(geomConfig->lg_name, "start") == 0) {
+                    firstSector = QString::fromLatin1(geomConfig->lg_val).toULongLong();
+                }
+                else if (::strcmp(geomConfig->lg_name, "end") == 0) {
+                    lastSector = QString::fromLatin1(geomConfig->lg_val).toULongLong();
+                }
+                else if (::strcmp(geomConfig->lg_name, "type") == 0) {
+                    partitionType = QString::fromLatin1(geomConfig->lg_val);
+                }
+                else if (::strcmp(geomConfig->lg_name, "rawuuid") == 0) {
+                    partitionUUID = QString::fromLatin1(geomConfig->lg_val);
+                }
+                else if (::strcmp(geomConfig->lg_name, "label") == 0) {
+                    partitionLabel = QString::fromLocal8Bit(geomConfig->lg_val);
+                }
+            }
+
+            if (withering)
+                continue;
+
+            QString partitionNode = QStringLiteral("/dev/") + QString::fromLatin1(geomProvider->lg_name);
+
+            FileSystem::Type type = detectFileSystem(partitionNode);
+            // FIXME: This fallbacks to swap detection
+            if (partitionType == QStringLiteral("freebsd-swap")) type = FileSystem::Type::Unknown;
+
+            PartitionTable::Flags activeFlags = PartitionTable::Flag::None;
+            PartitionRole::Roles r = PartitionRole::Primary;
+            bool mounted = false;
+
+            if (type == FileSystem::Type::Unknown) {
+                if (partitionType == QStringLiteral("ebr")) {
+                    r = PartitionRole::Extended;
+                    type = FileSystem::Type::Extended;
+                }
+                // FIXME: This isn't right but it works!
+                else if (partitionType == QStringLiteral("freebsd-swap")) {
+                    type = FileSystem::Type::FreeBSDSwap;
+                    QFileInfo kernelPath(partitionNode);
+                    ExternalCommand cmd(QStringLiteral("swapctl"), {QStringLiteral("-l")});
+                    if (cmd.run(-1) && cmd.exitCode() == 0) {
+                        QByteArray data = cmd.rawOutput();
+
+                        QTextStream in(&data);
+                        while (!in.atEnd()) {
+                            QStringList line = in.readLine().split(QRegularExpression(QStringLiteral("\\s+")));
+                            if (line[0] == kernelPath.canonicalFilePath()) {
+                                mounted = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (partitionType == QStringLiteral("linux-swap")) {
+                    type = FileSystem::Type::LinuxSwap;
+                }
+                else if (partitionType == QStringLiteral("freebsd-zfs")) {
+                    type = FileSystem::Type::Zfs;
+                }
+                else if (partitionType == QStringLiteral("apple-apfs")) {
+                    type = FileSystem::Type::Apfs;
+                }
+            }
+
+            PartitionNode* parent = d->partitionTable()->findPartitionBySector(firstSector, PartitionRole(PartitionRole::Extended));
+
+            if (parent == nullptr)
+                parent = d->partitionTable();
+            else
+                r = PartitionRole::Logical;
+
+            FileSystem* fs = FileSystemFactory::create(type, firstSector, lastSector, d->logicalSize());
+            fs->scan(partitionNode);
+
+            QString mountPoint = FileSystem::detectMountPoint(fs, partitionNode);
+            if (!mounted)
+                mounted = FileSystem::detectMountStatus(fs, partitionNode);
+
+            Partition* partition = new Partition(parent,
+                                                 *d,
+                                                 PartitionRole(r),
+                                                 fs,
+                                                 firstSector,
+                                                 lastSector,
+                                                 partitionNode,
+                                                 availableFlags(d->partitionTable()->type()),
+                                                 mountPoint,
+                                                 mounted,
+                                                 activeFlags);
+
+            if (!partitionLabel.isEmpty())
+                partition->setLabel(partitionLabel);
+
+            if (!partitionType.isEmpty())
+                partition->setType(partitionType);
+
+            if (!partitionUUID.isEmpty())
+                partition->setUUID(partitionUUID);
+
+            if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
+                fs->setLabel(fs->readLabel(partition->deviceNode()));
+
+            if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
+                fs->setUUID(fs->readUUID(partition->deviceNode()));
+
+            parent->append(partition);
+        }
+
+        return deviceFileName.isEmpty(); // continue if we're scanning all devices
+    });
+
+    for (auto* d : std::as_const(devs))
+        if (!d->partitionTable()) {
+            const qint64 lastSector = d->totalLogical() - 1;
+            setPartitionTableForDevice(*d, new PartitionTable(PartitionTable::TableType::none, 0, lastSector));
+
+            FileSystem::Type type = detectFileSystem(d->deviceNode());
+            FileSystem* fs = FileSystemFactory::create(type, 0, lastSector, d->logicalSize());
+            fs->scan(d->deviceNode());
+
+            QString mountPoint = FileSystem::detectMountPoint(fs, d->deviceNode());
+            bool mounted = FileSystem::detectMountStatus(fs, d->deviceNode());
+
+            Partition* partition = new Partition(d->partitionTable(),
+                                                 *d,
+                                                 PartitionRole(PartitionRole::Primary),
+                                                 fs,
+                                                 0,
+                                                 lastSector,
+                                                 d->deviceNode(),
+                                                 availableFlags(d->partitionTable()->type()),
+                                                 mountPoint,
+                                                 mounted,
+                                                 PartitionTable::Flag::None);
+
+            d->partitionTable()->append(partition);
+        }
+
+    ::geom_deletetree(&geomMesh);
+
+    return devs.values();
+}
 
 GeomBackend::GeomBackend(QObject*, const QList<QVariant>&) :
     CoreBackend()
@@ -48,238 +323,22 @@ QList<Device*> GeomBackend::scanDevices(const ScanFlags scanFlags)
 {
     //const bool includeReadOnly = scanFlags.testFlag(ScanFlag::includeReadOnly);
     const bool includeLoopback = scanFlags.testFlag(ScanFlag::includeLoopback);
-
     QList<Device*> result;
-    QStringList deviceNodes;
 
-    int error = geom_gettree(&m_mesh);
-    if (error)
-        return result;
+    auto devs = geomScan(includeLoopback);
+    for (auto* d : devs)
+        result << static_cast<Device*>(d);
 
-    gclass *c;
-    ggeom *g;
-    LIST_FOREACH(c, &m_mesh.lg_class, lg_class) {
-        if (!strcmp(c->lg_name, "DISK")) {
-            m_diskClass = c;
-            LIST_FOREACH(g, &c->lg_geom, lg_geom) {
-                deviceNodes << QString::fromLocal8Bit(g->lg_name);
-            }
-        }
-        else if (includeLoopback && !strcmp(c->lg_name, "MD")) {
-            m_mdClass = c;
-            LIST_FOREACH(g, &c->lg_geom, lg_geom) {
-                deviceNodes << QString::fromLocal8Bit(g->lg_name);
-            }
-        }
-        else if (!strcmp(c->lg_name, "PART"))
-            m_partClass = c;
-    }
-
-    int totalDevices = deviceNodes.length();
-    for (int i = 0; i < totalDevices; ++i) {
-        const QString deviceNode = deviceNodes[i];
-
-        emitScanProgress(deviceNode, i * 100 / totalDevices);
-        Device* device = scanDevice(deviceNode);
-        if (device != nullptr) {
-            result.append(device);
-        }
-    }
-
-    geom_deletetree(&m_mesh);
     return result;
 }
 
 Device* GeomBackend::scanDevice(const QString &deviceNode)
 {
-    if (!m_partClass)
+    auto devs = geomScan(true, deviceNode);
+    if (devs.isEmpty())
         return nullptr;
 
-    ggeom *g;
-    gprovider *p;
-    DiskDevice *d = nullptr;
-
-    const std::string nodeStr = deviceNode.toStdString();
-
-    bool isMemoryDisk = deviceNode.startsWith(QStringLiteral("md"));
-    gclass *c = m_diskClass;
-    if (isMemoryDisk)
-        c = m_mdClass;
-
-    LIST_FOREACH(g, &c->lg_geom, lg_geom) {
-        LIST_FOREACH(p, &g->lg_provider, lg_provider) {
-            if (!strcmp(nodeStr.c_str(), p->lg_name)) {
-                qint64 firstSector, lastSector;
-                qint64 deviceSize = p->lg_mediasize;
-                int logicalSectorSize = p->lg_sectorsize;
-
-                QString name;
-
-                gconfig *gc;
-                LIST_FOREACH(gc, &p->lg_config, lg_config) {
-                    QString val = QString::fromLocal8Bit(gc->lg_val);
-                    if (!strcmp(gc->lg_name, "start")) {
-                        firstSector = val.toULongLong();
-                    }
-                    else if (!strcmp(gc->lg_name, "last")) {
-                        lastSector = val.toULongLong();
-                    }
-                    else if (!strcmp(gc->lg_name, "descr")) {
-                        name = val;
-                    }
-                }
-
-                if (name.isEmpty())
-                    name = QString::fromLocal8Bit(p->lg_name);
-
-                QString icon;
-                // TODO: Icon selection
-                if (isMemoryDisk)
-                    icon = QStringLiteral("memory");
-                else icon = QStringLiteral("drive-harddisk");
-                d = new DiskDevice(name, QStringLiteral("/dev/") + deviceNode, logicalSectorSize, deviceSize / logicalSectorSize, icon);
-
-
-                setPartitionTableForDevice(*d, new PartitionTable(PartitionTable::TableType::none, firstSector, lastSector));
-            }
-        }
-    }
-
-    c = m_partClass;
-    LIST_FOREACH(g, &c->lg_geom, lg_geom) {
-        if (!strcmp(nodeStr.c_str(), g->lg_name)) {
-            gconfig *gc;
-            LIST_FOREACH(gc, &g->lg_config, lg_config) {
-                QString val = QString::fromLocal8Bit(gc->lg_val);
-                if (!strcmp(gc->lg_name, "scheme")) {
-                    PartitionTable::TableType type = PartitionTable::TableType::none;
-                    if (val == QStringLiteral("MBR")) type = PartitionTable::msdos;
-                    else if (val == QStringLiteral("GPT")) type = PartitionTable::gpt;
-                    if (d)
-                        d->partitionTable()->setType(*d, type);
-                }
-                else if (!strcmp(gc->lg_name, "entries")) {
-                    CoreBackend::setPartitionTableMaxPrimaries(*d->partitionTable(), val.toULongLong());
-                }
-            }
-            LIST_FOREACH(p, &g->lg_provider, lg_provider) {
-                if (d) {
-                    QString partitionNode = QStringLiteral("/dev/") + QString::fromLocal8Bit(p->lg_name);
-                    scanPartition(*d, partitionNode, p);
-                }
-            }
-        }
-    }
-
-    if (d)
-        d->partitionTable()->updateUnallocated(*d);
-
-    return d;
-}
-
-void GeomBackend::scanPartition(Device& d, const QString& partitionNode, gprovider *p)
-{
-    qint64 firstSector, lastSector;
-    QString partitionType, partitionUUID, partitionLabel;
-    QString mountPoint;
-    bool mounted = false;
-
-    gconfig *gc;
-    LIST_FOREACH(gc, &p->lg_config, lg_config) {
-        QString val = QString::fromLocal8Bit(gc->lg_val);
-        if (!strcmp(gc->lg_name, "start")) {
-            firstSector = val.toULongLong();
-        }
-        else if (!strcmp(gc->lg_name, "end")) {
-            lastSector = val.toULongLong();
-        }
-        else if (!strcmp(gc->lg_name, "type")) {
-            partitionType = val;
-        }
-        else if (!strcmp(gc->lg_name, "rawuuid")) {
-            partitionUUID = val;
-        }
-        else if (!strcmp(gc->lg_name, "label")) {
-            partitionLabel = val;
-        }
-    }
-
-    FileSystem::Type type = detectFileSystem(partitionNode);
-    // FIXME: This fallbacks to swap detection
-    if (partitionType == QStringLiteral("freebsd-swap")) type = FileSystem::Type::Unknown;
-
-    PartitionTable::Flags activeFlags = PartitionTable::Flag::None;
-
-    PartitionRole::Roles r = PartitionRole::Primary;
-
-    if (type == FileSystem::Type::Unknown) {
-        if (partitionType == QStringLiteral("ebr")) {
-            r = PartitionRole::Extended;
-            type = FileSystem::Type::Extended;
-            //Device *d = scanDevice(partitionNode);
-            //parent = d->partitionTable();
-        }
-        // FIXME: This isn't right but it works!
-        else if (partitionType == QStringLiteral("freebsd-swap")) {
-            type = FileSystem::Type::FreeBSDSwap;
-            QFileInfo kernelPath(partitionNode);
-            ExternalCommand cmd(QStringLiteral("swapctl"), {QStringLiteral("-l")});
-            if (cmd.run(-1) && cmd.exitCode() == 0) {
-                QByteArray data = cmd.rawOutput();
-
-                QTextStream in(&data);
-                while (!in.atEnd()) {
-                    QStringList line = in.readLine().split(QRegularExpression(QStringLiteral("\\s+")));
-                    if (line[0] == kernelPath.canonicalFilePath()) {
-                        mounted = true;
-                        break;
-                    }
-                }
-            }
-        }
-        else if (partitionType == QStringLiteral("linux-swap")) {
-            type = FileSystem::Type::LinuxSwap;
-        }
-        else if (partitionType == QStringLiteral("freebsd-zfs")) {
-            type = FileSystem::Type::Zfs;
-        }
-        else if (partitionType == QStringLiteral("apple-apfs")) {
-            type = FileSystem::Type::Apfs;
-        }
-    }
-
-    PartitionNode* parent = d.partitionTable()->findPartitionBySector(firstSector, PartitionRole(PartitionRole::Extended));
-
-    if (parent == nullptr)
-        parent = d.partitionTable();
-    else
-        r = PartitionRole::Logical;
-
-    FileSystem* fs = FileSystemFactory::create(type, firstSector, lastSector, d.logicalSize());
-    fs->scan(partitionNode);
-
-    mountPoint = FileSystem::detectMountPoint(fs, partitionNode);
-    if (!mounted)
-        mounted = FileSystem::detectMountStatus(fs, partitionNode);
-
-    Partition* partition = new Partition(parent, d, PartitionRole(r), fs, firstSector, lastSector, partitionNode, availableFlags(d.partitionTable()->type()), mountPoint, mounted, activeFlags);
-
-    if (!partitionLabel.isEmpty())
-        partition->setLabel(partitionLabel);
-
-    if (!partitionType.isEmpty())
-        partition->setType(partitionType);
-
-    if (!partitionUUID.isEmpty())
-        partition->setUUID(partitionUUID);
-
-    if (fs->supportGetLabel() != FileSystem::cmdSupportNone)
-        fs->setLabel(fs->readLabel(partition->deviceNode()));
-
-    if (fs->supportGetUUID() != FileSystem::cmdSupportNone)
-        fs->setUUID(fs->readUUID(partition->deviceNode()));
-
-    parent->append(partition);
+    return static_cast<Device*>(*devs.begin());
 }
 
 FileSystem::Type GeomBackend::fileSystemNameToType(const QString &name)
@@ -311,54 +370,70 @@ FileSystem::Type GeomBackend::detectFileSystem(const QString& deviceNode)
         type = fileSystemNameToType(fsType);
     }
 
-    //if (type == FileSystem::Type::Unknown) {
-    //    qWarning() << "unknown file system type on " << deviceNode;
-    //}
     return type;
 }
 
 QString GeomBackend::readLabel(const QString& deviceNode) const
 {
-    const std::string nodeStr = deviceNode.split(QStringLiteral("/dev/"))[1].toStdString();
+    gmesh geomMesh;
+    if (::geom_gettree(&geomMesh))
+        return {};
 
-    ggeom *g;
-    gprovider *p;
-    LIST_FOREACH(g, &m_partClass->lg_geom, lg_geom) {
-        LIST_FOREACH(p, &g->lg_provider, lg_provider) {
-            if (!strcmp(nodeStr.c_str(), p->lg_name)) {
-                gconfig *gc;
-                LIST_FOREACH(gc, &p->lg_config, lg_config) {
-                    if (!strcmp(gc->lg_name, "label")) {
-                        return QString::fromLocal8Bit(gc->lg_val);
-                    }
-                }
-            }
+    auto deviceFileName = deviceNode;
+    deviceFileName.remove(QLatin1String("/dev/"));
+    QString ret;
+
+    forEachGeom(&geomMesh, "LABEL", [&deviceFileName, &ret](auto* geom) {
+        QString geomName = QString::fromLocal8Bit(geom->lg_name);
+        if (deviceFileName != geomName)
+            return true;
+
+        gprovider *geomProvider;
+        LIST_FOREACH(geomProvider, &geom->lg_provider, lg_provider) {
+            ret = QString::fromLocal8Bit(geomProvider->lg_name);
+            return false;
         }
-    }
 
-    return QString();
+        return true;
+    });
+
+    ::geom_deletetree(&geomMesh);
+
+    return ret;
 }
 
 QString GeomBackend::readUUID(const QString& deviceNode) const
 {
-    const std::string nodeStr = deviceNode.split(QStringLiteral("/dev/"))[1].toStdString();
+    gmesh geomMesh;
+    if (::geom_gettree(&geomMesh))
+        return {};
 
-    ggeom *g;
-    gprovider *p;
-    LIST_FOREACH(g, &m_partClass->lg_geom, lg_geom) {
-        LIST_FOREACH(p, &g->lg_provider, lg_provider) {
-            if (!strcmp(nodeStr.c_str(), p->lg_name)) {
-                gconfig *gc;
-                LIST_FOREACH(gc, &p->lg_config, lg_config) {
-                    if (!strcmp(gc->lg_name, "rawuuid")) {
-                        return QString::fromLocal8Bit(gc->lg_val);
-                    }
+    auto deviceFileName = deviceNode;
+    deviceFileName.remove(QLatin1String("/dev/"));
+    QString ret;
+
+    forEachGeom(&geomMesh, "PART", [&deviceFileName, &ret](auto* geom) {
+        QString geomName = QString::fromLocal8Bit(geom->lg_name);
+        if (deviceFileName != geomName)
+            return true;
+
+        gprovider *geomProvider;
+        gconfig *geomConfig;
+        LIST_FOREACH(geomProvider, &geom->lg_provider, lg_provider) {
+            LIST_FOREACH(geomConfig, &geomProvider->lg_config, lg_config) {
+                if (::strcmp(geomConfig->lg_name, "rawuuid") == 0) {
+                    ret = QString::fromLocal8Bit(geomConfig->lg_val);
+                    return false;
                 }
             }
         }
-    }
 
-    return QString();
+        return true;
+    });
+
+    ::geom_deletetree(&geomMesh);
+
+    return {};
 }
 
 PartitionTable::Flags GeomBackend::availableFlags(PartitionTable::TableType type)
@@ -370,7 +445,7 @@ PartitionTable::Flags GeomBackend::availableFlags(PartitionTable::TableType type
         flags = PartitionTable::Flag::BiosGrub |
                 PartitionTable::Flag::Boot;
     }
-    else if (type == PartitionTable::msdos || type == PartitionTable::msdos_sectorbased)
+    else if (type == PartitionTable::msdos)
         flags = PartitionTable::Flag::Boot;
 
     return flags;
