@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2024-05-30 07:49+0200\n"
+"PO-Revision-Date: 2025-02-12 07:01+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -229,7 +229,7 @@ msgstr "logika"
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "extended"
-msgstr "etendita"
+msgstr "etendata"
 
 #: core/partitionrole.cpp:26
 #, kde-kuit-format
@@ -2140,7 +2140,7 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
-"Malsukcesis aldoni diskpartigon <filename>%1</filename> al aparato <filename>"
+"Malsukcesis aldoni subdiskon <filename>%1</filename> al aparato <filename>"
 "%2</filename>."
 
 #: jobs/createpartitionjob.cpp:74
@@ -2329,7 +2329,7 @@ msgstr "%1: %2"
 #, kde-kuit-format
 msgctxt "@info:progress job"
 msgid "Pending"
-msgstr "Traktota"
+msgstr "Okazonta"
 
 #: jobs/job.cpp:135
 #, kde-kuit-format
