@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-11 00:42+0000\n"
-"PO-Revision-Date: 2025-02-17 19:39+0300\n"
+"PO-Revision-Date: 2025-03-04 12:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -149,14 +149,14 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Changing flags again for the same partition: Removing old operation."
 msgstr ""
-"Aynı bölüntü için bayraklar tekrar değiştiriliyor: Eski işlem kaldırılıyor."
+"Aynı bölüntü için bayraklar yeniden değiştiriliyor: Eski işlem kaldırılıyor."
 
 #: core/operationstack.cpp:349
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing label again for the same partition: Removing old operation."
 msgstr ""
-"Aynı bölüntü için etiketler tekrar değiştiriliyor: Eski işlem kaldırılıyor."
+"Aynı bölüntü için etiketler yeniden değiştiriliyor: Eski işlem kaldırılıyor."
 
 #: core/operationstack.cpp:375
 #, kde-kuit-format
@@ -497,8 +497,8 @@ msgid ""
 "transfers data to a special reserved area (spare area)."
 msgstr ""
 "Yeniden ayrılan dilim sayısı. Sabit disk bir okuma/yazma/doğrulama hatası "
-"bulduğunda bu dilimi &quot;yeniden ayrılan&quot olarak işaretler ve veriyi "
-"özel ayrılmış bir alana aktarır (yedek alana)."
+"bulduğunda bu dilimi “yeniden ayrılan” olarak işaretler ve veriyi özel "
+"ayrılmış bir alana aktarır (yedek alana)."
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -581,7 +581,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Recalibration Retries"
-msgstr "Yeniden Denemelerin Tekrar Ayarlanması"
+msgstr "Yeniden Kalibrasyon Yeniden Denemeleri"
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -591,7 +591,7 @@ msgid ""
 "increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
-"İlk deneme başarısız olduğunda tekrarlanan yeniden düzenlemelerin sayısı. Bu "
+"İlk deneme başarısız olduğunda yinelenen yeniden kalibrasyonların sayısı. Bu "
 "özniteliğin artması sabit disk mekanik alt sisteminde hatalar olduğunun "
 "işareti olabilir."
 
@@ -959,8 +959,7 @@ msgid ""
 "Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
 "read errors)."
 msgstr ""
-"&quot;kararsız&quot; dilim sayısı (okuma hatası nedeniyle tekrar eşleme "
-"bekleyen)."
+"“kararsız” dilim sayısı (okuma hatası nedeniyle yeniden eşleme bekleyen)."
 
 #: core/smartattribute.cpp:142
 #, kde-format
@@ -1183,7 +1182,7 @@ msgstr "Veri yükü altında harcanan işletme zamanı."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Retry Count"
-msgstr "Yükleme/Kaldırma Tekrar Sayısı"
+msgstr "Yükleme/Kaldırma Yeniden Deneme Sayısı"
 
 #: core/smartattribute.cpp:159
 #, kde-format
@@ -1271,8 +1270,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
-msgstr ""
-"&quot;darbe&quot genişliği; (tekrarlı ileri/geri kafa hareketinin mesafesi)"
+msgstr "“darbe” genişliği; (yinelemeli ileri/geri kafa hareketinin uzaklığı)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
@@ -1390,7 +1388,7 @@ msgstr "NAND üzerine 1 GBlık artarak yazma sayısı"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Retry Rate"
-msgstr "Okuma Hatası Tekrar Oranı"
+msgstr "Okuma Hatası Yeniden Deneme Oranı"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1408,7 +1406,7 @@ msgstr "Serbest Düşme Koruması"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
-msgstr "Algılanan &quot;Serbest Düşme Olayları&quot; sayısı"
+msgstr "Algılanan “Serbest Düşme Olayları” sayısı"
 
 #: core/smartstatus.cpp:78
 #, kde-kuit-format
