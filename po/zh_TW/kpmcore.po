@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:43+0000\n"
+"POT-Creation-Date: 2025-03-12 00:44+0000\n"
 "PO-Revision-Date: 2024-02-11 22:51+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -1537,227 +1537,245 @@ msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "設定分割區 <filename>%1</filename> 的標籤為 %2"
 
-#: fs/filesystem.cpp:505
+#: fs/filesystem.cpp:506
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "未知"
 
-#: fs/filesystem.cpp:506
+#: fs/filesystem.cpp:507
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "延伸"
 
-#: fs/filesystem.cpp:508
+#: fs/filesystem.cpp:509
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "ext2"
 
-#: fs/filesystem.cpp:509
+#: fs/filesystem.cpp:510
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:510
+#: fs/filesystem.cpp:511
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:511
+#: fs/filesystem.cpp:512
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linuxswap"
 msgstr "linux 交換分割區"
 
-#: fs/filesystem.cpp:512
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "freebsdswap"
+msgstr ""
+
+#: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat16"
 msgstr "fat16"
 
-#: fs/filesystem.cpp:513
+#: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat32"
 msgstr "fat32"
 
-#: fs/filesystem.cpp:514
+#: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ntfs"
 msgstr "ntfs"
 
-#: fs/filesystem.cpp:515
+#: fs/filesystem.cpp:517
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser"
 msgstr "reiser"
 
-#: fs/filesystem.cpp:516
+#: fs/filesystem.cpp:518
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser4"
 msgstr "reiser4"
 
-#: fs/filesystem.cpp:517
+#: fs/filesystem.cpp:519
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "xfs"
 msgstr "xfs"
 
-#: fs/filesystem.cpp:518
+#: fs/filesystem.cpp:520
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "jfs"
 msgstr "jfs"
 
-#: fs/filesystem.cpp:519
+#: fs/filesystem.cpp:521
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfs"
 msgstr "hfs"
 
-#: fs/filesystem.cpp:520
+#: fs/filesystem.cpp:522
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfsplus"
 msgstr "hfsplus"
 
-#: fs/filesystem.cpp:521
+#: fs/filesystem.cpp:523
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ufs"
 msgstr "ufs"
 
-#: fs/filesystem.cpp:522
+#: fs/filesystem.cpp:524
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "未格式化"
 
-#: fs/filesystem.cpp:523
+#: fs/filesystem.cpp:525
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "btrfs"
 msgstr "btrfs"
 
-#: fs/filesystem.cpp:524
+#: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hpfs"
 msgstr "hpfs"
 
-#: fs/filesystem.cpp:525
+#: fs/filesystem.cpp:527
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks"
 msgstr "luks"
 
-#: fs/filesystem.cpp:526
+#: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ocfs2"
 msgstr "ocfs2"
 
-#: fs/filesystem.cpp:527
+#: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "zfs"
 msgstr "zfs"
 
-#: fs/filesystem.cpp:528
+#: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exfat"
 msgstr "exfat"
 
-#: fs/filesystem.cpp:529
+#: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "nilfs2"
 msgstr "nilfs2"
 
-#: fs/filesystem.cpp:530
+#: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "lvm2 pv"
 msgstr "lvm2 pv"
 
-#: fs/filesystem.cpp:531
+#: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
 msgstr "f2fs"
 
-#: fs/filesystem.cpp:532
+#: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "udf"
 msgstr "udf"
 
-#: fs/filesystem.cpp:533
+#: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
 msgstr "iso9660"
 
-#: fs/filesystem.cpp:534
+#: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks2"
 msgstr "luks2"
 
-#: fs/filesystem.cpp:535
+#: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat12"
 msgstr "fat12"
 
-#: fs/filesystem.cpp:536
+#: fs/filesystem.cpp:538
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr ""
 
-#: fs/filesystem.cpp:537
+#: fs/filesystem.cpp:539
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr "BitLocker"
 
-#: fs/filesystem.cpp:538
+#: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
 msgstr "apfs"
 
-#: fs/filesystem.cpp:539
+#: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
 msgstr "minix"
 
-#: fs/filesystem.cpp:540
+#: fs/filesystem.cpp:542
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr ""
 
-#: fs/filesystem.cpp:583 fs/luks.cpp:161
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "掛載"
 
-#: fs/filesystem.cpp:589 fs/luks.cpp:166
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
 msgstr "卸載"
+
+#: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "啟動交換分割區"
+
+#: fs/freebsdswap.cpp:82 fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "停止交換分割區"
 
 #: fs/jfs.cpp:155
 #, kde-kuit-format
@@ -1798,18 +1816,6 @@ msgid ""
 msgstr ""
 "調整位於 <filename>%1</filename> 上的 JFS 檔案系統的大小時失敗：初始掛載失"
 "敗。"
-
-#: fs/linuxswap.cpp:127
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Activate swap"
-msgstr "啟動交換分割區"
-
-#: fs/linuxswap.cpp:132
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Deactivate swap"
-msgstr "停止交換分割區"
 
 #: fs/luks.cpp:171
 #, kde-kuit-format
@@ -2174,7 +2180,8 @@ msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
 msgstr "刪除 <filename>%1</filename> 上的檔案系統"
 
-#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#: jobs/deletepartitionjob.cpp:61 plugins/geom/geompartitiontable.cpp:128
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:100
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
@@ -3042,6 +3049,24 @@ msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "設定分割區 <filename>%1</filename> 的標籤為 %2"
 
+#: plugins/geom/geompartitiontable.cpp:91
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr "新分割區 <filename>%1</filename> 有未知的分割區角色（%2）"
+
+#: plugins/geom/geompartitiontable.cpp:109
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"無法在裝置 <filename>%2</filename> 上新增分割區 <filename>%1</filename>"
+
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3053,22 +3078,6 @@ msgstr "找到軟體 RAID 裝置：%1"
 msgctxt "@info:status"
 msgid "Device found: %1"
 msgstr "找到裝置：%1"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
-#, kde-kuit-format
-msgctxt "@info:progress"
-msgid ""
-"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
-msgstr "新分割區 <filename>%1</filename> 有未知的分割區角色（%2）"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
-#, kde-kuit-format
-msgctxt "@info:progress"
-msgid ""
-"Failed to add partition <filename>%1</filename> to device <filename>%2</"
-"filename>."
-msgstr ""
-"無法在裝置 <filename>%2</filename> 上新增分割區 <filename>%1</filename>"
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:114
 #, kde-kuit-format

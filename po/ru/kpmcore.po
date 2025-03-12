@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:43+0000\n"
+"POT-Creation-Date: 2025-03-12 00:44+0000\n"
 "PO-Revision-Date: 2024-12-06 11:15+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -1631,227 +1631,245 @@ msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "Установка метки раздела <filename>%1</filename> на «%2»"
 
-#: fs/filesystem.cpp:505
+#: fs/filesystem.cpp:506
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "неизвестно"
 
-#: fs/filesystem.cpp:506
+#: fs/filesystem.cpp:507
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "расширенный"
 
-#: fs/filesystem.cpp:508
+#: fs/filesystem.cpp:509
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "ext2"
 
-#: fs/filesystem.cpp:509
+#: fs/filesystem.cpp:510
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:510
+#: fs/filesystem.cpp:511
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:511
+#: fs/filesystem.cpp:512
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linuxswap"
 msgstr "Область подкачки Linux"
 
-#: fs/filesystem.cpp:512
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "freebsdswap"
+msgstr ""
+
+#: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat16"
 msgstr "FAT16"
 
-#: fs/filesystem.cpp:513
+#: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat32"
 msgstr "FAT32"
 
-#: fs/filesystem.cpp:514
+#: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ntfs"
 msgstr "NTFS"
 
-#: fs/filesystem.cpp:515
+#: fs/filesystem.cpp:517
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser"
 msgstr "Reiser FS"
 
-#: fs/filesystem.cpp:516
+#: fs/filesystem.cpp:518
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser4"
 msgstr "Reiser4"
 
-#: fs/filesystem.cpp:517
+#: fs/filesystem.cpp:519
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "xfs"
 msgstr "XFS"
 
-#: fs/filesystem.cpp:518
+#: fs/filesystem.cpp:520
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "jfs"
 msgstr "JFS"
 
-#: fs/filesystem.cpp:519
+#: fs/filesystem.cpp:521
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfs"
 msgstr "HFS"
 
-#: fs/filesystem.cpp:520
+#: fs/filesystem.cpp:522
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfsplus"
 msgstr "HFS Plus"
 
-#: fs/filesystem.cpp:521
+#: fs/filesystem.cpp:523
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ufs"
 msgstr "UFS"
 
-#: fs/filesystem.cpp:522
+#: fs/filesystem.cpp:524
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "неформатированный"
 
-#: fs/filesystem.cpp:523
+#: fs/filesystem.cpp:525
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "btrfs"
 msgstr "Btrfs"
 
-#: fs/filesystem.cpp:524
+#: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hpfs"
 msgstr "HPFS"
 
-#: fs/filesystem.cpp:525
+#: fs/filesystem.cpp:527
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks"
 msgstr "LUKS"
 
-#: fs/filesystem.cpp:526
+#: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ocfs2"
 msgstr "OCFS2"
 
-#: fs/filesystem.cpp:527
+#: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "zfs"
 msgstr "ZFS"
 
-#: fs/filesystem.cpp:528
+#: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exfat"
 msgstr "exFAT"
 
-#: fs/filesystem.cpp:529
+#: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "nilfs2"
 msgstr "NILFS2"
 
-#: fs/filesystem.cpp:530
+#: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "lvm2 pv"
 msgstr "Физический том LVM2"
 
-#: fs/filesystem.cpp:531
+#: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
 msgstr "F2FS"
 
-#: fs/filesystem.cpp:532
+#: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "udf"
 msgstr "UDF"
 
-#: fs/filesystem.cpp:533
+#: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
 msgstr "ISO 9660"
 
-#: fs/filesystem.cpp:534
+#: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks2"
 msgstr "LUKS2"
 
-#: fs/filesystem.cpp:535
+#: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat12"
 msgstr "FAT12"
 
-#: fs/filesystem.cpp:536
+#: fs/filesystem.cpp:538
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr "linux_raid_member"
 
-#: fs/filesystem.cpp:537
+#: fs/filesystem.cpp:539
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr "BitLocker"
 
-#: fs/filesystem.cpp:538
+#: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
 msgstr "APFS"
 
-#: fs/filesystem.cpp:539
+#: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
 msgstr "MINIX"
 
-#: fs/filesystem.cpp:540
+#: fs/filesystem.cpp:542
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr "bcachefs"
 
-#: fs/filesystem.cpp:583 fs/luks.cpp:161
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Подключить"
 
-#: fs/filesystem.cpp:589 fs/luks.cpp:166
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
 msgstr "Отключить"
+
+#: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Активировать файл подкачки"
+
+#: fs/freebsdswap.cpp:82 fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Деактивировать файл подкачки"
 
 #: fs/jfs.cpp:155
 #, kde-kuit-format
@@ -1892,18 +1910,6 @@ msgid ""
 msgstr ""
 "Ошибка изменения размера файловой системы JFS на разделе <filename>%1</"
 "filename>: первоначальное подключение не удалось."
-
-#: fs/linuxswap.cpp:127
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Activate swap"
-msgstr "Активировать файл подкачки"
-
-#: fs/linuxswap.cpp:132
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Deactivate swap"
-msgstr "Деактивировать файл подкачки"
 
 #: fs/luks.cpp:171
 #, kde-kuit-format
@@ -2294,7 +2300,8 @@ msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
 msgstr "Удаление файловой системы на <filename>%1</filename>"
 
-#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#: jobs/deletepartitionjob.cpp:61 plugins/geom/geompartitiontable.cpp:128
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:100
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
@@ -3249,6 +3256,26 @@ msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Установить метку раздела <filename>%1</filename> в «%2»"
 
+#: plugins/geom/geompartitiontable.cpp:91
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr ""
+"Неизвестен тип раздела для нового раздела <filename>%1</filename> (типы: %2)"
+
+#: plugins/geom/geompartitiontable.cpp:109
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Ошибка добавления раздела <filename>%1</filename> на устройстве <filename>"
+"%2</filename>."
+
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3260,24 +3287,6 @@ msgstr "Найдено программное устройство RAID: %1"
 msgctxt "@info:status"
 msgid "Device found: %1"
 msgstr "Найдено устройство: %1"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
-#, kde-kuit-format
-msgctxt "@info:progress"
-msgid ""
-"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
-msgstr ""
-"Неизвестен тип раздела для нового раздела <filename>%1</filename> (типы: %2)"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
-#, kde-kuit-format
-msgctxt "@info:progress"
-msgid ""
-"Failed to add partition <filename>%1</filename> to device <filename>%2</"
-"filename>."
-msgstr ""
-"Ошибка добавления раздела <filename>%1</filename> на устройстве <filename>"
-"%2</filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:114
 #, kde-kuit-format

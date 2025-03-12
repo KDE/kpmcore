@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:43+0000\n"
+"POT-Creation-Date: 2025-03-12 00:44+0000\n"
 "PO-Revision-Date: 2014-03-12 23:25+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1643,7 +1643,7 @@ msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr ""
 "Beteker för Partitschoon <filename>%1</filename> warrt op \"%2\" fastsett."
 
-#: fs/filesystem.cpp:505
+#: fs/filesystem.cpp:506
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain partition table name"
 #| msgid "unknown"
@@ -1651,7 +1651,7 @@ msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "nich begäng"
 
-#: fs/filesystem.cpp:506
+#: fs/filesystem.cpp:507
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition role"
 #| msgid "extended"
@@ -1659,7 +1659,7 @@ msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "verwiedert"
 
-#: fs/filesystem.cpp:508
+#: fs/filesystem.cpp:509
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext2"
@@ -1667,7 +1667,7 @@ msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "Ext2"
 
-#: fs/filesystem.cpp:509
+#: fs/filesystem.cpp:510
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext3"
@@ -1675,7 +1675,7 @@ msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "Ext3"
 
-#: fs/filesystem.cpp:510
+#: fs/filesystem.cpp:511
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext4"
@@ -1683,7 +1683,7 @@ msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "Ext4"
 
-#: fs/filesystem.cpp:511
+#: fs/filesystem.cpp:512
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "linuxswap"
@@ -1691,7 +1691,13 @@ msgctxt "@item filesystem name"
 msgid "linuxswap"
 msgstr "Linux-Swap"
 
-#: fs/filesystem.cpp:512
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "freebsdswap"
+msgstr ""
+
+#: fs/filesystem.cpp:514
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat16"
@@ -1699,7 +1705,7 @@ msgctxt "@item filesystem name"
 msgid "fat16"
 msgstr "FAT16"
 
-#: fs/filesystem.cpp:513
+#: fs/filesystem.cpp:515
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat32"
@@ -1707,7 +1713,7 @@ msgctxt "@item filesystem name"
 msgid "fat32"
 msgstr "FAT32"
 
-#: fs/filesystem.cpp:514
+#: fs/filesystem.cpp:516
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ntfs"
@@ -1715,7 +1721,7 @@ msgctxt "@item filesystem name"
 msgid "ntfs"
 msgstr "NTFS"
 
-#: fs/filesystem.cpp:515
+#: fs/filesystem.cpp:517
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "reiser"
@@ -1723,7 +1729,7 @@ msgctxt "@item filesystem name"
 msgid "reiser"
 msgstr "Reiser"
 
-#: fs/filesystem.cpp:516
+#: fs/filesystem.cpp:518
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "reiser4"
@@ -1731,7 +1737,7 @@ msgctxt "@item filesystem name"
 msgid "reiser4"
 msgstr "Reiser4"
 
-#: fs/filesystem.cpp:517
+#: fs/filesystem.cpp:519
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "xfs"
@@ -1739,14 +1745,14 @@ msgctxt "@item filesystem name"
 msgid "xfs"
 msgstr "XFS"
 
-#: fs/filesystem.cpp:518
+#: fs/filesystem.cpp:520
 #, fuzzy, kde-kuit-format
 #| msgid "jfs"
 msgctxt "@item filesystem name"
 msgid "jfs"
 msgstr "JFS"
 
-#: fs/filesystem.cpp:519
+#: fs/filesystem.cpp:521
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "hfs"
@@ -1754,7 +1760,7 @@ msgctxt "@item filesystem name"
 msgid "hfs"
 msgstr "HFS"
 
-#: fs/filesystem.cpp:520
+#: fs/filesystem.cpp:522
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "hfsplus"
@@ -1762,7 +1768,7 @@ msgctxt "@item filesystem name"
 msgid "hfsplus"
 msgstr "HFSPlus"
 
-#: fs/filesystem.cpp:521
+#: fs/filesystem.cpp:523
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ufs"
@@ -1770,7 +1776,7 @@ msgctxt "@item filesystem name"
 msgid "ufs"
 msgstr "UFS"
 
-#: fs/filesystem.cpp:522
+#: fs/filesystem.cpp:524
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "unformatted"
@@ -1778,7 +1784,7 @@ msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "nich formateert"
 
-#: fs/filesystem.cpp:523
+#: fs/filesystem.cpp:525
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "btrfs"
@@ -1786,7 +1792,7 @@ msgctxt "@item filesystem name"
 msgid "btrfs"
 msgstr "BTRFS"
 
-#: fs/filesystem.cpp:524
+#: fs/filesystem.cpp:526
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "hpfs"
@@ -1794,7 +1800,7 @@ msgctxt "@item filesystem name"
 msgid "hpfs"
 msgstr "HPFS"
 
-#: fs/filesystem.cpp:525
+#: fs/filesystem.cpp:527
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "luks"
@@ -1802,7 +1808,7 @@ msgctxt "@item filesystem name"
 msgid "luks"
 msgstr "LUKS"
 
-#: fs/filesystem.cpp:526
+#: fs/filesystem.cpp:528
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ocfs2"
@@ -1810,7 +1816,7 @@ msgctxt "@item filesystem name"
 msgid "ocfs2"
 msgstr "OCFS2"
 
-#: fs/filesystem.cpp:527
+#: fs/filesystem.cpp:529
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "zfs"
@@ -1818,32 +1824,32 @@ msgctxt "@item filesystem name"
 msgid "zfs"
 msgstr "ZFS"
 
-#: fs/filesystem.cpp:528
+#: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exfat"
 msgstr ""
 
-#: fs/filesystem.cpp:529
+#: fs/filesystem.cpp:531
 #, fuzzy, kde-kuit-format
 #| msgid "ocfs2:"
 msgctxt "@item filesystem name"
 msgid "nilfs2"
 msgstr "OCFS2:"
 
-#: fs/filesystem.cpp:530
+#: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "lvm2 pv"
 msgstr ""
 
-#: fs/filesystem.cpp:531
+#: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
 msgstr ""
 
-#: fs/filesystem.cpp:532
+#: fs/filesystem.cpp:534
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ufs"
@@ -1851,13 +1857,13 @@ msgctxt "@item filesystem name"
 msgid "udf"
 msgstr "UFS"
 
-#: fs/filesystem.cpp:533
+#: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
 msgstr ""
 
-#: fs/filesystem.cpp:534
+#: fs/filesystem.cpp:536
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "luks"
@@ -1865,7 +1871,7 @@ msgctxt "@item filesystem name"
 msgid "luks2"
 msgstr "LUKS"
 
-#: fs/filesystem.cpp:535
+#: fs/filesystem.cpp:537
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "fat16"
@@ -1873,47 +1879,59 @@ msgctxt "@item filesystem name"
 msgid "fat12"
 msgstr "FAT16"
 
-#: fs/filesystem.cpp:536
+#: fs/filesystem.cpp:538
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr ""
 
-#: fs/filesystem.cpp:537
+#: fs/filesystem.cpp:539
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr ""
 
-#: fs/filesystem.cpp:538
+#: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
 msgstr ""
 
-#: fs/filesystem.cpp:539
+#: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
 msgstr ""
 
-#: fs/filesystem.cpp:540
+#: fs/filesystem.cpp:542
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr ""
 
-#: fs/filesystem.cpp:583 fs/luks.cpp:161
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Inhangen"
 
-#: fs/filesystem.cpp:589 fs/luks.cpp:166
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
 msgstr "Afhangen"
+
+#: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "Utlagerpartitschoon anmaken"
+
+#: fs/freebsdswap.cpp:82 fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "Utlagerpartitschoon utmaken"
 
 #: fs/jfs.cpp:155
 #, fuzzy, kde-kuit-format
@@ -1970,18 +1988,6 @@ msgid ""
 msgstr ""
 "Ännern vun de Grött vun't JFS-Dateisysteem op Partitschoon <filename>%1</"
 "filename> fehlslaan. Eerst Inhangen fehlslaan."
-
-#: fs/linuxswap.cpp:127
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Activate swap"
-msgstr "Utlagerpartitschoon anmaken"
-
-#: fs/linuxswap.cpp:132
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Deactivate swap"
-msgstr "Utlagerpartitschoon utmaken"
 
 #: fs/luks.cpp:171
 #, kde-kuit-format
@@ -2507,7 +2513,8 @@ msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
 msgstr "Dateisysteem op <filename>%1</filename> wegdoon"
 
-#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#: jobs/deletepartitionjob.cpp:61 plugins/geom/geompartitiontable.cpp:128
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:100
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not delete partition <filename>%1</filename>."
@@ -3767,6 +3774,35 @@ msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Beteker för Partitschoon <filename>%1</filename> op \"%2\" setten"
 
+#: plugins/geom/geompartitiontable.cpp:91
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Unknown partition role for new partition <filename>%1</filename> (roles: "
+#| "%2)"
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr ""
+"Nich begäng Partitschoontyp för nieg Partitschoon <filename>%1</filename> "
+"(Typen: %2)"
+
+#: plugins/geom/geompartitiontable.cpp:109
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Failed to add partition <filename>%1</filename> to device <filename>%2</"
+#| "filename>."
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"Partitschoon <filename>%1</filename> lett sik de Reedschap <filename>%2</"
+"filename> nich tofögen."
+
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -3782,33 +3818,6 @@ msgstr "Reedschap funnen: %1"
 msgctxt "@info:status"
 msgid "Device found: %1"
 msgstr "Reedschap funnen: %1"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Unknown partition role for new partition <filename>%1</filename> (roles: "
-#| "%2)"
-msgctxt "@info:progress"
-msgid ""
-"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
-msgstr ""
-"Nich begäng Partitschoontyp för nieg Partitschoon <filename>%1</filename> "
-"(Typen: %2)"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Failed to add partition <filename>%1</filename> to device <filename>%2</"
-#| "filename>."
-msgctxt "@info:progress"
-msgid ""
-"Failed to add partition <filename>%1</filename> to device <filename>%2</"
-"filename>."
-msgstr ""
-"Partitschoon <filename>%1</filename> lett sik de Reedschap <filename>%2</"
-"filename> nich tofögen."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:114
 #, fuzzy, kde-kuit-format

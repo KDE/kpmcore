@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-01-31 00:43+0000\n"
+"POT-Creation-Date: 2025-03-12 00:44+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -1566,227 +1566,245 @@ msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए लेबल को %2 पर सेट करना"
 
-#: fs/filesystem.cpp:505
+#: fs/filesystem.cpp:506
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "अज्ञात"
 
-#: fs/filesystem.cpp:506
+#: fs/filesystem.cpp:507
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "विस्तारित"
 
-#: fs/filesystem.cpp:508
+#: fs/filesystem.cpp:509
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "एक्सटी2"
 
-#: fs/filesystem.cpp:509
+#: fs/filesystem.cpp:510
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:510
+#: fs/filesystem.cpp:511
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:511
+#: fs/filesystem.cpp:512
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linuxswap"
 msgstr "लिनक्सस्वैप"
 
-#: fs/filesystem.cpp:512
+#: fs/filesystem.cpp:513
+#, kde-kuit-format
+msgctxt "@item filesystem name"
+msgid "freebsdswap"
+msgstr ""
+
+#: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat16"
 msgstr "मोटा16"
 
-#: fs/filesystem.cpp:513
+#: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat32"
 msgstr "वसा32"
 
-#: fs/filesystem.cpp:514
+#: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ntfs"
 msgstr "एनटीएफएस"
 
-#: fs/filesystem.cpp:515
+#: fs/filesystem.cpp:517
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser"
 msgstr "ट्रेवल्स"
 
-#: fs/filesystem.cpp:516
+#: fs/filesystem.cpp:518
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "reiser4"
 msgstr "यात्रा4"
 
-#: fs/filesystem.cpp:517
+#: fs/filesystem.cpp:519
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "xfs"
 msgstr "xfs"
 
-#: fs/filesystem.cpp:518
+#: fs/filesystem.cpp:520
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "jfs"
 msgstr "जेएफएस"
 
-#: fs/filesystem.cpp:519
+#: fs/filesystem.cpp:521
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfs"
 msgstr "एचएफएस"
 
-#: fs/filesystem.cpp:520
+#: fs/filesystem.cpp:522
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hfsplus"
 msgstr "एचएफएसप्लस"
 
-#: fs/filesystem.cpp:521
+#: fs/filesystem.cpp:523
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ufs"
 msgstr "यूएफएस"
 
-#: fs/filesystem.cpp:522
+#: fs/filesystem.cpp:524
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "अस्वरूपित"
 
-#: fs/filesystem.cpp:523
+#: fs/filesystem.cpp:525
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "btrfs"
 msgstr "btrfs"
 
-#: fs/filesystem.cpp:524
+#: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "hpfs"
 msgstr "एचपीएफएस"
 
-#: fs/filesystem.cpp:525
+#: fs/filesystem.cpp:527
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks"
 msgstr "विलासिता"
 
-#: fs/filesystem.cpp:526
+#: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ocfs2"
 msgstr "ओसीएफएस2"
 
-#: fs/filesystem.cpp:527
+#: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "zfs"
 msgstr "ज़ेडएफएस"
 
-#: fs/filesystem.cpp:528
+#: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exfat"
 msgstr "exfat"
 
-#: fs/filesystem.cpp:529
+#: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "nilfs2"
 msgstr "निल्फ़्स2"
 
-#: fs/filesystem.cpp:530
+#: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "lvm2 pv"
 msgstr "एलवीएम2 पी.वी"
 
-#: fs/filesystem.cpp:531
+#: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "f2fs"
 msgstr "f2fs"
 
-#: fs/filesystem.cpp:532
+#: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "udf"
 msgstr "यूडीएफ"
 
-#: fs/filesystem.cpp:533
+#: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "iso9660"
 msgstr "आईएसओ9660"
 
-#: fs/filesystem.cpp:534
+#: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "luks2"
 msgstr "विलासिता2"
 
-#: fs/filesystem.cpp:535
+#: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "fat12"
 msgstr "वसा12"
 
-#: fs/filesystem.cpp:536
+#: fs/filesystem.cpp:538
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr "linux_raid_सदस्य"
 
-#: fs/filesystem.cpp:537
+#: fs/filesystem.cpp:539
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr "BitLocker"
 
-#: fs/filesystem.cpp:538
+#: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
 msgstr "ए.पी.एफ.एस"
 
-#: fs/filesystem.cpp:539
+#: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
 msgstr "मिनिक्स"
 
-#: fs/filesystem.cpp:540
+#: fs/filesystem.cpp:542
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr "bcachefs"
 
-#: fs/filesystem.cpp:583 fs/luks.cpp:161
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "पर्वत"
 
-#: fs/filesystem.cpp:589 fs/luks.cpp:166
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
 msgstr "अनमाउंट"
+
+#: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Activate swap"
+msgstr "स्वैप सक्रिय करें"
+
+#: fs/freebsdswap.cpp:82 fs/linuxswap.cpp:132
+#, kde-kuit-format
+msgctxt "@title:menu"
+msgid "Deactivate swap"
+msgstr "स्वैप निष्क्रिय करें"
 
 #: fs/jfs.cpp:155
 #, kde-kuit-format
@@ -1827,18 +1845,6 @@ msgid ""
 msgstr ""
 "विभाजन <filename>%1</filename> पर JFS फ़ाइल सिस्टम का आकार बदलने में विफल: "
 "प्रारंभिक माउंट विफल."
-
-#: fs/linuxswap.cpp:127
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Activate swap"
-msgstr "स्वैप सक्रिय करें"
-
-#: fs/linuxswap.cpp:132
-#, kde-kuit-format
-msgctxt "@title:menu"
-msgid "Deactivate swap"
-msgstr "स्वैप निष्क्रिय करें"
 
 #: fs/luks.cpp:171
 #, kde-kuit-format
@@ -2222,7 +2228,8 @@ msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
 msgstr "<filename>%1</filename> पर फ़ाइल सिस्टम हटाएँ"
 
-#: jobs/deletepartitionjob.cpp:61 plugins/sfdisk/sfdiskpartitiontable.cpp:100
+#: jobs/deletepartitionjob.cpp:61 plugins/geom/geompartitiontable.cpp:128
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:100
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
@@ -3134,6 +3141,25 @@ msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए लेबल को \"%2\" पर सेट करें"
 
+#: plugins/geom/geompartitiontable.cpp:91
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
+msgstr "नये विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए अज्ञात विभाजन भूमिका (भूमिकाएँ: %2)"
+
+#: plugins/geom/geompartitiontable.cpp:109
+#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Failed to add partition <filename>%1</filename> to device <filename>%2</"
+"filename>."
+msgstr ""
+"विभाजन <filename>%1</filename> को डिवाइस <filename>%2</filename> में जोड़ने में "
+"विफल."
+
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3145,23 +3171,6 @@ msgstr "सॉफ़्टवेयर RAID डिवाइस मिला: %1"
 msgctxt "@info:status"
 msgid "Device found: %1"
 msgstr "डिवाइस मिला: %1"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:65
-#, kde-kuit-format
-msgctxt "@info:progress"
-msgid ""
-"Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
-msgstr "नये विभाजन <फ़ाइलनाम>%1</फ़ाइलनाम> के लिए अज्ञात विभाजन भूमिका (भूमिकाएँ: %2)"
-
-#: plugins/sfdisk/sfdiskpartitiontable.cpp:89
-#, kde-kuit-format
-msgctxt "@info:progress"
-msgid ""
-"Failed to add partition <filename>%1</filename> to device <filename>%2</"
-"filename>."
-msgstr ""
-"विभाजन <filename>%1</filename> को डिवाइस <filename>%2</filename> में जोड़ने में "
-"विफल."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:114
 #, kde-kuit-format
