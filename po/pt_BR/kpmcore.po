@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:43+0000\n"
-"PO-Revision-Date: 2025-02-13 00:02-0300\n"
+"PO-Revision-Date: 2025-03-12 22:05-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -451,7 +451,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Throughput Performance"
-msgstr "Performance da transferência"
+msgstr "Desempenho da transferência"
 
 #: core/smartattribute.cpp:102
 #, kde-format
@@ -461,7 +461,7 @@ msgid ""
 "of this attribute is decreasing there is a high probability that there is a "
 "problem with the disk."
 msgstr ""
-"A performance geral e global de um disco rígido. Se o valor deste atributo "
+"O desempenho geral e global de um disco rígido. Se o valor deste atributo "
 "estiver diminuindo, provavelmente existirá um problema com o disco."
 
 #: core/smartattribute.cpp:103
@@ -1136,14 +1136,14 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Offline Seek Performance"
-msgstr "Performance de posicionamento desligado"
+msgstr "Desempenho de posicionamento desligado"
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive's seek performance during its internal tests."
 msgstr ""
-"A performance de posicionamento do disco, durante os seus testes internos."
+"O desempenho de posicionamento do disco, durante os seus testes internos."
 
 #: core/smartattribute.cpp:154
 #, kde-format
