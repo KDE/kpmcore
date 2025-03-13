@@ -4,6 +4,17 @@
         "Id": "pmgeombackendplugin",
         "License": "GPL",
         "Name": "KDE Partition Manager geom Backend",
+        "Name[ca@valencia]": "Dorsal de geometria del gestor de particions de KDE",
+        "Name[ca]": "Dorsal de geometria del gestor de particions del KDE",
+        "Name[es]": "Motor geom para el gestor de particiones de KDE",
+        "Name[he]": "מנגנון geom למנהל המחיצות של KDE",
+        "Name[ia]": "KDE Partition Manager (gerente de partition de KDE) RetroAdministration geom (Dummy Backend)",
+        "Name[ka]": "KDE-ის დანაყოფების მმართველის geom-ის უკანაბოლო",
+        "Name[nl]": "Geom-backend van KDE-partitiebeheerder",
+        "Name[sl]": "KDE Partition Manager geom zaledni program",
+        "Name[tr]": "KDE Bölüntü Yöneticisi geom Arka Ucu",
+        "Name[uk]": "Додаток geom сервера Керування розділами KDE",
+        "Name[x-test]": "xxKDE Partition Manager geom Backendxx",
         "Version": "1"
     }
 }
