@@ -1573,7 +1573,7 @@ msgstr "linuxswap"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "freebsdswap"
-msgstr ""
+msgstr "freebsdswap"
 
 #: fs/filesystem.cpp:514
 #, kde-kuit-format
