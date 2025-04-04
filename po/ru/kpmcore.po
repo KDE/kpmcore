@@ -4,14 +4,14 @@
 # Artem Sereda <overmind88@gmail.com>, 2008, 2009, 2010, 2011.
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2011, 2016, 2017, 2019.
 # Yuri Efremov <yur.arh@gmail.com>, 2010, 2013.
-# SPDX-FileCopyrightText: 2022, 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 # Alexander Yavorsky <kekcuha@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-12 00:44+0000\n"
-"PO-Revision-Date: 2024-12-06 11:15+0300\n"
+"PO-Revision-Date: 2025-04-03 10:52+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -3249,12 +3249,10 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Установить флаги для раздела <filename>%1</filename> на «%2»"
 
 #: ops/setpartlabeloperation.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
-msgstr "Установить метку раздела <filename>%1</filename> в «%2»"
+msgstr "Установить метку раздела GPT <filename>%1</filename> в значение «%2»"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
