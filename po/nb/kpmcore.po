@@ -2971,10 +2971,6 @@ msgstr ""
 
 #: ops/setpartlabeloperation.cpp:59
 #, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Failed to add partition <filename>%1</filename> to device <filename>%2</"
-#| "filename>."
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr ""
