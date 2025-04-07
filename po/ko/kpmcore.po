@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:43+0000\n"
-"PO-Revision-Date: 2024-08-19 23:55+0200\n"
+"PO-Revision-Date: 2025-04-06 23:24+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -3102,12 +3102,10 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "파티션 <filename>%1</filename>의 플래그를 \"%2\"(으)로 설정"
 
 #: ops/setpartlabeloperation.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
-msgstr "파티션 <filename>%1</filename>의 레이블을 \"%2\"(으)로 설정"
+msgstr "<filename>%1</filename>의 GPT 파티션 레이블을 \"%2\"(으)로 설정"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
 #, kde-kuit-format
