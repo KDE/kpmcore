@@ -515,6 +515,8 @@ bool SfdiskBackend::updateDevicePartitionTable(Device &d, const QJsonObject &jso
 */
 void SfdiskBackend::readSectorsUsed(const Device& d, Partition& p, const QString& mountPoint)
 {
+    if (p.isFileSystemNullptr())
+        return;
     if (!mountPoint.isEmpty() && p.fileSystem().type() != FileSystem::Type::LinuxSwap && p.fileSystem().type() != FileSystem::Type::Lvm2_PV) {
         const QStorageInfo storage = QStorageInfo(mountPoint);
         if (p.isMounted() && storage.isValid())
