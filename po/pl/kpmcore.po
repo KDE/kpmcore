@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-31 00:43+0000\n"
-"PO-Revision-Date: 2025-02-01 12:53+0100\n"
+"PO-Revision-Date: 2025-04-26 11:44+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -2449,7 +2449,7 @@ msgstr[2] ""
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
-msgstr "Zmiana rozmiaru systemu plików z %1 do %2 sektorów."
+msgstr "Zmiana rozmiaru systemu plików z %1 na %2 sektorów."
 
 #: jobs/resizefilesystemjob.cpp:76
 #, kde-kuit-format
@@ -2511,10 +2511,14 @@ msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
 msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
 msgstr[0] ""
-"Zmiana rozmiaru systemu plików na partycji <filename>%2</filename> do 1 "
-"sektora"
-msgstr[1] "Zmiana rozmiaru systemu plików z %1 do %2 sektorów."
-msgstr[2] "Zmiana rozmiaru systemu plików z %1 do %2 sektorów."
+"Zmiana rozmiaru systemu plików na partycji <filename>%2</filename> na 1 "
+"sektor"
+msgstr[1] ""
+"Zmiana rozmiaru systemu plików na partycji <filename>%2</filename> na %1 "
+"sektory"
+msgstr[2] ""
+"Zmiana rozmiaru systemu plików na partycji <filename>%2</filename> na %1 "
+"sektorów"
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
