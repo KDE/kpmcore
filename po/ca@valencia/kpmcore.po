@@ -56,7 +56,7 @@ msgid ""
 "Deleting a partition just created: Undoing the operation to create the "
 "partition."
 msgstr ""
-"Suprimix una partició acabada de crear: desfera l'operació de crear una "
+"Suprimix una partició acabada de crear: desfés l'operació de crear una "
 "partició."
 
 #: core/operationstack.cpp:119
