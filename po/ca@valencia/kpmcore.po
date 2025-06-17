@@ -778,7 +778,7 @@ msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
 msgstr ""
 "SSD Comptador total de les fallades del programa o Comptador de l'accés "
-"alineat no 4K"
+"alineat no 4 K"
 
 #: core/smartattribute.cpp:127
 #, kde-format
