@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-12 00:44+0000\n"
-"PO-Revision-Date: 2025-03-13 22:44+0300\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"PO-Revision-Date: 2025-06-21 00:48+0300\n"
+"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -66,8 +66,8 @@ msgid ""
 "Resizing a partition just created: Updating start and end in existing "
 "operation."
 msgstr ""
-"Henüz oluşturulmuş bir bölüntü boyutlandırılıyor: Başlangıcı ve sonu mevcut "
-"işlemde güncelliyor."
+"Henüz oluşturulmuş bir bölüntü boyutlandırılıyor: Var olan işlemde başlangıç "
+"ve bitiş güncelleniyor."
 
 #: core/operationstack.cpp:139
 #, kde-kuit-format
@@ -81,15 +81,16 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing label for a new partition: No new operation required."
-msgstr "Yeni bir bölüntünün etiketi değiştiriliyor: Başka işlem gerekmiyor."
+msgstr ""
+"Yeni bir bölüntünün etiketi değiştiriliyor: Gereken başka bir işlem yok."
 
 #: core/operationstack.cpp:169
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing file system for a new partition: No new operation required."
 msgstr ""
-"Yeni bölüntü için dosya sisteminin değiştiriliyor: Başka işlem yapmak "
-"gerekmiyor."
+"Yeni bölüntü için dosya sisteminin değiştiriliyor: Gereken başka bir işlem "
+"yok."
 
 #: core/operationstack.cpp:186
 #, kde-kuit-format
@@ -98,8 +99,8 @@ msgid ""
 "Checking file systems is automatically done when creating them: No new "
 "operation required."
 msgstr ""
-"Dosya sistemleri oluşturulduğunda otomatik olarak denetleniyor: Başka işlem "
-"yapmak gerekmiyor."
+"Dosya sistemleri oluşturulduğunda kendiliğinden denetlenir: Gereken başka "
+"bir işlem yok."
 
 #: core/operationstack.cpp:233
 #, kde-kuit-format
@@ -114,8 +115,8 @@ msgid ""
 "Deleting a partition just copied over an existing partition: Removing the "
 "copy and deleting the existing partition."
 msgstr ""
-"Mevcut bir bölüntünün üzerine henüz kopyalanmış bir bölüntü siliniyor: Kopya "
-"kaldırılıyor ve var olan bölüntü siliniyor."
+"Var olan bir bölüntünün üzerine henüz kopyalanmış bir bölüntü siliniyor: "
+"Kopya kaldırılıyor ve var olan bölüntü siliniyor."
 
 #: core/operationstack.cpp:251
 #, kde-kuit-format
@@ -141,8 +142,8 @@ msgid ""
 "Deleting a partition just restored to an existing partition: Removing the "
 "restore operation and deleting the existing partition."
 msgstr ""
-"Mevcut bölüntüden henüz geri yüklenmiş bir bölüntü siliniyor. Geri yükleme "
-"işlemi kaldırılıyor ve mevcut bölüntü siliniyor."
+"Var olan bölüntüden henüz geri yüklenmiş bir bölüntü siliniyor. Geri yükleme "
+"işlemi kaldırılıyor ve var olan bölüntü siliniyor."
 
 #: core/operationstack.cpp:318
 #, kde-kuit-format
@@ -163,7 +164,7 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Creating new partition table, discarding previous operation on device."
 msgstr ""
-"Yeni bir disk bölüntü tablosu oluşturuluyor, önceki işlemler iptal ediliyor."
+"Aygıttaki önceki işlem atılarak yeni bir disk bölüntü tablosu oluşturuluyor."
 
 #: core/operationstack.cpp:395
 #, kde-kuit-format
@@ -199,7 +200,7 @@ msgstr "Geri Yüklenmiş Bölüntü"
 #, kde-kuit-format
 msgctxt "@item partition name"
 msgid "Copy of %1"
-msgstr "%1 ögesinin kopyası"
+msgstr "%1 bölüntüsünün kopyası"
 
 #: core/partitionalignment.cpp:62
 #, kde-kuit-format
@@ -261,7 +262,7 @@ msgstr "LVM mantıksal disk bölümü"
 #, kde-kuit-format
 msgctxt "@item partition role"
 msgid "none"
-msgstr "hiçbiri"
+msgstr "yok"
 
 #: core/partitiontable.cpp:180
 #, kde-kuit-format
@@ -393,13 +394,13 @@ msgstr " [RAID %1 — Yeniden Eşzamanlanıyor]"
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "failing"
-msgstr "başarısız oluyor"
+msgstr "bozulmak üzere"
 
 #: core/smartattribute.cpp:48
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "has failed"
-msgstr "başarısız oldu"
+msgstr "bozuldu"
 
 #: core/smartattribute.cpp:51
 #, kde-kuit-format
@@ -417,7 +418,7 @@ msgstr "iyi"
 #, kde-kuit-format
 msgctxt "@item:intable not applicable"
 msgid "N/A"
-msgstr "Yok"
+msgstr "yok"
 
 #: core/smartattribute.cpp:72
 #, kde-kuit-format
@@ -454,7 +455,7 @@ msgid ""
 "problem with the disk."
 msgstr ""
 "Sabit disk sürücüsünün toplam (genel) çıktı başarımı. Eğer bu niteliğin "
-"değeri düşüyorsa, diskte bir sorun olma ihtimali yüksektir."
+"değeri düşüyorsa diskte bir sorun olma olasılığı yüksektir."
 
 #: core/smartattribute.cpp:103
 #, kde-format
@@ -575,7 +576,7 @@ msgid ""
 "mechanical subsystem."
 msgstr ""
 "İlk deneme başarısız olduğunda dönme yeniden deneme sayısı. Bu öznitelik "
-"artıyorsa mekanik alt sistemlerde bir problem var demektir."
+"artıyorsa mekanik alt sistemlerde bir sorun var demektir."
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -599,13 +600,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Cycle Count"
-msgstr "Güç Döngü Sayısı"
+msgstr "Güç Döngüsü Sayısı"
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr "Sabit disk güç açma/kapatma döngü sayısı."
+msgstr "Sabit diskin güç açma/kapatma döngüsünün sayısı."
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
@@ -623,7 +624,7 @@ msgstr "İşletim sistemi tarafından bildirilen düzeltilemeyen okuma hataları
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr "Ayrılmıs kullanılabilir SSD alanı"
+msgstr "Ayrılmıs Kullanılabilir SSD Alanı"
 
 #: core/smartattribute.cpp:114
 #, kde-format
@@ -635,26 +636,27 @@ msgstr "Kullanılabilir ayrılmış blokların toplam ayrılmış bloklara oran�
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count"
-msgstr "SSD uygulama hata sayısı"
+msgstr "SSD Programı Hata Sayısı"
 
 #: core/smartattribute.cpp:115 core/smartattribute.cpp:125
 #, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "Number of flash program operation failures since the drive was deployed."
-msgstr "Sürücü açıldıgından beri hata alan flaş program operasyonun sayısı"
+msgstr "Sürücü açıldıgından beri hata alan flaş program operasyonun sayısı."
 
 #: core/smartattribute.cpp:116 core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count"
-msgstr "SSD silme hata sayısı"
+msgstr "SSD Silme Hatası Sayısı"
 
 #: core/smartattribute.cpp:116
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
-msgstr "Numaralı ani silme işlemi, sürücü yapılandırılırken başarısız oldu."
+msgstr ""
+"Sürücü takıldığından bu yana oluşan flaş silme işlemi hatalarının sayısı."
 
 #: core/smartattribute.cpp:117
 #, kde-format
@@ -666,13 +668,13 @@ msgstr "SSD Aşınma Düzeyi Tespiti"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr "Herhangi bir blok üzerinde maksimum en kötü silme sayımını say"
+msgstr "Herhangi bir blok üzerindeki en yüksek en kötü silme sayımını sayar."
 
 #: core/smartattribute.cpp:118
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unexpected power loss count"
-msgstr "SSD beklenmeyen güç kaybı sayısı"
+msgstr "SSD Beklenmedik Güç Kaybı Sayısı"
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -690,7 +692,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Power Loss Protection Failure"
-msgstr "SSD güç kaybı koruması hatası"
+msgstr "SSD Güç Kaybı Koruması Hatası"
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -714,13 +716,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr "SSD silme hataları sayımı (chip)"
+msgstr "SSD Silme Hatası Sayısı (Yonga)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase command failures."
-msgstr "Anlık silme komutunun hatalarının sayısı"
+msgstr "Anlık silme komutunun hatalarının sayısı."
 
 #: core/smartattribute.cpp:121
 #, kde-format
@@ -733,14 +735,14 @@ msgstr "SSD Aşınma Düzeyi Farkı"
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
 msgstr ""
-"En çok yıpranmış flaş blokları ile en az yıplanmış flaş blockları arasındaki "
-"delta"
+"En çok yıpranmış flaş blokları ile en az yıplanmış flaş blokları arasındaki "
+"fark."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Used Reserved Block Count Total"
-msgstr "SSD Kullanılmış ayrılmış blokların tamamının toplamı"
+msgstr "SSD Kullanılmış Ayrılmış Blok Sayısı Toplamı"
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #: core/smartattribute.cpp:126
@@ -753,7 +755,7 @@ msgstr "Samsung “Hata Öncesi” özniteliği."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unused Reserved Block Count Total"
-msgstr "SSD kullanılmamış ayrılmış blokların tamamının toplamı"
+msgstr "SSD Kullanılmayan Ayrılmış Blok Sayısı Toplamı"
 
 #: core/smartattribute.cpp:124
 #, kde-format
@@ -765,9 +767,7 @@ msgstr "HP “Hata Öncesi” özniteliği."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
-msgstr ""
-"SSD programının toplam hata alma sayısı ya da 4K olmayan hizalanmış erişim "
-"sayısı"
+msgstr "SSD Program Hatası Toplamı veya 4K Olmayan Hizalın Erişim Sayısı"
 
 #: core/smartattribute.cpp:127
 #, kde-format
@@ -803,7 +803,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Stability"
-msgstr "Kafa Sağlamlığı"
+msgstr "Kafa Stabilliği"
 
 #: core/smartattribute.cpp:129 core/smartattribute.cpp:130
 #, kde-format
@@ -821,7 +821,7 @@ msgstr "Titreşim Kaynaklı Algılama"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reported Uncorrectable Errors"
-msgstr "Bildirilen Düzeltilemeyen Hatalar"
+msgstr "Bildirilmiş Düzeltilemeyen Hatalar"
 
 #: core/smartattribute.cpp:131
 #, kde-format
@@ -833,7 +833,7 @@ msgstr "Donanım ECC kullanarak düzeltilemeyen hataların sayısı."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Command Timeout"
-msgstr "Komut Zamanaşımı"
+msgstr "Komut Zaman Aşımı"
 
 #: core/smartattribute.cpp:132
 #, kde-format
@@ -879,7 +879,7 @@ msgstr "G-sense Hata Oranı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors resulting from externally-induced shock and vibration."
-msgstr "Harici şok ve titreşim kaynaklı hata sayısı."
+msgstr "Dışsal şok ve titreşim kaynaklı hata sayısı."
 
 #: core/smartattribute.cpp:136
 #, kde-format
@@ -891,13 +891,13 @@ msgstr "Kapanma Geri Çekilme Sayısı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of power-off or emergency retract cycles"
-msgstr "Kapanma veya acil geri çekme döngüsü sayısı"
+msgstr "Kapanma veya acil geri çekme döngüsü sayısı."
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Cycle Count"
-msgstr "Yükleme Döngü Sayısı"
+msgstr "Yükleme Döngüsü Sayısı"
 
 #: core/smartattribute.cpp:137
 #, kde-format
@@ -915,19 +915,19 @@ msgstr "Sıcaklık"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Current internal temperature."
-msgstr "Mevcut dahili sıcaklık."
+msgstr "Geçerli iç sıcaklık."
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Hardware ECC Recovered"
-msgstr "Kurtarılan Donanım ECC"
+msgstr "Kurtarılmış Donanım ECC’si"
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could be recovered using hardware ECC."
-msgstr "Donanım ECC kullanarak düzeltilebilen hataların sayısı."
+msgstr "Donanım ECC’si kullanarak düzeltilebilen hataların sayısı."
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -950,7 +950,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Current Pending Sector Count"
-msgstr "Mevcut Bekleyen Dilim Sayısı"
+msgstr "Şu Anda Bekleyen Dilim Sayısı"
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -959,7 +959,7 @@ msgid ""
 "Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
 "read errors)."
 msgstr ""
-"“kararsız” dilim sayısı (okuma hatası nedeniyle yeniden eşleme bekleyen)."
+"“Kararsız” dilim sayısı (okuma hatası nedeniyle yeniden eşleme bekleyen)."
 
 #: core/smartattribute.cpp:142
 #, kde-format
@@ -1012,13 +1012,13 @@ msgstr "İz dışı hata sayısı."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Data Address Mark Errors"
-msgstr "Veri Adresi İşaret Hataları"
+msgstr "Veri Adresi İm Hataları"
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of Data Address Mark errors (or vendor-specific)."
-msgstr "Veri Adresi İşaret hataları (veya satıcıya özgü) sayısı."
+msgstr "Veri Adresi İm hataları (veya satıcıya özgü) sayısı."
 
 #: core/smartattribute.cpp:147
 #, kde-format
@@ -1030,7 +1030,7 @@ msgstr "İptal Bitmesi"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of ECC errors"
-msgstr "ECC hataları sayısı"
+msgstr "ECC hataları sayısı."
 
 #: core/smartattribute.cpp:148
 #, kde-format
@@ -1042,7 +1042,7 @@ msgstr "Yazılım ECC Düzeltmesi"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors corrected by software ECC"
-msgstr "Yazılım ECC tarafından düzeltilmiş hata sayısı"
+msgstr "Yazılım ECC tarafından düzeltilmiş hata sayısı."
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -1090,7 +1090,7 @@ msgstr "Sürücü dönüşünü sağlamak için kullanılan yüksek akım miktar
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Buzz"
-msgstr "Dönme Buzz"
+msgstr "Dönme Buzz’ı"
 
 #: core/smartattribute.cpp:152
 #, kde-format
@@ -1099,7 +1099,7 @@ msgid ""
 "Number of buzz routines needed to spin up the drive due to insufficient "
 "power."
 msgstr ""
-"Yetersiz güç yüzünden sürücüyü döndürmeye gereken buzz yordamlarının sayısı."
+"Yetersiz güç yüzünden sürücüyü döndürmeye gereken Buzz yordamlarının sayısı."
 
 #: core/smartattribute.cpp:153
 #, kde-format
@@ -1123,7 +1123,7 @@ msgstr "Yazma Süresince Titreşim"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Vibration During Write"
-msgstr "Yazma Süresince Titreşim"
+msgstr "Yazılırken maruz kalınan titreşimler."
 
 #: core/smartattribute.cpp:155
 #, kde-format
@@ -1135,7 +1135,7 @@ msgstr "Yazma Süresince Şok"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Shock During Write"
-msgstr "Yazma Süresince Şok"
+msgstr "Yazılırken maruz kalınan şoklar."
 
 #: core/smartattribute.cpp:156
 #, kde-format
@@ -1164,7 +1164,7 @@ msgstr "G-sense Hata Oranı"
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr "Harici şok ve titreşimden kaynaklanan hataların sayısı."
+msgstr "Dışsal şok ve titreşimden kaynaklanan hataların sayısı."
 
 #: core/smartattribute.cpp:158
 #, kde-format
@@ -1255,8 +1255,7 @@ msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
 msgstr ""
-"Manyetik armatürün gücün kesilmesi sonucu otomatik olarak geri çekilme "
-"sayısı."
+"Manyetik armatürün gücün kesilmesi sonucu kendiliğinden geri çekilme sayısı."
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1270,13 +1269,14 @@ msgctxt "SMART attr description"
 msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
-msgstr "“darbe” genişliği; (yinelemeli ileri/geri kafa hareketinin uzaklığı)"
+msgstr ""
+"“Hırpalama” genişliği; (yinelemeli ileri/geri kafa hareketinin uzaklığı)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive Temperature"
-msgstr "Sürücü Sıcaklığı"
+msgstr "Sürücünün sıcaklığı"
 
 #: core/smartattribute.cpp:167
 #, kde-format
@@ -1291,8 +1291,8 @@ msgid ""
 "Count of physical erase cycles completed on the drive as a percentage of the "
 "maximum physical erase cycles the drive supports"
 msgstr ""
-"Sürücünün desteklediği azami silme döngüleri yüzdesi olarak tamamlanan "
-"fiziksel silme döngüsü sayısı"
+"Sürücünün desteklediği en yüksek silme döngüleri yüzdesi olarak tamamlanan "
+"fiziksel silme döngüsü sayısı."
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -1304,7 +1304,7 @@ msgstr "Güçte Zamanı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time elapsed in the power-on state"
-msgstr "Güç bağlandığı zamanlarda geçen zaman"
+msgstr "Güç bağlandığı zamanlarda geçen zaman."
 
 #: core/smartattribute.cpp:169
 #, kde-format
@@ -1330,7 +1330,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
-msgstr "Kullanılabilir ayrılmış blokların toplam ayrılmış bloklara oranı"
+msgstr "Kullanılabilir ayrılmış blokların toplam ayrılmış bloklara oranı."
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1829,13 +1829,13 @@ msgstr "Bağlantıyı Kes"
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Activate swap"
-msgstr "Takas alanını etkinleştir"
+msgstr "Takas Alanını Etkinleştir"
 
 #: fs/freebsdswap.cpp:82 fs/linuxswap.cpp:132
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Deactivate swap"
-msgstr "Takas alanını devre dışı bırak"
+msgstr "Takas Alanını Devre Dışı Bırak"
 
 #: fs/jfs.cpp:155
 #, kde-kuit-format
