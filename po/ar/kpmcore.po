@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-12 00:44+0000\n"
-"PO-Revision-Date: 2025-03-13 11:43+0400\n"
+"PO-Revision-Date: 2025-08-03 12:14+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -661,7 +661,7 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
-"عدد عمليات إيقاف التشغيل بدون STANDBY IMMEDIATE كآخر أمر (بغض النظر عن نشاط "
+"عدد عمليات إيقاف التشغيل دون STANDBY IMMEDIATE كآخر أمر (بغض النظر عن نشاط "
 "PLI باستخدام طاقة المكثف). القيمة الطبيعية هي دائمًا 100."
 
 #: core/smartattribute.cpp:119
@@ -877,7 +877,7 @@ msgstr "عدد دورات التحميل"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
-msgstr "عدد دورات التحميل/التفريغ في موضع منطقة الهبوط الرئيسية."
+msgstr "عدد دورات التحميل/التفريغ في موضع منطقة الهبوط الرئيسة."
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
