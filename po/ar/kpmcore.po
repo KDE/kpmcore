@@ -87,7 +87,7 @@ msgctxt "@info:status"
 msgid ""
 "Checking file systems is automatically done when creating them: No new "
 "operation required."
-msgstr "تغيير أنظمة ملفات تلقائيًّا عند إنشائها: لا حاجة إلى عملية جديدة."
+msgstr "تغيير أنظمة ملفات آليًّا عند إنشائها: لا حاجة إلى عملية جديدة."
 
 #: core/operationstack.cpp:233
 #, kde-kuit-format
@@ -1226,8 +1226,7 @@ msgctxt "SMART attr description"
 msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
-msgstr ""
-"عدد المرات التي تم فيها سحب المحرك المغناطيسي تلقائيًا نتيجة لقوة القطع."
+msgstr "عدد المرات التي تم فيها سحب المحرك المغناطيسي آليًّا نتيجة لقوة القطع."
 
 #: core/smartattribute.cpp:165
 #, kde-format
