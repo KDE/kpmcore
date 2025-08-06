@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-12 00:44+0000\n"
-"PO-Revision-Date: 2025-08-03 12:14+0400\n"
+"PO-Revision-Date: 2025-08-05 20:18+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -684,8 +684,8 @@ msgstr ""
 "نتيجة الاختبار الأخيرة، مشبعة عند أقصى قيمة لها. البايتات 0-1: نتيجة "
 "الاختبار الأخيرة بالميكروثانية لتفريغ المكثف في النطاق [25، 5000000]، يشير "
 "الأقل إلى رمز خطأ محدد. البايتات 2-3: الدقائق منذ الاختبار الأخير. البايتات "
-"4-5: عدد الاختبارات مدى الحياة. يتم ضبط القيمة الطبيعية على 1 في حالة فشل "
-"الاختبار أو 11 إذا تم اختبار المكثف في حالة درجة حرارة مفرطة، وإلا 100."
+"4-5: عدد الاختبارات مدى الحياة. تُضبط القيمة الطبيعية على 1 في حالة فشل "
+"الاختبار أو 11 إذا اخُتبر المكثف في حالة درجة حرارة مفرطة، وإلا 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
@@ -895,7 +895,7 @@ msgstr "درجة الحرارة الداخلية الحالية."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Hardware ECC Recovered"
-msgstr "تم استعادة ECC للأجهزة"
+msgstr "اسُتعيد ECC للأجهزة"
 
 #: core/smartattribute.cpp:139
 #, kde-format
@@ -961,7 +961,7 @@ msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
 msgstr ""
-"عدد الأخطاء في نقل البيانات عبر كابل الواجهة كما تم تحديده بواسطة ICRC (فحص "
+"عدد الأخطاء في نقل البيانات عبر كابل الواجهة المحددة بواسطة ICRC (فحص "
 "التكرار الدوري للواجهة)."
 
 #: core/smartattribute.cpp:144
@@ -1016,7 +1016,7 @@ msgstr "تصحيح ECC الناعم"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors corrected by software ECC"
-msgstr "عدد الأخطاء التي تم تصحيحها عن طريق برنامج ECC"
+msgstr "عدد الأخطاء المصححة عن طريق برنامج ECC"
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -1199,8 +1199,8 @@ msgid ""
 "Total time of loading on the magnetic heads actuator (time not spent in "
 "parking area)."
 msgstr ""
-"إجمالي وقت التحميل على محرك الرؤوس المغناطيسية (الوقت الذي لا يتم قضاؤه في "
-"منطقة الوقوف)."
+"إجمالي وقت التحميل على محرك الرؤوس المغناطيسية (الوقت الذي لا يقضى في منطقة "
+"الوقوف)."
 
 #: core/smartattribute.cpp:163
 #, kde-format
@@ -1226,7 +1226,7 @@ msgctxt "SMART attr description"
 msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
-msgstr "عدد المرات التي تم فيها سحب المحرك المغناطيسي آليًّا نتيجة لقوة القطع."
+msgstr "عدد المرات التي سُحب فيها المحرك المغناطيسي آليًّا نتيجة لقوة القطع."
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1315,8 +1315,8 @@ msgid ""
 "Time while head is positioning<br/>or counts the number of times the link is "
 "reset during a data transfer."
 msgstr ""
-"الوقت أثناء وضع الرأس<br/>أو يحسب عدد المرات التي يتم فيها إعادة تعيين "
-"الارتباط أثناء نقل البيانات."
+"الوقت أثناء وضع الرأس<br/>أو يحسب عدد المرات التي يُصفر الارتباط فيها أثناء "
+"نقل البيانات."
 
 #: core/smartattribute.cpp:172
 #, kde-format
@@ -1376,7 +1376,7 @@ msgstr "حماية من السقوط الحر"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
-msgstr "عدد &quot;أحداث السقوط الحر&quot; التي تم اكتشافها"
+msgstr "عدد &quot;أحداث السقوط الحر&quot; المكتشفة"
 
 #: core/smartstatus.cpp:78
 #, kde-kuit-format
@@ -2184,8 +2184,7 @@ msgctxt "@info:progress"
 msgid ""
 "Could not delete file system: file system on <filename>%1</filename> is "
 "mounted."
-msgstr ""
-"تعذر حذف نظام الملفات: تم تحميل نظام الملفات على <filename>%1</filename>."
+msgstr "تعذر حذف نظام الملفات: حُمل نظام الملفات على <filename>%1</filename>."
 
 #: jobs/deletefilesystemjob.cpp:76
 #, kde-kuit-format
