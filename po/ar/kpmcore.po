@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-12 00:44+0000\n"
-"PO-Revision-Date: 2025-08-05 20:18+0400\n"
+"PO-Revision-Date: 2025-08-13 21:27+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1262,7 +1262,7 @@ msgid ""
 "maximum physical erase cycles the drive supports"
 msgstr ""
 "عدد دورات المسح المادي المكتملة على محرك الأقراص كنسبة مئوية من الحد الأقصى "
-"لدورات المسح المادي التي يدعمها محرك الأقراص"
+"لدورات المسح المادي التي يوفرها محرك الأقراص"
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -2401,7 +2401,8 @@ msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
 msgstr ""
-"تعذّر تغيير حجم نظام الملفات في القسم <filename>%1</filename> لأن لا دعم لذلك."
+"تعذّر تغيير حجم نظام الملفات في القسم <filename>%1</filename> لأن ذلك غير "
+"متاح."
 
 #: jobs/resizefilesystemjob.cpp:119
 #, kde-kuit-format
@@ -2506,7 +2507,7 @@ msgid ""
 "File system on partition <filename>%1</filename> does not support setting "
 "labels. Job ignored."
 msgstr ""
-"لا يدعم نظام الملفات الموجود على القسم <filename>%1</filename> تعيين "
+"لا يتيح نظام الملفات الموجود على القسم <filename>%1</filename> تعيين "
 "العلامات. تُجاهلت المهمة."
 
 #: jobs/setfilesystemlabeljob.cpp:81
@@ -2594,7 +2595,7 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
-"لا يدعم جدول التقسيم الخاص بالقسم <filename>%1</filename> سمات الإعداد. "
+"لا يتيح جدول التقسيم الخاص بالقسم <filename>%1</filename> سمات الإعداد. "
 "تُجاهلت المهمة."
 
 #: jobs/setpartitionattributesjob.cpp:59
@@ -2636,7 +2637,7 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
-"لا يدعم جدول التقسيم الخاص بالقسم <filename>%1</filename> أسماء الإعدادات. "
+"لا يتيح جدول التقسيم الخاص بالقسم <filename>%1</filename> أسماء الإعدادات. "
 "تُجاهلت المهمة."
 
 #: jobs/setpartitionlabeljob.cpp:59
@@ -2678,7 +2679,7 @@ msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
-"لا يدعم جدول التقسيم الخاص بالقسم <filename>%1</filename> إعداد معرفات UUID. "
+"لا يتيح جدول التقسيم الخاص بالقسم <filename>%1</filename> إعداد معرفات UUID. "
 "تُجاهلت المهمة."
 
 #: jobs/setpartitionuuidjob.cpp:59
@@ -3411,7 +3412,7 @@ msgstr "شانتارا تيث"
 #, kde-format
 msgctxt "@info:credit"
 msgid "LVM support"
-msgstr "دعم LVM"
+msgstr "إتاحة العمل مع LVM"
 
 #: util/helpers.cpp:60
 #, kde-kuit-format
@@ -3423,7 +3424,7 @@ msgstr "بالي روهار"
 #, kde-format
 msgctxt "@info:credit"
 msgid "UDF support"
-msgstr "دعم UDF"
+msgstr "إتاحة العمل مع UDF"
 
 #: util/helpers.cpp:61
 #, kde-kuit-format
@@ -3447,7 +3448,7 @@ msgstr "كايو جورداو كارفالو"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Improved SMART support"
-msgstr "دعم SMART محسّن"
+msgstr "تحسين العمل مع SMART"
 
 #: util/helpers.cpp:63
 #, kde-kuit-format
