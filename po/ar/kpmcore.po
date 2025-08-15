@@ -2364,22 +2364,22 @@ msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
 msgstr[0] ""
-"نظام الملفات في القسم <filename>%2</filename> لديه بالفعل الطول المطلوب (لا "
+"نظام الملفات في القسم <filename>%2</filename> لديه فعلًا الطول المطلوب (لا "
 "قطاعات)."
 msgstr[1] ""
-"نظام الملفات في القسم <filename>%2</filename> لديه بالفعل الطول المطلوب "
-"(قطاع واحد)."
+"نظام الملفات في القسم <filename>%2</filename> لديه فعلًا الطول المطلوب (قطاع "
+"واحد)."
 msgstr[2] ""
-"نظام الملفات في القسم <filename>%2</filename> لديه بالفعل الطول المطلوب "
+"نظام الملفات في القسم <filename>%2</filename> لديه فعلًا الطول المطلوب "
 "(قطاعان)."
 msgstr[3] ""
-"نظام الملفات في القسم <filename>%2</filename> لديه بالفعل الطول المطلوب (%1 "
+"نظام الملفات في القسم <filename>%2</filename> لديه فعلًا الطول المطلوب (%1 "
 "قطاعات)."
 msgstr[4] ""
-"نظام الملفات في القسم <filename>%2</filename> لديه بالفعل الطول المطلوب (%1 "
+"نظام الملفات في القسم <filename>%2</filename> لديه فعلًا الطول المطلوب (%1 "
 "قطاعًا)."
 msgstr[5] ""
-"نظام الملفات في القسم <filename>%2</filename> لديه بالفعل الطول المطلوب (%1 "
+"نظام الملفات في القسم <filename>%2</filename> لديه فعلًا الطول المطلوب (%1 "
 "قطاع)."
 
 #: jobs/resizefilesystemjob.cpp:69
@@ -2838,7 +2838,7 @@ msgstr "أنشئ جدول تقسيم جديد (النوع: %1) في <filename>%2
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "قم بإنشاء مجموعة وحدة تخزين LVM جديدة باسم '%1'."
+msgstr "أنشئ مجموعة وحدة تخزين LVM جديدة باسم '%1'."
 
 #: ops/deactivatevolumegroupoperation.cpp:35
 #, kde-kuit-format
