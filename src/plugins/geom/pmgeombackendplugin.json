@@ -20,6 +20,7 @@
         "Name[ko]": "KDE 파티션 관리자 geom 백엔드",
         "Name[nl]": "Geom-backend van KDE-partitiebeheerder",
         "Name[pl]": "Silnik geom zarządzania partycjami",
+        "Name[pt_BR]": "Gerenciador de Partição do KDE com base no geom",
         "Name[ru]": "Механизм geom для диспетчера разделов KDE",
         "Name[sl]": "KDE Partition Manager geom zaledni program",
         "Name[sv]": "KDE:s partitionshanterare bakgrundsprogram för geometri",
