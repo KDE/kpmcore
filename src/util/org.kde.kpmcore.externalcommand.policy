@@ -38,6 +38,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
       <description xml:lang="tr">Ayrıcalıklı bölüntü yöneticisi yardımcısını çalıştır</description>
       <description xml:lang="uk">Запуск привілейованої допоміжної програми з керування розділами</description>
+      <description xml:lang="x_test">xxRun privileged partition manager helperxx</description>
       <description xml:lang="zh_CN">使用管理员权限运行分区管理器辅助程序</description>
       <description xml:lang="zh_TW">執行需要管理員權限的磁碟分割區管理員協助程式</description>
       <message>Authenticate to manage disks.</message>
@@ -71,6 +72,7 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="sv">Logga in för att hantera diskar.</message>
       <message xml:lang="tr">Diskleri yönetmek için yetkilendirin.</message>
       <message xml:lang="uk">Розпізнавання для керування дисками.</message>
+      <message xml:lang="x_test">xxAuthenticate to manage disks.xx</message>
       <message xml:lang="zh_CN">请进行身份验证以管理磁盘。</message>
       <message xml:lang="zh_TW">認證以管理磁碟。</message>
       <defaults>
