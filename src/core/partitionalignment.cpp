@@ -71,8 +71,12 @@ bool PartitionAlignment::isAligned(const Device& d, const Partition& p, qint64 n
 */
 qint64 PartitionAlignment::sectorAlignment(const Device& d)
 {
-    Q_UNUSED(d)
-    return s_sectorAlignment;
+    // Sector alignment just specifies number of sectors.
+    // However, people usually want to align to MiB boundary irrespectively of whether we have
+    // 512 or 4096 byte sectors.
+
+    unsigned alignmentFactor = d.logicalSize() / 512;
+    return s_sectorAlignment / alignmentFactor;
 }
 
 void PartitionAlignment::setSectorAlignment(int sectorAlignment)
