@@ -550,7 +550,7 @@ msgid ""
 msgstr ""
 "Taux d'erreurs de positionnement des têtes magnétiques. S'il y a une "
 "défaillance partielle dans le système de positionnement mécanique, alors des "
-"erreurs de positionnement apparaîtront."
+"erreurs de positionnement apparaitront."
 
 #: core/smartattribute.cpp:108
 #, kde-format
