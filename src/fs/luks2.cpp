@@ -108,8 +108,10 @@ bool luks2::resize(Report& report, const QString& deviceNode, qint64 newLength) 
     else if (m_innerFs->resize(report, mapperName(), newPayloadSize))
     {
         ExternalCommand cryptResizeCmd(report, QStringLiteral("cryptsetup"),
-                {  QStringLiteral("--size"), QString::number(newPayloadSize / 512), // FIXME, LUKS2 can have different sector sizes
-                   QStringLiteral("resize"), mapperName() });
+                {  QStringLiteral("resize"),
+                   QStringLiteral("--size"), QString::number(newPayloadSize / 512), // According to manpage size option always specified in number of 512 bloks.
+                   mapperName() });
+
         report.line() << xi18nc("@info:progress", "Resizing LUKS crypt on partition <filename>%1</filename>.", deviceNode);
         if (m_KeyLocation == KeyLocation::keyring) {
             if (m_passphrase.isEmpty())
