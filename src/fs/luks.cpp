@@ -120,6 +120,7 @@ bool luks::create(Report& report, const QString& deviceNode)
     ExternalCommand createCmd(report, QStringLiteral("cryptsetup"),
                               { QStringLiteral("-s"),
                                 QStringLiteral("512"),
+                                QStringLiteral("--sector-size"), QStringLiteral("4096"),
                                 QStringLiteral("--batch-mode"),
                                 QStringLiteral("--force-password"),
                                 QStringLiteral("--type"), QStringLiteral("luks1"),
