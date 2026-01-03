@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2026-01-03 00:46+0000\n"
 "PO-Revision-Date: 2025-03-13 07:23+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -1871,13 +1871,13 @@ msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr "bcachefs"
 
-#: fs/filesystem.cpp:585 fs/luks.cpp:161
+#: fs/filesystem.cpp:585 fs/luks.cpp:162
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Monter"
 
-#: fs/filesystem.cpp:591 fs/luks.cpp:166
+#: fs/filesystem.cpp:591 fs/luks.cpp:167
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1935,24 +1935,24 @@ msgstr ""
 "Le redimensionnement du système de fichiers JFS sur la partition <filename>"
 "%1</filename> a échoué : impossible d'effectuer le montage initial."
 
-#: fs/luks.cpp:171
+#: fs/luks.cpp:172
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "Déverrouiller"
 
-#: fs/luks.cpp:176
+#: fs/luks.cpp:177
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "Verrouiller"
 
-#: fs/luks.cpp:257
+#: fs/luks.cpp:258
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "Saisissez une phrase secrète pour %1 :"
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:95 fs/luks2.cpp:112
+#: fs/luks.cpp:501 fs/luks.cpp:512 fs/luks2.cpp:96 fs/luks2.cpp:115
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
@@ -1960,7 +1960,7 @@ msgstr ""
 "Redimensionnement du chiffrement LUKS sur la partition <filename>%1</"
 "filename>."
 
-#: fs/luks.cpp:514 fs/luks2.cpp:123
+#: fs/luks.cpp:516 fs/luks2.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

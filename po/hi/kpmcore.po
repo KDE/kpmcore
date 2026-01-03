@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2026-01-03 00:46+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -1782,13 +1782,13 @@ msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr "bcachefs"
 
-#: fs/filesystem.cpp:585 fs/luks.cpp:161
+#: fs/filesystem.cpp:585 fs/luks.cpp:162
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "पर्वत"
 
-#: fs/filesystem.cpp:591 fs/luks.cpp:166
+#: fs/filesystem.cpp:591 fs/luks.cpp:167
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1846,30 +1846,30 @@ msgstr ""
 "विभाजन <filename>%1</filename> पर JFS फ़ाइल सिस्टम का आकार बदलने में विफल: "
 "प्रारंभिक माउंट विफल."
 
-#: fs/luks.cpp:171
+#: fs/luks.cpp:172
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "अनलॉक"
 
-#: fs/luks.cpp:176
+#: fs/luks.cpp:177
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "ताला"
 
-#: fs/luks.cpp:257
+#: fs/luks.cpp:258
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "%1 के लिए पासफ़्रेज़ दर्ज करें:"
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:95 fs/luks2.cpp:112
+#: fs/luks.cpp:501 fs/luks.cpp:512 fs/luks2.cpp:96 fs/luks2.cpp:115
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "विभाजन <filename>%1</filename> पर LUKS क्रिप्ट का आकार बदलना।"
 
-#: fs/luks.cpp:514 fs/luks2.cpp:123
+#: fs/luks.cpp:516 fs/luks2.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

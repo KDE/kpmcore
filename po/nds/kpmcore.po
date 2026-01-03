@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2026-01-03 00:46+0000\n"
 "PO-Revision-Date: 2014-03-12 23:25+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1909,13 +1909,13 @@ msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr ""
 
-#: fs/filesystem.cpp:585 fs/luks.cpp:161
+#: fs/filesystem.cpp:585 fs/luks.cpp:162
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Inhangen"
 
-#: fs/filesystem.cpp:591 fs/luks.cpp:166
+#: fs/filesystem.cpp:591 fs/luks.cpp:167
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1989,24 +1989,24 @@ msgstr ""
 "Ännern vun de Grött vun't JFS-Dateisysteem op Partitschoon <filename>%1</"
 "filename> fehlslaan. Eerst Inhangen fehlslaan."
 
-#: fs/luks.cpp:171
+#: fs/luks.cpp:172
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr ""
 
-#: fs/luks.cpp:176
+#: fs/luks.cpp:177
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr ""
 
-#: fs/luks.cpp:257
+#: fs/luks.cpp:258
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr ""
 
-#: fs/luks.cpp:500 fs/luks.cpp:510 fs/luks2.cpp:95 fs/luks2.cpp:112
+#: fs/luks.cpp:501 fs/luks.cpp:512 fs/luks2.cpp:96 fs/luks2.cpp:115
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing/moving partition <filename>%1</filename> failed."
@@ -2015,7 +2015,7 @@ msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr ""
 "Grött ännern/Verschuven vun Partitschoon <filename>%1</filename> fehlslaan."
 
-#: fs/luks.cpp:514 fs/luks2.cpp:123
+#: fs/luks.cpp:516 fs/luks2.cpp:126
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
