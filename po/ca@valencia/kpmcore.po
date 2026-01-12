@@ -809,7 +809,7 @@ msgid ""
 msgstr ""
 "Part de la tecnologia SMART IV d'HP: Després de transferir a través de la "
 "memòria intermèdia de dades de la memòria cau de la RAM les dades de paritat "
-"entre la màquina i la unitat de disc no coincidixen."
+"entre l'amfitrió i la unitat de disc no coincidixen."
 
 #: core/smartattribute.cpp:129
 #, kde-format
@@ -1005,8 +1005,8 @@ msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
 msgstr ""
-"Nombre d'errors en la transferència de dades via la interfície del cable tal "
-"com determina la ICRC."
+"Nombre d'errors durant la transferència de dades via la interfície del cable "
+"tal com determina la ICRC."
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -1018,7 +1018,7 @@ msgstr "Freqüència d'errors multizona<br/>Freqüència d'errors d'escriptura"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "The total number of errors when writing a sector."
-msgstr "El nombre total d'errors en escriure un sector."
+msgstr "El nombre total d'errors mentre s'escrivia un sector."
 
 #: core/smartattribute.cpp:145
 #, kde-format
@@ -1427,7 +1427,7 @@ msgstr "Freqüència de reintents d'error de lectura"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors while reading from a disk"
-msgstr "Nombre d'errors en llegir des del disk"
+msgstr "Nombre d'errors mentre es llegia des del disk"
 
 #: core/smartattribute.cpp:176
 #, kde-format
