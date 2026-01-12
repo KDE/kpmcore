@@ -809,7 +809,7 @@ msgid ""
 msgstr ""
 "Part de la tecnologia SMART IV d'HP: Després de transferir a través de la "
 "memòria intermèdia de dades de la memòria cau de la RAM les dades de paritat "
-"entre la màquina i la unitat de disc no coincidixen."
+"entre l'amfitrió i la unitat de disc no coincidixen."
 
 #: core/smartattribute.cpp:129
 #, kde-format
@@ -1005,8 +1005,8 @@ msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
 msgstr ""
-"Nombre d'errors en la transferència de dades via la interfície del cable tal "
-"com determina la ICRC."
+"Nombre d'errors durant la transferència de dades via la interfície del cable "
+"tal com determina la ICRC."
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -1018,7 +1018,7 @@ msgstr "Freqüència d'errors multizona<br/>Freqüència d'errors d'escriptura"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "The total number of errors when writing a sector."
-msgstr "El nombre total d'errors en escriure un sector."
+msgstr "El nombre total d'errors mentre s'escrivia un sector."
 
 #: core/smartattribute.cpp:145
 #, kde-format
@@ -1427,7 +1427,7 @@ msgstr "Freqüència de reintents d'error de lectura"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors while reading from a disk"
-msgstr "Nombre d'errors en llegir des del disk"
+msgstr "Nombre d'errors mentre es llegia des del disk"
 
 #: core/smartattribute.cpp:176
 #, kde-format
@@ -1574,7 +1574,7 @@ msgid ""
 "Unmount failed.</warning>"
 msgstr ""
 "<warning>En redimensionar la partició <filename>%1</filename> al sistema de "
-"fitxers Bcachefs: ha fallat en desmuntar.</warning>"
+"fitxers Bcachefs: ha fallat mentre es desmuntava.</warning>"
 
 #: fs/bcachefs.cpp:144
 #, kde-kuit-format
@@ -2193,7 +2193,7 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
-"No s'ha pogut afegir la partició <filename>%1</filename> al dispositiu "
+"Ha fallat mentre s'afegia la partició <filename>%1</filename> al dispositiu "
 "<filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:74
@@ -2330,7 +2330,7 @@ msgctxt "@info:progress"
 msgid ""
 "Deleting partition failed: Could not open device <filename>%1</filename>."
 msgstr ""
-"No s'ha pogut suprimir la partició: no s'ha pogut obrir el dispositiu "
+"Ha fallat mentre se suprimia la partició: no s'ha pogut obrir el dispositiu "
 "<filename>%1</filename>."
 
 #: jobs/deletepartitionjob.cpp:80
@@ -2632,7 +2632,7 @@ msgid ""
 "There was an error setting flag %1 for partition <filename>%2</filename> to "
 "state %3."
 msgstr ""
-"S'ha produït un error en establir l'estat %3 a l'indicador %1 per a la "
+"S'ha produït un error mentre s'establia l'estat %3 a l'indicador %1 per a la "
 "partició <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:74
@@ -2703,7 +2703,8 @@ msgstr ""
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
 msgstr ""
-"No s'han pogut establir els atributs de la partició <filename>%1</filename>."
+"Ha fallat mentre s'establien els atributs de la partició <filename>%1</"
+"filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
 #, kde-kuit-format
@@ -2745,7 +2746,8 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr "No s'ha pogut establir el nom de la partició <filename>%1</filename>."
+msgstr ""
+"Ha fallat mentre s'establia el nom de la partició <filename>%1</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:61
 #, kde-kuit-format
@@ -2787,7 +2789,8 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr "No s'ha pogut establir l'UUID de la partició <filename>%1</filename>."
+msgstr ""
+"Ha fallat mentre s'establia l'UUID de la partició <filename>%1</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:61
 #, kde-kuit-format
@@ -3279,7 +3282,7 @@ msgid ""
 "Failed to add partition <filename>%1</filename> to device <filename>%2</"
 "filename>."
 msgstr ""
-"No s'ha pogut afegir la partició <filename>%1</filename> al dispositiu "
+"Ha fallat mentre s'afegia la partició <filename>%1</filename> al dispositiu "
 "<filename>%2</filename>."
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
