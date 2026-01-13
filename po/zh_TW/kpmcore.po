@@ -4,13 +4,13 @@
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2008, 2009.
 # Franklin Weng <franklin@goodhorse.idv.tw>, 2010, 2011, 2013.
 # pan93412 <pan93412@gmail.com>, 2019.
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2026 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-03 00:46+0000\n"
-"PO-Revision-Date: 2024-02-11 22:51+0900\n"
+"PO-Revision-Date: 2026-01-13 01:58+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 26.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -305,13 +305,13 @@ msgstr "prep"
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "msft-reserved"
-msgstr "微軟保留區"
+msgstr "微軟保留區 (msft-reserved)"
 
 #: core/partitiontable.cpp:202
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "bios-grub"
-msgstr ""
+msgstr "bios-grub"
 
 #: core/partitiontable.cpp:204
 #, kde-kuit-format
@@ -455,7 +455,7 @@ msgstr "啟動/停止計數"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "A tally of spindle start/stop cycles."
-msgstr ""
+msgstr "轉軸啟動/停止總計次數。"
 
 #: core/smartattribute.cpp:105
 #, kde-format
@@ -569,7 +569,7 @@ msgstr "電源循環次數"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr ""
+msgstr "完整硬碟啟動/斷電週期數。"
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
@@ -845,13 +845,13 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Cycle Count"
-msgstr ""
+msgstr "載入週期次數"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
-msgstr ""
+msgstr "載入/解除載入到磁頭定位區的週期次數。"
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
@@ -995,7 +995,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors due to high temperature."
-msgstr ""
+msgstr "由於高溫而造成的錯誤數量。"
 
 #: core/smartattribute.cpp:150
 #, kde-format
@@ -1066,19 +1066,19 @@ msgstr "寫入時有震動"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Shock During Write"
-msgstr ""
+msgstr "寫入時有衝擊"
 
 #: core/smartattribute.cpp:155
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Shock During Write"
-msgstr ""
+msgstr "寫入時有衝擊"
 
 #: core/smartattribute.cpp:156
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Disk Shift"
-msgstr ""
+msgstr "硬碟位移"
 
 #: core/smartattribute.cpp:156
 #, kde-format
@@ -1086,7 +1086,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Distance the disk has shifted relative to the spindle (usually due to shock "
 "or temperature)."
-msgstr ""
+msgstr "硬碟相對於轉軸的位移（通常這是衝擊或溫度所造成的）。"
 
 #: core/smartattribute.cpp:157
 #, kde-format
@@ -1099,7 +1099,7 @@ msgstr "加速度感應器錯誤率"
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "外部引發的衝擊與震動所造成的錯誤數量。"
 
 #: core/smartattribute.cpp:158
 #, kde-format
@@ -1117,7 +1117,7 @@ msgstr "在高資料負載狀態下運轉的時間。"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Retry Count"
-msgstr ""
+msgstr "載入/解除載入重試次數"
 
 #: core/smartattribute.cpp:159
 #, kde-format
@@ -1141,13 +1141,13 @@ msgstr "運轉中由機械零件中的摩擦力所造成的阻力。"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Cycle Count"
-msgstr ""
+msgstr "載入/解除載入週期次數"
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total number of load cycles."
-msgstr ""
+msgstr "載入週期總次數。"
 
 #: core/smartattribute.cpp:162
 #, kde-format
@@ -1438,59 +1438,44 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "即將發生磁碟錯誤。快快快，快點備份！"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"調整位於 <filename>%1</filename> 上的 Btrfs 檔案系統的大小時失敗：無法建立暫"
-"存目錄。"
+"調整位於 <filename>%1</filename> 上的 Bcachefs 檔案系統的大小時失敗：無法建立"
+"暫存目錄。"
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"調整位於 <filename>%1</filename> 上的 Btrfs 檔案系統的大小時失敗：btrfs 檔案"
-"系統調整大小失敗。"
+"調整位於 <filename>%1</filename> 上的 Bcachefs 檔案系統的大小時失敗："
+"bcachefs 裝置調整大小指令失敗。"
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"調整位於 <filename>%1</filename> 上的 Btrfs 檔案系統的大小時失敗：卸載失敗。"
+"調整位於 <filename>%1</filename> 上的 Bcachefs 檔案系統的大小時失敗：卸載失"
+"敗。"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"調整位於 <filename>%1</filename> 上的 Btrfs 檔案系統的大小時失敗：初始掛載失"
-"敗。"
+"調整位於 <filename>%1</filename> 上的 Bcachefs 檔案系統的大小時失敗：初始掛載"
+"失敗。"
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1577,7 +1562,7 @@ msgstr "linux 交換分割區"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "freebsdswap"
-msgstr ""
+msgstr "freebsd 交換分割區"
 
 #: fs/filesystem.cpp:514
 #, kde-kuit-format
@@ -1727,7 +1712,7 @@ msgstr "fat12"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
-msgstr ""
+msgstr "linux_raid_member"
 
 #: fs/filesystem.cpp:539
 #, kde-kuit-format
@@ -1751,7 +1736,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:585 fs/luks.cpp:162
 #, kde-kuit-format
@@ -1838,7 +1823,7 @@ msgstr "輸入 %1 的密語："
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
-msgstr ""
+msgstr "正在調整分割區 <filename>%1</filename> 的 LUKS crypt。"
 
 #: fs/luks.cpp:516 fs/luks2.cpp:126
 #, kde-kuit-format
@@ -3042,12 +3027,10 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "設定分割區 <filename>%1</filename> 的旗標為 %2"
 
 #: ops/setpartlabeloperation.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
-msgstr "設定分割區 <filename>%1</filename> 的標籤為 %2"
+msgstr "設定 <filename>%1</filename> 的 GPT 分割區標籤為 %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
