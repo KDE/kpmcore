@@ -75,7 +75,15 @@ qint64 PartitionAlignment::sectorAlignment(const Device& d)
     // However, people usually want to align to MiB boundary irrespectively of whether we have
     // 512 or 4096 byte sectors.
 
+    // Guard against invalid logicalSize (e.g. from inactive Software RAID devices)
+    // which would cause division by zero
+    if (d.logicalSize() <= 0)
+        return s_sectorAlignment;
+
     unsigned alignmentFactor = d.logicalSize() / 512;
+    if (alignmentFactor == 0)
+        return s_sectorAlignment;
+
     return s_sectorAlignment / alignmentFactor;
 }
 
