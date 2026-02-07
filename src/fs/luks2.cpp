@@ -40,7 +40,6 @@ bool luks2::create(Report& report, const QString& deviceNode)
     Q_ASSERT(!m_passphrase.isEmpty());
 
     QStringList createCmdArgs = { QStringLiteral("--use-random"),
-                                  QStringLiteral("--sector-size"), QStringLiteral("4096"),
                                   QStringLiteral("--key-size"), QStringLiteral("512"),
                                   QStringLiteral("--hash"), QStringLiteral("sha512"),
                                   QStringLiteral("--batch-mode"),
