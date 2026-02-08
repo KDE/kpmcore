@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-03 00:46+0000\n"
+"POT-Creation-Date: 2026-02-08 00:46+0000\n"
 "PO-Revision-Date: 2023-12-12 19:28+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1819,13 +1819,13 @@ msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr ""
 
-#: fs/filesystem.cpp:585 fs/luks.cpp:162
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Pripojiť"
 
-#: fs/filesystem.cpp:591 fs/luks.cpp:167
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1883,30 +1883,30 @@ msgstr ""
 "Zmena veľkosti súborového systému JFS na oddieli <filename>%1</filename> "
 "zlyhalo:Zlyhalo pripojenie."
 
-#: fs/luks.cpp:172
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "Odomknúť"
 
-#: fs/luks.cpp:177
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "Zamknúť"
 
-#: fs/luks.cpp:258
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "Zadajte heslo pre %1:"
 
-#: fs/luks.cpp:501 fs/luks.cpp:512 fs/luks2.cpp:96 fs/luks2.cpp:115
+#: fs/luks.cpp:500 fs/luks.cpp:511 fs/luks2.cpp:95 fs/luks2.cpp:114
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "Zmena veľkosti  LUKS crypt na oddieli <filename>%1</filename>."
 
-#: fs/luks.cpp:516 fs/luks2.cpp:126
+#: fs/luks.cpp:515 fs/luks2.cpp:125
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

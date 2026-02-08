@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-03 00:46+0000\n"
+"POT-Creation-Date: 2026-02-08 00:46+0000\n"
 "PO-Revision-Date: 2025-08-20 21:55+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1782,13 +1782,13 @@ msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr "bcachefs"
 
-#: fs/filesystem.cpp:585 fs/luks.cpp:162
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "ضم"
 
-#: fs/filesystem.cpp:591 fs/luks.cpp:167
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1846,30 +1846,30 @@ msgstr ""
 "فشل تغيير حجم نظام ملفات JFS في القسم <filename>%1</filename>: فشل الضم "
 "الابتدائي."
 
-#: fs/luks.cpp:172
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "فك القفل"
 
-#: fs/luks.cpp:177
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "اقفل"
 
-#: fs/luks.cpp:258
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "أدخل عبارة مرور لـ %1:"
 
-#: fs/luks.cpp:501 fs/luks.cpp:512 fs/luks2.cpp:96 fs/luks2.cpp:115
+#: fs/luks.cpp:500 fs/luks.cpp:511 fs/luks2.cpp:95 fs/luks2.cpp:114
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "تغيير حجم ملف LUKS على القسم <filename>%1</filename>."
 
-#: fs/luks.cpp:516 fs/luks2.cpp:126
+#: fs/luks.cpp:515 fs/luks2.cpp:125
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

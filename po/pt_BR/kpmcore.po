@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-03 00:46+0000\n"
+"POT-Creation-Date: 2026-02-08 00:46+0000\n"
 "PO-Revision-Date: 2025-08-29 09:25-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -1857,13 +1857,13 @@ msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr "bcachefs"
 
-#: fs/filesystem.cpp:585 fs/luks.cpp:162
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Montar"
 
-#: fs/filesystem.cpp:591 fs/luks.cpp:167
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1921,24 +1921,24 @@ msgstr ""
 "Falha ao redimensionar o sistema de arquivos JFS da partição <filename>%1</"
 "filename>: Montagem inicial falhou."
 
-#: fs/luks.cpp:172
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr "Destravado"
 
-#: fs/luks.cpp:177
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr "Travado"
 
-#: fs/luks.cpp:258
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr "Insira a senha para %1:"
 
-#: fs/luks.cpp:501 fs/luks.cpp:512 fs/luks2.cpp:96 fs/luks2.cpp:115
+#: fs/luks.cpp:500 fs/luks.cpp:511 fs/luks2.cpp:95 fs/luks2.cpp:114
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
@@ -1946,7 +1946,7 @@ msgstr ""
 "Ocorreu uma falha ao redimensionar a partição criptografada com LUKS "
 "<filename>%1</filename>."
 
-#: fs/luks.cpp:516 fs/luks2.cpp:126
+#: fs/luks.cpp:515 fs/luks2.cpp:125
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

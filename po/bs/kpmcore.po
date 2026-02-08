@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-03 00:46+0000\n"
+"POT-Creation-Date: 2026-02-08 00:46+0000\n"
 "PO-Revision-Date: 2015-01-10 12:07+0100\n"
 "Last-Translator: Samir Ribic <samir.ribic@etf.unsa.ba>\n"
 "Language-Team: Bosnian <kde-i18n-bs@kde.org>\n"
@@ -1892,13 +1892,13 @@ msgctxt "@item filesystem name"
 msgid "bcachefs"
 msgstr ""
 
-#: fs/filesystem.cpp:585 fs/luks.cpp:162
+#: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Montiraj"
 
-#: fs/filesystem.cpp:591 fs/luks.cpp:167
+#: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
@@ -1972,24 +1972,24 @@ msgstr ""
 "Mijenjanje veličine JFS datotečnog sistema na particiji <filename>%1</"
 "filename> nije uspelo: početno montiranje nije uspelo."
 
-#: fs/luks.cpp:172
+#: fs/luks.cpp:171
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
 msgstr ""
 
-#: fs/luks.cpp:177
+#: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
 msgstr ""
 
-#: fs/luks.cpp:258
+#: fs/luks.cpp:257
 #, kde-format
 msgid "Enter passphrase for %1:"
 msgstr ""
 
-#: fs/luks.cpp:501 fs/luks.cpp:512 fs/luks2.cpp:96 fs/luks2.cpp:115
+#: fs/luks.cpp:500 fs/luks.cpp:511 fs/luks2.cpp:95 fs/luks2.cpp:114
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing/moving partition <filename>%1</filename> failed."
@@ -1997,7 +1997,7 @@ msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "Promjena ili pomeranje particije <filename>%1</filename> nije uspelo."
 
-#: fs/luks.cpp:516 fs/luks2.cpp:126
+#: fs/luks.cpp:515 fs/luks2.cpp:125
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
