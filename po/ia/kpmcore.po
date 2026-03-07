@@ -1616,7 +1616,7 @@ msgstr "ufs"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
-msgstr "non formattate"
+msgstr "non fnormatate"
 
 #: fs/filesystem.cpp:525
 #, kde-kuit-format

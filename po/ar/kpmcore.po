@@ -2,14 +2,14 @@
 # Copyright (C) 2013 This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 # Safa Alfulaij <safaalfulaij@hotmail.com>, 2013.
-# SPDX-FileCopyrightText: 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 # Automatically generated, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-02-08 00:46+0000\n"
-"PO-Revision-Date: 2025-08-20 21:55+0400\n"
+"PO-Revision-Date: 2026-02-26 12:29+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -1508,7 +1508,7 @@ msgid ""
 "Unmount failed.</warning>"
 msgstr ""
 "<warning> تغيير حجم نظام ملفات Bcachefs في القسم <filename>%1</filename>: "
-"فشلت إزالة الضم.</warning>"
+"فشلت إزالة الوصل.</warning>"
 
 #: fs/bcachefs.cpp:144
 #, kde-kuit-format
@@ -1517,8 +1517,8 @@ msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"فشل تغيير حجم نظام ملفات Bcachefs في القسم <filename>%1</filename>: فشل الضم "
-"الابتدائي."
+"فشل تغيير حجم نظام ملفات Bcachefs في القسم <filename>%1</filename>: فشل "
+"الوصل الابتدائي."
 
 #: fs/btrfs.cpp:166
 #, kde-kuit-format
@@ -1548,7 +1548,7 @@ msgid ""
 "Unmount failed.</warning>"
 msgstr ""
 "<warning>تغيير حجم نظام ملفات Btrfs في القسم <filename>%1</filename>: فشلت "
-"إزالة الضم.</warning>"
+"إزالة الوصل.</warning>"
 
 #: fs/btrfs.cpp:190
 #, kde-kuit-format
@@ -1557,7 +1557,7 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"فشل تغيير حجم نظام ملفات Btrfs في القسم <filename>%1</filename>: فشل الضم "
+"فشل تغيير حجم نظام ملفات Btrfs في القسم <filename>%1</filename>: فشل الوصل "
 "الابتدائي."
 
 #: fs/fat12.cpp:141
@@ -1786,13 +1786,13 @@ msgstr "bcachefs"
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
-msgstr "ضم"
+msgstr "صِل"
 
 #: fs/filesystem.cpp:591 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
-msgstr "أزل الضم"
+msgstr "أزل الوصل"
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -1824,7 +1824,7 @@ msgid ""
 "Remount failed."
 msgstr ""
 "فشل تغيير حجم نظام ملفات JFS في القسم <filename>%1</filename>: فشل إعادة "
-"الضم."
+"الوصل."
 
 #: fs/jfs.cpp:174
 #, kde-kuit-format
@@ -1834,7 +1834,7 @@ msgid ""
 "Unmount failed.</warning>"
 msgstr ""
 "<warning>تغيير حجم نظام ملفات JFS في القسم <filename>%1</filename>: فشل "
-"إزالة الضم.</warning>"
+"إزالة الوصل.</warning>"
 
 #: fs/jfs.cpp:176
 #, kde-kuit-format
@@ -1843,7 +1843,7 @@ msgid ""
 "Resizing JFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"فشل تغيير حجم نظام ملفات JFS في القسم <filename>%1</filename>: فشل الضم "
+"فشل تغيير حجم نظام ملفات JFS في القسم <filename>%1</filename>: فشل الوصل "
 "الابتدائي."
 
 #: fs/luks.cpp:171
@@ -1905,7 +1905,7 @@ msgid ""
 "Unmount failed.</warning>"
 msgstr ""
 "<warning>تغيير حجم نظام ملفات NILFS2 في القسم <filename>%1</filename>: فشل "
-"إزالة الضم.</warning>"
+"إزالة الوصل.</warning>"
 
 #: fs/nilfs2.cpp:158
 #, kde-kuit-format
@@ -1914,7 +1914,7 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"فشل تغيير حجم نظام ملفات NILFS2 في القسم <filename>%1</filename>: فشل الضم "
+"فشل تغيير حجم نظام ملفات NILFS2 في القسم <filename>%1</filename>: فشل الوصل "
 "الابتدائي."
 
 #: fs/ntfs.cpp:182
@@ -1971,7 +1971,7 @@ msgid ""
 "failed: Unmount failed.</warning>"
 msgstr ""
 "<warning>تغيير حجم نظام ملفات XFS في القسم <filename>%1</filename>: فشل "
-"إزالة الضم.</warning>"
+"إزالة الوصل.</warning>"
 
 #: fs/xfs.cpp:180
 #, kde-kuit-format
@@ -1980,7 +1980,7 @@ msgid ""
 "Resizing XFS file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"فشل تغيير حجم نظام ملفات XFS في القسم <filename>%1</filename>: فشل الضم "
+"فشل تغيير حجم نظام ملفات XFS في القسم <filename>%1</filename>: فشل الوصل "
 "الابتدائي."
 
 #: jobs/backupfilesystemjob.cpp:54
