@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/kpmcore/kpmcore._policy_.pot\n"
-"X-Crowdin-File-ID: 48426\n"
+"X-Crowdin-File: /kf6-stable/messages/kpmcore/kpmcore._policy_.pot\n"
+"X-Crowdin-File-ID: 53158\n"
 
 #: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
 msgctxt "description"
