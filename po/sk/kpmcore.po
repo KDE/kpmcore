@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 23.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -615,14 +615,10 @@ msgstr "Neopravené chyby čítania nahlásené operačnému systému."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr ""
+msgstr "SSD dostupný rezervovaný priestor"
 
 #: core/smartattribute.cpp:114
-#, fuzzy, kde-format
-#| msgctxt "SMART attr description"
-#| msgid ""
-#| "Count of available reserved blocks as percentage of the total number of "
-#| "reserved blocks"
+#, kde-format
 msgctxt "SMART attr description"
 msgid "Number of available reserved space as a percentage of reserved space."
 msgstr ""
@@ -633,44 +629,44 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count"
-msgstr ""
+msgstr "SSD počet zlyhaní programovania"
 
 #: core/smartattribute.cpp:115 core/smartattribute.cpp:125
 #, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "Number of flash program operation failures since the drive was deployed."
-msgstr ""
+msgstr "Počet zlyhaní operácií programovania flash pamäte od nasadenia disku."
 
 #: core/smartattribute.cpp:116 core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count"
-msgstr ""
+msgstr "SSD počet zlyhaní mazania"
 
 #: core/smartattribute.cpp:116
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
-msgstr ""
+msgstr "Počet zlyhaní operácií mazania flash pamäte od nasadenia disku."
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Leveling Count"
-msgstr ""
+msgstr "SSD počet vyrovnávania opotrebenia"
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr ""
+msgstr "Počíta maximálny najhorší počet mazaní na ľubovoľnom bloku."
 
 #: core/smartattribute.cpp:118
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unexpected power loss count"
-msgstr ""
+msgstr "SSD počet neočakávaných výpadkov napájania"
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -680,12 +676,15 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
+"Počet vypnutí bez STANDBY IMMEDIATE ako posledného príkazu (bez ohľadu na "
+"aktivitu PLI s použitím napájania z kondenzátora). Normalizovaná hodnota je "
+"vždy 100."
 
 #: core/smartattribute.cpp:119
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Power Loss Protection Failure"
-msgstr ""
+msgstr "SSD zlyhanie ochrany pred výpadkom napájania"
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -698,42 +697,48 @@ msgid ""
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
 msgstr ""
+"Posledný výsledok testu, saturovaný na maximálnej hodnote. Bajty 0-1: "
+"posledný výsledok testu ako mikrosekundy na vybitie kondenzátora v rozsahu "
+"[25, 5000000], nižšia hodnota označuje špecifický kód chyby. Bajty 2-3: "
+"minúty od posledného testu. Bajty 4-5: celkový počet testov za životnosť. "
+"Normalizovaná hodnota je nastavená na 1 pri zlyhaní testu alebo 11, ak bol "
+"kondenzátor testovaný v podmienkach nadmernej teploty, inak 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr ""
+msgstr "SSD počet zlyhaní mazania (čip)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase command failures."
-msgstr ""
+msgstr "Počet zlyhaní príkazov mazania flash pamäte."
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Range Delta"
-msgstr ""
+msgstr "SSD delta rozsahu opotrebenia"
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
 msgstr ""
+"Rozdiel medzi najopotrebovanejšími a najmenej opotrebovanými blokmi flash "
+"pamäte."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Used Reserved Block Count Total"
-msgstr ""
+msgstr "SSD celkový počet použitých rezervovaných blokov"
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #: core/smartattribute.cpp:126
-#, fuzzy, kde-format
-#| msgctxt "SMART attr description"
-#| msgid "Western Digital and Samsung attribute."
+#, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" Samsung attribute."
 msgstr "Atribúty Western Digital a Samsung."
@@ -742,19 +747,21 @@ msgstr "Atribúty Western Digital a Samsung."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unused Reserved Block Count Total"
-msgstr ""
+msgstr "SSD celkový počet nepoužitých rezervovaných blokov"
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" HP attribute."
-msgstr ""
+msgstr "\"Pre-Fail\" HP attribute."
 
 #: core/smartattribute.cpp:125
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
 msgstr ""
+"SSD celkový počet zlyhaní programovania alebo počet prístupov nezarovnaných "
+"na 4K"
 
 #: core/smartattribute.cpp:127
 #, kde-format
@@ -1363,13 +1370,13 @@ msgstr "Úplný počet prečítaní LBA"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD NAND_Writes_1GiB"
-msgstr ""
+msgstr "SSD NAND_Writes_1GiB"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr ""
+msgstr "Počet zápisov do NAND v prírastkoch po 1 GB"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1498,11 +1505,7 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "Hrozí zlyhanie disku. Zazálohujte si všetky dáta!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
@@ -1512,11 +1515,7 @@ msgstr ""
 "zlyhala: Nie je možné vytvoriť dočasný adresár."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
@@ -1526,11 +1525,7 @@ msgstr ""
 "zlyhala: zlyhala zmena veľkosti súborového systému btrfs."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Warning: Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
@@ -1540,11 +1535,7 @@ msgstr ""
 "%1</filename>: Zlyhalo odpojenie."
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
@@ -1574,11 +1565,7 @@ msgstr ""
 "zlyhala: zlyhala zmena veľkosti súborového systému btrfs."
 
 #: fs/btrfs.cpp:187
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Warning: Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
@@ -1643,7 +1630,7 @@ msgstr "linuxswap"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "freebsdswap"
-msgstr ""
+msgstr "freebsdswap"
 
 #: fs/filesystem.cpp:514
 #, kde-kuit-format
@@ -1817,7 +1804,7 @@ msgstr "minix"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 #: fs/filesystem.cpp:585 fs/luks.cpp:161
 #, kde-kuit-format
@@ -2051,9 +2038,7 @@ msgstr ""
 "%2</filename>"
 
 #: jobs/changepermissionsjob.cpp:49
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
 msgstr "Nastavenie návestia pre partíciu <filename>%1</filename> na \"%2\""
@@ -2215,33 +2200,25 @@ msgid "Create new partition table on device <filename>%1</filename>"
 msgstr "Vytvoriť novú partičnú tabuľku na zariadení <filename>%1</filename>"
 
 #: jobs/createvolumegroupjob.cpp:49
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Create new partition <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
-msgstr "Vytvoriť novú partíciu <filename>%1</filename>"
+msgstr "Create a new Volume Group: <filename>%1</filename> with PV: %2"
 
 #: jobs/deactivatelogicalvolumejob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:window"
-#| msgid "Device Properties: <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
 msgstr "Vlastnosti zariadenia: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:window"
-#| msgid "Device Properties: <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Volume Group: <filename>%1</filename>"
-msgstr "Deaktivovať skupinu jednotiek."
+msgstr "Deactivate Volume Group: <filename>%1</filename>"
 
 #: jobs/deletefilesystemjob.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Could not delete file system on <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not delete file system: file system on <filename>%1</filename> is "
@@ -2320,17 +2297,13 @@ msgstr ""
 "Zdroj a cieľ pre kopírovanie sa neprekrývajú: Rollback nie je vyžadovaný."
 
 #: jobs/job.cpp:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Rollback from: First sector: %1, last sector: %2."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback from: First byte: %1, last byte: %2."
 msgstr "Rollback z: Prvý sektor: %1, posledný sektor: %2."
 
 #: jobs/job.cpp:70
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Rollback to: First sector: %1, last sector: %2."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback to: First byte: %1, last byte: %2."
 msgstr "Rollback na: Prvý sektor: %1, posledný sektor: %2."
@@ -2425,12 +2398,10 @@ msgid "Move used PE in %1 on %2 to other available Physical Volumes"
 msgstr "Presunúť použité PE %1 na %2 na iné dostupné Fyzické Jednotky"
 
 #: jobs/removevolumegroupjob.cpp:41
-#, fuzzy, kde-kuit-format
-#| msgctxt "@label partition state"
-#| msgid "mounted on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
-msgstr "Odstrániť skupinu zväzkov"
+msgstr "Remove Volume Group: <filename>%1</filename>"
 
 #: jobs/resizefilesystemjob.cpp:66
 #, kde-kuit-format
@@ -2662,11 +2633,7 @@ msgstr ""
 "dľžka : %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
@@ -2676,19 +2643,13 @@ msgstr ""
 "Úloha ignorovaná."
 
 #: jobs/setpartitionattributesjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
 msgstr "Zlyhalo vytvorenie novej partície <filename>%1</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
@@ -2698,11 +2659,7 @@ msgstr ""
 "na nastavenie systémového typu pre partíciu <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
@@ -2712,9 +2669,7 @@ msgstr ""
 "systému pre partíciu <filename>%2</filename>. "
 
 #: jobs/setpartitionattributesjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
 msgstr "Nastavenie návestia pre partíciu <filename>%1</filename> na \"%2\""
@@ -2799,9 +2754,7 @@ msgstr ""
 "identifikátora UUID oddielu <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
 msgstr "Nastavenie návestia pre partíciu <filename>%1</filename> na \"%2\""
@@ -2834,11 +2787,7 @@ msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
 msgstr "Kontrola a oprava partície <filename>%1</filename> (%2, %3)"
 
 #: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Warning: Maximizing file system on target partition <filename>%1</"
-#| "filename> to the size of the partition failed."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<warning>Maximizing file system on target partition <filename>%1</filename> "
@@ -3243,9 +3192,7 @@ msgid "Set flags for partition <filename>%1</filename> to \"%2\""
 msgstr "Nastavenie príznakov pre partíciu <filename>%1</filename> to \"%2\""
 
 #: ops/setpartlabeloperation.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Nastavenie návestia pre partíciu <filename>%1</filename> na \"%2\""
@@ -3419,9 +3366,7 @@ msgid "Could not write to file <filename>%1</filename>."
 msgstr "Nepodarilo sa zapísať do súboru <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:237
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
 msgstr "Kopírovanie %1 blokov (%2 bajtov) z %3 na %4, smer: %5."
@@ -3445,9 +3390,7 @@ msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Kopírovanie %1 MiB/s, uplynutý čas: %2"
 
 #: util/externalcommandhelper.cpp:274
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying remainder of block size %1 from %2 to %3."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
 msgstr "Kopírovanie zvyšku bloku o veľkosti %1 z %2 do %3."
@@ -3461,12 +3404,7 @@ msgstr[1] "%1 bajty"
 msgstr[2] "%1 bajtov"
 
 #: util/externalcommandhelper.cpp:288
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:progress argument 2 is a string such as 7 bytes (localized "
-#| "accordingly)"
-#| msgid "Copying 1 block (%2) finished."
-#| msgid_plural "Copying %1 blocks (%2) finished."
+#, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
@@ -3488,12 +3426,10 @@ msgid "Library for managing partitions"
 msgstr "Knižnica pre správu oddielov"
 
 #: util/helpers.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "&copy; 2008-2020 KPMcore developers"
+#, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "&copy; 2008-2020 Vývojári KPMcore"
+msgstr "&copy; 2008-2022 Vývojári KPMcore"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3589,7 +3525,7 @@ msgstr "David Edmundson"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "Port from KAuth to Polkit"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format
@@ -3622,8 +3558,6 @@ msgid "Machine:"
 msgstr "Počítač:"
 
 #, fuzzy
-#~| msgctxt "@action:button"
-#~| msgid "Run without administrative privileges"
 #~ msgctxt "@info:status"
 #~ msgid "Could not obtain administrator privileges."
 #~ msgstr "Pokračovanie bez administrátorských práv"
@@ -3798,10 +3732,6 @@ msgstr "Počítač:"
 #~ msgstr "Stľpce"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Warning: Maximizing file system on target partition <filename>%1</"
-#~| "filename> to the size of the partition failed."
 #~ msgctxt "@info:status"
 #~ msgid ""
 #~ "Warning: Maximizing file system on target partition <filename>%1</"
@@ -3846,8 +3776,6 @@ msgstr "Počítač:"
 #~ msgstr "EiB"
 
 #, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid "Check file system on partition <filename>%1</filename>"
 #~ msgctxt "@info/plain"
 #~ msgid "Resizing encrypted file system on partition <filename>%1</filename>."
 #~ msgstr "Skontrolovať súborový systém na partícii <filename>%1</filename>"
