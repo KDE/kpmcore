@@ -34,6 +34,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="pt_BR">Executa o auxiliar do gerenciador de partições com privilégios</description>
       <description xml:lang="ru">Запуск привилегированной программы для управления разделами</description>
       <description xml:lang="sa">विशेषाधिकारयुक्तं विभाजनप्रबन्धकसहायकं चालयन्तु</description>
+      <description xml:lang="sk">Spustiť privilegovaného pomocníka správcu oddielov</description>
       <description xml:lang="sl">Zaženi pooblaščenega pomočnika skrbnika particij</description>
       <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
       <description xml:lang="tr">Ayrıcalıklı bölüntü yöneticisi yardımcısını çalıştır</description>
