@@ -2413,13 +2413,13 @@ msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
 msgstr[0] ""
-"Súborový systém na oddieli <filename>%2</filename> už má požadovanú dľžku 1 "
+"Súborový systém na oddieli <filename>%2</filename> už má požadovanú dĺžku 1 "
 "sektora."
 msgstr[1] ""
-"Súborový systém na oddieli <filename>%2</filename> už má požadovanú dľžku %1 "
+"Súborový systém na oddieli <filename>%2</filename> už má požadovanú dĺžku %1 "
 "sektorov."
 msgstr[2] ""
-"Súborový systém na oddieli <filename>%2</filename> už má požadovanú dľžku %1 "
+"Súborový systém na oddieli <filename>%2</filename> už má požadovanú dĺžku %1 "
 "sektorov."
 
 #: jobs/resizefilesystemjob.cpp:69
@@ -2630,7 +2630,7 @@ msgid ""
 "%3"
 msgstr ""
 "Nastav geometriu partície <filename>%1</filename> : Štart sektor : %2, "
-"dľžka : %3"
+"dĺžka : %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
 #, kde-kuit-format
@@ -3729,7 +3729,7 @@ msgstr "Počítač:"
 
 #~ msgctxt "@title:menu"
 #~ msgid "Columns"
-#~ msgstr "Stľpce"
+#~ msgstr "Stĺpce"
 
 #, fuzzy
 #~ msgctxt "@info:status"
@@ -5616,7 +5616,7 @@ msgstr "Počítač:"
 
 #~ msgctxt "@info:shell"
 #~ msgid "Do not try to gain super user privileges"
-#~ msgstr "Nepokúšajte sa získať práva super uživateľa"
+#~ msgstr "Nepokúšajte sa získať práva super užívateľa"
 
 #~ msgctxt "@info:shell"
 #~ msgid "Show advanced tab in configuration dialog"
