@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-08 00:49+0000\n"
-"PO-Revision-Date: 2025-03-12 11:24+0200\n"
+"PO-Revision-Date: 2026-05-02 19:36+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -3053,13 +3053,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the left by %2"
-msgstr "Пересування розділу <filename>%1</filename> ліворуч за допомогою %2"
+msgstr "Пересування розділу <filename>%1</filename> ліворуч на %2"
 
 #: ops/resizeoperation.cpp:204
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Move partition <filename>%1</filename> to the right by %2"
-msgstr "Пересування розділу <filename>%1</filename> праворуч за допомогою %2"
+msgstr "Пересування розділу <filename>%1</filename> праворуч на %2"
 
 #: ops/resizeoperation.cpp:207
 #, kde-kuit-format
@@ -3080,8 +3080,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
 "to %4"
 msgstr ""
-"Пересування розділу <filename>%1</filename> ліворуч за допомогою %2 і "
-"збільшення його розміру з %3 до %4"
+"Пересування розділу <filename>%1</filename> ліворуч на %2 і збільшення його "
+"розміру з %3 до %4"
 
 #: ops/resizeoperation.cpp:216
 #, kde-kuit-format
@@ -3090,8 +3090,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and grow it from "
 "%3 to %4"
 msgstr ""
-"Пересування розділу <filename>%1</filename> праворуч за допомогою %2 і "
-"збільшення його розміру з %3 до %4"
+"Пересування розділу <filename>%1</filename> праворуч на %2 і збільшення його "
+"розміру з %3 до %4"
 
 #: ops/resizeoperation.cpp:219
 #, kde-kuit-format
@@ -3100,8 +3100,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
-"Пересування розділу <filename>%1</filename> ліворуч за допомогою %2 і "
-"зменшення його розміру з %3 до %4"
+"Пересування розділу <filename>%1</filename> ліворуч на %2 і зменшення його "
+"розміру з %3 до %4"
 
 #: ops/resizeoperation.cpp:222
 #, kde-kuit-format
@@ -3110,8 +3110,8 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
-"Пересування розділу <filename>%1</filename> праворуч за допомогою %2 і "
-"зменшення його розміру з %3 до %4"
+"Пересування розділу <filename>%1</filename> праворуч на %2 і зменшення його "
+"розміру з %3 до %4"
 
 #: ops/resizeoperation.cpp:229
 #, kde-kuit-format
