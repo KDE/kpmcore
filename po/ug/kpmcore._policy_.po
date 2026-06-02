@@ -1,0 +1,28 @@
+# Uyghur translation for kpmcore.
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Abduqadir Abliz <sahranbay@gmail.com>, 2026., YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kpmcore\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"PO-Revision-Date: 2026-05-31 19:29-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
+"Language: ug\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:1
+msgctxt "description"
+msgid "Run privileged partition manager helper"
+msgstr "باشقۇرغۇچى ئىجازىتىدە رايون باشقۇرغۇچ ياردەمچىسىنى ئىجرا قىلىدۇ"
+
+#: util/org.kde.kpmcore.externalcommand.policy.podir/org.kde.kpmcore.externalcommand.policy.in.h:2
+msgctxt "message"
+msgid "Authenticate to manage disks."
+msgstr "دىسكا باشقۇرۇش ئۈچۈن كىملىك دەلىللەش زۆرۈر."
