@@ -120,8 +120,11 @@ void PartWidget::paintEvent(QPaintEvent*)
     const QRect textRect(0, 0, width() - 1, height() - 1);
     const QRect boundingRect = painter.boundingRect(textRect, Qt::AlignCenter, text);
     if (boundingRect.x() > PartWidgetBase::borderWidth() && boundingRect.y() > PartWidgetBase::borderHeight()) {
-        if (isActive())
+        if (isActive()) {
             painter.setPen(Qt::white);
+        } else {
+            painter.setPen(Qt::black);
+        }
         painter.drawText(textRect, Qt::AlignCenter, text);
     }
 }
