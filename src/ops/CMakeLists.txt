@@ -22,6 +22,7 @@ set(OPS_SRC
     ops/checkoperation.cpp
     ops/backupoperation.cpp
     ops/copyoperation.cpp
+    ops/takeownershipoperation.cpp
 )
 
 set(OPS_LIB_HDRS
@@ -42,4 +43,5 @@ set(OPS_LIB_HDRS
     ops/setfilesystemlabeloperation.h
     ops/setpartflagsoperation.h
     ops/setpartlabeloperation.h
+    ops/takeownershipoperation.h
 )

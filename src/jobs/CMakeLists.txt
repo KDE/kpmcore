@@ -32,6 +32,7 @@ set(JOBS_SRC
     jobs/copyfilesystemjob.cpp
     jobs/movefilesystemjob.cpp
     jobs/changepermissionsjob.cpp
+    jobs/takeownershipjob.cpp
 )
 
 set(JOBS_LIB_HDRS
