@@ -54,7 +54,6 @@ set(FS_SRC
 
 set(FS_LIB_HDRS
     fs/apfs.h
-    fs/btrfs.h
     fs/bitlocker.h
     fs/btrfs.h
     fs/exfat.h
