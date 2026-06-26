@@ -34,6 +34,7 @@ ki18n_wrap_ui(kpmcore_SRCS ${gui_UIFILES})
 add_library(kpmcore SHARED ${kpmcore_SRCS})
 target_link_libraries( kpmcore PUBLIC
     Qt6::Core
+    Qt6::Widgets
     PRIVATE
     ${BLKID_LIBRARIES}
     Qt6::DBus
