@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 00:49+0000\n"
+"POT-Creation-Date: 2026-06-26 00:48+0000\n"
 "PO-Revision-Date: 2016-04-08 22:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -2545,6 +2545,32 @@ msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
 msgstr "Tengipunktur:"
 
+#: jobs/takeownershipjob.cpp:28
+#, fuzzy, kde-kuit-format
+msgctxt "@info:status"
+msgid "File system on <filename>%1</filename> does not support ownership."
+msgstr "Tengipunktur:"
+
+#: jobs/takeownershipjob.cpp:36
+#, fuzzy, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Refusing to change ownership of critical mount point <filename>%1</filename>."
+msgstr "Tengipunktur:"
+
+#: jobs/takeownershipjob.cpp:60
+#, fuzzy, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Taking ownership of <filename>%1</filename> and its contents for user %2"
+msgstr "Tengipunktur:"
+
+#: jobs/takeownershipjob.cpp:62
+#, fuzzy, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Taking ownership of <filename>%1</filename> for user %2"
+msgstr "Tengipunktur:"
+
 #: ops/backupoperation.cpp:39
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
@@ -2925,6 +2951,18 @@ msgstr "Tengipunktur:"
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
+msgstr "Tengipunktur:"
+
+#: ops/takeownershipoperation.cpp:73
+#, fuzzy, kde-kuit-format
+msgctxt "@info:status"
+msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
+msgstr "Tengipunktur:"
+
+#: ops/takeownershipoperation.cpp:75
+#, fuzzy, kde-kuit-format
+msgctxt "@info:status"
+msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "Tengipunktur:"
 
 #: plugins/geom/geompartitiontable.cpp:91

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-08 00:49+0000\n"
+"POT-Creation-Date: 2026-06-26 00:48+0000\n"
 "PO-Revision-Date: 2026-05-31 19:30-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2535,6 +2535,38 @@ msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
 msgstr ""
 
+#: jobs/takeownershipjob.cpp:28
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Could not delete file system on partition <filename>%1</filename>: Failed "
+#| "to get partition."
+msgctxt "@info:status"
+msgid "File system on <filename>%1</filename> does not support ownership."
+msgstr "يېڭى رايون قۇرىدۇ"
+
+#: jobs/takeownershipjob.cpp:36
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Could not resize file system on partition <filename>%1</filename>."
+msgctxt "@info:status"
+msgid ""
+"Refusing to change ownership of critical mount point <filename>%1</filename>."
+msgstr "يېڭى رايون قۇرىدۇ"
+
+#: jobs/takeownershipjob.cpp:60
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
+"Taking ownership of <filename>%1</filename> and its contents for user %2"
+msgstr ""
+
+#: jobs/takeownershipjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Taking ownership of <filename>%1</filename> for user %2"
+msgstr ""
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -2915,6 +2947,18 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
+msgstr ""
+
+#: ops/takeownershipoperation.cpp:73
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
+msgstr ""
+
+#: ops/takeownershipoperation.cpp:75
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr ""
 
 #: plugins/geom/geompartitiontable.cpp:91
@@ -3311,20 +3355,6 @@ msgstr "ماشىنا:"
 #~ msgid ""
 #~ "Could not open partition <filename>%1</filename> while trying to resize/"
 #~ "move it."
-#~ msgstr "يېڭى رايون قۇرىدۇ"
-
-#~| msgctxt "@title:window"
-#~| msgid "Create a new partition"
-#~ msgctxt "@info:progress"
-#~ msgid ""
-#~ "Could not delete file system on partition <filename>%1</filename>: Failed "
-#~ "to get partition."
-#~ msgstr "يېڭى رايون قۇرىدۇ"
-
-#~| msgctxt "@title:window"
-#~| msgid "Create a new partition"
-#~ msgctxt "@info:progress"
-#~ msgid "Could not resize file system on partition <filename>%1</filename>."
 #~ msgstr "يېڭى رايون قۇرىدۇ"
 
 #~| msgctxt "@title:window"
