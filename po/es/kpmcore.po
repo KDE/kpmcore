@@ -1,27 +1,27 @@
 # Spanish translations for kpmcore.po package.
-# Copyright (C) 2008-2025 This file is copyright:
+# Copyright (C) 2008-2026 This file is copyright:
 # This file is distributed under the same license as the kpmcore package.
 #
 # SPDX-FileCopyrightText: 2008 Santi <santi@kde-es.org>
-# SPDX-FileCopyrightText: 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
-# SPDX-FileCopyrightText: 2009, 2010 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
+# SPDX-FileCopyrightText: 2009-2022, 2024-2026 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2009-2010 Cristina Yenyxe González García <the.blue.valkyrie@gmail.com>
 # SPDX-FileCopyrightText: 2009 Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>
 # SPDX-FileCopyrightText: 2010, 2013 Kira J. Fernandez <kirajfdez@gmail.com>
 # SPDX-FileCopyrightText: 2013 Rafael Belmonte <eaglescreen@gmail.com>
-# SPDX-FileCopyrightText: 2013, 2014, 2016 Rocio Gallego <traducciones@rociogallego.com>
+# SPDX-FileCopyrightText: 2013-2014, 2016 Rocio Gallego <traducciones@rociogallego.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2025-05-18 13:46+0100\n"
+"PO-Revision-Date: 2026-06-26 12:19+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 26.07.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -2854,43 +2854,34 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr "Destruir el sistema de archivos de <filename>%1</filename>"
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
 msgstr ""
-"El sistema de archivos <filename>%1</filename> no permite el uso de "
-"etiquetas. Trabajo ignorado."
+"El sistema de archivos en <filename>%1</filename> no permite propiedad."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
 msgstr ""
-"Cambiando el tamaño del cifrado LUKS en la partición <filename>%1</filename>."
+"Se ha denegado el cambio de propiedad del punto de montaje crítico <filename>"
+"%1</filename>."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Cambiar los permisos de: <filename>%1</filename> a %2"
+msgstr ""
+"Tomando posesión de <filename>%1</filename> y su contenido para el usuario %2"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Cambiar los permisos de: <filename>%1</filename> a %2"
+msgstr "Tomando posesión de <filename>%1</filename> para el usuario %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3328,20 +3319,17 @@ msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Definir etiqueta para la partición GPT <filename>%1</filename> a «%2»"
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Cambiar los permisos de: <filename>%1</filename> a %2"
+msgstr ""
+"Tomar posesión de <filename>%1</filename> y sus contenidos para el usuario %2"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Cambiar los permisos de: <filename>%1</filename> a %2"
+msgstr "Tomar posesión de <filename>%1</filename> para el usuario %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

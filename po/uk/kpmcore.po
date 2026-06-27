@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2026-05-02 19:36+0300\n"
+"PO-Revision-Date: 2026-06-26 12:03+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2835,43 +2835,35 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr "Витерти файлову систему на <filename>%1</filename>"
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
 msgstr ""
-"Файлова система на розділі <filename>%1</filename> не підтримує встановлення "
-"міток. Завдання скасовано."
+"У файловій системі на <filename>%1</filename> не передбачено підтримки "
+"запису власника."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
 msgstr ""
-"Змінюємо розмір зашифрованої області LUKS на розділі <filename>%1</filename>."
+"Відмова у зміні власності критичної точки монтування <filename>%1</filename>."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Зміна прав доступу до <filename>%1</filename> на %2"
+msgstr ""
+"Передаємо права власності на <filename>%1</filename> і його вмісту "
+"користувачеві %2"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Зміна прав доступу до <filename>%1</filename> на %2"
+msgstr "Передаємо права власності на <filename>%1</filename> користувачеві %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3305,20 +3297,18 @@ msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Встановлення мітки розділу GPT <filename>%1</filename> у значення «%2»"
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Зміна прав доступу до <filename>%1</filename> на %2"
+msgstr ""
+"Передати права власності на <filename>%1</filename> і його вмісту "
+"користувачеві %2"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Зміна прав доступу до <filename>%1</filename> на %2"
+msgstr "Передати права власності на <filename>%1</filename> користувачеві %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
