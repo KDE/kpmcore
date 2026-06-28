@@ -381,13 +381,13 @@ msgstr " [RAID %1]"
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr " [RAID %1 - Recuperant]"
+msgstr " [RAID %1 – Recuperant]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr " [RAID %1 - Resincronitzant]"
+msgstr " [RAID %1 – Resincronitzant]"
 
 #: core/smartattribute.cpp:45
 #, kde-kuit-format
