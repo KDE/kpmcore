@@ -9,7 +9,7 @@
 # Thomas Vergnaud <thomas.vergnaud@gmx.fr>, 2014, 2015.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019.
 # William Oprandi <william.oprandi@gmail.com>, 2020.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2024, 2025 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2020-2022, 2024-2026 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
 msgid ""
@@ -17,9 +17,9 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2025-03-13 07:23+0100\n"
+"PO-Revision-Date: 2026-06-27 14:32+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: French <French <kde-francophone@kde.org>>\n"
+"Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 26.04.2\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -2874,44 +2874,37 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr "Détruire le système de fichiers sur <filename>%1</filename>"
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
 msgstr ""
-"Le système de fichiers sur la partition <filename>%1</filename> ne prend pas "
-"en charge la définition d'étiquettes. Tâche ignorée."
+"Le système de fichiers sur <filename>%1</filename> ne prend pas en charge la "
+"propriété."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
 msgstr ""
-"Redimensionnement du chiffrement LUKS sur la partition <filename>%1</"
-"filename>."
+"Refus de modification de la propriété pour le point de montage critique "
+"<filename>%1</filename>."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Modifier les permissions de : <filename>%1</filename> à « %2 »"
+msgstr ""
+"Déclaration de propriété de <filename>%1</filename> et de son contenu pour "
+"l'utilisateur %2"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Modifier les permissions de : <filename>%1</filename> à « %2 »"
+msgstr ""
+"Déclaration de propriété de <filename>%1</filename> pour l'utilisateur %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3350,20 +3343,19 @@ msgstr ""
 "Définir l'étiquette de la partition « GPT » <filename>%1</filename> à « %2 »"
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Modifier les permissions de : <filename>%1</filename> à « %2 »"
+msgstr ""
+"Déclaration de propriété de <filename>%1</filename> et de son contenu pour "
+"l'utilisateur %2"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Modifier les permissions de : <filename>%1</filename> à « %2 »"
+msgstr ""
+"Déclaration de propriété de <filename>%1</filename> pour l'utilisateur %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
