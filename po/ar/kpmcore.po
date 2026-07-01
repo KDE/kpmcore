@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2026-02-26 12:29+0400\n"
+"PO-Revision-Date: 2026-06-30 21:44+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -2727,42 +2727,31 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr "مزّق نظام الملفات في <filename>%1</filename>"
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
 msgstr ""
-"لا يتيح نظام الملفات الموجود على القسم <filename>%1</filename> تعيين "
-"العلامات. تُجاهلت المهمة."
+"لا يتيح نظام الملفات الموجود على القسم <filename>%1</filename> ميزة الملكية."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
-msgstr "تغيير حجم ملف LUKS على القسم <filename>%1</filename>."
+msgstr "رفض تغيير ملكية نقطة الوصل المهمة <filename>%1</filename>."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "تغيير أذونات: <filename>%1</filename> إلى %2"
+msgstr "تخصيص ملف <filename>%1</filename> ومحتوياته للمستخدم %2"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "تغيير أذونات: <filename>%1</filename> إلى %2"
+msgstr "تخصيص ملف <filename>%1</filename> للمستخدم %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3170,20 +3159,16 @@ msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "عيّن لصيقة قسم GPT <filename>%1</filename> إلى \"%2\""
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "تغيير أذونات: <filename>%1</filename> إلى %2"
+msgstr "خصص ملف <filename>%1</filename> ومحتوياته للمستخدم %2"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "تغيير أذونات: <filename>%1</filename> إلى %2"
+msgstr "خصص ملف <filename>%1</filename> للمستخدم %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
