@@ -2634,27 +2634,27 @@ msgstr "粉碎 <filename>%1</filename> 的文件系统"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr ""
+msgstr "<filename>%1</filename> 上的文件系统不支持所有权。"
 
 #: jobs/takeownershipjob.cpp:36
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
-msgstr ""
+msgstr "拒绝更改关键挂载点 <filename>%1</filename> 的所有权。"
 
 #: jobs/takeownershipjob.cpp:60
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr ""
+msgstr "正在为用户 %2 取得 <filename>%1</filename> 及其内容的所有权"
 
 #: jobs/takeownershipjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr ""
+msgstr "正在为用户 %2 取得 <filename>%1</filename> 的所有权"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3052,13 +3052,13 @@ msgstr "设置 GPT 分区标签 <filename>%1</filename> 为“%2”"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr ""
+msgstr "为用户 %2 取得 <filename>%1</filename> 及其内容的所有权"
 
 #: ops/takeownershipoperation.cpp:75
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr ""
+msgstr "为用户 %2 取得 <filename>%1</filename> 的所有权"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
