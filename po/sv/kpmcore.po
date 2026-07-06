@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2015-2022, 2024-2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2025-04-05 08:53+0200\n"
+"PO-Revision-Date: 2026-07-05 19:17+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2775,43 +2775,33 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr "Förstör filsystemet på <filename>%1</filename>"
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr ""
-"Filsystem på partition <filename>%1</filename> stöder inte inställning av "
-"etiketter. Jobb ignorerat."
+msgstr "Filsystem på <filename>%1</filename> stöder inte äganderätt."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
 msgstr ""
-"Ändrar storlek på LUKS-kryptering på partition <filename>%1</filename>."
+"Vägrar ändra äganderätt för kritisk monteringspunkt <filename>%1</filename>."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Ändra behörighet för: <filename>%1</filename> till %2"
+msgstr ""
+"Tar äganderätt över <filename>%1</filename> och dess innehåll för användaren "
+"%2"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Ändra behörighet för: <filename>%1</filename> till %2"
+msgstr "Tar äganderätt över <filename>%1</filename> för användaren %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3242,20 +3232,18 @@ msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Ställ in GPT-partitionsetikett <filename>%1</filename> till \"%2\""
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Ändra behörighet för: <filename>%1</filename> till %2"
+msgstr ""
+"Ta äganderätt över <filename>%1</filename> och dess innehåll för användaren "
+"%2"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Ändra behörighet för: <filename>%1</filename> till %2"
+msgstr "Ta äganderätt över <filename>%1</filename> för användaren %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
