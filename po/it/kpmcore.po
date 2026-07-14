@@ -3,14 +3,14 @@
 # Marco Poletti <poletti.marco@gmail.com>, 2010.
 # Calogero Lo Leggio <calogero@loleggio.net>, 2010.
 # Jacopo Reggiani <jacopo.reggiani@gmail.com>, 2010.
-# SPDX-FileCopyrightText: 2013, 2014, 2015, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025 Vincenzo Reale <smart2128vr@gmail.com>
+# SPDX-FileCopyrightText: 2013-2015, 2017-2022, 2024-2026 Vincenzo Reale <smart2128vr@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2025-03-12 16:23+0100\n"
+"PO-Revision-Date: 2026-06-27 08:11+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2841,42 +2841,34 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr "Distruggi il file system su <filename>%1</filename>"
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr ""
-"Il file system nella partizione <filename>%1</filename> non supporta "
-"l'assegnazione delle etichette. Operazione ignorata."
+msgstr "Il file system su <filename>%1</filename> non supporta la proprietà."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
-msgstr "Ridimensionamento LUKS nella partizione <filename>%1</filename>."
+msgstr ""
+"Rifiuto di modificare la proprietà del punto di montaggio critico <filename>"
+"%1</filename>."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Modifica i permessi di: <filename>%1</filename> a %2"
+msgstr ""
+"Assunzione della proprietà di <filename>%1</filename> e del suo contenuto "
+"per l'utente %2"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Modifica i permessi di: <filename>%1</filename> a %2"
+msgstr "Assunzione della proprietà di <filename>%1</filename> per l'utente %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3318,20 +3310,18 @@ msgstr ""
 "Imposta l'etichetta della partizione GPT <filename>%1</filename> a «%2»"
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Modifica i permessi di: <filename>%1</filename> a %2"
+msgstr ""
+"Assumi la proprietà di <filename>%1</filename> e del suo contenuto per "
+"l'utente %2"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Modifica i permessi di: <filename>%1</filename> a %2"
+msgstr "Assumi la proprietà di <filename>%1</filename> per l'utente %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
