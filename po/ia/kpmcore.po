@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the kpmcore package.
 #
-# SPDX-FileCopyrightText: 2023, 2025 giovanni <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2023, 2025, 2026 giovanni <g.sora@tiscali.it>
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2025-01-31 12:25+0100\n"
+"PO-Revision-Date: 2026-07-17 11:32+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2555,11 +2555,10 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr ""
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open file <filename>%1</filename> for writing."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr "Il non pote aperir file  <filename>%1</filename> per scriber."
+msgstr "Systema de file sur  <filename>%1</filename> non supporta proprietate."
 
 #: jobs/takeownershipjob.cpp:36
 #, kde-kuit-format
@@ -2576,11 +2575,10 @@ msgid ""
 msgstr ""
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open file <filename>%1</filename> for writing."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Il non pote aperir file  <filename>%1</filename> per scriber."
+msgstr "Prendente proprietate de  <filename>%1</filename> per  usator %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -2971,11 +2969,10 @@ msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
 msgstr ""
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open file <filename>%1</filename> for writing."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Il non pote aperir file  <filename>%1</filename> per scriber."
+msgstr "Prende proprietate de  <filename>%1</filename> per  usator %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
