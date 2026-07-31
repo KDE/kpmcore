@@ -14,6 +14,7 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="bg">Стартиране на упълномощен помощен модул за управление на дялове</description>
       <description xml:lang="ca">Executa l'ajudant del gestor de particions amb privilegis</description>
       <description xml:lang="ca@valencia">Executa l'ajudant del gestor de particions amb privilegis</description>
+      <description xml:lang="cs">Spustit pomocný program pro správu privilegovaných oddílů</description>
       <description xml:lang="el">Εκτέλεση του προνομιούχου βοηθού του διαχειριστή κατατμήσεων</description>
       <description xml:lang="en_GB">Run privileged partition manager helper</description>
       <description xml:lang="eo">Lanĉi privilegiitan helpilon de diskpartiga mastrumilo</description>
