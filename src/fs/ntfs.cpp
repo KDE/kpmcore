@@ -17,10 +17,10 @@
 
 #include <KLocalizedString>
 
+#include <QFile>
 #include <QRegularExpression>
 #include <QString>
 #include <QStringList>
-#include <QFile>
 
 #include <algorithm>
 #include <ctime>
@@ -181,16 +181,13 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
 {
     report.line() << xi18nc("@info:progress", "Updating boot sector for NTFS file system on partition <filename>%1</filename>.", deviceNode);
 
-    qint64 n = firstSector();
-    char* s = reinterpret_cast<char*>(&n);
-
-#if Q_BYTE_ORDER == Q_BIG_ENDIAN
-    std::swap(s[0], s[3]);
-    std::swap(s[1], s[2]);
-#endif
+    QByteArray data;
+    QDataStream stream(&data, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::LittleEndian);
+    stream << static_cast<quint32>(firstSector());
 
     ExternalCommand cmd;
-    if (!cmd.writeData(report, QByteArray(s, sizeof(s)), deviceNode, 28)) {
+    if (!cmd.writeData(report, data, deviceNode, 28)) {
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
@@ -198,7 +195,7 @@ bool ntfs::updateBootSector(Report& report, const QString& deviceNode) const
     // Also update backup NTFS boot sector located at the end of the partition
     // NOTE: this should fail if filesystem does not span the whole partition
     qint64 pos = (lastSector() - firstSector()) * sectorSize() + 28;
-    if (!cmd.writeData(report, QByteArray(s, sizeof(s)), deviceNode, pos)) {
+    if (!cmd.writeData(report, data, deviceNode, pos)) {
         Log() << xi18nc("@info:progress", "Could not write new start sector to partition <filename>%1</filename> when trying to update the NTFS boot sector.", deviceNode);
         return false;
     }
