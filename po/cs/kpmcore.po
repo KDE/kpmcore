@@ -2,31 +2,32 @@
 # This file is distributed under the same license as the PACKAGE package.
 # SPDX-FileCopyrightText: 2015, 2016, 2017, 2018, 2019, 2020, 2025 Vít Pelčák <vit@pelcak.org>
 # SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filípek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2025-12-02 11:27+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-07-31 23:49+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Vít Pelčák"
+msgstr "Vít Pelčák,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "vit@pelcak.org"
+msgstr "vit@pelcak.org,libor.filipek@gmail.com"
 
 #: core/device.cpp:33
 #, kde-format
@@ -68,7 +69,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying a new partition: Creating a new partition instead."
-msgstr ""
+msgstr "Kopírování nového oddílu: Místo toho vytvořte nový oddíl."
 
 #: core/operationstack.cpp:156
 #, kde-kuit-format
@@ -90,6 +91,8 @@ msgid ""
 "Checking file systems is automatically done when creating them: No new "
 "operation required."
 msgstr ""
+"Kontrola souborových systémů se provádí automaticky při jejich vytváření: "
+"Není třeba provádět žádné další kroky."
 
 #: core/operationstack.cpp:233
 #, kde-kuit-format
@@ -138,12 +141,13 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Changing flags again for the same partition: Removing old operation."
 msgstr ""
+"Opětovná změna příznaků u stejného oddílu: Odstranění předchozí operace."
 
 #: core/operationstack.cpp:349
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Changing label again for the same partition: Removing old operation."
-msgstr ""
+msgstr "Opětovná změna popisku stejného oddílu: Odstranění předchozí operace."
 
 #: core/operationstack.cpp:375
 #, kde-kuit-format
@@ -157,7 +161,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resizing Volume Group, nothing to do."
-msgstr ""
+msgstr "Změna velikosti skupiny svazků – není třeba nic dělat."
 
 #: core/operationstack.cpp:440
 #, kde-kuit-format
@@ -303,61 +307,61 @@ msgstr "hpservice"
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "palo"
-msgstr ""
+msgstr "palo"
 
 #: core/partitiontable.cpp:198
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "prep"
-msgstr ""
+msgstr "prep"
 
 #: core/partitiontable.cpp:200
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "msft-reserved"
-msgstr ""
+msgstr "msft-reserved"
 
 #: core/partitiontable.cpp:202
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "bios-grub"
-msgstr ""
+msgstr "bios-grub"
 
 #: core/partitiontable.cpp:204
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "apple-tv-recovery"
-msgstr ""
+msgstr "apple-tv-recovery"
 
 #: core/partitiontable.cpp:206
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "diag"
-msgstr ""
+msgstr "diag"
 
 #: core/partitiontable.cpp:208
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "legacy-boot"
-msgstr ""
+msgstr "legacy-boot"
 
 #: core/partitiontable.cpp:210
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "msft-data"
-msgstr ""
+msgstr "msft-data"
 
 #: core/partitiontable.cpp:212
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "irst"
-msgstr ""
+msgstr "irst"
 
 #: core/partitiontable.cpp:499
 #, kde-kuit-format
 msgctxt "@item partition table name"
 msgid "unknown"
-msgstr "neznámý"
+msgstr "neznámé"
 
 #: core/raid/softwareraid.cpp:93
 #, kde-kuit-format
@@ -369,13 +373,13 @@ msgstr " [RAID %1]"
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr ""
+msgstr " [RAID %1 – Probíhá obnova]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr ""
+msgstr " [RAID %1 – Probíhá resynchronizace]"
 
 #: core/smartattribute.cpp:45
 #, kde-kuit-format
@@ -426,7 +430,7 @@ msgstr "Počet chyb při čtení"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Rate of hardware read errors while reading data from the disk surface."
-msgstr ""
+msgstr "Míra hardwarových chyb při čtení dat z povrchu disku."
 
 #: core/smartattribute.cpp:102
 #, kde-format
@@ -442,18 +446,22 @@ msgid ""
 "of this attribute is decreasing there is a high probability that there is a "
 "problem with the disk."
 msgstr ""
+"Celkový (obecný) výkon pevného disku z hlediska propustnosti. Pokud hodnota "
+"tohoto atributu klesá, je vysoká pravděpodobnost, že na disku došlo k poruše."
 
 #: core/smartattribute.cpp:103
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin-Up Time"
-msgstr ""
+msgstr "Doba rozběhu"
 
 #: core/smartattribute.cpp:103
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Average time of spindle spin up from zero RPM to fully operational."
 msgstr ""
+"Průměrná doba, za kterou se disk roztočí z nulových otáček na plný provozní "
+"režim."
 
 #: core/smartattribute.cpp:104
 #, kde-format
@@ -465,13 +473,13 @@ msgstr "Počet spuštění/zastavení"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "A tally of spindle start/stop cycles."
-msgstr ""
+msgstr "Počet cyklů spuštění a zastavení disku."
 
 #: core/smartattribute.cpp:105
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocated Sectors Count"
-msgstr ""
+msgstr "Počet realokovaných sektorů"
 
 #: core/smartattribute.cpp:105
 #, kde-format
@@ -489,7 +497,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Channel Margin"
-msgstr ""
+msgstr "Hranice kanálu při čtení"
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -498,12 +506,13 @@ msgid ""
 "Margin of a channel while reading data. The function of this attribute is "
 "not specified."
 msgstr ""
+"Hranice kanálu při čtení dat. Funkce tohoto atributu není specifikována."
 
 #: core/smartattribute.cpp:107
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Seek Error Rate"
-msgstr ""
+msgstr "Míra detekce chyb"
 
 #: core/smartattribute.cpp:107
 #, kde-format
@@ -512,12 +521,14 @@ msgid ""
 "Rate of seek errors of the magnetic heads. If there is a partial failure in "
 "the mechanical positioning system, then seek errors will arise."
 msgstr ""
+"Míra chyb vyhledávání magnetických hlav. Dojde-li k částečné poruše "
+"mechanického polohovacího systému, vzniknou chyby vyhledávání."
 
 #: core/smartattribute.cpp:108
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Seek Time Performance"
-msgstr ""
+msgstr "Časová výkonnost vyhledávání"
 
 #: core/smartattribute.cpp:108
 #, kde-format
@@ -527,6 +538,8 @@ msgid ""
 "attribute is decreasing, it is a sign of problems in the mechanical "
 "subsystem."
 msgstr ""
+"Průměrný výkon operací vyhledávání magnetických hlav. Pokud se hodnota "
+"tohoto atributu snižuje, je to známkou problémů v mechanickém subsystému."
 
 #: core/smartattribute.cpp:109
 #, kde-format
@@ -544,7 +557,7 @@ msgstr "Počet hodin v zapnutém stavu."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Retry Count"
-msgstr ""
+msgstr "Počet opakování spuštění rotace"
 
 #: core/smartattribute.cpp:110
 #, kde-format
@@ -554,12 +567,15 @@ msgid ""
 "An increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"Počet opakovaných pokusů o spuštění rotace v případě, že první pokus byl "
+"neúspěšný. Zvýšení hodnoty tohoto atributu signalizuje problémy v "
+"mechanickém subsystému pevného disku."
 
 #: core/smartattribute.cpp:111
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Recalibration Retries"
-msgstr ""
+msgstr "Počet pokusů o rekalibraci"
 
 #: core/smartattribute.cpp:111
 #, kde-format
@@ -569,85 +585,91 @@ msgid ""
 "increase of this attribute value is a sign of problems in the hard disk "
 "mechanical subsystem."
 msgstr ""
+"Počet požadovaných rekalibrací v případě, že první pokus nebyl úspěšný. "
+"Nárůst hodnoty tohoto atributu signalizuje problémy v mechanickém subsystému "
+"pevného disku."
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Cycle Count"
-msgstr ""
+msgstr "Počet cyklů zapnutí a vypnutí"
 
 #: core/smartattribute.cpp:112
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of full hard disk power on/off cycles."
-msgstr ""
+msgstr "Počet cyklů zapnutí a vypnutí pevného disku."
 
 #: core/smartattribute.cpp:113 core/smartattribute.cpp:145
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Soft Read Error Rate"
-msgstr ""
+msgstr "Míra chyb při čtení na softwarové úrovni"
 
 #: core/smartattribute.cpp:113
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Uncorrected read errors reported to the operating system."
-msgstr ""
+msgstr "Neopravené chyby čtení nahlášené operačnímu systému."
 
 #: core/smartattribute.cpp:114
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr ""
+msgstr "Dostupné rezervované místo na SSD"
 
 #: core/smartattribute.cpp:114
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of available reserved space as a percentage of reserved space."
 msgstr ""
+"Kapacita volného rezervovaného prostoru vyjádřená jako procentní podíl z "
+"celkové rezervované kapacity."
 
 #: core/smartattribute.cpp:115
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count"
-msgstr ""
+msgstr "Počet selhání programu SSD"
 
 #: core/smartattribute.cpp:115 core/smartattribute.cpp:125
 #, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "Number of flash program operation failures since the drive was deployed."
-msgstr ""
+msgstr "Počet selhání operací flash programu od uvedení disku do provozu."
 
 #: core/smartattribute.cpp:116 core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count"
-msgstr ""
+msgstr "Počet neúspěšných pokusů o vymazání SSD"
 
 #: core/smartattribute.cpp:116
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
 msgstr ""
+"Počet neúspěšných operací vymazání paměti flash od uvedení disku do provozu."
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Leveling Count"
-msgstr ""
+msgstr "Počet vyrovnání opotřebení SSD"
 
 #: core/smartattribute.cpp:117
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr ""
+msgstr "Vypočítá maximální počet vymazání v libovolném bloku."
 
 #: core/smartattribute.cpp:118
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unexpected power loss count"
-msgstr ""
+msgstr "Počet neočekávaných výpadků napájení SSD"
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -657,12 +679,15 @@ msgid ""
 "(regardless of PLI activity using capacitor power). Normalized value is "
 "always 100."
 msgstr ""
+"Počet vypnutí, u nichž nebyl posledním příkazem STANDBY IMMEDIATE (bez "
+"ohledu na aktivitu PLI využívající napájení z kondenzátoru). Normalizovaná "
+"hodnota je vždy 100."
 
 #: core/smartattribute.cpp:119
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Power Loss Protection Failure"
-msgstr ""
+msgstr "Selhání ochrany SSD proti výpadku napájení"
 
 #: core/smartattribute.cpp:119
 #, kde-format
@@ -675,67 +700,75 @@ msgid ""
 "or 11 if the capacitor has been tested in an excessive temperature "
 "condition, otherwise 100."
 msgstr ""
+"Výsledek posledního testu, který dosáhl své maximální hodnoty. Bajty 0–1: "
+"výsledek posledního testu vyjádřený v mikrosekundách potřebných k vybití "
+"kondenzátoru v rozmezí [25, 5 000 000]; nižší hodnota označuje konkrétní "
+"chybový kód. Bajty 2–3: počet minut od posledního testu. Bajty 4–5: celkový "
+"počet testů za dobu životnosti. Normalizovaná hodnota je nastavena na 1 v "
+"případě selhání testu nebo na 11, pokud byl kondenzátor testován za podmínek "
+"nadměrné teploty, v opačném případě na 100."
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr ""
+msgstr "Počet neúspěšných pokusů o vymazání SSD (čip)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase command failures."
-msgstr ""
+msgstr "Počet neúspěšných příkazů k vymazání paměti flash."
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Wear Range Delta"
-msgstr ""
+msgstr "Rozsah delta opotřebení SSD"
 
 #: core/smartattribute.cpp:121
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Delta between most-worn and least-worn flash blocks."
-msgstr ""
+msgstr "Rozdíl mezi nejvíce a nejméně opotřebovanými bloky paměti flash."
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Used Reserved Block Count Total"
-msgstr ""
+msgstr "Celkový počet použitých rezervovaných bloků na SSD"
 
 #: core/smartattribute.cpp:122 core/smartattribute.cpp:123
 #: core/smartattribute.cpp:126
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" Samsung attribute."
-msgstr ""
+msgstr "Funkce \"Pre-Fail\" společnosti Samsung."
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Unused Reserved Block Count Total"
-msgstr ""
+msgstr "Celkový počet nevyužitých rezervovaných bloků SSD"
 
 #: core/smartattribute.cpp:124
 #, kde-format
 msgctxt "SMART attr description"
 msgid "\"Pre-Fail\" HP attribute."
-msgstr ""
+msgstr "Atribut HP \"Pre-Fail\"."
 
 #: core/smartattribute.cpp:125
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Program Fail Count Total or Non-4K Aligned Access Count"
 msgstr ""
+"Celkový počet selhání programu SSD nebo počet přístupů bez zarovnání na 4K"
 
 #: core/smartattribute.cpp:127
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SATA Downshift Error Count"
-msgstr ""
+msgstr "Počet chyb při snížení rychlosti přenosu SATA"
 
 #: core/smartattribute.cpp:127
 #, kde-format
@@ -747,7 +780,7 @@ msgstr "Atributy Western Digital a Samsung."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "End-to-End Error"
-msgstr ""
+msgstr "Chyba v celém řetězci"
 
 #: core/smartattribute.cpp:128
 #, kde-format
@@ -757,6 +790,9 @@ msgid ""
 "data buffer the parity data between the host and the hard drive did not "
 "match."
 msgstr ""
+"Součást technologie SMART IV společnosti HP: Po přenosu dat přes vyrovnávací "
+"paměť RAM se zjistilo, že parita dat mezi hostitelským počítačem a pevným "
+"diskem se neshodují."
 
 #: core/smartattribute.cpp:129
 #, kde-format
@@ -774,7 +810,7 @@ msgstr "Atribut Western Digital."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Induced Op-Vibration Detection"
-msgstr ""
+msgstr "Detekce indukovaných optických vibrací"
 
 #: core/smartattribute.cpp:131
 #, kde-format
@@ -786,7 +822,7 @@ msgstr "Zaznamenané neopravitelné chyby"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could not be recovered using hardware ECC."
-msgstr ""
+msgstr "Počet chyb, které nebylo možné opravit pomocí hardwarové korekce ECC."
 
 #: core/smartattribute.cpp:132
 #, kde-format
@@ -805,19 +841,19 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "High Fly Writes"
-msgstr "Zápisy High Fly"
+msgstr "Chyby výšky hlav"
 
 #: core/smartattribute.cpp:133
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of fly height errors detected."
-msgstr ""
+msgstr "Počet zjištěných chyb ve výšce hlav disku."
 
 #: core/smartattribute.cpp:134
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Temperature Difference From 100"
-msgstr ""
+msgstr "Teplotní rozdíl od 100"
 
 #: core/smartattribute.cpp:134
 #, kde-format
@@ -826,42 +862,44 @@ msgid ""
 "Value is equal to (100 &ndash; temp. °C), allowing manufacturer to set a "
 "minimum threshold which corresponds to a maximum temperature."
 msgstr ""
+"Hodnota se rovná (100 – teplota v °C), což výrobci umožňuje nastavit "
+"minimální prahovou hodnotu, která odpovídá maximální teplotě."
 
 #: core/smartattribute.cpp:135
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-sense Error Rate"
-msgstr ""
+msgstr "Míra chybovosti G-sense"
 
 #: core/smartattribute.cpp:135
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "Počet chyb způsobených vnějšími nárazy a vibracemi."
 
 #: core/smartattribute.cpp:136
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power Off Retract Count"
-msgstr ""
+msgstr "Počet zaparkování při vypnutí"
 
 #: core/smartattribute.cpp:136
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of power-off or emergency retract cycles"
-msgstr ""
+msgstr "Počet cyklů vypnutí nebo nouzového zaparkování"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Cycle Count"
-msgstr ""
+msgstr "Počet zatěžovacích cyklů"
 
 #: core/smartattribute.cpp:137
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of load/unload cycles into head landing zone position."
-msgstr ""
+msgstr "Počet cyklů v poloze přistávací zóny hlavy."
 
 #: core/smartattribute.cpp:138 core/smartattribute.cpp:166
 #, kde-format
@@ -873,25 +911,25 @@ msgstr "Teplota"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Current internal temperature."
-msgstr "Aktuální vnitřní teplota"
+msgstr "Aktuální vnitřní teplota."
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Hardware ECC Recovered"
-msgstr ""
+msgstr "Hardwarové obnovení s ECC"
 
 #: core/smartattribute.cpp:139
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors that could be recovered using hardware ECC."
-msgstr ""
+msgstr "Počet chyb, které bylo možné opravit pomocí hardwarové korekce ECC."
 
 #: core/smartattribute.cpp:140
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocation Event Count"
-msgstr ""
+msgstr "Počet událostí realokace"
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -900,12 +938,14 @@ msgid ""
 "Count of remap operations. The raw value of this attribute shows the total "
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
+"Počet operací přemapování. Hrubá hodnota tohoto atributu udává celkový počet "
+"pokusů o přenos dat z přerozdělených sektorů do rezervní oblasti."
 
 #: core/smartattribute.cpp:141
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Current Pending Sector Count"
-msgstr ""
+msgstr "Aktuální počet čekajících sektorů"
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -914,24 +954,26 @@ msgid ""
 "Number of &quot;unstable&quot; sectors (waiting to be remapped, because of "
 "read errors)."
 msgstr ""
+"Počet \"nestabilních\" sektorů (čekajících na přemapování z důvodu chyb při "
+"čtení)."
 
 #: core/smartattribute.cpp:142
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Uncorrectable Sector Count"
-msgstr ""
+msgstr "Počet neopravitelných sektorů"
 
 #: core/smartattribute.cpp:142
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of uncorrectable errors when reading/writing a sector."
-msgstr ""
+msgstr "Počet neopravitelných chyb při čtení/zápisu sektoru."
 
 #: core/smartattribute.cpp:143
 #, kde-format
 msgctxt "SMART attr name"
 msgid "UltraDMA CRC Error Count"
-msgstr ""
+msgstr "Počet chyb CRC v režimu UltraDMA"
 
 #: core/smartattribute.cpp:143
 #, kde-format
@@ -939,13 +981,13 @@ msgctxt "SMART attr description"
 msgid ""
 "Count of errors in data transfer via the interface cable as determined by "
 "ICRC."
-msgstr ""
+msgstr "Počet chyb při přenosu dat přes propojovací kabel podle údajů ICRC."
 
 #: core/smartattribute.cpp:144
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Multi-Zone Error Rate<br/>Write Error Rate"
-msgstr ""
+msgstr "Míra chyb ve více zónách <br/>Míra chyb při zápisu"
 
 #: core/smartattribute.cpp:144
 #, kde-format
@@ -957,25 +999,26 @@ msgstr "Celkový počet chyb při psaní na sektor."
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of off-track errors."
-msgstr ""
+msgstr "Počet chyb mimo stopu."
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Data Address Mark Errors"
-msgstr ""
+msgstr "Chyby v označení datových adres"
 
 #: core/smartattribute.cpp:146
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of Data Address Mark errors (or vendor-specific)."
 msgstr ""
+"Počet chyb v označení datové adresy (nebo specifických pro daného výrobce)."
 
 #: core/smartattribute.cpp:147
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Run Out Cancel"
-msgstr ""
+msgstr "Neplatný kontrolní součet pro opravu chyb"
 
 #: core/smartattribute.cpp:147
 #, kde-format
@@ -999,7 +1042,7 @@ msgstr "Počet chyb opravených softwarem ECC"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Thermal Asperity Rate"
-msgstr ""
+msgstr "Míra tepelné náročnosti"
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -1011,7 +1054,7 @@ msgstr "Počet chyb z důvodu vysoké teploty."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Flying Height"
-msgstr ""
+msgstr "Výška hlav"
 
 #: core/smartattribute.cpp:150
 #, kde-format
@@ -1021,24 +1064,27 @@ msgid ""
 "increases the chances of a head crash while a flying height that is too high "
 "increases the chances of a read/write error."
 msgstr ""
+"Výška čtecích a zapisovacích hlav nad povrchem disku. Příliš nízká výška "
+"zvyšuje riziko nárazu čtecí a zapisovací hlavy, zatímco příliš vysoká výška "
+"zvyšuje riziko chyby při čtení nebo zápisu."
 
 #: core/smartattribute.cpp:151
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin High Current"
-msgstr ""
+msgstr "Vysoký proud pro roztočení"
 
 #: core/smartattribute.cpp:151
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Amount of surge current used to spin up the drive."
-msgstr ""
+msgstr "Velikost špičkového proudu potřebného k rozběhu pohonu."
 
 #: core/smartattribute.cpp:152
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Spin Buzz"
-msgstr ""
+msgstr "Počet cyklů roztočení"
 
 #: core/smartattribute.cpp:152
 #, kde-format
@@ -1047,18 +1093,20 @@ msgid ""
 "Number of buzz routines needed to spin up the drive due to insufficient "
 "power."
 msgstr ""
+"Počet pulzovacích cyklů potřebných k roztočení disku z důvodu nedostatečného "
+"napájení."
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Offline Seek Performance"
-msgstr ""
+msgstr "Výkon vyhledávání v režimu offline"
 
 #: core/smartattribute.cpp:153
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Drive's seek performance during its internal tests."
-msgstr ""
+msgstr "Výkon disku při vyhledávání v rámci interních testů."
 
 #: core/smartattribute.cpp:154
 #, kde-format
@@ -1097,25 +1145,27 @@ msgid ""
 "Distance the disk has shifted relative to the spindle (usually due to shock "
 "or temperature)."
 msgstr ""
+"Vzdálenost, o kterou se disk posunul vůči hřídeli (obvykle v důsledku nárazu "
+"nebo teplotních změn)."
 
 #: core/smartattribute.cpp:157
 #, kde-format
 msgctxt "SMART attr name"
 msgid "G-Sense Error Rate"
-msgstr ""
+msgstr "Míra chybovosti G-Sense"
 
 #: core/smartattribute.cpp:157
 #, kde-format
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr ""
+msgstr "Počet chyb způsobených vnějšími nárazy a vibracemi."
 
 #: core/smartattribute.cpp:158
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Loaded Hours"
-msgstr ""
+msgstr "Odpracované hodiny"
 
 #: core/smartattribute.cpp:158
 #, kde-format
@@ -1127,43 +1177,43 @@ msgstr "Doba běhu pod zatížením."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Retry Count"
-msgstr ""
+msgstr "Počet opakování cyklů zatížení"
 
 #: core/smartattribute.cpp:159
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr ""
+msgstr "Počet změn polohy hlavy."
 
 #: core/smartattribute.cpp:160
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load Friction"
-msgstr ""
+msgstr "Tření při zatížení"
 
 #: core/smartattribute.cpp:160
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Resistance caused by friction in mechanical parts while operating."
-msgstr ""
+msgstr "Odpor způsobený třením v mechanických součástech během provozu."
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load/Unload Cycle Count"
-msgstr ""
+msgstr "Počet cyklů zatížení"
 
 #: core/smartattribute.cpp:161
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total number of load cycles."
-msgstr ""
+msgstr "Celkový počet zatěžovacích cyklů."
 
 #: core/smartattribute.cpp:162
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Load-In Time"
-msgstr ""
+msgstr "Doba přípravy"
 
 #: core/smartattribute.cpp:162
 #, kde-format
@@ -1172,24 +1222,26 @@ msgid ""
 "Total time of loading on the magnetic heads actuator (time not spent in "
 "parking area)."
 msgstr ""
+"Celková doba zatížení pohonu magnetických hlav (čas strávený mimo parkovací "
+"polohu)."
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Torque Amplification Count"
-msgstr ""
+msgstr "Počet zesílení točivého momentu"
 
 #: core/smartattribute.cpp:163
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of attempts to compensate for platter speed variations."
-msgstr ""
+msgstr "Počet pokusů o kompenzaci kolísání rychlosti otáčení disku."
 
 #: core/smartattribute.cpp:164
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-Off Retract Cycle"
-msgstr ""
+msgstr "Cykly zaparkování při vypnutí napájení"
 
 #: core/smartattribute.cpp:164
 #, kde-format
@@ -1198,12 +1250,14 @@ msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
 msgstr ""
+"Počet případů, kdy se magnetická kotva automaticky stáhla v důsledku výpadku "
+"napájení."
 
 #: core/smartattribute.cpp:165
 #, kde-format
 msgctxt "SMART attr name"
 msgid "GMR Head Amplitude"
-msgstr ""
+msgstr "Amplituda hlavy GMR"
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1212,6 +1266,7 @@ msgid ""
 "Amplitude of &quot;thrashing&quot; (distance of repetitive forward/reverse "
 "head motion)"
 msgstr ""
+"Amplituda \"mávání\" (vzdálenost opakovaných pohybů hlavy dopředu a dozadu)"
 
 #: core/smartattribute.cpp:166
 #, kde-format
@@ -1223,7 +1278,7 @@ msgstr "Teplota disku"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Endurance Remaining"
-msgstr ""
+msgstr "Zbývající výdrž"
 
 #: core/smartattribute.cpp:167
 #, kde-format
@@ -1232,12 +1287,14 @@ msgid ""
 "Count of physical erase cycles completed on the drive as a percentage of the "
 "maximum physical erase cycles the drive supports"
 msgstr ""
+"Počet fyzických cyklů vymazání provedených na disku vyjádřený jako procento "
+"z maximálního počtu fyzických cyklů vymazání, které disk podporuje"
 
 #: core/smartattribute.cpp:168
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Power-On Seconds"
-msgstr ""
+msgstr "Doba zapnutí v sekundách"
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -1261,7 +1318,7 @@ msgstr "Počet neobnovitelných chyb ECC"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Good Block Rate"
-msgstr ""
+msgstr "Počet dobrých bloků"
 
 #: core/smartattribute.cpp:170
 #, kde-format
@@ -1270,12 +1327,14 @@ msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
 msgstr ""
+"Počet dostupných rezervovaných bloků vyjádřený jako procentní podíl z "
+"celkového počtu rezervovaných bloků"
 
 #: core/smartattribute.cpp:171
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Head Flying Hours<br/>or Transfer Error Rate (Fujitsu)"
-msgstr ""
+msgstr "Počet hodin rotace<br/>nebo míra chyb přenosu (Fujitsu)"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1284,48 +1343,50 @@ msgid ""
 "Time while head is positioning<br/>or counts the number of times the link is "
 "reset during a data transfer."
 msgstr ""
+"Doba, po kterou se hlava polohuje<br/>nebo počet případů, kdy dojde k "
+"resetování spojení během přenosu dat."
 
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "Celkový počet zápisů LBA"
 
 #: core/smartattribute.cpp:172
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Written"
-msgstr ""
+msgstr "Celkový počet zápisů LBA"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "Celkový počet čtení LBA"
 
 #: core/smartattribute.cpp:173
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Read"
-msgstr ""
+msgstr "Celkový počet čtení LBA"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD NAND_Writes_1GiB"
-msgstr ""
+msgstr "Zápisy SSD NAND po 1GiB"
 
 #: core/smartattribute.cpp:174
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr ""
+msgstr "Počet zápisů do paměti NAND v krocích po 1 GB"
 
 #: core/smartattribute.cpp:175
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Read Error Retry Rate"
-msgstr ""
+msgstr "Míra opakování pokusů při chybě čtení"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1337,13 +1398,13 @@ msgstr "Počet chyb při čtení z disku"
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Free Fall Protection"
-msgstr ""
+msgstr "Ochrana proti volnému pádu"
 
 #: core/smartattribute.cpp:176
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
-msgstr ""
+msgstr "Počet zaznamenaných událostí volného pádu"
 
 #: core/smartstatus.cpp:78
 #, kde-kuit-format
@@ -1397,13 +1458,13 @@ msgstr "Chyba při čtení"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Handling error"
-msgstr ""
+msgstr "Chyba při zpracování"
 
 #: core/smartstatus.cpp:110
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Self test in progress"
-msgstr ""
+msgstr "Probíhá autotest"
 
 #: core/smartstatus.cpp:114
 #, kde-kuit-format
@@ -1421,7 +1482,7 @@ msgstr "Zdravý"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has been used outside of its design parameters in the past."
-msgstr ""
+msgstr "V minulosti byl používán mimo své konstrukční parametry."
 
 #: core/smartstatus.cpp:129
 #, kde-kuit-format
@@ -1433,7 +1494,7 @@ msgstr "Obsahuje několik vadných sektorů."
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Is being used outside of its design parameters right now."
-msgstr ""
+msgstr "V současné době je zařízení používáno mimo své konstrukční parametry."
 
 #: core/smartstatus.cpp:135
 #, kde-kuit-format
@@ -1445,7 +1506,7 @@ msgstr "Obsahuje spoustu vadných sektorů."
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Disk failure is imminent. Backup all data!"
-msgstr "Hrozí selhání disku. Zálohujte všechna data."
+msgstr "Hrozí selhání disku. Zálohujte všechna data!"
 
 #: fs/bcachefs.cpp:120
 #, kde-kuit-format
@@ -1504,6 +1565,8 @@ msgid ""
 "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
 "btrfs file system resize failed."
 msgstr ""
+"Změna velikosti souborového systému Btrfs na oddílu <filename>%1</filename> "
+"se nezdařila: změna velikosti souborového systému btrfs se nezdařila."
 
 #: fs/btrfs.cpp:187
 #, kde-kuit-format
@@ -1721,7 +1784,7 @@ msgstr "fat12"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
-msgstr ""
+msgstr "linux_raid_member"
 
 #: fs/filesystem.cpp:539
 #, kde-kuit-format
@@ -1832,7 +1895,7 @@ msgstr "Zadejte heslo pro %1:"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
-msgstr ""
+msgstr "Změna velikosti šifrovaného oddílu LUKS <filename>%1</filename>."
 
 #: fs/luks.cpp:515 fs/luks2.cpp:126
 #, kde-kuit-format
@@ -1860,6 +1923,8 @@ msgid ""
 "Resizing NILFS2 file system on partition <filename>%1</filename> failed: "
 "NILFS2 file system resize failed."
 msgstr ""
+"Změna velikosti souborového systému NILFS2 na oddílu <filename>%1</filename> "
+"se nezdařila: Změna velikosti souborového systému NILFS2 se nezdařila."
 
 #: fs/nilfs2.cpp:156
 #, kde-kuit-format
@@ -1868,6 +1933,8 @@ msgid ""
 "<warning>Resizing NILFS2 file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
+"<warning>Změna velikosti souborového systému NILFS2 na oddílu <filename>%1</"
+"filename>: Odpojení se nezdařilo.</warning>"
 
 #: fs/nilfs2.cpp:158
 #, kde-kuit-format
@@ -1894,6 +1961,8 @@ msgid ""
 "Could not write new start sector to partition <filename>%1</filename> when "
 "trying to update the NTFS boot sector."
 msgstr ""
+"Při pokusu o aktualizaci spouštěcího sektoru NTFS se nepodařilo zapsat nový "
+"spouštěcí sektor do oddílu <filename>%1</filename>."
 
 #: fs/ntfs.cpp:206
 #, kde-kuit-format
@@ -2619,46 +2688,33 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr ""
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Partition table of partition <filename>%1</filename> does not support "
-#| "setting names. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr ""
-"Tabulka diskových oddílů na oddílu <filename>%1</filename> nepodporuje "
-"nastavení názvu. Úloha byla ignorována."
+msgstr "Souborový systém na <filename>%1</filename> nepodporuje vlastnictví."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing encrypted file system on partition <filename>%1</filename> "
-#| "failed."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
 msgstr ""
-"Selhala změna velikosti šifrovaného souborového systému na oddílu <filename>"
-"%1</filename>."
+"Odmítnutí změny vlastníka kritického připojovacího bodu <filename>%1</"
+"filename>."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Změnit oprávnění: <filename>%1</filename> na %2"
+msgstr ""
+"Převzetí vlastnictví <filename>%1</filename> a jeho obsahu pro uživatele %2"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Změnit oprávnění: <filename>%1</filename> na %2"
+msgstr "Převzetí vlastnictví <filename>%1</filename> pro uživatele %2"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3049,20 +3105,18 @@ msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "Nastavit popisek oddílu GPT <filename>%1</filename> na \"%2\""
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Změnit oprávnění: <filename>%1</filename> na %2"
+msgstr ""
+"Převést vlastnictví souboru <filename>%1</filename> a jeho obsahu na "
+"uživatele %2"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Změnit oprávnění: <filename>%1</filename> na %2"
+msgstr "Převést vlastnictví <filename>%1</filename> na uživatele %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
@@ -3195,12 +3249,12 @@ msgstr "Příkaz: %1 %2"
 #: util/externalcommandhelper.cpp:82
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr "Nelze otevřít zařízení <filename>%1</filename> pro čtení"
+msgstr "Nelze otevřít zařízení <filename>%1</filename> pro čtení."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
-msgstr "Nelze vyhledat pozici %1 na zařízení <filename>%2</filename>"
+msgstr "Nelze vyhledat pozici %1 na zařízení <filename>%2</filename>."
 
 #: util/externalcommandhelper.cpp:96
 #, kde-kuit-format
