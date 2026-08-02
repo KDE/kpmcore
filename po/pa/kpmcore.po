@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-26 00:48+0000\n"
+"POT-Creation-Date: 2026-08-02 00:48+0000\n"
 "PO-Revision-Date: 2013-01-05 09:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -2031,7 +2031,7 @@ msgstr ""
 "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ NTFS ਫਾਇਲ ਸਿਸਟਮ ਲਈ ਬੂਟ ਸੈਕਟਰ ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ "
 "ਰਿਹਾ ਹੈ।"
 
-#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2045,7 +2045,7 @@ msgstr ""
 "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ ਨਵਾਂ ਸ਼ੁਰੂ ਸੈਕਟਰ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ, ਜਦੋਂ NTFS ਬੂਟ "
 "ਸੈਕਟਰ ਅੱਪਡੇਟ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ।"
 
-#: fs/ntfs.cpp:206
+#: fs/ntfs.cpp:203
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
