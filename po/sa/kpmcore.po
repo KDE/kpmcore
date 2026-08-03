@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-26 00:48+0000\n"
+"POT-Creation-Date: 2026-08-03 02:46+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1916,7 +1916,7 @@ msgid ""
 msgstr ""
 "<filename>%1</filename> विभाजने NTFS सञ्चिकातन्त्रस्य कृते बूट् सेक्टर् अद्यतनीकरणम् ।"
 
-#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1926,7 +1926,7 @@ msgstr ""
 "NTFS बूट् सेक्टर् अपडेट् कर्तुं प्रयतमाने <filename>%1</filename> विभाजने नूतनं आरम्भक्षेत्रं "
 "लिखितुं न शक्तम् ।"
 
-#: fs/ntfs.cpp:206
+#: fs/ntfs.cpp:203
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

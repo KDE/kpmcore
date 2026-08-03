@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-26 00:48+0000\n"
+"POT-Creation-Date: 2026-08-03 02:46+0000\n"
 "PO-Revision-Date: 2019-03-02 11:56+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -2080,7 +2080,7 @@ msgstr ""
 "Opdaterer boot-sektoren for NTFS-filsystemet på partitionen <filename>%1</"
 "filename>."
 
-#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2094,7 +2094,7 @@ msgstr ""
 "Kunne ikke skrive ny startsektor til partitionen <filename>%1</filename> "
 "under forsøg på at opdatere NTFS boot-sektor."
 
-#: fs/ntfs.cpp:206
+#: fs/ntfs.cpp:203
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""

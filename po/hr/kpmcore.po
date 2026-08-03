@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-26 00:48+0000\n"
+"POT-Creation-Date: 2026-08-03 02:46+0000\n"
 "PO-Revision-Date: 2010-01-21 11:18+0100\n"
 "Last-Translator: Andrej Dundović <adundovi@gmail.com>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -1939,7 +1939,7 @@ msgid ""
 "filename>."
 msgstr "Informacije o particijama"
 
-#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Partition Information"
@@ -1949,7 +1949,7 @@ msgid ""
 "trying to update the NTFS boot sector."
 msgstr "Informacije o particijama"
 
-#: fs/ntfs.cpp:206
+#: fs/ntfs.cpp:203
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Partition Information"

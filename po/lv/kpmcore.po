@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-26 00:48+0000\n"
+"POT-Creation-Date: 2026-08-03 02:46+0000\n"
 "PO-Revision-Date: 2009-01-11 18:55+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -2086,7 +2086,7 @@ msgstr ""
 "Neizdevās izveidot mērķi failu sistēmas pārvietošanai uz sadaļu <filename>"
 "%1</filename>."
 
-#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2100,7 +2100,7 @@ msgstr ""
 "Neizdevās atvērt kopēšanai failu sistēmu mērķa sadaļā <filename>%1</"
 "filename>."
 
-#: fs/ntfs.cpp:206
+#: fs/ntfs.cpp:203
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Failed to create new partition <filename>%1</filename>."

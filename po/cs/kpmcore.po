@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-26 00:48+0000\n"
-"PO-Revision-Date: 2026-07-31 23:49+0200\n"
+"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"PO-Revision-Date: 2026-08-01 12:01+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -52,8 +52,7 @@ msgctxt "@info:status"
 msgid ""
 "Deleting a partition just created: Undoing the operation to create the "
 "partition."
-msgstr ""
-"Mažu čerstvě vytvořený oddíl: Místo toho ruším operaci pro vytvoření oddílu."
+msgstr "Odstranění právě vytvořeného oddílu: Zrušení operace vytvoření oddílu."
 
 #: core/operationstack.cpp:119
 #, kde-kuit-format
@@ -117,14 +116,14 @@ msgid ""
 "Copying a partition that is itself a copy: Copying the original source "
 "partition instead."
 msgstr ""
-"Kopírování oddílu, který je sám kopií: Kopíruji místo toho původní zdrojový "
-"oddíl."
+"Kopírování oddílu, který je sám o sobě kopií: Místo toho kopírovat původní "
+"zdrojový oddíl."
 
 #: core/operationstack.cpp:280
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Deleting a partition just restored: Removing the restore operation."
-msgstr "Mazání právě obnoveného oddílu: Odstraňuji operaci obnovení."
+msgstr "Odstranění právě obnoveného oddílu: Zrušení operace obnovení."
 
 #: core/operationstack.cpp:285
 #, kde-kuit-format
@@ -133,8 +132,8 @@ msgid ""
 "Deleting a partition just restored to an existing partition: Removing the "
 "restore operation and deleting the existing partition."
 msgstr ""
-"Mazání právě obnoveného oddílu: odstraňuji operaci obnovení a mažu "
-"existující oddíl."
+"Odstranění oddílu, který byl právě obnoven na stávající oddíl: Zrušení "
+"operace obnovení a odstranění stávajícího oddílu."
 
 #: core/operationstack.cpp:318
 #, kde-kuit-format
@@ -1954,7 +1953,7 @@ msgid ""
 "filename>."
 msgstr "Aktualizace zaváděcího sektoru NTFS na oddílu <filename>%1</filename>."
 
-#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1964,12 +1963,14 @@ msgstr ""
 "Při pokusu o aktualizaci spouštěcího sektoru NTFS se nepodařilo zapsat nový "
 "spouštěcí sektor do oddílu <filename>%1</filename>."
 
-#: fs/ntfs.cpp:206
+#: fs/ntfs.cpp:203
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Updated NTFS boot sector for partition <filename>%1</filename> successfully."
 msgstr ""
+"Zaváděcí sektor NTFS pro oddíl <filename>%1</filename> byl úspěšně "
+"aktualizován."
 
 #: fs/xfs.cpp:159
 #, kde-kuit-format
@@ -1998,6 +1999,8 @@ msgid ""
 "<warning>Resizing XFS file system on partition <filename>%1</filename> "
 "failed: Unmount failed.</warning>"
 msgstr ""
+"<warning>Změna velikosti souborového systému XFS na oddílu <filename>%1</"
+"filename> se nezdařila: Nepodařilo se odpojit.</warning>"
 
 #: fs/xfs.cpp:180
 #, kde-kuit-format
@@ -2016,6 +2019,8 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "backup."
 msgstr ""
+"Nelze otevřít souborový systém na zdrojovém oddílu <filename>%1</filename> "
+"pro zálohování."
 
 #: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -2053,6 +2058,9 @@ msgid ""
 "filename> is smaller than the file system on source partition <filename>%2</"
 "filename>."
 msgstr ""
+"Nelze zkopírovat souborový systém: Souborový systém na cílovém oddílu "
+"<filename>%1</filename> je menší než souborový systém na zdrojovém oddílu "
+"<filename>%2</filename>."
 
 #: jobs/copyfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -2061,6 +2069,8 @@ msgid ""
 "Could not open file system on source partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"Nelze otevřít souborový systém na zdrojovém oddílu <filename>%1</filename> "
+"za účelem kopírování."
 
 #: jobs/copyfilesystemjob.cpp:58
 #, kde-kuit-format
@@ -2069,6 +2079,8 @@ msgid ""
 "Could not open file system on target partition <filename>%1</filename> for "
 "copying."
 msgstr ""
+"Nelze otevřít souborový systém na cílovém oddílu <filename>%1</filename> za "
+"účelem kopírování."
 
 #: jobs/copyfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2087,6 +2099,8 @@ msgid ""
 "Copy file system on partition <filename>%1</filename> to partition <filename>"
 "%2</filename>"
 msgstr ""
+"Zkopírovat souborový systém z oddílu <filename>%1</filename> na oddíl "
+"<filename>%2</filename>"
 
 #: jobs/createfilesystemjob.cpp:66
 #, kde-kuit-format
@@ -2105,6 +2119,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "system type for partition <filename>%2</filename>."
 msgstr ""
+"Nepodařilo se otevřít tabulku oddílů na zařízení <filename>%1</filename> za "
+"účelem nastavení typu systému pro oddíl <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:70
 #, kde-kuit-format
@@ -2113,6 +2129,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the system type for "
 "partition <filename>%2</filename>."
 msgstr ""
+"Nelze otevřít zařízení <filename>%1</filename> za účelem nastavení typu "
+"systému pro oddíl <filename>%2</filename>."
 
 #: jobs/createfilesystemjob.cpp:84
 #, kde-kuit-format
@@ -2141,6 +2159,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to create "
 "new partition <filename>%2</filename>."
 msgstr ""
+"Nelze otevřít tabulku oddílů na zařízení <filename>%1</filename> za účelem "
+"vytvoření nového oddílu <filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:76
 #, kde-kuit-format
@@ -2149,18 +2169,20 @@ msgid ""
 "Could not open device <filename>%1</filename> to create new partition "
 "<filename>%2</filename>."
 msgstr ""
+"Nelze otevřít zařízení <filename>%1</filename> za účelem vytvoření nového "
+"oddílu <filename>%2</filename>."
 
 #: jobs/createpartitionjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition <filename>%1</filename>"
-msgstr ""
+msgstr "Vytvořit nový oddíl <filename>%1</filename>"
 
 #: jobs/createpartitionjob.cpp:96
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition on device <filename>%1</filename>"
-msgstr ""
+msgstr "Vytvořit nový oddíl na zařízení <filename>%1</filename>"
 
 #: jobs/createpartitiontablejob.cpp:49
 #, kde-kuit-format
@@ -2169,24 +2191,26 @@ msgid ""
 "Creating partition table failed: Could not open device <filename>%1</"
 "filename>."
 msgstr ""
+"Vytvoření tabulky oddílů se nezdařilo: Nelze otevřít zařízení <filename>%1</"
+"filename>."
 
 #: jobs/createpartitiontablejob.cpp:61
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Create new partition table on device <filename>%1</filename>"
-msgstr ""
+msgstr "Vytvořit novou tabulku oddílů na zařízení <filename>%1</filename>"
 
 #: jobs/createvolumegroupjob.cpp:49
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
-msgstr ""
+msgstr "Vytvořte novou skupinu svazků: <filename>%1</filename> s PV: %2"
 
 #: jobs/deactivatelogicalvolumejob.cpp:50
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr ""
+msgstr "Deaktivovat logické svazky: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
 #, kde-kuit-format
@@ -2208,7 +2232,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete file system on <filename>%1</filename>."
-msgstr ""
+msgstr "Nelze odstranit souborový systém v <filename>%1</filename>."
 
 #: jobs/deletefilesystemjob.cpp:80
 #, kde-kuit-format
@@ -2217,6 +2241,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "file system on <filename>%2</filename>."
 msgstr ""
+"Nelze otevřít tabulku oddílů na zařízení <filename>%1</filename> za účelem "
+"odstranění souborového systému na <filename>%2</filename>."
 
 #: jobs/deletefilesystemjob.cpp:83
 #, kde-kuit-format
@@ -2225,19 +2251,21 @@ msgid ""
 "Could not delete file system signature for partition <filename>%1</"
 "filename>: Failed to open device <filename>%2</filename>."
 msgstr ""
+"Nelze odstranit podpis souborového systému pro oddíl <filename>%1</"
+"filename>: Nepodařilo se otevřít zařízení <filename>%2</filename>."
 
 #: jobs/deletefilesystemjob.cpp:93
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Delete file system on <filename>%1</filename>"
-msgstr ""
+msgstr "Odstranit souborový systém v <filename>%1</filename>"
 
 #: jobs/deletepartitionjob.cpp:61 plugins/geom/geompartitiontable.cpp:128
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:100
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete partition <filename>%1</filename>."
-msgstr ""
+msgstr "Nepodařilo se odstranit oddíl <filename>%1</filename>."
 
 #: jobs/deletepartitionjob.cpp:65
 #, kde-kuit-format
@@ -2246,6 +2274,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to delete "
 "partition <filename>%2</filename>."
 msgstr ""
+"Nelze otevřít tabulku oddílů na zařízení <filename>%1</filename> za účelem "
+"odstranění oddílu <filename>%2</filename>."
 
 #: jobs/deletepartitionjob.cpp:67
 #, kde-kuit-format
@@ -2265,31 +2295,32 @@ msgstr "Smazat oddíl <filename>%1</filename>"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Source and target for copying do not overlap: Rollback is not required."
-msgstr ""
+msgstr "Zdroj a cíl kopírování se nepřekrývají: Zpětné vrácení není nutné."
 
 #: jobs/job.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback from: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "Vracení zpět od: První bajt: %1, poslední bajt: %2."
 
 #: jobs/job.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback to: First byte: %1, last byte: %2."
-msgstr ""
+msgstr "Vracení zpět do: První bajt: %1, poslední bajt: %2."
 
 #: jobs/job.cpp:74 jobs/job.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open device <filename>%1</filename> to rollback copying."
 msgstr ""
+"Nelze otevřít zařízení <filename>%1</filename> za účelem vrácení kopírování."
 
 #: jobs/job.cpp:86
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback failed: Source or target are not devices."
-msgstr ""
+msgstr "Vrácení zpět selhalo: Zdroj nebo cíl nejsou zařízení."
 
 #: jobs/job.cpp:106
 #, kde-kuit-format
@@ -2327,6 +2358,8 @@ msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
 msgstr ""
+"Nelze otevřít souborový systém na oddílu <filename>%1</filename> za účelem "
+"přesunu."
 
 #: jobs/movefilesystemjob.cpp:54
 #, kde-kuit-format
@@ -2335,31 +2368,36 @@ msgid ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
 msgstr ""
+"Nelze vytvořit cíl pro přesun souborového systému na oddílu <filename>%1</"
+"filename>."
 
 #: jobs/movefilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr ""
+"Vrácení zpět souborového systému na oddílu <filename>%1</filename> se "
+"nezdařilo."
 
 #: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, kde-format, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
-msgstr "Uzavírám zařízení. To může pár sekund trvat."
+msgstr "Uzavírání zařízení. To může pár sekund trvat."
 
 #: jobs/movefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"
 msgstr ""
+"Přesunout souborový systém na oddílu <filename>%1</filename> do sektoru %2"
 
 #: jobs/movephysicalvolumejob.cpp:57
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Move used PE in %1 on %2 to other available Physical Volumes"
-msgstr ""
+msgstr "Přesunout použitý PE v %1 na %2 do jiných dostupných fyzických svazků"
 
 #: jobs/removevolumegroupjob.cpp:41
 #, kde-kuit-format
@@ -2377,20 +2415,28 @@ msgid_plural ""
 "The file system on partition <filename>%2</filename> already has the "
 "requested length of %1 sectors."
 msgstr[0] ""
+"Souborový systém na oddílu <filename>%2</filename> již má požadovanou délku "
+"1 sektoru."
 msgstr[1] ""
+"Souborový systém na oddílu <filename>%2</filename> již má požadovanou délku "
+"%1 sektorů."
 msgstr[2] ""
+"Souborový systém na oddílu <filename>%2</filename> již má požadovanou délku "
+"%1 sektorů."
 
 #: jobs/resizefilesystemjob.cpp:69
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
-msgstr ""
+msgstr "Změna velikosti souborového systému z %1 na %2 sektorů."
 
 #: jobs/resizefilesystemjob.cpp:76
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
+"Změna velikosti souborového systému %1 pomocí interních funkcí podpůrné "
+"vrstvy."
 
 #: jobs/resizefilesystemjob.cpp:91
 #, kde-kuit-format
@@ -2399,12 +2445,16 @@ msgid ""
 "The file system on partition <filename>%1</filename> cannot be resized "
 "because there is no support for it."
 msgstr ""
+"Velikost souborového systému na oddílu <filename>%1</filename> nelze změnit, "
+"protože tato funkce není podporována."
 
 #: jobs/resizefilesystemjob.cpp:119
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
+"Velikost souborového systému se pomocí interních funkcí podpůrné vrstvy "
+"úspěšně změnila."
 
 #: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
@@ -2413,6 +2463,8 @@ msgid ""
 "Could not open partition <filename>%1</filename> while trying to resize the "
 "file system."
 msgstr ""
+"Při pokusu o změnu velikosti souborového systému se nepodařilo otevřít oddíl "
+"<filename>%1</filename>."
 
 #: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
@@ -2421,12 +2473,16 @@ msgid ""
 "Could not read geometry for partition <filename>%1</filename> while trying "
 "to resize the file system."
 msgstr ""
+"Při pokusu o změnu velikosti souborového systému se nepodařilo načíst "
+"geometrii oddílu <filename>%1</filename>."
 
 #: jobs/resizefilesystemjob.cpp:134
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
+"Maximalizovat souborový systém na <filename>%1</filename>, aby se zaplnil "
+"oddíl"
 
 #: jobs/resizefilesystemjob.cpp:136
 #, kde-kuit-format
@@ -2435,44 +2491,54 @@ msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
 msgid_plural ""
 "Resize file system on partition <filename>%2</filename> to %1 sectors"
 msgstr[0] ""
+"Změnit velikost souborového systému na oddílu <filename>%2</filename> na 1 "
+"sektor"
 msgstr[1] ""
+"Změnit velikost souborového systému na oddílu <filename>%2</filename> na %1 "
+"sektory"
 msgstr[2] ""
+"Změnit velikost souborového systému na oddílu <filename>%2</filename> na %1 "
+"sektorů"
 
 #: jobs/resizevolumegroupjob.cpp:59
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Adding LVM Physical Volume %2 to %3."
 msgid_plural "Adding LVM Physical Volumes %2 to %3."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Přidávání fyzického svazku LVM %2 do %3."
+msgstr[1] "Přidávání fyzických svazků LVM %2 do %3."
+msgstr[2] "Přidávání fyzických svazků LVM %2 do %3."
 
 #: jobs/resizevolumegroupjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Removing LVM Physical Volume %2 from %3."
 msgid_plural "Removing LVM Physical Volumes %2 from %3."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Odstraňování fyzického svazku LVM %2 z %3."
+msgstr[1] "Odstraňování fyzických svazků LVM %2 z %3."
+msgstr[2] "Odstraňování fyzických svazků LVM %2 z %3."
 
 #: jobs/resizevolumegroupjob.cpp:64
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resizing Volume Group %1 to %2."
-msgstr ""
+msgstr "Změna velikosti skupiny svazků z %1 na %2."
 
 #: jobs/restorefilesystemjob.cpp:62
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open backup file <filename>%1</filename> to restore from."
 msgstr ""
+"Nepodařilo se otevřít záložní soubor <filename>%1</filename>, ze kterého se "
+"měla provést obnova."
 
 #: jobs/restorefilesystemjob.cpp:64 jobs/shredfilesystemjob.cpp:63
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not open target partition <filename>%1</filename> to restore to."
 msgstr ""
+"Nelze otevřít cílový oddíl <filename>%1</filename>, do kterého má být "
+"provedena obnova."
 
 #: jobs/restorefilesystemjob.cpp:100
 #, kde-kuit-format
@@ -2481,6 +2547,8 @@ msgid ""
 "Restore the file system from file <filename>%1</filename> to partition "
 "<filename>%2</filename>"
 msgstr ""
+"Obnovit souborový systém ze souboru <filename>%1</filename> na oddíl "
+"<filename>%2</filename>"
 
 #: jobs/setfilesystemlabeljob.cpp:48
 #, kde-kuit-format
@@ -2489,6 +2557,8 @@ msgid ""
 "File system on partition <filename>%1</filename> does not support setting "
 "labels. Job ignored."
 msgstr ""
+"Souborový systém na oddílu <filename>%1</filename> nepodporuje nastavení "
+"popisků. Úloha byla ignorována."
 
 #: jobs/setfilesystemlabeljob.cpp:81
 #, kde-kuit-format
@@ -2496,6 +2566,8 @@ msgctxt "@info:progress"
 msgid ""
 "Set the file system label on partition <filename>%1</filename> to \"%2\""
 msgstr ""
+"Nastavit popisek souborového systému na oddílu <filename>%1</filename> na "
+"\"%2\""
 
 #: jobs/setpartflagsjob.cpp:65
 #, kde-kuit-format
@@ -2516,6 +2588,8 @@ msgid ""
 "There was an error setting flag %1 for partition <filename>%2</filename> to "
 "state %3."
 msgstr ""
+"Při nastavení příznaku %1 pro oddíl <filename>%2</filename> na stav %3 došlo "
+"k chybě."
 
 #: jobs/setpartflagsjob.cpp:74
 #, kde-kuit-format
@@ -2524,6 +2598,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set "
 "partition flags for partition <filename>%2</filename>."
 msgstr ""
+"Nepodařilo se otevřít tabulku oddílů na zařízení <filename>%1</filename> za "
+"účelem nastavení příznaků oddílu <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:76
 #, kde-kuit-format
@@ -2532,6 +2608,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set partition flags for "
 "partition <filename>%2</filename>."
 msgstr ""
+"Nelze otevřít zařízení <filename>%1</filename> za účelem nastavení příznaků "
+"oddílu <filename>%2</filename>."
 
 #: jobs/setpartflagsjob.cpp:89
 #, kde-kuit-format
@@ -2543,7 +2621,7 @@ msgstr "Vymazat příznaky pro oddíl <filename>%1</filename>"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "Nastavit příznaky oddílu <filename>%1</filename> na \"%2\""
 
 #: jobs/setpartgeometryjob.cpp:65
 #, kde-kuit-format
@@ -2552,6 +2630,8 @@ msgid ""
 "Could not open device <filename>%1</filename> while trying to resize/move "
 "partition <filename>%2</filename>."
 msgstr ""
+"Při pokusu o změnu velikosti nebo přesunutí oddílu <filename>%2</filename> "
+"se nepodařilo otevřít zařízení <filename>%1</filename>."
 
 #: jobs/setpartgeometryjob.cpp:81
 #, kde-kuit-format
@@ -2560,6 +2640,8 @@ msgid ""
 "Set geometry of partition <filename>%1</filename>: Start sector: %2, length: "
 "%3"
 msgstr ""
+"Nastavení geometrie oddílu <filename>%1</filename>: Počáteční sektor: %2, "
+"délka: %3"
 
 #: jobs/setpartitionattributesjob.cpp:47
 #, kde-kuit-format
@@ -2584,6 +2666,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
+"Nepodařilo se otevřít tabulku oddílů na zařízení <filename>%1</filename> za "
+"účelem nastavení atributů oddílu <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
 #, kde-kuit-format
@@ -2592,6 +2676,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
 msgstr ""
+"Nelze otevřít zařízení <filename>%1</filename> za účelem nastavení atributů "
+"oddílu <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:74
 #, kde-kuit-format
@@ -2622,6 +2708,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
+"Nepodařilo se otevřít tabulku oddílů na zařízení <filename>%1</filename> za "
+"účelem nastavení názvu oddílu <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:63
 #, kde-kuit-format
@@ -2630,6 +2718,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
+"Nelze otevřít zařízení <filename>%1</filename> za účelem nastavení názvu "
+"oddílu <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:74
 #, kde-kuit-format
@@ -2660,6 +2750,8 @@ msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
+"Nepodařilo se otevřít tabulku oddílů na zařízení <filename>%1</filename> za "
+"účelem nastavení UUID pro oddíl <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:63
 #, kde-kuit-format
@@ -2668,6 +2760,8 @@ msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
+"Nepodařilo se otevřít zařízení <filename>%1</filename> za účelem nastavení "
+"UUID pro oddíl <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:74
 #, kde-kuit-format
@@ -2680,12 +2774,14 @@ msgstr "Nastavit UUID oddílu <filename>%1</filename> na \"%2\""
 msgctxt "@info:progress"
 msgid "Could not open random data source to overwrite file system."
 msgstr ""
+"Nepodařilo se otevřít náhodný zdroj dat za účelem přepsání souborového "
+"systému."
 
 #: jobs/shredfilesystemjob.cpp:77
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Shred the file system on <filename>%1</filename>"
-msgstr ""
+msgstr "Zničit souborový systém v <filename>%1</filename>"
 
 #: jobs/takeownershipjob.cpp:28
 #, kde-kuit-format
@@ -2728,7 +2824,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Check and repair partition <filename>%1</filename> (%2, %3)"
-msgstr ""
+msgstr "Zkontrolovat a opravit oddíl <filename>%1</filename> (%2, %3)"
 
 #: ops/copyoperation.cpp:147 ops/restoreoperation.cpp:131
 #, kde-kuit-format
@@ -2737,12 +2833,15 @@ msgid ""
 "<warning>Maximizing file system on target partition <filename>%1</filename> "
 "to the size of the partition failed.</warning>"
 msgstr ""
+"<warning>Zvětšení souborového systému na cílovém oddílu <filename>%1</"
+"filename> na velikost oddílu se nezdařilo.</warning>"
 
 #: ops/copyoperation.cpp:151
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Checking target partition <filename>%1</filename> after copy failed."
-msgstr "Kontroluji cílový oddíl <filename>%1</filename> po selhání kopírování."
+msgstr ""
+"Kontrolování cílového oddílu <filename>%1</filename> po selhání kopírování."
 
 #: ops/copyoperation.cpp:158
 #, kde-kuit-format
@@ -2754,7 +2853,7 @@ msgstr "Kopírování zdroje do cílového oddílu selhalo."
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating target partition for copying failed."
-msgstr ""
+msgstr "Vytvoření cílového oddílu pro kopírování se nezdařilo."
 
 #: ops/copyoperation.cpp:163
 #, kde-kuit-format
@@ -2776,6 +2875,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6)"
 msgstr ""
+"Kopírovat oddíl <filename>%1</filename> (%2, %3) do <filename>%4</filename> "
+"(%5, %6)"
 
 #: ops/copyoperation.cpp:188
 #, kde-kuit-format
@@ -2784,6 +2885,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to <filename>%4</filename> "
 "(%5, %6) and grow it to %7"
 msgstr ""
+"Kopírovat oddíl <filename>%1</filename> (%2, %3) do <filename>%4</filename> "
+"(%5, %6) a zvětšit jej na %7"
 
 #: ops/copyoperation.cpp:200
 #, kde-kuit-format
@@ -2792,6 +2895,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename>"
 msgstr ""
+"Kopírovat oddíl <filename>%1</filename> (%2, %3) do nepřiděleného prostoru "
+"(počínaje od %4) na disku <filename>%5</filename>"
 
 #: ops/copyoperation.cpp:208
 #, kde-kuit-format
@@ -2800,6 +2905,8 @@ msgid ""
 "Copy partition <filename>%1</filename> (%2, %3) to unallocated space "
 "(starting at %4) on <filename>%5</filename> and grow it to %6"
 msgstr ""
+"Kopírovat oddíl <filename>%1</filename> (%2, %3) do nepřiděleného prostoru "
+"(počínaje od %4) na disku <filename>%5</filename> a zvětšit jej na %6"
 
 #: ops/createfilesystemoperation.cpp:89
 #, kde-kuit-format
@@ -2884,7 +2991,7 @@ msgstr "Chyba"
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Remove a LVM volume group."
-msgstr ""
+msgstr "Odstranit skupinu svazků LVM."
 
 #: ops/resizeoperation.cpp:156
 #, kde-kuit-format
@@ -2897,7 +3004,8 @@ msgstr "Přesun rozšířeného oddílu <filename>%1</filename> selhal."
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> after resize/move failed."
 msgstr ""
-"Kontroluji oddíl <filename>%1</filename> po selhání přesunu-změny velikosti."
+"Kontrolování oddílu <filename>%1</filename> po selhání přesunu-změny "
+"velikosti."
 
 #: ops/resizeoperation.cpp:168
 #, kde-kuit-format
@@ -2910,7 +3018,7 @@ msgstr "Změna velikosti/přesunutí oddílu <filename>%1</filename> selhalo."
 msgctxt "@info:status"
 msgid "Checking partition <filename>%1</filename> before resize/move failed."
 msgstr ""
-"Kontroluji oddíl <filename>%1</filename> před přesunem/změnou velikosti."
+"Kontrolování oddílu <filename>%1</filename> před přesunem/změnou velikosti."
 
 #: ops/resizeoperation.cpp:201
 #, kde-kuit-format
@@ -2943,6 +3051,7 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and grow it from %3 "
 "to %4"
 msgstr ""
+"Přesunout oddíl <filename>%1</filename> o %2 doleva a zvětšit jej z %3 na %4"
 
 #: ops/resizeoperation.cpp:216
 #, kde-kuit-format
@@ -2951,6 +3060,7 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and grow it from "
 "%3 to %4"
 msgstr ""
+"Přesunout oddíl <filename>%1</filename> o %2 doprava a zvětšit jej z %3 na %4"
 
 #: ops/resizeoperation.cpp:219
 #, kde-kuit-format
@@ -2959,6 +3069,7 @@ msgid ""
 "Move partition <filename>%1</filename> to the left by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
+"Přesunout oddíl <filename>%1</filename> o %2 doleva a zmenšit jej z %3 na %4"
 
 #: ops/resizeoperation.cpp:222
 #, kde-kuit-format
@@ -2967,12 +3078,13 @@ msgid ""
 "Move partition <filename>%1</filename> to the right by %2 and shrink it from "
 "%3 to %4"
 msgstr ""
+"Přesunout oddíl <filename>%1</filename> o %2 doprava a zmenšit jej z %3 na %4"
 
 #: ops/resizeoperation.cpp:229
 #, kde-kuit-format
 msgctxt "@info:status describe resize/move action"
 msgid "Unknown resize/move action."
-msgstr ""
+msgstr "Neznámá akce změny velikosti/přesunutí."
 
 #: ops/resizeoperation.cpp:258
 #, kde-kuit-format
@@ -2981,18 +3093,22 @@ msgid ""
 "Resize/move failed: Could not resize file system to shrink partition "
 "<filename>%1</filename>."
 msgstr ""
+"Změna velikosti/přesun se nezdařil: Nepodařilo se změnit velikost "
+"souborového systému tak, aby se zmenšil oddíl <filename>%1</filename>."
 
 #: ops/resizeoperation.cpp:263
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not shrink partition <filename>%1</filename>."
 msgstr ""
+"Změna velikosti/přesun se nezdařil: Nepodařilo se zmenšit oddíl <filename>"
+"%1</filename>."
 
 #: ops/resizeoperation.cpp:282
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Moving partition <filename>%1</filename> failed."
-msgstr ""
+msgstr "Přesunutí oddílu <filename>%1</filename> se nezdařilo."
 
 #: ops/resizeoperation.cpp:287
 #, kde-kuit-format
@@ -3001,8 +3117,8 @@ msgid ""
 "Moving the filesystem for partition <filename>%1</filename> failed. Rolling "
 "back."
 msgstr ""
-"Přesun souborového systému na oddíl <filename>%1</filename> selhal. Vracím "
-"se zpět."
+"Přesunutí souborového systému na oddílu <filename>%1</filename> se "
+"nezdařilo. Provádí se vrácení změn."
 
 #: ops/resizeoperation.cpp:291
 #, kde-kuit-format
@@ -3011,12 +3127,15 @@ msgid ""
 "Moving back partition <filename>%1</filename> to its original position "
 "failed."
 msgstr ""
+"Přesunutí oddílu <filename>%1</filename> zpět na původní místo se nezdařilo."
 
 #: ops/resizeoperation.cpp:304
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Resize/move failed: Could not grow partition <filename>%1</filename>."
 msgstr ""
+"Změna velikosti/přesun se nezdařil: Nepodařilo se zvětšit oddíl <filename>"
+"%1</filename>."
 
 #: ops/resizeoperation.cpp:309
 #, kde-kuit-format
@@ -3025,19 +3144,21 @@ msgid ""
 "Resize/move failed: Could not resize the file system on partition <filename>"
 "%1</filename>"
 msgstr ""
+"Změna velikosti/přesun se nezdařil: Nepodařilo se změnit velikost "
+"souborového systému na oddílu <filename>%1</filename>"
 
 #: ops/resizeoperation.cpp:312
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Could not restore old partition size for partition <filename>%1</filename>."
-msgstr ""
+msgstr "Nepodařilo se obnovit původní velikost oddílu <filename>%1</filename>."
 
 #: ops/resizevolumegroupoperation.cpp:108
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resize volume %1 from %2 to %3"
-msgstr ""
+msgstr "Změnit velikost svazku %1 z %2 na %3"
 
 #: ops/restoreoperation.cpp:133
 #, kde-kuit-format
@@ -3046,25 +3167,27 @@ msgid ""
 "Checking target file system on partition <filename>%1</filename> after the "
 "restore failed."
 msgstr ""
+"Kontrola cílového souborového systému na oddílu <filename>%1</filename> po "
+"neúspěšném obnovení."
 
 #: ops/restoreoperation.cpp:138
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Restoring file system failed."
-msgstr ""
+msgstr "Obnovení souborového systému se nezdařilo."
 
 #: ops/restoreoperation.cpp:141
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Creating the destination partition to restore to failed."
-msgstr ""
+msgstr "Vytvoření cílového oddílu pro obnovení se nezdařilo."
 
 #: ops/restoreoperation.cpp:156
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Restore partition from <filename>%1</filename> to <filename>%2</filename>"
-msgstr ""
+msgstr "Obnovit oddíl z <filename>%1</filename> do <filename>%2</filename>"
 
 #: ops/restoreoperation.cpp:158
 #, kde-kuit-format
@@ -3073,18 +3196,20 @@ msgid ""
 "Restore partition on <filename>%1</filename> at %2 from <filename>%3</"
 "filename>"
 msgstr ""
+"Obnovit oddíl v <filename>%1</filename> v umístění %2 ze <filename>%3</"
+"filename>"
 
 #: ops/setfilesystemlabeloperation.cpp:58
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "Nastavit popisek oddílu <filename>%1</filename> na \"%2\""
 
 #: ops/setfilesystemlabeloperation.cpp:60
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set label for partition <filename>%1</filename> from \"%2\" to \"%3\""
-msgstr ""
+msgstr "Nastavit popisek oddílu <filename>%1</filename> z \"%2\" na \"%3\""
 
 #: ops/setpartflagsoperation.cpp:62
 #, kde-kuit-format
@@ -3096,7 +3221,7 @@ msgstr "Vymazat příznaky pro oddíl <filename>%1</filename>"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set flags for partition <filename>%1</filename> to \"%2\""
-msgstr ""
+msgstr "Nastavit příznaky oddílu <filename>%1</filename> na \"%2\""
 
 #: ops/setpartlabeloperation.cpp:59
 #, kde-kuit-format
@@ -3124,7 +3249,7 @@ msgstr "Převést vlastnictví <filename>%1</filename> na uživatele %2"
 msgctxt "@info:progress"
 msgid ""
 "Unknown partition role for new partition <filename>%1</filename> (roles: %2)"
-msgstr ""
+msgstr "Neznámá role nového oddílu <filename>%1</filename> (role: %2)"
 
 #: plugins/geom/geompartitiontable.cpp:109
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:89
@@ -3156,6 +3281,8 @@ msgid ""
 "Could not set geometry for partition <filename>%1</filename> while trying to "
 "resize/move it."
 msgstr ""
+"Při pokusu o změnu velikosti nebo přesunutí oddílu <filename>%1</filename> "
+"se nepodařilo nastavit jeho geometrii."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:124
 #, kde-kuit-format
@@ -3285,7 +3412,7 @@ msgstr "Nelze zapisovat do souboru <filename>%1</filename>."
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
-msgstr ""
+msgstr "Kopírují se bloky o velikosti %1 (%2 bajtů) z %3 do %4, směr: %5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3309,7 +3436,7 @@ msgstr "Kopírování %1 MiB/s, odhadovaný zbývající čas: %2"
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr ""
+msgstr "Kopíruje se zbývající část velikosti bloku %1 z %2 do %3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3325,9 +3452,9 @@ msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Kopírování 1 bloku (%2) dokončeno."
+msgstr[1] "Kopírování %1 bloků (%2) dokončeno."
+msgstr[2] "Kopírování %1 bloků (%2) dokončeno."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
@@ -3441,7 +3568,7 @@ msgstr "David Edmundson"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "Portování z KAuth do Polkit"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format

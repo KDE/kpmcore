@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-26 00:48+0000\n"
+"POT-Creation-Date: 2026-08-03 02:46+0000\n"
 "PO-Revision-Date: 2010-03-06 19:47+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2070,7 +2070,7 @@ msgid ""
 "filename>."
 msgstr "กำลังปรับปรุงเซกเตอร์การบูตของระบบแฟ้ม NTFS บนพาร์ทิชัน <filename>%1</filename>"
 
-#: fs/ntfs.cpp:194 fs/ntfs.cpp:202
+#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2084,7 +2084,7 @@ msgstr ""
 "ไม่สามารถเขียนเซกเตอร์เริ่มตัวใหม่ของพาร์ทิชัน <filename>%1</filename> ได้ "
 "ในระหว่างพยายามปรับปรุงเซกเตอร์การบูตของระบบแฟ้ม NTFS"
 
-#: fs/ntfs.cpp:206
+#: fs/ntfs.cpp:203
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
