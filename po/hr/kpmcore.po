@@ -3577,7 +3577,9 @@ msgid "&copy; 2008-2022 KPMcore developers"
 msgstr ""
 
 #: util/helpers.cpp:56
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:credit"
+#| msgid "Volker Lanz"
 msgctxt "@info:credit"
 msgid "Volker Lanz"
 msgstr "Volker Lanz"
