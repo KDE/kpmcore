@@ -67,7 +67,7 @@ msgstr "تغيير حجم قسم أنشأ لتوّه: تحديث البداية 
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Copying a new partition: Creating a new partition instead."
-msgstr "نسخ قسم جديد: إنشاء قسم جديد بدلاً من ذلك."
+msgstr "نسخ قسم جديد: إنشاء قسم جديد بدلًا من ذلك."
 
 #: core/operationstack.cpp:156
 #, kde-kuit-format
