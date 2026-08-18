@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-17 00:49+0000\n"
+"POT-Creation-Date: 2026-08-18 00:48+0000\n"
 "PO-Revision-Date: 2014-03-23 11:51+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@nuug.no>\n"
@@ -1578,75 +1578,77 @@ msgid "ext4"
 msgstr ""
 
 #: fs/filesystem.cpp:512
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item partition flag"
+#| msgid "swap"
 msgctxt "@item filesystem name"
-msgid "Linux swap"
-msgstr ""
+msgid "linuxswap"
+msgstr "veksleminne"
 
 #: fs/filesystem.cpp:513
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FreeBSD swap"
+msgid "freebsdswap"
 msgstr ""
 
 #: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FAT16"
+msgid "fat16"
 msgstr ""
 
 #: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FAT32"
+msgid "fat32"
 msgstr ""
 
 #: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "NTFS"
+msgid "ntfs"
 msgstr ""
 
 #: fs/filesystem.cpp:517
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "ReiserFS"
+msgid "reiser"
 msgstr ""
 
 #: fs/filesystem.cpp:518
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "Reiser4"
+msgid "reiser4"
 msgstr ""
 
 #: fs/filesystem.cpp:519
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "XFS"
+msgid "xfs"
 msgstr ""
 
 #: fs/filesystem.cpp:520
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "JFS"
+msgid "jfs"
 msgstr ""
 
 #: fs/filesystem.cpp:521
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "HFS"
+msgid "hfs"
 msgstr ""
 
 #: fs/filesystem.cpp:522
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "HFS Plus"
+msgid "hfsplus"
 msgstr ""
 
 #: fs/filesystem.cpp:523
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "UFS"
+msgid "ufs"
 msgstr ""
 
 #: fs/filesystem.cpp:524
@@ -1658,79 +1660,79 @@ msgstr ""
 #: fs/filesystem.cpp:525
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "Btrfs"
+msgid "btrfs"
 msgstr ""
 
 #: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "HPFS"
+msgid "hpfs"
 msgstr ""
 
 #: fs/filesystem.cpp:527
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "LUKS"
+msgid "luks"
 msgstr ""
 
 #: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "OCFS2"
+msgid "ocfs2"
 msgstr ""
 
 #: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "ZFS"
+msgid "zfs"
 msgstr ""
 
 #: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "exFAT"
+msgid "exfat"
 msgstr ""
 
 #: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "NILFS2"
+msgid "nilfs2"
 msgstr ""
 
 #: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "LVM PV"
+msgid "lvm2 pv"
 msgstr ""
 
 #: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "F2FS"
+msgid "f2fs"
 msgstr ""
 
 #: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "UDF"
+msgid "udf"
 msgstr ""
 
 #: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "ISO 9660"
+msgid "iso9660"
 msgstr ""
 
 #: fs/filesystem.cpp:536
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "LUKS2"
+msgid "luks2"
 msgstr ""
 
 #: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FAT12"
+msgid "fat12"
 msgstr ""
 
 #: fs/filesystem.cpp:538
@@ -1748,19 +1750,19 @@ msgstr ""
 #: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "APFS"
+msgid "apfs"
 msgstr ""
 
 #: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "MINIX"
+msgid "minix"
 msgstr ""
 
 #: fs/filesystem.cpp:542
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "Bcachefs"
+msgid "bcachefs"
 msgstr ""
 
 #: fs/filesystem.cpp:585 fs/luks.cpp:161

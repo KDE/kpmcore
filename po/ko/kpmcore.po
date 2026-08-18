@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-17 00:49+0000\n"
+"POT-Creation-Date: 2026-08-18 00:48+0000\n"
 "PO-Revision-Date: 2025-04-06 23:24+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1593,7 +1593,7 @@ msgstr "ext4"
 #| msgctxt "@item filesystem name"
 #| msgid "linuxswap"
 msgctxt "@item filesystem name"
-msgid "Linux swap"
+msgid "linuxswap"
 msgstr "linuxswap"
 
 #: fs/filesystem.cpp:513
@@ -1601,72 +1601,72 @@ msgstr "linuxswap"
 #| msgctxt "@item filesystem name"
 #| msgid "freebsdswap"
 msgctxt "@item filesystem name"
-msgid "FreeBSD swap"
+msgid "freebsdswap"
 msgstr "freebsdswap"
 
 #: fs/filesystem.cpp:514
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FAT16"
-msgstr ""
+msgid "fat16"
+msgstr "fat16"
 
 #: fs/filesystem.cpp:515
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FAT32"
-msgstr ""
+msgid "fat32"
+msgstr "fat32"
 
 #: fs/filesystem.cpp:516
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "NTFS"
-msgstr ""
+msgid "ntfs"
+msgstr "ntfs"
 
 #: fs/filesystem.cpp:517
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item filesystem name"
-#| msgid "reiser"
+#| msgid "reiser4"
 msgctxt "@item filesystem name"
-msgid "ReiserFS"
-msgstr "reiser"
+msgid "reiser"
+msgstr "reiser4"
 
 #: fs/filesystem.cpp:518
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item filesystem name"
 #| msgid "reiser4"
 msgctxt "@item filesystem name"
-msgid "Reiser4"
+msgid "reiser4"
 msgstr "reiser4"
 
 #: fs/filesystem.cpp:519
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "XFS"
-msgstr ""
+msgid "xfs"
+msgstr "xfs"
 
 #: fs/filesystem.cpp:520
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "JFS"
-msgstr ""
+msgid "jfs"
+msgstr "jfs"
 
 #: fs/filesystem.cpp:521
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "HFS"
-msgstr ""
+msgid "hfs"
+msgstr "hfs"
 
 #: fs/filesystem.cpp:522
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "HFS Plus"
-msgstr ""
+msgid "hfsplus"
+msgstr "hfsplus"
 
 #: fs/filesystem.cpp:523
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "UFS"
-msgstr ""
+msgid "ufs"
+msgstr "ufs"
 
 #: fs/filesystem.cpp:524
 #, kde-kuit-format
@@ -1679,84 +1679,80 @@ msgstr "포맷되지 않음"
 #| msgctxt "@item filesystem name"
 #| msgid "btrfs"
 msgctxt "@item filesystem name"
-msgid "Btrfs"
+msgid "btrfs"
 msgstr "btrfs"
 
 #: fs/filesystem.cpp:526
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "HPFS"
-msgstr ""
+msgid "hpfs"
+msgstr "hpfs"
 
 #: fs/filesystem.cpp:527
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "LUKS"
-msgstr "LUKS"
+msgid "luks"
+msgstr "luks"
 
 #: fs/filesystem.cpp:528
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "OCFS2"
-msgstr ""
+msgid "ocfs2"
+msgstr "ocfs2"
 
 #: fs/filesystem.cpp:529
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "ZFS"
-msgstr ""
+msgid "zfs"
+msgstr "zfs"
 
 #: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "exFAT"
-msgstr ""
+msgid "exfat"
+msgstr "exfat"
 
 #: fs/filesystem.cpp:531
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "NILFS2"
-msgstr ""
+msgid "nilfs2"
+msgstr "nilfs2"
 
 #: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "LVM PV"
-msgstr ""
+msgid "lvm2 pv"
+msgstr "lvm2 pv"
 
 #: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "F2FS"
-msgstr ""
+msgid "f2fs"
+msgstr "f2fs"
 
 #: fs/filesystem.cpp:534
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "UDF"
-msgstr ""
+msgid "udf"
+msgstr "udf"
 
 #: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "ISO 9660"
-msgstr ""
+msgid "iso9660"
+msgstr "iso9660"
 
 #: fs/filesystem.cpp:536
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "LUKS2"
-msgstr "LUKS"
+msgid "luks2"
+msgstr "luks2"
 
 #: fs/filesystem.cpp:537
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FAT12"
-msgstr ""
+msgid "fat12"
+msgstr "fat12"
 
 #: fs/filesystem.cpp:538
 #, kde-kuit-format
@@ -1773,21 +1769,21 @@ msgstr "BitLocker"
 #: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "APFS"
-msgstr ""
+msgid "apfs"
+msgstr "apfs"
 
 #: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "MINIX"
-msgstr ""
+msgid "minix"
+msgstr "minix"
 
 #: fs/filesystem.cpp:542
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item filesystem name"
 #| msgid "bcachefs"
 msgctxt "@item filesystem name"
-msgid "Bcachefs"
+msgid "bcachefs"
 msgstr "bcachefs"
 
 #: fs/filesystem.cpp:585 fs/luks.cpp:161
@@ -3536,93 +3532,26 @@ msgstr "KDE 프레임워크 버전:"
 msgid "Machine:"
 msgstr "머신:"
 
+#, fuzzy
+#~| msgctxt "@item filesystem name"
+#~| msgid "reiser"
 #~ msgctxt "@item filesystem name"
-#~ msgid "fat16"
-#~ msgstr "fat16"
+#~ msgid "ReiserFS"
+#~ msgstr "reiser"
 
+#, fuzzy
+#~| msgctxt "@item partition role"
+#~| msgid "LUKS"
 #~ msgctxt "@item filesystem name"
-#~ msgid "fat32"
-#~ msgstr "fat32"
+#~ msgid "LUKS"
+#~ msgstr "LUKS"
 
+#, fuzzy
+#~| msgctxt "@item partition role"
+#~| msgid "LUKS"
 #~ msgctxt "@item filesystem name"
-#~ msgid "ntfs"
-#~ msgstr "ntfs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "xfs"
-#~ msgstr "xfs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "jfs"
-#~ msgstr "jfs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "hfs"
-#~ msgstr "hfs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "hfsplus"
-#~ msgstr "hfsplus"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "ufs"
-#~ msgstr "ufs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "hpfs"
-#~ msgstr "hpfs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "luks"
-#~ msgstr "luks"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "ocfs2"
-#~ msgstr "ocfs2"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "zfs"
-#~ msgstr "zfs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "exfat"
-#~ msgstr "exfat"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "nilfs2"
-#~ msgstr "nilfs2"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "lvm2 pv"
-#~ msgstr "lvm2 pv"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "f2fs"
-#~ msgstr "f2fs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "udf"
-#~ msgstr "udf"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "iso9660"
-#~ msgstr "iso9660"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "luks2"
-#~ msgstr "luks2"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "fat12"
-#~ msgstr "fat12"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "apfs"
-#~ msgstr "apfs"
-
-#~ msgctxt "@item filesystem name"
-#~ msgid "minix"
-#~ msgstr "minix"
+#~ msgid "LUKS2"
+#~ msgstr "LUKS"
 
 #~ msgctxt "@info:status"
 #~ msgid "Could not obtain administrator privileges."

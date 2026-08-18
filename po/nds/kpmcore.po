@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-17 00:49+0000\n"
+"POT-Creation-Date: 2026-08-18 00:48+0000\n"
 "PO-Revision-Date: 2014-03-12 23:25+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -1685,81 +1685,93 @@ msgstr "Ext4"
 
 #: fs/filesystem.cpp:512
 #, fuzzy, kde-kuit-format
-#| msgctxt "@item/plain filesystem name"
-#| msgid "linuxswap"
+#| msgid "linuxswap:"
 msgctxt "@item filesystem name"
-msgid "Linux swap"
-msgstr "Linux-Swap"
+msgid "linuxswap"
+msgstr "Linux-Swap:"
 
 #: fs/filesystem.cpp:513
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "FreeBSD swap"
+msgid "freebsdswap"
 msgstr ""
 
 #: fs/filesystem.cpp:514
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "fat16"
 msgctxt "@item filesystem name"
-msgid "FAT16"
-msgstr ""
+msgid "fat16"
+msgstr "FAT16"
 
 #: fs/filesystem.cpp:515
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "fat32"
 msgctxt "@item filesystem name"
-msgid "FAT32"
-msgstr ""
+msgid "fat32"
+msgstr "FAT32"
 
 #: fs/filesystem.cpp:516
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "ntfs"
 msgctxt "@item filesystem name"
-msgid "NTFS"
-msgstr ""
+msgid "ntfs"
+msgstr "NTFS"
 
 #: fs/filesystem.cpp:517
 #, fuzzy, kde-kuit-format
-#| msgctxt "@item/plain filesystem name"
-#| msgid "reiser"
+#| msgid "reiser4:"
 msgctxt "@item filesystem name"
-msgid "ReiserFS"
-msgstr "Reiser"
+msgid "reiser"
+msgstr "Reiser4:"
 
 #: fs/filesystem.cpp:518
 #, fuzzy, kde-kuit-format
-#| msgctxt "@item/plain filesystem name"
-#| msgid "reiser4"
+#| msgid "reiser4:"
 msgctxt "@item filesystem name"
-msgid "Reiser4"
-msgstr "Reiser4"
+msgid "reiser4"
+msgstr "Reiser4:"
 
 #: fs/filesystem.cpp:519
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "xfs"
 msgctxt "@item filesystem name"
-msgid "XFS"
-msgstr ""
+msgid "xfs"
+msgstr "XFS"
 
 #: fs/filesystem.cpp:520
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgid "jfs"
 msgctxt "@item filesystem name"
-msgid "JFS"
-msgstr ""
+msgid "jfs"
+msgstr "JFS"
 
 #: fs/filesystem.cpp:521
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "hfs"
 msgctxt "@item filesystem name"
-msgid "HFS"
-msgstr ""
+msgid "hfs"
+msgstr "HFS"
 
 #: fs/filesystem.cpp:522
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "hfsplus"
 msgctxt "@item filesystem name"
-msgid "HFS Plus"
-msgstr ""
+msgid "hfsplus"
+msgstr "HFSPlus"
 
 #: fs/filesystem.cpp:523
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "ufs"
 msgctxt "@item filesystem name"
-msgid "UFS"
-msgstr ""
+msgid "ufs"
+msgstr "UFS"
 
 #: fs/filesystem.cpp:524
 #, fuzzy, kde-kuit-format
@@ -1771,83 +1783,97 @@ msgstr "nich formateert"
 
 #: fs/filesystem.cpp:525
 #, fuzzy, kde-kuit-format
-#| msgctxt "@item/plain filesystem name"
-#| msgid "btrfs"
+#| msgid "btrfs:"
 msgctxt "@item filesystem name"
-msgid "Btrfs"
-msgstr "BTRFS"
+msgid "btrfs"
+msgstr "BTRFS:"
 
 #: fs/filesystem.cpp:526
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "hpfs"
 msgctxt "@item filesystem name"
-msgid "HPFS"
-msgstr ""
+msgid "hpfs"
+msgstr "HPFS"
 
 #: fs/filesystem.cpp:527
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "luks"
 msgctxt "@item filesystem name"
-msgid "LUKS"
-msgstr ""
+msgid "luks"
+msgstr "LUKS"
 
 #: fs/filesystem.cpp:528
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "ocfs2"
 msgctxt "@item filesystem name"
-msgid "OCFS2"
-msgstr ""
+msgid "ocfs2"
+msgstr "OCFS2"
 
 #: fs/filesystem.cpp:529
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "zfs"
 msgctxt "@item filesystem name"
-msgid "ZFS"
-msgstr ""
+msgid "zfs"
+msgstr "ZFS"
 
 #: fs/filesystem.cpp:530
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "exFAT"
+msgid "exfat"
 msgstr ""
 
 #: fs/filesystem.cpp:531
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgid "ocfs2:"
 msgctxt "@item filesystem name"
-msgid "NILFS2"
-msgstr ""
+msgid "nilfs2"
+msgstr "OCFS2:"
 
 #: fs/filesystem.cpp:532
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "LVM PV"
+msgid "lvm2 pv"
 msgstr ""
 
 #: fs/filesystem.cpp:533
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "F2FS"
+msgid "f2fs"
 msgstr ""
 
 #: fs/filesystem.cpp:534
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "ufs"
 msgctxt "@item filesystem name"
-msgid "UDF"
-msgstr ""
+msgid "udf"
+msgstr "UFS"
 
 #: fs/filesystem.cpp:535
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "ISO 9660"
+msgid "iso9660"
 msgstr ""
 
 #: fs/filesystem.cpp:536
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "luks"
 msgctxt "@item filesystem name"
-msgid "LUKS2"
-msgstr ""
+msgid "luks2"
+msgstr "LUKS"
 
 #: fs/filesystem.cpp:537
-#, kde-kuit-format
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item/plain filesystem name"
+#| msgid "fat16"
 msgctxt "@item filesystem name"
-msgid "FAT12"
-msgstr ""
+msgid "fat12"
+msgstr "FAT16"
 
 #: fs/filesystem.cpp:538
 #, kde-kuit-format
@@ -1864,19 +1890,19 @@ msgstr ""
 #: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "APFS"
+msgid "apfs"
 msgstr ""
 
 #: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "MINIX"
+msgid "minix"
 msgstr ""
 
 #: fs/filesystem.cpp:542
 #, kde-kuit-format
 msgctxt "@item filesystem name"
-msgid "Bcachefs"
+msgid "bcachefs"
 msgstr ""
 
 #: fs/filesystem.cpp:585 fs/luks.cpp:161
@@ -4227,113 +4253,31 @@ msgstr "Reekner:"
 
 #, fuzzy
 #~| msgctxt "@item/plain filesystem name"
-#~| msgid "fat16"
+#~| msgid "linuxswap"
 #~ msgctxt "@item filesystem name"
-#~ msgid "fat16"
-#~ msgstr "FAT16"
+#~ msgid "Linux swap"
+#~ msgstr "Linux-Swap"
 
 #, fuzzy
 #~| msgctxt "@item/plain filesystem name"
-#~| msgid "fat32"
+#~| msgid "reiser"
 #~ msgctxt "@item filesystem name"
-#~ msgid "fat32"
-#~ msgstr "FAT32"
+#~ msgid "ReiserFS"
+#~ msgstr "Reiser"
 
 #, fuzzy
 #~| msgctxt "@item/plain filesystem name"
-#~| msgid "ntfs"
+#~| msgid "reiser4"
 #~ msgctxt "@item filesystem name"
-#~ msgid "ntfs"
-#~ msgstr "NTFS"
+#~ msgid "Reiser4"
+#~ msgstr "Reiser4"
 
 #, fuzzy
 #~| msgctxt "@item/plain filesystem name"
-#~| msgid "xfs"
+#~| msgid "btrfs"
 #~ msgctxt "@item filesystem name"
-#~ msgid "xfs"
-#~ msgstr "XFS"
-
-#, fuzzy
-#~| msgid "jfs"
-#~ msgctxt "@item filesystem name"
-#~ msgid "jfs"
-#~ msgstr "JFS"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "hfs"
-#~ msgctxt "@item filesystem name"
-#~ msgid "hfs"
-#~ msgstr "HFS"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "hfsplus"
-#~ msgctxt "@item filesystem name"
-#~ msgid "hfsplus"
-#~ msgstr "HFSPlus"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "ufs"
-#~ msgctxt "@item filesystem name"
-#~ msgid "ufs"
-#~ msgstr "UFS"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "hpfs"
-#~ msgctxt "@item filesystem name"
-#~ msgid "hpfs"
-#~ msgstr "HPFS"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "luks"
-#~ msgctxt "@item filesystem name"
-#~ msgid "luks"
-#~ msgstr "LUKS"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "ocfs2"
-#~ msgctxt "@item filesystem name"
-#~ msgid "ocfs2"
-#~ msgstr "OCFS2"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "zfs"
-#~ msgctxt "@item filesystem name"
-#~ msgid "zfs"
-#~ msgstr "ZFS"
-
-#, fuzzy
-#~| msgid "ocfs2:"
-#~ msgctxt "@item filesystem name"
-#~ msgid "nilfs2"
-#~ msgstr "OCFS2:"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "ufs"
-#~ msgctxt "@item filesystem name"
-#~ msgid "udf"
-#~ msgstr "UFS"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "luks"
-#~ msgctxt "@item filesystem name"
-#~ msgid "luks2"
-#~ msgstr "LUKS"
-
-#, fuzzy
-#~| msgctxt "@item/plain filesystem name"
-#~| msgid "fat16"
-#~ msgctxt "@item filesystem name"
-#~ msgid "fat12"
-#~ msgstr "FAT16"
+#~ msgid "Btrfs"
+#~ msgstr "BTRFS"
 
 #, fuzzy
 #~| msgctxt "@action:button"
@@ -4837,12 +4781,6 @@ msgstr "Reekner:"
 #~ msgid "ext4:"
 #~ msgstr "Ext4:"
 
-#~ msgid "btrfs:"
-#~ msgstr "BTRFS:"
-
-#~ msgid "linuxswap:"
-#~ msgstr "Linux-Swap:"
-
 #~ msgid "fat16:"
 #~ msgstr "FAT16:"
 
@@ -4854,9 +4792,6 @@ msgstr "Reekner:"
 
 #~ msgid "reiserfs:"
 #~ msgstr "Reiser:"
-
-#~ msgid "reiser4:"
-#~ msgstr "Reiser4:"
 
 #~ msgid "hpfs:"
 #~ msgstr "HPFS:"
