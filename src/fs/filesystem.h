@@ -212,11 +212,17 @@ public:
     // and setPosixPermissions.
     bool execChangePosixPermission(Report& report, const QString& deviceNode);
 
+    [[deprecated]] QString name(const QStringList& languages) const;
+
     /**
-     * Returns the (possibly translated) name of the type of this filesystem.
+     * Returns the (translated) name of the type of this filesystem.
      * @see nameForType()
      */
-    virtual QString name(const QStringList& languages = {}) const;
+    virtual QString name() const;
+    /**
+     * Returns the untranslated name of the type of this filesystem.
+     */
+    virtual QString untranslatedName() const;
 
     /**
      * @return the FileSystem's type
@@ -232,9 +238,13 @@ public:
      * KLocalizedString() for details on the way toString() is used.
      * Returns a single QString with the name.
      */
-    static QString nameForType(FileSystem::Type t, const QStringList& languages = {});
+    static QString nameForType(FileSystem::Type t);
+    [[deprecated]] static QString nameForType(FileSystem::Type t, const QStringList& languages);
+    static QString untranslatedNameForType(FileSystem::Type t);
     static QList<FileSystem::Type> types();
-    static FileSystem::Type typeForName(const QString& s, const QStringList& languages = {});
+    static FileSystem::Type typeForName(const QString& s);
+    [[deprecated]] static FileSystem::Type typeForName(const QString& s, const QStringList& languages);
+    static FileSystem::Type typeForUntranslatedName(const QString& s);
     static FileSystem::Type detectFileSystem(const QString& partitionPath);
     static QString detectMountPoint(FileSystem* fs, const QString& partitionPath);
     static bool detectMountStatus(FileSystem* fs, const QString& partitionPath);

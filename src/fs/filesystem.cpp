@@ -488,10 +488,23 @@ QValidator* FileSystem::labelValidator(QObject *parent) const
     return nullptr;
 }
 
-/** @return this FileSystem's type as printable name */
+/* deprecated */
 QString FileSystem::name(const QStringList& languages) const
 {
-    return nameForType(type(), languages);
+    Q_UNUSED(languages)
+    return untranslatedNameForType(type());
+}
+
+/** @return this FileSystem's type as printable name */
+QString FileSystem::name() const
+{
+    return nameForType(type());
+}
+
+/** @return this FileSystem's type as printable untranslated name */
+QString FileSystem::untranslatedName() const
+{
+    return untranslatedNameForType(type());
 }
 
 FileSystem::Type FileSystem::type() const
@@ -499,47 +512,93 @@ FileSystem::Type FileSystem::type() const
     return d->m_Type;
 }
 
-/** @return a pointer to a QString C array with all FileSystem names */
-static const KLocalizedString* typeNames()
+/** @return a pointer to a QLatin1String C array with all FileSystem names */
+static const QLatin1String* untranslatedTypeNames()
 {
-    static const KLocalizedString s[] = {
-        kxi18nc("@item filesystem name", "unknown"),
-        kxi18nc("@item filesystem name", "extended"),
+    static const QLatin1String s[] = {
+        QLatin1String("unknown"),
+        QLatin1String("extended"),
 
-        kxi18nc("@item filesystem name", "ext2"),
-        kxi18nc("@item filesystem name", "ext3"),
-        kxi18nc("@item filesystem name", "ext4"),
-        kxi18nc("@item filesystem name", "linuxswap"),
-        kxi18nc("@item filesystem name", "freebsdswap"),
-        kxi18nc("@item filesystem name", "fat16"),
-        kxi18nc("@item filesystem name", "fat32"),
-        kxi18nc("@item filesystem name", "ntfs"),
-        kxi18nc("@item filesystem name", "reiser"),
-        kxi18nc("@item filesystem name", "reiser4"),
-        kxi18nc("@item filesystem name", "xfs"),
-        kxi18nc("@item filesystem name", "jfs"),
-        kxi18nc("@item filesystem name", "hfs"),
-        kxi18nc("@item filesystem name", "hfsplus"),
-        kxi18nc("@item filesystem name", "ufs"),
-        kxi18nc("@item filesystem name", "unformatted"),
-        kxi18nc("@item filesystem name", "btrfs"),
-        kxi18nc("@item filesystem name", "hpfs"),
-        kxi18nc("@item filesystem name", "luks"),
-        kxi18nc("@item filesystem name", "ocfs2"),
-        kxi18nc("@item filesystem name", "zfs"),
-        kxi18nc("@item filesystem name", "exfat"),
-        kxi18nc("@item filesystem name", "nilfs2"),
-        kxi18nc("@item filesystem name", "lvm2 pv"),
-        kxi18nc("@item filesystem name", "f2fs"),
-        kxi18nc("@item filesystem name", "udf"),
-        kxi18nc("@item filesystem name", "iso9660"),
-        kxi18nc("@item filesystem name", "luks2"),
-        kxi18nc("@item filesystem name", "fat12"),
-        kxi18nc("@item filesystem name", "linux_raid_member"),
-        kxi18nc("@item filesystem name", "BitLocker"),
-        kxi18nc("@item filesystem name", "apfs"),
-        kxi18nc("@item filesystem name", "minix"),
-        kxi18nc("@item filesystem name", "bcachefs"),
+        QLatin1String("ext2"),
+        QLatin1String("ext3"),
+        QLatin1String("ext4"),
+        QLatin1String("linuxswap"),
+        QLatin1String("freebsdswap"),
+        QLatin1String("fat16"),
+        QLatin1String("fat32"),
+        QLatin1String("ntfs"),
+        QLatin1String("reiser"),
+        QLatin1String("reiser4"),
+        QLatin1String("xfs"),
+        QLatin1String("jfs"),
+        QLatin1String("hfs"),
+        QLatin1String("hfsplus"),
+        QLatin1String("ufs"),
+        QLatin1String("unformatted"),
+        QLatin1String("btrfs"),
+        QLatin1String("hpfs"),
+        QLatin1String("luks"),
+        QLatin1String("ocfs2"),
+        QLatin1String("zfs"),
+        QLatin1String("exfat"),
+        QLatin1String("nilfs2"),
+        QLatin1String("lvm2 pv"),
+        QLatin1String("f2fs"),
+        QLatin1String("udf"),
+        QLatin1String("iso9660"),
+        QLatin1String("luks2"),
+        QLatin1String("fat12"),
+        QLatin1String("linux_raid_member"),
+        QLatin1String("bitlocker"),
+        QLatin1String("apfs"),
+        QLatin1String("minix"),
+        QLatin1String("bcachefs"),
+    };
+
+    return s;
+}
+
+/** @return a pointer to a QString C array with all FileSystem names */
+static const QString* typeNames()
+{
+    static const QString s[] = {
+        xi18nc("@item filesystem name", "unknown"),
+        xi18nc("@item filesystem name", "extended"),
+
+        xi18nc("@item filesystem name", "ext2"),
+        xi18nc("@item filesystem name", "ext3"),
+        xi18nc("@item filesystem name", "ext4"),
+        xi18nc("@item filesystem name", "Linux swap"),
+        xi18nc("@item filesystem name", "FreeBSD swap"),
+        xi18nc("@item filesystem name", "FAT16"),
+        xi18nc("@item filesystem name", "FAT32"),
+        xi18nc("@item filesystem name", "NTFS"),
+        xi18nc("@item filesystem name", "ReiserFS"),
+        xi18nc("@item filesystem name", "Reiser4"),
+        xi18nc("@item filesystem name", "XFS"),
+        xi18nc("@item filesystem name", "JFS"),
+        xi18nc("@item filesystem name", "HFS"),
+        xi18nc("@item filesystem name", "HFS Plus"),
+        xi18nc("@item filesystem name", "UFS"),
+        xi18nc("@item filesystem name", "unformatted"),
+        xi18nc("@item filesystem name", "Btrfs"),
+        xi18nc("@item filesystem name", "HPFS"),
+        xi18nc("@item filesystem name", "LUKS"),
+        xi18nc("@item filesystem name", "OCFS2"),
+        xi18nc("@item filesystem name", "ZFS"),
+        xi18nc("@item filesystem name", "exFAT"),
+        xi18nc("@item filesystem name", "NILFS2"),
+        xi18nc("@item filesystem name", "LVM PV"),
+        xi18nc("@item filesystem name", "F2FS"),
+        xi18nc("@item filesystem name", "UDF"),
+        xi18nc("@item filesystem name", "ISO 9660"),
+        xi18nc("@item filesystem name", "LUKS 2"),
+        xi18nc("@item filesystem name", "FAT12"),
+        xi18nc("@item filesystem name", "linux_raid_member"),
+        xi18nc("@item filesystem name", "BitLocker"),
+        xi18nc("@item filesystem name", "APFS"),
+        xi18nc("@item filesystem name", "MINIX"),
+        xi18nc("@item filesystem name", "Bcachefs"),
     };
 
     return s;
@@ -548,20 +607,55 @@ static const KLocalizedString* typeNames()
 /** @param t the type to get the name for
     @return the printable name for the given type
 */
-QString FileSystem::nameForType(FileSystem::Type t, const QStringList& languages)
+QString FileSystem::nameForType(FileSystem::Type t)
 {
     Q_ASSERT(t < Type::__lastType);
 
-    return typeNames()[static_cast<int>(t)].toString(languages);
+    return typeNames()[t];
+}
+
+QString FileSystem::nameForType(FileSystem::Type t, const QStringList& languages)
+{
+    Q_UNUSED(languages)
+    return nameForType(t);
+}
+
+/** @param t the type to get the untranslated name for
+    @return the printable untranslated name for the given type
+*/
+QString FileSystem::untranslatedNameForType(FileSystem::Type t)
+{
+    Q_ASSERT(t < Type::__lastType);
+
+    return untranslatedTypeNames()[t];
 }
 
 /** @param s the name to get the type for
     @return the type for the name or FileSystem::Unknown if not found
 */
-FileSystem::Type FileSystem::typeForName(const QString& s, const QStringList& languages )
+FileSystem::Type FileSystem::typeForName(const QString& s)
 {
     for (quint32 i = 0; i < static_cast<int>(Type::__lastType); i++)
-        if (typeNames()[i].toString(languages) == s)
+        if (typeNames()[i] == s)
+            return static_cast<FileSystem::Type>(i);
+
+    return Type::Unknown;
+}
+
+/* deprecated */
+FileSystem::Type FileSystem::typeForName(const QString& s, const QStringList& languages )
+{
+    Q_UNUSED(languages)
+    return typeForName(s);
+}
+
+/** @param s the untranslated name to get the type for
+ *   @return the type for the name or FileSystem::Unknown if not found
+ */
+FileSystem::Type FileSystem::typeForUntranslatedName(const QString& s)
+{
+    for (quint32 i = 0; i < static_cast<int>(Type::__lastType); i++)
+        if (untranslatedTypeNames()[i] == s)
             return static_cast<FileSystem::Type>(i);
 
     return Type::Unknown;
