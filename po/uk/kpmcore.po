@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-30 00:50+0000\n"
-"PO-Revision-Date: 2026-08-18 17:15+0300\n"
+"PO-Revision-Date: 2026-08-30 15:47+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1655,20 +1655,16 @@ msgid "ext4"
 msgstr "ext4"
 
 #: fs/filesystem.cpp:571
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "linuxswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Linux swap"
-msgstr "linuxswap"
+msgstr "Резервна пам'ять Linux"
 
 #: fs/filesystem.cpp:572
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "freebsdswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
-msgstr "freebsdswap"
+msgstr "Резервна пам'ять FreeBSD"
 
 #: fs/filesystem.cpp:573
 #, kde-kuit-format
@@ -1695,12 +1691,10 @@ msgid "ReiserFS"
 msgstr "ReiserFS"
 
 #: fs/filesystem.cpp:577
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser4"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Reiser4"
-msgstr "reiser4"
+msgstr "Reiser4"
 
 #: fs/filesystem.cpp:578
 #, kde-kuit-format
@@ -1739,12 +1733,10 @@ msgid "unformatted"
 msgstr "неформатована"
 
 #: fs/filesystem.cpp:584
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "btrfs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Btrfs"
-msgstr "btrfs"
+msgstr "Btrfs"
 
 #: fs/filesystem.cpp:585
 #, kde-kuit-format
@@ -1807,12 +1799,10 @@ msgid "ISO 9660"
 msgstr "ISO 9660"
 
 #: fs/filesystem.cpp:595
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "LUKS2"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS 2"
-msgstr "LUKS2"
+msgstr "LUKS 2"
 
 #: fs/filesystem.cpp:596
 #, kde-kuit-format
@@ -1845,12 +1835,10 @@ msgid "MINIX"
 msgstr "MINIX"
 
 #: fs/filesystem.cpp:601
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "bcachefs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
-msgstr "bcachefs"
+msgstr "Bcachefs"
 
 #: fs/filesystem.cpp:679 fs/luks.cpp:161
 #, kde-kuit-format
