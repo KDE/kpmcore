@@ -3,9 +3,9 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# SPDX-FileCopyrightText: 2009, 2010 Manuel Tortosa Moreno <manutortosa@gmail.com>
+# SPDX-FileCopyrightText: 2009-2010 Manuel Tortosa Moreno <manutortosa@gmail.com>
 # SPDX-FileCopyrightText: 2009-2010, 2012, 2014-2022, 2024-2026 Josep M. Ferrer <txemaq@gmail.com>
-# SPDX-FileCopyrightText: 2012, 2014, 2015, 2016, 2017, 2018, 2020 Antoni Bella Pérez <antonibella5@yahoo.com>
+# SPDX-FileCopyrightText: 2012, 2014-2018, 2020 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
@@ -489,7 +489,7 @@ msgstr "Un comptador de cicles d'inicis/parades de rotació."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocated Sectors Count"
-msgstr "Comptador de sectors reassignats"
+msgstr "Comptador de sectors tornats a assignar"
 
 #: core/smartattribute.cpp:105
 #, kde-format
@@ -499,9 +499,10 @@ msgid ""
 "verification error, it marks this sector as &quot;reallocated&quot; and "
 "transfers data to a special reserved area (spare area)."
 msgstr ""
-"Comptador de sectors reassignats. Quan la unitat de disc dur troba un error "
-"de lectura/escriptura/verificació, marca este sector com a «reassignat» i "
-"transferix les dades cap a una àrea reservada especial (àrea de reserva)."
+"Comptador de sectors tornats a assignar. Quan la unitat de disc dur troba un "
+"error de lectura/escriptura/verificació, marca este sector com a «tornat a "
+"assignar» i transferix les dades cap a una àrea reservada especial (àrea de "
+"reserva)."
 
 #: core/smartattribute.cpp:106
 #, kde-format
@@ -951,7 +952,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocation Event Count"
-msgstr "Comptador d'esdeveniments de reassignació"
+msgstr "Comptador d'esdeveniments de tornar a assignar"
 
 #: core/smartattribute.cpp:140
 #, kde-format
@@ -961,8 +962,8 @@ msgid ""
 "number of attempts to transfer data from reallocated sectors to a spare area."
 msgstr ""
 "Comptador d'operacions de remapatge. El valor d'este atribut mostra el "
-"nombre total d'intents de transferir dades des de sectors reassignats cap a "
-"una àrea de reserva."
+"nombre total d'intents de transferir dades des de sectors tornats a assignar "
+"cap a una àrea de reserva."
 
 #: core/smartattribute.cpp:141
 #, kde-format
@@ -1090,9 +1091,9 @@ msgid ""
 "increases the chances of a read/write error."
 msgstr ""
 "Alçària dels capçals sobre la superfície del disc. Una alçària que siga "
-"massa baixa augmenta les possibilitats d'una vegada del capçal mentre que "
-"una alçària que siga massa alta augmenta les possibilitats d'un error de "
-"lectura/escriptura."
+"massa baixa augmenta les possibilitats d'un colp del capçal mentre que una "
+"alçària que siga massa alta augmenta les possibilitats d'un error de lectura/"
+"escriptura."
 
 #: core/smartattribute.cpp:151
 #, kde-format
