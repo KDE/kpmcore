@@ -952,7 +952,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Reallocation Event Count"
-msgstr "Comptador d'esdeveniments de tornar a assignar"
+msgstr "Comptador d'esdeveniments de reassignació"
 
 #: core/smartattribute.cpp:140
 #, kde-format
