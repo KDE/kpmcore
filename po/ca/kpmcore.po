@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-03 02:46+0000\n"
-"PO-Revision-Date: 2026-07-11 17:10+0200\n"
+"PO-Revision-Date: 2026-09-06 17:48+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1077,7 +1077,7 @@ msgstr "Nombre d'errors deguts a una temperatura alta."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Flying Height"
-msgstr "Alçada dels capçals"
+msgstr "Altura dels capçals"
 
 #: core/smartattribute.cpp:150
 #, kde-format
@@ -1087,8 +1087,8 @@ msgid ""
 "increases the chances of a head crash while a flying height that is too high "
 "increases the chances of a read/write error."
 msgstr ""
-"Alçada dels capçals sobre la superfície del disc. Una alçada que sigui massa "
-"baixa augmenta les possibilitats d'un cop del capçal mentre que una alçada "
+"Altura dels capçals sobre la superfície del disc. Una altura que sigui massa "
+"baixa augmenta les possibilitats d'un cop del capçal mentre que una altura "
 "que sigui massa alta augmenta les possibilitats d'un error de lectura/"
 "escriptura."
 
