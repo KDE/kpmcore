@@ -15,6 +15,7 @@
 #include "fs/filesystem.h"
 #include "core/fstab.h"
 
+#include "fs/clustersize.h"
 #include "fs/lvm2_pv.h"
 
 #include "backend/corebackend.h"
@@ -82,6 +83,7 @@ struct FileSystemPrivate {
     qint64 m_LastSector;
     qint64 m_SectorSize;
     qint64 m_SectorsUsed;
+    qint64 m_ClusterSize = -1;
     QString m_Label;
     QString m_UUID;
     QString m_posixPermissions;
@@ -778,6 +780,40 @@ void FileSystem::addFeatures(const QVariantMap& features)
     }
 }
 
+void FileSystem::removeFeature(const QString& name)
+{
+    d->m_Features.remove(name);
+}
+
+void FileSystem::setFeatures(const QVariantMap& features)
+{
+    d->m_Features = features;
+}
+
+void FileSystem::setAvailableFeatures(const QStringList& features)
+{
+    d->m_AvailableFeatures = features;
+}
+
+QList<qint64> FileSystem::supportedClusterSizes(qint64 fileSystemSizeInBytes) const
+{
+    if (supportCreateWithFeatures() == cmdSupportNone)
+        return {};
+
+    return FS::ClusterSize::candidates(type(), sectorSize(), fileSystemSizeInBytes);
+}
+
+QString FileSystem::validateClusterSizeFeature(qint64 fileSystemSizeInBytes) const
+{
+    if (!d->m_Features.contains(QStringLiteral("cluster-size")))
+        return {};
+
+    if (supportCreateWithFeatures() == cmdSupportNone)
+        return xi18nc("@info", "Choosing the cluster size is not supported for this file system with the tools that are installed.");
+
+    return FS::ClusterSize::errorFor(type(), d->m_Features, sectorSize(), fileSystemSizeInBytes);
+}
+
 bool FileSystem::supportToolFound() const
 {
     return false;
@@ -823,6 +859,11 @@ qint64 FileSystem::sectorsUsed() const
     return d->m_SectorsUsed;
 }
 
+qint64 FileSystem::clusterSize() const
+{
+    return d->m_ClusterSize;
+}
+
 const QString& FileSystem::uuid() const
 {
     return d->m_UUID;
@@ -836,6 +877,11 @@ void FileSystem::setSectorSize(qint64 s)
 void FileSystem::setSectorsUsed(qint64 s)
 {
     d->m_SectorsUsed = s;
+}
+
+void FileSystem::setClusterSize(qint64 s)
+{
+    d->m_ClusterSize = s;
 }
 
 void FileSystem::setLabel(const QString& s)

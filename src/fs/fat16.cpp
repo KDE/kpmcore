@@ -44,6 +44,7 @@ void fat16::init()
     if (m_Create == cmdSupportFileSystem) {
         addAvailableFeature(QStringLiteral("sector-size"));
         addAvailableFeature(QStringLiteral("sectors-per-cluster"));
+        addAvailableFeature(QStringLiteral("cluster-size"));
     }
 }
 

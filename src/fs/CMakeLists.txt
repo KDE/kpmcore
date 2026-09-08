@@ -16,6 +16,7 @@ set(FS_SRC
     fs/bcachefs.cpp
     fs/bitlocker.cpp
     fs/btrfs.cpp
+    fs/clustersize.cpp
     fs/exfat.cpp
     fs/ext2.cpp
     fs/ext3.cpp

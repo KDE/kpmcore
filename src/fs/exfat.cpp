@@ -11,8 +11,10 @@
 
 #include "util/externalcommand.h"
 #include "util/capacity.h"
+#include "util/report.h"
 
 #include <QString>
+#include <QStringList>
 
 namespace FS
 {
@@ -59,6 +61,9 @@ void exfat::init()
     m_GetLabel = cmdSupportCore;
     m_Backup = cmdSupportCore;
     m_GetUUID = cmdSupportCore;
+
+    if (m_Create == cmdSupportFileSystem && !exfatUtils)
+        addAvailableFeature(QStringLiteral("cluster-size"));
 }
 
 bool exfat::supportToolFound() const
@@ -107,7 +112,20 @@ bool exfat::check(Report& report, const QString& deviceNode) const
 
 bool exfat::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.exfat"), { deviceNode });
+    const QString clusterSizeError = validateClusterSizeFeature(length() * sectorSize());
+    if (!clusterSizeError.isEmpty()) {
+        report.line() << clusterSizeError;
+        return false;
+    }
+
+    QStringList args;
+
+    if (features().contains(QStringLiteral("cluster-size")))
+        args << QStringLiteral("-c") << QString::number(features().value(QStringLiteral("cluster-size")).toLongLong());
+
+    args << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.exfat"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

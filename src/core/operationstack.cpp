@@ -172,6 +172,8 @@ bool OperationStack::mergeNewOperation(Operation*& currentOp, Operation*& pushed
 
         newOp->newPartition().setFileSystem(FileSystemFactory::cloneWithNewType(pushedCreateFileSystemOp->newFileSystem()->type(), *oldFs));
 
+        newOp->newPartition().fileSystem().setFeatures(pushedCreateFileSystemOp->newFileSystem()->features());
+
         delete oldFs;
         oldFs = nullptr;
 

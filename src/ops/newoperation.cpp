@@ -27,6 +27,7 @@
 #include "fs/filesystemfactory.h"
 
 #include "util/capacity.h"
+#include "util/report.h"
 
 #include <QString>
 
@@ -203,6 +204,23 @@ void NewOperation::undo()
 QString NewOperation::description() const
 {
     return xi18nc("@info:status", "Create a new partition (%1, %2) on <filename>%3</filename>", Capacity::formatByteSize(newPartition().capacity()), newPartition().fileSystem().name(), targetDevice().deviceNode());
+}
+
+bool NewOperation::execute(Report& parent)
+{
+    const FileSystem& fs = newPartition().fileSystem();
+    if (fs.type() != FileSystem::Type::Extended) {
+        const QString clusterSizeError = fs.validateClusterSizeFeature(fs.length() * fs.sectorSize());
+        if (!clusterSizeError.isEmpty()) {
+            Report* report = parent.newChild(description());
+            report->line() << clusterSizeError;
+            setStatus(StatusError);
+            report->setStatus(xi18nc("@info:status", "%1: %2", description(), statusText()));
+            return false;
+        }
+    }
+
+    return Operation::execute(parent);
 }
 
 /** Can a Partition be created somewhere?

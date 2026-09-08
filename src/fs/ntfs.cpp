@@ -57,6 +57,9 @@ void ntfs::init()
     m_UpdateUUID = cmdSupportCore;
     m_Move = (m_Check != cmdSupportNone) ? cmdSupportCore : cmdSupportNone;
     m_GetUUID = cmdSupportCore;
+
+    if (m_Create == cmdSupportFileSystem)
+        addAvailableFeature(QStringLiteral("cluster-size"));
 }
 
 bool ntfs::supportToolFound() const
@@ -142,7 +145,23 @@ bool ntfs::check(Report& report, const QString& deviceNode) const
 
 bool ntfs::create(Report& report, const QString& deviceNode)
 {
-    ExternalCommand cmd(report, QStringLiteral("mkfs.ntfs"), { QStringLiteral("--quick"), QStringLiteral("--verbose"), deviceNode });
+    const qint64 fsSizeInBytes = length() * sectorSize();
+
+    const QString clusterSizeError = validateClusterSizeFeature(fsSizeInBytes);
+    if (!clusterSizeError.isEmpty()) {
+        report.line() << clusterSizeError;
+        return false;
+    }
+
+    QStringList args = { QStringLiteral("--quick"), QStringLiteral("--verbose") };
+
+    const QVariant clusterSizeFeature = features().value(QStringLiteral("cluster-size"));
+    if (clusterSizeFeature.isValid())
+        args << QStringLiteral("--cluster-size") << QString::number(clusterSizeFeature.toLongLong());
+
+    args << deviceNode;
+
+    ExternalCommand cmd(report, QStringLiteral("mkfs.ntfs"), args);
     return cmd.run(-1) && cmd.exitCode() == 0;
 }
 

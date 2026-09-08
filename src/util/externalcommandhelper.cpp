@@ -312,7 +312,7 @@ QByteArray ExternalCommandHelper::ReadData(const QString& device, const qint64 o
         qWarning() << "ReadData: device should not be symbolic link";
         return {};
     }
-    if (device.left(5) != QStringLiteral("/dev/") || device.left(9) != QStringLiteral("/dev/shm/")) {
+    if (!device.startsWith(QStringLiteral("/dev/")) || device.startsWith(QStringLiteral("/dev/shm/"))) {
         qWarning() << "Error: trying to read data from device not in /dev";
         return {};
     }

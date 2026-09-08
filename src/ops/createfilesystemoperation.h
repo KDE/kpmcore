@@ -38,6 +38,7 @@ class LIBKPMCORE_EXPORT CreateFileSystemOperation : public Operation
 
 public:
     CreateFileSystemOperation(Device& d, Partition& p, FileSystem::Type newType);
+    CreateFileSystemOperation(Device& d, Partition& p, FileSystem::Type newType, const QVariantMap& features);
     ~CreateFileSystemOperation();
 
 public:

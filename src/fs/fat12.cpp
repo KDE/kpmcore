@@ -163,6 +163,21 @@ bool fat12::createWithFatSize(Report &report, const QString& deviceNode, int fat
     if (fatSize != 12 && fatSize != 16 && fatSize != 32)
         return false;
 
+    const bool clusterSizeSupported = (fatSize == 16 || fatSize == 32);
+    const QVariant clusterSizeFeature = clusterSizeSupported ? this->features().value(QStringLiteral("cluster-size")) : QVariant();
+    const bool strict = clusterSizeFeature.isValid();
+
+    if (strict) {
+        const QString clusterSizeError = validateClusterSizeFeature(length() * sectorSize());
+        if (!clusterSizeError.isEmpty()) {
+            report.line() << clusterSizeError;
+            return false;
+        }
+    }
+
+    quint32 explicitSectorSize = 0;
+    quint32 explicitSectorsPerCluster = 0;
+
     for (const auto& k : this->features().keys()) {
 	const auto& v = this->features().value(k);
         if (k == QStringLiteral("sector-size")) {
@@ -170,19 +185,35 @@ bool fat12::createWithFatSize(Report &report, const QString& deviceNode, int fat
 
             /* sectorSize has to be a power of 2 between 512 and 32768 */
             if (sectorSize >= 512 && sectorSize <= 32768 && sectorSize == qNextPowerOfTwo(sectorSize - 1))
-                args << QStringLiteral("-S%1").arg(sectorSize);
-            else
+                explicitSectorSize = sectorSize;
+            else if (!strict)
                 qWarning() << QStringLiteral("FAT sector size %1 is invalid, using default").arg(sectorSize);
         } else if (k == QStringLiteral("sectors-per-cluster")) {
             quint32 sectorsPerCluster = v.toInt();
 
             /* sectorsPerCluster has to be a power of 2 between 2 and 128 */
             if (sectorsPerCluster <= 128 && sectorsPerCluster == qNextPowerOfTwo(sectorsPerCluster - 1))
-                args << QStringLiteral("-s%1").arg(sectorsPerCluster);
-            else
+                explicitSectorsPerCluster = sectorsPerCluster;
+            else if (!strict)
                 qWarning() << QStringLiteral("FAT sector size %1 is invalid, using default").arg(sectorsPerCluster);
         }
     }
+
+    if (strict) {
+        const qint64 clusterSizeInBytes = clusterSizeFeature.toLongLong();
+        const qint64 effectiveSectorSize = explicitSectorSize ? qint64(explicitSectorSize)
+                                                              : (sectorSize() > 0 ? sectorSize() : 512);
+
+        if (explicitSectorSize)
+            args << QStringLiteral("-S%1").arg(explicitSectorSize);
+        args << QStringLiteral("-s%1").arg(clusterSizeInBytes / effectiveSectorSize);
+    } else {
+        if (explicitSectorSize)
+            args << QStringLiteral("-S%1").arg(explicitSectorSize);
+        if (explicitSectorsPerCluster)
+            args << QStringLiteral("-s%1").arg(explicitSectorsPerCluster);
+    }
+
     args << QStringLiteral("-F%1").arg(fatSize) << QStringLiteral("-I") << QStringLiteral("-v") << deviceNode;
 
     ExternalCommand cmd(report, QStringLiteral("mkfs.fat"), args);

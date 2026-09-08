@@ -53,6 +53,7 @@ public:
     QString description() const override;
     void preview() override;
     void undo() override;
+    bool execute(Report& parent) override;
 
     bool targets(const Device& d) const override;
     bool targets(const Partition& p) const override;

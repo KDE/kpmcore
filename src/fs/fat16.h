@@ -35,6 +35,9 @@ public:
     bool create(Report& report, const QString& deviceNode) override;
     bool resize(Report& report, const QString& deviceNode, qint64 length) const override;
 
+    CommandSupportType supportCreateWithFeatures() const override {
+        return m_Create;
+    }
     CommandSupportType supportGrow() const override {
         return m_Grow;
     }

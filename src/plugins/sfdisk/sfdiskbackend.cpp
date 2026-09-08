@@ -345,6 +345,60 @@ void SfdiskBackend::scanWholeDevicePartition(Device& d) {
         readSectorsUsed(d, *partition, partition->mountPoint());
 }
 
+static qint64 clusterSizeFromBootSector(const QByteArray& bs, FileSystem::Type t)
+{
+    if (bs.size() < 512)
+        return -1;
+
+    const auto isPowerOfTwo = [](qint64 v) { return v > 0 && (v & (v - 1)) == 0; };
+    const auto u16le = [&bs](int o) { return qint64(quint8(bs.at(o))) | (qint64(quint8(bs.at(o + 1))) << 8); };
+
+    switch (t) {
+    case FileSystem::Type::Fat12:
+    case FileSystem::Type::Fat16:
+    case FileSystem::Type::Fat32: {
+        const qint64 bytesPerSector = u16le(11);
+        const qint64 sectorsPerCluster = quint8(bs.at(13));
+        if (!isPowerOfTwo(bytesPerSector) || bytesPerSector < 512 || bytesPerSector > 32768)
+            return -1;
+        if (!isPowerOfTwo(sectorsPerCluster) || sectorsPerCluster > 128)
+            return -1;
+        return bytesPerSector * sectorsPerCluster;
+    }
+    case FileSystem::Type::Ntfs: {
+        if (bs.mid(3, 4) != QByteArrayLiteral("NTFS"))
+            return -1;
+        const qint64 bytesPerSector = u16le(11);
+        const quint32 spc = quint8(bs.at(13));
+        if (!isPowerOfTwo(bytesPerSector) || bytesPerSector < 256)
+            return -1;
+        qint64 cluster = -1;
+        if (spc >= 1 && spc <= 0x80)
+            cluster = bytesPerSector * qint64(spc);
+        else if (spc > 0x80) {
+            const int shift = 0x100 - int(spc);
+            if (shift < 9 || shift > 30)
+                return -1;
+            cluster = qint64(1) << shift;
+        }
+        return isPowerOfTwo(cluster) ? cluster : -1;
+    }
+    case FileSystem::Type::Exfat: {
+        if (bs.mid(3, 8) != QByteArrayLiteral("EXFAT   "))
+            return -1;
+        const quint32 bytesPerSectorShift = quint8(bs.at(108));
+        const quint32 sectorsPerClusterShift = quint8(bs.at(109));
+        if (bytesPerSectorShift < 9 || bytesPerSectorShift > 12)
+            return -1;
+        if (sectorsPerClusterShift > 25 - bytesPerSectorShift)
+            return -1;
+        return qint64(1) << (bytesPerSectorShift + sectorsPerClusterShift);
+    }
+    default:
+        return -1;
+    }
+}
+
 /** Scans a Device for Partitions.
 
     This method  will scan a Device for all Partitions on it, detect the FileSystem for each Partition,
@@ -368,6 +422,20 @@ void SfdiskBackend::scanDevicePartitions(Device& d, const QJsonArray& jsonPartit
         Partition* part = scanPartition(d, partitionNode, start, lastSector, partitionType, bootable);
 
         setupPartitionInfo(d, part, partitionObject);
+
+        if (!part->isFileSystemNullptr() && !part->roles().has(PartitionRole::Luks)) {
+            const FileSystem::Type fsType = part->fileSystem().type();
+            if (fsType == FileSystem::Type::Fat12 || fsType == FileSystem::Type::Fat16
+                || fsType == FileSystem::Type::Fat32 || fsType == FileSystem::Type::Ntfs
+                || fsType == FileSystem::Type::Exfat) {
+                const qint64 firstByte = start * d.logicalSize();
+                CopySourceDevice source(d, firstByte, firstByte + 511);
+                ExternalCommand readCmd;
+                const qint64 clusterSize = clusterSizeFromBootSector(readCmd.readData(source), fsType);
+                if (clusterSize > 0)
+                    part->fileSystem().setClusterSize(clusterSize);
+            }
+        }
 
         partitions.append(part);
     }

@@ -33,6 +33,7 @@ class QColor;
 class QValidator;
 class Device;
 class Report;
+class FileSystemFactory;
 struct FileSystemPrivate;
 
 /** Base class for all FileSystems.
@@ -301,11 +302,21 @@ public:
     /**< @param features the list of features to add to the FileSystem */
     void addFeatures(const QVariantMap& features);
 
+    void removeFeature(const QString& name);
+
+    void setFeatures(const QVariantMap& features);
+
+    QList<qint64> supportedClusterSizes(qint64 fileSystemSizeInBytes) const;
+
+    QString validateClusterSizeFeature(qint64 fileSystemSizeInBytes) const;
+
     /**< @return the sector size in the underlying Device */
     qint64 sectorSize() const;
 
     /**< @return the sectors in use on the FileSystem */
     qint64 sectorsUsed() const;
+
+    qint64 clusterSize() const;
 
     /**< @return the FileSystem's UUID */
     const QString& uuid() const;
@@ -315,6 +326,8 @@ public:
 
     /**< @param s the new value for sectors in use */
     void setSectorsUsed(qint64 s);
+
+    void setClusterSize(qint64 s);
 
     /**< @param s the new label */
     void setLabel(const QString& s);
@@ -327,6 +340,11 @@ protected:
     void addAvailableFeature(const QString& name);
 
     std::unique_ptr<FileSystemPrivate> d;
+
+private:
+    friend class FileSystemFactory;
+
+    void setAvailableFeatures(const QStringList& features);
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(FileSystem::CommandSupportTypes)

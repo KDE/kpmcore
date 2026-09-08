@@ -163,6 +163,10 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
     if (fs != nullptr) {
         fs->setUUID(uuid);
         fs->setSectorSize(sectorSize);
+
+        const auto it = m_FileSystems.constFind(t);
+        if (it != m_FileSystems.constEnd() && it.value() != nullptr && it.value() != fs)
+            fs->setAvailableFeatures(it.value()->availableFeatures());
     }
 
     return fs;
@@ -173,7 +177,10 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
 */
 FileSystem* FileSystemFactory::create(const FileSystem& other)
 {
-    return create(other.type(), other.firstSector(), other.lastSector(), other.sectorSize(), other.sectorsUsed(), other.label(), other.features(), other.uuid());
+    FileSystem* fs = create(other.type(), other.firstSector(), other.lastSector(), other.sectorSize(), other.sectorsUsed(), other.label(), other.features(), other.uuid());
+    if (fs != nullptr)
+        fs->setClusterSize(other.clusterSize());
+    return fs;
 }
 
 /** @return the map of FileSystems */

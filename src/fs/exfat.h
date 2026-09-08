@@ -49,6 +49,9 @@ public:
     CommandSupportType supportCreate() const override {
         return m_Create;
     }
+    CommandSupportType supportCreateWithFeatures() const override {
+        return exfatUtils ? cmdSupportNone : m_Create;
+    }
     CommandSupportType supportGrow() const override {
         return m_Grow;
     }

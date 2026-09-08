@@ -18,6 +18,8 @@
 #include "fs/filesystem.h"
 #include "fs/filesystemfactory.h"
 
+#include "util/report.h"
+
 #include <QString>
 
 #include <KLocalizedString>
@@ -47,6 +49,12 @@ CreateFileSystemOperation::CreateFileSystemOperation(Device& d, Partition& p, Fi
     // if the user never configured a new permission, nothing will run, if he did,
     // then we change the permissions on the newly created partition.
     addJob(new ChangePermissionJob(p));
+}
+
+CreateFileSystemOperation::CreateFileSystemOperation(Device& d, Partition& p, FileSystem::Type newType, const QVariantMap& features) :
+    CreateFileSystemOperation(d, p, newType)
+{
+    newFileSystem()->setFeatures(features);
 }
 
 CreateFileSystemOperation::~CreateFileSystemOperation()
@@ -79,6 +87,15 @@ void CreateFileSystemOperation::undo()
 
 bool CreateFileSystemOperation::execute(Report& parent)
 {
+    const QString clusterSizeError = newFileSystem()->validateClusterSizeFeature(newFileSystem()->length() * newFileSystem()->sectorSize());
+    if (!clusterSizeError.isEmpty()) {
+        Report* report = parent.newChild(description());
+        report->line() << clusterSizeError;
+        setStatus(StatusError);
+        report->setStatus(xi18nc("@info:status", "%1: %2", description(), statusText()));
+        return false;
+    }
+
     preview();
 
     return Operation::execute(parent);
