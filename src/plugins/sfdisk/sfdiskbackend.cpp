@@ -517,9 +517,9 @@ void SfdiskBackend::readSectorsUsed(const Device& d, Partition& p, const QString
 {
     if (p.isFileSystemNullptr())
         return;
-    if (!mountPoint.isEmpty() && p.fileSystem().type() != FileSystem::Type::LinuxSwap && p.fileSystem().type() != FileSystem::Type::Lvm2_PV) {
+    if (p.isMounted() && !mountPoint.isEmpty() && p.fileSystem().type() != FileSystem::Type::LinuxSwap && p.fileSystem().type() != FileSystem::Type::Lvm2_PV) {
         const QStorageInfo storage = QStorageInfo(mountPoint);
-        if (p.isMounted() && storage.isValid())
+        if (storage.isValid())
             p.fileSystem().setSectorsUsed( (storage.bytesTotal() - storage.bytesFree()) / d.logicalSize());
     }
     else if (p.fileSystem().supportGetUsed() == FileSystem::cmdSupportFileSystem)
