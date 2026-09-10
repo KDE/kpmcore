@@ -65,11 +65,6 @@ void fat12::init()
     }
 }
 
-void fat12::scan(const QString& deviceNode)
-{
-    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
-}
-
 bool fat12::supportToolFound() const
 {
     return
@@ -140,6 +135,36 @@ qint64 fat12::readUsedCapacity(const QString& deviceNode) const
     }
 
     return -1;
+}
+
+void fat12::scan(const QString& deviceNode)
+{
+    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
+
+    clearProperties();
+
+    if (m_GetUsed == cmdSupportNone)
+        return;
+
+    ExternalCommand cmd(QStringLiteral("fsck.fat"), { QStringLiteral("-n"), QStringLiteral("-v"), deviceNode });
+    if (!cmd.run(-1) || (cmd.exitCode() != 0 && cmd.exitCode() != 1))
+        return;
+
+    const QString output = cmd.output();
+    QRegularExpression re;
+
+    auto number = [&re, &output](const QString& pattern) -> QVariant {
+        re.setPattern(pattern);
+        const QRegularExpressionMatch match = re.match(output);
+        return match.hasMatch() ? QVariant(match.captured(1).toLongLong()) : QVariant();
+    };
+
+    addProperty(QStringLiteral("sector-size"), number(QStringLiteral("(\\d+) bytes per logical sector")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("cluster-size"), number(QStringLiteral("(\\d+) bytes per cluster")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("fat-count"), number(QStringLiteral("(\\d+) FATs,")),
+                FileSystemProperty::DisplayType::Number, FileSystemProperty::Group::Specific);
 }
 
 bool fat12::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)

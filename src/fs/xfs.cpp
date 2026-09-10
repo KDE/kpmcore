@@ -121,6 +121,68 @@ qint64 xfs::readUsedCapacity(const QString& deviceNode) const
     return -1;
 }
 
+void xfs::scan(const QString& deviceNode)
+{
+    clearProperties();
+
+    if (m_GetUsed == cmdSupportNone)
+        return;
+
+    ExternalCommand cmd(QStringLiteral("xfs_db"), { QStringLiteral("-c"), QStringLiteral("sb 0"), QStringLiteral("-c"), QStringLiteral("print"), deviceNode });
+    if (!cmd.run(-1) || cmd.exitCode() != 0)
+        return;
+
+    const QString output = cmd.output();
+    QRegularExpression re;
+
+    auto number = [&re, &output](const QString& field) -> QVariant {
+        re.setPattern(field + QStringLiteral(" = (\\d+)"));
+        const QRegularExpressionMatch match = re.match(output);
+        return match.hasMatch() ? QVariant(match.captured(1).toLongLong()) : QVariant();
+    };
+    auto hex = [&re, &output](const QString& field) -> qint64 {
+        re.setPattern(field + QStringLiteral(" = (?:0x)?([0-9a-fA-F]+)"));
+        const QRegularExpressionMatch match = re.match(output);
+        return match.hasMatch() ? match.captured(1).toLongLong(nullptr, 16) : -1;
+    };
+
+    const QVariant blockSize = number(QStringLiteral("blocksize"));
+    const QVariant logBlocks = number(QStringLiteral("logblocks"));
+
+    addProperty(QStringLiteral("block-size"), blockSize, FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("sector-size"), number(QStringLiteral("sectsize")), FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("inode-size"), number(QStringLiteral("inodesize")), FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::Metadata);
+
+    QVariant journalSize;
+    if (logBlocks.isValid() && blockSize.isValid())
+        journalSize = QVariant(logBlocks.toLongLong() * blockSize.toLongLong());
+    addProperty(QStringLiteral("journal-size"), journalSize, FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::Journal);
+
+    const qint64 versionNum = hex(QStringLiteral("versionnum"));
+    if (versionNum >= 0)
+        addProperty(QStringLiteral("format-version"), QVariant(QStringLiteral("v%1").arg(versionNum & 0xf)),
+                    FileSystemProperty::DisplayType::Text, FileSystemProperty::Group::Capabilities);
+
+    QStringList features;
+    const qint64 incompat = hex(QStringLiteral("features_incompat"));
+    if (incompat > 0) {
+        if (incompat & 0x1)  features << QStringLiteral("ftype");
+        if (incompat & 0x2)  features << QStringLiteral("sparse-inodes");
+        if (incompat & 0x4)  features << QStringLiteral("meta-uuid");
+        if (incompat & 0x8)  features << QStringLiteral("bigtime");
+        if (incompat & 0x10) features << QStringLiteral("large-extent-counts");
+    }
+    const qint64 roCompat = hex(QStringLiteral("features_ro_compat"));
+    if (roCompat > 0) {
+        if (roCompat & 0x1) features << QStringLiteral("finobt");
+        if (roCompat & 0x2) features << QStringLiteral("rmapbt");
+        if (roCompat & 0x4) features << QStringLiteral("reflink");
+        if (roCompat & 0x8) features << QStringLiteral("inobtcnt");
+    }
+    if (!features.isEmpty())
+        addProperty(QStringLiteral("filesystem-features"), features, FileSystemProperty::DisplayType::List, FileSystemProperty::Group::Capabilities);
+}
+
 bool xfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)
 {
     ExternalCommand cmd(report, QStringLiteral("xfs_db"), { QStringLiteral("-x"), QStringLiteral("-c"), QStringLiteral("sb 0"), QStringLiteral("-c"), QStringLiteral("label ") + newLabel, deviceNode });

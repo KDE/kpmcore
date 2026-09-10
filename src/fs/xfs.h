@@ -33,6 +33,7 @@ public:
 
 public:
     void init() override;
+    void scan(const QString& deviceNode) override;
 
     qint64 readUsedCapacity(const QString& deviceNode) const override;
     bool check(Report& report, const QString& deviceNode) const override;

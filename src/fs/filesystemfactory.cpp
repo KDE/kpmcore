@@ -178,8 +178,11 @@ FileSystem* FileSystemFactory::create(FileSystem::Type t, qint64 firstsector, qi
 FileSystem* FileSystemFactory::create(const FileSystem& other)
 {
     FileSystem* fs = create(other.type(), other.firstSector(), other.lastSector(), other.sectorSize(), other.sectorsUsed(), other.label(), other.features(), other.uuid());
-    if (fs != nullptr)
+    if (fs != nullptr) {
         fs->setClusterSize(other.clusterSize());
+        fs->setProperties(other.properties());
+    }
+
     return fs;
 }
 

@@ -68,6 +68,7 @@ set(FS_LIB_HDRS
     fs/fat32.h
     fs/filesystem.h
     fs/filesystemfactory.h
+    fs/filesystemproperty.h
     fs/freebsdswap.h
     fs/hfs.h
     fs/hfsplus.h

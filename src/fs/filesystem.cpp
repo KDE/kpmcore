@@ -89,6 +89,7 @@ struct FileSystemPrivate {
     QString m_posixPermissions;
     QStringList m_AvailableFeatures;
     QVariantMap m_Features;
+    QList<FileSystemProperty> m_Properties;
 };
 
 /** Creates a new FileSystem object
@@ -812,6 +813,27 @@ QString FileSystem::validateClusterSizeFeature(qint64 fileSystemSizeInBytes) con
         return xi18nc("@info", "Choosing the cluster size is not supported for this file system with the tools that are installed.");
 
     return FS::ClusterSize::errorFor(type(), d->m_Features, sectorSize(), fileSystemSizeInBytes);
+}
+
+void FileSystem::clearProperties()
+{
+    d->m_Properties.clear();
+}
+
+void FileSystem::addProperty(const QString& id, const QVariant& value,
+                             FileSystemProperty::DisplayType displayType, FileSystemProperty::Group group)
+{
+    d->m_Properties.append(FileSystemProperty(id, value, displayType, group));
+}
+
+const QList<FileSystemProperty>& FileSystem::properties() const
+{
+    return d->m_Properties;
+}
+
+void FileSystem::setProperties(const QList<FileSystemProperty>& properties)
+{
+    d->m_Properties = properties;
 }
 
 bool FileSystem::supportToolFound() const

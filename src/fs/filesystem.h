@@ -17,6 +17,8 @@
 #ifndef KPMCORE_FILESYSTEM_H
 #define KPMCORE_FILESYSTEM_H
 
+#include "fs/filesystemproperty.h"
+
 #include "util/libpartitionmanagerexport.h"
 
 #include <QVariant>
@@ -310,6 +312,12 @@ public:
 
     QString validateClusterSizeFeature(qint64 fileSystemSizeInBytes) const;
 
+    /**< @return the FileSystem's typed properties as read by scan() */
+    const QList<FileSystemProperty>& properties() const;
+
+    /**< @param properties the typed properties describing the FileSystem */
+    void setProperties(const QList<FileSystemProperty>& properties);
+
     /**< @return the sector size in the underlying Device */
     qint64 sectorSize() const;
 
@@ -338,6 +346,10 @@ public:
 protected:
     static bool findExternal(const QString& cmdName, const QStringList& args = QStringList(), int exptectedCode = 1);
     void addAvailableFeature(const QString& name);
+
+    void clearProperties();
+    void addProperty(const QString& id, const QVariant& value,
+                     FileSystemProperty::DisplayType displayType, FileSystemProperty::Group group);
 
     std::unique_ptr<FileSystemPrivate> d;
 

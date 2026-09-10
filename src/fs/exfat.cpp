@@ -14,6 +14,7 @@
 #include "util/capacity.h"
 #include "util/report.h"
 
+#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
 
@@ -67,11 +68,6 @@ void exfat::init()
         addAvailableFeature(QStringLiteral("cluster-size"));
 }
 
-void exfat::scan(const QString& deviceNode)
-{
-    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
-}
-
 bool exfat::supportToolFound() const
 {
     return
@@ -102,6 +98,71 @@ qint64 exfat::maxCapacity() const
 int exfat::maxLabelLength() const
 {
     return 11;
+}
+
+static qint64 parseSize(const QString& s)
+{
+    const QRegularExpressionMatch match = QRegularExpression(QStringLiteral("(\\d+)\\s*([KMG]i?B|B)?")).match(s.trimmed());
+    if (!match.hasMatch())
+        return -1;
+
+    qint64 value = match.captured(1).toLongLong();
+    const QString unit = match.captured(2).toUpper();
+    if (unit.startsWith(QLatin1Char('K')))
+        value *= 1024;
+    else if (unit.startsWith(QLatin1Char('M')))
+        value *= 1024LL * 1024;
+    else if (unit.startsWith(QLatin1Char('G')))
+        value *= 1024LL * 1024 * 1024;
+
+    return value;
+}
+
+void exfat::scan(const QString& deviceNode)
+{
+    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
+
+    clearProperties();
+
+    ExternalCommand cmd(exfatUtils ? QStringLiteral("dumpexfat") : QStringLiteral("dump.exfat"), { deviceNode });
+    if (!cmd.run(-1) || cmd.exitCode() != 0)
+        return;
+
+    const QString output = cmd.output();
+    QRegularExpression re;
+
+    qint64 sectorSize = -1;
+    qint64 clusterSize = -1;
+
+    re.setPattern(QStringLiteral("Sector Size Bits:\\s*(\\d+)"));
+    const QRegularExpressionMatch sectorBits = re.match(output);
+    if (sectorBits.hasMatch()) {
+        sectorSize = qint64(1) << sectorBits.captured(1).toLongLong();
+        re.setPattern(QStringLiteral("Sector per Cluster bits:\\s*(\\d+)"));
+        const QRegularExpressionMatch clusterBits = re.match(output);
+        if (clusterBits.hasMatch())
+            clusterSize = sectorSize << clusterBits.captured(1).toLongLong();
+    } else {
+        re.setPattern(QStringLiteral("Sector size\\s+([^\\n]+)"));
+        const QRegularExpressionMatch sectorLine = re.match(output);
+        if (sectorLine.hasMatch())
+            sectorSize = parseSize(sectorLine.captured(1));
+        re.setPattern(QStringLiteral("Cluster size\\s+([^\\n]+)"));
+        const QRegularExpressionMatch clusterLine = re.match(output);
+        if (clusterLine.hasMatch())
+            clusterSize = parseSize(clusterLine.captured(1));
+    }
+
+    addProperty(QStringLiteral("sector-size"), sectorSize >= 0 ? QVariant(sectorSize) : QVariant(),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("cluster-size"), clusterSize >= 0 ? QVariant(clusterSize) : QVariant(),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+
+    re.setPattern(QStringLiteral("(?:File system version|FS version)\\s+([\\d.]+)"));
+    const QRegularExpressionMatch version = re.match(output);
+    if (version.hasMatch())
+        addProperty(QStringLiteral("format-version"), QVariant(version.captured(1)),
+                    FileSystemProperty::DisplayType::Text, FileSystemProperty::Group::Capabilities);
 }
 
 bool exfat::check(Report& report, const QString& deviceNode) const

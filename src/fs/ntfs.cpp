@@ -63,11 +63,6 @@ void ntfs::init()
         addAvailableFeature(QStringLiteral("cluster-size"));
 }
 
-void ntfs::scan(const QString& deviceNode)
-{
-    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
-}
-
 bool ntfs::supportToolFound() const
 {
     return
@@ -131,6 +126,41 @@ qint64 ntfs::readUsedCapacity(const QString& deviceNode) const
     }
 
     return -1;
+}
+
+void ntfs::scan(const QString& deviceNode)
+{
+    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
+
+    clearProperties();
+
+    if (m_GetUsed == cmdSupportNone)
+        return;
+
+    ExternalCommand cmd(QStringLiteral("ntfsinfo"), { QStringLiteral("--mft"), QStringLiteral("--force"), deviceNode });
+    if (!cmd.run(-1) || cmd.exitCode() != 0)
+        return;
+
+    const QString output = cmd.output();
+    QRegularExpression re;
+
+    auto number = [&re, &output](const QString& pattern) -> QVariant {
+        re.setPattern(pattern);
+        const QRegularExpressionMatch match = re.match(output);
+        return match.hasMatch() ? QVariant(match.captured(1).toLongLong()) : QVariant();
+    };
+
+    addProperty(QStringLiteral("cluster-size"), number(QStringLiteral("Cluster Size:\\s*(\\d+)")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("sector-size"), number(QStringLiteral("(?:Sector Size|Bytes [Pp]er [Ss]ector):?\\s*(\\d+)")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("mft-record-size"), number(QStringLiteral("MFT Record Size:\\s*(\\d+)")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::Metadata);
+
+    re.setPattern(QStringLiteral("Volume Version:\\s*([\\d.]+)"));
+    const QRegularExpressionMatch version = re.match(output);
+    addProperty(QStringLiteral("format-version"), version.hasMatch() ? QVariant(version.captured(1)) : QVariant(),
+                FileSystemProperty::DisplayType::Text, FileSystemProperty::Group::Capabilities);
 }
 
 bool ntfs::writeLabel(Report& report, const QString& deviceNode, const QString& newLabel)

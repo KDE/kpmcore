@@ -128,6 +128,53 @@ qint64 btrfs::readUsedCapacity(const QString& deviceNode) const
     return -1;
 }
 
+void btrfs::scan(const QString& deviceNode)
+{
+    clearProperties();
+
+    if (m_GetUsed == cmdSupportNone)
+        return;
+
+    ExternalCommand cmd(QStringLiteral("btrfs"),
+                        { QStringLiteral("inspect-internal"), QStringLiteral("dump-super"), QStringLiteral("-f"), deviceNode });
+    if (!cmd.run(-1) || cmd.exitCode() != 0)
+        return;
+
+    const QString output = cmd.output();
+    QRegularExpression re;
+
+    auto number = [&re, &output](const QString& pattern) -> QVariant {
+        re.setPattern(pattern);
+        const QRegularExpressionMatch match = re.match(output);
+        return match.hasMatch() ? QVariant(match.captured(1).toLongLong()) : QVariant();
+    };
+
+    addProperty(QStringLiteral("sector-size"), number(QStringLiteral("sectorsize\\s+(\\d+)")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    addProperty(QStringLiteral("metadata-node-size"), number(QStringLiteral("nodesize\\s+(\\d+)")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+
+    re.setPattern(QStringLiteral("csum_type\\s+\\d+\\s*\\(([^)]*)\\)"));
+    const QRegularExpressionMatch csumType = re.match(output);
+    if (csumType.hasMatch())
+        addProperty(QStringLiteral("checksum-algorithm"), csumType.captured(1).trimmed(),
+                    FileSystemProperty::DisplayType::Text, FileSystemProperty::Group::Specific);
+
+    re.setPattern(QStringLiteral("incompat_flags\\s+\\S+\\s*\\(([^)]*)\\)"));
+    const QRegularExpressionMatch flags = re.match(output);
+    if (flags.hasMatch()) {
+        QStringList features;
+        const auto parts = flags.captured(1).split(QLatin1Char('|'), Qt::SkipEmptyParts);
+        for (const auto& part : parts) {
+            const QString name = part.trimmed();
+            if (!name.isEmpty())
+                features.append(name);
+        }
+        if (!features.isEmpty())
+            addProperty(QStringLiteral("filesystem-features"), features, FileSystemProperty::DisplayType::List, FileSystemProperty::Group::Capabilities);
+    }
+}
+
 bool btrfs::check(Report& report, const QString& deviceNode) const
 {
     ExternalCommand cmd(report, QStringLiteral("btrfs"), { QStringLiteral("check"), deviceNode });

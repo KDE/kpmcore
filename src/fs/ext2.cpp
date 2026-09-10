@@ -149,6 +149,98 @@ qint64 ext2::readUsedCapacity(const QString& deviceNode) const
     return -1;
 }
 
+static qint64 parseHumanSize(const QString& s)
+{
+    const QRegularExpressionMatch match = QRegularExpression(QStringLiteral("(\\d+)\\s*([kKmMgGtT])?")).match(s.trimmed());
+    if (!match.hasMatch())
+        return -1;
+
+    qint64 value = match.captured(1).toLongLong();
+    const QString unit = match.captured(2).toLower();
+    if (unit == QStringLiteral("k"))
+        value *= 1024;
+    else if (unit == QStringLiteral("m"))
+        value *= 1024LL * 1024;
+    else if (unit == QStringLiteral("g"))
+        value *= 1024LL * 1024 * 1024;
+    else if (unit == QStringLiteral("t"))
+        value *= 1024LL * 1024 * 1024 * 1024;
+
+    return value;
+}
+
+void ext2::scan(const QString& deviceNode)
+{
+    clearProperties();
+
+    if (m_GetUsed == cmdSupportNone)
+        return;
+
+    ExternalCommand cmd(QStringLiteral("dumpe2fs"), { QStringLiteral("-h"), deviceNode });
+    if (!cmd.run() || cmd.exitCode() != 0)
+        return;
+
+    const QString output = cmd.output();
+    QRegularExpression re;
+
+    auto text = [&re, &output](const QString& pattern) -> QVariant {
+        re.setPattern(pattern);
+        const QRegularExpressionMatch match = re.match(output);
+        return match.hasMatch() ? QVariant(match.captured(1).trimmed()) : QVariant();
+    };
+    auto number = [&text](const QString& pattern) -> QVariant {
+        const QVariant value = text(pattern);
+        return value.isValid() ? QVariant(value.toString().toLongLong()) : QVariant();
+    };
+
+    const QStringList features = text(QStringLiteral("Filesystem features:\\s+([^\\n]+)"))
+                                    .toString().split(QLatin1Char(' '), Qt::SkipEmptyParts);
+    const QVariant blockSize = number(QStringLiteral("Block size:\\s+(\\d+)"));
+    const QVariant reservedBlocks = number(QStringLiteral("Reserved block count:\\s+(\\d+)"));
+    const QVariant blockCount = number(QStringLiteral("Block count:\\s+(\\d+)"));
+
+    addProperty(QStringLiteral("block-size"), blockSize, FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+    if (features.contains(QStringLiteral("bigalloc")))
+        addProperty(QStringLiteral("cluster-size"), number(QStringLiteral("Cluster size:\\s+(\\d+)")),
+                    FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::UnitSizes);
+
+    addProperty(QStringLiteral("filesystem-features"), features.isEmpty() ? QVariant() : QVariant(features),
+                FileSystemProperty::DisplayType::List, FileSystemProperty::Group::Capabilities);
+    addProperty(QStringLiteral("format-version"), text(QStringLiteral("Filesystem revision #:\\s+([^\\n]+)")),
+                FileSystemProperty::DisplayType::Text, FileSystemProperty::Group::Capabilities);
+
+    addProperty(QStringLiteral("reserved-block-count"), reservedBlocks, FileSystemProperty::DisplayType::Number, FileSystemProperty::Group::Reserved);
+    QVariant reservedSpace;
+    if (reservedBlocks.isValid() && blockSize.isValid())
+        reservedSpace = QVariant(reservedBlocks.toLongLong() * blockSize.toLongLong());
+    addProperty(QStringLiteral("reserved-space"), reservedSpace, FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::Reserved);
+    if (reservedBlocks.isValid() && blockCount.isValid() && blockCount.toLongLong() > 0)
+        addProperty(QStringLiteral("reserved-space-percent"), QVariant(100.0 * reservedBlocks.toLongLong() / blockCount.toLongLong()),
+                    FileSystemProperty::DisplayType::Percent, FileSystemProperty::Group::Reserved);
+    addProperty(QStringLiteral("reserved-uid"), number(QStringLiteral("Reserved blocks uid:\\s+(\\d+)")),
+                FileSystemProperty::DisplayType::Number, FileSystemProperty::Group::Reserved);
+    addProperty(QStringLiteral("reserved-gid"), number(QStringLiteral("Reserved blocks gid:\\s+(\\d+)")),
+                FileSystemProperty::DisplayType::Number, FileSystemProperty::Group::Reserved);
+
+    addProperty(QStringLiteral("inode-size"), number(QStringLiteral("Inode size:\\s+(\\d+)")),
+                FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::Metadata);
+    addProperty(QStringLiteral("inode-count"), number(QStringLiteral("Inode count:\\s+(\\d+)")),
+                FileSystemProperty::DisplayType::Number, FileSystemProperty::Group::Metadata);
+
+    if (features.contains(QStringLiteral("has_journal"))) {
+        QVariant journalSize;
+        const QVariant journalBlocks = number(QStringLiteral("Total journal blocks:\\s+(\\d+)"));
+        if (journalBlocks.isValid() && blockSize.isValid())
+            journalSize = QVariant(journalBlocks.toLongLong() * blockSize.toLongLong());
+        else {
+            const qint64 bytes = parseHumanSize(text(QStringLiteral("(?:Total journal size|Journal size):\\s+(\\S+)")).toString());
+            if (bytes >= 0)
+                journalSize = QVariant(bytes);
+        }
+        addProperty(QStringLiteral("journal-size"), journalSize, FileSystemProperty::DisplayType::Bytes, FileSystemProperty::Group::Journal);
+    }
+}
+
 bool ext2::check(Report& report, const QString& deviceNode) const
 {
     ExternalCommand cmd(report, QStringLiteral("e2fsck"), { QStringLiteral("-f"), QStringLiteral("-y"), QStringLiteral("-v"), deviceNode });
