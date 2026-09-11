@@ -10,6 +10,7 @@
 
 #include "fs/ntfs.h"
 
+#include "fs/clustersize.h"
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 #include "util/report.h"
@@ -60,6 +61,11 @@ void ntfs::init()
 
     if (m_Create == cmdSupportFileSystem)
         addAvailableFeature(QStringLiteral("cluster-size"));
+}
+
+void ntfs::scan(const QString& deviceNode)
+{
+    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
 }
 
 bool ntfs::supportToolFound() const

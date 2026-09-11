@@ -204,13 +204,18 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
 
 QByteArray ExternalCommand::readData(const CopySourceDevice& source)
 {
+    return readData(source.path(), source.firstByte(), source.length());
+}
+
+QByteArray ExternalCommand::readData(const QString& deviceNode, qint64 offset, qint64 length)
+{
     auto interface = helperInterface();
     if (!interface)
         return {};
 
     // Helper is restricted not to resolve symlinks
-    QFileInfo sourceInfo(source.path());
-    QDBusPendingCall pcall = interface->ReadData(sourceInfo.canonicalFilePath(), source.firstByte(), source.length());
+    QFileInfo sourceInfo(deviceNode);
+    QDBusPendingCall pcall = interface->ReadData(sourceInfo.canonicalFilePath(), offset, length);
 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pcall, this);
 

@@ -56,6 +56,7 @@ public:
 public:
     bool copyBlocks(const CopySource& source, CopyTarget& target);
     QByteArray readData(const CopySourceDevice& source);
+    QByteArray readData(const QString& deviceNode, qint64 offset, qint64 length);
     bool writeData(Report& commandReport, const QByteArray& buffer, const QString& deviceNode, const quint64 firstByte); // same as copyBlocks but from QByteArray
     bool writeFstab(const QByteArray& fileContents);
 

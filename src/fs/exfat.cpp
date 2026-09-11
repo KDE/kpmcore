@@ -9,6 +9,7 @@
 
 #include "fs/exfat.h"
 
+#include "fs/clustersize.h"
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 #include "util/report.h"
@@ -64,6 +65,11 @@ void exfat::init()
 
     if (m_Create == cmdSupportFileSystem && !exfatUtils)
         addAvailableFeature(QStringLiteral("cluster-size"));
+}
+
+void exfat::scan(const QString& deviceNode)
+{
+    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
 }
 
 bool exfat::supportToolFound() const

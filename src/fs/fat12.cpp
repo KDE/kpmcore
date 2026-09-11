@@ -11,6 +11,7 @@
 
 #include "fs/fat12.h"
 
+#include "fs/clustersize.h"
 #include "util/externalcommand.h"
 #include "util/capacity.h"
 #include "util/report.h"
@@ -62,6 +63,11 @@ void fat12::init()
         addAvailableFeature(QStringLiteral("sector-size"));
         addAvailableFeature(QStringLiteral("sectors-per-cluster"));
     }
+}
+
+void fat12::scan(const QString& deviceNode)
+{
+    setClusterSize(FS::ClusterSize::fromBootSector(deviceNode, type()));
 }
 
 bool fat12::supportToolFound() const
