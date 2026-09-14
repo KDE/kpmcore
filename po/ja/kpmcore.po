@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-30 00:50+0000\n"
+"POT-Creation-Date: 2026-09-14 00:46+0000\n"
 "PO-Revision-Date: 2009-01-06 23:32+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -97,7 +97,7 @@ msgid "Changing file system for a new partition: No new operation required."
 msgstr ""
 "新しいパーティションのファイルシステムを変更: 新しい操作は必要ありません。"
 
-#: core/operationstack.cpp:186
+#: core/operationstack.cpp:188
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Changing file system for a new partition: No new operation required."
@@ -108,7 +108,7 @@ msgid ""
 msgstr ""
 "新しいパーティションのファイルシステムを変更: 新しい操作は必要ありません。"
 
-#: core/operationstack.cpp:233
+#: core/operationstack.cpp:235
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Deleting a partition just copied: Removing the copy."
@@ -116,7 +116,7 @@ msgctxt "@info:status"
 msgid "Deleting a partition just copied: Removing the copy."
 msgstr "コピーしたばかりのパーティションを削除: コピーを削除します。"
 
-#: core/operationstack.cpp:238
+#: core/operationstack.cpp:240
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -130,7 +130,7 @@ msgstr ""
 "既存のパーティションにコピーされたばかりのパーティションを削除: コピーを削除"
 "し、既存のパーティションを削除します。"
 
-#: core/operationstack.cpp:251
+#: core/operationstack.cpp:253
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -144,7 +144,7 @@ msgstr ""
 "コピーされたパーティションをコピー: 最初のコピー元のパーティションをコピーし"
 "ます。"
 
-#: core/operationstack.cpp:280
+#: core/operationstack.cpp:282
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Deleting a partition just restored: Removing the restore operation."
@@ -152,7 +152,7 @@ msgctxt "@info:status"
 msgid "Deleting a partition just restored: Removing the restore operation."
 msgstr "復元されたばかりのパーティションを削除: 復元操作を削除します。"
 
-#: core/operationstack.cpp:285
+#: core/operationstack.cpp:287
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -166,7 +166,7 @@ msgstr ""
 "既存のパーティションに復元されたばかりのパーティションを削除: 復元操作を削除"
 "し、既存のパーティションを削除します。"
 
-#: core/operationstack.cpp:318
+#: core/operationstack.cpp:320
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Changing flags again for the same partition: Removing old operation."
@@ -174,7 +174,7 @@ msgctxt "@info:status"
 msgid "Changing flags again for the same partition: Removing old operation."
 msgstr "同じパーティションに対して再度フラグを変更: 古い方の操作を削除します。"
 
-#: core/operationstack.cpp:349
+#: core/operationstack.cpp:351
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Changing label again for the same partition: Removing old operation."
@@ -182,7 +182,7 @@ msgctxt "@info:status"
 msgid "Changing label again for the same partition: Removing old operation."
 msgstr "同じパーティションに対して再度ラベルを変更: 古い方の操作を削除します。"
 
-#: core/operationstack.cpp:375
+#: core/operationstack.cpp:377
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info:status"
 #| msgid "Create a new and empty partition table on a device."
@@ -190,7 +190,7 @@ msgctxt "@info:status"
 msgid "Creating new partition table, discarding previous operation on device."
 msgstr "デバイスに新しい空のパーティションテーブルを作成します。"
 
-#: core/operationstack.cpp:395
+#: core/operationstack.cpp:397
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -198,7 +198,7 @@ msgctxt "@info:status"
 msgid "Resizing Volume Group, nothing to do."
 msgstr "ファイルシステムをセクター数 %1 から %2 にリサイズしています。"
 
-#: core/operationstack.cpp:440
+#: core/operationstack.cpp:442
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Add operation: %1"
@@ -1627,7 +1627,106 @@ msgstr ""
 "パーティション <filename>%1</filename> の JFS ファイルシステムのリサイズに失"
 "敗: 最初のマウントに失敗しました。"
 
-#: fs/fat12.cpp:141
+#: fs/clustersize.cpp:107
+#, kde-kuit-format
+msgctxt "@info"
+msgid "Choosing the cluster size is not supported for this file system."
+msgstr ""
+
+#: fs/clustersize.cpp:111
+#, kde-kuit-format
+msgctxt "@info"
+msgid "The cluster size must be given as an integer number of bytes."
+msgstr ""
+
+#: fs/clustersize.cpp:115
+#, kde-kuit-format
+msgctxt "@info"
+msgid "The cluster size (%1 bytes) must be a positive number."
+msgstr ""
+
+#: fs/clustersize.cpp:117
+#, kde-kuit-format
+msgctxt "@info"
+msgid "The cluster size (%1 bytes) must be a power of two."
+msgstr ""
+
+#: fs/clustersize.cpp:125
+#, kde-kuit-format
+msgctxt "@info"
+msgid "The requested FAT sector size is not an integer power of two."
+msgstr ""
+
+#: fs/clustersize.cpp:128
+#, kde-kuit-format
+msgctxt "@info"
+msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
+msgstr ""
+
+#: fs/clustersize.cpp:134
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"The requested FAT sectors-per-cluster value is not an integer power of two "
+"from 1 to 128."
+msgstr ""
+
+#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
+"bytes)."
+msgstr ""
+
+#: fs/clustersize.cpp:141
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
+"mkfs.fat cannot use (it must be a power of two from 1 to 128)."
+msgstr ""
+
+#: fs/clustersize.cpp:143
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
+"not agree."
+msgstr ""
+
+#: fs/clustersize.cpp:152
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"The cluster size (%1 bytes) is outside the range this file system supports "
+"(%2 to %3 bytes)."
+msgstr ""
+
+#: fs/clustersize.cpp:155
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
+msgstr ""
+
+#: fs/clustersize.cpp:160
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
+"file system needs. Choose a smaller cluster size."
+msgstr ""
+
+#: fs/clustersize.cpp:162
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
+"file system needs. Choose a smaller cluster size."
+msgstr ""
+
+#: fs/fat12.cpp:147
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Set label for partition <filename>%1</filename> to \"%2\""
@@ -1635,7 +1734,7 @@ msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "パーティション <filename>%1</filename> のラベルを “%2” にセット"
 
-#: fs/filesystem.cpp:565
+#: fs/filesystem.cpp:567
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "unknown"
@@ -1643,7 +1742,7 @@ msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "不明"
 
-#: fs/filesystem.cpp:566
+#: fs/filesystem.cpp:568
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition role"
 #| msgid "extended"
@@ -1651,7 +1750,7 @@ msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "拡張"
 
-#: fs/filesystem.cpp:568
+#: fs/filesystem.cpp:570
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext2"
@@ -1659,7 +1758,7 @@ msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "ext2"
 
-#: fs/filesystem.cpp:569
+#: fs/filesystem.cpp:571
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext3"
@@ -1667,7 +1766,7 @@ msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:570
+#: fs/filesystem.cpp:572
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ext4"
@@ -1675,7 +1774,7 @@ msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:571
+#: fs/filesystem.cpp:573
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "linuxswap"
@@ -1683,31 +1782,31 @@ msgctxt "@item filesystem name"
 msgid "Linux swap"
 msgstr "linuxswap"
 
-#: fs/filesystem.cpp:572
+#: fs/filesystem.cpp:574
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
 msgstr ""
 
-#: fs/filesystem.cpp:573
+#: fs/filesystem.cpp:575
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT16"
 msgstr ""
 
-#: fs/filesystem.cpp:574
+#: fs/filesystem.cpp:576
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT32"
 msgstr ""
 
-#: fs/filesystem.cpp:575
+#: fs/filesystem.cpp:577
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NTFS"
 msgstr ""
 
-#: fs/filesystem.cpp:576
+#: fs/filesystem.cpp:578
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "reiser"
@@ -1715,7 +1814,7 @@ msgctxt "@item filesystem name"
 msgid "ReiserFS"
 msgstr "reiser"
 
-#: fs/filesystem.cpp:577
+#: fs/filesystem.cpp:579
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "reiser4"
@@ -1723,37 +1822,37 @@ msgctxt "@item filesystem name"
 msgid "Reiser4"
 msgstr "reiser4"
 
-#: fs/filesystem.cpp:578
+#: fs/filesystem.cpp:580
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "XFS"
 msgstr ""
 
-#: fs/filesystem.cpp:579
+#: fs/filesystem.cpp:581
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "JFS"
 msgstr ""
 
-#: fs/filesystem.cpp:580
+#: fs/filesystem.cpp:582
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS"
 msgstr ""
 
-#: fs/filesystem.cpp:581
+#: fs/filesystem.cpp:583
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS Plus"
 msgstr ""
 
-#: fs/filesystem.cpp:582
+#: fs/filesystem.cpp:584
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UFS"
 msgstr ""
 
-#: fs/filesystem.cpp:583
+#: fs/filesystem.cpp:585
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "unformatted"
@@ -1761,7 +1860,7 @@ msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "未フォーマット"
 
-#: fs/filesystem.cpp:584
+#: fs/filesystem.cpp:586
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item/plain filesystem name"
 #| msgid "ntfs"
@@ -1769,121 +1868,129 @@ msgctxt "@item filesystem name"
 msgid "Btrfs"
 msgstr "ntfs"
 
-#: fs/filesystem.cpp:585
+#: fs/filesystem.cpp:587
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HPFS"
 msgstr ""
 
-#: fs/filesystem.cpp:586
+#: fs/filesystem.cpp:588
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS"
 msgstr ""
 
-#: fs/filesystem.cpp:587
+#: fs/filesystem.cpp:589
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "OCFS2"
 msgstr ""
 
-#: fs/filesystem.cpp:588
+#: fs/filesystem.cpp:590
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ZFS"
 msgstr ""
 
-#: fs/filesystem.cpp:589
+#: fs/filesystem.cpp:591
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exFAT"
 msgstr ""
 
-#: fs/filesystem.cpp:590
+#: fs/filesystem.cpp:592
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NILFS2"
 msgstr ""
 
-#: fs/filesystem.cpp:591
+#: fs/filesystem.cpp:593
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LVM PV"
 msgstr ""
 
-#: fs/filesystem.cpp:592
+#: fs/filesystem.cpp:594
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "F2FS"
 msgstr ""
 
-#: fs/filesystem.cpp:593
+#: fs/filesystem.cpp:595
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UDF"
 msgstr ""
 
-#: fs/filesystem.cpp:594
+#: fs/filesystem.cpp:596
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ISO 9660"
 msgstr ""
 
-#: fs/filesystem.cpp:595
+#: fs/filesystem.cpp:597
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS 2"
 msgstr ""
 
-#: fs/filesystem.cpp:596
+#: fs/filesystem.cpp:598
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT12"
 msgstr ""
 
-#: fs/filesystem.cpp:597
+#: fs/filesystem.cpp:599
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr ""
 
-#: fs/filesystem.cpp:598
+#: fs/filesystem.cpp:600
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr ""
 
-#: fs/filesystem.cpp:599
+#: fs/filesystem.cpp:601
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "APFS"
 msgstr ""
 
-#: fs/filesystem.cpp:600
+#: fs/filesystem.cpp:602
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "MINIX"
 msgstr ""
 
-#: fs/filesystem.cpp:601
+#: fs/filesystem.cpp:603
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
 msgstr ""
 
 # @action:inmenu
-#: fs/filesystem.cpp:679 fs/luks.cpp:161
+#: fs/filesystem.cpp:681 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "マウント(&M)"
 
 # @action:inmenu
-#: fs/filesystem.cpp:685 fs/luks.cpp:166
+#: fs/filesystem.cpp:687 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
 msgstr "アンマウント(&M)"
+
+#: fs/filesystem.cpp:812
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Choosing the cluster size is not supported for this file system with the "
+"tools that are installed."
+msgstr ""
 
 # @action:inmenu
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
@@ -2048,7 +2155,7 @@ msgstr ""
 "パーティション <filename>%1</filename> の JFS ファイルシステムのリサイズに失"
 "敗: 最初のマウントに失敗しました。"
 
-#: fs/ntfs.cpp:182
+#: fs/ntfs.cpp:207
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not resize file system on partition <filename>%1</filename>."
@@ -2060,7 +2167,7 @@ msgstr ""
 "パーティション <filename>%1</filename> のファイルシステムをリサイズできません"
 "でした。"
 
-#: fs/ntfs.cpp:191 fs/ntfs.cpp:199
+#: fs/ntfs.cpp:216 fs/ntfs.cpp:224
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2074,7 +2181,7 @@ msgstr ""
 "ファイルシステムのリサイズ操作のためにパーティション <filename>%1</filename> "
 "を開けませんでした。"
 
-#: fs/ntfs.cpp:203
+#: fs/ntfs.cpp:228
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Failed to create new partition <filename>%1</filename>."
@@ -3326,7 +3433,15 @@ msgstr ""
 "パーティション <filename>%1</filename> (%2, %3) を <filename>%5</filename> の"
 "未割り当て領域 (開始位置: %4) にコピーし、サイズを %6 に拡大"
 
-#: ops/createfilesystemoperation.cpp:89
+#: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain job status (error, warning, ...)"
+#| msgid "%1: %2"
+msgctxt "@info:status"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: ops/createfilesystemoperation.cpp:106
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Create filesystem %1 on partition <filename>%2</filename>"
@@ -3376,7 +3491,7 @@ msgctxt "@info:status"
 msgid "Delete partition <filename>%1</filename> (%2, %3)"
 msgstr "パーティション <filename>%1</filename> (%2, %3) を削除"
 
-#: ops/newoperation.cpp:205
+#: ops/newoperation.cpp:206
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Create a new partition (%1, %2) on <filename>%3</filename>"
@@ -3945,7 +4060,7 @@ msgid "(unknown unit)"
 msgstr "(未知の単位)"
 
 #: util/externalcommand.cpp:114 util/externalcommand.cpp:118
-#: util/externalcommand.cpp:241
+#: util/externalcommand.cpp:246
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Command: %1 %2"
