@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-03 02:46+0000\n"
-"PO-Revision-Date: 2026-06-26 19:10+0300\n"
+"PO-Revision-Date: 2026-09-14 18:41+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1188,7 +1188,7 @@ msgstr "Yükleme/Kaldırma Yeniden Deneme Sayısı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr "Kafanın konum değiştirme sayısı."
+msgstr "Kafanın konum değiştirme sayısı"
 
 #: core/smartattribute.cpp:160
 #, kde-format
@@ -1212,7 +1212,7 @@ msgstr "Yükleme/Geri Yükleme Döngü Sayısı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total number of load cycles."
-msgstr "Yük döngüsünün toplam sayısı."
+msgstr "Yük döngüsünün toplam sayısı"
 
 #: core/smartattribute.cpp:162
 #, kde-format
@@ -1228,7 +1228,7 @@ msgid ""
 "parking area)."
 msgstr ""
 "Manyetik kafa işletici üzerinde toplam yükleme zamanı (park alanında "
-"harcanmayan zaman)."
+"harcanmayan zaman)"
 
 #: core/smartattribute.cpp:163
 #, kde-format
@@ -1240,7 +1240,7 @@ msgstr "Tork Amplifikasyon Sayısı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of attempts to compensate for platter speed variations."
-msgstr "Plakaların hız değişikliklerini dengelemek için yapılan deneme sayısı."
+msgstr "Plakaların hız değişikliklerini dengelemek için yapılan deneme sayısı"
 
 #: core/smartattribute.cpp:164
 #, kde-format
@@ -1255,7 +1255,7 @@ msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
 msgstr ""
-"Manyetik armatürün gücün kesilmesi sonucu kendiliğinden geri çekilme sayısı."
+"Manyetik armatürün gücün kesilmesi sonucu kendiliğinden geri çekilme sayısı"
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1292,7 +1292,7 @@ msgid ""
 "maximum physical erase cycles the drive supports"
 msgstr ""
 "Sürücünün desteklediği en yüksek silme döngüleri yüzdesi olarak tamamlanan "
-"fiziksel silme döngüsü sayısı."
+"fiziksel silme döngüsü sayısı"
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -1304,7 +1304,7 @@ msgstr "Güçte Zamanı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time elapsed in the power-on state"
-msgstr "Güç bağlandığı zamanlarda geçen zaman."
+msgstr "Güç bağlandığı zamanlarda geçen zaman"
 
 #: core/smartattribute.cpp:169
 #, kde-format
@@ -1330,7 +1330,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
-msgstr "Kullanılabilir ayrılmış blokların toplam ayrılmış bloklara oranı."
+msgstr "Kullanılabilir ayrılmış blokların toplam ayrılmış bloklara oranı"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1346,7 +1346,7 @@ msgid ""
 "reset during a data transfer."
 msgstr ""
 "Kafa konumlanırken geçen zaman<br/>veya bir veri aktarımı sırasında "
-"bağlantının sıfırlanma sayısı."
+"bağlantının sıfırlanma sayısı"
 
 #: core/smartattribute.cpp:172
 #, kde-format
@@ -1382,7 +1382,7 @@ msgstr "SSD NAND_Yazma_1GiB"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr "NAND üzerine 1 GBlık artarak yazma sayısı"
+msgstr "NAND üzerine 1 GiB’lık artarak yazma sayısı"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1430,7 +1430,7 @@ msgstr "Kesintiye uğradı"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Fatal error"
-msgstr "Sonlandırıcı Hata"
+msgstr "Onulmaz hata"
 
 #: core/smartstatus.cpp:95
 #, kde-kuit-format
