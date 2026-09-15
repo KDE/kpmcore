@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-14 00:46+0000\n"
-"PO-Revision-Date: 2026-08-31 19:38+0200\n"
+"PO-Revision-Date: 2026-09-14 21:33+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1592,37 +1592,38 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
-msgstr ""
+msgstr "Val av klusterstorlek stöds inte för det här filsystemet."
 
 #: fs/clustersize.cpp:111
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
-msgstr ""
+msgstr "Klusterstorleken måste anges som ett heltal i byte."
 
 #: fs/clustersize.cpp:115
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
-msgstr ""
+msgstr "Klusterstorleken (%1 byte) måste vara ett positivt tal."
 
 #: fs/clustersize.cpp:117
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
-msgstr ""
+msgstr "Klusterstorleken (%1 byte) måste vara en tvåpotens."
 
 #: fs/clustersize.cpp:125
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
-msgstr ""
+msgstr "Den begärda FAT-sektorstorleken är inte en tvåpotens."
 
 #: fs/clustersize.cpp:128
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr ""
+"Den begärda FAT-sektorstorleken (%1 byte) måste vara mellan 512 och 32768."
 
 #: fs/clustersize.cpp:134
 #, kde-kuit-format
@@ -1631,6 +1632,8 @@ msgid ""
 "The requested FAT sectors-per-cluster value is not an integer power of two "
 "from 1 to 128."
 msgstr ""
+"Det begärda värdet för antal FAT-sektorer per kluster är inte en tvåpotens i "
+"intervallet 1 till 128."
 
 #: fs/clustersize.cpp:137 fs/clustersize.cpp:146
 #, kde-kuit-format
@@ -1639,6 +1642,8 @@ msgid ""
 "The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
 "bytes)."
 msgstr ""
+"Klusterstorleken (%1 byte) måste vara en heltalsmultipel av sektorstorleken "
+"(%2 byte)."
 
 #: fs/clustersize.cpp:141
 #, kde-kuit-format
@@ -1647,6 +1652,9 @@ msgid ""
 "A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
 "mkfs.fat cannot use (it must be a power of two from 1 to 128)."
 msgstr ""
+"En klusterstorlek på %1 byte motsvarar %2 sektorer om %3 byte per kluster, "
+"vilket mkfs.fat inte kan hantera (värdet måste vara en tvåpotens mellan 1 "
+"och 128)."
 
 #: fs/clustersize.cpp:143
 #, kde-kuit-format
@@ -1655,6 +1663,8 @@ msgid ""
 "The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
 "not agree."
 msgstr ""
+"Den begärda klusterstorleken (%1 byte) och värdet för sektorer per kluster "
+"(%2) stämmer inte överens."
 
 #: fs/clustersize.cpp:152
 #, kde-kuit-format
@@ -1663,13 +1673,15 @@ msgid ""
 "The cluster size (%1 bytes) is outside the range this file system supports "
 "(%2 to %3 bytes)."
 msgstr ""
+"Klusterstorleken (%1 byte) ligger utanför det intervall som filsystemet "
+"stöder (%2 till %3 byte)."
 
 #: fs/clustersize.cpp:155
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
-msgstr ""
+msgstr "Klusterstorleken (%1 byte) är större än hela filsystemet (%2 byte)."
 
 #: fs/clustersize.cpp:160
 #, kde-kuit-format
@@ -1678,6 +1690,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"En klusterstorlek på %1 byte ger färre än de 4085 datakluster som ett FAT16-"
+"filsystem kräver. Välj en mindre klusterstorlek."
 
 #: fs/clustersize.cpp:162
 #, kde-kuit-format
@@ -1686,6 +1700,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"En klusterstorlek på %1 byte ger färre än de 65 525 datakluster som ett "
+"FAT32-filsystem kräver. Välj en mindre klusterstorlek."
 
 #: fs/fat12.cpp:147
 #, kde-kuit-format
@@ -1928,6 +1944,8 @@ msgid ""
 "Choosing the cluster size is not supported for this file system with the "
 "tools that are installed."
 msgstr ""
+"Att välja klusterstorlek stöds inte för det här filsystemet med de verktyg "
+"som är installerade."
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -3009,9 +3027,7 @@ msgstr ""
 "början på %4) på <filename>%5</filename> och låt den växa till %6"
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
 msgstr "%1: %2"

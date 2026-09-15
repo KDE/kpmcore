@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-14 00:46+0000\n"
-"PO-Revision-Date: 2026-08-30 08:56+0200\n"
+"PO-Revision-Date: 2026-09-14 19:16+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1607,37 +1607,38 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
-msgstr ""
+msgstr "Izbira velikosti gruče ni podprta za ta datotečni sistem."
 
 #: fs/clustersize.cpp:111
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
-msgstr ""
+msgstr "Velikost gruče mora biti podana kot celo število bajtov."
 
 #: fs/clustersize.cpp:115
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
-msgstr ""
+msgstr "Velikost gruče (%1 bajtov) mora biti pozitivno število."
 
 #: fs/clustersize.cpp:117
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
-msgstr ""
+msgstr "Velikost gruče (%1 bajtov) mora biti potenca števila dve."
 
 #: fs/clustersize.cpp:125
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
-msgstr ""
+msgstr "Zahtevana velikost sektorja FAT ni celoštevilska potenca dveh."
 
 #: fs/clustersize.cpp:128
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr ""
+"Zahtevana velikost sektorja FAT (%1 bajtov) mora biti med 512 in 32768."
 
 #: fs/clustersize.cpp:134
 #, kde-kuit-format
@@ -1646,6 +1647,8 @@ msgid ""
 "The requested FAT sectors-per-cluster value is not an integer power of two "
 "from 1 to 128."
 msgstr ""
+"Zahtevana vrednost sektorjev FAT na gručo ni celoštevilska potenca dveh od 1 "
+"do 128."
 
 #: fs/clustersize.cpp:137 fs/clustersize.cpp:146
 #, kde-kuit-format
@@ -1654,6 +1657,8 @@ msgid ""
 "The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
 "bytes)."
 msgstr ""
+"Velikost gruče (%1 bajtov) mora biti cel večkratnik velikosti sektorja (%2 "
+"bajtov)."
 
 #: fs/clustersize.cpp:141
 #, kde-kuit-format
@@ -1662,6 +1667,8 @@ msgid ""
 "A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
 "mkfs.fat cannot use (it must be a power of two from 1 to 128)."
 msgstr ""
+"Velikost gruče %1 bajtov se preslika v %2 sektorja z %3 bajtov na gručo, "
+"česar mkfs.fat ne more uporabiti (mora biti potenca dveh od 1 do 128)."
 
 #: fs/clustersize.cpp:143
 #, kde-kuit-format
@@ -1670,6 +1677,8 @@ msgid ""
 "The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
 "not agree."
 msgstr ""
+"Zahtevana velikost gruče (%1 bajtov) in vrednost sektorjev na gručo (%2) se "
+"ne ujemata."
 
 #: fs/clustersize.cpp:152
 #, kde-kuit-format
@@ -1678,6 +1687,8 @@ msgid ""
 "The cluster size (%1 bytes) is outside the range this file system supports "
 "(%2 to %3 bytes)."
 msgstr ""
+"Velikost gruče (%1 bajtov) je zunaj obsega, ki ga podpira ta datotečni "
+"sistem (%2 do %3 bajtov)."
 
 #: fs/clustersize.cpp:155
 #, kde-kuit-format
@@ -1685,6 +1696,8 @@ msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr ""
+"Velikost gruče (%1 bajtov) je večja od celotnega datotečnega sistema (%2 "
+"bajtov)."
 
 #: fs/clustersize.cpp:160
 #, kde-kuit-format
@@ -1693,6 +1706,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"Velikost gruče %1 bajtov pusti manj kot 4085 podatkovnih gruč, ki jih "
+"potrebuje datotečni sistem FAT16. Izberite manjšo velikost gruče."
 
 #: fs/clustersize.cpp:162
 #, kde-kuit-format
@@ -1701,6 +1716,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"Velikost gruče %1 bajtov pusti manj kot 65525 podatkovnih gruč, ki jih "
+"potrebuje datotečni sistem FAT32. Izberite manjšo velikost gruče."
 
 #: fs/fat12.cpp:147
 #, kde-kuit-format
@@ -1742,7 +1759,7 @@ msgstr "ext4"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Linux swap"
-msgstr "linux swap"
+msgstr "Linux swap"
 
 #: fs/filesystem.cpp:574
 #, kde-kuit-format
@@ -1943,6 +1960,8 @@ msgid ""
 "Choosing the cluster size is not supported for this file system with the "
 "tools that are installed."
 msgstr ""
+"Izbira velikosti gruče ni podprta za ta datotečni sistem z nameščenimi "
+"orodji."
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -3054,9 +3073,7 @@ msgstr ""
 "se začne pri %4) na <filename>%5</filename> in ga povečaj do %6"
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
 msgstr "%1: %2"

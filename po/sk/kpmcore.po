@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-14 00:46+0000\n"
-"PO-Revision-Date: 2023-12-12 19:28+0100\n"
-"Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
+"PO-Revision-Date: 2026-09-14 20:10+0200\n"
+"Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -1585,41 +1585,40 @@ msgstr ""
 "zlyhala: Zlyhalo počiatočné pripojenie."
 
 #: fs/clustersize.cpp:107
-#, fuzzy, kde-kuit-format
-#| msgid "Edit the mount options for this file system:"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
-msgstr "Edituj možnosti pripojena pre tento súborový systém:"
+msgstr "Voľba veľkosti klastra nie je pre tento súborový systém podporovaná."
 
 #: fs/clustersize.cpp:111
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
-msgstr ""
+msgstr "Veľkosť klastra sa musí zadať ako celé číslo bajtov."
 
 #: fs/clustersize.cpp:115
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
-msgstr ""
+msgstr "Veľkosť klastra (%1 bajtov) musí byť kladné číslo."
 
 #: fs/clustersize.cpp:117
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
-msgstr ""
+msgstr "Veľkosť klastra (%1 bajtov) musí byť mocninou dvoch."
 
 #: fs/clustersize.cpp:125
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
-msgstr ""
+msgstr "Požadovaná veľkosť sektora FAT nie je celočíselnou mocninou dvoch."
 
 #: fs/clustersize.cpp:128
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
-msgstr ""
+msgstr "Požadovaná veľkosť sektora FAT (%1 bajtov) musí byť medzi 512 a 32768."
 
 #: fs/clustersize.cpp:134
 #, kde-kuit-format
@@ -1628,6 +1627,8 @@ msgid ""
 "The requested FAT sectors-per-cluster value is not an integer power of two "
 "from 1 to 128."
 msgstr ""
+"Požadovaná hodnota sektorov na klaster pre FAT nie je celočíselnou mocninou "
+"dvoch od 1 do 128."
 
 #: fs/clustersize.cpp:137 fs/clustersize.cpp:146
 #, kde-kuit-format
@@ -1636,6 +1637,8 @@ msgid ""
 "The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
 "bytes)."
 msgstr ""
+"Veľkosť klastra (%1 bajtov) musí byť celočíselným násobkom veľkosti sektora "
+"(%2 bajtov)."
 
 #: fs/clustersize.cpp:141
 #, kde-kuit-format
@@ -1644,6 +1647,8 @@ msgid ""
 "A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
 "mkfs.fat cannot use (it must be a power of two from 1 to 128)."
 msgstr ""
+"Veľkosť klastra %1 bajtov zodpovedá %2 sektorom po %3 bajtoch na klaster, čo "
+"mkfs.fat nedokáže použiť (musí to byť mocnina dvoch od 1 do 128)."
 
 #: fs/clustersize.cpp:143
 #, kde-kuit-format
@@ -1652,6 +1657,8 @@ msgid ""
 "The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
 "not agree."
 msgstr ""
+"Požadovaná veľkosť klastra (%1 bajtov) a hodnota sektorov na klaster (%2) sa "
+"nezhodujú."
 
 #: fs/clustersize.cpp:152
 #, kde-kuit-format
@@ -1660,6 +1667,8 @@ msgid ""
 "The cluster size (%1 bytes) is outside the range this file system supports "
 "(%2 to %3 bytes)."
 msgstr ""
+"Veľkosť klastra (%1 bajtov) je mimo rozsahu, ktorý tento súborový systém "
+"podporuje (%2 až %3 bajtov)."
 
 #: fs/clustersize.cpp:155
 #, kde-kuit-format
@@ -1667,6 +1676,7 @@ msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr ""
+"Veľkosť klastra (%1 bajtov) je väčšia než celý súborový systém (%2 bajtov)."
 
 #: fs/clustersize.cpp:160
 #, kde-kuit-format
@@ -1675,6 +1685,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"Veľkosť klastra %1 bajtov necháva menej než 4085 dátových klastrov, ktoré "
+"súborový systém FAT16 potrebuje. Zvoľte menšiu veľkosť klastra."
 
 #: fs/clustersize.cpp:162
 #, kde-kuit-format
@@ -1683,6 +1695,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"Veľkosť klastra %1 bajtov necháva menej než 65525 dátových klastrov, ktoré "
+"súborový systém FAT32 potrebuje. Zvoľte menšiu veľkosť klastra."
 
 #: fs/fat12.cpp:147
 #, kde-kuit-format
@@ -1721,84 +1735,76 @@ msgid "ext4"
 msgstr "ext4"
 
 #: fs/filesystem.cpp:573
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "linuxswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Linux swap"
-msgstr "linuxswap"
+msgstr "Linux swap"
 
 #: fs/filesystem.cpp:574
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "freebsdswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
-msgstr "freebsdswap"
+msgstr "FreeBSD swap"
 
 #: fs/filesystem.cpp:575
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT16"
-msgstr ""
+msgstr "FAT16"
 
 #: fs/filesystem.cpp:576
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT32"
-msgstr ""
+msgstr "FAT32"
 
 #: fs/filesystem.cpp:577
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NTFS"
-msgstr ""
+msgstr "NTFS"
 
 #: fs/filesystem.cpp:578
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ReiserFS"
-msgstr "reiser"
+msgstr "ReiserFS"
 
 #: fs/filesystem.cpp:579
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser4"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Reiser4"
-msgstr "reiser4"
+msgstr "Reiser4"
 
 #: fs/filesystem.cpp:580
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "XFS"
-msgstr ""
+msgstr "XFS"
 
 #: fs/filesystem.cpp:581
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "JFS"
-msgstr ""
+msgstr "JFS"
 
 #: fs/filesystem.cpp:582
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS"
-msgstr ""
+msgstr "HFS"
 
 #: fs/filesystem.cpp:583
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS Plus"
-msgstr ""
+msgstr "HFS Plus"
 
 #: fs/filesystem.cpp:584
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UFS"
-msgstr ""
+msgstr "UFS"
 
 #: fs/filesystem.cpp:585
 #, kde-kuit-format
@@ -1807,23 +1813,19 @@ msgid "unformatted"
 msgstr "nenaformátovaný"
 
 #: fs/filesystem.cpp:586
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "btrfs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Btrfs"
-msgstr "btrfs"
+msgstr "Btrfs"
 
 #: fs/filesystem.cpp:587
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HPFS"
-msgstr ""
+msgstr "HPFS"
 
 #: fs/filesystem.cpp:588
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS"
 msgstr "LUKS"
@@ -1832,63 +1834,61 @@ msgstr "LUKS"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "OCFS2"
-msgstr ""
+msgstr "OCFS2"
 
 #: fs/filesystem.cpp:590
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ZFS"
-msgstr ""
+msgstr "ZFS"
 
 #: fs/filesystem.cpp:591
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exFAT"
-msgstr ""
+msgstr "exFAT"
 
 #: fs/filesystem.cpp:592
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NILFS2"
-msgstr ""
+msgstr "NILFS2"
 
 #: fs/filesystem.cpp:593
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LVM PV"
-msgstr ""
+msgstr "LVM PV"
 
 #: fs/filesystem.cpp:594
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "F2FS"
-msgstr ""
+msgstr "F2FS"
 
 #: fs/filesystem.cpp:595
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UDF"
-msgstr ""
+msgstr "UDF"
 
 #: fs/filesystem.cpp:596
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ISO 9660"
-msgstr ""
+msgstr "ISO 9660"
 
 #: fs/filesystem.cpp:597
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS 2"
-msgstr "LUKS"
+msgstr "LUKS 2"
 
 #: fs/filesystem.cpp:598
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT12"
-msgstr ""
+msgstr "FAT12"
 
 #: fs/filesystem.cpp:599
 #, kde-kuit-format
@@ -1906,21 +1906,19 @@ msgstr "BitLocker"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "APFS"
-msgstr ""
+msgstr "APFS"
 
 #: fs/filesystem.cpp:602
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "MINIX"
-msgstr ""
+msgstr "MINIX"
 
 #: fs/filesystem.cpp:603
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "bcachefs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
-msgstr "bcachefs"
+msgstr "Bcachefs"
 
 #: fs/filesystem.cpp:681 fs/luks.cpp:161
 #, kde-kuit-format
@@ -1941,6 +1939,8 @@ msgid ""
 "Choosing the cluster size is not supported for this file system with the "
 "tools that are installed."
 msgstr ""
+"Voľba veľkosti klastra nie je pre tento súborový systém s nainštalovanými "
+"nástrojmi podporovaná."
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -3023,9 +3023,7 @@ msgstr ""
 "(začiatok na %4) do <filename>%5</filename> a zväčšenie na %6"
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
 msgstr "%1: %2"

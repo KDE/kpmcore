@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-14 00:46+0000\n"
-"PO-Revision-Date: 2026-08-30 19:55+0300\n"
+"PO-Revision-Date: 2026-09-14 18:42+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1188,7 +1188,7 @@ msgstr "Yükleme/Kaldırma Yeniden Deneme Sayısı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of times head changes position."
-msgstr "Kafanın konum değiştirme sayısı."
+msgstr "Kafanın konum değiştirme sayısı"
 
 #: core/smartattribute.cpp:160
 #, kde-format
@@ -1212,7 +1212,7 @@ msgstr "Yükleme/Geri Yükleme Döngü Sayısı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total number of load cycles."
-msgstr "Yük döngüsünün toplam sayısı."
+msgstr "Yük döngüsünün toplam sayısı"
 
 #: core/smartattribute.cpp:162
 #, kde-format
@@ -1228,7 +1228,7 @@ msgid ""
 "parking area)."
 msgstr ""
 "Manyetik kafa işletici üzerinde toplam yükleme zamanı (park alanında "
-"harcanmayan zaman)."
+"harcanmayan zaman)"
 
 #: core/smartattribute.cpp:163
 #, kde-format
@@ -1240,7 +1240,7 @@ msgstr "Tork Amplifikasyon Sayısı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of attempts to compensate for platter speed variations."
-msgstr "Plakaların hız değişikliklerini dengelemek için yapılan deneme sayısı."
+msgstr "Plakaların hız değişikliklerini dengelemek için yapılan deneme sayısı"
 
 #: core/smartattribute.cpp:164
 #, kde-format
@@ -1255,7 +1255,7 @@ msgid ""
 "The number of times the magnetic armature was retracted automatically as a "
 "result of cutting power."
 msgstr ""
-"Manyetik armatürün gücün kesilmesi sonucu kendiliğinden geri çekilme sayısı."
+"Manyetik armatürün gücün kesilmesi sonucu kendiliğinden geri çekilme sayısı"
 
 #: core/smartattribute.cpp:165
 #, kde-format
@@ -1292,7 +1292,7 @@ msgid ""
 "maximum physical erase cycles the drive supports"
 msgstr ""
 "Sürücünün desteklediği en yüksek silme döngüleri yüzdesi olarak tamamlanan "
-"fiziksel silme döngüsü sayısı."
+"fiziksel silme döngüsü sayısı"
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -1304,7 +1304,7 @@ msgstr "Güçte Zamanı"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Time elapsed in the power-on state"
-msgstr "Güç bağlandığı zamanlarda geçen zaman."
+msgstr "Güç bağlandığı zamanlarda geçen zaman"
 
 #: core/smartattribute.cpp:169
 #, kde-format
@@ -1330,7 +1330,7 @@ msgctxt "SMART attr description"
 msgid ""
 "Count of available reserved blocks as percentage of the total number of "
 "reserved blocks"
-msgstr "Kullanılabilir ayrılmış blokların toplam ayrılmış bloklara oranı."
+msgstr "Kullanılabilir ayrılmış blokların toplam ayrılmış bloklara oranı"
 
 #: core/smartattribute.cpp:171
 #, kde-format
@@ -1346,7 +1346,7 @@ msgid ""
 "reset during a data transfer."
 msgstr ""
 "Kafa konumlanırken geçen zaman<br/>veya bir veri aktarımı sırasında "
-"bağlantının sıfırlanma sayısı."
+"bağlantının sıfırlanma sayısı"
 
 #: core/smartattribute.cpp:172
 #, kde-format
@@ -1382,7 +1382,7 @@ msgstr "SSD NAND_Yazma_1GiB"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of writes to NAND in 1 GB increments"
-msgstr "NAND üzerine 1 GBlık artarak yazma sayısı"
+msgstr "NAND üzerine 1 GiB’lık artarak yazma sayısı"
 
 #: core/smartattribute.cpp:175
 #, kde-format
@@ -1430,7 +1430,7 @@ msgstr "Kesintiye uğradı"
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Fatal error"
-msgstr "Sonlandırıcı Hata"
+msgstr "Onulmaz hata"
 
 #: core/smartstatus.cpp:95
 #, kde-kuit-format
@@ -1595,37 +1595,37 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
-msgstr ""
+msgstr "Bu dosya sisteminde küme boyutunu seçme desteklenmiyor."
 
 #: fs/clustersize.cpp:111
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
-msgstr ""
+msgstr "Küme boyutu, bayt türünden bir tamsayı olmalıdır."
 
 #: fs/clustersize.cpp:115
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
-msgstr ""
+msgstr "Küme boyutu (%1 bayt), pozitif bir sayı olmalıdır."
 
 #: fs/clustersize.cpp:117
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
-msgstr ""
+msgstr "Küme boyutu (%1 bayt), 2’nin bir üssü olmalıdır."
 
 #: fs/clustersize.cpp:125
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
-msgstr ""
+msgstr "İstenen FAT dilim boyutu, 2’nin üssü olan bir tamsayı değil."
 
 #: fs/clustersize.cpp:128
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
-msgstr ""
+msgstr "İstenen FAT dilim boyutu (%1 bayt), 512 ve 32768 arasında olmalıdır."
 
 #: fs/clustersize.cpp:134
 #, kde-kuit-format
@@ -1634,6 +1634,8 @@ msgid ""
 "The requested FAT sectors-per-cluster value is not an integer power of two "
 "from 1 to 128."
 msgstr ""
+"İstenen küme başı FAT dilimleri değeri, 1 ile 128 arasında 2’nin bir üssü "
+"olan bir tamsayı değil."
 
 #: fs/clustersize.cpp:137 fs/clustersize.cpp:146
 #, kde-kuit-format
@@ -1642,6 +1644,7 @@ msgid ""
 "The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
 "bytes)."
 msgstr ""
+"Küme boyutu (%1 bayt), dilim boyutunun (%2 bayt) tam bir çarpanı olmalıdır."
 
 #: fs/clustersize.cpp:141
 #, kde-kuit-format
@@ -1650,6 +1653,9 @@ msgid ""
 "A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
 "mkfs.fat cannot use (it must be a power of two from 1 to 128)."
 msgstr ""
+"Küme başına %3 baytlık %2 dilime eşlemlenmiş %1 baytlık bir küme boyutu, "
+"mkfs.fat tarafından kullanılamıyor (1 ile 128 arasında 2’nin bir üssü "
+"olmalı)."
 
 #: fs/clustersize.cpp:143
 #, kde-kuit-format
@@ -1658,6 +1664,8 @@ msgid ""
 "The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
 "not agree."
 msgstr ""
+"İstenen küme boyutu (%1 bayt) ve küme başına dilim değeri (%2), aynı anda "
+"kullanılamıyor."
 
 #: fs/clustersize.cpp:152
 #, kde-kuit-format
@@ -1666,13 +1674,15 @@ msgid ""
 "The cluster size (%1 bytes) is outside the range this file system supports "
 "(%2 to %3 bytes)."
 msgstr ""
+"Küme boyutu (%1 bayt), bu dosya sisteminin desteklediği erimin dışında (%2 "
+"ila %3 bayt arası)."
 
 #: fs/clustersize.cpp:155
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
-msgstr ""
+msgstr "Küme boyutu (%1 bayt), tüm dosya sisteminden daha büyük (%2 bayt)."
 
 #: fs/clustersize.cpp:160
 #, kde-kuit-format
@@ -1681,6 +1691,9 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"%1 baytlık bir küme boyutu, bir FAT16 dosya sisteminin gereksinimi olan 4085 "
+"veri kümesinden daha az yer bırakıyor. Lütfen daha küçük bir küme boyutu "
+"seçin."
 
 #: fs/clustersize.cpp:162
 #, kde-kuit-format
@@ -1689,6 +1702,9 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"%1 baytlık bir küme boyutu, bir FAT32 dosya sisteminin gereksinimi olan "
+"65525 veri kümesinden daha az yer bırakıyor. Lütfen daha küçük bir küme "
+"boyutu seçin."
 
 #: fs/fat12.cpp:147
 #, kde-kuit-format
@@ -1931,6 +1947,8 @@ msgid ""
 "Choosing the cluster size is not supported for this file system with the "
 "tools that are installed."
 msgstr ""
+"Küme boyutunu seçmek, kurulu araçlarla birlikte bu dosya sistemi için "
+"desteklenmiyor."
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -3013,9 +3031,7 @@ msgstr ""
 "büyüt"
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
 msgstr "%1: %2"
