@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-14 00:46+0000\n"
+"POT-Creation-Date: 2026-09-16 00:48+0000\n"
 "PO-Revision-Date: 2020-03-28 12:15+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -1545,7 +1545,7 @@ msgstr ""
 "Btrfs failisüsteemi suuruse muutmine partitsioonil <filename>%1</filename> "
 "nurjus: algne ühendamine nurjus."
 
-#: fs/btrfs.cpp:166
+#: fs/btrfs.cpp:213
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1555,7 +1555,7 @@ msgstr ""
 "Btrfs failisüsteemi suuruse muutmine partitsioonil <filename>%1</filename> "
 "nurjus: ajutise kataloogi loomine nurjus."
 
-#: fs/btrfs.cpp:182 fs/btrfs.cpp:203
+#: fs/btrfs.cpp:229 fs/btrfs.cpp:250
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1565,7 +1565,7 @@ msgstr ""
 "Btrfs failisüsteemi suuruse muutmine partitsioonil <filename>%1</filename> "
 "nurjus."
 
-#: fs/btrfs.cpp:187
+#: fs/btrfs.cpp:234
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1575,7 +1575,7 @@ msgstr ""
 "<warning>Btrfs failisüsteemi suuruse muutmine partitsioonil <filename>%1</"
 "filename> nurjus: lahutamine nurjus.</warning>"
 
-#: fs/btrfs.cpp:190
+#: fs/btrfs.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1685,43 +1685,43 @@ msgid ""
 "file system needs. Choose a smaller cluster size."
 msgstr ""
 
-#: fs/fat12.cpp:147
+#: fs/fat12.cpp:172
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "Partitsiooni <filename>%1</filename> nimeks määratakse %2"
 
-#: fs/filesystem.cpp:567
+#: fs/filesystem.cpp:568
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "teadmata"
 
-#: fs/filesystem.cpp:568
+#: fs/filesystem.cpp:569
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "laiendatud"
 
-#: fs/filesystem.cpp:570
+#: fs/filesystem.cpp:571
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "ext2"
 
-#: fs/filesystem.cpp:571
+#: fs/filesystem.cpp:572
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:572
+#: fs/filesystem.cpp:573
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:573
+#: fs/filesystem.cpp:574
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item filesystem name"
 #| msgid "linuxswap"
@@ -1729,31 +1729,31 @@ msgctxt "@item filesystem name"
 msgid "Linux swap"
 msgstr "linuxswap"
 
-#: fs/filesystem.cpp:574
+#: fs/filesystem.cpp:575
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
 msgstr ""
 
-#: fs/filesystem.cpp:575
+#: fs/filesystem.cpp:576
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT16"
 msgstr ""
 
-#: fs/filesystem.cpp:576
+#: fs/filesystem.cpp:577
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT32"
 msgstr ""
 
-#: fs/filesystem.cpp:577
+#: fs/filesystem.cpp:578
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NTFS"
 msgstr ""
 
-#: fs/filesystem.cpp:578
+#: fs/filesystem.cpp:579
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item filesystem name"
 #| msgid "reiser"
@@ -1761,7 +1761,7 @@ msgctxt "@item filesystem name"
 msgid "ReiserFS"
 msgstr "reiser"
 
-#: fs/filesystem.cpp:579
+#: fs/filesystem.cpp:580
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item filesystem name"
 #| msgid "reiser4"
@@ -1769,43 +1769,43 @@ msgctxt "@item filesystem name"
 msgid "Reiser4"
 msgstr "reiser4"
 
-#: fs/filesystem.cpp:580
+#: fs/filesystem.cpp:581
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "XFS"
 msgstr ""
 
-#: fs/filesystem.cpp:581
+#: fs/filesystem.cpp:582
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "JFS"
 msgstr ""
 
-#: fs/filesystem.cpp:582
+#: fs/filesystem.cpp:583
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS"
 msgstr ""
 
-#: fs/filesystem.cpp:583
+#: fs/filesystem.cpp:584
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS Plus"
 msgstr ""
 
-#: fs/filesystem.cpp:584
+#: fs/filesystem.cpp:585
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UFS"
 msgstr ""
 
-#: fs/filesystem.cpp:585
+#: fs/filesystem.cpp:586
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "vormindamata"
 
-#: fs/filesystem.cpp:586
+#: fs/filesystem.cpp:587
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item filesystem name"
 #| msgid "btrfs"
@@ -1813,13 +1813,13 @@ msgctxt "@item filesystem name"
 msgid "Btrfs"
 msgstr "btrfs"
 
-#: fs/filesystem.cpp:587
+#: fs/filesystem.cpp:588
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HPFS"
 msgstr ""
 
-#: fs/filesystem.cpp:588
+#: fs/filesystem.cpp:589
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition role"
 #| msgid "LUKS"
@@ -1827,55 +1827,55 @@ msgctxt "@item filesystem name"
 msgid "LUKS"
 msgstr "LUKS"
 
-#: fs/filesystem.cpp:589
+#: fs/filesystem.cpp:590
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "OCFS2"
 msgstr ""
 
-#: fs/filesystem.cpp:590
+#: fs/filesystem.cpp:591
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ZFS"
 msgstr ""
 
-#: fs/filesystem.cpp:591
+#: fs/filesystem.cpp:592
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exFAT"
 msgstr ""
 
-#: fs/filesystem.cpp:592
+#: fs/filesystem.cpp:593
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NILFS2"
 msgstr ""
 
-#: fs/filesystem.cpp:593
+#: fs/filesystem.cpp:594
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LVM PV"
 msgstr ""
 
-#: fs/filesystem.cpp:594
+#: fs/filesystem.cpp:595
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "F2FS"
 msgstr ""
 
-#: fs/filesystem.cpp:595
+#: fs/filesystem.cpp:596
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UDF"
 msgstr ""
 
-#: fs/filesystem.cpp:596
+#: fs/filesystem.cpp:597
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ISO 9660"
 msgstr ""
 
-#: fs/filesystem.cpp:597
+#: fs/filesystem.cpp:598
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition role"
 #| msgid "LUKS"
@@ -1883,55 +1883,55 @@ msgctxt "@item filesystem name"
 msgid "LUKS 2"
 msgstr "LUKS"
 
-#: fs/filesystem.cpp:598
+#: fs/filesystem.cpp:599
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT12"
 msgstr ""
 
-#: fs/filesystem.cpp:599
+#: fs/filesystem.cpp:600
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr "linux_raid_member"
 
-#: fs/filesystem.cpp:600
+#: fs/filesystem.cpp:601
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr "BitLocker"
 
-#: fs/filesystem.cpp:601
+#: fs/filesystem.cpp:602
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "APFS"
 msgstr ""
 
-#: fs/filesystem.cpp:602
+#: fs/filesystem.cpp:603
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "MINIX"
 msgstr ""
 
-#: fs/filesystem.cpp:603
+#: fs/filesystem.cpp:604
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
 msgstr ""
 
-#: fs/filesystem.cpp:681 fs/luks.cpp:161
+#: fs/filesystem.cpp:682 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Ühenda"
 
-#: fs/filesystem.cpp:687 fs/luks.cpp:166
+#: fs/filesystem.cpp:688 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
 msgstr "Lahuta"
 
-#: fs/filesystem.cpp:812
+#: fs/filesystem.cpp:813
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2064,7 +2064,7 @@ msgstr ""
 "NILFS2 failisüsteemi suuruse muutmine partitsioonil <filename>%1</filename> "
 "nurjus: algne ühendamine nurjus."
 
-#: fs/ntfs.cpp:207
+#: fs/ntfs.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2074,7 +2074,7 @@ msgstr ""
 "NTFS failisüsteemi alglaadimissektori uuendamine partitsioonil <filename>%1</"
 "filename>."
 
-#: fs/ntfs.cpp:216 fs/ntfs.cpp:224
+#: fs/ntfs.cpp:246 fs/ntfs.cpp:254
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2084,7 +2084,7 @@ msgstr ""
 "Partitsiooni <filename>%1</filename> uue algsektori kirjutamine NTFS "
 "alglaadimisektori uuendamise ajal nurjus."
 
-#: fs/ntfs.cpp:228
+#: fs/ntfs.cpp:258
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2092,7 +2092,7 @@ msgid ""
 msgstr ""
 "Partitsiooni <filename>%1</filename> NTFS alglaadimissektor uuendati edukalt."
 
-#: fs/xfs.cpp:159
+#: fs/xfs.cpp:221
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2102,7 +2102,7 @@ msgstr ""
 "XFS failisüsteemi suuruse muutmine partitsioonil <filename>%1</filename> "
 "nurjus: ajutise kataloogi loomine nurjus."
 
-#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#: fs/xfs.cpp:235 fs/xfs.cpp:254
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2112,7 +2112,7 @@ msgstr ""
 "XFS failisüsteemi suuruse muutmine partitsioonil <filename>%1</filename> "
 "nurjus: xfs_growfs nurjus."
 
-#: fs/xfs.cpp:178
+#: fs/xfs.cpp:240
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2122,7 +2122,7 @@ msgstr ""
 "<warning>XFS failisüsteemi suuruse muutmine partitsioonil <filename>%1</"
 "filename> nurjus: lahutamine nurjus.</warning>"
 
-#: fs/xfs.cpp:180
+#: fs/xfs.cpp:242
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""

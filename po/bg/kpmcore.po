@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-14 00:46+0000\n"
+"POT-Creation-Date: 2026-09-16 00:48+0000\n"
 "PO-Revision-Date: 2026-09-14 17:40+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1568,7 +1568,7 @@ msgstr ""
 "Преоразмеряването на файловата система Bcachefs на дял <filename>%1</"
 "filename> е неуспешно: първоначалното монтиране е неуспешно."
 
-#: fs/btrfs.cpp:166
+#: fs/btrfs.cpp:213
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1578,7 +1578,7 @@ msgstr ""
 "Преоразмеряването на файлова система Btrfs на дял <filename>%1</filename> е "
 "неуспешно: не може да се създаде временна директория."
 
-#: fs/btrfs.cpp:182 fs/btrfs.cpp:203
+#: fs/btrfs.cpp:229 fs/btrfs.cpp:250
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1588,7 +1588,7 @@ msgstr ""
 "Преоразмеряването на файлова система Btrfs на дял <filename>%1</filename> е "
 "неуспешно: преоразмеряването на btrfs файловата система пропадна."
 
-#: fs/btrfs.cpp:187
+#: fs/btrfs.cpp:234
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1598,7 +1598,7 @@ msgstr ""
 "<warning>Преоразмеряване на файловата система Btrfs на дял <filename>%1</"
 "filename>: демонтирането е неуспешно.</warning>"
 
-#: fs/btrfs.cpp:190
+#: fs/btrfs.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -1727,241 +1727,241 @@ msgstr ""
 "данни, необходими за файловата система FAT32. Избор на по-малък размер на "
 "клъстера."
 
-#: fs/fat12.cpp:147
+#: fs/fat12.cpp:172
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Setting label for partition <filename>%1</filename> to %2"
 msgstr "Задаване на етикет на дял <filename>%1</filename> на „%2“"
 
-#: fs/filesystem.cpp:567
+#: fs/filesystem.cpp:568
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unknown"
 msgstr "неизвестен"
 
-#: fs/filesystem.cpp:568
+#: fs/filesystem.cpp:569
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "extended"
 msgstr "разширен"
 
-#: fs/filesystem.cpp:570
+#: fs/filesystem.cpp:571
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext2"
 msgstr "ext2"
 
-#: fs/filesystem.cpp:571
+#: fs/filesystem.cpp:572
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext3"
 msgstr "ext3"
 
-#: fs/filesystem.cpp:572
+#: fs/filesystem.cpp:573
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ext4"
 msgstr "ext4"
 
-#: fs/filesystem.cpp:573
+#: fs/filesystem.cpp:574
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Linux swap"
 msgstr "Linux swap"
 
-#: fs/filesystem.cpp:574
+#: fs/filesystem.cpp:575
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
 msgstr "Swap на FreeBSD"
 
-#: fs/filesystem.cpp:575
+#: fs/filesystem.cpp:576
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT16"
 msgstr "FAT16"
 
-#: fs/filesystem.cpp:576
+#: fs/filesystem.cpp:577
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT32"
 msgstr "FAT32"
 
-#: fs/filesystem.cpp:577
+#: fs/filesystem.cpp:578
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NTFS"
 msgstr "NTFS"
 
-#: fs/filesystem.cpp:578
+#: fs/filesystem.cpp:579
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ReiserFS"
 msgstr "ReiserFS"
 
-#: fs/filesystem.cpp:579
+#: fs/filesystem.cpp:580
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Reiser4"
 msgstr "Reiser4"
 
-#: fs/filesystem.cpp:580
+#: fs/filesystem.cpp:581
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "XFS"
 msgstr "XFS"
 
-#: fs/filesystem.cpp:581
+#: fs/filesystem.cpp:582
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "JFS"
 msgstr "JFS"
 
-#: fs/filesystem.cpp:582
+#: fs/filesystem.cpp:583
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS"
 msgstr "HFS"
 
-#: fs/filesystem.cpp:583
+#: fs/filesystem.cpp:584
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS Plus"
 msgstr "HFS Plus"
 
-#: fs/filesystem.cpp:584
+#: fs/filesystem.cpp:585
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UFS"
 msgstr "UFS"
 
-#: fs/filesystem.cpp:585
+#: fs/filesystem.cpp:586
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "unformatted"
 msgstr "неформатиран"
 
-#: fs/filesystem.cpp:586
+#: fs/filesystem.cpp:587
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Btrfs"
 msgstr "Btrfs"
 
-#: fs/filesystem.cpp:587
+#: fs/filesystem.cpp:588
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HPFS"
 msgstr "HPFS"
 
-#: fs/filesystem.cpp:588
+#: fs/filesystem.cpp:589
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS"
 msgstr "LUKS"
 
-#: fs/filesystem.cpp:589
+#: fs/filesystem.cpp:590
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "OCFS2"
 msgstr "OCFS2"
 
-#: fs/filesystem.cpp:590
+#: fs/filesystem.cpp:591
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ZFS"
 msgstr "ZFS"
 
-#: fs/filesystem.cpp:591
+#: fs/filesystem.cpp:592
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exFAT"
 msgstr "exFAT"
 
-#: fs/filesystem.cpp:592
+#: fs/filesystem.cpp:593
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NILFS2"
 msgstr "NILFS2"
 
-#: fs/filesystem.cpp:593
+#: fs/filesystem.cpp:594
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LVM PV"
 msgstr "LVM PV"
 
-#: fs/filesystem.cpp:594
+#: fs/filesystem.cpp:595
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "F2FS"
 msgstr "F2FS"
 
-#: fs/filesystem.cpp:595
+#: fs/filesystem.cpp:596
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UDF"
 msgstr "UDF"
 
-#: fs/filesystem.cpp:596
+#: fs/filesystem.cpp:597
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ISO 9660"
 msgstr "ISO 9660"
 
-#: fs/filesystem.cpp:597
+#: fs/filesystem.cpp:598
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS 2"
 msgstr "LUKS 2"
 
-#: fs/filesystem.cpp:598
+#: fs/filesystem.cpp:599
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT12"
 msgstr "FAT12"
 
-#: fs/filesystem.cpp:599
+#: fs/filesystem.cpp:600
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
 msgstr "linux_raid_member"
 
-#: fs/filesystem.cpp:600
+#: fs/filesystem.cpp:601
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
 msgstr "BitLocker"
 
-#: fs/filesystem.cpp:601
+#: fs/filesystem.cpp:602
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "APFS"
 msgstr "APFS"
 
-#: fs/filesystem.cpp:602
+#: fs/filesystem.cpp:603
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "MINIX"
 msgstr "MINIX"
 
-#: fs/filesystem.cpp:603
+#: fs/filesystem.cpp:604
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
 msgstr "Bcachefs"
 
-#: fs/filesystem.cpp:681 fs/luks.cpp:161
+#: fs/filesystem.cpp:682 fs/luks.cpp:161
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Mount"
 msgstr "Монтиране"
 
-#: fs/filesystem.cpp:687 fs/luks.cpp:166
+#: fs/filesystem.cpp:688 fs/luks.cpp:166
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unmount"
 msgstr "Демонтиране"
 
-#: fs/filesystem.cpp:812
+#: fs/filesystem.cpp:813
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2096,7 +2096,7 @@ msgstr ""
 "Преоразмеряването на файловата система NILFS2 на дял <filename>%1</filename> "
 "е неуспешно: първоначалното монтиране е неуспешно."
 
-#: fs/ntfs.cpp:207
+#: fs/ntfs.cpp:237
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2106,7 +2106,7 @@ msgstr ""
 "Обновяване на зареждащия сектор (boot sector) за файлова система NTFS на дял "
 "<filename>%1</filename>."
 
-#: fs/ntfs.cpp:216 fs/ntfs.cpp:224
+#: fs/ntfs.cpp:246 fs/ntfs.cpp:254
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2116,7 +2116,7 @@ msgstr ""
 "Неуспешен запис на новия начален сектор на дял <filename>%1</filename> при "
 "опит за обновяване на NTFS зареждащия сектор."
 
-#: fs/ntfs.cpp:228
+#: fs/ntfs.cpp:258
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2124,7 +2124,7 @@ msgid ""
 msgstr ""
 "Зареждащият сектор на NTFS за дял <filename>%1</filename> е обновен успешно."
 
-#: fs/xfs.cpp:159
+#: fs/xfs.cpp:221
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2134,7 +2134,7 @@ msgstr ""
 "Преоразмеряването на файловата система XFS на дял <filename>%1</filename> е "
 "неуспешно: не може да се създаде временна директория."
 
-#: fs/xfs.cpp:173 fs/xfs.cpp:192
+#: fs/xfs.cpp:235 fs/xfs.cpp:254
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2144,7 +2144,7 @@ msgstr ""
 "Преоразмеряването на файловата система XFS на дял <filename>%1</filename> е "
 "неуспешно: xfs_growfs пропадна."
 
-#: fs/xfs.cpp:178
+#: fs/xfs.cpp:240
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2154,7 +2154,7 @@ msgstr ""
 "<warning>Преоразмеряване на файловата система XFS на дял <filename>%1</"
 "filename>: демонтирането е неуспешно.</warning>"
 
-#: fs/xfs.cpp:180
+#: fs/xfs.cpp:242
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
