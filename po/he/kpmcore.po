@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-16 00:48+0000\n"
-"PO-Revision-Date: 2026-08-30 21:35+0300\n"
+"PO-Revision-Date: 2026-09-15 08:14+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1549,37 +1549,37 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
-msgstr ""
+msgstr "אין תמיכה בבחירת גודל הצביר במערכת הקבצים הזאת."
 
 #: fs/clustersize.cpp:111
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
-msgstr ""
+msgstr "יש לספק את גודל הצביר כמספר שלם של בתים."
 
 #: fs/clustersize.cpp:115
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
-msgstr ""
+msgstr "גודל הצביר (%1 בתים) חייב להיות מספר חיובי."
 
 #: fs/clustersize.cpp:117
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
-msgstr ""
+msgstr "גודל הצביר (%1 בתים) חייב להיות חזקה של שתיים."
 
 #: fs/clustersize.cpp:125
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
-msgstr ""
+msgstr "גודל הצביר המבוקש ל־FAT אינו מספר שלם בחזקת שתיים."
 
 #: fs/clustersize.cpp:128
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
-msgstr ""
+msgstr "גודל הצביר המבוקש ל־FAT (%1 בתים) חייב להיות בין 512 ל־32768."
 
 #: fs/clustersize.cpp:134
 #, kde-kuit-format
@@ -1587,7 +1587,7 @@ msgctxt "@info"
 msgid ""
 "The requested FAT sectors-per-cluster value is not an integer power of two "
 "from 1 to 128."
-msgstr ""
+msgstr "גודל המגזרים לצביר המבוקש ל־FAT אינו מספר שלם בחזקת שתיים מ־1 עד 128."
 
 #: fs/clustersize.cpp:137 fs/clustersize.cpp:146
 #, kde-kuit-format
@@ -1595,7 +1595,7 @@ msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
 "bytes)."
-msgstr ""
+msgstr "גודל הצביר (%1 בתים) חייב להיות כפולה שלמה של גודל המגזר (%2 בתים)."
 
 #: fs/clustersize.cpp:141
 #, kde-kuit-format
@@ -1604,6 +1604,8 @@ msgid ""
 "A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
 "mkfs.fat cannot use (it must be a power of two from 1 to 128)."
 msgstr ""
+"גודל צביר של %1 בתים ממופה ל־%2 מגזרים בגודל %3 בתים לצביר, ש־mkfs.fat לא "
+"יכול להשתמש בזה (חייב להיות חזקה של שתיים מ־1 עד 128)."
 
 #: fs/clustersize.cpp:143
 #, kde-kuit-format
@@ -1612,6 +1614,7 @@ msgid ""
 "The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
 "not agree."
 msgstr ""
+"גודל הצביר המבוקש (%1 בתים) וערך המגזרים לצביר (%2) לא מסכימים זה עם זה."
 
 #: fs/clustersize.cpp:152
 #, kde-kuit-format
@@ -1620,13 +1623,14 @@ msgid ""
 "The cluster size (%1 bytes) is outside the range this file system supports "
 "(%2 to %3 bytes)."
 msgstr ""
+"גודל הצביר (%1) הוא מחוץ לטווח שמערכת הקבצים הזאת תומכת בו (%2 עד %3 בתים)."
 
 #: fs/clustersize.cpp:155
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
-msgstr ""
+msgstr "גודל הצביר (%1 בתים) גדול מכלל מערכת הקבצים (%2 בתים)."
 
 #: fs/clustersize.cpp:160
 #, kde-kuit-format
@@ -1635,6 +1639,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"גודל צביר של %1 בתים משאיר פחות מ־4085 צבירי נתונים שמערכת קבצים מסוג FAT16 "
+"צריכה. נא לבחור גודל צביר קטן יותר."
 
 #: fs/clustersize.cpp:162
 #, kde-kuit-format
@@ -1643,6 +1649,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"גודל צביר של %1 בתים משאיר פחות מ־65525 צבירי נתונים שמערכת קבצים מסוג FAT32 "
+"צריכה. נא לבחור גודל צביר קטן יותר."
 
 #: fs/fat12.cpp:172
 #, kde-kuit-format
@@ -1884,7 +1892,7 @@ msgctxt "@info"
 msgid ""
 "Choosing the cluster size is not supported for this file system with the "
 "tools that are installed."
-msgstr ""
+msgstr "אין תמיכה בבחירת גודל הצביר במערכת הקבצים הזאת עם הכלים שמותקנים."
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -2932,9 +2940,7 @@ msgstr ""
 "<filename>%5</filename> ולהגדיל אותה ל־%6"
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
 msgstr "%1: %2"
