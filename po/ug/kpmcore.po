@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-16 00:48+0000\n"
-"PO-Revision-Date: 2026-05-31 19:30-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -245,7 +245,7 @@ msgstr "قوزغىتىش رايونى"
 #, kde-kuit-format
 msgctxt "@item partition flag"
 msgid "root"
-msgstr "root"
+msgstr ""
 
 #: core/partitiontable.cpp:184
 #, kde-kuit-format
@@ -2270,7 +2270,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress job status (error, warning, ...)"
 msgid "%1: %2"
-msgstr "%1: %2"
+msgstr ""
 
 #: jobs/job.cpp:134
 #, kde-kuit-format
@@ -2643,23 +2643,17 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr ""
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not delete file system on partition <filename>%1</filename>: Failed "
-#| "to get partition."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr "يېڭى رايون قۇرىدۇ"
+msgstr ""
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not resize file system on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
-msgstr "يېڭى رايون قۇرىدۇ"
+msgstr ""
 
 #: jobs/takeownershipjob.cpp:60
 #, kde-kuit-format
@@ -2724,7 +2718,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status (success, error, warning...) of operation"
 msgid "%1: %2"
-msgstr "%1: %2"
+msgstr ""
 
 #: ops/copyoperation.cpp:179
 #, kde-kuit-format
@@ -2759,12 +2753,10 @@ msgid ""
 msgstr ""
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
-msgstr "%1: %2"
+msgstr ""
 
 #: ops/createfilesystemoperation.cpp:106
 #, kde-kuit-format
@@ -3139,37 +3131,37 @@ msgstr[0] "بايت"
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "KiB"
-msgstr "KiB"
+msgstr ""
 
 #: util/capacity.cpp:102
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "MiB"
-msgstr "MiB"
+msgstr ""
 
 #: util/capacity.cpp:103
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "GiB"
-msgstr "GiB"
+msgstr ""
 
 #: util/capacity.cpp:104
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "TiB"
-msgstr "TiB"
+msgstr ""
 
 #: util/capacity.cpp:105
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "PiB"
-msgstr "PiB"
+msgstr ""
 
 #: util/capacity.cpp:106
 #, kde-kuit-format
 msgctxt "@item:intext unit"
 msgid "EiB"
-msgstr "EiB"
+msgstr ""
 
 #: util/capacity.cpp:107
 #, kde-kuit-format
@@ -3381,7 +3373,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "David Edmundson"
-msgstr "David Edmundson"
+msgstr ""
 
 #: util/helpers.cpp:63
 #, kde-format
@@ -3419,31 +3411,26 @@ msgstr ""
 msgid "Machine:"
 msgstr "ماشىنا:"
 
-#, fuzzy
 #~| msgid "jfs"
 #~ msgctxt "@item filesystem name"
 #~ msgid "xfs"
 #~ msgstr "jfs"
 
-#, fuzzy
 #~| msgid "jfs"
 #~ msgctxt "@item filesystem name"
 #~ msgid "jfs"
 #~ msgstr "jfs"
 
-#, fuzzy
 #~| msgid "jfs"
 #~ msgctxt "@item filesystem name"
 #~ msgid "hfs"
 #~ msgstr "jfs"
 
-#, fuzzy
 #~| msgid "jfs"
 #~ msgctxt "@item filesystem name"
 #~ msgid "ufs"
 #~ msgstr "jfs"
 
-#, fuzzy
 #~| msgid "jfs"
 #~ msgctxt "@item filesystem name"
 #~ msgid "zfs"
