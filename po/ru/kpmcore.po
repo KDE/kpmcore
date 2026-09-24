@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-16 00:48+0000\n"
-"PO-Revision-Date: 2026-06-26 20:55+0200\n"
+"PO-Revision-Date: 2026-09-23 21:24+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -844,7 +844,7 @@ msgctxt "SMART attr description"
 msgid "Count of errors that could not be recovered using hardware ECC."
 msgstr ""
 "Количество ошибок, которые не могут быть восстановлены аппаратными "
-"средствами (ECC) ."
+"средствами (ECC)."
 
 #: core/smartattribute.cpp:132
 #, kde-format
@@ -1626,41 +1626,42 @@ msgstr ""
 "filename>: первоначальное подключение не удалось."
 
 #: fs/clustersize.cpp:107
-#, fuzzy, kde-kuit-format
-#| msgid "Edit the mount options for this file system:"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
-msgstr "Изменить параметры подключения этой файловой системы:"
+msgstr "Для этой файловой системы выбор размера кластера не поддерживается."
 
 #: fs/clustersize.cpp:111
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
-msgstr ""
+msgstr "Размер кластера должен быть указан целым числом байт."
 
 #: fs/clustersize.cpp:115
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
-msgstr ""
+msgstr "Размер кластера (%1 байт) должен быть положительным числом."
 
 #: fs/clustersize.cpp:117
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
-msgstr ""
+msgstr "Размер кластера (%1 байт) должен быть степенью двойки."
 
 #: fs/clustersize.cpp:125
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
-msgstr ""
+msgstr "Запрошенный размер сектора FAT не является целой степенью двойки."
 
 #: fs/clustersize.cpp:128
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr ""
+"Запрошенный размер сектора FAT (%1 байт) должен находиться в диапазоне от "
+"512 до 32768."
 
 #: fs/clustersize.cpp:134
 #, kde-kuit-format
@@ -1669,6 +1670,8 @@ msgid ""
 "The requested FAT sectors-per-cluster value is not an integer power of two "
 "from 1 to 128."
 msgstr ""
+"Запрошенное значение количества секторов на кластер для FAT не является "
+"целой степенью двойки в диапазоне от 1 до 128."
 
 #: fs/clustersize.cpp:137 fs/clustersize.cpp:146
 #, kde-kuit-format
@@ -1677,6 +1680,7 @@ msgid ""
 "The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
 "bytes)."
 msgstr ""
+"Размер кластера (%1 байт) должен быть кратен размеру сектора (%2 байт)."
 
 #: fs/clustersize.cpp:141
 #, kde-kuit-format
@@ -1685,6 +1689,9 @@ msgid ""
 "A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
 "mkfs.fat cannot use (it must be a power of two from 1 to 128)."
 msgstr ""
+"Размер кластера %1 байт соответствует %2 секторам по %3 байт каждый, что "
+"mkfs.fat не может использовать (число секторов должно быть степенью двойки "
+"от 1 до 128)."
 
 #: fs/clustersize.cpp:143
 #, kde-kuit-format
@@ -1693,6 +1700,8 @@ msgid ""
 "The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
 "not agree."
 msgstr ""
+"Запрошенный размер кластера (%1 байт) и значение числа секторов в кластере "
+"(%2) не согласуются."
 
 #: fs/clustersize.cpp:152
 #, kde-kuit-format
@@ -1701,6 +1710,8 @@ msgid ""
 "The cluster size (%1 bytes) is outside the range this file system supports "
 "(%2 to %3 bytes)."
 msgstr ""
+"Размер кластера (%1 байт) выходит за пределы диапазона, поддерживаемого этой "
+"файловой системой (от %2 до %3 байт)."
 
 #: fs/clustersize.cpp:155
 #, kde-kuit-format
@@ -1708,6 +1719,7 @@ msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr ""
+"Размер кластера (%1 байт) превышает размер всей файловой системы (%2 байт)."
 
 #: fs/clustersize.cpp:160
 #, kde-kuit-format
@@ -1716,6 +1728,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"При размере кластера %1 байт остаётся менее 4085 кластеров данных, "
+"необходимых файловой системе FAT16. Выберите меньший размер кластера."
 
 #: fs/clustersize.cpp:162
 #, kde-kuit-format
@@ -1724,6 +1738,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"При размере кластера %1 байт остаётся менее 65525 кластеров данных, "
+"требуемых файловой системе FAT32. Выберите меньший размер кластера."
 
 #: fs/fat12.cpp:172
 #, kde-kuit-format
@@ -1762,17 +1778,13 @@ msgid "ext4"
 msgstr "ext4"
 
 #: fs/filesystem.cpp:574
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "linuxswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Linux swap"
 msgstr "Область подкачки Linux"
 
 #: fs/filesystem.cpp:575
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "freebsdswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
 msgstr "Область подкачки FreeBSD"
@@ -1781,32 +1793,28 @@ msgstr "Область подкачки FreeBSD"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT16"
-msgstr ""
+msgstr "FAT16"
 
 #: fs/filesystem.cpp:577
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT32"
-msgstr ""
+msgstr "FAT32"
 
 #: fs/filesystem.cpp:578
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NTFS"
-msgstr ""
+msgstr "NTFS"
 
 #: fs/filesystem.cpp:579
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ReiserFS"
-msgstr "Reiser FS"
+msgstr "ReiserFS"
 
 #: fs/filesystem.cpp:580
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser4"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Reiser4"
 msgstr "Reiser4"
@@ -1815,31 +1823,31 @@ msgstr "Reiser4"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "XFS"
-msgstr ""
+msgstr "XFS"
 
 #: fs/filesystem.cpp:582
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "JFS"
-msgstr ""
+msgstr "JFS"
 
 #: fs/filesystem.cpp:583
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS"
-msgstr ""
+msgstr "HFS"
 
 #: fs/filesystem.cpp:584
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS Plus"
-msgstr ""
+msgstr "HFS Plus"
 
 #: fs/filesystem.cpp:585
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UFS"
-msgstr ""
+msgstr "UFS"
 
 #: fs/filesystem.cpp:586
 #, kde-kuit-format
@@ -1848,9 +1856,7 @@ msgid "unformatted"
 msgstr "неформатированный"
 
 #: fs/filesystem.cpp:587
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "btrfs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Btrfs"
 msgstr "Btrfs"
@@ -1859,12 +1865,10 @@ msgstr "Btrfs"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HPFS"
-msgstr ""
+msgstr "HPFS"
 
 #: fs/filesystem.cpp:589
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS"
 msgstr "LUKS"
@@ -1873,63 +1877,61 @@ msgstr "LUKS"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "OCFS2"
-msgstr ""
+msgstr "OCFS2"
 
 #: fs/filesystem.cpp:591
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ZFS"
-msgstr ""
+msgstr "ZFS"
 
 #: fs/filesystem.cpp:592
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exFAT"
-msgstr ""
+msgstr "exFAT"
 
 #: fs/filesystem.cpp:593
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NILFS2"
-msgstr ""
+msgstr "NILFS2"
 
 #: fs/filesystem.cpp:594
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LVM PV"
-msgstr ""
+msgstr "Физический том LVM"
 
 #: fs/filesystem.cpp:595
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "F2FS"
-msgstr ""
+msgstr "F2FS"
 
 #: fs/filesystem.cpp:596
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UDF"
-msgstr ""
+msgstr "UDF"
 
 #: fs/filesystem.cpp:597
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ISO 9660"
-msgstr ""
+msgstr "ISO 9660"
 
 #: fs/filesystem.cpp:598
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS 2"
-msgstr "LUKS"
+msgstr "LUKS 2"
 
 #: fs/filesystem.cpp:599
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT12"
-msgstr ""
+msgstr "FAT12"
 
 #: fs/filesystem.cpp:600
 #, kde-kuit-format
@@ -1947,21 +1949,19 @@ msgstr "BitLocker"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "APFS"
-msgstr ""
+msgstr "APFS"
 
 #: fs/filesystem.cpp:603
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "MINIX"
-msgstr ""
+msgstr "MINIX"
 
 #: fs/filesystem.cpp:604
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "bcachefs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
-msgstr "bcachefs"
+msgstr "Bcachefs"
 
 #: fs/filesystem.cpp:682 fs/luks.cpp:161
 #, kde-kuit-format
@@ -1982,6 +1982,8 @@ msgid ""
 "Choosing the cluster size is not supported for this file system with the "
 "tools that are installed."
 msgstr ""
+"Установленные средства не поддерживают выбор размера кластера для этой "
+"файловой системы."
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -3082,9 +3084,7 @@ msgstr ""
 "пространство (начиная с %4) на <filename>%5</filename> с увеличением до %6"
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -3165,7 +3165,7 @@ msgstr "Предупреждение"
 #, kde-kuit-format
 msgctxt "@info:progress operation"
 msgid "Error"
-msgstr "Ошибка "
+msgstr "Ошибка"
 
 #: ops/removevolumegroupoperation.cpp:35
 #, kde-kuit-format
