@@ -38,6 +38,7 @@ qt_add_dbus_interface(HelperInterface_SRCS ${CMAKE_CURRENT_BINARY_DIR}/${helper_
 set(UTIL_SRC
     ${HelperInterface_SRCS}
     util/capacity.cpp
+    util/devicereadbenchmark.cpp
     util/externalcommand.cpp
     util/globallog.cpp
     util/helpers.cpp
@@ -47,6 +48,7 @@ set(UTIL_SRC
 
 set(UTIL_LIB_HDRS
     util/capacity.h
+    util/devicereadbenchmark.h
     util/externalcommand.h
     util/globallog.h
     util/helpers.h

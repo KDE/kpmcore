@@ -44,6 +44,7 @@ public Q_SLOTS:
     Q_SCRIPTABLE QByteArray ReadData(const QString& device, const qint64 offset, const qint64 length);
     Q_SCRIPTABLE bool WriteData(const QByteArray& buffer, const QString& targetDevice, const qint64 targetOffset);
     Q_SCRIPTABLE bool WriteFstab(const QByteArray& fstabContents);
+    Q_SCRIPTABLE QVariantMap BenchmarkRead(const QString& device, const QVariantList& offsets, const qint64 length);
 
 private:
     bool isCallerAuthorized();
