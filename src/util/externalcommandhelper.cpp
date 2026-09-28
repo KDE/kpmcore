@@ -469,9 +469,13 @@ QVariantMap ExternalCommandHelper::BenchmarkRead(const QString& device, const QV
         }
     }
 
-    const size_t alignment = std::max<size_t>(logicalBlockSize, sysconf(_SC_PAGESIZE));
     void *memory = nullptr;
     if (!offsets.isEmpty()) {
+        const long pageSize = sysconf(_SC_PAGESIZE);
+        if (pageSize <= 0) {
+            return fail(Status::Failed, QStringLiteral("could not determine the memory page size"));
+        }
+        const size_t alignment = std::max<size_t>(logicalBlockSize, pageSize);
         const int allocError = posix_memalign(&memory, alignment, length);
         if (allocError != 0) {
             return fail(Status::Failed, systemError(QStringLiteral("could not allocate read buffer"), allocError));
