@@ -67,9 +67,10 @@ bool DeviceReadBenchmark::request(const QList<qint64>& offsets, qint64 length)
         interface->deleteLater();
 
         Result result;
-        if (watcher->isError())
+        if (watcher->isError()) {
             qWarning() << watcher->error();
-        else {
+            result.error = watcher->error().message();
+        } else {
             const QVariantMap reply = QDBusPendingReply<QVariantMap>(*watcher).value();
             if (!reply.isEmpty()) {
                 result.status = static_cast<Status>(reply[QStringLiteral("status")].toInt());
@@ -79,6 +80,7 @@ bool DeviceReadBenchmark::request(const QList<qint64>& offsets, qint64 length)
                 const QVariantList elapsedNs = qdbus_cast<QVariantList>(reply[QStringLiteral("elapsedNs")]);
                 for (const QVariant& value : elapsedNs)
                     result.elapsedNs.append(value.toLongLong());
+                result.error = reply[QStringLiteral("error")].toString();
             }
         }
 

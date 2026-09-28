@@ -37,6 +37,7 @@ public:
         qint64 logicalBlockSize = 0;
         qint64 physicalBlockSize = 0;
         QList<qint64> elapsedNs;
+        QString error;
     };
 
     static constexpr qint64 maxReadLength = 16 * 1024 * 1024;

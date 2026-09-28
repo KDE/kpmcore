@@ -18,6 +18,7 @@
 #include <cerrno>
 #include <chrono>
 #include <cstdlib>
+#include <cstring>
 #include <filesystem>
 
 #include <fcntl.h>
@@ -375,10 +376,16 @@ QVariantMap ExternalCommandHelper::BenchmarkRead(const QString& device, const QV
 
     using Status = DeviceReadBenchmark::Status;
     QVariantMap reply;
-    reply[QStringLiteral("status")] = static_cast<int>(Status::InvalidRequest);
+    const auto fail = [&reply](Status status, const QString& error) {
+        qWarning() << "BenchmarkRead:" << error;
+        reply[QStringLiteral("status")] = static_cast<int>(status);
+        reply[QStringLiteral("error")] = error;
+        return reply;
+    };
 
     if (offsetList.size() > DeviceReadBenchmark::maxReadsPerRequest) {
-        return reply;
+        return fail(Status::InvalidRequest, QStringLiteral("too many reads requested (%1, maximum %2)")
+                    .arg(offsetList.size()).arg(DeviceReadBenchmark::maxReadsPerRequest));
     }
     QList<qint64> offsets;
     offsets.reserve(offsetList.size());
@@ -386,29 +393,31 @@ QVariantMap ExternalCommandHelper::BenchmarkRead(const QString& device, const QV
         bool ok = false;
         offsets.append(value.toLongLong(&ok));
         if (!ok) {
-            return reply;
+            return fail(Status::InvalidRequest, QStringLiteral("offset is not an integer"));
         }
     }
     if (!offsets.isEmpty() && (length <= 0 || length > DeviceReadBenchmark::maxReadLength ||
                                length * offsets.size() > DeviceReadBenchmark::maxBytesPerRequest)) {
-        return reply;
+        return fail(Status::InvalidRequest, QStringLiteral("read length %1 is out of range").arg(length));
     }
 
-    if (!device.startsWith(QStringLiteral("/dev/")) || device.startsWith(QStringLiteral("/dev/shm/"))) {
-        qWarning() << "BenchmarkRead: device not in /dev";
-        return reply;
+    if (QDir::cleanPath(device) != device || !device.startsWith(QStringLiteral("/dev/")) ||
+        device.startsWith(QStringLiteral("/dev/shm/"))) {
+        return fail(Status::InvalidRequest, QStringLiteral("device %1 is not a normalized path in /dev").arg(device));
     }
     std::error_code error;
     if (!std::filesystem::is_block_file(device.toStdU16String(), error)) {
-        qWarning() << "BenchmarkRead: not a block device";
-        return reply;
+        return fail(Status::InvalidRequest, QStringLiteral("%1 is not a block device").arg(device));
     }
     if (QFileInfo(device).isSymbolicLink()) {
-        qWarning() << "BenchmarkRead: device should not be symbolic link";
-        return reply;
+        return fail(Status::InvalidRequest, QStringLiteral("%1 is a symbolic link").arg(device));
     }
 
 #if defined(Q_OS_LINUX) && defined(O_DIRECT)
+    const auto systemError = [](const QString& what, int error) {
+        return QStringLiteral("%1: %2").arg(what, QString::fromLocal8Bit(strerror(error)));
+    };
+
     struct FileDescriptor {
         int fd;
         ~FileDescriptor() {
@@ -418,22 +427,30 @@ QVariantMap ExternalCommandHelper::BenchmarkRead(const QString& device, const QV
     } file { open(device.toLocal8Bit().constData(), O_RDONLY | O_DIRECT | O_NOFOLLOW | O_CLOEXEC) };
 
     if (file.fd < 0) {
-        reply[QStringLiteral("status")] = static_cast<int>(errno == EINVAL ? Status::Unsupported : Status::Failed);
-        return reply;
+        const int openError = errno;
+        return fail(openError == EINVAL ? Status::Unsupported : Status::Failed,
+                    systemError(QStringLiteral("could not open %1").arg(device), openError));
     }
 
     struct stat info;
-    if (fstat(file.fd, &info) != 0 || !S_ISBLK(info.st_mode)) {
-        return reply;
+    if (fstat(file.fd, &info) != 0) {
+        const int statError = errno;
+        return fail(Status::Failed, systemError(QStringLiteral("could not inspect %1").arg(device), statError));
+    }
+    if (!S_ISBLK(info.st_mode)) {
+        return fail(Status::InvalidRequest, QStringLiteral("%1 is not a block device").arg(device));
     }
 
     int logicalBlockSize = 0;
     unsigned int physicalBlockSize = 0;
     quint64 deviceSize = 0;
     if (ioctl(file.fd, BLKSSZGET, &logicalBlockSize) != 0 || ioctl(file.fd, BLKPBSZGET, &physicalBlockSize) != 0 ||
-        ioctl(file.fd, BLKGETSIZE64, &deviceSize) != 0 || logicalBlockSize <= 0) {
-        reply[QStringLiteral("status")] = static_cast<int>(Status::Failed);
-        return reply;
+        ioctl(file.fd, BLKGETSIZE64, &deviceSize) != 0) {
+        const int geometryError = errno;
+        return fail(Status::Failed, systemError(QStringLiteral("could not query geometry of %1").arg(device), geometryError));
+    }
+    if (logicalBlockSize <= 0) {
+        return fail(Status::Failed, QStringLiteral("invalid logical block size %1").arg(logicalBlockSize));
     }
     reply[QStringLiteral("deviceSize")] = static_cast<qint64>(deviceSize);
     reply[QStringLiteral("logicalBlockSize")] = static_cast<qint64>(logicalBlockSize);
@@ -441,20 +458,24 @@ QVariantMap ExternalCommandHelper::BenchmarkRead(const QString& device, const QV
 
     if (!offsets.isEmpty()) {
         if (length % logicalBlockSize != 0 || static_cast<quint64>(length) > deviceSize) {
-            return reply;
+            return fail(Status::InvalidRequest, QStringLiteral("read length %1 is not aligned to %2 or exceeds the device")
+                        .arg(length).arg(logicalBlockSize));
         }
         for (const qint64 offset : offsets) {
             if (offset < 0 || offset % logicalBlockSize != 0 || static_cast<quint64>(offset) > deviceSize - length) {
-                return reply;
+                return fail(Status::InvalidRequest, QStringLiteral("offset %1 is not aligned to %2 or out of range")
+                            .arg(offset).arg(logicalBlockSize));
             }
         }
     }
 
     const size_t alignment = std::max<size_t>(logicalBlockSize, sysconf(_SC_PAGESIZE));
     void *memory = nullptr;
-    if (!offsets.isEmpty() && posix_memalign(&memory, alignment, length) != 0) {
-        reply[QStringLiteral("status")] = static_cast<int>(Status::Failed);
-        return reply;
+    if (!offsets.isEmpty()) {
+        const int allocError = posix_memalign(&memory, alignment, length);
+        if (allocError != 0) {
+            return fail(Status::Failed, systemError(QStringLiteral("could not allocate read buffer"), allocError));
+        }
     }
     std::unique_ptr<void, decltype(&free)> buffer(memory, &free);
 
@@ -462,25 +483,31 @@ QVariantMap ExternalCommandHelper::BenchmarkRead(const QString& device, const QV
     elapsedNs.reserve(offsets.size());
     for (const qint64 offset : offsets) {
         ssize_t bytesRead;
+        int readError = 0;
         const auto start = std::chrono::steady_clock::now();
         do {
             bytesRead = pread(file.fd, buffer.get(), length, offset);
-        } while (bytesRead < 0 && errno == EINTR);
+            readError = errno;
+        } while (bytesRead < 0 && readError == EINTR);
         const auto end = std::chrono::steady_clock::now();
 
+        if (bytesRead < 0) {
+            return fail(readError == EINVAL ? Status::Unsupported : Status::Failed,
+                        systemError(QStringLiteral("could not read %1 bytes at offset %2").arg(length).arg(offset), readError));
+        }
         if (bytesRead != length) {
-            reply[QStringLiteral("status")] = static_cast<int>(bytesRead < 0 && errno == EINVAL ? Status::Unsupported : Status::Failed);
-            return reply;
+            return fail(Status::Failed, QStringLiteral("short read at offset %1: %2 of %3 bytes")
+                        .arg(offset).arg(bytesRead).arg(length));
         }
         elapsedNs.append(static_cast<qint64>(std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count()));
     }
 
     reply[QStringLiteral("elapsedNs")] = elapsedNs;
     reply[QStringLiteral("status")] = static_cast<int>(Status::Success);
-#else
-    reply[QStringLiteral("status")] = static_cast<int>(Status::Unsupported);
-#endif
     return reply;
+#else
+    return fail(Status::Unsupported, QStringLiteral("direct I/O is not supported on this platform"));
+#endif
 }
 
 QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
