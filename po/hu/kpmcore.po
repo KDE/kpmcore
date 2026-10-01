@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:48+0000\n"
 "PO-Revision-Date: 2025-04-27 22:26+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -3547,80 +3547,80 @@ msgctxt "@info:status"
 msgid "Command: %1 %2"
 msgstr "Parancs: %1 %2"
 
-#: util/externalcommandhelper.cpp:82
+#: util/externalcommandhelper.cpp:95
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
 msgstr "Nem sikerült megnyitni a(z) <filename>%1</filename> eszközt olvasásra."
 
-#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#: util/externalcommandhelper.cpp:102 util/externalcommandhelper.cpp:133
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr ""
 "Nem sikerült keresni a(z) %1 pozíciót a(z) <filename>%2</filename> eszközön."
 
-#: util/externalcommandhelper.cpp:96
+#: util/externalcommandhelper.cpp:109
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
 msgstr "Nem sikerült olvasni a(z) <filename>%1</filename> eszközre."
 
-#: util/externalcommandhelper.cpp:114
+#: util/externalcommandhelper.cpp:127
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
 msgstr "Nem sikerült megnyitni a(z) <filename>%1</filename> eszközt írásra."
 
-#: util/externalcommandhelper.cpp:125
+#: util/externalcommandhelper.cpp:138
 #, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
 msgstr "Nem sikerült írni a(z) <filename>%1</filename> eszközre."
 
-#: util/externalcommandhelper.cpp:151
+#: util/externalcommandhelper.cpp:164
 #, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
 msgstr "Nem sikerült megnyitni a(z) <filename>%1</filename> fájlt írásra."
 
-#: util/externalcommandhelper.cpp:156
+#: util/externalcommandhelper.cpp:169
 #, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
 msgstr "Nem sikerült írni a(z) <filename>%1</filename> fájlba."
 
-#: util/externalcommandhelper.cpp:237
+#: util/externalcommandhelper.cpp:250
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
 msgstr "%1 adarészlet (%2 bájt) másolása innen: %3 ide: %4, irány: %5."
 
-#: util/externalcommandhelper.cpp:238
+#: util/externalcommandhelper.cpp:251
 #, kde-format
 msgctxt "direction: left"
 msgid "left"
 msgstr "balra"
 
-#: util/externalcommandhelper.cpp:239
+#: util/externalcommandhelper.cpp:252
 #, kde-format
 msgctxt "direction: right"
 msgid "right"
 msgstr "jobbra"
 
-#: util/externalcommandhelper.cpp:261
+#: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Másolás %1 MiB/s sebességgel, becsült hátralévő idő: %2"
 
-#: util/externalcommandhelper.cpp:274
+#: util/externalcommandhelper.cpp:287
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
 msgstr "A(z) %1 adatrészlet méret maradékának másolása innen: %2, ide: %3."
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, kde-format
 msgid "1 byte"
 msgid_plural "%1 bytes"
 msgstr[0] "1 bájt"
 msgstr[1] "%1 bájt"
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"

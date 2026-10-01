@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:48+0000\n"
 "PO-Revision-Date: 2026-09-14 19:16+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -3554,72 +3554,72 @@ msgctxt "@info:status"
 msgid "Command: %1 %2"
 msgstr "Ukaz: %1 %2"
 
-#: util/externalcommandhelper.cpp:82
+#: util/externalcommandhelper.cpp:95
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
 msgstr "Ni bilo mogoče odpreti naprave <filename>%1</filename> za branje."
 
-#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#: util/externalcommandhelper.cpp:102 util/externalcommandhelper.cpp:133
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr "Ni mogoče iskati položaja %1 na napravi <filename>%2</filename>."
 
-#: util/externalcommandhelper.cpp:96
+#: util/externalcommandhelper.cpp:109
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
 msgstr "Ni bilo mogoče brati na napravi <filename>%1</filename>."
 
-#: util/externalcommandhelper.cpp:114
+#: util/externalcommandhelper.cpp:127
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
 msgstr "Ni bilo mogoče odpreti naprave <filename>%1</filename> za pisanje."
 
-#: util/externalcommandhelper.cpp:125
+#: util/externalcommandhelper.cpp:138
 #, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
 msgstr "Ni bilo mogoče pisati na napravo <filename>%1</filename>."
 
-#: util/externalcommandhelper.cpp:151
+#: util/externalcommandhelper.cpp:164
 #, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
 msgstr "Ni bilo mogoče odpreti datoteke <filename>%1</filename> za pisanje."
 
-#: util/externalcommandhelper.cpp:156
+#: util/externalcommandhelper.cpp:169
 #, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
 msgstr "Ni bilo mogoče pisati na datoteko <filename>%1</filename>."
 
-#: util/externalcommandhelper.cpp:237
+#: util/externalcommandhelper.cpp:250
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
 msgstr "Kopiranje %1 delčkov (%2 bajtov) iz %3 v %4, smer: %5."
 
-#: util/externalcommandhelper.cpp:238
+#: util/externalcommandhelper.cpp:251
 #, kde-format
 msgctxt "direction: left"
 msgid "left"
 msgstr "levo"
 
-#: util/externalcommandhelper.cpp:239
+#: util/externalcommandhelper.cpp:252
 #, kde-format
 msgctxt "direction: right"
 msgid "right"
 msgstr "desno"
 
-#: util/externalcommandhelper.cpp:261
+#: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Kopiranje z %1 MiB/sekundo, preostali čas: %2"
 
-#: util/externalcommandhelper.cpp:274
+#: util/externalcommandhelper.cpp:287
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
 msgstr "Kopiranje preostanka delčka velikosti %1 iz %2 v %3."
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, kde-format
 msgid "1 byte"
 msgid_plural "%1 bytes"
@@ -3628,7 +3628,7 @@ msgstr[1] "%1 bajt"
 msgstr[2] "%1 bajta"
 msgstr[3] "%1 bajti"
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"

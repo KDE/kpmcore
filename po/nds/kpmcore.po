@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:48+0000\n"
 "PO-Revision-Date: 2014-03-12 23:25+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -4084,56 +4084,56 @@ msgctxt "@info:status"
 msgid "Command: %1 %2"
 msgstr "Befehl: %1 %2"
 
-#: util/externalcommandhelper.cpp:82
+#: util/externalcommandhelper.cpp:95
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Could not open file <filename>%1</filename> for writing."
 msgid "Could not open device <filename>%1</filename> for reading."
 msgstr "Datei <filename>%1</filename> lett sik nich schrieven."
 
-#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#: util/externalcommandhelper.cpp:102 util/externalcommandhelper.cpp:133
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not access device <filename>%1</filename>"
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr "Keen Togriep op Reedschap <filename>%1</filename>"
 
-#: util/externalcommandhelper.cpp:96
+#: util/externalcommandhelper.cpp:109
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not access device <filename>%1</filename>"
 msgid "Could not read from device <filename>%1</filename>."
 msgstr "Keen Togriep op Reedschap <filename>%1</filename>"
 
-#: util/externalcommandhelper.cpp:114
+#: util/externalcommandhelper.cpp:127
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Could not open file <filename>%1</filename> for writing."
 msgid "Could not open device <filename>%1</filename> for writing."
 msgstr "Datei <filename>%1</filename> lett sik nich schrieven."
 
-#: util/externalcommandhelper.cpp:125
+#: util/externalcommandhelper.cpp:138
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not access device <filename>%1</filename>"
 msgid "Could not write to device <filename>%1</filename>."
 msgstr "Keen Togriep op Reedschap <filename>%1</filename>"
 
-#: util/externalcommandhelper.cpp:151
+#: util/externalcommandhelper.cpp:164
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Could not open file <filename>%1</filename> for writing."
 msgid "Could not open file <filename>%1</filename> for writing."
 msgstr "Datei <filename>%1</filename> lett sik nich schrieven."
 
-#: util/externalcommandhelper.cpp:156
+#: util/externalcommandhelper.cpp:169
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not access device <filename>%1</filename>"
 msgid "Could not write to file <filename>%1</filename>."
 msgstr "Keen Togriep op Reedschap <filename>%1</filename>"
 
-#: util/externalcommandhelper.cpp:237
+#: util/externalcommandhelper.cpp:250
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Copying %1 blocks (%2 sectors) from %3 to %4, direction: %5."
@@ -4143,19 +4143,19 @@ msgstr ""
 "%1 Blöck (%2 Sektoren) warrt vun %3 na %4 kopeert, Richt: "
 "%5.                         %1"
 
-#: util/externalcommandhelper.cpp:238
+#: util/externalcommandhelper.cpp:251
 #, kde-format
 msgctxt "direction: left"
 msgid "left"
 msgstr ""
 
-#: util/externalcommandhelper.cpp:239
+#: util/externalcommandhelper.cpp:252
 #, kde-format
 msgctxt "direction: right"
 msgid "right"
 msgstr ""
 
-#: util/externalcommandhelper.cpp:261
+#: util/externalcommandhelper.cpp:274
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Copying %1 MiB/second, estimated time left: %2"
@@ -4163,7 +4163,7 @@ msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "%1 MiB/s warrt kopeert, estemeert nablieven Tiet: %2"
 
-#: util/externalcommandhelper.cpp:274
+#: util/externalcommandhelper.cpp:287
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Copying remainder of block size %1 from  %2 to %3."
@@ -4171,14 +4171,14 @@ msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
 msgstr "Överblevels mit Blockgrött %1 warrt vun %2 na %3 kopeert."
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, kde-format
 msgid "1 byte"
 msgid_plural "%1 bytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, fuzzy, kde-kuit-format
 #| msgctxt ""
 #| "@info/plain argument 2 is a string such as 7 sectors (localized "

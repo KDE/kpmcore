@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-16 00:48+0000\n"
+"POT-Creation-Date: 2026-10-01 00:48+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -3295,78 +3295,78 @@ msgctxt "@info:status"
 msgid "Command: %1 %2"
 msgstr "命令：%1 %2"
 
-#: util/externalcommandhelper.cpp:82
+#: util/externalcommandhelper.cpp:95
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
 msgstr "无法打开设备 <filename>%1</filename> 进行读取。"
 
-#: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
+#: util/externalcommandhelper.cpp:102 util/externalcommandhelper.cpp:133
 #, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
 msgstr "无法在设备 <filename>%2</filename> 上寻址到 %1。"
 
-#: util/externalcommandhelper.cpp:96
+#: util/externalcommandhelper.cpp:109
 #, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
 msgstr "无法读取设备 <filename>%1</filename>。"
 
-#: util/externalcommandhelper.cpp:114
+#: util/externalcommandhelper.cpp:127
 #, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
 msgstr "无法打开设备 <filename>%1</filename> 进行写入。"
 
-#: util/externalcommandhelper.cpp:125
+#: util/externalcommandhelper.cpp:138
 #, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
 msgstr "无法写入设备 <filename>%1</filename>。"
 
-#: util/externalcommandhelper.cpp:151
+#: util/externalcommandhelper.cpp:164
 #, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
 msgstr "无法打开文件 <filename>%1</filename> 进行写入。"
 
-#: util/externalcommandhelper.cpp:156
+#: util/externalcommandhelper.cpp:169
 #, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
 msgstr "无法写入文件 <filename>%1</filename>。"
 
-#: util/externalcommandhelper.cpp:237
+#: util/externalcommandhelper.cpp:250
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
 msgstr "正在从 %3 复制 %1 个区块 (%2 字节) 到 %4，方向：%5。"
 
-#: util/externalcommandhelper.cpp:238
+#: util/externalcommandhelper.cpp:251
 #, kde-format
 msgctxt "direction: left"
 msgid "left"
 msgstr "左"
 
-#: util/externalcommandhelper.cpp:239
+#: util/externalcommandhelper.cpp:252
 #, kde-format
 msgctxt "direction: right"
 msgid "right"
 msgstr "右"
 
-#: util/externalcommandhelper.cpp:261
+#: util/externalcommandhelper.cpp:274
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "正在复制，速度为 %1 MiB/秒，预计剩余时间：%2"
 
-#: util/externalcommandhelper.cpp:274
+#: util/externalcommandhelper.cpp:287
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
 msgstr "正在从 %2 复制剩余 %1 大小的区块到 %3。"
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, kde-format
 msgid "1 byte"
 msgid_plural "%1 bytes"
 msgstr[0] "%1 字节"
 
-#: util/externalcommandhelper.cpp:288
+#: util/externalcommandhelper.cpp:301
 #, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
