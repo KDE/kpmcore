@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-01 00:48+0000\n"
-"PO-Revision-Date: 2025-04-06 23:24+0200\n"
+"PO-Revision-Date: 2026-10-03 21:00+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1556,37 +1556,37 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
-msgstr ""
+msgstr "이 파일 시스템에서는 클러스터 크기 선택을 지원하지 않습니다."
 
 #: fs/clustersize.cpp:111
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
-msgstr ""
+msgstr "클러스터 크기는 정수 단위 바이트로 지정해야 합니다."
 
 #: fs/clustersize.cpp:115
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
-msgstr ""
+msgstr "클러스터 크기(%1바이트)는 양수여야 합니다."
 
 #: fs/clustersize.cpp:117
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
-msgstr ""
+msgstr "클러스터 크기(%1바이트)는 2의 제곱이어야 합니다."
 
 #: fs/clustersize.cpp:125
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
-msgstr ""
+msgstr "요청한 FAT 섹터 크기가 2의 정수 제곱수가 아닙니다."
 
 #: fs/clustersize.cpp:128
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
-msgstr ""
+msgstr "요청한 FAT 섹터 크기(%1바이트)가 512에서 32768 사이여야 합니다."
 
 #: fs/clustersize.cpp:134
 #, kde-kuit-format
@@ -1595,6 +1595,8 @@ msgid ""
 "The requested FAT sectors-per-cluster value is not an integer power of two "
 "from 1 to 128."
 msgstr ""
+"요청한 FAT의 클러스터당 섹터 값이 1에서 128 사이의 2의 정수 제곱수가 아닙니"
+"다."
 
 #: fs/clustersize.cpp:137 fs/clustersize.cpp:146
 #, kde-kuit-format
@@ -1602,7 +1604,7 @@ msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) must be a whole multiple of the sector size (%2 "
 "bytes)."
-msgstr ""
+msgstr "클러스터 크기(%1바이트)는 섹터 크기의 배수(%2바이트)여야 합니다."
 
 #: fs/clustersize.cpp:141
 #, kde-kuit-format
@@ -1611,6 +1613,8 @@ msgid ""
 "A cluster size of %1 bytes maps to %2 sectors of %3 bytes per cluster, which "
 "mkfs.fat cannot use (it must be a power of two from 1 to 128)."
 msgstr ""
+"클러스터 크기 %1바이트는 클러스터당 %3바이트에서 %2섹터에 대응되며, mkfs.fat"
+"에서 사용할 수 없습니다(1에서 128 사이의 2의 제곱수여야 함)."
 
 #: fs/clustersize.cpp:143
 #, kde-kuit-format
@@ -1619,6 +1623,8 @@ msgid ""
 "The requested cluster size (%1 bytes) and sectors-per-cluster value (%2) do "
 "not agree."
 msgstr ""
+"요청한 클러스터 크기(%1바이트)와 클러스터당 섹터 수(%2)가 서로 일치하지 않습"
+"니다."
 
 #: fs/clustersize.cpp:152
 #, kde-kuit-format
@@ -1627,13 +1633,15 @@ msgid ""
 "The cluster size (%1 bytes) is outside the range this file system supports "
 "(%2 to %3 bytes)."
 msgstr ""
+"클러스터 크기(%1바이트)가 이 파일 시스템에서 지원하는 범위(%2바이트부터 %3바"
+"이트까지)를 벗어났습니다."
 
 #: fs/clustersize.cpp:155
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
-msgstr ""
+msgstr "클러스터 크기(%1바이트)가 전체 파일 시스템 크기(%2바이트)보다 큽니다."
 
 #: fs/clustersize.cpp:160
 #, kde-kuit-format
@@ -1642,6 +1650,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 4085 data clusters a FAT16 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"클러스터 크기 %1바이트를 사용하면 FAT16 파일 시스템에서 필요한 4085개 이상의 "
+"클러스터를 확보할 수 없습니다. 더 작은 클러스터 크기를 사용하십시오."
 
 #: fs/clustersize.cpp:162
 #, kde-kuit-format
@@ -1650,6 +1660,8 @@ msgid ""
 "A cluster size of %1 bytes leaves fewer than the 65525 data clusters a FAT32 "
 "file system needs. Choose a smaller cluster size."
 msgstr ""
+"클러스터 크기 %1바이트를 사용하면 FAT32 파일 시스템에서 필요한 65525개 이상"
+"의 클러스터를 확보할 수 없습니다. 더 작은 클러스터 크기를 사용하십시오."
 
 #: fs/fat12.cpp:172
 #, kde-kuit-format
@@ -1688,84 +1700,76 @@ msgid "ext4"
 msgstr "ext4"
 
 #: fs/filesystem.cpp:574
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "linuxswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Linux swap"
-msgstr "linuxswap"
+msgstr "리눅스 스왑"
 
 #: fs/filesystem.cpp:575
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "freebsdswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
-msgstr "freebsdswap"
+msgstr "FreeBSD 스왑"
 
 #: fs/filesystem.cpp:576
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT16"
-msgstr ""
+msgstr "FAT16"
 
 #: fs/filesystem.cpp:577
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT32"
-msgstr ""
+msgstr "FAT32"
 
 #: fs/filesystem.cpp:578
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NTFS"
-msgstr ""
+msgstr "NTFS"
 
 #: fs/filesystem.cpp:579
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ReiserFS"
-msgstr "reiser"
+msgstr "ReiserFS"
 
 #: fs/filesystem.cpp:580
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser4"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Reiser4"
-msgstr "reiser4"
+msgstr "Reiser4"
 
 #: fs/filesystem.cpp:581
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "XFS"
-msgstr ""
+msgstr "XFS"
 
 #: fs/filesystem.cpp:582
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "JFS"
-msgstr ""
+msgstr "JFS"
 
 #: fs/filesystem.cpp:583
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS"
-msgstr ""
+msgstr "HFS"
 
 #: fs/filesystem.cpp:584
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS Plus"
-msgstr ""
+msgstr "HFS Plus"
 
 #: fs/filesystem.cpp:585
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UFS"
-msgstr ""
+msgstr "UFS"
 
 #: fs/filesystem.cpp:586
 #, kde-kuit-format
@@ -1774,23 +1778,19 @@ msgid "unformatted"
 msgstr "포맷되지 않음"
 
 #: fs/filesystem.cpp:587
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "btrfs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Btrfs"
-msgstr "btrfs"
+msgstr "Btrfs"
 
 #: fs/filesystem.cpp:588
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HPFS"
-msgstr ""
+msgstr "HPFS"
 
 #: fs/filesystem.cpp:589
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS"
 msgstr "LUKS"
@@ -1799,63 +1799,61 @@ msgstr "LUKS"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "OCFS2"
-msgstr ""
+msgstr "OCFS2"
 
 #: fs/filesystem.cpp:591
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ZFS"
-msgstr ""
+msgstr "ZFS"
 
 #: fs/filesystem.cpp:592
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exFAT"
-msgstr ""
+msgstr "exFAT"
 
 #: fs/filesystem.cpp:593
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NILFS2"
-msgstr ""
+msgstr "NILFS2"
 
 #: fs/filesystem.cpp:594
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LVM PV"
-msgstr ""
+msgstr "LVM PV"
 
 #: fs/filesystem.cpp:595
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "F2FS"
-msgstr ""
+msgstr "F2FS"
 
 #: fs/filesystem.cpp:596
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UDF"
-msgstr ""
+msgstr "UDF"
 
 #: fs/filesystem.cpp:597
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ISO 9660"
-msgstr ""
+msgstr "ISO 9660"
 
 #: fs/filesystem.cpp:598
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS 2"
-msgstr "LUKS"
+msgstr "LUKS 2"
 
 #: fs/filesystem.cpp:599
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT12"
-msgstr ""
+msgstr "FAT12"
 
 #: fs/filesystem.cpp:600
 #, kde-kuit-format
@@ -1873,21 +1871,19 @@ msgstr "BitLocker"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "APFS"
-msgstr ""
+msgstr "APFS"
 
 #: fs/filesystem.cpp:603
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "MINIX"
-msgstr ""
+msgstr "MINIX"
 
 #: fs/filesystem.cpp:604
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "bcachefs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
-msgstr "bcachefs"
+msgstr "Bcachefs"
 
 #: fs/filesystem.cpp:682 fs/luks.cpp:161
 #, kde-kuit-format
@@ -1908,6 +1904,8 @@ msgid ""
 "Choosing the cluster size is not supported for this file system with the "
 "tools that are installed."
 msgstr ""
+"이 파일 시스템에 대해서 현재 설치된 도구에서는 클러스터 크기 선택을 지원하지 "
+"않습니다."
 
 #: fs/freebsdswap.cpp:77 fs/linuxswap.cpp:127
 #, kde-kuit-format
@@ -2823,44 +2821,30 @@ msgid "Shred the file system on <filename>%1</filename>"
 msgstr "<filename>%1</filename>의 파일 시스템을 완전히 삭제"
 
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr ""
-"파티션 <filename>%1</filename>의 파일 시스템은 레이블 설정을 지원하지 않습니"
-"다. 작업을 무시합니다."
+msgstr "<filename>%1</filename>의 파일 시스템에서 소유권을 지원하지 않습니다."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
-msgstr ""
-"파티션 <filename>%1</filename>에 있는 LUKS 암호화 영역 크기를 조정하고 있습니"
-"다."
+msgstr "주요 마운트 지점 <filename>%1</filename>의 소유권 변경을 거부합니다."
 
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "<filename>%1</filename>의 권한을 %2(으)로 설정"
+msgstr "<filename>%1</filename> 및 포함된 내용의 소유권을 %2에게 부여함"
 
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "<filename>%1</filename>의 권한을 %2(으)로 설정"
+msgstr "<filename>%1</filename>의 소유권을 %2에게 부여함"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -2959,9 +2943,7 @@ msgstr ""
 "지 않은 공간(%4에서 시작)에 복사한 다음 %6(으)로 확대"
 
 #: ops/createfilesystemoperation.cpp:95 ops/newoperation.cpp:218
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "%1: %2"
 msgstr "%1: %2"
@@ -3286,20 +3268,16 @@ msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
 msgstr "<filename>%1</filename>의 GPT 파티션 레이블을 \"%2\"(으)로 설정"
 
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "<filename>%1</filename>의 권한을 %2(으)로 설정"
+msgstr "<filename>%1</filename> 및 포함된 내용의 소유권을 %2에게 부여"
 
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Change the permissions of: <filename>%1</filename> to %2"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "<filename>%1</filename>의 권한을 %2(으)로 설정"
+msgstr "<filename>%1</filename>의 소유권을 %2에게 부여"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
