@@ -2,13 +2,14 @@
 # Slobodan Simic <slsimic@gmail.com>, 2008, 2009, 2010.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
 # Dalibor Djuric <daliborddjuric@gmail.com>, 2010, 2011.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-03 02:46+0000\n"
-"PO-Revision-Date: 2018-01-06 09:21+0100\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-10 13:47+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@latin\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +25,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Slobodan Simić"
+msgstr "Slobodan Simić,Nemanja Hiršl"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "slsimic@gmail.com"
+msgstr "slsimic@gmail.com,nemhirsl@gmail.com"
 
 #: core/device.cpp:33
 #, kde-format
@@ -46,7 +47,7 @@ msgstr "%1 — %2 (%3)"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "An error occurred while running lvdisplay."
-msgstr ""
+msgstr "Došlo je do greške pri izvršavanju lvdisplay."
 
 #: core/operationstack.cpp:101
 #, kde-kuit-format
@@ -367,19 +368,19 @@ msgstr "nepoznato"
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level]"
 msgid " [RAID %1]"
-msgstr ""
+msgstr " [RAID %1]"
 
 #: core/raid/softwareraid.cpp:95
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Recovering]"
 msgid " [RAID %1 - Recovering]"
-msgstr ""
+msgstr " [RAID %1 - oporavlja se]"
 
 #: core/raid/softwareraid.cpp:97
 #, kde-kuit-format
 msgctxt "@item:inlistbox [RAID level - Resyncing]"
 msgid " [RAID %1 - Resyncing]"
-msgstr ""
+msgstr " [RAID %1 - ponovo se usklađuje]"
 
 # >> + SMART disk state
 #: core/smartattribute.cpp:45
@@ -879,8 +880,7 @@ msgstr "stopa G‑Sense grešaka"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Count of errors resulting from externally-induced shock and vibration."
-msgstr ""
-"Broj grešaka usled spolja izazvanih spolja pobuđenim vibracijama i udarima."
+msgstr "Broj grešaka usled spolja izazvanih udara i vibracija."
 
 #: core/smartattribute.cpp:136
 #, kde-format
@@ -923,7 +923,7 @@ msgstr "Trenutna unutrašnja temperatura."
 #, kde-format
 msgctxt "SMART attr name"
 msgid "Hardware ECC Recovered"
-msgstr "povraćenom hardverskim ECC‑om"
+msgstr "povraćeno hardverskim ECC‑om"
 
 #: core/smartattribute.cpp:139
 #, kde-format
@@ -1167,8 +1167,7 @@ msgstr "stopa G‑Sense grešaka"
 msgctxt "SMART attr description"
 msgid ""
 "The number of errors resulting from externally-induced shock and vibration."
-msgstr ""
-"Broj grešaka usled spolja izazvanih spolja pobuđenim vibracijama i udarima."
+msgstr "Broj grešaka usled spolja izazvanih udara i vibracija."
 
 #: core/smartattribute.cpp:158
 #, kde-format
@@ -1538,59 +1537,43 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "krah diska neizbežan — arhivirajte sve podatke!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"Menjanje veličine btrfs fajl sistema na particiji <filename>%1</filename> "
+"Menjanje veličine Bcachefs fajl sistema na particiji <filename>%1</filename> "
 "nije uspelo: ne mogu da napravim privremenu fasciklu."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"Menjanje veličine btrfs fajl sistema na particiji <filename>%1</filename> "
-"nije uspelo: promena veličine btrfs‑a nije uspela."
+"Menjanje veličine Bcachefs fajl sistema na particiji <filename>%1</filename> "
+"nije uspelo: naredba bcachefs device resize nije uspela."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Promena veličine btrfs fajl sistema na particiji <filename>%1</"
+"<warning>Promena veličine Bcachefs fajl sistema na particiji <filename>%1</"
 "filename>: neuspelo demontiranje.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"Menjanje veličine btrfs fajl sistema na particiji <filename>%1</filename> "
+"Menjanje veličine Bcachefs fajl sistema na particiji <filename>%1</filename> "
 "nije uspelo: početno montiranje nije uspelo."
 
 #: fs/btrfs.cpp:166
@@ -1680,7 +1663,7 @@ msgstr "Linux-razmena"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "freebsdswap"
-msgstr ""
+msgstr "FreeBSD-razmena"
 
 #: fs/filesystem.cpp:514
 #, kde-kuit-format
@@ -1722,7 +1705,7 @@ msgstr "XFS"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "jfs"
-msgstr "JFS:"
+msgstr "JFS"
 
 #: fs/filesystem.cpp:521
 #, kde-kuit-format
@@ -1776,7 +1759,7 @@ msgstr "OCFS2"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "zfs"
-msgstr "ZFS:"
+msgstr "ZFS"
 
 #: fs/filesystem.cpp:530
 #, kde-kuit-format
@@ -1830,31 +1813,31 @@ msgstr "FAT12"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
-msgstr ""
+msgstr "linux_raid_member"
 
 #: fs/filesystem.cpp:539
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "BitLocker"
-msgstr ""
+msgstr "BitLocker"
 
 #: fs/filesystem.cpp:540
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "apfs"
-msgstr ""
+msgstr "apfs"
 
 #: fs/filesystem.cpp:541
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "minix"
-msgstr ""
+msgstr "Minix"
 
 #: fs/filesystem.cpp:542
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "bcachefs"
-msgstr ""
+msgstr "bcachefs"
 
 # >> @action
 #: fs/filesystem.cpp:585 fs/luks.cpp:161
@@ -1928,13 +1911,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Unlock"
-msgstr ""
+msgstr "Otključaj"
 
 #: fs/luks.cpp:176
 #, kde-kuit-format
 msgctxt "@title:menu"
 msgid "Lock"
-msgstr ""
+msgstr "Zaključaj"
 
 #: fs/luks.cpp:257
 #, kde-format
@@ -2094,12 +2077,10 @@ msgstr ""
 
 # >> Job description, used as tooltip and in job lists.
 #: jobs/changepermissionsjob.cpp:49
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Change the permissions of: <filename>%1</filename> to %2"
-msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
+msgstr "Promena dozvola za: <filename>%1</filename> na %2"
 
 # >> Job description, used as tooltip and in job lists.
 #: jobs/checkfilesystemjob.cpp:43
@@ -2168,7 +2149,7 @@ msgid ""
 "Failed to set the system type for the file system on partition <filename>%1</"
 "filename>."
 msgstr ""
-"Ne mogu da postavi tip sistema za fajl sistem na particiji <filename>%1</"
+"Ne mogu da postavim tip sistema za fajl sistem na particiji <filename>%1</"
 "filename>."
 
 #: jobs/createfilesystemjob.cpp:68
@@ -2276,7 +2257,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr "Brisanje logičkih delova: <filename>%1</filename>"
+msgstr "Deaktiviranje logičkih delova: <filename>%1</filename>"
 
 # >> Job description, used as tooltip and in job lists.
 #: jobs/deactivatevolumegroupjob.cpp:47
@@ -2592,10 +2573,10 @@ msgstr[3] ""
 msgctxt "@info/plain"
 msgid "Adding LVM Physical Volume %2 to %3."
 msgid_plural "Adding LVM Physical Volumes %2 to %3."
-msgstr[0] "Dodavanje LVM fizičkih delova %2 do %3"
-msgstr[1] "Dodavanje LVM fizičkih delova %2 do %3"
-msgstr[2] "Dodavanje LVM fizičkih delova %2 do %3"
-msgstr[3] "Dodavanje LVM fizičkog dela %2 do %3"
+msgstr[0] "Dodavanje LVM fizičkih delova %2 u %3."
+msgstr[1] "Dodavanje LVM fizičkih delova %2 u %3."
+msgstr[2] "Dodavanje LVM fizičkih delova %2 u %3."
+msgstr[3] "Dodavanje LVM fizičkog dela %2 u %3."
 
 # >> Job description, used as tooltip and in job lists.
 #: jobs/resizevolumegroupjob.cpp:62
@@ -2603,10 +2584,10 @@ msgstr[3] "Dodavanje LVM fizičkog dela %2 do %3"
 msgctxt "@info/plain"
 msgid "Removing LVM Physical Volume %2 from %3."
 msgid_plural "Removing LVM Physical Volumes %2 from %3."
-msgstr[0] "Uklanjanje LVM fizičkih delova %2 do %3"
-msgstr[1] "Uklanjanje LVM fizičkih delova %2 do %3"
-msgstr[2] "Uklanjanje LVM fizičkih delova %2 do %3"
-msgstr[3] "Uklanjanje LVM fizičkog dela %2 do %3"
+msgstr[0] "Uklanjanje LVM fizičkih delova %2 iz %3."
+msgstr[1] "Uklanjanje LVM fizičkih delova %2 iz %3."
+msgstr[2] "Uklanjanje LVM fizičkih delova %2 iz %3."
+msgstr[3] "Uklanjanje LVM fizičkog dela %2 iz %3."
 
 # >> Job description, used as tooltip and in job lists.
 #: jobs/resizevolumegroupjob.cpp:64
@@ -2742,195 +2723,135 @@ msgstr ""
 
 # skip-rule: t-setting
 #: jobs/setpartitionattributesjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
-"Fajl sistem na particiji <filename>%1</filename> ne podržava postavljanje "
-"etiketa. Posao se zanemaruje."
+"Tabela particija za particiju <filename>%1</filename> ne podržava "
+"postavljanje atributa. Posao se zanemaruje."
 
 #: jobs/setpartitionattributesjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Failed to set the system type for the file system on partition <filename>"
-#| "%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
-msgstr ""
-"Ne mogu da postavi tip sistema za fajl sistem na particiji <filename>%1</"
-"filename>."
+msgstr "Ne mogu da postavim atribute za particiju <filename>%1</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
 "Ne mogu da otvorim tabelu particija na uređaju <filename>%1</filename> radi "
-"postavljanja tipa sistema za particiju <filename>%2</filename>."
+"postavljanja atributa za particiju <filename>%2</filename>."
 
 #: jobs/setpartitionattributesjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the attributes for "
 "partition <filename>%2</filename>."
 msgstr ""
-"Ne mogu da otvorim uređaj <filename>%1</filename> radi postavljanja tipa "
-"sistema za particiju <filename>%2</filename>."
+"Ne mogu da otvorim uređaj <filename>%1</filename> radi postavljanja atributa "
+"za particiju <filename>%2</filename>."
 
 # >> Job description, used as tooltip and in job lists.
 #: jobs/setpartitionattributesjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
+msgstr "Promena atributa particije <filename>%1</filename> na „%2“"
 
 # skip-rule: t-setting
 #: jobs/setpartitionlabeljob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
-"Fajl sistem na particiji <filename>%1</filename> ne podržava postavljanje "
-"etiketa. Posao se zanemaruje."
+"Tabela particija za particiju <filename>%1</filename> ne podržava "
+"postavljanje imena. Posao se zanemaruje."
 
 #: jobs/setpartitionlabeljob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Failed to set the system type for the file system on partition <filename>"
-#| "%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
-msgstr ""
-"Ne mogu da postavi tip sistema za fajl sistem na particiji <filename>%1</"
-"filename>."
+msgstr "Ne mogu da postavim ime za particiju <filename>%1</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
 "Ne mogu da otvorim tabelu particija na uređaju <filename>%1</filename> radi "
-"postavljanja tipa sistema za particiju <filename>%2</filename>."
+"postavljanja imena za particiju <filename>%2</filename>."
 
 #: jobs/setpartitionlabeljob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Ne mogu da otvorim uređaj <filename>%1</filename> radi postavljanja tipa "
-"sistema za particiju <filename>%2</filename>."
+"Ne mogu da otvorim uređaj <filename>%1</filename> radi postavljanja imena za "
+"particiju <filename>%2</filename>."
 
 # >> Operation description, used as tooltip and in operation lists.
 #: jobs/setpartitionlabeljob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
 msgstr "Promena etikete particije <filename>%1</filename> na „%2“"
 
 # skip-rule: t-setting
 #: jobs/setpartitionuuidjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
-"Fajl sistem na particiji <filename>%1</filename> ne podržava postavljanje "
-"etiketa. Posao se zanemaruje."
+"Tabela particija za particiju <filename>%1</filename> ne podržava "
+"postavljanje UUID‑a. Posao se zanemaruje."
 
 #: jobs/setpartitionuuidjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Failed to set the system type for the file system on partition <filename>"
-#| "%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
-msgstr ""
-"Ne mogu da postavi tip sistema za fajl sistem na particiji <filename>%1</"
-"filename>."
+msgstr "Ne mogu da postavim UUID za particiju <filename>%1</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "UUID for the partition <filename>%2</filename>."
 msgstr ""
 "Ne mogu da otvorim tabelu particija na uređaju <filename>%1</filename> radi "
-"postavljanja tipa sistema za particiju <filename>%2</filename>."
+"postavljanja UUID‑a za particiju <filename>%2</filename>."
 
 #: jobs/setpartitionuuidjob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the UUID for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Ne mogu da otvorim uređaj <filename>%1</filename> radi postavljanja tipa "
-"sistema za particiju <filename>%2</filename>."
+"Ne mogu da otvorim uređaj <filename>%1</filename> radi postavljanja UUID‑a "
+"za particiju <filename>%2</filename>."
 
 # >> Job description, used as tooltip and in job lists.
 #: jobs/setpartitionuuidjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the UUID on partition <filename>%1</filename> to \"%2\""
-msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
+msgstr "Promena UUID‑a particije <filename>%1</filename> na „%2“"
 
 #: jobs/shredfilesystemjob.cpp:61
 #, kde-kuit-format
@@ -2947,45 +2868,36 @@ msgstr "Seckanje fajl sistema na <filename>%1</filename>"
 
 # skip-rule: t-setting
 #: jobs/takeownershipjob.cpp:28
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "File system on <filename>%1</filename> does not support ownership."
-msgstr ""
-"Fajl sistem na particiji <filename>%1</filename> ne podržava postavljanje "
-"etiketa. Posao se zanemaruje."
+msgstr "Fajl sistem na <filename>%1</filename> ne podržava vlasništvo."
 
 #: jobs/takeownershipjob.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Refusing to change ownership of critical mount point <filename>%1</filename>."
 msgstr ""
-"Menjanje veličine LUKS šifrovanja na particiji <filename>%1</filename>."
+"Odbijam da promenim vlasništvo nad kritičnom tačkom montiranja <filename>%1</"
+"filename>."
 
-# >> Job description, used as tooltip and in job lists.
+# >> Operation description, used as tooltip and in operation lists.
 #: jobs/takeownershipjob.cpp:60
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Taking ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
+msgstr ""
+"Preuzimanje vlasništva nad <filename>%1</filename> i njegovim sadržajem za "
+"korisnika %2"
 
-# >> Job description, used as tooltip and in job lists.
+# >> Operation description, used as tooltip and in operation lists.
 #: jobs/takeownershipjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
-msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
+msgstr "Preuzimanje vlasništva nad <filename>%1</filename> za korisnika %2"
 
 # >> Operation description, used as tooltip and in operation lists.
 #: ops/backupoperation.cpp:39
@@ -3019,8 +2931,8 @@ msgstr ""
 msgctxt "@info:status"
 msgid "Checking target partition <filename>%1</filename> after copy failed."
 msgstr ""
-"Proveravam odredišnu particiju <filename>%1</filename> nakon neuspelog "
-"kopiranja."
+"Provera odredišne particije <filename>%1</filename> nakon kopiranja nije "
+"uspela."
 
 #: ops/copyoperation.cpp:158
 #, kde-kuit-format
@@ -3107,12 +3019,10 @@ msgstr "Pravljenje nove tabele particija (tip: %1) na <filename>%2</filename>"
 
 # >> Operation description, used as tooltip and in operation lists.
 #: ops/createvolumegroupoperation.cpp:36
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid "Create a new LVM volume group."
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Create a new LVM volume group named '%1'."
-msgstr "Pravljenje nove LVM deone grupe"
+msgstr "Pravljenje nove LVM deone grupe po imenu „%1“."
 
 # >> Operation description, used as tooltip and in operation lists.
 #: ops/deactivatevolumegroupoperation.cpp:35
@@ -3443,30 +3353,26 @@ msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
 
 # >> Operation description, used as tooltip and in operation lists.
 #: ops/setpartlabeloperation.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Set GPT partition label <filename>%1</filename> to \"%2\""
-msgstr "Promena etikete particije <filename>%1</filename> na „%2“"
+msgstr "Promena etikete GPT particije <filename>%1</filename> na „%2“"
 
-# >> Job description, used as tooltip and in job lists.
+# >> Operation description, used as tooltip and in operation lists.
 #: ops/takeownershipoperation.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> and its contents for user %2"
-msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
+msgstr ""
+"Preuzimanje vlasništva nad <filename>%1</filename> i njegovim sadržajem za "
+"korisnika %2"
 
-# >> Job description, used as tooltip and in job lists.
+# >> Operation description, used as tooltip and in operation lists.
 #: ops/takeownershipoperation.cpp:75
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Set the flags for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
-msgstr "Promena zastavica particije <filename>%1</filename> na „%2“"
+msgstr "Preuzimanje vlasništva nad <filename>%1</filename> za korisnika %2"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
@@ -3488,12 +3394,10 @@ msgstr ""
 "filename>."
 
 #: plugins/sfdisk/sfdiskbackend.cpp:243
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Device found: %1"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Software RAID Device found: %1"
-msgstr "Nađen uređaj: %1"
+msgstr "Nađen softverski RAID uređaj: %1"
 
 #: plugins/sfdisk/sfdiskbackend.cpp:273
 #, kde-kuit-format
@@ -3602,70 +3506,50 @@ msgid "Command: %1 %2"
 msgstr "Naredba: %1 %2"
 
 #: util/externalcommandhelper.cpp:82
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not open device <filename>%1</filename> to rollback copying."
+#, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for reading."
-msgstr ""
-"Ne mogu da otvorim uređaj <filename>%1</filename> radi vraćanja unazad "
-"kopiranja."
+msgstr "Ne mogu da otvorim uređaj <filename>%1</filename> za čitanje."
 
 #: util/externalcommandhelper.cpp:89 util/externalcommandhelper.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not seek position %1 on device <filename>%2</filename>."
-msgstr "Ne mogu da pristupim uređaju <filename>%1</filename>"
+msgstr ""
+"Ne mogu da se postavim na položaj %1 na uređaju <filename>%2</filename>."
 
 #: util/externalcommandhelper.cpp:96
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not read from device <filename>%1</filename>."
-msgstr "Ne mogu da pristupim uređaju <filename>%1</filename>"
+msgstr "Ne mogu da čitam sa uređaja <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:114
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not open device <filename>%1</filename> to rollback copying."
+#, kde-kuit-format
 msgid "Could not open device <filename>%1</filename> for writing."
-msgstr ""
-"Ne mogu da otvorim uređaj <filename>%1</filename> radi vraćanja unazad "
-"kopiranja."
+msgstr "Ne mogu da otvorim uređaj <filename>%1</filename> za pisanje."
 
 #: util/externalcommandhelper.cpp:125
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not write to device <filename>%1</filename>."
-msgstr "Ne mogu da pristupim uređaju <filename>%1</filename>"
+msgstr "Ne mogu da pišem na uređaj <filename>%1</filename>."
 
 #: util/externalcommandhelper.cpp:151
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not open device <filename>%1</filename> to rollback copying."
+#, kde-kuit-format
 msgid "Could not open file <filename>%1</filename> for writing."
-msgstr ""
-"Ne mogu da otvorim uređaj <filename>%1</filename> radi vraćanja unazad "
-"kopiranja."
+msgstr "Ne mogu da otvorim fajl <filename>%1</filename> za pisanje."
 
 #: util/externalcommandhelper.cpp:156
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Could not access device <filename>%1</filename>"
+#, kde-kuit-format
 msgid "Could not write to file <filename>%1</filename>."
-msgstr "Ne mogu da pristupim uređaju <filename>%1</filename>"
+msgstr "Ne mogu da pišem u fajl <filename>%1</filename>."
 
 # >! Plurals.
 #: util/externalcommandhelper.cpp:237
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying %1 blocks (%2 bytes) from %3 to %4, direction: %5."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying %1 chunks (%2 bytes) from %3 to %4, direction: %5."
 msgstr ""
-"Kopiram %1 blokova (%2 bajtova) iz %3 u %4, smer: %5.|/|Kopiram %1 $[množ ^1 "
-"blok bloka blokova] (%2 $[množ ^2 bajt bajta bajtova]) iz %3 u %4, smer: %5."
+"Kopiram %1 parčića (%2 bajtova) iz %3 u %4, smer: %5.|/|Kopiram %1 $[množ ^1 "
+"parčić parčića parčića] (%2 $[množ ^2 bajt bajta bajtova]) iz %3 u %4, smer: "
+"%5."
 
 #: util/externalcommandhelper.cpp:238
 #, kde-format
@@ -3686,12 +3570,10 @@ msgid "Copying %1 MiB/second, estimated time left: %2"
 msgstr "Kopiram %1 MiB/s, procenjeno preostalo vreme: %2"
 
 #: util/externalcommandhelper.cpp:274
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Copying remainder of block size %1 from %2 to %3."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Copying remainder of chunk size %1 from %2 to %3."
-msgstr "Kopiram ostatak blokova veličine %1 sa %2 na %3."
+msgstr "Kopiram ostatak parčića veličine %1 sa %2 na %3."
 
 #: util/externalcommandhelper.cpp:288
 #, kde-format
@@ -3703,20 +3585,15 @@ msgstr[2] "%1 bajtova"
 msgstr[3] "%1 bajt"
 
 #: util/externalcommandhelper.cpp:288
-#, fuzzy, kde-kuit-format
-#| msgctxt ""
-#| "@info:progress argument 2 is a string such as 7 bytes (localized "
-#| "accordingly)"
-#| msgid "Copying 1 block (%2) finished."
-#| msgid_plural "Copying %1 blocks (%2) finished."
+#, kde-kuit-format
 msgctxt ""
 "@info:progress argument 2 is a string such as 7 bytes (localized accordingly)"
 msgid "Copying 1 chunk (%2) finished."
 msgid_plural "Copying %1 chunks (%2) finished."
-msgstr[0] "Kopiranje %1 bloka (%2) završeno."
-msgstr[1] "Kopiranje %1 bloka (%2) završeno."
-msgstr[2] "Kopiranje %1 blokova (%2) završeno."
-msgstr[3] "Kopiranje %1 bloka (%2) završeno."
+msgstr[0] "Kopiranje %1 parčića (%2) završeno."
+msgstr[1] "Kopiranje %1 parčića (%2) završeno."
+msgstr[2] "Kopiranje %1 parčića (%2) završeno."
+msgstr[3] "Kopiranje jednog parčića (%2) završeno."
 
 #: util/helpers.cpp:49
 #, kde-kuit-format
@@ -3731,12 +3608,10 @@ msgid "Library for managing partitions"
 msgstr "Biblioteka za upravljanje particijama"
 
 #: util/helpers.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "&copy; 2008-2017 KPMcore developers"
+#, kde-kuit-format
 msgctxt "@info:credit"
 msgid "&copy; 2008-2022 KPMcore developers"
-msgstr "© 2008–2017, programeri KPM‑jezgra"
+msgstr "© 2008–2022, programeri KPM‑jezgra"
 
 #: util/helpers.cpp:56
 #, kde-kuit-format
@@ -3814,25 +3689,25 @@ msgstr "Održavalac Calamaresa"
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "Caio Jordão Carvalho"
-msgstr ""
+msgstr "Caio Jordão Carvalho"
 
 #: util/helpers.cpp:62
 #, kde-format
 msgctxt "@info:credit"
 msgid "Improved SMART support"
-msgstr ""
+msgstr "Poboljšana podrška za SMART"
 
 #: util/helpers.cpp:63
 #, kde-kuit-format
 msgctxt "@info:credit"
 msgid "David Edmundson"
-msgstr ""
+msgstr "Dejvid Edmundson"
 
 #: util/helpers.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Port from KAuth to Polkit"
-msgstr ""
+msgstr "Prenos sa KAuth na Polkit"
 
 #: util/htmlreport.cpp:51 util/htmlreport.cpp:58
 #, kde-format
