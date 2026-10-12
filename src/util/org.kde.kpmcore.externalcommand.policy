@@ -38,6 +38,10 @@ SPDX-License-Identifier: CC0-1.0
       <description xml:lang="sa">विशेषाधिकारयुक्तं विभाजनप्रबन्धकसहायकं चालयन्तु</description>
       <description xml:lang="sk">Spustiť privilegovaného pomocníka správcu oddielov</description>
       <description xml:lang="sl">Zaženi pooblaščenega pomočnika skrbnika particij</description>
+      <description xml:lang="sr">Покретање помоћника менаџера партиција са овлашћењима</description>
+      <description xml:lang="sr@ijekavian">Покретање помоћника менаџера партиција са овлашћењима</description>
+      <description xml:lang="sr@ijekavianlatin">Pokretanje pomoćnika menadžera particija sa ovlašćenjima</description>
+      <description xml:lang="sr@latin">Pokretanje pomoćnika menadžera particija sa ovlašćenjima</description>
       <description xml:lang="sv">Kör hjälpverktyg för privilegierad partitionshanterare</description>
       <description xml:lang="tr">Ayrıcalıklı bölüntü yöneticisi yardımcısını çalıştırın</description>
       <description xml:lang="ug">باشقۇرغۇچى ئىجازىتىدە رايون باشقۇرغۇچ ياردەمچىسىنى ئىجرا قىلىدۇ</description>
@@ -73,6 +77,10 @@ SPDX-License-Identifier: CC0-1.0
       <message xml:lang="sa">डिस्कं प्रबन्धयितुं प्रमाणीकरणं कुर्वन्तु ।</message>
       <message xml:lang="sk">Overiť na správu diskov.</message>
       <message xml:lang="sl">Avtenticirajte se za upravljanje z diski.</message>
+      <message xml:lang="sr">Аутентификујте се да бисте управљали дисковима.</message>
+      <message xml:lang="sr@ijekavian">Аутентификујте се да бисте управљали дисковима.</message>
+      <message xml:lang="sr@ijekavianlatin">Autentifikujte se da biste upravljali diskovima.</message>
+      <message xml:lang="sr@latin">Autentifikujte se da biste upravljali diskovima.</message>
       <message xml:lang="sv">Logga in för att hantera diskar.</message>
       <message xml:lang="tr">Diskleri yönetmek için yetkilendirin</message>
       <message xml:lang="ug">دىسكا باشقۇرۇش ئۈچۈن كىملىك دەلىللەش زۆرۈر.</message>
