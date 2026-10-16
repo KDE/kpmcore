@@ -25,7 +25,9 @@ MoveFileSystemJob::MoveFileSystemJob(Device& d, Partition& p, qint64 newstart) :
     Job(),
     m_Device(d),
     m_Partition(p),
-    m_NewStart(newstart)
+    m_NewStart(newstart),
+    m_SourceFirstByte(p.fileSystem().firstByte()),
+    m_SourceLastByte(p.fileSystem().lastByte())
 {
 }
 
@@ -44,8 +46,8 @@ bool MoveFileSystemJob::run(Report& parent)
     // say we're finished: The CopyTargetDevice dtor asks the backend to close the device
     // and that may take a while.
     {
-        qint64 length = partition().fileSystem().lastByte() - partition().fileSystem().firstByte();
-        CopySourceDevice moveSource(device(), partition().fileSystem().firstByte(), partition().fileSystem().lastByte());
+        qint64 length = sourceLastByte() - sourceFirstByte();
+        CopySourceDevice moveSource(device(), sourceFirstByte(), sourceLastByte());
         CopyTargetDevice moveTarget(device(), newStart() * device().logicalSize(), newStart() * device().logicalSize() + length);
 
         if (!moveSource.open())
