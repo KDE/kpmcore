@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"POT-Creation-Date: 2026-10-16 03:04+0000\n"
 "PO-Revision-Date: 2026-06-30 09:03+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -2296,14 +2296,14 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "שגיאה"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
 msgstr "לא ניתן לפתוח את מערכת הקבצים במחיצה <filename>%1</filename> להעברה."
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2311,20 +2311,20 @@ msgid ""
 "filename>."
 msgstr "לא ניתן ליצור יעד להעברת מערכת הקבצים במחיצה <filename>%1</filename>."
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr "החזרה לאחור למערכת הקבצים שבמחיצה <filename>%1</filename> נכשלה."
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, kde-format, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
 msgstr "ההתקן נסגר. זה יכול לארוך כמה שניות."
 
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"

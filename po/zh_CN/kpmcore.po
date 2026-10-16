@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"POT-Creation-Date: 2026-10-16 03:04+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2256,14 +2256,14 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "错误"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open file system on partition <filename>%1</filename> for moving."
 msgstr "无法打开分区 <filename>%1</filename> 的文件系统进行移动。"
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2271,20 +2271,20 @@ msgid ""
 "filename>."
 msgstr "无法创建目标以移动分区 <filename>%1</filename> 的文件系统。"
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr "回滚分区 <filename>%1</filename> 的文件系统失败。"
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, kde-format, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
 msgstr "正在关闭设备。这可能需要几秒钟。"
 
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"

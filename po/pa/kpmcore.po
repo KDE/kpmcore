@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"POT-Creation-Date: 2026-10-16 03:04+0000\n"
 "PO-Revision-Date: 2013-01-05 09:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -2548,7 +2548,7 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "ਗਲਤੀ"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2561,7 +2561,7 @@ msgstr ""
 "ਟਾਰਗੇਟ ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ ਫਾਇਲ ਸਿਸਟਮ ਕਾਪੀ ਕਰਨ ਲਈ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ "
 "ਸਕਿਆ।"
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not resize file system on partition <filename>%1</filename>."
@@ -2572,7 +2572,7 @@ msgid ""
 msgstr ""
 "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ ਫਾਇਲ ਸਿਸਟਮ ਮੁੜ-ਸਾਈਜ਼ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Check file system on partition <filename>%1</filename>"
@@ -2580,7 +2580,7 @@ msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ ਫਾਇਲ ਸਿਸਟਮ ਚੈੱਕ ਕਰੋ"
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, fuzzy, kde-format, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -2589,7 +2589,7 @@ msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
 msgstr "ਜੰਤਰ ਬੰਦ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ। ਇਸ ਨੂੰ ਕੁਝ ਕੁ ਸਕਿੰਟ ਲੱਗ ਸਕਦੇ ਹਨ।"
 
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

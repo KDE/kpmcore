@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"POT-Creation-Date: 2026-10-16 03:04+0000\n"
 "PO-Revision-Date: 2009-01-06 23:32+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2632,7 +2632,7 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "エラー"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2645,7 +2645,7 @@ msgstr ""
 "移動操作のためにパーティション <filename>%1</filename> のファイルシステムを開"
 "けませんでした。"
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2659,7 +2659,7 @@ msgstr ""
 "パーティション <filename>%1</filename> のファイルシステムを移動するための行き"
 "先を作成できませんでした。"
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2670,7 +2670,7 @@ msgstr ""
 "パーティション <filename>%1</filename> のファイルシステムのロールバックに失敗"
 "しました。"
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, fuzzy, kde-format, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -2679,7 +2679,7 @@ msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
 msgstr "デバイスを閉じます。これには数秒かかる場合があります。"
 
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""

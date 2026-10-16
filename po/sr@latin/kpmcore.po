@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"POT-Creation-Date: 2026-10-16 03:04+0000\n"
 "PO-Revision-Date: 2026-10-10 13:47+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2409,7 +2409,7 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "greška"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2418,7 +2418,7 @@ msgstr ""
 "Ne mogu da otvorim fajl sistem na particiji <filename>%1</filename> radi "
 "pomeranja."
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2428,7 +2428,7 @@ msgstr ""
 "Ne mogu da napravim odredište za pomeranje fajl sistema na particiji "
 "<filename>%1</filename>."
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
@@ -2436,7 +2436,7 @@ msgstr ""
 "Vraćanje unazad za fajl sistem na particiji <filename>%1</filename> nije "
 "uspelo."
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, kde-format, kde-kuit-format
 msgctxt "@info:progress"
@@ -2444,7 +2444,7 @@ msgid "Closing device. This may take a few seconds."
 msgstr "Zatvaram uređaj. Može potrajati nekoliko sekundi."
 
 # >> Job description, used as tooltip and in job lists.
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"

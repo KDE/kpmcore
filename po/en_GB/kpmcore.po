@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"POT-Creation-Date: 2026-10-16 03:04+0000\n"
 "PO-Revision-Date: 2024-05-20 19:37+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -2348,38 +2348,38 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "Error"
 
-#: jobs/movefilesystemjob.cpp:52
-#, kde-kuit-format
-msgctxt "@info:progress"
-msgid ""
-"Could not open file system on partition <filename>%1</filename> for moving."
-msgstr ""
-"Could not open file system on partition <filename>%1</filename> for moving."
-
 #: jobs/movefilesystemjob.cpp:54
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+msgstr ""
+"Could not open file system on partition <filename>%1</filename> for moving."
+
+#: jobs/movefilesystemjob.cpp:56
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
 msgstr ""
 "Could not create target for moving file system on partition <filename>%1</"
 "filename>."
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Rollback for file system on partition <filename>%1</filename> failed."
 msgstr "Rollback for file system on partition <filename>%1</filename> failed."
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, kde-format, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
 msgstr "Closing device. This may take a few seconds."
 
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Move the file system on partition <filename>%1</filename> to sector %2"

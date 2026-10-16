@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-03 02:46+0000\n"
+"POT-Creation-Date: 2026-10-16 03:04+0000\n"
 "PO-Revision-Date: 2014-03-12 23:25+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2632,7 +2632,7 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "Fehler"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2645,7 +2645,7 @@ msgstr ""
 "Dat Dateisysteem op Partitschoon <filename>%1</filename> lett sik nich för't "
 "Verschuven opmaken."
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2659,7 +2659,7 @@ msgstr ""
 "Dat Teel för't Verschuven vun't Dateisysteem op Partitschoon <filename>%1</"
 "filename> lett sik nich opstellen."
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2670,7 +2670,7 @@ msgstr ""
 "Dat Torüchdreihen is för't Dateisysteem op Partitschoon <filename>%1</"
 "filename> fehlslaan."
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, fuzzy, kde-format, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -2679,7 +2679,7 @@ msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
 msgstr "Reedschap warrt tomaakt. Dat mag en poor Sekunnen bruken."
 
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
