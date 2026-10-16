@@ -75,7 +75,7 @@ FileSystem::SupportTool xfs::supportToolName() const
 
 qint64 xfs::minCapacity() const
 {
-    return 32 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
+    return 300 * Capacity::unitFactor(Capacity::Unit::Byte, Capacity::Unit::MiB);
 }
 
 qint64 xfs::maxCapacity() const
