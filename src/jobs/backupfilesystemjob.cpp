@@ -29,7 +29,9 @@ BackupFileSystemJob::BackupFileSystemJob(Device& sourcedevice, Partition& source
     Job(),
     m_SourceDevice(sourcedevice),
     m_SourcePartition(sourcepartition),
-    m_FileName(filename)
+    m_FileName(filename),
+    m_SourceFirstByte(sourcepartition.fileSystem().firstByte()),
+    m_SourceLastByte(sourcepartition.fileSystem().lastByte())
 {
 }
 
@@ -47,7 +49,7 @@ bool BackupFileSystemJob::run(Report& parent)
     if (sourcePartition().fileSystem().supportBackup() == FileSystem::cmdSupportFileSystem)
         rval = sourcePartition().fileSystem().backup(*report, sourceDevice(), sourcePartition().deviceNode(), fileName());
     else if (sourcePartition().fileSystem().supportBackup() == FileSystem::cmdSupportCore) {
-        CopySourceDevice copySource(sourceDevice(), sourcePartition().fileSystem().firstByte(), sourcePartition().fileSystem().lastByte());
+        CopySourceDevice copySource(sourceDevice(), sourceFirstByte(), sourceLastByte());
         CopyTargetFile copyTarget(fileName());
 
         if (!copySource.open())

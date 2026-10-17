@@ -51,10 +51,20 @@ protected:
         return m_FileName;
     }
 
+    qint64 sourceFirstByte() const {
+        return m_SourceFirstByte;
+    }
+
+    qint64 sourceLastByte() const {
+        return m_SourceLastByte;
+    }
+
 private:
     Device& m_SourceDevice;
     Partition& m_SourcePartition;
     QString m_FileName;
+    qint64 m_SourceFirstByte;
+    qint64 m_SourceLastByte;
 };
 
 #endif
