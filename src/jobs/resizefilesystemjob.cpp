@@ -38,7 +38,11 @@ ResizeFileSystemJob::ResizeFileSystemJob(Device& d, Partition& p, qint64 newleng
     m_Device(d),
     m_Partition(p),
     m_Maximize(newlength == -1),
-    m_NewLength(isMaximizing() ? partition().length() : newlength)
+    m_NewLength(isMaximizing() ? partition().length() : newlength),
+    m_SourceFirstSector(p.fileSystem().firstSector()),
+    m_SourceLastSector(p.fileSystem().lastSector()),
+    m_FileSystemLength(partition().fileSystem().length()),
+    m_PartitionLength(partition().length())
 {
 }
 
@@ -49,12 +53,12 @@ qint32 ResizeFileSystemJob::numSteps() const
 
 bool ResizeFileSystemJob::run(Report& parent)
 {
-    Q_ASSERT(partition().fileSystem().firstSector() != -1);
-    Q_ASSERT(partition().fileSystem().lastSector() != -1);
-    Q_ASSERT(newLength() <= partition().length());
+    Q_ASSERT(sourceFirstSector() != -1);
+    Q_ASSERT(sourceLastSector() != -1);
+    Q_ASSERT(newLength() <= partitionLength());
 
-    if (partition().fileSystem().firstSector() == -1 || partition().fileSystem().lastSector() == -1 || newLength() > partition().length()) {
-        qWarning() << "file system first sector: " << partition().fileSystem().firstSector() << ", last sector: " << partition().fileSystem().lastSector() << ", new length: " << newLength() << ", partition length: " << partition().length();
+    if (sourceFirstSector() == -1 || sourceLastSector() == -1 || newLength() > partitionLength()) {
+        qWarning() << "file system first sector: " << sourceFirstSector() << ", last sector: " << sourceLastSector() << ", new length: " << newLength() << ", partition length: " << partitionLength();
         return false;
     }
 
@@ -62,13 +66,13 @@ bool ResizeFileSystemJob::run(Report& parent)
 
     Report* report = jobStarted(parent);
 
-    if (partition().fileSystem().length() == newLength()) {
+    if (fileSystemLength() == newLength()) {
         report->line() << xi18ncp("@info:progress", "The file system on partition <filename>%2</filename> already has the requested length of 1 sector.", "The file system on partition <filename>%2</filename> already has the requested length of %1 sectors.", newLength(), partition().deviceNode());
         rval = true;
     } else {
-        report->line() << i18nc("@info:progress", "Resizing file system from %1 to %2 sectors.", partition().fileSystem().length(), newLength());
+        report->line() << i18nc("@info:progress", "Resizing file system from %1 to %2 sectors.", fileSystemLength(), newLength());
 
-        FileSystem::CommandSupportType support = (newLength() < partition().fileSystem().length()) ? partition().fileSystem().supportShrink() : partition().fileSystem().supportGrow();
+        FileSystem::CommandSupportType support = (newLength() < fileSystemLength()) ? partition().fileSystem().supportShrink() : partition().fileSystem().supportGrow();
 
         switch (support) {
         case FileSystem::cmdSupportBackend: {
@@ -93,7 +97,7 @@ bool ResizeFileSystemJob::run(Report& parent)
         }
 
         if (rval)
-            partition().fileSystem().setLastSector(partition().fileSystem().firstSector() + newLength() - 1);
+            partition().fileSystem().setLastSector(sourceFirstSector() + newLength() - 1);
     }
 
     jobFinished(*report, rval);

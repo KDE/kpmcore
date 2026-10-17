@@ -58,11 +58,31 @@ protected:
         return m_Maximize;
     }
 
+    qint64 sourceFirstSector() const {
+        return m_SourceFirstSector;
+    }
+
+    qint64 sourceLastSector() const {
+        return m_SourceLastSector;
+    }
+
+    qint64 partitionLength() const {
+        return m_PartitionLength;
+    }
+
+    qint64 fileSystemLength() const {
+        return m_FileSystemLength;
+    }
+
 private:
     Device& m_Device;
     Partition& m_Partition;
     bool m_Maximize;
     qint64 m_NewLength;
+    qint64 m_SourceFirstSector;
+    qint64 m_SourceLastSector;
+    qint64 m_FileSystemLength;
+    qint64 m_PartitionLength;
 };
 
 #endif
