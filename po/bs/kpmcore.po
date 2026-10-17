@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-01 00:48+0000\n"
+"POT-Creation-Date: 2026-10-17 00:53+0000\n"
 "PO-Revision-Date: 2015-01-10 12:07+0100\n"
 "Last-Translator: Samir Ribic <samir.ribic@etf.unsa.ba>\n"
 "Language-Team: Bosnian <kde-i18n-bs@kde.org>\n"
@@ -2741,7 +2741,7 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "Greška"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2754,7 +2754,7 @@ msgstr ""
 "Ne mogu da otvorim datotečni sistem na particiji <filename>%1</filename> "
 "radi pomeranja."
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2768,7 +2768,7 @@ msgstr ""
 "Ne mogu da napravim odredište za pomeranje datotečnog sistema na particiji "
 "<filename>%1</filename>."
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2779,7 +2779,7 @@ msgstr ""
 "Vraćanje unazad za datotečni sistem na particiji <filename>%1</filename> "
 "nije uspelo."
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, fuzzy, kde-format, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -2789,7 +2789,7 @@ msgid "Closing device. This may take a few seconds."
 msgstr "Zatvaram uređaj. Može potrajati nekoliko sekundi."
 
 # >> Job description, used as tooltip and in job lists.
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""

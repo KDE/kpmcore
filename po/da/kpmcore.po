@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-01 00:48+0000\n"
+"POT-Creation-Date: 2026-10-17 00:53+0000\n"
 "PO-Revision-Date: 2019-03-02 11:56+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -2741,7 +2741,7 @@ msgctxt "@info:progress job"
 msgid "Error"
 msgstr "Fejl"
 
-#: jobs/movefilesystemjob.cpp:52
+#: jobs/movefilesystemjob.cpp:54
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2754,7 +2754,7 @@ msgstr ""
 "Kunne ikke åbne filsystemet på partitionen <filename>%1</filename> til "
 "flytning."
 
-#: jobs/movefilesystemjob.cpp:54
+#: jobs/movefilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2768,7 +2768,7 @@ msgstr ""
 "Kunne ikke oprette mål for flytning af filsystem på partitionen <filename>"
 "%1</filename>."
 
-#: jobs/movefilesystemjob.cpp:63
+#: jobs/movefilesystemjob.cpp:65
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2779,7 +2779,7 @@ msgstr ""
 "Tilbagerulning for filsystemet på partitionen <filename>%1</filename> "
 "mislykkedes."
 
-#: jobs/movefilesystemjob.cpp:65 jobs/restorefilesystemjob.cpp:89
+#: jobs/movefilesystemjob.cpp:67 jobs/restorefilesystemjob.cpp:89
 #: jobs/shredfilesystemjob.cpp:66
 #, fuzzy, kde-format, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -2788,7 +2788,7 @@ msgctxt "@info:progress"
 msgid "Closing device. This may take a few seconds."
 msgstr "Lukker enhed. Dette kan vare nogle sekunder."
 
-#: jobs/movefilesystemjob.cpp:79
+#: jobs/movefilesystemjob.cpp:81
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
