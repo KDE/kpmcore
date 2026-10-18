@@ -41,8 +41,7 @@ ResizeFileSystemJob::ResizeFileSystemJob(Device& d, Partition& p, qint64 newleng
     m_NewLength(isMaximizing() ? partition().length() : newlength),
     m_SourceFirstSector(p.fileSystem().firstSector()),
     m_SourceLastSector(p.fileSystem().lastSector()),
-    m_FileSystemLength(partition().fileSystem().length()),
-    m_PartitionLength(partition().length())
+    m_FileSystemLength(partition().fileSystem().length())
 {
 }
 
@@ -55,10 +54,10 @@ bool ResizeFileSystemJob::run(Report& parent)
 {
     Q_ASSERT(sourceFirstSector() != -1);
     Q_ASSERT(sourceLastSector() != -1);
-    Q_ASSERT(newLength() <= partitionLength());
+    Q_ASSERT(newLength() <= partition().length());
 
-    if (sourceFirstSector() == -1 || sourceLastSector() == -1 || newLength() > partitionLength()) {
-        qWarning() << "file system first sector: " << sourceFirstSector() << ", last sector: " << sourceLastSector() << ", new length: " << newLength() << ", partition length: " << partitionLength();
+    if (sourceFirstSector() == -1 || sourceLastSector() == -1 || newLength() > partition().length()) {
+        qWarning() << "file system first sector: " << sourceFirstSector() << ", last sector: " << sourceLastSector() << ", new length: " << newLength() << ", partition length: " << partition().length();
         return false;
     }
 

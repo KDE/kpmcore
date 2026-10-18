@@ -66,10 +66,6 @@ protected:
         return m_SourceLastSector;
     }
 
-    qint64 partitionLength() const {
-        return m_PartitionLength;
-    }
-
     qint64 fileSystemLength() const {
         return m_FileSystemLength;
     }
@@ -82,7 +78,6 @@ private:
     qint64 m_SourceFirstSector;
     qint64 m_SourceLastSector;
     qint64 m_FileSystemLength;
-    qint64 m_PartitionLength;
 };
 
 #endif
