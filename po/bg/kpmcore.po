@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2026-09-14 17:40+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -2164,7 +2164,7 @@ msgstr ""
 "Преоразмеряването на файловата система XFS на дял <filename>%1</filename> е "
 "неуспешно: първоначалното монтиране е неуспешно."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2174,13 +2174,13 @@ msgstr ""
 "Не може да се отвори файловата система на изходния дял <filename>%1</"
 "filename> за архивиране (backup)."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Не може да се създаде архивният файл <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2568,7 +2568,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Премахване на група от томове (Volume Group): <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2584,19 +2584,19 @@ msgstr[1] ""
 "Файловата система на дял <filename>%2</filename> вече има желаната дължина "
 "от %1 сектора."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Преоразмеряване на файловата система от %1 на %2 сектора."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "Преоразмеряване на файлова система %1 чрез вътрешни бекенд функции."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2606,14 +2606,14 @@ msgstr ""
 "Файловата система на дял <filename>%1</filename> не може да бъде "
 "преоразмерена, тъй като липсва поддръжка за нея."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 "Файловата система е преоразмерена успешно чрез вътрешни бекенд функции."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2623,7 +2623,7 @@ msgstr ""
 "Не може да се отвори дял <filename>%1</filename> при опита за "
 "преоразмеряване на файловата система."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2633,7 +2633,7 @@ msgstr ""
 "Не може да се прочете геометрията на дял <filename>%1</filename> при опита "
 "за преоразмеряване на файловата система."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2641,7 +2641,7 @@ msgstr ""
 "Максимално разширяване на файловата система на <filename>%1</filename> до "
 "запълване на целия дял"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

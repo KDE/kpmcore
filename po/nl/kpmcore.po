@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2026-09-14 09:39+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -2177,7 +2177,7 @@ msgstr ""
 "Grootte wijzigen van XFS bestandssysteem op partitie <filename>%1</filename> "
 "is mislukt: initieel aankoppelen is mislukt."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2187,13 +2187,13 @@ msgstr ""
 "Kon bestandssysteem op de bronpartitie <filename>%1</filename> niet openen "
 "voor het maken van een reservekopie."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Kon reservekopiebestand <filename>%1</filename> niet aanmaken."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2575,7 +2575,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Volumegroep verwijderen: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2591,13 +2591,13 @@ msgstr[1] ""
 "Het bestandssysteem op partitie <filename>%2</filename> heeft al de "
 "gevraagde lengte van %1 sectoren."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Grootte wijzigen van bestandssysteem van %1 naar %2 sectoren."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2605,7 +2605,7 @@ msgstr ""
 "Grootte wijzigen van een %1-bestandssysteem met interne functies van de "
 "backend."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2615,7 +2615,7 @@ msgstr ""
 "Het bestandssysteem op partitie <filename>%1</filename> kan niet in grootte "
 "gewijzigd worden omdat er geen ondersteuning voor is."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2623,7 +2623,7 @@ msgstr ""
 "Bestandssysteem met succes van grootte gewijzigd met gebruik van interne "
 "functies van de backend."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2633,7 +2633,7 @@ msgstr ""
 "Kon de partitie <filename>%1</filename> niet openen terwijl gepoogd werd om "
 "het bestandssysteem te van grootte te wijzigen."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2643,7 +2643,7 @@ msgstr ""
 "Kon de geometie niet lezen van partitie <filename>%1</filename> terwijl "
 "gepoogd werd het bestandssysteem van grootte te wijzigen."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2651,7 +2651,7 @@ msgstr ""
 "Maximaliseer bestandssysteem op <filename>%1</filename> om de partitie te "
 "vullen"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

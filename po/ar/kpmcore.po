@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2026-09-15 17:33+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -2101,7 +2101,7 @@ msgstr ""
 "فشل تغيير حجم نظام ملفات XFS في القسم <filename>%1</filename>: فشل الوصل "
 "الابتدائي."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2111,13 +2111,13 @@ msgstr ""
 "تعذّر فتح نظام الملفات على القسم المصدر <filename>%1</filename> للنسخ "
 "الاحتياطي."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "تعذّر إنشاء ملف النسخ الاحتياطي <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2472,7 +2472,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "أزل مجموعة وحدات التخزين: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2500,19 +2500,19 @@ msgstr[5] ""
 "نظام الملفات في القسم <filename>%2</filename> لديه فعلًا الطول المطلوب (%1 "
 "قطاع)."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "تغيير حجم نظام الملفات من %1 إلى %2 قطاع."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "يغيّر حجم نظام ملفات %1 باستخدام دوال التتبّع الخلفي الداخلية."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2522,13 +2522,13 @@ msgstr ""
 "تعذّر تغيير حجم نظام الملفات في القسم <filename>%1</filename> لأن ذلك غير "
 "متاح."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "غُيّر حجم نظام الملفات باستخدام دوال التتبّع الخلفي الداخلية بنجاح."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2537,7 +2537,7 @@ msgid ""
 msgstr ""
 "تعذّر فتح القسم <filename>%1</filename> أثناء محاولة تغيير حجم نظام الملفات"
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2547,13 +2547,13 @@ msgstr ""
 "تعذّرت قراءة أبعاد القسم <filename>%1</filename> أثناء محاولة تغيير حجم نظام "
 "الملفات"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "تكبير نظام الملفات على <filename>%1</filename> لملء القسم"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

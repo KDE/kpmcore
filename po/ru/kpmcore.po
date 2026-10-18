@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2026-09-23 21:24+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2178,7 +2178,7 @@ msgstr ""
 "Ошибка изменения размера файловой системы XFS на разделе <filename>%1</"
 "filename>: первоначальное подключение не удалось."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2188,13 +2188,13 @@ msgstr ""
 "Не удалось открыть файловую систему на исходном разделе <filename>%1</"
 "filename> для резервного копирования."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Не удалось создать резервную копию <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2575,7 +2575,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Удаление группы томов: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2597,20 +2597,20 @@ msgstr[3] ""
 "Файловая системы на разделе <filename>%2</filename> уже имеет требуемый "
 "размер в %1 сектор."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Изменение размера файловой системы с %1 до %2 секторов."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 "Изменение размера файловой системы %1 с использованием внутренних функций."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2620,14 +2620,14 @@ msgstr ""
 "Операция изменения размера не поддерживается для файловой системы на разделе "
 "<filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 "Успешно изменён размер файловой системы с использованием внутренних функций."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2637,7 +2637,7 @@ msgstr ""
 "Не удалось открыть раздел <filename>%1</filename>, так как не завершено "
 "изменение размера файловой системы."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2647,13 +2647,13 @@ msgstr ""
 "Не удалось считать геометрию раздела <filename>%1</filename>, так как не "
 "завершено изменение размера файловой системы."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "Расширить файловую систему <filename>%1</filename> на весь раздел"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

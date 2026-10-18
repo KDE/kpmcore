@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2018-07-30 18:58+0100\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <kde-i18n-lt@kde.org>\n"
@@ -2111,7 +2111,7 @@ msgstr ""
 "Nepavyko pakeisti XFS failų sistemos dydžio skaidinyje <filename>%1</"
 "filename>: nepavyko prijungti laikino aplanko."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not resize file system on partition <filename>%1</filename>."
@@ -2122,13 +2122,13 @@ msgid ""
 msgstr ""
 "Nepavyko pakeisti failų sistemos dydžio skaidinyje <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Nepavyko sukurti atsarginės kopijos failo <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2544,7 +2544,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Pašalinti tomų grupę: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
@@ -2563,13 +2563,13 @@ msgstr[1] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
 msgstr[2] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
 msgstr[3] "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Keičiamas failų sistemos dydis nuo %1 iki %2 sektorių."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2577,7 +2577,7 @@ msgstr ""
 "Keičiamas %1 failų sistemos dydis naudojant vidines galinės sąsajos "
 "funkcijas."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
@@ -2590,7 +2590,7 @@ msgid ""
 msgstr ""
 "Pakeisti failų sistemą skaidinyje <filename>%2</filename> į %1 sektorių"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2598,7 +2598,7 @@ msgstr ""
 "Sėkmingai pakeistas failų sistemos dydis naudojant vidines galinės sąsajos "
 "funkcijas."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2608,7 +2608,7 @@ msgstr ""
 "Nepavyko atverti skaidinio <filename>%1</filename>, bandant keisti failų "
 "sistemos dydį."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not delete partition <filename>%1</filename>."
@@ -2618,7 +2618,7 @@ msgid ""
 "to resize the file system."
 msgstr "Nepavyko ištrinti skaidinio <filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
@@ -2629,7 +2629,7 @@ msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
 "Pakeisti failų sistemą skaidinyje <filename>%2</filename> į %1 sektorių"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

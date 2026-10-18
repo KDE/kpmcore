@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2016-04-08 22:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -1997,7 +1997,7 @@ msgid ""
 "Initial mount failed."
 msgstr "Tengipunktur:"
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2005,13 +2005,13 @@ msgid ""
 "backup."
 msgstr "Tengipunktur:"
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Tengipunktur:"
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2342,7 +2342,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Tengipunktur:"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2354,19 +2354,19 @@ msgid_plural ""
 msgstr[0] "Tengipunktur:"
 msgstr[1] "Tengipunktur:"
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2374,13 +2374,13 @@ msgid ""
 "because there is no support for it."
 msgstr "Tengipunktur:"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2388,7 +2388,7 @@ msgid ""
 "file system."
 msgstr "Tengipunktur:"
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2396,13 +2396,13 @@ msgid ""
 "to resize the file system."
 msgstr "Tengipunktur:"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "Tengipunktur:"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

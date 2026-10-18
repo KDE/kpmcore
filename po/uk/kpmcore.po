@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2026-09-14 19:51+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -2173,7 +2173,7 @@ msgstr ""
 "Спроба зміни розміру файлової системи XFS на розділі диска <filename>%1</"
 "filename> зазнала невдачі: невдала спроба початкового монтування."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2183,13 +2183,13 @@ msgstr ""
 "Не вдалося відкрити файлову систему на вихідному розділі <filename>%1</"
 "filename> для створення резервної копії."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Не вдалося створити файл резервної копії <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2572,7 +2572,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Вилучення групи томів: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2594,20 +2594,20 @@ msgstr[3] ""
 "Файлова система на розділі <filename>%2</filename> вже має потрібну довжину "
 "у %1 сектор."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Зміна розміну файлової системи з %1 до %2 секторів."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 "Зміна розміру файлової системи %1 за допомогою вбудованих функцій сервера."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2617,7 +2617,7 @@ msgstr ""
 "Файлова система на розділі <filename>%1</filename> не підлягає зміні "
 "розміру, оскільки така дія не передбачена для цієї файлової системи."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2625,7 +2625,7 @@ msgstr ""
 "Розмір файлової системи успішно змінено за допомогою вбудованих функцій "
 "сервера."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2635,7 +2635,7 @@ msgstr ""
 "Під час спроби змінити розмір файлової системи не вдалося відкрити розділ "
 "<filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2645,7 +2645,7 @@ msgstr ""
 "Під час спроби змінити розмір файлової системи не вдалося прочитати дані про "
 "геометрію розділу <filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2653,7 +2653,7 @@ msgstr ""
 "Збільшення розміру файлової системи на <filename>%1</filename> до "
 "максимального дозволеного розділом"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

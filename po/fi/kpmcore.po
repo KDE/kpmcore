@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2025-07-28 11:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -2124,7 +2124,7 @@ msgstr ""
 "Osion <filename>%1</filename> XFS-tiedostojärjestelmän koon "
 "muuttaminenepäonnistui: alustava liittäminen epäonnistui."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2134,13 +2134,13 @@ msgstr ""
 "Lähdeosion <filename>%1</filename> tiedostojärjestelmää ei voitu avata "
 "varmuuskopioitavaksi."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Varmuuskopiotiedostoa <filename>%1</filename> ei voitu avata."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2517,7 +2517,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Poista taltioryhmä: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2533,13 +2533,13 @@ msgstr[1] ""
 "Osion <filename>%2</filename> tiedostojärjestelmän koko on jo pyydetyt %1 "
 "sektoria."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Muutetaan tiedostojärjestelmän kokoa %1 sektorista %2 sektoriin."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing a %1 file system using internal backend functions."
@@ -2548,7 +2548,7 @@ msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 "Muutetaan %1-tiedostojärjestelmän kokoa sisäisen taustaosan toiminnoin."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2558,7 +2558,7 @@ msgstr ""
 "Osion <filename>%1</filename> tiedostojärjestelmän kokoa ei voi muuttaa, "
 "koska toimenpidettä ei tueta."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2566,7 +2566,7 @@ msgstr ""
 "Tiedostojärjestelmän koon muuttaminen onnistui sisäisen taustaosan "
 "toiminnoin."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2576,7 +2576,7 @@ msgstr ""
 "Osiota <filename>%1</filename> ei voitu avata tiedostojärjestelmän koon "
 "muuttamiseksi."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2586,14 +2586,14 @@ msgstr ""
 "Osion <filename>%1</filename> geometriaa ei voitu lukea tiedostojärjestelmän "
 "koon muuttamiseksi."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
 "Kasvata laitteen <filename>%1</filename> tiedostojärjestelmä osion kokoon"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

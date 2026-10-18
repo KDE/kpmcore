@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2015-01-10 12:07+0100\n"
 "Last-Translator: Samir Ribic <samir.ribic@etf.unsa.ba>\n"
 "Language-Team: Bosnian <kde-i18n-bs@kde.org>\n"
@@ -2270,7 +2270,7 @@ msgstr ""
 "Mijenjanje veličine IksFS datotečnog sistema na particiji <filename>%1</"
 "filename> nije uspelo: početno montiranje nije uspelo."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2284,7 +2284,7 @@ msgstr ""
 "Ne mogu da otvorim datotečni sistem na izvornoj particiji <filename>%1</"
 "filename> radi arhiviranja."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not create backup file <filename>%1</filename>."
@@ -2293,7 +2293,7 @@ msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Ne mogu da napravim datoteku arhive <filename>%1</filename>."
 
 # >> Job description, used as tooltip and in job lists.
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2814,7 +2814,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "montiraj na <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2840,7 +2840,7 @@ msgstr[2] ""
 "Datoteka sistem na particiji <filename>%2</filename> već ima traženu dužinu "
 "od %1 sektora."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -2848,7 +2848,7 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Mijenjam veličinu datotečnog sistema sa %1 na %2 sektora."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing a %1 file system using internal backend functions."
@@ -2858,7 +2858,7 @@ msgstr ""
 "Mijenjam velicinu %1 sistemskog fajla koristeci funkcije pozadinskih "
 "programa."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2872,7 +2872,7 @@ msgstr ""
 "Datoteka sistemu na particiji <filename>%1</filename> ne može se mijenjati "
 "veličina jer ta mogućnost nije podržana."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Successfully resized file system using internal backend functions."
@@ -2882,7 +2882,7 @@ msgstr ""
 "Uspijesno promijenjena velicina sistemskog fajla koristeci funkcije "
 "pozadinskih programa."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2896,7 +2896,7 @@ msgstr ""
 "Ne mogu da otvorim particiju <filename>%1</filename> pri pokušaju promjene "
 "veličine datotečnog sistema."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2911,7 +2911,7 @@ msgstr ""
 "pokušaju promjene veličine datotečnog sistema."
 
 # >> Job description, used as tooltip and in job lists.
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2923,7 +2923,7 @@ msgstr ""
 "particije"
 
 # >> Job description, used as tooltip and in job lists.
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

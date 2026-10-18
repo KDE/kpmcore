@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2013-04-01 17:45+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -2065,7 +2065,7 @@ msgid ""
 "Initial mount failed."
 msgstr "नवीन विभाजन"
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"
@@ -2075,7 +2075,7 @@ msgid ""
 "backup."
 msgstr "नवीन विभाजन"
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"
@@ -2083,7 +2083,7 @@ msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "नवीन विभाजन"
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"
@@ -2488,7 +2488,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "नवीन विभाजन"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"
@@ -2502,19 +2502,19 @@ msgid_plural ""
 msgstr[0] "नवीन विभाजन"
 msgstr[1] "नवीन विभाजन"
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"
@@ -2524,13 +2524,13 @@ msgid ""
 "because there is no support for it."
 msgstr "नवीन विभाजन"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2538,7 +2538,7 @@ msgid ""
 "file system."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"
@@ -2548,7 +2548,7 @@ msgid ""
 "to resize the file system."
 msgstr "नवीन विभाजन"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"
@@ -2556,7 +2556,7 @@ msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "नवीन विभाजन"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, fuzzy, kde-kuit-format
 #| msgctxt "@item partition name"
 #| msgid "New Partition"

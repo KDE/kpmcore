@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2025-02-12 07:01+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -2130,7 +2130,7 @@ msgstr ""
 "Regrandigo de XFS-dosiersistemo sur diskparto <filename>%1</filename> "
 "malsukcesis: Komenca muntado malsukcesis."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2140,13 +2140,13 @@ msgstr ""
 "Ne eblis malfermi dosiersistemon sur fontdisko <filename>%1</filename> por "
 "sekurkopio."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Ne eblis krei rezervan dosieron <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2524,7 +2524,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Forigi Voluman Grupon: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2540,19 +2540,19 @@ msgstr[1] ""
 "La dosiersistemo en subdisko <filename>%2</filename> jam havas la postulitan "
 "longecon de %1 sektoroj."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Regrandigi dosiersistemon de %1 al %2 sektoroj."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "Regrandigi %1 dosiersistemon uzante internajn malantaŭajn funkciojn."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2562,14 +2562,14 @@ msgstr ""
 "La dosiersistemo sur subdisko <filename>%1</filename> ne povas esti "
 "regrandigita ĉar ne ekzistas subteno por ĝi."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 "Sukcese regrandigi dosiersistemon uzante internajn malantaŭajn funkciojn."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2579,7 +2579,7 @@ msgstr ""
 "Ne eblis malfermi diskparton <filename>%1</filename> dum provo regrandigi la "
 "dosiersistemon."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2589,7 +2589,7 @@ msgstr ""
 "Ne eblis legi geometrion por subdisko <filename>%1</filename> provante "
 "aligrandigi la dosiersistemon."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2597,7 +2597,7 @@ msgstr ""
 "Maksimumigi dosiersistemon sur <filename>%1</filename> por plenigi la "
 "subdiskon"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

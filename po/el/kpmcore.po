@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2023-01-07 16:04+0200\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -2177,7 +2177,7 @@ msgstr ""
 "Η αλλαγή μεγέθους του συστήματος αρχείων XFS στην κατάτμηση <filename>%1</"
 "filename> απέτυχε: Αποτυχία αρχικής προσάρτησης."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2187,14 +2187,14 @@ msgstr ""
 "Αδυναμία ανοίγματος του συστήματος αρχείων στην πηγαία κατάτμηση <filename>"
 "%1</filename> για δημιουργία εφεδρικού αντιγράφου."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr ""
 "Αδυναμία δημιουργίας αρχείου εφεδρικού αντιγράφου <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2578,7 +2578,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Διαγραφή ομάδας τόμων: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2594,13 +2594,13 @@ msgstr[1] ""
 "Το σύστημα αρχείων στην κατάτμηση <filename>%2</filename> έχει ήδη το "
 "ζητούμενο μέγεθος των %1 τομέων."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Αλλαγή μεγέθους συστήματος αρχείων από %1 σε %2 τομείς."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2608,7 +2608,7 @@ msgstr ""
 "Αλλαγή μεγέθους ενός συστήματος αρχείων %1 με χρήση εσωτερικών λειτουργιών "
 "του συστήματος υποστήριξης."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2618,7 +2618,7 @@ msgstr ""
 "Το σύστημα αρχείων στην κατάτμηση <filename>%1</filename> δεν μπορεί να "
 "αλλάξει μέγεθος καθώς δεν υπάρχει υποστήριξη γι' αυτό."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2626,7 +2626,7 @@ msgstr ""
 "Επιτυχής αλλαγή μεγέθους του συστήματος αρχείων με χρήση εσωτερικών "
 "λειτουργιών του συστήματος υποστήριξης."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2636,7 +2636,7 @@ msgstr ""
 "Αδυναμία ανοίγματος της κατάτμησης <filename>%1</filename> κατά την "
 "προσπάθεια αλλαγής μεγέθους του συστήματος αρχείων."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2646,7 +2646,7 @@ msgstr ""
 "Αδυναμία ανάγνωσης γεωμετρίας της κατάτμησης <filename>%1</filename> κατά "
 "την προσπάθεια αλλαγής μεγέθους του συστήματος αρχείων."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2654,7 +2654,7 @@ msgstr ""
 "Μεγιστοποίηση συστήματος αρχείων στο <filename>%1</filename> για τη "
 "συμπλήρωση της κατάτμησης"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

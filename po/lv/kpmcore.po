@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2009-01-11 18:55+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -2240,7 +2240,7 @@ msgstr ""
 "Neizdevās mainīt XFS failu sistēmas izmēru sadaļā <filename>%1</filename>: "
 "Neizdevās piemontēt."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2254,7 +2254,7 @@ msgstr ""
 "Neizdevās atvērt kopēšanai failu sistēmu avota sadaļā <filename>%1</"
 "filename>."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Could not open file <filename>%1</filename> for writing."
@@ -2262,7 +2262,7 @@ msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Neizdevās atvērt failu <filename>%1</filename> rakstīšanai."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2757,7 +2757,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "piemontēta <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2780,7 +2780,7 @@ msgstr[2] ""
 "Neizdevās mainīt JFS failu sistēmas izmēru sadaļā <filename>%1</filename>: "
 "Neizdevās izveidot pagaidu mapi."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Restoring file system failed."
@@ -2788,13 +2788,13 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Failu sistēmas atjaunošana neveiksmīga."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2808,13 +2808,13 @@ msgstr ""
 "Neizdevās mainīt JFS failu sistēmas izmēru sadaļā <filename>%1</filename>: "
 "Neizdevās izveidot pagaidu mapi."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Could not open file <filename>%1</filename> for writing."
@@ -2824,7 +2824,7 @@ msgid ""
 "file system."
 msgstr "Neizdevās atvērt failu <filename>%1</filename> rakstīšanai."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2838,7 +2838,7 @@ msgstr ""
 "Neizdevās atvērt kopēšanai failu sistēmu mērķa sadaļā <filename>%1</"
 "filename>."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2850,7 +2850,7 @@ msgstr ""
 "Neizdevās mainīt JFS failu sistēmas izmēru sadaļā <filename>%1</filename>: "
 "Neizdevās pārmontēt."
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""

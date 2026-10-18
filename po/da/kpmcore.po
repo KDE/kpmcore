@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2019-03-02 11:56+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -2283,7 +2283,7 @@ msgstr ""
 "Det mislykkedes at ændre XFS-filsystemets størrelse på partitionen <filename>"
 "%1</filename>: Første montering mislykkedes."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2297,7 +2297,7 @@ msgstr ""
 "Kunne ikke åbne filsystemet på kildepartitionen <filename>%1</filename> til "
 "backup."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not create backup file <filename>%1</filename>."
@@ -2305,7 +2305,7 @@ msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "Kunne ikke oprette backup-filen <filename>%1</filename>."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2811,7 +2811,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "monteret på <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2834,7 +2834,7 @@ msgstr[1] ""
 "Filsystemet på partitionen <filename>%2</filename> har allerede den "
 "forespurgte længde på %1 sektorer."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -2842,7 +2842,7 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Ændrer størrelse på filsystem fra %1 til %2 sektorer."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing a %1 file system using internal backend functions."
@@ -2850,7 +2850,7 @@ msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "Ændrer størrelse på et %1-filsystem med interne backend-funktioner."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2864,7 +2864,7 @@ msgstr ""
 "Filsystemets størrelse på partitionen <filename>%1</filename> kan ikke "
 "ændres, da dette ikke understøttes."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Successfully resized file system using internal backend functions."
@@ -2872,7 +2872,7 @@ msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "Filsystemets størrelse er ændret med interne backend-funktioner."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2886,7 +2886,7 @@ msgstr ""
 "Kunne ikke åbne partitionen <filename>%1</filename> under forsøg på at ændre "
 "filsystemets størrelse."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2900,7 +2900,7 @@ msgstr ""
 "Kunne ikke læse geometri for partitionen <filename>%1</filename> under "
 "forsøg på at ændre filsystemets størrelse."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2910,7 +2910,7 @@ msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
 "Forstør filsystemet på <filename>%1</filename> til at fylde partitionen"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

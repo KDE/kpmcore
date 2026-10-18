@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2026-09-14 10:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -2180,7 +2180,7 @@ msgstr ""
 "Ha fallat la redimensió de la partició <filename>%1</filename> al sistema de "
 "fitxers XFS: ha fallat el muntatge inicial."
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2190,14 +2190,14 @@ msgstr ""
 "No s'ha pogut obrir el sistema de fitxers a la partició d'origen <filename>"
 "%1</filename> per a fer una còpia de seguretat."
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr ""
 "No s'ha pogut crear el fitxer <filename>%1</filename> de còpia de seguretat."
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2583,7 +2583,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Elimina el grup de volums: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2599,13 +2599,13 @@ msgstr[1] ""
 "El sistema de fitxers de la partició <filename>%2</filename> ja té la "
 "longitud sol·licitada de %1 sectors."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Redimensiona el sistema de fitxers des de %1 fins a %2 sectors."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2613,7 +2613,7 @@ msgstr ""
 "S'està redimensionant un sistema de fitxers %1 usant les funcions internes "
 "del dorsal."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2623,7 +2623,7 @@ msgstr ""
 "El sistema de fitxers a la partició <filename>%1</filename> no es pot "
 "redimensionar perquè no admet aquesta funció."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2631,7 +2631,7 @@ msgstr ""
 "El sistema de fitxers s'ha redimensionat amb èxit usant funcions internes "
 "del dorsal."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2641,7 +2641,7 @@ msgstr ""
 "No s'ha pogut obrir la partició <filename>%1</filename> en provar de "
 "redimensionar el sistema de fitxers."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2651,7 +2651,7 @@ msgstr ""
 "No s'ha pogut llegir la geometria de la partició <filename>%1</filename> en "
 "provar de redimensionar la partició."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2659,7 +2659,7 @@ msgstr ""
 "Maximitza el sistema de fitxers a <filename>%1</filename> per a omplir la "
 "partició"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

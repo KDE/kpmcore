@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-17 00:53+0000\n"
+"POT-Creation-Date: 2026-10-18 00:52+0000\n"
 "PO-Revision-Date: 2009-01-06 23:32+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2246,7 +2246,7 @@ msgstr ""
 "パーティション <filename>%1</filename> の XFS ファイルシステムのリサイズに失"
 "敗: 最初のマウントに失敗しました。"
 
-#: jobs/backupfilesystemjob.cpp:54
+#: jobs/backupfilesystemjob.cpp:56
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2260,7 +2260,7 @@ msgstr ""
 "バックアップ操作のために元のパーティション <filename>%1</filename> のファイル"
 "システムを開けませんでした。"
 
-#: jobs/backupfilesystemjob.cpp:56
+#: jobs/backupfilesystemjob.cpp:58
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Could not create backup file <filename>%1</filename>."
@@ -2268,7 +2268,7 @@ msgctxt "@info:progress"
 msgid "Could not create backup file <filename>%1</filename>."
 msgstr "バックアップファイル <filename>%1</filename> を作成できませんでした。"
 
-#: jobs/backupfilesystemjob.cpp:68
+#: jobs/backupfilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2778,7 +2778,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "新しいパーティション <filename>%1</filename> を作成"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:70
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -2791,7 +2791,7 @@ msgid_plural ""
 "requested length of %1 sectors."
 msgstr[0] "ファイルシステムをセクター数 %1 から %2 にリサイズしています。"
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:73
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -2799,7 +2799,7 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "ファイルシステムをセクター数 %1 から %2 にリサイズしています。"
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:80
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing a %1 file system using LibParted internal functions."
@@ -2807,7 +2807,7 @@ msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "%1 ファイルシステムを LibParted の内部機能を使ってリサイズしています。"
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:95
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2821,7 +2821,7 @@ msgstr ""
 "パーティション <filename>%1</filename> のファイルシステムのリサイズはサポート"
 "されていません。"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:123
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Successfully resized file system using LibParted."
@@ -2829,7 +2829,7 @@ msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "LibParted を使ってファイルシステムをリサイズしました。"
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:127
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2843,7 +2843,7 @@ msgstr ""
 "ファイルシステムのリサイズ操作のためにパーティション <filename>%1</filename> "
 "を開けませんでした。"
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:130
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2857,7 +2857,7 @@ msgstr ""
 "ファイルシステムのリサイズ操作のためにパーティション <filename>%1</filename> "
 "の位置情報を読み取れませんでした。"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:138
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2867,7 +2867,7 @@ msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
 "<filename>%1</filename> のファイルシステムをパーティションいっぱいに最大化"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:140
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
