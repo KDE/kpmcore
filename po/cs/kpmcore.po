@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2026-08-01 12:01+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -2405,7 +2405,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Odstranit skupinu svazků: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2424,13 +2424,13 @@ msgstr[2] ""
 "Souborový systém na oddílu <filename>%2</filename> již má požadovanou délku "
 "%1 sektorů."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Změna velikosti souborového systému z %1 na %2 sektorů."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2438,7 +2438,7 @@ msgstr ""
 "Změna velikosti souborového systému %1 pomocí interních funkcí podpůrné "
 "vrstvy."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2448,7 +2448,7 @@ msgstr ""
 "Velikost souborového systému na oddílu <filename>%1</filename> nelze změnit, "
 "protože tato funkce není podporována."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2456,7 +2456,7 @@ msgstr ""
 "Velikost souborového systému se pomocí interních funkcí podpůrné vrstvy "
 "úspěšně změnila."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2466,7 +2466,7 @@ msgstr ""
 "Při pokusu o změnu velikosti souborového systému se nepodařilo otevřít oddíl "
 "<filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2476,7 +2476,7 @@ msgstr ""
 "Při pokusu o změnu velikosti souborového systému se nepodařilo načíst "
 "geometrii oddílu <filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2484,7 +2484,7 @@ msgstr ""
 "Maximalizovat souborový systém na <filename>%1</filename>, aby se zaplnil "
 "oddíl"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

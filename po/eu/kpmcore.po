@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2026-07-14 23:48+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -2428,7 +2428,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Kendu bolumen taldea: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2444,13 +2444,13 @@ msgstr[1] ""
 "<filename>%2</filename> partizioko fitxategi-sistemak, jada, eskatutako %1 "
 "sektoreko luzera du."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Fitxategi-sistema %1(e)tik %2 sektorera neurriz aldatzen."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2458,7 +2458,7 @@ msgstr ""
 "Barneko bizkarraldeko funtzioak erabiliz %1 fitxategi-sistema bat neurriz "
 "aldatzen."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2468,7 +2468,7 @@ msgstr ""
 "<filename>%1</filename> partizioko fitxategi-sistema ezin da neurriz aldatu, "
 "horretarako euskarririk ez dagoelako."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2476,7 +2476,7 @@ msgstr ""
 "Fitxategi-sistema neurriz ondo aldatu du, barneko bizkarraldeko funtzioak "
 "erabiliz."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2486,7 +2486,7 @@ msgstr ""
 "Ezin izan du <filename>%1</filename> partizioa, fitxategi-sistema neurriz "
 "aldatzen saiatu bitartean, ireki."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2496,14 +2496,14 @@ msgstr ""
 "Ezin izan du <filename>%1</filename> partizioko geometria, fitxategi-sistema "
 "neurriz aldatzen saiatu bitartean, irakurri."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
 "Maximizatu <filename>%1</filename>(e)ko fitxategi-sistema partizioa betetzeko"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

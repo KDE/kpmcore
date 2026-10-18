@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -2370,7 +2370,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "वॉल्यूम समूह हटाएँ: <फ़ाइलनाम>%1</फ़ाइलनाम>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2386,19 +2386,19 @@ msgstr[1] ""
 "विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम में पहले से ही अनुरोधित लंबाई %1 सेक्टर "
 "है।"
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "फ़ाइल सिस्टम का आकार %1 से %2 सेक्टर में बदला जा रहा है।"
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "आंतरिक बैकएंड फ़ंक्शन का उपयोग करके %1 फ़ाइल सिस्टम का आकार बदलना।"
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2408,13 +2408,13 @@ msgstr ""
 "विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम का आकार बदला नहीं जा सकता क्योंकि "
 "इसके लिए कोई समर्थन नहीं है।"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "आंतरिक बैकएंड फ़ंक्शन का उपयोग करके फ़ाइल सिस्टम का आकार सफलतापूर्वक बदला गया।"
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2424,7 +2424,7 @@ msgstr ""
 "फ़ाइल सिस्टम का आकार बदलने का प्रयास करते समय विभाजन <filename>%1</filename> को "
 "खोला नहीं जा सका."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2434,13 +2434,13 @@ msgstr ""
 "फ़ाइल सिस्टम का आकार बदलने का प्रयास करते समय विभाजन <filename>%1</filename> के "
 "लिए ज्यामिति नहीं पढ़ी जा सकी।"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "विभाजन को भरने के लिए <filename>%1</filename> पर फ़ाइल सिस्टम को अधिकतम करें"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

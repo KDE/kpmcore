@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2010-03-06 19:47+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2659,7 +2659,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "ถูกเมานท์ไว้ที่ <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2678,7 +2678,7 @@ msgid_plural ""
 msgstr[0] ""
 "ระบบแฟ้มบนพาร์ทิชัน <filename>%2</filename> มีความยาว %1 เซกเตอร์ ตามที่ร้องขอมาอยู่แล้ว"
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -2686,7 +2686,7 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "ทำการปรับขนาดระบบแฟ้มจาก %1 เป็น %2 เซกเตอร์"
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing a %1 file system using internal backend functions."
@@ -2694,7 +2694,7 @@ msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "ทำการปรับขนาดระบบแฟ้ม %1 โดยใช้ฟังก์ชันภายในของแบ็กเอนด์"
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2708,7 +2708,7 @@ msgstr ""
 "ระบบแฟ้มบนพาร์ทิชัน <filename>%1</filename> ไม่สามารถทำการปรับขนาดได้ "
 "เนื่องจากระบบแฟ้มนี้ไม่รองรับการปรับขนาด"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Successfully resized file system using internal backend functions."
@@ -2716,7 +2716,7 @@ msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "ทำการปรับขนาดระบบแฟ้มโดยใช้ฟังก์ชันภายในของแบ็กเอนด์เสร็จเรียบร้อยแล้ว"
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2729,7 +2729,7 @@ msgid ""
 msgstr ""
 "ไม่สามารถเปิดพาร์ทิชัน <filename>%1</filename> ในระหว่างพยายามปรับขนาดระบบแฟ้มได้"
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2743,7 +2743,7 @@ msgstr ""
 "ไม่สามารถอ่านค่าตำแหน่งของพาร์ทิชัน <filename>%1</filename> ได้ "
 "ในระหว่างพยายามปรับขนาดระบบแฟ้ม"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2752,7 +2752,7 @@ msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "ปรับขนาดระบบแฟ้มบน <filename>%1</filename> ให้ใหญ่ที่สุดเต็มพาร์ทิชัน"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

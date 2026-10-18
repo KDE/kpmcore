@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2026-06-26 06:40+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2432,7 +2432,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Odstrani skupino nosilcev: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2454,13 +2454,13 @@ msgstr[3] ""
 "Datotečni sistem na razdelku <filename>%2</filename> ima že zahtevano "
 "velikost %1 sektorje."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Spreminjanje velikosti datotečnega sistema iz %1 na %2 sektorjev."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2468,7 +2468,7 @@ msgstr ""
 "Spreminjanje velikosti datotečnega sistema %1 z uporabo funkcij notranjega "
 "zaledja."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2478,7 +2478,7 @@ msgstr ""
 "Datotečnemu sistemu na razdelku <filename>%1</filename> ni mogoče spremeniti "
 "velikosti, ker zanj ni podpore."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2486,7 +2486,7 @@ msgstr ""
 "Spreminjanje velikosti datotečnega sistema z uporabo funkcij notranjega "
 "zaledja je uspelo."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2496,7 +2496,7 @@ msgstr ""
 "Med poskusom spremembe velikosti datotečnega sistema ni bilo mogoče odpreti "
 "razdelka <filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2506,7 +2506,7 @@ msgstr ""
 "Med poskusom spremembe velikosti datotečnega sistema ni bilo mogoče prebrati "
 "geometrije za razdelek <filename>%1</filename>."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2514,7 +2514,7 @@ msgstr ""
 "Razpni datotečni sistem na <filename>%1</filename> tako da bo zapolnil "
 "razdelek"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

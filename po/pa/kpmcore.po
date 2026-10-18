@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2013-01-05 09:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -2613,7 +2613,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "<filename>%1</filename> ਉੱਤੇ ਮਾਉਂਟ ਕੀਤਾ"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2634,7 +2634,7 @@ msgstr[0] ""
 msgstr[1] ""
 "ਪਾਰਟੀਸ਼ਨ <filename>%2</filename> ਉੱਤੇ ਫਾਇਲ ਸਿਸਟਮ ਦੀ ਲੰਬਾਈ ਪਹਿਲਾਂ ਹੀ %1 ਸੈਕਟਰ ਹੈ।"
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Restoring file system failed."
@@ -2642,7 +2642,7 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "ਫਾਇਲ ਸਿਸਟਮ ਰੀ-ਸਟੋਰ ਕਰਨ ਲਈ ਫੇਲ੍ਹ।"
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Successfully resized file system using internal backend functions."
@@ -2650,7 +2650,7 @@ msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "ਅੰਦਰੂਨੀ ਬੈਕਐਂਡ ਫੰਕਸ਼ਨਾਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਫਾਇਲ-ਸਿਸਟਮ ਦਾ ਆਕਾਰ ਠੀਕ ਤਰ੍ਹਾਂ ਬਦਲਿਆ ਗਿਆ।"
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -2663,7 +2663,7 @@ msgid ""
 msgstr ""
 "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ ਫਾਇਲ ਸਿਸਟਮ ਅਣ-ਮਾਊਂਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Successfully resized file system using internal backend functions."
@@ -2671,7 +2671,7 @@ msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "ਅੰਦਰੂਨੀ ਬੈਕਐਂਡ ਫੰਕਸ਼ਨਾਂ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਫਾਇਲ-ਸਿਸਟਮ ਦਾ ਆਕਾਰ ਠੀਕ ਤਰ੍ਹਾਂ ਬਦਲਿਆ ਗਿਆ।"
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2685,7 +2685,7 @@ msgstr ""
 "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਨੂੰ ਲਿਖਣ ਲਈ ਖੋਲ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ, ਜਦੋਂ ਕਿ NTFS ਬੂਟ "
 "ਸੈਕਟਰ ਅੱਪਡੇਟ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ।"
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2699,7 +2699,7 @@ msgstr ""
 "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ ਨਵਾਂ ਸ਼ੁਰੂ ਸੈਕਟਰ ਲਿਖਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ, ਜਦੋਂ NTFS ਬੂਟ "
 "ਸੈਕਟਰ ਅੱਪਡੇਟ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ।"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
@@ -2709,7 +2709,7 @@ msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "ਪਾਰਟੀਸ਼ਨ <filename>%2</filename> ਫਾਇਲ ਸਿਸਟਮ ਨੂੰ 1 ਸੈਕਟਰ ਲਈ ਮੁੜ-ਅਕਾਰ ਦਿੱਤਾ।"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

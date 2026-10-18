@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2356,7 +2356,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "आयतनसमूहं निष्कासयन्तु: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2372,19 +2372,19 @@ msgstr[1] ""
 "विभाजने <filename>%2</filename> इत्यत्र सञ्चिकातन्त्रे पूर्वमेव %1 सेक्टर् इत्यस्य "
 "अनुरोधितदीर्घता अस्ति ।"
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "सञ्चिकातन्त्रस्य आकारं %1 तः %2 क्षेत्रेषु परिवर्तनम् ।"
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "आन्तरिकपृष्ठभागकार्यस्य उपयोगेन %1 सञ्चिकातन्त्रस्य आकारं परिवर्तयितुं ।"
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2394,13 +2394,13 @@ msgstr ""
 "<filename>%1</filename> विभाजने स्थितस्य सञ्चिकातन्त्रस्य आकारं परिवर्तयितुं न शक्यते यतः "
 "तस्य समर्थनं नास्ति ।"
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "आन्तरिकपृष्ठभागकार्यस्य उपयोगेन सञ्चिकातन्त्रस्य आकारं सफलतया परिवर्तितम् ।"
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2410,7 +2410,7 @@ msgstr ""
 "सञ्चिकातन्त्रस्य आकारं परिवर्तयितुं प्रयतमाने <filename>%1</filename> विभाजनं उद्घाटयितुं "
 "न शक्तम् ।"
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2420,13 +2420,13 @@ msgstr ""
 "सञ्चिकातन्त्रस्य आकारं परिवर्तयितुं प्रयतमाने <filename>%1</filename> विभाजनस्य "
 "ज्यामितिः पठितुं न शक्तवान् ।"
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "विभाजनं पूरयितुं <filename>%1</filename> इत्यत्र सञ्चिकातन्त्रं अधिकतमं कुर्वन्तु"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

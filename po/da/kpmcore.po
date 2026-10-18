@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-16 03:04+0000\n"
+"POT-Creation-Date: 2026-10-18 03:05+0000\n"
 "PO-Revision-Date: 2019-03-02 11:56+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish\n"
@@ -2691,7 +2691,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "monteret på <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:66
+#: jobs/resizefilesystemjob.cpp:69
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2714,7 +2714,7 @@ msgstr[1] ""
 "Filsystemet på partitionen <filename>%2</filename> har allerede den "
 "forespurgte længde på %1 sektorer."
 
-#: jobs/resizefilesystemjob.cpp:69
+#: jobs/resizefilesystemjob.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -2722,7 +2722,7 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Ændrer størrelse på filsystem fra %1 til %2 sektorer."
 
-#: jobs/resizefilesystemjob.cpp:76
+#: jobs/resizefilesystemjob.cpp:79
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing a %1 file system using internal backend functions."
@@ -2730,7 +2730,7 @@ msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "Ændrer størrelse på et %1-filsystem med interne backend-funktioner."
 
-#: jobs/resizefilesystemjob.cpp:91
+#: jobs/resizefilesystemjob.cpp:94
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2744,7 +2744,7 @@ msgstr ""
 "Filsystemets størrelse på partitionen <filename>%1</filename> kan ikke "
 "ændres, da dette ikke understøttes."
 
-#: jobs/resizefilesystemjob.cpp:119
+#: jobs/resizefilesystemjob.cpp:122
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Successfully resized file system using internal backend functions."
@@ -2752,7 +2752,7 @@ msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "Filsystemets størrelse er ændret med interne backend-funktioner."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:126
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2766,7 +2766,7 @@ msgstr ""
 "Kunne ikke åbne partitionen <filename>%1</filename> under forsøg på at ændre "
 "filsystemets størrelse."
 
-#: jobs/resizefilesystemjob.cpp:126
+#: jobs/resizefilesystemjob.cpp:129
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2780,7 +2780,7 @@ msgstr ""
 "Kunne ikke læse geometri for partitionen <filename>%1</filename> under "
 "forsøg på at ændre filsystemets størrelse."
 
-#: jobs/resizefilesystemjob.cpp:134
+#: jobs/resizefilesystemjob.cpp:137
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2790,7 +2790,7 @@ msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr ""
 "Forstør filsystemet på <filename>%1</filename> til at fylde partitionen"
 
-#: jobs/resizefilesystemjob.cpp:136
+#: jobs/resizefilesystemjob.cpp:139
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
