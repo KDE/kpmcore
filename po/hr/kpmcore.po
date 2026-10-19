@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:52+0000\n"
+"POT-Creation-Date: 2026-10-19 00:49+0000\n"
 "PO-Revision-Date: 2010-01-21 11:18+0100\n"
 "Last-Translator: Andrej Dundović <adundovi@gmail.com>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -2498,7 +2498,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Informacije o particijama"
 
-#: jobs/resizefilesystemjob.cpp:70
+#: jobs/resizefilesystemjob.cpp:69
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Partition Information"
@@ -2513,19 +2513,19 @@ msgstr[0] "Informacije o particijama"
 msgstr[1] "Informacije o particijama"
 msgstr[2] "Informacije o particijama"
 
-#: jobs/resizefilesystemjob.cpp:73
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:80
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:95
+#: jobs/resizefilesystemjob.cpp:94
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Partition Information"
@@ -2535,13 +2535,13 @@ msgid ""
 "because there is no support for it."
 msgstr "Informacije o particijama"
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:127
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2549,7 +2549,7 @@ msgid ""
 "file system."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:130
+#: jobs/resizefilesystemjob.cpp:129
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Partition Information"
@@ -2559,7 +2559,7 @@ msgid ""
 "to resize the file system."
 msgstr "Informacije o particijama"
 
-#: jobs/resizefilesystemjob.cpp:138
+#: jobs/resizefilesystemjob.cpp:137
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Partition Information"
@@ -2567,7 +2567,7 @@ msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "Informacije o particijama"
 
-#: jobs/resizefilesystemjob.cpp:140
+#: jobs/resizefilesystemjob.cpp:139
 #, fuzzy, kde-kuit-format
 #| msgctxt "@title:window"
 #| msgid "Partition Information"

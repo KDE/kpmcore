@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:52+0000\n"
+"POT-Creation-Date: 2026-10-19 00:49+0000\n"
 "PO-Revision-Date: 2026-10-16 20:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -2538,7 +2538,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Disk bölümü grubunu kaldır: <filename>%1</filename> "
 
-#: jobs/resizefilesystemjob.cpp:70
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2554,13 +2554,13 @@ msgstr[1] ""
 "<filename>%2</filename> bölüntüsü üzerindeki dosya sistemi zaten istenen %1 "
 "uzunluklu dilime iye."
 
-#: jobs/resizefilesystemjob.cpp:73
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Dosya sistemi %1 dilimden %2 dilime yeniden boyutlandırılıyor."
 
-#: jobs/resizefilesystemjob.cpp:80
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2568,7 +2568,7 @@ msgstr ""
 "Dahili arka uç işlevleri kullanılarak bir %1 dosya sistemi yeniden "
 "boyutlandırılıyor."
 
-#: jobs/resizefilesystemjob.cpp:95
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2578,7 +2578,7 @@ msgstr ""
 "<filename>%1</filename> birimi üzerindeki dosya sistemi, desteklenmediği "
 "için yeniden boyutlandırılamadı."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2586,7 +2586,7 @@ msgstr ""
 "Dosya sistemi, iç arka uç işlevleri kullanılarak başarılı bir şekilde "
 "yeniden boyutlandırıldı."
 
-#: jobs/resizefilesystemjob.cpp:127
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2595,7 +2595,7 @@ msgid ""
 msgstr ""
 "Dosya sistemi boyutlandırılırken <filename>%1</filename> bölüntüsü açılamadı."
 
-#: jobs/resizefilesystemjob.cpp:130
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2605,7 +2605,7 @@ msgstr ""
 "Dosya sistemi boyutlandırılırken <filename>%1</filename> bölüntü geometrisi "
 "okunamadı."
 
-#: jobs/resizefilesystemjob.cpp:138
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2613,7 +2613,7 @@ msgstr ""
 "Bölüntüyü doldurmak için <filename>%1</filename> üzerindeki dosya sistemini "
 "en büyük yap"
 
-#: jobs/resizefilesystemjob.cpp:140
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

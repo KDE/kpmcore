@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:52+0000\n"
+"POT-Creation-Date: 2026-10-19 00:49+0000\n"
 "PO-Revision-Date: 2026-10-10 13:47+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -2583,7 +2583,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Уклањање деоне групе: <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:70
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2605,19 +2605,19 @@ msgstr[3] ""
 "Фајл систем на партицији <filename>%2</filename> већ има тражену дужину од "
 "%1 сектора."
 
-#: jobs/resizefilesystemjob.cpp:73
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Мењам величину фајл система са %1 на %2 сектора."
 
-#: jobs/resizefilesystemjob.cpp:80
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr "Мењам величину %1 фајл система помоћу унутрашњих функција позадине."
 
-#: jobs/resizefilesystemjob.cpp:95
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2627,14 +2627,14 @@ msgstr ""
 "Фајл систему на партицији <filename>%1</filename> не може се мењати величина "
 "јер та могућност није подржана."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 "Успешно промењена величина фајл система помоћу унутрашњих функција позадине."
 
-#: jobs/resizefilesystemjob.cpp:127
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2644,7 +2644,7 @@ msgstr ""
 "Не могу да отворим партицију <filename>%1</filename> при покушају промене "
 "величине фајл система."
 
-#: jobs/resizefilesystemjob.cpp:130
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2655,7 +2655,7 @@ msgstr ""
 "покушају промене величине фајл система."
 
 # >> Job description, used as tooltip and in job lists.
-#: jobs/resizefilesystemjob.cpp:138
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2663,7 +2663,7 @@ msgstr ""
 "Повећавање фајл система на <filename>%1</filename> до испуњавања партиције"
 
 # >> Job description, used as tooltip and in job lists.
-#: jobs/resizefilesystemjob.cpp:140
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

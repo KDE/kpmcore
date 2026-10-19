@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:52+0000\n"
+"POT-Creation-Date: 2026-10-19 00:49+0000\n"
 "PO-Revision-Date: 2014-03-12 23:25+0100\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2782,7 +2782,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "inhangt op <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:70
+#: jobs/resizefilesystemjob.cpp:69
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2805,7 +2805,7 @@ msgstr[1] ""
 "Dat Dateisysteem op Partitschoon <filename>%2</filename> hett al de anfraagt "
 "Längde vun %1 Sektoren."
 
-#: jobs/resizefilesystemjob.cpp:73
+#: jobs/resizefilesystemjob.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Resizing file system from %1 to %2 sectors."
@@ -2813,7 +2813,7 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "De Grött vun't Dateisysteem warrt vun %1 op %2 Sektoren ännert."
 
-#: jobs/resizefilesystemjob.cpp:80
+#: jobs/resizefilesystemjob.cpp:79
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2821,7 +2821,7 @@ msgstr ""
 "De Grött vun en %1-Dateisysteem warrt mit intern LibParted-Funkschonen "
 "ännert."
 
-#: jobs/resizefilesystemjob.cpp:95
+#: jobs/resizefilesystemjob.cpp:94
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2835,13 +2835,13 @@ msgstr ""
 "De Grött vun't Dateisysteem op Partitschoon <filename>%1</filename> lett sik "
 "nich ännern, dor gifft dat keen Ünnerstütten för."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:122
 #, fuzzy, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr "Grött vun't Dateisysteem mit Spood mit LibParted ännert."
 
-#: jobs/resizefilesystemjob.cpp:127
+#: jobs/resizefilesystemjob.cpp:126
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2855,7 +2855,7 @@ msgstr ""
 "Partitschoon <filename>%1</filename> lett sik nich opmaken, bides de Grött "
 "vun't Dateisysteem ännert warrt."
 
-#: jobs/resizefilesystemjob.cpp:130
+#: jobs/resizefilesystemjob.cpp:129
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2869,7 +2869,7 @@ msgstr ""
 "Geometrie för Partitschoon <filename>%1</filename> lett sik nich lesen, "
 "bides de Grött vun't Dateisysteem ännert warrt."
 
-#: jobs/resizefilesystemjob.cpp:138
+#: jobs/resizefilesystemjob.cpp:137
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2880,7 +2880,7 @@ msgstr ""
 "Dateisysteem op <filename>%1</filename> so utwiedern, dat de Partitschoon "
 "vull warrt"
 
-#: jobs/resizefilesystemjob.cpp:140
+#: jobs/resizefilesystemjob.cpp:139
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Resize file system on partition <filename>%2</filename> to 1 sector"

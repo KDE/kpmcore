@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:52+0000\n"
+"POT-Creation-Date: 2026-10-19 00:49+0000\n"
 "PO-Revision-Date: 2021-05-15 17:40+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -2729,7 +2729,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "montată pe <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:70
+#: jobs/resizefilesystemjob.cpp:69
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -2751,7 +2751,7 @@ msgstr[2] ""
 "Sistemul de fișiere de pe partiția <filename>%1</filename> nu a putut fi "
 "montat."
 
-#: jobs/resizefilesystemjob.cpp:73
+#: jobs/resizefilesystemjob.cpp:72
 #, fuzzy, kde-format
 #| msgctxt "@info/plain"
 #| msgid "Restoring file system failed."
@@ -2759,13 +2759,13 @@ msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Restabilirea sistemului de fișiere a eșuat."
 
-#: jobs/resizefilesystemjob.cpp:80
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:95
+#: jobs/resizefilesystemjob.cpp:94
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -2779,13 +2779,13 @@ msgstr ""
 "Sistemul de fișiere de pe partiția <filename>%1</filename> nu a putut fi "
 "demontat."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
 msgstr ""
 
-#: jobs/resizefilesystemjob.cpp:127
+#: jobs/resizefilesystemjob.cpp:126
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2799,7 +2799,7 @@ msgstr ""
 "Nu s-a putut deschide pentru scriere partiția <filename>%1</filename> la "
 "actualizarea sectorului de demarare NTFS."
 
-#: jobs/resizefilesystemjob.cpp:130
+#: jobs/resizefilesystemjob.cpp:129
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
@@ -2813,7 +2813,7 @@ msgstr ""
 "Nu s-a putut scrie noul sector de început pe partiția <filename>%1</"
 "filename> la actualizarea sectorului de demarare NTFS."
 
-#: jobs/resizefilesystemjob.cpp:138
+#: jobs/resizefilesystemjob.cpp:137
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Create filesystem %1 on partition <filename>%2</filename>"
@@ -2821,7 +2821,7 @@ msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
 msgstr "Creează sistemul de fișiere %1 pe partiția <filename>%2</filename>"
 
-#: jobs/resizefilesystemjob.cpp:140
+#: jobs/resizefilesystemjob.cpp:139
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Create filesystem %1 on partition <filename>%2</filename>"

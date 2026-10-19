@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-18 00:52+0000\n"
+"POT-Creation-Date: 2026-10-19 00:49+0000\n"
 "PO-Revision-Date: 2026-09-15 07:22+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -2632,7 +2632,7 @@ msgctxt "@info/plain"
 msgid "Remove Volume Group: <filename>%1</filename>"
 msgstr "Supprimer le groupe de volumes : <filename>%1</filename>"
 
-#: jobs/resizefilesystemjob.cpp:70
+#: jobs/resizefilesystemjob.cpp:69
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2648,13 +2648,13 @@ msgstr[1] ""
 "Le système de fichiers sur la partition <filename>%2</filename> a déjà la "
 "taille demandée de %1 secteurs."
 
-#: jobs/resizefilesystemjob.cpp:73
+#: jobs/resizefilesystemjob.cpp:72
 #, kde-format
 msgctxt "@info:progress"
 msgid "Resizing file system from %1 to %2 sectors."
 msgstr "Redimensionnement du système de fichiers de %1 à %2 secteurs."
 
-#: jobs/resizefilesystemjob.cpp:80
+#: jobs/resizefilesystemjob.cpp:79
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing a %1 file system using internal backend functions."
@@ -2662,7 +2662,7 @@ msgstr ""
 "Redimensionnement d'un système de fichiers %1 à l'aide des fonctions du "
 "moteur interne."
 
-#: jobs/resizefilesystemjob.cpp:95
+#: jobs/resizefilesystemjob.cpp:94
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2672,7 +2672,7 @@ msgstr ""
 "Impossible de redimensionner le système de fichiers sur la partition "
 "<filename>%1</filename> car il n'est pas pris en charge."
 
-#: jobs/resizefilesystemjob.cpp:123
+#: jobs/resizefilesystemjob.cpp:122
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Successfully resized file system using internal backend functions."
@@ -2680,7 +2680,7 @@ msgstr ""
 "Le redimensionnement du système de fichiers à l'aide des fonctions du moteur "
 "interne a réussi."
 
-#: jobs/resizefilesystemjob.cpp:127
+#: jobs/resizefilesystemjob.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2690,7 +2690,7 @@ msgstr ""
 "Impossible d'ouvrir la partition <filename>%1</filename> en essayant de "
 "redimensionner le système de fichiers."
 
-#: jobs/resizefilesystemjob.cpp:130
+#: jobs/resizefilesystemjob.cpp:129
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -2700,7 +2700,7 @@ msgstr ""
 "Impossible de lire la géométrie de la partition <filename>%1</filename> en "
 "essayant de redimensionner le système de fichiers."
 
-#: jobs/resizefilesystemjob.cpp:138
+#: jobs/resizefilesystemjob.cpp:137
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Maximize file system on <filename>%1</filename> to fill the partition"
@@ -2708,7 +2708,7 @@ msgstr ""
 "Maximiser le système de fichiers sur <filename>%1</filename> pour remplir la "
 "partition"
 
-#: jobs/resizefilesystemjob.cpp:140
+#: jobs/resizefilesystemjob.cpp:139
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resize file system on partition <filename>%2</filename> to 1 sector"
