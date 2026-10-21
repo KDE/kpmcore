@@ -1,0 +1,45 @@
+{
+  "json_format_version": [1, 0],
+  "smartctl": {
+    "version": [7, 4],
+    "messages": [{"string": "Read Error Information Log failed: Invalid Field in Command (0x002)", "severity": "error"}],
+    "exit_status": 76
+  },
+  "device": {"name": "/dev/nvme2n1", "info_name": "/dev/nvme2n1", "type": "nvme", "protocol": "NVMe"},
+  "model_name": "Worn NVMe SSD",
+  "serial_number": "W0000000001",
+  "firmware_version": "2.0",
+  "user_capacity": {"blocks": 1953525168, "bytes": 1000204886016},
+  "smart_support": {"available": true, "enabled": true},
+  "smart_status": {"passed": false, "nvme": {"value": 5, "spare_below_threshold": true, "reliability_degraded": true}},
+  "nvme_smart_health_information_log": {
+    "critical_warning": 5,
+    "temperature": 41,
+    "available_spare": 4,
+    "available_spare_threshold": 10,
+    "percentage_used": 117,
+    "data_units_read": 12345678901234568,
+    "data_units_read_s": "12345678901234567",
+    "data_units_written": 1000000,
+    "host_reads": 3.402823669209385e+38,
+    "host_reads_s": "340282366920938463463374607431768211455",
+    "host_writes": 9007199254740993,
+    "host_writes_s": "9007199254740993",
+    "controller_busy_time": 4321,
+    "power_cycles": 1500,
+    "power_on_hours": 26000,
+    "unsafe_shutdowns": 87,
+    "media_errors": 3,
+    "num_err_log_entries": 12
+  },
+  "temperature": {"current": 41},
+  "power_cycle_count": 1500,
+  "power_on_time": {"hours": 26000},
+  "nvme_self_test_log": {
+    "current_self_test_operation": {"value": 0, "string": "No self-test in progress"},
+    "table": [
+      {"self_test_code": {"value": 2, "string": "Extended"}, "self_test_result": {"value": 7, "string": "Completed: failed segments"}, "power_on_hours": 25990},
+      {"self_test_code": {"value": 1, "string": "Short"}, "self_test_result": {"value": 0, "string": "Completed without error"}, "power_on_hours": 20000}
+    ]
+  }
+}

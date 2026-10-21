@@ -7,6 +7,9 @@
 #ifndef KPMCORE_SMARTPARSER_H
 #define KPMCORE_SMARTPARSER_H
 
+#include "core/smartstatus.h"
+
+#include <QByteArray>
 #include <QJsonDocument>
 #include <QString>
 
@@ -21,11 +24,24 @@ class SmartDiskInformation;
 class SmartParser
 {
 public:
+    enum ExitStatusBit {
+        CommandLineError = 0x01,
+        DeviceOpenError = 0x02,
+        DeviceCommandError = 0x04,
+        DiskFailing = 0x08,
+        PrefailAttributeBelowThreshold = 0x10,
+        AttributeBelowThresholdInPast = 0x20,
+        ErrorLogHasErrors = 0x40,
+        SelfTestLogHasErrors = 0x80,
+    };
+
+public:
     explicit SmartParser(const QString &device_path);
     ~SmartParser();
 
 public:
     bool init();
+    bool init(const QByteArray &output, int exitStatus);
 
 public:
     const QString &devicePath() const
@@ -39,13 +55,24 @@ public:
     }
 
 protected:
-    void loadSmartOutput();
+    bool loadSmartOutput();
+
+    bool parseSmartOutput(const QByteArray &output);
+
+    bool loadDiskInformation();
 
     void loadAttributes();
+
+    void loadNvmeHealth();
+
+    void loadCommonValues();
+
+    SmartStatus::SelfTestStatus loadSelfTestStatus() const;
 
 private:
     const QString m_DevicePath;
     QJsonDocument m_SmartOutput;
+    int m_ExitStatus;
     SmartDiskInformation *m_DiskInformation;
 
 };

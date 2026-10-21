@@ -32,7 +32,9 @@ set(CORE_SRC
     core/smartattribute.cpp
     core/smartparser.cpp
     core/smartattributeparseddata.cpp
+    core/smartdetails.cpp
     core/smartdiskinformation.cpp
+    core/smartnvmehealth.cpp
     core/volumemanagerdevice.cpp
     ${RAID_SRC}
 )
@@ -51,6 +53,8 @@ set(CORE_LIB_HDRS
     core/partitionrole.h
     core/partitiontable.h
     core/smartattribute.h
+    core/smartdetails.h
+    core/smartnvmehealth.h
     core/smartstatus.h
     core/volumemanagerdevice.h
     ${RAID_LIB_HDRS}

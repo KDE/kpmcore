@@ -76,3 +76,11 @@ find_package(Qt6Test REQUIRED)
 kpm_test(test_fstab test_fstab.cpp)
 add_test(NAME test_fstab COMMAND test_fstab)
 target_link_libraries(test_fstab Qt6::Test)
+
+kpm_test(test_smartparser test_smartparser.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/smartparser.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/smartdiskinformation.cpp
+    ${CMAKE_SOURCE_DIR}/src/core/smartattributeparseddata.cpp
+)
+add_test(NAME test_smartparser COMMAND test_smartparser)
+target_link_libraries(test_smartparser Qt6::Test)

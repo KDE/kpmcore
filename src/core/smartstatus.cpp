@@ -21,7 +21,6 @@
 #include <QString>
 #include <QStringList>
 
-#include <errno.h>
 #include <utility>
 
 SmartStatus::SmartStatus(const QString &device_path) :
@@ -32,7 +31,7 @@ SmartStatus::SmartStatus(const QString &device_path) :
     m_Serial(),
     m_Firmware(),
     m_Overall(Overall::Bad),
-    m_SelfTestStatus(SelfTestStatus::Success),
+    m_SelfTestStatus(SelfTestStatus::Unknown),
     m_Temp(0),
     m_BadSectors(0),
     m_PowerCycles(0),
@@ -43,10 +42,23 @@ SmartStatus::SmartStatus(const QString &device_path) :
 
 void SmartStatus::update()
 {
+    setInitSuccess(false);
+    setStatus(false);
+    setModelName(QString());
+    setSerial(QString());
+    setFirmware(QString());
+    setOverall(Overall::Bad);
+    setSelfTestStatus(SelfTestStatus::Unknown);
+    setTemp(0);
+    setBadSectors(0);
+    setPowerCycles(0);
+    setPoweredOn(0);
+    m_Attributes.clear();
+
     SmartParser parser(devicePath());
 
     if (!parser.init()) {
-        qDebug() << "error during smart output parsing for " << devicePath() << ": " << strerror(errno);
+        qDebug() << "could not read SMART data of" << devicePath();
         return;
     }
 
@@ -73,6 +85,9 @@ void SmartStatus::update()
 
 QString SmartStatus::tempToString(quint64 mkelvin)
 {
+    if (mkelvin == 0)
+        return xi18nc("@item:intable", "unknown");
+
     const double celsius = (mkelvin - 273150.0) / 1000.0;
     const double fahrenheit = 9.0 * celsius / 5.0 + 32;
     return xi18nc("@item:intable degrees in Celsius and Fahrenheit", "%1° C / %2° F",
@@ -109,9 +124,18 @@ QString SmartStatus::selfTestStatusToString(SmartStatus::SelfTestStatus s)
     case SelfTestStatus::InProgress:
         return xi18nc("@item", "Self test in progress");
 
+    case SelfTestStatus::NotSupported:
+        return xi18nc("@item", "Not supported");
+
+    case SelfTestStatus::NoResults:
+        return xi18nc("@item", "No self test results");
+
     case SelfTestStatus::Success:
-    default:
         return xi18nc("@item", "Success");
+
+    case SelfTestStatus::Unknown:
+    default:
+        return xi18nc("@item", "Unknown");
     }
 
 }

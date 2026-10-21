@@ -45,6 +45,9 @@ public:
         ErrorRead,
         ErrorHandling,
         InProgress = 15,
+        NotSupported,
+        NoResults,
+        Unknown,
     };
 
 public:

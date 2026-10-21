@@ -1,0 +1,54 @@
+{
+  "json_format_version": [1, 0],
+  "smartctl": {
+    "version": [7, 4],
+    "argv": ["smartctl", "--all", "--json", "/dev/nvme0n1"],
+    "exit_status": 0
+  },
+  "local_time": {"time_t": 1792540800, "asctime": "Wed Oct 21 12:00:00 2026 UTC"},
+  "device": {"name": "/dev/nvme0n1", "info_name": "/dev/nvme0n1", "type": "nvme", "protocol": "NVMe"},
+  "model_name": "QEMU NVMe Ctrl",
+  "serial_number": "deadbeef",
+  "firmware_version": "7.2.22",
+  "nvme_pci_vendor": {"id": 6966, "subsystem_id": 6900},
+  "nvme_ieee_oui_identifier": 5376442,
+  "nvme_controller_id": 0,
+  "nvme_version": {"string": "1.4", "value": 66560},
+  "nvme_number_of_namespaces": 256,
+  "nvme_namespaces": [
+    {
+      "id": 1,
+      "size": {"blocks": 41943040, "bytes": 21474836480},
+      "capacity": {"blocks": 41943040, "bytes": 21474836480},
+      "utilization": {"blocks": 41943040, "bytes": 21474836480},
+      "formatted_lba_size": 512,
+      "eui64": {"oui": 0, "ext_id": 0}
+    }
+  ],
+  "user_capacity": {"blocks": 41943040, "bytes": 21474836480},
+  "logical_block_size": 512,
+  "smart_support": {"available": true, "enabled": true},
+  "smart_status": {"passed": true, "nvme": {"value": 0}},
+  "nvme_smart_health_information_log": {
+    "critical_warning": 0,
+    "temperature": 50,
+    "available_spare": 0,
+    "available_spare_threshold": 0,
+    "percentage_used": 0,
+    "data_units_read": 0,
+    "data_units_written": 0,
+    "host_reads": 0,
+    "host_writes": 0,
+    "controller_busy_time": 0,
+    "power_cycles": 0,
+    "power_on_hours": 0,
+    "unsafe_shutdowns": 0,
+    "media_errors": 0,
+    "num_err_log_entries": 0,
+    "warning_temp_time": 0,
+    "critical_comp_time": 0
+  },
+  "temperature": {"current": 50},
+  "power_cycle_count": 0,
+  "power_on_time": {"hours": 0}
+}

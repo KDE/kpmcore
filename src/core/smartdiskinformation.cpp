@@ -23,10 +23,14 @@ SmartDiskInformation::SmartDiskInformation() :
     m_BadSectors(0),
     m_PoweredOn(0),
     m_PowerCycles(0),
+    m_TemperatureValid(false),
+    m_PoweredOnValid(false),
+    m_PowerCyclesValid(false),
+    m_Nvme(false),
     m_SmartStatus(false),
     m_BadAttributeNow(false),
     m_BadAttributeInThePast(false),
-    m_SelfTestExecutionStatus(SmartStatus::SelfTestStatus::Success),
+    m_SelfTestExecutionStatus(SmartStatus::SelfTestStatus::Unknown),
     m_Overall(SmartStatus::Overall::Bad)
 {
 }
@@ -34,6 +38,11 @@ SmartDiskInformation::SmartDiskInformation() :
 /** Update the number of bad sectors based on reallocated sector count and current pending sector attributes data */
 void SmartDiskInformation::updateBadSectors()
 {
+    if (!badSectorsValid()) {
+        m_BadSectors = 0;
+        return;
+    }
+
     std::unique_ptr<SmartAttributeParsedData> reallocatedSectorCt(findAttribute(5));
     std::unique_ptr<SmartAttributeParsedData> currentPendingSector(findAttribute(197));
 
@@ -50,6 +59,11 @@ void SmartDiskInformation::updateBadSectors()
 /** Update SMART overall data based on the quantity of bad sectors and the status of SMART attributes */
 void SmartDiskInformation::updateOverall()
 {
+    if (isNvme()) {
+        updateNvmeOverall();
+        return;
+    }
+
     if (!smartStatus()) {
         m_Overall = SmartStatus::Overall::Bad;
         return;
@@ -82,6 +96,20 @@ void SmartDiskInformation::updateOverall()
     m_Overall = SmartStatus::Overall::Good;
 }
 
+void SmartDiskInformation::updateNvmeOverall()
+{
+    const quint64 warning = m_NvmeHealth.value(SmartNvmeHealth::Field::CriticalWarning).value_or(0);
+
+    if (warning & ~quint64(SmartNvmeHealth::TemperatureThreshold))
+        m_Overall = SmartStatus::Overall::Bad;
+    else if (warning & SmartNvmeHealth::TemperatureThreshold)
+        m_Overall = SmartStatus::Overall::BadNow;
+    else if (!smartStatus())
+        m_Overall = SmartStatus::Overall::Bad;
+    else
+        m_Overall = SmartStatus::Overall::Good;
+}
+
 /** Update the temperature value based on SMART attributes
     @return a boolean representing the status of the operation
 */
@@ -93,16 +121,16 @@ bool SmartDiskInformation::updateTemperature()
 
     if (temperatureCelsius != nullptr
             && temperatureCelsius->prettyUnit() == SmartAttributeUnit::Milikelvin) {
-        m_Temperature = temperatureCelsius->prettyValue();
+        setTemperature(temperatureCelsius->prettyValue());
         return true;
     } else if (temperatureCelsius2 != nullptr
                && temperatureCelsius2->prettyUnit() == SmartAttributeUnit::Milikelvin) {
-        m_Temperature = temperatureCelsius2->prettyValue();
+        setTemperature(temperatureCelsius2->prettyValue());
         return true;
     } else if (airflowTemperatureCelsius != nullptr
                && airflowTemperatureCelsius->prettyUnit() ==
                SmartAttributeUnit::Milikelvin) {
-        m_Temperature = airflowTemperatureCelsius->prettyValue();
+        setTemperature(airflowTemperatureCelsius->prettyValue());
         return true;
     }
     return false;
@@ -118,11 +146,11 @@ bool SmartDiskInformation::updatePowerOn()
 
     if (powerOnHours != nullptr
             && powerOnHours->prettyUnit() == SmartAttributeUnit::Miliseconds) {
-        m_PoweredOn = powerOnHours->prettyValue();
+        setPoweredOn(powerOnHours->prettyValue());
         return true;
     } else if (powerOnSeconds != nullptr
                && powerOnSeconds->prettyUnit() == SmartAttributeUnit::Miliseconds) {
-        m_PoweredOn = powerOnSeconds->prettyValue();
+        setPoweredOn(powerOnSeconds->prettyValue());
         return true;
     }
     return false;
@@ -137,7 +165,7 @@ bool SmartDiskInformation::updatePowerCycle()
 
     if (powerCycleCount != nullptr
             && powerCycleCount->prettyUnit() == SmartAttributeUnit::None) {
-        m_PowerCycles = powerCycleCount->prettyValue();
+        setPowerCycles(powerCycleCount->prettyValue());
         return true;
     }
     return false;
