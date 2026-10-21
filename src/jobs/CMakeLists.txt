@@ -33,6 +33,7 @@ set(JOBS_SRC
     jobs/movefilesystemjob.cpp
     jobs/changepermissionsjob.cpp
     jobs/takeownershipjob.cpp
+    jobs/trimjob.cpp
 )
 
 set(JOBS_LIB_HDRS
