@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-19 00:49+0000\n"
+"POT-Creation-Date: 2026-10-25 00:53+0000\n"
 "PO-Revision-Date: 2026-09-14 10:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1442,104 +1442,322 @@ msgctxt "SMART attr description"
 msgid "Number of &quot;Free Fall Events&quot; detected"
 msgstr "Nombre d'«Esdeveniments de caiguda lliure» detectats"
 
-#: core/smartstatus.cpp:78
+#: core/smartnvmehealth.cpp:51
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item:intable"
+#| msgid "warning"
+msgctxt "@label NVMe health"
+msgid "Critical warning"
+msgstr "avís"
+
+#: core/smartnvmehealth.cpp:53
+#, fuzzy, kde-kuit-format
+#| msgctxt "SMART attr name"
+#| msgid "SSD Available Reserved Space"
+msgctxt "@label NVMe health"
+msgid "Available spare"
+msgstr "SSD Espai reservat disponible"
+
+#: core/smartnvmehealth.cpp:55
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Available spare threshold"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:57
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Percentage used"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:59
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Data read"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:61
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Data written"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:63
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Host read commands"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:65
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Host write commands"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:67
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Controller busy time"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:69
+#, fuzzy, kde-kuit-format
+#| msgctxt "SMART attr name"
+#| msgid "Power Cycle Count"
+msgctxt "@label NVMe health"
+msgid "Power cycles"
+msgstr "Comptador de cicles funcionament"
+
+#: core/smartnvmehealth.cpp:71
+#, fuzzy, kde-kuit-format
+#| msgctxt "SMART attr name"
+#| msgid "Power-On Hours"
+msgctxt "@label NVMe health"
+msgid "Power on hours"
+msgstr "Hores de funcionament"
+
+#: core/smartnvmehealth.cpp:73
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Unsafe shutdowns"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:75
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Media and data integrity errors"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:77
+#, kde-kuit-format
+msgctxt "@label NVMe health"
+msgid "Error information log entries"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:88
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item partition role"
+#| msgid "none"
+msgctxt "@item:intable NVMe critical warning, %1 is the raw value"
+msgid "%1 (none)"
+msgstr "cap"
+
+#: core/smartnvmehealth.cpp:92
+#, kde-kuit-format
+msgctxt "@item:intable NVMe critical warning"
+msgid "available spare below threshold"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:94
+#, kde-kuit-format
+msgctxt "@item:intable NVMe critical warning"
+msgid "temperature threshold exceeded"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:96
+#, kde-kuit-format
+msgctxt "@item:intable NVMe critical warning"
+msgid "reliability degraded"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:98
+#, kde-kuit-format
+msgctxt "@item:intable NVMe critical warning"
+msgid "media in read-only mode"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:100
+#, kde-kuit-format
+msgctxt "@item:intable NVMe critical warning"
+msgid "volatile memory backup failed"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:102
+#, kde-kuit-format
+msgctxt "@item:intable NVMe critical warning"
+msgid "persistent memory region read-only"
+msgstr ""
+
+#: core/smartnvmehealth.cpp:104
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item:intext unit"
+#| msgid "(unknown unit)"
+msgctxt "@item:intable NVMe critical warning"
+msgid "unknown warning"
+msgstr "(unitat desconeguda)"
+
+#: core/smartnvmehealth.cpp:106
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress job status (error, warning, ...)"
+#| msgid "%1: %2"
+msgctxt ""
+"@item:intable NVMe critical warning, %1 is the raw value, %2 the list of "
+"warnings"
+msgid "%1: %2"
+msgstr "%1: %2"
+
+#: core/smartnvmehealth.cpp:113 core/smartstatus.cpp:89
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item partition table name"
+#| msgid "unknown"
+msgctxt "@item:intable"
+msgid "unknown"
+msgstr "desconegut"
+
+#: core/smartnvmehealth.cpp:122
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress job status (error, warning, ...)"
+#| msgid "%1: %2"
+msgctxt "@item:intable percentage"
+msgid "%1%"
+msgstr "%1: %2"
+
+#: core/smartnvmehealth.cpp:128
+#, kde-kuit-format
+msgctxt "@item:intable NVMe data units of 512000 bytes"
+msgid "%1 data unit"
+msgid_plural "%1 data units"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/smartnvmehealth.cpp:133
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/smartnvmehealth.cpp:136
+#, kde-kuit-format
+msgctxt "@item:intable"
+msgid "%1 hour"
+msgid_plural "%1 hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/smartstatus.cpp:93
 #, kde-kuit-format
 msgctxt "@item:intable degrees in Celsius and Fahrenheit"
 msgid "%1° C / %2° F"
 msgstr "%1° C / %2° F"
 
-#: core/smartstatus.cpp:86
+#: core/smartstatus.cpp:101
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Aborted"
 msgstr "S'ha interromput"
 
-#: core/smartstatus.cpp:89
+#: core/smartstatus.cpp:104
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Interrupted"
 msgstr "S'ha interromput"
 
-#: core/smartstatus.cpp:92
+#: core/smartstatus.cpp:107
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Fatal error"
 msgstr "Error fatal"
 
-#: core/smartstatus.cpp:95
+#: core/smartstatus.cpp:110
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Unknown error"
 msgstr "S'ha produït un error desconegut"
 
-#: core/smartstatus.cpp:98
+#: core/smartstatus.cpp:113
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Electrical error"
 msgstr "Error elèctric"
 
-#: core/smartstatus.cpp:101
+#: core/smartstatus.cpp:116
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Servo error"
 msgstr "S'ha produït un error del servo"
 
-#: core/smartstatus.cpp:104
+#: core/smartstatus.cpp:119
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Read error"
 msgstr "S'ha produït un error de lectura"
 
-#: core/smartstatus.cpp:107
+#: core/smartstatus.cpp:122
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Handling error"
 msgstr "S'ha produït un error de gestió"
 
-#: core/smartstatus.cpp:110
+#: core/smartstatus.cpp:125
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Self test in progress"
 msgstr "Autocomprovació en curs"
 
-#: core/smartstatus.cpp:114
+#: core/smartstatus.cpp:128
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:credit"
+#| msgid "LVM support"
+msgctxt "@item"
+msgid "Not supported"
+msgstr "Implementació del LVM"
+
+#: core/smartstatus.cpp:131
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item"
+#| msgid "Self test in progress"
+msgctxt "@item"
+msgid "No self test results"
+msgstr "Autocomprovació en curs"
+
+#: core/smartstatus.cpp:134
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Success"
 msgstr "Correcte"
 
-#: core/smartstatus.cpp:123
+#: core/smartstatus.cpp:138
+#, fuzzy, kde-kuit-format
+#| msgctxt "@item partition table name"
+#| msgid "unknown"
+msgctxt "@item"
+msgid "Unknown"
+msgstr "desconegut"
+
+#: core/smartstatus.cpp:147
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Healthy"
 msgstr "Bon estat"
 
-#: core/smartstatus.cpp:126
+#: core/smartstatus.cpp:150
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has been used outside of its design parameters in the past."
 msgstr ""
 "En el passat s'ha utilitzat per damunt dels seus paràmetres de disseny."
 
-#: core/smartstatus.cpp:129
+#: core/smartstatus.cpp:153
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has some bad sectors."
 msgstr "Té alguns sectors roïns."
 
-#: core/smartstatus.cpp:132
+#: core/smartstatus.cpp:156
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Is being used outside of its design parameters right now."
 msgstr "Ara s'està utilitzant per damunt dels seus paràmetres de disseny."
 
-#: core/smartstatus.cpp:135
+#: core/smartstatus.cpp:159
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Has many bad sectors."
 msgstr "Té molts sectors roïns."
 
-#: core/smartstatus.cpp:139
+#: core/smartstatus.cpp:163
 #, kde-kuit-format
 msgctxt "@item"
 msgid "Disk failure is imminent. Backup all data!"
