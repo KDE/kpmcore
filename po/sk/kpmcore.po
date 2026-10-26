@@ -1403,151 +1403,139 @@ msgid "Number of &quot;Free Fall Events&quot; detected"
 msgstr "Počet detekovaných &quot;udalostí voľného pádu&quot;"
 
 #: core/smartnvmehealth.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item:intable"
-#| msgid "warning"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Critical warning"
-msgstr "Upozornenie"
+msgstr "Kritické varovanie"
 
 #: core/smartnvmehealth.cpp:53
-#, fuzzy, kde-kuit-format
-#| msgid "Available"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Available spare"
-msgstr "Dostupné"
+msgstr "Dostupná rezerva"
 
 #: core/smartnvmehealth.cpp:55
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Available spare threshold"
-msgstr ""
+msgstr "Prah dostupnej rezervy"
 
 #: core/smartnvmehealth.cpp:57
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Percentage used"
-msgstr ""
+msgstr "Využité percento"
 
 #: core/smartnvmehealth.cpp:59
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Data read"
-msgstr ""
+msgstr "Prečítané údaje"
 
 #: core/smartnvmehealth.cpp:61
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Data written"
-msgstr ""
+msgstr "Zapísané údaje"
 
 #: core/smartnvmehealth.cpp:63
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Host read commands"
-msgstr ""
+msgstr "Príkazy čítania hostiteľa"
 
 #: core/smartnvmehealth.cpp:65
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Host write commands"
-msgstr ""
+msgstr "Príkazy zápisu hostiteľa"
 
 #: core/smartnvmehealth.cpp:67
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Controller busy time"
-msgstr ""
+msgstr "Čas zaneprázdnenia radiča"
 
 #: core/smartnvmehealth.cpp:69
-#, fuzzy, kde-kuit-format
-#| msgid "Power cycles:"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Power cycles"
-msgstr "Počet zapnutí:"
+msgstr "Počet zapnutí"
 
 #: core/smartnvmehealth.cpp:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "SMART attr name"
-#| msgid "Power-On Hours"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Power on hours"
-msgstr "Počet hodín v zapnutom stave "
+msgstr "Počet hodín v zapnutom stave"
 
 #: core/smartnvmehealth.cpp:73
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Unsafe shutdowns"
-msgstr ""
+msgstr "Nebezpečné vypnutia"
 
 #: core/smartnvmehealth.cpp:75
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Media and data integrity errors"
-msgstr ""
+msgstr "Chyby integrity média a údajov"
 
 #: core/smartnvmehealth.cpp:77
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Error information log entries"
-msgstr ""
+msgstr "Záznamy v protokole chýb"
 
 #: core/smartnvmehealth.cpp:88
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item uuid"
-#| msgid "(none)"
+#, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning, %1 is the raw value"
 msgid "%1 (none)"
-msgstr "(žiadne)"
+msgstr "%1 (žiadne)"
 
 #: core/smartnvmehealth.cpp:92
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "available spare below threshold"
-msgstr ""
+msgstr "dostupná rezerva pod prahom"
 
 #: core/smartnvmehealth.cpp:94
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "temperature threshold exceeded"
-msgstr ""
+msgstr "prekročený teplotný prah"
 
 #: core/smartnvmehealth.cpp:96
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "reliability degraded"
-msgstr ""
+msgstr "znížená spoľahlivosť"
 
 #: core/smartnvmehealth.cpp:98
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "media in read-only mode"
-msgstr ""
+msgstr "médium v režime iba na čítanie"
 
 #: core/smartnvmehealth.cpp:100
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "volatile memory backup failed"
-msgstr ""
+msgstr "zlyhala záloha nestálej pamäte"
 
 #: core/smartnvmehealth.cpp:102
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "persistent memory region read-only"
-msgstr ""
+msgstr "oblasť trvalej pamäte iba na čítanie"
 
 #: core/smartnvmehealth.cpp:104
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item:intext unit"
-#| msgid "(unknown unit)"
+#, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "unknown warning"
-msgstr "(neznáma jednotka)"
+msgstr "neznáme varovanie"
 
 #: core/smartnvmehealth.cpp:106
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt ""
 "@item:intable NVMe critical warning, %1 is the raw value, %2 the list of "
 "warnings"
@@ -1555,47 +1543,43 @@ msgid "%1: %2"
 msgstr "%1: %2"
 
 #: core/smartnvmehealth.cpp:113 core/smartstatus.cpp:89
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition table name"
-#| msgid "unknown"
+#, kde-kuit-format
 msgctxt "@item:intable"
 msgid "unknown"
-msgstr "neznámy"
+msgstr "neznáme"
 
 #: core/smartnvmehealth.cpp:122
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@item:intable percentage"
 msgid "%1%"
-msgstr "%1: %2"
+msgstr "%1 %"
 
 #: core/smartnvmehealth.cpp:128
 #, kde-kuit-format
 msgctxt "@item:intable NVMe data units of 512000 bytes"
 msgid "%1 data unit"
 msgid_plural "%1 data units"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 dátová jednotka"
+msgstr[1] "%1 dátové jednotky"
+msgstr[2] "%1 dátových jednotiek"
 
 #: core/smartnvmehealth.cpp:133
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "%1 minute"
 msgid_plural "%1 minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 minúta"
+msgstr[1] "%1 minúty"
+msgstr[2] "%1 minút"
 
 #: core/smartnvmehealth.cpp:136
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "%1 hour"
 msgid_plural "%1 hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 hodina"
+msgstr[1] "%1 hodiny"
+msgstr[2] "%1 hodín"
 
 #: core/smartstatus.cpp:93
 #, kde-kuit-format
@@ -1658,20 +1642,16 @@ msgid "Self test in progress"
 msgstr "Prebieha samokontrola"
 
 #: core/smartstatus.cpp:128
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "LVM support"
+#, kde-kuit-format
 msgctxt "@item"
 msgid "Not supported"
-msgstr "Podpora LVM"
+msgstr "Nepodporované"
 
 #: core/smartstatus.cpp:131
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item"
-#| msgid "Self test in progress"
+#, kde-kuit-format
 msgctxt "@item"
 msgid "No self test results"
-msgstr "Prebieha samokontrola"
+msgstr "Žiadne výsledky samokontroly"
 
 #: core/smartstatus.cpp:134
 #, kde-kuit-format
@@ -1680,12 +1660,10 @@ msgid "Success"
 msgstr "Úspech"
 
 #: core/smartstatus.cpp:138
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition table name"
-#| msgid "unknown"
+#, kde-kuit-format
 msgctxt "@item"
 msgid "Unknown"
-msgstr "neznámy"
+msgstr "Neznáme"
 
 #: core/smartstatus.cpp:147
 #, kde-kuit-format
