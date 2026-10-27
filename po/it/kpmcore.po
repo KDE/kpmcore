@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-18 03:05+0000\n"
-"PO-Revision-Date: 2026-06-27 08:11+0200\n"
+"PO-Revision-Date: 2026-10-26 07:47+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Poedit 3.10\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1067,7 +1067,7 @@ msgstr "Soft ECC Correction"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of errors corrected by software ECC"
-msgstr "Numero degli errori corretti dal software di ECC."
+msgstr "Numero degli errori corretti dal software di ECC"
 
 #: core/smartattribute.cpp:149
 #, kde-format
@@ -1396,7 +1396,7 @@ msgstr "Total LBAs Written"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Written"
-msgstr "Numero totale di LBA (Logical Block Addressing) scritte"
+msgstr "Numero totale di LBA scritte"
 
 #: core/smartattribute.cpp:173
 #, kde-format
@@ -1408,7 +1408,7 @@ msgstr "Total LBAs Read"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Total LBAs Read"
-msgstr "Numero totale di LBA (Logical Block Addressing) lette"
+msgstr "Numero totale di LBA lette"
 
 #: core/smartattribute.cpp:174
 #, kde-format
@@ -2109,7 +2109,7 @@ msgid ""
 msgstr ""
 "Impossibile copiare il file system: il file system nella partizione di "
 "destinazione <filename>%1</filename> è più piccolo del file system nella "
-"partizione di origine <filename>%2</filename>"
+"partizione di origine <filename>%2</filename>."
 
 #: jobs/copyfilesystemjob.cpp:56
 #, kde-kuit-format
@@ -2283,7 +2283,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Could not delete file system on <filename>%1</filename>."
-msgstr "Impossibile eliminare il file system su <filename>%1</filename>"
+msgstr "Impossibile eliminare il file system su <filename>%1</filename>."
 
 #: jobs/deletefilesystemjob.cpp:80
 #, kde-kuit-format
@@ -2983,8 +2983,7 @@ msgstr "Crea il file system %1 nella partizione <filename>%2</filename>"
 msgctxt "@info:status"
 msgid "Create a new partition table (type: %1) on <filename>%2</filename>"
 msgstr ""
-"Crea una nuova tabella delle partizioni (tipo: %1) in <filename>%2</"
-"filename>."
+"Crea una nuova tabella delle partizioni (tipo: %1) in <filename>%2</filename>"
 
 #: ops/createvolumegroupoperation.cpp:36
 #, kde-kuit-format
@@ -3219,7 +3218,7 @@ msgid ""
 "%1</filename>"
 msgstr ""
 "Ridimensionamento/spostamento non riuscito: impossibile ridimensionare il "
-"file system nella partizione <filename>%1</filename>."
+"file system nella partizione <filename>%1</filename>"
 
 #: ops/resizeoperation.cpp:312
 #, kde-kuit-format
@@ -3234,7 +3233,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Resize volume %1 from %2 to %3"
-msgstr "Ridimensionamento del volume %1 da %2 a %3."
+msgstr "Ridimensionamento del volume %1 da %2 a %3"
 
 #: ops/restoreoperation.cpp:133
 #, kde-kuit-format
@@ -3294,7 +3293,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Clear flags for partition <filename>%1</filename>"
-msgstr "Cancella i parametri della partizione <filename>%1</filename>."
+msgstr "Cancella i parametri della partizione <filename>%1</filename>"
 
 #: ops/setpartflagsoperation.cpp:64
 #, kde-kuit-format
