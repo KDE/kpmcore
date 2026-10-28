@@ -10,14 +10,8 @@
 
 #include "ops/trimoperation.h"
 
-#include "util/capacity.h"
+#include "util/externalcommand.h"
 #include "util/report.h"
-
-#include "externalcommandhelper_interface.h"
-
-#include <QDBusConnection>
-#include <QDBusPendingReply>
-#include <QVariantMap>
 
 #include <KLocalizedString>
 
@@ -36,6 +30,10 @@ bool TrimJob::run(Report& parent)
     switch (TrimOperation::check(partition())) {
     case TrimOperation::Check::Ok:
         break;
+    case TrimOperation::Check::ToolNotFound:
+        report->line() << xi18nc("@info:status", "Could not find the <command>fstrim</command> program.");
+        jobFinished(*report, false);
+        return false;
     case TrimOperation::Check::UnsupportedFileSystem:
         report->line() << xi18nc("@info:status", "The file system on <filename>%1</filename> does not support discarding unused blocks.", partition().deviceNode());
         jobFinished(*report, false);
@@ -54,35 +52,16 @@ bool TrimJob::run(Report& parent)
         return false;
     }
 
-    if (!QDBusConnection::systemBus().isConnected()) {
-        report->line() << QDBusConnection::systemBus().lastError().message();
-        jobFinished(*report, false);
-        return false;
-    }
+    ExternalCommand cmd(*report, QStringLiteral("fstrim"), { QStringLiteral("--verbose"), QStringLiteral("--"), mountPoint });
+    const bool rval = cmd.run(-1) && cmd.exitCode() == 0;
 
-    org::kde::kpmcore::externalcommand interface(QStringLiteral("org.kde.kpmcore.helperinterface"),
-                                                  QStringLiteral("/Helper"), QDBusConnection::systemBus());
-    interface.setTimeout(10 * 24 * 3600 * 1000);
-
-    QDBusPendingReply<QVariantMap> pendingReply = interface.TrimFileSystem(mountPoint, TrimOperation::trimDeviceNode(partition()));
-    pendingReply.waitForFinished();
-
-    if (pendingReply.isError()) {
-        report->line() << pendingReply.error().message();
-        jobFinished(*report, false);
-        return false;
-    }
-
-    const QVariantMap reply = pendingReply.value();
-    const bool rval = reply[QStringLiteral("success")].toBool();
+    if (!cmd.output().trimmed().isEmpty())
+        *report << cmd.output().trimmed();
 
     if (rval)
-        report->line() << xi18nc("@info:status", "The TRIM request for <filename>%1</filename> completed successfully. The file system reported %2 as discarded.",
-                                 mountPoint, Capacity::formatByteSize(reply[QStringLiteral("trimmed")].toLongLong()));
-    else if (reply[QStringLiteral("unsupported")].toBool())
-        report->line() << xi18nc("@info:status", "Discarding unused blocks is not supported on <filename>%1</filename>.", mountPoint);
+        report->line() << xi18nc("@info:status", "Discarding unused blocks on <filename>%1</filename> completed successfully.", mountPoint);
     else
-        report->line() << xi18nc("@info:status", "Could not discard unused blocks on <filename>%1</filename>: %2", mountPoint, reply[QStringLiteral("error")].toString());
+        report->line() << xi18nc("@info:status", "Could not discard unused blocks on <filename>%1</filename>.", mountPoint);
 
     jobFinished(*report, rval);
 

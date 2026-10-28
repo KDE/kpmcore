@@ -13,6 +13,8 @@
 
 #include "jobs/trimjob.h"
 
+#include "util/externalcommand_trustedprefixes.h"
+
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -62,6 +64,22 @@ static std::optional<bool> discardSupported(const QString& deviceNode)
     return maxBytes > 0;
 }
 
+static QString trimDeviceNode(const Partition& p)
+{
+    const FileSystem& fs = p.fileSystem();
+    QString deviceNode = p.deviceNode();
+
+    if (fs.type() == FileSystem::Type::Luks || fs.type() == FileSystem::Type::Luks2) {
+        const FS::luks* luksFs = dynamic_cast<const FS::luks*>(&fs);
+        deviceNode = luksFs ? luksFs->mapperName() : QString();
+    }
+
+    if (deviceNode.isEmpty())
+        return QString();
+
+    return QFileInfo(deviceNode).canonicalFilePath();
+}
+
 TrimOperation::TrimOperation(Partition& p) :
     Operation(),
     m_TrimmedPartition(p),
@@ -108,24 +126,11 @@ bool TrimOperation::supportsTrim(FileSystem::Type type)
     }
 }
 
-QString TrimOperation::trimDeviceNode(const Partition& p)
-{
-    const FileSystem& fs = p.fileSystem();
-    QString deviceNode = p.deviceNode();
-
-    if (fs.type() == FileSystem::Type::Luks || fs.type() == FileSystem::Type::Luks2) {
-        const FS::luks* luksFs = dynamic_cast<const FS::luks*>(&fs);
-        deviceNode = luksFs ? luksFs->mapperName() : QString();
-    }
-
-    if (deviceNode.isEmpty())
-        return QString();
-
-    return QFileInfo(deviceNode).canonicalFilePath();
-}
-
 TrimOperation::Check TrimOperation::check(const Partition& p)
 {
+    if (findTrustedCommand(QStringLiteral("fstrim")).isEmpty())
+        return Check::ToolNotFound;
+
     const FileSystem* fs = trimFileSystem(p);
     if (fs == nullptr || !supportsTrim(fs->type()))
         return Check::UnsupportedFileSystem;

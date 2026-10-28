@@ -24,6 +24,7 @@ class LIBKPMCORE_EXPORT TrimOperation : public Operation
 public:
     enum class Check {
         Ok,
+        ToolNotFound,
         UnsupportedFileSystem,
         NotMounted,
         ReadOnly,
@@ -44,7 +45,6 @@ public:
     bool targets(const Partition& p) const override;
 
     static bool supportsTrim(FileSystem::Type type);
-    static QString trimDeviceNode(const Partition& p);
     static Check check(const Partition& p);
     static bool canTrim(const Partition* p);
 

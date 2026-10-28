@@ -20,7 +20,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <filesystem>
-#include <limits>
 
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -513,129 +512,6 @@ QVariantMap ExternalCommandHelper::BenchmarkRead(const QString& device, const QV
 #else
     return fail(Status::Unsupported, QStringLiteral("direct I/O is not supported on this platform"));
 #endif
-}
-
-#if defined(Q_OS_LINUX) && defined(STATX_MNT_ID)
-static QString unescapeMountInfo(const QByteArray& field)
-{
-    QByteArray result;
-    result.reserve(field.size());
-    for (qsizetype i = 0; i < field.size(); ++i) {
-        if (field[i] == '\\' && i + 3 < field.size()) {
-            bool ok = false;
-            const int c = field.mid(i + 1, 3).toInt(&ok, 8);
-            if (ok) {
-                result.append(static_cast<char>(c));
-                i += 3;
-                continue;
-            }
-        }
-        result.append(field[i]);
-    }
-    return QFile::decodeName(result);
-}
-#endif
-
-QVariantMap ExternalCommandHelper::TrimFileSystem(const QString& mountPoint, const QString& device)
-{
-    if (!isCallerAuthorized()) {
-        return {};
-    }
-
-    QVariantMap reply;
-    reply[QStringLiteral("success")] = false;
-
-    if (!QDir::isAbsolutePath(mountPoint) || QDir::cleanPath(mountPoint) != mountPoint) {
-        qWarning() << "TrimFileSystem: invalid mount point";
-        return reply;
-    }
-
-    if (!device.startsWith(QStringLiteral("/dev/")) || device.startsWith(QStringLiteral("/dev/shm/"))) {
-        qWarning() << "TrimFileSystem: device not in /dev";
-        return reply;
-    }
-    std::error_code error;
-    if (!std::filesystem::is_block_file(device.toStdU16String(), error)) {
-        qWarning() << "TrimFileSystem: not a block device";
-        return reply;
-    }
-    if (QFileInfo(device).isSymbolicLink()) {
-        qWarning() << "TrimFileSystem: device should not be symbolic link";
-        return reply;
-    }
-
-#if defined(Q_OS_LINUX) && defined(STATX_MNT_ID)
-    struct FileDescriptor {
-        int fd;
-        ~FileDescriptor() {
-            if (fd >= 0)
-                close(fd);
-        }
-    } file { open(QFile::encodeName(mountPoint).constData(), O_RDONLY | O_DIRECTORY | O_NOFOLLOW | O_CLOEXEC) };
-
-    if (file.fd < 0) {
-        reply[QStringLiteral("error")] = QString::fromLocal8Bit(strerror(errno));
-        return reply;
-    }
-
-    struct statx info;
-    if (statx(file.fd, "", AT_EMPTY_PATH, STATX_MNT_ID, &info) != 0 || !(info.stx_mask & STATX_MNT_ID)) {
-        reply[QStringLiteral("error")] = QStringLiteral("could not determine the mount of %1").arg(mountPoint);
-        return reply;
-    }
-
-    QFile mountInfo(QStringLiteral("/proc/self/mountinfo"));
-    if (!mountInfo.open(QIODevice::ReadOnly)) {
-        reply[QStringLiteral("error")] = QStringLiteral("could not read mount information");
-        return reply;
-    }
-
-    bool found = false;
-    const QList<QByteArray> lines = mountInfo.readAll().split('\n');
-    for (const QByteArray& line : lines) {
-        const QList<QByteArray> fields = line.trimmed().split(' ');
-        const qsizetype separator = fields.indexOf(QByteArrayLiteral("-"));
-        if (fields.size() < 6 || separator < 6 || fields.size() < separator + 4)
-            continue;
-
-        bool ok = false;
-        if (fields[0].toULongLong(&ok) != info.stx_mnt_id || !ok)
-            continue;
-
-        if (unescapeMountInfo(fields[4]) != mountPoint ||
-            QFileInfo(unescapeMountInfo(fields[separator + 2])).canonicalFilePath() != device) {
-            reply[QStringLiteral("error")] = QStringLiteral("%1 is not mounted at %2").arg(device, mountPoint);
-            return reply;
-        }
-
-        if (fields[5].split(',').contains(QByteArrayLiteral("ro")) || fields[separator + 3].split(',').contains(QByteArrayLiteral("ro"))) {
-            reply[QStringLiteral("error")] = QStringLiteral("%1 is mounted read-only").arg(mountPoint);
-            return reply;
-        }
-
-        found = true;
-        break;
-    }
-
-    if (!found) {
-        reply[QStringLiteral("error")] = QStringLiteral("%1 is not mounted at %2").arg(device, mountPoint);
-        return reply;
-    }
-
-    struct fstrim_range range {};
-    range.len = std::numeric_limits<__u64>::max();
-    if (ioctl(file.fd, FITRIM, &range) != 0) {
-        reply[QStringLiteral("unsupported")] = errno == EOPNOTSUPP;
-        reply[QStringLiteral("error")] = QString::fromLocal8Bit(strerror(errno));
-        return reply;
-    }
-
-    reply[QStringLiteral("trimmed")] = static_cast<qint64>(std::min<quint64>(range.len, std::numeric_limits<qint64>::max()));
-    reply[QStringLiteral("success")] = true;
-#else
-    reply[QStringLiteral("unsupported")] = true;
-#endif
-    return reply;
 }
 
 QVariantMap ExternalCommandHelper::RunCommand(const QString& command, const QStringList& arguments, const QByteArray& input, const int processChannelMode)
