@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin/partitionmanager.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2009-01-20 10:11-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -2917,6 +2917,59 @@ msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr ""
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr ""
+
+#: jobs/trimjob.cpp:42
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr ""
+
+#: jobs/trimjob.cpp:46
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr ""
+
+#: jobs/trimjob.cpp:50
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr ""
+
+#: jobs/trimjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+
+#: jobs/trimjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr ""
+
+#: jobs/trimjob.cpp:73
+#, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr ""
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3315,6 +3368,12 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
+msgstr ""
+
+#: ops/trimoperation.cpp:103
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
 msgstr ""
 
 #: plugins/geom/geompartitiontable.cpp:91

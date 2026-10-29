@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2013-01-05 09:00+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -3393,6 +3393,78 @@ msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr "<filename>%1</filename> ਪਾਰਟੀਸ਼ਨ ਲਈ ਲੇਬਲ \"%2\" ਸੈੱਟ ਕਰੋ"
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "The file system on partition <filename>%1</filename> could not be mounted."
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਤੋਂ ਫਾਇਲ ਸਿਸਟਮ ਨੂੰ ਮਾਊਂਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Create file system %1 on partition <filename>%2</filename>"
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr "ਪਾਰਟੀਸ਼ਨ <filename>%2</filename> ਉੱਤੇ %1 ਫਾਇਲ ਸਿਸਟਮ ਬਣਾਓ"
+
+#: jobs/trimjob.cpp:46
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Could not open file <filename>%1</filename> for writing."
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr "ਫਾਇਲ <filename>%1</filename> ਲਿਖਣ ਲਈ ਖੋਲ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ।"
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "The file system on partition <filename>%1</filename> could not be mounted."
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਤੋਂ ਫਾਇਲ ਸਿਸਟਮ ਨੂੰ ਮਾਊਂਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
+
+#: jobs/trimjob.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#| "successfully."
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+"NTFS ਬੂਟ ਸੈਕਟਰ ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਲਈ ਠੀਕ ਤਰ੍ਹਾਂ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ।"
+
+#: jobs/trimjob.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not create backup file <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr "ਬੈਕਅੱਪ ਫਾਇਲ <filename>%1</filename> ਬਣਾਈ ਨਹੀਂ ਜਾ ਸਕੀ।"
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+#| msgctxt "@label"
+#| msgid "Scanning device: <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr "ਸਕੈਨ ਕੀਤਾ ਜਾਂਦਾ ਜੰਤਰ: <filename>%1</filename>"
+
 #: ops/backupoperation.cpp:39
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -3952,6 +4024,14 @@ msgstr "<filename>%1</filename> ਪਾਰਟੀਸ਼ਨ ਲਈ ਲੇਬਲ \"%
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "<filename>%1</filename> ਪਾਰਟੀਸ਼ਨ ਲਈ ਲੇਬਲ \"%2\" ਸੈੱਟ ਕਰੋ"
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Delete file system on <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
+msgstr "<filename>%1</filename> ਉੱਤੇ "
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
@@ -4853,18 +4933,6 @@ msgstr "ਮਸ਼ੀਨ:"
 #~ "filename>."
 #~ msgstr ""
 #~ "ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਉੱਤੇ ਫਾਇਲ ਸਿਸਟਮ ਮੁੜ-ਸਾਈਜ਼ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
-
-#, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#~| "successfully."
-#~ msgctxt "@info/plain"
-#~ msgid ""
-#~ "Updated NTFS serial number for partition <filename>%1</filename> "
-#~ "successfully."
-#~ msgstr ""
-#~ "NTFS ਬੂਟ ਸੈਕਟਰ ਪਾਰਟੀਸ਼ਨ <filename>%1</filename> ਲਈ ਠੀਕ ਤਰ੍ਹਾਂ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ।"
 
 #~ msgctxt "@label"
 #~ msgid "Is this the first time KDE Partition Manager is being run?"
@@ -6207,10 +6275,6 @@ msgstr "ਮਸ਼ੀਨ:"
 #~ msgctxt "@label"
 #~ msgid "Scanning..."
 #~ msgstr "ਸਕੈਨ ਕਰਨਾ ਜਾਰੀ.."
-
-#~ msgctxt "@label"
-#~ msgid "Scanning device: <filename>%1</filename>"
-#~ msgstr "ਸਕੈਨ ਕੀਤਾ ਜਾਂਦਾ ਜੰਤਰ: <filename>%1</filename>"
 
 #~ msgctxt "@label:listbox"
 #~ msgid "First sector:"

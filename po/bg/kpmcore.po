@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2026-09-14 17:40+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -3162,6 +3162,82 @@ msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr ""
 "Прехвърляне на собствеността на <filename>%1</filename> към потребител %2"
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "File system on <filename>%1</filename> does not support ownership."
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr ""
+"Файловата система на дял <filename>%1</filename> не поддържа задаване на "
+"собственост."
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Create file system <filename>%1</filename> on partition <filename>%2</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr "Създаване на файлова система %1 на дял <filename>%2</filename>"
+
+#: jobs/trimjob.cpp:46
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for reading."
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr ""
+"Устройството <filename>%1</filename> не може да бъде отворено за четене."
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "File system on <filename>%1</filename> does not support ownership."
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr ""
+"Файловата система на дял <filename>%1</filename> не поддържа задаване на "
+"собственост."
+
+#: jobs/trimjob.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#| "successfully."
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+"Зареждащият сектор на NTFS за дял <filename>%1</filename> е обновен успешно."
+
+#: jobs/trimjob.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Could not create backup file <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr "Не може да се създаде архивният файл <filename>%1</filename>."
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr "Унищожаване (shred) на файловата система на <filename>%1</filename>"
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3607,6 +3683,14 @@ msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr ""
 "Прехвърляне на собствеността на <filename>%1</filename> към потребител %2"
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
+msgstr "Унищожаване (shred) на файловата система на <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

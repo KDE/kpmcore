@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2010-03-06 19:47+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -3451,6 +3451,87 @@ msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr "ตั้งค่าป้ายชื่อของพาร์ทิชัน <filename>%1</filename> เป็น \"%2\""
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr ""
+"ระบบแฟ้มบนพาร์ทิชัน <filename>%1</filename> ไม่รองรับการตั้งค่าป้ายชื่อ งานถูกเพิกเฉย"
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Restore the file system from file <filename>%1</filename> to partition "
+#| "<filename>%2</filename>"
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr ""
+"เรียกคืนระบบแฟ้มจากแฟ้ม <filename>%1</filename> ไปยังพาร์ทิชัน <filename>%2</"
+"filename>"
+
+#: jobs/trimjob.cpp:46
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "Could not open file <filename>%1</filename> for writing."
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr "ไม่สามารถเปิดแฟ้ม <filename>%1</filename> เพื่อทำการเขียนได้"
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr ""
+"ระบบแฟ้มบนพาร์ทิชัน <filename>%1</filename> ไม่รองรับการตั้งค่าป้ายชื่อ งานถูกเพิกเฉย"
+
+#: jobs/trimjob.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#| "successfully."
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+"ทำการปรับปรุงเซกเตอร์การบูตของระบบแฟ้ม NTFS ของพาร์ทิชัน <filename>%1</filename> "
+"เสร็จเรียบร้อยแล้ว"
+
+#: jobs/trimjob.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Could not create backup file <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr "ไม่สามารถสร้างแฟ้มสำรองข้อมูฃ <filename>%1</filename> ได้"
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+#| msgctxt "@label"
+#| msgid "Scanning device: <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr "กำลังตรวจค้นอุปกรณ์: <filename>%1</filename>"
+
 #: ops/backupoperation.cpp:39
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
@@ -4029,6 +4110,14 @@ msgstr "ตั้งค่าป้ายชื่อของพาร์ทิ
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "ตั้งค่าป้ายชื่อของพาร์ทิชัน <filename>%1</filename> เป็น \"%2\""
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
+msgstr "ลบระบบแฟ้มแบบทำลายข้อมูลบน <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
@@ -4930,19 +5019,6 @@ msgstr "เครื่อง:"
 #~ "Could not write new NTFS serial number to partition <filename>%1</"
 #~ "filename>."
 #~ msgstr "ไม่สามารปรับขนาดระบบแฟ้มบนพาร์ทิชัน <filename>%1</filename> ได้"
-
-#, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#~| "successfully."
-#~ msgctxt "@info/plain"
-#~ msgid ""
-#~ "Updated NTFS serial number for partition <filename>%1</filename> "
-#~ "successfully."
-#~ msgstr ""
-#~ "ทำการปรับปรุงเซกเตอร์การบูตของระบบแฟ้ม NTFS ของพาร์ทิชัน <filename>%1</filename> "
-#~ "เสร็จเรียบร้อยแล้ว"
 
 #, fuzzy
 #~| msgid "Partition Sector Alignment:"
@@ -6619,10 +6695,6 @@ msgstr "เครื่อง:"
 #~ msgctxt "@label"
 #~ msgid "Scanning..."
 #~ msgstr "กำลังตรวจค้นหา..."
-
-#~ msgctxt "@label"
-#~ msgid "Scanning device: <filename>%1</filename>"
-#~ msgstr "กำลังตรวจค้นอุปกรณ์: <filename>%1</filename>"
 
 #, fuzzy
 #~| msgctxt "@label partition"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2024-12-15 17:36+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
@@ -3100,6 +3100,87 @@ msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr "<filename>%1</filename> की अनुमतियों को %2 में बदलें"
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr ""
+"विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम लेबल सेट करने का समर्थन नहीं करता है। "
+"कार्य अनदेखा किया गया।"
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Create file system <filename>%1</filename> on partition <filename>%2</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr ""
+"विभाजन <filename>%2</filename> पर फ़ाइल सिस्टम <filename>%1</filename> बनाएँ"
+
+#: jobs/trimjob.cpp:46
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for reading."
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr "डिवाइस <फ़ाइलनाम>%1</फ़ाइलनाम> को पढ़ने के लिए नहीं खोला जा सका."
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr ""
+"विभाजन <filename>%1</filename> पर फ़ाइल सिस्टम लेबल सेट करने का समर्थन नहीं करता है। "
+"कार्य अनदेखा किया गया।"
+
+#: jobs/trimjob.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#| "successfully."
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+"विभाजन <filename>%1</filename> के लिए NTFS बूट सेक्टर को सफलतापूर्वक अद्यतन किया "
+"गया।"
+
+#: jobs/trimjob.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Could not create backup file <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr "बैकअप फ़ाइल <फ़ाइलनाम>%1</फ़ाइलनाम> नहीं बनाई जा सकी."
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr "<filename>%1</filename> पर फ़ाइल सिस्टम को नष्ट करें"
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3541,6 +3622,14 @@ msgstr "<filename>%1</filename> की अनुमतियों को %2 म
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "<filename>%1</filename> की अनुमतियों को %2 में बदलें"
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
+msgstr "<filename>%1</filename> पर फ़ाइल सिस्टम को नष्ट करें"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

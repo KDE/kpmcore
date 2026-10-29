@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2026-10-03 21:00+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -3061,6 +3061,77 @@ msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr "<filename>%1</filename>의 소유권을 %2에게 부여함"
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "File system on <filename>%1</filename> does not support ownership."
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr "<filename>%1</filename>의 파일 시스템에서 소유권을 지원하지 않습니다."
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Create file system <filename>%1</filename> on partition <filename>%2</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr ""
+"파티션 <filename>%2</filename>에 파일 시스템 <filename>%1</filename> 만들기"
+
+#: jobs/trimjob.cpp:46
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for reading."
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr "장치 <filename>%1</filename>에서 읽으려고 열 수 없습니다."
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:status"
+#| msgid "File system on <filename>%1</filename> does not support ownership."
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr "<filename>%1</filename>의 파일 시스템에서 소유권을 지원하지 않습니다."
+
+#: jobs/trimjob.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#| "successfully."
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr "파티션 <filename>%1</filename>의 NTFS 부트 섹터를 업데이트했습니다."
+
+#: jobs/trimjob.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Could not create backup file <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr "백업 파일 <filename>%1</filename>을(를) 만들 수 없습니다."
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr "<filename>%1</filename>의 파일 시스템을 완전히 삭제"
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3493,6 +3564,14 @@ msgstr "<filename>%1</filename> 및 포함된 내용의 소유권을 %2에게 �
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "<filename>%1</filename>의 소유권을 %2에게 부여"
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
+msgstr "<filename>%1</filename>의 파일 시스템을 완전히 삭제"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

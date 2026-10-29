@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2025-07-28 11:10+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -3138,6 +3138,90 @@ msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr "Muuta kohteen <filename>%1</filename> käyttöoikeuksiksi %2"
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr ""
+"Osion <filename>%1</filename> tiedostojärjestelmä ei tue nimiöiden "
+"asettamista. Työ sivuutetaan."
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Create file system <filename>%1</filename> on partition <filename>%2</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr ""
+"Luo osiolle <filename>%2</filename> <filename>%1</filename>-"
+"tiedostojärjestelmä"
+
+#: jobs/trimjob.cpp:46
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for reading."
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr ""
+"Ei voitu avata varmuuskopiotiedostoa <filename>%1</filename>, jolta "
+"palauttaa."
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr ""
+"Osion <filename>%1</filename> tiedostojärjestelmä ei tue nimiöiden "
+"asettamista. Työ sivuutetaan."
+
+#: jobs/trimjob.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Updated NTFS boot sector for partition <filename>%1</filename> "
+#| "successfully."
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+"NTFS-käynnistyssektori osiolla <filename>%1</filename> päivitetty "
+"onnistuneesti."
+
+#: jobs/trimjob.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Could not create backup file <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr "Varmuuskopiotiedostoa <filename>%1</filename> ei voitu avata."
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+#| msgctxt "@label"
+#| msgid "Scanning device: <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr "Etsitään laitetta: <filename>%1</filename>"
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3583,6 +3667,14 @@ msgstr "Muuta kohteen <filename>%1</filename> käyttöoikeuksiksi %2"
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "Muuta kohteen <filename>%1</filename> käyttöoikeuksiksi %2"
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
+msgstr "Hävitä tiedostojärjestelmä laitteelta <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
@@ -4423,19 +4515,6 @@ msgstr "Kone:"
 #~ "Could not write new NTFS serial number to partition <filename>%1</"
 #~ "filename>."
 #~ msgstr "Osion <filename>%1</filename> kokoa ei saatu muutettua."
-
-#, fuzzy
-#~| msgctxt "@info/plain"
-#~| msgid ""
-#~| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#~| "successfully."
-#~ msgctxt "@info/plain"
-#~ msgid ""
-#~ "Updated NTFS serial number for partition <filename>%1</filename> "
-#~ "successfully."
-#~ msgstr ""
-#~ "NTFS-käynnistyssektori osiolla <filename>%1</filename> päivitetty "
-#~ "onnistuneesti."
 
 #~ msgctxt "@label"
 #~ msgid "Is this the first time KDE Partition Manager is being run?"
@@ -6029,10 +6108,6 @@ msgstr "Kone:"
 #~ msgctxt "@label"
 #~ msgid "Scanning..."
 #~ msgstr "Etsitään…"
-
-#~ msgctxt "@label"
-#~ msgid "Scanning device: <filename>%1</filename>"
-#~ msgstr "Etsitään laitetta: <filename>%1</filename>"
 
 #~ msgctxt "@label:listbox"
 #~ msgid "First sector:"

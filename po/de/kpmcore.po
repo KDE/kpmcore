@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2023-08-14 21:58+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -3277,6 +3277,90 @@ msgctxt "@info:progress"
 msgid "Taking ownership of <filename>%1</filename> for user %2"
 msgstr "Bezeichnung der Partition <filename>%1</filename> auf „%2“ einstellen"
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr ""
+"Das Dateisystem <filename>%1</filename> unterstützt kein Setzen von "
+"Bezeichnungen. Operation ignoriert."
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "Create file system <filename>%1</filename> on partition <filename>%2</"
+#| "filename>"
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr ""
+"Dateisystem <filename>%1</filename> auf der Partition <filename>%2</"
+"filename> erstellen"
+
+#: jobs/trimjob.cpp:46
+#, fuzzy, kde-kuit-format
+#| msgid "Could not open device <filename>%1</filename> for reading."
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr ""
+"Das Gerät <filename>%1</filename> kann nicht zum Lesen geöffnet werden."
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid ""
+#| "File system on partition <filename>%1</filename> does not support setting "
+#| "labels. Job ignored."
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr ""
+"Das Dateisystem <filename>%1</filename> unterstützt kein Setzen von "
+"Bezeichnungen. Operation ignoriert."
+
+#: jobs/trimjob.cpp:62
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Updated NTFS serial number for partition <filename>%1</filename> "
+#| "successfully."
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+"Die NTFS-Seriennummer für die Partition <filename>%1</filename> wurde "
+"erfolgreich aktualisiert."
+
+#: jobs/trimjob.cpp:64
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Could not create backup file <filename>%1</filename>."
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr ""
+"Die Sicherungsdatei <filename>%1</filename> kann nicht angelegt werden."
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+#| msgctxt "@label"
+#| msgid "Scanning device: <filename>%1</filename>"
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr "Gerät wird eingelesen: <filename>%1</filename>"
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3748,6 +3832,14 @@ msgstr "Bezeichnung der Partition <filename>%1</filename> auf „%2“ einstelle
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "Bezeichnung der Partition <filename>%1</filename> auf „%2“ einstellen"
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info:progress"
+#| msgid "Shred the file system on <filename>%1</filename>"
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
+msgstr "Dateisystem auf <filename>%1</filename> schreddern"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
@@ -4509,14 +4601,6 @@ msgstr "System:"
 #~ msgstr ""
 #~ "Die neue NTFS-Seriennummer kann nicht auf die Partition <filename>%1</"
 #~ "filename> geschrieben werden."
-
-#~ msgctxt "@info/plain"
-#~ msgid ""
-#~ "Updated NTFS serial number for partition <filename>%1</filename> "
-#~ "successfully."
-#~ msgstr ""
-#~ "Die NTFS-Seriennummer für die Partition <filename>%1</filename> wurde "
-#~ "erfolgreich aktualisiert."
 
 #~ msgctxt "@label"
 #~ msgid "Is this the first time KDE Partition Manager is being run?"
@@ -6136,10 +6220,6 @@ msgstr "System:"
 #~ msgctxt "@label"
 #~ msgid "Scanning..."
 #~ msgstr "Geräte werden gesucht ..."
-
-#~ msgctxt "@label"
-#~ msgid "Scanning device: <filename>%1</filename>"
-#~ msgstr "Gerät wird eingelesen: <filename>%1</filename>"
 
 #~ msgctxt "@label:listbox"
 #~ msgid "First sector:"

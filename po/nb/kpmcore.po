@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-10-29 00:56+0000\n"
 "PO-Revision-Date: 2014-03-23 11:51+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@nuug.no>\n"
@@ -2938,6 +2938,71 @@ msgstr ""
 "Det lyktes ikke å legge til partisjon  <filename>%1</filename> til enhet "
 "<filename>%2</filename> "
 
+#: jobs/trimjob.cpp:34
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not find the <command>fstrim</command> program."
+msgstr ""
+
+#: jobs/trimjob.cpp:38
+#, fuzzy, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"The file system on <filename>%1</filename> does not support discarding "
+"unused blocks."
+msgstr ""
+"Det lyktes ikke å legge til partisjon  <filename>%1</filename> til enhet "
+"<filename>%2</filename> "
+
+#: jobs/trimjob.cpp:42
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info/plain"
+#| msgid ""
+#| "Failed to add partition <filename>%1</filename> to device <filename>%2</"
+#| "filename>."
+msgctxt "@info:status"
+msgid ""
+"<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
+msgstr ""
+"Det lyktes ikke å legge til partisjon  <filename>%1</filename> til enhet "
+"<filename>%2</filename> "
+
+#: jobs/trimjob.cpp:46
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "<filename>%1</filename> is mounted read-only."
+msgstr ""
+
+#: jobs/trimjob.cpp:50
+#, fuzzy, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"The device of <filename>%1</filename> does not support discarding blocks."
+msgstr ""
+"Det lyktes ikke å legge til partisjon  <filename>%1</filename> til enhet "
+"<filename>%2</filename> "
+
+#: jobs/trimjob.cpp:62
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid ""
+"Discarding unused blocks on <filename>%1</filename> completed successfully."
+msgstr ""
+
+#: jobs/trimjob.cpp:64
+#, kde-kuit-format
+msgctxt "@info:status"
+msgid "Could not discard unused blocks on <filename>%1</filename>."
+msgstr ""
+
+#: jobs/trimjob.cpp:73
+#, fuzzy, kde-kuit-format
+msgctxt "@info:progress"
+msgid "Discarding unused blocks on <filename>%1</filename>"
+msgstr ""
+"Det lyktes ikke å legge til partisjon  <filename>%1</filename> til enhet "
+"<filename>%2</filename> "
+
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
 msgctxt "@info:status"
@@ -3338,6 +3403,14 @@ msgstr ""
 #, fuzzy, kde-kuit-format
 msgctxt "@info:status"
 msgid "Take ownership of <filename>%1</filename> for user %2"
+msgstr ""
+"Det lyktes ikke å legge til partisjon  <filename>%1</filename> til enhet "
+"<filename>%2</filename> "
+
+#: ops/trimoperation.cpp:103
+#, fuzzy, kde-kuit-format
+msgctxt "@info:status"
+msgid "Discard unused blocks on <filename>%1</filename>"
 msgstr ""
 "Det lyktes ikke å legge til partisjon  <filename>%1</filename> til enhet "
 "<filename>%2</filename> "
