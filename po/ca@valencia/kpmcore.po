@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-29 00:56+0000\n"
-"PO-Revision-Date: 2026-10-25 17:54+0100\n"
+"PO-Revision-Date: 2026-10-29 12:12+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
-"X-Generator: Lokalize 26.08.2\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1482,13 +1482,13 @@ msgstr "Dades escrites"
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Host read commands"
-msgstr "Ordres de lectura de la màquina"
+msgstr "Ordres de lectura de l'amfitrió"
 
 #: core/smartnvmehealth.cpp:65
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Host write commands"
-msgstr "Ordres d'escriptura de la màquina"
+msgstr "Ordres d'escriptura de l'amfitrió"
 
 #: core/smartnvmehealth.cpp:67
 #, kde-kuit-format
@@ -3192,76 +3192,62 @@ msgstr "L'usuari %2 ha pres la propietat de <filename>%1</filename>"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not find the <command>fstrim</command> program."
-msgstr ""
+msgstr "No s'ha pogut trobar el programa <command>fstrim</command>."
 
 #: jobs/trimjob.cpp:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The file system on <filename>%1</filename> does not support discarding "
 "unused blocks."
-msgstr "El sistema de fitxers <filename>%1</filename> no admet la propietat."
+msgstr ""
+"El sistema de fitxers a <filename>%1</filename> no admet descartar els blocs "
+"no utilitzats."
 
 #: jobs/trimjob.cpp:42
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Create file system <filename>%1</filename> on partition <filename>%2</"
-#| "filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
 msgstr ""
-"Crea el sistema de fitxers <filename>%1</filename> en la partició <filename>"
-"%2</filename>"
+"<filename>%1</filename> ja no es troba muntat a <filename>%2</filename>."
 
 #: jobs/trimjob.cpp:46
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "<filename>%1</filename> is mounted read-only."
-msgstr "No s'ha pogut obrir <filename>%1</filename> per a lectura."
+msgstr "<filename>%1</filename> està muntat com a només de lectura."
 
 #: jobs/trimjob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The device of <filename>%1</filename> does not support discarding blocks."
-msgstr "El sistema de fitxers <filename>%1</filename> no admet la propietat."
+msgstr ""
+"El dispositiu de <filename>%1</filename> no admet descartar els blocs no "
+"utilitzats."
 
 #: jobs/trimjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#| "successfully."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Discarding unused blocks on <filename>%1</filename> completed successfully."
 msgstr ""
-"S'ha actualitzat amb èxit el sector d'arrancada NTFS de la partició "
-"<filename>%1</filename>."
+"S'ha completat correctament el descart dels blocs no utilitzats a <filename>"
+"%1</filename>."
 
 #: jobs/trimjob.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not create backup file <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not discard unused blocks on <filename>%1</filename>."
 msgstr ""
-"No s'ha pogut crear el fitxer <filename>%1</filename> de còpia de seguretat."
+"No s'han pogut descartar els blocs no utilitzats a <filename>%1</filename>."
 
 #: jobs/trimjob.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Discarding unused blocks on <filename>%1</filename>"
-msgstr "Tritura el sistema de fitxers a <filename>%1</filename>"
+msgstr "S'estan descartant els blocs no utilitzats a <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3716,12 +3702,10 @@ msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "L'usuari %2 ha pres la propietat de <filename>%1</filename>"
 
 #: ops/trimoperation.cpp:103
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Discard unused blocks on <filename>%1</filename>"
-msgstr "Tritura el sistema de fitxers a <filename>%1</filename>"
+msgstr "Descarta els blocs no utilitzats a <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

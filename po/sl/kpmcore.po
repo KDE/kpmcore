@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-29 00:56+0000\n"
-"PO-Revision-Date: 2026-10-25 07:34+0100\n"
+"PO-Revision-Date: 2026-10-29 10:37+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -1517,7 +1517,7 @@ msgstr "razpoložljiv preostanek pod pragom"
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "temperature threshold exceeded"
-msgstr "preseženih mej temperature "
+msgstr "temperaturni prag presežen"
 
 #: core/smartnvmehealth.cpp:96
 #, kde-kuit-format
@@ -3178,76 +3178,59 @@ msgstr "Prevzem lastništva <filename>%1</filename> za uporabnika %2"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not find the <command>fstrim</command> program."
-msgstr ""
+msgstr "Ni bilo mogoče najti programa <command>fstrim</command>."
 
 #: jobs/trimjob.cpp:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The file system on <filename>%1</filename> does not support discarding "
 "unused blocks."
-msgstr "Datotečni sistem na <filename>%1</filename> ne podpira lastništva."
+msgstr ""
+"Datotečni sistem na <filename>%1</filename> ne podpira opuščanja "
+"neuporabljenih blokov."
 
 #: jobs/trimjob.cpp:42
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Create file system <filename>%1</filename> on partition <filename>%2</"
-#| "filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
-msgstr ""
-"Ustvari datotečni sistem <filename>%1</filename> na razdelku <filename>%2</"
-"filename>"
+msgstr "<filename>%1</filename> ni več priklopljen na <filename>%2</filename>."
 
 #: jobs/trimjob.cpp:46
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "<filename>%1</filename> is mounted read-only."
-msgstr "Ni bilo mogoče odpreti naprave <filename>%1</filename> za branje."
+msgstr "<filename>%1</filename> je priklopljen v načinu samo za branje."
 
 #: jobs/trimjob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The device of <filename>%1</filename> does not support discarding blocks."
-msgstr "Datotečni sistem na <filename>%1</filename> ne podpira lastništva."
+msgstr "Naprava <filename>%1</filename> ne podpira zavrženja blokov."
 
 #: jobs/trimjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#| "successfully."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Discarding unused blocks on <filename>%1</filename> completed successfully."
 msgstr ""
-"Zagonski sektor NTFS za razdelek <filename>%1</filename> je bil uspešno "
-"posodobljen."
+"Zavrženje neuporabljenih blokov na <filename>%1</filename> je bila uspešno "
+"zaključena."
 
 #: jobs/trimjob.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not create backup file <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not discard unused blocks on <filename>%1</filename>."
 msgstr ""
-"Ni bilo mogoče ustvariti datoteke varnostne kopije <filename>%1</filename>."
+"Ni bilo mogoče zavreči neuporabljenih blokov na <filename>%1</filename>."
 
 #: jobs/trimjob.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Discarding unused blocks on <filename>%1</filename>"
-msgstr "Popolnoma prepiši datotečni sistem na <filename>%1</filename>"
+msgstr "Zavrženje neuporabljenih blokov na <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3698,12 +3681,10 @@ msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "Prevzem lastništva nad <filename>%1</filename> za uporabnika %2"
 
 #: ops/trimoperation.cpp:103
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Discard unused blocks on <filename>%1</filename>"
-msgstr "Popolnoma prepiši datotečni sistem na <filename>%1</filename>"
+msgstr "Zavrzi neuporabljene bloke na <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

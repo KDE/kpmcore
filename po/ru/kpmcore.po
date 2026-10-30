@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-29 00:56+0000\n"
-"PO-Revision-Date: 2026-10-25 07:45+0200\n"
+"PO-Revision-Date: 2026-10-29 07:44+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -3192,73 +3192,62 @@ msgstr "Смена владельца: <filename>%1</filename> на %2"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not find the <command>fstrim</command> program."
-msgstr ""
+msgstr "Не удалось найти программу <command>fstrim</command>."
 
 #: jobs/trimjob.cpp:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The file system on <filename>%1</filename> does not support discarding "
 "unused blocks."
 msgstr ""
 "Файловая система на разделе <filename>%1</filename> не поддерживает "
-"назначение владельца."
+"освобождение неиспользуемых блоков."
 
 #: jobs/trimjob.cpp:42
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Create file system <filename>%1</filename> on partition <filename>%2</"
-#| "filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
 msgstr ""
-"Создание файловой системы <filename>%1</filename> на разделе <filename>%2</"
-"filename>"
+"Раздел <filename>%1</filename> больше не подключён к <filename>%2</filename>."
 
 #: jobs/trimjob.cpp:46
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "<filename>%1</filename> is mounted read-only."
-msgstr "Не удалось открыть устройство <filename>%1</filename> для чтения."
+msgstr ""
+"Файловая система в <filename>%1</filename> подключена только для чтения."
 
 #: jobs/trimjob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The device of <filename>%1</filename> does not support discarding blocks."
 msgstr ""
-"Файловая система на разделе <filename>%1</filename> не поддерживает "
-"назначение владельца."
+"Устройство раздела <filename>%1</filename> не поддерживает освобождение "
+"блоков."
 
 #: jobs/trimjob.cpp:62
-#, fuzzy, kde-kuit-format
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Discarding unused blocks on <filename>%1</filename> completed successfully."
-msgstr "Ошибка создания нового раздела <filename>%1</filename>."
+msgstr ""
+"Освобождение неиспользуемых блоков в <filename>%1</filename> успешно "
+"завершено."
 
 #: jobs/trimjob.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not create backup file <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not discard unused blocks on <filename>%1</filename>."
-msgstr "Не удалось создать резервную копию <filename>%1</filename>."
+msgstr "Не удалось освободить неиспользуемые блоки в <filename>%1</filename>."
 
 #: jobs/trimjob.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@label"
-#| msgid "Scanning device: <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Discarding unused blocks on <filename>%1</filename>"
-msgstr "Сканирование устройства: <filename>%1</filename>"
+msgstr "Освобождение неиспользуемых блоков в <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3705,12 +3694,10 @@ msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "Смена владельца <filename>%1</filename> на %2"
 
 #: ops/trimoperation.cpp:103
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Discard unused blocks on <filename>%1</filename>"
-msgstr "Уничтожение файловой системы на <filename>%1</filename>"
+msgstr "Освободить неиспользуемые блоки в <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

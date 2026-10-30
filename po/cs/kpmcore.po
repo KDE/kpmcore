@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-29 00:56+0000\n"
-"PO-Revision-Date: 2026-10-25 11:47+0100\n"
+"PO-Revision-Date: 2026-10-30 00:57+0100\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -3142,75 +3142,58 @@ msgstr "Převzetí vlastnictví <filename>%1</filename> pro uživatele %2"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not find the <command>fstrim</command> program."
-msgstr ""
+msgstr "Nelze najít program <command>fstrim</command>."
 
 #: jobs/trimjob.cpp:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The file system on <filename>%1</filename> does not support discarding "
 "unused blocks."
-msgstr "Souborový systém na <filename>%1</filename> nepodporuje vlastnictví."
+msgstr ""
+"Souborový systém na <filename>%1</filename> nepodporuje uvolňování "
+"nepoužívaných bloků."
 
 #: jobs/trimjob.cpp:42
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Create file system <filename>%1</filename> on partition <filename>%2</"
-#| "filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
-msgstr ""
-"Vytvořit souborový systém <filename>%1</filename> na oddíle <filename>%2</"
-"filename>"
+msgstr "<filename>%1</filename> již není připojen v <filename>%2</filename>."
 
 #: jobs/trimjob.cpp:46
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "<filename>%1</filename> is mounted read-only."
-msgstr "Nelze otevřít zařízení <filename>%1</filename> pro čtení."
+msgstr "<filename>%1</filename> je připojen jako pouze pro čtení."
 
 #: jobs/trimjob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The device of <filename>%1</filename> does not support discarding blocks."
-msgstr "Souborový systém na <filename>%1</filename> nepodporuje vlastnictví."
+msgstr "Zařízení <filename>%1</filename> nepodporuje uvolňování bloků."
 
 #: jobs/trimjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#| "successfully."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Discarding unused blocks on <filename>%1</filename> completed successfully."
 msgstr ""
-"Zaváděcí sektor NTFS pro oddíl <filename>%1</filename> byl úspěšně "
-"aktualizován."
+"Uvolňování nepoužívaných bloků v <filename>%1</filename> bylo úspěšně "
+"dokončeno."
 
 #: jobs/trimjob.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not create backup file <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not discard unused blocks on <filename>%1</filename>."
-msgstr "Nelze vytvořit záložní soubor <filename>%1</filename>."
+msgstr "Nepodařilo se uvolnit nepoužívané bloky v <filename>%1</filename>."
 
 #: jobs/trimjob.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Discarding unused blocks on <filename>%1</filename>"
-msgstr "Zničit souborový systém v <filename>%1</filename>"
+msgstr "Uvolňování nepoužívaných bloků v <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3650,12 +3633,10 @@ msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "Převést vlastnictví <filename>%1</filename> na uživatele %2"
 
 #: ops/trimoperation.cpp:103
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Discard unused blocks on <filename>%1</filename>"
-msgstr "Zničit souborový systém v <filename>%1</filename>"
+msgstr "Uvolnit nepoužívané bloky v <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
