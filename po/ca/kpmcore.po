@@ -3661,7 +3661,3 @@ msgstr "Versió dels Frameworks de KDE:"
 #, kde-format
 msgid "Machine:"
 msgstr "Màquina:"
-
-#~ msgctxt "@info:status"
-#~ msgid "Could not obtain administrator privileges."
-#~ msgstr "No s'han pogut obtenir els privilegis d'administrador."
