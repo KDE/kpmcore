@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-29 00:56+0000\n"
-"PO-Revision-Date: 2026-09-15 08:14+0300\n"
+"PO-Revision-Date: 2026-11-05 14:00+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1364,12 +1364,10 @@ msgid "Number of &quot;Free Fall Events&quot; detected"
 msgstr "מספר „אירועי נפילה חופשית” שזוהו"
 
 #: core/smartnvmehealth.cpp:51
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item:intable"
-#| msgid "warning"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Critical warning"
-msgstr "אזהרה"
+msgstr "אזהרה משמעותית"
 
 #: core/smartnvmehealth.cpp:53
 #, fuzzy, kde-kuit-format
@@ -1401,7 +1399,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Data written"
-msgstr ""
+msgstr "נתונים נכתבו"
 
 #: core/smartnvmehealth.cpp:63
 #, kde-kuit-format
@@ -1430,9 +1428,7 @@ msgid "Power cycles"
 msgstr "כמות סבבי הפעלה/כיבוי"
 
 #: core/smartnvmehealth.cpp:71
-#, fuzzy, kde-kuit-format
-#| msgctxt "SMART attr name"
-#| msgid "Power-On Hours"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Power on hours"
 msgstr "שעות פעילות"
@@ -1456,12 +1452,10 @@ msgid "Error information log entries"
 msgstr ""
 
 #: core/smartnvmehealth.cpp:88
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "none"
+#, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning, %1 is the raw value"
 msgid "%1 (none)"
-msgstr "ללא"
+msgstr "%1 (ללא)"
 
 #: core/smartnvmehealth.cpp:92
 #, kde-kuit-format
@@ -1485,7 +1479,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "media in read-only mode"
-msgstr ""
+msgstr "מדיה במצב קריאה בלבד"
 
 #: core/smartnvmehealth.cpp:100
 #, kde-kuit-format
@@ -1500,17 +1494,13 @@ msgid "persistent memory region read-only"
 msgstr ""
 
 #: core/smartnvmehealth.cpp:104
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item:intext unit"
-#| msgid "(unknown unit)"
+#, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "unknown warning"
-msgstr "(יחידה לא ידועה)"
+msgstr "אזהרה לא ידועה"
 
 #: core/smartnvmehealth.cpp:106
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt ""
 "@item:intable NVMe critical warning, %1 is the raw value, %2 the list of "
 "warnings"
@@ -1518,50 +1508,46 @@ msgid "%1: %2"
 msgstr "%1: %2"
 
 #: core/smartnvmehealth.cpp:113 core/smartstatus.cpp:89
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition table name"
-#| msgid "unknown"
+#, kde-kuit-format
 msgctxt "@item:intable"
 msgid "unknown"
 msgstr "לא ידועה"
 
 #: core/smartnvmehealth.cpp:122
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress job status (error, warning, ...)"
-#| msgid "%1: %2"
+#, kde-kuit-format
 msgctxt "@item:intable percentage"
 msgid "%1%"
-msgstr "%1: %2"
+msgstr "%1%"
 
 #: core/smartnvmehealth.cpp:128
 #, kde-kuit-format
 msgctxt "@item:intable NVMe data units of 512000 bytes"
 msgid "%1 data unit"
 msgid_plural "%1 data units"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "יחידת נתונים"
+msgstr[1] "שתי יחידות נתונים"
+msgstr[2] "%1 יחידות נתונים"
+msgstr[3] "%1 יחידות נתונים"
 
 #: core/smartnvmehealth.cpp:133
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "%1 minute"
 msgid_plural "%1 minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "דקה"
+msgstr[1] "שתי דקות"
+msgstr[2] "%1 דקות"
+msgstr[3] "%1 דקות"
 
 #: core/smartnvmehealth.cpp:136
 #, kde-kuit-format
 msgctxt "@item:intable"
 msgid "%1 hour"
 msgid_plural "%1 hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "שעה"
+msgstr[1] "שעתיים"
+msgstr[2] "%1 שעות"
+msgstr[3] "%1 שעות"
 
 #: core/smartstatus.cpp:93
 #, kde-kuit-format
@@ -1624,20 +1610,16 @@ msgid "Self test in progress"
 msgstr "מתבצעת בדיקה עצמית"
 
 #: core/smartstatus.cpp:128
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:credit"
-#| msgid "LVM support"
+#, kde-kuit-format
 msgctxt "@item"
 msgid "Not supported"
-msgstr "תמיכה ב־LVM"
+msgstr "אין תמיכה"
 
 #: core/smartstatus.cpp:131
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item"
-#| msgid "Self test in progress"
+#, kde-kuit-format
 msgctxt "@item"
 msgid "No self test results"
-msgstr "מתבצעת בדיקה עצמית"
+msgstr "אין תוצאות בדיקה עצמית"
 
 #: core/smartstatus.cpp:134
 #, kde-kuit-format
@@ -1646,9 +1628,7 @@ msgid "Success"
 msgstr "הצליחה"
 
 #: core/smartstatus.cpp:138
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition table name"
-#| msgid "unknown"
+#, kde-kuit-format
 msgctxt "@item"
 msgid "Unknown"
 msgstr "לא ידועה"
@@ -3072,17 +3052,16 @@ msgstr "העברת בעלות על <filename>%1</filename> למשתמש %2"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not find the <command>fstrim</command> program."
-msgstr ""
+msgstr "לא ניתן למצוא את התוכנית <command>fstrim</command>."
 
 #: jobs/trimjob.cpp:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The file system on <filename>%1</filename> does not support discarding "
 "unused blocks."
-msgstr "מערכת הקבצים על <filename>%1</filename> לא תומכת בבעלות."
+msgstr ""
+"מערכת הקבצים על <filename>%1</filename> לא תומכת בסילוק בלוקים שאינם בשימוש."
 
 #: jobs/trimjob.cpp:42
 #, fuzzy, kde-kuit-format
@@ -3125,20 +3104,16 @@ msgstr ""
 "עדכון מקטע הטעינה (boot sector) של NTFS למחיצה <filename>%1</filename>."
 
 #: jobs/trimjob.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not create backup file <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not discard unused blocks on <filename>%1</filename>."
-msgstr "לא ניתן ליצור קובץ גיבוי <filename>%1</filename>."
+msgstr "לא ניתן לסלק בלוקים שאינם בשימוש ב־<filename>%1</filename>."
 
 #: jobs/trimjob.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Discarding unused blocks on <filename>%1</filename>"
-msgstr "גריטת מערכת הקבצים שעל <filename>%1</filename>"
+msgstr "סילוק בלוקים שאינם בשימוש ב־<filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3560,12 +3535,10 @@ msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "העברת בעלות על <filename>%1</filename> למשתמש %2"
 
 #: ops/trimoperation.cpp:103
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Discard unused blocks on <filename>%1</filename>"
-msgstr "גריטת מערכת הקבצים שעל <filename>%1</filename>"
+msgstr "סילוק בלוקים שאינם בשימוש ב־<filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65
