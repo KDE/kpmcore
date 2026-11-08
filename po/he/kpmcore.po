@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-29 00:56+0000\n"
-"PO-Revision-Date: 2026-11-05 14:00+0200\n"
+"POT-Creation-Date: 2026-11-08 00:16+0000\n"
+"PO-Revision-Date: 2026-11-07 22:11+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1387,13 +1387,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Percentage used"
-msgstr ""
+msgstr "אחוז בשימוש"
 
 #: core/smartnvmehealth.cpp:59
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Data read"
-msgstr ""
+msgstr "נתונים נקראו"
 
 #: core/smartnvmehealth.cpp:61
 #, kde-kuit-format
@@ -1405,27 +1405,25 @@ msgstr "נתונים נכתבו"
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Host read commands"
-msgstr ""
+msgstr "פקודות קריאה של מארח"
 
 #: core/smartnvmehealth.cpp:65
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Host write commands"
-msgstr ""
+msgstr "פקודות כתיבה של מארח"
 
 #: core/smartnvmehealth.cpp:67
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Controller busy time"
-msgstr ""
+msgstr "זמן אי־זמינות של בקר"
 
 #: core/smartnvmehealth.cpp:69
-#, fuzzy, kde-kuit-format
-#| msgctxt "SMART attr name"
-#| msgid "Power Cycle Count"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Power cycles"
-msgstr "כמות סבבי הפעלה/כיבוי"
+msgstr "מחזורי הפעלה/כיבוי"
 
 #: core/smartnvmehealth.cpp:71
 #, kde-kuit-format
@@ -1437,13 +1435,13 @@ msgstr "שעות פעילות"
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Unsafe shutdowns"
-msgstr ""
+msgstr "כיבויים לא בטוחים"
 
 #: core/smartnvmehealth.cpp:75
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Media and data integrity errors"
-msgstr ""
+msgstr "שגיאות מדיה ורציפות נתונים"
 
 #: core/smartnvmehealth.cpp:77
 #, kde-kuit-format
@@ -1467,13 +1465,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "temperature threshold exceeded"
-msgstr ""
+msgstr "אירעה חריגה מהטמפרטורה המרבית"
 
 #: core/smartnvmehealth.cpp:96
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "reliability degraded"
-msgstr ""
+msgstr "האמינות נפגמה"
 
 #: core/smartnvmehealth.cpp:98
 #, kde-kuit-format
@@ -1485,7 +1483,7 @@ msgstr "מדיה במצב קריאה בלבד"
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "volatile memory backup failed"
-msgstr ""
+msgstr "גיבוי זיכרון נדיף נכשל"
 
 #: core/smartnvmehealth.cpp:102
 #, kde-kuit-format
@@ -3064,44 +3062,31 @@ msgstr ""
 "מערכת הקבצים על <filename>%1</filename> לא תומכת בסילוק בלוקים שאינם בשימוש."
 
 #: jobs/trimjob.cpp:42
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Create file system <filename>%1</filename> on partition <filename>%2</"
-#| "filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
-msgstr ""
-"יצירת מערכת הקבצים <filename>%1</filename> על המחיצה <filename>%2</filename>"
+msgstr "<filename>%1</filename> לא מעוגן יותר ב־<filename>%2</filename>."
 
 #: jobs/trimjob.cpp:46
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "<filename>%1</filename> is mounted read-only."
-msgstr "לא ניתן לפתוח את ההתקן <filename>%1</filename> לקריאה."
+msgstr "<filename>%1</filename> מעוגן לקריאה בלבד."
 
 #: jobs/trimjob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The device of <filename>%1</filename> does not support discarding blocks."
-msgstr "מערכת הקבצים על <filename>%1</filename> לא תומכת בבעלות."
+msgstr "ההתקן <filename>%1</filename> לא תומך בסילוק בלוקים."
 
 #: jobs/trimjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#| "successfully."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Discarding unused blocks on <filename>%1</filename> completed successfully."
-msgstr ""
-"עדכון מקטע הטעינה (boot sector) של NTFS למחיצה <filename>%1</filename>."
+msgstr "סילוק בלוקים שאינם בשימוש ב־<filename>%1</filename> הושלם בהצלחה."
 
 #: jobs/trimjob.cpp:64
 #, kde-kuit-format
