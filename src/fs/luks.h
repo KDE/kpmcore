@@ -115,6 +115,11 @@ public:
             return m_innerFs->supportSetLabel();
         return cmdSupportNone;
     }
+    CommandSupportType supportSetLabelOnline() const override {
+        if (m_Check && m_innerFs)
+            return m_innerFs->supportSetLabelOnline();
+        return cmdSupportNone;
+    }
     CommandSupportType supportUpdateUUID() const override {
         return m_UpdateUUID;
     }
@@ -132,6 +137,7 @@ public:
     bool resizeOnline(Report& report, const QString& deviceNode, const QString& mountPoint, qint64 length) const override;
     QString readLabel(const QString& deviceNode) const override;
     bool writeLabel(Report& report, const QString& deviceNode, const QString& newLabel) override;
+    bool writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel) override;
 
     QString mountTitle() const override;
     QString unmountTitle() const override;

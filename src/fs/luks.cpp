@@ -485,6 +485,13 @@ bool luks::writeLabel(Report& report, const QString&, const QString& newLabel)
     return m_innerFs->writeLabel(report, mapperName(), newLabel);
 }
 
+bool luks::writeLabelOnline(Report& report, const QString& deviceNode, const QString& mountPoint, const QString& newLabel)
+{
+    Q_UNUSED(deviceNode)
+    Q_ASSERT(m_innerFs);
+    return m_innerFs->writeLabel(report, mountPoint, newLabel);
+}
+
 bool luks::resize(Report& report, const QString& deviceNode, qint64 newLength) const
 {
     Q_ASSERT(m_innerFs);
