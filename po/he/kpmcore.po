@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 03:01+0000\n"
-"PO-Revision-Date: 2026-11-07 22:11+0200\n"
+"PO-Revision-Date: 2026-11-08 09:07+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: צוות התרגום של KDE ישראל\n"
+"Language-Team: Hebrew <kde-l10n-he@kde.org>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 26.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1370,18 +1370,16 @@ msgid "Critical warning"
 msgstr "אזהרה משמעותית"
 
 #: core/smartnvmehealth.cpp:53
-#, fuzzy, kde-kuit-format
-#| msgctxt "SMART attr name"
-#| msgid "SSD Available Reserved Space"
+#, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Available spare"
-msgstr "מקום שמור זמין ב־SSD"
+msgstr "חלופי זמין"
 
 #: core/smartnvmehealth.cpp:55
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Available spare threshold"
-msgstr ""
+msgstr "סף חלופי זמין"
 
 #: core/smartnvmehealth.cpp:57
 #, kde-kuit-format
@@ -1447,7 +1445,7 @@ msgstr "שגיאות מדיה ורציפות נתונים"
 #, kde-kuit-format
 msgctxt "@label NVMe health"
 msgid "Error information log entries"
-msgstr ""
+msgstr "רשומות יומן לפרטי שגיאה"
 
 #: core/smartnvmehealth.cpp:88
 #, kde-kuit-format
@@ -1459,7 +1457,7 @@ msgstr "%1 (ללא)"
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "available spare below threshold"
-msgstr ""
+msgstr "החלופי הזמין הוא מתחת לסף"
 
 #: core/smartnvmehealth.cpp:94
 #, kde-kuit-format
@@ -1489,7 +1487,7 @@ msgstr "גיבוי זיכרון נדיף נכשל"
 #, kde-kuit-format
 msgctxt "@item:intable NVMe critical warning"
 msgid "persistent memory region read-only"
-msgstr ""
+msgstr "אזור זיכרון קבוע לקריאה בלבד"
 
 #: core/smartnvmehealth.cpp:104
 #, kde-kuit-format
