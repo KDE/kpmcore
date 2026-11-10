@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 03:01+0000\n"
-"PO-Revision-Date: 2026-10-26 07:47+0100\n"
+"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"PO-Revision-Date: 2026-10-31 09:22+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.10\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2264,13 +2264,13 @@ msgstr "Blocca"
 msgid "Enter passphrase for %1:"
 msgstr "Digita la frase segreta per %1:"
 
-#: fs/luks.cpp:500 fs/luks.cpp:511 fs/luks2.cpp:96 fs/luks2.cpp:115
+#: fs/luks.cpp:507 fs/luks.cpp:518 fs/luks2.cpp:96 fs/luks2.cpp:115
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "Ridimensionamento LUKS nella partizione <filename>%1</filename>."
 
-#: fs/luks.cpp:515 fs/luks2.cpp:126
+#: fs/luks.cpp:522 fs/luks2.cpp:126
 #, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
@@ -3203,77 +3203,60 @@ msgstr "Assunzione della proprietà di <filename>%1</filename> per l'utente %2"
 #, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not find the <command>fstrim</command> program."
-msgstr ""
+msgstr "Impossibile trovare il programma <command>fstrim</command>."
 
 #: jobs/trimjob.cpp:38
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The file system on <filename>%1</filename> does not support discarding "
 "unused blocks."
-msgstr "Il file system su <filename>%1</filename> non supporta la proprietà."
+msgstr ""
+"Il file system su <filename>%1</filename> non supporta l'eliminazione dei "
+"blocchi inutilizzati."
 
 #: jobs/trimjob.cpp:42
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Create file system <filename>%1</filename> on partition <filename>%2</"
-#| "filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "<filename>%1</filename> is no longer mounted at <filename>%2</filename>."
-msgstr ""
-"Crea il file system <filename>%1</filename> sulla partizione <filename>%2</"
-"filename>"
+msgstr "<filename>%1</filename> non è più montato in <filename>%2</filename>."
 
 #: jobs/trimjob.cpp:46
-#, fuzzy, kde-kuit-format
-#| msgid "Could not open device <filename>%1</filename> for reading."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "<filename>%1</filename> is mounted read-only."
-msgstr ""
-"Impossibile aprire il dispositivo <filename>%1</filename> per la lettura."
+msgstr "<filename>%1</filename> è montato in sola lettura."
 
 #: jobs/trimjob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "File system on <filename>%1</filename> does not support ownership."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "The device of <filename>%1</filename> does not support discarding blocks."
-msgstr "Il file system su <filename>%1</filename> non supporta la proprietà."
+msgstr ""
+"Il dispositivo <filename>%1</filename> non supporta lo scarto dei blocchi."
 
 #: jobs/trimjob.cpp:62
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Updated NTFS boot sector for partition <filename>%1</filename> "
-#| "successfully."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid ""
 "Discarding unused blocks on <filename>%1</filename> completed successfully."
 msgstr ""
-"L'aggiornamento del settore di avvio NTFS della partizione <filename>%1</"
-"filename> ha avuto successo."
+"La rimozione dei blocchi inutilizzati su <filename>%1</filename> è stata "
+"completata correttamente."
 
 #: jobs/trimjob.cpp:64
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Could not create backup file <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Could not discard unused blocks on <filename>%1</filename>."
 msgstr ""
-"Impossibile creare il file della copia di sicurezza <filename>%1</filename>."
+"Impossibile scartare i blocchi inutilizzati su <filename>%1</filename>."
 
 #: jobs/trimjob.cpp:73
-#, fuzzy, kde-kuit-format
-#| msgctxt "@label"
-#| msgid "Scanning device: <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Discarding unused blocks on <filename>%1</filename>"
-msgstr "Scansione del dispositivo: <filename>%1</filename>"
+msgstr "Rimozione dei blocchi inutilizzati su <filename>%1</filename>"
 
 #: ops/backupoperation.cpp:39
 #, kde-kuit-format
@@ -3734,12 +3717,10 @@ msgid "Take ownership of <filename>%1</filename> for user %2"
 msgstr "Assumi la proprietà di <filename>%1</filename> per l'utente %2"
 
 #: ops/trimoperation.cpp:103
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Shred the file system on <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info:status"
 msgid "Discard unused blocks on <filename>%1</filename>"
-msgstr "Distruggi il file system su <filename>%1</filename>"
+msgstr "Scarta i blocchi inutilizzati su <filename>%1</filename>"
 
 #: plugins/geom/geompartitiontable.cpp:91
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:65

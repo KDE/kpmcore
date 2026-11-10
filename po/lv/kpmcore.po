@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 03:01+0000\n"
+"POT-Creation-Date: 2026-11-10 01:00+0000\n"
 "PO-Revision-Date: 2009-01-11 18:55+0200\n"
 "Last-Translator: Viesturs Zarins <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -2286,7 +2286,7 @@ msgstr ""
 msgid "Enter passphrase for %1:"
 msgstr ""
 
-#: fs/luks.cpp:500 fs/luks.cpp:511 fs/luks2.cpp:96 fs/luks2.cpp:115
+#: fs/luks.cpp:507 fs/luks.cpp:518 fs/luks2.cpp:96 fs/luks2.cpp:115
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid "Moving partition <filename>%1</filename> failed."
@@ -2294,7 +2294,7 @@ msgctxt "@info:progress"
 msgid "Resizing LUKS crypt on partition <filename>%1</filename>."
 msgstr "Neizdevās pārvietot sadaļu <filename>%1</filename>."
 
-#: fs/luks.cpp:515 fs/luks2.cpp:126
+#: fs/luks.cpp:522 fs/luks2.cpp:126
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info/plain"
 #| msgid ""
