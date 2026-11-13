@@ -6,20 +6,21 @@
 # SPDX-FileCopyrightText: 2010 Panagiotis Papadopoulos <pano_90@gmx.net>
 # SPDX-FileCopyrightText: 2010-2013, 2016, 2023 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2013 Benjamin Weis <benjamin.weis@gmx.com>
+# SPDX-FileCopyrightText: 2026 Alois Spitzbart <spitz234@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-10 01:00+0000\n"
-"PO-Revision-Date: 2023-08-14 21:58+0200\n"
-"Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
+"PO-Revision-Date: 2026-11-11 23:22+0100\n"
+"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -632,23 +633,18 @@ msgid "Uncorrected read errors reported to the operating system."
 msgstr "An das Betriebssystem gemeldete unkorrigierte Lesefehler."
 
 #: core/smartattribute.cpp:114
-#, fuzzy, kde-format
-#| msgid "Available and Used Space"
+#, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Available Reserved Space"
-msgstr "Verfügbarer und belegter Speicherplatz"
+msgstr "SSD verfügbarer reservierter Speicherplatz"
 
 #: core/smartattribute.cpp:114
-#, fuzzy, kde-format
-#| msgctxt "SMART attr description"
-#| msgid ""
-#| "Count of available reserved blocks as percentage of the total number of "
-#| "reserved blocks"
+#, kde-format
 msgctxt "SMART attr description"
 msgid "Number of available reserved space as a percentage of reserved space."
 msgstr ""
-"Prozentzahl der verfügbaren fehlerfreien Blöcke von der Gesamtanzahl der "
-"fehlerfreien Blöcke"
+"Größe des verfügbaren reservierten Speicherplatzes als Prozentzahl des "
+"reservierten Speicherplatzes."
 
 #: core/smartattribute.cpp:115
 #, kde-format
@@ -1757,62 +1753,46 @@ msgid "Disk failure is imminent. Backup all data!"
 msgstr "Festplattenausfall steht bevor. Sichern Sie Ihre Daten!"
 
 #: fs/bcachefs.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Could not create temp dir."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Could not create temp dir."
 msgstr ""
-"Das Ändern der Größe des Btrfs-Dateisystems auf der Partition <filename>%1</"
-"filename> ist fehlgeschlagen: Der temporäre Ordner lässt sich nicht "
+"Das Ändern der Größe des Bcachefs-Dateisystems auf der Partition <filename>"
+"%1</filename> ist fehlgeschlagen: Der temporäre Ordner lässt sich nicht "
 "erstellen."
 
 #: fs/bcachefs.cpp:136 fs/bcachefs.cpp:158
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "btrfs file system resize failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "bcachefs device resize command failed."
 msgstr ""
-"Das Ändern der Größe des Btrfs-Dateisystems auf der Partition <filename>%1</"
-"filename> ist fehlgeschlagen: Größenänderung des btrfs-Dateisystems ist "
-"fehlgeschlagen."
+"Das Ändern der Größe des Bcachefs-Dateisystems auf der Partition <filename>"
+"%1</filename> ist fehlgeschlagen: Befehl für die Größenänderung des Bcachefs-"
+"Geräts ist fehlgeschlagen."
 
 #: fs/bcachefs.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "<warning>Resizing Btrfs file system on partition <filename>%1</filename>: "
-#| "Unmount failed.</warning>"
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "<warning>Resizing Bcachefs file system on partition <filename>%1</filename>: "
 "Unmount failed.</warning>"
 msgstr ""
-"<warning>Beim Ändern der Größe des Btrfs-Dateisystems auf der Partition "
-"<filename>%1</filename> ist das Einhängen fehlgeschlagen.</warning>"
+"<warning>Beim Ändern der Größe des Bcachefs-Dateisystems auf der Partition "
+"<filename>%1</filename> ist das Aushängen fehlgeschlagen.</warning>"
 
 #: fs/bcachefs.cpp:144
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Resizing Btrfs file system on partition <filename>%1</filename> failed: "
-#| "Initial mount failed."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Resizing Bcachefs file system on partition <filename>%1</filename> failed: "
 "Initial mount failed."
 msgstr ""
-"Das Ändern der Größe des Btrfs-Dateisystems auf der Partition <filename>%1</"
-"filename> ist fehlgeschlagen: Das erste Einhängen ist fehlgeschlagen."
+"Das Ändern der Größe des Bcachefs-Dateisystems auf der Partition <filename>"
+"%1</filename> ist fehlgeschlagen: Das erste Einhängen ist fehlgeschlagen."
 
 #: fs/btrfs.cpp:213
 #, kde-kuit-format
@@ -1844,7 +1824,7 @@ msgid ""
 "Unmount failed.</warning>"
 msgstr ""
 "<warning>Beim Ändern der Größe des Btrfs-Dateisystems auf der Partition "
-"<filename>%1</filename> ist das Einhängen fehlgeschlagen.</warning>"
+"<filename>%1</filename> ist das Aushängen fehlgeschlagen.</warning>"
 
 #: fs/btrfs.cpp:237
 #, kde-kuit-format
@@ -1994,9 +1974,7 @@ msgid "ext4"
 msgstr "ext4"
 
 #: fs/filesystem.cpp:574
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "linuxswap"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Linux swap"
 msgstr "Linux-Swap"
@@ -2005,38 +1983,34 @@ msgstr "Linux-Swap"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FreeBSD swap"
-msgstr ""
+msgstr "FreeBSD-Swap"
 
 #: fs/filesystem.cpp:576
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT16"
-msgstr ""
+msgstr "FAT16"
 
 #: fs/filesystem.cpp:577
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT32"
-msgstr ""
+msgstr "FAT32"
 
 #: fs/filesystem.cpp:578
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NTFS"
-msgstr ""
+msgstr "NTFS"
 
 #: fs/filesystem.cpp:579
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ReiserFS"
-msgstr "Reiser"
+msgstr "ReiserFS"
 
 #: fs/filesystem.cpp:580
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "reiser4"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Reiser4"
 msgstr "Reiser4"
@@ -2045,31 +2019,31 @@ msgstr "Reiser4"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "XFS"
-msgstr ""
+msgstr "XFS"
 
 #: fs/filesystem.cpp:582
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "JFS"
-msgstr ""
+msgstr "JFS"
 
 #: fs/filesystem.cpp:583
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS"
-msgstr ""
+msgstr "HFS"
 
 #: fs/filesystem.cpp:584
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HFS Plus"
-msgstr ""
+msgstr "HFS Plus"
 
 #: fs/filesystem.cpp:585
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UFS"
-msgstr ""
+msgstr "UFS"
 
 #: fs/filesystem.cpp:586
 #, kde-kuit-format
@@ -2078,9 +2052,7 @@ msgid "unformatted"
 msgstr "Unformatiert"
 
 #: fs/filesystem.cpp:587
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item filesystem name"
-#| msgid "btrfs"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Btrfs"
 msgstr "Btrfs"
@@ -2089,12 +2061,10 @@ msgstr "Btrfs"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "HPFS"
-msgstr ""
+msgstr "HPFS"
 
 #: fs/filesystem.cpp:589
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS"
 msgstr "LUKS"
@@ -2103,69 +2073,67 @@ msgstr "LUKS"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "OCFS2"
-msgstr ""
+msgstr "OCFS2"
 
 #: fs/filesystem.cpp:591
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ZFS"
-msgstr ""
+msgstr "ZFS"
 
 #: fs/filesystem.cpp:592
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "exFAT"
-msgstr ""
+msgstr "exFAT"
 
 #: fs/filesystem.cpp:593
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "NILFS2"
-msgstr ""
+msgstr "NILFS2"
 
 #: fs/filesystem.cpp:594
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LVM PV"
-msgstr ""
+msgstr "LVM PV"
 
 #: fs/filesystem.cpp:595
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "F2FS"
-msgstr ""
+msgstr "F2FS"
 
 #: fs/filesystem.cpp:596
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "UDF"
-msgstr ""
+msgstr "UDF"
 
 #: fs/filesystem.cpp:597
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "ISO 9660"
-msgstr ""
+msgstr "ISO 9660"
 
 #: fs/filesystem.cpp:598
-#, fuzzy, kde-kuit-format
-#| msgctxt "@item partition role"
-#| msgid "LUKS"
+#, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "LUKS 2"
-msgstr "LUKS"
+msgstr "LUKS 2"
 
 #: fs/filesystem.cpp:599
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "FAT12"
-msgstr ""
+msgstr "FAT12"
 
 #: fs/filesystem.cpp:600
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "linux_raid_member"
-msgstr ""
+msgstr "linux_raid_member"
 
 #: fs/filesystem.cpp:601
 #, kde-kuit-format
@@ -2177,19 +2145,19 @@ msgstr "BitLocker"
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "APFS"
-msgstr ""
+msgstr "APFS"
 
 #: fs/filesystem.cpp:603
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "MINIX"
-msgstr ""
+msgstr "MINIX"
 
 #: fs/filesystem.cpp:604
 #, kde-kuit-format
 msgctxt "@item filesystem name"
 msgid "Bcachefs"
-msgstr ""
+msgstr "Bcachefs"
 
 #: fs/filesystem.cpp:682 fs/luks.cpp:161
 #, kde-kuit-format
@@ -2609,12 +2577,10 @@ msgid "Create a new Volume Group: <filename>%1</filename> with PV: %2"
 msgstr "Neue „Volume Group“  <filename>%1</filename> mit PV %2 erstellen"
 
 #: jobs/deactivatelogicalvolumejob.cpp:50
-#, fuzzy, kde-kuit-format
-#| msgctxt "@title:window"
-#| msgid "Device Properties: <filename>%1</filename>"
+#, kde-kuit-format
 msgctxt "@info/plain"
 msgid "Deactivate Logical Volumes: <filename>%1</filename>"
-msgstr "Geräte-Eigenschaften: <filename>%1</filename>"
+msgstr "„Logical Volumes“ deaktivieren: <filename>%1</filename>"
 
 #: jobs/deactivatevolumegroupjob.cpp:47
 #, kde-kuit-format
@@ -3048,42 +3014,33 @@ msgstr ""
 "Startsektor: %2, Länge: %3."
 
 #: jobs/setpartitionattributesjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting attributes. Job ignored."
 msgstr ""
-"Das Dateisystem <filename>%1</filename> unterstützt kein Setzen von "
-"Bezeichnungen. Operation ignoriert."
+"Die Partitionstabelle der Partition <filename>%1</filename> unterstützt das "
+"Festlegen von Eigenschaften nicht. Operation ignoriert."
 
 #: jobs/setpartitionattributesjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the attributes for the partition <filename>%1</filename>."
 msgstr ""
-"Das Erstellen der neuen Partition <filename>%1</filename> ist fehlgeschlagen."
+"Das Festlegen der Eigenschaften für die Partition <filename>%1</filename> "
+"ist fehlgeschlagen."
 
 #: jobs/setpartitionattributesjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "attributes for the partition <filename>%2</filename>."
 msgstr ""
 "Die Partitionstabelle auf dem Gerät <filename>%1</filename> kann nicht "
-"geöffnet werden, um den Systemtyp der Partition <filename>%2</filename> "
-"einzustellen."
+"geöffnet werden, um die Eigenschaften der Partition <filename>%2</filename> "
+"festzulegen."
 
 #: jobs/setpartitionattributesjob.cpp:63
 #, kde-kuit-format
@@ -3096,102 +3053,76 @@ msgstr ""
 "für die Partition <filename>%2</filename> geöffnet werden."
 
 #: jobs/setpartitionattributesjob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the attributes on partition <filename>%1</filename> to \"%2\""
-msgstr "Bezeichnung der Partition <filename>%1</filename> auf „%2“ einstellen"
+msgstr "Eigenschaften der Partition <filename>%1</filename> auf „%2“ festlegen"
 
 #: jobs/setpartitionlabeljob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting names. Job ignored."
 msgstr ""
-"Das Dateisystem <filename>%1</filename> unterstützt kein Setzen von "
-"Bezeichnungen. Operation ignoriert."
+"Die Partitionstabelle der Partition <filename>%1</filename> unterstützt das "
+"Festlegen von Bezeichnungen nicht. Operation ignoriert."
 
 #: jobs/setpartitionlabeljob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the name for the partition <filename>%1</filename>."
 msgstr ""
-"Das Erstellen der neuen Partition <filename>%1</filename> ist fehlgeschlagen."
+"Das Festlegen der Bezeichnung für die Partition <filename>%1</filename> ist "
+"fehlgeschlagen."
 
 #: jobs/setpartitionlabeljob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
 "name for the partition <filename>%2</filename>."
 msgstr ""
 "Die Partitionstabelle auf dem Gerät <filename>%1</filename> kann nicht "
-"geöffnet werden, um den Systemtyp der Partition <filename>%2</filename> "
-"einzustellen."
+"geöffnet werden, um die Bezeichnung der Partition <filename>%2</filename> "
+"festzulegen."
 
 #: jobs/setpartitionlabeljob.cpp:63
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open device <filename>%1</filename> to set the system type for "
-#| "partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open device <filename>%1</filename> to set the name for partition "
 "<filename>%2</filename>."
 msgstr ""
-"Das Gerät <filename>%1</filename> kann nicht zum Einstellen des Systemtyps "
-"für die Partition <filename>%2</filename> geöffnet werden."
+"Das Gerät <filename>%1</filename> kann nicht geöffnet werden, um die "
+"Bezeichnung der Partition <filename>%2</filename> festzulegen."
 
 #: jobs/setpartitionlabeljob.cpp:74
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:status"
-#| msgid "Set label for partition <filename>%1</filename> to \"%2\""
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Set the label on partition <filename>%1</filename> to \"%2\""
-msgstr "Bezeichnung der Partition <filename>%1</filename> auf „%2“ einstellen"
+msgstr "Bezeichnung der Partition <filename>%1</filename> auf „%2“ festlegen"
 
 #: jobs/setpartitionuuidjob.cpp:47
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "File system on partition <filename>%1</filename> does not support setting "
-#| "labels. Job ignored."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Partition table of partition <filename>%1</filename> does not support "
 "setting UUIDs. Job ignored."
 msgstr ""
-"Das Dateisystem <filename>%1</filename> unterstützt kein Setzen von "
-"Bezeichnungen. Operation ignoriert."
+"Die Partitionstabelle der Partition <filename>%1</filename> unterstützt das "
+"Festlegen von UUIDs nicht. Operation ignoriert."
 
 #: jobs/setpartitionuuidjob.cpp:59
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid "Failed to create new partition <filename>%1</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid "Failed to set the UUID for the partition <filename>%1</filename>."
 msgstr ""
-"Das Erstellen der neuen Partition <filename>%1</filename> ist fehlgeschlagen."
+"Das Festlegen der UUID für die Partition <filename>%1</filename> ist "
+"fehlgeschlagen."
 
 #: jobs/setpartitionuuidjob.cpp:61
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info:progress"
-#| msgid ""
-#| "Could not open partition table on device <filename>%1</filename> to set "
-#| "the system type for partition <filename>%2</filename>."
+#, kde-kuit-format
 msgctxt "@info:progress"
 msgid ""
 "Could not open partition table on device <filename>%1</filename> to set the "
@@ -3199,7 +3130,7 @@ msgid ""
 msgstr ""
 "Die Partitionstabelle auf dem Gerät <filename>%1</filename> kann nicht "
 "geöffnet werden, um den Systemtyp der Partition <filename>%2</filename> "
-"einzustellen."
+"festzulegen."
 
 #: jobs/setpartitionuuidjob.cpp:63
 #, fuzzy, kde-kuit-format
