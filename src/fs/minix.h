@@ -13,6 +13,8 @@
 
 #include "util/libpartitionmanagerexport.h"
 
+#include <QVariantMap>
+
 class Report;
 
 class QString;

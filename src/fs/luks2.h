@@ -14,6 +14,7 @@
 #include "fs/luks.h"
 
 #include <QtGlobal>
+#include <QVariantMap>
 
 class QString;
 

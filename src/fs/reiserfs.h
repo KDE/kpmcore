@@ -19,6 +19,7 @@
 #include "util/capacity.h"
 
 #include <QtGlobal>
+#include <QVariantMap>
 
 class Report;
 

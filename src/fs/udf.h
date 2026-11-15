@@ -15,6 +15,7 @@
 #include "fs/filesystem.h"
 
 #include <QtGlobal>
+#include <QVariantMap>
 
 class Report;
 

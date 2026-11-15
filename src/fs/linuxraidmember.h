@@ -13,6 +13,8 @@
 
 #include "fs/filesystem.h"
 
+#include <QVariantMap>
+
 class Report;
 
 class QString;

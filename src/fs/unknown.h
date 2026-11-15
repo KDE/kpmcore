@@ -16,6 +16,7 @@
 #include "fs/filesystem.h"
 
 #include <QtGlobal>
+#include <QVariantMap>
 
 namespace FS
 {
