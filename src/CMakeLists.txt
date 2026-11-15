@@ -60,6 +60,23 @@ install(FILES ${OPS_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/ops/
 install(FILES ${UTIL_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/util/ COMPONENT Devel)
 install(FILES ${GUI_LIB_HDRS} DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kpmcore/gui/ COMPONENT Devel)
 
+if(${ECM_VERSION} VERSION_GREATER_EQUAL 6.30)
+    include(ECMInstalledLibraryCheck)
+
+    ecm_add_installed_library_check(kpmcore
+        PACKAGE_NAME "KPMcore"
+        NO_PACKAGE_TARGET_NAMESPACE
+    )
+
+    ecm_installed_library_check_include_strings(kpmcore HEADERS ${CORE_LIB_HDRS} PREFIX core)
+    ecm_installed_library_check_include_strings(kpmcore HEADERS ${BACKEND_LIB_HDRS} PREFIX backend)
+    ecm_installed_library_check_include_strings(kpmcore HEADERS ${FS_LIB_HDRS} PREFIX fs)
+    ecm_installed_library_check_include_strings(kpmcore HEADERS ${JOBS_LIB_HDRS} PREFIX jobs)
+    ecm_installed_library_check_include_strings(kpmcore HEADERS ${OPS_LIB_HDRS} PREFIX ops)
+    ecm_installed_library_check_include_strings(kpmcore HEADERS ${UTIL_LIB_HDRS} PREFIX util)
+    ecm_installed_library_check_include_strings(kpmcore HEADERS ${GUI_LIB_HDRS} PREFIX gui)
+endif()
+
 ############################################
 
 add_subdirectory(plugins)
