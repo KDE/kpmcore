@@ -11,6 +11,7 @@
 #include <KLocalizedString>
 
 #include <QMetaType>
+#include <QVariantMap>
 
 namespace FS
 {
