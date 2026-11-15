@@ -157,7 +157,7 @@ bool ExternalCommand::start(int timeout)
         }
     };
 
-    connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, exitLoop);
     loop.exec();
 
     return rval;
@@ -196,7 +196,7 @@ bool ExternalCommand::copyBlocks(const CopySource& source, CopyTarget& target)
         setExitCode(!rval);
     };
 
-    connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, exitLoop);
     loop.exec();
 
     return rval;
@@ -233,7 +233,7 @@ QByteArray ExternalCommand::readData(const QString& deviceNode, qint64 offset, q
         }
     };
 
-    connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, exitLoop);
     loop.exec();
 
     return target;
@@ -293,7 +293,7 @@ bool ExternalCommand::waitForDbusReply(QDBusPendingCall &pcall)
         setExitCode(!rval);
     };
 
-    connect(watcher, &QDBusPendingCallWatcher::finished, exitLoop);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, exitLoop);
     loop.exec();
 
     return rval;
