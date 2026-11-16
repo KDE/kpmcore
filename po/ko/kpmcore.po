@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-10-03 21:00+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -1767,43 +1767,43 @@ msgstr ""
 "파티션 <filename>%1</filename>에 있는 Btrfs 파일 시스템의 크기를 조정할 수 없"
 "음: 첫 마운트가 실패했습니다."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "이 파일 시스템에서는 클러스터 크기 선택을 지원하지 않습니다."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr "클러스터 크기는 정수 단위 바이트로 지정해야 합니다."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "클러스터 크기(%1바이트)는 양수여야 합니다."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "클러스터 크기(%1바이트)는 2의 제곱이어야 합니다."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr "요청한 FAT 섹터 크기가 2의 정수 제곱수가 아닙니다."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr "요청한 FAT 섹터 크기(%1바이트)가 512에서 32768 사이여야 합니다."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1813,7 +1813,7 @@ msgstr ""
 "요청한 FAT의 클러스터당 섹터 값이 1에서 128 사이의 2의 정수 제곱수가 아닙니"
 "다."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1821,7 +1821,7 @@ msgid ""
 "bytes)."
 msgstr "클러스터 크기(%1바이트)는 섹터 크기의 배수(%2바이트)여야 합니다."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1831,7 +1831,7 @@ msgstr ""
 "클러스터 크기 %1바이트는 클러스터당 %3바이트에서 %2섹터에 대응되며, mkfs.fat"
 "에서 사용할 수 없습니다(1에서 128 사이의 2의 제곱수여야 함)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1841,7 +1841,7 @@ msgstr ""
 "요청한 클러스터 크기(%1바이트)와 클러스터당 섹터 수(%2)가 서로 일치하지 않습"
 "니다."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1851,14 +1851,14 @@ msgstr ""
 "클러스터 크기(%1바이트)가 이 파일 시스템에서 지원하는 범위(%2바이트부터 %3바"
 "이트까지)를 벗어났습니다."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr "클러스터 크기(%1바이트)가 전체 파일 시스템 크기(%2바이트)보다 큽니다."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1868,7 +1868,7 @@ msgstr ""
 "클러스터 크기 %1바이트를 사용하면 FAT16 파일 시스템에서 필요한 4085개 이상의 "
 "클러스터를 확보할 수 없습니다. 더 작은 클러스터 크기를 사용하십시오."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

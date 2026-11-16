@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extragear-sysadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-11-03 22:50+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1785,43 +1785,43 @@ msgstr ""
 "<filename>%1</filename> bölüntüsü üzerindeki Btrfs dosya sistemi yeniden "
 "boyutlandırılamadı: İlk bağlama işlemi başarısız oldu."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "Bu dosya sisteminde küme boyutunu seçme desteklenmiyor."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr "Küme boyutu, bayt türünden bir tam sayı olmalıdır."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "Küme boyutu (%1 bayt), pozitif bir sayı olmalıdır."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "Küme boyutu (%1 bayt), 2’nin bir üssü olmalıdır."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr "İstenen FAT dilim boyutu, 2’nin üssü olan bir tam sayı değil."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr "İstenen FAT dilim boyutu (%1 bayt), 512 ve 32768 arasında olmalıdır."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1831,7 +1831,7 @@ msgstr ""
 "İstenen küme başı FAT dilimleri değeri, 1 ile 128 arasında 2’nin bir üssü "
 "olan bir tam sayı değil."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1840,7 +1840,7 @@ msgid ""
 msgstr ""
 "Küme boyutu (%1 bayt), dilim boyutunun (%2 bayt) tam bir çarpanı olmalıdır."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1851,7 +1851,7 @@ msgstr ""
 "mkfs.fat tarafından kullanılamıyor (1 ile 128 arasında 2’nin bir üssü "
 "olmalı)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1861,7 +1861,7 @@ msgstr ""
 "İstenen küme boyutu (%1 bayt) ve küme başına dilim değeri (%2), aynı anda "
 "kullanılamıyor."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1871,14 +1871,14 @@ msgstr ""
 "Küme boyutu (%1 bayt), bu dosya sisteminin desteklediği erimin dışında (%2 "
 "ila %3 bayt arası)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr "Küme boyutu (%1 bayt), tüm dosya sisteminden daha büyük (%2 bayt)."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1889,7 +1889,7 @@ msgstr ""
 "veri kümesinden daha az yer bırakıyor. Lütfen daha küçük bir küme boyutu "
 "seçin."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

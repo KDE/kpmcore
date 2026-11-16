@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-09-14 20:10+0200\n"
 "Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1781,43 +1781,43 @@ msgstr ""
 "Zmena veľkosti súborového systému Btrfs na partícii <filename>%1</filename> "
 "zlyhala: Zlyhalo počiatočné pripojenie."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "Voľba veľkosti klastra nie je pre tento súborový systém podporovaná."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr "Veľkosť klastra sa musí zadať ako celé číslo bajtov."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "Veľkosť klastra (%1 bajtov) musí byť kladné číslo."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "Veľkosť klastra (%1 bajtov) musí byť mocninou dvoch."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr "Požadovaná veľkosť sektora FAT nie je celočíselnou mocninou dvoch."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr "Požadovaná veľkosť sektora FAT (%1 bajtov) musí byť medzi 512 a 32768."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1827,7 +1827,7 @@ msgstr ""
 "Požadovaná hodnota sektorov na klaster pre FAT nie je celočíselnou mocninou "
 "dvoch od 1 do 128."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1837,7 +1837,7 @@ msgstr ""
 "Veľkosť klastra (%1 bajtov) musí byť celočíselným násobkom veľkosti sektora "
 "(%2 bajtov)."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1847,7 +1847,7 @@ msgstr ""
 "Veľkosť klastra %1 bajtov zodpovedá %2 sektorom po %3 bajtoch na klaster, čo "
 "mkfs.fat nedokáže použiť (musí to byť mocnina dvoch od 1 do 128)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1857,7 +1857,7 @@ msgstr ""
 "Požadovaná veľkosť klastra (%1 bajtov) a hodnota sektorov na klaster (%2) sa "
 "nezhodujú."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1867,7 +1867,7 @@ msgstr ""
 "Veľkosť klastra (%1 bajtov) je mimo rozsahu, ktorý tento súborový systém "
 "podporuje (%2 až %3 bajtov)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1875,7 +1875,7 @@ msgid ""
 msgstr ""
 "Veľkosť klastra (%1 bajtov) je väčšia než celý súborový systém (%2 bajtov)."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1885,7 +1885,7 @@ msgstr ""
 "Veľkosť klastra %1 bajtov necháva menej než 4085 dátových klastrov, ktoré "
 "súborový systém FAT16 potrebuje. Zvoľte menšiu veľkosť klastra."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: partitionmanager\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-10-31 09:22+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1825,7 +1825,7 @@ msgstr ""
 "Ridimensionamento del file system Btrfs nella partizione <filename>%1</"
 "filename> non riuscito. Montaggio iniziale non riuscito."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
@@ -1833,7 +1833,7 @@ msgstr ""
 "La scelta della dimensione del cluster non è supportata per questo file "
 "system."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
@@ -1841,26 +1841,26 @@ msgstr ""
 "La dimensione del cluster deve essere specificata come un numero intero di "
 "byte."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "La dimensione del cluster (%1 byte) deve essere un numero positivo."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "La dimensione del cluster (%1 byte) deve essere una potenza di due."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr ""
 "La dimensione del settore FAT richiesta non è una potenza intera di due."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
@@ -1868,7 +1868,7 @@ msgstr ""
 "La dimensione del settore FAT richiesta (%1 byte) deve essere compresa tra "
 "512 e 32768."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1878,7 +1878,7 @@ msgstr ""
 "Il valore richiesto per settori FAT per cluster non è una potenza intera di "
 "due da 1 a 128."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1888,7 +1888,7 @@ msgstr ""
 "La dimensione del cluster (%1 byte) deve essere un multiplo intero della "
 "dimensione del settore (%2 byte)."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1899,7 +1899,7 @@ msgstr ""
 "per cluster, valore che mkfs.fat non può utilizzare (deve trattarsi di una "
 "potenza di due compresa tra 1 e 128)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1909,7 +1909,7 @@ msgstr ""
 "La dimensione del cluster richiesta (%1 byte) e il valore dei settori per "
 "cluster (%2) non corrispondono."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1919,7 +1919,7 @@ msgstr ""
 "La dimensione del cluster (%1 byte) non rientra nell'intervallo supportato "
 "da questo file system (da %2 a %3 byte)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1928,7 +1928,7 @@ msgstr ""
 "La dimensione del cluster (%1 byte) è maggiore dell'intero file system (%2 "
 "byte)."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1939,7 +1939,7 @@ msgstr ""
 "inferiore ai 4085 richiesti da un file system FAT16. Sceglie una dimensione "
 "del cluster inferiore."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

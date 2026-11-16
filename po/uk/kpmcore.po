@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-10-29 16:19+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -1818,37 +1818,37 @@ msgstr ""
 "Спроба зміни розміру файлової системи Btrfs на розділі диска <filename>%1</"
 "filename> зазнала невдачі: невдала спроба початкового монтування."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "Для цієї файлової системи не передбачено підтримки розміру кластера."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr "Розмір кластера слід подавати як цілу кількість байтів."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "Розмір кластера (%1 байтів) має бути додатним числом."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "Розмір кластера (%1 байтів) має бути степенем двійки."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr "Вказаний розмір сектора FAT не є степенем двійки."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
@@ -1856,7 +1856,7 @@ msgstr ""
 "Вказаний розмір сектора FAT (%1 байтів) має належати діапазону від 512 до "
 "32768."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1866,7 +1866,7 @@ msgstr ""
 "Бажане значення кількості секторів на кластер FAT не є цілим степенем двійки "
 "у діапазоні від 1 до 128."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1875,7 +1875,7 @@ msgid ""
 msgstr ""
 "Розмір кластера (%1 байтів) має бути кратним до розміру сектора (%2 байтів)."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1886,7 +1886,7 @@ msgstr ""
 "що не може бути використано у mkfs.fat (має бути степенем двох у діапазоні "
 "від 1 до 128)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1896,7 +1896,7 @@ msgstr ""
 "Вказаний розмір кластера (%1 байтів) і значення кількості секторів на "
 "кластер (%2) є неузгодженими."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1906,7 +1906,7 @@ msgstr ""
 "Розмір кластера (%1 байтів) поза підтримуваним у цій системі діапазоном (від "
 "%2 до %3 байтів)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1915,7 +1915,7 @@ msgstr ""
 "Розмір кластера (%1 байтів) перевищує розмір усієї файлової системи (%2 "
 "байтів)."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1925,7 +1925,7 @@ msgstr ""
 "Розмір кластера у %1 байтів є меншим за 4085 кластерів даних, які потрібні "
 "файловій системі FAT16. Виберіть менший розмір кластера."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

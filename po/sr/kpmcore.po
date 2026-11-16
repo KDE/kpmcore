@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-11-14 16:15+0100\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1815,43 +1815,43 @@ msgstr ""
 "Мењање величине бтрфс фајл система на партицији <filename>%1</filename> није "
 "успело: почетно монтирање није успело."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "Избор величине кластера није подржан за овај фајл систем."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr "Величина кластера мора бити задата као цео број бајтова."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "Величина кластера (%1 B) мора бити позитиван број."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "Величина кластера (%1 B) мора бити степен двојке."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr "Захтевана величина ФАТ сектора није целобројни степен двојке."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr "Захтевана величина ФАТ сектора (%1 B) мора бити између 512 и 32768."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1861,7 +1861,7 @@ msgstr ""
 "Захтевани број ФАТ сектора по кластеру није целобројни степен двојке од 1 до "
 "128."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1870,7 +1870,7 @@ msgid ""
 msgstr ""
 "Величина кластера (%1 B) мора бити цео умножак величине сектора (%2 B)."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1880,7 +1880,7 @@ msgstr ""
 "Величина кластера од %1 B даје број сектора по кластеру %2 (сектор од %3 B), "
 "а то mkfs.fat не може да користи (број мора бити степен двојке од 1 до 128)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1890,7 +1890,7 @@ msgstr ""
 "Захтевана величина кластера (%1 B) и број сектора по кластеру (%2) се не "
 "слажу."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1900,14 +1900,14 @@ msgstr ""
 "Величина кластера (%1 B) је ван опсега који овај фајл систем подржава (%2–%3 "
 "B)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr "Величина кластера (%1 B) је већа од целог фајл система (%2 B)."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1917,7 +1917,7 @@ msgstr ""
 "Уз величину кластера од %1 B остаје мање од 4085 кластера података, колико "
 "је потребно ФАТ‑16 фајл систему. Изаберите мању величину кластера."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

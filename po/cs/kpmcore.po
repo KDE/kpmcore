@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-10-30 00:57+0100\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1784,45 +1784,45 @@ msgstr ""
 "Varování: Změna velikosti souborového systému Btrfs na oddílu <filename>%1</"
 "filename>: Nelze připojit oddíl."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "U tohoto souborového systému není volba velikosti svazku podporována."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr ""
 "Velikost svazku musí být zadána jako celé číslo vyjadřující počet bajtů."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "Velikost svazku (%1 bajtů) musí být kladné číslo."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "Velikost svazku (%1 bajtů) musí být mocninou čísla dva."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr "Požadovaná velikost sektoru FAT není celočíselnou mocninou čísla dva."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr ""
 "Požadovaná velikost sektoru FAT (%1 bajtů) musí být v rozmezí 512 až 32 768."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1832,7 +1832,7 @@ msgstr ""
 "Zadaná hodnota počtu sektorů FAT na jeden klastr není celočíselnou mocninou "
 "čísla dva v rozmezí od 1 do 128."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1842,7 +1842,7 @@ msgstr ""
 "Velikost svazku (%1 bajtů) musí být celočíselným násobkem velikosti sektoru "
 "(%2 bajtů)."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1853,7 +1853,7 @@ msgstr ""
 "svazek, což příkaz mkfs.fat nemůže použít (musí se jednat o mocninu čísla "
 "dvě v rozmezí od 1 do 128)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1863,7 +1863,7 @@ msgstr ""
 "Požadovaná velikost svazku (%1 bajtů) a hodnota počtu sektorů na svazek (%2) "
 "se neshodují."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1873,7 +1873,7 @@ msgstr ""
 "Velikost svazku (%1 bajtů) leží mimo rozsah podporovaný tímto souborovým "
 "systémem (%2 až %3 bajtů)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1882,7 +1882,7 @@ msgstr ""
 "Velikost svazku (%1 bajtů) je větší než velikost celého souborového systému "
 "(%2 bajtů)."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1892,7 +1892,7 @@ msgstr ""
 "Velikost svazku %1 bajtů znamená, že zbývá méně než 4085 datových svazků, "
 "které souborový systém FAT16 potřebuje. Zvolte menší velikost svazku."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

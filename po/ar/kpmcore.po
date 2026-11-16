@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-10-31 20:00+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -1766,43 +1766,43 @@ msgstr ""
 "فشل تغيير حجم نظام ملفات Btrfs في القسم <filename>%1</filename>: فشل الوصل "
 "الابتدائي."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "تحديد حجم نظام المجموعات غير متاح لنظام الملفات هذا."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr "يجب تحديد حجم الكتلة بعدد صحيح من البايتات."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "يجب أن يكون حجم الكتلة (%1 بايت) رقمًا موجبًا."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "يجب أن يكون حجم الكتلة (%1 بايت) من قوى العدد اثنين."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr "حجم قطاع FAT المطلوب ليس مضاعفًا صحيحًا لعدد اثنين."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr "يجب أن يتراوح حجم قطاع FAT المطلوب (%1 بايت) بين 512 و32768."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1812,7 +1812,7 @@ msgstr ""
 "القيمة المطلوبة لعدد القطاعات في كل كتلة FAT ليست مضاعفة عددية لـ 2 تتراوح "
 "بين 1 و128."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1820,7 +1820,7 @@ msgid ""
 "bytes)."
 msgstr "يجب أن يكون حجم الكتلة (%1 بايت) مضاعفًا صحيحًا لحجم القطاع (%2 بايت)."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1830,7 +1830,7 @@ msgstr ""
 "حجم الكتلة البالغ %1 بايت يُعادل %2 قطاعًا بحجم %3 بايت لكل كتلة، وهو ما لا "
 "يمكن لـ mkfs.fat استخدامه (يجب أن يكون القيمة الأسية من 1 إلى 128)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1839,7 +1839,7 @@ msgid ""
 msgstr ""
 "حجم الكتلة المطلوب (%1 بايت) وقيمة عدد القطاعات في كل كتلة (%2) غير متطابقين."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1849,14 +1849,14 @@ msgstr ""
 "حجم الكتلة (%1 بايت) خارج النطاق الذي يدعمه نظام الملفات هذا (%2 إلى %3 "
 "بايت)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr "حجم الكتلة (%1 بايت) أكبر من حجم نظام الملفات بأكمله (%2 بايت)."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1866,7 +1866,7 @@ msgstr ""
 "حجم الكتلة البالغ %1 بايت لا يوفر العدد الكافي من مجموعات البيانات التي "
 "يحتاجها نظام الملفات FAT16، وهو 4085 مجموعة. اختر حجم كتلة أصغر."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

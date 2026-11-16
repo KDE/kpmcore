@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-10 01:00+0000\n"
+"POT-Creation-Date: 2026-11-16 01:10+0000\n"
 "PO-Revision-Date: 2026-10-29 03:33+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1799,45 +1799,45 @@ msgstr ""
 "დანაყოფზე <filename>%1</filename> Btrfs ფაილური სისტემის ზომის შეცვლა "
 "ჩავარდა: საწყისი მიმაგრება ჩავარდა."
 
-#: fs/clustersize.cpp:107
+#: fs/clustersize.cpp:108
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Choosing the cluster size is not supported for this file system."
 msgstr "ამ ფაილური სისტემისთვის კლასტერის ზომის არჩევა მხარდაჭერილი არაა."
 
-#: fs/clustersize.cpp:111
+#: fs/clustersize.cpp:112
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size must be given as an integer number of bytes."
 msgstr "კლასტერის ზომა ბაიტების მთელი რიცხვით უნდა მიუთითოთ."
 
-#: fs/clustersize.cpp:115
+#: fs/clustersize.cpp:116
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a positive number."
 msgstr "კლასტერის ზომა (%1 ბაიტი) დადებითი რიცხვი უნდა იყოს."
 
-#: fs/clustersize.cpp:117
+#: fs/clustersize.cpp:118
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The cluster size (%1 bytes) must be a power of two."
 msgstr "კლასტერის ზომა (%1 ბაიტი) ორის ხარისხი უნდა იყოს."
 
-#: fs/clustersize.cpp:125
+#: fs/clustersize.cpp:126
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size is not an integer power of two."
 msgstr ""
 "მოთხოვნილი FAT-ის სექტორის ზომა არ წარმოადგენს ორის ხარისხ მთელ რიცხვს."
 
-#: fs/clustersize.cpp:128
+#: fs/clustersize.cpp:129
 #, kde-kuit-format
 msgctxt "@info"
 msgid "The requested FAT sector size (%1 bytes) must be between 512 and 32768."
 msgstr ""
 "მოთხოვნილი FAT-ის სექტორის ზომა (%1 ბაიტი) უნდა იყოს შუალედიდან 512-32768."
 
-#: fs/clustersize.cpp:134
+#: fs/clustersize.cpp:135
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1847,7 +1847,7 @@ msgstr ""
 "მოთხოვნილი FAT-ის სექტორის მნიშვნელობა თითოეული კლასტერისთვის არ წარმოადგენს "
 "მთელ რიცხვს, ორის ხარისხს, ან არაა შუალედიდან 1-128."
 
-#: fs/clustersize.cpp:137 fs/clustersize.cpp:146
+#: fs/clustersize.cpp:138 fs/clustersize.cpp:147
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1857,7 +1857,7 @@ msgstr ""
 "კლასტერის ზომა (%1 ბაიტი) უნდა იყოს მთელი რიცხვი და სექტორის ზომის (%2 "
 "ბაიტი) ნამრავლი."
 
-#: fs/clustersize.cpp:141
+#: fs/clustersize.cpp:142
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1868,7 +1868,7 @@ msgstr ""
 "რომლის გამოყენებაც mkfs.fat-ს არ შეუძლია (უნდა იყოს ორის ხარისხი შუალედიდან "
 "1-128)."
 
-#: fs/clustersize.cpp:143
+#: fs/clustersize.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1878,7 +1878,7 @@ msgstr ""
 "მოთხოვნილი კლასტერის ზომა (%1 ბაიტი) და სექტორის მნიშვნელობა თითოეულ "
 "კლასტერში (%2) არ თანხმდებიან."
 
-#: fs/clustersize.cpp:152
+#: fs/clustersize.cpp:153
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1888,14 +1888,14 @@ msgstr ""
 "კლასტერის ზომა (%1 ბაიტი) ამ ფაილური სისტემის მიერ მხარდაჭერილი მნიშვნელობის "
 "შუალედის გარეთაა (%2-%3 ბაიტი)."
 
-#: fs/clustersize.cpp:155
+#: fs/clustersize.cpp:156
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "The cluster size (%1 bytes) is larger than the whole file system (%2 bytes)."
 msgstr "კლასტერის ზომა (%1 ბაიტი) მთელ ფაილურ სისტემაზე (%2 ბაიტი) დიდია."
 
-#: fs/clustersize.cpp:160
+#: fs/clustersize.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1905,7 +1905,7 @@ msgstr ""
 "კლასტერის ზომა%1 ბაიტი FAT16 ფაილური სისტემის მიერ მოთხოვნილ 4085 მონაცემთა "
 "კლასტერზე ნაკლებს ტოვებს. აირჩიეთ უფრო პატარა კლასტერის ზომა."
 
-#: fs/clustersize.cpp:162
+#: fs/clustersize.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
