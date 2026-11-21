@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kpmcore\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 00:16+0000\n"
-"PO-Revision-Date: 2026-10-29 12:12+0100\n"
+"PO-Revision-Date: 2026-11-20 17:53+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -658,15 +658,15 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count"
-msgstr "SSD Comptador de les fallades de l'esborrat"
+msgstr "SSD Comptador de les fallades d'esborrament"
 
 #: core/smartattribute.cpp:116
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Number of flash erase operation failures since the drive was deployed."
 msgstr ""
-"Nombre de fallades en el funcionament de l'esborrat flaix des que la unitat "
-"va ser desplegada."
+"Nombre de fallades en el funcionament de l'esborrament flaix des que la "
+"unitat es va desplegar."
 
 #: core/smartattribute.cpp:117
 #, kde-format
@@ -678,7 +678,7 @@ msgstr "SSD Comptador de l'anivellament del desgast"
 #, kde-format
 msgctxt "SMART attr description"
 msgid "Counts the maximum worst erase count on any block."
-msgstr "Compta el màxim pitjor recompte de l'esborrat en qualsevol bloc."
+msgstr "Compta el comptador màxim d'esborrament pitjor en qualsevol bloc."
 
 #: core/smartattribute.cpp:118
 #, kde-format
@@ -727,7 +727,7 @@ msgstr ""
 #, kde-format
 msgctxt "SMART attr name"
 msgid "SSD Erase Fail Count (chip)"
-msgstr "SSD Comptador de les fallades de l'esborrat (xip)"
+msgstr "SSD Comptador de les fallades d'esborrament (xip)"
 
 #: core/smartattribute.cpp:120
 #, kde-format
@@ -1319,8 +1319,8 @@ msgid ""
 "Count of physical erase cycles completed on the drive as a percentage of the "
 "maximum physical erase cycles the drive supports"
 msgstr ""
-"Comptador de cicles d'esborrat físic completats en la unitat com a "
-"percentatge dels cicles màxims d'esborrats físics que accepta la unitat"
+"Comptador de cicles d'esborrament físic completats en la unitat com a "
+"percentatge dels cicles màxims d'esborraments físics que accepta la unitat"
 
 #: core/smartattribute.cpp:168
 #, kde-format
@@ -3745,7 +3745,7 @@ msgctxt "@info:progress"
 msgid ""
 "Failed to erase filesystem signature on partition <filename>%1</filename>."
 msgstr ""
-"Ha fallat l'esborrat de la signatura del sistema de fitxers a la partició "
+"Ha fallat l'esborrament de la signatura del sistema de fitxers a la partició "
 "<filename>%1</filename>."
 
 #: plugins/sfdisk/sfdiskpartitiontable.cpp:157
